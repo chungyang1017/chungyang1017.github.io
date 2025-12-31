@@ -1,56 +1,22 @@
 ---
 permalink: /
-title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
-author_profile: true
+title: "Chung-Yang Yeh (葉崇揚)"
+author_profile: Chung-Yang Yeh (葉崇揚)
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-This is the front page of a website that is powered by the [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the repository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. Incidentally, these same features make it a great template for anyone that needs to show off a professional template!
+Chung-Yang Yeh, Professor, Department of Sociology at Soochow University, Taiwan. I received PhD in Sociology and Social Policy from University of Southampton, the United Kingdom, in 2014. My PhD thesis, supervised by Dr. Paul Bridgen and Dr. Traute Meyer, focuses on public-private pension mix in East Asia. 
+Now, my main research interest focuses on welfare attitude, comparative pension policy, and East Asian welfare states. A recent research project funded by National Science and Technology Council (國家科學及技術委員會) (Taiwan) compares pension attitudes and how pension politics was managed in Japan, Korea, and Taiwan. 
+And, I love photography, particularly, street snap and landscape. You can find my IG from here: chungyang.yeh 
+and my Flickr here: young1017
 
- You can fork [this template](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and Markdown files, add your own PDFs and other content, and have your own site for free, with no ads!
 
-A data-driven personal website
-======
-Like many other Jekyll-based GitHub Pages templates, Academic Pages makes you separate the website's content from its form. The content & metadata of your website are in structured Markdown files, while various other files constitute the theme, specifying how to transform that content & metadata into HTML pages. You keep these various Markdown (.md), YAML (.yml), HTML, and CSS files in a public GitHub repository. Each time you commit and push an update to the repository, the [GitHub pages](https://pages.github.com/) service creates static HTML pages based on these files, which are hosted on GitHub's servers free of charge.
+個人介紹
+  我是一位社會政策學者。雖然社會政策跟每個人息息相關，但是研讀社會政策其實是一個人生偶然的抉擇。在高中就讀之時，開始接觸以及學習攝影，讓我開始看見過去常常被忽略的人生百態和景色，因此開啟了對社會的關懷，特別是對社會弱勢的關懷。雖然如此，其實當初選擇暨南大學社會政策與社會工作學系就讀時，完全不了解社會政策與社會工作是什麼。可是它卻啟蒙了我對於社會的關懷與對社會政策的了解與興趣，而這也成為我接下來投注了十幾年的時間研讀社會政策領域的動力。
+爾後，在碩士畢業以及役畢之後，於2009年考取教育部公費留學獎學金，並於2010年申請至英國Southampton大學〈社會學與社會政策學系〉就讀博士班。Southampton大學在社會科學領域並不那麼有名，但是卻有兩位在目前年金政策研究領域中相當著名的專家，也就是我博士論文的指導教授為Paul Bridgen和Traute Meyer。基本上，我的研究關懷主要都是老年經濟安全，也就是年金政策。從碩士階段鑽研歐洲福利國家的年金體系與政策如何影響個人退出勞動市場的型態，到博士論文主要是探討東亞公私年金混合體系的差異，以及從其資本主義制度結構的歷史脈絡結構解釋為何東亞福利體制的國家，日本、韓國和台灣，在公私年金混合模式有所差異。英國博士班的訓練，對我而言，最重要的是如何進行理論的辯證與對話，從而發展新的理論觀點。兩位指導教授的指導，基本上就是一直透過不斷地討論與對話，強化此一能力。
+畢業回台之後，雖然是以比較東亞的工作貧窮圖像的相關計畫進入中研院人社中心進行博士後研究，可是此時開始大量的接觸到福利態度研究的文獻以及相關的資料庫，就重拾了博士階段所學的量化課程，開始進行福利態度的研究分析。並結合了目前當代福利國家討論最盛的社會投資(social investment)政策典範，開始探討東亞福利國家轉型的社會大眾民意基礎。因為當代福利國家為了解決結構變遷所帶來的新社會風險以及回應社會人口的結構轉型，必須要開始將傳統著重於現金給付的所得保障政策轉變成為以服務為主的積極性社會政策。但是，這會面臨一個問題，即是資源的重新分配必然會涉及到利益之間的衝突以及背後是否有其社會大眾的民意基礎，而此就會涉及到如何找出利益團體之間的衝突以及誰會比較支持哪種社會政策。這也就是我最近幾年來的核心研究關懷。2018年出版的一本小書《轉型中的東亞福利體制》，由香港城市大學出版社，就是目前的一個研究成果。這本書是利用比較歷史與制度分析，了解東亞福利國家轉型的不同路徑，比較了日本、韓國、台灣、香港與新加坡五個國家。
+目前我的研究關懷與取向多是以東亞福利國家比較研究為主，不論是質化或是量化的研究取向，研究大多重於東亞福利國家之間的跨國比較。而這也是東吳大學社會學系的特色課群之一。其中，年金政策一直以來是我最關心的政策研究領域，除了延續博士論文的公私年金混合模式比較之外，也同時開始擴展到公私年金政策治理的模式；另外，我也開始逐漸地將範圍擴展到社會救助政策與社會投資政策上，包括積極勞動市場政策與兒童照顧政策。
+社會政策，從搖籃到墳墓，與我們人的一生息息相關。在當代民主參與與公共討論越來越興盛的情況下，社會政策相關的知識與討論勢必越來越重要，特別是在福利改革的年代下，如果我們缺乏相關的知識與討論，將會使得我們無法理解改革內容的討論，從而喪失自己的權利與責任。作為一個社會政策學者，未來希望能夠努力在此方面持續的耕耘，讓社會大眾更關心社會政策的議題。
 
-Many of the features of dynamic content management systems (like Wordpress) can be achieved in this fashion, using a fraction of the computational resources and with far less vulnerability to hacking and DDoSing. You can also modify the theme to your heart's content without touching the content of your site. If you get to a point where you've broken something in Jekyll/HTML/CSS beyond repair, your Markdown files describing your talks, publications, etc. are safe. You can rollback the changes or even delete the repository and start over - just be sure to save the Markdown files! You can also write scripts that process the structured data on the site, such as [this one](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb) that analyzes metadata in pages about talks to display [a map of every location you've given a talk](https://academicpages.github.io/talkmap.html).
-
-For those users that need more advanced functionality, the template also supports the following popular tools:
-- [MathJax](https://www.mathjax.org/) for mathematical equations
-- [Mermaid](https://mermaid.js.org/) for diagraming
-- [Plotly](https://plotly.com/javascript/) for plotting
-
-Getting started
-======
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Fork [this template](https://github.com/academicpages/academicpages.github.io) by clicking the "Use this template" button in the top right. 
-1. Go to the repository's settings (rightmost item in the tabs that start with "Code", should be below "Unwatch"). Rename the repository "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and create content & metadata (see below -- also see [this set of diffs](https://archive.is/3TPas) showing what files were changed to set up [an example site](https://getorg-testacct.github.io) for a user with the username "getorg-testacct")
-1. Upload any files (like PDFs, .zip files, etc.) to the files/ directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.  
-1. Check status by going to the repository settings, in the "GitHub pages" section
-
-Site-wide configuration
-------
-The main configuration file for the site is in the base directory in [_config.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_config.yml), which defines the content in the sidebars and other site-wide features. You will need to replace the default variables with ones about yourself and your site's github repository. The configuration file for the top menu is in [_data/navigation.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_data/navigation.yml). For example, if you don't have a portfolio or blog posts, you can remove those items from that navigation.yml file to remove them from the header. 
-
-Create content & metadata
-------
-For site content, there is one Markdown file for each type of content, which are stored in directories like _publications, _talks, _posts, _teaching, or _pages. For example, each talk is a Markdown file in the [_talks directory](https://github.com/academicpages/academicpages.github.io/tree/master/_talks). At the top of each Markdown file is structured data in YAML about the talk, which the theme will parse to do lots of cool stuff. The same structured data about a talk is used to generate the list of talks on the [Talks page](https://academicpages.github.io/talks), each [individual page](https://academicpages.github.io/talks/2012-03-01-talk-1) for specific talks, the talks section for the [CV page](https://academicpages.github.io/cv), and the [map of places you've given a talk](https://academicpages.github.io/talkmap.html) (if you run this [python file](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.py) or [Jupyter notebook](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb), which creates the HTML for the map based on the contents of the _talks directory).
-
-**Markdown generator**
-
-The repository includes [a set of Jupyter notebooks](https://github.com/academicpages/academicpages.github.io/tree/master/markdown_generator
-) that converts a CSV containing structured data about talks or presentations into individual Markdown files that will be properly formatted for the Academic Pages template. The sample CSVs in that directory are the ones I used to create my own personal website at stuartgeiger.com. My usual workflow is that I keep a spreadsheet of my publications and talks, then run the code in these notebooks to generate the Markdown files, then commit and push them to the GitHub repository.
-
-How to edit your site's GitHub repository
-------
-Many people use a git client to create files on their local computer and then push them to GitHub's servers. If you are not familiar with git, you can directly edit these configuration and Markdown files directly in the github.com interface. Navigate to a file (like [this one](https://github.com/academicpages/academicpages.github.io/blob/master/_talks/2012-03-01-talk-1.md) and click the pencil icon in the top right of the content preview (to the right of the "Raw | Blame | History" buttons). You can delete a file by clicking the trashcan icon to the right of the pencil icon. You can also create new files or upload files by navigating to a directory and clicking the "Create new file" or "Upload files" buttons. 
-
-Example: editing a Markdown file for a talk
-![Editing a Markdown file for a talk](/images/editing-talk.png)
-
-For more info
-------
-More info about configuring Academic Pages can be found in [the guide](https://academicpages.github.io/markdown/), the [growing wiki](https://github.com/academicpages/academicpages.github.io/wiki), and you can always [ask a question on GitHub](https://github.com/academicpages/academicpages.github.io/discussions). The [guides for the Minimal Mistakes theme](https://mmistakes.github.io/minimal-mistakes/docs/configuration/) (which this theme was forked from) might also be helpful.
