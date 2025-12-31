@@ -24,9 +24,8 @@ repository               : "academicpages/academicpages.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
+  name             : "Chung-Yang Yeh (葉崇揚)"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
   location         : "Taipei, Taiwan"
   employer         : "Soochow University"
   uri              : # URL
@@ -41,20 +40,19 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "academicpages"
+  github           : "chungyang1017.github.io"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
   artstation       : # Username
-  bluesky          : "bsky.app" # Replace this with you Bluesky username
   facebook         : # Username
-  flickr           : # Username
+  flickr           : “young1017”
   foursquare       : # Username
   goodreads        : # Username
   google_plus      : # Username
   keybase          : # Username
-  instagram        : # Username
+  instagram        : “chungyang.yeh”
   lastfm           : # Username
   linkedin         : # Username
   mastodon         : # URL
