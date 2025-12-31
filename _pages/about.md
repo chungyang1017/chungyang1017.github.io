@@ -12,7 +12,7 @@ Chung-Yang Yeh
 Professor, Department of Sociology at Soochow University, Taiwan. I received PhD in Sociology and Social Policy from University of Southampton, the United Kingdom, in 2014. My PhD thesis, supervised by Dr. Paul Bridgen and Dr. Traute Meyer, focuses on public-private pension mix in East Asia. 
 Now, my main research interest focuses on welfare attitude, comparative pension policy, and East Asian welfare states. A recent research project funded by National Science and Technology Council (國家科學及技術委員會) (Taiwan) compares pension attitudes and how pension politics was managed in Japan, Korea, and Taiwan. 
 And, I love photography, particularly, street snap and landscape. 
-You can find my IG from here: chungyang.yeh and my Flickr here: young1017
+
 
 
 個人介紹
