@@ -353,10 +353,12 @@ section { padding: 6rem 2rem; }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 4rem;
   align-items: start;
 }
+
+.about-grid > * { min-width: 0; }
 
 .about-text p {
   font-size: 0.97rem;
@@ -376,31 +378,47 @@ section { padding: 6rem 2rem; }
 .about-sidebar {}
 
 .edu-item {
-  display: grid;
-  grid-template-columns: 3px 1fr;
-  gap: 0 1.25rem;
-  margin-bottom: 2rem;
+  display: block;
   position: relative;
+  margin-bottom: 1.5rem;
+  padding: 0.1rem 0 0.1rem 1.1rem;
+  border-left: 2px solid var(--gold);
 }
 
-.edu-item::before {
-  content: '';
-  background: var(--border);
-  grid-row: 1 / span 3;
+.edu-item:last-of-type { margin-bottom: 0; }
+
+.edu-item .edu-degree,
+.edu-item .edu-inst,
+.edu-item .edu-year {
+  display: block;
+  width: auto;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .edu-degree {
-  font-size: 0.9rem; font-weight: 500; color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.45;
+  margin-bottom: 0.25rem;
 }
 
 .edu-inst {
-  font-size: 0.82rem; color: var(--ink-light); margin-top: 0.2rem;
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  line-height: 1.55;
+  margin-bottom: 0.35rem;
 }
 
 .edu-year {
-  font-size: 0.72rem; color: var(--gold);
-  letter-spacing: 0.08em; margin-top: 0.2rem;
-  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  font-style: italic;
+  font-family: var(--font-display);
+  white-space: nowrap;
 }
 
 .sidebar-label {
