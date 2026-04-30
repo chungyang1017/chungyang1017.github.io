@@ -1484,3 +1484,47 @@ footer a { color: rgba(184,147,90,0.7); text-decoration: none; }
   .academic-page .section-num { font-size: 2.6rem !important; }
   .academic-page .section-num::before { font-size: 2.6rem; }
 }
+
+
+/* ── academic page: enlarge typography across the board ── */
+.academic-page .hero-desc { font-size: 1.12rem; line-height: 1.95; }
+.academic-page .hero-tag { font-size: 0.85rem; padding: 0.45rem 1.05rem; }
+
+.academic-page .about-text p { font-size: 1.08rem; line-height: 2; margin-bottom: 1.4rem; }
+.academic-page .about-text p:first-child { font-size: 1.45rem; line-height: 1.75; }
+
+.academic-page .pub-overview-intro { font-size: 1.12rem; line-height: 1.95; }
+.academic-page .pub-overview-card h3 { font-size: 1.32rem; }
+.academic-page .pub-overview-card p { font-size: 0.92rem; }
+.academic-page .pub-overview-card .card-num { font-size: 3.2rem; }
+
+.academic-page .research-period { font-size: 0.92rem; }
+.academic-page .research-title { font-size: 1.12rem; line-height: 1.7; }
+.academic-page .research-grant { font-size: 0.88rem; }
+
+.academic-page .contact-info p { font-size: 1.1rem; line-height: 2; }
+.academic-page .contact-links li { font-size: 1rem; padding: 0.95rem 0; }
+.academic-page .contact-label { font-size: 0.82rem; min-width: 84px; }
+.academic-page .contact-section-label { font-size: 0.82rem; }
+.academic-page .social-platform { font-size: 0.78rem; }
+.academic-page .social-handle { font-size: 1.05rem; }
+.academic-page .contact-quote { font-size: 1.7rem; line-height: 1.7; }
+
+.academic-page .pub-tab { font-size: 0.85rem; padding: 0.85rem 1.65rem; }
+
+.academic-page .section-title { font-size: clamp(2rem, 3.4vw, 2.95rem); }
+.academic-page .hero-name { font-size: clamp(3.1rem, 5.4vw, 4.9rem); }
+.academic-page .hero-name-cn { font-size: clamp(1.55rem, 2.7vw, 2.2rem); }
+.academic-page .hero-eyebrow { font-size: 0.8rem; }
+
+.academic-page .hero-affil p { font-size: 0.9rem; }
+.academic-page .hero-affil strong { font-size: 0.95rem; }
+
+.academic-page footer p { font-size: 0.82rem; }
+
+/* sidebar: bump beyond previous edit */
+.academic-page .edu-degree { font-size: 1.18rem; }
+.academic-page .edu-inst { font-size: 1.02rem; }
+.academic-page .edu-year { font-size: 0.92rem; }
+.academic-page .interest-list li { font-size: 1.08rem; padding: 0.85rem 0; }
+.academic-page .sidebar-label { font-size: 0.95rem; letter-spacing: 0.18em; }
