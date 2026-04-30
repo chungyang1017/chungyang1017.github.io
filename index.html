@@ -9,7 +9,7 @@
   <link rel="alternate" hreflang="en" href="index-en.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400&family=Noto+Serif+JP:wght@200;300;400;500&family=Noto+Serif+TC:wght@200;300;400&family=Zhi+Mang+Xing&family=Long+Cang&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400&family=Noto+Serif+JP:wght@200;300;400;500&family=Noto+Serif+TC:wght@200;300;400&family=Ma+Shan+Zheng&family=Zhi+Mang+Xing&family=Long+Cang&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --sumi: #15110d; --sumi-soft: #2c2622;
@@ -89,17 +89,17 @@
     .door-brush {
       font-family: var(--brush);
       font-weight: 400;
-      font-size: clamp(2.4rem, 4vw, 3.4rem);
-      line-height: 1.05;
+      font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+      line-height: 1.15;
       color: var(--sumi);
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.04em;
+      margin: 0;
+      letter-spacing: 0.06em;
       writing-mode: vertical-rl;
       transform: rotate(-1deg);
       transition: transform 0.6s cubic-bezier(.2,.7,.2,1);
       user-select: none;
-      max-height: 9em;
     }
+    .door-content { padding: 4.5rem 1rem 5.5rem !important; }
     .door:hover .door-brush { transform: rotate(-1deg) translateY(-3px); }
 
     .door-meta { position: absolute; left: 0; right: 0; bottom: 1.6rem; display: flex; flex-direction: column; align-items: center; gap: 0.35rem; z-index: 2; }
