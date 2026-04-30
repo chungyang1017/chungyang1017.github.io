@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>葉崇揚 ・ Variant A 純文字</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400&family=Noto+Serif+JP:wght@200;300;400;500&family=Noto+Serif+TC:wght@200;300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sumi: #15110d; --sumi-soft: #2c2622;
+      --ink-mid: #5a534d; --ink-mute: #9a938c;
+      --washi: #f4efe5; --washi-deep: #e8e1d3; --washi-soft: #fbf7ee;
+      --shu: #b13a2a; --kin: #a98146;
+      --line: rgba(21,17,13,0.14); --line-soft: rgba(21,17,13,0.07);
+      --jp: 'Noto Serif JP', 'Noto Serif TC', 'Hiragino Mincho ProN', serif;
+      --display: 'Cormorant Garamond', 'Noto Serif TC', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: var(--sans); background: var(--washi); color: var(--sumi);
+      -webkit-font-smoothing: antialiased; line-height: 1.7;
+      background-image:
+        radial-gradient(rgba(169,129,70,0.035) 1px, transparent 1px),
+        radial-gradient(rgba(21,17,13,0.022) 1px, transparent 1px);
+      background-size: 28px 28px, 17px 17px; background-position: 0 0, 14px 14px;
+      display: flex; flex-direction: column; min-height: 100vh;
+    }
+
+    .mockup-banner {
+      flex-shrink: 0; background: var(--sumi); color: rgba(244,239,229,0.78);
+      padding: 0.55rem 1.5rem; font-size: 0.72rem; letter-spacing: 0.16em; text-align: center;
+    }
+    .mockup-banner strong { color: var(--kin); margin-right: 0.6rem; letter-spacing: 0.22em; }
+    .mockup-banner a { color: rgba(169,129,70,0.85); text-decoration: none; margin-left: 1rem; }
+    .mockup-banner em { color: rgba(244,239,229,0.55); font-style: normal; margin-left: 0.6rem; letter-spacing: 0.04em; }
+
+    .top {
+      flex-shrink: 0; display: flex; justify-content: space-between; align-items: center;
+      padding: 2rem 2.5rem 0;
+    }
+    .top-mark {
+      font-family: var(--jp); font-size: 0.85rem; color: var(--ink-mid);
+      letter-spacing: 0.6em;
+    }
+    .top-mark::before {
+      content: ''; display: inline-block; width: 18px; height: 1px;
+      background: var(--shu); vertical-align: middle; margin-right: 1.2rem;
+      transform: translateY(-2px);
+    }
+    .lang-toggle { display: flex; align-items: center; gap: 0.6rem; font-size: 0.7rem; letter-spacing: 0.18em; }
+    .lang-toggle .current { color: var(--sumi); font-weight: 500; }
+    .lang-toggle .sep { color: var(--ink-mute); opacity: 0.4; }
+    .lang-toggle a { color: var(--ink-mute); text-decoration: none; transition: color 0.2s; }
+    .lang-toggle a:hover { color: var(--shu); }
+
+    main {
+      flex: 1; display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem;
+      padding: 3rem 4rem 5rem; max-width: 1280px; margin: 0 auto; width: 100%; align-items: center;
+    }
+
+    .name-block { position: relative; padding-left: 1.5rem; }
+    .name-block::before {
+      content: ''; position: absolute; left: 0; top: 0.5rem; width: 1px; height: 100%; background: var(--line);
+    }
+    .name-block::after {
+      content: ''; position: absolute; left: -3px; top: 0.85rem; width: 7px; height: 7px;
+      background: var(--shu); border-radius: 50%;
+    }
+    .eyebrow { font-family: var(--display); font-style: italic; font-size: 0.92rem; color: var(--ink-mid); letter-spacing: 0.14em; margin-bottom: 2rem; }
+    .name-cn {
+      font-family: var(--jp); font-weight: 200;
+      font-size: clamp(3.4rem, 6vw, 5.4rem); line-height: 1; letter-spacing: 0.18em;
+      color: var(--sumi); margin-bottom: 1.2rem;
+    }
+    .name-en { font-family: var(--display); font-style: italic; font-weight: 300;
+      font-size: clamp(1.1rem, 1.6vw, 1.45rem); color: var(--ink-mid); letter-spacing: 0.05em; margin-bottom: 2.5rem;
+    }
+    .role { font-family: var(--jp); font-weight: 300; font-size: 0.92rem; color: var(--sumi); letter-spacing: 0.18em; line-height: 2.1; }
+    .role .role-en { display: block; font-family: var(--display); font-style: italic; font-size: 0.88rem; color: var(--ink-mute); letter-spacing: 0.04em; margin-top: 0.4rem; }
+
+    /* ── DOORS · Variant A (pure typography) ── */
+    .doors {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+      position: relative;
+    }
+    .doors::before {
+      content: ''; position: absolute; top: -2.5rem; left: 0;
+      width: 60px; height: 1px; background: var(--sumi); opacity: 0.85;
+    }
+
+    .door {
+      position: relative; aspect-ratio: 3 / 4.4;
+      background: var(--washi-soft);
+      border: 1px solid var(--line);
+      text-decoration: none; color: var(--sumi);
+      display: flex; flex-direction: column;
+      transition: transform 0.5s cubic-bezier(.2,.7,.2,1), border-color 0.5s ease, background 0.5s ease;
+      overflow: hidden;
+    }
+    .door:nth-child(1) { background: var(--washi-soft); }
+    .door:nth-child(2) { background: var(--washi); }
+    .door:nth-child(3) { background: var(--washi-deep); }
+
+    .door:hover { transform: translateY(-6px); border-color: var(--shu); }
+    .door.disabled { pointer-events: none; opacity: 0.55; }
+
+    /* internal frame */
+    .door::before {
+      content: ''; position: absolute; inset: 12px;
+      border: 1px solid rgba(169,129,70,0.22);
+      pointer-events: none;
+    }
+
+    .door-num {
+      position: absolute; top: 1.4rem; left: 1.4rem;
+      font-family: var(--display); font-style: italic;
+      font-size: 0.72rem; color: var(--ink-mute); letter-spacing: 0.14em;
+    }
+    .door-num::before {
+      content: ''; display: inline-block;
+      width: 14px; height: 1px; background: var(--shu);
+      vertical-align: middle; margin-right: 0.4rem;
+    }
+
+    .door-status {
+      position: absolute; top: 1.4rem; right: 1.4rem;
+      font-size: 0.6rem; letter-spacing: 0.18em;
+      color: var(--ink-mute); padding: 0.2rem 0.55rem;
+      border: 1px solid var(--line);
+      text-transform: uppercase;
+    }
+    .door-status.live { color: var(--shu); border-color: rgba(177,58,42,0.4); }
+
+    .door-content {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .door-kanji {
+      font-family: var(--jp); font-weight: 300;
+      font-size: clamp(2.2rem, 3.6vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: 0.4em;
+      color: var(--sumi);
+      margin-bottom: 1.6rem;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      max-height: 4.5em;
+    }
+
+    .door-rule {
+      width: 1px; height: 24px;
+      background: var(--shu);
+      opacity: 0.5;
+      margin: 0 auto 1.2rem;
+    }
+
+    .door-cn {
+      font-family: var(--jp); font-size: 0.78rem;
+      letter-spacing: 0.32em; color: var(--ink-mid);
+      margin-bottom: 0.45rem;
+    }
+
+    .door-en {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.92rem; color: var(--ink-mid);
+      letter-spacing: 0.06em;
+      display: flex; align-items: baseline; gap: 0.3rem;
+      transition: color 0.3s ease;
+    }
+    .door-en .arrow { font-style: normal; font-family: var(--sans); transition: transform 0.4s ease; }
+    .door:hover .door-en { color: var(--shu); }
+    .door:hover .door-en .arrow { transform: translateX(4px); }
+
+    .door-foot {
+      position: absolute; bottom: 1.2rem; left: 1.4rem; right: 1.4rem;
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-family: var(--display); font-style: italic; font-size: 0.7rem;
+      color: var(--ink-mute); letter-spacing: 0.06em;
+    }
+    .door-foot .key { color: var(--ink-mute); }
+    .door-foot .val { color: var(--sumi); }
+
+    footer {
+      flex-shrink: 0; padding: 1.75rem 2.5rem; border-top: 1px solid var(--line);
+      background: var(--washi); display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 0.75rem; font-size: 0.72rem; color: var(--ink-mute); letter-spacing: 0.06em;
+    }
+    footer .links a { color: var(--ink-mid); text-decoration: none; margin: 0 0.35rem; transition: color 0.2s; }
+    footer .links a:hover { color: var(--shu); }
+    footer .sep { color: var(--ink-mute); opacity: 0.4; margin: 0 0.4rem; }
+
+    @media (max-width: 1024px) {
+      main { grid-template-columns: 1fr; gap: 3rem; padding: 2.5rem 2.5rem 4rem; }
+      .doors::before { top: -1.5rem; }
+    }
+    @media (max-width: 720px) {
+      .doors { grid-template-columns: 1fr; gap: 0.8rem; }
+      .door { aspect-ratio: 16/8; }
+      .door-kanji { writing-mode: horizontal-tb; letter-spacing: 0.18em; max-height: none; }
+      .top { padding: 1.5rem 1.5rem 0; flex-wrap: wrap; gap: 1rem; }
+      main { padding: 2rem 1.5rem 3rem; }
+      footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="mockup-banner">
+  <strong>VARIANT A</strong>純文字 · 三道門皆無圖 <em>· compare:</em>
+  <a href="landing-b.html">B 大字書道</a>
+  <a href="landing-c.html">C 混搭</a>
+  <a href="landing.html">原版（全照片）</a>
+</div>
+
+<header class="top">
+  <span class="top-mark">葉 崇 揚</span>
+  <div class="lang-toggle"><span class="current">中文</span><span class="sep">／</span><a href="#">EN</a></div>
+</header>
+
+<main>
+  <div class="name-block">
+    <p class="eyebrow">Welcome ・ ようこそ</p>
+    <h1 class="name-cn">葉崇揚</h1>
+    <p class="name-en">Chung-Yang Yeh</p>
+    <p class="role">
+      東吳大學社會學系 ・ 教授
+      <span class="role-en">Professor of Social Policy ・ Soochow University, Taiwan</span>
+    </p>
+  </div>
+
+  <nav class="doors" aria-label="Sections">
+
+    <a href="index.html" class="door">
+      <span class="door-num">No. 一</span>
+      <span class="door-status live">Live</span>
+      <div class="door-content">
+        <span class="door-kanji">学術</span>
+        <span class="door-rule"></span>
+        <span class="door-cn">學 術</span>
+        <span class="door-en">Academic <span class="arrow">→</span></span>
+      </div>
+      <div class="door-foot"><span class="key">Research</span><span class="val">2009 — 2026</span></div>
+    </a>
+
+    <a href="#" class="door">
+      <span class="door-num">No. 二</span>
+      <span class="door-status">Soon</span>
+      <div class="door-content">
+        <span class="door-kanji">写真</span>
+        <span class="door-rule"></span>
+        <span class="door-cn">攝 影</span>
+        <span class="door-en">Photography <span class="arrow">→</span></span>
+      </div>
+      <div class="door-foot"><span class="key">Series</span><span class="val">街・春霞・青嵐</span></div>
+    </a>
+
+    <a href="#" class="door disabled">
+      <span class="door-num">No. 三</span>
+      <span class="door-status">Soon</span>
+      <div class="door-content">
+        <span class="door-kanji">講義</span>
+        <span class="door-rule"></span>
+        <span class="door-cn">教 學</span>
+        <span class="door-en">Teaching <span class="arrow">→</span></span>
+      </div>
+      <div class="door-foot"><span class="key">Soochow</span><span class="val">Coming</span></div>
+    </a>
+
+  </nav>
+</main>
+
+<footer>
+  <p>© 2025 ・ 葉崇揚 Chung-Yang Yeh ・ 東吳大學社會學系</p>
+  <p class="links">
+    <a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener">Instagram</a>
+    <span class="sep">·</span>
+    <a href="https://www.flickr.com/photos/young1017/" target="_blank" rel="noopener">Flickr</a>
+  </p>
+</footer>
+
+</body>
+</html>
