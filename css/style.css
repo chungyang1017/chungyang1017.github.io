@@ -93,6 +93,38 @@ nav {
 .nav-links a:hover { color: var(--accent); }
 .nav-links a:hover::after { transform: scaleX(1); }
 
+.lang-toggle {
+  display: flex; align-items: center; gap: 0.5rem;
+  margin-left: 1.5rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--border);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.lang-current {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.lang-sep {
+  color: var(--ink-muted);
+  opacity: 0.5;
+}
+
+.lang-link {
+  color: var(--ink-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.lang-link:hover {
+  color: var(--accent);
+}
+
 .nav-hamburger {
   display: none;
   flex-direction: column; gap: 5px;
@@ -985,5 +1017,6 @@ footer a { color: rgba(184,147,90,0.7); text-decoration: none; }
     padding: 1.5rem 2rem; gap: 1.25rem;
   }
   .nav-hamburger { display: flex; }
+  .lang-toggle { margin-left: auto; padding-left: 0; border-left: none; }
   section { padding: 4rem 1.25rem; }
 }
