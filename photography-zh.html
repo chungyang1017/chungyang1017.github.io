@@ -414,30 +414,36 @@ const LANG = 'zh';
 const themes = [
   { id: 'street',     jp: '街',    romaji: 'Machi',       en: 'Street',     zh: '街頭',
     desc_en: 'People, fragments of cities, encounters with strangers — moments where the public street becomes briefly intimate.',
-    desc_jp: '街角、見知らぬ人、都市の断片。' },
+    desc_jp: '街角、見知らぬ人、都市の断片 ── 公共空間が一瞬だけ親密になる瞬間。',
+    desc_zh: '街角、陌生人、都市的碎片 ── 公共街道在某一瞬間變得親密的時刻。' },
   { id: 'harugasumi', jp: '春霞',   romaji: 'Harugasumi',  en: 'Spring',     zh: '春霞',
     desc_en: 'The pale veil of spring — cherry blossoms, drifting blossoms, soft mist.',
-    desc_jp: '桜、霞、春の柔らかな空気。' },
+    desc_jp: '桜、漂う花びら、春のやわらかな霞。',
+    desc_zh: '春日的淡薄面紗 ── 櫻花、飄落的花瓣、輕柔的霧氣。' },
   { id: 'aoarashi',   jp: '青嵐',   romaji: 'Aoarashi',    en: 'Summer',     zh: '青嵐',
     desc_en: 'The verdant pulse of summer — leaves, light through trees, the green wind.',
-    desc_jp: '若葉、緑陰、青嵐。' },
+    desc_jp: '若葉、樹間の光、青嵐 ── 夏の脈動。',
+    desc_zh: '夏日翠綠的脈動 ── 嫩葉、穿過樹梢的光、青嵐之風。' },
   { id: 'kouyou',     jp: '紅葉',   romaji: 'Kōyō',        en: 'Autumn',     zh: '紅葉',
     desc_en: 'The slow turning of leaves into fire and gold — autumn forests and quiet light.',
-    desc_jp: '紅葉、晩秋の光。' },
+    desc_jp: '緋色と黄金に染まる葉 ── 晩秋の森と静謐な光。',
+    desc_zh: '葉子緩慢地轉成火與金 ── 秋日的森林與安靜的光線。' },
   { id: 'yukiakari',  jp: '雪明',   romaji: 'Yukiakari',   en: 'Winter',     zh: '雪明',
     desc_en: 'Snow-light, stillness, the muted palette of winter mornings.',
-    desc_jp: '雪、静けさ、冬の朝。' },
+    desc_jp: '雪明、静寂、冬の朝の抑えた色彩。',
+    desc_zh: '雪光、靜止、冬日清晨那種克制的色調。' },
   { id: 'kaiyou',     jp: '海洋',   romaji: 'Kaiyō',       en: 'Ocean',      zh: '海洋',
     desc_en: 'Coastlines, rivers, water at every hour — long exposures and tides.',
-    desc_jp: '海、川、水際。' },
+    desc_jp: '海岸、川、あらゆる時刻の水 ── 長時間露光と潮の動き。',
+    desc_zh: '海岸線、河流、每個時刻的水 ── 長時間曝光與潮汐。' },
   { id: 'xpan',       jp: 'Xpan',  romaji: 'Panoramic',   en: 'Xpan ・ 65×24', zh: 'Xpan',
     desc_en: 'The wide format — 65×24, an unusually long frame, anything that asked to be seen sideways.',
-    desc_jp: '横長判（65×24）。',
-    desc_zh: '寬幅 65×24 比例 ・ 部分照片同時也屬街頭或風景。' },
+    desc_jp: '横長判（65×24）── 普通の枠に収まらない景色のための画面。',
+    desc_zh: '寬幅 65×24 ── 容不下方框的景色，需要橫向觀看的作品。' },
   { id: 'misc',       jp: '未分類', romaji: 'Mibunrui',    en: 'Uncategorized', zh: '未分類',
     desc_en: 'Photographs still awaiting categorization — the open file.',
-    desc_jp: '未分類。',
-    desc_zh: '尚待分類的作品 ・ 等待你以編號告知歸屬。' },
+    desc_jp: '未分類 ── 仮置きの作品。',
+    desc_zh: '尚待分類的作品 ── 等待以編號告知歸屬的暫存區。' },
 ];
 
 const labels = {
@@ -485,7 +491,7 @@ themes.forEach(t => {
       <span class="count">${photos.length}${labels[LANG].count}</span>
     </p>
     <p class="ph-series-desc">${t['desc_' + LANG] || t.desc_en}</p>
-    ${LANG === 'en' ? `<p class="ph-series-desc-jp">${t.desc_jp}</p>` : ''}
+    ${t.desc_jp ? `<p class="ph-series-desc-jp">${t.desc_jp}</p>` : ''}
     <div class="ph-grid ${t.id === 'xpan' ? 'is-xpan' : ''}">
       ${photos.map(p => {
         const title = p['title_' + LANG] || p.title_en || p.title || '';
