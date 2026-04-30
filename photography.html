@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>寫真 Shashin Photography ・ Chung-Yang Yeh</title>
+  <meta name="description" content="Photography by Chung-Yang Yeh — street, seasonal landscapes, ocean, panoramic Xpan." />
+  <link rel="alternate" hreflang="en" href="photography.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="photography-zh.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500&family=Noto+Serif+JP:wght@200;300;400;500&family=Noto+Serif+TC:wght@200;300;400&family=Ma+Shan+Zheng&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sumi: #15110d; --ink-mid: #5a534d; --ink-mute: #9a938c;
+      --washi: #fbf8f2; --washi-deep: #f1ebdf; --washi-soft: #ffffff;
+      --shu: #b13a2a; --kin: #a98146;
+      --line: rgba(21,17,13,0.10); --line-mid: rgba(21,17,13,0.18);
+      --jp: 'Noto Serif JP', 'Noto Serif TC', serif;
+      --brush: 'Ma Shan Zheng', 'Noto Serif TC', serif;
+      --display: 'Cormorant Garamond', 'Noto Serif TC', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--sans); background: var(--washi); color: var(--sumi);
+      -webkit-font-smoothing: antialiased; line-height: 1.85; font-weight: 300;
+    }
+
+    /* TOP NAV */
+    nav.top {
+      position: sticky; top: 0; z-index: 30;
+      background: rgba(251,248,242,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav.top .inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 1.1rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-logo { font-family: var(--display); font-style: italic; font-size: 0.95rem; color: var(--sumi); text-decoration: none; letter-spacing: 0.1em; }
+    .top-logo .nav-back { display: inline-block; color: var(--shu); margin-right: 0.4rem; transition: transform 0.3s; }
+    .top-logo:hover .nav-back { transform: translateX(-3px); }
+    .top-nav { list-style: none; display: flex; gap: 2.4rem; align-items: center; }
+    .top-nav a { font-family: var(--display); font-style: italic; font-size: 0.92rem; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s; }
+    .top-nav a:hover, .top-nav a.active { color: var(--shu); }
+    .lang-toggle { font-size: 0.72rem; letter-spacing: 0.18em; display: flex; gap: 0.5rem; align-items: center; }
+    .lang-toggle .current { color: var(--sumi); font-weight: 500; }
+    .lang-toggle .sep { color: var(--ink-mute); opacity: 0.4; }
+    .lang-toggle a { color: var(--ink-mute); text-decoration: none; }
+    .lang-toggle a:hover { color: var(--shu); }
+
+    /* HERO MASTHEAD */
+    .ph-hero {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 8rem 2.5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: end;
+    }
+    .ph-hero-eyebrow {
+      font-family: var(--display); font-style: italic; font-size: 0.92rem;
+      color: var(--shu); letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.85rem;
+    }
+    .ph-hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--shu); }
+
+    .ph-hero h1 {
+      font-family: var(--display); font-weight: 300;
+      font-size: clamp(3rem, 5.5vw, 4.8rem);
+      letter-spacing: 0.02em; line-height: 1.05;
+      color: var(--sumi); margin-bottom: 0.7rem;
+    }
+    .ph-hero .h1-jp {
+      display: block; font-family: var(--jp); font-weight: 300;
+      font-size: clamp(1.4rem, 2vw, 1.8rem);
+      letter-spacing: 0.32em; color: var(--ink-mid); margin-top: 0.6rem;
+    }
+    .ph-hero .h1-cn {
+      display: block; font-family: var(--jp); font-weight: 300;
+      font-size: 1.05rem; letter-spacing: 0.18em; color: var(--ink-mute); margin-top: 0.3rem;
+    }
+
+    .ph-hero-text p {
+      font-size: 1.05rem; color: var(--ink-mid); line-height: 2;
+      max-width: 480px; margin-bottom: 1.4rem;
+    }
+
+    .ph-hero-meta {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.82rem; color: var(--ink-mute);
+      letter-spacing: 0.12em;
+    }
+    .ph-hero-meta .num { color: var(--shu); }
+
+    /* THEMES INDEX */
+    .ph-index {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 2.5rem 3rem;
+      border-top: 1px solid var(--line-mid);
+      padding-top: 2rem;
+    }
+    .ph-index-eyebrow {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.78rem; letter-spacing: 0.22em; color: var(--shu);
+      text-transform: uppercase; margin-bottom: 1.4rem;
+    }
+    .ph-index-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 1px; background: var(--shu); vertical-align: middle; margin-right: 0.6rem; transform: translateY(-2px); }
+
+    .ph-index-list {
+      display: flex; flex-wrap: wrap; gap: 0;
+      list-style: none;
+    }
+    .ph-index-list li {
+      flex: 1 0 auto;
+      border-right: 1px solid var(--line);
+    }
+    .ph-index-list li:last-child { border-right: none; }
+    .ph-index-list a {
+      display: block;
+      padding: 1rem 1.5rem;
+      text-decoration: none;
+      color: var(--sumi);
+      transition: background 0.3s;
+    }
+    .ph-index-list a:hover { background: var(--washi-deep); }
+    .ph-index-list .name-jp {
+      display: block; font-family: var(--jp);
+      font-size: 1.15rem; letter-spacing: 0.18em; margin-bottom: 0.2rem;
+    }
+    .ph-index-list .name-en {
+      display: block; font-family: var(--display); font-style: italic;
+      font-size: 0.78rem; color: var(--ink-mute); letter-spacing: 0.06em;
+    }
+    .ph-index-list .count {
+      font-family: var(--display); font-style: italic; font-size: 0.7rem;
+      color: var(--shu); margin-left: 0.4rem;
+    }
+
+    /* SERIES */
+    .ph-series {
+      max-width: 1280px; margin: 0 auto;
+      padding: 5rem 2.5rem 6rem;
+      border-top: 1px solid var(--line-mid);
+    }
+    .ph-series-mark {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 3rem;
+      padding-bottom: 1rem;
+    }
+
+    .ph-series-num {
+      font-family: var(--brush);
+      font-weight: 400;
+      font-size: clamp(3.6rem, 5vw, 4.8rem);
+      color: var(--shu);
+      line-height: 0.9;
+      transform: rotate(-2deg);
+    }
+
+    .ph-series-title { padding-bottom: 0.4rem; border-bottom: 1px solid var(--line-mid); }
+    .ph-series-title .title-jp {
+      font-family: var(--jp); font-weight: 200;
+      font-size: clamp(1.95rem, 3vw, 2.6rem);
+      letter-spacing: 0.22em; color: var(--sumi);
+      line-height: 1.1;
+    }
+    .ph-series-title .title-romaji {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.92rem; color: var(--ink-mute);
+      letter-spacing: 0.08em; display: block; margin-top: 0.2rem;
+    }
+    .ph-series-title .title-en {
+      font-family: var(--display); font-style: italic;
+      font-size: 1.1rem; color: var(--shu);
+      letter-spacing: 0.04em; margin-left: 1rem;
+    }
+
+    .ph-series-meta {
+      display: flex; gap: 2rem; align-items: baseline;
+      font-family: var(--display); font-style: italic;
+      font-size: 0.85rem; color: var(--ink-mute);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.4rem;
+    }
+    .ph-series-meta .years { color: var(--shu); letter-spacing: 0.12em; }
+    .ph-series-meta .count {}
+    .ph-series-meta::before { content: '—'; color: var(--shu); margin-right: 0.2rem; }
+
+    .ph-series-desc {
+      font-size: 1rem; color: var(--ink-mid); line-height: 1.95;
+      max-width: 720px; margin-bottom: 2.5rem;
+    }
+    .ph-series-desc-jp {
+      font-family: var(--jp); font-size: 0.92rem;
+      color: var(--ink-mute); letter-spacing: 0.06em;
+      line-height: 2.2; margin-top: 0.4rem;
+    }
+
+    /* PHOTO GRID — like contact sheet */
+    .ph-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.4rem;
+    }
+    .ph-grid.is-xpan { grid-template-columns: 1fr; max-width: 1100px; gap: 2rem; }
+
+    .ph-card {
+      position: relative;
+      overflow: hidden;
+      cursor: zoom-in;
+      transition: transform 0.5s ease;
+      background: var(--washi-deep);
+    }
+    .ph-card.is-portrait { aspect-ratio: 4/5; }
+    .ph-card.is-landscape { aspect-ratio: 3/2; }
+    .ph-card.is-square { aspect-ratio: 1/1; }
+    .ph-card.is-xpan { aspect-ratio: 65/24; }
+
+    .ph-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.88) brightness(0.97);
+      transition: transform 0.7s cubic-bezier(.2,.7,.2,1), filter 0.5s;
+    }
+    .ph-card:hover img { transform: scale(1.03); filter: saturate(1) brightness(1); }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed; inset: 0;
+      background: rgba(15,12,9,0.95);
+      display: none; align-items: center; justify-content: center;
+      z-index: 200;
+      padding: 2rem;
+      cursor: zoom-out;
+    }
+    .lightbox.is-open { display: flex; }
+    .lightbox-figure {
+      max-width: 92vw; max-height: 88vh;
+      display: flex; flex-direction: column; align-items: center;
+      cursor: default;
+    }
+    .lightbox-img { max-width: 92vw; max-height: 80vh; object-fit: contain; display: block; }
+    .lightbox-caption {
+      margin-top: 1.25rem;
+      color: rgba(251,248,242,0.78);
+      font-family: var(--display);
+      font-size: 0.85rem; font-style: italic;
+      letter-spacing: 0.1em;
+    }
+    .lightbox-close, .lightbox-prev, .lightbox-next {
+      position: absolute;
+      background: rgba(251,248,242,0.06);
+      border: 1px solid rgba(251,248,242,0.18);
+      color: rgba(251,248,242,0.9);
+      width: 44px; height: 44px;
+      font-size: 1.5rem; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
+      background: rgba(177,58,42,0.25); border-color: rgba(177,58,42,0.5);
+    }
+    .lightbox-close { top: 1.25rem; right: 1.25rem; }
+    .lightbox-prev { left: 1.25rem; top: 50%; transform: translateY(-50%); }
+    .lightbox-next { right: 1.25rem; top: 50%; transform: translateY(-50%); }
+    .lightbox-counter { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); font-family: var(--display); font-style: italic; font-size: 0.78rem; letter-spacing: 0.18em; color: rgba(251,248,242,0.5); }
+
+    /* FOOTER */
+    footer {
+      padding: 3rem 2.5rem;
+      border-top: 1px solid var(--line);
+      background: var(--washi-deep);
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--ink-mute);
+      letter-spacing: 0.08em;
+    }
+    footer .sep { color: var(--ink-mute); opacity: 0.4; margin: 0 0.5rem; }
+    footer a { color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--shu); }
+
+    @media (max-width: 1024px) {
+      .ph-hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 5rem; }
+      .top-nav { display: none; }
+      .ph-index-list { flex-direction: column; }
+      .ph-index-list li { border-right: none; border-bottom: 1px solid var(--line); }
+    }
+    @media (max-width: 640px) {
+      .ph-series, .ph-hero, .ph-index { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .ph-series-mark { grid-template-columns: auto 1fr; gap: 1rem; }
+      .ph-series-title .title-en { display: block; margin-left: 0; margin-top: 0.4rem; }
+      .lightbox-prev, .lightbox-next { width: 38px; height: 38px; font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="inner">
+    <a href="index-en.html" class="top-logo" title="Home"><span class="nav-back">←</span> Chung-Yang Yeh</a>
+    <ul class="top-nav">
+      <li><a href="academic.html">Academic</a></li>
+      <li><a href="photography.html" class="active">Photography</a></li>
+      <li><a href="#">Teaching</a></li>
+    </ul>
+    <div class="lang-toggle">
+      <span class="current">EN</span>
+      <span class="sep">／</span>
+      <a href="photography-zh.html">中文</a>
+    </div>
+  </div>
+</nav>
+
+<header class="ph-hero">
+  <div class="ph-hero-text">
+    <p class="ph-hero-eyebrow">No. 二 ・ Photography</p>
+    <h1>
+      Shashin
+      <span class="h1-jp">写真</span>
+      <span class="h1-cn">寫真</span>
+    </h1>
+  </div>
+  <div class="ph-hero-text">
+    <p>
+      Photography has been a quiet companion to my academic life for nearly two decades — a way of
+      paying attention to what the world is doing when no one is reading welfare-state theory.
+    </p>
+    <p>
+      Most of my work happens in the cities, mountains, and coastlines of Taiwan and Japan: the slow
+      walking pace of a Taipei lane at dusk, the brittle hush of a Kyoto morning in late autumn, the
+      light that hangs above the Tamsui river when the buildings on the far bank begin to pulse.
+      I shoot mostly with Fujifilm digital and an occasional Hasselblad Xpan, drawn to the wide frame
+      whenever a place feels too long to fit inside a single rectangle.
+    </p>
+    <p>
+      The work below is grouped into seven series — <em>Street, Spring, Summer, Autumn, Winter, Ocean,
+      and Xpan</em> — each shaped less by a deliberate project than by the rhythm of light and the
+      seasons themselves. They form, together, a slow record of looking.
+    </p>
+    <p class="ph-hero-meta"><span class="num">No. 〇〇一 — 〇四三</span> ・ 43 selected works ・ 2016 — 2026</p>
+  </div>
+</header>
+
+<div class="ph-index">
+  <p class="ph-index-eyebrow">Series ・ 主題</p>
+  <ul class="ph-index-list" id="theme-index"></ul>
+</div>
+
+<main id="series-list"></main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">×</button>
+  <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous">‹</button>
+  <button class="lightbox-next" id="lightbox-next" aria-label="Next">›</button>
+  <figure class="lightbox-figure">
+    <img class="lightbox-img" id="lightbox-img" alt="" />
+    <figcaption class="lightbox-caption" id="lightbox-caption"></figcaption>
+  </figure>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
+<footer>
+  © 2025 ・ Chung-Yang Yeh ・ Department of Sociology, Soochow University
+  <span class="sep">·</span>
+  <a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener">Instagram</a>
+  <span class="sep">·</span>
+  <a href="https://www.flickr.com/photos/young1017/" target="_blank" rel="noopener">Flickr</a>
+</footer>
+
+<script src="js/photo-data.js"></script>
+<script>
+const LANG = 'en';
+const themes = [
+  { id: 'street',     jp: '街',    romaji: 'Machi',       en: 'Street',     zh: '街頭',
+    desc_en: 'People, fragments of cities, encounters with strangers — moments where the public street becomes briefly intimate.',
+    desc_jp: '街角、見知らぬ人、都市の断片。' },
+  { id: 'harugasumi', jp: '春霞',   romaji: 'Harugasumi',  en: 'Spring',     zh: '春霞',
+    desc_en: 'The pale veil of spring — cherry blossoms, drifting blossoms, soft mist.',
+    desc_jp: '桜、霞、春の柔らかな空気。' },
+  { id: 'aoarashi',   jp: '青嵐',   romaji: 'Aoarashi',    en: 'Summer',     zh: '青嵐',
+    desc_en: 'The verdant pulse of summer — leaves, light through trees, the green wind.',
+    desc_jp: '若葉、緑陰、青嵐。' },
+  { id: 'kouyou',     jp: '紅葉',   romaji: 'Kōyō',        en: 'Autumn',     zh: '紅葉',
+    desc_en: 'The slow turning of leaves into fire and gold — autumn forests and quiet light.',
+    desc_jp: '紅葉、晩秋の光。' },
+  { id: 'yukiakari',  jp: '雪明',   romaji: 'Yukiakari',   en: 'Winter',     zh: '雪明',
+    desc_en: 'Snow-light, stillness, the muted palette of winter mornings.',
+    desc_jp: '雪、静けさ、冬の朝。' },
+  { id: 'kaiyou',     jp: '海洋',   romaji: 'Kaiyō',       en: 'Ocean',      zh: '海洋',
+    desc_en: 'Coastlines, rivers, water at every hour — long exposures and tides.',
+    desc_jp: '海、川、水際。' },
+  { id: 'xpan',       jp: 'Xpan',  romaji: 'Panoramic',   en: 'Xpan ・ 65×24', zh: 'Xpan',
+    desc_en: 'The wide format — 65×24, an unusually long frame, anything that asked to be seen sideways.',
+    desc_jp: '横長判（65×24）。' },
+];
+
+const labels = {
+  en: { years: '', count: ' works', readMore: 'View all' },
+  zh: { years: '', count: ' 件', readMore: '檢視全部' }
+};
+
+// ── Render index ──
+const idx = document.getElementById('theme-index');
+themes.forEach(t => {
+  const photos = photoData.filter(p => (p.themes || []).includes(t.id));
+  if (photos.length === 0) return;
+  const li = document.createElement('li');
+  li.innerHTML = `<a href="#${t.id}">
+    <span class="name-jp">${t.jp}</span>
+    <span class="name-en">${t.en}<span class="count">(${photos.length})</span></span>
+  </a>`;
+  idx.appendChild(li);
+});
+
+// ── Render series sections ──
+const list = document.getElementById('series-list');
+let seriesNum = 0;
+themes.forEach(t => {
+  const photos = photoData.filter(p => (p.themes || []).includes(t.id));
+  if (photos.length === 0) return;
+  seriesNum++;
+  const years = photos.map(p => p.year).filter(Boolean);
+  const yearRange = years.length ? `${Math.min(...years)} — ${Math.max(...years)}` : '';
+
+  const section = document.createElement('section');
+  section.className = 'ph-series';
+  section.id = t.id;
+  section.innerHTML = `
+    <div class="ph-series-mark">
+      <span class="ph-series-num">${cjkNumeral(seriesNum)}</span>
+      <div class="ph-series-title">
+        <span class="title-jp">${t.jp}</span>
+        <span class="title-en">${t.en}</span>
+        <span class="title-romaji">${t.romaji}</span>
+      </div>
+    </div>
+    <p class="ph-series-meta">
+      <span class="years">${yearRange}</span>
+      <span class="count">${photos.length}${labels[LANG].count}</span>
+    </p>
+    <p class="ph-series-desc">${t['desc_' + LANG] || t.desc_en}</p>
+    ${LANG === 'en' ? `<p class="ph-series-desc-jp">${t.desc_jp}</p>` : ''}
+    <div class="ph-grid ${t.id === 'xpan' ? 'is-xpan' : ''}">
+      ${photos.map(p => `
+        <figure class="ph-card is-${p.shape || 'landscape'}" data-src="${p.src}" data-title="${p.title || ''}">
+          <img src="${p.src}" alt="${p.title || ''}" loading="lazy" />
+        </figure>
+      `).join('')}
+    </div>
+  `;
+  list.appendChild(section);
+});
+
+function cjkNumeral(n) {
+  return ['〇','一','二','三','四','五','六','七','八','九','十'][n] || n;
+}
+
+// ── Lightbox ──
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lightbox-img');
+const lbCap = document.getElementById('lightbox-caption');
+const lbCount = document.getElementById('lightbox-counter');
+let allCards = [];
+let cur = 0;
+
+function refreshCards() { allCards = Array.from(document.querySelectorAll('.ph-card')); }
+
+function openLb(idx) {
+  refreshCards();
+  cur = idx;
+  const card = allCards[idx];
+  if (!card) return;
+  lbImg.src = card.dataset.src;
+  lbCap.textContent = card.dataset.title || '';
+  lbCount.textContent = `${idx + 1} / ${allCards.length}`;
+  lb.classList.add('is-open');
+  lb.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() { lb.classList.remove('is-open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
+function navLb(d) { cur = (cur + d + allCards.length) % allCards.length; openLb(cur); }
+
+document.body.addEventListener('click', e => {
+  const card = e.target.closest('.ph-card');
+  if (card) { refreshCards(); openLb(allCards.indexOf(card)); }
+});
+document.getElementById('lightbox-close').onclick = closeLb;
+document.getElementById('lightbox-prev').onclick = e => { e.stopPropagation(); navLb(-1); };
+document.getElementById('lightbox-next').onclick = e => { e.stopPropagation(); navLb(1); };
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('is-open')) return;
+  if (e.key === 'Escape') closeLb();
+  else if (e.key === 'ArrowLeft') navLb(-1);
+  else if (e.key === 'ArrowRight') navLb(1);
+});
+</script>
+
+</body>
+</html>
