@@ -75,6 +75,49 @@
       letter-spacing: 0.02em; line-height: 1.05;
       color: var(--sumi); margin-bottom: 0.7rem;
     }
+
+    /* featured photo on left */
+    .ph-hero-feature {
+      margin-top: 2.8rem;
+      position: relative;
+    }
+    .ph-feature-eyebrow {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.78rem; color: var(--shu);
+      letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .ph-feature-eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--shu); }
+
+    .ph-hero-feature figure {
+      position: relative;
+      overflow: hidden;
+      background: var(--washi-deep);
+      box-shadow: 0 18px 40px -22px rgba(21,17,13,0.35);
+    }
+    .ph-hero-feature img {
+      width: 100%;
+      display: block;
+      filter: saturate(0.88) brightness(0.97);
+      transition: filter 0.5s, transform 0.7s cubic-bezier(.2,.7,.2,1);
+    }
+    .ph-hero-feature figure:hover img { filter: saturate(1) brightness(1); transform: scale(1.015); }
+
+    .ph-hero-feature figcaption {
+      margin-top: 1rem;
+      display: flex; align-items: baseline; gap: 1.25rem;
+      font-family: var(--display); font-style: italic;
+      font-size: 0.84rem; color: var(--ink-mute);
+      letter-spacing: 0.08em;
+    }
+    .ph-hero-feature .cap-num { color: var(--shu); letter-spacing: 0.16em; }
+    .ph-hero-feature .cap-title {
+      flex: 1; color: var(--sumi); font-style: normal;
+      font-family: var(--jp); letter-spacing: 0.18em;
+      font-size: 0.95rem;
+    }
+    .ph-hero-feature .cap-year { color: var(--shu); letter-spacing: 0.1em; }
     .ph-hero .h1-jp {
       display: block; font-family: var(--jp); font-weight: 300;
       font-size: clamp(1.4rem, 2vw, 1.8rem);
@@ -363,6 +406,18 @@
       <span class="h1-jp">写真</span>
       <span class="h1-cn">Shashin</span>
     </h1>
+
+    <div class="ph-hero-feature">
+      <p class="ph-feature-eyebrow">扉頁 ・ Frontispiece</p>
+      <figure>
+        <img src="images/photography/2019-12-22_09-24-27.jpg" alt="枝垂櫻" />
+        <figcaption>
+          <span class="cap-num">No. 〇〇三</span>
+          <span class="cap-title">枝垂櫻 ・ Shidare</span>
+          <span class="cap-year">2019</span>
+        </figcaption>
+      </figure>
+    </div>
   </div>
   <div class="ph-hero-text">
     <p>
