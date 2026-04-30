@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>葉崇揚 Chung-Yang Yeh</title>
-  <meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 學術、攝影、教學。" />
+  <title>Chung-Yang Yeh ・ 葉崇揚</title>
+  <meta name="description" content="Chung-Yang Yeh ・ Academic, Photography, Teaching." />
   <link rel="alternate" hreflang="zh-Hant" href="index.html" />
   <link rel="alternate" hreflang="en" href="index-en.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,7 @@
       flex-shrink: 0; display: flex; justify-content: space-between; align-items: center;
       padding: 2rem 2.5rem 0;
     }
-    .top-mark { font-family: var(--jp); font-size: 0.85rem; color: var(--ink-mid); letter-spacing: 0.6em; }
+    .top-mark { font-family: var(--display); font-style: italic; font-size: 0.92rem; color: var(--ink-mid); letter-spacing: 0.32em; text-transform: uppercase; }
     .top-mark::before { content: ''; display: inline-block; width: 18px; height: 1px; background: var(--shu); vertical-align: middle; margin-right: 1.2rem; transform: translateY(-2px); }
     .lang-toggle { display: flex; align-items: center; gap: 0.6rem; font-size: 0.7rem; letter-spacing: 0.18em; }
     .lang-toggle .current { color: var(--sumi); font-weight: 500; }
@@ -55,10 +55,12 @@
     .name-block::before { content: ''; position: absolute; left: 0; top: 0.5rem; width: 1px; height: 100%; background: var(--line); }
     .name-block::after { content: ''; position: absolute; left: -3px; top: 0.85rem; width: 7px; height: 7px; background: var(--shu); border-radius: 50%; }
     .eyebrow { font-family: var(--display); font-style: italic; font-size: 0.92rem; color: var(--ink-mid); letter-spacing: 0.14em; margin-bottom: 2rem; }
-    .name-cn { font-family: var(--jp); font-weight: 200; font-size: clamp(3.4rem, 6vw, 5.4rem); line-height: 1; letter-spacing: 0.18em; color: var(--sumi); margin-bottom: 1.2rem; }
-    .name-en { font-family: var(--display); font-style: italic; font-weight: 300; font-size: clamp(1.1rem, 1.6vw, 1.45rem); color: var(--ink-mid); letter-spacing: 0.05em; margin-bottom: 2.5rem; }
-    .role { font-family: var(--jp); font-weight: 300; font-size: 0.92rem; color: var(--sumi); letter-spacing: 0.18em; line-height: 2.1; }
-    .role .role-en { display: block; font-family: var(--display); font-style: italic; font-size: 0.88rem; color: var(--ink-mute); letter-spacing: 0.04em; margin-top: 0.4rem; }
+    .name-en-big { font-family: var(--display); font-weight: 300; font-size: clamp(3rem, 5.4vw, 4.6rem); line-height: 1.05; letter-spacing: 0.01em; color: var(--sumi); margin-bottom: 1rem; }
+    .name-jp { font-family: var(--jp); font-weight: 300; font-size: clamp(1.05rem, 1.4vw, 1.3rem); color: var(--ink-mid); letter-spacing: 0.32em; margin-bottom: 0.5rem; }
+    .name-cn-small { font-family: var(--jp); font-weight: 300; font-size: 1rem; color: var(--ink-mute); letter-spacing: 0.18em; margin-bottom: 2.5rem; }
+    .role { font-family: var(--display); font-style: italic; font-size: 1rem; color: var(--sumi); letter-spacing: 0.04em; line-height: 1.95; max-width: 460px; }
+    .role .role-jp { display: block; font-family: var(--jp); font-style: normal; font-size: 0.85rem; color: var(--ink-mid); letter-spacing: 0.18em; margin-top: 0.55rem; }
+    .role .role-cn { display: block; font-family: var(--jp); font-style: normal; font-size: 0.82rem; color: var(--ink-mute); letter-spacing: 0.16em; margin-top: 0.25rem; }
 
     .doors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; position: relative; }
     .doors::before { content: ''; position: absolute; top: -2.5rem; left: 0; width: 60px; height: 1px; background: var(--sumi); opacity: 0.85; }
@@ -90,10 +92,10 @@
     .door:hover .door-brush { transform: rotate(-1deg) translateY(-3px); }
 
     .door-meta { position: absolute; left: 0; right: 0; bottom: 1.6rem; display: flex; flex-direction: column; align-items: center; gap: 0.35rem; z-index: 2; }
-    .door-jp { font-family: var(--jp); font-size: 0.85rem; letter-spacing: 0.22em; color: var(--sumi); }
-    .door-jp .romaji { color: var(--ink-mute); font-style: italic; font-family: var(--display); letter-spacing: 0.06em; margin-left: 0.5rem; font-size: 0.78rem; }
-    .door-en { font-family: var(--display); font-style: italic; font-size: 0.85rem; color: var(--ink-mid); letter-spacing: 0.06em; display: flex; align-items: baseline; gap: 0.3rem; transition: color 0.3s ease; }
+    .door-en { font-family: var(--display); font-style: italic; font-size: 0.95rem; color: var(--sumi); letter-spacing: 0.04em; display: flex; align-items: baseline; gap: 0.3rem; transition: color 0.3s ease; }
     .door-en .arrow { font-style: normal; font-family: var(--sans); transition: transform 0.4s ease; }
+    .door-jp { font-family: var(--jp); font-size: 0.78rem; letter-spacing: 0.22em; color: var(--ink-mid); }
+    .door-jp .romaji { color: var(--ink-mute); font-style: italic; font-family: var(--display); letter-spacing: 0.06em; margin-left: 0.5rem; font-size: 0.72rem; }
     .door:hover .door-en { color: var(--shu); }
     .door:hover .door-en .arrow { transform: translateX(4px); }
 
@@ -123,60 +125,62 @@
 <body>
 
 <header class="top">
-  <span class="top-mark">葉 崇 揚</span>
+  <span class="top-mark">Chung-Yang Yeh</span>
   <div class="lang-toggle">
-    <span class="current">中文</span>
+    <span class="current">EN</span>
     <span class="sep">／</span>
-    <a href="index-en.html">EN</a>
+    <a href="index.html">中文</a>
   </div>
 </header>
 
 <main>
   <div class="name-block">
     <p class="eyebrow">Welcome ・ ようこそ</p>
-    <h1 class="name-cn">葉崇揚</h1>
-    <p class="name-en">Chung-Yang Yeh</p>
+    <h1 class="name-en-big">Chung-Yang Yeh</h1>
+    <p class="name-jp">よう しゅうよう</p>
+    <p class="name-cn-small">葉 崇 揚</p>
     <p class="role">
-      東吳大學社會學系 ・ 教授
-      <span class="role-en">Professor of Social Policy ・ Soochow University, Taiwan</span>
+      Professor of Social Policy ・ Soochow University, Taiwan
+      <span class="role-jp">東呉大学 ・ 社会学部 ・ 教授</span>
+      <span class="role-cn">東吳大學社會學系 ・ 教授</span>
     </p>
   </div>
 
   <nav class="doors" aria-label="Sections">
-    <a href="academic-zh.html" class="door">
-      <span class="door-num">No. 一</span>
+    <a href="academic.html" class="door">
+      <span class="door-num">No. I</span>
       <span class="door-status live">Live</span>
       <div class="door-content"><span class="door-brush">學</span></div>
       <div class="door-meta">
-        <span class="door-jp">学術<span class="romaji">Gakujutsu</span></span>
         <span class="door-en">Academic <span class="arrow">→</span></span>
+        <span class="door-jp">学術<span class="romaji">Gakujutsu</span></span>
       </div>
     </a>
 
     <a href="#" class="door disabled">
-      <span class="door-num">No. 二</span>
+      <span class="door-num">No. II</span>
       <span class="door-status">Soon</span>
       <div class="door-content"><span class="door-brush">攝</span></div>
       <div class="door-meta">
-        <span class="door-jp">写真<span class="romaji">Shashin</span></span>
         <span class="door-en">Photography <span class="arrow">→</span></span>
+        <span class="door-jp">写真<span class="romaji">Shashin</span></span>
       </div>
     </a>
 
     <a href="#" class="door disabled">
-      <span class="door-num">No. 三</span>
+      <span class="door-num">No. III</span>
       <span class="door-status">Soon</span>
       <div class="door-content"><span class="door-brush">教</span></div>
       <div class="door-meta">
-        <span class="door-jp">講義<span class="romaji">Kōgi</span></span>
         <span class="door-en">Teaching <span class="arrow">→</span></span>
+        <span class="door-jp">講義<span class="romaji">Kōgi</span></span>
       </div>
     </a>
   </nav>
 </main>
 
 <footer>
-  <p>© 2025 ・ 葉崇揚 Chung-Yang Yeh ・ 東吳大學社會學系</p>
+  <p>© 2025 ・ Chung-Yang Yeh ・ Department of Sociology, Soochow University</p>
   <p class="links">
     <a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener">Instagram</a>
     <span class="sep">·</span>
