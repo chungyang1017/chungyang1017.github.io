@@ -1528,3 +1528,24 @@ footer a { color: rgba(184,147,90,0.7); text-decoration: none; }
 .academic-page .edu-year { font-size: 0.92rem; }
 .academic-page .interest-list li { font-size: 1.08rem; padding: 0.85rem 0; }
 .academic-page .sidebar-label { font-size: 0.95rem; letter-spacing: 0.18em; }
+
+
+/* ── publications sub-page: enlarge typography ── */
+.pub-page .pub-page-title { font-size: clamp(2.7rem, 5.4vw, 4rem); }
+.pub-page .section-title { font-size: clamp(2.1rem, 3.5vw, 3rem); }
+.pub-page .pub-section-subtitle { font-size: 1.1rem; line-height: 1.7; }
+.pub-page .pub-title { font-size: 1.08rem; line-height: 1.7; margin-bottom: 0.45rem; }
+.pub-page .pub-authors { font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.35rem; }
+.pub-page .pub-journal { font-size: 0.95rem; line-height: 1.7; }
+.pub-page .pub-link { font-size: 0.86rem; }
+.pub-page .pub-year { font-size: 0.95rem; padding-top: 0.15rem; }
+.pub-page .pub-item { padding: 1.85rem 0; grid-template-columns: 56px 1fr; gap: 0 1.5rem; }
+.pub-page .jump-label { font-size: 1rem; }
+.pub-page .jump-num { font-size: 1.05rem; }
+.pub-page .jump-eyebrow { font-size: 0.82rem; }
+.pub-page .pub-note { font-size: 0.95rem; }
+.pub-page .book-title { font-size: 1.45rem; line-height: 1.5; }
+.pub-page .book-meta { font-size: 0.95rem; margin-bottom: 1rem; }
+.pub-page .book-desc { font-size: 1.05rem; line-height: 1.95; }
+.pub-page .back-home { font-size: 0.92rem; }
+.pub-page .pub-badge { font-size: 0.74rem; }
