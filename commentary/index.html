@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>東亞觀察最前線 ・ 葉崇揚</title>
+  <meta name="description" content="葉崇揚的東亞政治社會觀察專欄 ── 從漫畫、流行文化、社會數據看日本、韓國、台灣、中國。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Noto+Serif+JP:wght@200;300;400;500&family=Noto+Serif+TC:wght@200;300;400;500&family=Shippori+Mincho:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sumi: #15110d; --ink: #1a1714;
+      --ink-mid: #5a534d; --ink-mute: #9a938c;
+      --washi: #f5f0e6; --washi-warm: #f8f3e8; --washi-soft: #fbf7ee;
+      --shu: #b13a2a; --kin: #a98146;
+      --line: rgba(21,17,13,0.10); --line-mid: rgba(21,17,13,0.18);
+      --jp: 'Noto Serif JP', 'Noto Serif TC', serif;
+      --tc: 'Noto Serif TC', 'Shippori Mincho', 'Noto Serif JP', serif;
+      --display: 'Cormorant Garamond', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 17px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--tc);
+      background: var(--washi); color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.95; font-weight: 300;
+      background-image:
+        radial-gradient(rgba(169,129,70,0.03) 1px, transparent 1px),
+        radial-gradient(rgba(21,17,13,0.022) 1px, transparent 1px);
+      background-size: 32px 32px, 19px 19px;
+      background-position: 0 0, 16px 16px;
+    }
+
+    nav.top {
+      position: sticky; top: 0; z-index: 30;
+      background: rgba(245,240,230,0.92); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav.top .inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 1.05rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-logo { font-family: var(--tc); font-size: 0.92rem; color: var(--sumi); text-decoration: none; letter-spacing: 0.45em; display: inline-flex; align-items: center; gap: 0.7rem; }
+    .top-logo .nav-back { color: var(--shu); transition: transform 0.3s; }
+    .top-logo:hover .nav-back { transform: translateX(-3px); }
+    .top-section { font-family: var(--display); font-style: italic; font-size: 0.86rem; color: var(--ink-mid); letter-spacing: 0.1em; }
+    .top-lang { font-size: 0.7rem; letter-spacing: 0.18em; color: var(--ink-mute); }
+
+    /* HERO */
+    .hero {
+      max-width: 1100px; margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+      align-items: end;
+    }
+    .hero-eyebrow {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.92rem;
+      color: var(--shu); letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 1.4rem;
+      display: flex; align-items: center; gap: 0.85rem;
+    }
+    .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--shu); }
+
+    .hero h1 {
+      font-family: var(--tc); font-weight: 400;
+      font-size: clamp(2.6rem, 4.8vw, 3.8rem);
+      line-height: 1.1; letter-spacing: 0.12em;
+      color: var(--sumi); margin-bottom: 1rem;
+    }
+    .hero h1 .sub {
+      display: block;
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+      letter-spacing: 0.04em;
+      font-weight: 300; color: var(--ink-mid);
+      margin-top: 0.6rem;
+    }
+
+    .hero-text p {
+      font-size: 1.05rem; line-height: 2.05;
+      color: var(--ink-mid); margin-bottom: 1.4rem;
+    }
+    .hero-meta {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.85rem; color: var(--ink-mute);
+      letter-spacing: 0.12em;
+    }
+
+    /* ARTICLES LIST */
+    .articles {
+      max-width: 1100px; margin: 0 auto;
+      padding: 2rem 2rem 6rem;
+      border-top: 1px solid var(--line-mid);
+    }
+    .articles-eyebrow {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.78rem; letter-spacing: 0.22em;
+      color: var(--shu); text-transform: uppercase;
+      margin: 2.5rem 0 2rem;
+    }
+    .articles-eyebrow::before {
+      content: ''; display: inline-block;
+      width: 18px; height: 1px; background: var(--shu);
+      vertical-align: middle; margin-right: 0.6rem; transform: translateY(-2px);
+    }
+
+    .article-card {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--line);
+      text-decoration: none;
+      color: var(--ink);
+      transition: background 0.3s ease;
+    }
+    .article-card:hover { background: rgba(255,255,255,0.4); }
+    .article-card:first-of-type { border-top: 1px solid var(--line-mid); }
+
+    .card-num {
+      font-family: var(--display); font-style: italic;
+      font-size: 1rem; color: var(--shu);
+      letter-spacing: 0.16em;
+      text-align: right; padding-top: 0.3rem;
+    }
+    .card-num .date {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--ink-mute); margin-top: 0.55rem;
+      letter-spacing: 0.08em;
+      font-style: normal;
+      font-family: var(--tc);
+    }
+    .card-num .tag {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-size: 0.7rem; letter-spacing: 0.18em;
+      color: var(--shu);
+      padding: 0.2rem 0.55rem;
+      border: 1px solid rgba(177,58,42,0.35);
+      text-transform: uppercase;
+      font-style: normal;
+      font-family: var(--display);
+    }
+
+    .card-content h2 {
+      font-family: var(--tc); font-weight: 500;
+      font-size: 1.45rem;
+      line-height: 1.45;
+      color: var(--sumi);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.02em;
+      transition: color 0.3s;
+    }
+    .article-card:hover h2 { color: var(--shu); }
+
+    .card-subtitle {
+      font-family: var(--display); font-style: italic;
+      font-size: 1rem; color: var(--ink-mid);
+      margin-bottom: 1.1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .card-excerpt {
+      font-size: 0.98rem; line-height: 1.95;
+      color: var(--ink-mid);
+    }
+
+    .card-arrow {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-family: var(--display); font-style: italic;
+      font-size: 0.9rem; color: var(--shu);
+      letter-spacing: 0.06em;
+      transition: transform 0.3s;
+    }
+    .article-card:hover .card-arrow { transform: translateX(4px); }
+
+    /* MISSION */
+    .mission {
+      max-width: 720px; margin: 4rem auto 2rem;
+      padding: 0 2rem;
+      font-family: var(--tc);
+      font-size: 0.96rem; line-height: 2;
+      color: var(--ink-mid);
+      text-align: center;
+      font-style: italic;
+    }
+    .mission::before, .mission::after {
+      content: '◇';
+      color: var(--shu);
+      display: block;
+      margin: 0.5rem auto;
+    }
+
+    footer {
+      padding: 2.5rem 2rem;
+      border-top: 1px solid var(--line);
+      background: var(--washi-warm);
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--ink-mute);
+      letter-spacing: 0.08em;
+    }
+    footer .sep { color: var(--ink-mute); opacity: 0.4; margin: 0 0.5rem; }
+    footer a { color: var(--ink-mid); text-decoration: none; }
+    footer a:hover { color: var(--shu); }
+
+    @media (max-width: 720px) {
+      .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem 3rem; }
+      .articles { padding: 1.5rem 1.5rem 4rem; }
+      .article-card { grid-template-columns: 1fr; gap: 1rem; padding: 1.8rem 0; }
+      .card-num { text-align: left; padding-top: 0; }
+      .card-num .date { display: inline; margin-left: 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="inner">
+    <a href="../index.html" class="top-logo" title="首頁"><span class="nav-back">←</span> 葉 崇 揚</a>
+    <span class="top-section">東亞觀察最前線 ・ East Asia Frontline</span>
+    <span class="top-lang">中文</span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">東亞觀察 ・ Frontline</p>
+    <h1>
+      東亞觀察最前線
+      <span class="sub">East Asia Frontline ・ A Column by Chung-Yang Yeh</span>
+    </h1>
+  </div>
+  <div class="hero-text">
+    <p>
+      這是一個關於「正在發生的東亞」的觀察專欄。日本、韓國、台灣、中國 ── 這四個社會在二十一世紀第三個十年的此刻，正以各自的速度，重新定義「現代性」對自己的意義。
+    </p>
+    <p>
+      在這個專欄裡，我會以社會學者的眼光，從漫畫、流行文化、社會數據、日常觀察出發，記錄這些社會的精神底層變遷。學術的嚴謹會在 <a href="../academic-zh.html" style="color:var(--shu)">學術頁</a>，這裡是相對輕快的書寫。
+    </p>
+    <p class="hero-meta">A Column ・ Quarterly ・ since 2026</p>
+  </div>
+</header>
+
+<section class="articles">
+
+  <p class="articles-eyebrow">最新文章 ・ Articles</p>
+
+  <a href="2026-takaichi.html" class="article-card">
+    <div class="card-num">
+      No. 〇〇一
+      <span class="date">2026.02.07</span>
+      <span class="tag">日本</span>
+    </div>
+    <div class="card-content">
+      <h2>另一個從漫畫走出來的人物：以《政治最前線》與《島耕作》解讀高市早苗</h2>
+      <p class="card-subtitle">From a Manga Frame: Reading Sanae Takaichi through <em>The Politics</em> and <em>Kosaku Shima</em></p>
+      <p class="card-excerpt">
+        當大谷翔平在洛杉磯創下漫畫《棒球大聯盟》也未曾預演的二刀流紀錄，日本社會看到的是「向外延伸的夢」；而在永田町，另一個從漫畫走出來的人物正穩定接近權力的最高點。本文借《政治最前線》的「方法」與《島耕作》的「焦慮」，解讀高市早苗所代表的日本「絕對現實主義」。
+      </p>
+      <span class="card-arrow">閱讀全文 →</span>
+    </div>
+  </a>
+
+</section>
+
+<aside class="mission">
+  「東亞，不是一個地理名詞，而是一個還在成形的故事。」
+</aside>
+
+<footer>
+  © 2025 ・ 葉崇揚 Chung-Yang Yeh
+  <span class="sep">·</span>
+  東吳大學社會學系
+  <span class="sep">·</span>
+  <a href="../academic-zh.html">學術頁</a>
+  <span class="sep">·</span>
+  <a href="../index.html">首頁</a>
+</footer>
+
+</body>
+</html>
