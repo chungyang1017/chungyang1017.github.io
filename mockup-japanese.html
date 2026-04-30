@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mockup · 日式調整 · 葉崇揚</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Serif+JP:wght@200;300;400&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1714;
+      --ink-light: #4a4541;
+      --ink-muted: #8a8480;
+      --paper: #f7f4ef;
+      --paper-warm: #ede9e2;
+      --paper-soft: #fbf8f2;
+      --accent: #8b3a2a;
+      --vermilion: #c63831;       /* 朱 — slightly brighter for hanko */
+      --vermilion-soft: rgba(198,56,49,0.85);
+      --gold: #b8935a;
+      --border: rgba(26,23,20,0.12);
+      --font-display: 'Cormorant Garamond', 'Noto Serif TC', serif;
+      --font-jp: 'Noto Serif JP', 'Noto Serif TC', serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      /* WASHI PAPER subtle texture */
+      background-image:
+        radial-gradient(rgba(184,147,90,0.04) 1px, transparent 1px),
+        radial-gradient(rgba(26,23,20,0.025) 1px, transparent 1px);
+      background-size: 22px 22px, 13px 13px;
+      background-position: 0 0, 11px 11px;
+    }
+
+    /* ── MOCKUP CHROME ── */
+    .mockup-banner {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--ink); color: rgba(247,244,239,0.85);
+      padding: 0.7rem 1.5rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+    }
+    .mockup-banner strong { color: var(--gold); letter-spacing: 0.18em; margin-right: 0.6rem; }
+    .mockup-banner a { color: rgba(184,147,90,0.85); text-decoration: none; margin-left: 1.2rem; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex; align-items: center;
+      padding: 6rem 2rem 5rem;
+      overflow: hidden;
+    }
+
+    /* faded photo background (one of user's photos as soft mist) */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('images/photography/2019-12-22_09-24-27.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      opacity: 0.07;
+      filter: saturate(0.6);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(247,244,239,0.6) 0%, rgba(247,244,239,0.85) 60%, var(--paper) 100%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 5rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* HANKO seal — small red square with character */
+    .hanko {
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      width: 52px; height: 52px;
+      background: var(--vermilion);
+      color: #fff;
+      font-family: var(--font-jp);
+      font-weight: 400;
+      font-size: 1.5rem;
+      letter-spacing: 0;
+      border-radius: 2px;
+      box-shadow:
+        inset 0 0 0 2px rgba(255,255,255,0.4),
+        2px 2px 0 rgba(198,56,49,0.18);
+      transform: rotate(-3deg);
+      vertical-align: middle;
+      margin-right: 1rem;
+      flex-shrink: 0;
+      /* faux ink texture */
+      background-image:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15) 0%, transparent 40%),
+        radial-gradient(circle at 70% 70%, rgba(0,0,0,0.1) 0%, transparent 50%);
+    }
+
+    .hero-eyebrow {
+      display: flex; align-items: center;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow .line {
+      display: inline-block;
+      width: 32px; height: 1px;
+      background: var(--accent);
+      margin-right: 0.85rem;
+    }
+
+    .hero-name {
+      font-family: var(--font-jp);
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-sub {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+      font-style: italic;
+      color: var(--ink-muted);
+      margin-bottom: 2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--ink-light);
+      max-width: 520px;
+      line-height: 1.95;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 2.5rem; }
+    .hero-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.85rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.5);
+      color: var(--ink-light);
+      border-radius: 0;
+    }
+    .hero-tag.accent {
+      border-color: var(--vermilion-soft);
+      color: var(--vermilion);
+      background: rgba(198,56,49,0.05);
+    }
+
+    /* photo frame on right */
+    .photo-frame {
+      position: relative;
+      aspect-ratio: 3/4;
+      background: var(--paper-soft);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .photo-frame::before {
+      content: '';
+      position: absolute; inset: 14px;
+      border: 1px solid rgba(184,147,90,0.32);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .photo-frame img {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 70%;
+      max-height: 70%;
+      transform: translate(-50%, -52%);
+      object-fit: cover;
+      filter: saturate(0.94);
+      box-shadow: 0 2px 18px -6px rgba(26,23,20,0.25);
+    }
+    /* a small hanko stamped on the photo frame */
+    .photo-frame .frame-hanko {
+      position: absolute;
+      bottom: 22px; right: 22px;
+      width: 36px; height: 36px;
+      background: var(--vermilion);
+      color: #fff;
+      font-family: var(--font-jp);
+      font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transform: rotate(2deg);
+      z-index: 2;
+      box-shadow: inset 0 0 0 1.5px rgba(255,255,255,0.4);
+    }
+
+    .affil {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      line-height: 1.6;
+    }
+    .affil strong { color: var(--ink); display: block; font-size: 0.9rem; margin-bottom: 0.2rem; }
+
+    /* ── SECTION (demo) ── */
+    section.demo {
+      padding: 5rem 2rem;
+      position: relative;
+    }
+
+    section.demo:nth-of-type(even) {
+      background: var(--paper-warm);
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: auto auto 1fr;
+      align-items: end;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+      padding-bottom: 1rem;
+      position: relative;
+    }
+
+    /* KANJI section number — large background + small arabic */
+    .kanji-num {
+      font-family: var(--font-jp);
+      font-size: 3.6rem;
+      font-weight: 300;
+      color: var(--vermilion);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .arabic-num {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      align-self: center;
+      position: relative;
+      padding-bottom: 0.3rem;
+    }
+
+    /* brush-stroke underline */
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -2px;
+      height: 2px;
+      width: 60px;
+      background: var(--vermilion);
+      border-radius: 1px;
+      opacity: 0.85;
+    }
+
+    .section-line {
+      align-self: center;
+      height: 1px;
+      background: linear-gradient(to right, var(--border), transparent 80%);
+      margin-bottom: 0.6rem;
+    }
+
+    /* sample about content */
+    .demo-about {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .demo-about p {
+      font-size: 0.96rem;
+      color: var(--ink-light);
+      line-height: 1.95;
+      margin-bottom: 1.1rem;
+    }
+
+    .demo-about p:first-child {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    .interest-card {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--border);
+      padding: 1.5rem 1.75rem;
+      position: relative;
+    }
+    .interest-card .card-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--vermilion);
+      margin-bottom: 1rem;
+      display: flex; align-items: center;
+    }
+    .interest-card .card-eyebrow::before {
+      content: '◇';
+      color: var(--gold);
+      margin-right: 0.5rem;
+      font-size: 0.6rem;
+    }
+    .interest-card ul { list-style: none; }
+    .interest-card li {
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      padding: 0.45rem 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .interest-card li:last-child { border-bottom: none; }
+
+    /* publication card preview */
+    .pub-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .pub-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.65);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--ink);
+      transition: 0.25s;
+    }
+    .pub-card:hover { border-color: var(--vermilion); transform: translateY(-2px); }
+    .pub-card .card-num {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      font-style: italic;
+      color: var(--vermilion);
+      line-height: 1;
+    }
+    .pub-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 0.2rem;
+    }
+    .pub-card p {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+    }
+    .pub-card .arrow { color: var(--ink-muted); font-size: 1.15rem; }
+
+    /* ── CALLOUT panel showing key changes ── */
+    .changes-panel {
+      max-width: 1100px;
+      margin: 4rem auto 5rem;
+      padding: 2rem 2rem;
+    }
+
+    .changes-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .change-item {
+      background: var(--paper-soft);
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+      position: relative;
+      padding-left: 3.25rem;
+    }
+
+    .change-item::before {
+      content: counter(change-counter, cjk-ideographic);
+      counter-increment: change-counter;
+      position: absolute;
+      left: 1rem;
+      top: 1.1rem;
+      font-family: var(--font-jp);
+      font-size: 1.2rem;
+      color: var(--vermilion);
+    }
+
+    .changes-list { counter-reset: change-counter; }
+
+    .change-item h4 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+    .change-item p { font-size: 0.85rem; color: var(--ink-light); line-height: 1.6; }
+
+    /* ── responsive ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .demo-about { grid-template-columns: 1fr; gap: 2rem; }
+      .pub-grid { grid-template-columns: 1fr; }
+      .section-header { grid-template-columns: auto 1fr; }
+      .section-header .arabic-num { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="mockup-banner">
+  <strong>MOCKUP</strong>日式調整示意 · 不影響主站
+  <a href="index.html">← 主站</a>
+  <a href="zh.html">中文版主站</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">
+        <span class="line"></span>
+        Professor · Social Policy
+      </p>
+      <h1 class="hero-name">
+        <span class="hanko">葉</span>葉崇揚
+      </h1>
+      <p class="hero-sub">Chung-Yang Yeh ／ Young</p>
+      <p class="hero-desc">
+        比較福利國家研究者，專長為東亞社會政策、年金政治與福利態度。
+        現任東吳大學社會學系教授。
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag accent">福利態度</span>
+        <span class="hero-tag">比較年金政策</span>
+        <span class="hero-tag">東亞福利國家</span>
+        <span class="hero-tag">社會投資</span>
+        <span class="hero-tag">權力資源理論</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="photo-frame">
+        <img src="photo.jpg" alt="葉崇揚" />
+        <div class="frame-hanko">印</div>
+      </div>
+      <div class="affil">
+        <strong>東吳大學社會學系</strong>
+        台北，台灣<br />
+        英國南安普敦大學社會學暨社會政策博士（2014）
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT (demo) ── -->
+<section class="demo">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="kanji-num">一</span>
+      <span class="arabic-num">— No. 01</span>
+      <h2 class="section-title">關於我</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="demo-about">
+      <div>
+        <p>
+          現任東吳大學社會學系教授，長期從事比較福利國家研究，特別關注東亞社會政策的發展與轉型。
+        </p>
+        <p>
+          2014 年於英國南安普敦大學取得社會學暨社會政策博士學位，
+          博士論文研究東亞國家公私年金混合體系。
+        </p>
+        <p>
+          研究興趣集中於福利態度、比較年金政策與東亞福利國家。
+          論文發表於 <em>Ageing &amp; Society</em>、<em>Journal of Asian Public Policy</em> 等國際期刊。
+        </p>
+      </div>
+
+      <div class="interest-card">
+        <p class="card-eyebrow">研究興趣</p>
+        <ul>
+          <li>福利態度與民意</li>
+          <li>比較年金政策</li>
+          <li>東亞福利國家</li>
+          <li>社會投資政策</li>
+          <li>權力資源理論</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PUBLICATIONS (demo) ── -->
+<section class="demo">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="kanji-num">二</span>
+      <span class="arabic-num">— No. 02</span>
+      <h2 class="section-title">著作</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="pub-grid">
+      <a class="pub-card">
+        <span class="card-num">29</span>
+        <div>
+          <h3>期刊論文</h3>
+          <p>同儕審查論文．2009 至今</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="pub-card">
+        <span class="card-num">2</span>
+        <div>
+          <h3>專書</h3>
+          <p>獨著與編著專書</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="pub-card">
+        <span class="card-num">12</span>
+        <div>
+          <h3>專書章節</h3>
+          <p>收錄於專書章節</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="pub-card">
+        <span class="card-num">2</span>
+        <div>
+          <h3>研討會論文</h3>
+          <p>近五年發表精選</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── PHOTOGRAPHY (demo placeholder) ── -->
+<section class="demo">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="kanji-num">四</span>
+      <span class="arabic-num">— No. 04</span>
+      <h2 class="section-title">攝影</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <p style="font-family: var(--font-display); font-size:1.2rem; font-style: italic; color: var(--ink-muted); max-width: 640px; line-height: 1.8;">
+      街頭・春霞・青嵐・紅葉・雪明・海洋・Xpan
+    </p>
+    <p style="margin-top:0.85rem; color: var(--ink-light); font-size:0.92rem; max-width:640px; line-height:1.85;">
+      （攝影頁仍在建構中，每張作品將以日／中／英三語並列題名，分類後呈現如 kazuakikoseki.com 的寫真集風格。）
+    </p>
+  </div>
+</section>
+
+<!-- ── 變動列表 ── -->
+<section class="changes-panel">
+  <div class="section-header">
+    <span class="kanji-num">※</span>
+    <span class="arabic-num">— Notes</span>
+    <h2 class="section-title">日式調整重點</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="changes-list">
+    <div class="change-item">
+      <h4>和紙紋理 · Washi texture</h4>
+      <p>整頁底層加入兩層極淡的點狀紋理，模擬手抄和紙的纖維質感，僅在中性背景顯現。</p>
+    </div>
+    <div class="change-item">
+      <h4>章印 · Hanko 印鑑</h4>
+      <p>姓名旁與相片右下角各放一個朱色「葉」「印」方章，有手寫印泥的溫度感，傾斜 -3°/+2° 增加自然感。</p>
+    </div>
+    <div class="change-item">
+      <h4>漢字編號 · Kanji numerals</h4>
+      <p>章節編號改為大幅朱色漢字「一・二・三・四」，搭配小型 Cormorant 斜體 No. 01 對照，東亞文人風格。</p>
+    </div>
+    <div class="change-item">
+      <h4>朱色強調 · Vermilion accent</h4>
+      <p>原本 #8b3a2a（暗赭）→ 新增 #c63831（朱色）作為章印與標題重點，更接近日本傳統「朱」。</p>
+    </div>
+    <div class="change-item">
+      <h4>淡景照片 · Faded photo</h4>
+      <p>Hero 區下層放一張你的攝影作品（目前用枝垂櫻），透明度 7%，做為氣氛而非主體，襯托名字。</p>
+    </div>
+    <div class="change-item">
+      <h4>排版微調 · Subtle typography</h4>
+      <p>標題下方改為短朱線而非完整橫線，研究興趣等清單改為虛線分隔，整體更接近寫真集／和書的留白感。</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
