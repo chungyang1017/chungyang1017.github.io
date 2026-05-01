@@ -61,6 +61,7 @@ nav {
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
+  margin-right: 2.5rem;
 }
 
 .nav-logo span {
