@@ -263,7 +263,7 @@ const photoData = [
     haiku_zh: '漣漪／數著數著／竟是夜了' },
 
   // ── Xpan 65×24 ──
-  { num: '030', src: 'images/photography/dscf9370_xd2s_3.jpg', year: 2025, themes: ['xpan'], shape: 'xpan',
+  { num: '030', src: 'images/photography/dscf9370_xd2s_3.jpg', year: 2025, themes: ['xpan', 'sansui'], shape: 'xpan',
     title_jp: '横長', title_en: 'Long View', title_zh: '橫長',
     haiku_jp: '横長に／切り取る景色／風の道',
     haiku_en: 'cut sideways — / the view becomes / a road for the wind',
