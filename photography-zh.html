@@ -316,63 +316,64 @@
     }
     .ph-card:hover .ph-card-title { opacity: 1; transform: translateY(0); }
 
-    /* ── 銀塩 Ginen: Fuji RVP50 35mm film-strip border ── */
+    /* ── 銀塩 Ginen: Fuji RVP50 contact-print film strip ── */
     .ph-card.is-ginen {
       background: #0a0807;
-      padding: 4% 8.5%;
+      padding: 9.5% 0;
       box-shadow:
         0 4px 14px rgba(21,17,13,0.30),
         inset 0 0 0 1px rgba(255,255,255,0.04);
       cursor: zoom-in;
     }
-    .ph-card.is-ginen img {
-      outline: none;
-    }
-    .ph-card.is-ginen .film-side-l {
+    .ph-card.is-ginen img { outline: none; }
+
+    .ph-card.is-ginen .film-strip {
       position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 8.5%;
-      display: flex; align-items: center; justify-content: center;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font: 700 0.55rem/1 'Helvetica Neue', 'Inter', sans-serif;
-      letter-spacing: 0.36em;
-      color: #f0e9da;
+      left: 0; right: 0;
+      height: 9.5%;
+      background-color: #0a0807;
+      background-image:
+        linear-gradient(to bottom,
+          #0a0807 0, #0a0807 30%,
+          transparent 30%, transparent 70%,
+          #0a0807 70%, #0a0807 100%),
+        repeating-linear-gradient(to right,
+          transparent 0, transparent 0.55em,
+          #ece4d2 0.55em, #ece4d2 1.1em);
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+    }
+    .ph-card.is-ginen .film-top    { top: 0; }
+    .ph-card.is-ginen .film-bottom { bottom: 0; }
+
+    .ph-card.is-ginen .film-num,
+    .ph-card.is-ginen .film-brand {
+      position: absolute;
+      font: 700 0.62rem/1 'Helvetica Neue', 'Inter', sans-serif;
+      color: #ff8a2b;
+      letter-spacing: 0.05em;
       white-space: nowrap;
-      pointer-events: none;
     }
-    .ph-card.is-ginen .film-mark-tl,
-    .ph-card.is-ginen .film-mark-br {
-      position: absolute;
-      right: 0;
-      width: 8.5%;
-      text-align: center;
-      writing-mode: vertical-rl;
-      font: 700 0.6rem/1 'Helvetica Neue', 'Inter', sans-serif;
-      letter-spacing: 0.18em;
-      color: #f0e9da;
-      pointer-events: none;
-    }
-    .ph-card.is-ginen .film-mark-tl { top: 4%; }
-    .ph-card.is-ginen .film-mark-br { bottom: 4%; }
-    .ph-card.is-ginen .film-stamp {
-      position: absolute;
-      bottom: calc(4% + 0.55rem);
-      right: calc(8.5% + 0.7rem);
-      font: 500 0.7rem/1 'Courier New', monospace;
-      letter-spacing: 0.18em;
-      color: #ff7a3a;
-      text-shadow: 0 0 4px rgba(255,122,58,0.45);
-      pointer-events: none;
-    }
+    .ph-card.is-ginen .film-brand { letter-spacing: 0.2em; }
+
+    .ph-card.is-ginen .film-top .film-num,
+    .ph-card.is-ginen .film-top .film-brand    { bottom: 6%; }
+    .ph-card.is-ginen .film-bottom .film-num,
+    .ph-card.is-ginen .film-bottom .film-brand { top: 6%; }
+
+    .ph-card.is-ginen .film-num-l { left: 4%; }
+    .ph-card.is-ginen .film-num-r { right: 4%; }
+    .ph-card.is-ginen .film-brand { left: 50%; transform: translateX(-50%); }
+
     .ph-card.is-ginen .ph-card-num {
-      top: calc(4% + 0.5rem);
-      left: calc(8.5% + 0.5rem);
+      top: calc(9.5% + 0.5rem);
+      left: 0.5rem;
     }
     .ph-card.is-ginen .ph-card-title {
-      bottom: calc(4% + 0.5rem);
-      left: calc(8.5% + 0.5rem);
-      right: calc(8.5% + 0.5rem);
+      bottom: calc(9.5% + 0.5rem);
+      left: 0.5rem;
+      right: 0.5rem;
     }
 
     /* LIGHTBOX */
@@ -668,18 +669,15 @@ themes.forEach(t => {
       ${photos.map(p => {
         const title = p['title_' + LANG] || p.title_en || p.title || '';
         const isGinen = (p.themes||[]).includes('ginen');
-        const dm = p.src.match(/img(\d{4})(\d{2})(\d{2})/);
-        const dateStamp = isGinen && dm ? `'${dm[1].slice(2)} ${dm[2]} ${dm[3]}` : '';
+        const filmStrip = isGinen ? `<span class="film-num film-num-l">→ ${p.num}A</span><span class="film-brand">FUJICHROME ・ VELVIA 50 ・ RVP-50</span><span class="film-num film-num-r">${p.num} →</span>` : '';
         return `
         <figure class="ph-card is-${p.shape || 'landscape'}${isGinen ? ' is-ginen' : ''}" data-src="${p.src}" data-title="${title}" data-num="${p.num}">
           <img src="${p.src}" alt="${title || ('No. ' + p.num)}" loading="lazy" />
           <span class="ph-card-num">No. ${p.num}</span>
           ${title ? `<span class="ph-card-title">${title}</span>` : ''}
           ${isGinen ? `
-            <span class="film-side-l">FUJICHROME · VELVIA 50 · RVP-50</span>
-            <span class="film-mark-tl">▲ ${p.num} ▼</span>
-            <span class="film-mark-br">▲ ${p.num} ▼</span>
-            <span class="film-stamp">${dateStamp}</span>
+            <div class="film-strip film-top">${filmStrip}</div>
+            <div class="film-strip film-bottom">${filmStrip}</div>
           ` : ''}
         </figure>
       `;}).join('')}
