@@ -53,6 +53,12 @@ const photoData = [
     haiku_en: 'a single line / the crosswalk / passes the wind',
     haiku_zh: '一線／斑馬線上／風穿過' },
 
+  { num: '039', src: 'images/photography/img_9437.jpg', year: 2025, themes: ['street'], shape: 'square',
+    title_jp: '角', title_en: 'The Corner', title_zh: '街角',
+    haiku_jp: '角を曲がる／一秒の前と／一秒の後',
+    haiku_en: 'turning the corner / one second before / one second after',
+    haiku_zh: '轉角／一秒之前／一秒之後' },
+
   { num: '040', src: 'images/photography/img_9439.jpg', year: 2025, themes: ['street','xpan'], shape: 'xpan',
     title_jp: '標語の下', title_en: 'Beneath the Slogan', title_zh: '標語之下',
     haiku_jp: '広告の笑み／その下を行く／影ひとつ',
@@ -187,12 +193,6 @@ const photoData = [
     haiku_jp: '紅の／落ち葉踏みしめ／秋の朝',
     haiku_en: 'crimson — / treading on fallen leaves / autumn morning',
     haiku_zh: '紅色／踩過落葉／秋晨' },
-
-  { num: '039', src: 'images/photography/img_9437.jpg', year: 2025, themes: ['kouyou'], shape: 'square',
-    title_jp: '紅の角', title_en: 'Autumn Corner', title_zh: '紅葉街角',
-    haiku_jp: '紅葉して／角を曲がれば／別の街',
-    haiku_en: 'turning the corner / through autumn leaves — / another town',
-    haiku_zh: '紅葉之中／轉過街角／是另一座城' },
 
   { num: '043', src: 'images/photography/img_9805.jpg', themes: ['kouyou'], shape: 'landscape',
     title_jp: '黄昏', title_en: 'Twilight', title_zh: '黃昏',
