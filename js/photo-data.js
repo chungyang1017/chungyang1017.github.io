@@ -158,10 +158,10 @@ const photoData = [
     haiku_zh: '翠葉／在光與影的／邊界之處' },
 
   { num: '035', src: 'images/photography/img_3506.jpg', year: 2024, themes: ['aoarashi'], shape: 'square',
-    title_jp: '木陰', title_en: 'Tree Shade', title_zh: '樹蔭',
-    haiku_jp: '木陰にて／一人腰下ろす／真夏日',
-    haiku_en: 'in the tree\'s shade / I sit down alone / midsummer day',
-    haiku_zh: '樹蔭下／獨自坐下／盛夏之日' },
+    title_jp: '琉璃光院', title_en: 'Ruriko-in', title_zh: '琉璃光院',
+    haiku_jp: '水の音や／楓の影をゆく／鯉ひとつ',
+    haiku_en: 'sound of water — / through maple shadows / one quiet koi glides',
+    haiku_zh: '水聲／穿過楓影／一尾鯉魚靜行' },
 
   { num: '036', src: 'images/photography/img_3507.jpg', year: 2024, themes: ['aoarashi'], shape: 'landscape',
     title_jp: '涼風', title_en: 'Cool Breeze', title_zh: '涼風',
