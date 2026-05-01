@@ -1764,3 +1764,18 @@ footer a { color: rgba(184,147,90,0.7); text-decoration: none; }
   .academic-page::before,
   .academic-page::after { display: none !important; content: none !important; }
 }
+
+
+/* ── nav cross-page links visual differentiation ── */
+.nav-divider {
+  color: var(--ink-muted) !important;
+  opacity: 0.35 !important;
+  pointer-events: none;
+  letter-spacing: 0 !important;
+  font-style: normal !important;
+  margin: 0 -0.4rem;
+}
+.nav-divider::after { display: none !important; }
+.nav-cross { color: var(--accent) !important; }
+.nav-cross.nav-soon { color: var(--ink-muted) !important; opacity: 0.6; cursor: not-allowed; }
+.nav-cross.nav-soon::after { background: var(--ink-muted) !important; }
