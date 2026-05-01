@@ -319,7 +319,7 @@
     /* ── 銀塩 Ginen: Fuji RVP50 contact-print film strip ── */
     .ph-card.is-ginen {
       background: #0a0807;
-      padding: 9.5% 0;
+      padding: 11% 0;
       box-shadow:
         0 4px 14px rgba(21,17,13,0.30),
         inset 0 0 0 1px rgba(255,255,255,0.04);
@@ -327,19 +327,12 @@
     }
     .ph-card.is-ginen img { outline: none; }
 
+    /* film strip = solid black w/ a sprocket-hole band on the OUTER edge */
     .ph-card.is-ginen .film-strip {
       position: absolute;
       left: 0; right: 0;
-      height: 9.5%;
+      height: 11%;
       background-color: #0a0807;
-      background-image:
-        linear-gradient(to bottom,
-          #0a0807 0, #0a0807 30%,
-          transparent 30%, transparent 70%,
-          #0a0807 70%, #0a0807 100%),
-        repeating-linear-gradient(to right,
-          transparent 0, transparent 0.55em,
-          #ece4d2 0.55em, #ece4d2 1.1em);
       pointer-events: none;
       z-index: 2;
       overflow: hidden;
@@ -347,10 +340,25 @@
     .ph-card.is-ginen .film-top    { top: 0; }
     .ph-card.is-ginen .film-bottom { bottom: 0; }
 
+    /* sprocket-hole row: cream rectangles, only on the outer 38% of strip */
+    .ph-card.is-ginen .film-strip::before {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 38%;
+      background:
+        repeating-linear-gradient(to right,
+          transparent 0, transparent 0.5em,
+          #ece4d2 0.5em, #ece4d2 1em);
+    }
+    .ph-card.is-ginen .film-top::before    { top: 12%; }
+    .ph-card.is-ginen .film-bottom::before { bottom: 12%; }
+
+    /* orange text band — sits in the INNER 50% of strip, no overlap */
     .ph-card.is-ginen .film-num,
     .ph-card.is-ginen .film-brand {
       position: absolute;
-      font: 700 0.62rem/1 'Helvetica Neue', 'Inter', sans-serif;
+      font: 700 0.6rem/1 'Helvetica Neue', 'Inter', sans-serif;
       color: #ff8a2b;
       letter-spacing: 0.05em;
       white-space: nowrap;
@@ -358,20 +366,20 @@
     .ph-card.is-ginen .film-brand { letter-spacing: 0.2em; }
 
     .ph-card.is-ginen .film-top .film-num,
-    .ph-card.is-ginen .film-top .film-brand    { bottom: 6%; }
+    .ph-card.is-ginen .film-top .film-brand    { bottom: 8%; }
     .ph-card.is-ginen .film-bottom .film-num,
-    .ph-card.is-ginen .film-bottom .film-brand { top: 6%; }
+    .ph-card.is-ginen .film-bottom .film-brand { top: 8%; }
 
-    .ph-card.is-ginen .film-num-l { left: 4%; }
-    .ph-card.is-ginen .film-num-r { right: 4%; }
+    .ph-card.is-ginen .film-num-l { left: 5%; }
+    .ph-card.is-ginen .film-num-r { right: 5%; }
     .ph-card.is-ginen .film-brand { left: 50%; transform: translateX(-50%); }
 
     .ph-card.is-ginen .ph-card-num {
-      top: calc(9.5% + 0.5rem);
+      top: calc(11% + 0.5rem);
       left: 0.5rem;
     }
     .ph-card.is-ginen .ph-card-title {
-      bottom: calc(9.5% + 0.5rem);
+      bottom: calc(11% + 0.5rem);
       left: 0.5rem;
       right: 0.5rem;
     }
