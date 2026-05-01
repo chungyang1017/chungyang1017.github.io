@@ -766,19 +766,19 @@ const photoData = [
     haiku_en: 'evening glow — / even the sand / dyed crimson',
     haiku_zh: '夕陽染紅／連沙也／一片緋紅' },
   // kaiyou | No.057
-  { num: '057', src: 'images/photography/dscf3373_3.jpg', themes: ['kaiyou','xpan'], shape: 'xpan',
+  { num: '057', src: 'images/photography/dscf3373_3.jpg', themes: ['sansui','xpan'], shape: 'xpan',
     title_jp: '富士暮', title_en: 'Fuji Dusk', title_zh: '富士暮',
     haiku_jp: '湖の上／富士の影に／街の灯',
     haiku_en: 'over the lake — / in Fuji\'s shadow / the city\'s lamps',
     haiku_zh: '湖之上／富士影下／城市之燈' },
   // kaiyou | No.063
-  { num: '063', src: 'images/photography/dscf3839_3.jpg', themes: ['kaiyou','xpan'], shape: 'xpan',
+  { num: '063', src: 'images/photography/dscf3839_3.jpg', themes: ['sansui','xpan'], shape: 'xpan',
     title_jp: '撮影者たち', title_en: 'The Photographers', title_zh: '攝影者群',
     haiku_jp: '夕暮れに／富士に向かいて／皆並ぶ',
     haiku_en: 'evening descends — / facing Mt Fuji / they all line up',
     haiku_zh: '黃昏／面向富士／眾人並排' },
   // kaiyou | No.064
-  { num: '064', src: 'images/photography/dscf3861_4.jpg', themes: ['kaiyou','xpan'], shape: 'xpan',
+  { num: '064', src: 'images/photography/dscf3861_4.jpg', themes: ['sansui','xpan'], shape: 'xpan',
     title_jp: '富士と橋', title_en: 'Fuji and Bridge', title_zh: '富士與橋',
     haiku_jp: '黄昏や／橋の灯ともり／湖鎮まる',
     haiku_en: 'evening — / bridge lights come on / the lake stills',
@@ -802,7 +802,7 @@ const photoData = [
     haiku_en: 'inside the mist — / birds dance / the pine stands',
     haiku_zh: '霧之中／鳥群飛舞／松樹挺立' },
   // kaiyou | No.069
-  { num: '069', src: 'images/photography/dscf4128_1.jpg', themes: ['kaiyou'], shape: 'landscape',
+  { num: '069', src: 'images/photography/dscf4128_1.jpg', themes: ['sansui'], shape: 'landscape',
     title_jp: '夏の華', title_en: 'Summer Bloom', title_zh: '夏之華',
     haiku_jp: '夏の夜／富士の上にも／華開く',
     haiku_en: 'summer night — / above Mt Fuji too / flowers bloom',
@@ -879,12 +879,6 @@ const photoData = [
     haiku_jp: '長き浜／薄紅雲が／映りゆく',
     haiku_en: 'a long beach — / pale pink clouds / are mirrored',
     haiku_zh: '長長海岸／淡紅雲影／映於水中' },
-  // kaiyou | No.126
-  { num: '126', src: 'images/photography/img_3649.jpg', themes: ['kaiyou','xpan'], shape: 'xpan',
-    title_jp: '岩多き', title_en: 'Rocky Shore', title_zh: '多岩之岸',
-    haiku_jp: '波の上／岩のかたまり／夕日かな',
-    haiku_en: 'over the waves — / clusters of rock / setting sun',
-    haiku_zh: '波之上／岩石叢叢／夕陽之中' },
   // kaiyou | No.127
   { num: '127', src: 'images/photography/img_3653.jpg', themes: ['kaiyou'], shape: 'landscape',
     title_jp: '凪の海', title_en: 'Calm Sea', title_zh: '凪海',
@@ -916,7 +910,7 @@ const photoData = [
     haiku_en: 'red pillars / blue ocean / white clouds',
     haiku_zh: '紅柱／青海／白雲' },
   // kaiyou | No.152
-  { num: '152', src: 'images/photography/img20260329_18543590.jpg', themes: ['kaiyou'], shape: 'landscape',
+  { num: '152', src: 'images/photography/img20260329_18543590.jpg', themes: ['sansui'], shape: 'landscape',
     title_jp: '舟列', title_en: 'Row of Boats', title_zh: '舟列',
     haiku_jp: '夕の湖／舟が静かに／一列なる',
     haiku_en: 'evening lake — / boats settle quietly / into a single line',
