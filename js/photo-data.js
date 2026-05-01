@@ -53,12 +53,6 @@ const photoData = [
     haiku_en: 'a single line / the crosswalk / passes the wind',
     haiku_zh: '一線／斑馬線上／風穿過' },
 
-  { num: '039', src: 'images/photography/img_9437.jpg', year: 2025, themes: ['street'], shape: 'square',
-    title_jp: '角', title_en: 'The Corner', title_zh: '街角',
-    haiku_jp: '角を曲がる／一秒の前と／一秒の後',
-    haiku_en: 'turning the corner / one second before / one second after',
-    haiku_zh: '轉角／一秒之前／一秒之後' },
-
   { num: '040', src: 'images/photography/img_9439.jpg', year: 2025, themes: ['street','xpan'], shape: 'xpan',
     title_jp: '並木道', title_en: 'Tree-lined Avenue', title_zh: '並木道',
     haiku_jp: '並木の／影に浮かぶ／古都の朝',
@@ -102,11 +96,29 @@ const photoData = [
     haiku_en: 'falling petals / piling on the road / a parting spring',
     haiku_zh: '落花／鋪滿道路／離別的春' },
 
+  { num: '023', src: 'images/photography/dscf7974.jpg', year: 2025, themes: ['harugasumi'], shape: 'portrait',
+    title_jp: '春日', title_en: 'A Spring Day', title_zh: '春日',
+    haiku_jp: '春の日や／木の間の光／揺れにけり',
+    haiku_en: 'a spring day — / light between the trees / quietly trembling',
+    haiku_zh: '春日／樹間的光／輕輕搖曳' },
+
+  { num: '025', src: 'images/photography/dscf8356_3.jpg', year: 2025, themes: ['harugasumi'], shape: 'square',
+    title_jp: '春の野', title_en: 'Spring Meadow', title_zh: '春野',
+    haiku_jp: '春の野や／何もせぬまま／日が暮れる',
+    haiku_en: 'spring meadow — / doing nothing at all / the sun goes down',
+    haiku_zh: '春野／無所事事／日已西斜' },
+
   { num: '026', src: 'images/photography/dscf8423_1.jpg', year: 2026, themes: ['harugasumi'], shape: 'landscape',
     title_jp: '春霞', title_en: 'Spring Haze', title_zh: '春霞',
     haiku_jp: '春霞／山の輪郭が／溶けてゆく',
     haiku_en: 'spring haze / the mountain\'s outline / dissolves',
     haiku_zh: '春霞／山的輪廓／漸漸消融' },
+
+  { num: '028', src: 'images/photography/dscf8885_1.jpg', year: 2025, themes: ['harugasumi'], shape: 'landscape',
+    title_jp: '春暁', title_en: 'Spring Dawn', title_zh: '春曉',
+    haiku_jp: '春暁や／淡き光の／差し始む',
+    haiku_en: 'spring dawn — / a tender light / begins to enter',
+    haiku_zh: '春曉／淡淡的光／緩緩傾入' },
 
   { num: '032', src: 'images/photography/dscf9795_xd3.jpg', year: 2026, themes: ['harugasumi'], shape: 'square',
     title_jp: '桜雨', title_en: 'Cherry Rain', title_zh: '櫻雨',
@@ -133,29 +145,11 @@ const photoData = [
     haiku_en: 'sun through leaves — / inside the green / a summer noon',
     haiku_zh: '木漏日／在綠意之中／夏日午' },
 
-  { num: '011', src: 'images/photography/dscf4473_xd2s_9.jpg', year: 2026, themes: ['aoarashi'], shape: 'landscape',
-    title_jp: '青嵐', title_en: 'Green Gust', title_zh: '青嵐',
-    haiku_jp: '青嵐／葉と葉の音／夏の喧騒',
-    haiku_en: 'green wind — / leaf against leaf / summer\'s clamor',
-    haiku_zh: '青嵐／葉與葉相擊／夏之喧鬧' },
-
   { num: '013', src: 'images/photography/dscf4989_xd3_1.jpg', year: 2025, themes: ['aoarashi'], shape: 'landscape',
     title_jp: '翠葉', title_en: 'Jade Leaf', title_zh: '翠葉',
     haiku_jp: '翠葉や／光と影との／境界に',
     haiku_en: 'jade leaves — / on the very border / of light and shade',
     haiku_zh: '翠葉／在光與影的／邊界之處' },
-
-  { num: '017', src: 'images/photography/dscf6254_10.jpg', year: 2025, themes: ['aoarashi'], shape: 'landscape',
-    title_jp: '青野', title_en: 'Green Field', title_zh: '青野',
-    haiku_jp: '青野原／風が描く／夏の譜',
-    haiku_en: 'green plain — / the wind composes / a summer score',
-    haiku_zh: '青野／風所描繪的／夏之譜' },
-
-  { num: '018', src: 'images/photography/dscf6254_15.jpg', year: 2025, themes: ['aoarashi'], shape: 'landscape',
-    title_jp: '緑風', title_en: 'Green Wind', title_zh: '綠風',
-    haiku_jp: '葉の上を／風が走る／夏の朝',
-    haiku_en: 'across the leaves / the wind runs through / a summer morning',
-    haiku_zh: '葉之上／風奔過／夏之晨' },
 
   { num: '035', src: 'images/photography/img_3506.jpg', year: 2024, themes: ['aoarashi'], shape: 'square',
     title_jp: '木陰', title_en: 'Tree Shade', title_zh: '樹蔭',
@@ -194,6 +188,12 @@ const photoData = [
     haiku_en: 'crimson — / treading on fallen leaves / autumn morning',
     haiku_zh: '紅色／踩過落葉／秋晨' },
 
+  { num: '039', src: 'images/photography/img_9437.jpg', year: 2025, themes: ['kouyou'], shape: 'square',
+    title_jp: '紅の角', title_en: 'Autumn Corner', title_zh: '紅葉街角',
+    haiku_jp: '紅葉して／角を曲がれば／別の街',
+    haiku_en: 'turning the corner / through autumn leaves — / another town',
+    haiku_zh: '紅葉之中／轉過街角／是另一座城' },
+
   { num: '043', src: 'images/photography/img_9805.jpg', themes: ['kouyou'], shape: 'landscape',
     title_jp: '黄昏', title_en: 'Twilight', title_zh: '黃昏',
     haiku_jp: '黄昏や／紅葉に染まる／山の影',
@@ -201,29 +201,35 @@ const photoData = [
     haiku_zh: '黃昏／染上紅葉／山之影' },
 
   // ── 雪明 WINTER ──
+  { num: '007', src: 'images/photography/dscf1023_11.jpg', year: 2025, themes: ['yukiakari'], shape: 'landscape',
+    title_jp: '未明', title_en: 'Before Dawn', title_zh: '未明',
+    haiku_jp: '未明や／凍てつく街に／灯ひとつ',
+    haiku_en: 'before dawn — / in the freezing town / a single lamp',
+    haiku_zh: '未明／凜冽的街頭／一盞燈火' },
+
+  { num: '012', src: 'images/photography/dscf4933_6.jpg', year: 2025, themes: ['yukiakari'], shape: 'landscape',
+    title_jp: '静寂', title_en: 'Stillness', title_zh: '寂靜',
+    haiku_jp: '静寂や／冬の窓辺に／光積む',
+    haiku_en: 'stillness — / piling on the winter window / a thin light',
+    haiku_zh: '寂靜／積在冬窗邊／微光淡淡' },
+
+  { num: '017', src: 'images/photography/dscf6254_10.jpg', year: 2025, themes: ['yukiakari'], shape: 'landscape',
+    title_jp: '凍て野', title_en: 'Frozen Plain', title_zh: '凍野',
+    haiku_jp: '凍て野や／風が描いて／消えてゆく',
+    haiku_en: 'frozen plain — / what the wind draws / fades away',
+    haiku_zh: '凍野／風所描畫／旋即消逝' },
+
+  { num: '018', src: 'images/photography/dscf6254_15.jpg', year: 2025, themes: ['yukiakari'], shape: 'landscape',
+    title_jp: '寒気', title_en: 'Cold Air', title_zh: '寒氣',
+    haiku_jp: '寒気澄み／木立の間に／光ひとすじ',
+    haiku_en: 'clear cold air — / among the trees / a thread of light',
+    haiku_zh: '寒氣清澈／樹影之間／一線光明' },
+
   { num: '020', src: 'images/photography/dscf7306_xd2s.jpg', year: 2025, themes: ['yukiakari'], shape: 'landscape',
     title_jp: '雪明', title_en: 'Snow Light', title_zh: '雪明',
     haiku_jp: '雪明かり／闇の中にも／道はある',
     haiku_en: 'snow-light — / even within the dark / a path exists',
     haiku_zh: '雪明／黑暗之中／也有道路' },
-
-  { num: '024', src: 'images/photography/dscf8240_xd2s.jpg', year: 2025, themes: ['yukiakari'], shape: 'landscape',
-    title_jp: '寒月', title_en: 'Cold Moon', title_zh: '寒月',
-    haiku_jp: '寒月や／雪原一面／影のなき',
-    haiku_en: 'cold moon — / across the snow plain / no shadow at all',
-    haiku_zh: '寒月／雪原一面／無影可見' },
-
-  { num: '027', src: 'images/photography/dscf8513_2.jpg', year: 2025, themes: ['yukiakari'], shape: 'landscape',
-    title_jp: '雪片', title_en: 'Snowflakes', title_zh: '雪片',
-    haiku_jp: '一片の／雪が落ちる音／聞こゆ',
-    haiku_en: 'a single flake — / the sound of snow falling / I think I can hear',
-    haiku_zh: '一片／雪落之聲／彷彿聽見' },
-
-  { num: '028', src: 'images/photography/dscf8885_1.jpg', year: 2025, themes: ['yukiakari'], shape: 'landscape',
-    title_jp: '白銀', title_en: 'Silver World', title_zh: '白銀',
-    haiku_jp: '白銀の／山に迷い込む／朝の鳥',
-    haiku_en: 'into the silver mountain / a morning bird / loses its way',
-    haiku_zh: '白銀的山中／晨鳥／迷失' },
 
   { num: '029', src: 'images/photography/dscf9336.jpg', year: 2023, themes: ['yukiakari'], shape: 'landscape',
     title_jp: '冬籠', title_en: 'Winter Hush', title_zh: '冬籠',
@@ -232,17 +238,23 @@ const photoData = [
     haiku_zh: '冬籠／屋簷的陰影下／一片靜謐' },
 
   // ── 海洋 OCEAN ──
-  { num: '023', src: 'images/photography/dscf7974.jpg', year: 2025, themes: ['kaiyou'], shape: 'portrait',
-    title_jp: '潮騒', title_en: 'Tide Sound', title_zh: '潮騷',
-    haiku_jp: '潮騒や／一人の足跡／消えてゆく',
-    haiku_en: 'tide-sound — / a single set of footprints / disappearing',
-    haiku_zh: '潮騷／一人的足跡／逐漸消失' },
+  { num: '011', src: 'images/photography/dscf4473_xd2s_9.jpg', year: 2026, themes: ['kaiyou'], shape: 'landscape',
+    title_jp: '潮風', title_en: 'Sea Breeze', title_zh: '潮風',
+    haiku_jp: '潮風や／髪を乱して／海光る',
+    haiku_en: 'sea breeze — / tangling my hair / the ocean glints',
+    haiku_zh: '潮風／撩亂髮絲／海面閃光' },
 
-  { num: '025', src: 'images/photography/dscf8356_3.jpg', year: 2025, themes: ['kaiyou'], shape: 'square',
-    title_jp: '海原', title_en: 'The Open Sea', title_zh: '海原',
-    haiku_jp: '海原や／水平線に／朝の色',
-    haiku_en: 'the open sea — / on the horizon / the morning\'s color',
-    haiku_zh: '海原／水平線上／晨之色' },
+  { num: '024', src: 'images/photography/dscf8240_xd2s.jpg', year: 2025, themes: ['kaiyou'], shape: 'landscape',
+    title_jp: '月の道', title_en: 'Path of the Moon', title_zh: '月之道',
+    haiku_jp: '月の道／波の上にも／海の上にも',
+    haiku_en: 'the moon\'s path — / on the waves / and on the sea',
+    haiku_zh: '月之道／既在波上／也在海上' },
+
+  { num: '027', src: 'images/photography/dscf8513_2.jpg', year: 2025, themes: ['kaiyou'], shape: 'landscape',
+    title_jp: '波音', title_en: 'Sound of Waves', title_zh: '波音',
+    haiku_jp: '波音や／一人で歩く／浜の朝',
+    haiku_en: 'sound of waves — / walking alone / a morning shore',
+    haiku_zh: '波音／獨自漫步／晨之海濱' },
 
   { num: '041', src: 'images/photography/img_9609.jpg', year: 2025, themes: ['kaiyou'], shape: 'landscape',
     title_jp: '漣', title_en: 'Ripples', title_zh: '漣漪',
@@ -262,18 +274,5 @@ const photoData = [
     haiku_jp: '遥かなる／水平線の／その向こう',
     haiku_en: 'far horizon — / and beyond it / what?',
     haiku_zh: '遙遠的／水平線／那一邊呢' },
-
-  // ── 未分類 MISC ──
-  { num: '007', src: 'images/photography/dscf1023_11.jpg', year: 2025, themes: ['misc'], shape: 'landscape',
-    title_jp: '未明', title_en: 'Before Dawn', title_zh: '未明',
-    haiku_jp: '未明の／街にひとつだけ／灯りあり',
-    haiku_en: 'before dawn — / in the entire city / one lit window',
-    haiku_zh: '未明／整座城市／一盞燈火' },
-
-  { num: '012', src: 'images/photography/dscf4933_6.jpg', year: 2025, themes: ['misc'], shape: 'landscape',
-    title_jp: '沈黙', title_en: 'Silence', title_zh: '沉默',
-    haiku_jp: '静かなる／一瞬の中に／何かある',
-    haiku_en: 'in this quiet / single instant / something is there',
-    haiku_zh: '靜謐的／一瞬之中／有什麼' },
 
 ];
