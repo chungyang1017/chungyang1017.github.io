@@ -67,7 +67,7 @@ const photoData = [
 
   // ── 春霞 SPRING ──
   { num: '003', src: 'images/photography/2019-12-22_09-24-27.jpg', year: 2019, themes: ['harugasumi'], shape: 'landscape',
-    title_jp: '枝垂桜', title_en: 'Weeping Cherry', title_zh: '枝垂櫻',
+    title_jp: 'しだれ桜', title_en: 'Weeping Cherry', title_zh: '枝垂櫻',
     haiku_jp: '枝垂れて／重き花房の／春の朝',
     haiku_en: 'weeping low / the heavy clusters of bloom / in spring morning',
     haiku_zh: '枝垂／繁花重重／春之晨' },
