@@ -151,11 +151,11 @@ const photoData = [
     haiku_en: 'sun through leaves — / inside the green / a summer noon',
     haiku_zh: '木漏日／在綠意之中／夏日午' },
 
-  { num: '013', src: 'images/photography/dscf4989_xd3_1.jpg', year: 2025, themes: ['aoarashi'], shape: 'landscape',
-    title_jp: '翠葉', title_en: 'Jade Leaf', title_zh: '翠葉',
-    haiku_jp: '翠葉や／光と影との／境界に',
-    haiku_en: 'jade leaves — / on the very border / of light and shade',
-    haiku_zh: '翠葉／在光與影的／邊界之處' },
+  { num: '013', src: 'images/photography/dscf4989_xd3_1.jpg', year: 2025, themes: ['sansui'], shape: 'landscape',
+    title_jp: '雲海', title_en: 'Sea of Clouds', title_zh: '雲海',
+    haiku_jp: '合歓山や／雲海の上／朝の朱',
+    haiku_en: 'Hehuanshan — / above the sea of clouds / dawn\'s vermilion',
+    haiku_zh: '合歡山昆陽／雲海之上／晨之朱紅' },
 
   { num: '035', src: 'images/photography/img_3506.jpg', year: 2024, themes: ['aoarashi'], shape: 'square',
     title_jp: '琉璃光院', title_en: 'Ruriko-in', title_zh: '琉璃光院',
