@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>東亞觀察最前線 ・ 葉崇揚</title>
-  <meta name="description" content="葉崇揚的東亞政治社會觀察專欄 ── 從漫畫、流行文化、社會數據看日本、韓國、台灣、中國。" />
+  <title>East Asia Frontline ・ Chung-Yang Yeh</title>
+  <meta name="description" content="A column observing the shifting under-currents of Japan, Korea, Taiwan, and China — from manga, popular culture, and social data." />
+  <link rel="alternate" hreflang="zh-Hant" href="index.html" />
+  <link rel="alternate" hreflang="en" href="index-en.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Noto+Serif+JP:wght@200;300;400;500&family=Noto+Serif+TC:wght@200;300;400;500&family=Shippori+Mincho:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -23,17 +25,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 17px; scroll-behavior: smooth; }
     body {
-      font-family: var(--tc);
-      background: var(--washi); color: var(--ink);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.95; font-weight: 300;
+      font-family: var(--display); background: var(--washi); color: var(--ink);
+      -webkit-font-smoothing: antialiased; line-height: 1.85; font-weight: 400;
       background-image:
         radial-gradient(rgba(169,129,70,0.03) 1px, transparent 1px),
         radial-gradient(rgba(21,17,13,0.022) 1px, transparent 1px);
       background-size: 32px 32px, 19px 19px;
       background-position: 0 0, 16px 16px;
     }
-
     nav.top {
       position: sticky; top: 0; z-index: 30;
       background: rgba(245,240,230,0.92); backdrop-filter: blur(10px);
@@ -44,17 +43,16 @@
       padding: 1.05rem 2.5rem;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .top-logo { font-family: var(--tc); font-size: 0.92rem; color: var(--sumi); text-decoration: none; letter-spacing: 0.45em; display: inline-flex; align-items: center; gap: 0.7rem; }
+    .top-logo { font-family: var(--display); font-style: italic; font-size: 0.95rem; color: var(--sumi); text-decoration: none; letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 0.6rem; }
     .top-logo .nav-back { color: var(--shu); transition: transform 0.3s; }
     .top-logo:hover .nav-back { transform: translateX(-3px); }
-    .top-section { font-family: var(--display); font-style: italic; font-size: 0.86rem; color: var(--ink-mid); letter-spacing: 0.1em; }
+    .top-section { font-family: var(--display); font-style: italic; font-size: 0.9rem; color: var(--ink-mid); letter-spacing: 0.1em; }
     .top-lang { font-size: 0.72rem; letter-spacing: 0.18em; color: var(--ink-mute); }
     .top-lang a { color: var(--ink-mute); text-decoration: none; transition: color 0.2s; }
     .top-lang a:hover { color: var(--shu); }
     .top-lang .current { color: var(--sumi); font-weight: 500; }
     .top-lang .sep { opacity: 0.4; margin: 0 0.4rem; }
 
-    /* HERO */
     .hero {
       max-width: 1100px; margin: 0 auto;
       padding: 6rem 2rem 4rem;
@@ -63,39 +61,30 @@
     }
     .hero-eyebrow {
       font-family: var(--display); font-style: italic;
-      font-size: 0.92rem;
-      color: var(--shu); letter-spacing: 0.22em; text-transform: uppercase;
+      font-size: 0.92rem; color: var(--shu);
+      letter-spacing: 0.22em; text-transform: uppercase;
       margin-bottom: 1.4rem;
       display: flex; align-items: center; gap: 0.85rem;
     }
     .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--shu); }
-
     .hero h1 {
-      font-family: var(--tc); font-weight: 400;
+      font-family: var(--display); font-weight: 400;
       font-size: clamp(2.6rem, 4.8vw, 3.8rem);
-      line-height: 1.1; letter-spacing: 0.12em;
+      line-height: 1.1; letter-spacing: 0.005em;
       color: var(--sumi); margin-bottom: 1rem;
     }
     .hero h1 .sub {
       display: block;
-      font-family: var(--display); font-style: italic;
-      font-size: clamp(1.05rem, 1.5vw, 1.3rem);
-      letter-spacing: 0.04em;
-      font-weight: 300; color: var(--ink-mid);
+      font-family: var(--tc); font-weight: 300;
+      font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+      letter-spacing: 0.18em;
+      color: var(--ink-mid);
       margin-top: 0.6rem;
     }
+    .hero-text p { font-size: 1.05rem; line-height: 2.05; color: var(--ink-mid); margin-bottom: 1.4rem; }
+    .hero-meta { font-family: var(--display); font-style: italic; font-size: 0.85rem; color: var(--ink-mute); letter-spacing: 0.12em; }
+    .hero-text a { color: var(--shu); }
 
-    .hero-text p {
-      font-size: 1.05rem; line-height: 2.05;
-      color: var(--ink-mid); margin-bottom: 1.4rem;
-    }
-    .hero-meta {
-      font-family: var(--display); font-style: italic;
-      font-size: 0.85rem; color: var(--ink-mute);
-      letter-spacing: 0.12em;
-    }
-
-    /* ARTICLES LIST */
     .articles {
       max-width: 1100px; margin: 0 auto;
       padding: 2rem 2rem 6rem;
@@ -115,7 +104,7 @@
 
     .article-card {
       display: grid;
-      grid-template-columns: 90px 1fr;
+      grid-template-columns: 110px 1fr;
       gap: 2.5rem;
       padding: 2.5rem 0;
       border-bottom: 1px solid var(--line);
@@ -138,7 +127,6 @@
       color: var(--ink-mute); margin-top: 0.55rem;
       letter-spacing: 0.08em;
       font-style: normal;
-      font-family: var(--tc);
     }
     .card-num .tag {
       display: inline-block;
@@ -149,29 +137,29 @@
       border: 1px solid rgba(177,58,42,0.35);
       text-transform: uppercase;
       font-style: normal;
-      font-family: var(--display);
     }
 
     .card-content h2 {
-      font-family: var(--tc); font-weight: 500;
-      font-size: 1.45rem;
-      line-height: 1.45;
+      font-family: var(--display); font-weight: 500;
+      font-size: 1.5rem;
+      line-height: 1.4;
       color: var(--sumi);
       margin-bottom: 0.6rem;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.005em;
       transition: color 0.3s;
     }
     .article-card:hover h2 { color: var(--shu); }
 
     .card-subtitle {
-      font-family: var(--display); font-style: italic;
+      font-family: var(--tc); font-weight: 300;
       font-size: 1rem; color: var(--ink-mid);
       margin-bottom: 1.1rem;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
     }
 
     .card-excerpt {
-      font-size: 0.98rem; line-height: 1.95;
+      font-family: var(--display);
+      font-size: 1rem; line-height: 1.85;
       color: var(--ink-mid);
     }
 
@@ -179,27 +167,23 @@
       display: inline-block;
       margin-top: 0.8rem;
       font-family: var(--display); font-style: italic;
-      font-size: 0.9rem; color: var(--shu);
+      font-size: 0.92rem; color: var(--shu);
       letter-spacing: 0.06em;
       transition: transform 0.3s;
     }
     .article-card:hover .card-arrow { transform: translateX(4px); }
 
-    /* MISSION */
     .mission {
       max-width: 720px; margin: 4rem auto 2rem;
       padding: 0 2rem;
-      font-family: var(--tc);
-      font-size: 0.96rem; line-height: 2;
+      font-family: var(--display);
+      font-size: 1rem; line-height: 1.85;
       color: var(--ink-mid);
-      text-align: center;
-      font-style: italic;
+      text-align: center; font-style: italic;
     }
     .mission::before, .mission::after {
-      content: '◇';
-      color: var(--shu);
-      display: block;
-      margin: 0.5rem auto;
+      content: '◇'; color: var(--shu);
+      display: block; margin: 0.5rem auto;
     }
 
     footer {
@@ -228,30 +212,30 @@
 
 <nav class="top">
   <div class="inner">
-    <a href="../index.html" class="top-logo" title="首頁"><span class="nav-back">←</span> 葉 崇 揚</a>
-    <span class="top-section">東亞觀察最前線 ・ East Asia Frontline</span>
+    <a href="../index-en.html" class="top-logo" title="Home"><span class="nav-back">←</span> Chung-Yang Yeh</a>
+    <span class="top-section">East Asia Frontline ・ 東亞觀察最前線</span>
     <span class="top-lang">
-      <span class="current">中文</span>
+      <a href="index.html">中文</a>
       <span class="sep">／</span>
-      <a href="index-en.html">EN</a>
+      <span class="current">EN</span>
     </span>
   </div>
 </nav>
 
 <header class="hero">
   <div class="hero-text">
-    <p class="hero-eyebrow">東亞觀察 ・ Frontline</p>
+    <p class="hero-eyebrow">A Column ・ Frontline</p>
     <h1>
-      東亞觀察最前線
-      <span class="sub">East Asia Frontline ・ A Column by Chung-Yang Yeh</span>
+      East Asia Frontline
+      <span class="sub">東亞觀察最前線 ・ A Column by Chung-Yang Yeh</span>
     </h1>
   </div>
   <div class="hero-text">
     <p>
-      這是一個關於「正在發生的東亞」的觀察專欄。日本、韓國、台灣、中國 ── 這四個社會在二十一世紀第三個十年的此刻，正以各自的速度，重新定義「現代性」對自己的意義。
+      A column on the <em>East Asia that is happening now</em>. Japan, Korea, Taiwan, and China — four societies that, in the third decade of the twenty-first century, are each redefining what "modernity" means for themselves, at their own pace.
     </p>
     <p>
-      在這個專欄裡，我會以社會學者的眼光，從漫畫、流行文化、社會數據、日常觀察出發，記錄這些社會的精神底層變遷。學術的嚴謹會在 <a href="../academic-zh.html" style="color:var(--shu)">學術頁</a>，這裡是相對輕快的書寫。
+      Here I write as a sociologist, but lighter — drawing on manga, popular culture, social data, and street observation to track shifts in the spiritual undercurrent of these societies. The strict academic writing lives on the <a href="../academic.html">Academic page</a>; this column is the lighter counterpart.
     </p>
     <p class="hero-meta">A Column ・ Quarterly ・ since 2026</p>
   </div>
@@ -259,38 +243,38 @@
 
 <section class="articles">
 
-  <p class="articles-eyebrow">最新文章 ・ Articles</p>
+  <p class="articles-eyebrow">Articles</p>
 
-  <a href="2026-takaichi.html" class="article-card">
+  <a href="2026-takaichi-en.html" class="article-card">
     <div class="card-num">
       No. 〇〇一
       <span class="date">2026.02.07</span>
-      <span class="tag">日本</span>
+      <span class="tag">Japan</span>
     </div>
     <div class="card-content">
-      <h2>另一個從漫畫走出來的人物：以《政治最前線》與《島耕作》解讀高市早苗</h2>
-      <p class="card-subtitle">From a Manga Frame: Reading Sanae Takaichi through <em>The Politics</em> and <em>Kosaku Shima</em></p>
+      <h2>From a Manga Frame: Reading Sanae Takaichi through <em>The Politics</em> and <em>Kosaku Shima</em></h2>
+      <p class="card-subtitle">另一個從漫畫走出來的人物：以《政治最前線》與《島耕作》解讀高市早苗</p>
       <p class="card-excerpt">
-        當大谷翔平在洛杉磯創下漫畫《棒球大聯盟》也未曾預演的二刀流紀錄，日本社會看到的是「向外延伸的夢」；而在永田町，另一個從漫畫走出來的人物正穩定接近權力的最高點。本文借《政治最前線》的「方法」與《島耕作》的「焦慮」，解讀高市早苗所代表的日本「絕對現實主義」。
+        While Shohei Ohtani writes a script even <em>Major League</em> never imagined, another figure shaped by manga is steadily reaching Japan's political summit. This essay reads Sanae Takaichi through Hirokane Kenshi's <em>Kaji Ryūsuke no Gi</em> for the <strong>method</strong>, and the <em>Shima Kōsaku</em> arc for the <strong>anxiety</strong> — to understand the "absolute realism" she represents.
       </p>
-      <span class="card-arrow">閱讀全文 →</span>
+      <span class="card-arrow">Read full essay →</span>
     </div>
   </a>
 
 </section>
 
 <aside class="mission">
-  「東亞，不是一個地理名詞，而是一個還在成形的故事。」
+  "East Asia is not a geography — it is a story still being written."
 </aside>
 
 <footer>
-  © 2025 ・ 葉崇揚 Chung-Yang Yeh
+  © 2025 ・ Chung-Yang Yeh
   <span class="sep">·</span>
-  東吳大學社會學系
+  Department of Sociology, Soochow University
   <span class="sep">·</span>
-  <a href="../academic-zh.html">學術頁</a>
+  <a href="../academic.html">Academic</a>
   <span class="sep">·</span>
-  <a href="../index.html">首頁</a>
+  <a href="../index-en.html">Home</a>
 </footer>
 
 </body>

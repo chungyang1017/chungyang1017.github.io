@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reading Takaichi through Manga · East Asia Frontline · Chung-Yang Yeh</title>
+  <meta name="description" content="Reading Sanae Takaichi through two long-running manga — Kaji Ryūsuke's The Politics and Hirokane's Kosaku Shima series." />
+  <link rel="alternate" hreflang="zh-Hant" href="2026-takaichi.html" />
+  <link rel="alternate" hreflang="en" href="2026-takaichi-en.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Noto+Serif+JP:wght@200;300;400;500&family=Noto+Serif+TC:wght@200;300;400;500&family=Shippori+Mincho:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sumi: #15110d; --sumi-soft: #2c2622;
+      --ink: #1a1714; --ink-mid: #5a534d; --ink-mute: #9a938c;
+      --washi: #f5f0e6; --washi-warm: #f8f3e8; --washi-soft: #fbf7ee;
+      --shu: #b13a2a; --kin: #a98146;
+      --line: rgba(21,17,13,0.10); --line-mid: rgba(21,17,13,0.18);
+      --jp: 'Noto Serif JP', 'Noto Serif TC', serif;
+      --tc: 'Noto Serif TC', 'Shippori Mincho', 'Noto Serif JP', serif;
+      --display: 'Cormorant Garamond', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 17px; }
+    body {
+      font-family: var(--display);
+      background: var(--washi);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.85; font-weight: 400;
+      background-image:
+        radial-gradient(rgba(169,129,70,0.03) 1px, transparent 1px),
+        radial-gradient(rgba(21,17,13,0.022) 1px, transparent 1px);
+      background-size: 32px 32px, 19px 19px;
+      background-position: 0 0, 16px 16px;
+    }
+
+    nav.top {
+      position: sticky; top: 0; z-index: 30;
+      background: rgba(245,240,230,0.92); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav.top .inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 1.05rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-logo {
+      font-family: var(--display); font-style: italic; font-size: 0.95rem;
+      color: var(--sumi); text-decoration: none; letter-spacing: 0.1em;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+    }
+    .top-logo .nav-back { color: var(--shu); transition: transform 0.3s; }
+    .top-logo:hover .nav-back { transform: translateX(-3px); }
+    .top-section {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.9rem; color: var(--ink-mid);
+      letter-spacing: 0.1em;
+    }
+    .top-lang { font-size: 0.72rem; letter-spacing: 0.18em; color: var(--ink-mute); }
+    .top-lang a { color: var(--ink-mute); text-decoration: none; transition: color 0.2s; }
+    .top-lang a:hover { color: var(--shu); }
+    .top-lang .current { color: var(--sumi); font-weight: 500; }
+    .top-lang .sep { opacity: 0.4; margin: 0 0.4rem; }
+
+    .article {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    .article-eyebrow {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.92rem;
+      letter-spacing: 0.22em;
+      color: var(--shu);
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      display: flex; align-items: center; gap: 0.85rem;
+    }
+    .article-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--shu); }
+    .article-eyebrow a { color: var(--shu); text-decoration: none; }
+    .article-eyebrow a:hover { text-decoration: underline; }
+
+    .article-title {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(2.2rem, 3.8vw, 3rem);
+      line-height: 1.2;
+      color: var(--sumi);
+      letter-spacing: 0.005em;
+      margin-bottom: 1rem;
+    }
+
+    .article-subtitle {
+      font-family: var(--tc);
+      font-weight: 300;
+      font-size: 1.18rem;
+      color: var(--ink-mid);
+      line-height: 1.55;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.04em;
+    }
+
+    .article-byline {
+      display: flex; align-items: center; gap: 1.25rem;
+      padding: 1rem 0;
+      border-top: 1px solid var(--line-mid);
+      border-bottom: 1px solid var(--line-mid);
+      margin-bottom: 4rem;
+      font-family: var(--display); font-style: italic;
+      font-size: 0.92rem; color: var(--ink-mid);
+      letter-spacing: 0.06em;
+    }
+    .byline-author { color: var(--sumi); font-weight: 500; font-style: normal; letter-spacing: 0.1em; }
+    .byline-date { color: var(--shu); }
+    .byline-tag {
+      margin-left: auto;
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-mute);
+      padding: 0.25rem 0.7rem; border: 1px solid var(--line-mid);
+    }
+
+    /* COVER */
+    .article-cover {
+      max-width: 1100px;
+      margin: 2.5rem auto 0;
+      padding: 0 2rem;
+    }
+    .article-cover figure {
+      position: relative; overflow: hidden;
+      box-shadow: 0 24px 50px -28px rgba(21,17,13,0.4);
+    }
+    .article-cover img {
+      width: 100%; display: block;
+      filter: saturate(0.85) brightness(0.97);
+    }
+    .article-cover figcaption {
+      margin-top: 0.95rem;
+      display: flex; align-items: baseline; gap: 1.5rem;
+      font-family: var(--display); font-style: italic;
+      font-size: 0.86rem; color: var(--ink-mute);
+      letter-spacing: 0.08em;
+      flex-wrap: wrap;
+    }
+    .article-cover .cap-num { color: var(--shu); letter-spacing: 0.16em; }
+    .article-cover .cap-title { color: var(--sumi); font-style: normal; flex: 1; min-width: 200px; letter-spacing: 0.1em; }
+
+    /* INLINE PHOTO */
+    .inline-photo {
+      margin: 3.5rem -2rem;
+    }
+    .inline-photo.is-square { max-width: 580px; margin-left: auto; margin-right: auto; }
+    .inline-photo figure {
+      position: relative; overflow: hidden;
+      box-shadow: 0 18px 40px -22px rgba(21,17,13,0.35);
+    }
+    .inline-photo img {
+      width: 100%; display: block;
+      filter: saturate(0.85) brightness(0.97);
+      transition: filter 0.5s, transform 0.7s cubic-bezier(.2,.7,.2,1);
+    }
+    .inline-photo figure:hover img { filter: saturate(1) brightness(1); transform: scale(1.015); }
+    .inline-photo figcaption {
+      margin-top: 0.9rem;
+      padding: 0 0.5rem;
+      display: flex; align-items: baseline; gap: 1.25rem;
+      font-family: var(--display); font-style: italic;
+      font-size: 0.84rem; color: var(--ink-mute);
+      letter-spacing: 0.08em; flex-wrap: wrap;
+    }
+    .inline-photo .cap-num { color: var(--shu); letter-spacing: 0.16em; }
+    .inline-photo .cap-title { color: var(--sumi); font-style: normal; flex: 1; min-width: 180px; letter-spacing: 0.1em; }
+
+    /* BODY */
+    .article-body p {
+      font-size: 1.18rem;
+      color: var(--ink);
+      line-height: 1.85;
+      margin-bottom: 1.75rem;
+      letter-spacing: 0.005em;
+    }
+    .article-body p.lead {
+      font-size: 1.36rem;
+      line-height: 1.75;
+      color: var(--sumi);
+      margin-bottom: 2.4rem;
+    }
+    .article-body p.lead::first-letter {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 3.2rem;
+      line-height: 1;
+      float: left;
+      margin: 0.3rem 0.55rem 0 0;
+      color: var(--shu);
+    }
+
+    .article-body h2 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 1.85rem;
+      color: var(--sumi);
+      letter-spacing: 0.01em;
+      margin: 4rem 0 1.7rem;
+      padding-top: 1rem;
+      position: relative;
+    }
+    .article-body h2::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 36px; height: 2px; background: var(--shu);
+    }
+    .article-body h2 .num {
+      font-family: var(--display); font-style: italic;
+      font-weight: 400;
+      color: var(--shu);
+      margin-right: 0.6rem;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+    }
+
+    .article-body em { font-style: italic; color: var(--sumi); }
+    .article-body strong { font-weight: 500; color: var(--sumi); }
+
+    .article-body blockquote {
+      margin: 2.8rem 0;
+      padding: 1.75rem 2rem 1.75rem 2.25rem;
+      background: var(--washi-soft);
+      border-left: 4px solid var(--shu);
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 1.13rem;
+      line-height: 1.85;
+      color: var(--ink-mid);
+      letter-spacing: 0.01em;
+    }
+    .article-body blockquote .label {
+      display: block;
+      font-style: italic;
+      font-size: 0.78rem; letter-spacing: 0.18em;
+      color: var(--shu); margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .article-body ul {
+      margin: 1.6rem 0 1.8rem 1.4rem;
+    }
+    .article-body ul li {
+      list-style: none; position: relative;
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+      font-size: 1.16rem; line-height: 1.85;
+    }
+    .article-body ul li::before {
+      content: '・'; position: absolute; left: 0;
+      color: var(--shu); font-weight: 500;
+    }
+
+    .article-body hr {
+      border: none; height: 1px;
+      background: linear-gradient(to right, transparent, var(--line-mid), transparent);
+      margin: 3rem auto; width: 60%;
+    }
+
+    .colophon {
+      margin-top: 4rem;
+      padding: 2rem 2rem 1.75rem;
+      background: var(--washi-warm);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--shu);
+    }
+    .colophon-label {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.78rem; letter-spacing: 0.22em;
+      color: var(--shu); text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+    .colophon p {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--ink-mid);
+    }
+
+    .article-foot {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line-mid);
+      display: flex; justify-content: space-between;
+      align-items: baseline; flex-wrap: wrap; gap: 1rem;
+    }
+    .article-foot .meta {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.85rem; color: var(--ink-mute);
+      letter-spacing: 0.06em;
+    }
+    .article-foot .back {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.92rem; color: var(--shu);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: gap 0.3s;
+    }
+    .article-foot .back:hover { letter-spacing: 0.1em; }
+
+    footer {
+      padding: 2.5rem 2rem;
+      border-top: 1px solid var(--line);
+      background: var(--washi-warm);
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--ink-mute);
+      letter-spacing: 0.08em;
+    }
+    footer .sep { color: var(--ink-mute); opacity: 0.4; margin: 0 0.5rem; }
+    footer a { color: var(--ink-mid); text-decoration: none; }
+    footer a:hover { color: var(--shu); }
+
+    @media (max-width: 720px) {
+      .article { padding: 3rem 1.5rem 4rem; }
+      .article-byline { flex-wrap: wrap; gap: 0.75rem; }
+      .byline-tag { margin-left: 0; }
+      nav.top .inner { padding: 0.85rem 1.5rem; flex-wrap: wrap; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="inner">
+    <a href="../index-en.html" class="top-logo" title="Home"><span class="nav-back">←</span> Chung-Yang Yeh</a>
+    <span class="top-section">East Asia Frontline ・ 東亞觀察最前線</span>
+    <span class="top-lang">
+      <a href="2026-takaichi.html">中文</a>
+      <span class="sep">／</span>
+      <span class="current">EN</span>
+    </span>
+  </div>
+</nav>
+
+<div class="article-cover">
+  <figure>
+    <img src="../images/photography/img_8239.jpg" alt="Japan street panorama" />
+    <figcaption>
+      <span class="cap-num">No. 〇三八</span>
+      <span class="cap-title">Japan Street ・ Xpan 65×24</span>
+      <span class="cap-year">photo · Chung-Yang Yeh</span>
+    </figcaption>
+  </figure>
+</div>
+
+<article class="article">
+
+  <p class="article-eyebrow">
+    <a href="index-en.html">← East Asia Frontline No. 〇〇一</a>
+  </p>
+
+  <h1 class="article-title">
+    From a Manga Frame: Reading Sanae Takaichi through <em>The Politics</em> and <em>Kosaku Shima</em>
+  </h1>
+
+  <p class="article-subtitle">
+    另一個從漫畫走出來的人物：以《政治最前線》與《島耕作》解讀高市早苗
+  </p>
+
+  <div class="article-byline">
+    <span class="byline-author">Chung-Yang Yeh</span>
+    <span class="byline-date">7 February 2026</span>
+    <span class="byline-tag">Japan</span>
+  </div>
+
+  <div class="article-body">
+
+    <p class="lead">
+      While Shohei Ohtani is rewriting baseball history in Los Angeles — outpacing even the two-way feats imagined in <em>Major League</em>, Mitsuru Adachi's classic baseball manga — Japan watches his ascent as something it might dream of becoming: pure, beyond reproach, admired by the world. But as Ohtani rises in the air, another figure shaped by manga is steadily approaching the summit of Japanese power: Sanae Takaichi.
+    </p>
+
+    <p>
+      If Ohtani embodies what Japan would like to be, Takaichi represents what Japan must come to terms with. To understand this LDP president-in-waiting — who may become the country's first female prime minister — we don't necessarily need the Western political-science label of "right-wing resurgence." A reading closer to the spiritual ground of contemporary Japan returns us to two long-running series by manga artist Kenshi Hirokane: <em>Kaji Ryūsuke no Gi</em> (rendered here as <em>The Politics</em>) and the <em>Shima Kōsaku</em> arc. The former offers a method; the latter explains an anxiety. Together, they help us see what Takaichi's "absolute realism" actually is.
+    </p>
+
+    <h2><span class="num">I.</span>Kaji Ryūsuke's Method — The 1990s Reform Gene</h2>
+
+    <p>
+      <em>Kaji Ryūsuke no Gi</em> ran from 1991 to 1998, the most dramatic spiritual turning point in Japan's postwar history. The Cold War had ended; the bubble had burst; the Great Hanshin earthquake and the Aum subway attack had punctured any remaining innocence. The familiar self-deprecating phrase — "first-class economy, third-class politics" — had turned bitter, no longer a joke.
+    </p>
+
+    <p>
+      Hirokane's protagonist, Kaji Ryūsuke, is the rational reformer the era seemed to call for: he steps into a Diet seat, starts from nothing, and consistently argues for "national normalization" — Japan should possess independent defense, foreign-policy authority, and decision-making power, no longer indefinitely tied to the Peace Constitution and the U.S.–Japan Security Treaty.
+    </p>
+
+    <p>
+      Kaji's political register is built on what we might call "context-stripped directness." He doesn't speak in <em>Nagatachō</em> literature — the language of indirection, of strategically placed silence and modulated implication — but in something closer to a "science-faculty-graduate's" tone: how many kilometers a missile can travel; what the interception probability is; what international law actually says about a particular clause.
+    </p>
+
+    <p>
+      What Sanae Takaichi inherits is precisely this Kaji-style grammar. When she stands at a press conference and runs through "a Taiwan emergency is a Japan emergency," counter-strike capability, and economic security at high speed and in cold data, she is decisively stepping outside Fumio Kishida's "comprehensive consideration, continued review" formula. To Japanese voters fatigued by "thirty years since Heisei in which nothing has been resolved" — particularly to younger and middle-aged men, and to a portion of women whose lives have been displaced by the <em>Danjo Kyōdō Sankaku</em> (gender equality) framework — this refusal to perform vagueness registers as a long-overdue psychological release.
+    </p>
+
+    <h2><span class="num">II.</span>Kosaku Shima's Anxiety — From "Conquering the Market" to "Economic Security"</h2>
+
+    <p>
+      If Kaji explains the <em>method</em>, the <em>Shima Kōsaku</em> series explains <em>why now</em>.
+    </p>
+
+    <p>
+      Hirokane's Shima Kōsaku has been drawn from <em>Section Chief Shima</em> in 1983 all the way to <em>Outside Director Shima</em> in the 2020s — a span of nearly forty years across Japanese corporate history. The Shima of the 1980s and 1990s was the corporate warrior of the "Japan as No. 1" sunset: he believed in globalization, in technology-led growth, in the proposition that if your product was good enough, the world was your market. His problem was <em>how to win</em>.
+    </p>
+
+    <p>
+      By the Reiwa era, Shima's world has changed. Japan's GDP has been overtaken by China for more than a decade; per-capita GDP has been overtaken by South Korea; semiconductor manufacturing has migrated to Taiwan and Korea; energy and food are heavily dependent on imports. In the latest <em>Outside Director Shima</em>, the obsession with "expanding market share" has nearly disappeared, replaced by talk of supply-chain security, technology leakage, food self-sufficiency, geopolitical risk. Shima Kōsaku has shifted from "profit-seeking businessman" to "anxious elder statesman." His problem is no longer <em>how to win</em>, but <em>how not to lose, how to survive</em>.
+    </p>
+
+    <div class="inline-photo is-square">
+      <figure>
+        <img src="../images/photography/img_3503_2.jpg" alt="Japan street, summer" />
+      </figure>
+      <figcaption>
+        <span class="cap-num">No. 〇三四</span>
+        <span class="cap-title">Japan Street ・ Summer</span>
+        <span class="cap-year">photo · Chung-Yang Yeh</span>
+      </figcaption>
+    </div>
+
+    <p>
+      The Economic Security Promotion Act that Takaichi has championed reads almost like a policy checklist that "Adviser Shima" might write up for the Diet: elevate supply-chain resilience to a national-security concern, conduct security review of critical infrastructure, prevent leakage of advanced technologies, subsidize strategic industries such as semiconductors and batteries. She is not inventing a right-wing economics from thin air. She is precisely translating the collective fear of the Japanese business establishment — particularly manufacturing and heavy industry — into a political language that can be voted on. She is, politically, the agent of the <em>anxious Shima Kōsaku</em>.
+    </p>
+
+    <h2><span class="num">III.</span>A Traditional Anchor — Ontological Security</h2>
+
+    <p>
+      Takaichi's political profile contains a surface paradox: she has inherited Kaji Ryūsuke's "break the old framework" reform gene, yet on issues such as separate marital surnames, Yasukuni Shrine visits, and imperial succession, she takes a strongly traditionalist position. How can these be reconciled?
+    </p>
+
+    <p>
+      The answer lies in a difference of era. Japan's anxiety in the 1990s was that it was "too closed and needed to be opened up." Japan's anxiety in the 2020s is that it is "vanishing" — population decline, geopolitical threat, economic stagnation, cultural identity diluted by globalization. In a "structural twilight" of this kind, voters do not need yet another reformer who promises to break tradition. They need a protector who promises to <em>keep the core intact</em>.
+    </p>
+
+    <blockquote>
+      <span class="label">Theoretical borrowing</span>
+      <p>
+        To borrow from sociologist Anthony Giddens's concept of <em>ontological security</em>: when the external world becomes intensely volatile, individuals anchor themselves in things that symbolize continuity — institutions, rituals, traditions.
+      </p>
+    </blockquote>
+
+    <p>
+      Takaichi's traditionalism, in this light, is less an ideology than a contract with her voters: "What makes Japan Japan, I will hold for you." This "cultural driftwood" sits perfectly comfortably alongside the "economic-security steel" she swings with the other hand. They are not contradictions; they are two coordinates of the same political map.
+    </p>
+
+    <h2><span class="num">IV.</span>強く・豊かに — An Adult's Fairy Tale</h2>
+
+    <p>
+      Takaichi's most repeated political slogan is <em>Nihon o, tsuyoku yutaka ni</em> — "Make Japan Strong and Prosperous." Unpacked, it is precisely the confluence of the Kaji Ryūsuke and Shima Kōsaku streams:
+    </p>
+
+    <ul>
+      <li><strong>Tsuyoku (Strong)</strong>: inherits the Kaji line. Through constitutional revision, defense self-sufficiency, and counter-strike capability, Japan should be able to stand straight when facing China and North Korea — the strength of physical and diplomatic posture.</li>
+      <li><strong>Yutaka ni (Prosperous)</strong>: answers Shima's expectations. Through aggressive fiscal policy (which markets have already nicknamed "Sanaenomics"), strategic industrial investment, and protection of core technologies, Japan should escape the deflationary shadow of the Lost Three Decades and return to growth.</li>
+    </ul>
+
+    <p>
+      What is striking about this vision is its absence of youthful romance. Unlike Shinzō Abe's early "Beautiful Japan," which appealed to the romance of national narrative, or Shigeru Ishiba's intricate institutional dialectics, Takaichi's program reads like a prescription written by a <em>clear-headed, calculating, illusion-free middle-aged</em> operator: in the gap between U.S.–China rivalry, secure your own survival first; talk about prosperity later.
+    </p>
+
+    <p>
+      If Shohei Ohtani is the <em>outward-extending</em> dream of Japanese society — a tale of youth, possibility, and being recognized by the world — then Sanae Takaichi is the <em>inward-consolidating</em> dream: a tale of adulthood, of self-protection, of holding what is certain in the midst of uncertainty. It carries no ornate phrasing. But for a country that is learning to accept that it is <em>no longer young</em>, it may be the political language most aligned with its actual psychology.
+    </p>
+
+    <hr />
+
+    <div class="colophon">
+      <p class="colophon-label">Note from the Author</p>
+      <p>
+        This essay was written on the eve of the Japanese Diet election. Whatever the final result, the "Takaichi phenomenon" reflects a deep shift in the collective psychology of Japanese society — a case worth long-term observation in East Asian political sociology. In future installments of this <em>East Asia Frontline</em> column, I will continue from adjacent angles — Korea after Yoon Seok-yeol, Taiwan toward 2028, Beijing's "new normal" — to follow an East Asia that is, again, redefining itself.
+      </p>
+    </div>
+
+    <div class="article-foot">
+      <span class="meta">No. 〇〇一 ・ East Asia Frontline ・ 2026.02.07</span>
+      <a href="index-en.html" class="back">← Back to Column</a>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  © 2025 ・ Chung-Yang Yeh
+  <span class="sep">·</span>
+  Department of Sociology, Soochow University
+  <span class="sep">·</span>
+  <a href="../academic.html">Academic</a>
+  <span class="sep">·</span>
+  <a href="../index-en.html">Home</a>
+</footer>
+
+</body>
+</html>

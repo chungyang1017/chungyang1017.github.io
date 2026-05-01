@@ -60,7 +60,11 @@
       font-size: 0.86rem; color: var(--ink-mid);
       letter-spacing: 0.1em;
     }
-    .top-lang { font-size: 0.7rem; letter-spacing: 0.18em; color: var(--ink-mute); }
+    .top-lang { font-size: 0.72rem; letter-spacing: 0.18em; color: var(--ink-mute); }
+    .top-lang a { color: var(--ink-mute); text-decoration: none; transition: color 0.2s; }
+    .top-lang a:hover { color: var(--shu); }
+    .top-lang .current { color: var(--sumi); font-weight: 500; }
+    .top-lang .sep { opacity: 0.4; margin: 0 0.4rem; }
 
     /* ── COVER PHOTO ── */
     .article-cover {
@@ -357,7 +361,11 @@
   <div class="inner">
     <a href="../index.html" class="top-logo" title="首頁"><span class="nav-back">←</span> 葉 崇 揚</a>
     <span class="top-section">東亞觀察最前線 ・ East Asia Frontline</span>
-    <span class="top-lang">中文</span>
+    <span class="top-lang">
+      <span class="current">中文</span>
+      <span class="sep">／</span>
+      <a href="2026-takaichi-en.html">EN</a>
+    </span>
   </div>
 </nav>
 
