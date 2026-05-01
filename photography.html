@@ -242,10 +242,13 @@
     /* PHOTO GRID — like contact sheet */
     .ph-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 0.4rem;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 0.7rem;
     }
     .ph-grid.is-xpan { grid-template-columns: 1fr; max-width: 1100px; gap: 2rem; }
+    @media (max-width: 720px) {
+      .ph-grid { grid-template-columns: 1fr; gap: 0.6rem; }
+    }
 
     .ph-card {
       position: relative;
