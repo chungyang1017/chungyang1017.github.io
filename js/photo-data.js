@@ -825,36 +825,18 @@ const photoData = [
     haiku_jp: '波の縁／光に縁取られ／砂は影',
     haiku_en: 'edge of the wave / outlined in light — / the sand is shadow',
     haiku_zh: '浪之邊緣／鑲著光／沙是影' },
-  // kaiyou | No.110
-  { num: '110', src: 'images/photography/dscf9825_2.jpg', themes: ['kaiyou','xpan'], shape: 'xpan',
-    title_jp: '立山連峰', title_en: 'Tateyama Range', title_zh: '立山連峰',
-    haiku_jp: '海越えて／白き山々／黄昏色',
-    haiku_en: 'across the sea — / white mountains / colored by dusk',
-    haiku_zh: '隔海／白色山巒／染上黃昏' },
   // kaiyou | No.111
   { num: '111', src: 'images/photography/dscf9843_1.jpg', themes: ['kaiyou'], shape: 'portrait',
     title_jp: '夕映え', title_en: 'Evening Glow', title_zh: '夕映',
     haiku_jp: '夕焼けて／岩礁の松も／黄金色',
     haiku_en: 'evening glow — / even the pine on the rock / turns to gold',
     haiku_zh: '夕陽燃燒／礁石上的松／也成了金色' },
-  // kaiyou | No.112
-  { num: '112', src: 'images/photography/dscf9847_1.jpg', themes: ['kaiyou','xpan'], shape: 'xpan',
-    title_jp: '雪山と海', title_en: 'Snow Range, Sea', title_zh: '雪山與海',
-    haiku_jp: '雪の山／海の彼方に／黄昏かな',
-    haiku_en: 'snowy peaks — / across the sea / a deepening dusk',
-    haiku_zh: '雪山／海的彼端／黃昏將至' },
   // kaiyou | No.113
   { num: '113', src: 'images/photography/dscf9864_2.jpg', themes: ['kaiyou'], shape: 'landscape',
     title_jp: '霧と岩', title_en: 'Mist and Rock', title_zh: '霧與岩',
     haiku_jp: '黄金の／霧の中より／岩浮かぶ',
     haiku_en: 'out of the golden mist — / a rock / emerges',
     haiku_zh: '金霧之中／岩石／浮現而出' },
-  // kaiyou | No.114
-  { num: '114', src: 'images/photography/dscf9880_4.jpg', themes: ['kaiyou','xpan'], shape: 'xpan',
-    title_jp: '朝の遥か', title_en: 'Distant Morning', title_zh: '遙遠的晨',
-    haiku_jp: '朝の海／立山遥か／松ひとつ',
-    haiku_en: 'morning sea — / Tateyama far away / one solitary pine',
-    haiku_zh: '晨海／立山遙遠／一棵松' },
   // kaiyou | No.117
   { num: '117', src: 'images/photography/dscf9938_2.jpg', themes: ['kaiyou','xpan'], shape: 'xpan',
     title_jp: '岩礁', title_en: 'The Reef', title_zh: '礁岩',
