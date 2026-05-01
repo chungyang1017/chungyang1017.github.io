@@ -855,12 +855,6 @@ const photoData = [
     haiku_jp: '朝の海／立山遥か／松ひとつ',
     haiku_en: 'morning sea — / Tateyama far away / one solitary pine',
     haiku_zh: '晨海／立山遙遠／一棵松' },
-  // kaiyou | No.115
-  { num: '115', src: 'images/photography/dscf9882_5.jpg', themes: ['kaiyou','xpan'], shape: 'xpan',
-    title_jp: '黎明', title_en: 'First Light', title_zh: '黎明',
-    haiku_jp: '黎明や／海の彼方に／山連なる',
-    haiku_en: 'first light — / across the sea / the mountains link',
-    haiku_zh: '黎明／海之彼方／群山相連' },
   // kaiyou | No.117
   { num: '117', src: 'images/photography/dscf9938_2.jpg', themes: ['kaiyou','xpan'], shape: 'xpan',
     title_jp: '岩礁', title_en: 'The Reef', title_zh: '礁岩',
