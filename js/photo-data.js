@@ -23,6 +23,13 @@ const photoData = [
   { num: '003', src: 'images/photography/2019-12-22_09-24-27.jpg',     year: 2019, themes: ['harugasumi'],     shape: 'landscape', title_jp: '枝垂桜 ・ Shidare', title_en: 'Weeping Cherry',  title_zh: '枝垂櫻' },
   { num: '015', src: 'images/photography/dscf5542_2.jpg',              year: 2025, themes: ['harugasumi'],     shape: 'landscape' },
   { num: '016', src: 'images/photography/dscf5975_1.jpg',              year: 2025, themes: ['harugasumi'],     shape: 'landscape' },
+  { num: '019', src: 'images/photography/dscf6846_1.jpg',              year: 2025, themes: ['harugasumi'],     shape: 'landscape' },
+  { num: '021', src: 'images/photography/dscf7430_1.jpg',              year: 2025, themes: ['harugasumi'],     shape: 'landscape' },
+  { num: '022', src: 'images/photography/dscf7650_3.jpg',              year: 2025, themes: ['harugasumi'],     shape: 'landscape' },
+  { num: '026', src: 'images/photography/dscf8423_1.jpg',              year: 2026, themes: ['harugasumi'],     shape: 'landscape' },
+  { num: '032', src: 'images/photography/dscf9795_xd3.jpg',            year: 2026, themes: ['harugasumi'],     shape: 'square' },
+  { num: '037', src: 'images/photography/img_5427.jpg',                year: 2023, themes: ['harugasumi'],     shape: 'square' },
+  { num: '042', src: 'images/photography/img_9798.jpg',                            themes: ['harugasumi'],     shape: 'landscape' },
 
   // ── 青嵐 SUMMER ──
   { num: '005', src: 'images/photography/dscf8410_xd3.jpg',            year: 2025, themes: ['aoarashi'],       shape: 'landscape', title_jp: '緑陰 ・ Ryokuin',   title_en: 'Verdant Canopy',     title_zh: '綠蔭' },
@@ -33,9 +40,6 @@ const photoData = [
 
   // ── 紅葉 AUTUMN ──
   { num: '002', src: 'images/photography/1575909151701_original.jpg',  year: 2017, themes: ['kouyou'],         shape: 'landscape', title_jp: '葉影 ・ Hakage',    title_en: 'Maple Shadows',      title_zh: '葉影' },
-  { num: '021', src: 'images/photography/dscf7430_1.jpg',              year: 2025, themes: ['kouyou'],         shape: 'landscape' },
-  { num: '022', src: 'images/photography/dscf7650_3.jpg',              year: 2025, themes: ['kouyou'],         shape: 'landscape' },
-  { num: '037', src: 'images/photography/img_5427.jpg',                year: 2023, themes: ['kouyou'],         shape: 'square' },
 
   // ── 雪明 WINTER ──
   { num: '020', src: 'images/photography/dscf7306_xd2s.jpg',           year: 2025, themes: ['yukiakari'],      shape: 'landscape' },
@@ -47,8 +51,6 @@ const photoData = [
   // ── 海洋 OCEAN ──
   { num: '023', src: 'images/photography/dscf7974.jpg',                year: 2025, themes: ['kaiyou'],         shape: 'portrait' },
   { num: '025', src: 'images/photography/dscf8356_3.jpg',              year: 2025, themes: ['kaiyou'],         shape: 'square' },
-  { num: '026', src: 'images/photography/dscf8423_1.jpg',              year: 2026, themes: ['kaiyou'],         shape: 'landscape' },
-  { num: '032', src: 'images/photography/dscf9795_xd3.jpg',            year: 2026, themes: ['kaiyou'],         shape: 'square' },
   { num: '036', src: 'images/photography/img_3507.jpg',                year: 2024, themes: ['kaiyou'],         shape: 'landscape' },
   { num: '041', src: 'images/photography/img_9609.jpg',                year: 2025, themes: ['kaiyou'],         shape: 'landscape' },
 
@@ -62,8 +64,6 @@ const photoData = [
   { num: '009', src: 'images/photography/dscf2136_2.jpg',              year: 2025, themes: ['misc'],           shape: 'landscape' },
   { num: '010', src: 'images/photography/dscf3424_1.jpg',              year: 2025, themes: ['misc'],           shape: 'landscape' },
   { num: '012', src: 'images/photography/dscf4933_6.jpg',              year: 2025, themes: ['misc'],           shape: 'landscape' },
-  { num: '019', src: 'images/photography/dscf6846_1.jpg',              year: 2025, themes: ['misc'],           shape: 'landscape' },
   { num: '035', src: 'images/photography/img_3506.jpg',                year: 2024, themes: ['misc'],           shape: 'square' },
-  { num: '042', src: 'images/photography/img_9798.jpg',                            themes: ['misc'],           shape: 'landscape' },
   { num: '043', src: 'images/photography/img_9805.jpg',                            themes: ['misc'],           shape: 'landscape' },
 ];
