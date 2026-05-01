@@ -1730,3 +1730,22 @@ footer a { color: rgba(184,147,90,0.7); text-decoration: none; }
   /* Hide left fixed sumi rule on mobile (already in old query but consolidate) */
   .academic-page::before, .academic-page::after { display: none !important; }
 }
+
+
+/* ── academic page: further enlarge hero/top typography ── */
+.academic-page .hero-eyebrow { font-size: 0.95rem !important; letter-spacing: 0.22em; }
+.academic-page .hero-name { font-size: clamp(3.5rem, 6.2vw, 5.6rem) !important; }
+.academic-page .hero-name-cn { font-size: clamp(1.75rem, 3vw, 2.5rem) !important; }
+.academic-page .hero-desc { font-size: 1.22rem !important; line-height: 2 !important; }
+.academic-page .hero-tag { font-size: 0.92rem !important; padding: 0.5rem 1.1rem !important; }
+.academic-page .hero-affil p { font-size: 1rem !important; line-height: 1.7; }
+.academic-page .hero-affil strong { font-size: 1.08rem !important; }
+.academic-page .nav-links a { font-size: 0.92rem !important; letter-spacing: 0.12em; }
+.academic-page .nav-logo { font-size: 1.32rem !important; }
+.academic-page .lang-toggle { font-size: 0.85rem !important; }
+
+/* publication subpage top */
+.pub-page .nav-logo { font-size: 1.32rem !important; }
+.pub-page .nav-links a { font-size: 0.92rem !important; letter-spacing: 0.12em; }
+.pub-page .lang-toggle { font-size: 0.85rem !important; }
+.pub-page .back-home { font-size: 1rem !important; }
