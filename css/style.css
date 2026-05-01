@@ -1750,6 +1750,11 @@ footer a { color: rgba(184,147,90,0.7); text-decoration: none; }
 .academic-page nav { height: 68px; }
 .academic-page { --nav-height: 68px; }
 
+/* Chinese page: bump nav typography up so CJK characters read at parity */
+html[lang^="zh"] .academic-page .nav-logo { font-size: 1.32rem !important; }
+html[lang^="zh"] .academic-page .nav-links a { font-size: 1.1rem !important; }
+html[lang^="zh"] .academic-page .lang-toggle { font-size: 0.95rem !important; }
+
 /* publication subpage top */
 .pub-page .nav-logo { font-size: 1.5rem !important; }
 .pub-page .nav-links { gap: 2.6rem !important; }
