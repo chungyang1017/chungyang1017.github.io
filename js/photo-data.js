@@ -61,9 +61,9 @@ const photoData = [
 
   { num: '040', src: 'images/photography/img_9439.jpg', year: 2025, themes: ['street','xpan'], shape: 'xpan',
     title_jp: '標語の下', title_en: 'Beneath the Slogan', title_zh: '標語之下',
-    haiku_jp: '広告の笑み／その下を行く／影ひとつ',
-    haiku_en: 'the billboard smiles — / and beneath it / one quiet shadow passes',
-    haiku_zh: '廣告的笑容／其下／一個靜默的身影' },
+    haiku_jp: '笑顔の広告の下を、身体に障害を持つ一人が静かに横切っていく。台湾の街は、こうした落差の上に成り立っている。',
+    haiku_en: 'Beneath a smiling advertisement, a person with a disability quietly crosses the street. Taiwan\'s cities rest on gaps like these.',
+    haiku_zh: '笑容滿面的廣告之下，一位身障者靜靜地穿越街道。台灣的城市，正建立在這樣的落差之上。' },
 
   // ── 春霞 SPRING ──
   { num: '003', src: 'images/photography/2019-12-22_09-24-27.jpg', year: 2019, themes: ['harugasumi'], shape: 'landscape',
@@ -300,9 +300,9 @@ const photoData = [
   // street | No.106
   { num: '106', src: 'images/photography/dscf8066.jpg', themes: ['street'], shape: 'landscape',
     title_jp: '空を飛びたい', title_en: 'I Wish to Fly', title_zh: '想要飛翔',
-    haiku_jp: '広告は空／その下に丸い／一つの背中',
-    haiku_en: 'the ad is sky — / and beneath it / one curved back',
-    haiku_zh: '廣告是天空／在其下／一個彎曲的背' },
+    haiku_jp: '「空を飛びたい」と謳う銀行の広告。その真下で、一人がうつむいて荷物を整えている。',
+    haiku_en: 'A bank billboard proclaims "I wish to fly!" Right beneath it, someone bows down to sort their belongings.',
+    haiku_zh: '銀行廣告高呼著「我想要飛翔」。就在它正下方，一個人低頭整理自己的家當。' },
   // street | No.120
   { num: '120', src: 'images/photography/img_0794.jpg', themes: ['street'], shape: 'landscape',
     title_jp: '線香', title_en: 'Incense Stick', title_zh: '線香',
@@ -312,9 +312,9 @@ const photoData = [
   // street | No.121
   { num: '121', src: 'images/photography/img_0843.jpg', themes: ['street'], shape: 'landscape',
     title_jp: '滑り台', title_en: 'Empty Slide', title_zh: '溜滑梯',
-    haiku_jp: '滑り台／誰もいない午後／老いた影',
-    haiku_en: 'an empty slide — / on a vacant afternoon / one old shadow',
-    haiku_zh: '溜滑梯／無人的午後／一個老去的身影' },
+    haiku_jp: '子ども用の遊具に囲まれて、車椅子の老婦人が一人坐っている。台湾の高齢化と少子化が、同じ風景の中で出会う。',
+    haiku_en: 'Surrounded by children\'s playground equipment, an elderly woman sits alone in her wheelchair. Taiwan\'s aging and birth-decline meet in a single landscape.',
+    haiku_zh: '在兒童遊具的環抱中，一位老婦人獨自坐在輪椅上。台灣的高齡化與少子化，在同一個畫面裡相遇。' },
   // street | No.124
   { num: '124', src: 'images/photography/img_2766.jpg', themes: ['street'], shape: 'portrait',
     title_jp: '自転車', title_en: 'Bicycle', title_zh: '自行車',
@@ -324,9 +324,9 @@ const photoData = [
   // street | No.125
   { num: '125', src: 'images/photography/img_3499.jpg', themes: ['street','xpan'], shape: 'xpan',
     title_jp: '世代', title_en: 'Generations', title_zh: '世代',
-    haiku_jp: '老人の／視線の先に／少女ら笑う',
-    haiku_en: 'where the old man / fixes his gaze — / girls laugh together',
-    haiku_zh: '老人的目光／凝視之處／是嬉笑的少女' },
+    haiku_jp: '古い時代の風を纏う老人と、新しい時代を生きる少女たち。台湾の街角は、こうして世代の距離を映し出す。',
+    haiku_en: 'An old man carrying the air of another era, and girls living in a new age. Taiwan\'s street corners hold these generational distances side by side.',
+    haiku_zh: '帶著舊時代氣息的老人，與生活在新時代的少女們。台灣的街角，就這樣映照出世代之間的距離。' },
   // street | No.130
   { num: '130', src: 'images/photography/img_3771.jpg', themes: ['street'], shape: 'portrait',
     title_jp: '神將', title_en: 'Spirit Walker', title_zh: '神將',
@@ -354,9 +354,9 @@ const photoData = [
   // street | No.137
   { num: '137', src: 'images/photography/img_9432.jpg', themes: ['street'], shape: 'portrait',
     title_jp: '広告の下', title_en: 'Beneath the Ad', title_zh: '廣告之下',
-    haiku_jp: '若き顔の／下にうつむく／老いの夏',
-    haiku_en: 'beneath youthful faces / one old man bows his head — / summer',
-    haiku_zh: '青春的臉龐之下／低頭的老者／夏日街頭' },
+    haiku_jp: '若く美しいモデルの広告の真下で、一人の老人が荷物とともに座り込んでいる。広告が約束する未来と、街が抱える現実は、別物のままだ。',
+    haiku_en: 'Right beneath an ad featuring beautiful young models, an old man sits with his belongings. The future an advertisement promises, and the reality a city carries, remain different things.',
+    haiku_zh: '在年輕貌美模特兒的廣告正下方，一位老人帶著家當坐著。廣告所承諾的未來，與城市承載的現實，始終是兩件不同的事。' },
   // street | No.139
   { num: '139', src: 'images/photography/l1000612.jpg', themes: ['street'], shape: 'landscape',
     title_jp: '搬運', title_en: 'Conveyance', title_zh: '搬運',
@@ -390,9 +390,9 @@ const photoData = [
   // street | No.144
   { num: '144', src: 'images/photography/l1001209.jpg', themes: ['street'], shape: 'landscape',
     title_jp: '地下道', title_en: 'Underpass', title_zh: '地下道',
-    haiku_jp: '誰も見ぬ／一つの暮らし／灯の下に',
-    haiku_en: 'unseen by all — / a single life / under the light',
-    haiku_zh: '無人看見／一個人的生活／在燈光之下' },
+    haiku_jp: '駅構内、誰の視線も届かない場所で、一人の暮らしが続いている。',
+    haiku_en: 'Inside the station, in a place no gaze reaches, someone\'s life continues.',
+    haiku_zh: '車站內部，在無人投以目光的角落，有一個人的生活，仍在繼續。' },
   // street | No.147
   { num: '147', src: 'images/photography/l1005020_2.jpg', themes: ['street'], shape: 'landscape',
     title_jp: '町家', title_en: 'Old Town House', title_zh: '町家',
@@ -449,7 +449,7 @@ const photoData = [
     haiku_zh: '櫻花樹下／三代人／春之晨' },
   // harugasumi | No.145
   { num: '145', src: 'images/photography/l1002835_3.jpg', themes: ['harugasumi'], shape: 'landscape',
-    title_jp: '紅梅', title_en: 'Red Plum', title_zh: '紅梅',
+    title_jp: '紅椿落つ', title_en: 'Fallen Camellias', title_zh: '紅椿落',
     haiku_jp: '紅椿／苔に落ちては／春の音',
     haiku_en: 'crimson camellia / falling onto moss — / the sound of spring',
     haiku_zh: '紅椿／落於青苔／春之音' },
@@ -767,7 +767,7 @@ const photoData = [
     haiku_zh: '夕陽染紅／連沙也／一片緋紅' },
   // kaiyou | No.057
   { num: '057', src: 'images/photography/dscf3373_3.jpg', themes: ['kaiyou','xpan'], shape: 'xpan',
-    title_jp: '富士暁', title_en: 'Fuji Dawn', title_zh: '富士曉',
+    title_jp: '富士暮', title_en: 'Fuji Dusk', title_zh: '富士暮',
     haiku_jp: '湖の上／富士の影に／街の灯',
     haiku_en: 'over the lake — / in Fuji\'s shadow / the city\'s lamps',
     haiku_zh: '湖之上／富士影下／城市之燈' },
@@ -810,9 +810,9 @@ const photoData = [
   // kaiyou | No.070
   { num: '070', src: 'images/photography/dscf4204_2.jpg', themes: ['kaiyou'], shape: 'landscape',
     title_jp: '飛沫', title_en: 'Splash', title_zh: '飛濺',
-    haiku_jp: '波の音／霊峰隠す／一瞬の／飛沫',
-    haiku_en: 'sound of waves — / hiding the sacred peak / one instant of spray',
-    haiku_zh: '波之聲／瞬間遮蔽霊峰／一道飛濺' },
+    haiku_jp: '波の音／霊峰を隠す／白き飛沫',
+    haiku_en: 'sound of waves — / hiding the sacred peak / a white spray',
+    haiku_zh: '浪聲／遮蔽霊峰／一道白色飛濺' },
   // kaiyou | No.073
   { num: '073', src: 'images/photography/dscf4364_1.jpg', themes: ['kaiyou'], shape: 'landscape',
     title_jp: '波と山', title_en: 'Wave and Mountain', title_zh: '波與山',
