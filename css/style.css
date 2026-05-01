@@ -1749,3 +1749,12 @@ footer a { color: rgba(184,147,90,0.7); text-decoration: none; }
 .pub-page .nav-links a { font-size: 0.92rem !important; letter-spacing: 0.12em; }
 .pub-page .lang-toggle { font-size: 0.85rem !important; }
 .pub-page .back-home { font-size: 1rem !important; }
+
+
+/* hard-hide academic decorative left rule on any narrow viewport */
+@media (max-width: 900px) {
+  body.academic-page::before,
+  body.academic-page::after,
+  .academic-page::before,
+  .academic-page::after { display: none !important; content: none !important; }
+}
