@@ -37,9 +37,15 @@ const photoData = [
   { num: '013', src: 'images/photography/dscf4989_xd3_1.jpg',          year: 2025, themes: ['aoarashi'],       shape: 'landscape' },
   { num: '017', src: 'images/photography/dscf6254_10.jpg',             year: 2025, themes: ['aoarashi'],       shape: 'landscape' },
   { num: '018', src: 'images/photography/dscf6254_15.jpg',             year: 2025, themes: ['aoarashi'],       shape: 'landscape' },
+  { num: '035', src: 'images/photography/img_3506.jpg',                year: 2024, themes: ['aoarashi'],       shape: 'square' },
+  { num: '036', src: 'images/photography/img_3507.jpg',                year: 2024, themes: ['aoarashi'],       shape: 'landscape' },
 
   // ── 紅葉 AUTUMN ──
   { num: '002', src: 'images/photography/1575909151701_original.jpg',  year: 2017, themes: ['kouyou'],         shape: 'landscape', title_jp: '葉影 ・ Hakage',    title_en: 'Maple Shadows',      title_zh: '葉影' },
+  { num: '008', src: 'images/photography/dscf1466_3.jpg',              year: 2025, themes: ['kouyou'],         shape: 'square' },
+  { num: '009', src: 'images/photography/dscf2136_2.jpg',              year: 2025, themes: ['kouyou'],         shape: 'landscape' },
+  { num: '010', src: 'images/photography/dscf3424_1.jpg',              year: 2025, themes: ['kouyou'],         shape: 'landscape' },
+  { num: '043', src: 'images/photography/img_9805.jpg',                            themes: ['kouyou'],         shape: 'landscape' },
 
   // ── 雪明 WINTER ──
   { num: '020', src: 'images/photography/dscf7306_xd2s.jpg',           year: 2025, themes: ['yukiakari'],      shape: 'landscape' },
@@ -51,7 +57,6 @@ const photoData = [
   // ── 海洋 OCEAN ──
   { num: '023', src: 'images/photography/dscf7974.jpg',                year: 2025, themes: ['kaiyou'],         shape: 'portrait' },
   { num: '025', src: 'images/photography/dscf8356_3.jpg',              year: 2025, themes: ['kaiyou'],         shape: 'square' },
-  { num: '036', src: 'images/photography/img_3507.jpg',                year: 2024, themes: ['kaiyou'],         shape: 'landscape' },
   { num: '041', src: 'images/photography/img_9609.jpg',                year: 2025, themes: ['kaiyou'],         shape: 'landscape' },
 
   // ── Xpan 65×24 ──
@@ -60,10 +65,5 @@ const photoData = [
 
   // ── 未分類 MISC（待用戶確認分類）──
   { num: '007', src: 'images/photography/dscf1023_11.jpg',             year: 2025, themes: ['misc'],           shape: 'landscape' },
-  { num: '008', src: 'images/photography/dscf1466_3.jpg',              year: 2025, themes: ['misc'],           shape: 'square' },
-  { num: '009', src: 'images/photography/dscf2136_2.jpg',              year: 2025, themes: ['misc'],           shape: 'landscape' },
-  { num: '010', src: 'images/photography/dscf3424_1.jpg',              year: 2025, themes: ['misc'],           shape: 'landscape' },
   { num: '012', src: 'images/photography/dscf4933_6.jpg',              year: 2025, themes: ['misc'],           shape: 'landscape' },
-  { num: '035', src: 'images/photography/img_3506.jpg',                year: 2024, themes: ['misc'],           shape: 'square' },
-  { num: '043', src: 'images/photography/img_9805.jpg',                            themes: ['misc'],           shape: 'landscape' },
 ];
