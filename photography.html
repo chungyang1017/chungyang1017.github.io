@@ -308,74 +308,6 @@
     }
     .ph-card:hover .ph-card-title { opacity: 1; transform: translateY(0); }
 
-    /* ── 銀塩 Ginen: Fuji RVP50 contact-print film strip ── */
-    .ph-card.is-ginen {
-      background: #0a0807;
-      padding: 11% 0;
-      box-shadow:
-        0 4px 14px rgba(21,17,13,0.30),
-        inset 0 0 0 1px rgba(255,255,255,0.04);
-      cursor: zoom-in;
-    }
-    .ph-card.is-ginen img { outline: none; }
-
-    /* film strip = solid black w/ a sprocket-hole band on the OUTER edge */
-    .ph-card.is-ginen .film-strip {
-      position: absolute;
-      left: 0; right: 0;
-      height: 11%;
-      background-color: #0a0807;
-      pointer-events: none;
-      z-index: 2;
-      overflow: hidden;
-    }
-    .ph-card.is-ginen .film-top    { top: 0; }
-    .ph-card.is-ginen .film-bottom { bottom: 0; }
-
-    /* sprocket-hole row: cream rectangles, only on the outer 38% of strip */
-    .ph-card.is-ginen .film-strip::before {
-      content: '';
-      position: absolute;
-      left: 0; right: 0;
-      height: 38%;
-      background:
-        repeating-linear-gradient(to right,
-          transparent 0, transparent 0.5em,
-          #ece4d2 0.5em, #ece4d2 1em);
-    }
-    .ph-card.is-ginen .film-top::before    { top: 12%; }
-    .ph-card.is-ginen .film-bottom::before { bottom: 12%; }
-
-    /* orange text band — sits in the INNER 50% of strip, no overlap */
-    .ph-card.is-ginen .film-num,
-    .ph-card.is-ginen .film-brand {
-      position: absolute;
-      font: 700 0.6rem/1 'Helvetica Neue', 'Inter', sans-serif;
-      color: #ff8a2b;
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-    }
-    .ph-card.is-ginen .film-brand { letter-spacing: 0.2em; }
-
-    .ph-card.is-ginen .film-top .film-num,
-    .ph-card.is-ginen .film-top .film-brand    { bottom: 8%; }
-    .ph-card.is-ginen .film-bottom .film-num,
-    .ph-card.is-ginen .film-bottom .film-brand { top: 8%; }
-
-    .ph-card.is-ginen .film-num-l { left: 5%; }
-    .ph-card.is-ginen .film-num-r { right: 5%; }
-    .ph-card.is-ginen .film-brand { left: 50%; transform: translateX(-50%); }
-
-    .ph-card.is-ginen .ph-card-num {
-      top: calc(11% + 0.5rem);
-      left: 0.5rem;
-    }
-    .ph-card.is-ginen .ph-card-title {
-      bottom: calc(11% + 0.5rem);
-      left: 0.5rem;
-      right: 0.5rem;
-    }
-
     /* LIGHTBOX */
     .lightbox {
       position: fixed; inset: 0;
@@ -648,17 +580,11 @@ themes.forEach(t => {
     <div class="ph-grid ${t.id === 'xpan' ? 'is-xpan' : ''}">
       ${photos.map(p => {
         const title = p['title_' + LANG] || p.title_en || p.title || '';
-        const isGinen = (p.themes||[]).includes('ginen');
-        const filmStrip = isGinen ? `<span class="film-num film-num-l">→ ${p.num}A</span><span class="film-brand">FUJICHROME ・ VELVIA 50 ・ RVP-50</span><span class="film-num film-num-r">${p.num} →</span>` : '';
         return `
-        <figure class="ph-card is-${p.shape || 'landscape'}${isGinen ? ' is-ginen' : ''}" data-src="${p.src}" data-title="${title}" data-num="${p.num}">
+        <figure class="ph-card is-${p.shape || 'landscape'}" data-src="${p.src}" data-title="${title}" data-num="${p.num}">
           <img src="${p.src}" alt="${title || ('No. ' + p.num)}" loading="lazy" />
           <span class="ph-card-num">No. ${p.num}</span>
           ${title ? `<span class="ph-card-title">${title}</span>` : ''}
-          ${isGinen ? `
-            <div class="film-strip film-top">${filmStrip}</div>
-            <div class="film-strip film-bottom">${filmStrip}</div>
-          ` : ''}
         </figure>
       `;}).join('')}
     </div>
