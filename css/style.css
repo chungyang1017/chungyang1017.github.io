@@ -1740,15 +1740,21 @@ footer a { color: rgba(184,147,90,0.7); text-decoration: none; }
 .academic-page .hero-tag { font-size: 0.92rem !important; padding: 0.5rem 1.1rem !important; }
 .academic-page .hero-affil p { font-size: 1rem !important; line-height: 1.7; }
 .academic-page .hero-affil strong { font-size: 1.08rem !important; }
-.academic-page .nav-links a { font-size: 0.92rem !important; letter-spacing: 0.12em; }
-.academic-page .nav-logo { font-size: 1.32rem !important; }
-.academic-page .lang-toggle { font-size: 0.85rem !important; }
+.academic-page .nav-links { gap: 2.6rem !important; }
+.academic-page .nav-links a { font-size: 1.08rem !important; letter-spacing: 0.14em; }
+.academic-page .nav-logo { font-size: 1.5rem !important; }
+.academic-page .lang-toggle { font-size: 0.95rem !important; }
+.academic-page nav { height: 76px; }
+.academic-page { --nav-height: 76px; }
 
 /* publication subpage top */
-.pub-page .nav-logo { font-size: 1.32rem !important; }
-.pub-page .nav-links a { font-size: 0.92rem !important; letter-spacing: 0.12em; }
-.pub-page .lang-toggle { font-size: 0.85rem !important; }
-.pub-page .back-home { font-size: 1rem !important; }
+.pub-page .nav-logo { font-size: 1.5rem !important; }
+.pub-page .nav-links { gap: 2.6rem !important; }
+.pub-page .nav-links a { font-size: 1.08rem !important; letter-spacing: 0.14em; }
+.pub-page .lang-toggle { font-size: 0.95rem !important; }
+.pub-page .back-home { font-size: 1.05rem !important; }
+.pub-page nav { height: 76px; }
+.pub-page { --nav-height: 76px; }
 
 
 /* hard-hide academic decorative left rule on any narrow viewport */
