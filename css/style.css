@@ -1743,12 +1743,12 @@ footer a { color: rgba(184,147,90,0.7); text-decoration: none; }
 .academic-page .hero-tag { font-size: 0.92rem !important; padding: 0.5rem 1.1rem !important; }
 .academic-page .hero-affil p { font-size: 1rem !important; line-height: 1.7; }
 .academic-page .hero-affil strong { font-size: 1.08rem !important; }
-.academic-page .nav-links { gap: 2.6rem !important; }
-.academic-page .nav-links a { font-size: 1.08rem !important; letter-spacing: 0.14em; }
-.academic-page .nav-logo { font-size: 1.2rem !important; }
-.academic-page .lang-toggle { font-size: 0.95rem !important; }
-.academic-page nav { height: 76px; }
-.academic-page { --nav-height: 76px; }
+.academic-page .nav-links { gap: 2.2rem !important; }
+.academic-page .nav-links a { font-size: 0.9rem !important; letter-spacing: 0.13em; }
+.academic-page .nav-logo { font-size: 1.05rem !important; }
+.academic-page .lang-toggle { font-size: 0.82rem !important; }
+.academic-page nav { height: 68px; }
+.academic-page { --nav-height: 68px; }
 
 /* publication subpage top */
 .pub-page .nav-logo { font-size: 1.5rem !important; }
