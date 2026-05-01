@@ -300,9 +300,9 @@ const photoData = [
   // street | No.106
   { num: '106', src: 'images/photography/dscf8066.jpg', themes: ['street'], shape: 'landscape',
     title_jp: '空を飛びたい', title_en: 'I Wish to Fly', title_zh: '想要飛翔',
-    haiku_jp: '「空を飛びたい」と謳う銀行の広告。その真下で、一人がうつむいて荷物を整えている。',
-    haiku_en: 'A bank billboard proclaims "I wish to fly!" Right beneath it, someone bows down to sort their belongings.',
-    haiku_zh: '銀行廣告高呼著「我想要飛翔」。就在它正下方，一個人低頭整理自己的家當。' },
+    haiku_jp: '未明の街角、銀行の「空を飛びたい」と謳う広告の下で、廃品を拾う一人の老人が腰を下ろしている。広告の約束する自由と、深夜の街を歩く現実は、こんなにも遠い。',
+    haiku_en: 'At pre-dawn on a street corner, beneath a bank ad proclaiming \'I wish to fly!\', an elderly scavenger sits down to rest. The freedom an advertisement promises, and the reality of walking pre-dawn streets, are this far apart.',
+    haiku_zh: '凌晨的街角，在銀行「想要飛翔」的廣告下方，一位拾荒老人坐下歇息。廣告所許諾的自由，與深夜行走街頭的現實，竟是這般遙遠。' },
   // street | No.120
   { num: '120', src: 'images/photography/img_0794.jpg', themes: ['street'], shape: 'landscape',
     title_jp: '線香', title_en: 'Incense Stick', title_zh: '線香',
