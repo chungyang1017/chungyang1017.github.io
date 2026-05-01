@@ -1549,3 +1549,184 @@ footer a { color: rgba(184,147,90,0.7); text-decoration: none; }
 .pub-page .book-desc { font-size: 1.05rem; line-height: 1.95; }
 .pub-page .back-home { font-size: 0.92rem; }
 .pub-page .pub-badge { font-size: 0.74rem; }
+
+
+/* ── COMMENTARY (column) section on academic page ── */
+#commentary { background: var(--paper); }
+
+.commentary-intro {
+  font-size: 1.08rem;
+  line-height: 1.95;
+  color: var(--ink-light);
+  max-width: 720px;
+  margin-bottom: 2.5rem;
+}
+.commentary-intro strong { color: var(--accent); font-weight: 500; letter-spacing: 0.04em; }
+
+.commentary-card {
+  display: block;
+  position: relative;
+  padding: 2rem 2.5rem 2.2rem 5.5rem;
+  background: rgba(255,255,255,0.65);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.3s, transform 0.3s, background 0.3s, box-shadow 0.3s;
+  margin-bottom: 1.5rem;
+}
+.commentary-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  background: #fff;
+  box-shadow: 0 16px 36px -20px rgba(26,23,20,0.28);
+}
+
+.commentary-card::before {
+  content: '〇〇一';
+  position: absolute;
+  top: 1.85rem; left: 1.5rem;
+  font-family: 'Long Cang', 'Noto Serif TC', serif;
+  font-size: 2.2rem;
+  color: var(--accent);
+  letter-spacing: 0;
+  line-height: 0.95;
+  transform: rotate(-3deg);
+}
+
+.commentary-card-meta {
+  display: flex; align-items: baseline;
+  gap: 1.25rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.85rem;
+  flex-wrap: wrap;
+}
+.commentary-card-meta .card-num { color: var(--accent); letter-spacing: 0.16em; }
+.commentary-card-meta .card-date {}
+.commentary-card-meta .card-tag {
+  margin-left: auto;
+  font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+  font-style: normal; font-family: var(--font-body);
+  color: var(--accent);
+  border: 1px solid rgba(139,58,42,0.35);
+  padding: 0.22rem 0.6rem;
+}
+
+.commentary-card-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.32rem;
+  line-height: 1.5;
+  color: var(--ink);
+  margin-bottom: 0.85rem;
+  transition: color 0.3s;
+}
+.commentary-card:hover .commentary-card-title { color: var(--accent); }
+
+.commentary-card-excerpt {
+  font-size: 1rem;
+  line-height: 1.95;
+  color: var(--ink-light);
+  margin-bottom: 1rem;
+}
+
+.commentary-card-arrow {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  transition: transform 0.3s;
+}
+.commentary-card:hover .commentary-card-arrow { transform: translateX(4px); }
+
+.commentary-more {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--ink-muted);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.2rem;
+  transition: color 0.2s, border-color 0.2s, gap 0.3s;
+}
+.commentary-more:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ── MOBILE FIXES ── */
+@media (max-width: 720px) {
+  /* Landing pages: door brush size correction (was wrong override) */
+  body main .doors .door .door-brush {
+    font-size: clamp(1.6rem, 5vw, 2rem) !important;
+    writing-mode: horizontal-tb;
+    letter-spacing: 0.18em;
+  }
+  body main .doors .door { aspect-ratio: 5/3; min-height: 200px; }
+  body main .doors .door-content { padding: 3.5rem 1rem 4rem !important; }
+
+  /* Academic: tighten layout */
+  .academic-page section { padding: 3.5rem 1rem; }
+  .academic-page .hero { padding: calc(var(--nav-height) + 2rem) 1rem 2.5rem; min-height: auto; }
+  .academic-page .hero-inner { gap: 1.5rem; }
+  .academic-page .hero-name { font-size: clamp(2.2rem, 8vw, 3rem); }
+  .academic-page .hero-name-cn { font-size: clamp(1.1rem, 4vw, 1.5rem); margin-bottom: 1rem; }
+  .academic-page .hero-desc { font-size: 0.96rem; }
+  .academic-page .section-num { font-size: 2rem !important; }
+  .academic-page .section-num::before { font-size: 2rem; }
+  .academic-page .section-num::after { font-size: 0.66rem; }
+  .academic-page .section-title { font-size: clamp(1.5rem, 6vw, 1.95rem) !important; }
+  .academic-page .pub-overview-grid { grid-template-columns: 1fr; }
+  .academic-page .pub-overview-card { padding: 1.1rem 1.2rem; gap: 0.9rem; }
+  .academic-page .pub-overview-card .card-num { font-size: 2.2rem; min-width: 36px; }
+  .academic-page .pub-overview-card h3 { font-size: 1.1rem; }
+  .academic-page .research-item { padding: 1.5rem 0; }
+  .academic-page .research-period { font-size: 0.84rem; margin-bottom: 0.4rem; color: var(--accent); }
+  .academic-page .research-title { font-size: 1.02rem; }
+  .academic-page .research-grant { font-size: 0.82rem; }
+  .academic-page .about-text p:first-child { font-size: 1.18rem !important; }
+  .academic-page .about-text p { font-size: 1rem !important; line-height: 1.85 !important; }
+  .academic-page .interest-list li { font-size: 0.96rem !important; padding: 0.6rem 0 !important; }
+  .academic-page .edu-degree { font-size: 1.05rem !important; }
+  .academic-page .edu-inst { font-size: 0.94rem !important; }
+  .academic-page .sidebar-label { font-size: 0.88rem !important; }
+  .academic-page .commentary-card { padding: 1.5rem 1.2rem 1.6rem 1.2rem; }
+  .academic-page .commentary-card::before { display: none; }
+  .academic-page .commentary-card-title { font-size: 1.12rem; }
+  .academic-page .commentary-card-excerpt { font-size: 0.94rem; }
+  .academic-page .commentary-card-meta { gap: 0.85rem; font-size: 0.78rem; }
+  .academic-page .commentary-card-meta .card-tag { margin-left: 0; }
+  .academic-page .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .academic-page .social-link { padding: 0.7rem 0.85rem; gap: 0.85rem; }
+  .academic-page .social-icon { width: 32px; height: 32px; }
+  .academic-page .contact-info p { font-size: 0.96rem !important; }
+  .academic-page .contact-quote { font-size: 1.25rem; padding-left: 1.25rem; }
+  .academic-page .hero-tag { font-size: 0.74rem !important; padding: 0.3rem 0.75rem !important; }
+
+  /* Publications subpage on mobile */
+  .pub-page-header { padding: calc(var(--nav-height) + 2rem) 1.25rem 1.75rem; }
+  .pub-page-title { font-size: clamp(2rem, 8vw, 2.6rem) !important; }
+  .pub-jump-nav { padding: 1rem 1.1rem; margin: 1.5rem 0 0.5rem; }
+  .pub-jump-nav ul { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .pub-jump-nav a { padding: 0.4rem 0; }
+  .pub-section { padding: 2.5rem 1rem; }
+  .pub-page .pub-item { grid-template-columns: 44px 1fr !important; padding: 1.25rem 0 !important; gap: 0 0.75rem !important; }
+  .pub-page .pub-title { font-size: 0.98rem !important; }
+  .pub-page .pub-authors { font-size: 0.86rem !important; }
+  .pub-page .pub-journal { font-size: 0.86rem !important; }
+  .pub-page .pub-year { font-size: 0.85rem !important; }
+  .pub-page .section-title { font-size: clamp(1.6rem, 6vw, 2rem) !important; }
+  .pub-page .pub-section-subtitle { font-size: 1rem; margin-top: -1rem; margin-bottom: 1.5rem; }
+  .book-item { grid-template-columns: 1fr !important; gap: 1.25rem !important; }
+  .book-cover { max-width: 180px; }
+  .pub-page .book-title { font-size: 1.2rem !important; }
+  .pub-page .book-desc { font-size: 0.96rem !important; }
+
+  /* Hide left fixed sumi rule on mobile (already in old query but consolidate) */
+  .academic-page::before, .academic-page::after { display: none !important; }
+}
