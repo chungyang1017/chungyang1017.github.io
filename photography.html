@@ -257,10 +257,13 @@
       transition: transform 0.5s ease;
       background: var(--washi-deep);
     }
-    .ph-card.is-portrait { aspect-ratio: 4/5; }
-    .ph-card.is-landscape { aspect-ratio: 3/2; }
-    .ph-card.is-square { aspect-ratio: 1/1; }
-    .ph-card.is-xpan { aspect-ratio: 65/24; }
+    /* unified 3:2 landscape thumbnails for all categories */
+    .ph-card.is-portrait,
+    .ph-card.is-landscape,
+    .ph-card.is-square,
+    .ph-card.is-xpan { aspect-ratio: 3/2; }
+    /* Xpan section keeps native panorama */
+    .ph-grid.is-xpan .ph-card { aspect-ratio: 65/24; }
 
     .ph-card img {
       width: 100%; height: 100%;
@@ -324,9 +327,36 @@
     .lightbox-caption {
       margin-top: 1.25rem;
       color: rgba(251,248,242,0.78);
+      text-align: center;
+      max-width: 92vw;
+    }
+    .lightbox-caption .lb-title {
       font-family: var(--display);
-      font-size: 0.85rem; font-style: italic;
+      font-style: italic;
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+      color: rgba(251,248,242,0.65);
+      margin-bottom: 0.7rem;
+    }
+    .lightbox-caption .lb-haiku,
+    .lightbox-caption .lb-haiku-jp,
+    .lightbox-caption .lb-haiku-zh {
+      font-family: var(--jp);
+      font-size: 1.15rem;
+      line-height: 1.95;
+      color: rgba(251,248,242,0.92);
       letter-spacing: 0.1em;
+      margin-top: 0.4rem;
+    }
+    .lightbox-caption .lb-haiku {
+      font-family: var(--display);
+      font-style: italic;
+      letter-spacing: 0.04em;
+      font-size: 1.05rem;
+    }
+    .lightbox-caption .lb-haiku-zh {
+      color: rgba(251,248,242,0.7);
+      font-size: 1rem;
     }
     .lightbox-close, .lightbox-prev, .lightbox-next {
       position: absolute;
@@ -569,10 +599,17 @@ function openLb(idx) {
   cur = idx;
   const card = allCards[idx];
   if (!card) return;
-  lbImg.src = card.dataset.src;
   const num = card.dataset.num;
-  const title = card.dataset.title;
-  lbCap.textContent = `No. ${num}${title ? ' ・ ' + title : ''}`;
+  const photo = photoData.find(p => p.num === num) || {};
+  lbImg.src = card.dataset.src;
+
+  const title = photo.title_en || photo['title_' + LANG] || '';
+  const haiku = (photo.haiku_en || '').replace(/[／\/]\s*/g, '<br>');
+  let html = '';
+  if (title) html += `<div class="lb-title">No. ${num} ・ ${title}</div>`;
+  if (haiku) html += `<div class="lb-haiku">${haiku}</div>`;
+  lbCap.innerHTML = html;
+
   lbCount.textContent = `${idx + 1} / ${allCards.length}`;
   lb.classList.add('is-open');
   lb.setAttribute('aria-hidden', 'false');
