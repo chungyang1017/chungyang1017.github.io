@@ -54,10 +54,10 @@ const photoData = [
     haiku_zh: '一線／斑馬線上／風穿過' },
 
   { num: '040', src: 'images/photography/img_9439.jpg', year: 2025, themes: ['street','xpan'], shape: 'xpan',
-    title_jp: '並木道', title_en: 'Tree-lined Avenue', title_zh: '並木道',
-    haiku_jp: '並木の／影に浮かぶ／古都の朝',
-    haiku_en: 'tree-lined avenue / the morning of an old capital / floats in shadow',
-    haiku_zh: '並木的影／浮著／古都的晨' },
+    title_jp: '標語の下', title_en: 'Beneath the Slogan', title_zh: '標語之下',
+    haiku_jp: '広告の笑み／その下を行く／影ひとつ',
+    haiku_en: 'the billboard smiles — / and beneath it / one quiet shadow passes',
+    haiku_zh: '廣告的笑容／其下／一個靜默的身影' },
 
   // ── 春霞 SPRING ──
   { num: '003', src: 'images/photography/2019-12-22_09-24-27.jpg', year: 2019, themes: ['harugasumi'], shape: 'landscape',
