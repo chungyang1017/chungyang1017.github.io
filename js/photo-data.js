@@ -322,6 +322,16 @@ const photoData = [
     haiku_zh: '紅葉／一葉一葉／飄然而落' },
 
   // ── 雪明 WINTER ──
+  { num: '165', src: 'images/photography/dscf4884_22.jpg', themes: ['yukiakari'], shape: 'landscape',
+    title_jp: '雪夜', title_en: 'Snow Night', title_zh: '雪夜',
+    haiku_jp: '雪降りて／枯れ枝の中に／青き光',
+    haiku_en: 'snow falling — / inside the bare branches / a blue light',
+    haiku_zh: '雪降／枯枝之中／有青色之光' },
+  { num: '166', src: 'images/photography/dscf4890_1.jpg', themes: ['yukiakari'], shape: 'landscape',
+    title_jp: '光の柱', title_en: 'Pillars of Light', title_zh: '光柱',
+    haiku_jp: '雪の中／光の柱が／樹を照らす',
+    haiku_en: 'within the snow / pillars of light / illumine the tree',
+    haiku_zh: '雪中／光的柱／照亮樹梢' },
   { num: '012', src: 'images/photography/dscf4933_6.jpg', year: 2025, themes: ['yukiakari'], shape: 'landscape',
     title_jp: '静寂', title_en: 'Stillness', title_zh: '寂靜',
     haiku_jp: '静寂や／冬の窓辺に／光積む',
@@ -573,6 +583,11 @@ const photoData = [
     haiku_zh: '樹木之間／光斑灑落／午後群山' },
 
   // ── 街 STREET ──
+  { num: '167', src: 'images/photography/r0008428.jpg', themes: ['street'], shape: 'portrait',
+    title_jp: '光の交差', title_en: 'Crossings of Light', title_zh: '光的交叉',
+    haiku_jp: '光の中／二人の女の／別の道',
+    haiku_en: 'in the light — / two women / on diverging paths',
+    haiku_zh: '光中之間／兩位女子／各自的方向' },
   { num: '038', src: 'images/photography/img_8239.jpg', themes: ['street','xpan'], shape: 'xpan',
     title_jp: '横断', title_en: 'Crossing', title_zh: '橫渡',
     haiku_jp: '一線の／横断歩道を／風が抜く',
