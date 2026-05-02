@@ -45,7 +45,7 @@
       display: flex; justify-content: space-between; align-items: center;
       border-bottom: 1px solid rgba(232,226,212,0.08);
     }
-    .brand { display: inline-flex; align-items: center; gap: 14px; }
+    .brand { display: inline-flex; align-items: baseline; gap: 10px; }
     .seal {
       width: 36px; height: 36px;
       background: var(--accent); color: #f8f5ec;
@@ -55,11 +55,8 @@
       box-shadow: 2px 2px 0 rgba(196,56,56,0.25);
       flex-shrink: 0;
     }
-    .brand-name {
-      display: flex; flex-direction: column; line-height: 1.15;
-    }
-    .brand-name .jp { font-family: var(--brush); font-size: 18px; letter-spacing: 0.1em; }
-    .brand-name .en { font-family: var(--display); font-style: italic; font-size: 11px; letter-spacing: 0.18em; opacity: 0.7; }
+    .brand-name { font-family: var(--brush); font-size: 28px; letter-spacing: 0.1em; }
+    .brand-romaji { font-family: var(--display); font-style: italic; font-size: 17px; letter-spacing: 0.06em; opacity: 0.82; }
     .nav {
       display: flex; gap: 24px;
       font-size: 12px; letter-spacing: 0.25em;
@@ -106,25 +103,6 @@
       text-transform: uppercase;
     }
     .hero-eyebrow .jp { font-family: var(--jp); margin-right: 0.5em; letter-spacing: 0.4em; text-transform: none; }
-    .hero-name {
-      font-family: var(--brush);
-      font-size: 32px;
-      line-height: 1;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      margin-bottom: 28px;
-      display: inline-flex;
-      align-items: baseline;
-      gap: 14px;
-    }
-    .hero-name .romaji {
-      font-family: var(--display);
-      font-style: italic;
-      font-size: 18px;
-      letter-spacing: 0.06em;
-      color: var(--sand);
-      opacity: 0.88;
-    }
     .hero-title {
       margin: 0;
       font-family: var(--brush);
@@ -296,16 +274,14 @@
     @media (max-width: 760px) {
       .top { padding: 14px 20px; }
       .seal { width: 32px; height: 32px; font-size: 15px; }
-      .brand-name .jp { font-size: 16px; }
-      .brand-name .en { font-size: 10px; }
+      .brand-name { font-size: 22px; letter-spacing: 0.08em; }
+      .brand-romaji { font-size: 13px; }
       .nav { gap: 14px; font-size: 10px; letter-spacing: 0.2em; }
       .nav .lang { padding-left: 14px; }
       .nav a.nav-sub { display: none; }
 
       .hero-inner { padding: 70px 24px 56px; }
-      .hero-eyebrow { font-size: 10px; letter-spacing: 0.4em; margin-bottom: 16px; }
-      .hero-name { font-size: 22px; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
-      .hero-name .romaji { font-size: 13px; }
+      .hero-eyebrow { font-size: 10px; letter-spacing: 0.4em; margin-bottom: 20px; }
       .hero-title { font-size: 52px; letter-spacing: 0.04em; }
       .hero-title-en { font-size: 18px; margin-top: 12px; }
       .hero-sub { font-size: 12px; letter-spacing: 0.16em; margin-top: 16px; }
@@ -338,10 +314,7 @@
 
 <header class="top">
   <span class="brand">
-    <span class="brand-name">
-      <span class="jp">葉崇揚</span>
-      <span class="en">Chung-Yang Yeh</span>
-    </span>
+    <span class="brand-name">葉崇揚</span><span class="brand-romaji">（Chung-Yang Yeh）</span>
   </span>
   <nav class="nav" aria-label="Sections">
     <a href="index-en.html" class="is-current">Home <span class="nav-jp">(玄關)</span></a>
@@ -357,7 +330,6 @@
   <div class="hero-veil"></div>
   <div class="hero-inner">
     <p class="hero-eyebrow"><span class="jp">玄關</span>· GENKAN</p>
-    <p class="hero-name">葉崇揚（<span class="romaji">Chung-Yang Yeh</span>）</p>
     <h1 class="hero-title">お入りください</h1>
     <p class="hero-title-en">Please, come in.</p>
     <p class="hero-sub">Three rooms. Choose any door.</p>
