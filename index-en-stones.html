@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chung-Yang Yeh ・ 葉崇揚 ・ Karesansui</title>
+  <meta name="description" content="Chung-Yang Yeh ・ Academic, Photography, Teaching." />
+  <link rel="alternate" hreflang="zh-Hant" href="index.html" />
+  <link rel="alternate" hreflang="en" href="index-en.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Old+Mincho:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sand: #e8e2d4;
+      --sand-deep: #ddd5c2;
+      --sand-light: #efeadc;
+      --card: #f0ead7;
+      --card-warm: #ede5cc;
+      --card-cool: #e9e3d0;
+      --sumi: #2a2620;
+      --sumi-soft: #3a342c;
+      --ink-mid: #6b6256;
+      --ink-mute: #9c9385;
+      --moss: #2c4a36;
+      --moss-deep: #1f3d2e;
+      --line: rgba(42,38,32,0.20);
+      --line-soft: rgba(42,38,32,0.10);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', 'Hiragino Mincho ProN', serif;
+      --brush: 'Zen Old Mincho', 'Shippori Mincho', 'Noto Serif TC', serif;
+      --display: 'Cormorant Garamond', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: var(--sans);
+      background: var(--sand);
+      color: var(--sumi);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Top bar ── */
+    .top {
+      flex-shrink: 0;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 2.4rem 3rem 0;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 1.4rem;
+      font-family: var(--sans); font-size: 0.78rem;
+      color: var(--sumi); letter-spacing: 0.32em;
+    }
+    .brand-jp { font-family: var(--jp); letter-spacing: 0.45em; font-weight: 500; font-size: 0.92rem; }
+    .brand .dot { color: var(--ink-mute); letter-spacing: 0; }
+    .lang {
+      display: inline-flex; align-items: center; gap: 1rem;
+      font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.3em;
+    }
+    .lang .current { color: var(--sumi); font-weight: 600; }
+    .lang .sep { color: var(--ink-mute); font-weight: 300; }
+    .lang a { color: var(--ink-mute); text-decoration: none; transition: color 0.2s; }
+    .lang a:hover { color: var(--sumi); }
+
+    /* ── Main hero ── */
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 3rem;
+      padding: 3.2rem 3rem 1rem;
+      max-width: 1280px; margin: 0 auto; width: 100%;
+      align-items: center;
+    }
+
+    /* ── Vertical name ── */
+    .name-vertical {
+      font-family: var(--brush);
+      writing-mode: vertical-rl;
+      font-weight: 900;
+      font-size: clamp(4.2rem, 7.8vw, 6.8rem);
+      line-height: 1.0;
+      letter-spacing: 0.1em;
+      color: var(--sumi);
+      padding: 0 1rem;
+      user-select: none;
+    }
+
+    /* ── Identity block ── */
+    .identity { padding-top: 1rem; }
+    .identity .en {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      color: var(--sumi);
+      margin-bottom: 0.7rem;
+      white-space: nowrap;
+    }
+    .identity .role {
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      color: var(--sumi);
+      margin-bottom: 0.4rem;
+      white-space: nowrap;
+    }
+    .identity .role-cn {
+      font-family: var(--jp);
+      font-size: 0.85rem;
+      letter-spacing: 0.32em;
+      color: var(--ink-mid);
+      white-space: nowrap;
+    }
+
+    /* ── Standing stones (cards) ── */
+    .stones {
+      display: flex; gap: 1.1rem; align-items: flex-end;
+    }
+    .stone {
+      position: relative;
+      width: 158px;
+      background: var(--card);
+      border: 1px solid var(--line-soft);
+      text-decoration: none;
+      color: var(--sumi);
+      display: flex; flex-direction: column;
+      padding: 1rem 1rem 1.3rem;
+      transition: transform 0.5s cubic-bezier(.2,.7,.2,1), box-shadow 0.4s ease, border-color 0.3s ease;
+    }
+    .stone:hover { transform: translateY(-7px); box-shadow: 0 14px 36px rgba(31,61,46,0.13); border-color: var(--line); }
+    .stone.is-disabled { pointer-events: none; }
+    .stone:nth-child(1) { height: 340px; background: var(--card); }
+    .stone:nth-child(2) { height: 300px; background: var(--card-warm); }
+    .stone:nth-child(3) { height: 260px; background: var(--card-cool); }
+
+    .stone::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: var(--moss-deep);
+    }
+    .stone.is-disabled::before { background: var(--ink-mute); opacity: 0.5; }
+
+    .stone-head {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 0.6rem;
+    }
+    .stone-num {
+      font-family: var(--display); font-style: italic;
+      font-size: 1rem; font-weight: 400;
+      color: var(--sumi); letter-spacing: 0.1em;
+    }
+    .stone-status {
+      font-family: var(--sans);
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.2em;
+      padding: 0.22rem 0.55rem;
+      background: var(--moss-deep); color: var(--card);
+    }
+    .stone-status.is-soon {
+      background: transparent; color: var(--ink-mid);
+      border: 1px solid var(--line);
+    }
+
+    .stone-kanji {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--brush);
+      font-weight: 900;
+      font-size: 2.65rem;
+      letter-spacing: 0.04em;
+      color: var(--sumi);
+      padding: 0.5rem 0;
+    }
+
+    .stone-foot {
+      border-top: 1px solid var(--line-soft);
+      padding-top: 0.85rem;
+      display: flex; flex-direction: column; gap: 0.25rem;
+    }
+    .stone-en {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 0.92rem;
+      letter-spacing: 0.06em;
+      color: var(--sumi);
+    }
+    .stone-meta {
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-family: var(--sans); font-size: 0.74rem;
+      color: var(--ink-mid); letter-spacing: 0.08em;
+    }
+    .stone-arrow {
+      font-family: var(--sans); font-size: 1rem; line-height: 1;
+      color: var(--sumi); transition: transform 0.3s ease;
+    }
+    .stone:hover .stone-arrow { transform: translateX(4px); }
+
+    /* ── Karesansui ripples ── */
+    .ripples {
+      position: relative; width: 100%;
+      max-width: 1280px; margin: 0 auto;
+      height: 170px; pointer-events: none;
+    }
+    .ripples svg { width: 100%; height: 100%; display: block; }
+
+    /* ── Footer ── */
+    footer {
+      flex-shrink: 0;
+      padding: 0 3rem 2rem;
+      max-width: 1280px; margin: 0 auto; width: 100%;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 2rem;
+    }
+    .quote {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--sumi);
+      line-height: 1.85;
+      letter-spacing: 0.04em;
+      max-width: 360px;
+    }
+    .colophon {
+      text-align: right;
+      font-family: var(--sans); font-size: 0.78rem;
+      color: var(--ink-mid); letter-spacing: 0.14em;
+      line-height: 2;
+    }
+    .colophon .name {
+      font-family: var(--display); font-style: italic;
+      letter-spacing: 0.1em;
+      color: var(--sumi); font-weight: 400;
+    }
+    .colophon a {
+      color: var(--sumi); text-decoration: none;
+      letter-spacing: 0.24em; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .colophon a:hover { color: var(--moss-deep); }
+    .colophon .sep { color: var(--ink-mute); margin: 0 0.5rem; font-weight: 300; }
+
+    @media (max-width: 1100px) {
+      main { grid-template-columns: auto 1fr; gap: 2rem; padding: 2.5rem 2.5rem 1rem; }
+      .stones { grid-column: 1 / -1; justify-content: center; margin-top: 1.5rem; }
+    }
+    @media (max-width: 720px) {
+      .top { padding: 1.5rem 1.25rem 0; gap: 1rem; flex-wrap: wrap; }
+      .brand { font-size: 0.7rem; gap: 1rem; }
+      .brand-jp { font-size: 0.82rem; letter-spacing: 0.35em; }
+      main { grid-template-columns: 1fr; padding: 2rem 1.5rem 1rem; gap: 1.8rem; }
+      .name-vertical { font-size: 4rem; padding: 0; align-self: flex-start; }
+      .identity { padding-top: 0; }
+      .identity .en { font-size: 1.2rem; }
+      .stones {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.85rem;
+        margin-top: 0.5rem;
+        overflow: visible;
+      }
+      .stone {
+        width: 100%; min-width: 0;
+        height: auto !important; min-height: 168px;
+        padding: 1rem 1.2rem 1.15rem;
+      }
+      .stone:nth-child(1),
+      .stone:nth-child(2),
+      .stone:nth-child(3) { min-height: 168px; }
+      .stone-kanji { font-size: 2.4rem; padding: 0.9rem 0; }
+      .stone-num { font-size: 0.95rem; }
+      .stone-en { font-size: 0.92rem; }
+      .stone-meta { font-size: 0.78rem; }
+      .ripples { height: 110px; }
+      footer {
+        padding: 0 1.5rem 1.5rem;
+        flex-direction: column; align-items: flex-start; gap: 1.2rem;
+      }
+      .colophon { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="top">
+  <span class="brand">
+    <span>KARESANSUI</span>
+    <span class="dot">·</span>
+    <span class="brand-jp">枯 山 水</span>
+  </span>
+  <div class="lang">
+    <span class="current">EN</span>
+    <span class="sep">／</span>
+    <a href="index.html">中</a>
+  </div>
+</header>
+
+<main>
+  <h1 class="name-vertical">葉崇揚</h1>
+
+  <div class="identity">
+    <p class="en">Chung-Yang Yeh</p>
+    <p class="role">Professor of Social Policy</p>
+    <p class="role-cn">Soochow University, Taiwan</p>
+  </div>
+
+  <nav class="stones" aria-label="Sections">
+    <a href="academic.html" class="stone">
+      <div class="stone-head">
+        <span class="stone-num">I</span>
+        <span class="stone-status">LIVE</span>
+      </div>
+      <div class="stone-kanji">學術</div>
+      <div class="stone-foot">
+        <span class="stone-en">Academic</span>
+        <span class="stone-meta"><span>Research · Writings</span><span class="stone-arrow">→</span></span>
+      </div>
+    </a>
+
+    <a href="photography.html" class="stone">
+      <div class="stone-head">
+        <span class="stone-num">II</span>
+        <span class="stone-status">LIVE</span>
+      </div>
+      <div class="stone-kanji">寫真</div>
+      <div class="stone-foot">
+        <span class="stone-en">Photography</span>
+        <span class="stone-meta"><span>162 frames</span><span class="stone-arrow">→</span></span>
+      </div>
+    </a>
+
+    <a href="#" class="stone is-disabled">
+      <div class="stone-head">
+        <span class="stone-num">III</span>
+        <span class="stone-status is-soon">SOON</span>
+      </div>
+      <div class="stone-kanji">教學</div>
+      <div class="stone-foot">
+        <span class="stone-en">Teaching</span>
+        <span class="stone-meta"><span>—</span><span class="stone-arrow">→</span></span>
+      </div>
+    </a>
+  </nav>
+</main>
+
+<div class="ripples">
+  <svg viewBox="0 0 1280 170" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <g id="ring-set">
+        <ellipse cx="0" cy="0" rx="14" ry="6" fill="none" stroke="rgba(42,38,32,0.22)" stroke-width="0.7"/>
+        <ellipse cx="0" cy="0" rx="40" ry="14" fill="none" stroke="rgba(42,38,32,0.20)" stroke-width="0.7"/>
+        <ellipse cx="0" cy="0" rx="72" ry="24" fill="none" stroke="rgba(42,38,32,0.18)" stroke-width="0.7"/>
+        <ellipse cx="0" cy="0" rx="106" ry="34" fill="none" stroke="rgba(42,38,32,0.16)" stroke-width="0.7"/>
+        <ellipse cx="0" cy="0" rx="142" ry="46" fill="none" stroke="rgba(42,38,32,0.13)" stroke-width="0.7"/>
+        <ellipse cx="0" cy="0" rx="180" ry="58" fill="none" stroke="rgba(42,38,32,0.10)" stroke-width="0.7"/>
+        <ellipse cx="0" cy="0" rx="220" ry="70" fill="none" stroke="rgba(42,38,32,0.08)" stroke-width="0.7"/>
+      </g>
+    </defs>
+    <use href="#ring-set" x="220" y="95"/>
+    <use href="#ring-set" x="640" y="115"/>
+    <use href="#ring-set" x="1050" y="95"/>
+  </svg>
+</div>
+
+<footer>
+  <p class="quote">“Social policy — from cradle to grave,<br/>threaded through every life we live.”</p>
+  <p class="colophon">
+    © 2026 <span class="name">Chung-Yang Yeh</span><br/>
+    <a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener">INSTAGRAM</a>
+    <span class="sep">·</span>
+    <a href="https://www.flickr.com/photos/young1017/" target="_blank" rel="noopener">FLICKR</a>
+  </p>
+</footer>
+
+</body>
+</html>
