@@ -140,7 +140,7 @@ const photoData = [
     haiku_jp: '白き樺／紅葉の中に／立ち尽くす',
     haiku_en: 'a white birch / standing within the crimson — / unmoving',
     haiku_zh: '白色樺樹／在紅葉之中／靜靜佇立' },
-  { num: '080', src: 'images/photography/dscf4963_2.jpg', themes: ['kouyou','xpan'], shape: 'xpan',
+  { num: '080', src: 'images/photography/dscf4963_2.jpg', themes: ['sansui','xpan'], shape: 'xpan',
     title_jp: '黄金の壁', title_en: 'Golden Wall', title_zh: '金壁',
     haiku_jp: '霧の中／山肌だけが／黄金なり',
     haiku_en: 'inside the mist — / only the mountain\'s face / is golden',
