@@ -399,6 +399,11 @@ const photoData = [
     haiku_zh: '未明／凜冽的街頭／一盞燈火' },
 
   // ── 潮騒 TIDELINE ──
+  { num: '011', src: 'images/photography/dscf4473_xd2s_9.jpg', year: 2026, themes: ['kaiyou'], shape: 'landscape',
+    title_jp: '潮風', title_en: 'Sea Breeze', title_zh: '潮風',
+    haiku_jp: '潮風や／髪を乱して／海光る',
+    haiku_en: 'sea breeze — / tangling my hair / the ocean glints',
+    haiku_zh: '潮風／撩亂髮絲／海面閃光' },
   { num: '122', src: 'images/photography/img_1272.jpg', themes: ['kaiyou','xpan'], shape: 'xpan',
     title_jp: '長き浜', title_en: 'Long Beach', title_zh: '長岸',
     haiku_jp: '長き浜／薄紅雲が／映りゆく',
@@ -504,11 +509,6 @@ const photoData = [
     haiku_jp: '月の道／波の上にも／海の上にも',
     haiku_en: 'the moon\'s path — / on the waves / and on the sea',
     haiku_zh: '月之道／既在波上／也在海上' },
-  { num: '011', src: 'images/photography/dscf4473_xd2s_9.jpg', year: 2026, themes: ['kaiyou'], shape: 'landscape',
-    title_jp: '潮風', title_en: 'Sea Breeze', title_zh: '潮風',
-    haiku_jp: '潮風や／髪を乱して／海光る',
-    haiku_en: 'sea breeze — / tangling my hair / the ocean glints',
-    haiku_zh: '潮風／撩亂髮絲／海面閃光' },
   { num: '053', src: 'images/photography/dscf2619.jpg', themes: ['kaiyou'], shape: 'square',
     title_jp: '紅の浜', title_en: 'Crimson Shore', title_zh: '紅之岸',
     haiku_jp: '夕焼けて／砂さえ赤く／染まりたる',
