@@ -75,6 +75,25 @@
     .hero-desc { margin-top: 32px; font-size: 18px; line-height: 1.95; opacity: 0.82; max-width: 760px; }
     .hero-desc .jp { display: block; font-family: var(--jp); font-size: 16px; opacity: 0.85; margin-bottom: 8px; }
 
+    /* ── Series index (jump-to bar) ── */
+    .ph-index { padding: 32px 60px 0; max-width: 1320px; margin: 0 auto; position: relative; z-index: 2; }
+    .ph-index-eyebrow { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; color: var(--accent); text-transform: uppercase; margin-bottom: 1.2rem; }
+    .ph-index-eyebrow .jp { font-family: var(--jp); margin-right: 0.5em; letter-spacing: 0.4em; text-transform: none; color: var(--ink); }
+    .ph-index-list { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; border-top: 1px solid rgba(31,31,29,0.18); border-bottom: 1px solid rgba(31,31,29,0.18); }
+    .ph-index-list li { flex: 1 0 auto; border-right: 1px solid rgba(31,31,29,0.10); }
+    .ph-index-list li:last-child { border-right: none; }
+    .ph-index-list button {
+      display: block; width: 100%;
+      background: transparent; border: none;
+      padding: 1.1rem 1.4rem; cursor: pointer;
+      text-align: left; color: var(--ink); font-family: inherit;
+      transition: background 0.3s;
+    }
+    .ph-index-list button:hover { background: rgba(31,31,29,0.05); }
+    .ph-index-list .name-jp { display: block; font-family: var(--brush); font-size: 1.2rem; letter-spacing: 0.12em; margin-bottom: 0.25rem; }
+    .ph-index-list .name-en { display: block; font-family: var(--display); font-style: italic; font-size: 0.78rem; color: rgba(31,31,29,0.55); letter-spacing: 0.08em; }
+    .ph-index-list .count { font-family: var(--sans); font-size: 0.7rem; color: var(--accent); margin-left: 0.4rem; font-style: normal; }
+
     /* ── Series rows (9 categories top→bottom, each scrolls horizontally) ── */
     .series-rows { padding: 24px 0 80px; max-width: 1320px; margin: 0 auto; position: relative; z-index: 2; }
     .series-row { padding: 32px 0 28px; border-top: 1px solid rgba(31,31,29,0.16); }
@@ -289,6 +308,14 @@
       .hero-sub { font-size: 11px; letter-spacing: 0.22em; }
       .hero-desc { font-size: 16px; margin-top: 24px; }
 
+      .ph-index { padding: 22px 22px 0; }
+      .ph-index-list { flex-direction: column; }
+      .ph-index-list li { flex: 1 1 auto; border-right: none; border-bottom: 1px solid rgba(31,31,29,0.10); }
+      .ph-index-list li:last-child { border-bottom: none; }
+      .ph-index-list button { padding: 0.9rem 1.1rem; }
+      .ph-index-list .name-jp { font-size: 1.1rem; }
+      .ph-index-list .name-en { font-size: 0.7rem; }
+
       .series-rows { padding: 14px 0 56px; }
       .series-row { padding: 22px 0 18px; }
       .series-row-head { padding: 0 22px 12px; gap: 10px; }
@@ -367,6 +394,11 @@
   </div>
 </section>
 
+<div class="ph-index">
+  <p class="ph-index-eyebrow"><span class="jp">主題</span>· SERIES</p>
+  <ul class="ph-index-list" id="series-index"></ul>
+</div>
+
 <div class="series-rows" id="series-rows"></div>
 
 <footer>
@@ -444,7 +476,24 @@
     });
   }
 
+  // ── Render jump-to bar (clicking a series opens its first photo)
+  function renderIndex() {
+    const indexList = document.getElementById('series-index');
+    SERIES.forEach(sr => {
+      const photos = seriesIndex[sr.id] || [];
+      if (photos.length === 0) return;
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.innerHTML = `<span class="name-jp">${sr.jp}</span><span class="name-en">${sr.en}<span class="count">${photos.length}</span></span>`;
+      btn.addEventListener('click', () => openBook(sr.id, 0));
+      li.appendChild(btn);
+      indexList.appendChild(li);
+    });
+  }
+
   renderRows();
+  renderIndex();
 
   // Classic lightbox
   let lbState = null;
