@@ -248,6 +248,64 @@
       font-size: 11px; font-family: var(--sans); opacity: 0.55;
     }
 
+    /* Chapters */
+    .ch-list { display: flex; flex-direction: column; }
+    .ch-row { display: grid; grid-template-columns: 60px 1fr; gap: 32px; padding: 22px 0; border-bottom: 1px solid rgba(31,31,29,0.10); }
+    .ch-row .y { font-family: var(--sans); font-size: 13px; letter-spacing: 0.15em; opacity: 0.55; }
+    .ch-row h3 { margin: 0; font-family: var(--jp); font-size: 17px; font-weight: 500; line-height: 1.5; }
+    .ch-row .au { margin-top: 8px; font-size: 13px; opacity: 0.7; font-style: italic; }
+    .ch-row .src { margin-top: 8px; font-size: 13px; opacity: 0.78; line-height: 1.65; }
+
+    /* Commentary */
+    .commentary {
+      max-width: 1280px; margin: 0 auto;
+      padding: 60px 60px 80px;
+      position: relative; z-index: 2;
+      border-top: 1px solid var(--line-soft);
+    }
+    .commentary-head {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end;
+      margin-bottom: 36px;
+    }
+    .commentary-eyebrow { font-size: 11px; letter-spacing: 0.5em; opacity: 0.5; margin-bottom: 12px; }
+    .commentary-title-zh { font-family: var(--brush); font-size: 38px; font-weight: 400; letter-spacing: 0.05em; line-height: 1; margin: 0; }
+    .commentary-sub { margin-top: 10px; font-size: 13px; letter-spacing: 0.3em; opacity: 0.55; }
+    .commentary-intro { font-size: 15px; line-height: 1.95; opacity: 0.78; max-width: 560px; }
+    .commentary-intro strong { color: var(--accent); font-weight: 500; }
+    .commentary-card {
+      display: block; text-decoration: none; color: var(--ink);
+      background: var(--shoin-paper);
+      border: 1px solid rgba(31,31,29,0.12);
+      padding: 32px 36px; margin-bottom: 16px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .commentary-card:hover { background: #fff8e8; border-color: rgba(31,31,29,0.22); }
+    .commentary-meta {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      font-size: 11px; letter-spacing: 0.2em;
+      opacity: 0.6; margin-bottom: 14px;
+      font-family: var(--sans);
+    }
+    .commentary-meta .num { font-family: var(--jp); letter-spacing: 0.3em; color: var(--accent); }
+    .commentary-meta .tag { padding: 2px 8px; background: var(--line-soft); letter-spacing: 0.15em; }
+    .commentary-card-title {
+      font-family: var(--brush); font-size: 22px; font-weight: 400;
+      line-height: 1.5; letter-spacing: 0.04em;
+      margin: 0 0 14px;
+    }
+    .commentary-card-excerpt { font-size: 14px; line-height: 1.95; opacity: 0.78; }
+    .commentary-arrow {
+      display: inline-block; margin-top: 18px;
+      font-size: 12px; letter-spacing: 0.18em;
+      color: var(--accent);
+    }
+    .commentary-more {
+      display: inline-block; margin-top: 14px;
+      font-size: 13px; letter-spacing: 0.18em;
+      color: var(--accent); text-decoration: none;
+    }
+    .commentary-more:hover { text-decoration: underline; }
+
     /* Conferences */
     .c-list { display: flex; flex-direction: column; }
     .c-row {
@@ -379,6 +437,7 @@
     <div class="tabs" role="tablist">
       <button class="tab is-active" data-tab="journal" role="tab"><span class="jp">期刊</span><span class="en">JOURNAL</span><span class="n">29</span></button>
       <button class="tab" data-tab="book" role="tab"><span class="jp">專書</span><span class="en">BOOK</span><span class="n">2</span></button>
+      <button class="tab" data-tab="chapter" role="tab"><span class="jp">章節</span><span class="en">CHAPTER</span><span class="n">12</span></button>
       <button class="tab" data-tab="conf" role="tab"><span class="jp">研討會</span><span class="en">CONFERENCE</span><span class="n">20</span></button>
     </div>
     <div class="view-toggle" id="view-toggle">
@@ -572,6 +631,24 @@
     </div>
   </div>
 
+  <!-- Chapters pane -->
+  <div class="pane" data-pane="chapter">
+    <div class="ch-list">
+      <article class="ch-row"><div class="y">2023</div><div><h3>Public opinion and social policy reform in East Asia</h3><div class="au">Yeh, C-Y. and Hong, I.</div><div class="src">In Misa Izuhara (ed.), <em>A Research Agenda for East Asian Social Policy</em>, pp. 63–84. Cheltenham: Edward Elgar.</div></div></article>
+      <article class="ch-row"><div class="y">2022</div><div><h3>What makes old-age poverty in East Asian societies so high?</h3><div class="au">Ku, I., Lee, W., Abe, A., Mengbing, Z., Shi, L., Yeh, C-Y. and Kim, D.</div><div class="src">In Ku, I. and Saunders, P. (eds.), <em>Poverty and Inequality in East Asia</em>, pp. 196–220. Cheltenham: Edward Elgar.</div></div></article>
+      <article class="ch-row"><div class="y">2022</div><div><h3>An Increasing but Diverse Support for Social Investment</h3><div class="au">Hong, I., Yeh, C-Y., Lee, J. and Lue, J-D.</div><div class="src">In Garritzmann et al. (eds.), <em>The World Politics of Social Investment</em> (Vol. II), pp. 259–284. Oxford: Oxford University Press.</div></div></article>
+      <article class="ch-row"><div class="y">2021</div><div><h3>社會投資──源起、典範與批評（第二章）</h3><div class="au">葉崇揚、古允文</div><div class="src">收錄於《人口高齡化與社會福利──社會投資的反思》，頁27–42。台北：國家衛生研究院。</div></div></article>
+      <article class="ch-row"><div class="y">2020</div><div><h3>台湾の第三章・制度の概要</h3><div class="au">孫瑩芯、施世駿、葉崇揚</div><div class="src">收錄於上村泰裕（編著），《新世界の社会福祉（第7巻）：東アジア》，頁451–492。東京：旬報社。</div></div></article>
+      <article class="ch-row"><div class="y">2018</div><div><h3>產業化？私有化？市場化？福利市場的興起</h3><div class="au">葉崇揚</div><div class="src">收錄於古允文（主編），《醫療與福利服務產業化評估研究》，頁25–38。台北：國家衛生研究院。</div></div></article>
+      <article class="ch-row"><div class="y">2018</div><div><h3>台灣所得分配惡化的政治經濟基礎：一個政治的解釋</h3><div class="au">呂建德、葉崇揚</div><div class="src">收錄於許宗力（編著），《追尋社會國──社會正義之理論與制度實踐》。台北：台大出版中心。</div></div></article>
+      <article class="ch-row"><div class="y">2018</div><div><h3>In-Work Poverty in three East Asian Welfare States</h3><div class="au">Yeh, C-Y. and Lue, J-D.</div><div class="src">In Lohmann, H. and Marx, I. (eds.), <em>Handbook of Research on In-Work Poverty</em>, pp. 449–472. Cheltenham: Edward Elgar.</div></div></article>
+      <article class="ch-row"><div class="y">2016</div><div><h3>一個抉擇：台灣需要什麼樣的教育與技術形成體系</h3><div class="au">葉崇揚</div><div class="src">收錄於陳錦稷（編著），《新藍圖、新活路：台灣新經濟模式倡議》，頁92–117。台北：新境界文教基金會。</div></div></article>
+      <article class="ch-row"><div class="y">2014</div><div><h3>Public-Private Pension Mix and Its Governance: Japan and Taiwan Compared</h3><div class="au">Yeh, C-Y. and Shi, S-J.</div><div class="src">In Mok, K-H. and Lau, M. (eds.), <em>Managing Social Change and Social Policy in Greater China</em>, pp. 170–190. London: Routledge.</div></div></article>
+      <article class="ch-row"><div class="y">2012</div><div><h3>台灣社會保障體系及其再分配效果</h3><div class="au">呂建德、葉崇揚、陳昭榮</div><div class="src">收錄於《中國社會保障發展報告（2012）No. 5──社會保障與收入再分配》，頁211–233。北京：社會科學文獻出版社。</div></div></article>
+      <article class="ch-row"><div class="y">2009</div><div><h3>制度變遷的依變項問題：東亞年金體系的比較</h3><div class="au">葉崇揚、呂建德</div><div class="src">收錄於李明政（編著），《新興福利國家與高齡化社會：學習與創新》，頁63–104。台北：松慧出版社。</div></div></article>
+    </div>
+  </div>
+
   <!-- Conferences pane -->
   <div class="pane" data-pane="conf">
     <div class="c-list">
@@ -609,6 +686,33 @@
     <p style="margin-top: 28px; text-align: center; font-size: 13px; opacity: 0.6;"><a href="publications/publications-zh.html#conference" style="color: var(--accent); text-decoration: none; letter-spacing: 0.18em;">查看全部 20 場研討會 →</a></p>
   </div>
 </div>
+
+<section class="commentary" id="commentary">
+  <div class="commentary-head">
+    <div>
+      <p class="commentary-eyebrow">第二室 · 書院 SHOIN ・ 別冊</p>
+      <h2 class="commentary-title-zh">專欄</h2>
+      <p class="commentary-sub">COMMENTARY ・ 東亞觀察最前線</p>
+    </div>
+    <p class="commentary-intro">
+      <strong>東亞觀察最前線</strong> ── 從漫畫、流行文化、社會數據觀察日本、韓國、台灣、中國的精神底層變遷。學術書寫之外，輕快但嚴肅的書寫。
+    </p>
+  </div>
+
+  <a href="commentary/2026-takaichi.html" class="commentary-card">
+    <div class="commentary-meta">
+      <span class="num">No. 〇〇一</span>
+      <span>2026.02.07</span>
+      <span class="tag">日本</span>
+    </div>
+    <h3 class="commentary-card-title">另一個從漫畫走出來的人物：以《政治最前線》與《島耕作》解讀高市早苗</h3>
+    <p class="commentary-card-excerpt">
+      當大谷翔平在洛杉磯創下漫畫《棒球大聯盟》也未曾預演的二刀流紀錄，日本社會看到的是「向外延伸的夢」；而在永田町，另一個從漫畫走出來的人物正穩定接近權力的最高點。本文借《政治最前線》的「方法」與《島耕作》的「焦慮」，解讀高市早苗所代表的日本「絕對現實主義」。
+    </p>
+    <span class="commentary-arrow">閱讀全文 →</span>
+  </a>
+  <a href="commentary/" class="commentary-more">查看全部專欄文章 →</a>
+</section>
 
 <footer>
   <span>YEH CHUNG-YANG</span>

@@ -142,6 +142,42 @@
     .b-desc { margin-top: 14px; font-size: 13px; opacity: 0.75; line-height: 1.85; }
     .b-foot { margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(31,31,29,0.15); display: flex; justify-content: space-between; gap: 12px; font-size: 11px; font-family: var(--sans); opacity: 0.55; }
 
+    .ch-list { display: flex; flex-direction: column; }
+    .ch-row { display: grid; grid-template-columns: 60px 1fr; gap: 32px; padding: 22px 0; border-bottom: 1px solid rgba(31,31,29,0.10); }
+    .ch-row .y { font-family: var(--sans); font-size: 13px; letter-spacing: 0.15em; opacity: 0.55; }
+    .ch-row h3 { margin: 0; font-family: var(--display); font-style: italic; font-size: 17px; font-weight: 500; line-height: 1.5; }
+    .ch-row .au { margin-top: 8px; font-size: 13px; opacity: 0.7; font-style: italic; }
+    .ch-row .src { margin-top: 8px; font-size: 13px; opacity: 0.78; line-height: 1.65; }
+
+    .commentary {
+      max-width: 1280px; margin: 0 auto;
+      padding: 60px 60px 80px;
+      position: relative; z-index: 2;
+      border-top: 1px solid rgba(31,31,29,0.10);
+    }
+    .commentary-head { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 36px; }
+    .commentary-eyebrow { font-size: 11px; letter-spacing: 0.5em; opacity: 0.5; margin-bottom: 12px; font-family: var(--sans); text-transform: uppercase; }
+    .commentary-title-zh { font-family: var(--brush); font-size: 38px; font-weight: 400; letter-spacing: 0.05em; line-height: 1; margin: 0; }
+    .commentary-sub { margin-top: 10px; font-size: 13px; letter-spacing: 0.3em; opacity: 0.55; font-family: var(--sans); text-transform: uppercase; }
+    .commentary-intro { font-size: 15px; line-height: 1.95; opacity: 0.78; max-width: 560px; font-style: italic; }
+    .commentary-intro strong { color: var(--accent); font-weight: 500; }
+    .commentary-card {
+      display: block; text-decoration: none; color: var(--ink);
+      background: var(--shoin-paper);
+      border: 1px solid rgba(31,31,29,0.12);
+      padding: 32px 36px; margin-bottom: 16px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .commentary-card:hover { background: #fff8e8; border-color: rgba(31,31,29,0.22); }
+    .commentary-meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 11px; letter-spacing: 0.2em; opacity: 0.6; margin-bottom: 14px; font-family: var(--sans); text-transform: uppercase; }
+    .commentary-meta .num { font-family: var(--jp); letter-spacing: 0.3em; color: var(--accent); }
+    .commentary-meta .tag { padding: 2px 8px; background: rgba(31,31,29,0.10); letter-spacing: 0.15em; }
+    .commentary-card-title { font-family: var(--display); font-style: italic; font-size: 22px; font-weight: 500; line-height: 1.4; letter-spacing: 0.02em; margin: 0 0 14px; }
+    .commentary-card-excerpt { font-size: 14px; line-height: 1.95; opacity: 0.78; }
+    .commentary-arrow { display: inline-block; margin-top: 18px; font-size: 12px; letter-spacing: 0.18em; color: var(--accent); font-family: var(--sans); text-transform: uppercase; }
+    .commentary-more { display: inline-block; margin-top: 14px; font-size: 13px; letter-spacing: 0.18em; color: var(--accent); text-decoration: none; font-family: var(--sans); text-transform: uppercase; }
+    .commentary-more:hover { text-decoration: underline; }
+
     .c-list { display: flex; flex-direction: column; }
     .c-row { display: grid; grid-template-columns: 60px 100px 1fr 180px; gap: 24px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid rgba(31,31,29,0.10); }
     .c-year { font-family: var(--sans); font-size: 13px; opacity: 0.55; letter-spacing: 0.1em; }
@@ -263,6 +299,7 @@
     <div class="tabs" role="tablist">
       <button class="tab is-active" data-tab="journal" role="tab"><span class="jp">期刊</span><span class="en">JOURNAL</span><span class="n">29</span></button>
       <button class="tab" data-tab="book" role="tab"><span class="jp">專書</span><span class="en">BOOK</span><span class="n">2</span></button>
+      <button class="tab" data-tab="chapter" role="tab"><span class="jp">章節</span><span class="en">CHAPTER</span><span class="n">12</span></button>
       <button class="tab" data-tab="conf" role="tab"><span class="jp">研討會</span><span class="en">CONFERENCE</span><span class="n">20</span></button>
     </div>
     <div class="view-toggle" id="view-toggle">
@@ -407,6 +444,23 @@
     </div>
   </div>
 
+  <div class="pane" data-pane="chapter">
+    <div class="ch-list">
+      <article class="ch-row"><div class="y">2023</div><div><h3>Public opinion and social policy reform in East Asia</h3><div class="au">Yeh, C-Y. and Hong, I.</div><div class="src">In Misa Izuhara (ed.), <em>A Research Agenda for East Asian Social Policy</em>, pp. 63–84. Cheltenham: Edward Elgar.</div></div></article>
+      <article class="ch-row"><div class="y">2022</div><div><h3>What makes old-age poverty in East Asian societies so high?</h3><div class="au">Ku, I., Lee, W., Abe, A., Mengbing, Z., Shi, L., Yeh, C-Y. and Kim, D.</div><div class="src">In Ku, I. and Saunders, P. (eds.), <em>Poverty and Inequality in East Asia</em>, pp. 196–220. Cheltenham: Edward Elgar.</div></div></article>
+      <article class="ch-row"><div class="y">2022</div><div><h3>An Increasing but Diverse Support for Social Investment</h3><div class="au">Hong, I., Yeh, C-Y., Lee, J. and Lue, J-D.</div><div class="src">In Garritzmann et al. (eds.), <em>The World Politics of Social Investment</em> (Vol. II), pp. 259–284. Oxford: Oxford University Press.</div></div></article>
+      <article class="ch-row"><div class="y">2021</div><div><h3>Social Investment: Origins, Paradigms and Critiques (Chapter 2)</h3><div class="au">Yeh, C-Y. and Ku, Y-W.</div><div class="src">In <em>Population Ageing and Social Welfare: Reflections on Social Investment</em>, pp. 27–42. Taipei: National Health Research Institutes.</div></div></article>
+      <article class="ch-row"><div class="y">2020</div><div><h3>Taiwan: Chapter 3 – Overview of the System</h3><div class="au">Sun, Y-X., Shih, S-J. and Yeh, C-Y.</div><div class="src">In Kamimura, Y. (ed.), <em>New World of Social Welfare (Vol. 7): East Asia</em>, pp. 451–492. Tokyo: Junpo-sha.</div></div></article>
+      <article class="ch-row"><div class="y">2018</div><div><h3>Industrialisation? Privatisation? Marketisation? The Rise of the Welfare Market</h3><div class="au">Yeh, C-Y.</div><div class="src">In Ku, Y-W. (ed.), <em>Assessment Study on the Industrialisation of Healthcare and Welfare Services</em>, pp. 25–38. Taipei: National Health Research Institutes.</div></div></article>
+      <article class="ch-row"><div class="y">2018</div><div><h3>The Political Economy of Worsening Income Distribution in Taiwan: A Political Interpretation</h3><div class="au">Lue, J-D. and Yeh, C-Y.</div><div class="src">In Hsu, T-L. (ed.), <em>In Search of the Social State – Theory and Institutional Practice of Social Justice</em>. Taipei: NTU Press.</div></div></article>
+      <article class="ch-row"><div class="y">2018</div><div><h3>In-Work Poverty in three East Asian Welfare States</h3><div class="au">Yeh, C-Y. and Lue, J-D.</div><div class="src">In Lohmann, H. and Marx, I. (eds.), <em>Handbook of Research on In-Work Poverty</em>, pp. 449–472. Cheltenham: Edward Elgar.</div></div></article>
+      <article class="ch-row"><div class="y">2016</div><div><h3>A Choice: What Education and Skill-Formation System Does Taiwan Need?</h3><div class="au">Yeh, C-Y.</div><div class="src">In Chen, J-J. (ed.), <em>New Blueprint, New Path: Initiative for Taiwan's New Economic Model</em>, pp. 92–117. Taipei: New Frontier Foundation.</div></div></article>
+      <article class="ch-row"><div class="y">2014</div><div><h3>Public-Private Pension Mix and Its Governance: Japan and Taiwan Compared</h3><div class="au">Yeh, C-Y. and Shi, S-J.</div><div class="src">In Mok, K-H. and Lau, M. (eds.), <em>Managing Social Change and Social Policy in Greater China</em>, pp. 170–190. London: Routledge.</div></div></article>
+      <article class="ch-row"><div class="y">2012</div><div><h3>Taiwan's Social Security System and its Redistributive Effects</h3><div class="au">Lue, J-D., Yeh, C-Y. and Chen, C-J.</div><div class="src">In <em>China Social Security Development Report (2012) No. 5</em>, pp. 211–233. Beijing: Social Sciences Academic Press.</div></div></article>
+      <article class="ch-row"><div class="y">2009</div><div><h3>The Dependent Variable Problem in Institutional Change: A Comparison of East Asian Pension Systems</h3><div class="au">Yeh, C-Y. and Lue, J-D.</div><div class="src">In Li, M-C. (ed.), <em>Emerging Welfare States and Aging Societies: Learning and Innovation</em>, pp. 63–104. Taipei: Songhui Publishing.</div></div></article>
+    </div>
+  </div>
+
   <div class="pane" data-pane="conf">
     <div class="c-list">
       <article class="c-row">
@@ -443,6 +497,33 @@
     <p style="margin-top: 28px; text-align: center; font-size: 13px; opacity: 0.6;"><a href="publications/publications-en.html#conference" style="color: var(--accent); text-decoration: none; letter-spacing: 0.18em; font-family: var(--sans); text-transform: uppercase;">View all 20 conferences →</a></p>
   </div>
 </div>
+
+<section class="commentary" id="commentary">
+  <div class="commentary-head">
+    <div>
+      <p class="commentary-eyebrow">Room II · SHOIN ・ Side Notes</p>
+      <h2 class="commentary-title-zh">專欄</h2>
+      <p class="commentary-sub">COMMENTARY ・ East Asia, Frontline</p>
+    </div>
+    <p class="commentary-intro">
+      <strong>East Asia, Frontline</strong> ── reading the underlying mood of Japan, Korea, Taiwan and China through manga, popular culture, and social data. A lighter but still serious register, alongside the academic writing.
+    </p>
+  </div>
+
+  <a href="commentary/2026-takaichi-en.html" class="commentary-card">
+    <div class="commentary-meta">
+      <span class="num">No. 〇〇一</span>
+      <span>2026.02.07</span>
+      <span class="tag">JAPAN</span>
+    </div>
+    <h3 class="commentary-card-title">Another figure walking out of a manga: Reading Sanae Takaichi through Seijika Mae and Shima Kōsaku</h3>
+    <p class="commentary-card-excerpt">
+      As Shohei Ohtani sets a two-way record in Los Angeles that even <em>Major</em> never rehearsed, Japan looks at "an outward-stretching dream"; meanwhile in Nagatachō another manga-born figure approaches the summit of power. The essay reads Takaichi through the "method" of <em>Seijika Mae</em> and the "anxiety" of <em>Shima Kōsaku</em> as Japan's "absolute realism".
+    </p>
+    <span class="commentary-arrow">Read full essay →</span>
+  </a>
+  <a href="commentary/" class="commentary-more">All commentary →</a>
+</section>
 
 <footer>
   <span>YEH CHUNG-YANG</span>
