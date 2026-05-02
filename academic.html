@@ -54,9 +54,9 @@
       font-family: var(--brush); font-size: 17px; transform: rotate(-3deg);
       box-shadow: 2px 2px 0 rgba(196,56,56,0.25); flex-shrink: 0;
     }
-    .name-block { line-height: 1.15; }
-    .name-jp { font-family: var(--brush); font-size: 18px; letter-spacing: 0.1em; }
-    .name-en { font-family: var(--sans); font-size: 9px; letter-spacing: 0.3em; opacity: 0.55; text-transform: uppercase; }
+    .name-block { display: inline-flex; align-items: baseline; gap: 8px; }
+    .name-jp { font-family: var(--brush); font-size: 22px; letter-spacing: 0.1em; }
+    .name-en { font-family: var(--sans); font-style: italic; font-size: 13px; letter-spacing: 0.06em; opacity: 0.7; text-transform: none; }
     .nav { display: flex; gap: 24px; font-size: 12px; letter-spacing: 0.25em; font-family: var(--sans); text-transform: uppercase; }
     .nav a { color: var(--ink); text-decoration: none; opacity: 0.5; padding-bottom: 4px; }
     .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
@@ -224,8 +224,8 @@
     <a href="index-en.html" class="back">← HOME</a>
     <span class="top-sep">·</span>
     <span class="name-block">
-      <div class="name-jp">葉崇揚</div>
-      <div class="name-en">CHUNG-YANG YEH</div>
+      <span class="name-jp">葉崇揚</span>
+      <span class="name-en">（Chung-Yang Yeh）</span>
     </span>
   </div>
   <nav class="nav" aria-label="Sections">
@@ -382,7 +382,7 @@
     <div class="b-grid">
       <article class="b-card">
         <div class="b-cover">
-          <img src="images/books/pension-reform-2026.jpg" alt="The Buried Welfare Years: Challenges and Solutions of Taiwan's Pension Reform" loading="lazy" />
+          <img src="images/books/pension-reform-2026-cover.jpg" alt="The Buried Welfare Years: Challenges and Solutions of Taiwan's Pension Reform" loading="lazy" />
         </div>
         <div>
           <div class="b-tag">BOOK · 2026</div>
