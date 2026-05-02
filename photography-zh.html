@@ -72,31 +72,50 @@
       position: relative; z-index: 2;
       border-bottom: 1px solid rgba(31,31,29,0.06);
     }
-    .hero-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
+    .hero-inner { max-width: 1280px; margin: 0 auto; }
     .hero-eyebrow { font-size: 11px; letter-spacing: 0.5em; opacity: 0.5; margin-bottom: 16px; }
     .hero-title { margin: 0; font-family: var(--brush); font-size: 88px; font-weight: 400; line-height: 1; letter-spacing: 0.05em; }
     .hero-sub { margin-top: 12px; font-size: 14px; letter-spacing: 0.3em; opacity: 0.55; }
-    .hero-desc { margin-top: 32px; font-size: 15px; line-height: 2; opacity: 0.78; max-width: 560px; }
-    .hero-cover { position: relative; aspect-ratio: 4/3; overflow: hidden; }
-    .hero-cover img { width: 100%; height: 100%; object-fit: cover; }
-    .hero-cover .cap { position: absolute; left: 16px; bottom: 12px; color: #f8f0dc; font-size: 11px; letter-spacing: 0.2em; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
-    .hero-cover .cap .t { font-family: var(--brush); font-size: 18px; }
-    .hero-cover .cap .m { opacity: 0.85; margin-top: 2px; }
+    .hero-desc { margin-top: 32px; font-size: 15px; line-height: 2; opacity: 0.78; max-width: 720px; }
 
-    /* View switcher */
-    .switch-wrap { padding: 32px 60px 0; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
-    .switch-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(31,31,29,0.20); padding-bottom: 16px; }
-    .switch-label { font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; }
-    .switch-buttons { display: flex; gap: 4px; }
-    .switch-btn {
-      background: transparent; color: var(--ink);
-      border: 1px solid var(--ink);
-      padding: 8px 16px; font-family: inherit;
-      font-size: 11px; letter-spacing: 0.2em;
-      cursor: pointer;
+    /* Series index (filter bar) */
+    .ph-index { padding: 32px 60px 0; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
+    .ph-index-eyebrow {
+      font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em;
+      color: var(--accent); text-transform: uppercase;
+      margin-bottom: 1.2rem;
     }
-    .switch-btn.is-active { background: var(--ink); color: var(--engawa-bg); }
-    .switch-btn .jp { font-family: var(--brush); margin-right: 8px; font-size: 13px; }
+    .ph-index-eyebrow .jp { font-family: var(--jp); margin-right: 0.5em; letter-spacing: 0.4em; text-transform: none; color: var(--ink); }
+    .ph-index-list {
+      display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0;
+      border-top: 1px solid rgba(31,31,29,0.18);
+      border-bottom: 1px solid rgba(31,31,29,0.18);
+    }
+    .ph-index-list li {
+      flex: 1 0 auto;
+      border-right: 1px solid rgba(31,31,29,0.10);
+    }
+    .ph-index-list li:last-child { border-right: none; }
+    .ph-index-list button {
+      display: block; width: 100%;
+      background: transparent; border: none;
+      padding: 1.1rem 1.4rem; cursor: pointer;
+      text-align: left; color: var(--ink); font-family: inherit;
+      transition: background 0.3s;
+    }
+    .ph-index-list button:hover { background: rgba(31,31,29,0.05); }
+    .ph-index-list .name-jp {
+      display: block; font-family: var(--brush);
+      font-size: 1.2rem; letter-spacing: 0.12em; margin-bottom: 0.25rem;
+    }
+    .ph-index-list .name-en {
+      display: block; font-family: var(--sans); font-size: 0.72rem;
+      color: rgba(31,31,29,0.55); letter-spacing: 0.18em; text-transform: uppercase;
+    }
+    .ph-index-list .count {
+      font-family: var(--sans); font-size: 0.7rem;
+      color: var(--accent); margin-left: 0.4rem;
+    }
 
     /* Series content */
     .series-content { padding: 40px 60px 80px; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
@@ -153,171 +172,81 @@
       position: relative; z-index: 2;
     }
 
-    /* ── Book mode (single page + flip animation) ── */
-    .book-overlay {
+    /* ── Lightbox (classic style) ── */
+    .lightbox {
       position: fixed; inset: 0; z-index: 100;
       background: rgba(15,12,9,0.96);
-      display: none;
-      align-items: center; justify-content: center;
-      padding: 80px 60px;
+      display: none; align-items: center; justify-content: center;
+      padding: 2rem;
+      cursor: zoom-out;
     }
-    .book-overlay.is-open { display: flex; }
-
-    .book-top {
-      position: absolute; top: 0; left: 0; right: 0;
-      padding: 20px 32px;
-      display: flex; justify-content: space-between; align-items: center;
-      color: rgba(232,226,212,0.85); z-index: 10;
+    .lightbox.is-open { display: flex; }
+    .lightbox-figure {
+      max-width: 96vw; max-height: 92vh;
+      display: flex; flex-direction: row; align-items: center;
+      gap: 2.5rem;
+      cursor: default;
     }
-    .book-top .series-label { display: flex; gap: 14px; align-items: baseline; }
-    .book-top .series-label .t { font-family: var(--brush); font-size: 22px; letter-spacing: 0.12em; }
-    .book-top .series-label .meta { font-size: 10px; letter-spacing: 0.3em; opacity: 0.55; }
-    .book-close {
-      background: rgba(232,226,212,0.06);
-      color: rgba(232,226,212,0.9);
-      border: 1px solid rgba(232,226,212,0.22);
-      width: 40px; height: 40px;
-      font-size: 16px; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s, border-color 0.2s;
+    .lightbox-img {
+      max-width: 70vw; max-height: 88vh;
+      object-fit: contain; display: block;
+      transition: opacity 0.25s ease;
     }
-    .book-close:hover { background: rgba(196,56,56,0.25); border-color: rgba(196,56,56,0.5); }
-
-    /* The page (3D-perspective wrapper) */
-    .book-stage {
-      position: relative;
-      perspective: 1800px;
-      perspective-origin: center;
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-    }
-    /* Spread = open book (photo across both pages + caption strip on right) */
-    .book-page {
-      position: relative;
-      width: min(1400px, 94vw);
-      height: min(calc(100vh - 200px), calc((min(1400px, 94vw) - 220px) * 2 / 3));
-      max-height: calc(100vh - 200px);
-      background: #0a0a0a;
-      box-shadow: 0 18px 80px rgba(0,0,0,0.7);
-      transform-style: preserve-3d;
-      transform-origin: center center;
-      transition: transform 0.55s cubic-bezier(.55,.05,.3,1), opacity 0.45s ease;
-      will-change: transform, opacity;
-      backface-visibility: hidden;
-      display: grid;
-      grid-template-columns: 1fr 220px;
-    }
-    .book-photo-wrap {
-      position: relative;
-      overflow: hidden;
-      background: #0a0a0a;
-    }
-    .book-photo {
-      width: 100%; height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-    /* center spine over photo */
-    .book-spine {
-      position: absolute; top: 0; bottom: 0; left: 50%;
-      width: 2px; transform: translateX(-1px);
-      background: linear-gradient(180deg,
-        rgba(0,0,0,0.55) 0%,
-        rgba(0,0,0,0.25) 50%,
-        rgba(0,0,0,0.55) 100%);
-      box-shadow: 0 0 18px rgba(0,0,0,0.6);
-      pointer-events: none; z-index: 2;
-    }
-    /* page edges (subtle vertical highlight at outer edges of pages) */
-    .book-edge-left, .book-edge-right {
-      position: absolute; top: 0; bottom: 0; width: 12px;
-      pointer-events: none; z-index: 2;
-    }
-    .book-edge-left { left: 0; background: linear-gradient(90deg, rgba(0,0,0,0.4), transparent); }
-    .book-edge-right { right: 220px; background: linear-gradient(270deg, rgba(0,0,0,0.4), transparent); }
-
-    .book-caption {
-      background: #fcf6e6;
-      color: #1f1f1d;
-      padding: 36px 24px;
-      box-shadow: inset 16px 0 24px -16px rgba(0,0,0,0.3);
-      display: flex; flex-direction: column;
-      align-items: flex-start; justify-content: space-between;
+    .lightbox-img.is-flipping { opacity: 0; }
+    .lightbox-caption {
       writing-mode: vertical-rl;
       text-orientation: mixed;
-      overflow: hidden;
+      max-height: 80vh;
+      color: rgba(232,226,212,0.78);
+      display: flex; flex-direction: column;
+      gap: 1.6rem; align-items: flex-start;
+      padding: 1rem 0;
     }
-    .book-caption .b-title {
-      font-family: var(--jp);
-      font-size: 13px;
+    .lightbox-caption .lb-title {
+      font-family: var(--jp); font-size: 14px;
       letter-spacing: 0.22em;
-      color: rgba(31,31,29,0.55);
+      color: rgba(232,226,212,0.5);
     }
-    .book-caption .b-title .romaji {
+    .lightbox-caption .lb-title .romaji {
+      font-family: var(--sans); font-style: italic;
+      font-size: 12px; color: rgba(232,226,212,0.4);
+      letter-spacing: 0.08em;
       display: block; margin-top: 0.5rem;
       writing-mode: horizontal-tb;
-      font-family: var(--sans); font-style: italic;
-      font-size: 11px; letter-spacing: 0.08em;
-      color: rgba(31,31,29,0.45);
     }
-    .book-caption .b-haiku-jp {
-      font-family: var(--jp);
-      font-size: 1.25rem; line-height: 2.3;
-      color: rgba(31,31,29,0.92);
+    .lightbox-caption .lb-haiku-jp {
+      font-family: var(--jp); font-size: 1.4rem; line-height: 2.4;
+      color: rgba(232,226,212,0.95);
       letter-spacing: 0.18em;
     }
-    .book-caption .b-haiku-zh {
-      font-family: var(--jp);
-      font-size: 0.95rem; line-height: 2.1;
-      color: rgba(31,31,29,0.65);
+    .lightbox-caption .lb-haiku-zh {
+      font-family: var(--jp); font-size: 1.05rem; line-height: 2.1;
+      color: rgba(232,226,212,0.65);
       letter-spacing: 0.14em;
     }
-
-    /* Flip animations */
-    .book-page.flip-out-next {
-      transform: rotateY(-90deg) translateX(-30px);
-      transform-origin: left center;
-      opacity: 0;
-    }
-    .book-page.flip-out-prev {
-      transform: rotateY(90deg) translateX(30px);
-      transform-origin: right center;
-      opacity: 0;
-    }
-    .book-page.flip-in-next { animation: pageInNext 0.45s cubic-bezier(.2,.7,.2,1); }
-    .book-page.flip-in-prev { animation: pageInPrev 0.45s cubic-bezier(.2,.7,.2,1); }
-    @keyframes pageInNext {
-      from { transform: rotateY(75deg) translateX(50px); opacity: 0; transform-origin: right center; }
-      to   { transform: rotateY(0) translateX(0); opacity: 1; }
-    }
-    @keyframes pageInPrev {
-      from { transform: rotateY(-75deg) translateX(-50px); opacity: 0; transform-origin: left center; }
-      to   { transform: rotateY(0) translateX(0); opacity: 1; }
-    }
-
-    .book-nav {
-      position: absolute; top: 50%; transform: translateY(-50%);
+    .lightbox-close, .lightbox-prev, .lightbox-next {
+      position: absolute;
       background: rgba(232,226,212,0.06);
+      border: 1px solid rgba(232,226,212,0.18);
       color: rgba(232,226,212,0.9);
-      border: 1px solid rgba(232,226,212,0.22);
       width: 44px; height: 44px;
-      font-size: 18px; cursor: pointer;
+      font-size: 1.5rem; line-height: 1;
       display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
       transition: background 0.2s, border-color 0.2s;
-      z-index: 10;
     }
-    .book-nav:hover:not(:disabled) { background: rgba(196,56,56,0.25); border-color: rgba(196,56,56,0.5); }
-    .book-nav:disabled { opacity: 0.25; cursor: default; }
-    .book-nav.prev { left: 24px; }
-    .book-nav.next { right: 24px; }
-    .book-counter {
-      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
-      font-family: var(--sans); font-size: 11px;
-      letter-spacing: 0.25em;
+    .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
+      background: rgba(196,56,56,0.25); border-color: rgba(196,56,56,0.5);
+    }
+    .lightbox-close { top: 1.25rem; right: 1.25rem; }
+    .lightbox-prev { left: 1.25rem; top: 50%; transform: translateY(-50%); }
+    .lightbox-next { right: 1.25rem; top: 50%; transform: translateY(-50%); }
+    .lightbox-counter {
+      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      font-family: var(--sans); font-size: 0.78rem;
+      letter-spacing: 0.18em;
       color: rgba(232,226,212,0.55);
-      z-index: 10;
     }
-    .book-counter .num { color: rgba(232,226,212,0.95); }
 
     /* Mobile */
     @media (max-width: 760px) {
@@ -402,44 +331,24 @@
 
 <section class="hero">
   <div class="hero-inner">
-    <div>
-      <p class="hero-eyebrow">第三室 · 縁側 ENGAWA</p>
-      <h1 class="hero-title">攝影</h1>
-      <p class="hero-sub">PHOTOGRAPHY · 9 系列 · 162 件作品</p>
-      <p class="hero-desc">
-        内と外の境。庭が一冊の本となる場所。<br/>
-        於我而言，攝影是一種觀察與敘事的方法。將近三十年來，它與研究並行——一種以文字深入，一種以光影靠近。<br/>
-        作品依九個系列分類：春信、青嵐、紅葉、雪明、潮聲、山水、街、Xpan、銀鹽。與其說是有計畫的專案，更像是被光與季節推著走的紀錄。它們合起來，是一份緩慢的觀看。
-      </p>
-    </div>
-    <div class="hero-cover">
-      <img src="images/photography/dscf6313_2.jpg" alt="嵐山 ・ 紅葉樹下，河邊的自己" />
-      <div class="cap">
-        <div class="t">嵐山</div>
-        <div class="m">紅葉樹下，河邊的自己</div>
-      </div>
-    </div>
+    <p class="hero-eyebrow">第三室 · 縁側 ENGAWA</p>
+    <h1 class="hero-title">攝影</h1>
+    <p class="hero-sub">PHOTOGRAPHY · 9 系列 · 162 件作品</p>
+    <p class="hero-desc">
+      内と外の境。庭が一冊の本となる場所。<br/>
+      於我而言，攝影是一種觀察與敘事的方法。將近三十年來，它與研究並行——一種以文字深入，一種以光影靠近。<br/>
+      作品依九個系列分類：春信、青嵐、紅葉、雪明、潮聲、山水、街、Xpan、銀鹽。與其說是有計畫的專案，更像是被光與季節推著走的紀錄。它們合起來，是一份緩慢的觀看。
+    </p>
   </div>
 </section>
 
-<div class="switch-wrap">
-  <div class="switch-bar">
-    <div class="switch-label">覗き方 · VIEW</div>
-    <div class="switch-buttons">
-      <button class="switch-btn is-active" data-view="masonry"><span class="jp">瀑布</span>MASONRY</button>
-      <button class="switch-btn" data-view="scroll"><span class="jp">巻軸</span>HORIZONTAL</button>
-      <button class="switch-btn" data-view="grid"><span class="jp">網</span>GRID</button>
-    </div>
-  </div>
+<div class="ph-index">
+  <p class="ph-index-eyebrow"><span class="jp">主題</span>· SERIES</p>
+  <ul class="ph-index-list" id="series-index"></ul>
 </div>
 
 <div class="series-content">
-  <div class="series-view v-masonry is-active" data-view-pane="masonry" id="view-masonry"></div>
-  <div class="series-view v-scroll" data-view-pane="scroll">
-    <div class="v-scroll-inner" id="view-scroll"></div>
-    <div class="v-scroll-hint">← 横にスクロール →</div>
-  </div>
-  <div class="series-view v-grid" data-view-pane="grid" id="view-grid"></div>
+  <div class="series-view v-masonry is-active" id="view-masonry"></div>
 </div>
 
 <footer>
@@ -447,36 +356,16 @@
   <span>令和八年 ・ 夏 ・ 縁側</span>
 </footer>
 
-<!-- Book mode overlay (single-page + flip animation) -->
-<div class="book-overlay" id="book" role="dialog" aria-modal="true" aria-hidden="true">
-  <div class="book-top">
-    <div class="series-label">
-      <div class="t" id="book-series"></div>
-      <div class="meta" id="book-series-meta"></div>
-    </div>
-    <button class="book-close" id="book-close" type="button" aria-label="關閉">×</button>
-  </div>
-  <div class="book-stage">
-    <div class="book-page" id="book-page">
-      <div class="book-photo-wrap">
-        <img class="book-photo" id="book-img" alt="" />
-        <div class="book-spine" aria-hidden="true"></div>
-        <div class="book-edge-left" aria-hidden="true"></div>
-        <div class="book-edge-right" aria-hidden="true"></div>
-      </div>
-      <div class="book-caption">
-        <div class="b-title" id="book-title">
-          <span id="book-title-jp"></span>
-          <span class="romaji" id="book-title-en"></span>
-        </div>
-        <div class="b-haiku-jp" id="book-haiku-jp"></div>
-        <div class="b-haiku-zh" id="book-haiku-zh"></div>
-      </div>
-    </div>
-  </div>
-  <button class="book-nav prev" id="book-prev" type="button" aria-label="前">‹</button>
-  <button class="book-nav next" id="book-next" type="button" aria-label="次">›</button>
-  <div class="book-counter"><span class="num" id="book-num"></span> / <span id="book-denom"></span></div>
+<!-- Classic lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="lightbox-close" id="lightbox-close" type="button" aria-label="關閉">×</button>
+  <button class="lightbox-prev" id="lightbox-prev" type="button" aria-label="前">‹</button>
+  <button class="lightbox-next" id="lightbox-next" type="button" aria-label="次">›</button>
+  <figure class="lightbox-figure">
+    <img class="lightbox-img" id="lightbox-img" alt="" />
+    <figcaption class="lightbox-caption" id="lightbox-caption"></figcaption>
+  </figure>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
 </div>
 
 <script src="js/photo-data.js"></script>
@@ -502,26 +391,23 @@
 
   // ── Render series cards into each view
   function renderViews() {
-    const views = {
-      masonry: document.getElementById('view-masonry'),
-      scroll: document.getElementById('view-scroll'),
-      grid: document.getElementById('view-grid'),
-    };
+    const masonry = document.getElementById('view-masonry');
+    const indexList = document.getElementById('series-index');
+    const heights = [320, 240, 380, 260, 340, 220, 360, 280, 300];
     SERIES.forEach((sr, i) => {
       const photos = seriesIndex[sr.id] || [];
       const cover = photos[0] || photoData[0];
       const count = photos.length;
-
-      // MASONRY (varied heights)
-      const heights = [320, 240, 380, 260, 340, 220, 360, 280, 300];
-      const masonryCard = makeCard(sr, cover, count, { mode: 'masonry', height: heights[i % heights.length] });
-      views.masonry.appendChild(masonryCard);
-
-      // SCROLL
-      views.scroll.appendChild(makeCard(sr, cover, count, { mode: 'scroll' }));
-
-      // GRID
-      views.grid.appendChild(makeCard(sr, cover, count, { mode: 'grid' }));
+      // Masonry card
+      masonry.appendChild(makeCard(sr, cover, count, { mode: 'masonry', height: heights[i % heights.length] }));
+      // Series index entry
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.innerHTML = `<span class="name-jp">${sr.jp}</span><span class="name-en">${sr.en}<span class="count">${count}</span></span>`;
+      btn.addEventListener('click', () => openBook(sr.id, 0));
+      li.appendChild(btn);
+      indexList.appendChild(li);
     });
   }
 
@@ -555,89 +441,76 @@
 
   renderViews();
 
-  // ── View switcher
-  document.querySelectorAll('.switch-btn').forEach(b => b.addEventListener('click', () => {
-    const v = b.dataset.view;
-    document.querySelectorAll('.switch-btn').forEach(x => x.classList.toggle('is-active', x === b));
-    document.querySelectorAll('.series-view').forEach(p => p.classList.toggle('is-active', p.dataset.viewPane === v));
-  }));
-
-  // ── Book mode
-  let bookState = null; // { sr, photos, idx }
+  // ── Lightbox
+  // Classic lightbox
+  let lbState = null; // { sr, photos, idx }
   let isFlipping = false;
-  const bookEl = document.getElementById('book');
-  const pageEl = document.getElementById('book-page');
-  const imgEl = document.getElementById('book-img');
+  const lbEl = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbCap = document.getElementById('lightbox-caption');
+  const lbCounter = document.getElementById('lightbox-counter');
 
+  // Rebind: series cards open lightbox instead of book
   function openBook(seriesId, idx = 0) {
     const sr = SERIES.find(s => s.id === seriesId);
     const photos = seriesIndex[seriesId] || [];
     if (!sr || photos.length === 0) return;
-    bookState = { sr, photos, idx };
+    lbState = { sr, photos, idx };
     document.body.classList.add('is-book-open');
-    bookEl.classList.add('is-open');
-    bookEl.setAttribute('aria-hidden', 'false');
-    renderBook();
+    lbEl.classList.add('is-open');
+    lbEl.setAttribute('aria-hidden', 'false');
+    renderLb();
   }
-
-  function closeBook() {
-    bookState = null;
+  function closeLb() {
+    lbState = null;
     document.body.classList.remove('is-book-open');
-    bookEl.classList.remove('is-open');
-    bookEl.setAttribute('aria-hidden', 'true');
+    lbEl.classList.remove('is-open');
+    lbEl.setAttribute('aria-hidden', 'true');
   }
-
-  function nextBook() {
-    if (!bookState || isFlipping) return;
-    if (bookState.idx < bookState.photos.length - 1) flipTo(bookState.idx + 1, 'next');
+  function nextLb() {
+    if (!lbState || isFlipping) return;
+    if (lbState.idx < lbState.photos.length - 1) flipTo(lbState.idx + 1);
   }
-  function prevBook() {
-    if (!bookState || isFlipping) return;
-    if (bookState.idx > 0) flipTo(bookState.idx - 1, 'prev');
+  function prevLb() {
+    if (!lbState || isFlipping) return;
+    if (lbState.idx > 0) flipTo(lbState.idx - 1);
   }
-
-  function flipTo(newIdx, dir) {
+  function flipTo(newIdx) {
     isFlipping = true;
-    pageEl.classList.add(dir === 'next' ? 'flip-out-next' : 'flip-out-prev');
+    lbImg.classList.add('is-flipping');
     setTimeout(() => {
-      bookState.idx = newIdx;
-      renderBook();
-      pageEl.classList.remove('flip-out-next', 'flip-out-prev');
-      pageEl.classList.add(dir === 'next' ? 'flip-in-next' : 'flip-in-prev');
-      setTimeout(() => {
-        pageEl.classList.remove('flip-in-next', 'flip-in-prev');
-        isFlipping = false;
-      }, 450);
-    }, 450);
+      lbState.idx = newIdx;
+      renderLb();
+      lbImg.classList.remove('is-flipping');
+      isFlipping = false;
+    }, 250);
   }
-
-  function renderBook() {
-    const { sr, photos, idx } = bookState;
+  function renderLb() {
+    const { sr, photos, idx } = lbState;
     const photo = photos[idx];
-    document.getElementById('book-series').textContent = sr.jp;
-    document.getElementById('book-series-meta').textContent = `${sr.romaji} ・ ${sr.en} ・ ${sr.place}`;
-    imgEl.src = photo.src;
-    imgEl.alt = photo.title_zh || ('No. ' + photo.num);
-    document.getElementById('book-title-jp').textContent =
-      `No. ${photo.num} ・ ${photo.title_jp || photo.title_zh || ''}`;
-    document.getElementById('book-title-en').textContent = photo.title_en || '';
-    document.getElementById('book-haiku-jp').textContent = (photo.haiku_jp || '').replace(/／/g, '・');
-    document.getElementById('book-haiku-zh').textContent = (photo.haiku_zh || '').replace(/／/g, '・');
-    document.getElementById('book-num').textContent = String(idx + 1).padStart(3, '0');
-    document.getElementById('book-denom').textContent = String(photos.length).padStart(3, '0');
-    document.getElementById('book-prev').disabled = idx === 0;
-    document.getElementById('book-next').disabled = idx === photos.length - 1;
+    lbImg.src = photo.src;
+    lbImg.alt = photo.title_zh || ('No. ' + photo.num);
+    const titleZh = photo.title_zh || photo.title_jp || '';
+    const titleJp = photo.title_jp || '';
+    const haikuJp = (photo.haiku_jp || '').replace(/[／\/]\s*/g, '<br>');
+    const haikuZh = (photo.haiku_zh || '').replace(/[／\/]\s*/g, '<br>');
+    let html = '';
+    if (titleZh) html += `<div class="lb-title">No. ${photo.num} ・ ${titleZh}${titleJp && titleJp !== titleZh ? `<span class="romaji">${titleJp}</span>` : ''}</div>`;
+    if (haikuJp) html += `<div class="lb-haiku-jp">${haikuJp}</div>`;
+    if (haikuZh) html += `<div class="lb-haiku-zh">${haikuZh}</div>`;
+    lbCap.innerHTML = html;
+    lbCounter.textContent = `${sr.jp} ・ ${String(idx + 1).padStart(3, '0')} / ${String(photos.length).padStart(3, '0')}`;
   }
-
-  document.getElementById('book-close').addEventListener('click', closeBook);
-  document.getElementById('book-prev').addEventListener('click', prevBook);
-  document.getElementById('book-next').addEventListener('click', nextBook);
-  bookEl.addEventListener('click', e => { if (e.target === bookEl) closeBook(); });
+  document.getElementById('lightbox-close').addEventListener('click', closeLb);
+  document.getElementById('lightbox-prev').addEventListener('click', e => { e.stopPropagation(); prevLb(); });
+  document.getElementById('lightbox-next').addEventListener('click', e => { e.stopPropagation(); nextLb(); });
+  lbEl.addEventListener('click', e => { if (e.target === lbEl) closeLb(); });
+  document.querySelector('.lightbox-figure').addEventListener('click', e => e.stopPropagation());
   document.addEventListener('keydown', e => {
-    if (!bookState) return;
-    if (e.key === 'Escape') closeBook();
-    else if (e.key === 'ArrowRight') nextBook();
-    else if (e.key === 'ArrowLeft') prevBook();
+    if (!lbState) return;
+    if (e.key === 'Escape') closeLb();
+    else if (e.key === 'ArrowRight') nextLb();
+    else if (e.key === 'ArrowLeft') prevLb();
   });
 </script>
 
