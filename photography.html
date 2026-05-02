@@ -75,55 +75,66 @@
     .hero-desc { margin-top: 32px; font-size: 18px; line-height: 1.95; opacity: 0.82; max-width: 760px; }
     .hero-desc .jp { display: block; font-family: var(--jp); font-size: 16px; opacity: 0.85; margin-bottom: 8px; }
 
-    .ph-index { padding: 32px 60px 0; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
-    .ph-index-eyebrow { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; color: var(--accent); text-transform: uppercase; margin-bottom: 1.2rem; }
-    .ph-index-eyebrow .jp { font-family: var(--jp); margin-right: 0.5em; letter-spacing: 0.4em; text-transform: none; color: var(--ink); }
-    .ph-index-list { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; border-top: 1px solid rgba(31,31,29,0.18); border-bottom: 1px solid rgba(31,31,29,0.18); }
-    .ph-index-list li { flex: 1 0 auto; border-right: 1px solid rgba(31,31,29,0.10); }
-    .ph-index-list li:last-child { border-right: none; }
-    .ph-index-list button {
-      display: block; width: 100%;
-      background: transparent; border: none;
-      padding: 1.1rem 1.4rem; cursor: pointer;
-      text-align: left; color: var(--ink); font-family: inherit;
-      transition: background 0.3s;
+    /* ── Series rows (9 categories top→bottom, each scrolls horizontally) ── */
+    .series-rows { padding: 24px 0 80px; max-width: 1320px; margin: 0 auto; position: relative; z-index: 2; }
+    .series-row { padding: 32px 0 28px; border-top: 1px solid rgba(31,31,29,0.16); }
+    .series-row:first-child { border-top: none; padding-top: 16px; }
+    .series-row-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 16px; padding: 0 60px 18px;
     }
-    .ph-index-list button:hover { background: rgba(31,31,29,0.05); }
-    .ph-index-list .name-jp { display: block; font-family: var(--brush); font-size: 1.2rem; letter-spacing: 0.12em; margin-bottom: 0.25rem; }
-    .ph-index-list .name-en { display: block; font-family: var(--display); font-style: italic; font-size: 0.78rem; color: rgba(31,31,29,0.55); letter-spacing: 0.08em; }
-    .ph-index-list .count { font-family: var(--sans); font-size: 0.7rem; color: var(--accent); margin-left: 0.4rem; font-style: normal; }
-
-    .series-content { padding: 40px 60px 80px; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
-    .series-view { display: none; }
-    .series-view.is-active { display: block; }
-
-    .series-card {
-      background: transparent; border: none; padding: 0;
-      cursor: pointer; display: block; width: 100%;
-      text-align: left; color: inherit; font-family: inherit;
+    .series-row-title { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+    .series-row-jp { font-family: var(--brush); font-size: 34px; letter-spacing: 0.06em; line-height: 1; }
+    .series-row-en {
+      font-family: var(--display); font-style: italic;
+      font-size: 14px; letter-spacing: 0.06em; opacity: 0.65;
     }
-    .series-cover { position: relative; width: 100%; overflow: hidden; background: rgba(31,31,29,0.08); }
-    .series-cover img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-    .series-card:hover .series-cover img { transform: scale(1.04); }
-    .series-cover .label { position: absolute; left: 14px; bottom: 12px; color: #f8f0dc; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
-    .series-cover .label .t { font-family: var(--brush); font-size: 22px; letter-spacing: 0.08em; }
-    .series-cover .label .meta { font-size: 11px; letter-spacing: 0.2em; opacity: 0.85; margin-top: 4px; font-style: italic; }
-    .series-meta-row { margin-top: 8px; display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.2em; opacity: 0.6; font-family: var(--sans); text-transform: uppercase; }
+    .series-row-meta {
+      font-family: var(--sans); font-size: 11px; opacity: 0.55;
+      letter-spacing: 0.2em; white-space: nowrap; text-transform: uppercase;
+    }
+    .series-row-meta .count-num { color: var(--accent); margin-right: 0.4em; }
+    .series-row-meta .place { margin-left: 14px; font-style: italic; text-transform: none; letter-spacing: 0.08em; opacity: 0.85; font-family: var(--display); }
 
-    .v-masonry { columns: 3; column-gap: 16px; }
-    .v-masonry .series-card { break-inside: avoid; margin-bottom: 16px; }
+    .series-row-scroll {
+      display: flex; gap: 12px;
+      overflow-x: auto; overflow-y: hidden;
+      padding: 4px 60px 18px;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-color: rgba(31,31,29,0.25) transparent;
+    }
+    .series-row-scroll::-webkit-scrollbar { height: 6px; }
+    .series-row-scroll::-webkit-scrollbar-track { background: transparent; }
+    .series-row-scroll::-webkit-scrollbar-thumb { background: rgba(31,31,29,0.20); border-radius: 3px; }
+    .series-row-scroll::-webkit-scrollbar-thumb:hover { background: rgba(31,31,29,0.35); }
 
-    .v-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 24px; }
-    .v-scroll-inner { display: flex; gap: 16px; padding-right: 60px; }
-    .v-scroll .series-card { flex: 0 0 320px; }
-    .v-scroll .series-cover { width: 320px; height: 440px; }
-    .v-scroll .series-foot { width: 320px; margin-top: 10px; }
-    .v-scroll-hint { margin-top: 8px; font-size: 10px; opacity: 0.5; letter-spacing: 0.3em; text-align: right; font-family: var(--sans); text-transform: uppercase; }
-
-    .v-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .v-grid .series-cover { aspect-ratio: 3/4; }
-    .v-grid .series-cover .label .t { font-size: 18px; }
-    .v-grid .series-cover .label .meta { font-size: 10px; }
+    .thumb {
+      flex: 0 0 auto;
+      height: 240px;
+      background: rgba(31,31,29,0.08);
+      border: none; padding: 0; margin: 0;
+      cursor: pointer; position: relative;
+      overflow: hidden;
+      scroll-snap-align: start;
+      transition: transform 0.3s ease;
+    }
+    .thumb img {
+      height: 100%; width: auto;
+      display: block; object-fit: cover;
+      transition: transform 0.5s ease, filter 0.3s ease;
+      filter: saturate(0.95);
+    }
+    .thumb:hover img { transform: scale(1.04); filter: saturate(1.05); }
+    .thumb-num {
+      position: absolute; left: 8px; bottom: 6px;
+      font-family: var(--sans); font-size: 9px;
+      letter-spacing: 0.18em; color: #f8f0dc;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+      opacity: 0; transition: opacity 0.25s;
+      pointer-events: none;
+    }
+    .thumb:hover .thumb-num { opacity: 0.9; }
 
     footer {
       border-top: 1px solid var(--line);
@@ -278,16 +289,15 @@
       .hero-sub { font-size: 11px; letter-spacing: 0.22em; }
       .hero-desc { font-size: 16px; margin-top: 24px; }
 
-      .ph-index { padding: 22px 22px 0; }
-      .ph-index-list { flex-direction: column; }
-      .ph-index-list li { flex: 1 1 auto; border-right: none; border-bottom: 1px solid rgba(31,31,29,0.10); }
-      .ph-index-list li:last-child { border-bottom: none; }
-      .ph-index-list button { padding: 0.9rem 1.1rem; }
-      .ph-index-list .name-jp { font-size: 1.1rem; }
-      .ph-index-list .name-en { font-size: 0.7rem; }
-
-      .series-content { padding: 28px 22px 56px; }
-      .v-masonry { columns: 1; }
+      .series-rows { padding: 14px 0 56px; }
+      .series-row { padding: 22px 0 18px; }
+      .series-row-head { padding: 0 22px 12px; gap: 10px; }
+      .series-row-jp { font-size: 26px; }
+      .series-row-en { font-size: 12px; letter-spacing: 0.04em; }
+      .series-row-meta { font-size: 10px; }
+      .series-row-meta .place { margin-left: 8px; }
+      .series-row-scroll { padding: 4px 22px 14px; gap: 8px; }
+      .thumb { height: 180px; }
 
       .lightbox { padding: 1rem; }
       .lightbox-figure { flex-direction: column; gap: 1rem; max-width: 96vw; max-height: 92vh; }
@@ -357,18 +367,11 @@
   </div>
 </section>
 
-<div class="ph-index">
-  <p class="ph-index-eyebrow"><span class="jp">主題</span>· SERIES</p>
-  <ul class="ph-index-list" id="series-index"></ul>
-</div>
-
-<div class="series-content">
-  <div class="series-view v-masonry is-active" id="view-masonry"></div>
-</div>
+<div class="series-rows" id="series-rows"></div>
 
 <footer>
   <span>YEH CHUNG-YANG</span>
-  <span>Reiwa 8 ・ Summer ・ Engawa</span>
+  <span>Reiwa 8 ・ Spring ・ Engawa</span>
 </footer>
 
 <!-- Classic lightbox -->
@@ -402,51 +405,46 @@
     seriesIndex[sr.id] = photoData.filter(p => p.themes && p.themes.includes(sr.id));
   });
 
-  function renderViews() {
-    const masonry = document.getElementById('view-masonry');
-    const indexList = document.getElementById('series-index');
-    const heights = [320, 240, 380, 260, 340, 220, 360, 280, 300];
-    SERIES.forEach((sr, i) => {
+  // ── Render 9 series rows, each with horizontal-scroll thumbnails
+  function renderRows() {
+    const root = document.getElementById('series-rows');
+    SERIES.forEach(sr => {
       const photos = seriesIndex[sr.id] || [];
-      const cover = photos[0] || photoData[0];
-      const count = photos.length;
-      masonry.appendChild(makeCard(sr, cover, count, { mode: 'masonry', height: heights[i % heights.length] }));
-      const li = document.createElement('li');
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.innerHTML = `<span class="name-jp">${sr.jp}</span><span class="name-en">${sr.en}<span class="count">${count}</span></span>`;
-      btn.addEventListener('click', () => openBook(sr.id, 0));
-      li.appendChild(btn);
-      indexList.appendChild(li);
+      if (photos.length === 0) return;
+
+      const row = document.createElement('section');
+      row.className = 'series-row';
+      row.dataset.seriesId = sr.id;
+
+      const head = document.createElement('div');
+      head.className = 'series-row-head';
+      head.innerHTML = `
+        <div class="series-row-title">
+          <span class="series-row-jp">${sr.jp}</span>
+          <span class="series-row-en">${sr.romaji} · ${sr.en}</span>
+        </div>
+        <div class="series-row-meta"><span class="count-num">${photos.length}</span>frames<span class="place">${sr.place}</span></div>
+      `;
+
+      const scroll = document.createElement('div');
+      scroll.className = 'series-row-scroll';
+      photos.forEach((p, i) => {
+        const t = document.createElement('button');
+        t.className = 'thumb';
+        t.type = 'button';
+        const alt = p.title_en || p.title_jp || ('No.' + p.num);
+        t.innerHTML = `<img src="${p.src}" alt="${alt}" loading="lazy"><span class="thumb-num">No.${p.num}</span>`;
+        t.addEventListener('click', () => openBook(sr.id, i));
+        scroll.appendChild(t);
+      });
+
+      row.appendChild(head);
+      row.appendChild(scroll);
+      root.appendChild(row);
     });
   }
 
-  function makeCard(sr, cover, count, opts) {
-    const btn = document.createElement('button');
-    btn.className = 'series-card';
-    btn.type = 'button';
-    btn.dataset.seriesId = sr.id;
-    btn.addEventListener('click', () => openBook(sr.id, 0));
-
-    const coverDiv = document.createElement('div');
-    coverDiv.className = 'series-cover';
-    if (opts.mode === 'masonry') coverDiv.style.height = (opts.height || 280) + 'px';
-
-    const img = document.createElement('img');
-    img.src = cover.src; img.alt = sr.en; img.loading = 'lazy';
-    coverDiv.appendChild(img);
-
-    const label = document.createElement('div');
-    label.className = 'label';
-    label.innerHTML = `<div class="t">${sr.jp}</div><div class="meta">${count} frames ・ ${sr.place}</div>`;
-    coverDiv.appendChild(label);
-    btn.appendChild(coverDiv);
-
-    // No bottom label row — overlay on photo is sufficient
-    return btn;
-  }
-
-  renderViews();
+  renderRows();
 
   // Classic lightbox
   let lbState = null;
