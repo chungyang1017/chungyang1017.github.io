@@ -3,251 +3,283 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>East Asia Frontline ・ Chung-Yang Yeh</title>
-  <meta name="description" content="A column observing the shifting under-currents of Japan, Korea, Taiwan, and China — from manga, popular culture, and social data." />
-  <link rel="alternate" hreflang="zh-Hant" href="index.html" />
+  <title>Chung-Yang Yeh ・ Zuihitsu ・ East Asia Frontline</title>
+  <meta name="description" content="A column by Chung-Yang Yeh on East Asian politics and society — reading Japan, Korea, Taiwan, and China through manga, popular culture, and social data." />
   <link rel="alternate" hreflang="en" href="index-en.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="index.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Noto+Serif+JP:wght@200;300;400;500&family=Noto+Serif+TC:wght@200;300;400;500&family=Shippori+Mincho:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
+    /* ── Spring 書院 palette (matches site) ───────── */
     :root {
-      --sumi: #15110d; --ink: #1a1714;
-      --ink-mid: #5a534d; --ink-mute: #9a938c;
-      --washi: #f5f0e6; --washi-warm: #f8f3e8; --washi-soft: #fbf7ee;
-      --shu: #b13a2a; --kin: #a98146;
-      --line: rgba(21,17,13,0.10); --line-mid: rgba(21,17,13,0.18);
-      --jp: 'Noto Serif JP', 'Noto Serif TC', serif;
-      --tc: 'Noto Serif TC', 'Shippori Mincho', 'Noto Serif JP', serif;
+      --shoin-bg: #f5edd8;
+      --shoin-paper: #fcf6e6;
+      --moss: #5a7a4a;
+      --accent: #d98aa8;        /* sakura */
+      --water: #7a9aa8;
+      --ink: #2a2a28;
+      --ink-deep: #2a2624;
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
       --display: 'Cormorant Garamond', serif;
       --sans: 'Inter', 'Helvetica Neue', sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 17px; scroll-behavior: smooth; }
+    html, body { height: 100%; }
     body {
-      font-family: var(--display); background: var(--washi); color: var(--ink);
-      -webkit-font-smoothing: antialiased; line-height: 1.85; font-weight: 400;
-      background-image:
-        radial-gradient(rgba(169,129,70,0.03) 1px, transparent 1px),
-        radial-gradient(rgba(21,17,13,0.022) 1px, transparent 1px);
-      background-size: 32px 32px, 19px 19px;
-      background-position: 0 0, 16px 16px;
+      font-family: var(--display);
+      background: var(--shoin-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
-    nav.top {
-      position: sticky; top: 0; z-index: 30;
-      background: rgba(245,240,230,0.92); backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-    nav.top .inner {
-      max-width: 1200px; margin: 0 auto;
-      padding: 1.05rem 2.5rem;
+
+    .top {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(245,237,216,0.93);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      padding: 14px 48px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .top-logo { font-family: var(--display); font-style: italic; font-size: 0.95rem; color: var(--sumi); text-decoration: none; letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 0.6rem; }
-    .top-logo .nav-back { color: var(--shu); transition: transform 0.3s; }
-    .top-logo:hover .nav-back { transform: translateX(-3px); }
-    .top-section { font-family: var(--display); font-style: italic; font-size: 0.9rem; color: var(--ink-mid); letter-spacing: 0.1em; }
-    .top-lang { font-size: 0.72rem; letter-spacing: 0.18em; color: var(--ink-mute); }
-    .top-lang a { color: var(--ink-mute); text-decoration: none; transition: color 0.2s; }
-    .top-lang a:hover { color: var(--shu); }
-    .top-lang .current { color: var(--sumi); font-weight: 500; }
-    .top-lang .sep { opacity: 0.4; margin: 0 0.4rem; }
+    .top-left { display: flex; align-items: center; gap: 16px; }
+    .back { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .name-block { display: inline-flex; align-items: baseline; gap: 8px; }
+    .name-jp { font-family: var(--brush); font-size: 22px; letter-spacing: 0.1em; }
+    .name-en { font-family: var(--sans); font-style: italic; font-size: 13px; letter-spacing: 0.06em; opacity: 0.7; }
+    .nav { display: flex; gap: 24px; font-size: 12px; letter-spacing: 0.25em; font-family: var(--sans); text-transform: uppercase; }
+    .nav a { color: var(--ink); text-decoration: none; opacity: 0.5; padding-bottom: 4px; }
+    .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
+    .nav .nav-jp { font-size: 9px; opacity: 0.55; letter-spacing: 0.18em; margin-left: 2px; font-family: var(--jp); text-transform: none; }
+    .nav .lang { border-left: 1px solid var(--line); padding-left: 24px; font-family: var(--sans); }
 
     .hero {
-      max-width: 1100px; margin: 0 auto;
-      padding: 6rem 2rem 4rem;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
-      align-items: end;
+      position: relative;
+      min-height: 62vh;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+      background: var(--ink-deep);
+      color: var(--shoin-bg);
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.78;
+    }
+    .hero-veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(42,38,36,0) 35%, rgba(42,38,36,0.85) 100%);
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      padding: 80px 60px 50px;
+      max-width: 1280px; margin: 0 auto;
+      width: 100%;
     }
     .hero-eyebrow {
-      font-family: var(--display); font-style: italic;
-      font-size: 0.92rem; color: var(--shu);
-      letter-spacing: 0.22em; text-transform: uppercase;
-      margin-bottom: 1.4rem;
-      display: flex; align-items: center; gap: 0.85rem;
+      font-size: 11px; letter-spacing: 0.5em;
+      opacity: 0.7; margin-bottom: 18px;
+      font-family: var(--sans); text-transform: uppercase;
     }
-    .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--shu); }
-    .hero h1 {
-      font-family: var(--display); font-weight: 400;
-      font-size: clamp(2.6rem, 4.8vw, 3.8rem);
-      line-height: 1.1; letter-spacing: 0.005em;
-      color: var(--sumi); margin-bottom: 1rem;
+    .hero-eyebrow .jp { font-family: var(--jp); margin-right: 0.4em; letter-spacing: 0.4em; text-transform: none; }
+    .hero-title {
+      margin: 0; font-family: var(--brush);
+      font-size: clamp(38px, 5.5vw, 72px);
+      font-weight: 400;
+      line-height: 1.05; letter-spacing: 0.04em;
+      white-space: nowrap;
     }
-    .hero h1 .sub {
-      display: block;
-      font-family: var(--tc); font-weight: 300;
-      font-size: clamp(1.15rem, 1.6vw, 1.5rem);
-      letter-spacing: 0.18em;
-      color: var(--ink-mid);
-      margin-top: 0.6rem;
+    .hero-sub-zh {
+      margin-top: 14px; font-family: var(--jp);
+      font-size: 16px; letter-spacing: 0.16em;
+      opacity: 0.78;
     }
-    .hero-text p { font-size: 1.05rem; line-height: 2.05; color: var(--ink-mid); margin-bottom: 1.4rem; }
-    .hero-meta { font-family: var(--display); font-style: italic; font-size: 0.85rem; color: var(--ink-mute); letter-spacing: 0.12em; }
-    .hero-text a { color: var(--shu); }
+    .hero-desc {
+      margin-top: 28px; font-family: var(--display);
+      font-size: 17px; line-height: 1.95;
+      opacity: 0.88; max-width: 640px;
+    }
+    .hero-desc a { color: var(--accent); text-decoration: none; }
+    .hero-desc a:hover { text-decoration: underline; }
 
     .articles {
-      max-width: 1100px; margin: 0 auto;
-      padding: 2rem 2rem 6rem;
-      border-top: 1px solid var(--line-mid);
+      max-width: 1280px; margin: 0 auto;
+      padding: 56px 60px 30px;
     }
     .articles-eyebrow {
-      font-family: var(--display); font-style: italic;
-      font-size: 0.78rem; letter-spacing: 0.22em;
-      color: var(--shu); text-transform: uppercase;
-      margin: 2.5rem 0 2rem;
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.4rem;
     }
-    .articles-eyebrow::before {
-      content: ''; display: inline-block;
-      width: 18px; height: 1px; background: var(--shu);
-      vertical-align: middle; margin-right: 0.6rem; transform: translateY(-2px);
-    }
+    .articles-eyebrow .jp { font-family: var(--jp); margin-right: 0.5em; letter-spacing: 0.4em; text-transform: none; color: var(--ink); }
 
     .article-card {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 2.5rem;
-      padding: 2.5rem 0;
-      border-bottom: 1px solid var(--line);
-      text-decoration: none;
-      color: var(--ink);
-      transition: background 0.3s ease;
+      display: grid; grid-template-columns: 110px 1fr;
+      gap: 36px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line-soft);
+      text-decoration: none; color: var(--ink);
+      transition: background 0.25s ease;
     }
-    .article-card:hover { background: rgba(255,255,255,0.4); }
-    .article-card:first-of-type { border-top: 1px solid var(--line-mid); }
+    .article-card:hover { background: rgba(252,246,230,0.5); }
+    .article-card:first-of-type { border-top: 1px solid var(--line); }
 
     .card-num {
-      font-family: var(--display); font-style: italic;
-      font-size: 1rem; color: var(--shu);
-      letter-spacing: 0.16em;
-      text-align: right; padding-top: 0.3rem;
+      font-family: var(--brush); font-size: 22px;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-align: right; padding-top: 4px;
     }
     .card-num .date {
-      display: block;
-      font-size: 0.72rem;
-      color: var(--ink-mute); margin-top: 0.55rem;
-      letter-spacing: 0.08em;
-      font-style: normal;
+      display: block; font-family: var(--sans);
+      font-size: 11px; letter-spacing: 0.18em;
+      color: var(--ink); opacity: 0.55;
+      margin-top: 0.55rem;
     }
     .card-num .tag {
       display: inline-block;
-      margin-top: 0.6rem;
-      font-size: 0.7rem; letter-spacing: 0.18em;
-      color: var(--shu);
-      padding: 0.2rem 0.55rem;
-      border: 1px solid rgba(177,58,42,0.35);
+      margin-top: 0.55rem;
+      font-family: var(--sans);
+      font-size: 9px; letter-spacing: 0.22em;
+      color: var(--accent);
+      padding: 0.22rem 0.6rem;
+      border: 1px solid rgba(217,138,168,0.5);
       text-transform: uppercase;
-      font-style: normal;
     }
 
     .card-content h2 {
-      font-family: var(--display); font-weight: 500;
-      font-size: 1.5rem;
+      font-family: var(--display); font-style: italic;
+      font-weight: 500; font-size: 1.55rem;
       line-height: 1.4;
-      color: var(--sumi);
-      margin-bottom: 0.6rem;
-      letter-spacing: 0.005em;
-      transition: color 0.3s;
+      margin: 0 0 0.55rem;
+      letter-spacing: 0.02em;
+      transition: color 0.25s;
     }
-    .article-card:hover h2 { color: var(--shu); }
-
+    .article-card:hover .card-content h2 { color: var(--accent); }
     .card-subtitle {
-      font-family: var(--tc); font-weight: 300;
-      font-size: 1rem; color: var(--ink-mid);
-      margin-bottom: 1.1rem;
+      font-family: var(--jp);
+      font-size: 0.98rem; opacity: 0.7;
+      margin-bottom: 1rem;
       letter-spacing: 0.04em;
     }
-
     .card-excerpt {
-      font-family: var(--display);
       font-size: 1rem; line-height: 1.85;
-      color: var(--ink-mid);
+      opacity: 0.82;
     }
-
     .card-arrow {
       display: inline-block;
-      margin-top: 0.8rem;
-      font-family: var(--display); font-style: italic;
-      font-size: 0.92rem; color: var(--shu);
-      letter-spacing: 0.06em;
-      transition: transform 0.3s;
+      margin-top: 0.9rem;
+      font-family: var(--sans); font-size: 0.82rem;
+      letter-spacing: 0.18em; color: var(--accent);
+      text-transform: uppercase;
+      transition: transform 0.25s;
     }
     .article-card:hover .card-arrow { transform: translateX(4px); }
 
     .mission {
-      max-width: 720px; margin: 4rem auto 2rem;
-      padding: 0 2rem;
-      font-family: var(--display);
-      font-size: 1rem; line-height: 1.85;
-      color: var(--ink-mid);
-      text-align: center; font-style: italic;
+      max-width: 720px; margin: 50px auto 30px;
+      padding: 0 32px;
+      font-family: var(--display); font-style: italic;
+      font-size: 1.15rem; line-height: 1.95;
+      opacity: 0.7;
+      text-align: center;
+      letter-spacing: 0.02em;
     }
     .mission::before, .mission::after {
-      content: '◇'; color: var(--shu);
-      display: block; margin: 0.5rem auto;
+      content: '◇';
+      color: var(--accent);
+      display: block;
+      margin: 0.7rem auto;
+      font-family: var(--sans);
+      font-size: 0.85rem;
     }
 
     footer {
-      padding: 2.5rem 2rem;
-      border-top: 1px solid var(--line);
-      background: var(--washi-warm);
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--ink-mute);
-      letter-spacing: 0.08em;
+      border-top: 1px solid var(--line-soft);
+      padding: 30px 60px;
+      max-width: 1280px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      font-size: 11px; opacity: 0.55; letter-spacing: 0.2em;
+      font-family: var(--sans); text-transform: uppercase;
     }
-    footer .sep { color: var(--ink-mute); opacity: 0.4; margin: 0 0.5rem; }
-    footer a { color: var(--ink-mid); text-decoration: none; }
-    footer a:hover { color: var(--shu); }
+    footer .links { display: flex; gap: 18px; }
+    footer .links a { color: var(--ink); text-decoration: none; opacity: 0.85; transition: opacity 0.2s; }
+    footer .links a:hover { opacity: 1; color: var(--accent); }
 
-    @media (max-width: 720px) {
-      .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem 3rem; }
-      .articles { padding: 1.5rem 1.5rem 4rem; }
-      .article-card { grid-template-columns: 1fr; gap: 1rem; padding: 1.8rem 0; }
-      .card-num { text-align: left; padding-top: 0; }
-      .card-num .date { display: inline; margin-left: 0.6rem; }
+    @media (max-width: 760px) {
+      .top { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
+      .top-left { gap: 10px; }
+      .back { font-size: 10px; letter-spacing: 0.22em; }
+      .name-jp { font-size: 16px; }
+      .name-en { font-size: 8px; }
+      .nav { gap: 12px; font-size: 10px; letter-spacing: 0.16em; }
+      .nav a.nav-sub { display: none; }
+      .nav .lang { padding-left: 12px; }
+
+      .hero { min-height: 48vh; }
+      .hero-inner { padding: 50px 22px 32px; }
+      .hero-title { font-size: clamp(28px, 8vw, 42px); white-space: nowrap; letter-spacing: 0.02em; }
+      .hero-sub-zh { font-size: 13px; }
+      .hero-desc { font-size: 15.5px; margin-top: 22px; }
+
+      .articles { padding: 32px 22px 16px; }
+      .article-card { grid-template-columns: 1fr; gap: 12px; padding: 22px 0; }
+      .card-num { text-align: left; padding-top: 0; font-size: 18px; }
+      .card-num .date { display: inline; margin-left: 12px; }
+      .card-num .tag { margin-left: 12px; }
+      .card-content h2 { font-size: 1.25rem; }
+
+      footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 10px; }
     }
   </style>
 </head>
 <body>
 
-<nav class="top">
-  <div class="inner">
-    <a href="../index-en.html" class="top-logo" title="Home"><span class="nav-back">←</span> Chung-Yang Yeh</a>
-    <span class="top-section">East Asia Frontline ・ 東亞觀察最前線</span>
-    <span class="top-lang">
-      <a href="index.html">中文</a>
-      <span class="sep">／</span>
-      <span class="current">EN</span>
+<header class="top">
+  <div class="top-left">
+    <a href="../index-en.html" class="back">← HOME</a>
+    <span class="top-sep">·</span>
+    <span class="name-block">
+      <span class="name-jp">葉崇揚</span>
+      <span class="name-en">（Chung-Yang Yeh）</span>
     </span>
   </div>
-</nav>
-
-<header class="hero">
-  <div class="hero-text">
-    <p class="hero-eyebrow">A Column ・ Frontline</p>
-    <h1>
-      East Asia Frontline
-      <span class="sub">東亞觀察最前線 ・ A Column by Chung-Yang Yeh</span>
-    </h1>
-  </div>
-  <div class="hero-text">
-    <p>
-      A column on the <em>East Asia that is happening now</em>. Japan, Korea, Taiwan, and China — four societies that, in the third decade of the twenty-first century, are each redefining what "modernity" means for themselves, at their own pace.
-    </p>
-    <p>
-      Here I write as a sociologist, but lighter — drawing on manga, popular culture, social data, and street observation to track shifts in the spiritual undercurrent of these societies. The strict academic writing lives on the <a href="../academic.html">Academic page</a>; this column is the lighter counterpart.
-    </p>
-    <p class="hero-meta">A Column ・ Quarterly ・ since 2026</p>
-  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="../index-en.html" class="nav-sub">Home <span class="nav-jp">(玄關)</span></a>
+    <a href="../academic.html" class="nav-sub">Academic <span class="nav-jp">(書院)</span></a>
+    <a href="../photography.html" class="nav-sub">Photography <span class="nav-jp">(縁側)</span></a>
+    <a href="index-en.html" class="is-current">Zuihitsu <span class="nav-jp">(隨筆)</span></a>
+    <a href="index.html" class="lang">中</a>
+  </nav>
 </header>
+
+<section class="hero">
+  <img class="hero-img" src="../images/photography/dscf3861_4.jpg" alt="" />
+  <div class="hero-veil"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow"><span class="jp">隨筆</span>· ZUIHITSU · A COLUMN</p>
+    <h1 class="hero-title">East Asia Frontline</h1>
+    <p class="hero-sub-zh">東亞觀察最前線 ・ A Column by Chung-Yang Yeh</p>
+    <p class="hero-desc">
+      A column on the <em>East Asia that is happening now</em>. Japan, Korea, Taiwan, and China — four societies that, in the third decade of the twenty-first century, are each redefining what "modernity" means for themselves, at their own pace. Drawing on manga, popular culture, social data, and street observation, this column tracks the spiritual undercurrents below the headlines. The strict academic writing lives on the <a href="../academic.html">Academic page</a>; this is the lighter counterpart.
+    </p>
+  </div>
+</section>
 
 <section class="articles">
 
-  <p class="articles-eyebrow">Articles</p>
+  <p class="articles-eyebrow"><span class="jp">最新</span>· ARTICLES</p>
 
   <a href="2026-takaichi-en.html" class="article-card">
     <div class="card-num">
-      No. 〇〇一
+      〇〇一
       <span class="date">2026.02.07</span>
       <span class="tag">Japan</span>
     </div>
@@ -268,13 +300,13 @@
 </aside>
 
 <footer>
-  © 2025 ・ Chung-Yang Yeh
-  <span class="sep">·</span>
-  Department of Sociology, Soochow University
-  <span class="sep">·</span>
-  <a href="../academic.html">Academic</a>
-  <span class="sep">·</span>
-  <a href="../index-en.html">Home</a>
+  <span>YEH CHUNG-YANG · ZUIHITSU</span>
+  <div class="links">
+    <a href="../index-en.html">Home</a>
+    <a href="../academic.html">Shoin</a>
+    <a href="../photography.html">Engawa</a>
+  </div>
+  <span>Reiwa 8 ・ Spring</span>
 </footer>
 
 </body>
