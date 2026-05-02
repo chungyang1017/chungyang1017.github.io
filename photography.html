@@ -66,34 +66,32 @@
       position: relative; z-index: 2;
       border-bottom: 1px solid rgba(31,31,29,0.06);
     }
-    .hero-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
+    .hero-inner { max-width: 1280px; margin: 0 auto; }
     .hero-eyebrow { font-size: 11px; letter-spacing: 0.5em; opacity: 0.5; margin-bottom: 16px; font-family: var(--sans); text-transform: uppercase; }
     .hero-eyebrow .jp { font-family: var(--jp); margin-right: 0.4em; letter-spacing: 0.4em; text-transform: none; }
     .hero-title { margin: 0; font-family: var(--brush); font-size: 88px; font-weight: 400; line-height: 1; letter-spacing: 0.05em; }
     .hero-title-en { margin-top: 18px; font-family: var(--display); font-style: italic; font-size: 26px; letter-spacing: 0.06em; opacity: 0.85; }
     .hero-sub { margin-top: 8px; font-size: 13px; letter-spacing: 0.3em; opacity: 0.55; font-family: var(--sans); text-transform: uppercase; }
-    .hero-desc { margin-top: 32px; font-size: 16px; line-height: 1.95; opacity: 0.78; max-width: 560px; }
+    .hero-desc { margin-top: 32px; font-size: 16px; line-height: 1.95; opacity: 0.78; max-width: 720px; }
     .hero-desc .jp { display: block; font-family: var(--jp); font-size: 14px; opacity: 0.85; margin-bottom: 8px; }
-    .hero-cover { position: relative; aspect-ratio: 4/3; overflow: hidden; }
-    .hero-cover img { width: 100%; height: 100%; object-fit: cover; }
-    .hero-cover .cap { position: absolute; left: 16px; bottom: 12px; color: #f8f0dc; font-size: 11px; letter-spacing: 0.2em; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
-    .hero-cover .cap .t { font-family: var(--brush); font-size: 18px; }
-    .hero-cover .cap .m { opacity: 0.85; margin-top: 2px; font-style: italic; }
 
-    .switch-wrap { padding: 32px 60px 0; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
-    .switch-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(31,31,29,0.20); padding-bottom: 16px; }
-    .switch-label { font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; font-family: var(--sans); text-transform: uppercase; }
-    .switch-label .jp { font-family: var(--jp); margin-right: 0.4em; letter-spacing: 0.4em; text-transform: none; }
-    .switch-buttons { display: flex; gap: 4px; }
-    .switch-btn {
-      background: transparent; color: var(--ink);
-      border: 1px solid var(--ink);
-      padding: 8px 16px; font-family: inherit;
-      font-size: 11px; letter-spacing: 0.2em; cursor: pointer;
-      text-transform: uppercase;
+    .ph-index { padding: 32px 60px 0; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
+    .ph-index-eyebrow { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; color: var(--accent); text-transform: uppercase; margin-bottom: 1.2rem; }
+    .ph-index-eyebrow .jp { font-family: var(--jp); margin-right: 0.5em; letter-spacing: 0.4em; text-transform: none; color: var(--ink); }
+    .ph-index-list { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; border-top: 1px solid rgba(31,31,29,0.18); border-bottom: 1px solid rgba(31,31,29,0.18); }
+    .ph-index-list li { flex: 1 0 auto; border-right: 1px solid rgba(31,31,29,0.10); }
+    .ph-index-list li:last-child { border-right: none; }
+    .ph-index-list button {
+      display: block; width: 100%;
+      background: transparent; border: none;
+      padding: 1.1rem 1.4rem; cursor: pointer;
+      text-align: left; color: var(--ink); font-family: inherit;
+      transition: background 0.3s;
     }
-    .switch-btn.is-active { background: var(--ink); color: var(--engawa-bg); }
-    .switch-btn .jp { font-family: var(--brush); margin-right: 8px; font-size: 13px; text-transform: none; }
+    .ph-index-list button:hover { background: rgba(31,31,29,0.05); }
+    .ph-index-list .name-jp { display: block; font-family: var(--brush); font-size: 1.2rem; letter-spacing: 0.12em; margin-bottom: 0.25rem; }
+    .ph-index-list .name-en { display: block; font-family: var(--display); font-style: italic; font-size: 0.78rem; color: rgba(31,31,29,0.55); letter-spacing: 0.08em; }
+    .ph-index-list .count { font-family: var(--sans); font-size: 0.7rem; color: var(--accent); margin-left: 0.4rem; font-style: normal; }
 
     .series-content { padding: 40px 60px 80px; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
     .series-view { display: none; }
@@ -275,41 +273,38 @@
       .nav .lang { padding-left: 14px; }
 
       .hero { padding: 50px 22px 32px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 28px; }
       .hero-title { font-size: 56px; }
       .hero-title-en { font-size: 20px; margin-top: 12px; }
       .hero-sub { font-size: 11px; letter-spacing: 0.22em; }
       .hero-desc { font-size: 14px; margin-top: 24px; }
-      .hero-cover { aspect-ratio: 16/10; }
 
-      .switch-wrap { padding: 24px 22px 0; }
-      .switch-bar { flex-direction: column; align-items: stretch; gap: 14px; padding-bottom: 14px; }
-      .switch-buttons { justify-content: flex-start; }
-      .switch-btn { padding: 7px 12px; font-size: 10px; letter-spacing: 0.18em; flex: 1; }
+      .ph-index { padding: 22px 22px 0; }
+      .ph-index-list { flex-direction: column; }
+      .ph-index-list li { flex: 1 1 auto; border-right: none; border-bottom: 1px solid rgba(31,31,29,0.10); }
+      .ph-index-list li:last-child { border-bottom: none; }
+      .ph-index-list button { padding: 0.9rem 1.1rem; }
+      .ph-index-list .name-jp { font-size: 1.1rem; }
+      .ph-index-list .name-en { font-size: 0.7rem; }
 
       .series-content { padding: 28px 22px 56px; }
       .v-masonry { columns: 1; }
-      .v-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .v-scroll .series-card { flex: 0 0 240px; }
-      .v-scroll .series-cover { width: 240px; height: 320px; }
-      .v-scroll .series-foot { width: 240px; }
 
-      .book-overlay { padding: 14px; }
-      .book-top { padding: 12px 16px; }
-      .book-title-block .t { font-size: 20px; }
-      .book-title-block .meta { font-size: 10px; }
-      .book-close { padding: 5px 10px; font-size: 9px; }
-      .book-spread { flex-direction: column-reverse; aspect-ratio: auto; height: calc(100vh - 100px); width: 100%; max-height: none; }
-      .book-page-left { width: 100%; height: 38%; padding: 18px 22px; box-shadow: none; border-top: 1px solid rgba(31,31,29,0.18); }
-      .book-page-left .p-title { font-size: 28px; }
-      .book-page-left .p-haiku { font-size: 12px; line-height: 1.95; margin-top: 10px; max-width: none; }
-      .book-page-left .p-pagenum .num { font-size: 18px; margin-top: 4px; }
-      .book-page-right { width: 100%; height: 62%; }
-      .book-spine { display: none; }
-      .book-nav { width: 40px; height: 40px; font-size: 14px; }
-      .book-nav.prev { left: 8px; }
-      .book-nav.next { right: 8px; }
-      .book-hint { display: none; }
+      .lightbox { padding: 1rem; }
+      .lightbox-figure { flex-direction: column; gap: 1rem; max-width: 96vw; max-height: 92vh; }
+      .lightbox-img { max-width: 92vw; max-height: 65vh; }
+      .lightbox-caption {
+        writing-mode: horizontal-tb;
+        flex-direction: column;
+        max-height: none;
+        text-align: center;
+        padding: 0;
+        gap: 0.6rem;
+      }
+      .lightbox-caption .lb-title { font-size: 11px; letter-spacing: 0.2em; }
+      .lightbox-caption .lb-haiku-jp { font-size: 1.05rem; line-height: 1.85; letter-spacing: 0.1em; }
+      .lightbox-caption .lb-haiku-en { font-size: 0.95rem; line-height: 1.7; letter-spacing: 0.04em; }
+      .lightbox-prev, .lightbox-next { width: 38px; height: 38px; font-size: 1.2rem; }
+      .lightbox-counter { font-size: 0.7rem; bottom: 0.6rem; }
 
       footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 10px; }
     }
@@ -359,34 +354,16 @@
         The work below is grouped into nine series — Spring, Summer, Autumn, Winter, Tideline, Landscape, Street, Xpan, and Silver Halide — each shaped less by deliberate project than by the rhythm of light and the seasons themselves. Together they form a slow record of looking.
       </p>
     </div>
-    <div class="hero-cover">
-      <img src="images/photography/dscf6313_2.jpg" alt="Arashiyama — a self beneath the maples" />
-      <div class="cap">
-        <div class="t">嵐山</div>
-        <div class="m">Arashiyama, beneath the autumn maples</div>
-      </div>
-    </div>
   </div>
 </section>
 
-<div class="switch-wrap">
-  <div class="switch-bar">
-    <div class="switch-label"><span class="jp">覗き方</span> · VIEW</div>
-    <div class="switch-buttons">
-      <button class="switch-btn is-active" data-view="masonry"><span class="jp">瀑布</span>Masonry</button>
-      <button class="switch-btn" data-view="scroll"><span class="jp">巻軸</span>Horizontal</button>
-      <button class="switch-btn" data-view="grid"><span class="jp">網</span>Grid</button>
-    </div>
-  </div>
+<div class="ph-index">
+  <p class="ph-index-eyebrow"><span class="jp">主題</span>· SERIES</p>
+  <ul class="ph-index-list" id="series-index"></ul>
 </div>
 
 <div class="series-content">
-  <div class="series-view v-masonry is-active" data-view-pane="masonry" id="view-masonry"></div>
-  <div class="series-view v-scroll" data-view-pane="scroll">
-    <div class="v-scroll-inner" id="view-scroll"></div>
-    <div class="v-scroll-hint">← scroll horizontally →</div>
-  </div>
-  <div class="series-view v-grid" data-view-pane="grid" id="view-grid"></div>
+  <div class="series-view v-masonry is-active" id="view-masonry"></div>
 </div>
 
 <footer>
@@ -394,36 +371,16 @@
   <span>Reiwa 8 ・ Summer ・ Engawa</span>
 </footer>
 
-<div class="book-overlay" id="book" role="dialog" aria-modal="true" aria-hidden="true">
-  <div class="book-top">
-    <div class="book-title-block">
-      <div class="t" id="book-title"></div>
-      <div class="meta" id="book-meta"></div>
-    </div>
-    <button class="book-close" id="book-close" type="button">✕ Close ESC</button>
-  </div>
-  <div class="book-spread">
-    <div class="book-page-left">
-      <div>
-        <div class="p-eyebrow" id="book-eyebrow"></div>
-        <h2 class="p-title" id="book-page-title"></h2>
-        <div class="p-title-en" id="book-page-title-en"></div>
-        <div class="p-place" id="book-place"></div>
-        <div class="p-haiku" id="book-haiku"></div>
-      </div>
-      <div class="p-pagenum">
-        <span>Page</span>
-        <span class="num"><span id="book-num"></span> <span class="denom">/ <span id="book-denom"></span></span></span>
-      </div>
-    </div>
-    <div class="book-page-right" id="book-img-wrap">
-      <img id="book-img" alt="" />
-    </div>
-    <div class="book-spine"></div>
-  </div>
-  <button class="book-nav prev" id="book-prev" type="button" aria-label="Previous">←</button>
-  <button class="book-nav next" id="book-next" type="button" aria-label="Next">→</button>
-  <div class="book-hint">← → flip ・ ESC close</div>
+<!-- Classic lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close">×</button>
+  <button class="lightbox-prev" id="lightbox-prev" type="button" aria-label="Previous">‹</button>
+  <button class="lightbox-next" id="lightbox-next" type="button" aria-label="Next">›</button>
+  <figure class="lightbox-figure">
+    <img class="lightbox-img" id="lightbox-img" alt="" />
+    <figcaption class="lightbox-caption" id="lightbox-caption"></figcaption>
+  </figure>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
 </div>
 
 <script src="js/photo-data.js"></script>
@@ -446,19 +403,21 @@
   });
 
   function renderViews() {
-    const views = {
-      masonry: document.getElementById('view-masonry'),
-      scroll: document.getElementById('view-scroll'),
-      grid: document.getElementById('view-grid'),
-    };
+    const masonry = document.getElementById('view-masonry');
+    const indexList = document.getElementById('series-index');
+    const heights = [320, 240, 380, 260, 340, 220, 360, 280, 300];
     SERIES.forEach((sr, i) => {
       const photos = seriesIndex[sr.id] || [];
       const cover = photos[0] || photoData[0];
       const count = photos.length;
-      const heights = [320, 240, 380, 260, 340, 220, 360, 280, 300];
-      views.masonry.appendChild(makeCard(sr, cover, count, { mode: 'masonry', height: heights[i % heights.length] }));
-      views.scroll.appendChild(makeCard(sr, cover, count, { mode: 'scroll' }));
-      views.grid.appendChild(makeCard(sr, cover, count, { mode: 'grid' }));
+      masonry.appendChild(makeCard(sr, cover, count, { mode: 'masonry', height: heights[i % heights.length] }));
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.innerHTML = `<span class="name-jp">${sr.jp}</span><span class="name-en">${sr.en}<span class="count">${count}</span></span>`;
+      btn.addEventListener('click', () => openBook(sr.id, 0));
+      li.appendChild(btn);
+      indexList.appendChild(li);
     });
   }
 
@@ -489,83 +448,74 @@
 
   renderViews();
 
-  document.querySelectorAll('.switch-btn').forEach(b => b.addEventListener('click', () => {
-    const v = b.dataset.view;
-    document.querySelectorAll('.switch-btn').forEach(x => x.classList.toggle('is-active', x === b));
-    document.querySelectorAll('.series-view').forEach(p => p.classList.toggle('is-active', p.dataset.viewPane === v));
-  }));
-
-  let bookState = null;
-  const bookEl = document.getElementById('book');
-  const imgEl = document.getElementById('book-img');
-  const imgWrap = document.getElementById('book-img-wrap');
+  // Classic lightbox
+  let lbState = null;
+  let isFlipping = false;
+  const lbEl = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbCap = document.getElementById('lightbox-caption');
+  const lbCounter = document.getElementById('lightbox-counter');
 
   function openBook(seriesId, idx = 0) {
     const sr = SERIES.find(s => s.id === seriesId);
     const photos = seriesIndex[seriesId] || [];
     if (!sr || photos.length === 0) return;
-    bookState = { sr, photos, idx };
+    lbState = { sr, photos, idx };
     document.body.classList.add('is-book-open');
-    bookEl.classList.add('is-open');
-    bookEl.setAttribute('aria-hidden', 'false');
-    renderBook();
+    lbEl.classList.add('is-open');
+    lbEl.setAttribute('aria-hidden', 'false');
+    renderLb();
   }
-
-  function closeBook() {
-    bookState = null;
+  function closeLb() {
+    lbState = null;
     document.body.classList.remove('is-book-open');
-    bookEl.classList.remove('is-open');
-    bookEl.setAttribute('aria-hidden', 'true');
+    lbEl.classList.remove('is-open');
+    lbEl.setAttribute('aria-hidden', 'true');
   }
-
-  function nextBook() {
-    if (!bookState) return;
-    if (bookState.idx < bookState.photos.length - 1) { bookState.idx++; renderBook(true); }
+  function nextLb() {
+    if (!lbState || isFlipping) return;
+    if (lbState.idx < lbState.photos.length - 1) flipTo(lbState.idx + 1);
   }
-  function prevBook() {
-    if (!bookState) return;
-    if (bookState.idx > 0) { bookState.idx--; renderBook(true); }
+  function prevLb() {
+    if (!lbState || isFlipping) return;
+    if (lbState.idx > 0) flipTo(lbState.idx - 1);
   }
-
-  function renderBook(animate) {
-    const { sr, photos, idx } = bookState;
+  function flipTo(newIdx) {
+    isFlipping = true;
+    lbImg.classList.add('is-flipping');
+    setTimeout(() => {
+      lbState.idx = newIdx;
+      renderLb();
+      lbImg.classList.remove('is-flipping');
+      isFlipping = false;
+    }, 250);
+  }
+  function renderLb() {
+    const { sr, photos, idx } = lbState;
     const photo = photos[idx];
-    document.getElementById('book-title').textContent = sr.jp;
-    document.getElementById('book-meta').textContent = `${sr.romaji} ・ ${sr.en} ・ ${sr.place}`;
-    document.getElementById('book-eyebrow').textContent = sr.romaji.toUpperCase() + ' ・ ' + sr.en.toUpperCase();
-    document.getElementById('book-page-title').textContent = photo.title_jp || photo.title_en || ('No. ' + photo.num);
-    document.getElementById('book-page-title-en').textContent = photo.title_en || '';
-    document.getElementById('book-place').textContent = (photo.year ? photo.year : '');
-    const haikuEn = (photo.haiku_en || '').replace(/／/g, '\n');
-    const haikuJp = (photo.haiku_jp || '').replace(/／/g, '\n');
-    document.getElementById('book-haiku').innerHTML = haikuEn.replace(/\n/g, '<br/>') + (haikuJp ? `<span class="romaji">${haikuJp.replace(/\n/g, ' / ')}</span>` : '');
-    document.getElementById('book-num').textContent = String(idx + 1).padStart(3, '0');
-    document.getElementById('book-denom').textContent = String(photos.length).padStart(3, '0');
-
-    if (animate) {
-      imgWrap.classList.add('is-flipping');
-      setTimeout(() => {
-        imgEl.src = photo.src;
-        imgEl.alt = photo.title_en || ('No. ' + photo.num);
-        imgWrap.classList.remove('is-flipping');
-      }, 300);
-    } else {
-      imgEl.src = photo.src;
-      imgEl.alt = photo.title_en || ('No. ' + photo.num);
-    }
-    document.getElementById('book-prev').disabled = idx === 0;
-    document.getElementById('book-next').disabled = idx === photos.length - 1;
+    lbImg.src = photo.src;
+    lbImg.alt = photo.title_en || ('No. ' + photo.num);
+    const titleJp = photo.title_jp || '';
+    const titleEn = photo.title_en || photo.title_zh || '';
+    const haikuJp = (photo.haiku_jp || '').replace(/[／\/]\s*/g, '<br>');
+    const haikuEn = (photo.haiku_en || '').replace(/[／\/]\s*/g, '<br>');
+    let html = '';
+    if (titleJp || titleEn) html += `<div class="lb-title">No. ${photo.num} ・ ${titleJp || titleEn}${titleEn && titleJp && titleEn !== titleJp ? `<span class="romaji">${titleEn}</span>` : ''}</div>`;
+    if (haikuJp) html += `<div class="lb-haiku-jp">${haikuJp}</div>`;
+    if (haikuEn) html += `<div class="lb-haiku-en">${haikuEn}</div>`;
+    lbCap.innerHTML = html;
+    lbCounter.textContent = `${sr.jp} ・ ${String(idx + 1).padStart(3, '0')} / ${String(photos.length).padStart(3, '0')}`;
   }
-
-  document.getElementById('book-close').addEventListener('click', closeBook);
-  document.getElementById('book-prev').addEventListener('click', prevBook);
-  document.getElementById('book-next').addEventListener('click', nextBook);
-  bookEl.addEventListener('click', e => { if (e.target === bookEl) closeBook(); });
+  document.getElementById('lightbox-close').addEventListener('click', closeLb);
+  document.getElementById('lightbox-prev').addEventListener('click', e => { e.stopPropagation(); prevLb(); });
+  document.getElementById('lightbox-next').addEventListener('click', e => { e.stopPropagation(); nextLb(); });
+  lbEl.addEventListener('click', e => { if (e.target === lbEl) closeLb(); });
+  document.querySelector('.lightbox-figure').addEventListener('click', e => e.stopPropagation());
   document.addEventListener('keydown', e => {
-    if (!bookState) return;
-    if (e.key === 'Escape') closeBook();
-    else if (e.key === 'ArrowRight') nextBook();
-    else if (e.key === 'ArrowLeft') prevBook();
+    if (!lbState) return;
+    if (e.key === 'Escape') closeLb();
+    else if (e.key === 'ArrowRight') nextLb();
+    else if (e.key === 'ArrowLeft') prevLb();
   });
 </script>
 
