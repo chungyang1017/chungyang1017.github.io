@@ -260,40 +260,38 @@
       .nav .lang { padding-left: 14px; }
 
       .hero { padding: 50px 22px 32px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 28px; }
       .hero-title { font-size: 56px; }
       .hero-sub { font-size: 12px; }
       .hero-desc { font-size: 14px; margin-top: 24px; }
-      .hero-cover { aspect-ratio: 16/10; }
 
-      .switch-wrap { padding: 24px 22px 0; }
-      .switch-bar { flex-direction: column; align-items: stretch; gap: 14px; padding-bottom: 14px; }
-      .switch-buttons { justify-content: flex-start; }
-      .switch-btn { padding: 7px 12px; font-size: 10px; letter-spacing: 0.18em; flex: 1; }
+      .ph-index { padding: 22px 22px 0; }
+      .ph-index-list { flex-direction: column; }
+      .ph-index-list li { flex: 1 1 auto; border-right: none; border-bottom: 1px solid rgba(31,31,29,0.10); }
+      .ph-index-list li:last-child { border-bottom: none; }
+      .ph-index-list button { padding: 0.9rem 1.1rem; }
+      .ph-index-list .name-jp { font-size: 1.1rem; }
+      .ph-index-list .name-en { font-size: 0.7rem; }
 
       .series-content { padding: 28px 22px 56px; }
       .v-masonry { columns: 1; }
-      .v-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .v-scroll .series-card { flex: 0 0 240px; }
-      .v-scroll .series-cover { width: 240px; height: 320px; }
-      .v-scroll .series-foot { width: 240px; }
 
-      .book-overlay { padding: 14px; }
-      .book-top { padding: 12px 16px; }
-      .book-title-block .t { font-size: 20px; }
-      .book-title-block .meta { font-size: 10px; }
-      .book-close { padding: 5px 10px; font-size: 9px; }
-      .book-spread { flex-direction: column-reverse; aspect-ratio: auto; height: calc(100vh - 100px); width: 100%; max-height: none; }
-      .book-page-left { width: 100%; height: 38%; padding: 18px 22px; box-shadow: none; border-top: 1px solid rgba(31,31,29,0.18); }
-      .book-page-left .p-title { font-size: 28px; }
-      .book-page-left .p-haiku { font-size: 12px; line-height: 1.95; margin-top: 10px; max-width: none; }
-      .book-page-left .p-pagenum .num { font-size: 18px; margin-top: 4px; }
-      .book-page-right { width: 100%; height: 62%; }
-      .book-spine { display: none; }
-      .book-nav { width: 40px; height: 40px; font-size: 14px; }
-      .book-nav.prev { left: 8px; }
-      .book-nav.next { right: 8px; }
-      .book-hint { display: none; }
+      /* Lightbox: photo on top, caption below (horizontal text) */
+      .lightbox { padding: 1rem; }
+      .lightbox-figure { flex-direction: column; gap: 1rem; max-width: 96vw; max-height: 92vh; }
+      .lightbox-img { max-width: 92vw; max-height: 65vh; }
+      .lightbox-caption {
+        writing-mode: horizontal-tb;
+        flex-direction: column;
+        max-height: none;
+        text-align: center;
+        padding: 0;
+        gap: 0.6rem;
+      }
+      .lightbox-caption .lb-title { font-size: 11px; letter-spacing: 0.2em; }
+      .lightbox-caption .lb-haiku-jp { font-size: 1.05rem; line-height: 1.85; letter-spacing: 0.1em; }
+      .lightbox-caption .lb-haiku-zh { font-size: 0.95rem; line-height: 1.7; letter-spacing: 0.08em; }
+      .lightbox-prev, .lightbox-next { width: 38px; height: 38px; font-size: 1.2rem; }
+      .lightbox-counter { font-size: 0.7rem; bottom: 0.6rem; }
 
       footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 10px; }
     }
