@@ -3,342 +3,323 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reading Takaichi through Manga · East Asia Frontline · Chung-Yang Yeh</title>
-  <meta name="description" content="Reading Sanae Takaichi through two long-running manga — Kaji Ryūsuke's The Politics and Hirokane's Kosaku Shima series." />
-  <link rel="alternate" hreflang="zh-Hant" href="2026-takaichi.html" />
+  <title>From a Manga Frame: Reading Sanae Takaichi ・ Zuihitsu ・ Chung-Yang Yeh</title>
+  <meta name="description" content="A reading of Sanae Takaichi through Hirokane Kenshi's manga The Politics and Kosaku Shima — the method, the anxiety, and the absolute realism of contemporary Japanese politics." />
   <link rel="alternate" hreflang="en" href="2026-takaichi-en.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="2026-takaichi.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Noto+Serif+JP:wght@200;300;400;500&family=Noto+Serif+TC:wght@200;300;400;500&family=Shippori+Mincho:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
+    /* ── Spring 書院 palette ───────── */
     :root {
-      --sumi: #15110d; --sumi-soft: #2c2622;
-      --ink: #1a1714; --ink-mid: #5a534d; --ink-mute: #9a938c;
-      --washi: #f5f0e6; --washi-warm: #f8f3e8; --washi-soft: #fbf7ee;
-      --shu: #b13a2a; --kin: #a98146;
-      --line: rgba(21,17,13,0.10); --line-mid: rgba(21,17,13,0.18);
-      --jp: 'Noto Serif JP', 'Noto Serif TC', serif;
-      --tc: 'Noto Serif TC', 'Shippori Mincho', 'Noto Serif JP', serif;
+      --shoin-bg: #f5edd8;
+      --shoin-paper: #fcf6e6;
+      --moss: #5a7a4a;
+      --accent: #d98aa8;
+      --water: #7a9aa8;
+      --ink: #2a2a28;
+      --ink-mid: #5a534d;
+      --ink-mute: #8a8378;
+      --ink-deep: #2a2624;
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
       --display: 'Cormorant Garamond', serif;
       --sans: 'Inter', 'Helvetica Neue', sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 17px; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: var(--display);
-      background: var(--washi);
+      background: var(--shoin-bg);
       color: var(--ink);
       -webkit-font-smoothing: antialiased;
-      line-height: 1.85; font-weight: 400;
-      background-image:
-        radial-gradient(rgba(169,129,70,0.03) 1px, transparent 1px),
-        radial-gradient(rgba(21,17,13,0.022) 1px, transparent 1px);
-      background-size: 32px 32px, 19px 19px;
-      background-position: 0 0, 16px 16px;
+      line-height: 1.95;
     }
 
-    nav.top {
-      position: sticky; top: 0; z-index: 30;
-      background: rgba(245,240,230,0.92); backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-    nav.top .inner {
-      max-width: 1200px; margin: 0 auto;
-      padding: 1.05rem 2.5rem;
+    .top {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(245,237,216,0.93);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      padding: 14px 48px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .top-logo {
-      font-family: var(--display); font-style: italic; font-size: 0.95rem;
-      color: var(--sumi); text-decoration: none; letter-spacing: 0.1em;
-      display: inline-flex; align-items: center; gap: 0.6rem;
-    }
-    .top-logo .nav-back { color: var(--shu); transition: transform 0.3s; }
-    .top-logo:hover .nav-back { transform: translateX(-3px); }
-    .top-section {
-      font-family: var(--display); font-style: italic;
-      font-size: 0.9rem; color: var(--ink-mid);
-      letter-spacing: 0.1em;
-    }
-    .top-lang { font-size: 0.72rem; letter-spacing: 0.18em; color: var(--ink-mute); }
-    .top-lang a { color: var(--ink-mute); text-decoration: none; transition: color 0.2s; }
-    .top-lang a:hover { color: var(--shu); }
-    .top-lang .current { color: var(--sumi); font-weight: 500; }
-    .top-lang .sep { opacity: 0.4; margin: 0 0.4rem; }
+    .top-left { display: flex; align-items: center; gap: 16px; }
+    .back { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .name-block { display: inline-flex; align-items: baseline; gap: 8px; }
+    .name-jp { font-family: var(--brush); font-size: 22px; letter-spacing: 0.1em; }
+    .name-en { font-family: var(--sans); font-style: italic; font-size: 13px; letter-spacing: 0.06em; opacity: 0.7; }
+    .nav { display: flex; gap: 24px; font-size: 12px; letter-spacing: 0.25em; font-family: var(--sans); text-transform: uppercase; }
+    .nav a { color: var(--ink); text-decoration: none; opacity: 0.5; padding-bottom: 4px; }
+    .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
+    .nav .nav-jp { font-size: 9px; opacity: 0.55; letter-spacing: 0.18em; margin-left: 2px; font-family: var(--jp); text-transform: none; }
+    .nav .lang { border-left: 1px solid var(--line); padding-left: 24px; font-family: var(--sans); }
 
-    .article {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 4rem 2rem 6rem;
-    }
-
-    .article-eyebrow {
-      font-family: var(--display); font-style: italic;
-      font-size: 0.92rem;
-      letter-spacing: 0.22em;
-      color: var(--shu);
-      text-transform: uppercase;
-      margin-bottom: 2.5rem;
-      display: flex; align-items: center; gap: 0.85rem;
-    }
-    .article-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--shu); }
-    .article-eyebrow a { color: var(--shu); text-decoration: none; }
-    .article-eyebrow a:hover { text-decoration: underline; }
-
-    .article-title {
-      font-family: var(--display);
-      font-weight: 400;
-      font-size: clamp(2.2rem, 3.8vw, 3rem);
-      line-height: 1.2;
-      color: var(--sumi);
-      letter-spacing: 0.005em;
-      margin-bottom: 1rem;
-    }
-
-    .article-subtitle {
-      font-family: var(--tc);
-      font-weight: 300;
-      font-size: 1.18rem;
-      color: var(--ink-mid);
-      line-height: 1.55;
-      margin-bottom: 2.5rem;
-      letter-spacing: 0.04em;
-    }
-
-    .article-byline {
-      display: flex; align-items: center; gap: 1.25rem;
-      padding: 1rem 0;
-      border-top: 1px solid var(--line-mid);
-      border-bottom: 1px solid var(--line-mid);
-      margin-bottom: 4rem;
-      font-family: var(--display); font-style: italic;
-      font-size: 0.92rem; color: var(--ink-mid);
-      letter-spacing: 0.06em;
-    }
-    .byline-author { color: var(--sumi); font-weight: 500; font-style: normal; letter-spacing: 0.1em; }
-    .byline-date { color: var(--shu); }
-    .byline-tag {
-      margin-left: auto;
-      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--ink-mute);
-      padding: 0.25rem 0.7rem; border: 1px solid var(--line-mid);
-    }
-
-    /* COVER */
     .article-cover {
-      max-width: 1100px;
-      margin: 2.5rem auto 0;
+      max-width: 1100px; margin: 2.5rem auto 0;
       padding: 0 2rem;
     }
     .article-cover figure {
       position: relative; overflow: hidden;
-      box-shadow: 0 24px 50px -28px rgba(21,17,13,0.4);
+      box-shadow: 0 24px 50px -28px rgba(31,31,29,0.4);
     }
-    .article-cover img {
-      width: 100%; display: block;
-      filter: saturate(0.85) brightness(0.97);
-    }
+    .article-cover img { display: block; width: 100%; height: auto; aspect-ratio: 65/24; object-fit: cover; }
     .article-cover figcaption {
-      margin-top: 0.95rem;
-      display: flex; align-items: baseline; gap: 1.5rem;
-      font-family: var(--display); font-style: italic;
-      font-size: 0.86rem; color: var(--ink-mute);
-      letter-spacing: 0.08em;
-      flex-wrap: wrap;
+      position: absolute; right: 1.4rem; bottom: 1rem;
+      color: rgba(252,246,230,0.92);
+      text-align: right; font-family: var(--sans);
+      font-size: 0.7rem; letter-spacing: 0.18em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      display: flex; flex-direction: column; gap: 0.2rem;
     }
-    .article-cover .cap-num { color: var(--shu); letter-spacing: 0.16em; }
-    .article-cover .cap-title { color: var(--sumi); font-style: normal; flex: 1; min-width: 200px; letter-spacing: 0.1em; }
+    .article-cover .cap-num { color: var(--accent); }
+    .article-cover .cap-title { font-family: var(--display); font-style: italic; font-size: 0.78rem; letter-spacing: 0.06em; }
+    .article-cover .cap-year { opacity: 0.7; font-size: 0.65rem; }
 
-    /* INLINE PHOTO */
-    .inline-photo {
-      margin: 3.5rem -2rem;
+    .article {
+      max-width: 720px; margin: 0 auto;
+      padding: 3.5rem 2rem 4rem;
     }
-    .inline-photo.is-square { max-width: 580px; margin-left: auto; margin-right: auto; }
-    .inline-photo figure {
-      position: relative; overflow: hidden;
-      box-shadow: 0 18px 40px -22px rgba(21,17,13,0.35);
+    .article-eyebrow {
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
     }
-    .inline-photo img {
-      width: 100%; display: block;
-      filter: saturate(0.85) brightness(0.97);
-      transition: filter 0.5s, transform 0.7s cubic-bezier(.2,.7,.2,1);
-    }
-    .inline-photo figure:hover img { filter: saturate(1) brightness(1); transform: scale(1.015); }
-    .inline-photo figcaption {
-      margin-top: 0.9rem;
-      padding: 0 0.5rem;
-      display: flex; align-items: baseline; gap: 1.25rem;
-      font-family: var(--display); font-style: italic;
-      font-size: 0.84rem; color: var(--ink-mute);
-      letter-spacing: 0.08em; flex-wrap: wrap;
-    }
-    .inline-photo .cap-num { color: var(--shu); letter-spacing: 0.16em; }
-    .inline-photo .cap-title { color: var(--sumi); font-style: normal; flex: 1; min-width: 180px; letter-spacing: 0.1em; }
+    .article-eyebrow a { color: inherit; text-decoration: none; transition: opacity 0.2s; }
+    .article-eyebrow a:hover { opacity: 0.7; }
 
-    /* BODY */
-    .article-body p {
-      font-size: 1.24rem;
-      color: var(--ink);
-      line-height: 1.85;
-      margin-bottom: 1.75rem;
-      letter-spacing: 0.005em;
-    }
-    .article-body p.lead {
-      font-size: 1.42rem;
-      line-height: 1.75;
-      color: var(--sumi);
-      margin-bottom: 2.4rem;
-    }
-    .article-body p.lead::first-letter {
-      font-family: var(--display);
+    .article-title {
+      font-family: var(--display); font-style: italic;
       font-weight: 500;
-      font-size: 3.2rem;
-      line-height: 1;
-      float: left;
-      margin: 0.3rem 0.55rem 0 0;
-      color: var(--shu);
+      font-size: clamp(1.7rem, 3.4vw, 2.55rem);
+      line-height: 1.35; letter-spacing: 0.01em;
+      margin-bottom: 1.1rem;
+      color: var(--ink-deep);
     }
+    .article-subtitle {
+      font-family: var(--jp);
+      font-size: 1.05rem; line-height: 1.6;
+      color: var(--ink-mid);
+      margin-bottom: 2rem;
+      letter-spacing: 0.04em;
+    }
+    .article-byline {
+      display: flex; flex-wrap: wrap; gap: 0.85rem 1.4rem;
+      padding-bottom: 2rem; margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--line-soft);
+      font-family: var(--sans); font-size: 0.78rem;
+      letter-spacing: 0.16em; color: var(--ink-mid);
+      text-transform: uppercase;
+    }
+    .byline-author { color: var(--accent); }
+    .byline-tag {
+      padding: 0.18rem 0.55rem;
+      border: 1px solid rgba(217,138,168,0.45);
+      color: var(--accent); font-size: 0.7rem;
+      letter-spacing: 0.22em;
+    }
+
+    .article-body p.lead {
+      font-family: var(--display); font-style: italic;
+      font-size: 1.25rem; line-height: 1.85;
+      letter-spacing: 0.01em;
+      color: var(--ink-deep);
+      margin-bottom: 2rem;
+      padding-left: 1.4rem;
+      border-left: 2px solid var(--accent);
+    }
+    .article-body p {
+      font-size: 1.06rem; line-height: 1.9;
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.005em;
+      color: var(--ink);
+    }
+    .article-body p em { font-style: italic; }
+    .article-body strong { font-weight: 600; color: var(--ink-deep); }
 
     .article-body h2 {
-      font-family: var(--display);
-      font-weight: 500;
-      font-size: 1.85rem;
-      color: var(--sumi);
-      letter-spacing: 0.01em;
-      margin: 4rem 0 1.7rem;
-      padding-top: 1rem;
-      position: relative;
-    }
-    .article-body h2::before {
-      content: ''; position: absolute; top: 0; left: 0;
-      width: 36px; height: 2px; background: var(--shu);
+      font-family: var(--brush); font-weight: 400;
+      font-size: 1.65rem;
+      margin: 3rem 0 1.4rem;
+      letter-spacing: 0.04em;
+      color: var(--ink-deep);
+      display: flex; align-items: baseline; gap: 0.85rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--line-soft);
     }
     .article-body h2 .num {
       font-family: var(--display); font-style: italic;
-      font-weight: 400;
-      color: var(--shu);
-      margin-right: 0.6rem;
-      font-size: 1.05rem;
-      letter-spacing: 0.06em;
-    }
-
-    .article-body em { font-style: italic; color: var(--sumi); }
-    .article-body strong { font-weight: 500; color: var(--sumi); }
-
-    .article-body blockquote {
-      margin: 2.8rem 0;
-      padding: 1.75rem 2rem 1.75rem 2.25rem;
-      background: var(--washi-soft);
-      border-left: 4px solid var(--shu);
-      font-family: var(--display);
-      font-style: italic;
-      font-size: 1.13rem;
-      line-height: 1.85;
-      color: var(--ink-mid);
-      letter-spacing: 0.01em;
-    }
-    .article-body blockquote .label {
-      display: block;
-      font-style: italic;
-      font-size: 0.78rem; letter-spacing: 0.18em;
-      color: var(--shu); margin-bottom: 0.5rem;
-      text-transform: uppercase;
+      font-size: 1rem;
+      color: var(--accent);
+      padding: 0.2rem 0.55rem;
+      border: 1px solid rgba(217,138,168,0.5);
+      flex-shrink: 0;
     }
 
     .article-body ul {
-      margin: 1.6rem 0 1.8rem 1.4rem;
+      margin: 0 0 1.6rem 1.6rem;
+      padding: 0;
     }
     .article-body ul li {
-      list-style: none; position: relative;
-      padding-left: 1.4rem;
-      margin-bottom: 1rem;
-      font-size: 1.2rem; line-height: 1.85;
+      font-size: 1.04rem; line-height: 1.85;
+      margin-bottom: 0.85rem;
+      color: var(--ink);
     }
-    .article-body ul li::before {
-      content: '・'; position: absolute; left: 0;
-      color: var(--shu); font-weight: 500;
+    .article-body ul li::marker { color: var(--accent); }
+
+    .article-body blockquote {
+      margin: 2rem 0;
+      padding: 1.6rem 1.8rem;
+      background: var(--shoin-paper);
+      border-left: 3px solid var(--moss);
+    }
+    .article-body blockquote .label {
+      display: inline-block;
+      font-family: var(--sans); font-size: 0.7rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--moss); margin-bottom: 0.7rem;
+    }
+    .article-body blockquote p {
+      margin: 0;
+      font-size: 1rem; line-height: 1.85;
+      color: var(--ink-mid);
+      font-family: var(--display);
     }
 
     .article-body hr {
-      border: none; height: 1px;
-      background: linear-gradient(to right, transparent, var(--line-mid), transparent);
-      margin: 3rem auto; width: 60%;
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 3rem auto;
+      width: 60%;
+      position: relative;
+    }
+    .article-body hr::after {
+      content: '◇';
+      position: absolute;
+      left: 50%; top: -0.7em;
+      transform: translateX(-50%);
+      background: var(--shoin-bg);
+      padding: 0 0.6rem;
+      color: var(--accent); font-size: 0.85rem;
     }
 
+    .inline-photo {
+      margin: 2.5rem -1rem;
+    }
+    .inline-photo figure {
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 40px -22px rgba(31,31,29,0.35);
+    }
+    .inline-photo img { display: block; width: 100%; height: auto; }
+    .inline-photo figcaption {
+      position: absolute; right: 0.9rem; bottom: 0.7rem;
+      color: rgba(252,246,230,0.92);
+      text-align: right; font-family: var(--sans);
+      font-size: 0.65rem; letter-spacing: 0.18em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      display: flex; flex-direction: column; gap: 0.15rem;
+    }
+    .inline-photo .cap-num { color: var(--accent); }
+    .inline-photo .cap-title { font-family: var(--display); font-style: italic; font-size: 0.72rem; letter-spacing: 0.06em; }
+    .inline-photo .cap-year { opacity: 0.7; font-size: 0.6rem; }
+
     .colophon {
-      margin-top: 4rem;
-      padding: 2rem 2rem 1.75rem;
-      background: var(--washi-warm);
-      border: 1px solid var(--line);
-      border-left: 3px solid var(--shu);
+      margin: 2.5rem 0 2rem;
+      padding: 1.8rem 2rem;
+      background: var(--shoin-paper);
+      border: 1px solid var(--line-soft);
     }
     .colophon-label {
-      font-family: var(--display); font-style: italic;
-      font-size: 0.78rem; letter-spacing: 0.22em;
-      color: var(--shu); text-transform: uppercase;
+      font-family: var(--sans); font-size: 0.72rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent);
       margin-bottom: 0.85rem;
     }
     .colophon p {
-      font-family: var(--display);
-      font-size: 1.05rem;
-      line-height: 1.85;
+      font-size: 0.97rem; line-height: 1.8;
       color: var(--ink-mid);
+      margin-bottom: 0.85rem;
+      font-family: var(--display);
     }
+    .colophon p:last-child { margin-bottom: 0; }
 
     .article-foot {
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--line-mid);
       display: flex; justify-content: space-between;
-      align-items: baseline; flex-wrap: wrap; gap: 1rem;
-    }
-    .article-foot .meta {
-      font-family: var(--display); font-style: italic;
-      font-size: 0.85rem; color: var(--ink-mute);
-      letter-spacing: 0.06em;
+      align-items: center; flex-wrap: wrap; gap: 0.85rem;
+      margin-top: 2.5rem; padding-top: 1.6rem;
+      border-top: 1px solid var(--line-soft);
+      font-family: var(--sans); font-size: 0.76rem;
+      letter-spacing: 0.16em; color: var(--ink-mute);
+      text-transform: uppercase;
     }
     .article-foot .back {
-      font-family: var(--display); font-style: italic;
-      font-size: 0.92rem; color: var(--shu);
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      transition: gap 0.3s;
+      color: var(--accent); text-decoration: none;
+      letter-spacing: 0.2em;
     }
-    .article-foot .back:hover { letter-spacing: 0.1em; }
+    .article-foot .back:hover { opacity: 0.75; }
 
     footer {
-      padding: 2.5rem 2rem;
-      border-top: 1px solid var(--line);
-      background: var(--washi-warm);
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--ink-mute);
-      letter-spacing: 0.08em;
+      border-top: 1px solid var(--line-soft);
+      padding: 30px 60px;
+      max-width: 1280px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      font-size: 11px; opacity: 0.55; letter-spacing: 0.2em;
+      font-family: var(--sans); text-transform: uppercase;
     }
-    footer .sep { color: var(--ink-mute); opacity: 0.4; margin: 0 0.5rem; }
-    footer a { color: var(--ink-mid); text-decoration: none; }
-    footer a:hover { color: var(--shu); }
+    footer .links { display: flex; gap: 18px; }
+    footer .links a { color: var(--ink); text-decoration: none; opacity: 0.85; transition: opacity 0.2s; }
+    footer .links a:hover { opacity: 1; color: var(--accent); }
 
-    @media (max-width: 720px) {
-      .article { padding: 3rem 1.5rem 4rem; }
-      .article-byline { flex-wrap: wrap; gap: 0.75rem; }
-      .byline-tag { margin-left: 0; }
-      nav.top .inner { padding: 0.85rem 1.5rem; flex-wrap: wrap; gap: 0.5rem; }
+    @media (max-width: 760px) {
+      .top { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
+      .top-left { gap: 10px; }
+      .back { font-size: 10px; letter-spacing: 0.22em; }
+      .name-jp { font-size: 16px; }
+      .name-en { font-size: 8px; }
+      .nav { gap: 12px; font-size: 10px; letter-spacing: 0.16em; }
+      .nav a.nav-sub { display: none; }
+      .nav .lang { padding-left: 12px; }
+
+      .article-cover { padding: 0 1rem; margin-top: 1.4rem; }
+      .article { padding: 2.4rem 1.4rem 3rem; }
+      .article-title { font-size: 1.55rem; }
+      .article-subtitle { font-size: 0.95rem; }
+      .article-body p.lead { font-size: 1.1rem; padding-left: 1rem; }
+      .article-body p { font-size: 1rem; }
+      .article-body h2 { font-size: 1.35rem; }
+      .article-body h2 .num { font-size: 0.85rem; }
+      .article-body blockquote { padding: 1.2rem 1.4rem; }
+      .inline-photo { margin: 2rem 0; }
+
+      footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 10px; }
     }
   </style>
 </head>
 <body>
 
-<nav class="top">
-  <div class="inner">
-    <a href="../index-en.html" class="top-logo" title="Home"><span class="nav-back">←</span> Chung-Yang Yeh</a>
-    <span class="top-section">East Asia Frontline ・ 東亞觀察最前線</span>
-    <span class="top-lang">
-      <a href="2026-takaichi.html">中文</a>
-      <span class="sep">／</span>
-      <span class="current">EN</span>
+<header class="top">
+  <div class="top-left">
+    <a href="../index-en.html" class="back">← HOME</a>
+    <span class="top-sep">·</span>
+    <span class="name-block">
+      <span class="name-jp">葉崇揚</span>
+      <span class="name-en">（Chung-Yang Yeh）</span>
     </span>
   </div>
-</nav>
+  <nav class="nav" aria-label="Sections">
+    <a href="../index-en.html" class="nav-sub">Home <span class="nav-jp">(玄關)</span></a>
+    <a href="../academic.html" class="nav-sub">Academic <span class="nav-jp">(書院)</span></a>
+    <a href="../photography.html" class="nav-sub">Photography <span class="nav-jp">(縁側)</span></a>
+    <a href="index-en.html" class="is-current">Zuihitsu <span class="nav-jp">(隨筆)</span></a>
+    <a href="2026-takaichi.html" class="lang">中</a>
+  </nav>
+</header>
 
 <div class="article-cover">
   <figure>
@@ -354,7 +335,7 @@
 <article class="article">
 
   <p class="article-eyebrow">
-    <a href="index-en.html">← East Asia Frontline No. 〇〇一</a>
+    <a href="index-en.html">← Zuihitsu ・ East Asia Frontline No. 〇〇一</a>
   </p>
 
   <h1 class="article-title">
@@ -416,12 +397,12 @@
     <div class="inline-photo">
       <figure>
         <img src="../images/photography/img_8239.jpg" alt="Crossing — Japan street panorama" />
+        <figcaption>
+          <span class="cap-num">No. 〇三八</span>
+          <span class="cap-title">Crossing ・ Xpan 65×24</span>
+          <span class="cap-year">photo · Chung-Yang Yeh</span>
+        </figcaption>
       </figure>
-      <figcaption>
-        <span class="cap-num">No. 〇三八</span>
-        <span class="cap-title">Crossing ・ Xpan 65×24</span>
-        <span class="cap-year">photo · Chung-Yang Yeh</span>
-      </figcaption>
     </div>
 
     <p>
@@ -452,12 +433,12 @@
     <div class="inline-photo">
       <figure>
         <img src="../images/photography/dscf3861_4.jpg" alt="Mt Fuji and the bridge at evening" />
+        <figcaption>
+          <span class="cap-num">No. 〇六四</span>
+          <span class="cap-title">Fuji and Bridge ・ Xpan 65×24</span>
+          <span class="cap-year">photo · Chung-Yang Yeh</span>
+        </figcaption>
       </figure>
-      <figcaption>
-        <span class="cap-num">No. 〇六四</span>
-        <span class="cap-title">Fuji and Bridge ・ Xpan 65×24</span>
-        <span class="cap-year">photo · Chung-Yang Yeh</span>
-      </figcaption>
     </div>
 
     <h2><span class="num">IV.</span>強く・豊かに — An Adult's Fairy Tale</h2>
@@ -482,12 +463,12 @@
     <div class="inline-photo">
       <figure>
         <img src="../images/photography/img_9078.jpg" alt="Three generations beneath the cherry tree" />
+        <figcaption>
+          <span class="cap-num">No. 一三六</span>
+          <span class="cap-title">Spring Family ・ three generations, one spring morning</span>
+          <span class="cap-year">photo · Chung-Yang Yeh</span>
+        </figcaption>
       </figure>
-      <figcaption>
-        <span class="cap-num">No. 一三六</span>
-        <span class="cap-title">Spring Family ・ three generations, one spring morning</span>
-        <span class="cap-year">photo · Chung-Yang Yeh</span>
-      </figcaption>
     </div>
 
     <hr />
@@ -503,7 +484,7 @@
     </div>
 
     <div class="article-foot">
-      <span class="meta">No. 〇〇一 ・ East Asia Frontline ・ 2026.02.07</span>
+      <span>No. 〇〇一 ・ Zuihitsu ・ East Asia Frontline ・ 2026.02.07</span>
       <a href="index-en.html" class="back">← Back to Column</a>
     </div>
 
@@ -511,13 +492,13 @@
 </article>
 
 <footer>
-  © 2025 ・ Chung-Yang Yeh
-  <span class="sep">·</span>
-  Department of Sociology, Soochow University
-  <span class="sep">·</span>
-  <a href="../academic.html">Academic</a>
-  <span class="sep">·</span>
-  <a href="../index-en.html">Home</a>
+  <span>YEH CHUNG-YANG · ZUIHITSU</span>
+  <div class="links">
+    <a href="../index-en.html">Home</a>
+    <a href="../academic.html">Shoin</a>
+    <a href="../photography.html">Engawa</a>
+  </div>
+  <span>Reiwa 8 ・ Spring</span>
 </footer>
 
 </body>
