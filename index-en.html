@@ -3,287 +3,313 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chung-Yang Yeh ・ 葉崇揚 ・ Karesansui</title>
-  <meta name="description" content="Chung-Yang Yeh ・ Academic, Photography, Teaching." />
+  <title>Chung-Yang Yeh ・ Genkan ・ Entrance</title>
+  <meta name="description" content="Chung-Yang Yeh ・ Academic, Photography, Teaching. Three rooms — choose any door." />
   <link rel="alternate" hreflang="zh-Hant" href="index.html" />
   <link rel="alternate" hreflang="en" href="index-en.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Old+Mincho:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --sand: #e8e2d4;
-      --sand-deep: #ddd5c2;
-      --sand-light: #efeadc;
-      --card: #f0ead7;
-      --card-warm: #ede5cc;
-      --card-cool: #e9e3d0;
-      --sumi: #2a2620;
-      --sumi-soft: #3a342c;
-      --ink-mid: #6b6256;
-      --ink-mute: #9c9385;
-      --moss: #2c4a36;
-      --moss-deep: #1f3d2e;
-      --line: rgba(42,38,32,0.20);
-      --line-soft: rgba(42,38,32,0.10);
-      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', 'Hiragino Mincho ProN', serif;
-      --brush: 'Zen Old Mincho', 'Shippori Mincho', 'Noto Serif TC', serif;
+      --moss: #3d5a3f;
+      --accent: #c43838;
+      --water: #5a7a8a;
+      --ink: #1f1f1d;
+      --ink-deep: #1a1a1c;
+      --shoin: #f0e8d4;
+      --engawa: #e0d8c0;
+      --chashitsu: #dcd2b8;
+      --jp: 'Shippori Mincho', 'Noto Serif JP', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
       --display: 'Cormorant Garamond', serif;
       --sans: 'Inter', 'Helvetica Neue', sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
     body {
-      font-family: var(--sans);
-      background: var(--sand);
-      color: var(--sumi);
+      font-family: var(--jp);
+      background: var(--ink-deep);
+      color: var(--sand);
       -webkit-font-smoothing: antialiased;
       line-height: 1.7;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
       overflow-x: hidden;
     }
 
-    /* ── Top bar ── */
     .top {
-      flex-shrink: 0;
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(26,26,28,0.86);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      padding: 16px 48px;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 2.4rem 3rem 0;
+      border-bottom: 1px solid rgba(232,226,212,0.08);
     }
-    .brand {
-      display: inline-flex; align-items: center; gap: 1.4rem;
-      font-family: var(--sans); font-size: 0.78rem;
-      color: var(--sumi); letter-spacing: 0.32em;
-    }
-    .brand-jp { font-family: var(--jp); letter-spacing: 0.45em; font-weight: 500; font-size: 0.92rem; }
-    .brand .dot { color: var(--ink-mute); letter-spacing: 0; }
-    .lang {
-      display: inline-flex; align-items: center; gap: 1rem;
-      font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.3em;
-    }
-    .lang .current { color: var(--sumi); font-weight: 600; }
-    .lang .sep { color: var(--ink-mute); font-weight: 300; }
-    .lang a { color: var(--ink-mute); text-decoration: none; transition: color 0.2s; }
-    .lang a:hover { color: var(--sumi); }
-
-    /* ── Main hero ── */
-    main {
-      flex: 1;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 3rem;
-      padding: 3.2rem 3rem 1rem;
-      max-width: 1280px; margin: 0 auto; width: 100%;
-      align-items: center;
-    }
-
-    /* ── Vertical name ── */
-    .name-vertical {
-      font-family: var(--brush);
-      writing-mode: vertical-rl;
-      font-weight: 900;
-      font-size: clamp(4.2rem, 7.8vw, 6.8rem);
-      line-height: 1.0;
-      letter-spacing: 0.1em;
-      color: var(--sumi);
-      padding: 0 1rem;
-      user-select: none;
-    }
-
-    /* ── Identity block ── */
-    .identity { padding-top: 1rem; }
-    .identity .en {
-      font-family: var(--display);
-      font-style: italic;
-      font-size: 1.4rem;
-      letter-spacing: 0.06em;
-      color: var(--sumi);
-      margin-bottom: 0.7rem;
-      white-space: nowrap;
-    }
-    .identity .role {
-      font-family: var(--display);
-      font-style: italic;
-      font-weight: 400;
-      font-size: 1rem;
-      letter-spacing: 0.08em;
-      color: var(--sumi);
-      margin-bottom: 0.4rem;
-      white-space: nowrap;
-    }
-    .identity .role-cn {
-      font-family: var(--jp);
-      font-size: 0.85rem;
-      letter-spacing: 0.32em;
-      color: var(--ink-mid);
-      white-space: nowrap;
-    }
-
-    /* ── Standing stones (cards) ── */
-    .stones {
-      display: flex; gap: 1.1rem; align-items: flex-end;
-    }
-    .stone {
-      position: relative;
-      width: 158px;
-      background: var(--card);
-      border: 1px solid var(--line-soft);
-      text-decoration: none;
-      color: var(--sumi);
-      display: flex; flex-direction: column;
-      padding: 1rem 1rem 1.3rem;
-      transition: transform 0.5s cubic-bezier(.2,.7,.2,1), box-shadow 0.4s ease, border-color 0.3s ease;
-    }
-    .stone:hover { transform: translateY(-7px); box-shadow: 0 14px 36px rgba(31,61,46,0.13); border-color: var(--line); }
-    .stone.is-disabled { pointer-events: none; }
-    .stone:nth-child(1) { height: 340px; background: var(--card); }
-    .stone:nth-child(2) { height: 300px; background: var(--card-warm); }
-    .stone:nth-child(3) { height: 260px; background: var(--card-cool); }
-
-    .stone::before {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-      background: var(--moss-deep);
-    }
-    .stone.is-disabled::before { background: var(--ink-mute); opacity: 0.5; }
-
-    .stone-head {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 0.6rem;
-    }
-    .stone-num {
-      font-family: var(--display); font-style: italic;
-      font-size: 1rem; font-weight: 400;
-      color: var(--sumi); letter-spacing: 0.1em;
-    }
-    .stone-status {
-      font-family: var(--sans);
-      font-size: 0.6rem; font-weight: 700;
-      letter-spacing: 0.2em;
-      padding: 0.22rem 0.55rem;
-      background: var(--moss-deep); color: var(--card);
-    }
-    .stone-status.is-soon {
-      background: transparent; color: var(--ink-mid);
-      border: 1px solid var(--line);
-    }
-
-    .stone-kanji {
-      flex: 1;
+    .brand { display: inline-flex; align-items: center; gap: 14px; }
+    .seal {
+      width: 36px; height: 36px;
+      background: var(--accent); color: #f8f5ec;
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--brush);
-      font-weight: 900;
-      font-size: 2.65rem;
-      letter-spacing: 0.04em;
-      color: var(--sumi);
-      padding: 0.5rem 0;
-    }
-
-    .stone-foot {
-      border-top: 1px solid var(--line-soft);
-      padding-top: 0.85rem;
-      display: flex; flex-direction: column; gap: 0.25rem;
-    }
-    .stone-en {
-      font-family: var(--display);
-      font-style: italic;
-      font-size: 0.92rem;
-      letter-spacing: 0.06em;
-      color: var(--sumi);
-    }
-    .stone-meta {
-      display: flex; justify-content: space-between; align-items: baseline;
-      font-family: var(--sans); font-size: 0.74rem;
-      color: var(--ink-mid); letter-spacing: 0.08em;
-    }
-    .stone-arrow {
-      font-family: var(--sans); font-size: 1rem; line-height: 1;
-      color: var(--sumi); transition: transform 0.3s ease;
-    }
-    .stone:hover .stone-arrow { transform: translateX(4px); }
-
-    /* ── Karesansui ripples ── */
-    .ripples {
-      position: relative; width: 100%;
-      max-width: 1280px; margin: 0 auto;
-      height: 170px; pointer-events: none;
-    }
-    .ripples svg { width: 100%; height: 100%; display: block; }
-
-    /* ── Footer ── */
-    footer {
+      font-family: var(--brush); font-size: 17px;
+      transform: rotate(-3deg);
+      box-shadow: 2px 2px 0 rgba(196,56,56,0.25);
       flex-shrink: 0;
-      padding: 0 3rem 2rem;
-      max-width: 1280px; margin: 0 auto; width: 100%;
-      display: flex; justify-content: space-between; align-items: flex-end;
-      gap: 2rem;
     }
-    .quote {
+    .brand-name {
+      display: flex; flex-direction: column; line-height: 1.15;
+    }
+    .brand-name .jp { font-family: var(--brush); font-size: 18px; letter-spacing: 0.1em; }
+    .brand-name .en { font-family: var(--display); font-style: italic; font-size: 11px; letter-spacing: 0.18em; opacity: 0.7; }
+    .nav {
+      display: flex; gap: 24px;
+      font-size: 12px; letter-spacing: 0.25em;
+      font-family: var(--sans);
+      text-transform: uppercase;
+    }
+    .nav a {
+      color: var(--sand); text-decoration: none;
+      opacity: 0.55; transition: opacity 0.3s;
+    }
+    .nav a.is-current, .nav a:hover { opacity: 0.95; }
+    .nav .nav-jp { font-size: 9px; opacity: 0.55; letter-spacing: 0.18em; margin-left: 2px; font-family: var(--jp); text-transform: none; }
+    .nav .lang {
+      border-left: 1px solid rgba(232,226,212,0.18);
+      padding-left: 24px;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+    }
+    .hero-veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(26,26,28,0) 0%, rgba(26,26,28,1) 100%);
+    }
+    .hero-inner {
+      position: relative;
+      padding: 120px 60px 80px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.5em;
+      opacity: 0.65;
+      margin-bottom: 28px;
+      font-family: var(--sans);
+      text-transform: uppercase;
+    }
+    .hero-eyebrow .jp { font-family: var(--jp); margin-right: 0.5em; letter-spacing: 0.4em; text-transform: none; }
+    .hero-title {
+      margin: 0;
+      font-family: var(--brush);
+      font-size: 88px;
+      line-height: 1.1;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+    }
+    .hero-title-en {
+      margin-top: 18px;
       font-family: var(--display);
       font-style: italic;
-      font-size: 0.95rem;
-      color: var(--sumi);
-      line-height: 1.85;
-      letter-spacing: 0.04em;
-      max-width: 360px;
-    }
-    .colophon {
-      text-align: right;
-      font-family: var(--sans); font-size: 0.78rem;
-      color: var(--ink-mid); letter-spacing: 0.14em;
-      line-height: 2;
-    }
-    .colophon .name {
-      font-family: var(--display); font-style: italic;
+      font-size: 26px;
       letter-spacing: 0.1em;
-      color: var(--sumi); font-weight: 400;
+      opacity: 0.85;
     }
-    .colophon a {
-      color: var(--sumi); text-decoration: none;
-      letter-spacing: 0.24em; font-weight: 500;
-      transition: color 0.2s;
+    .hero-sub {
+      margin-top: 24px;
+      font-size: 14px;
+      opacity: 0.7;
+      letter-spacing: 0.2em;
+      font-family: var(--display);
+      font-style: italic;
     }
-    .colophon a:hover { color: var(--moss-deep); }
-    .colophon .sep { color: var(--ink-mute); margin: 0 0.5rem; font-weight: 300; }
 
-    @media (max-width: 1100px) {
-      main { grid-template-columns: auto 1fr; gap: 2rem; padding: 2.5rem 2.5rem 1rem; }
-      .stones { grid-column: 1 / -1; justify-content: center; margin-top: 1.5rem; }
+    .rooms {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      min-height: 70vh;
+      border-top: 1px solid rgba(232,226,212,0.08);
     }
-    @media (max-width: 720px) {
-      .top { padding: 1.5rem 1.25rem 0; gap: 1rem; flex-wrap: wrap; }
-      .brand { font-size: 0.7rem; gap: 1rem; }
-      .brand-jp { font-size: 0.82rem; letter-spacing: 0.35em; }
-      main { grid-template-columns: 1fr; padding: 2rem 1.5rem 1rem; gap: 1.8rem; }
-      .name-vertical { font-size: 4rem; padding: 0; align-self: flex-start; }
-      .identity { padding-top: 0; }
-      .identity .en { font-size: 1.2rem; }
-      .stones {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.85rem;
-        margin-top: 0.5rem;
-        overflow: visible;
+    .room {
+      position: relative;
+      color: var(--ink);
+      text-decoration: none;
+      cursor: pointer;
+      padding: 60px 40px;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      transition: background 0.6s ease;
+    }
+    .room:not(:last-child) { border-right: 1px solid rgba(31,31,29,0.13); }
+    .room.is-shoin { background: var(--shoin); --room-accent: var(--ink); }
+    .room.is-engawa { background: var(--engawa); --room-accent: var(--accent); }
+    .room.is-chashitsu { background: var(--chashitsu); --room-accent: var(--moss); }
+    .room.is-disabled { cursor: default; }
+    .room.is-disabled .room-arrow { opacity: 0.35; }
+
+    .shoji {
+      position: absolute; inset: 0;
+      opacity: 0.12;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+    }
+    .room:hover .shoji { opacity: 0.05; }
+
+    .light-shaft {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg,
+        transparent 0%,
+        var(--room-accent) 60%,
+        transparent 100%);
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+    }
+    .room:hover .light-shaft { opacity: 0.08; }
+
+    .room-head {
+      position: relative;
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      opacity: 0.6;
+      font-family: var(--sans);
+    }
+    .room-head .jp { font-family: var(--jp); margin-right: 0.4em; }
+
+    .room-center {
+      position: relative;
+      text-align: center;
+      flex: 1;
+      display: flex; flex-direction: column;
+      justify-content: center;
+    }
+    .room-label {
+      font-family: var(--brush);
+      font-size: 110px;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      color: var(--room-accent);
+      transform: translateY(0);
+      transition: transform 0.6s ease;
+    }
+    .room:hover .room-label { transform: translateY(-4px); }
+    .room-en {
+      margin-top: 16px;
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 16px;
+      letter-spacing: 0.18em;
+      opacity: 0.7;
+    }
+
+    .room-foot {
+      position: relative;
+      font-size: 13px;
+      line-height: 1.7;
+      opacity: 0.6;
+      transition: opacity 0.6s ease;
+      font-family: var(--display);
+      font-style: italic;
+    }
+    .room:hover .room-foot { opacity: 0.85; }
+    .room-arrow {
+      margin-top: 14px;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: var(--room-accent);
+      font-family: var(--sans);
+      font-style: normal;
+      text-transform: uppercase;
+    }
+
+    .strip {
+      background: var(--sand);
+      color: var(--ink);
+      padding: 80px 60px;
+    }
+    .strip-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+    .strip-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      opacity: 0.5;
+      margin-bottom: 16px;
+      font-family: var(--sans);
+      text-transform: uppercase;
+    }
+    .strip-title {
+      margin: 0;
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }
+    .strip-body {
+      margin-top: 24px;
+      font-size: 14px;
+      line-height: 2;
+      opacity: 0.7;
+    }
+
+    footer {
+      background: var(--ink-deep);
+      padding: 32px 60px;
+      display: flex; justify-content: space-between;
+      font-size: 11px; opacity: 0.55;
+      letter-spacing: 0.2em;
+      font-family: var(--sans);
+      text-transform: uppercase;
+    }
+    footer .links a { color: var(--sand); text-decoration: none; opacity: 0.85; transition: opacity 0.2s; }
+    footer .links a:hover { opacity: 1; color: var(--accent); }
+    footer .sep { opacity: 0.4; margin: 0 0.6em; }
+
+    @media (max-width: 760px) {
+      .top { padding: 14px 20px; }
+      .seal { width: 32px; height: 32px; font-size: 15px; }
+      .brand-name .jp { font-size: 16px; }
+      .brand-name .en { font-size: 10px; }
+      .nav { gap: 14px; font-size: 10px; letter-spacing: 0.2em; }
+      .nav .lang { padding-left: 14px; }
+      .nav a.nav-sub { display: none; }
+
+      .hero-inner { padding: 70px 24px 56px; }
+      .hero-eyebrow { font-size: 10px; letter-spacing: 0.4em; margin-bottom: 20px; }
+      .hero-title { font-size: 52px; letter-spacing: 0.04em; }
+      .hero-title-en { font-size: 18px; margin-top: 12px; }
+      .hero-sub { font-size: 12px; letter-spacing: 0.16em; margin-top: 16px; }
+
+      .rooms { grid-template-columns: 1fr; min-height: 0; }
+      .room { padding: 40px 32px; min-height: 280px; }
+      .room:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid rgba(31,31,29,0.13);
       }
-      .stone {
-        width: 100%; min-width: 0;
-        height: auto !important; min-height: 168px;
-        padding: 1rem 1.2rem 1.15rem;
-      }
-      .stone:nth-child(1),
-      .stone:nth-child(2),
-      .stone:nth-child(3) { min-height: 168px; }
-      .stone-kanji { font-size: 2.4rem; padding: 0.9rem 0; }
-      .stone-num { font-size: 0.95rem; }
-      .stone-en { font-size: 0.92rem; }
-      .stone-meta { font-size: 0.78rem; }
-      .ripples { height: 110px; }
+      .room-label { font-size: 84px; }
+      .room-en { font-size: 14px; }
+      .room-head { font-size: 10px; letter-spacing: 0.28em; }
+      .room-foot { font-size: 12px; }
+
+      .strip { padding: 56px 24px; }
+      .strip-title { font-size: 22px; }
+      .strip-body { font-size: 13px; }
+
       footer {
-        padding: 0 1.5rem 1.5rem;
-        flex-direction: column; align-items: flex-start; gap: 1.2rem;
+        padding: 24px;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 10px;
       }
-      .colophon { text-align: left; }
     }
   </style>
 </head>
@@ -291,92 +317,124 @@
 
 <header class="top">
   <span class="brand">
-    <span>KARESANSUI</span>
-    <span class="dot">·</span>
-    <span class="brand-jp">枯 山 水</span>
+    <span class="brand-name">
+      <span class="jp">葉崇揚</span>
+      <span class="en">Chung-Yang Yeh</span>
+    </span>
   </span>
-  <div class="lang">
-    <span class="current">EN</span>
-    <span class="sep">／</span>
-    <a href="index.html">中</a>
-  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index-en.html" class="is-current">Home <span class="nav-jp">(玄關)</span></a>
+    <a href="academic.html" class="nav-sub">Academic <span class="nav-jp">(書院)</span></a>
+    <a href="photography.html" class="nav-sub">Photography <span class="nav-jp">(縁側)</span></a>
+    <a href="#" class="nav-sub">Teaching <span class="nav-jp">(茶室)</span></a>
+    <a href="index.html" class="lang">中</a>
+  </nav>
 </header>
 
-<main>
-  <h1 class="name-vertical">葉崇揚</h1>
-
-  <div class="identity">
-    <p class="en">Chung-Yang Yeh</p>
-    <p class="role">Professor of Social Policy</p>
-    <p class="role-cn">Soochow University, Taiwan</p>
+<section class="hero" aria-label="Genkan ・ Entrance">
+  <img class="hero-img" src="images/photography/img_3506.jpg" alt="" />
+  <div class="hero-veil"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow"><span class="jp">玄關</span>· GENKAN</p>
+    <h1 class="hero-title">お入りください</h1>
+    <p class="hero-title-en">Please, come in.</p>
+    <p class="hero-sub">Three rooms. Choose any door.</p>
   </div>
+</section>
 
-  <nav class="stones" aria-label="Sections">
-    <a href="academic.html" class="stone">
-      <div class="stone-head">
-        <span class="stone-num">I</span>
-        <span class="stone-status">LIVE</span>
-      </div>
-      <div class="stone-kanji">學術</div>
-      <div class="stone-foot">
-        <span class="stone-en">Academic</span>
-        <span class="stone-meta"><span>Research · Writings</span><span class="stone-arrow">→</span></span>
-      </div>
-    </a>
+<section class="rooms" aria-label="Three rooms">
+  <a href="academic.html" class="room is-shoin">
+    <svg class="shoji" aria-hidden="true">
+      <defs>
+        <pattern id="shoji-1" x="0" y="0" width="120" height="180" patternUnits="userSpaceOnUse">
+          <rect width="120" height="180" fill="none" stroke="#1f1f1d" stroke-width="1" />
+          <line x1="60" y1="0" x2="60" y2="180" stroke="#1f1f1d" stroke-width="0.5" />
+          <line x1="0" y1="60" x2="120" y2="60" stroke="#1f1f1d" stroke-width="0.5" />
+          <line x1="0" y1="120" x2="120" y2="120" stroke="#1f1f1d" stroke-width="0.5" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#shoji-1)" />
+    </svg>
+    <div class="light-shaft" aria-hidden="true"></div>
+    <div class="room-head">01 · <span class="jp">書院</span> SHOIN · ACADEMIC</div>
+    <div class="room-center">
+      <div class="room-label">書院</div>
+      <div class="room-en">The Study</div>
+    </div>
+    <div class="room-foot">
+      Where papers breathe; the desk holds a small mountain of paper.
+      <div class="room-arrow">→ Enter</div>
+    </div>
+  </a>
 
-    <a href="photography.html" class="stone">
-      <div class="stone-head">
-        <span class="stone-num">II</span>
-        <span class="stone-status">LIVE</span>
-      </div>
-      <div class="stone-kanji">寫真</div>
-      <div class="stone-foot">
-        <span class="stone-en">Photography</span>
-        <span class="stone-meta"><span>162 frames</span><span class="stone-arrow">→</span></span>
-      </div>
-    </a>
+  <a href="photography.html" class="room is-engawa">
+    <svg class="shoji" aria-hidden="true">
+      <defs>
+        <pattern id="shoji-2" x="0" y="0" width="120" height="180" patternUnits="userSpaceOnUse">
+          <rect width="120" height="180" fill="none" stroke="#1f1f1d" stroke-width="1" />
+          <line x1="60" y1="0" x2="60" y2="180" stroke="#1f1f1d" stroke-width="0.5" />
+          <line x1="0" y1="60" x2="120" y2="60" stroke="#1f1f1d" stroke-width="0.5" />
+          <line x1="0" y1="120" x2="120" y2="120" stroke="#1f1f1d" stroke-width="0.5" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#shoji-2)" />
+    </svg>
+    <div class="light-shaft" aria-hidden="true"></div>
+    <div class="room-head">02 · <span class="jp">縁側</span> ENGAWA · PHOTOGRAPHY</div>
+    <div class="room-center">
+      <div class="room-label">縁側</div>
+      <div class="room-en">The Veranda</div>
+    </div>
+    <div class="room-foot">
+      The threshold between in and out, where the garden becomes a book.
+      <div class="room-arrow">→ Enter</div>
+    </div>
+  </a>
 
-    <a href="#" class="stone is-disabled">
-      <div class="stone-head">
-        <span class="stone-num">III</span>
-        <span class="stone-status is-soon">SOON</span>
-      </div>
-      <div class="stone-kanji">教學</div>
-      <div class="stone-foot">
-        <span class="stone-en">Teaching</span>
-        <span class="stone-meta"><span>—</span><span class="stone-arrow">→</span></span>
-      </div>
-    </a>
-  </nav>
-</main>
+  <a href="#" class="room is-chashitsu is-disabled" aria-disabled="true">
+    <svg class="shoji" aria-hidden="true">
+      <defs>
+        <pattern id="shoji-3" x="0" y="0" width="120" height="180" patternUnits="userSpaceOnUse">
+          <rect width="120" height="180" fill="none" stroke="#1f1f1d" stroke-width="1" />
+          <line x1="60" y1="0" x2="60" y2="180" stroke="#1f1f1d" stroke-width="0.5" />
+          <line x1="0" y1="60" x2="120" y2="60" stroke="#1f1f1d" stroke-width="0.5" />
+          <line x1="0" y1="120" x2="120" y2="120" stroke="#1f1f1d" stroke-width="0.5" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#shoji-3)" />
+    </svg>
+    <div class="light-shaft" aria-hidden="true"></div>
+    <div class="room-head">03 · <span class="jp">茶室</span> CHASHITSU · TEACHING</div>
+    <div class="room-center">
+      <div class="room-label">茶室</div>
+      <div class="room-en">The Tea Room</div>
+    </div>
+    <div class="room-foot">
+      A small entrance, a large conversation. One meeting, once in a lifetime.
+      <div class="room-arrow">— Coming soon</div>
+    </div>
+  </a>
+</section>
 
-<div class="ripples">
-  <svg viewBox="0 0 1280 170" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <g id="ring-set">
-        <ellipse cx="0" cy="0" rx="14" ry="6" fill="none" stroke="rgba(42,38,32,0.22)" stroke-width="0.7"/>
-        <ellipse cx="0" cy="0" rx="40" ry="14" fill="none" stroke="rgba(42,38,32,0.20)" stroke-width="0.7"/>
-        <ellipse cx="0" cy="0" rx="72" ry="24" fill="none" stroke="rgba(42,38,32,0.18)" stroke-width="0.7"/>
-        <ellipse cx="0" cy="0" rx="106" ry="34" fill="none" stroke="rgba(42,38,32,0.16)" stroke-width="0.7"/>
-        <ellipse cx="0" cy="0" rx="142" ry="46" fill="none" stroke="rgba(42,38,32,0.13)" stroke-width="0.7"/>
-        <ellipse cx="0" cy="0" rx="180" ry="58" fill="none" stroke="rgba(42,38,32,0.10)" stroke-width="0.7"/>
-        <ellipse cx="0" cy="0" rx="220" ry="70" fill="none" stroke="rgba(42,38,32,0.08)" stroke-width="0.7"/>
-      </g>
-    </defs>
-    <use href="#ring-set" x="220" y="95"/>
-    <use href="#ring-set" x="640" y="115"/>
-    <use href="#ring-set" x="1050" y="95"/>
-  </svg>
-</div>
+<section class="strip">
+  <div class="strip-inner">
+    <p class="strip-eyebrow">続きへ ・ Onward</p>
+    <h2 class="strip-title">Each room carries its own air.</h2>
+    <p class="strip-body">
+      The Study smells of paper and ink. The Veranda is wind and light.<br/>
+      The Tea Room — a stillness, and a single bowl. Choose your door above.
+    </p>
+  </div>
+</section>
 
 <footer>
-  <p class="quote">“Social policy — from cradle to grave,<br/>threaded through every life we live.”</p>
-  <p class="colophon">
-    © 2026 <span class="name">Chung-Yang Yeh</span><br/>
+  <span>YEH CHUNG-YANG</span>
+  <span class="links">
     <a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener">INSTAGRAM</a>
     <span class="sep">·</span>
     <a href="https://www.flickr.com/photos/young1017/" target="_blank" rel="noopener">FLICKR</a>
-  </p>
+  </span>
+  <span>Reiwa 8 ・ Summer</span>
 </footer>
 
 </body>

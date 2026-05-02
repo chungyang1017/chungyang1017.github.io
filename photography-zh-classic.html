@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>寫真 ・ 葉崇揚</title>
+  <meta name="description" content="葉崇揚的攝影作品 — 街頭、四季風景、海洋、寬幅 Xpan。" />
+  <link rel="alternate" hreflang="en" href="photography.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="photography-zh.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500&family=Noto+Serif+JP:wght@200;300;400;500&family=Noto+Serif+TC:wght@200;300;400&family=Ma+Shan+Zheng&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sumi: #15110d; --ink-mid: #5a534d; --ink-mute: #9a938c;
+      --washi: #fbf8f2; --washi-deep: #f1ebdf; --washi-soft: #ffffff;
+      --shu: #b13a2a; --kin: #a98146;
+      --line: rgba(21,17,13,0.10); --line-mid: rgba(21,17,13,0.18);
+      --jp: 'Noto Serif JP', 'Noto Serif TC', serif;
+      --brush: 'Ma Shan Zheng', 'Noto Serif TC', serif;
+      --display: 'Cormorant Garamond', 'Noto Serif TC', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--sans); background: var(--washi); color: var(--sumi);
+      -webkit-font-smoothing: antialiased; line-height: 1.85; font-weight: 300;
+    }
+
+    /* TOP NAV */
+    nav.top {
+      position: sticky; top: 0; z-index: 30;
+      background: rgba(251,248,242,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav.top .inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 1.1rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-logo { font-family: var(--jp); font-size: 1.15rem; color: var(--sumi); text-decoration: none; letter-spacing: 0.32em; }
+    .top-logo .nav-back { display: inline-block; color: var(--shu); margin-right: 0.5rem; transition: transform 0.3s; font-family: var(--display); font-style: italic; }
+    .top-logo:hover .nav-back { transform: translateX(-3px); }
+    .top-nav { list-style: none; display: flex; gap: 2.6rem; align-items: center; }
+    .top-nav a { font-family: var(--jp); font-size: 1.1rem; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.18em; transition: color 0.2s; }
+    .top-nav a:hover, .top-nav a.active { color: var(--shu); }
+    .lang-toggle { font-size: 0.86rem; letter-spacing: 0.2em; display: flex; gap: 0.5rem; align-items: center; }
+    .lang-toggle .current { color: var(--sumi); font-weight: 500; }
+    .lang-toggle .sep { color: var(--ink-mute); opacity: 0.4; }
+    .lang-toggle a { color: var(--ink-mute); text-decoration: none; }
+    .lang-toggle a:hover { color: var(--shu); }
+
+    /* HERO MASTHEAD */
+    .ph-hero {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 8rem 2.5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: end;
+    }
+    .ph-hero-eyebrow {
+      font-family: var(--display); font-style: italic; font-size: 1.08rem;
+      color: var(--shu); letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 1.7rem; display: flex; align-items: center; gap: 0.85rem;
+    }
+    .ph-hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--shu); }
+
+    .ph-hero h1 {
+      font-family: var(--display); font-weight: 300;
+      font-size: clamp(3.6rem, 6.5vw, 5.6rem);
+      letter-spacing: 0.02em; line-height: 1.05;
+      color: var(--sumi); margin-bottom: 0.85rem;
+    }
+
+    /* featured photo on left */
+    .ph-hero-feature {
+      margin-top: 2.8rem;
+      position: relative;
+    }
+    .ph-feature-eyebrow {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.78rem; color: var(--shu);
+      letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .ph-feature-eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--shu); }
+
+    .ph-hero-feature figure {
+      position: relative;
+      overflow: hidden;
+      background: var(--washi-deep);
+      box-shadow: 0 18px 40px -22px rgba(21,17,13,0.35);
+    }
+    .ph-hero-feature img {
+      width: 100%;
+      display: block;
+      filter: saturate(0.88) brightness(0.97);
+      transition: filter 0.5s, transform 0.7s cubic-bezier(.2,.7,.2,1);
+    }
+    .ph-hero-feature figure:hover img { filter: saturate(1) brightness(1); transform: scale(1.015); }
+
+    .ph-hero-feature figcaption {
+      margin-top: 1rem;
+      display: flex; align-items: baseline; gap: 1.25rem;
+      font-family: var(--display); font-style: italic;
+      font-size: 0.84rem; color: var(--ink-mute);
+      letter-spacing: 0.08em;
+    }
+    .ph-hero-feature .cap-num { color: var(--shu); letter-spacing: 0.16em; }
+    .ph-hero-feature .cap-title {
+      flex: 1; color: var(--sumi); font-style: normal;
+      font-family: var(--jp); letter-spacing: 0.18em;
+      font-size: 0.95rem;
+    }
+    .ph-hero-feature .cap-year { color: var(--shu); letter-spacing: 0.1em; }
+    .ph-hero .h1-jp {
+      display: block; font-family: var(--jp); font-weight: 300;
+      font-size: clamp(1.7rem, 2.5vw, 2.2rem);
+      letter-spacing: 0.32em; color: var(--ink-mid); margin-top: 0.75rem;
+    }
+    .ph-hero .h1-cn {
+      display: block; font-family: var(--jp); font-weight: 300;
+      font-size: 1.25rem; letter-spacing: 0.18em; color: var(--ink-mute); margin-top: 0.35rem;
+    }
+
+    .ph-hero-text p {
+      font-size: 1.22rem; color: var(--ink-mid); line-height: 2.05;
+      max-width: 540px; margin-bottom: 1.55rem;
+    }
+
+    .ph-hero-meta {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.96rem; color: var(--ink-mute);
+      letter-spacing: 0.12em;
+    }
+    .ph-hero-meta .num { color: var(--shu); }
+
+    /* THEMES INDEX */
+    .ph-index {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 2.5rem 3rem;
+      border-top: 1px solid var(--line-mid);
+      padding-top: 2rem;
+    }
+    .ph-index-eyebrow {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.78rem; letter-spacing: 0.22em; color: var(--shu);
+      text-transform: uppercase; margin-bottom: 1.4rem;
+    }
+    .ph-index-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 1px; background: var(--shu); vertical-align: middle; margin-right: 0.6rem; transform: translateY(-2px); }
+
+    .ph-index-list {
+      display: flex; flex-wrap: wrap; gap: 0;
+      list-style: none;
+    }
+    .ph-index-list li {
+      flex: 1 0 auto;
+      border-right: 1px solid var(--line);
+    }
+    .ph-index-list li:last-child { border-right: none; }
+    .ph-index-list a {
+      display: block;
+      padding: 1rem 1.5rem;
+      text-decoration: none;
+      color: var(--sumi);
+      transition: background 0.3s;
+    }
+    .ph-index-list a:hover { background: var(--washi-deep); }
+    .ph-index-list .name-jp {
+      display: block; font-family: var(--jp);
+      font-size: 1.15rem; letter-spacing: 0.18em; margin-bottom: 0.2rem;
+    }
+    .ph-index-list .name-en {
+      display: block; font-family: var(--display); font-style: italic;
+      font-size: 0.78rem; color: var(--ink-mute); letter-spacing: 0.06em;
+    }
+    .ph-index-list .count {
+      font-family: var(--display); font-style: italic; font-size: 0.7rem;
+      color: var(--shu); margin-left: 0.4rem;
+    }
+
+    /* SERIES */
+    .ph-series {
+      max-width: 1280px; margin: 0 auto;
+      padding: 5rem 2.5rem 6rem;
+      border-top: 1px solid var(--line-mid);
+    }
+    .ph-series-mark {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 3rem;
+      padding-bottom: 1rem;
+    }
+
+    .ph-series-num {
+      font-family: var(--brush);
+      font-weight: 400;
+      font-size: clamp(3.6rem, 5vw, 4.8rem);
+      color: var(--shu);
+      line-height: 0.9;
+      transform: rotate(-2deg);
+    }
+
+    .ph-series-title { padding-bottom: 0.4rem; border-bottom: 1px solid var(--line-mid); }
+    .ph-series-title .title-jp {
+      font-family: var(--jp); font-weight: 200;
+      font-size: clamp(1.95rem, 3vw, 2.6rem);
+      letter-spacing: 0.22em; color: var(--sumi);
+      line-height: 1.1;
+    }
+    .ph-series-title .title-romaji {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.92rem; color: var(--ink-mute);
+      letter-spacing: 0.08em; display: block; margin-top: 0.2rem;
+    }
+    .ph-series-title .title-en {
+      font-family: var(--display); font-style: italic;
+      font-size: 1.1rem; color: var(--shu);
+      letter-spacing: 0.04em; margin-left: 1rem;
+    }
+
+    .ph-series-meta {
+      display: flex; gap: 2rem; align-items: baseline;
+      font-family: var(--display); font-style: italic;
+      font-size: 0.85rem; color: var(--ink-mute);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.4rem;
+    }
+    .ph-series-meta .years { color: var(--shu); letter-spacing: 0.12em; }
+    .ph-series-meta .count {}
+    .ph-series-meta::before { content: '—'; color: var(--shu); margin-right: 0.2rem; }
+
+    .ph-series-desc {
+      font-size: 1rem; color: var(--ink-mid); line-height: 1.95;
+      max-width: 720px; margin-bottom: 2.5rem;
+    }
+    .ph-series-desc-jp {
+      font-family: var(--jp); font-size: 0.92rem;
+      color: var(--ink-mute); letter-spacing: 0.06em;
+      line-height: 2.2; margin-top: 0.4rem;
+    }
+
+    /* PHOTO GRID — like contact sheet */
+    .ph-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 0.6rem;
+    }
+    .ph-grid.is-xpan { grid-template-columns: 1fr; max-width: 1100px; gap: 1.5rem; }
+    @media (max-width: 720px) {
+      .ph-grid { grid-template-columns: 1fr; gap: 0.5rem; }
+    }
+
+    .ph-card {
+      position: relative;
+      overflow: hidden;
+      cursor: zoom-in;
+      transition: transform 0.5s ease;
+      background: var(--washi-deep);
+    }
+    /* unified 3:2 landscape thumbnails for all categories */
+    .ph-card.is-portrait,
+    .ph-card.is-landscape,
+    .ph-card.is-square,
+    .ph-card.is-xpan { aspect-ratio: 3/2; }
+    /* Xpan section keeps native panorama */
+    .ph-grid.is-xpan .ph-card { aspect-ratio: 65/24; }
+
+    .ph-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.88) brightness(0.97);
+      transition: transform 0.7s cubic-bezier(.2,.7,.2,1), filter 0.5s;
+    }
+    .ph-card:hover img { transform: scale(1.03); filter: saturate(1) brightness(1); }
+
+    .ph-card-num {
+      position: absolute;
+      top: 0.5rem; left: 0.5rem;
+      z-index: 3;
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 0.78rem;
+      color: rgba(251,248,242,0.92);
+      background: rgba(21,17,13,0.55);
+      padding: 0.22rem 0.55rem;
+      letter-spacing: 0.15em;
+      backdrop-filter: blur(4px);
+      pointer-events: none;
+    }
+    .ph-card:hover .ph-card-num {
+      background: rgba(177,58,42,0.85);
+    }
+    .ph-card-title {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      z-index: 3;
+      padding: 1.5rem 0.85rem 0.7rem;
+      background: linear-gradient(to top, rgba(21,17,13,0.78), rgba(21,17,13,0));
+      color: rgba(251,248,242,0.95);
+      font-family: var(--jp);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      pointer-events: none;
+    }
+    .ph-card:hover .ph-card-title { opacity: 1; transform: translateY(0); }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed; inset: 0;
+      background: rgba(15,12,9,0.95);
+      display: none; align-items: center; justify-content: center;
+      z-index: 200;
+      padding: 2rem;
+      cursor: zoom-out;
+    }
+    .lightbox.is-open { display: flex; }
+    .lightbox-figure {
+      max-width: 96vw; max-height: 92vh;
+      display: flex; flex-direction: row; align-items: center;
+      gap: 2.5rem;
+      cursor: default;
+    }
+    .lightbox-img {
+      max-width: 70vw; max-height: 88vh;
+      object-fit: contain; display: block;
+    }
+    .lightbox-caption {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      max-height: 80vh;
+      color: rgba(251,248,242,0.78);
+      display: flex; flex-direction: column;
+      gap: 1.6rem; align-items: flex-start;
+      padding: 1rem 0;
+    }
+    .lightbox-caption .lb-title {
+      font-family: var(--jp);
+      font-size: 0.88rem;
+      letter-spacing: 0.22em;
+      color: rgba(251,248,242,0.5);
+    }
+    .lightbox-caption .lb-title .romaji {
+      font-family: var(--display); font-style: italic;
+      font-size: 0.78rem;
+      color: rgba(251,248,242,0.4);
+      letter-spacing: 0.08em;
+      display: block;
+      margin-top: 0.5rem;
+    }
+    .lightbox-caption .lb-haiku-jp {
+      font-family: var(--jp);
+      font-size: 1.4rem;
+      line-height: 2.4;
+      color: rgba(251,248,242,0.95);
+      letter-spacing: 0.18em;
+    }
+    .lightbox-caption .lb-haiku-zh {
+      font-family: var(--jp);
+      font-size: 1.05rem;
+      line-height: 2.1;
+      color: rgba(251,248,242,0.65);
+      letter-spacing: 0.14em;
+    }
+    .lightbox-close, .lightbox-prev, .lightbox-next {
+      position: absolute;
+      background: rgba(251,248,242,0.06);
+      border: 1px solid rgba(251,248,242,0.18);
+      color: rgba(251,248,242,0.9);
+      width: 44px; height: 44px;
+      font-size: 1.5rem; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
+      background: rgba(177,58,42,0.25); border-color: rgba(177,58,42,0.5);
+    }
+    .lightbox-close { top: 1.25rem; right: 1.25rem; }
+    .lightbox-prev { left: 1.25rem; top: 50%; transform: translateY(-50%); }
+    .lightbox-next { right: 1.25rem; top: 50%; transform: translateY(-50%); }
+    .lightbox-counter { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); font-family: var(--display); font-style: italic; font-size: 0.78rem; letter-spacing: 0.18em; color: rgba(251,248,242,0.5); }
+
+    /* FOOTER */
+    footer {
+      padding: 3rem 2.5rem;
+      border-top: 1px solid var(--line);
+      background: var(--washi-deep);
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--ink-mute);
+      letter-spacing: 0.08em;
+    }
+    footer .sep { color: var(--ink-mute); opacity: 0.4; margin: 0 0.5rem; }
+    footer a { color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--shu); }
+
+    @media (max-width: 1024px) {
+      .ph-hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 5rem; }
+      .top-nav { display: none; }
+      .ph-index-list { flex-direction: column; }
+      .ph-index-list li { border-right: none; border-bottom: 1px solid var(--line); }
+    }
+    @media (max-width: 640px) {
+      .ph-series, .ph-hero, .ph-index { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .ph-series-mark { grid-template-columns: auto 1fr; gap: 1rem; }
+      .ph-series-title .title-en { display: block; margin-left: 0; margin-top: 0.4rem; }
+      .lightbox-prev, .lightbox-next { width: 38px; height: 38px; font-size: 1.2rem; }
+      .lightbox-figure { flex-direction: column; gap: 1rem; max-width: 96vw; max-height: 92vh; }
+      .lightbox-img { max-width: 92vw; max-height: 70vh; }
+      .lightbox-caption {
+        writing-mode: horizontal-tb;
+        flex-direction: column;
+        max-height: none;
+        text-align: center;
+        padding: 0;
+        gap: 0.6rem;
+      }
+      .lightbox-caption .lb-haiku-jp { font-size: 1.05rem; line-height: 1.85; letter-spacing: 0.1em; }
+      .lightbox-caption .lb-haiku-zh { font-size: 0.95rem; line-height: 1.7; letter-spacing: 0.08em; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="inner">
+    <a href="index.html" class="top-logo" title="首頁"><span class="nav-back">←</span> 葉崇揚</a>
+    <ul class="top-nav">
+      <li><a href="academic-zh.html">學術</a></li>
+      <li><a href="photography-zh.html" class="active">寫真</a></li>
+      <li><a href="#">教學</a></li>
+    </ul>
+    <div class="lang-toggle">
+      <span class="current">中文</span>
+      <span class="sep">／</span>
+      <a href="photography.html">EN</a>
+    </div>
+  </div>
+</nav>
+
+<header class="ph-hero">
+  <div class="ph-hero-text">
+    <p class="ph-hero-eyebrow">No. 二 ・ 寫真</p>
+    <h1>
+      寫真
+      <span class="h1-jp">写真</span>
+      <span class="h1-cn">Shashin</span>
+    </h1>
+
+    <div class="ph-hero-feature">
+      <p class="ph-feature-eyebrow">扉頁 ・ Frontispiece</p>
+      <figure>
+        <img src="images/photography/dscf6313_2.jpg" alt="嵐山 ・ 紅葉樹下的我" />
+        <figcaption>
+          <span class="cap-title">嵐山 ・ 紅葉樹下，河邊的自己</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="ph-hero-text">
+    <p>
+      於我而言，攝影是我一種觀察和敘事的方法。將近三十年來，它與研究並行，像是同一種凝視的兩種姿態——一種以文字深入，一種以光影靠近。在快門落下的瞬間，世界自會悄悄告訴我，它正在發生著什麼。
+    </p>
+    <p>
+      我大部分的作品發生在台灣與日本的街道、山脈與海岸：黃昏時台北小巷裡緩慢的步伐、
+      晚秋京都清晨那種乾脆的靜謐、淡水河面上對岸大廈剛開始閃爍的光。
+      器材以 Fujifilm 數位機為主，偶爾配一台 Leica M6/M11 相機 ──
+      當一個場景太長、容不下一個方框的時候，我就會拿起 Xpan。
+    </p>
+    <p>
+      作品依九個系列分類 ── <em>街頭、春信、青嵐、紅葉、雪明、潮騒、山水、Xpan、銀鹽</em> ──
+      與其說是有計畫的專案，更像是被光與季節推著走的紀錄。它們合起來，是一份緩慢的觀看。
+    </p>
+    <p class="ph-hero-meta"><span class="num">No. 〇〇一 — 一六二</span> ・ 162 件作品 ・ 1996 — 2026</p>
+  </div>
+</header>
+
+<div class="ph-index">
+  <p class="ph-index-eyebrow">主題 ・ Series</p>
+  <ul class="ph-index-list" id="theme-index"></ul>
+</div>
+
+<main id="series-list"></main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">×</button>
+  <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous">‹</button>
+  <button class="lightbox-next" id="lightbox-next" aria-label="Next">›</button>
+  <figure class="lightbox-figure">
+    <img class="lightbox-img" id="lightbox-img" alt="" />
+    <figcaption class="lightbox-caption" id="lightbox-caption"></figcaption>
+  </figure>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
+<footer>
+  © 2025 ・ 葉崇揚 Chung-Yang Yeh ・ 東吳大學社會學系
+  <span class="sep">·</span>
+  <a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener">Instagram</a>
+  <span class="sep">·</span>
+  <a href="https://www.flickr.com/photos/young1017/" target="_blank" rel="noopener">Flickr</a>
+</footer>
+
+<script src="js/photo-data.js"></script>
+<script>
+const LANG = 'zh';
+const themes = [
+  { id: 'harugasumi', jp: '春信',   romaji: 'Shunshin',    en: 'Spring',     zh: '春信',
+    desc_en: 'Tidings of spring — cherry blossoms, fresh greenery, the season\'s first light and breeze.',
+    desc_jp: '春信 ── 桜、若葉、春の最初の光と風。',
+    desc_zh: '春之訊息 ── 櫻花、新綠、春日最初的光與風。' },
+  { id: 'aoarashi',   jp: '青嵐',   romaji: 'Aoarashi',    en: 'Summer',     zh: '青嵐',
+    desc_en: 'The verdant pulse of summer — leaves, light through trees, the green wind.',
+    desc_jp: '若葉、樹間の光、青嵐 ── 夏の脈動。',
+    desc_zh: '夏日翠綠的脈動 ── 嫩葉、穿過樹梢的光、青嵐之風。' },
+  { id: 'kouyou',     jp: '紅葉',   romaji: 'Kōyō',        en: 'Autumn',     zh: '紅葉',
+    desc_en: 'The slow turning of leaves into fire and gold — autumn forests and quiet light.',
+    desc_jp: '緋色と黄金に染まる葉 ── 晩秋の森と静謐な光。',
+    desc_zh: '葉子緩慢地轉成火與金 ── 秋日的森林與安靜的光線。' },
+  { id: 'yukiakari',  jp: '雪明',   romaji: 'Yukiakari',   en: 'Winter',     zh: '雪明',
+    desc_en: 'Snow-light, stillness, the muted palette of winter mornings.',
+    desc_jp: '雪明、静寂、冬の朝の抑えた色彩。',
+    desc_zh: '雪光、靜止、冬日清晨那種克制的色調。' },
+  { id: 'kaiyou',     jp: '潮騒',   romaji: 'Shiosai',     en: 'Tideline',   zh: '潮聲',
+    desc_en: 'The sound of the tide — coastlines, beaches, the ocean at every hour.',
+    desc_jp: '潮騒 ── 海岸線、浜辺、あらゆる時刻の海。',
+    desc_zh: '潮浪之聲 ── 海岸線、沙灘、每一個時刻的海。' },
+  { id: 'sansui',     jp: '山水',   romaji: 'Sansui',      en: 'Landscape',  zh: '山水',
+    desc_en: 'Mountains and waters — Mt Fuji, lakes, mirrored peaks, sceneries that ask to be remembered slowly.',
+    desc_jp: '山と水 ── 富士、湖、映る峰々、ゆっくりと記憶されることを求める景色。',
+    desc_zh: '山與水 ── 富士、湖泊、倒影的群峰、需要慢慢記憶的景色。' },
+  { id: 'street',     jp: '街',    romaji: 'Machi',       en: 'Street',     zh: '街頭',
+    desc_en: 'People, fragments of cities, encounters with strangers — moments where the public street becomes briefly intimate.',
+    desc_jp: '街角、見知らぬ人、都市の断片 ── 公共空間が一瞬だけ親密になる瞬間。',
+    desc_zh: '街角、陌生人、都市的碎片 ── 公共街道在某一瞬間變得親密的時刻。' },
+  { id: 'xpan',       jp: 'Xpan',  romaji: 'Panoramic',   en: 'Xpan ・ 65×24', zh: 'Xpan',
+    desc_en: 'The wide format — 65×24, an unusually long frame, anything that asked to be seen sideways.',
+    desc_jp: '横長判（65×24）── 普通の枠に収まらない景色のための画面。',
+    desc_zh: '寬幅 65×24 ── 容不下方框的景色，需要橫向觀看的作品。' },
+  { id: 'ginen',      jp: '銀塩',  romaji: 'Ginen',       en: 'Silver Halide', zh: '銀鹽',
+    desc_en: 'Slide-film scans — the silver-halide medium where light is held by chemistry rather than sensors. Each frame, a small accident of light and time.',
+    desc_jp: '銀塩 ── ポジフィルムのスキャン。光が化学に捕えられた一枚、一枚の偶然。',
+    desc_zh: '銀鹽 ── 正片掃描。光被化學留住的痕跡，每一格都是時間的小意外。' },
+  { id: 'misc',       jp: '未分類', romaji: 'Mibunrui',    en: 'Uncategorized', zh: '未分類',
+    desc_en: 'Photographs still awaiting categorization — the open file.',
+    desc_jp: '未分類 ── 仮置きの作品。',
+    desc_zh: '尚待分類的作品 ── 等待以編號告知歸屬的暫存區。' },
+];
+
+const labels = {
+  en: { years: '', count: ' works', readMore: 'View all' },
+  zh: { years: '', count: ' 件', readMore: '檢視全部' }
+};
+
+// ── Render index ──
+const idx = document.getElementById('theme-index');
+themes.forEach(t => {
+  const photos = photoData.filter(p => (p.themes || []).includes(t.id));
+  if (photos.length === 0) return;
+  const li = document.createElement('li');
+  li.innerHTML = `<a href="#${t.id}">
+    <span class="name-jp">${t.jp}</span>
+    <span class="name-en">${t.en}<span class="count">(${photos.length})</span></span>
+  </a>`;
+  idx.appendChild(li);
+});
+
+// ── Render series sections ──
+const list = document.getElementById('series-list');
+let seriesNum = 0;
+themes.forEach(t => {
+  const photos = photoData.filter(p => (p.themes || []).includes(t.id));
+  if (photos.length === 0) return;
+  seriesNum++;
+  const years = photos.map(p => p.year).filter(Boolean);
+  const yearRange = years.length ? `${Math.min(...years)} — ${Math.max(...years)}` : '';
+
+  const section = document.createElement('section');
+  section.className = 'ph-series';
+  section.id = t.id;
+  section.innerHTML = `
+    <div class="ph-series-mark">
+      <span class="ph-series-num">${cjkNumeral(seriesNum)}</span>
+      <div class="ph-series-title">
+        <span class="title-jp">${t.jp}</span>
+        <span class="title-en">${t.en}</span>
+        <span class="title-romaji">${t.romaji}</span>
+      </div>
+    </div>
+    <p class="ph-series-meta">
+      <span class="years">${yearRange}</span>
+      <span class="count">${photos.length}${labels[LANG].count}</span>
+    </p>
+    <p class="ph-series-desc">${t['desc_' + LANG] || t.desc_en}</p>
+    ${t.desc_jp ? `<p class="ph-series-desc-jp">${t.desc_jp}</p>` : ''}
+    <div class="ph-grid ${t.id === 'xpan' ? 'is-xpan' : ''}">
+      ${photos.map(p => {
+        const title = p['title_' + LANG] || p.title_en || p.title || '';
+        return `
+        <figure class="ph-card is-${p.shape || 'landscape'}" data-src="${p.src}" data-title="${title}" data-num="${p.num}">
+          <img src="${p.src}" alt="${title || ('No. ' + p.num)}" loading="lazy" />
+          <span class="ph-card-num">No. ${p.num}</span>
+          ${title ? `<span class="ph-card-title">${title}</span>` : ''}
+        </figure>
+      `;}).join('')}
+    </div>
+  `;
+  list.appendChild(section);
+});
+
+function cjkNumeral(n) {
+  return ['〇','一','二','三','四','五','六','七','八','九','十'][n] || n;
+}
+
+// ── Lightbox ──
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lightbox-img');
+const lbCap = document.getElementById('lightbox-caption');
+const lbCount = document.getElementById('lightbox-counter');
+let allCards = [];
+let cur = 0;
+
+function refreshCards() { allCards = Array.from(document.querySelectorAll('.ph-card')); }
+
+function openLb(idx) {
+  refreshCards();
+  cur = idx;
+  const card = allCards[idx];
+  if (!card) return;
+  const num = card.dataset.num;
+  const photo = photoData.find(p => p.num === num) || {};
+  lbImg.src = card.dataset.src;
+
+  const titleZh = photo.title_zh || photo.title_jp || '';
+  const titleJp = photo.title_jp || '';
+  const haikuJp = (photo.haiku_jp || '').replace(/[／\/]\s*/g, '<br>');
+  const haikuZh = (photo.haiku_zh || '').replace(/[／\/]\s*/g, '<br>');
+  let html = '';
+  if (titleZh) html += `<div class="lb-title">No. ${num} ・ ${titleZh}${titleJp && titleJp !== titleZh ? `<span class="romaji">${titleJp}</span>` : ''}</div>`;
+  if (haikuJp) html += `<div class="lb-haiku-jp">${haikuJp}</div>`;
+  if (haikuZh) html += `<div class="lb-haiku-zh">${haikuZh}</div>`;
+  lbCap.innerHTML = html;
+
+  lbCount.textContent = `${idx + 1} / ${allCards.length}`;
+  lb.classList.add('is-open');
+  lb.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() { lb.classList.remove('is-open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
+function navLb(d) { cur = (cur + d + allCards.length) % allCards.length; openLb(cur); }
+
+document.body.addEventListener('click', e => {
+  const card = e.target.closest('.ph-card');
+  if (card) { refreshCards(); openLb(allCards.indexOf(card)); }
+});
+document.getElementById('lightbox-close').onclick = closeLb;
+document.getElementById('lightbox-prev').onclick = e => { e.stopPropagation(); navLb(-1); };
+document.getElementById('lightbox-next').onclick = e => { e.stopPropagation(); navLb(1); };
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('is-open')) return;
+  if (e.key === 'Escape') closeLb();
+  else if (e.key === 'ArrowLeft') navLb(-1);
+  else if (e.key === 'ArrowRight') navLb(1);
+});
+</script>
+
+</body>
+</html>
