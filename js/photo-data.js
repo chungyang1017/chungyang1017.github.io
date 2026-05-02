@@ -372,7 +372,7 @@ const photoData = [
     haiku_jp: '雪の山／頂きにだけ／朝の紅',
     haiku_en: 'snowy peak — / only at its summit / morning crimson',
     haiku_zh: '雪山／僅在山巔／一抹晨紅' },
-  { num: '029', src: 'images/photography/dscf9336.jpg', year: 2023, themes: ['yukiakari'], shape: 'landscape',
+  { num: '029', src: 'images/photography/dscf9336.jpg', year: 2023, themes: ['kouyou'], shape: 'landscape',
     title_jp: '冬籠', title_en: 'Winter Hush', title_zh: '冬籠',
     haiku_jp: '冬籠り／軒下の影に／静けさあり',
     haiku_en: 'winter seclusion — / under the eaves\' shadow / there is stillness',
