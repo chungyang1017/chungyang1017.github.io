@@ -3,678 +3,584 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>寫真 ・ 葉崇揚</title>
-  <meta name="description" content="葉崇揚的攝影作品 — 街頭、四季風景、海洋、寬幅 Xpan。" />
-  <link rel="alternate" hreflang="en" href="photography.html" />
+  <title>葉崇揚 ・ 縁側 ・ 攝影</title>
+  <meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 寫真九系列：街頭、春信、青嵐、紅葉、雪明、潮騒、山水、Xpan、銀鹽。" />
   <link rel="alternate" hreflang="zh-Hant" href="photography-zh.html" />
+  <link rel="alternate" hreflang="en" href="photography.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500&family=Noto+Serif+JP:wght@200;300;400;500&family=Noto+Serif+TC:wght@200;300;400&family=Ma+Shan+Zheng&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Klee+One:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --sumi: #15110d; --ink-mid: #5a534d; --ink-mute: #9a938c;
-      --washi: #fbf8f2; --washi-deep: #f1ebdf; --washi-soft: #ffffff;
-      --shu: #b13a2a; --kin: #a98146;
-      --line: rgba(21,17,13,0.10); --line-mid: rgba(21,17,13,0.18);
-      --jp: 'Noto Serif JP', 'Noto Serif TC', serif;
-      --brush: 'Ma Shan Zheng', 'Noto Serif TC', serif;
-      --display: 'Cormorant Garamond', 'Noto Serif TC', serif;
+      --engawa-bg: #e0d8c0;
+      --engawa-paper: #f0ebd5;
+      --moss: #3d5a3f;
+      --accent: #c43838;
+      --water: #5a7a8a;
+      --ink: #1f1f1d;
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --hand: 'Klee One', cursive;
       --sans: 'Inter', 'Helvetica Neue', sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html, body { height: 100%; }
     body {
-      font-family: var(--sans); background: var(--washi); color: var(--sumi);
-      -webkit-font-smoothing: antialiased; line-height: 1.85; font-weight: 300;
+      font-family: var(--jp);
+      background: var(--engawa-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      position: relative;
+      overflow-x: hidden;
+    }
+    body.is-book-open { overflow: hidden; }
+
+    /* Engawa wood floor (subtle background) */
+    .engawa-floor {
+      position: fixed; inset: 0;
+      pointer-events: none;
+      opacity: 0.06; z-index: 1;
     }
 
-    /* TOP NAV */
-    nav.top {
-      position: sticky; top: 0; z-index: 30;
-      background: rgba(251,248,242,0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-    nav.top .inner {
-      max-width: 1280px; margin: 0 auto;
-      padding: 1.1rem 2.5rem;
+    /* Header */
+    .top {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(224,216,192,0.93);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      padding: 14px 48px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .top-logo { font-family: var(--jp); font-size: 1.15rem; color: var(--sumi); text-decoration: none; letter-spacing: 0.32em; }
-    .top-logo .nav-back { display: inline-block; color: var(--shu); margin-right: 0.5rem; transition: transform 0.3s; font-family: var(--display); font-style: italic; }
-    .top-logo:hover .nav-back { transform: translateX(-3px); }
-    .top-nav { list-style: none; display: flex; gap: 2.6rem; align-items: center; }
-    .top-nav a { font-family: var(--jp); font-size: 1.1rem; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.18em; transition: color 0.2s; }
-    .top-nav a:hover, .top-nav a.active { color: var(--shu); }
-    .lang-toggle { font-size: 0.86rem; letter-spacing: 0.2em; display: flex; gap: 0.5rem; align-items: center; }
-    .lang-toggle .current { color: var(--sumi); font-weight: 500; }
-    .lang-toggle .sep { color: var(--ink-mute); opacity: 0.4; }
-    .lang-toggle a { color: var(--ink-mute); text-decoration: none; }
-    .lang-toggle a:hover { color: var(--shu); }
+    .top-left { display: flex; align-items: center; gap: 16px; }
+    .back { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .name-block { line-height: 1.15; }
+    .name-jp { font-family: var(--brush); font-size: 18px; letter-spacing: 0.1em; }
+    .name-en { font-family: var(--sans); font-size: 9px; letter-spacing: 0.3em; opacity: 0.55; }
+    .nav { display: flex; gap: 24px; font-size: 12px; letter-spacing: 0.25em; }
+    .nav a { color: var(--ink); text-decoration: none; opacity: 0.5; padding-bottom: 4px; }
+    .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
+    .nav .nav-jp { font-size: 10px; opacity: 0.55; letter-spacing: 0.18em; margin-left: 2px; font-family: var(--jp); }
+    .nav .lang { border-left: 1px solid var(--line); padding-left: 24px; font-family: var(--sans); }
 
-    /* HERO MASTHEAD */
-    .ph-hero {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 8rem 2.5rem 4rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: end;
+    /* Hero */
+    .hero {
+      padding: 80px 60px 50px;
+      position: relative; z-index: 2;
+      border-bottom: 1px solid rgba(31,31,29,0.06);
     }
-    .ph-hero-eyebrow {
-      font-family: var(--display); font-style: italic; font-size: 1.08rem;
-      color: var(--shu); letter-spacing: 0.22em; text-transform: uppercase;
-      margin-bottom: 1.7rem; display: flex; align-items: center; gap: 0.85rem;
-    }
-    .ph-hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--shu); }
+    .hero-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 0.5em; opacity: 0.5; margin-bottom: 16px; }
+    .hero-title { margin: 0; font-family: var(--brush); font-size: 88px; font-weight: 400; line-height: 1; letter-spacing: 0.05em; }
+    .hero-sub { margin-top: 12px; font-size: 14px; letter-spacing: 0.3em; opacity: 0.55; }
+    .hero-desc { margin-top: 32px; font-size: 15px; line-height: 2; opacity: 0.78; max-width: 560px; }
+    .hero-cover { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+    .hero-cover img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-cover .cap { position: absolute; left: 16px; bottom: 12px; color: #f8f0dc; font-size: 11px; letter-spacing: 0.2em; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+    .hero-cover .cap .t { font-family: var(--brush); font-size: 18px; }
+    .hero-cover .cap .m { opacity: 0.85; margin-top: 2px; }
 
-    .ph-hero h1 {
-      font-family: var(--display); font-weight: 300;
-      font-size: clamp(3.6rem, 6.5vw, 5.6rem);
-      letter-spacing: 0.02em; line-height: 1.05;
-      color: var(--sumi); margin-bottom: 0.85rem;
-    }
-
-    /* featured photo on left */
-    .ph-hero-feature {
-      margin-top: 2.8rem;
-      position: relative;
-    }
-    .ph-feature-eyebrow {
-      font-family: var(--display); font-style: italic;
-      font-size: 0.78rem; color: var(--shu);
-      letter-spacing: 0.22em; text-transform: uppercase;
-      margin-bottom: 1rem;
-      display: flex; align-items: center; gap: 0.7rem;
-    }
-    .ph-feature-eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--shu); }
-
-    .ph-hero-feature figure {
-      position: relative;
-      overflow: hidden;
-      background: var(--washi-deep);
-      box-shadow: 0 18px 40px -22px rgba(21,17,13,0.35);
-    }
-    .ph-hero-feature img {
-      width: 100%;
-      display: block;
-      filter: saturate(0.88) brightness(0.97);
-      transition: filter 0.5s, transform 0.7s cubic-bezier(.2,.7,.2,1);
-    }
-    .ph-hero-feature figure:hover img { filter: saturate(1) brightness(1); transform: scale(1.015); }
-
-    .ph-hero-feature figcaption {
-      margin-top: 1rem;
-      display: flex; align-items: baseline; gap: 1.25rem;
-      font-family: var(--display); font-style: italic;
-      font-size: 0.84rem; color: var(--ink-mute);
-      letter-spacing: 0.08em;
-    }
-    .ph-hero-feature .cap-num { color: var(--shu); letter-spacing: 0.16em; }
-    .ph-hero-feature .cap-title {
-      flex: 1; color: var(--sumi); font-style: normal;
-      font-family: var(--jp); letter-spacing: 0.18em;
-      font-size: 0.95rem;
-    }
-    .ph-hero-feature .cap-year { color: var(--shu); letter-spacing: 0.1em; }
-    .ph-hero .h1-jp {
-      display: block; font-family: var(--jp); font-weight: 300;
-      font-size: clamp(1.7rem, 2.5vw, 2.2rem);
-      letter-spacing: 0.32em; color: var(--ink-mid); margin-top: 0.75rem;
-    }
-    .ph-hero .h1-cn {
-      display: block; font-family: var(--jp); font-weight: 300;
-      font-size: 1.25rem; letter-spacing: 0.18em; color: var(--ink-mute); margin-top: 0.35rem;
-    }
-
-    .ph-hero-text p {
-      font-size: 1.22rem; color: var(--ink-mid); line-height: 2.05;
-      max-width: 540px; margin-bottom: 1.55rem;
-    }
-
-    .ph-hero-meta {
-      font-family: var(--display); font-style: italic;
-      font-size: 0.96rem; color: var(--ink-mute);
-      letter-spacing: 0.12em;
-    }
-    .ph-hero-meta .num { color: var(--shu); }
-
-    /* THEMES INDEX */
-    .ph-index {
-      max-width: 1280px; margin: 0 auto;
-      padding: 0 2.5rem 3rem;
-      border-top: 1px solid var(--line-mid);
-      padding-top: 2rem;
-    }
-    .ph-index-eyebrow {
-      font-family: var(--display); font-style: italic;
-      font-size: 0.78rem; letter-spacing: 0.22em; color: var(--shu);
-      text-transform: uppercase; margin-bottom: 1.4rem;
-    }
-    .ph-index-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 1px; background: var(--shu); vertical-align: middle; margin-right: 0.6rem; transform: translateY(-2px); }
-
-    .ph-index-list {
-      display: flex; flex-wrap: wrap; gap: 0;
-      list-style: none;
-    }
-    .ph-index-list li {
-      flex: 1 0 auto;
-      border-right: 1px solid var(--line);
-    }
-    .ph-index-list li:last-child { border-right: none; }
-    .ph-index-list a {
-      display: block;
-      padding: 1rem 1.5rem;
-      text-decoration: none;
-      color: var(--sumi);
-      transition: background 0.3s;
-    }
-    .ph-index-list a:hover { background: var(--washi-deep); }
-    .ph-index-list .name-jp {
-      display: block; font-family: var(--jp);
-      font-size: 1.15rem; letter-spacing: 0.18em; margin-bottom: 0.2rem;
-    }
-    .ph-index-list .name-en {
-      display: block; font-family: var(--display); font-style: italic;
-      font-size: 0.78rem; color: var(--ink-mute); letter-spacing: 0.06em;
-    }
-    .ph-index-list .count {
-      font-family: var(--display); font-style: italic; font-size: 0.7rem;
-      color: var(--shu); margin-left: 0.4rem;
-    }
-
-    /* SERIES */
-    .ph-series {
-      max-width: 1280px; margin: 0 auto;
-      padding: 5rem 2.5rem 6rem;
-      border-top: 1px solid var(--line-mid);
-    }
-    .ph-series-mark {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 2rem;
-      align-items: end;
-      margin-bottom: 3rem;
-      padding-bottom: 1rem;
-    }
-
-    .ph-series-num {
-      font-family: var(--brush);
-      font-weight: 400;
-      font-size: clamp(3.6rem, 5vw, 4.8rem);
-      color: var(--shu);
-      line-height: 0.9;
-      transform: rotate(-2deg);
-    }
-
-    .ph-series-title { padding-bottom: 0.4rem; border-bottom: 1px solid var(--line-mid); }
-    .ph-series-title .title-jp {
-      font-family: var(--jp); font-weight: 200;
-      font-size: clamp(1.95rem, 3vw, 2.6rem);
-      letter-spacing: 0.22em; color: var(--sumi);
-      line-height: 1.1;
-    }
-    .ph-series-title .title-romaji {
-      font-family: var(--display); font-style: italic;
-      font-size: 0.92rem; color: var(--ink-mute);
-      letter-spacing: 0.08em; display: block; margin-top: 0.2rem;
-    }
-    .ph-series-title .title-en {
-      font-family: var(--display); font-style: italic;
-      font-size: 1.1rem; color: var(--shu);
-      letter-spacing: 0.04em; margin-left: 1rem;
-    }
-
-    .ph-series-meta {
-      display: flex; gap: 2rem; align-items: baseline;
-      font-family: var(--display); font-style: italic;
-      font-size: 0.85rem; color: var(--ink-mute);
-      letter-spacing: 0.08em;
-      margin-bottom: 1.4rem;
-    }
-    .ph-series-meta .years { color: var(--shu); letter-spacing: 0.12em; }
-    .ph-series-meta .count {}
-    .ph-series-meta::before { content: '—'; color: var(--shu); margin-right: 0.2rem; }
-
-    .ph-series-desc {
-      font-size: 1rem; color: var(--ink-mid); line-height: 1.95;
-      max-width: 720px; margin-bottom: 2.5rem;
-    }
-    .ph-series-desc-jp {
-      font-family: var(--jp); font-size: 0.92rem;
-      color: var(--ink-mute); letter-spacing: 0.06em;
-      line-height: 2.2; margin-top: 0.4rem;
-    }
-
-    /* PHOTO GRID — like contact sheet */
-    .ph-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 0.6rem;
-    }
-    .ph-grid.is-xpan { grid-template-columns: 1fr; max-width: 1100px; gap: 1.5rem; }
-    @media (max-width: 720px) {
-      .ph-grid { grid-template-columns: 1fr; gap: 0.5rem; }
-    }
-
-    .ph-card {
-      position: relative;
-      overflow: hidden;
-      cursor: zoom-in;
-      transition: transform 0.5s ease;
-      background: var(--washi-deep);
-    }
-    /* unified 3:2 landscape thumbnails for all categories */
-    .ph-card.is-portrait,
-    .ph-card.is-landscape,
-    .ph-card.is-square,
-    .ph-card.is-xpan { aspect-ratio: 3/2; }
-    /* Xpan section keeps native panorama */
-    .ph-grid.is-xpan .ph-card { aspect-ratio: 65/24; }
-
-    .ph-card img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: saturate(0.88) brightness(0.97);
-      transition: transform 0.7s cubic-bezier(.2,.7,.2,1), filter 0.5s;
-    }
-    .ph-card:hover img { transform: scale(1.03); filter: saturate(1) brightness(1); }
-
-    .ph-card-num {
-      position: absolute;
-      top: 0.5rem; left: 0.5rem;
-      z-index: 3;
-      font-family: var(--display);
-      font-style: italic;
-      font-size: 0.78rem;
-      color: rgba(251,248,242,0.92);
-      background: rgba(21,17,13,0.55);
-      padding: 0.22rem 0.55rem;
-      letter-spacing: 0.15em;
-      backdrop-filter: blur(4px);
-      pointer-events: none;
-    }
-    .ph-card:hover .ph-card-num {
-      background: rgba(177,58,42,0.85);
-    }
-    .ph-card-title {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      z-index: 3;
-      padding: 1.5rem 0.85rem 0.7rem;
-      background: linear-gradient(to top, rgba(21,17,13,0.78), rgba(21,17,13,0));
-      color: rgba(251,248,242,0.95);
-      font-family: var(--jp);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      opacity: 0;
-      transform: translateY(6px);
-      transition: opacity 0.35s ease, transform 0.35s ease;
-      pointer-events: none;
-    }
-    .ph-card:hover .ph-card-title { opacity: 1; transform: translateY(0); }
-
-    /* LIGHTBOX */
-    .lightbox {
-      position: fixed; inset: 0;
-      background: rgba(15,12,9,0.95);
-      display: none; align-items: center; justify-content: center;
-      z-index: 200;
-      padding: 2rem;
-      cursor: zoom-out;
-    }
-    .lightbox.is-open { display: flex; }
-    .lightbox-figure {
-      max-width: 96vw; max-height: 92vh;
-      display: flex; flex-direction: row; align-items: center;
-      gap: 2.5rem;
-      cursor: default;
-    }
-    .lightbox-img {
-      max-width: 70vw; max-height: 88vh;
-      object-fit: contain; display: block;
-    }
-    .lightbox-caption {
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      max-height: 80vh;
-      color: rgba(251,248,242,0.78);
-      display: flex; flex-direction: column;
-      gap: 1.6rem; align-items: flex-start;
-      padding: 1rem 0;
-    }
-    .lightbox-caption .lb-title {
-      font-family: var(--jp);
-      font-size: 0.88rem;
-      letter-spacing: 0.22em;
-      color: rgba(251,248,242,0.5);
-    }
-    .lightbox-caption .lb-title .romaji {
-      font-family: var(--display); font-style: italic;
-      font-size: 0.78rem;
-      color: rgba(251,248,242,0.4);
-      letter-spacing: 0.08em;
-      display: block;
-      margin-top: 0.5rem;
-    }
-    .lightbox-caption .lb-haiku-jp {
-      font-family: var(--jp);
-      font-size: 1.4rem;
-      line-height: 2.4;
-      color: rgba(251,248,242,0.95);
-      letter-spacing: 0.18em;
-    }
-    .lightbox-caption .lb-haiku-zh {
-      font-family: var(--jp);
-      font-size: 1.05rem;
-      line-height: 2.1;
-      color: rgba(251,248,242,0.65);
-      letter-spacing: 0.14em;
-    }
-    .lightbox-close, .lightbox-prev, .lightbox-next {
-      position: absolute;
-      background: rgba(251,248,242,0.06);
-      border: 1px solid rgba(251,248,242,0.18);
-      color: rgba(251,248,242,0.9);
-      width: 44px; height: 44px;
-      font-size: 1.5rem; line-height: 1;
-      display: flex; align-items: center; justify-content: center;
+    /* View switcher */
+    .switch-wrap { padding: 32px 60px 0; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
+    .switch-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(31,31,29,0.20); padding-bottom: 16px; }
+    .switch-label { font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; }
+    .switch-buttons { display: flex; gap: 4px; }
+    .switch-btn {
+      background: transparent; color: var(--ink);
+      border: 1px solid var(--ink);
+      padding: 8px 16px; font-family: inherit;
+      font-size: 11px; letter-spacing: 0.2em;
       cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
     }
-    .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
-      background: rgba(177,58,42,0.25); border-color: rgba(177,58,42,0.5);
-    }
-    .lightbox-close { top: 1.25rem; right: 1.25rem; }
-    .lightbox-prev { left: 1.25rem; top: 50%; transform: translateY(-50%); }
-    .lightbox-next { right: 1.25rem; top: 50%; transform: translateY(-50%); }
-    .lightbox-counter { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); font-family: var(--display); font-style: italic; font-size: 0.78rem; letter-spacing: 0.18em; color: rgba(251,248,242,0.5); }
+    .switch-btn.is-active { background: var(--ink); color: var(--engawa-bg); }
+    .switch-btn .jp { font-family: var(--brush); margin-right: 8px; font-size: 13px; }
 
-    /* FOOTER */
+    /* Series content */
+    .series-content { padding: 40px 60px 80px; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
+    .series-view { display: none; }
+    .series-view.is-active { display: block; }
+
+    .series-card {
+      background: transparent; border: none; padding: 0;
+      cursor: pointer; display: block; width: 100%;
+      text-align: left; color: inherit;
+      font-family: inherit;
+    }
+    .series-cover {
+      position: relative; width: 100%; overflow: hidden;
+      background: rgba(31,31,29,0.08);
+    }
+    .series-cover img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .series-card:hover .series-cover img { transform: scale(1.04); }
+    .series-cover .label {
+      position: absolute; left: 14px; bottom: 12px;
+      color: #f8f0dc; text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+    .series-cover .label .t { font-family: var(--brush); font-size: 22px; letter-spacing: 0.08em; }
+    .series-cover .label .meta { font-size: 11px; letter-spacing: 0.2em; opacity: 0.85; margin-top: 4px; }
+    .series-meta-row { margin-top: 8px; display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.2em; opacity: 0.6; font-family: var(--sans); }
+
+    /* MASONRY view */
+    .v-masonry { columns: 3; column-gap: 16px; }
+    .v-masonry .series-card { break-inside: avoid; margin-bottom: 16px; }
+
+    /* SCROLL view */
+    .v-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 24px; }
+    .v-scroll-inner { display: flex; gap: 16px; padding-right: 60px; }
+    .v-scroll .series-card { flex: 0 0 320px; }
+    .v-scroll .series-cover { width: 320px; height: 440px; }
+    .v-scroll .series-foot { width: 320px; margin-top: 10px; }
+    .v-scroll .series-foot .t { font-family: var(--brush); font-size: 18px; }
+    .v-scroll-hint { margin-top: 8px; font-size: 10px; opacity: 0.5; letter-spacing: 0.3em; text-align: right; }
+
+    /* GRID view */
+    .v-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .v-grid .series-cover { aspect-ratio: 4/5; }
+
+    /* Footer */
     footer {
-      padding: 3rem 2.5rem;
       border-top: 1px solid var(--line);
-      background: var(--washi-deep);
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--ink-mute);
-      letter-spacing: 0.08em;
+      padding: 32px 60px;
+      max-width: 1280px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      font-size: 11px; opacity: 0.55; letter-spacing: 0.2em;
+      font-family: var(--sans);
+      position: relative; z-index: 2;
     }
-    footer .sep { color: var(--ink-mute); opacity: 0.4; margin: 0 0.5rem; }
-    footer a { color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--shu); }
 
-    @media (max-width: 1024px) {
-      .ph-hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 5rem; }
-      .top-nav { display: none; }
-      .ph-index-list { flex-direction: column; }
-      .ph-index-list li { border-right: none; border-bottom: 1px solid var(--line); }
+    /* ── Book mode ── */
+    .book-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: #1a1a1c;
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 40px;
     }
-    @media (max-width: 640px) {
-      .ph-series, .ph-hero, .ph-index { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .ph-series-mark { grid-template-columns: auto 1fr; gap: 1rem; }
-      .ph-series-title .title-en { display: block; margin-left: 0; margin-top: 0.4rem; }
-      .lightbox-prev, .lightbox-next { width: 38px; height: 38px; font-size: 1.2rem; }
-      .lightbox-figure { flex-direction: column; gap: 1rem; max-width: 96vw; max-height: 92vh; }
-      .lightbox-img { max-width: 92vw; max-height: 70vh; }
-      .lightbox-caption {
-        writing-mode: horizontal-tb;
-        flex-direction: column;
-        max-height: none;
-        text-align: center;
-        padding: 0;
-        gap: 0.6rem;
-      }
-      .lightbox-caption .lb-haiku-jp { font-size: 1.05rem; line-height: 1.85; letter-spacing: 0.1em; }
-      .lightbox-caption .lb-haiku-zh { font-size: 0.95rem; line-height: 1.7; letter-spacing: 0.08em; }
+    .book-overlay.is-open { display: flex; }
+    .book-top {
+      position: absolute; top: 0; left: 0; right: 0;
+      padding: 20px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      color: #e0d8c0; z-index: 5;
+    }
+    .book-title-block { display: flex; gap: 16px; align-items: baseline; }
+    .book-title-block .t { font-family: var(--brush); font-size: 28px; letter-spacing: 0.1em; }
+    .book-title-block .meta { font-size: 11px; letter-spacing: 0.3em; opacity: 0.6; }
+    .book-close {
+      background: transparent; color: #e0d8c0;
+      border: 1px solid rgba(224,216,192,0.35);
+      padding: 8px 18px; font-family: inherit;
+      font-size: 11px; letter-spacing: 0.3em;
+      cursor: pointer;
+    }
+    .book-close:hover { border-color: rgba(224,216,192,0.75); }
+    .book-spread {
+      display: flex; position: relative;
+      width: min(1200px, 92vw);
+      aspect-ratio: 3/2;
+      perspective: 2000px;
+      max-height: calc(100vh - 160px);
+    }
+    .book-page-left {
+      width: 50%; height: 100%;
+      background: #fcf6e6;
+      padding: 56px 48px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      color: #1f1f1d;
+      box-shadow: inset -16px 0 24px -16px rgba(0,0,0,0.25);
+      position: relative; z-index: 2;
+      overflow-y: auto;
+    }
+    .book-page-left .p-eyebrow { font-size: 11px; letter-spacing: 0.4em; opacity: 0.55; }
+    .book-page-left .p-title { margin: 12px 0 0; font-family: var(--brush); font-size: 48px; font-weight: 400; letter-spacing: 0.05em; line-height: 1.15; }
+    .book-page-left .p-place { margin-top: 12px; font-size: 12px; opacity: 0.65; font-style: italic; letter-spacing: 0.05em; }
+    .book-page-left .p-haiku {
+      margin-top: 28px;
+      font-family: var(--hand);
+      font-size: 14px; line-height: 2.1;
+      opacity: 0.78; max-width: 320px; white-space: pre-line;
+    }
+    .book-page-left .p-haiku .romaji { display: block; font-family: var(--jp); font-size: 11px; opacity: 0.55; margin-top: 12px; line-height: 1.7; }
+    .book-page-left .p-pagenum {
+      font-size: 11px; letter-spacing: 0.3em; opacity: 0.5;
+      margin-top: 24px;
+    }
+    .book-page-left .p-pagenum .num {
+      display: block; margin-top: 6px;
+      font-family: var(--sans); font-size: 22px; letter-spacing: 0.1em;
+    }
+    .book-page-left .p-pagenum .num .denom { opacity: 0.4; }
+    .book-page-right {
+      width: 50%; height: 100%;
+      background: #1a1a1c;
+      position: relative;
+      box-shadow: inset 16px 0 24px -16px rgba(0,0,0,0.25), 0 4px 24px rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
+    .book-page-right img {
+      width: 100%; height: 100%; object-fit: contain;
+      transition: opacity 0.3s ease;
+    }
+    .book-page-right.is-flipping img { opacity: 0; }
+    .book-spine {
+      position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(90deg, rgba(0,0,0,0.35), rgba(0,0,0,0.05));
+      transform: translateX(-1px); pointer-events: none; z-index: 3;
+    }
+    .book-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: transparent; color: #e0d8c0;
+      border: 1px solid rgba(224,216,192,0.35);
+      width: 56px; height: 56px; border-radius: 50%;
+      font-size: 18px; cursor: pointer;
+      font-family: inherit;
+    }
+    .book-nav:hover:not(:disabled) { border-color: rgba(224,216,192,0.75); }
+    .book-nav:disabled { opacity: 0.3; cursor: default; }
+    .book-nav.prev { left: 40px; }
+    .book-nav.next { right: 40px; }
+    .book-hint {
+      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+      font-size: 10px; color: #e0d8c0; opacity: 0.5; letter-spacing: 0.4em;
+    }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      .top { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
+      .top-left { gap: 10px; }
+      .back { font-size: 10px; letter-spacing: 0.22em; }
+      .name-jp { font-size: 16px; }
+      .name-en { font-size: 8px; }
+      .nav { gap: 14px; font-size: 10px; letter-spacing: 0.18em; }
+      .nav a.nav-sub { display: none; }
+      .nav .lang { padding-left: 14px; }
+
+      .hero { padding: 50px 22px 32px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 28px; }
+      .hero-title { font-size: 56px; }
+      .hero-sub { font-size: 12px; }
+      .hero-desc { font-size: 14px; margin-top: 24px; }
+      .hero-cover { aspect-ratio: 16/10; }
+
+      .switch-wrap { padding: 24px 22px 0; }
+      .switch-bar { flex-direction: column; align-items: stretch; gap: 14px; padding-bottom: 14px; }
+      .switch-buttons { justify-content: flex-start; }
+      .switch-btn { padding: 7px 12px; font-size: 10px; letter-spacing: 0.18em; flex: 1; }
+
+      .series-content { padding: 28px 22px 56px; }
+      .v-masonry { columns: 1; }
+      .v-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .v-scroll .series-card { flex: 0 0 240px; }
+      .v-scroll .series-cover { width: 240px; height: 320px; }
+      .v-scroll .series-foot { width: 240px; }
+
+      .book-overlay { padding: 14px; }
+      .book-top { padding: 12px 16px; }
+      .book-title-block .t { font-size: 20px; }
+      .book-title-block .meta { font-size: 10px; }
+      .book-close { padding: 5px 10px; font-size: 9px; }
+      .book-spread { flex-direction: column-reverse; aspect-ratio: auto; height: calc(100vh - 100px); width: 100%; max-height: none; }
+      .book-page-left { width: 100%; height: 38%; padding: 18px 22px; box-shadow: none; border-top: 1px solid rgba(31,31,29,0.18); }
+      .book-page-left .p-title { font-size: 28px; }
+      .book-page-left .p-haiku { font-size: 12px; line-height: 1.95; margin-top: 10px; max-width: none; }
+      .book-page-left .p-pagenum .num { font-size: 18px; margin-top: 4px; }
+      .book-page-right { width: 100%; height: 62%; }
+      .book-spine { display: none; }
+      .book-nav { width: 40px; height: 40px; font-size: 14px; }
+      .book-nav.prev { left: 8px; }
+      .book-nav.next { right: 8px; }
+      .book-hint { display: none; }
+
+      footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 10px; }
     }
   </style>
 </head>
 <body>
 
-<nav class="top">
-  <div class="inner">
-    <a href="index.html" class="top-logo" title="首頁"><span class="nav-back">←</span> 葉崇揚</a>
-    <ul class="top-nav">
-      <li><a href="academic-zh.html">學術</a></li>
-      <li><a href="photography-zh.html" class="active">寫真</a></li>
-      <li><a href="#">教學</a></li>
-    </ul>
-    <div class="lang-toggle">
-      <span class="current">中文</span>
-      <span class="sep">／</span>
-      <a href="photography.html">EN</a>
-    </div>
-  </div>
-</nav>
+<svg class="engawa-floor" aria-hidden="true">
+  <defs>
+    <pattern id="planks" x="0" y="0" width="200" height="60" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="200" y2="0" stroke="#1f1f1d" stroke-width="0.6" />
+      <line x1="80" y1="0" x2="80" y2="60" stroke="#1f1f1d" stroke-width="0.4" />
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#planks)" />
+</svg>
 
-<header class="ph-hero">
-  <div class="ph-hero-text">
-    <p class="ph-hero-eyebrow">No. 二 ・ 寫真</p>
-    <h1>
-      寫真
-      <span class="h1-jp">写真</span>
-      <span class="h1-cn">Shashin</span>
-    </h1>
-
-    <div class="ph-hero-feature">
-      <p class="ph-feature-eyebrow">扉頁 ・ Frontispiece</p>
-      <figure>
-        <img src="images/photography/dscf6313_2.jpg" alt="嵐山 ・ 紅葉樹下的我" />
-        <figcaption>
-          <span class="cap-title">嵐山 ・ 紅葉樹下，河邊的自己</span>
-        </figcaption>
-      </figure>
-    </div>
+<header class="top">
+  <div class="top-left">
+    <a href="index.html" class="back">← 玄關</a>
+    <span class="top-sep">·</span>
+    <span class="name-block">
+      <div class="name-jp">葉崇揚</div>
+      <div class="name-en">YEH CHUNG-YANG</div>
+    </span>
   </div>
-  <div class="ph-hero-text">
-    <p>
-      於我而言，攝影是我一種觀察和敘事的方法。將近三十年來，它與研究並行，像是同一種凝視的兩種姿態——一種以文字深入，一種以光影靠近。在快門落下的瞬間，世界自會悄悄告訴我，它正在發生著什麼。
-    </p>
-    <p>
-      我大部分的作品發生在台灣與日本的街道、山脈與海岸：黃昏時台北小巷裡緩慢的步伐、
-      晚秋京都清晨那種乾脆的靜謐、淡水河面上對岸大廈剛開始閃爍的光。
-      器材以 Fujifilm 數位機為主，偶爾配一台 Leica M6/M11 相機 ──
-      當一個場景太長、容不下一個方框的時候，我就會拿起 Xpan。
-    </p>
-    <p>
-      作品依九個系列分類 ── <em>街頭、春信、青嵐、紅葉、雪明、潮騒、山水、Xpan、銀鹽</em> ──
-      與其說是有計畫的專案，更像是被光與季節推著走的紀錄。它們合起來，是一份緩慢的觀看。
-    </p>
-    <p class="ph-hero-meta"><span class="num">No. 〇〇一 — 一六二</span> ・ 162 件作品 ・ 1996 — 2026</p>
-  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html" class="nav-sub">玄關</a>
+    <a href="academic-zh.html" class="nav-sub">學術 <span class="nav-jp">（書院）</span></a>
+    <a href="photography-zh.html" class="is-current">攝影 <span class="nav-jp">（縁側）</span></a>
+    <a href="#" class="nav-sub">教學 <span class="nav-jp">（茶室）</span></a>
+    <a href="photography.html" class="lang">EN</a>
+  </nav>
 </header>
 
-<div class="ph-index">
-  <p class="ph-index-eyebrow">主題 ・ Series</p>
-  <ul class="ph-index-list" id="theme-index"></ul>
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">第三室 · 縁側 ENGAWA</p>
+      <h1 class="hero-title">攝影</h1>
+      <p class="hero-sub">PHOTOGRAPHY · 9 系列 · 162 件作品</p>
+      <p class="hero-desc">
+        内と外の境。庭が一冊の本となる場所。<br/>
+        於我而言，攝影是一種觀察和敘事的方法。將近三十年來，它與研究並行——一種以文字深入，一種以光影靠近。
+      </p>
+    </div>
+    <div class="hero-cover">
+      <img src="images/photography/dscf6313_2.jpg" alt="嵐山 ・ 紅葉樹下，河邊的自己" />
+      <div class="cap">
+        <div class="t">嵐山</div>
+        <div class="m">紅葉樹下，河邊的自己</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="switch-wrap">
+  <div class="switch-bar">
+    <div class="switch-label">覗き方 · VIEW</div>
+    <div class="switch-buttons">
+      <button class="switch-btn is-active" data-view="masonry"><span class="jp">瀑布</span>MASONRY</button>
+      <button class="switch-btn" data-view="scroll"><span class="jp">巻軸</span>HORIZONTAL</button>
+      <button class="switch-btn" data-view="grid"><span class="jp">網</span>GRID</button>
+    </div>
+  </div>
 </div>
 
-<main id="series-list"></main>
-
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
-  <button class="lightbox-close" id="lightbox-close" aria-label="Close">×</button>
-  <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous">‹</button>
-  <button class="lightbox-next" id="lightbox-next" aria-label="Next">›</button>
-  <figure class="lightbox-figure">
-    <img class="lightbox-img" id="lightbox-img" alt="" />
-    <figcaption class="lightbox-caption" id="lightbox-caption"></figcaption>
-  </figure>
-  <div class="lightbox-counter" id="lightbox-counter"></div>
+<div class="series-content">
+  <div class="series-view v-masonry is-active" data-view-pane="masonry" id="view-masonry"></div>
+  <div class="series-view v-scroll" data-view-pane="scroll">
+    <div class="v-scroll-inner" id="view-scroll"></div>
+    <div class="v-scroll-hint">← 横にスクロール →</div>
+  </div>
+  <div class="series-view v-grid" data-view-pane="grid" id="view-grid"></div>
 </div>
 
 <footer>
-  © 2025 ・ 葉崇揚 Chung-Yang Yeh ・ 東吳大學社會學系
-  <span class="sep">·</span>
-  <a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener">Instagram</a>
-  <span class="sep">·</span>
-  <a href="https://www.flickr.com/photos/young1017/" target="_blank" rel="noopener">Flickr</a>
+  <span>YEH CHUNG-YANG</span>
+  <span>令和八年 ・ 夏 ・ 縁側</span>
 </footer>
+
+<!-- Book mode overlay -->
+<div class="book-overlay" id="book" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="book-top">
+    <div class="book-title-block">
+      <div class="t" id="book-title"></div>
+      <div class="meta" id="book-meta"></div>
+    </div>
+    <button class="book-close" id="book-close" type="button">✕ 閉じる ESC</button>
+  </div>
+  <div class="book-spread">
+    <div class="book-page-left">
+      <div>
+        <div class="p-eyebrow" id="book-eyebrow"></div>
+        <h2 class="p-title" id="book-page-title"></h2>
+        <div class="p-place" id="book-place"></div>
+        <div class="p-haiku" id="book-haiku"></div>
+      </div>
+      <div class="p-pagenum">
+        <span>頁</span>
+        <span class="num"><span id="book-num"></span> <span class="denom">/ <span id="book-denom"></span></span></span>
+      </div>
+    </div>
+    <div class="book-page-right" id="book-img-wrap">
+      <img id="book-img" alt="" />
+    </div>
+    <div class="book-spine"></div>
+  </div>
+  <button class="book-nav prev" id="book-prev" type="button" aria-label="前">←</button>
+  <button class="book-nav next" id="book-next" type="button" aria-label="次">→</button>
+  <div class="book-hint">← → めくる ・ ESC 閉じる</div>
+</div>
 
 <script src="js/photo-data.js"></script>
 <script>
-const LANG = 'zh';
-const themes = [
-  { id: 'harugasumi', jp: '春信',   romaji: 'Shunshin',    en: 'Spring',     zh: '春信',
-    desc_en: 'Tidings of spring — cherry blossoms, fresh greenery, the season\'s first light and breeze.',
-    desc_jp: '春信 ── 桜、若葉、春の最初の光と風。',
-    desc_zh: '春之訊息 ── 櫻花、新綠、春日最初的光與風。' },
-  { id: 'aoarashi',   jp: '青嵐',   romaji: 'Aoarashi',    en: 'Summer',     zh: '青嵐',
-    desc_en: 'The verdant pulse of summer — leaves, light through trees, the green wind.',
-    desc_jp: '若葉、樹間の光、青嵐 ── 夏の脈動。',
-    desc_zh: '夏日翠綠的脈動 ── 嫩葉、穿過樹梢的光、青嵐之風。' },
-  { id: 'kouyou',     jp: '紅葉',   romaji: 'Kōyō',        en: 'Autumn',     zh: '紅葉',
-    desc_en: 'The slow turning of leaves into fire and gold — autumn forests and quiet light.',
-    desc_jp: '緋色と黄金に染まる葉 ── 晩秋の森と静謐な光。',
-    desc_zh: '葉子緩慢地轉成火與金 ── 秋日的森林與安靜的光線。' },
-  { id: 'yukiakari',  jp: '雪明',   romaji: 'Yukiakari',   en: 'Winter',     zh: '雪明',
-    desc_en: 'Snow-light, stillness, the muted palette of winter mornings.',
-    desc_jp: '雪明、静寂、冬の朝の抑えた色彩。',
-    desc_zh: '雪光、靜止、冬日清晨那種克制的色調。' },
-  { id: 'kaiyou',     jp: '潮騒',   romaji: 'Shiosai',     en: 'Tideline',   zh: '潮聲',
-    desc_en: 'The sound of the tide — coastlines, beaches, the ocean at every hour.',
-    desc_jp: '潮騒 ── 海岸線、浜辺、あらゆる時刻の海。',
-    desc_zh: '潮浪之聲 ── 海岸線、沙灘、每一個時刻的海。' },
-  { id: 'sansui',     jp: '山水',   romaji: 'Sansui',      en: 'Landscape',  zh: '山水',
-    desc_en: 'Mountains and waters — Mt Fuji, lakes, mirrored peaks, sceneries that ask to be remembered slowly.',
-    desc_jp: '山と水 ── 富士、湖、映る峰々、ゆっくりと記憶されることを求める景色。',
-    desc_zh: '山與水 ── 富士、湖泊、倒影的群峰、需要慢慢記憶的景色。' },
-  { id: 'street',     jp: '街',    romaji: 'Machi',       en: 'Street',     zh: '街頭',
-    desc_en: 'People, fragments of cities, encounters with strangers — moments where the public street becomes briefly intimate.',
-    desc_jp: '街角、見知らぬ人、都市の断片 ── 公共空間が一瞬だけ親密になる瞬間。',
-    desc_zh: '街角、陌生人、都市的碎片 ── 公共街道在某一瞬間變得親密的時刻。' },
-  { id: 'xpan',       jp: 'Xpan',  romaji: 'Panoramic',   en: 'Xpan ・ 65×24', zh: 'Xpan',
-    desc_en: 'The wide format — 65×24, an unusually long frame, anything that asked to be seen sideways.',
-    desc_jp: '横長判（65×24）── 普通の枠に収まらない景色のための画面。',
-    desc_zh: '寬幅 65×24 ── 容不下方框的景色，需要橫向觀看的作品。' },
-  { id: 'ginen',      jp: '銀塩',  romaji: 'Ginen',       en: 'Silver Halide', zh: '銀鹽',
-    desc_en: 'Slide-film scans — the silver-halide medium where light is held by chemistry rather than sensors. Each frame, a small accident of light and time.',
-    desc_jp: '銀塩 ── ポジフィルムのスキャン。光が化学に捕えられた一枚、一枚の偶然。',
-    desc_zh: '銀鹽 ── 正片掃描。光被化學留住的痕跡，每一格都是時間的小意外。' },
-  { id: 'misc',       jp: '未分類', romaji: 'Mibunrui',    en: 'Uncategorized', zh: '未分類',
-    desc_en: 'Photographs still awaiting categorization — the open file.',
-    desc_jp: '未分類 ── 仮置きの作品。',
-    desc_zh: '尚待分類的作品 ── 等待以編號告知歸屬的暫存區。' },
-];
+  // ── Series definitions (matches photo-data.js theme ids)
+  const SERIES = [
+    { id: 'street',     jp: '街',    romaji: 'Machi',     en: 'Street',          zh: '街頭',   place: '台北 ・ 京都', primary: '#1f1f1d' },
+    { id: 'harugasumi', jp: '春信',  romaji: 'Shunshin',  en: 'Spring',          zh: '春信',   place: '櫻花季', primary: '#d98aa8' },
+    { id: 'aoarashi',   jp: '青嵐',  romaji: 'Aoarashi',  en: 'Summer',          zh: '青嵐',   place: '盛夏', primary: '#5a7a4a' },
+    { id: 'kouyou',     jp: '紅葉',  romaji: 'Kōyō',      en: 'Autumn',          zh: '紅葉',   place: '京都・東京', primary: '#c43838' },
+    { id: 'yukiakari',  jp: '雪明',  romaji: 'Yukiakari', en: 'Winter',          zh: '雪明',   place: '北海道', primary: '#a0a8ad' },
+    { id: 'kaiyou',     jp: '潮騒',  romaji: 'Shiosai',   en: 'Tideline',        zh: '潮聲',   place: '海岸', primary: '#5a7a8a' },
+    { id: 'sansui',     jp: '山水',  romaji: 'Sansui',    en: 'Landscape',       zh: '山水',   place: '山海', primary: '#3d5a3f' },
+    { id: 'xpan',       jp: 'Xpan',  romaji: 'Panoramic', en: 'Xpan ・ 65×24',   zh: 'Xpan',  place: '寬幅', primary: '#7a5a3a' },
+    { id: 'ginen',      jp: '銀塩',  romaji: 'Ginen',     en: 'Silver Halide',   zh: '銀鹽',   place: '正片掃描', primary: '#6b6256' },
+  ];
 
-const labels = {
-  en: { years: '', count: ' works', readMore: 'View all' },
-  zh: { years: '', count: ' 件', readMore: '檢視全部' }
-};
+  // ── Build per-series photo lists from photoData
+  const seriesIndex = {};
+  SERIES.forEach(sr => {
+    seriesIndex[sr.id] = photoData.filter(p => p.themes && p.themes.includes(sr.id));
+  });
 
-// ── Render index ──
-const idx = document.getElementById('theme-index');
-themes.forEach(t => {
-  const photos = photoData.filter(p => (p.themes || []).includes(t.id));
-  if (photos.length === 0) return;
-  const li = document.createElement('li');
-  li.innerHTML = `<a href="#${t.id}">
-    <span class="name-jp">${t.jp}</span>
-    <span class="name-en">${t.en}<span class="count">(${photos.length})</span></span>
-  </a>`;
-  idx.appendChild(li);
-});
+  // ── Render series cards into each view
+  function renderViews() {
+    const views = {
+      masonry: document.getElementById('view-masonry'),
+      scroll: document.getElementById('view-scroll'),
+      grid: document.getElementById('view-grid'),
+    };
+    SERIES.forEach((sr, i) => {
+      const photos = seriesIndex[sr.id] || [];
+      const cover = photos[0] || photoData[0];
+      const count = photos.length;
 
-// ── Render series sections ──
-const list = document.getElementById('series-list');
-let seriesNum = 0;
-themes.forEach(t => {
-  const photos = photoData.filter(p => (p.themes || []).includes(t.id));
-  if (photos.length === 0) return;
-  seriesNum++;
-  const years = photos.map(p => p.year).filter(Boolean);
-  const yearRange = years.length ? `${Math.min(...years)} — ${Math.max(...years)}` : '';
+      // MASONRY (varied heights)
+      const heights = [320, 240, 380, 260, 340, 220, 360, 280, 300];
+      const masonryCard = makeCard(sr, cover, count, { mode: 'masonry', height: heights[i % heights.length] });
+      views.masonry.appendChild(masonryCard);
 
-  const section = document.createElement('section');
-  section.className = 'ph-series';
-  section.id = t.id;
-  section.innerHTML = `
-    <div class="ph-series-mark">
-      <span class="ph-series-num">${cjkNumeral(seriesNum)}</span>
-      <div class="ph-series-title">
-        <span class="title-jp">${t.jp}</span>
-        <span class="title-en">${t.en}</span>
-        <span class="title-romaji">${t.romaji}</span>
-      </div>
-    </div>
-    <p class="ph-series-meta">
-      <span class="years">${yearRange}</span>
-      <span class="count">${photos.length}${labels[LANG].count}</span>
-    </p>
-    <p class="ph-series-desc">${t['desc_' + LANG] || t.desc_en}</p>
-    ${t.desc_jp ? `<p class="ph-series-desc-jp">${t.desc_jp}</p>` : ''}
-    <div class="ph-grid ${t.id === 'xpan' ? 'is-xpan' : ''}">
-      ${photos.map(p => {
-        const title = p['title_' + LANG] || p.title_en || p.title || '';
-        return `
-        <figure class="ph-card is-${p.shape || 'landscape'}" data-src="${p.src}" data-title="${title}" data-num="${p.num}">
-          <img src="${p.src}" alt="${title || ('No. ' + p.num)}" loading="lazy" />
-          <span class="ph-card-num">No. ${p.num}</span>
-          ${title ? `<span class="ph-card-title">${title}</span>` : ''}
-        </figure>
-      `;}).join('')}
-    </div>
-  `;
-  list.appendChild(section);
-});
+      // SCROLL
+      views.scroll.appendChild(makeCard(sr, cover, count, { mode: 'scroll' }));
 
-function cjkNumeral(n) {
-  return ['〇','一','二','三','四','五','六','七','八','九','十'][n] || n;
-}
+      // GRID
+      views.grid.appendChild(makeCard(sr, cover, count, { mode: 'grid' }));
+    });
+  }
 
-// ── Lightbox ──
-const lb = document.getElementById('lightbox');
-const lbImg = document.getElementById('lightbox-img');
-const lbCap = document.getElementById('lightbox-caption');
-const lbCount = document.getElementById('lightbox-counter');
-let allCards = [];
-let cur = 0;
+  function makeCard(sr, cover, count, opts) {
+    const btn = document.createElement('button');
+    btn.className = 'series-card';
+    btn.type = 'button';
+    btn.dataset.seriesId = sr.id;
+    btn.addEventListener('click', () => openBook(sr.id, 0));
 
-function refreshCards() { allCards = Array.from(document.querySelectorAll('.ph-card')); }
+    const coverDiv = document.createElement('div');
+    coverDiv.className = 'series-cover';
+    if (opts.mode === 'masonry') coverDiv.style.height = (opts.height || 280) + 'px';
 
-function openLb(idx) {
-  refreshCards();
-  cur = idx;
-  const card = allCards[idx];
-  if (!card) return;
-  const num = card.dataset.num;
-  const photo = photoData.find(p => p.num === num) || {};
-  lbImg.src = card.dataset.src;
+    const img = document.createElement('img');
+    img.src = cover.src;
+    img.alt = sr.zh;
+    img.loading = 'lazy';
+    coverDiv.appendChild(img);
 
-  const titleZh = photo.title_zh || photo.title_jp || '';
-  const titleJp = photo.title_jp || '';
-  const haikuJp = (photo.haiku_jp || '').replace(/[／\/]\s*/g, '<br>');
-  const haikuZh = (photo.haiku_zh || '').replace(/[／\/]\s*/g, '<br>');
-  let html = '';
-  if (titleZh) html += `<div class="lb-title">No. ${num} ・ ${titleZh}${titleJp && titleJp !== titleZh ? `<span class="romaji">${titleJp}</span>` : ''}</div>`;
-  if (haikuJp) html += `<div class="lb-haiku-jp">${haikuJp}</div>`;
-  if (haikuZh) html += `<div class="lb-haiku-zh">${haikuZh}</div>`;
-  lbCap.innerHTML = html;
+    const label = document.createElement('div');
+    label.className = 'label';
+    label.innerHTML = `<div class="t">${sr.jp}</div><div class="meta">${count} 枚 ・ ${sr.place}</div>`;
+    coverDiv.appendChild(label);
 
-  lbCount.textContent = `${idx + 1} / ${allCards.length}`;
-  lb.classList.add('is-open');
-  lb.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-}
-function closeLb() { lb.classList.remove('is-open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
-function navLb(d) { cur = (cur + d + allCards.length) % allCards.length; openLb(cur); }
+    btn.appendChild(coverDiv);
 
-document.body.addEventListener('click', e => {
-  const card = e.target.closest('.ph-card');
-  if (card) { refreshCards(); openLb(allCards.indexOf(card)); }
-});
-document.getElementById('lightbox-close').onclick = closeLb;
-document.getElementById('lightbox-prev').onclick = e => { e.stopPropagation(); navLb(-1); };
-document.getElementById('lightbox-next').onclick = e => { e.stopPropagation(); navLb(1); };
-lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
-document.addEventListener('keydown', e => {
-  if (!lb.classList.contains('is-open')) return;
-  if (e.key === 'Escape') closeLb();
-  else if (e.key === 'ArrowLeft') navLb(-1);
-  else if (e.key === 'ArrowRight') navLb(1);
-});
+    if (opts.mode === 'scroll') {
+      const foot = document.createElement('div');
+      foot.className = 'series-foot';
+      foot.innerHTML = `<div class="t" style="font-family: var(--brush); font-size: 18px; margin-top: 8px;">${sr.jp}</div>
+        <div style="display: flex; justify-content: space-between; font-size: 10px; margin-top: 4px; opacity: 0.6; letter-spacing: 0.2em; font-family: var(--sans);">
+          <span>${sr.en}</span><span>${count} 枚</span>
+        </div>`;
+      btn.appendChild(foot);
+    } else {
+      const meta = document.createElement('div');
+      meta.className = 'series-meta-row';
+      meta.innerHTML = `<span>${sr.en}</span><span>${count} 枚</span>`;
+      btn.appendChild(meta);
+    }
+    return btn;
+  }
+
+  renderViews();
+
+  // ── View switcher
+  document.querySelectorAll('.switch-btn').forEach(b => b.addEventListener('click', () => {
+    const v = b.dataset.view;
+    document.querySelectorAll('.switch-btn').forEach(x => x.classList.toggle('is-active', x === b));
+    document.querySelectorAll('.series-view').forEach(p => p.classList.toggle('is-active', p.dataset.viewPane === v));
+  }));
+
+  // ── Book mode
+  let bookState = null; // { seriesId, photos, idx }
+  const bookEl = document.getElementById('book');
+  const imgEl = document.getElementById('book-img');
+  const imgWrap = document.getElementById('book-img-wrap');
+
+  function openBook(seriesId, idx = 0) {
+    const sr = SERIES.find(s => s.id === seriesId);
+    const photos = seriesIndex[seriesId] || [];
+    if (!sr || photos.length === 0) return;
+    bookState = { sr, photos, idx };
+    document.body.classList.add('is-book-open');
+    bookEl.classList.add('is-open');
+    bookEl.setAttribute('aria-hidden', 'false');
+    renderBook();
+  }
+
+  function closeBook() {
+    bookState = null;
+    document.body.classList.remove('is-book-open');
+    bookEl.classList.remove('is-open');
+    bookEl.setAttribute('aria-hidden', 'true');
+  }
+
+  function nextBook() {
+    if (!bookState) return;
+    if (bookState.idx < bookState.photos.length - 1) {
+      bookState.idx++;
+      renderBook(true);
+    }
+  }
+  function prevBook() {
+    if (!bookState) return;
+    if (bookState.idx > 0) {
+      bookState.idx--;
+      renderBook(true);
+    }
+  }
+
+  function renderBook(animate) {
+    const { sr, photos, idx } = bookState;
+    const photo = photos[idx];
+    document.getElementById('book-title').textContent = sr.jp;
+    document.getElementById('book-meta').textContent = `${sr.romaji} ・ ${sr.en} ・ ${sr.place}`;
+    document.getElementById('book-eyebrow').textContent = sr.romaji.toUpperCase() + ' ・ ' + sr.en.toUpperCase();
+    document.getElementById('book-page-title').textContent = photo.title_zh || photo.title_jp || ('No. ' + photo.num);
+    document.getElementById('book-place').textContent = (photo.title_jp || '') + (photo.year ? ' · ' + photo.year : '');
+    const haiku = (photo.haiku_zh || '').replace(/／/g, '\n');
+    const haikuJp = (photo.haiku_jp || '').replace(/／/g, '\n');
+    document.getElementById('book-haiku').innerHTML = haiku.replace(/\n/g, '<br/>') + (haikuJp ? `<span class="romaji">${haikuJp.replace(/\n/g, ' / ')}</span>` : '');
+    document.getElementById('book-num').textContent = String(idx + 1).padStart(3, '0');
+    document.getElementById('book-denom').textContent = String(photos.length).padStart(3, '0');
+
+    // Flip animation: fade out → swap src → fade in
+    if (animate) {
+      imgWrap.classList.add('is-flipping');
+      setTimeout(() => {
+        imgEl.src = photo.src;
+        imgEl.alt = photo.title_zh || ('No. ' + photo.num);
+        imgWrap.classList.remove('is-flipping');
+      }, 300);
+    } else {
+      imgEl.src = photo.src;
+      imgEl.alt = photo.title_zh || ('No. ' + photo.num);
+    }
+    document.getElementById('book-prev').disabled = idx === 0;
+    document.getElementById('book-next').disabled = idx === photos.length - 1;
+  }
+
+  document.getElementById('book-close').addEventListener('click', closeBook);
+  document.getElementById('book-prev').addEventListener('click', prevBook);
+  document.getElementById('book-next').addEventListener('click', nextBook);
+  bookEl.addEventListener('click', e => { if (e.target === bookEl) closeBook(); });
+  document.addEventListener('keydown', e => {
+    if (!bookState) return;
+    if (e.key === 'Escape') closeBook();
+    else if (e.key === 'ArrowRight') nextBook();
+    else if (e.key === 'ArrowLeft') prevBook();
+  });
 </script>
 
 </body>

@@ -3,365 +3,470 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chung-Yang Yeh 葉崇揚 | Professor of Sociology</title>
-  <meta name="description" content="Chung-Yang Yeh is a Professor in the Department of Sociology at Soochow University, Taiwan. Research interests: welfare attitudes, comparative pension policy, East Asian welfare states." />
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Chung-Yang Yeh ・ Shoin ・ Academic</title>
+  <meta name="description" content="Chung-Yang Yeh ・ Professor of Social Policy, Soochow University. Comparative welfare states, East Asian social policy, pension politics." />
+  <link rel="alternate" hreflang="zh-Hant" href="academic-zh.html" />
+  <link rel="alternate" hreflang="en" href="academic.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --shoin-bg: #f0e8d4;
+      --shoin-paper: #fcf6e6;
+      --moss: #3d5a3f;
+      --accent: #c43838;
+      --water: #5a7a8a;
+      --ink: #1f1f1d;
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --display: 'Cormorant Garamond', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: var(--display);
+      background: var(--shoin-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .paper-grain { position: fixed; inset: 0; pointer-events: none; opacity: 0.35; mix-blend-mode: multiply; z-index: 1; }
+    .top {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(240,232,212,0.93);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      padding: 14px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-left { display: flex; align-items: center; gap: 16px; }
+    .back { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.55; text-decoration: none; color: var(--ink); text-transform: uppercase; }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .seal {
+      width: 36px; height: 36px; background: var(--accent); color: #f8f5ec;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--brush); font-size: 17px; transform: rotate(-3deg);
+      box-shadow: 2px 2px 0 rgba(196,56,56,0.25); flex-shrink: 0;
+    }
+    .name-block { line-height: 1.15; }
+    .name-jp { font-family: var(--brush); font-size: 18px; letter-spacing: 0.1em; }
+    .name-en { font-family: var(--sans); font-size: 9px; letter-spacing: 0.3em; opacity: 0.55; text-transform: uppercase; }
+    .nav { display: flex; gap: 24px; font-size: 12px; letter-spacing: 0.25em; font-family: var(--sans); text-transform: uppercase; }
+    .nav a { color: var(--ink); text-decoration: none; opacity: 0.5; padding-bottom: 4px; }
+    .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
+    .nav .nav-jp { font-size: 9px; opacity: 0.55; letter-spacing: 0.18em; margin-left: 2px; font-family: var(--jp); text-transform: none; }
+    .nav .lang { border-left: 1px solid var(--line); padding-left: 24px; }
+
+    .hero {
+      padding: 80px 60px 50px;
+      position: relative; z-index: 2;
+      border-bottom: 1px solid rgba(31,31,29,0.06);
+    }
+    .hero-inner { display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: end; max-width: 1280px; margin: 0 auto; }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 0.5em; opacity: 0.5; margin-bottom: 16px; font-family: var(--sans); text-transform: uppercase; }
+    .hero-eyebrow .jp { font-family: var(--jp); margin-right: 0.4em; letter-spacing: 0.4em; text-transform: none; }
+    .hero-title { margin: 0; font-family: var(--brush); font-size: 88px; font-weight: 400; line-height: 1; letter-spacing: 0.05em; }
+    .hero-title-en { margin-top: 18px; font-family: var(--display); font-style: italic; font-size: 26px; letter-spacing: 0.06em; opacity: 0.85; }
+    .hero-sub { margin-top: 8px; font-size: 13px; letter-spacing: 0.3em; opacity: 0.55; font-family: var(--sans); text-transform: uppercase; }
+    .hero-desc { margin-top: 32px; font-size: 16px; line-height: 1.95; opacity: 0.78; max-width: 560px; }
+    .hero-desc .jp { display: block; font-family: var(--jp); font-size: 14px; opacity: 0.85; margin-bottom: 8px; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(31,31,29,0.18); }
+    .stat { background: var(--shoin-paper); padding: 18px 20px; }
+    .stat-num { font-family: var(--brush); font-size: 36px; line-height: 1; }
+    .stat-label { font-size: 12px; margin-top: 6px; opacity: 0.7; font-style: italic; }
+    .stat-en { font-size: 9px; letter-spacing: 0.25em; opacity: 0.45; margin-top: 2px; font-family: var(--sans); text-transform: uppercase; }
+
+    .tabs-wrap { padding: 40px 60px 0; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
+    .tabs-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(31,31,29,0.20); }
+    .tabs { display: flex; gap: 4px; }
+    .tab {
+      background: transparent; border: none; padding: 14px 24px;
+      font-family: inherit; font-size: 14px;
+      color: rgba(31,31,29,0.6); border-bottom: 2px solid transparent;
+      margin-bottom: -1px; cursor: pointer; letter-spacing: 0.1em;
+      font-style: italic;
+    }
+    .tab.is-active { color: var(--ink); border-bottom-color: var(--accent); }
+    .tab .jp { font-family: var(--brush); margin-right: 10px; font-style: normal; }
+    .tab .en { font-size: 10px; letter-spacing: 0.25em; opacity: 0.6; font-family: var(--sans); font-style: normal; }
+    .tab .n { font-size: 11px; margin-left: 10px; opacity: 0.5; font-family: var(--sans); font-style: normal; }
+    .view-toggle { display: flex; gap: 4px; }
+    .view-btn {
+      background: transparent; color: var(--ink); border: 1px solid var(--ink);
+      padding: 6px 14px; font-family: inherit; font-size: 11px; letter-spacing: 0.2em;
+      cursor: pointer; text-transform: uppercase;
+    }
+    .view-btn.is-active { background: var(--ink); color: var(--shoin-bg); }
+
+    .content { padding: 40px 60px 80px; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
+    .pane { display: none; }
+    .pane.is-active { display: block; }
+
+    .j-list { display: flex; flex-direction: column; }
+    .j-row { display: grid; grid-template-columns: 60px 1fr 200px; gap: 32px; padding: 24px 0; border-bottom: 1px solid rgba(31,31,29,0.10); align-items: baseline; }
+    .j-year { font-family: var(--sans); font-size: 13px; letter-spacing: 0.15em; opacity: 0.55; }
+    .j-title { margin: 0; font-family: var(--display); font-style: italic; font-size: 18px; font-weight: 500; line-height: 1.45; }
+    .j-authors { margin-top: 8px; font-size: 13px; opacity: 0.7; font-style: italic; }
+    .j-meta-line { margin-top: 12px; display: flex; gap: 14px; flex-wrap: wrap; font-size: 11px; font-family: var(--sans); opacity: 0.6; letter-spacing: 0.05em; }
+    .j-meta-line .doi { color: var(--accent); }
+    .j-meta-line .oa { color: var(--moss); }
+    .j-venue { text-align: right; }
+    .j-venue .name { font-size: 13px; opacity: 0.85; font-style: italic; }
+    .j-venue .vol { font-size: 11px; opacity: 0.55; margin-top: 4px; font-family: var(--sans); }
+
+    .j-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .j-card { background: var(--shoin-paper); border: 1px solid rgba(31,31,29,0.15); padding: 24px 22px; position: relative; display: flex; flex-direction: column; min-height: 280px; }
+    .j-card-head { display: flex; justify-content: space-between; margin-bottom: 16px; }
+    .j-card-tag { font-size: 10px; color: var(--accent); letter-spacing: 0.25em; font-family: var(--sans); }
+    .j-card-year { font-size: 11px; opacity: 0.5; font-family: var(--sans); }
+    .j-card-title { margin: 0; font-family: var(--display); font-style: italic; font-size: 16px; font-weight: 500; line-height: 1.5; flex: 1; }
+    .j-card-authors { margin-top: 16px; font-size: 12px; opacity: 0.65; font-style: italic; line-height: 1.5; }
+    .j-card-foot { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(31,31,29,0.15); font-size: 11px; font-family: var(--sans); opacity: 0.6; }
+    .j-card-meta { margin-top: 8px; display: flex; justify-content: space-between; font-size: 10px; font-family: var(--sans); }
+    .j-card-meta .oa { color: var(--moss); letter-spacing: 0.15em; }
+    .seal-multi { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; background: var(--accent); color: #f8f5ec; display: flex; align-items: center; justify-content: center; font-family: var(--brush); font-size: 14px; transform: rotate(-3deg); }
+
+    .b-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .b-card { background: var(--shoin-paper); padding: 28px; display: grid; grid-template-columns: 140px 1fr; gap: 28px; border: 1px solid rgba(31,31,29,0.15); position: relative; }
+    .b-cover { width: 140px; min-height: 200px; background: rgba(31,31,29,0.05); box-shadow: 4px 4px 0 0 rgba(31,31,29,0.08), inset 8px 0 12px -8px rgba(0,0,0,0.25); overflow: hidden; }
+    .b-cover img { display: block; width: 100%; height: auto; object-fit: cover; }
+    .b-tag { font-size: 10px; color: var(--accent); letter-spacing: 0.3em; margin-bottom: 12px; font-family: var(--sans); }
+    .b-title { margin: 0; font-family: var(--brush); font-size: 24px; font-weight: 400; letter-spacing: 0.04em; line-height: 1.25; }
+    .b-sub { margin-top: 6px; font-size: 13px; opacity: 0.7; font-style: italic; }
+    .b-desc { margin-top: 14px; font-size: 13px; opacity: 0.75; line-height: 1.85; }
+    .b-foot { margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(31,31,29,0.15); display: flex; justify-content: space-between; gap: 12px; font-size: 11px; font-family: var(--sans); opacity: 0.55; }
+
+    .c-list { display: flex; flex-direction: column; }
+    .c-row { display: grid; grid-template-columns: 60px 100px 1fr 180px; gap: 24px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid rgba(31,31,29,0.10); }
+    .c-year { font-family: var(--sans); font-size: 13px; opacity: 0.55; letter-spacing: 0.1em; }
+    .c-type { font-size: 10px; letter-spacing: 0.2em; font-family: var(--sans); }
+    .c-type.is-keynote { color: var(--accent); }
+    .c-type.is-invited { color: var(--moss); }
+    .c-type.is-oral { color: var(--water); }
+    .c-title { margin: 0; font-family: var(--display); font-style: italic; font-size: 16px; font-weight: 500; line-height: 1.45; }
+    .c-venue { text-align: right; font-size: 12px; }
+    .c-venue .v { opacity: 0.85; font-style: italic; }
+    .c-venue .city { opacity: 0.5; margin-top: 4px; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 60px;
+      max-width: 1280px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      font-size: 11px; opacity: 0.55; letter-spacing: 0.2em;
+      font-family: var(--sans); text-transform: uppercase;
+      position: relative; z-index: 2;
+    }
+
+    @media (max-width: 760px) {
+      .top { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
+      .top-left { gap: 10px; }
+      .back { font-size: 10px; letter-spacing: 0.22em; }
+      .seal { width: 30px; height: 30px; font-size: 14px; }
+      .name-jp { font-size: 16px; }
+      .name-en { font-size: 8px; }
+      .nav { gap: 14px; font-size: 10px; letter-spacing: 0.18em; }
+      .nav a.nav-sub { display: none; }
+      .nav .lang { padding-left: 14px; }
+
+      .hero { padding: 50px 22px 32px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero-title { font-size: 56px; }
+      .hero-title-en { font-size: 20px; margin-top: 12px; }
+      .hero-sub { font-size: 11px; letter-spacing: 0.22em; }
+      .hero-desc { font-size: 14px; margin-top: 24px; }
+      .stat-num { font-size: 28px; }
+
+      .tabs-wrap { padding: 28px 22px 0; }
+      .tabs-bar { flex-direction: column; align-items: stretch; gap: 14px; padding-bottom: 0; }
+      .tabs { overflow-x: auto; }
+      .tab { padding: 12px 14px; font-size: 12px; flex-shrink: 0; }
+      .tab .en { display: none; }
+      .view-toggle { justify-content: flex-end; }
+
+      .content { padding: 28px 22px 56px; }
+      .j-row { grid-template-columns: 1fr; gap: 8px; padding: 18px 0; }
+      .j-venue { text-align: left; }
+      .j-grid { grid-template-columns: 1fr; }
+
+      .b-grid { grid-template-columns: 1fr; }
+      .b-card { grid-template-columns: 80px 1fr; gap: 20px; padding: 20px; }
+      .b-spine { height: 130px; }
+      .b-title { font-size: 20px; }
+
+      .c-row { grid-template-columns: 1fr; gap: 4px; padding: 16px 0; }
+      .c-venue { text-align: left; }
+
+      footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 10px; }
+    }
+  </style>
 </head>
-<body class="academic-page">
+<body>
 
-<!-- ── NAVIGATION ── -->
-<nav>
-  <div class="nav-inner">
-    <a href="index-en.html" class="nav-logo" title="Home"><span class="nav-back">←</span> Chung-Yang Yeh <span>(Young)</span></a>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#commentary">Column</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li class="nav-divider" aria-hidden="true">／</li>
-      <li><a href="photography.html" class="nav-cross">Photography</a></li>
-      <li><a href="#" class="nav-cross nav-soon">Teaching</a></li>
-    </ul>
-    <div class="lang-toggle" role="group" aria-label="Language">
-      <span class="lang-current" aria-current="page">EN</span>
-      <span class="lang-sep">·</span>
-      <a href="academic-zh.html" class="lang-link" hreflang="zh-Hant">中文</a>
-    </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+<svg class="paper-grain" aria-hidden="true">
+  <defs>
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#paper-noise)" />
+</svg>
+
+<header class="top">
+  <div class="top-left">
+    <a href="index-en.html" class="back">← HOME</a>
+    <span class="top-sep">·</span>
+    <span class="name-block">
+      <div class="name-jp">葉崇揚</div>
+      <div class="name-en">CHUNG-YANG YEH</div>
+    </span>
   </div>
-</nav>
+  <nav class="nav" aria-label="Sections">
+    <a href="index-en.html" class="nav-sub">Home <span class="nav-jp">(玄關)</span></a>
+    <a href="academic.html" class="is-current">Academic <span class="nav-jp">(書院)</span></a>
+    <a href="photography.html" class="nav-sub">Photography <span class="nav-jp">(縁側)</span></a>
+    <a href="#" class="nav-sub">Teaching <span class="nav-jp">(茶室)</span></a>
+    <a href="academic-zh.html" class="lang">中</a>
+  </nav>
+</header>
 
-<!-- ── HERO ── -->
-<section class="hero" id="home">
-  <div class="hero-grid"></div>
+<section class="hero">
   <div class="hero-inner">
-    <div class="hero-text">
-      <p class="hero-eyebrow">Professor · Social Policy</p>
-      <h1 class="hero-name">Chung-Yang Yeh</h1>
-      <p class="hero-name-cn">葉崇揚</p>
+    <div>
+      <p class="hero-eyebrow">Room II ・ <span class="jp">書院</span> SHOIN</p>
+      <h1 class="hero-title">學術</h1>
+      <p class="hero-title-en">The Study</p>
+      <p class="hero-sub">ACADEMIC WORKS</p>
       <p class="hero-desc">
-        Comparative welfare state researcher specialising in East Asian social policy,
-        pension politics, and welfare attitudes. Faculty at Soochow University, Taiwan.
+        <span class="jp">紙の山に座する。論文が呼吸する場所。</span>
+        Professor of Social Policy at Soochow University. A comparative welfare-state researcher writing at the intersection of East-Asian social policy, pension politics, and welfare attitudes.
       </p>
-      <div class="hero-tags">
-        <span class="hero-tag">Comparative Pension Policy</span>
-        <span class="hero-tag">East Asian Welfare States</span>
-        <span class="hero-tag">Welfare Attitudes</span>
-        <span class="hero-tag">Social Investment</span>
-        <span class="hero-tag">Comparative Political Economy</span>
-      </div>
-      <div class="hero-links">
-        <a href="#publications" class="btn btn-primary">Publications</a>
-        <a href="#research" class="btn btn-outline">Research Projects</a>
-        <a href="#contact" class="btn btn-outline">Contact</a>
-      </div>
     </div>
-
-    <div class="hero-photo-wrap">
-      <div class="hero-photo-frame">
-        <img src="photo.jpg" alt="Chung-Yang Yeh" class="hero-photo-img" />
-      </div>
-      <div class="hero-affil">
-        <p>
-          <strong>Department of Sociology</strong>
-          Soochow University, Taiwan<br />
-          PhD · University of Southampton, UK (2014)
-        </p>
-      </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">29</div><div class="stat-label">Journal articles</div><div class="stat-en">JOURNAL</div></div>
+      <div class="stat"><div class="stat-num">2</div><div class="stat-label">Books</div><div class="stat-en">BOOK</div></div>
+      <div class="stat"><div class="stat-num">12</div><div class="stat-label">Chapters</div><div class="stat-en">CHAPTER</div></div>
+      <div class="stat"><div class="stat-num">20</div><div class="stat-label">Conferences</div><div class="stat-en">CONF.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ── ABOUT ── -->
-<section id="about">
-  <div class="section-inner">
-    <div class="section-header fade-in">
-      <span class="section-num">01</span>
-      <h2 class="section-title">About Me</h2>
-      <div class="section-line"></div>
+<div class="tabs-wrap">
+  <div class="tabs-bar">
+    <div class="tabs" role="tablist">
+      <button class="tab is-active" data-tab="journal" role="tab"><span class="jp">期刊</span><span class="en">JOURNAL</span><span class="n">29</span></button>
+      <button class="tab" data-tab="book" role="tab"><span class="jp">專書</span><span class="en">BOOK</span><span class="n">2</span></button>
+      <button class="tab" data-tab="conf" role="tab"><span class="jp">研討會</span><span class="en">CONFERENCE</span><span class="n">20</span></button>
     </div>
-
-    <div class="about-grid">
-      <div class="about-text fade-in">
-        <p>
-          I am a Professor in the Department of Sociology at Soochow University, Taiwan,
-          and a comparative welfare state researcher with a focus on East Asian social policy.
-        </p>
-        <p>
-          I received my PhD in Sociology and Social Policy from the University of Southampton,
-          United Kingdom, in 2014. My doctoral dissertation examined the public-private pension
-          mix in East Asia.
-        </p>
-        <p>
-          My main research interests centre on comparative pension policy, East Asian welfare
-          states, and welfare attitudes. A recent project funded by the National Science and Technology
-          Council (國家科學及技術委員會) compares pension attitudes and how pension politics is managed
-          in Japan, Korea, and Taiwan.
-        </p>
-        <p>
-          My research draws on welfare regime theory, comparative political economy, and
-          comparative historical analysis, employing both quantitative and qualitative methods. I have
-          published in outlets including <em>Ageing & Society</em>,
-          <em>Journal of Asian Public Policy</em>, and leading TSSCI-indexed journals in Taiwan.
-        </p>
-        
-      </div>
-
-      <div class="about-sidebar fade-in">
-        <p class="sidebar-label">Education</p>
-
-        <div class="edu-item">
-          <p class="edu-degree">PhD, Sociology and Social Policy</p>
-          <p class="edu-inst">University of Southampton, United Kingdom</p>
-          <p class="edu-year">2010 – 2014</p>
-        </div>
-
-        <div class="edu-item">
-          <p class="edu-degree">Master, Institute of Social Welfare</p>
-          <p class="edu-inst">National Chung-Cheng University, Taiwan</p>
-          <p class="edu-year">2003 – 2006</p>
-        </div>
-
-        <div class="edu-item">
-          <p class="edu-degree">Bachelor, Social Policy and Social Work</p>
-          <p class="edu-inst">National Chi-Nan University, Taiwan</p>
-          <p class="edu-year">1999 – 2003</p>
-        </div>
-
-        <p class="sidebar-label">Research Interests</p>
-        <ul class="interest-list">
-          <li>Comparative Pension Policy</li>
-          <li>East Asian Welfare States</li>
-          <li>Welfare Attitudes &amp; Public Opinion</li>
-          <li>Social Investment Policy</li>
-          <li>Welfare Regime Theory</li>
-          <li>Comparative Political Economy</li>
-          <li>Comparative Research Methods</li>
-        </ul>
-      </div>
+    <div class="view-toggle" id="view-toggle">
+      <button class="view-btn is-active" data-view="list">目錄式 LIST</button>
+      <button class="view-btn" data-view="grid">札式 CARD</button>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ── PUBLICATIONS ── -->
-<section id="publications">
-  <div class="section-inner">
-    <div class="section-header fade-in">
-      <span class="section-num">02</span>
-      <h2 class="section-title">Publications</h2>
-      <div class="section-line"></div>
+<div class="content">
+  <div class="pane is-active" data-pane="journal">
+    <div class="j-list" data-view-pane="list">
+      <article class="j-row">
+        <div class="j-year">2025</div>
+        <div>
+          <h3 class="j-title">Public attitudes towards government's role in unemployment provision in three East Asian countries</h3>
+          <div class="j-authors">Niu, C-W., Yeh, C-Y., Yeh, M-J. and Cheng, Y.</div>
+          <div class="j-meta-line"><a href="https://doi.org/10.1080/17516234.2024.2343574" target="_blank" rel="noopener" class="doi">DOI ↗</a></div>
+        </div>
+        <div class="j-venue"><div class="name">Journal of Asian Public Policy</div><div class="vol">18(3): 822–838</div></div>
+      </article>
+      <article class="j-row">
+        <div class="j-year">2024</div>
+        <div>
+          <h3 class="j-title">The Political Dilemma of the Social Investment Transformation in Newly Industrialized Welfare States: Lessons from the Taiwanese Welfare State</h3>
+          <div class="j-authors">Yeh, C-Y.* and Lue, J-D.</div>
+          <div class="j-meta-line"><a href="https://doi.org/10.1080/17516234.2022.2085533" target="_blank" rel="noopener" class="doi">DOI ↗</a></div>
+        </div>
+        <div class="j-venue"><div class="name">Journal of Asian Public Policy</div><div class="vol">17(3): 402–418</div></div>
+      </article>
+      <article class="j-row">
+        <div class="j-year">2024</div>
+        <div>
+          <h3 class="j-title">An Empirical Examination of the Micro-foundations of Public Support for Taiwan's National Health Insurance</h3>
+          <div class="j-authors">Yeh, C-Y., Lin, T-Y. and Lue, J-D.</div>
+          <div class="j-meta-line"><a href="https://www.airitilibrary.com/Common/Search?q=%E5%8F%B0%E7%81%A3%E5%85%A8%E6%B0%91%E5%81%A5%E5%BA%B7%E4%BF%9D%E9%9A%AA&type=article" target="_blank" rel="noopener" class="doi">Airiti ↗</a><span class="oa">● TSSCI</span></div>
+        </div>
+        <div class="j-venue"><div class="name">Journal of Social Sciences and Philosophy</div><div class="vol">36(1): 205–243</div></div>
+      </article>
+      <article class="j-row">
+        <div class="j-year">2024</div>
+        <div>
+          <h3 class="j-title">Progressive Dilemma: Empirical Examination of the Characteristics of Welfare Chauvinism in Taiwan</h3>
+          <div class="j-authors">Huang, F-Y. and Yeh, C-Y.</div>
+          <div class="j-meta-line"><a href="https://www.airitilibrary.com/Common/Search?q=%E9%80%B2%E6%AD%A5%E7%9A%84%E5%85%A9%E9%9B%A3&type=article" target="_blank" rel="noopener" class="doi">Airiti ↗</a></div>
+        </div>
+        <div class="j-venue"><div class="name">Journal of Social Policy and Social Work</div><div class="vol">28(1): 47–97</div></div>
+      </article>
+      <article class="j-row">
+        <div class="j-year">2022</div>
+        <div>
+          <h3 class="j-title">Public Attitude towards Government Financial Support during the Covid-19 Pandemic in Taiwan</h3>
+          <div class="j-authors">Yeh, C-Y., Tsai, P-Y. and Ku, Y-W.</div>
+          <div class="j-meta-line"><a href="https://doi.org/10.1080/02185385.2022.2135588" target="_blank" rel="noopener" class="doi">DOI ↗</a></div>
+        </div>
+        <div class="j-venue"><div class="name">Asia Pacific J. of Social Work and Development</div><div class="vol">32(4): 229–243</div></div>
+      </article>
+      <article class="j-row">
+        <div class="j-year">2022</div>
+        <div>
+          <h3 class="j-title">Social Policy Responses and Social Development during and after the Unequal Pandemic: What We can Learn from Each Other?</h3>
+          <div class="j-authors">Ku, Y-W. and Yeh, C-Y.*</div>
+          <div class="j-meta-line"><a href="https://doi.org/10.1080/02185385.2022.2141848" target="_blank" rel="noopener" class="doi">DOI ↗</a></div>
+        </div>
+        <div class="j-venue"><div class="name">Asia Pacific J. of Social Work and Development</div><div class="vol">32(3): 161–169</div></div>
+      </article>
+      <p style="margin-top: 28px; text-align: center; font-size: 13px; opacity: 0.6;"><a href="publications/publications-en.html#journals" style="color: var(--accent); text-decoration: none; letter-spacing: 0.18em; font-family: var(--sans); text-transform: uppercase;">View all 29 journal articles →</a></p>
     </div>
-
-    <p class="pub-overview-intro fade-in">A selection of academic outputs across journals, books, chapters, and conference proceedings. Click through for the full list.</p>
-
-    <div class="pub-overview-grid fade-in">
-      <a href="publications/publications.html#journals" class="pub-overview-card">
-        <span class="card-num">29</span>
-        <div>
-          <h3>Journal Articles</h3>
-          <p>Peer-reviewed papers · 2009–present</p>
-        </div>
-        <span class="card-arrow">→</span>
-      </a>
-      <a href="publications/publications.html#books" class="pub-overview-card">
-        <span class="card-num">2</span>
-        <div>
-          <h3>Books</h3>
-          <p>Authored and edited monographs</p>
-        </div>
-        <span class="card-arrow">→</span>
-      </a>
-      <a href="publications/publications.html#chapters" class="pub-overview-card">
-        <span class="card-num">12</span>
-        <div>
-          <h3>Book Chapters</h3>
-          <p>Chapters in collected volumes</p>
-        </div>
-        <span class="card-arrow">→</span>
-      </a>
-      <a href="publications/publications.html#conference" class="pub-overview-card">
-        <span class="card-num">20</span>
-        <div>
-          <h3>Conference Papers</h3>
-          <p>2021 – 2025</p>
-        </div>
-        <span class="card-arrow">→</span>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── RESEARCH PROJECTS ── -->
-<section id="research">
-  <div class="section-inner">
-    <div class="section-header fade-in">
-      <span class="section-num">03</span>
-      <h2 class="section-title">Research Projects</h2>
-      <div class="section-line"></div>
-    </div>
-
-    <ul class="research-list">
-
-      <li class="research-item fade-in">
-        <div class="research-period">2025.08 – 2026.07</div>
-        <div>
-          <p class="research-title">打造福利市場：比較東亞福利國家<br /><span style="color:var(--ink-muted);font-size:0.87rem;">Building the Welfare Market: A Comparative Study of East Asian Welfare States</span></p>
-          <p class="research-grant">NSTC 114-2410-H-031-090 · National Science and Technology Council (NSTC)</p>
-        </div>
-      </li>
-
-      <li class="research-item fade-in">
-        <div class="research-period">2023.08 – 2025.07</div>
-        <div>
-          <p class="research-title">比較東亞福利國家的年金市場化和金融化和管制型福利國家的興起</p>
-          <p class="research-grant">112-2410-H-031-039-MY2 · National Science and Technology Council (NSTC)</p>
-        </div>
-      </li>
-
-      <li class="research-item fade-in">
-        <div class="research-period">2021.08 – 2023.07</div>
-        <div>
-          <p class="research-title">Shaping and Managing Pension Politics: East Asian Welfare States in International Comparison<br /><span style="color:var(--ink-muted);font-size:0.87rem;">（形塑與管理年金政治：國際比較下的東亞福利國家）</span></p>
-          <p class="research-grant">MOST 110-2410-H-031-052-MY2 · Ministry of Science and Technology</p>
-        </div>
-      </li>
-
-      <li class="research-item fade-in">
-        <div class="research-period">2020.08 – 2021.07</div>
-        <div>
-          <p class="research-title">女性勞動參與率與家庭政策：社會投資的觀點</p>
-          <p class="research-grant">MOST 109-2410-H-194-024 · Ministry of Science and Technology <em>(Co-PI)</em></p>
-        </div>
-      </li>
-
-      <li class="research-item fade-in">
-        <div class="research-period">2019.08 – 2021.07</div>
-        <div>
-          <p class="research-title">從消極保障到積極促進的微觀基礎：東亞福利國家的比較分析</p>
-          <p class="research-grant">MOST 108-2410-H-031-069-MY2 · Ministry of Science and Technology</p>
-        </div>
-      </li>
-
-      <li class="research-item fade-in">
-        <div class="research-period">2018.01 – 2018.12</div>
-        <div>
-          <p class="research-title">從生產主義到社會投資：東亞福利國家轉型的比較政治經濟學</p>
-          <p class="research-grant">MOST 107-2410-H-031-065 · Ministry of Science and Technology</p>
-        </div>
-      </li>
-
-    </ul>
-  </div>
-</section>
-
-<!-- ── COMMENTARY ── -->
-<section id="commentary">
-  <div class="section-inner">
-    <div class="section-header fade-in">
-      <span class="section-num">04</span>
-      <h2 class="section-title">Column</h2>
-      <div class="section-line"></div>
-    </div>
-
-    <p class="commentary-intro fade-in">
-      <strong>East Asia Frontline ・ 東亞觀察最前線</strong> ── A column observing the shifting under-currents of Japan, Korea, Taiwan, and China, drawing on manga, popular culture, and social data. A lighter but serious counterpart to the academic writing.
-    </p>
-
-    <a href="commentary/2026-takaichi-en.html" class="commentary-card fade-in">
-      <div class="commentary-card-meta">
-        <span class="card-num">No. 〇〇一</span>
-        <span class="card-date">2026.02.07</span>
-        <span class="card-tag">Japan</span>
-      </div>
-      <h3 class="commentary-card-title">From a Manga Frame: Reading Sanae Takaichi through <em>The Politics</em> and <em>Kosaku Shima</em></h3>
-      <p class="commentary-card-excerpt">
-        While Shohei Ohtani writes a script even <em>Major League</em> never imagined, another figure shaped by manga is steadily reaching Japan's political summit. This essay reads Sanae Takaichi through the lens of two long-running series — Hirokane Kenshi's <em>Kaji Ryūsuke no Gi</em> for the <strong>method</strong>, and the <em>Shima Kōsaku</em> arc for the <strong>anxiety</strong> — to understand the "absolute realism" she represents.
-      </p>
-      <span class="commentary-card-arrow">Read full essay →</span>
-    </a>
-
-    <a href="commentary/index-en.html" class="commentary-more fade-in">View all articles →</a>
-  </div>
-</section>
-
-<!-- ── CONTACT ── -->
-<section id="contact">
-  <div class="section-inner">
-    <div class="section-header fade-in">
-      <span class="section-num">05</span>
-      <h2 class="section-title">Contact</h2>
-      <div class="section-line"></div>
-    </div>
-
-    <div class="contact-grid">
-      <div class="contact-info fade-in">
-        <p>
-          I welcome inquiries from researchers, students, and collaborators interested in
-          comparative welfare state research, East Asian social policy, and pension politics.
-        </p>
-
-        <ul class="contact-links">
-          <li>
-            <span class="contact-label">Position</span>
-            Professor, Department of Sociology, Soochow University, Taiwan
-          </li>
-        </ul>
-
-        <p class="contact-section-label">Find me online</p>
-        <ul class="contact-socials">
-          <li>
-            <a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener" class="social-link">
-              <span class="social-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="3" width="18" height="18" rx="5"/>
-                  <circle cx="12" cy="12" r="4"/>
-                  <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/>
-                </svg>
-              </span>
-              <span class="social-text">
-                <span class="social-platform">Instagram</span>
-                <span class="social-handle">@chungyang.yeh</span>
-              </span>
-              <span class="social-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.flickr.com/photos/young1017/" target="_blank" rel="noopener" class="social-link">
-              <span class="social-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <circle cx="7" cy="12" r="4.5"/>
-                  <circle cx="17" cy="12" r="4.5"/>
-                </svg>
-              </span>
-              <span class="social-text">
-                <span class="social-platform">Flickr</span>
-                <span class="social-handle">young1017</span>
-              </span>
-              <span class="social-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="fade-in">
-        <blockquote class="contact-quote">
-          社會政策，從搖籃到墳墓，與我們人的一生息息相關。
-        </blockquote>
-      </div>
+    <div class="j-grid" data-view-pane="grid" style="display:none;">
+      <article class="j-card">
+        <div class="j-card-head"><span class="j-card-tag">JOURNAL</span><span class="j-card-year">2025</span></div>
+        <h3 class="j-card-title">Public attitudes towards government's role in unemployment provision in three East Asian countries</h3>
+        <div class="j-card-authors">Niu, C-W., Yeh, C-Y., Yeh, M-J. and Cheng, Y.</div>
+        <div class="j-card-foot">Journal of Asian Public Policy · 18(3): 822–838</div>
+        <div class="j-card-meta"><a href="https://doi.org/10.1080/17516234.2024.2343574" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">DOI ↗</a></div>
+      </article>
+      <article class="j-card">
+        <div class="j-card-head"><span class="j-card-tag">JOURNAL</span><span class="j-card-year">2024</span></div>
+        <h3 class="j-card-title">The Political Dilemma of the Social Investment Transformation in Newly Industrialized Welfare States</h3>
+        <div class="j-card-authors">Yeh, C-Y.* and Lue, J-D.</div>
+        <div class="j-card-foot">Journal of Asian Public Policy · 17(3): 402–418</div>
+        <div class="j-card-meta"><a href="https://doi.org/10.1080/17516234.2022.2085533" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">DOI ↗</a></div>
+      </article>
+      <article class="j-card">
+        <div class="j-card-head"><span class="j-card-tag">JOURNAL</span><span class="j-card-year">2024</span></div>
+        <h3 class="j-card-title">An Empirical Examination of the Micro-foundations of Public Support for Taiwan's National Health Insurance</h3>
+        <div class="j-card-authors">Yeh, C-Y., Lin, T-Y. and Lue, J-D.</div>
+        <div class="j-card-foot">J. of Social Sciences &amp; Philosophy · 36(1): 205–243</div>
+        <div class="j-card-meta"><a href="https://www.airitilibrary.com/Common/Search?q=%E5%8F%B0%E7%81%A3%E5%85%A8%E6%B0%91%E5%81%A5%E5%BA%B7%E4%BF%9D%E9%9A%AA&type=article" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">Airiti ↗</a><span class="oa">● TSSCI</span></div>
+        <div class="seal-multi">多</div>
+      </article>
+      <article class="j-card">
+        <div class="j-card-head"><span class="j-card-tag">JOURNAL</span><span class="j-card-year">2024</span></div>
+        <h3 class="j-card-title">Progressive Dilemma: Empirical Examination of the Characteristics of Welfare Chauvinism in Taiwan</h3>
+        <div class="j-card-authors">Huang, F-Y. and Yeh, C-Y.</div>
+        <div class="j-card-foot">J. of Social Policy and Social Work · 28(1): 47–97</div>
+        <div class="j-card-meta"><a href="https://www.airitilibrary.com/Common/Search?q=%E9%80%B2%E6%AD%A5%E7%9A%84%E5%85%A9%E9%9B%A3&type=article" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">Airiti ↗</a></div>
+      </article>
+      <article class="j-card">
+        <div class="j-card-head"><span class="j-card-tag">JOURNAL</span><span class="j-card-year">2022</span></div>
+        <h3 class="j-card-title">Public Attitude towards Government Financial Support during the Covid-19 Pandemic in Taiwan</h3>
+        <div class="j-card-authors">Yeh, C-Y., Tsai, P-Y. and Ku, Y-W.</div>
+        <div class="j-card-foot">Asia Pacific J. of SWD · 32(4): 229–243</div>
+        <div class="j-card-meta"><a href="https://doi.org/10.1080/02185385.2022.2135588" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">DOI ↗</a></div>
+      </article>
+      <article class="j-card">
+        <div class="j-card-head"><span class="j-card-tag">JOURNAL</span><span class="j-card-year">2022</span></div>
+        <h3 class="j-card-title">Social Policy Responses and Social Development during and after the Unequal Pandemic</h3>
+        <div class="j-card-authors">Ku, Y-W. and Yeh, C-Y.*</div>
+        <div class="j-card-foot">Asia Pacific J. of SWD · 32(3): 161–169</div>
+        <div class="j-card-meta"><a href="https://doi.org/10.1080/02185385.2022.2141848" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">DOI ↗</a></div>
+      </article>
     </div>
   </div>
-</section>
 
-<!-- ── FOOTER ── -->
+  <div class="pane" data-pane="book">
+    <div class="b-grid">
+      <article class="b-card">
+        <div class="b-cover">
+          <img src="images/books/pension-reform-2026.jpg" alt="The Buried Welfare Years: Challenges and Solutions of Taiwan's Pension Reform" loading="lazy" />
+        </div>
+        <div>
+          <div class="b-tag">BOOK · 2026</div>
+          <h3 class="b-title">葬送的福利年（金）</h3>
+          <div class="b-sub">Challenges and Solutions of Taiwan's Pension Reform</div>
+          <div class="b-desc">Taiwan's Labour Insurance fund will run out by 2028 — not just a financial black hole, but a rupture in the country's intergenerational contract. This volume reframes the debate beyond the conventional, drawing on European and Japanese reforms to address generational justice, gender equality, labour market change, and pension financialisation.</div>
+          <div class="b-foot"><span>Edited by Yeh, Chen, Shih &amp; Ku</span><span>Taipei: Chuliu</span></div>
+        </div>
+      </article>
+      <article class="b-card">
+        <div class="b-cover">
+          <img src="images/books/east-asian-welfare-2018.jpg" alt="The Transforming East Asian Welfare Regimes" loading="lazy" />
+        </div>
+        <div>
+          <div class="b-tag">BOOK · 2018</div>
+          <h3 class="b-title">轉型中的東亞福利體制</h3>
+          <div class="b-sub">The Transforming East Asian Welfare Regimes</div>
+          <div class="b-desc">A comparative study of welfare-regime reform across Taiwan, Japan, Singapore, South Korea and Hong Kong. Examines why political-economic transitions led to divergent reform pathways, and rethinks the limitations of the standard "East Asian welfare regime" perspective.</div>
+          <div class="b-foot"><span>Yeh, C-Y. (sole author)</span><span>Hong Kong: City Univ. of HK Press</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="pane" data-pane="conf">
+    <div class="c-list">
+      <article class="c-row">
+        <div class="c-year">2025</div>
+        <div class="c-type is-oral">● ORAL</div>
+        <h3 class="c-title">Who are Deserving Poor in Taiwan and Korea: A Conjoint Experiment Survey</h3>
+        <div class="c-venue"><div class="v">2025 ESPAnet Annual Conference</div><div class="city">University of Milan, Italy</div></div>
+      </article>
+      <article class="c-row">
+        <div class="c-year">2025</div>
+        <div class="c-type is-oral">● ORAL</div>
+        <h3 class="c-title">Population Aging, Pension Sustainability, and Public Opinion: Does Better Information Lead to Greater Reform Endorsement?</h3>
+        <div class="c-venue"><div class="v">2025 SPA-EASP Joint Annual Conf.</div><div class="city">University of York, UK</div></div>
+      </article>
+      <article class="c-row">
+        <div class="c-year">2025</div>
+        <div class="c-type is-oral">● ORAL</div>
+        <h3 class="c-title">Is More Choice the Right Choice? Exploring Public Preferences for Encouraging IRA Savings through a Randomized Survey Experiment</h3>
+        <div class="c-venue"><div class="v">2025 SPA-EASP Joint Annual Conf.</div><div class="city">University of York, UK</div></div>
+      </article>
+      <article class="c-row">
+        <div class="c-year">2025</div>
+        <div class="c-type is-invited">● WORKSHOP</div>
+        <h3 class="c-title">The Activation Turn or the Decline of Social Solidarity: Public Attitude towards Active Labour Market Policies in Taiwan</h3>
+        <div class="c-venue"><div class="v">Digitalization, Precarious Work &amp; Welfare State in Asia</div><div class="city">National Taipei University</div></div>
+      </article>
+      <article class="c-row">
+        <div class="c-year">2024</div>
+        <div class="c-type is-oral">● ORAL</div>
+        <h3 class="c-title">Crafting a Welfare Market: The Rise of the Market-based Homecare in Taiwan</h3>
+        <div class="c-venue"><div class="v">2024 EASP Annual Conference</div><div class="city">Kyoto, Japan</div></div>
+      </article>
+    </div>
+    <p style="margin-top: 28px; text-align: center; font-size: 13px; opacity: 0.6;"><a href="publications/publications-en.html#conference" style="color: var(--accent); text-decoration: none; letter-spacing: 0.18em; font-family: var(--sans); text-transform: uppercase;">View all 20 conferences →</a></p>
+  </div>
+</div>
+
 <footer>
-  <p>© 2025 Chung-Yang Yeh 葉崇揚 &nbsp;·&nbsp; Department of Sociology, Soochow University 
-  </p>
+  <span>YEH CHUNG-YANG</span>
+  <span>Reiwa 8 ・ Summer ・ Shoin</span>
 </footer>
 
-<script src="js/main.js"></script>
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const panes = document.querySelectorAll('.pane');
+  const viewToggle = document.getElementById('view-toggle');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    const id = t.dataset.tab;
+    tabs.forEach(x => x.classList.toggle('is-active', x === t));
+    panes.forEach(p => p.classList.toggle('is-active', p.dataset.pane === id));
+    viewToggle.style.display = id === 'journal' ? 'flex' : 'none';
+  }));
+  document.querySelectorAll('.view-btn').forEach(b => b.addEventListener('click', () => {
+    const v = b.dataset.view;
+    document.querySelectorAll('.view-btn').forEach(x => x.classList.toggle('is-active', x === b));
+    document.querySelectorAll('[data-view-pane]').forEach(p => {
+      p.style.display = p.dataset.viewPane === v ? (v === 'grid' ? 'grid' : 'flex') : 'none';
+    });
+  }));
+</script>
+
 </body>
 </html>

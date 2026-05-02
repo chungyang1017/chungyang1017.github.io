@@ -67,6 +67,7 @@
       opacity: 0.55; transition: opacity 0.3s;
     }
     .nav a.is-current, .nav a:hover { opacity: 0.95; }
+    .nav .nav-jp { font-size: 10px; opacity: 0.55; letter-spacing: 0.18em; margin-left: 2px; font-family: var(--jp); }
     .nav .lang {
       border-left: 1px solid rgba(232,226,212,0.18);
       padding-left: 24px;
@@ -302,14 +303,13 @@
 
 <header class="top">
   <span class="brand">
-    <span class="seal" aria-hidden="true">葉</span>
     <span class="brand-name">葉崇揚</span>
   </span>
   <nav class="nav" aria-label="Sections">
     <a href="index.html" class="is-current">玄關</a>
-    <a href="academic-zh.html" class="nav-sub">書院</a>
-    <a href="photography-zh.html" class="nav-sub">縁側</a>
-    <a href="#" class="nav-sub">茶室</a>
+    <a href="academic-zh.html" class="nav-sub">學術 <span class="nav-jp">（書院）</span></a>
+    <a href="photography-zh.html" class="nav-sub">攝影 <span class="nav-jp">（縁側）</span></a>
+    <a href="#" class="nav-sub">教學 <span class="nav-jp">（茶室）</span></a>
     <a href="index-en.html" class="lang">EN</a>
   </nav>
 </header>
