@@ -52,9 +52,9 @@
     .top-left { display: flex; align-items: center; gap: 16px; }
     .back { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.55; text-decoration: none; color: var(--ink); text-transform: uppercase; }
     .top-sep { font-size: 11px; opacity: 0.3; }
-    .name-block { line-height: 1.15; }
-    .name-jp { font-family: var(--brush); font-size: 18px; letter-spacing: 0.1em; }
-    .name-en { font-family: var(--sans); font-size: 9px; letter-spacing: 0.3em; opacity: 0.55; text-transform: uppercase; }
+    .name-block { display: inline-flex; align-items: baseline; gap: 8px; }
+    .name-jp { font-family: var(--brush); font-size: 22px; letter-spacing: 0.1em; }
+    .name-en { font-family: var(--sans); font-style: italic; font-size: 13px; letter-spacing: 0.06em; opacity: 0.7; text-transform: none; }
     .nav { display: flex; gap: 24px; font-size: 12px; letter-spacing: 0.25em; font-family: var(--sans); text-transform: uppercase; }
     .nav a { color: var(--ink); text-decoration: none; opacity: 0.5; padding-bottom: 4px; }
     .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
@@ -122,8 +122,10 @@
     .v-scroll .series-foot { width: 320px; margin-top: 10px; }
     .v-scroll-hint { margin-top: 8px; font-size: 10px; opacity: 0.5; letter-spacing: 0.3em; text-align: right; font-family: var(--sans); text-transform: uppercase; }
 
-    .v-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .v-grid .series-cover { aspect-ratio: 4/5; }
+    .v-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .v-grid .series-cover { aspect-ratio: 3/4; }
+    .v-grid .series-cover .label .t { font-size: 18px; }
+    .v-grid .series-cover .label .meta { font-size: 10px; }
 
     footer {
       border-top: 1px solid var(--line);
@@ -137,91 +139,130 @@
 
     .book-overlay {
       position: fixed; inset: 0; z-index: 100;
-      background: #1a1a1c;
+      background: rgba(15,12,9,0.96);
       display: none; align-items: center; justify-content: center;
-      padding: 40px;
+      padding: 80px 60px;
     }
     .book-overlay.is-open { display: flex; }
     .book-top {
       position: absolute; top: 0; left: 0; right: 0;
-      padding: 20px 40px;
+      padding: 20px 32px;
       display: flex; justify-content: space-between; align-items: center;
-      color: #e0d8c0; z-index: 5;
+      color: rgba(232,226,212,0.85); z-index: 10;
     }
-    .book-title-block { display: flex; gap: 16px; align-items: baseline; }
-    .book-title-block .t { font-family: var(--brush); font-size: 28px; letter-spacing: 0.1em; }
-    .book-title-block .meta { font-size: 11px; letter-spacing: 0.3em; opacity: 0.6; font-family: var(--sans); text-transform: uppercase; }
+    .book-top .series-label { display: flex; gap: 14px; align-items: baseline; }
+    .book-top .series-label .t { font-family: var(--brush); font-size: 22px; letter-spacing: 0.12em; }
+    .book-top .series-label .meta { font-size: 10px; letter-spacing: 0.3em; opacity: 0.55; font-family: var(--sans); text-transform: uppercase; }
     .book-close {
-      background: transparent; color: #e0d8c0;
-      border: 1px solid rgba(224,216,192,0.35);
-      padding: 8px 18px; font-family: inherit;
-      font-size: 11px; letter-spacing: 0.3em;
-      cursor: pointer; text-transform: uppercase;
+      background: rgba(232,226,212,0.06);
+      color: rgba(232,226,212,0.9);
+      border: 1px solid rgba(232,226,212,0.22);
+      width: 40px; height: 40px;
+      font-size: 16px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
     }
-    .book-close:hover { border-color: rgba(224,216,192,0.75); }
-    .book-spread {
-      display: flex; position: relative;
-      width: min(1200px, 92vw);
-      aspect-ratio: 3/2; max-height: calc(100vh - 160px);
+    .book-close:hover { background: rgba(196,56,56,0.25); border-color: rgba(196,56,56,0.5); }
+
+    .book-stage {
+      position: relative;
+      perspective: 1800px; perspective-origin: center;
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
     }
-    .book-page-left {
-      width: 50%; height: 100%;
+    /* Spread = open book (photo across both pages + caption strip on right) */
+    .book-page {
+      position: relative;
+      width: min(1400px, 94vw);
+      height: min(calc(100vh - 200px), calc((min(1400px, 94vw) - 220px) * 2 / 3));
+      max-height: calc(100vh - 200px);
+      background: #0a0a0a;
+      box-shadow: 0 18px 80px rgba(0,0,0,0.7);
+      transform-style: preserve-3d;
+      transform-origin: center center;
+      transition: transform 0.55s cubic-bezier(.55,.05,.3,1), opacity 0.45s ease;
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+      display: grid;
+      grid-template-columns: 1fr 220px;
+    }
+    .book-photo-wrap { position: relative; overflow: hidden; background: #0a0a0a; }
+    .book-photo { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .book-spine {
+      position: absolute; top: 0; bottom: 0; left: 50%;
+      width: 2px; transform: translateX(-1px);
+      background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0.55) 100%);
+      box-shadow: 0 0 18px rgba(0,0,0,0.6);
+      pointer-events: none; z-index: 2;
+    }
+    .book-edge-left, .book-edge-right { position: absolute; top: 0; bottom: 0; width: 12px; pointer-events: none; z-index: 2; }
+    .book-edge-left { left: 0; background: linear-gradient(90deg, rgba(0,0,0,0.4), transparent); }
+    .book-edge-right { right: 220px; background: linear-gradient(270deg, rgba(0,0,0,0.4), transparent); }
+
+    .book-caption {
       background: #fcf6e6;
-      padding: 56px 48px;
-      display: flex; flex-direction: column; justify-content: space-between;
       color: #1f1f1d;
-      box-shadow: inset -16px 0 24px -16px rgba(0,0,0,0.25);
-      position: relative; z-index: 2;
-      overflow-y: auto;
-    }
-    .book-page-left .p-eyebrow { font-size: 11px; letter-spacing: 0.4em; opacity: 0.55; font-family: var(--sans); text-transform: uppercase; }
-    .book-page-left .p-title { margin: 12px 0 0; font-family: var(--brush); font-size: 48px; font-weight: 400; letter-spacing: 0.05em; line-height: 1.15; }
-    .book-page-left .p-title-en { font-family: var(--display); font-style: italic; font-size: 18px; opacity: 0.7; margin-top: 6px; }
-    .book-page-left .p-place { margin-top: 12px; font-size: 12px; opacity: 0.65; font-style: italic; letter-spacing: 0.05em; }
-    .book-page-left .p-haiku {
-      margin-top: 28px;
-      font-family: var(--hand);
-      font-size: 14px; line-height: 2.1;
-      opacity: 0.78; max-width: 320px; white-space: pre-line;
-      font-style: italic;
-    }
-    .book-page-left .p-haiku .romaji { display: block; font-family: var(--jp); font-size: 11px; opacity: 0.55; margin-top: 12px; line-height: 1.7; font-style: normal; }
-    .book-page-left .p-pagenum { font-size: 11px; letter-spacing: 0.3em; opacity: 0.5; margin-top: 24px; font-family: var(--sans); text-transform: uppercase; }
-    .book-page-left .p-pagenum .num { display: block; margin-top: 6px; font-family: var(--sans); font-size: 22px; letter-spacing: 0.1em; }
-    .book-page-left .p-pagenum .num .denom { opacity: 0.4; }
-    .book-page-right {
-      width: 50%; height: 100%;
-      background: #1a1a1c; position: relative;
-      box-shadow: inset 16px 0 24px -16px rgba(0,0,0,0.25), 0 4px 24px rgba(0,0,0,0.4);
+      padding: 36px 24px;
+      box-shadow: inset 16px 0 24px -16px rgba(0,0,0,0.3);
+      display: flex; flex-direction: column;
+      align-items: flex-start; justify-content: space-between;
+      writing-mode: vertical-rl; text-orientation: mixed;
       overflow: hidden;
     }
-    .book-page-right img {
-      width: 100%; height: 100%; object-fit: contain;
-      transition: opacity 0.3s ease;
+    .book-caption .b-title { font-family: var(--jp); font-size: 13px; letter-spacing: 0.22em; color: rgba(31,31,29,0.55); }
+    .book-caption .b-title .romaji {
+      display: block; margin-top: 0.5rem;
+      writing-mode: horizontal-tb;
+      font-family: var(--display); font-style: italic;
+      font-size: 11px; letter-spacing: 0.08em;
+      color: rgba(31,31,29,0.45);
     }
-    .book-page-right.is-flipping img { opacity: 0; }
-    .book-spine {
-      position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
-      background: linear-gradient(90deg, rgba(0,0,0,0.35), rgba(0,0,0,0.05));
-      transform: translateX(-1px); pointer-events: none; z-index: 3;
+    .book-caption .b-haiku-jp { font-family: var(--jp); font-size: 1.25rem; line-height: 2.3; color: rgba(31,31,29,0.92); letter-spacing: 0.18em; }
+    .book-caption .b-haiku-en {
+      font-family: var(--display); font-style: italic;
+      font-size: 1rem; line-height: 1.95;
+      color: rgba(31,31,29,0.7);
+      letter-spacing: 0.04em;
+      writing-mode: horizontal-tb;
     }
+
+    /* Flip animations */
+    .book-page.flip-out-next { transform: rotateY(-90deg) translateX(-30px); transform-origin: left center; opacity: 0; }
+    .book-page.flip-out-prev { transform: rotateY(90deg) translateX(30px); transform-origin: right center; opacity: 0; }
+    .book-page.flip-in-next { animation: pageInNext 0.45s cubic-bezier(.2,.7,.2,1); }
+    .book-page.flip-in-prev { animation: pageInPrev 0.45s cubic-bezier(.2,.7,.2,1); }
+    @keyframes pageInNext {
+      from { transform: rotateY(75deg) translateX(50px); opacity: 0; transform-origin: right center; }
+      to   { transform: rotateY(0) translateX(0); opacity: 1; }
+    }
+    @keyframes pageInPrev {
+      from { transform: rotateY(-75deg) translateX(-50px); opacity: 0; transform-origin: left center; }
+      to   { transform: rotateY(0) translateX(0); opacity: 1; }
+    }
+
     .book-nav {
       position: absolute; top: 50%; transform: translateY(-50%);
-      background: transparent; color: #e0d8c0;
-      border: 1px solid rgba(224,216,192,0.35);
-      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(232,226,212,0.06);
+      color: rgba(232,226,212,0.9);
+      border: 1px solid rgba(232,226,212,0.22);
+      width: 44px; height: 44px;
       font-size: 18px; cursor: pointer;
-      font-family: inherit;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+      z-index: 10;
     }
-    .book-nav:hover:not(:disabled) { border-color: rgba(224,216,192,0.75); }
-    .book-nav:disabled { opacity: 0.3; cursor: default; }
-    .book-nav.prev { left: 40px; }
-    .book-nav.next { right: 40px; }
-    .book-hint {
+    .book-nav:hover:not(:disabled) { background: rgba(196,56,56,0.25); border-color: rgba(196,56,56,0.5); }
+    .book-nav:disabled { opacity: 0.25; cursor: default; }
+    .book-nav.prev { left: 24px; }
+    .book-nav.next { right: 24px; }
+    .book-counter {
       position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
-      font-size: 10px; color: #e0d8c0; opacity: 0.5; letter-spacing: 0.4em;
-      font-family: var(--sans); text-transform: uppercase;
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.25em;
+      color: rgba(232,226,212,0.55);
+      z-index: 10;
     }
+    .book-counter .num { color: rgba(232,226,212,0.95); }
 
     @media (max-width: 760px) {
       .top { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
@@ -291,8 +332,8 @@
     <a href="index-en.html" class="back">← HOME</a>
     <span class="top-sep">·</span>
     <span class="name-block">
-      <div class="name-jp">葉崇揚</div>
-      <div class="name-en">CHUNG-YANG YEH</div>
+      <span class="name-jp">葉崇揚</span>
+      <span class="name-en">（Chung-Yang Yeh）</span>
     </span>
   </div>
   <nav class="nav" aria-label="Sections">
@@ -314,6 +355,8 @@
       <p class="hero-desc">
         <span class="jp">内と外の境。庭が一冊の本となる場所。</span>
         For me, photography is a way of looking and a way of telling. For nearly thirty years it has run beside the research — one approach reaches in through words, the other approaches through light.
+        <br/><br/>
+        The work below is grouped into nine series — Spring, Summer, Autumn, Winter, Tideline, Landscape, Street, Xpan, and Silver Halide — each shaped less by deliberate project than by the rhythm of light and the seasons themselves. Together they form a slow record of looking.
       </p>
     </div>
     <div class="hero-cover">
@@ -386,13 +429,13 @@
 <script src="js/photo-data.js"></script>
 <script>
   const SERIES = [
-    { id: 'street',     jp: '街',    romaji: 'Machi',     en: 'Street',          place: 'Taipei ・ Kyoto', primary: '#1f1f1d' },
     { id: 'harugasumi', jp: '春信',  romaji: 'Shunshin',  en: 'Spring',          place: 'Cherry season', primary: '#d98aa8' },
     { id: 'aoarashi',   jp: '青嵐',  romaji: 'Aoarashi',  en: 'Summer',          place: 'High summer', primary: '#5a7a4a' },
     { id: 'kouyou',     jp: '紅葉',  romaji: 'Kōyō',      en: 'Autumn',          place: 'Kyoto ・ Tokyo', primary: '#c43838' },
     { id: 'yukiakari',  jp: '雪明',  romaji: 'Yukiakari', en: 'Winter',          place: 'Hokkaido', primary: '#a0a8ad' },
     { id: 'kaiyou',     jp: '潮騒',  romaji: 'Shiosai',   en: 'Tideline',        place: 'Coast', primary: '#5a7a8a' },
     { id: 'sansui',     jp: '山水',  romaji: 'Sansui',    en: 'Landscape',       place: 'Mountains & sea', primary: '#3d5a3f' },
+    { id: 'street',     jp: '街',    romaji: 'Machi',     en: 'Street',          place: 'Taipei ・ Kyoto', primary: '#1f1f1d' },
     { id: 'xpan',       jp: 'Xpan',  romaji: 'Panoramic', en: 'Xpan ・ 65×24',   place: 'Wide-frame', primary: '#7a5a3a' },
     { id: 'ginen',      jp: '銀塩',  romaji: 'Ginen',     en: 'Silver Halide',   place: 'Slide film scans', primary: '#6b6256' },
   ];
@@ -440,20 +483,7 @@
     coverDiv.appendChild(label);
     btn.appendChild(coverDiv);
 
-    if (opts.mode === 'scroll') {
-      const foot = document.createElement('div');
-      foot.className = 'series-foot';
-      foot.innerHTML = `<div style="font-family: var(--brush); font-size: 18px; margin-top: 8px;">${sr.jp}</div>
-        <div style="display: flex; justify-content: space-between; font-size: 10px; margin-top: 4px; opacity: 0.6; letter-spacing: 0.2em; font-family: var(--sans); text-transform: uppercase;">
-          <span>${sr.en}</span><span>${count} frames</span>
-        </div>`;
-      btn.appendChild(foot);
-    } else {
-      const meta = document.createElement('div');
-      meta.className = 'series-meta-row';
-      meta.innerHTML = `<span>${sr.en}</span><span>${count} frames</span>`;
-      btn.appendChild(meta);
-    }
+    // No bottom label row — overlay on photo is sufficient
     return btn;
   }
 

@@ -57,9 +57,9 @@
     .top-left { display: flex; align-items: center; gap: 16px; }
     .back { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.55; text-decoration: none; color: var(--ink); }
     .top-sep { font-size: 11px; opacity: 0.3; }
-    .name-block { line-height: 1.15; }
-    .name-jp { font-family: var(--brush); font-size: 18px; letter-spacing: 0.1em; }
-    .name-en { font-family: var(--sans); font-size: 9px; letter-spacing: 0.3em; opacity: 0.55; }
+    .name-block { display: inline-flex; align-items: baseline; gap: 8px; }
+    .name-jp { font-family: var(--brush); font-size: 22px; letter-spacing: 0.1em; }
+    .name-en { font-family: var(--sans); font-size: 13px; letter-spacing: 0.08em; opacity: 0.7; }
     .nav { display: flex; gap: 24px; font-size: 12px; letter-spacing: 0.25em; }
     .nav a { color: var(--ink); text-decoration: none; opacity: 0.5; padding-bottom: 4px; }
     .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
@@ -137,8 +137,10 @@
     .v-scroll-hint { margin-top: 8px; font-size: 10px; opacity: 0.5; letter-spacing: 0.3em; text-align: right; }
 
     /* GRID view */
-    .v-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .v-grid .series-cover { aspect-ratio: 4/5; }
+    .v-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .v-grid .series-cover { aspect-ratio: 3/4; }
+    .v-grid .series-cover .label .t { font-size: 18px; }
+    .v-grid .series-cover .label .meta { font-size: 10px; }
 
     /* Footer */
     footer {
@@ -151,101 +153,171 @@
       position: relative; z-index: 2;
     }
 
-    /* ── Book mode ── */
+    /* ── Book mode (single page + flip animation) ── */
     .book-overlay {
       position: fixed; inset: 0; z-index: 100;
-      background: #1a1a1c;
+      background: rgba(15,12,9,0.96);
       display: none;
       align-items: center; justify-content: center;
-      padding: 40px;
+      padding: 80px 60px;
     }
     .book-overlay.is-open { display: flex; }
+
     .book-top {
       position: absolute; top: 0; left: 0; right: 0;
-      padding: 20px 40px;
+      padding: 20px 32px;
       display: flex; justify-content: space-between; align-items: center;
-      color: #e0d8c0; z-index: 5;
+      color: rgba(232,226,212,0.85); z-index: 10;
     }
-    .book-title-block { display: flex; gap: 16px; align-items: baseline; }
-    .book-title-block .t { font-family: var(--brush); font-size: 28px; letter-spacing: 0.1em; }
-    .book-title-block .meta { font-size: 11px; letter-spacing: 0.3em; opacity: 0.6; }
+    .book-top .series-label { display: flex; gap: 14px; align-items: baseline; }
+    .book-top .series-label .t { font-family: var(--brush); font-size: 22px; letter-spacing: 0.12em; }
+    .book-top .series-label .meta { font-size: 10px; letter-spacing: 0.3em; opacity: 0.55; }
     .book-close {
-      background: transparent; color: #e0d8c0;
-      border: 1px solid rgba(224,216,192,0.35);
-      padding: 8px 18px; font-family: inherit;
-      font-size: 11px; letter-spacing: 0.3em;
-      cursor: pointer;
+      background: rgba(232,226,212,0.06);
+      color: rgba(232,226,212,0.9);
+      border: 1px solid rgba(232,226,212,0.22);
+      width: 40px; height: 40px;
+      font-size: 16px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
     }
-    .book-close:hover { border-color: rgba(224,216,192,0.75); }
-    .book-spread {
-      display: flex; position: relative;
-      width: min(1200px, 92vw);
-      aspect-ratio: 3/2;
-      perspective: 2000px;
-      max-height: calc(100vh - 160px);
-    }
-    .book-page-left {
-      width: 50%; height: 100%;
-      background: #fcf6e6;
-      padding: 56px 48px;
-      display: flex; flex-direction: column; justify-content: space-between;
-      color: #1f1f1d;
-      box-shadow: inset -16px 0 24px -16px rgba(0,0,0,0.25);
-      position: relative; z-index: 2;
-      overflow-y: auto;
-    }
-    .book-page-left .p-eyebrow { font-size: 11px; letter-spacing: 0.4em; opacity: 0.55; }
-    .book-page-left .p-title { margin: 12px 0 0; font-family: var(--brush); font-size: 48px; font-weight: 400; letter-spacing: 0.05em; line-height: 1.15; }
-    .book-page-left .p-place { margin-top: 12px; font-size: 12px; opacity: 0.65; font-style: italic; letter-spacing: 0.05em; }
-    .book-page-left .p-haiku {
-      margin-top: 28px;
-      font-family: var(--hand);
-      font-size: 14px; line-height: 2.1;
-      opacity: 0.78; max-width: 320px; white-space: pre-line;
-    }
-    .book-page-left .p-haiku .romaji { display: block; font-family: var(--jp); font-size: 11px; opacity: 0.55; margin-top: 12px; line-height: 1.7; }
-    .book-page-left .p-pagenum {
-      font-size: 11px; letter-spacing: 0.3em; opacity: 0.5;
-      margin-top: 24px;
-    }
-    .book-page-left .p-pagenum .num {
-      display: block; margin-top: 6px;
-      font-family: var(--sans); font-size: 22px; letter-spacing: 0.1em;
-    }
-    .book-page-left .p-pagenum .num .denom { opacity: 0.4; }
-    .book-page-right {
-      width: 50%; height: 100%;
-      background: #1a1a1c;
+    .book-close:hover { background: rgba(196,56,56,0.25); border-color: rgba(196,56,56,0.5); }
+
+    /* The page (3D-perspective wrapper) */
+    .book-stage {
       position: relative;
-      box-shadow: inset 16px 0 24px -16px rgba(0,0,0,0.25), 0 4px 24px rgba(0,0,0,0.4);
+      perspective: 1800px;
+      perspective-origin: center;
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    /* Spread = open book (photo across both pages + caption strip on right) */
+    .book-page {
+      position: relative;
+      width: min(1400px, 94vw);
+      height: min(calc(100vh - 200px), calc((min(1400px, 94vw) - 220px) * 2 / 3));
+      max-height: calc(100vh - 200px);
+      background: #0a0a0a;
+      box-shadow: 0 18px 80px rgba(0,0,0,0.7);
+      transform-style: preserve-3d;
+      transform-origin: center center;
+      transition: transform 0.55s cubic-bezier(.55,.05,.3,1), opacity 0.45s ease;
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+      display: grid;
+      grid-template-columns: 1fr 220px;
+    }
+    .book-photo-wrap {
+      position: relative;
+      overflow: hidden;
+      background: #0a0a0a;
+    }
+    .book-photo {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    /* center spine over photo */
+    .book-spine {
+      position: absolute; top: 0; bottom: 0; left: 50%;
+      width: 2px; transform: translateX(-1px);
+      background: linear-gradient(180deg,
+        rgba(0,0,0,0.55) 0%,
+        rgba(0,0,0,0.25) 50%,
+        rgba(0,0,0,0.55) 100%);
+      box-shadow: 0 0 18px rgba(0,0,0,0.6);
+      pointer-events: none; z-index: 2;
+    }
+    /* page edges (subtle vertical highlight at outer edges of pages) */
+    .book-edge-left, .book-edge-right {
+      position: absolute; top: 0; bottom: 0; width: 12px;
+      pointer-events: none; z-index: 2;
+    }
+    .book-edge-left { left: 0; background: linear-gradient(90deg, rgba(0,0,0,0.4), transparent); }
+    .book-edge-right { right: 220px; background: linear-gradient(270deg, rgba(0,0,0,0.4), transparent); }
+
+    .book-caption {
+      background: #fcf6e6;
+      color: #1f1f1d;
+      padding: 36px 24px;
+      box-shadow: inset 16px 0 24px -16px rgba(0,0,0,0.3);
+      display: flex; flex-direction: column;
+      align-items: flex-start; justify-content: space-between;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
       overflow: hidden;
     }
-    .book-page-right img {
-      width: 100%; height: 100%; object-fit: contain;
-      transition: opacity 0.3s ease;
+    .book-caption .b-title {
+      font-family: var(--jp);
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      color: rgba(31,31,29,0.55);
     }
-    .book-page-right.is-flipping img { opacity: 0; }
-    .book-spine {
-      position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
-      background: linear-gradient(90deg, rgba(0,0,0,0.35), rgba(0,0,0,0.05));
-      transform: translateX(-1px); pointer-events: none; z-index: 3;
+    .book-caption .b-title .romaji {
+      display: block; margin-top: 0.5rem;
+      writing-mode: horizontal-tb;
+      font-family: var(--sans); font-style: italic;
+      font-size: 11px; letter-spacing: 0.08em;
+      color: rgba(31,31,29,0.45);
     }
+    .book-caption .b-haiku-jp {
+      font-family: var(--jp);
+      font-size: 1.25rem; line-height: 2.3;
+      color: rgba(31,31,29,0.92);
+      letter-spacing: 0.18em;
+    }
+    .book-caption .b-haiku-zh {
+      font-family: var(--jp);
+      font-size: 0.95rem; line-height: 2.1;
+      color: rgba(31,31,29,0.65);
+      letter-spacing: 0.14em;
+    }
+
+    /* Flip animations */
+    .book-page.flip-out-next {
+      transform: rotateY(-90deg) translateX(-30px);
+      transform-origin: left center;
+      opacity: 0;
+    }
+    .book-page.flip-out-prev {
+      transform: rotateY(90deg) translateX(30px);
+      transform-origin: right center;
+      opacity: 0;
+    }
+    .book-page.flip-in-next { animation: pageInNext 0.45s cubic-bezier(.2,.7,.2,1); }
+    .book-page.flip-in-prev { animation: pageInPrev 0.45s cubic-bezier(.2,.7,.2,1); }
+    @keyframes pageInNext {
+      from { transform: rotateY(75deg) translateX(50px); opacity: 0; transform-origin: right center; }
+      to   { transform: rotateY(0) translateX(0); opacity: 1; }
+    }
+    @keyframes pageInPrev {
+      from { transform: rotateY(-75deg) translateX(-50px); opacity: 0; transform-origin: left center; }
+      to   { transform: rotateY(0) translateX(0); opacity: 1; }
+    }
+
     .book-nav {
       position: absolute; top: 50%; transform: translateY(-50%);
-      background: transparent; color: #e0d8c0;
-      border: 1px solid rgba(224,216,192,0.35);
-      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(232,226,212,0.06);
+      color: rgba(232,226,212,0.9);
+      border: 1px solid rgba(232,226,212,0.22);
+      width: 44px; height: 44px;
       font-size: 18px; cursor: pointer;
-      font-family: inherit;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+      z-index: 10;
     }
-    .book-nav:hover:not(:disabled) { border-color: rgba(224,216,192,0.75); }
-    .book-nav:disabled { opacity: 0.3; cursor: default; }
-    .book-nav.prev { left: 40px; }
-    .book-nav.next { right: 40px; }
-    .book-hint {
+    .book-nav:hover:not(:disabled) { background: rgba(196,56,56,0.25); border-color: rgba(196,56,56,0.5); }
+    .book-nav:disabled { opacity: 0.25; cursor: default; }
+    .book-nav.prev { left: 24px; }
+    .book-nav.next { right: 24px; }
+    .book-counter {
       position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
-      font-size: 10px; color: #e0d8c0; opacity: 0.5; letter-spacing: 0.4em;
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.25em;
+      color: rgba(232,226,212,0.55);
+      z-index: 10;
     }
+    .book-counter .num { color: rgba(232,226,212,0.95); }
 
     /* Mobile */
     @media (max-width: 760px) {
@@ -315,8 +387,8 @@
     <a href="index.html" class="back">← 玄關</a>
     <span class="top-sep">·</span>
     <span class="name-block">
-      <div class="name-jp">葉崇揚</div>
-      <div class="name-en">YEH CHUNG-YANG</div>
+      <span class="name-jp">葉崇揚</span>
+      <span class="name-en">（Chung-Yang Yeh）</span>
     </span>
   </div>
   <nav class="nav" aria-label="Sections">
@@ -336,7 +408,8 @@
       <p class="hero-sub">PHOTOGRAPHY · 9 系列 · 162 件作品</p>
       <p class="hero-desc">
         内と外の境。庭が一冊の本となる場所。<br/>
-        於我而言，攝影是一種觀察和敘事的方法。將近三十年來，它與研究並行——一種以文字深入，一種以光影靠近。
+        於我而言，攝影是一種觀察與敘事的方法。將近三十年來，它與研究並行——一種以文字深入，一種以光影靠近。<br/>
+        作品依九個系列分類：春信、青嵐、紅葉、雪明、潮聲、山水、街、Xpan、銀鹽。與其說是有計畫的專案，更像是被光與季節推著走的紀錄。它們合起來，是一份緩慢的觀看。
       </p>
     </div>
     <div class="hero-cover">
@@ -374,49 +447,49 @@
   <span>令和八年 ・ 夏 ・ 縁側</span>
 </footer>
 
-<!-- Book mode overlay -->
+<!-- Book mode overlay (single-page + flip animation) -->
 <div class="book-overlay" id="book" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="book-top">
-    <div class="book-title-block">
-      <div class="t" id="book-title"></div>
-      <div class="meta" id="book-meta"></div>
+    <div class="series-label">
+      <div class="t" id="book-series"></div>
+      <div class="meta" id="book-series-meta"></div>
     </div>
-    <button class="book-close" id="book-close" type="button">✕ 閉じる ESC</button>
+    <button class="book-close" id="book-close" type="button" aria-label="關閉">×</button>
   </div>
-  <div class="book-spread">
-    <div class="book-page-left">
-      <div>
-        <div class="p-eyebrow" id="book-eyebrow"></div>
-        <h2 class="p-title" id="book-page-title"></h2>
-        <div class="p-place" id="book-place"></div>
-        <div class="p-haiku" id="book-haiku"></div>
+  <div class="book-stage">
+    <div class="book-page" id="book-page">
+      <div class="book-photo-wrap">
+        <img class="book-photo" id="book-img" alt="" />
+        <div class="book-spine" aria-hidden="true"></div>
+        <div class="book-edge-left" aria-hidden="true"></div>
+        <div class="book-edge-right" aria-hidden="true"></div>
       </div>
-      <div class="p-pagenum">
-        <span>頁</span>
-        <span class="num"><span id="book-num"></span> <span class="denom">/ <span id="book-denom"></span></span></span>
+      <div class="book-caption">
+        <div class="b-title" id="book-title">
+          <span id="book-title-jp"></span>
+          <span class="romaji" id="book-title-en"></span>
+        </div>
+        <div class="b-haiku-jp" id="book-haiku-jp"></div>
+        <div class="b-haiku-zh" id="book-haiku-zh"></div>
       </div>
     </div>
-    <div class="book-page-right" id="book-img-wrap">
-      <img id="book-img" alt="" />
-    </div>
-    <div class="book-spine"></div>
   </div>
-  <button class="book-nav prev" id="book-prev" type="button" aria-label="前">←</button>
-  <button class="book-nav next" id="book-next" type="button" aria-label="次">→</button>
-  <div class="book-hint">← → めくる ・ ESC 閉じる</div>
+  <button class="book-nav prev" id="book-prev" type="button" aria-label="前">‹</button>
+  <button class="book-nav next" id="book-next" type="button" aria-label="次">›</button>
+  <div class="book-counter"><span class="num" id="book-num"></span> / <span id="book-denom"></span></div>
 </div>
 
 <script src="js/photo-data.js"></script>
 <script>
   // ── Series definitions (matches photo-data.js theme ids)
   const SERIES = [
-    { id: 'street',     jp: '街',    romaji: 'Machi',     en: 'Street',          zh: '街頭',   place: '台北 ・ 京都', primary: '#1f1f1d' },
     { id: 'harugasumi', jp: '春信',  romaji: 'Shunshin',  en: 'Spring',          zh: '春信',   place: '櫻花季', primary: '#d98aa8' },
     { id: 'aoarashi',   jp: '青嵐',  romaji: 'Aoarashi',  en: 'Summer',          zh: '青嵐',   place: '盛夏', primary: '#5a7a4a' },
     { id: 'kouyou',     jp: '紅葉',  romaji: 'Kōyō',      en: 'Autumn',          zh: '紅葉',   place: '京都・東京', primary: '#c43838' },
     { id: 'yukiakari',  jp: '雪明',  romaji: 'Yukiakari', en: 'Winter',          zh: '雪明',   place: '北海道', primary: '#a0a8ad' },
     { id: 'kaiyou',     jp: '潮騒',  romaji: 'Shiosai',   en: 'Tideline',        zh: '潮聲',   place: '海岸', primary: '#5a7a8a' },
     { id: 'sansui',     jp: '山水',  romaji: 'Sansui',    en: 'Landscape',       zh: '山水',   place: '山海', primary: '#3d5a3f' },
+    { id: 'street',     jp: '街',    romaji: 'Machi',     en: 'Street',          zh: '街頭',   place: '台北 ・ 京都', primary: '#1f1f1d' },
     { id: 'xpan',       jp: 'Xpan',  romaji: 'Panoramic', en: 'Xpan ・ 65×24',   zh: 'Xpan',  place: '寬幅', primary: '#7a5a3a' },
     { id: 'ginen',      jp: '銀塩',  romaji: 'Ginen',     en: 'Silver Halide',   zh: '銀鹽',   place: '正片掃描', primary: '#6b6256' },
   ];
@@ -476,20 +549,7 @@
 
     btn.appendChild(coverDiv);
 
-    if (opts.mode === 'scroll') {
-      const foot = document.createElement('div');
-      foot.className = 'series-foot';
-      foot.innerHTML = `<div class="t" style="font-family: var(--brush); font-size: 18px; margin-top: 8px;">${sr.jp}</div>
-        <div style="display: flex; justify-content: space-between; font-size: 10px; margin-top: 4px; opacity: 0.6; letter-spacing: 0.2em; font-family: var(--sans);">
-          <span>${sr.en}</span><span>${count} 枚</span>
-        </div>`;
-      btn.appendChild(foot);
-    } else {
-      const meta = document.createElement('div');
-      meta.className = 'series-meta-row';
-      meta.innerHTML = `<span>${sr.en}</span><span>${count} 枚</span>`;
-      btn.appendChild(meta);
-    }
+    // 卡片底部不再重複標題／枚數（label overlay 已足夠）
     return btn;
   }
 
@@ -503,10 +563,11 @@
   }));
 
   // ── Book mode
-  let bookState = null; // { seriesId, photos, idx }
+  let bookState = null; // { sr, photos, idx }
+  let isFlipping = false;
   const bookEl = document.getElementById('book');
+  const pageEl = document.getElementById('book-page');
   const imgEl = document.getElementById('book-img');
-  const imgWrap = document.getElementById('book-img-wrap');
 
   function openBook(seriesId, idx = 0) {
     const sr = SERIES.find(s => s.id === seriesId);
@@ -527,46 +588,43 @@
   }
 
   function nextBook() {
-    if (!bookState) return;
-    if (bookState.idx < bookState.photos.length - 1) {
-      bookState.idx++;
-      renderBook(true);
-    }
+    if (!bookState || isFlipping) return;
+    if (bookState.idx < bookState.photos.length - 1) flipTo(bookState.idx + 1, 'next');
   }
   function prevBook() {
-    if (!bookState) return;
-    if (bookState.idx > 0) {
-      bookState.idx--;
-      renderBook(true);
-    }
+    if (!bookState || isFlipping) return;
+    if (bookState.idx > 0) flipTo(bookState.idx - 1, 'prev');
   }
 
-  function renderBook(animate) {
+  function flipTo(newIdx, dir) {
+    isFlipping = true;
+    pageEl.classList.add(dir === 'next' ? 'flip-out-next' : 'flip-out-prev');
+    setTimeout(() => {
+      bookState.idx = newIdx;
+      renderBook();
+      pageEl.classList.remove('flip-out-next', 'flip-out-prev');
+      pageEl.classList.add(dir === 'next' ? 'flip-in-next' : 'flip-in-prev');
+      setTimeout(() => {
+        pageEl.classList.remove('flip-in-next', 'flip-in-prev');
+        isFlipping = false;
+      }, 450);
+    }, 450);
+  }
+
+  function renderBook() {
     const { sr, photos, idx } = bookState;
     const photo = photos[idx];
-    document.getElementById('book-title').textContent = sr.jp;
-    document.getElementById('book-meta').textContent = `${sr.romaji} ・ ${sr.en} ・ ${sr.place}`;
-    document.getElementById('book-eyebrow').textContent = sr.romaji.toUpperCase() + ' ・ ' + sr.en.toUpperCase();
-    document.getElementById('book-page-title').textContent = photo.title_zh || photo.title_jp || ('No. ' + photo.num);
-    document.getElementById('book-place').textContent = (photo.title_jp || '') + (photo.year ? ' · ' + photo.year : '');
-    const haiku = (photo.haiku_zh || '').replace(/／/g, '\n');
-    const haikuJp = (photo.haiku_jp || '').replace(/／/g, '\n');
-    document.getElementById('book-haiku').innerHTML = haiku.replace(/\n/g, '<br/>') + (haikuJp ? `<span class="romaji">${haikuJp.replace(/\n/g, ' / ')}</span>` : '');
+    document.getElementById('book-series').textContent = sr.jp;
+    document.getElementById('book-series-meta').textContent = `${sr.romaji} ・ ${sr.en} ・ ${sr.place}`;
+    imgEl.src = photo.src;
+    imgEl.alt = photo.title_zh || ('No. ' + photo.num);
+    document.getElementById('book-title-jp').textContent =
+      `No. ${photo.num} ・ ${photo.title_jp || photo.title_zh || ''}`;
+    document.getElementById('book-title-en').textContent = photo.title_en || '';
+    document.getElementById('book-haiku-jp').textContent = (photo.haiku_jp || '').replace(/／/g, '・');
+    document.getElementById('book-haiku-zh').textContent = (photo.haiku_zh || '').replace(/／/g, '・');
     document.getElementById('book-num').textContent = String(idx + 1).padStart(3, '0');
     document.getElementById('book-denom').textContent = String(photos.length).padStart(3, '0');
-
-    // Flip animation: fade out → swap src → fade in
-    if (animate) {
-      imgWrap.classList.add('is-flipping');
-      setTimeout(() => {
-        imgEl.src = photo.src;
-        imgEl.alt = photo.title_zh || ('No. ' + photo.num);
-        imgWrap.classList.remove('is-flipping');
-      }, 300);
-    } else {
-      imgEl.src = photo.src;
-      imgEl.alt = photo.title_zh || ('No. ' + photo.num);
-    }
     document.getElementById('book-prev').disabled = idx === 0;
     document.getElementById('book-next').disabled = idx === photos.length - 1;
   }
