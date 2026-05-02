@@ -104,6 +104,25 @@
       text-transform: uppercase;
     }
     .hero-eyebrow .jp { font-family: var(--jp); margin-right: 0.5em; letter-spacing: 0.4em; }
+    .hero-name {
+      font-family: var(--brush);
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 28px;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+    .hero-name .romaji {
+      font-family: var(--sans);
+      font-style: italic;
+      font-size: 16px;
+      letter-spacing: 0.1em;
+      color: var(--sand);
+      opacity: 0.85;
+    }
     .hero-title {
       margin: 0;
       font-family: var(--brush);
@@ -265,7 +284,9 @@
       .nav a.nav-sub { display: none; }
 
       .hero-inner { padding: 70px 24px 56px; }
-      .hero-eyebrow { font-size: 10px; letter-spacing: 0.4em; margin-bottom: 20px; }
+      .hero-eyebrow { font-size: 10px; letter-spacing: 0.4em; margin-bottom: 16px; }
+      .hero-name { font-size: 22px; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+      .hero-name .romaji { font-size: 12px; }
       .hero-title { font-size: 52px; letter-spacing: 0.04em; }
       .hero-sub { font-size: 12px; letter-spacing: 0.16em; margin-top: 18px; }
 
@@ -319,6 +340,7 @@
   <div class="hero-veil"></div>
   <div class="hero-inner">
     <p class="hero-eyebrow"><span class="jp">玄關</span>· GENKAN</p>
+    <p class="hero-name">葉崇揚（<span class="romaji">Chung-Yang Yeh</span>）</p>
     <h1 class="hero-title">お入りください</h1>
     <p class="hero-sub">三つの部屋。お好きなところから。</p>
   </div>
