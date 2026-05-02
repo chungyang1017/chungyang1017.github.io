@@ -260,13 +260,21 @@
       .identity { padding-top: 0; }
       .identity .en { font-size: 1.2rem; }
       .stones {
-        flex-wrap: nowrap; gap: 0.7rem; justify-content: flex-start;
-        margin-top: 0.5rem; overflow-x: auto;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.85rem;
+        margin-top: 0.5rem;
+        overflow: visible;
       }
-      .stone { width: 130px; min-width: 130px; height: 230px !important; padding: 0.85rem 0.85rem 1.1rem; }
-      .stone-kanji { font-size: 1.85rem; }
-      .stone-num { font-size: 0.88rem; }
-      .stone-en { font-size: 0.82rem; }
+      .stone {
+        width: 100%; min-width: 0;
+        height: auto !important; min-height: 168px;
+        padding: 1rem 1.2rem 1.15rem;
+      }
+      .stone-kanji { font-size: 2.4rem; padding: 0.9rem 0; }
+      .stone-num { font-size: 0.95rem; }
+      .stone-en { font-size: 0.92rem; }
+      .stone-meta { font-size: 0.78rem; }
       .ripples { height: 110px; }
       footer {
         padding: 0 1.5rem 1.5rem;
