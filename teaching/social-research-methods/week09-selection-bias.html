@@ -1619,7 +1619,7 @@
     if (n < 0 || n >= total || n === cur) return;
     const dir = n > cur ? 1 : -1;
     slides[cur].classList.remove('is-active');
-    slides[cur].classList.add(dir > 0 ? 'is-prev' : '');
+    if (dir > 0) slides[cur].classList.add('is-prev');
     cur = n;
     slides[cur].classList.remove('is-prev');
     slides[cur].classList.add('is-active');
