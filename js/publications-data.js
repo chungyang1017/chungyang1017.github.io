@@ -258,9 +258,11 @@ function renderTopJournals(containerId, limit, lang) {
   if (!container) return;
   const items = publicationsData.slice(0, limit);
   const html = items.map(p => {
-    const title = lang === 'en' ? (p.title_en || p.title_zh) : (p.title_zh || p.title_en);
-    const authors = lang === 'en' ? (p.authors_en || p.authors_zh) : (p.authors_zh || p.authors_en);
-    const venue = lang === 'en' ? (p.venue_en || p.venue_zh) : (p.venue_zh || p.venue_en);
+    // English-original articles always show in English (don't translate to Chinese).
+    // Chinese-original articles show in the page's language.
+    const title = (p.lang === 'en') ? p.title_en : (lang === 'en' ? p.title_en : p.title_zh);
+    const authors = (p.lang === 'en') ? p.authors_en : (lang === 'en' ? p.authors_en : p.authors_zh);
+    const venue = (p.lang === 'en') ? p.venue_en : (lang === 'en' ? p.venue_en : p.venue_zh);
     let metaHtml = '';
     if (p.link) {
       const label = linkLabel(p.link.type, lang);
@@ -305,9 +307,9 @@ function renderJournalCardsGrid(containerId, limit, lang) {
   if (!container) return;
   const items = publicationsData.slice(0, limit);
   const html = items.map(p => {
-    const title = lang === 'en' ? (p.title_en || p.title_zh) : (p.title_zh || p.title_en);
-    const authors = lang === 'en' ? (p.authors_en || p.authors_zh) : (p.authors_zh || p.authors_en);
-    const venue = lang === 'en' ? (p.venue_en || p.venue_zh) : (p.venue_zh || p.venue_en);
+    const title = (p.lang === 'en') ? p.title_en : (lang === 'en' ? p.title_en : p.title_zh);
+    const authors = (p.lang === 'en') ? p.authors_en : (lang === 'en' ? p.authors_en : p.authors_zh);
+    const venue = (p.lang === 'en') ? p.venue_en : (lang === 'en' ? p.venue_en : p.venue_zh);
     const tag = p.lang === 'zh' ? (lang === 'en' ? 'JOURNAL' : '期刊') : 'JOURNAL';
     let metaHtml = '';
     if (p.link) {
