@@ -233,7 +233,11 @@
       gap: 32px;
       border: 1px solid rgba(31,31,29,0.15);
       position: relative;
+      color: inherit; text-decoration: none;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
     }
+    .b-card:hover { background: #fff8e8; border-color: rgba(31,31,29,0.25); transform: translateY(-2px); }
+    .b-more { display: inline-block; margin-top: 14px; font-size: 12px; letter-spacing: 0.2em; color: var(--accent); font-family: var(--sans); text-transform: uppercase; }
     .b-cover {
       width: 160px; min-height: 220px;
       background: rgba(31,31,29,0.05);
@@ -457,7 +461,7 @@
   <!-- Books pane -->
   <div class="pane" data-pane="book">
     <div class="b-grid">
-      <article class="b-card">
+      <a href="books/pension-reform-2026.html" class="b-card">
         <div class="b-cover">
           <img src="images/books/pension-reform-2026-cover.jpg" alt="葬送的福利年（金）：台灣年金改革的挑戰與解答" loading="lazy" />
         </div>
@@ -466,10 +470,11 @@
           <h3 class="b-title">葬送的福利年（金）</h3>
           <div class="b-sub">台灣年金改革的挑戰與解答</div>
           <div class="b-desc">勞保基金最快將在 2028 年耗盡，這不僅是財務黑洞，更是台灣世代契約的斷裂。本書跳脫傳統框架，從世代正義、性別平等、勞動市場變遷到年金金融化，納入歐洲與日本的改革經驗。</div>
+          <span class="b-more">查看內容簡介與目錄 →</span>
           <div class="b-foot"><span>葉崇揚、陳芬苓、施世駿、古允文（編著）</span><span>台北：巨流</span></div>
         </div>
-      </article>
-      <article class="b-card">
+      </a>
+      <a href="books/east-asian-welfare-2018.html" class="b-card">
         <div class="b-cover">
           <img src="images/books/east-asian-welfare-2018.jpg" alt="轉型中的東亞福利體制" loading="lazy" />
         </div>
@@ -478,9 +483,10 @@
           <h3 class="b-title">轉型中的東亞福利體制</h3>
           <div class="b-sub">A Comparative Study of East Asian Welfare Regimes</div>
           <div class="b-desc">以台灣、日本、新加坡、韓國及香港為例，深入研究東亞各地社會在政治經濟結構轉型中，其福利體制改革呈現不同轉型過程與改革方向的原因。透過跨地域比較，反省既有「東亞福利體制」觀點的不足。</div>
+          <span class="b-more">查看內容簡介與目錄 →</span>
           <div class="b-foot"><span>葉崇揚（獨著）</span><span>香港：香港城市大學出版社</span></div>
         </div>
-      </article>
+      </a>
     </div>
   </div>
 
