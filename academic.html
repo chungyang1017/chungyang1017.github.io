@@ -138,7 +138,9 @@
 
     /* Books — single column, wide horizontal layout (matches publications page) */
     .b-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
-    .b-card { background: var(--shoin-paper); padding: 28px; display: grid; grid-template-columns: 160px 1fr; gap: 32px; border: 1px solid rgba(31,31,29,0.15); position: relative; }
+    .b-card { background: var(--shoin-paper); padding: 28px; display: grid; grid-template-columns: 160px 1fr; gap: 32px; border: 1px solid rgba(31,31,29,0.15); position: relative; color: inherit; text-decoration: none; transition: background 0.25s, border-color 0.25s, transform 0.25s; }
+    .b-card:hover { background: #fff8e8; border-color: rgba(31,31,29,0.25); transform: translateY(-2px); }
+    .b-more { display: inline-block; margin-top: 14px; font-size: 12px; letter-spacing: 0.2em; color: var(--accent); font-family: var(--sans); text-transform: uppercase; }
     .b-cover { width: 160px; min-height: 220px; background: rgba(31,31,29,0.05); box-shadow: 4px 4px 0 0 rgba(31,31,29,0.08), inset 8px 0 12px -8px rgba(0,0,0,0.25); overflow: hidden; }
     .b-cover img { display: block; width: 100%; height: auto; object-fit: cover; }
     .b-tag { font-size: 11px; color: var(--accent); letter-spacing: 0.3em; margin-bottom: 12px; font-family: var(--sans); }
@@ -321,7 +323,7 @@
 
   <div class="pane" data-pane="book">
     <div class="b-grid">
-      <article class="b-card">
+      <a href="books/pension-reform-2026-en.html" class="b-card">
         <div class="b-cover">
           <img src="images/books/pension-reform-2026-cover.jpg" alt="The Buried Welfare Years: Challenges and Solutions of Taiwan's Pension Reform" loading="lazy" />
         </div>
@@ -330,10 +332,11 @@
           <h3 class="b-title">葬送的福利年（金）</h3>
           <div class="b-sub">Challenges and Solutions of Taiwan's Pension Reform</div>
           <div class="b-desc">Taiwan's Labour Insurance fund will run out by 2028 — not just a financial black hole, but a rupture in the country's intergenerational contract. This volume reframes the debate beyond the conventional, drawing on European and Japanese reforms to address generational justice, gender equality, labour market change, and pension financialisation.</div>
+          <span class="b-more">Synopsis &amp; Contents →</span>
           <div class="b-foot"><span>Edited by Yeh, Chen, Shih &amp; Ku</span><span>Taipei: Chuliu</span></div>
         </div>
-      </article>
-      <article class="b-card">
+      </a>
+      <a href="books/east-asian-welfare-2018-en.html" class="b-card">
         <div class="b-cover">
           <img src="images/books/east-asian-welfare-2018.jpg" alt="The Transforming East Asian Welfare Regimes" loading="lazy" />
         </div>
@@ -342,9 +345,10 @@
           <h3 class="b-title">轉型中的東亞福利體制</h3>
           <div class="b-sub">The Transforming East Asian Welfare Regimes</div>
           <div class="b-desc">A comparative study of welfare-regime reform across Taiwan, Japan, Singapore, South Korea and Hong Kong. Examines why political-economic transitions led to divergent reform pathways, and rethinks the limitations of the standard "East Asian welfare regime" perspective.</div>
+          <span class="b-more">Synopsis &amp; Contents →</span>
           <div class="b-foot"><span>Yeh, C-Y. (sole author)</span><span>Hong Kong: City Univ. of HK Press</span></div>
         </div>
-      </article>
+      </a>
     </div>
   </div>
 

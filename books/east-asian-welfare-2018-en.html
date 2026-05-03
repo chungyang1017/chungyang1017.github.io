@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chung-Yang Yeh ・ The Transforming East Asian Welfare Regimes</title>
+  <meta name="description" content="The Transforming East Asian Welfare Regimes. Chung-Yang Yeh (sole author). Hong Kong: City University of Hong Kong Press, 2018. A comparative study of welfare regime reform in Taiwan, Japan, Singapore, South Korea and Hong Kong." />
+  <link rel="alternate" hreflang="zh-Hant" href="east-asian-welfare-2018.html" />
+  <link rel="alternate" hreflang="en" href="east-asian-welfare-2018-en.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --shoin-bg: #f0e8d4;
+      --shoin-paper: #fcf6e6;
+      --moss: #3d5a3f;
+      --accent: #c43838;
+      --water: #5a7a8a;
+      --ink: #1f1f1d;
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --display: 'Cormorant Garamond', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: var(--display);
+      background: var(--shoin-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.85;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .paper-grain { position: fixed; inset: 0; pointer-events: none; opacity: 0.35; mix-blend-mode: multiply; z-index: 1; }
+
+    .top {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(240,232,212,0.93);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      padding: 14px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-left { display: flex; align-items: center; gap: 16px; }
+    .back { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.55; text-decoration: none; color: var(--ink); text-transform: uppercase; }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .name-block { display: inline-flex; align-items: baseline; gap: 8px; }
+    .name-jp { font-family: var(--brush); font-size: 22px; letter-spacing: 0.1em; }
+    .name-en { font-family: var(--sans); font-style: italic; font-size: 13px; letter-spacing: 0.06em; opacity: 0.7; }
+    .nav { display: flex; gap: 24px; font-size: 12px; letter-spacing: 0.25em; font-family: var(--sans); text-transform: uppercase; }
+    .nav a { color: var(--ink); text-decoration: none; opacity: 0.5; padding-bottom: 4px; }
+    .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
+    .nav .nav-jp { font-size: 9px; opacity: 0.55; letter-spacing: 0.18em; margin-left: 2px; font-family: var(--jp); text-transform: none; }
+    .nav .lang { border-left: 1px solid var(--line); padding-left: 24px; }
+
+    .hero {
+      padding: 80px 60px 60px;
+      position: relative; z-index: 2;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .hero-eyebrow { font-size: 12px; letter-spacing: 0.5em; opacity: 0.5; margin-bottom: 20px; font-family: var(--sans); text-transform: uppercase; color: var(--accent); }
+    .hero-grid { display: grid; grid-template-columns: 280px 1fr; gap: 60px; align-items: start; }
+    .hero-cover {
+      width: 280px; min-height: 380px;
+      background: rgba(31,31,29,0.05);
+      box-shadow: 6px 6px 0 0 rgba(31,31,29,0.10), inset 8px 0 12px -8px rgba(0,0,0,0.25);
+      overflow: hidden;
+    }
+    .hero-cover img { display: block; width: 100%; height: auto; }
+    .hero-info { padding-top: 4px; }
+    .hero-title {
+      margin: 0; font-family: var(--display);
+      font-style: italic; font-size: 46px; font-weight: 500;
+      line-height: 1.15; letter-spacing: 0.01em;
+    }
+    .hero-zh {
+      margin-top: 14px; font-family: var(--brush);
+      font-size: 26px; opacity: 0.85; letter-spacing: 0.04em; line-height: 1.3;
+    }
+    .hero-meta {
+      margin-top: 32px;
+      border-top: 1px solid var(--line-soft);
+      padding-top: 24px;
+      display: grid; grid-template-columns: 90px 1fr; gap: 12px 20px;
+      font-size: 15px; line-height: 1.6;
+    }
+    .hero-meta dt { font-family: var(--sans); font-size: 11px; letter-spacing: 0.25em; opacity: 0.55; padding-top: 4px; text-transform: uppercase; }
+    .hero-meta dd { opacity: 0.85; font-style: italic; }
+
+    .section {
+      padding: 56px 60px;
+      max-width: 1100px; margin: 0 auto;
+      position: relative; z-index: 2;
+      border-top: 1px solid var(--line-soft);
+    }
+    .section-eyebrow { font-size: 11px; letter-spacing: 0.5em; opacity: 0.5; margin-bottom: 12px; font-family: var(--sans); text-transform: uppercase; }
+    .section-title {
+      font-family: var(--display); font-style: italic;
+      font-size: 38px; font-weight: 500;
+      margin: 0 0 28px; line-height: 1.1; letter-spacing: 0.01em;
+    }
+
+    .desc { font-size: 18px; line-height: 1.95; max-width: 820px; }
+    .desc p { margin-bottom: 1em; }
+    .desc p:last-child { margin-bottom: 0; }
+    .desc strong { color: var(--accent); font-weight: 500; font-style: italic; }
+
+    .toc-list { display: flex; flex-direction: column; }
+    .toc-part {
+      margin-top: 28px; padding-top: 18px;
+      border-top: 1px dashed var(--line-soft);
+    }
+    .toc-part:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+    .toc-part-name {
+      font-family: var(--display); font-style: italic;
+      font-size: 22px; line-height: 1.2;
+      color: var(--accent); margin-bottom: 14px;
+    }
+    .toc-row {
+      display: grid; grid-template-columns: 90px 1fr;
+      gap: 24px; padding: 14px 0;
+      border-bottom: 1px solid var(--line-soft);
+      align-items: baseline;
+    }
+    .toc-row .ch { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; text-transform: uppercase; }
+    .toc-row .t { font-size: 17px; line-height: 1.55; font-style: italic; }
+
+    .placeholder {
+      padding: 24px 28px;
+      background: var(--shoin-paper);
+      border: 1px dashed var(--line);
+      font-family: var(--sans); font-size: 13.5px;
+      opacity: 0.65; letter-spacing: 0.06em;
+      text-align: center;
+    }
+
+    .author-card {
+      background: var(--shoin-paper);
+      padding: 28px 32px;
+      border: 1px solid var(--line-soft);
+      max-width: 720px;
+    }
+    .author-name {
+      font-family: var(--display); font-style: italic;
+      font-size: 26px; line-height: 1.2; font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .author-aff {
+      font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.18em; opacity: 0.65;
+      margin-bottom: 14px; text-transform: uppercase;
+    }
+    .author-bio { font-size: 16px; line-height: 1.85; opacity: 0.85; }
+
+    .cite-block {
+      background: var(--shoin-paper);
+      padding: 22px 26px;
+      border-left: 3px solid var(--accent);
+      font-size: 15px; line-height: 1.85;
+      font-family: var(--sans);
+    }
+    .cite-format { font-size: 11px; letter-spacing: 0.25em; opacity: 0.55; margin-bottom: 8px; text-transform: uppercase; }
+
+    .buy-grid { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
+    .buy-link {
+      display: inline-flex; align-items: center;
+      padding: 12px 22px; border: 1px solid var(--ink);
+      font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.2em; text-decoration: none; color: var(--ink);
+      text-transform: uppercase;
+      transition: background 0.2s, color 0.2s;
+    }
+    .buy-link:hover { background: var(--ink); color: var(--shoin-bg); }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 60px;
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      font-size: 11px; opacity: 0.55; letter-spacing: 0.2em;
+      font-family: var(--sans); text-transform: uppercase;
+      position: relative; z-index: 2;
+    }
+
+    @media (max-width: 760px) {
+      .top { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
+      .top-left { gap: 10px; }
+      .back { font-size: 10px; letter-spacing: 0.22em; }
+      .name-jp { font-size: 16px; }
+      .name-en { font-size: 8px; }
+      .nav { gap: 14px; font-size: 10px; letter-spacing: 0.18em; }
+      .nav a.nav-sub { display: none; }
+      .nav .lang { padding-left: 14px; }
+
+      .hero { padding: 40px 22px 36px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-cover { width: 200px; min-height: 280px; margin: 0 auto; }
+      .hero-title { font-size: 30px; text-align: center; }
+      .hero-zh { font-size: 22px; text-align: center; }
+      .hero-meta { grid-template-columns: 80px 1fr; font-size: 14px; }
+
+      .section { padding: 40px 22px; }
+      .section-title { font-size: 28px; }
+      .desc { font-size: 17px; }
+
+      .toc-row { grid-template-columns: 70px 1fr; gap: 14px; }
+      .toc-row .t { font-size: 15.5px; }
+
+      .author-card { padding: 22px; }
+      footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<svg class="paper-grain" aria-hidden="true">
+  <defs>
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#paper-noise)" />
+</svg>
+
+<header class="top">
+  <div class="top-left">
+    <a href="../academic.html" class="back">← SHOIN</a>
+    <span class="top-sep">·</span>
+    <span class="name-block">
+      <span class="name-jp">葉崇揚</span>
+      <span class="name-en">（Chung-Yang Yeh）</span>
+    </span>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="../index-en.html" class="nav-sub">Home</a>
+    <a href="../academic.html" class="is-current">Academic <span class="nav-jp">(書院)</span></a>
+    <a href="east-asian-welfare-2018.html" class="lang">中</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="hero-eyebrow">BOOK · 2018 · Room II Shoin</p>
+  <div class="hero-grid">
+    <div class="hero-cover">
+      <img src="../images/books/east-asian-welfare-2018.jpg" alt="The Transforming East Asian Welfare Regimes" />
+    </div>
+    <div class="hero-info">
+      <h1 class="hero-title">A Comparative Study of East Asian Welfare Regimes</h1>
+      <p class="hero-zh">轉型中的東亞福利體制</p>
+      <dl class="hero-meta">
+        <dt>Author</dt>
+        <dd>Yeh, Chung-Yang (sole author)</dd>
+        <dt>Series</dt>
+        <dd>East Asia Focus 東亞焦點</dd>
+        <dt>Publisher</dt>
+        <dd>Hong Kong: City University of Hong Kong Press</dd>
+        <dt>Pub. Date</dt>
+        <dd>July 2018</dd>
+        <dt>ISBN</dt>
+        <dd>978-962-937-375-7</dd>
+        <dt>Foreword</dt>
+        <dd>Ku, Yeun-Wen (May 2018, Taipei)</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-eyebrow">Synopsis ・ 內容簡介</p>
+  <h2 class="section-title">Foreword</h2>
+  <div class="desc">
+    <p>
+      This book takes <strong>Taiwan, Japan, Singapore, South Korea, and Hong Kong</strong> as comparative cases to investigate why these East Asian societies have followed strikingly different welfare-regime reform pathways during their political-economic transitions.
+    </p>
+    <p>
+      Earlier "East Asian welfare regime" scholarship has often relied on single-frame concepts — Confucian culture, the developmental state, productivism — to cover the entire region. Such framings obscure the substantive differences in <strong>capitalist varieties, political systems, and labour-capital structures</strong> that distinguish these societies from one another. This book takes a comparative historical-institutional approach, returning to each case's specific historical context to reconsider why institutional paths diverge.
+    </p>
+    <p>
+      Through cross-territorial comparison, the book interrogates the limits of the standard "East Asian welfare regime" perspective and proposes a more granular <strong>diversity thesis</strong>: East Asia is not one regime, but a constellation of developmental pathways.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-eyebrow">Table of Contents ・ 目錄</p>
+  <h2 class="section-title">Contents</h2>
+  <div class="toc-list">
+    <div class="toc-part">
+      <div class="toc-row"><div class="ch">Chap 1</div><div class="t">Where Are We Going? <span style="color: rgba(31,31,29,0.5); font-style: normal;">/ 要往哪裏走？</span></div></div>
+      <div class="toc-row"><div class="ch">Chap 2</div><div class="t">East Asian Welfare Regimes: Past, Present and Future <span style="color: rgba(31,31,29,0.5); font-style: normal;">/ 東亞福利體制的過去、現在與未來</span></div></div>
+      <div class="toc-row"><div class="ch">Chap 3</div><div class="t">The Coming of Post-Industrial Society in East Asia <span style="color: rgba(31,31,29,0.5); font-style: normal;">/ 東亞後工業社會的來臨</span></div></div>
+      <div class="toc-row"><div class="ch">Chap 4</div><div class="t">Japan and Taiwan: A Constrained Social-Investment Transition <span style="color: rgba(31,31,29,0.5); font-style: normal;">/ 日本與台灣：被限制的社會投資轉型</span></div></div>
+      <div class="toc-row"><div class="ch">Chap 5</div><div class="t">South Korea: Toward a Social-Investment Welfare Regime? <span style="color: rgba(31,31,29,0.5); font-style: normal;">/ 韓國：邁向社會投資福利體制？</span></div></div>
+      <div class="toc-row"><div class="ch">Chap 6</div><div class="t">Hong Kong and Singapore: A Neoliberal Transition? <span style="color: rgba(31,31,29,0.5); font-style: normal;">/ 香港和新加坡：新自由主義轉型？</span></div></div>
+      <div class="toc-row"><div class="ch">Chap 7</div><div class="t">The Future of East Asian Welfare Regimes <span style="color: rgba(31,31,29,0.5); font-style: normal;">/ 東亞福利體制的未來</span></div></div>
+    </div>
+  </div>
+  <p style="margin-top: 18px; font-size: 13px; opacity: 0.55; font-family: var(--sans); font-style: italic;">
+    Note: The book is published in Traditional Chinese; the English titles above are the author's translations of the original chapter headings.
+  </p>
+</section>
+
+<section class="section">
+  <p class="section-eyebrow">Author ・ 作者</p>
+  <h2 class="section-title">About the Author</h2>
+  <div class="author-card">
+    <div class="author-name">Yeh, Chung-Yang</div>
+    <div class="author-aff">Professor, Soochow University</div>
+    <div class="author-bio">
+      Comparative welfare states, East-Asian social policy, pension politics, welfare attitudes. Research focuses on pension and social-policy reform in Taiwan, Japan, and Korea, and on the diversity within East Asian welfare regimes.
+      Doctoral work addressed labour-market exit institutions in Germany; subsequent work has examined how East Asian states are reshaping their social contracts under globalisation and post-industrial pressure.
+      Co-editor of <em>The Buried Welfare Years: Challenges and Solutions of Taiwan's Pension Reform</em> (2026).
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-eyebrow">Citation ・ 引用</p>
+  <h2 class="section-title">How to Cite</h2>
+  <div class="cite-block">
+    <div class="cite-format">APA Format</div>
+    Yeh, C-Y. (2018). <em>The Transforming East Asian Welfare Regimes</em>. Hong Kong: City University of Hong Kong Press.
+  </div>
+  <div class="buy-grid">
+    <a href="https://www.cityu.edu.hk/upress/east-asian-welfare-regime-in-transition-in-chinese" target="_blank" rel="noopener" class="buy-link">CityU Press ↗</a>
+  </div>
+</section>
+
+<footer>
+  <span>YEH CHUNG-YANG</span>
+  <span>Reiwa 8 ・ Spring ・ Shoin</span>
+</footer>
+
+</body>
+</html>
