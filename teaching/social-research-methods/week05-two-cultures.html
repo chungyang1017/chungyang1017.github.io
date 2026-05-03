@@ -39,8 +39,8 @@
       background: var(--chashitsu-bg);
       color: var(--ink);
       -webkit-font-smoothing: antialiased;
-      font-size: 17px;
-      line-height: 1.85;
+      font-size: 19px;
+      line-height: 1.95;
       position: relative;
     }
     .paper-grain {
@@ -306,17 +306,17 @@
       border-bottom: 1px solid var(--line);
     }
     .content-head h2 {
-      font-family: var(--brush); font-size: 38px;
+      font-family: var(--brush); font-size: 42px;
       font-weight: 400; letter-spacing: 0.04em;
     }
     .content-head .h-en {
-      font-family: var(--sans); font-size: 13px;
-      letter-spacing: 0.25em; opacity: 0.5;
+      font-family: var(--sans); font-size: 14px;
+      letter-spacing: 0.25em; opacity: 0.55;
     }
     .content-head .h-tag {
       margin-left: auto;
-      font-family: var(--sans); font-size: 11px;
-      letter-spacing: 0.3em; opacity: 0.5;
+      font-family: var(--sans); font-size: 12.5px;
+      letter-spacing: 0.3em; opacity: 0.55;
     }
 
     /* ── Reusable components ── */
@@ -341,31 +341,31 @@
       margin-bottom: 14px;
     }
     .why-card h3 {
-      font-family: var(--brush); font-size: 20px;
-      letter-spacing: 0.04em; margin-bottom: 8px;
+      font-family: var(--brush); font-size: 23px;
+      letter-spacing: 0.04em; margin-bottom: 10px;
     }
-    .why-card p { font-size: 15px; line-height: 1.85; opacity: 0.86; }
+    .why-card p { font-size: 17px; line-height: 1.9; opacity: 0.88; }
     .why-card .cite {
-      font-family: var(--sans); font-size: 11.5px;
-      opacity: 0.55; letter-spacing: 0.1em;
-      margin-top: 12px; padding-top: 10px;
+      font-family: var(--sans); font-size: 13px;
+      opacity: 0.6; letter-spacing: 0.1em;
+      margin-top: 14px; padding-top: 12px;
       border-top: 1px solid var(--line-soft);
     }
 
     /* Overview table */
     .ov-table {
       width: 100%; border-collapse: collapse;
-      margin-top: 8px; background: var(--chashitsu-paper);
+      margin-top: 10px; background: var(--chashitsu-paper);
       border: 1px solid var(--line);
-      font-size: 14.5px;
+      font-size: 16.5px;
     }
     .ov-table th, .ov-table td {
-      padding: 10px 14px;
+      padding: 13px 16px;
       border-bottom: 1px solid var(--line-soft);
       text-align: left;
     }
     .ov-table th {
-      font-family: var(--brush); font-size: 16px; font-weight: 500;
+      font-family: var(--brush); font-size: 18px; font-weight: 500;
       background: rgba(216,200,168,0.4);
     }
     .ov-table th.qual-h { background: var(--qual-bg); color: var(--qual); }
@@ -396,23 +396,23 @@
     .col.quant { border-top-color: var(--quant); }
     .col-tag {
       display: inline-block;
-      font-family: var(--sans); font-size: 11.5px;
+      font-family: var(--sans); font-size: 13px;
       letter-spacing: 0.3em;
-      padding: 3px 10px;
-      margin-bottom: 12px;
+      padding: 4px 12px;
+      margin-bottom: 14px;
     }
     .col.qual .col-tag { background: var(--qual-bg); color: var(--qual); }
     .col.quant .col-tag { background: var(--quant-bg); color: var(--quant); }
     .col h3 {
-      font-family: var(--brush); font-size: 24px;
-      font-weight: 400; letter-spacing: 0.04em; margin-bottom: 12px;
+      font-family: var(--brush); font-size: 26px;
+      font-weight: 400; letter-spacing: 0.04em; margin-bottom: 14px;
     }
-    .col p { font-size: 15.5px; line-height: 1.9; opacity: 0.88; }
-    .col p + p { margin-top: 8px; }
+    .col p { font-size: 17.5px; line-height: 1.95; opacity: 0.9; }
+    .col p + p { margin-top: 10px; }
     .col .formula {
-      font-family: var(--mono); font-size: 14.5px;
+      font-family: var(--mono); font-size: 16px;
       background: rgba(31,31,29,0.05);
-      padding: 8px 12px; margin: 8px 0;
+      padding: 10px 14px; margin: 10px 0;
       border-left: 2px solid;
     }
     .col.qual .formula { border-left-color: var(--qual); color: var(--qual); }
@@ -426,7 +426,7 @@
     }
     .reveal-trigger {
       cursor: pointer;
-      font-family: var(--sans); font-size: 12.5px;
+      font-family: var(--sans); font-size: 14px;
       letter-spacing: 0.18em; color: var(--accent);
       display: inline-flex; align-items: center; gap: 8px;
       transition: opacity 0.2s;
@@ -441,19 +441,19 @@
     }
     .reveal.is-open .reveal-body { max-height: 600px; opacity: 1; }
     .reveal-body-inner {
-      margin-top: 12px; padding: 14px 18px;
+      margin-top: 14px; padding: 16px 22px;
       background: rgba(31,31,29,0.04);
-      font-size: 14.5px; line-height: 1.85;
+      font-size: 16.5px; line-height: 1.9;
     }
     .reveal-body-inner strong { color: var(--accent); }
 
     /* Insight banner */
     .insight {
-      margin-top: 18px;
-      padding: 14px 22px;
+      margin-top: 20px;
+      padding: 16px 24px;
       background: rgba(196,56,56,0.06);
       border-left: 3px solid var(--accent);
-      font-size: 15.5px; line-height: 1.85;
+      font-size: 17.5px; line-height: 1.9;
     }
     .insight strong { color: var(--accent); }
 
@@ -476,17 +476,17 @@
     .regime.conservative { border-top: 4px solid var(--earth); }
     .regime.liberal { border-top: 4px solid var(--water); }
     .regime h3 {
-      font-family: var(--brush); font-size: 22px;
-      letter-spacing: 0.04em; margin-bottom: 10px;
+      font-family: var(--brush); font-size: 24px;
+      letter-spacing: 0.04em; margin-bottom: 12px;
     }
     .regime .countries {
-      font-family: var(--sans); font-size: 12px;
+      font-family: var(--sans); font-size: 13px;
       letter-spacing: 0.15em; color: var(--accent);
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
     .regime .features {
-      font-size: 14.5px; line-height: 1.9; opacity: 0.85;
-      margin-bottom: 14px;
+      font-size: 16px; line-height: 1.9; opacity: 0.88;
+      margin-bottom: 16px;
     }
     .regime .features li {
       list-style: none; padding-left: 14px; position: relative;
@@ -524,8 +524,8 @@
     .flow-step:hover { transform: translateY(-3px); }
     .flow-step.q1 { border-top-color: var(--quant); }
     .flow-step.q2 { border-top-color: var(--qual); }
-    .flow-step h3 { font-family: var(--brush); font-size: 22px; margin-bottom: 8px; letter-spacing: 0.04em; }
-    .flow-step p { font-size: 15px; line-height: 1.85; opacity: 0.86; }
+    .flow-step h3 { font-family: var(--brush); font-size: 24px; margin-bottom: 10px; letter-spacing: 0.04em; }
+    .flow-step p { font-size: 17px; line-height: 1.9; opacity: 0.88; }
     .flow-step .step-detail {
       max-height: 0; overflow: hidden;
       font-size: 13.5px; line-height: 1.75; opacity: 0;
@@ -550,13 +550,13 @@
       cursor: pointer;
     }
     .discuss-item .qn {
-      font-family: var(--brush); font-size: 15px;
-      color: var(--accent); letter-spacing: 0.1em; margin-bottom: 4px;
+      font-family: var(--brush); font-size: 17px;
+      color: var(--accent); letter-spacing: 0.1em; margin-bottom: 6px;
     }
-    .discuss-item .qt { font-size: 16px; line-height: 1.85; }
+    .discuss-item .qt { font-size: 18px; line-height: 1.9; }
     .discuss-item .hint {
       max-height: 0; overflow: hidden; opacity: 0;
-      font-size: 14px; line-height: 1.85;
+      font-size: 16px; line-height: 1.9;
       transition: max-height 0.4s, opacity 0.3s, margin 0.3s, padding 0.3s;
       color: var(--ink-soft); font-style: italic;
     }
@@ -576,11 +576,11 @@
       animation: rise 0.6s ease backwards;
     }
     .take .num {
-      font-family: var(--brush); font-size: 36px;
+      font-family: var(--brush); font-size: 40px;
       color: var(--accent); line-height: 1;
-      min-width: 50px;
+      min-width: 56px;
     }
-    .take .txt { font-size: 16px; line-height: 1.85; }
+    .take .txt { font-size: 18px; line-height: 1.9; }
 
     /* Reference */
     .ref-grid {
@@ -593,22 +593,22 @@
       padding: 20px 22px;
     }
     .ref-card h3 {
-      font-family: var(--brush); font-size: 18px;
-      margin-bottom: 12px; letter-spacing: 0.04em;
+      font-family: var(--brush); font-size: 20px;
+      margin-bottom: 14px; letter-spacing: 0.04em;
     }
     .ref-card p {
-      font-size: 14px; line-height: 1.85;
-      padding: 6px 0; border-bottom: 1px solid var(--line-faint);
+      font-size: 15.5px; line-height: 1.9;
+      padding: 8px 0; border-bottom: 1px solid var(--line-faint);
     }
     .ref-card p:last-child { border-bottom: none; }
     .ref-card em { color: var(--accent); font-style: italic; }
 
     /* Lead text */
     .lead {
-      font-size: 17px; line-height: 1.95; opacity: 0.86;
-      max-width: 800px; margin-bottom: 20px;
+      font-size: 19px; line-height: 2; opacity: 0.88;
+      max-width: 860px; margin-bottom: 22px;
     }
-    .lead p + p { margin-top: 12px; }
+    .lead p + p { margin-top: 14px; }
 
     /* Animations */
     @keyframes fade {
@@ -626,6 +626,170 @@
     .slide.is-active .take:nth-child(2) { animation-delay: 0.3s; }
     .slide.is-active .take:nth-child(3) { animation-delay: 0.5s; }
     .slide.is-active .take:nth-child(4) { animation-delay: 0.7s; }
+
+    /* Sort exercise (drag-to-classify) */
+    .sort-exercise { margin-top: 8px; }
+    .sort-prompt {
+      font-family: var(--brush); font-size: 19px;
+      letter-spacing: 0.04em; margin-bottom: 12px;
+      padding: 14px 18px;
+      background: var(--chashitsu-paper);
+      border-left: 3px solid var(--accent);
+    }
+    .sort-bins {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      margin-bottom: 16px;
+    }
+    .sort-bin {
+      background: var(--chashitsu-paper);
+      border: 2px dashed var(--line);
+      padding: 18px 20px;
+      min-height: 200px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .sort-bin.qual { border-color: var(--qual); background: var(--qual-bg); }
+    .sort-bin.quant { border-color: var(--quant); background: var(--quant-bg); }
+    .sort-bin.drag-over { background: #fff8e8; }
+    .sort-bin h4 {
+      font-family: var(--brush); font-size: 22px;
+      letter-spacing: 0.06em; margin-bottom: 14px;
+    }
+    .sort-bin.qual h4 { color: var(--qual); }
+    .sort-bin.quant h4 { color: var(--quant); }
+    .sort-bin .bin-cards { min-height: 150px; display: flex; flex-direction: column; gap: 6px; }
+    .sort-pool {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 16px 18px;
+      display: flex; flex-wrap: wrap; gap: 8px;
+      min-height: 60px;
+    }
+    .sort-pool-label {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.25em; opacity: 0.6;
+      width: 100%; margin-bottom: 8px;
+    }
+    .sort-card {
+      background: var(--chashitsu-bg);
+      border: 1px solid var(--line);
+      padding: 9px 16px;
+      font-size: 15px;
+      cursor: grab;
+      user-select: none;
+      transition: transform 0.15s, background 0.2s;
+    }
+    .sort-card:hover { background: #fff8e8; transform: translateY(-1px); }
+    .sort-card.dragging { opacity: 0.4; cursor: grabbing; }
+    .sort-card.is-correct { background: rgba(106,74,58,0.18); border-color: var(--qual); }
+    .sort-card.is-correct.is-quant { background: rgba(58,90,122,0.18); border-color: var(--quant); }
+    .sort-card.is-wrong { background: rgba(196,56,56,0.12); border-color: var(--accent); color: var(--accent); }
+    .sort-result {
+      margin-top: 14px;
+      padding: 16px 20px;
+      background: rgba(31,31,29,0.04);
+      font-size: 16.5px; line-height: 1.9;
+      display: none;
+    }
+    .sort-result.is-shown { display: block; animation: fade 0.3s; }
+    .sort-result strong { color: var(--accent); }
+    .sort-actions {
+      display: flex; gap: 10px; margin-top: 14px;
+    }
+    .sort-btn {
+      background: transparent; border: 1px solid var(--accent);
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.18em; color: var(--accent);
+      padding: 8px 18px; cursor: pointer;
+    }
+    .sort-btn:hover { background: var(--accent); color: var(--chashitsu-paper); }
+    .sort-btn.secondary { border-color: var(--line); color: var(--ink); opacity: 0.7; }
+    .sort-btn.secondary:hover { background: var(--ink); color: var(--chashitsu-paper); opacity: 1; }
+
+    /* Quiz wrap (final test) */
+    .quiz-wrap {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 24px 28px;
+    }
+    .quiz-num { font-family: var(--sans); font-size: 13px; letter-spacing: 0.3em; opacity: 0.6; }
+    .quiz-q { font-family: var(--brush); font-size: 21px; line-height: 1.6; margin: 8px 0 18px; letter-spacing: 0.03em; }
+    .quiz-opt {
+      display: block; width: 100%; text-align: left;
+      background: var(--chashitsu-bg);
+      border: 1px solid var(--line-soft);
+      padding: 13px 18px; margin-bottom: 10px;
+      font-family: inherit; font-size: 16.5px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .quiz-opt:hover:not(:disabled) { background: #fff8e8; border-color: var(--accent); }
+    .quiz-opt.is-correct { background: rgba(61,90,63,0.12); border-color: var(--moss); color: var(--moss); font-weight: 600; }
+    .quiz-opt.is-wrong { background: rgba(196,56,56,0.08); border-color: var(--accent); color: var(--accent); }
+    .quiz-opt:disabled { cursor: default; }
+    .quiz-explain {
+      display: none; margin-top: 14px;
+      padding: 14px 20px;
+      background: rgba(31,31,29,0.04);
+      border-left: 3px solid var(--accent);
+      font-size: 16px; line-height: 1.9;
+    }
+    .quiz-explain.is-shown { display: block; animation: fade 0.3s; }
+    .quiz-explain strong { color: var(--accent); }
+    .score-pill {
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 10px 20px;
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      margin-bottom: 18px;
+    }
+    .score-pill .sn {
+      font-family: var(--brush); font-size: 28px;
+      color: var(--accent); line-height: 1;
+    }
+    .score-pill .st {
+      font-family: var(--sans); font-size: 12.5px;
+      letter-spacing: 0.25em; opacity: 0.6;
+    }
+
+    /* Taiwan case panel */
+    .tw-case {
+      background: var(--chashitsu-paper);
+      border-top: 4px solid var(--accent);
+      padding: 24px 28px;
+      margin-top: 8px;
+    }
+    .tw-case .tag {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.3em; color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .tw-case h3 {
+      font-family: var(--brush); font-size: 26px;
+      letter-spacing: 0.04em; margin-bottom: 12px;
+    }
+    .tw-case .tw-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      margin-top: 16px;
+    }
+    .tw-side {
+      padding: 18px 22px;
+      border-left: 3px solid;
+    }
+    .tw-side.qual { border-left-color: var(--qual); background: var(--qual-bg); }
+    .tw-side.quant { border-left-color: var(--quant); background: var(--quant-bg); }
+    .tw-side .lab {
+      font-family: var(--sans); font-size: 12.5px;
+      letter-spacing: 0.25em;
+      margin-bottom: 8px;
+    }
+    .tw-side.qual .lab { color: var(--qual); }
+    .tw-side.quant .lab { color: var(--quant); }
+    .tw-side .q {
+      font-family: var(--brush); font-size: 19px;
+      line-height: 1.55; margin-bottom: 12px;
+      letter-spacing: 0.03em;
+    }
+    .tw-side .body { font-size: 16.5px; line-height: 1.9; opacity: 0.9; }
 
     .keyboard-hint {
       position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
@@ -811,7 +975,43 @@
     </div>
   </section>
 
-  <!-- ============ S3 SECTION 1 DIVIDER ============ -->
+  <!-- ============ S3 TAIWAN OPENING CASE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="台灣案例：全民健保的兩種問法">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>台灣案例：全民健保的兩種問法</h2>
+        <span class="h-en">TAIWAN CASE ・ TWO QUESTIONS</span>
+        <span class="h-tag">★ 開場</span>
+      </div>
+      <p class="lead">
+        要看懂「兩種文化」的差異，先看一個你熟悉的東西：<strong>1995 年的全民健保</strong>。同樣一個現象，質化和量化會問完全不同的問題、找完全不同的證據、得到完全不同形式的答案——但兩者都是<strong>正當的科學</strong>。
+      </p>
+      <div class="tw-case">
+        <span class="tag">CASE ・ NHI 1995</span>
+        <h3>1995 年，台灣為什麼建立了全民健保？</h3>
+        <p style="font-size: 16.5px; line-height: 1.85; opacity: 0.86;">
+          1990 年代台灣只有勞保、公保、農保等職業別保險，覆蓋率約 57%。1995 年 3 月，全民健保上路，覆蓋率三年內衝到 95%+。同一個事件，可以這樣問：
+        </p>
+        <div class="tw-grid">
+          <div class="tw-side qual">
+            <p class="lab">質化問法</p>
+            <p class="q">「為什麼是 1995？為什麼是台灣？」</p>
+            <p class="body">追溯：1986 民進黨成立、1988 蔣經國過世、1991 第一次總統民選、1992 立法院全面改選——民主轉型壓力、健康保險局籌備處 1990 設立、楊志良等政策企業家、保險費率攻防。<strong>case-of-effects：</strong>從這個結果，往回找它的因。</p>
+          </div>
+          <div class="tw-side quant">
+            <p class="lab">量化問法</p>
+            <p class="q">「民主化對全民健保的平均效果是？」</p>
+            <p class="body">建立 OECD ＋ 東亞 30 個國家的面板資料，自變項放民主化年數、左派席次、國民所得、老年人口比，依變項放健保覆蓋率。估計每個自變項的<strong>平均淨效果</strong>。<strong>effects-of-causes：</strong>從可觀察的因，估計它的果。</p>
+          </div>
+        </div>
+        <div class="insight" style="margin-top: 20px;">
+          <strong>關鍵：</strong>第一個問法只把台灣當<strong>一個案例</strong>來深挖；第二個問法把台灣當<strong>三十個案例之一</strong>，犧牲深度換取概括化。沒有對錯——這是「目標的不同」。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S3a SECTION 1 DIVIDER ============ -->
   <section class="slide slide-section" data-kind="section" data-label="第一部分：解釋的取徑">
     <div class="slide-inner">
       <div class="big-num">壹</div>
@@ -1325,6 +1525,176 @@
     </div>
   </section>
 
+  <!-- ============ S18a DRAG-TO-SORT EXERCISE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="互動：分類研究問題">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>互動 ・ 哪個取徑？</h2>
+        <span class="h-en">SORT THE QUESTIONS</span>
+        <span class="h-tag">★ 拖拉</span>
+      </div>
+      <p class="lead">
+        把下面 8 個研究問題，拖到對應的「<strong>質化</strong>」或「<strong>量化</strong>」格子裡。判斷標準：是 <em>causes-of-effects</em>（從結果回推原因）還是 <em>effects-of-causes</em>（估計原因的平均效果）？
+      </p>
+      <div class="sort-exercise">
+        <div class="sort-bins">
+          <div class="sort-bin qual" data-side="qual">
+            <h4>質化 ・ Causes-of-Effects</h4>
+            <div class="bin-cards" data-bin="qual"></div>
+          </div>
+          <div class="sort-bin quant" data-side="quant">
+            <h4>量化 ・ Effects-of-Causes</h4>
+            <div class="bin-cards" data-bin="quant"></div>
+          </div>
+        </div>
+        <div class="sort-pool">
+          <div class="sort-pool-label">研究問題（拖到上方分類）</div>
+          <div class="sort-card" draggable="true" data-ans="qual">為什麼 1995 年台灣建立了全民健保？</div>
+          <div class="sort-card" draggable="true" data-ans="quant">老年人口比每增加 1%，社會支出佔 GDP 平均增加幾 %？</div>
+          <div class="sort-card" draggable="true" data-ans="qual">為什麼日本長照走介護保險，台灣走稅收制？</div>
+          <div class="sort-card" draggable="true" data-ans="quant">工會密度對去商品化指數有什麼平均效果？</div>
+          <div class="sort-card" draggable="true" data-ans="qual">瑞典三條福利國家形成路徑各是什麼？</div>
+          <div class="sort-card" draggable="true" data-ans="quant">民主化年數對健保覆蓋率的迴歸係數是多少？</div>
+          <div class="sort-card" draggable="true" data-ans="qual">為什麼太陽花運動發生在 2014 而非更早？</div>
+          <div class="sort-card" draggable="true" data-ans="quant">所得不平等與福利支出的相關係數為何？</div>
+        </div>
+        <div class="sort-actions">
+          <button class="sort-btn" onclick="checkSort()">對答案</button>
+          <button class="sort-btn secondary" onclick="resetSort()">重置</button>
+        </div>
+        <div class="sort-result" id="sortResult"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S18b QUIZ S19 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第五部分：自我測驗">
+    <div class="slide-inner">
+      <div class="big-num">伍</div>
+      <p class="part">PART 05</p>
+      <h2>自我測驗</h2>
+      <p class="sec-en">Self-Check ・ 5 題</p>
+      <p class="sec-q">
+        檢驗本週對「兩種文化」的核心理解。<br/>
+        每題作答後出現解析。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ 1 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q1">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q1</h2>
+        <span class="h-en">EXPLANATORY APPROACH</span>
+        <span class="h-tag">1/5</span>
+      </div>
+      <div class="score-pill">
+        <span class="sn"><span id="scoreNum">0</span></span>
+        <span class="st">分 / 5</span>
+      </div>
+      <div class="quiz-wrap" data-correct="b">
+        <div class="quiz-num">解釋取徑</div>
+        <h3 class="quiz-q">「為什麼 1995 年的台灣建立了全民健保？」這個研究問題屬於哪一種取徑？</h3>
+        <button class="quiz-opt" data-opt="a">A. effects-of-causes（量化）</button>
+        <button class="quiz-opt" data-opt="b">B. causes-of-effects（質化）</button>
+        <button class="quiz-opt" data-opt="c">C. 純粹的描述性研究，無因果取徑</button>
+        <button class="quiz-opt" data-opt="d">D. 隨機對照實驗</button>
+        <div class="quiz-explain">
+          <strong>正解：B。</strong>「為什麼...會發生？」是從<strong>已知的結果</strong>（1995 年健保上路）<strong>往回追溯原因</strong>，這是 causes-of-effects 取徑，質化研究的典型問法。對照之下，「民主化對健保覆蓋率的<strong>平均效果</strong>是什麼？」才是 effects-of-causes（量化）取徑。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ 2 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q2">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q2</h2>
+        <span class="h-en">EQUIFINALITY</span>
+        <span class="h-tag">2/5</span>
+      </div>
+      <div class="quiz-wrap" data-correct="c">
+        <div class="quiz-num">等結果性</div>
+        <h3 class="quiz-q">下列哪個說法<strong>最符合</strong>質化研究中的「等結果性」（equifinality）？</h3>
+        <button class="quiz-opt" data-opt="a">A. 所有國家走向福利國家的路徑都一樣。</button>
+        <button class="quiz-opt" data-opt="b">B. 只有一條因果路徑可以解釋同一個結果。</button>
+        <button class="quiz-opt" data-opt="c">C. 存在<strong>少數</strong>幾條不同的因果路徑可以通往同一個結果。</button>
+        <button class="quiz-opt" data-opt="d">D. 結果完全由隨機因素決定。</button>
+        <div class="quiz-explain">
+          <strong>正解：C。</strong>等結果性的核心觀念：同一個結果可以被<strong>少數</strong>幾條（不是所有、也不是無限）不同的因果路徑達成。Esping-Andersen 三條福利國家路徑就是經典——社會民主、保守、自由——三條路徑、三組條件組合、相同的「福利國家」結果。量化研究通常缺乏這個概念。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ 3 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q3">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q3</h2>
+        <span class="h-en">CASE SELECTION</span>
+        <span class="h-tag">3/5</span>
+      </div>
+      <div class="quiz-wrap" data-correct="b">
+        <div class="quiz-num">個案選擇</div>
+        <h3 class="quiz-q">為什麼質化研究者通常會「依變項上選樣」（先挑結果有發生的案例）？</h3>
+        <button class="quiz-opt" data-opt="a">A. 因為這樣樣本數更大。</button>
+        <button class="quiz-opt" data-opt="b">B. 因為 (0,0,0) 案例（無強工會、無左派、無慷慨福利）對<strong>機制檢驗</strong>提供有限槓桿。</button>
+        <button class="quiz-opt" data-opt="c">C. 因為質化研究者不在乎統計推論。</button>
+        <button class="quiz-opt" data-opt="d">D. 因為這樣才能發表期刊論文。</button>
+        <div class="quiz-explain">
+          <strong>正解：B。</strong>對量化研究者，(0,0,0) 案例非常有價值——能增加變異、降低標準誤。但對質化研究者來說，「沒有強工會、沒有左派、也沒慷慨福利」的國家數量龐大（如許多發展中國家）但對<strong>檢驗特定機制</strong>沒有太多新資訊。質化的目標是<strong>追蹤機制如何運作</strong>，不是估計平均效果。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ 4 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q4">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q4</h2>
+        <span class="h-en">LACK OF FIT</span>
+        <span class="h-tag">4/5</span>
+      </div>
+      <div class="quiz-wrap" data-correct="d">
+        <div class="quiz-num">缺乏擬合</div>
+        <h3 class="quiz-q">如果一個迴歸模型在 OECD 的 18 國資料上整體成立，但日本是明顯的離群值，量化和質化研究者各會如何反應？</h3>
+        <button class="quiz-opt" data-opt="a">A. 兩者都會丟掉日本，重新跑模型。</button>
+        <button class="quiz-opt" data-opt="b">B. 兩者都會接受結論，不再深究。</button>
+        <button class="quiz-opt" data-opt="c">C. 兩者都會把日本當關鍵案例深入分析。</button>
+        <button class="quiz-opt" data-opt="d">D. 量化會把日本歸入誤差項；質化會深入探究「日本為何偏離」並可能發展新理論（如東亞福利體制）。</button>
+        <div class="quiz-explain">
+          <strong>正解：D。</strong>這是兩種文化最根本的差異之一。對量化研究：日本的特殊性是<strong>非系統性誤差</strong>，只要不偏誤 β 估計就無妨。對質化研究：日本的偏離正是發展<strong>新理論</strong>的契機——Holliday (2000) 的「生產主義福利資本主義」、Kwon (2005) 的「發展型福利國家」等新框架，都是從這類「不擬合」中長出來的。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ 5 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q5">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q5</h2>
+        <span class="h-en">MIXED METHODS</span>
+        <span class="h-tag">5/5</span>
+      </div>
+      <div class="quiz-wrap" data-correct="c">
+        <div class="quiz-num">混合方法</div>
+        <h3 class="quiz-q">Lieberman (2005) 的「嵌套分析」（nested analysis）最核心的設計邏輯是？</h3>
+        <button class="quiz-opt" data-opt="a">A. 只用量化、放棄質化。</button>
+        <button class="quiz-opt" data-opt="b">B. 只用質化、補一點量化背景。</button>
+        <button class="quiz-opt" data-opt="c">C. 先用量化建立跨案例模式，再用質化選擇符合與偏離模型的案例做機制檢驗。</button>
+        <button class="quiz-opt" data-opt="d">D. 先做質化過程追蹤，再用量化驗證個案結論。</button>
+        <div class="quiz-explain">
+          <strong>正解：C。</strong>Nested analysis 的順序是「<strong>先廣後深</strong>」：第一步量化迴歸建立整體模式，第二步在模型中選「典型符合」的案例（如瑞典）和「明顯偏離」的案例（如日本）做質化過程追蹤，理解機制如何運作。這是當代社會研究越來越主流的設計，台灣最近的福利國家研究也常見類似策略。
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ S19 DISCUSSION ============ -->
   <section class="slide slide-content" data-kind="content" data-label="課堂討論">
     <div class="slide-inner">
@@ -1436,7 +1806,7 @@
 <nav class="navbar">
   <button class="nav-btn" id="prevBtn" onclick="goPrev()">← 前頁</button>
   <div class="nav-center">
-    <span><span id="curNum">1</span> / <span id="totNum">23</span></span>
+    <span><span id="curNum">1</span> / <span id="totNum">30</span></span>
     <div class="dots" id="dots"></div>
   </div>
   <button class="nav-btn" id="nextBtn" onclick="goNext()">下一頁 →</button>
@@ -1523,6 +1893,106 @@
       const target = parseInt(tr.dataset.goto);
       if (!isNaN(target)) goTo(target);
     };
+  });
+
+  // ── Drag-to-sort exercise ──
+  let draggedCard = null;
+  function setupSort() {
+    document.querySelectorAll('.sort-card').forEach(c => {
+      c.addEventListener('dragstart', e => {
+        draggedCard = c;
+        c.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+      });
+      c.addEventListener('dragend', () => c.classList.remove('dragging'));
+    });
+    document.querySelectorAll('.sort-bin').forEach(bin => {
+      bin.addEventListener('dragover', e => { e.preventDefault(); bin.classList.add('drag-over'); });
+      bin.addEventListener('dragleave', () => bin.classList.remove('drag-over'));
+      bin.addEventListener('drop', e => {
+        e.preventDefault(); bin.classList.remove('drag-over');
+        if (draggedCard) {
+          bin.querySelector('.bin-cards').appendChild(draggedCard);
+          draggedCard.dataset.in = bin.dataset.side;
+        }
+      });
+    });
+    // Pool also accepts drops (to put back)
+    const pool = document.querySelector('.sort-pool');
+    if (pool) {
+      pool.addEventListener('dragover', e => { e.preventDefault(); });
+      pool.addEventListener('drop', e => {
+        e.preventDefault();
+        if (draggedCard) {
+          pool.appendChild(draggedCard);
+          delete draggedCard.dataset.in;
+        }
+      });
+    }
+  }
+  setupSort();
+
+  function checkSort() {
+    let correct = 0, wrong = 0, unplaced = 0;
+    document.querySelectorAll('.sort-card').forEach(c => {
+      c.classList.remove('is-correct', 'is-wrong', 'is-quant');
+      if (!c.dataset.in) { unplaced++; return; }
+      if (c.dataset.in === c.dataset.ans) {
+        c.classList.add('is-correct');
+        if (c.dataset.ans === 'quant') c.classList.add('is-quant');
+        correct++;
+      } else {
+        c.classList.add('is-wrong');
+        wrong++;
+      }
+    });
+    const r = document.getElementById('sortResult');
+    r.classList.add('is-shown');
+    if (unplaced > 0) {
+      r.innerHTML = `還有 <strong>${unplaced}</strong> 張卡片沒分類，先全部拖到上面再對答案。`;
+    } else {
+      const grade = correct === 8 ? '完美！你掌握了核心區別。' :
+                    correct >= 6 ? '不錯，但有幾題踩到陷阱——再回去看看「解釋取徑」那一頁。' :
+                    correct >= 4 ? '還有空間。重點：「為什麼...」開頭幾乎都是質化（causes-of-effects）；「平均效果／係數／相關」幾乎都是量化（effects-of-causes）。' :
+                    '建議重新讀一次第 4 張投影片。';
+      r.innerHTML = `<strong>${correct} / 8 正確 ・ ${wrong} 錯</strong><br/>${grade}`;
+    }
+  }
+
+  function resetSort() {
+    const pool = document.querySelector('.sort-pool');
+    document.querySelectorAll('.sort-card').forEach(c => {
+      c.classList.remove('is-correct', 'is-wrong', 'is-quant');
+      delete c.dataset.in;
+      pool.appendChild(c);
+    });
+    const r = document.getElementById('sortResult');
+    r.classList.remove('is-shown');
+  }
+
+  // ── Final quiz ──
+  let quizScore = 0;
+  document.querySelectorAll('.quiz-wrap').forEach(quiz => {
+    const correct = quiz.dataset.correct;
+    const opts = quiz.querySelectorAll('.quiz-opt');
+    opts.forEach(opt => {
+      opt.addEventListener('click', () => {
+        if (quiz.dataset.done) return;
+        quiz.dataset.done = '1';
+        const picked = opt.dataset.opt;
+        opts.forEach(o => {
+          o.disabled = true;
+          if (o.dataset.opt === correct) o.classList.add('is-correct');
+          else if (o.dataset.opt === picked) o.classList.add('is-wrong');
+        });
+        if (picked === correct) {
+          quizScore++;
+          const sn = document.getElementById('scoreNum');
+          if (sn) sn.textContent = quizScore;
+        }
+        quiz.querySelector('.quiz-explain').classList.add('is-shown');
+      });
+    });
   });
 
   // Keyboard
