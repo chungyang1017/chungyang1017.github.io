@@ -521,6 +521,11 @@ const photoData = [
     haiku_zh: '夕陽燃燒／礁石上的松／也成了金色' },
 
   // ── 山水 LANDSCAPE ──
+  { num: '023', src: 'images/photography/dscf7974.jpg', year: 2025, themes: ['sansui'], shape: 'portrait',
+    title_jp: '木洩日', title_en: 'Light through Trees', title_zh: '樹間之光',
+    haiku_jp: '木の間より／光のこぼるる／午後の山',
+    haiku_en: 'between the trees / light spills through — / afternoon hills',
+    haiku_zh: '樹木之間／光斑灑落／午後群山' },
   { num: '030', src: 'images/photography/dscf9370_xd2s_3.jpg', year: 2025, themes: ['sansui','xpan'], shape: 'xpan',
     title_jp: '横長', title_en: 'Long View', title_zh: '橫長',
     haiku_jp: '横長に／切り取る景色／風の道',
@@ -581,11 +586,6 @@ const photoData = [
     haiku_jp: '合歓山や／雲海の上／朝の朱',
     haiku_en: 'Hehuanshan — / above the sea of clouds / dawn\'s vermilion',
     haiku_zh: '合歡山昆陽／雲海之上／晨之朱紅' },
-  { num: '023', src: 'images/photography/dscf7974.jpg', year: 2025, themes: ['sansui'], shape: 'portrait',
-    title_jp: '木洩日', title_en: 'Light through Trees', title_zh: '樹間之光',
-    haiku_jp: '木の間より／光のこぼるる／午後の山',
-    haiku_en: 'between the trees / light spills through — / afternoon hills',
-    haiku_zh: '樹木之間／光斑灑落／午後群山' },
 
   // ── 街 STREET ──
   { num: '038', src: 'images/photography/img_8239.jpg', themes: ['street','xpan'], shape: 'xpan',
