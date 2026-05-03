@@ -103,7 +103,7 @@ const publicationsData = [
     authors_zh: '葉崇揚', authors_en: 'Yeh, C-Y.',
     venue_zh: '社區發展季刊', venue_en: 'Community Development Journal Quarterly',
     vol: '第170期: 130–147',
-    link: { type: 'search', url: 'https://www.airitilibrary.com/Common/Search?q=%E7%A4%BE%E6%9C%83%E6%8A%95%E8%B3%87%E8%88%87%E5%A5%B3%E6%80%A7%E8%B2%A7%E7%AA%AE&type=article' } },
+    link: { type: 'publisher', url: 'https://www.sfaa.gov.tw/SFAA/Pages/Detail.aspx?nodeid=1231&pid=9777' } },
 
   { year: 2020, lang: 'en',
     title_zh: '東亞公私年金組合：制度多樣性與老年安全的政策意涵', title_en: 'Public-Private Pension Mixes in East Asia: Institutional Diversity and Policy Implications for Old-Age Security',
@@ -118,14 +118,14 @@ const publicationsData = [
     authors_zh: '葉崇揚', authors_en: 'Yeh, C-Y.',
     venue_zh: '老年經濟安全制度專刊', venue_en: 'Journal of Old-Age Economic Security',
     vol: '第4期: 114–145',
-    link: { type: 'search', url: 'https://www.airitilibrary.com/Common/Search?q=%E4%B8%BB%E8%A6%81%E5%9C%8B%E5%AE%B6%E5%B9%B4%E9%87%91%E6%94%B9%E9%9D%A9&type=article' } },
+    link: { type: 'publisher', url: 'https://www.ndc.gov.tw/cp.aspx?n=A76B7230ADF29736&s=78D44431464E02FA' } },
 
   { year: 2019, lang: 'zh',
     title_zh: '社會團結的兩難──臺灣民眾如何看待移民福利', title_en: 'The Solidarity Dilemma: Taiwanese Public Attitudes towards Immigrant Welfare',
     authors_zh: '葉崇揚、楊筱慧、楊佑萱、黃仁甫', authors_en: 'Yeh, C-Y., Yang, H-H., Yang, Y-H. and Huang, J-F.',
     venue_zh: '法律扶助與社會', venue_en: 'Legal Aid and Society',
     vol: '第3期: 47–71',
-    link: { type: 'search', url: 'https://www.airitilibrary.com/Common/Search?q=%E7%A4%BE%E6%9C%83%E5%9C%98%E7%B5%90%E7%9A%84%E5%85%A9%E9%9B%A3&type=article' } },
+    link: { type: 'publisher', url: 'https://www.laf.org.tw/edu-detail/39' } },
 
   { year: 2019, lang: 'en',
     title_zh: '發展型福利國家論題的批判性回顧──東亞公私年金組合的模式', title_en: 'A Critical Review of the Developmental Welfare State Thesis – The Patterns of Public-Private Pension Mix in East Asia',
@@ -139,7 +139,7 @@ const publicationsData = [
     authors_zh: '葉崇揚', authors_en: 'Yeh, C-Y.',
     venue_zh: '亞太研究論壇', venue_en: 'Forum for Asia-Pacific Studies',
     vol: '第65期: 1–36',
-    link: { type: 'search', url: 'https://www.airitilibrary.com/Common/Search?q=%E6%9D%B1%E4%BA%9E%E8%B3%87%E6%9C%AC%E4%B8%BB%E7%BE%A9%E8%88%87%E7%A6%8F%E5%88%A9%E5%9C%8B%E5%AE%B6&type=article' } },
+    link: { type: 'sinica', url: 'https://www.rchss.sinica.edu.tw/aprf/journals/3141' } },
 
   { year: 2018, lang: 'zh',
     title_zh: '年金自由化？──日本企業年金體系的制度變遷', title_en: 'Pension Liberalization? Institutional Change in Japan\'s Corporate Pension System',
@@ -162,7 +162,7 @@ const publicationsData = [
     authors_zh: '葉崇揚、蔡明璋、呂建德', authors_en: 'Yeh, C-Y., Tsai, M-C. and Lue, J-D.',
     venue_zh: '臺灣民主季刊', venue_en: 'Taiwan Democracy Quarterly',
     vol: '14(2): 1–48',
-    link: { type: 'search', url: 'https://www.airitilibrary.com/Common/Search?q=%E5%8F%B0%E7%81%A3%E6%B0%91%E7%9C%BE%E5%B0%8D%E7%A4%BE%E6%9C%83%E7%A6%8F%E5%88%A9%E7%9A%84%E6%85%8B%E5%BA%A6&type=article' },
+    link: { type: 'airiti', url: 'https://www.airitilibrary.com/Publication/alPublicationJournal?PublicationID=17269350' },
     badge: 'TSSCI' },
 
   { year: 2017, lang: 'zh',
@@ -170,7 +170,7 @@ const publicationsData = [
     authors_zh: '葉崇揚、呂建德', authors_en: 'Yeh, C-Y. and Lue, J-D.',
     venue_zh: '國家與社會', venue_en: 'State and Society',
     vol: '第19期: 1–64',
-    link: { type: 'search', url: 'https://www.airitilibrary.com/Common/Search?q=%E5%BE%B7%E5%9C%8B%E9%80%80%E5%87%BA%E5%8B%9E%E5%8B%95%E5%B8%82%E5%A0%B4&type=article' } },
+    link: { type: 'publisher', url: 'http://lawdata.com.tw/tw/journal.aspx?no=869&pno=52314' } },
 
   { year: 2017, lang: 'zh',
     title_zh: '從生產性福利體制到社會投資福利國家──台灣與韓國的比較', title_en: 'From Productivist Welfare to Social Investment Welfare State: A Comparison of Taiwan and Korea',
@@ -185,14 +185,14 @@ const publicationsData = [
     authors_zh: '葉崇揚、施世駿', authors_en: 'Yeh, C-Y. and Shi, S-J.',
     venue_zh: '社会政策研究', venue_en: 'Social Policy Research',
     vol: '2017.2: 35–54',
-    link: { type: 'search', url: 'https://www.airitilibrary.com/Common/Search?q=%E5%8F%B0%E7%81%A3%E5%B7%A5%E4%BD%9C%E8%B2%A7%E7%AA%AE%E7%9A%84%E6%A9%9F%E5%88%B6&type=article' } },
+    link: { type: 'publisher', url: 'https://sns.wanfangdata.com.cn/perio/shzcyj' } },
 
   { year: 2017, lang: 'zh',
     title_zh: '專欄導語：融合或排斥？跨兩岸遷移者與社會保障', title_en: 'Editorial: Inclusion or Exclusion? Cross-strait Migrants and Social Protection',
     authors_zh: '葉崇揚、岳經綼', authors_en: 'Yeh, C-Y. and Yueh, C-W.',
     venue_zh: '中國公共政策評論', venue_en: 'China Public Policy Review',
     vol: '第十一期: 149–154',
-    link: { type: 'search', url: 'https://www.airitilibrary.com/Common/Search?q=%E5%B0%88%E6%AC%84%E5%B0%8E%E8%AA%9E%EF%BC%9A%E8%9E%8D%E5%90%88%E6%88%96%E6%8E%92%E6%96%A5&type=article' },
+    link: { type: 'publisher', url: 'https://www.newcnki.net/info/6353.html' },
     badge: 'CSSCI' },
 
   { year: 2017, lang: 'zh',
@@ -216,7 +216,7 @@ const publicationsData = [
     authors_zh: '葉崇揚', authors_en: 'Yeh, C-Y.',
     venue_zh: '中國公共政策評論', venue_en: 'China Public Policy Review',
     vol: '第十期: 1–23',
-    link: { type: 'search', url: 'https://www.airitilibrary.com/Common/Search?q=%E7%A4%BE%E6%9C%83%E6%8A%95%E8%B3%87%E7%A6%8F%E5%88%A9%E5%9C%8B%E5%AE%B6%EF%BC%9F&type=article' },
+    link: { type: 'publisher', url: 'https://www.newcnki.net/info/6353.html' },
     badge: 'CSSCI' },
 
   { year: 2014, lang: 'zh',
@@ -224,7 +224,7 @@ const publicationsData = [
     authors_zh: '呂建德、葉崇揚、張馨文', authors_en: 'Lue, J-D., Yeh, C-Y. and Chang, H-W.',
     venue_zh: '公共行政評論', venue_en: 'Journal of Public Administration',
     vol: '6: 6–26',
-    link: { type: 'search', url: 'https://www.airitilibrary.com/Common/Search?q=%E8%87%BA%E7%81%A3%E5%9C%8B%E6%B0%91%E5%B9%B4%E9%87%91%E7%82%BA%E4%BD%95%E8%B5%B0%E5%90%91&type=article' },
+    link: { type: 'publisher', url: 'https://jpa.sysu.edu.cn/' },
     badge: 'CSSCI' },
 
   { year: 2013, lang: 'zh',
