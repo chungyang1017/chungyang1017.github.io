@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-//  PUBLICATIONS DATA · 期刊論文資料（30 篇）
+//  PUBLICATIONS DATA · 期刊論文資料（31 篇）
 //  Single source of truth for journal articles.
 //  Used by: academic-zh.html, academic.html (top 10),
 //           publications/publications-zh.html, publications/publications.html (full list — TODO: refactor).
@@ -13,6 +13,8 @@
 //    vol    — volume/issue/pages, e.g. "28(1): 47–97"
 //    link   — { type: 'doi'|'airiti'|'cnki'|'search', url: '...', label: 'DOI ↗'|'華藝 ↗'|... }
 //    badge  — optional: 'SSCI' | 'TSSCI' | 'CSSCI' | 'Scopus'
+//    metrics — optional: { if: '1.77', rank: 'Q2 Gerontology', year: 2019 }
+//              Only for SSCI-indexed articles. JCR IF + category rank for the year closest to publication.
 //
 //  Order: newest first (sorted by year desc, then by importance).
 // ─────────────────────────────────────────────
@@ -25,14 +27,17 @@ const publicationsData = [
     venue_zh: 'Journal of East Asian Studies', venue_en: 'Journal of East Asian Studies',
     vol: 'forthcoming',
     link: { type: 'doi', url: 'https://doi.org/10.1017/S1598240826100332' },
-    badge: 'SSCI' },
+    badge: 'SSCI',
+    metrics: { if: '1.6', rank: 'Q1 Social Sciences, Interdisciplinary', year: 2024 } },
 
   { year: 2025, lang: 'en',
     title_zh: '東亞三國對政府失業保障角色的公眾態度', title_en: 'Public attitudes towards government\'s role in unemployment provision in three East Asian countries',
     authors_zh: 'Niu, C-W., Yeh, C-Y., Yeh, M-J. and Cheng, Y.', authors_en: 'Niu, C-W., Yeh, C-Y., Yeh, M-J. and Cheng, Y.',
     venue_zh: 'Journal of Asian Public Policy', venue_en: 'Journal of Asian Public Policy',
     vol: '18(3): 822–838',
-    link: { type: 'doi', url: 'https://doi.org/10.1080/17516234.2024.2343574' } },
+    link: { type: 'doi', url: 'https://doi.org/10.1080/17516234.2024.2343574' },
+    badge: 'SSCI',
+    metrics: { if: '2.65', rank: 'Q2 Public Administration', year: 2024 } },
 
   { year: 2024, lang: 'zh',
     title_zh: '進步的兩難：臺灣福利沙文主義特徵的經驗檢證', title_en: 'Progressive Dilemma: Empirical Examination of the Characteristics of Welfare Chauvinism in Taiwan',
@@ -46,7 +51,9 @@ const publicationsData = [
     authors_zh: 'Yeh, C-Y.* and Lue, J-D.', authors_en: 'Yeh, C-Y.* and Lue, J-D.',
     venue_zh: 'Journal of Asian Public Policy', venue_en: 'Journal of Asian Public Policy',
     vol: '17(3): 402–418',
-    link: { type: 'doi', url: 'https://doi.org/10.1080/17516234.2022.2085533' } },
+    link: { type: 'doi', url: 'https://doi.org/10.1080/17516234.2022.2085533' },
+    badge: 'SSCI',
+    metrics: { if: '2.65', rank: 'Q2 Public Administration', year: 2023 } },
 
   { year: 2024, lang: 'zh',
     title_zh: '台灣全民健康保險支持度的微觀經驗檢證', title_en: 'An Empirical Examination of the Micro-foundations of Public Support for Taiwan\'s National Health Insurance',
@@ -68,14 +75,18 @@ const publicationsData = [
     authors_zh: 'Yeh, C-Y., Tsai, P-Y. and Ku, Y-W.', authors_en: 'Yeh, C-Y., Tsai, P-Y. and Ku, Y-W.',
     venue_zh: 'Asia Pacific J. of Social Work and Development', venue_en: 'Asia Pacific J. of Social Work and Development',
     vol: '32(4): 229–243',
-    link: { type: 'doi', url: 'https://doi.org/10.1080/02185385.2022.2135588' } },
+    link: { type: 'doi', url: 'https://doi.org/10.1080/02185385.2022.2135588' },
+    badge: 'SSCI',
+    metrics: { if: '2.0', rank: 'Q3 Social Work', year: 2022 } },
 
   { year: 2022, lang: 'en',
     title_zh: '不平等大流行期間及之後的社會政策回應與社會發展：我們可以彼此學習什麼？', title_en: 'Social Policy Responses and Social Development during and after the Unequal Pandemic: What We can Learn from Each Other?',
     authors_zh: 'Ku, Y-W. and Yeh, C-Y.*', authors_en: 'Ku, Y-W. and Yeh, C-Y.*',
     venue_zh: 'Asia Pacific J. of Social Work and Development', venue_en: 'Asia Pacific J. of Social Work and Development',
     vol: '32(3): 161–169',
-    link: { type: 'doi', url: 'https://doi.org/10.1080/02185385.2022.2141848' } },
+    link: { type: 'doi', url: 'https://doi.org/10.1080/02185385.2022.2141848' },
+    badge: 'SSCI',
+    metrics: { if: '2.0', rank: 'Q3 Social Work', year: 2022 } },
 
   { year: 2021, lang: 'zh',
     title_zh: '社會投資福利國家的多樣性──社會支出結構的檢證', title_en: 'The Diversity of the Social Investment Welfare State: An Examination of the Social Expenditure Structure',
@@ -90,7 +101,8 @@ const publicationsData = [
     venue_zh: 'Journal of Asian Public Policy', venue_en: 'Journal of Asian Public Policy',
     vol: '14(1): 13–29',
     link: { type: 'doi', url: 'https://doi.org/10.1080/17516234.2020.1790729' },
-    badge: 'SSCI' },
+    badge: 'SSCI',
+    metrics: { if: '1.63', rank: 'Q2 Public Administration', year: 2020 } },
 
   { year: 2020, lang: 'zh',
     title_zh: '家庭主義的分歧？台灣民眾對兒童及老人照顧的福利態度', title_en: 'Divergences in Familialism? Taiwanese Public Attitudes towards Childcare and Eldercare Welfare',
@@ -120,7 +132,8 @@ const publicationsData = [
     venue_zh: 'Ageing & Society', venue_en: 'Ageing & Society',
     vol: '40(3): 604–625',
     link: { type: 'doi', url: 'https://doi.org/10.1017/s0144686x18001137' },
-    badge: 'SSCI' },
+    badge: 'SSCI',
+    metrics: { if: '1.77', rank: 'Q2 Gerontology', year: 2019 } },
 
   { year: 2019, lang: 'zh',
     title_zh: '主要國家年金改革：英國與日本的比較', title_en: 'Pension Reform in Major Countries: A Comparison of the UK and Japan',
@@ -288,6 +301,9 @@ function renderTopJournals(containerId, limit, lang) {
     if (p.badge) {
       metaHtml += `<span class="oa">● ${p.badge}</span>`;
     }
+    if (p.metrics) {
+      metaHtml += metricsHtml(p.metrics, lang);
+    }
     return `
       <article class="j-row">
         <div class="j-year">${p.year}</div>
@@ -300,6 +316,15 @@ function renderTopJournals(containerId, limit, lang) {
       </article>`;
   }).join('');
   container.insertAdjacentHTML('beforeend', html);
+}
+
+// Render JCR metrics (IF + category rank) for a publication.
+// Used inline within .j-meta-line.
+function metricsHtml(m, lang) {
+  if (!m) return '';
+  const ifLabel = lang === 'en' ? 'IF' : 'IF';
+  const yearLabel = lang === 'en' ? `${m.year} JCR` : `${m.year} JCR`;
+  return `<span class="jif">IF ${escapeHtml(m.if)} · ${escapeHtml(m.rank)} <span class="jif-y">(${yearLabel})</span></span>`;
 }
 
 // Map link.type → display label, language-aware.
@@ -342,12 +367,17 @@ function renderJournalCardsGrid(containerId, limit, lang) {
     if (p.badge) {
       metaHtml += `<span class="oa">● ${p.badge}</span>`;
     }
+    let metricsLine = '';
+    if (p.metrics) {
+      metricsLine = `<div class="j-card-jif">IF ${escapeHtml(p.metrics.if)} · ${escapeHtml(p.metrics.rank)} <span class="j-card-jif-y">(${p.metrics.year} JCR)</span></div>`;
+    }
     return `
       <article class="j-card">
         <div class="j-card-head"><span class="j-card-tag">${tag}</span><span class="j-card-year">${p.year}</span></div>
         <h3 class="j-card-title">${escapeHtml(title)}</h3>
         <div class="j-card-authors">${escapeHtml(authors)}</div>
         <div class="j-card-foot">${escapeHtml(venue)} · ${escapeHtml(p.vol)}</div>
+        ${metricsLine}
         <div class="j-card-meta">${metaHtml}</div>
       </article>`;
   }).join('');
