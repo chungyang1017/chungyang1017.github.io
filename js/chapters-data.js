@@ -127,12 +127,21 @@ const chaptersData = [
 ];
 
 // Render top-N book chapters into a `.ch-list` container.
+// On EN page: if chapter is originally non-English (title_zh != title_en), show "English（中文原題）" parallel.
 function renderTopChapters(containerId, limit, lang) {
   const container = document.getElementById(containerId);
   if (!container) return;
   const items = chaptersData.slice(0, limit);
   const html = items.map(c => {
-    const title = lang === 'en' ? c.title_en : c.title_zh;
+    const isOriginallyZh = c.title_zh !== c.title_en;
+    let title;
+    if (lang === 'en' && isOriginallyZh) {
+      title = `${c.title_en}（${c.title_zh}）`;
+    } else if (lang === 'en') {
+      title = c.title_en;
+    } else {
+      title = c.title_zh;
+    }
     const authors = lang === 'en' ? c.authors_en : c.authors_zh;
     const src = lang === 'en' ? c.src_en : c.src_zh;
     return `<article class="ch-row"><div class="y">${c.year}</div><div><h3>${title}</h3><div class="au">${authors}</div><div class="src">${src}</div></div></article>`;

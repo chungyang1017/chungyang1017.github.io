@@ -111,14 +111,21 @@ const conferencesData = [
 ];
 
 // Render top-N conference papers into a `.c-list` container.
+// On EN page: if conference paper is originally non-English (title_zh != title_en), show "English（中文原題）" parallel.
 function renderTopConferences(containerId, limit, lang) {
   const container = document.getElementById(containerId);
   if (!container) return;
   const items = conferencesData.slice(0, limit);
   const html = items.map(c => {
-    // For English-titled entries (most are English-language conferences), always show English.
-    // For entries with explicit Chinese title (台灣 conferences), show language-appropriate.
-    const title = (lang === 'en') ? (c.title_en || c.title_zh) : (c.title_zh || c.title_en);
+    const isOriginallyZh = c.title_zh && c.title_en && c.title_zh !== c.title_en;
+    let title;
+    if (lang === 'en' && isOriginallyZh) {
+      title = `${c.title_en}（${c.title_zh}）`;
+    } else if (lang === 'en') {
+      title = c.title_en || c.title_zh;
+    } else {
+      title = c.title_zh || c.title_en;
+    }
     const authors = c.authors || (lang === 'en' ? (c.authors_en || c.authors_zh) : (c.authors_zh || c.authors_en));
     const venue = c.venue || (lang === 'en' ? (c.venue_en || c.venue_zh) : (c.venue_zh || c.venue_en));
     return `<article class="c-row"><div class="y">${c.year}</div><div><h3>${title}</h3><div class="au">${authors}</div><div class="v">${venue}</div></div></article>`;
