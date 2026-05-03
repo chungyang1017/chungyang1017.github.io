@@ -179,16 +179,11 @@
     .commentary-more:hover { text-decoration: underline; }
 
     .c-list { display: flex; flex-direction: column; }
-    .c-row { display: grid; grid-template-columns: 60px 100px 1fr 180px; gap: 24px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid rgba(31,31,29,0.10); }
-    .c-year { font-family: var(--sans); font-size: 14px; opacity: 0.6; letter-spacing: 0.1em; }
-    .c-type { font-size: 11px; letter-spacing: 0.2em; font-family: var(--sans); }
-    .c-type.is-keynote { color: var(--accent); }
-    .c-type.is-invited { color: var(--moss); }
-    .c-type.is-oral { color: var(--water); }
-    .c-title { margin: 0; font-family: var(--display); font-style: italic; font-size: 18px; font-weight: 500; line-height: 1.45; }
-    .c-venue { text-align: right; font-size: 13.5px; }
-    .c-venue .v { opacity: 0.88; font-style: italic; }
-    .c-venue .city { opacity: 0.55; margin-top: 4px; }
+    .c-row { display: grid; grid-template-columns: 60px 1fr; gap: 32px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid rgba(31,31,29,0.10); }
+    .c-row .y { font-family: var(--sans); font-size: 14px; opacity: 0.6; letter-spacing: 0.1em; }
+    .c-row h3 { margin: 0; font-family: var(--display); font-style: italic; font-size: 17px; font-weight: 500; line-height: 1.55; }
+    .c-row .au { margin-top: 8px; font-size: 13.5px; opacity: 0.78; font-style: italic; }
+    .c-row .v { margin-top: 8px; font-size: 13.5px; opacity: 0.78; line-height: 1.55; }
 
     footer {
       border-top: 1px solid var(--line);
@@ -239,7 +234,6 @@
       .b-title { font-size: 20px; }
 
       .c-row { grid-template-columns: 1fr; gap: 4px; padding: 16px 0; }
-      .c-venue { text-align: left; }
 
       footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 10px; }
     }
