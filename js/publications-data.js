@@ -44,7 +44,7 @@ const publicationsData = [
     authors_zh: '葉崇揚、林佐穎、呂建德', authors_en: 'Yeh, C-Y., Lin, T-Y. and Lue, J-D.',
     venue_zh: '人文及社會科學集刊', venue_en: 'Journal of Social Sciences and Philosophy',
     vol: '36(1): 205–243',
-    link: { type: 'search', url: 'https://www.airitilibrary.com/Common/Search?q=%E5%8F%B0%E7%81%A3%E5%85%A8%E6%B0%91%E5%81%A5%E5%BA%B7%E4%BF%9D%E9%9A%AA&type=article' },
+    link: { type: 'sinica', url: 'https://www.rchss.sinica.edu.tw/jssp/journals/3225' },
     badge: 'TSSCI' },
 
   { year: 2022, lang: 'zh',
@@ -146,7 +146,7 @@ const publicationsData = [
     authors_zh: '葉崇揚', authors_en: 'Yeh, C-Y.',
     venue_zh: '人文及社會科學集刊', venue_en: 'Journal of Social Sciences and Philosophy',
     vol: '30(3): 349–393',
-    link: { type: 'search', url: 'https://www.airitilibrary.com/Common/Search?q=%E5%B9%B4%E9%87%91%E8%87%AA%E7%94%B1%E5%8C%96&type=article' },
+    link: { type: 'sinica', url: 'https://www.rchss.sinica.edu.tw/jssp/journals/1545' },
     badge: 'TSSCI' },
 
   { year: 2018, lang: 'zh',
@@ -208,7 +208,7 @@ const publicationsData = [
     authors_zh: '葉崇揚', authors_en: 'Yeh, C-Y.',
     venue_zh: '人文及社會科學集刊', venue_en: 'Journal of Social Sciences and Philosophy',
     vol: '28(4): 541–580',
-    link: { type: 'search', url: 'https://www.airitilibrary.com/Common/Search?q=%E8%A1%8C%E5%8B%95%E8%80%85%E7%9A%84%E5%A4%B1%E6%95%97&type=article' },
+    link: { type: 'sinica', url: 'https://www.rchss.sinica.edu.tw/jssp/journals/1491' },
     badge: 'TSSCI' },
 
   { year: 2016, lang: 'zh',
@@ -263,8 +263,7 @@ function renderTopJournals(containerId, limit, lang) {
     const venue = lang === 'en' ? (p.venue_en || p.venue_zh) : (p.venue_zh || p.venue_en);
     let metaHtml = '';
     if (p.link) {
-      const labelMap = { doi: 'DOI ↗', airiti: '華藝 ↗', cnki: 'CNKI ↗', search: lang === 'en' ? 'Airiti ↗' : '華藝 ↗' };
-      const label = labelMap[p.link.type] || 'Link ↗';
+      const label = linkLabel(p.link.type, lang);
       metaHtml += `<a href="${p.link.url}" target="_blank" rel="noopener" class="doi">${label}</a>`;
     }
     if (p.badge) {
@@ -284,6 +283,21 @@ function renderTopJournals(containerId, limit, lang) {
   container.insertAdjacentHTML('beforeend', html);
 }
 
+// Map link.type → display label, language-aware.
+function linkLabel(type, lang) {
+  const map = {
+    doi:       { zh: 'DOI ↗',   en: 'DOI ↗' },
+    airiti:    { zh: '華藝 ↗',  en: 'Airiti ↗' },
+    cnki:      { zh: 'CNKI ↗',  en: 'CNKI ↗' },
+    sinica:    { zh: '中研院 ↗', en: 'Sinica ↗' },
+    publisher: { zh: '原文 ↗',  en: 'Publisher ↗' },
+    pdf:       { zh: 'PDF ↗',   en: 'PDF ↗' },
+    search:    { zh: '華藝 ↗',  en: 'Airiti ↗' },
+  };
+  const entry = map[type] || { zh: '連結 ↗', en: 'Link ↗' };
+  return entry[lang] || entry.en;
+}
+
 // Render top-N journal articles as grid cards into a `.j-grid` container.
 // Used by academic pages for the "card view" toggle.
 function renderJournalCardsGrid(containerId, limit, lang) {
@@ -297,8 +311,7 @@ function renderJournalCardsGrid(containerId, limit, lang) {
     const tag = p.lang === 'zh' ? (lang === 'en' ? 'JOURNAL' : '期刊') : 'JOURNAL';
     let metaHtml = '';
     if (p.link) {
-      const labelMap = { doi: 'DOI ↗', airiti: '華藝 ↗', cnki: 'CNKI ↗', search: lang === 'en' ? 'Airiti ↗' : '華藝 ↗' };
-      const label = labelMap[p.link.type] || 'Link ↗';
+      const label = linkLabel(p.link.type, lang);
       metaHtml += `<a href="${p.link.url}" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">${label}</a>`;
     }
     if (p.badge) {
