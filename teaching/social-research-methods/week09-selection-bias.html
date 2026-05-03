@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>選樣偏誤與案例選取 ・ 社會研究法 第 9 週 ・ 葉崇揚</title>
+  <meta name="description" content="社會研究法第 9 週互動講義：DSI、Geddes、Collier 三篇對選樣偏誤的對話，含可拖拉的截尾示意圖。分頁式互動簡報。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --chashitsu-bg: #e8dcc4;
+      --chashitsu-paper: #f5ecd6;
+      --chashitsu-tatami: #d8c8a8;
+      --moss: #3d5a3f;
+      --water: #5a7a8a;
+      --earth: #8a6a4a;
+      --persimmon: #c47038;
+      --accent: #c43838;
+      --gold: #b8860b;
+      --ink: #1f1f1d;
+      --ink-soft: rgba(31,31,29,0.78);
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --line-faint: rgba(31,31,29,0.05);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+      --mono: 'JetBrains Mono', 'Menlo', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: var(--jp);
+      background: var(--chashitsu-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 17px;
+      line-height: 1.85;
+      position: relative;
+    }
+    .paper-grain {
+      position: fixed; inset: 0; pointer-events: none;
+      opacity: 0.32; mix-blend-mode: multiply; z-index: 1;
+    }
+
+    /* Top bar */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 56px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .top-left { display: flex; align-items: center; gap: 14px; }
+    .back { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .back:hover { opacity: 0.85; }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .top-title { font-family: var(--brush); font-size: 19px; letter-spacing: 0.06em; }
+    .top-title small { font-family: var(--sans); font-size: 12px; letter-spacing: 0.18em; opacity: 0.55; margin-left: 10px; }
+    .top-right { display: flex; align-items: center; gap: 18px; font-family: var(--sans); font-size: 12px; opacity: 0.6; letter-spacing: 0.15em; }
+    .toc-btn {
+      background: transparent; border: 1px solid var(--line);
+      font-family: inherit; font-size: 11.5px; letter-spacing: 0.2em;
+      padding: 5px 12px; cursor: pointer; color: var(--ink); opacity: 0.75;
+    }
+    .toc-btn:hover { background: var(--chashitsu-paper); opacity: 1; }
+
+    .progress {
+      position: fixed; top: 56px; left: 0;
+      height: 2px; background: var(--accent);
+      z-index: 49; transition: width 0.4s ease;
+    }
+
+    .deck {
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 64px;
+      overflow: hidden; z-index: 2;
+    }
+    .slide {
+      position: absolute; inset: 0;
+      padding: 36px 72px 28px;
+      overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.2,0.7,0.2,1);
+    }
+    .slide.is-prev { transform: translateX(-40px); }
+    .slide.is-active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide-inner { max-width: 1080px; margin: 0 auto; }
+
+    .navbar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 64px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .nav-btn {
+      background: transparent; border: 1px solid var(--ink);
+      font-family: var(--jp); font-size: 14px;
+      letter-spacing: 0.15em; color: var(--ink);
+      padding: 9px 22px; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover:not(:disabled) { background: var(--ink); color: var(--chashitsu-paper); }
+    .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; border-color: var(--line); }
+    .nav-center { display: flex; align-items: center; gap: 16px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.18em; opacity: 0.7; }
+    .dots { display: flex; gap: 5px; max-width: 480px; flex-wrap: wrap; justify-content: center; }
+    .dot { width: 7px; height: 7px; background: var(--line); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .dot:hover { background: var(--accent); transform: scale(1.3); }
+    .dot.is-active { background: var(--accent); }
+    .dot.is-section { width: 14px; }
+
+    /* TOC overlay */
+    .toc-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(31,31,29,0.85);
+      backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center;
+      padding: 40px;
+    }
+    .toc-overlay.is-shown { display: flex; animation: fade 0.3s; }
+    .toc-panel {
+      background: var(--chashitsu-paper);
+      max-width: 920px; width: 100%; max-height: 80vh;
+      overflow-y: auto;
+      padding: 36px 44px;
+      border: 1px solid var(--accent);
+      position: relative;
+    }
+    .toc-close {
+      position: absolute; top: 14px; right: 18px;
+      background: transparent; border: none;
+      font-size: 26px; cursor: pointer; opacity: 0.5;
+      font-family: var(--brush); color: var(--ink);
+    }
+    .toc-close:hover { opacity: 1; }
+    .toc-title { font-family: var(--brush); font-size: 26px; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .toc-sub { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 22px; }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; }
+    .toc-list li {
+      padding: 8px 0; border-bottom: 1px dashed var(--line-soft);
+      cursor: pointer; display: flex; align-items: baseline; gap: 14px;
+    }
+    .toc-list li:hover { color: var(--accent); }
+    .toc-list .num { font-family: var(--brush); font-size: 14px; color: var(--accent); min-width: 28px; }
+    .toc-list .lab { font-size: 15px; flex: 1; }
+    .toc-list .kind { font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; opacity: 0.45; }
+    .toc-list .is-section { color: var(--accent); font-weight: 600; }
+
+    /* Slide types */
+    .slide-title {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      padding: 36px 72px;
+    }
+    .slide-title .week-tag {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.4em; opacity: 0.6; margin-bottom: 24px;
+    }
+    .slide-title .seal {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      background: var(--accent); color: var(--chashitsu-paper);
+      font-family: var(--brush); font-size: 16px;
+      transform: rotate(-3deg);
+    }
+    .slide-title h1 {
+      font-family: var(--brush); font-size: 72px;
+      font-weight: 400; line-height: 1.1; letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+    .slide-title .subtitle {
+      font-family: var(--sans); font-size: 18px;
+      letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 28px;
+    }
+    .slide-title .author {
+      font-size: 17px; opacity: 0.85; line-height: 1.7;
+      max-width: 760px;
+    }
+    .slide-title .author cite { font-style: italic; color: var(--accent); }
+    .meta-strip {
+      margin-top: 36px;
+      display: flex; flex-wrap: wrap; gap: 24px;
+      font-family: var(--sans); font-size: 13px; opacity: 0.6;
+      letter-spacing: 0.12em;
+    }
+
+    .slide-section {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      background: linear-gradient(135deg, rgba(196,56,56,0.06) 0%, rgba(216,200,168,0.4) 100%);
+      padding: 36px 72px;
+      position: relative;
+    }
+    .slide-section .big-num {
+      font-family: var(--brush); font-size: 240px;
+      color: var(--accent); opacity: 0.15;
+      position: absolute; bottom: 30px; right: 60px;
+      line-height: 1;
+    }
+    .slide-section .part {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.45em; opacity: 0.55; margin-bottom: 14px;
+    }
+    .slide-section h2 {
+      font-family: var(--brush); font-size: 56px;
+      font-weight: 400; letter-spacing: 0.04em;
+      line-height: 1.15; margin-bottom: 14px;
+    }
+    .slide-section .sec-en {
+      font-family: var(--sans); font-size: 16px;
+      letter-spacing: 0.3em; opacity: 0.55; font-style: italic;
+      margin-bottom: 22px;
+    }
+    .slide-section .sec-q {
+      font-size: 19px; opacity: 0.85;
+      max-width: 620px; line-height: 1.85;
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+    }
+
+    .slide-content { padding-top: 28px; }
+    .content-head {
+      margin-bottom: 24px;
+      display: flex; align-items: baseline; gap: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .content-head h2 { font-family: var(--brush); font-size: 36px; font-weight: 400; letter-spacing: 0.04em; }
+    .content-head .h-en { font-family: var(--sans); font-size: 13px; letter-spacing: 0.25em; opacity: 0.5; }
+    .content-head .h-tag { margin-left: auto; font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.5; }
+
+    .lead {
+      font-size: 17px; line-height: 2; opacity: 0.88;
+      max-width: 840px; margin-bottom: 18px;
+    }
+    .lead p + p { margin-top: 12px; }
+    .lead strong { color: var(--accent); }
+    .lead .term-en { font-family: var(--sans); font-style: italic; opacity: 0.75; font-size: 14.5px; }
+
+    /* Three-paper grid (intro) */
+    .papers-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      margin-top: 6px;
+    }
+    .paper-card {
+      background: var(--chashitsu-paper);
+      border-top: 4px solid var(--accent);
+      padding: 22px 24px;
+      animation: rise 0.5s ease backwards;
+    }
+    .paper-card:nth-child(2) { border-top-color: var(--water); }
+    .paper-card:nth-child(3) { border-top-color: var(--moss); }
+    .paper-card .yr {
+      font-family: var(--sans); font-size: 11.5px;
+      letter-spacing: 0.25em; color: var(--accent); margin-bottom: 8px;
+    }
+    .paper-card:nth-child(2) .yr { color: var(--water); }
+    .paper-card:nth-child(3) .yr { color: var(--moss); }
+    .paper-card h3 { font-family: var(--brush); font-size: 21px; letter-spacing: 0.04em; margin-bottom: 6px; }
+    .paper-card .cite { font-family: var(--sans); font-size: 11.5px; opacity: 0.55; margin-bottom: 12px; font-style: italic; }
+    .paper-card p { font-size: 15px; line-height: 1.85; opacity: 0.86; }
+
+    /* Quote / blockquote */
+    .quote-box {
+      background: var(--chashitsu-paper);
+      border-left: 3px solid var(--accent);
+      padding: 18px 24px;
+      margin: 18px 0;
+      font-style: italic; font-size: 17px; line-height: 1.9;
+    }
+    .quote-box cite {
+      display: block; font-style: normal;
+      font-family: var(--sans); font-size: 12.5px;
+      letter-spacing: 0.18em; opacity: 0.65;
+      margin-top: 12px;
+    }
+
+    /* Truncation chart */
+    .chart-wrap {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 22px 26px;
+      margin-top: 8px;
+    }
+    .chart-title {
+      font-family: var(--brush); font-size: 19px;
+      letter-spacing: 0.04em; margin-bottom: 4px;
+    }
+    .chart-hint {
+      font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.1em; opacity: 0.6;
+      margin-bottom: 14px;
+    }
+    .chart-svg {
+      width: 100%; height: auto;
+      max-height: 360px;
+      display: block;
+      cursor: ns-resize;
+      user-select: none;
+    }
+    .chart-controls {
+      display: flex; align-items: center; gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--line-soft);
+    }
+    .stat-box {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.05em;
+      padding: 6px 12px;
+      background: rgba(31,31,29,0.04);
+    }
+    .stat-box b { font-family: var(--mono); color: var(--accent); margin-left: 6px; }
+    .resample-btn {
+      background: transparent; border: 1px solid var(--accent);
+      font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.18em; color: var(--accent);
+      padding: 6px 14px; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .resample-btn:hover { background: var(--accent); color: var(--chashitsu-paper); }
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      margin-top: 12px;
+      font-family: var(--sans); font-size: 12px; opacity: 0.7;
+    }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .legend i { display: inline-block; width: 22px; height: 2px; }
+
+    /* Pitfall card (Geddes) */
+    .pitfall {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      padding: 22px 26px;
+      margin-top: 8px;
+    }
+    .pitfall .lab {
+      font-family: var(--sans); font-size: 11.5px;
+      letter-spacing: 0.3em; color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .pitfall h3 {
+      font-family: var(--brush); font-size: 24px;
+      font-weight: 400; letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
+    .pitfall p { font-size: 15.5px; line-height: 1.9; opacity: 0.88; margin-top: 10px; }
+    .pitfall .case-bx {
+      margin-top: 16px; padding: 14px 18px;
+      background: rgba(196,56,56,0.05);
+      border: 1px dashed rgba(196,56,56,0.3);
+    }
+    .pitfall .case-bx .ct {
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.25em; color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .pitfall .case-bx h4 {
+      font-family: var(--brush); font-size: 17px;
+      letter-spacing: 0.04em; margin-bottom: 6px;
+    }
+    .pitfall .case-bx p { font-size: 14.5px; line-height: 1.8; opacity: 0.85; }
+    .pitfall .warn {
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: rgba(31,31,29,0.05);
+      font-size: 14px; line-height: 1.8;
+      border-left: 2px solid var(--gold);
+    }
+    .pitfall .warn .wt {
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.2em; color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    /* DSO vs CPO */
+    .dso-cpo {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      margin-top: 8px;
+    }
+    .dc-card {
+      background: var(--chashitsu-paper);
+      border-top: 4px solid;
+      padding: 22px 24px;
+    }
+    .dc-card.dso { border-top-color: var(--water); }
+    .dc-card.cpo { border-top-color: var(--moss); }
+    .dc-card .ab {
+      font-family: var(--mono); font-size: 13px;
+      letter-spacing: 0.15em; padding: 3px 10px;
+      display: inline-block; margin-bottom: 10px;
+    }
+    .dc-card.dso .ab { background: rgba(90,122,138,0.15); color: var(--water); }
+    .dc-card.cpo .ab { background: rgba(61,90,63,0.15); color: var(--moss); }
+    .dc-card h3 { font-family: var(--brush); font-size: 22px; letter-spacing: 0.04em; margin-bottom: 10px; }
+    .dc-card p { font-size: 15px; line-height: 1.9; opacity: 0.88; }
+
+    /* Compare table (DSI vs Collier) */
+    .cmp-table {
+      width: 100%; border-collapse: collapse;
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      font-size: 14.5px;
+      margin-top: 8px;
+    }
+    .cmp-table th, .cmp-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line-soft);
+      text-align: left;
+      vertical-align: top;
+    }
+    .cmp-table th {
+      font-family: var(--brush); font-size: 16px; font-weight: 500;
+      background: rgba(216,200,168,0.4);
+    }
+    .cmp-table th:nth-child(2), .cmp-table td:nth-child(2) { background: rgba(196,56,56,0.04); }
+    .cmp-table th:nth-child(3), .cmp-table td:nth-child(3) { background: rgba(61,90,63,0.04); }
+    .cmp-table td:first-child { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.18em; opacity: 0.65; width: 130px; vertical-align: middle; }
+
+    /* Case tabs (4 cases) */
+    .case-tabs {
+      margin-top: 8px;
+    }
+    .case-tab-bar {
+      display: flex; gap: 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .case-tab-btn {
+      background: transparent; border: none;
+      font-family: var(--jp); font-size: 15px;
+      letter-spacing: 0.06em;
+      padding: 12px 22px;
+      color: var(--ink); opacity: 0.55;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      cursor: pointer;
+    }
+    .case-tab-btn:hover { opacity: 0.85; }
+    .case-tab-btn.is-active { opacity: 1; border-bottom-color: var(--accent); font-weight: 500; }
+    .case-tab-panel { display: none; padding: 22px 0; animation: fade 0.3s; }
+    .case-tab-panel.is-active { display: block; }
+    .case-tab-panel h4 {
+      font-family: var(--brush); font-size: 21px;
+      letter-spacing: 0.04em; margin-bottom: 12px;
+    }
+    .case-tab-panel p { font-size: 15.5px; line-height: 1.9; opacity: 0.88; margin-bottom: 10px; }
+    .case-tab-panel ul { padding-left: 24px; margin: 8px 0; }
+    .case-tab-panel li { font-size: 14.5px; line-height: 1.85; opacity: 0.85; }
+    .case-tab-panel .lesson {
+      margin-top: 14px; padding: 12px 16px;
+      background: rgba(196,56,56,0.06);
+      border-left: 3px solid var(--accent);
+      font-size: 14.5px; line-height: 1.85;
+    }
+    .case-tab-panel .lesson b { color: var(--accent); }
+
+    /* Practice card (advice) */
+    .advice-grid {
+      display: grid; grid-template-columns: 1fr; gap: 14px;
+      margin-top: 8px;
+    }
+    .advice {
+      background: var(--chashitsu-paper);
+      border-left: 3px solid var(--moss);
+      padding: 18px 24px;
+    }
+    .advice .stage {
+      font-family: var(--sans); font-size: 11.5px;
+      letter-spacing: 0.3em; color: var(--moss);
+      margin-bottom: 6px;
+    }
+    .advice h3 { font-family: var(--brush); font-size: 19px; letter-spacing: 0.04em; margin-bottom: 8px; }
+    .advice ul { padding-left: 22px; margin-top: 6px; }
+    .advice li { font-size: 14.5px; line-height: 1.85; opacity: 0.88; }
+    .advice li::marker { color: var(--moss); }
+
+    /* Quiz */
+    .quiz-wrap {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 24px 28px;
+    }
+    .quiz-num { font-family: var(--sans); font-size: 13px; letter-spacing: 0.3em; opacity: 0.6; }
+    .quiz-q { font-family: var(--brush); font-size: 20px; line-height: 1.6; margin: 6px 0 16px; letter-spacing: 0.03em; }
+    .quiz-opt {
+      display: block; width: 100%; text-align: left;
+      background: var(--chashitsu-bg);
+      border: 1px solid var(--line-soft);
+      padding: 12px 18px; margin-bottom: 10px;
+      font-family: inherit; font-size: 15.5px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .quiz-opt:hover:not(:disabled) { background: #fff8e8; border-color: var(--accent); }
+    .quiz-opt.is-correct { background: rgba(61,90,63,0.12); border-color: var(--moss); color: var(--moss); font-weight: 600; }
+    .quiz-opt.is-wrong { background: rgba(196,56,56,0.08); border-color: var(--accent); color: var(--accent); }
+    .quiz-opt:disabled { cursor: default; }
+    .quiz-explain {
+      display: none; margin-top: 14px;
+      padding: 14px 18px;
+      background: rgba(31,31,29,0.04);
+      border-left: 3px solid var(--accent);
+      font-size: 14.5px; line-height: 1.85;
+    }
+    .quiz-explain.is-shown { display: block; animation: fade 0.3s; }
+    .quiz-explain strong { color: var(--accent); }
+
+    /* Discussion */
+    .discuss-list { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .discuss-item {
+      background: var(--chashitsu-paper);
+      border-left: 3px solid var(--accent);
+      padding: 16px 22px; cursor: pointer;
+    }
+    .discuss-item .qn { font-family: var(--brush); font-size: 15px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 4px; }
+    .discuss-item .qt { font-size: 16px; line-height: 1.85; }
+    .discuss-item .hint {
+      max-height: 0; overflow: hidden; opacity: 0;
+      font-size: 14px; line-height: 1.85;
+      transition: max-height 0.4s, opacity 0.3s, margin 0.3s, padding 0.3s;
+      color: var(--ink-soft); font-style: italic;
+    }
+    .discuss-item.is-open .hint {
+      max-height: 200px; opacity: 1;
+      margin-top: 12px; padding-top: 12px;
+      border-top: 1px dashed var(--line-soft);
+    }
+
+    /* Conclusion */
+    .takeaways { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+    .take {
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 16px 22px;
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      animation: rise 0.6s ease backwards;
+    }
+    .take .num { font-family: var(--brush); font-size: 36px; color: var(--accent); line-height: 1; min-width: 50px; }
+    .take .txt { font-size: 16px; line-height: 1.85; }
+    .take strong { color: var(--accent); }
+
+    /* References */
+    .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+    .ref-card {
+      background: var(--chashitsu-paper);
+      border-top: 3px solid var(--accent);
+      padding: 20px 22px;
+    }
+    .ref-card h3 { font-family: var(--brush); font-size: 18px; margin-bottom: 12px; letter-spacing: 0.04em; }
+    .ref-card p {
+      font-size: 14px; line-height: 1.85;
+      padding: 6px 0; border-bottom: 1px solid var(--line-faint);
+    }
+    .ref-card p:last-child { border-bottom: none; }
+    .ref-card em { color: var(--accent); font-style: italic; }
+
+    /* Animations */
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    .slide.is-active .paper-card:nth-child(1) { animation-delay: 0.05s; }
+    .slide.is-active .paper-card:nth-child(2) { animation-delay: 0.2s; }
+    .slide.is-active .paper-card:nth-child(3) { animation-delay: 0.35s; }
+    .slide.is-active .take:nth-child(1) { animation-delay: 0.1s; }
+    .slide.is-active .take:nth-child(2) { animation-delay: 0.3s; }
+    .slide.is-active .take:nth-child(3) { animation-delay: 0.5s; }
+
+    .keyboard-hint {
+      position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
+      font-family: var(--sans); font-size: 9.5px;
+      letter-spacing: 0.25em; opacity: 0.4;
+      pointer-events: none; z-index: 60;
+    }
+    .keyboard-hint kbd {
+      font-family: var(--mono); font-size: 9.5px;
+      background: rgba(31,31,29,0.08);
+      padding: 1px 5px; margin: 0 2px;
+    }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      .topbar { padding: 0 14px; }
+      .top-title { font-size: 15px; }
+      .top-title small { display: none; }
+      .top-right { display: none; }
+      .toc-btn { font-size: 10.5px; padding: 4px 9px; letter-spacing: 0.18em; }
+
+      .slide { padding: 26px 22px 20px; }
+      .slide-title { padding: 26px 22px; }
+      .slide-title h1 { font-size: 42px; }
+      .slide-title .subtitle { font-size: 14.5px; letter-spacing: 0.18em; }
+      .slide-title .author { font-size: 15px; }
+      .meta-strip { font-size: 11.5px; gap: 14px; }
+
+      .slide-section { padding: 26px 22px; }
+      .slide-section h2 { font-size: 36px; }
+      .slide-section .sec-en { font-size: 13px; }
+      .slide-section .sec-q { font-size: 16px; }
+      .slide-section .big-num { font-size: 130px; bottom: 20px; right: 20px; }
+
+      .content-head h2 { font-size: 24px; }
+      .content-head .h-en { font-size: 11.5px; }
+      .content-head .h-tag { display: none; }
+
+      .lead { font-size: 15.5px; }
+      .quote-box { font-size: 15.5px; padding: 16px 20px; }
+
+      .papers-grid { grid-template-columns: 1fr; gap: 12px; }
+      .paper-card { padding: 18px 20px; }
+
+      .chart-wrap { padding: 18px 18px; }
+      .chart-svg { max-height: 280px; }
+      .chart-controls { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+      .pitfall { padding: 18px 20px; }
+      .pitfall h3 { font-size: 20px; }
+
+      .dso-cpo { grid-template-columns: 1fr; }
+      .cmp-table { font-size: 12.5px; display: block; overflow-x: auto; }
+      .cmp-table th, .cmp-table td { padding: 9px 10px; }
+
+      .case-tab-bar { overflow-x: auto; scrollbar-width: none; }
+      .case-tab-bar::-webkit-scrollbar { display: none; }
+      .case-tab-btn { padding: 10px 14px; font-size: 13.5px; flex-shrink: 0; }
+      .case-tab-panel h4 { font-size: 18px; }
+      .case-tab-panel p { font-size: 14.5px; }
+
+      .advice { padding: 16px 20px; }
+      .advice h3 { font-size: 17px; }
+      .advice li { font-size: 13.5px; }
+
+      .quiz-wrap { padding: 20px 22px; }
+      .quiz-q { font-size: 17px; }
+      .quiz-opt { font-size: 14.5px; padding: 11px 16px; }
+      .quiz-explain { font-size: 13.5px; }
+
+      .ref-grid { grid-template-columns: 1fr; }
+
+      .navbar { padding: 0 14px; height: 58px; }
+      .nav-btn { padding: 7px 14px; font-size: 13px; letter-spacing: 0.1em; }
+      .dots { max-width: 200px; }
+      .nav-center { font-size: 12px; gap: 10px; }
+
+      .toc-panel { padding: 24px 22px; }
+      .toc-list { grid-template-columns: 1fr; gap: 0; }
+      .toc-list .lab { font-size: 13.5px; }
+
+      .keyboard-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<svg class="paper-grain" aria-hidden="true">
+  <defs>
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#paper-noise)" />
+</svg>
+
+<header class="topbar">
+  <div class="top-left">
+    <a href="../../teaching-zh.html" class="back">← 茶室</a>
+    <span class="top-sep">·</span>
+    <span class="top-title">選樣偏誤與案例選取<small>社研法 第 9 週</small></span>
+  </div>
+  <div class="top-right">
+    <span>DSI ・ Geddes ・ Collier</span>
+    <button class="toc-btn" onclick="toggleToc()">目次 ・ TOC</button>
+  </div>
+</header>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ============ S0 TITLE ============ -->
+  <section class="slide slide-title is-active" data-kind="title" data-label="封面">
+    <div class="slide-inner">
+      <div class="week-tag">
+        <span class="seal">研</span>
+        <span>第 9 週 ・ 4/21 ・ WEEK 9</span>
+      </div>
+      <h1>選樣偏誤與案例選取</h1>
+      <p class="subtitle">SELECTION BIAS AND CASE SELECTION</p>
+      <p class="author">
+        三篇文獻的對話：<cite>King, Keohane &amp; Verba (1994, ch.4)</cite>、<cite>Geddes (1990)</cite>、<cite>Collier, Mahoney &amp; Seawright (2004, ch.6)</cite>。<br/>
+        從統計直觀，到質性反思，再到有限的辯護——一個方法論問題如何被三代學者反覆磨亮。
+      </p>
+      <div class="meta-strip">
+        <span>社會研究法 ・ 葉崇揚</span>
+        <span>東吳大學社會學系</span>
+        <span>2026 春學期</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S1 THREE PAPERS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="三篇文獻">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>為什麼把三篇一起讀</h2>
+        <span class="h-en">WHY THESE THREE PAPERS</span>
+        <span class="h-tag">01 ・ 引入</span>
+      </div>
+      <p class="lead">
+        選樣偏誤（<span class="term-en">selection bias</span>）是質性比較研究最常被量化學者質疑的方法學問題。本週把三篇代表性文獻合讀，看同一個問題如何在不同立場下被提出、接收、修正。
+      </p>
+      <div class="papers-grid">
+        <div class="paper-card">
+          <div class="yr">1990</div>
+          <h3>Geddes</h3>
+          <div class="cite">"How the Cases You Choose..."</div>
+          <p>首次把「在依變項上選樣」寫成方法學通則，提出三種典型錯誤；對比較政治學影響深遠。</p>
+        </div>
+        <div class="paper-card">
+          <div class="yr">1994</div>
+          <h3>King, Keohane &amp; Verba</h3>
+          <div class="cite">DSI, Chapter 4</div>
+          <p>把選樣偏誤放進統計推論的框架，主張無變異設計「甚麼都學不到」。</p>
+        </div>
+        <div class="paper-card">
+          <div class="yr">2004</div>
+          <h3>Collier, Mahoney &amp; Seawright</h3>
+          <div class="cite">Rethinking Social Inquiry, ch.6</div>
+          <p>質性研究者的回應：DSO vs CPO，為「無變異設計」做有限但穩健的辯護。</p>
+        </div>
+      </div>
+      <p class="lead" style="margin-top: 22px;">
+        為何對<strong>社會政策研究</strong>格外重要？我們研究的對象多是「<strong>已經發生政策改革</strong>」的國家、「<strong>已採行某制度</strong>」的地方政府。這正是 Geddes 口中最容易出問題的選樣方式。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S2 SECTION 1 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第一部分：DSI 核心">
+    <div class="slide-inner">
+      <div class="big-num">壹</div>
+      <p class="part">PART 01</p>
+      <h2>DSI 的核心主張</h2>
+      <p class="sec-en">Selection Bias as a Statistical Problem</p>
+      <p class="sec-q">
+        當案例進入樣本的機率，受依變項取值影響——X 與誤差項相關，因果係數被壓平。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S3 DEFINITION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="什麼是在依變項上選樣">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>什麼是「在依變項上選樣」</h2>
+        <span class="h-en">SELECTION ON DEPENDENT VARIABLE</span>
+      </div>
+      <p class="lead">
+        DSI 所謂的選樣偏誤指的是：「<strong>依變項的取值影響了案例是否進入樣本</strong>」。常見三種樣態：
+      </p>
+      <div class="dso-cpo" style="grid-template-columns: 1fr 1fr 1fr;">
+        <div class="dc-card dso">
+          <span class="ab">truncation</span>
+          <h3>截尾</h3>
+          <p>依變項某值以上或以下的觀察值全部被排除。</p>
+        </div>
+        <div class="dc-card cpo">
+          <span class="ab">self-selection</span>
+          <h3>自我選擇</h3>
+          <p>研究對象自行決定是否被觀察到（如政策計畫的參與者）。</p>
+        </div>
+        <div class="dc-card" style="border-top-color: var(--gold);">
+          <span class="ab" style="background: rgba(184,134,11,0.15); color: var(--gold);">censoring</span>
+          <h3>篩選</h3>
+          <p>觀察到特定狀態才進入分析（如只看「已發生緊縮」的案例）。</p>
+        </div>
+      </div>
+      <p class="lead" style="margin-top: 18px;">
+        三種樣態統計後果相似：<strong>X 與誤差項 ε 出現相關</strong>，因果係數被壓平。
+      </p>
+      <div class="quote-box">
+        在無變異設計（no-variance design）中，沒有任何因果槓桿。若不同時納入依變項取其他值的情形，就學不到任何關於依變項原因的事。
+        <cite>— King, Keohane &amp; Verba (1994: 129–130)</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S4 INTERACTIVE TRUNCATION CHART ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="互動：截尾如何壓平斜率">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>截尾如何壓平斜率</h2>
+        <span class="h-en">INTERACTIVE: TRUNCATION DEMO</span>
+        <span class="h-tag">★ 互動</span>
+      </div>
+      <p class="lead">
+        假設真實關係是 <span class="term-en">Y = α + βX + ε</span>，β > 0。若僅保留 Y 高於某值的觀察值，樣本中 X 與 ε 出現負相關，迴歸係數被壓平、甚至反轉符號。
+      </p>
+      <div class="chart-wrap">
+        <div class="chart-title">拖動黃色虛線體會斜率變化</div>
+        <div class="chart-hint">↕ 上下拖曳下方黃色虛線（截尾線）；空心圈為被排除案例</div>
+        <svg class="chart-svg" id="truncChart" viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="chart-controls">
+          <span class="stat-box">完整斜率 β̂ = <b id="fullBeta">—</b></span>
+          <span class="stat-box">截尾後斜率 β̂ = <b id="truncBeta">—</b></span>
+          <span class="stat-box">保留案例數 n = <b id="keepN">—</b></span>
+          <button class="resample-btn" id="resampleBtn">重新抽樣</button>
+        </div>
+        <div class="legend">
+          <span><i style="background: var(--ink);"></i> 真實迴歸線</span>
+          <span><i style="background: var(--accent);"></i> 截尾後迴歸線</span>
+          <span><i style="background: var(--gold);"></i> 截尾線（可拖拉）</span>
+          <span><i style="background: var(--moss); border-radius: 50%; width: 8px; height: 8px;"></i> 保留案例</span>
+          <span><i style="background: transparent; border: 1.5px solid var(--ink); border-radius: 50%; width: 8px; height: 8px; opacity: 0.5;"></i> 排除案例</span>
+        </div>
+      </div>
+      <p class="lead" style="margin-top: 18px; font-size: 14.5px; opacity: 0.78;">
+        觀察重點：把截尾線拉高，樣本數變少，紅線逐漸變平；極端時，紅線甚至可能呈現反符號的斜率。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S5 SAMPLE SIZE DOESNT HELP ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="樣本量也救不了">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>樣本量也救不了</h2>
+        <span class="h-en">N CANNOT FIX TRUNCATION</span>
+      </div>
+      <p class="lead">
+        DSI 最反直覺的結論：如果只「<strong>隨機地</strong>」從依變項高值區段抽樣，案例數再多偏誤也不會消失。截尾改變的不是代表性的機率，而是<strong>結構性的 X 與誤差相關</strong>。
+      </p>
+      <div class="quote-box">
+        對質性研究者的警示：「我專挑已經轉型成功的國家，但我在其中隨機抽」並不構成有效辯護。
+        <cite>— DSI 對「隨機性」的限制</cite>
+      </div>
+      <p class="lead" style="margin-top: 18px;">
+        <strong>對社會政策研究的具體意涵：</strong>研究長照改革時多數只看「已建立制度的國家」；研究年金改革時只看「已發生緊縮」的個案；研究貧窮方案時只看「參與者」。若要談改革成敗的<strong>原因</strong>，這些樣本的設計本身就讓我們無法回答問題。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S6 SECTION 2 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第二部分：Geddes 三大錯誤">
+    <div class="slide-inner">
+      <div class="big-num">貳</div>
+      <p class="part">PART 02</p>
+      <h2>Geddes 的三大典型錯誤</h2>
+      <p class="sec-en">Three Typical Pitfalls in Comparative Research</p>
+      <p class="sec-q">
+        Barbara Geddes (1990) 把「在依變項上選樣」寫成比較研究的方法學通則。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S7 PITFALL 1 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="錯誤 1：只研究成功">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>錯誤一 ・ 只研究成功案例</h2>
+        <span class="h-en">PITFALL #1: STUDYING ONLY SUCCESSES</span>
+      </div>
+      <div class="pitfall">
+        <span class="lab">PITFALL ・ 01</span>
+        <h3>只研究成功的，歸納成功的原因</h3>
+        <p>最常見的錯誤：只研究「成功轉型的國家」、「推動改革成功的政府」、「脫貧的家戶」，然後從中歸納「成功的原因」。這類研究<strong>不可能</strong>告訴我們「為什麼其他案例沒有成功」——因為那些案例根本沒被觀察到。</p>
+        <div class="case-bx">
+          <p class="ct">社會政策範例</p>
+          <h4>東亞「發展型福利國家」的爭議</h4>
+          <p>Holliday (2000) 與 Kwon (2005) 依台、日、韓案例提出「生產主義福利資本主義」。Peng &amp; Wong (2008, 2010) 納入泰、馬、菲後發現，「生產主義」特徵在東亞內部的差異遠大於先前宣稱。這是典型的「只看成功工業化案例」所產生的選樣偏誤。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S8 PITFALL 2 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="錯誤 2：極端值選樣">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>錯誤二 ・ 在依變項上的極端值選樣</h2>
+        <span class="h-en">PITFALL #2: EXTREME-VALUE SELECTION</span>
+      </div>
+      <div class="pitfall">
+        <span class="lab">PITFALL ・ 02</span>
+        <h3>選極端案例對照常模</h3>
+        <p>第二種錯誤：選「極端案例」對照常模。譬如研究「福利國家慷慨程度的成因」，卻只選瑞典、挪威、丹麥與美英對照。這種對比雖有啟發，但容易把<strong>地理相近、語言相近、歷史相近</strong>等額外變項也同時固定，造成自變項與誤差項共變。</p>
+        <div class="case-bx">
+          <p class="ct">社會政策範例</p>
+          <h4>「北歐 vs. 美英」的方法論陷阱</h4>
+          <p>常見的福利國家文獻：以北歐三國對照美英兩國，得出「左派執政→慷慨福利」的結論。但這五國同時也共享了完全不同的歷史路徑、語言文化、人口規模——這些都是潛在的混淆變項，被研究設計直接忽略。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S9 PITFALL 3 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="錯誤 3：時間端點選樣">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>錯誤三 ・ 把時間序列端點當變化</h2>
+        <span class="h-en">PITFALL #3: TIME-ENDPOINT SELECTION</span>
+      </div>
+      <div class="pitfall">
+        <span class="lab">PITFALL ・ 03</span>
+        <h3>從一個高峰寫到另一個谷底</h3>
+        <p>第三種錯誤：從一個「高峰」寫到另一個「谷底」。事件本身的高峰與谷底是被選擇出來的。若起點與終點都是研究者刻意挑選，因果趨勢很可能是<strong>看圖說故事</strong>。</p>
+        <div class="case-bx">
+          <p class="ct">社會政策範例</p>
+          <h4>Universal Credit 的貧窮效應評估</h4>
+          <p>僅以 2008–2015 年為觀察區間，貧窮率下降的證據看似強；但這段期間跨過 2010 年緊縮與 2013 年稅改，起點與終點都是研究者刻意挑選。若擴展到 2020 年疫情加碼與 2022 年通膨侵蝕，同一工具的「效果」會呈現完全不同的面貌。</p>
+        </div>
+        <div class="warn">
+          <p class="wt">GEDDES 的警語</p>
+          不是所有問題都能用小樣本比較研究回答。有些問題必須擴大樣本、甚至借用量化資料，才能避免把極端值當成通則。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S10 SECTION 3 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第三部分：Collier 等人的回應">
+    <div class="slide-inner">
+      <div class="big-num">參</div>
+      <p class="part">PART 03</p>
+      <h2>Collier 等人的回應</h2>
+      <p class="sec-en">The Qualitative Reply</p>
+      <p class="sec-q">
+        質性研究者並非沒有方法論——只是用了不同的證據邏輯。<br/>
+        關鍵概念：DSO vs CPO。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S11 DSO vs CPO ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="DSO vs CPO">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>DSO vs CPO ・ 兩種證據</h2>
+        <span class="h-en">TWO TYPES OF EVIDENCE</span>
+      </div>
+      <p class="lead">
+        Collier, Mahoney &amp; Seawright (2004) 的核心貢獻：引入「<strong>資料集觀察</strong>」（DSO）與「<strong>因果過程觀察</strong>」（CPO）的區別。
+      </p>
+      <div class="dso-cpo">
+        <div class="dc-card dso">
+          <span class="ab">DSO ・ data-set observation</span>
+          <h3>資料集觀察</h3>
+          <p>填入資料表格的「列列欄欄」。每個觀察值都是同質的、可加總的——這是迴歸分析的標準資料形式。</p>
+          <p style="margin-top: 10px;"><strong>例：</strong>18 個 OECD 國家、2000–2020 年、每國每年的工會密度與社會支出。</p>
+        </div>
+        <div class="dc-card cpo">
+          <span class="ab">CPO ・ causal-process observation</span>
+          <h3>因果過程觀察</h3>
+          <p>研究者對特定案例「<strong>內部機制</strong>」的深入理解：關鍵人物的動機、制度轉折點上的非慣例文件、行動者當時的認知。</p>
+          <p style="margin-top: 10px;"><strong>例：</strong>1995 年台灣全民健保立法時，李登輝政府如何擺平醫師公會反對、勞委會內部關於費率的攻防文件。</p>
+        </div>
+      </div>
+      <p class="lead" style="margin-top: 18px;">
+        <strong>關鍵：</strong>CPO 無法化約成表格列，但對假說檢驗的貢獻可能非常大。一篇關鍵的會議紀錄、一個轉折點的見證敘述，可以推翻整個理論。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S12 NO-VARIANCE DEFENSE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="為「無變異設計」辯護">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>為「無變異設計」辯護</h2>
+        <span class="h-en">DEFENDING NO-VARIANCE DESIGN</span>
+      </div>
+      <p class="lead">
+        DSI 主張無變異設計「甚麼都學不到」。Collier 等人則主張：在某些情境下，<strong>單看一組依變項同值的案例仍可以做機制檢驗</strong>。
+      </p>
+      <p class="lead">
+        關鍵在於：研究者不是想<strong>估計平均因果效果</strong>，而是<strong>檢驗一個特定機制是否在案例內存在</strong>。Skocpol (1979) 對法、俄、中三場革命的機制拆解便是經典例子——三個案例的依變項都是「成功的社會革命」，但她要回答的是「這個機制是否運作」，而非「這個自變項的平均效果」。
+      </p>
+      <div class="quote-box">
+        如果研究問題真的是「為什麼成功／失敗」這類比較式問題，那麼在依變項上選樣確實會讓推論失效。但如果研究問題是「這個機制是否在此處運作」，那麼這類批評就不完全適用。<strong>選樣偏誤的診斷，不能跳過研究問題本身是甚麼。</strong>
+        <cite>— Collier, Mahoney &amp; Seawright (2004) 的有限辯護</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S13 COMPARISON TABLE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="DSI vs Collier 對照">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>DSI vs Collier 對照</h2>
+        <span class="h-en">DSI VS. COLLIER ET AL.</span>
+        <span class="h-tag">總整理</span>
+      </div>
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th>議題</th>
+            <th>DSI (1994)</th>
+            <th>Collier et al. (2004)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>無變異設計</td>
+            <td>沒有因果槓桿，甚麼都學不到。</td>
+            <td>可做機制檢驗，但不能做平均效果估計。</td>
+          </tr>
+          <tr>
+            <td>在依變項上選樣</td>
+            <td>幾乎總是偏誤；擴大樣本再說。</td>
+            <td>視研究問題而定；若問機制，仍可接受。</td>
+          </tr>
+          <tr>
+            <td>資料型態</td>
+            <td>以 DSO 為主，CPO 僅是軼事。</td>
+            <td>DSO 與 CPO 並列，都能對假說做出貢獻。</td>
+          </tr>
+          <tr>
+            <td>方法策略</td>
+            <td>增加觀察、隨機化、控制變項。</td>
+            <td>過程追蹤、關鍵見證、文獻交叉比對。</td>
+          </tr>
+          <tr>
+            <td>對台灣研究的意義</td>
+            <td>研究「為何台灣建健保」，要納入未建健保的國家做對照。</td>
+            <td>研究「健保立法時，政策企業家的動員機制」，可單看台灣，但要厚描證據。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ S14 SECTION 4 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第四部分：四個社會政策案例">
+    <div class="slide-inner">
+      <div class="big-num">肆</div>
+      <p class="part">PART 04</p>
+      <h2>四個社會政策範例</h2>
+      <p class="sec-en">Four Cases ・ Four Lessons</p>
+      <p class="sec-q">
+        福利體制 ・ 年金政治 ・ 活化政策 ・ 長照改革<br/>
+        每個案例都是 Geddes 與 Collier 對話的最佳教材。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S15 FOUR CASES TABS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="四案例（分頁）">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>四個社會政策案例</h2>
+        <span class="h-en">FOUR CASES</span>
+        <span class="h-tag">點選分頁切換</span>
+      </div>
+      <div class="case-tabs" id="caseTabs">
+        <div class="case-tab-bar">
+          <button class="case-tab-btn is-active" data-tab="c1">福利體制</button>
+          <button class="case-tab-btn" data-tab="c2">年金政治</button>
+          <button class="case-tab-btn" data-tab="c3">活化政策</button>
+          <button class="case-tab-btn" data-tab="c4">長照改革</button>
+        </div>
+
+        <div class="case-tab-panel is-active" data-panel="c1">
+          <h4>案例一 ・ 福利體制的分類擴張</h4>
+          <p>Esping-Andersen (1990) 以 OECD 18 個高所得國家為對象，提出自由主義、保守主義、社會民主三種體制類型。這是比較社會政策最具影響力的分類。然而後續研究發現：當分析擴展到東亞、拉美、後共時，三分類即不再完整。</p>
+          <ul>
+            <li>Castles &amp; Mitchell (1993)：補上「激進主義」（antipodean）類型。</li>
+            <li>Ferrera (1996)：提出南歐類型。</li>
+            <li>Gough (2004)：在低所得國家中應改談「非正式保障」。</li>
+          </ul>
+          <div class="lesson">
+            <b>方法學教訓：</b>Esping-Andersen 的原始設計其實是在依變項（福利國家成熟度）上篩選樣本。隨著樣本擴展，類型邊界必須被重新劃定。這正是 Geddes 所警告的「成功案例選樣」的後果。
+          </div>
+        </div>
+
+        <div class="case-tab-panel" data-panel="c2">
+          <h4>案例二 ・ Pierson 的責難規避理論與樣本範圍</h4>
+          <p>Pierson (1994, 1996) 以英、美兩案例提出福利國家緊縮時期的「責難規避」（<span style="font-style: italic;">blame avoidance</span>）理論，主張緊縮政治下決策者的動機與擴張時期截然不同。這個命題影響力極大。</p>
+          <p>但批評者（Green-Pedersen 2002；Starke 2006）指出：Pierson 的兩個案例恰好是「改革艱難、政黨競爭激烈」的情境。若納入北歐（丹麥、瑞典）的大型退休金改革，責難規避只是眾多策略之一。</p>
+          <div class="lesson">
+            <b>折衷解讀：</b>Geddes 第二類錯誤（極端值選樣）與 Collier 等人的區分同時出現。Pierson 談的是<b>機制</b>（CPO 很豐富），擴展樣本不一定否定其洞見，但絕對應該<b>限制命題的推論範圍</b>。
+          </div>
+        </div>
+
+        <div class="case-tab-panel" data-panel="c3">
+          <h4>案例三 ・ 活化政策是否拉低貧窮？</h4>
+          <p>歐洲自 1990 年代後期大量採行活化政策（<span style="font-style: italic;">activation policies</span>），Bonoli (2010) 稱之為社會投資轉向。</p>
+          <p>許多早期研究僅以成功案例（丹麥、瑞典）為證，主張活化能降低貧窮；然而後續將樣本擴及德國 Hartz IV 改革與英國 New Deal，發現活化若搭配低保給付的削減，反而可能加深工作貧窮（Jessoula et al. 2010；Knotz 2020）。</p>
+          <div class="lesson">
+            <b>方法學教訓：</b>這是 DSI 所提醒的<b>截尾偏誤</b>——只看「已加強活化的國家」並觀察貧窮變化，我們無法估計活化的純粹效果，因為同一時期北歐的勞動市場制度、工會密度、集體協商範圍也都是高水準，形成混淆。
+          </div>
+        </div>
+
+        <div class="case-tab-panel" data-panel="c4">
+          <h4>案例四 ・ 台、德、日、韓四國的長照改革推動條件</h4>
+          <p>比較長照改革常見的問題：我們傾向只研究「已建立長照保險或長照體系」的國家。台灣長照 2.0、日本介護保險、德國 Pflegeversicherung、韓國老人長期療養保險看似走了相似的路，但「為什麼這四國先走」與「為什麼其他國家沒走」這個問題，幾乎沒有被處理過。</p>
+          <p>Campbell, Ikegami &amp; Gibson (2010) 指出：若要回答後者，就必須納入未建立長照保險的國家（如義大利、西班牙）作為對照。</p>
+          <div class="lesson">
+            <b>台灣本地啟示：</b>多數研究聚焦於<b>已接受服務者</b>的滿意度與使用模式，忽略「符合資格但未進入服務」的群體。若要回答「為何該接受卻未接受」，必須重新設計樣本（從資格界定、名冊比對、非使用者訪談切入）。
+          </div>
+        </div>
+      </div>
+      <div class="quote-box" style="margin-top: 22px;">
+        選樣偏誤不是量化研究的專有病灶——它就在我們日常的文獻生產中。差別在於：量化研究可以用模型寫出偏誤大小，質性研究則必須依賴研究者自己對案例結構的警覺。
+        <cite>— 跨案例共同教訓</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S16 SECTION 5 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第五部分：實作建議">
+    <div class="slide-inner">
+      <div class="big-num">伍</div>
+      <p class="part">PART 05</p>
+      <h2>實作建議</h2>
+      <p class="sec-en">How to Defend Your Own Thesis</p>
+      <p class="sec-q">
+        三個階段、三種策略——讓你的論文經得起 Geddes 與 Collier 的審視。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S17 ADVICE 1 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="實作 1：研究設計">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>研究設計階段</h2>
+        <span class="h-en">DESIGN PHASE</span>
+        <span class="h-tag">建議 1/3</span>
+      </div>
+      <div class="advice-grid">
+        <div class="advice">
+          <span class="stage">STAGE 01 ・ DESIGN</span>
+          <h3>先想清楚「依變項是什麼」</h3>
+          <ul>
+            <li>先<strong>明確寫下依變項</strong>，自問：「這個依變項的哪些值沒有進入我的樣本？」</li>
+            <li>若樣本只保留「已採行某政策」的單位，必須在研究問題上<strong>限縮</strong>，改問「機制如何運作」而非「為何採行」。</li>
+            <li>若要問「為何採行」，至少納入一個「<strong>類似處境但未採行</strong>」的對照案例（Geddes 的最低限度建議）。</li>
+            <li>對照案例的選擇：相似條件、相反結果（最相似系統設計，MSSD）。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S18 ADVICE 2 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="實作 2：資料蒐集">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>資料蒐集階段</h2>
+        <span class="h-en">DATA COLLECTION</span>
+        <span class="h-tag">建議 2/3</span>
+      </div>
+      <div class="advice-grid">
+        <div class="advice">
+          <span class="stage">STAGE 02 ・ COLLECT</span>
+          <h3>建立完整的母體清單</h3>
+          <ul>
+            <li>建立<strong>完整母體清單</strong>，標示納入／不納入的案例及其排除理由。</li>
+            <li>善用 Collier 等人的 <strong>CPO 觀念</strong>：關鍵文件、見證敘述、非慣例事件，可大幅強化推論。</li>
+            <li>若研究台灣，國史館檔案、立法院公報、行政院記錄、媒體口述史都是 CPO 的潛在來源。</li>
+            <li>將「未進入樣本的案例為什麼不在」也記錄在研究筆記中——這是論文寫作時的辯護彈藥。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S19 ADVICE 3 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="實作 3：論文寫作">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>論文寫作階段</h2>
+        <span class="h-en">WRITING PHASE</span>
+        <span class="h-tag">建議 3/3</span>
+      </div>
+      <div class="advice-grid">
+        <div class="advice">
+          <span class="stage">STAGE 03 ・ WRITE</span>
+          <h3>把選樣邏輯寫進方法章節</h3>
+          <ul>
+            <li>把「<strong>研究範圍條件</strong>」（<span style="font-style: italic;">scope conditions</span>）明確寫進命題，避免過度延伸。</li>
+            <li>在方法章節以一小節討論<strong>選樣偏誤的可能性與因應策略</strong>；這幾乎是歐洲社會政策期刊（JESP、JSP、SP&amp;A）審查人的標準提問。</li>
+            <li>若評審質疑，引用 <strong>Collier et al. (2004) 的 CPO 論點做限定辯護</strong>，而非主張「自己沒有偏誤」——後者幾乎一定失敗。</li>
+            <li>避免把「資料可得性」當成案例選擇的理由——這是審查人最容易抓的弱點。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S20 SECTION 6 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第六部分：自我測驗">
+    <div class="slide-inner">
+      <div class="big-num">陸</div>
+      <p class="part">PART 06</p>
+      <h2>自我測驗</h2>
+      <p class="sec-en">Self-Check ・ 3 題</p>
+      <p class="sec-q">
+        每題作答後會出現解析。<br/>
+        測驗你對三篇文獻的核心理解。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S21 QUIZ 1 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q1">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q1</h2>
+        <span class="h-en">CONCEPT</span>
+        <span class="h-tag">1/3</span>
+      </div>
+      <div class="quiz-wrap" data-correct="b">
+        <div class="quiz-num">概念辨識</div>
+        <h3 class="quiz-q">下列哪一項<strong>最準確</strong>描述 DSI 對「選樣偏誤」的核心批評？</h3>
+        <button class="quiz-opt" data-opt="a">A. 質性研究者的樣本量太小，統計檢定力不足。</button>
+        <button class="quiz-opt" data-opt="b">B. 案例進入樣本的機率受依變項取值影響，造成 X 與誤差項相關，估計量被壓平。</button>
+        <button class="quiz-opt" data-opt="c">C. 質性研究者不使用隨機分派，因此內在效度天然低落。</button>
+        <button class="quiz-opt" data-opt="d">D. 比較案例時無法納入時間序列資料。</button>
+        <div class="quiz-explain">
+          <strong>正解：B。</strong>DSI 的核心批評是統計推論層面的：選樣機率與依變項相關，會導致 X 與誤差項相關，迴歸係數被壓平（甚至反符號）。重點不在樣本大小，而在<strong>結構性的相關</strong>。樣本量再大也不能解決這個問題。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S22 QUIZ 2 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q2">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q2</h2>
+        <span class="h-en">METHODOLOGY</span>
+        <span class="h-tag">2/3</span>
+      </div>
+      <div class="quiz-wrap" data-correct="c">
+        <div class="quiz-num">方法論辯</div>
+        <h3 class="quiz-q">Collier、Mahoney &amp; Seawright (2004) 對「無變異設計」最主要的辯護是？</h3>
+        <button class="quiz-opt" data-opt="a">A. 只要擴大樣本數，無變異設計就能估計平均效果。</button>
+        <button class="quiz-opt" data-opt="b">B. 隨機抽樣能解決截尾問題。</button>
+        <button class="quiz-opt" data-opt="c">C. 若研究問題是「機制是否在此運作」，可透過 CPO 檢驗，而非估計平均因果效果。</button>
+        <button class="quiz-opt" data-opt="d">D. 因果過程觀察本身即可取代任何跨案例比較。</button>
+        <div class="quiz-explain">
+          <strong>正解：C。</strong>Collier 等人的核心辯護建立在「研究問題的不同」之上。當問題是「<strong>機制是否在此處運作</strong>」（mechanism check），而非「<strong>X 對 Y 的平均效果為何</strong>」（effect estimation），就可以透過 CPO（深度的案例內部證據）來檢驗，無變異設計仍有意義。Skocpol 對三場社會革命的研究是經典例子。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S23 QUIZ 3 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q3">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q3</h2>
+        <span class="h-en">APPLICATION</span>
+        <span class="h-tag">3/3</span>
+      </div>
+      <div class="quiz-wrap" data-correct="a">
+        <div class="quiz-num">社會政策應用</div>
+        <h3 class="quiz-q">台灣長照 2.0 研究若只分析「已接受服務者」，最直接犯了哪個 Geddes 警告的錯誤？</h3>
+        <button class="quiz-opt" data-opt="a">A. 只研究成功案例（pitfall 1：在依變項上選樣）。</button>
+        <button class="quiz-opt" data-opt="b">B. 時間端點選樣（pitfall 3）。</button>
+        <button class="quiz-opt" data-opt="c">C. 控制變項不足。</button>
+        <button class="quiz-opt" data-opt="d">D. 樣本對象缺乏隨機性。</button>
+        <div class="quiz-explain">
+          <strong>正解：A。</strong>「已接受服務」本身就是依變項上的篩選——只看「<strong>進入了服務</strong>」的人，等於忽略「符合資格但未進入服務」的群體。要回答「<strong>誰在使用、誰在被排除</strong>」這類問題，必須重新設計樣本，從資格界定、名冊比對、非使用者訪談切入。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S24 DISCUSSION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="課堂討論">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>課堂討論</h2>
+        <span class="h-en">CLASS DISCUSSION</span>
+        <span class="h-tag">點選展開提示</span>
+      </div>
+      <div class="discuss-list">
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">問題一</div>
+          <div class="qt">台灣的長照 2.0 研究幾乎都在分析已接受服務者。若要研究「為何該接受卻未接受」，你會如何重新設計樣本？</div>
+          <div class="hint">提示：從資格界定、名冊比對、非使用者訪談切入。可參考衛福部的 ADL/IADL 評估資料、長照需求調查與實際使用率的差距。</div>
+        </div>
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">問題二</div>
+          <div class="qt">東亞福利國家文獻的選樣，能否用 Collier 等人的「無變異設計＋CPO」來辯護？這樣的辯護在此是否成立？</div>
+          <div class="hint">提示：比較 Haggard &amp; Kaufman (2008) 與 Peng (2011)。前者偏「比較式問題」（為何成功），後者偏「機制檢驗」（社會投資的政治條件）。</div>
+        </div>
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">問題三</div>
+          <div class="qt">你手上正在寫的論文，選案例的理由是什麼？如果今天由 Geddes 審你，她會挑出哪個偏誤？</div>
+          <div class="hint">提示：誠實列出你<strong>排除的案例</strong>與<strong>排除的原因</strong>。「資料可得性」常常是真實理由，但很少被寫進論文——而它正是審查人最容易抓的點。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S25 CONCLUSION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="本講小結">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>本講小結</h2>
+        <span class="h-en">KEY TAKEAWAYS</span>
+        <span class="h-tag">收束</span>
+      </div>
+      <div class="takeaways">
+        <div class="take">
+          <div class="num">壹</div>
+          <div class="txt">選樣偏誤是<strong>跨典範的共同議題</strong>：DSI 講成統計問題，Geddes 擴展為質性方法學反思，Collier 等人為質性做法提供有限但穩健的辯護。</div>
+        </div>
+        <div class="take">
+          <div class="num">貳</div>
+          <div class="txt">對社會政策研究者，最關鍵的自覺是「<strong>哪些案例不在我的樣本裡</strong>」，以及「<strong>它們的不在場是否改變了我的結論</strong>」。</div>
+        </div>
+        <div class="take">
+          <div class="num">參</div>
+          <div class="txt">研究設計與寫作階段都應明確處理樣本邏輯：把<strong>範圍條件寫進命題</strong>，並用 <strong>CPO 補強因果推論</strong>。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S26 REFERENCES ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="延伸閱讀">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>延伸閱讀</h2>
+        <span class="h-en">FURTHER READING</span>
+      </div>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <h3>核心三篇</h3>
+          <p>King, G., Keohane, R. O., &amp; Verba, S. (1994). <em>Designing Social Inquiry</em>. (Ch. 4)</p>
+          <p>Geddes, B. (1990). "How the Cases You Choose Affect the Answers You Get." <em>Political Analysis</em>, 2(1), 131–150.</p>
+          <p>Brady, H. E., &amp; Collier, D. (eds.) (2010). <em>Rethinking Social Inquiry</em>. (Ch. 5, 6)</p>
+        </div>
+        <div class="ref-card">
+          <h3>方法學延伸</h3>
+          <p>Seawright, J., &amp; Gerring, J. (2008). "Case Selection Techniques." <em>PRQ</em>, 61(2), 294–308.</p>
+          <p>Collier, D. (2011). "Understanding Process Tracing." <em>PS</em>, 44(4), 823–830.</p>
+          <p>Mahoney, J. (2000). "Strategies of Causal Inference in Small N Analysis." <em>SMR</em>, 28(4), 387–424.</p>
+        </div>
+        <div class="ref-card">
+          <h3>社會政策應用</h3>
+          <p>Pierson, P. (1994). <em>Dismantling the Welfare State?</em> Cambridge UP.</p>
+          <p>Esping-Andersen, G. (1990). <em>The Three Worlds of Welfare Capitalism</em>. Polity.</p>
+          <p>Bonoli, G. (2010). "The Political Economy of Active Labor-Market Policy." <em>Politics &amp; Society</em>, 38(4).</p>
+        </div>
+        <div class="ref-card">
+          <h3>東亞與台灣</h3>
+          <p>Peng, I., &amp; Wong, J. (2010). "East Asian Welfare State Transition." <em>Comparative Social Research</em>.</p>
+          <p>Holliday, I. (2000). "Productivist Welfare Capitalism." <em>Political Studies</em>.</p>
+          <p>Campbell, J. C., Ikegami, N., &amp; Gibson, M. J. (2010). "Lessons from Public Long-Term Care Insurance." <em>Health Affairs</em>, 29(1).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<nav class="navbar">
+  <button class="nav-btn" id="prevBtn" onclick="goPrev()">← 前頁</button>
+  <div class="nav-center">
+    <span><span id="curNum">1</span> / <span id="totNum">27</span></span>
+    <div class="dots" id="dots"></div>
+  </div>
+  <button class="nav-btn" id="nextBtn" onclick="goNext()">下一頁 →</button>
+</nav>
+
+<div class="keyboard-hint">
+  <kbd>←</kbd> <kbd>→</kbd> 切換頁面　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕
+</div>
+
+<div class="toc-overlay" id="tocOverlay" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" onclick="toggleToc()">×</button>
+    <h2 class="toc-title">目次 ・ Table of Contents</h2>
+    <p class="toc-sub">點選任一條目跳到該頁</p>
+    <ul class="toc-list" id="tocList"></ul>
+  </div>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let cur = 0;
+  document.getElementById('totNum').textContent = total;
+
+  // dots & toc
+  const dotsEl = document.getElementById('dots');
+  const tocEl = document.getElementById('tocList');
+  slides.forEach((s, i) => {
+    const d = document.createElement('span');
+    d.className = 'dot' + (s.dataset.kind === 'section' ? ' is-section' : '');
+    d.title = s.dataset.label || '';
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+    const li = document.createElement('li');
+    if (s.dataset.kind === 'section') li.classList.add('is-section');
+    li.innerHTML = `<span class="num">${String(i + 1).padStart(2, '0')}</span><span class="lab">${s.dataset.label || ''}</span><span class="kind">${s.dataset.kind}</span>`;
+    li.onclick = () => { goTo(i); toggleToc(); };
+    tocEl.appendChild(li);
+  });
+
+  function goTo(n) {
+    if (n < 0 || n >= total || n === cur) return;
+    const dir = n > cur ? 1 : -1;
+    slides[cur].classList.remove('is-active');
+    slides[cur].classList.add(dir > 0 ? 'is-prev' : '');
+    cur = n;
+    slides[cur].classList.remove('is-prev');
+    slides[cur].classList.add('is-active');
+    setTimeout(() => slides.forEach((s, i) => { if (i !== cur) s.classList.remove('is-prev'); }), 500);
+    update();
+    if (n === 4) initTruncChart(); // refresh chart on enter
+  }
+  function goPrev() { goTo(cur - 1); }
+  function goNext() { goTo(cur + 1); }
+  function update() {
+    document.getElementById('curNum').textContent = cur + 1;
+    document.getElementById('prevBtn').disabled = cur === 0;
+    document.getElementById('nextBtn').disabled = cur === total - 1;
+    document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('is-active', i === cur));
+  }
+
+  function toggleToc() {
+    document.getElementById('tocOverlay').classList.toggle('is-shown');
+  }
+
+  // Case tabs
+  document.querySelectorAll('.case-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const wrap = btn.closest('.case-tabs');
+      const tab = btn.dataset.tab;
+      wrap.querySelectorAll('.case-tab-btn').forEach(b => b.classList.remove('is-active'));
+      wrap.querySelectorAll('.case-tab-panel').forEach(p => p.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      wrap.querySelector(`.case-tab-panel[data-panel="${tab}"]`).classList.add('is-active');
+    });
+  });
+
+  // Quiz
+  document.querySelectorAll('.quiz-wrap').forEach(quiz => {
+    const correct = quiz.dataset.correct;
+    const opts = quiz.querySelectorAll('.quiz-opt');
+    opts.forEach(opt => {
+      opt.addEventListener('click', () => {
+        if (quiz.dataset.done) return;
+        quiz.dataset.done = '1';
+        const picked = opt.dataset.opt;
+        opts.forEach(o => {
+          o.disabled = true;
+          if (o.dataset.opt === correct) o.classList.add('is-correct');
+          else if (o.dataset.opt === picked) o.classList.add('is-wrong');
+        });
+        quiz.querySelector('.quiz-explain').classList.add('is-shown');
+      });
+    });
+  });
+
+  // Keyboard + touch
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('tocOverlay').classList.contains('is-shown')) {
+      if (e.key === 'Escape') toggleToc();
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goNext(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goPrev(); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+    else if (e.key === 'Escape') toggleToc();
+    else if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+  });
+
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) dx < 0 ? goNext() : goPrev();
+  });
+
+  // ───────────────────────────────────────
+  // Truncation chart (interactive)
+  // ───────────────────────────────────────
+  const chartEl = document.getElementById('truncChart');
+  const W = 600, H = 360;
+  const PAD = { l: 50, r: 30, t: 30, b: 50 };
+  const PW = W - PAD.l - PAD.r, PH = H - PAD.t - PAD.b;
+
+  let pts = [];
+  let cutY = -1.5; // in data units (Y range roughly -3 to 3)
+
+  function rnorm() { // box-muller
+    let u = 0, v = 0;
+    while (u === 0) u = Math.random();
+    while (v === 0) v = Math.random();
+    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+  }
+  function genPoints(n = 80, beta = 0.7) {
+    const arr = [];
+    for (let i = 0; i < n; i++) {
+      const x = rnorm() * 1.5;
+      const y = beta * x + rnorm() * 0.9;
+      arr.push({ x, y });
+    }
+    return arr;
+  }
+
+  function lsr(data) {
+    const n = data.length;
+    if (n < 2) return { a: 0, b: 0 };
+    let sx = 0, sy = 0, sxx = 0, sxy = 0;
+    data.forEach(p => { sx += p.x; sy += p.y; sxx += p.x * p.x; sxy += p.x * p.y; });
+    const b = (n * sxy - sx * sy) / (n * sxx - sx * sx);
+    const a = (sy - b * sx) / n;
+    return { a, b };
+  }
+
+  // X domain & Y domain in data units
+  const X_MIN = -4, X_MAX = 4;
+  const Y_MIN = -3.5, Y_MAX = 3.5;
+  function px(x) { return PAD.l + ((x - X_MIN) / (X_MAX - X_MIN)) * PW; }
+  function py(y) { return PAD.t + ((Y_MAX - y) / (Y_MAX - Y_MIN)) * PH; }
+  function dy(yp) { return Y_MAX - ((yp - PAD.t) / PH) * (Y_MAX - Y_MIN); }
+
+  function drawChart() {
+    const kept = pts.filter(p => p.y >= cutY);
+    const fullFit = lsr(pts);
+    const truncFit = kept.length > 1 ? lsr(kept) : { a: 0, b: 0 };
+
+    // Build SVG content
+    const xL = X_MIN, xR = X_MAX;
+    let svg = '';
+
+    // axes
+    svg += `<line x1="${PAD.l}" y1="${PAD.t}" x2="${PAD.l}" y2="${H - PAD.b}" stroke="#1f1f1d" stroke-width="1" opacity="0.55"/>`;
+    svg += `<line x1="${PAD.l}" y1="${py(0)}" x2="${W - PAD.r}" y2="${py(0)}" stroke="#1f1f1d" stroke-width="1" opacity="0.55"/>`;
+    // labels
+    svg += `<text x="${W - PAD.r}" y="${py(0) + 18}" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#1f1f1d" opacity="0.6">X</text>`;
+    svg += `<text x="${PAD.l - 8}" y="${PAD.t + 4}" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#1f1f1d" opacity="0.6">Y</text>`;
+    // gridlines
+    for (let g = -3; g <= 3; g++) {
+      if (g === 0) continue;
+      svg += `<line x1="${PAD.l}" y1="${py(g)}" x2="${W - PAD.r}" y2="${py(g)}" stroke="#1f1f1d" stroke-width="0.5" opacity="0.08"/>`;
+      svg += `<line x1="${px(g)}" y1="${PAD.t}" x2="${px(g)}" y2="${H - PAD.b}" stroke="#1f1f1d" stroke-width="0.5" opacity="0.08"/>`;
+    }
+
+    // points
+    pts.forEach(p => {
+      const kept = p.y >= cutY;
+      if (kept) {
+        svg += `<circle cx="${px(p.x)}" cy="${py(p.y)}" r="3.2" fill="#3d5a3f" opacity="0.85"/>`;
+      } else {
+        svg += `<circle cx="${px(p.x)}" cy="${py(p.y)}" r="3" fill="none" stroke="#1f1f1d" stroke-width="1" opacity="0.4"/>`;
+      }
+    });
+
+    // True regression line (full)
+    const fy1 = fullFit.a + fullFit.b * xL;
+    const fy2 = fullFit.a + fullFit.b * xR;
+    svg += `<line x1="${px(xL)}" y1="${py(fy1)}" x2="${px(xR)}" y2="${py(fy2)}" stroke="#1f1f1d" stroke-width="2.2" opacity="0.85"/>`;
+
+    // Truncated regression line
+    if (kept.length > 1) {
+      const ty1 = truncFit.a + truncFit.b * xL;
+      const ty2 = truncFit.a + truncFit.b * xR;
+      svg += `<line x1="${px(xL)}" y1="${py(ty1)}" x2="${px(xR)}" y2="${py(ty2)}" stroke="#c43838" stroke-width="2.2" stroke-dasharray="6 4"/>`;
+    }
+
+    // Cutoff line (draggable)
+    const cy = py(cutY);
+    svg += `<line x1="${PAD.l}" y1="${cy}" x2="${W - PAD.r}" y2="${cy}" stroke="#b8860b" stroke-width="2" stroke-dasharray="8 5" id="cutLine"/>`;
+    svg += `<text x="${W - PAD.r - 4}" y="${cy - 6}" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#b8860b">截尾線 Y ≥ ${cutY.toFixed(2)}</text>`;
+    // Drag handle
+    svg += `<rect x="${W - PAD.r - 16}" y="${cy - 6}" width="14" height="12" fill="#b8860b" rx="2" style="cursor:ns-resize"/>`;
+
+    chartEl.innerHTML = svg;
+
+    document.getElementById('fullBeta').textContent = fullFit.b.toFixed(3);
+    document.getElementById('truncBeta').textContent = kept.length > 1 ? truncFit.b.toFixed(3) : 'n/a';
+    document.getElementById('keepN').textContent = kept.length + ' / ' + pts.length;
+  }
+
+  function initTruncChart() {
+    if (pts.length === 0) {
+      pts = genPoints(80, 0.7);
+      drawChart();
+    } else {
+      drawChart();
+    }
+  }
+  initTruncChart();
+
+  // Drag interaction
+  let dragging = false;
+  function getCursorY(e) {
+    const rect = chartEl.getBoundingClientRect();
+    const y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+    return (y / rect.height) * H;
+  }
+  chartEl.addEventListener('mousedown', e => {
+    dragging = true;
+    cutY = dy(getCursorY(e));
+    cutY = Math.max(-3.4, Math.min(3.4, cutY));
+    drawChart();
+  });
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    cutY = dy(getCursorY(e));
+    cutY = Math.max(-3.4, Math.min(3.4, cutY));
+    drawChart();
+  });
+  document.addEventListener('mouseup', () => { dragging = false; });
+  chartEl.addEventListener('touchstart', e => {
+    dragging = true;
+    cutY = dy(getCursorY(e));
+    cutY = Math.max(-3.4, Math.min(3.4, cutY));
+    drawChart();
+    e.preventDefault();
+  });
+  document.addEventListener('touchmove', e => {
+    if (!dragging) return;
+    cutY = dy(getCursorY(e));
+    cutY = Math.max(-3.4, Math.min(3.4, cutY));
+    drawChart();
+    e.preventDefault();
+  }, { passive: false });
+  document.addEventListener('touchend', () => { dragging = false; });
+
+  document.getElementById('resampleBtn').addEventListener('click', () => {
+    pts = genPoints(80, 0.7);
+    drawChart();
+  });
+
+  update();
+</script>
+</body>
+</html>
