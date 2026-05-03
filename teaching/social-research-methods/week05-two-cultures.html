@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>兩種文化的故事 ・ 社會研究法 第 5 週 ・ 葉崇揚</title>
+  <meta name="description" content="社會研究法第 5 週互動講義：Mahoney & Goertz 兩種文化——量化與質化研究的十大維度對比。分頁式互動簡報。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --chashitsu-bg: #e8dcc4;
+      --chashitsu-paper: #f5ecd6;
+      --chashitsu-tatami: #d8c8a8;
+      --moss: #3d5a3f;
+      --water: #5a7a8a;
+      --earth: #8a6a4a;
+      --persimmon: #c47038;
+      --accent: #c43838;
+      --qual: #6a4a3a;            /* 質化 — 棕 */
+      --qual-bg: rgba(106,74,58,0.08);
+      --quant: #3a5a7a;           /* 量化 — 藍 */
+      --quant-bg: rgba(58,90,122,0.08);
+      --ink: #1f1f1d;
+      --ink-soft: rgba(31,31,29,0.78);
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --line-faint: rgba(31,31,29,0.05);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+      --mono: 'JetBrains Mono', 'Menlo', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: var(--jp);
+      background: var(--chashitsu-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 17px;
+      line-height: 1.85;
+      position: relative;
+    }
+    .paper-grain {
+      position: fixed; inset: 0; pointer-events: none;
+      opacity: 0.32; mix-blend-mode: multiply; z-index: 1;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 56px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .top-left { display: flex; align-items: center; gap: 14px; }
+    .back {
+      font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.25em; opacity: 0.55;
+      text-decoration: none; color: var(--ink);
+    }
+    .back:hover { opacity: 0.85; }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .top-title {
+      font-family: var(--brush); font-size: 19px;
+      letter-spacing: 0.06em;
+    }
+    .top-title small {
+      font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.18em; opacity: 0.55; margin-left: 10px;
+    }
+    .top-right {
+      display: flex; align-items: center; gap: 18px;
+      font-family: var(--sans); font-size: 12px; opacity: 0.6; letter-spacing: 0.15em;
+    }
+    .toc-btn {
+      background: transparent; border: 1px solid var(--line);
+      font-family: inherit; font-size: 11.5px;
+      letter-spacing: 0.2em;
+      padding: 5px 12px;
+      cursor: pointer; color: var(--ink); opacity: 0.75;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .toc-btn:hover { background: var(--chashitsu-paper); opacity: 1; }
+
+    /* ── Progress bar ── */
+    .progress {
+      position: fixed; top: 56px; left: 0;
+      height: 2px; background: var(--accent);
+      z-index: 49; transition: width 0.4s ease;
+    }
+
+    /* ── Slide deck ── */
+    .deck {
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 64px;
+      overflow: hidden;
+      z-index: 2;
+    }
+    .slide {
+      position: absolute; inset: 0;
+      padding: 36px 72px 28px;
+      overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.2,0.7,0.2,1);
+    }
+    .slide.is-prev { transform: translateX(-40px); }
+    .slide.is-active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide-inner { max-width: 1080px; margin: 0 auto; }
+
+    /* ── Bottom nav ── */
+    .navbar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 64px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .nav-btn {
+      background: transparent; border: 1px solid var(--ink);
+      font-family: var(--jp); font-size: 14px;
+      letter-spacing: 0.15em; color: var(--ink);
+      padding: 9px 22px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover:not(:disabled) { background: var(--ink); color: var(--chashitsu-paper); }
+    .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; border-color: var(--line); color: var(--ink); }
+    .nav-center {
+      display: flex; align-items: center; gap: 16px;
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.18em; opacity: 0.7;
+    }
+    .dots {
+      display: flex; gap: 5px;
+      max-width: 480px; overflow: hidden; flex-wrap: wrap;
+      justify-content: center;
+    }
+    .dot {
+      width: 7px; height: 7px;
+      background: var(--line);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .dot:hover { background: var(--accent); transform: scale(1.3); }
+    .dot.is-active { background: var(--accent); }
+    .dot.is-section { width: 14px; }
+
+    /* ── TOC overlay ── */
+    .toc-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(31,31,29,0.85);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 40px;
+    }
+    .toc-overlay.is-shown { display: flex; animation: fade 0.3s; }
+    .toc-panel {
+      background: var(--chashitsu-paper);
+      max-width: 920px; width: 100%; max-height: 80vh;
+      overflow-y: auto;
+      padding: 36px 44px;
+      border: 1px solid var(--accent);
+      position: relative;
+    }
+    .toc-close {
+      position: absolute; top: 14px; right: 18px;
+      background: transparent; border: none;
+      font-size: 26px; cursor: pointer; opacity: 0.5;
+      font-family: var(--brush); color: var(--ink);
+    }
+    .toc-close:hover { opacity: 1; }
+    .toc-title { font-family: var(--brush); font-size: 26px; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .toc-sub { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 22px; }
+    .toc-list {
+      list-style: none; padding: 0; margin: 0;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px;
+    }
+    .toc-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--line-soft);
+      cursor: pointer;
+      display: flex; align-items: baseline; gap: 14px;
+      transition: color 0.2s;
+    }
+    .toc-list li:hover { color: var(--accent); }
+    .toc-list .num {
+      font-family: var(--brush); font-size: 14px;
+      color: var(--accent); min-width: 28px;
+    }
+    .toc-list .lab {
+      font-size: 15px; flex: 1;
+    }
+    .toc-list .kind {
+      font-family: var(--sans); font-size: 10px;
+      letter-spacing: 0.2em; opacity: 0.45;
+    }
+    .toc-list .is-section { color: var(--accent); font-weight: 600; }
+
+    /* ── Slide types ── */
+    /* TITLE slide */
+    .slide-title {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      padding: 36px 72px;
+    }
+    .slide-title .week-tag {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.4em; opacity: 0.6;
+      margin-bottom: 24px;
+    }
+    .slide-title .seal {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      background: var(--accent); color: var(--chashitsu-paper);
+      font-family: var(--brush); font-size: 16px;
+      transform: rotate(-3deg);
+    }
+    .slide-title h1 {
+      font-family: var(--brush); font-size: 76px;
+      font-weight: 400; line-height: 1.1; letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+    .slide-title .subtitle {
+      font-family: var(--sans); font-size: 18px;
+      letter-spacing: 0.25em; opacity: 0.6;
+      margin-bottom: 28px;
+    }
+    .slide-title .author {
+      font-size: 17px; opacity: 0.85; line-height: 1.7;
+      max-width: 700px;
+    }
+    .slide-title .author cite { font-style: italic; color: var(--accent); }
+    .dual-badges {
+      display: flex; gap: 14px; margin-top: 32px;
+    }
+    .dual-badges span {
+      padding: 10px 22px;
+      font-family: var(--brush); font-size: 17px;
+      letter-spacing: 0.08em;
+      border: 1px solid;
+    }
+    .badge-qual { color: var(--qual); border-color: var(--qual); background: var(--qual-bg); }
+    .badge-quant { color: var(--quant); border-color: var(--quant); background: var(--quant-bg); }
+    .meta-strip {
+      margin-top: 36px;
+      display: flex; flex-wrap: wrap; gap: 24px;
+      font-family: var(--sans); font-size: 13px; opacity: 0.6;
+      letter-spacing: 0.12em;
+    }
+
+    /* SECTION DIVIDER slide */
+    .slide-section {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      background: linear-gradient(135deg, rgba(196,56,56,0.06) 0%, rgba(216,200,168,0.4) 100%);
+      padding: 36px 72px;
+      position: relative;
+    }
+    .slide-section .big-num {
+      font-family: var(--brush); font-size: 240px;
+      color: var(--accent); opacity: 0.15;
+      position: absolute;
+      bottom: 30px; right: 60px;
+      line-height: 1;
+    }
+    .slide-section .part {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.45em; opacity: 0.55;
+      margin-bottom: 14px;
+    }
+    .slide-section h2 {
+      font-family: var(--brush); font-size: 60px;
+      font-weight: 400; letter-spacing: 0.04em;
+      line-height: 1.15; margin-bottom: 14px;
+    }
+    .slide-section .sec-en {
+      font-family: var(--sans); font-size: 16px;
+      letter-spacing: 0.3em; opacity: 0.55; font-style: italic;
+      margin-bottom: 22px;
+    }
+    .slide-section .sec-q {
+      font-size: 19px; opacity: 0.85;
+      max-width: 620px; line-height: 1.85;
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+    }
+
+    /* CONTENT slide */
+    .slide-content {
+      padding-top: 28px;
+    }
+    .content-head {
+      margin-bottom: 24px;
+      display: flex; align-items: baseline; gap: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .content-head h2 {
+      font-family: var(--brush); font-size: 38px;
+      font-weight: 400; letter-spacing: 0.04em;
+    }
+    .content-head .h-en {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.25em; opacity: 0.5;
+    }
+    .content-head .h-tag {
+      margin-left: auto;
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.3em; opacity: 0.5;
+    }
+
+    /* ── Reusable components ── */
+    /* Why grid */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+      margin-top: 12px;
+    }
+    .why-card {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 24px 22px;
+      transition: transform 0.3s, border-color 0.3s;
+      animation: rise 0.5s ease backwards;
+    }
+    .why-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .why-card .glyph {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px;
+      background: var(--accent); color: var(--chashitsu-paper);
+      font-family: var(--brush); font-size: 22px;
+      margin-bottom: 14px;
+    }
+    .why-card h3 {
+      font-family: var(--brush); font-size: 20px;
+      letter-spacing: 0.04em; margin-bottom: 8px;
+    }
+    .why-card p { font-size: 15px; line-height: 1.85; opacity: 0.86; }
+    .why-card .cite {
+      font-family: var(--sans); font-size: 11.5px;
+      opacity: 0.55; letter-spacing: 0.1em;
+      margin-top: 12px; padding-top: 10px;
+      border-top: 1px solid var(--line-soft);
+    }
+
+    /* Overview table */
+    .ov-table {
+      width: 100%; border-collapse: collapse;
+      margin-top: 8px; background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      font-size: 14.5px;
+    }
+    .ov-table th, .ov-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line-soft);
+      text-align: left;
+    }
+    .ov-table th {
+      font-family: var(--brush); font-size: 16px; font-weight: 500;
+      background: rgba(216,200,168,0.4);
+    }
+    .ov-table th.qual-h { background: var(--qual-bg); color: var(--qual); }
+    .ov-table th.quant-h { background: var(--quant-bg); color: var(--quant); }
+    .ov-table td:first-child { width: 36px; opacity: 0.5; font-family: var(--sans); }
+    .ov-table td:nth-child(2) { font-weight: 500; }
+    .ov-table tr.clickable { cursor: pointer; transition: background 0.15s; }
+    .ov-table tr.clickable:hover td { background: #fff8e8; }
+    .ov-table tr.clickable td { transition: background 0.15s; }
+    .ov-hint {
+      margin-top: 10px;
+      font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.18em; color: var(--accent); opacity: 0.85;
+      text-align: center;
+    }
+
+    /* Comparison two columns */
+    .compare {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      margin-top: 8px;
+    }
+    .col {
+      background: var(--chashitsu-paper);
+      border-top: 4px solid;
+      padding: 22px 24px 20px;
+    }
+    .col.qual { border-top-color: var(--qual); }
+    .col.quant { border-top-color: var(--quant); }
+    .col-tag {
+      display: inline-block;
+      font-family: var(--sans); font-size: 11.5px;
+      letter-spacing: 0.3em;
+      padding: 3px 10px;
+      margin-bottom: 12px;
+    }
+    .col.qual .col-tag { background: var(--qual-bg); color: var(--qual); }
+    .col.quant .col-tag { background: var(--quant-bg); color: var(--quant); }
+    .col h3 {
+      font-family: var(--brush); font-size: 24px;
+      font-weight: 400; letter-spacing: 0.04em; margin-bottom: 12px;
+    }
+    .col p { font-size: 15.5px; line-height: 1.9; opacity: 0.88; }
+    .col p + p { margin-top: 8px; }
+    .col .formula {
+      font-family: var(--mono); font-size: 14.5px;
+      background: rgba(31,31,29,0.05);
+      padding: 8px 12px; margin: 8px 0;
+      border-left: 2px solid;
+    }
+    .col.qual .formula { border-left-color: var(--qual); color: var(--qual); }
+    .col.quant .formula { border-left-color: var(--quant); color: var(--quant); }
+
+    /* Reveal block (click to show details) */
+    .reveal {
+      margin-top: 14px;
+      border-top: 1px dashed var(--line-soft);
+      padding-top: 12px;
+    }
+    .reveal-trigger {
+      cursor: pointer;
+      font-family: var(--sans); font-size: 12.5px;
+      letter-spacing: 0.18em; color: var(--accent);
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: opacity 0.2s;
+    }
+    .reveal-trigger:hover { opacity: 0.7; }
+    .reveal-trigger .arr { transition: transform 0.3s; display: inline-block; }
+    .reveal.is-open .reveal-trigger .arr { transform: rotate(90deg); }
+    .reveal-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s;
+      opacity: 0;
+    }
+    .reveal.is-open .reveal-body { max-height: 600px; opacity: 1; }
+    .reveal-body-inner {
+      margin-top: 12px; padding: 14px 18px;
+      background: rgba(31,31,29,0.04);
+      font-size: 14.5px; line-height: 1.85;
+    }
+    .reveal-body-inner strong { color: var(--accent); }
+
+    /* Insight banner */
+    .insight {
+      margin-top: 18px;
+      padding: 14px 22px;
+      background: rgba(196,56,56,0.06);
+      border-left: 3px solid var(--accent);
+      font-size: 15.5px; line-height: 1.85;
+    }
+    .insight strong { color: var(--accent); }
+
+    /* Regime cards */
+    .regime-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      margin-top: 8px;
+    }
+    .regime {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 22px 22px;
+      cursor: pointer;
+      transition: border-color 0.25s, background 0.25s, transform 0.25s;
+      position: relative;
+      min-height: 280px;
+    }
+    .regime:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .regime.social-dem { border-top: 4px solid var(--moss); }
+    .regime.conservative { border-top: 4px solid var(--earth); }
+    .regime.liberal { border-top: 4px solid var(--water); }
+    .regime h3 {
+      font-family: var(--brush); font-size: 22px;
+      letter-spacing: 0.04em; margin-bottom: 10px;
+    }
+    .regime .countries {
+      font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.15em; color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .regime .features {
+      font-size: 14.5px; line-height: 1.9; opacity: 0.85;
+      margin-bottom: 14px;
+    }
+    .regime .features li {
+      list-style: none; padding-left: 14px; position: relative;
+    }
+    .regime .features li::before { content: "・"; position: absolute; left: 0; opacity: 0.5; }
+    .regime .detail {
+      font-size: 13.5px; line-height: 1.75;
+      padding-top: 12px;
+      border-top: 1px dashed var(--line-soft);
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height 0.35s ease, opacity 0.3s, padding 0.3s;
+    }
+    .regime.is-open .detail { max-height: 220px; opacity: 1; padding-top: 12px; }
+    .regime .detail strong { color: var(--accent); }
+    .regime .more-hint {
+      position: absolute; bottom: 14px; right: 18px;
+      font-family: var(--sans); font-size: 10.5px;
+      letter-spacing: 0.2em; color: var(--accent); opacity: 0.8;
+    }
+
+    /* Nested flow */
+    .flow {
+      display: flex; align-items: stretch; gap: 14px;
+      margin-top: 8px;
+    }
+    .flow-step {
+      flex: 1;
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      border-top: 4px solid;
+      padding: 22px 24px;
+      cursor: pointer;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .flow-step:hover { transform: translateY(-3px); }
+    .flow-step.q1 { border-top-color: var(--quant); }
+    .flow-step.q2 { border-top-color: var(--qual); }
+    .flow-step h3 { font-family: var(--brush); font-size: 22px; margin-bottom: 8px; letter-spacing: 0.04em; }
+    .flow-step p { font-size: 15px; line-height: 1.85; opacity: 0.86; }
+    .flow-step .step-detail {
+      max-height: 0; overflow: hidden;
+      font-size: 13.5px; line-height: 1.75; opacity: 0;
+      transition: max-height 0.35s ease, opacity 0.3s;
+    }
+    .flow-step.is-open .step-detail {
+      max-height: 200px; opacity: 1;
+      margin-top: 12px; padding-top: 12px;
+      border-top: 1px dashed var(--line-soft);
+    }
+    .flow-arrow {
+      align-self: center; font-size: 26px;
+      color: var(--accent); opacity: 0.6;
+    }
+
+    /* Discussion */
+    .discuss-list { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .discuss-item {
+      background: var(--chashitsu-paper);
+      border-left: 3px solid var(--accent);
+      padding: 16px 22px;
+      cursor: pointer;
+    }
+    .discuss-item .qn {
+      font-family: var(--brush); font-size: 15px;
+      color: var(--accent); letter-spacing: 0.1em; margin-bottom: 4px;
+    }
+    .discuss-item .qt { font-size: 16px; line-height: 1.85; }
+    .discuss-item .hint {
+      max-height: 0; overflow: hidden; opacity: 0;
+      font-size: 14px; line-height: 1.85;
+      transition: max-height 0.4s, opacity 0.3s, margin 0.3s, padding 0.3s;
+      color: var(--ink-soft); font-style: italic;
+    }
+    .discuss-item.is-open .hint {
+      max-height: 200px; opacity: 1;
+      margin-top: 12px; padding-top: 12px;
+      border-top: 1px dashed var(--line-soft);
+    }
+
+    /* Conclusion takeaways */
+    .takeaways { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+    .take {
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 16px 22px;
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      animation: rise 0.6s ease backwards;
+    }
+    .take .num {
+      font-family: var(--brush); font-size: 36px;
+      color: var(--accent); line-height: 1;
+      min-width: 50px;
+    }
+    .take .txt { font-size: 16px; line-height: 1.85; }
+
+    /* Reference */
+    .ref-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+      margin-top: 8px;
+    }
+    .ref-card {
+      background: var(--chashitsu-paper);
+      border-top: 3px solid var(--accent);
+      padding: 20px 22px;
+    }
+    .ref-card h3 {
+      font-family: var(--brush); font-size: 18px;
+      margin-bottom: 12px; letter-spacing: 0.04em;
+    }
+    .ref-card p {
+      font-size: 14px; line-height: 1.85;
+      padding: 6px 0; border-bottom: 1px solid var(--line-faint);
+    }
+    .ref-card p:last-child { border-bottom: none; }
+    .ref-card em { color: var(--accent); font-style: italic; }
+
+    /* Lead text */
+    .lead {
+      font-size: 17px; line-height: 1.95; opacity: 0.86;
+      max-width: 800px; margin-bottom: 20px;
+    }
+    .lead p + p { margin-top: 12px; }
+
+    /* Animations */
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide.is-active .why-card:nth-child(1) { animation-delay: 0.05s; }
+    .slide.is-active .why-card:nth-child(2) { animation-delay: 0.2s; }
+    .slide.is-active .why-card:nth-child(3) { animation-delay: 0.35s; }
+    .slide.is-active .take:nth-child(1) { animation-delay: 0.1s; }
+    .slide.is-active .take:nth-child(2) { animation-delay: 0.3s; }
+    .slide.is-active .take:nth-child(3) { animation-delay: 0.5s; }
+    .slide.is-active .take:nth-child(4) { animation-delay: 0.7s; }
+
+    .keyboard-hint {
+      position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
+      font-family: var(--sans); font-size: 9.5px;
+      letter-spacing: 0.25em; opacity: 0.4;
+      pointer-events: none;
+      z-index: 60;
+    }
+    .keyboard-hint kbd {
+      font-family: var(--mono); font-size: 9.5px;
+      background: rgba(31,31,29,0.08);
+      padding: 1px 5px; margin: 0 2px;
+    }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      .topbar { padding: 0 14px; }
+      .top-title { font-size: 15px; }
+      .top-title small { display: none; }
+      .top-right { display: none; }
+      .toc-btn { font-size: 10.5px; padding: 4px 9px; letter-spacing: 0.18em; }
+
+      .slide { padding: 26px 22px 20px; }
+      .slide-title { padding: 26px 22px; }
+      .slide-title h1 { font-size: 44px; }
+      .slide-title .subtitle { font-size: 14.5px; letter-spacing: 0.18em; }
+      .slide-title .author { font-size: 15px; }
+      .dual-badges span { padding: 8px 16px; font-size: 14px; }
+      .meta-strip { font-size: 11.5px; gap: 14px; }
+
+      .slide-section { padding: 26px 22px; }
+      .slide-section h2 { font-size: 38px; }
+      .slide-section .sec-en { font-size: 13px; }
+      .slide-section .sec-q { font-size: 16px; }
+      .slide-section .big-num { font-size: 140px; bottom: 20px; right: 20px; }
+
+      .content-head h2 { font-size: 26px; }
+      .content-head .h-en { font-size: 11.5px; }
+      .content-head .h-tag { display: none; }
+
+      .why-grid { grid-template-columns: 1fr; gap: 12px; }
+      .why-card { padding: 18px 20px; }
+
+      .ov-table { font-size: 12.5px; }
+      .ov-table th, .ov-table td { padding: 8px 8px; }
+      .ov-table th { font-size: 13px; }
+
+      .compare { grid-template-columns: 1fr; gap: 14px; }
+      .col { padding: 18px 20px; }
+      .col h3 { font-size: 21px; }
+
+      .regime-grid { grid-template-columns: 1fr; }
+      .flow { flex-direction: column; }
+      .flow-arrow { transform: rotate(90deg); }
+
+      .ref-grid { grid-template-columns: 1fr; }
+
+      .navbar { padding: 0 14px; height: 58px; }
+      .nav-btn { padding: 7px 14px; font-size: 13px; letter-spacing: 0.1em; }
+      .dots { max-width: 200px; }
+      .nav-center { font-size: 12px; gap: 10px; }
+
+      .toc-panel { padding: 24px 22px; }
+      .toc-list { grid-template-columns: 1fr; gap: 0; }
+      .toc-list .lab { font-size: 13.5px; }
+
+      .keyboard-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<svg class="paper-grain" aria-hidden="true">
+  <defs>
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#paper-noise)" />
+</svg>
+
+<header class="topbar">
+  <div class="top-left">
+    <a href="../../teaching-zh.html" class="back">← 茶室</a>
+    <span class="top-sep">·</span>
+    <span class="top-title">兩種文化的故事<small>社研法 第 5 週</small></span>
+  </div>
+  <div class="top-right">
+    <span>Mahoney &amp; Goertz (2006)</span>
+    <button class="toc-btn" onclick="toggleToc()">目次 ・ TOC</button>
+  </div>
+</header>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ============ S0 TITLE ============ -->
+  <section class="slide slide-title is-active" data-kind="title" data-label="封面">
+    <div class="slide-inner">
+      <div class="week-tag">
+        <span class="seal">研</span>
+        <span>第 5 週 ・ 3/24 ・ WEEK 5</span>
+      </div>
+      <h1>兩種文化的故事</h1>
+      <p class="subtitle">A TALE OF TWO CULTURES — 量化與質化研究的對比</p>
+      <p class="author">
+        Mahoney, J., &amp; Goertz, G. (2006). "A Tale of Two Cultures: Contrasting Quantitative and Qualitative Research." <cite>Political Analysis</cite>, 14(3), 227–249.
+      </p>
+      <div class="dual-badges">
+        <span class="badge-qual">質化 ・ Qualitative</span>
+        <span class="badge-quant">量化 ・ Quantitative</span>
+      </div>
+      <div class="meta-strip">
+        <span>社會研究法 ・ 葉崇揚</span>
+        <span>東吳大學社會學系</span>
+        <span>2026 春學期</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S1 WHY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="為什麼讀這篇">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>為什麼要讀這篇文章？</h2>
+        <span class="h-en">WHY THIS PAPER</span>
+        <span class="h-tag">01 ・ 引入</span>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="glyph">論</div>
+          <h3>核心論點</h3>
+          <p>量化與質化是兩種不同的「文化」，各有其價值、信念與規範。不應以一方標準評判另一方。</p>
+        </div>
+        <div class="why-card">
+          <div class="glyph">十</div>
+          <h3>十個維度</h3>
+          <p>從解釋取徑到概念測量，系統對比兩種傳統在十個面向上的差異與各自的合理性。</p>
+        </div>
+        <div class="why-card">
+          <div class="glyph">和</div>
+          <h3>實踐意義</h3>
+          <p>理解差異有助於跨傳統溝通，避免方法論戰爭，促進混合方法研究的可能。</p>
+          <p class="cite">Mahoney &amp; Goertz, <i>Political Analysis</i> (2006) 14:227-249</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S2 OVERVIEW TABLE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="十大維度總覽">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>兩種文化的十個維度</h2>
+        <span class="h-en">TEN DIMENSIONS</span>
+        <span class="h-tag">02 ・ 概覽</span>
+      </div>
+      <table class="ov-table" id="ov-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>維度</th>
+            <th class="qual-h">質化研究</th>
+            <th class="quant-h">量化研究</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="clickable" data-goto="5"><td>1</td><td>解釋取徑</td><td>結果的原因 (Causes-of-effects)</td><td>原因的效果 (Effects-of-causes)</td></tr>
+          <tr class="clickable" data-goto="6"><td>2</td><td>因果概念</td><td>必要／充分條件；邏輯</td><td>相關性因果；機率統計</td></tr>
+          <tr class="clickable" data-goto="7"><td>3</td><td>多變量模型</td><td>INUS 條件組合</td><td>變項獨立加總 β₁X₁+β₂X₂+ε</td></tr>
+          <tr class="clickable" data-goto="8"><td>4</td><td>等結果性</td><td>核心概念；少數因果路徑</td><td>缺乏此概念；隱含無數路徑</td></tr>
+          <tr class="clickable" data-goto="10"><td>5</td><td>範圍與概括化</td><td>窄化範圍避免異質性</td><td>廣泛概括以最大化統計槓桿</td></tr>
+          <tr class="clickable" data-goto="11"><td>6</td><td>個案選擇</td><td>依變項選擇（正例優先）</td><td>隨機抽樣（追求變異）</td></tr>
+          <tr class="clickable" data-goto="13"><td>7</td><td>觀察值加權</td><td>鐵證不對等權重</td><td>所有觀察值同等重要</td></tr>
+          <tr class="clickable" data-goto="14"><td>8</td><td>重要個案</td><td>必須解釋重大個案</td><td>所有個案地位平等</td></tr>
+          <tr class="clickable" data-goto="15"><td>9</td><td>缺乏擬合</td><td>解釋特例與不一致</td><td>歸入誤差項 ε</td></tr>
+          <tr class="clickable" data-goto="17"><td>10</td><td>概念與測量</td><td>追求概念精確度</td><td>專注指標與測量誤差模型</td></tr>
+        </tbody>
+      </table>
+      <div class="ov-hint">點擊任一列，跳到該維度的詳細說明 →</div>
+    </div>
+  </section>
+
+  <!-- ============ S3 SECTION 1 DIVIDER ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第一部分：解釋的取徑">
+    <div class="slide-inner">
+      <div class="big-num">壹</div>
+      <p class="part">PART 01</p>
+      <h2>解釋的取徑</h2>
+      <p class="sec-en">Causes-of-Effects vs. Effects-of-Causes</p>
+      <p class="sec-q">
+        質化問：為什麼台灣建立了全民健保？<br/>
+        量化問：民主化對健保覆蓋率的平均效果是什麼？
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S4 EXPLAIN ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="解釋的取徑">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>解釋的取徑</h2>
+        <span class="h-en">EXPLANATORY APPROACH</span>
+        <span class="h-tag">維度 1</span>
+      </div>
+      <div class="compare">
+        <div class="col qual">
+          <span class="col-tag">質化研究</span>
+          <h3>結果的原因</h3>
+          <p>從「已知的結果」出發，往回追溯「為什麼是這個結果」。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 福利國家案例</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              <strong>例：</strong>「為什麼<strong>瑞典</strong>建立了普及式福利國家？為什麼<strong>美國</strong>仍是殘補式？」<br/><br/>
+              Esping-Andersen (1990) 識別三種福利體制（社會民主、保守、自由）的形成原因，每個案例都被分配到一條特定的因果路徑。
+            </div></div>
+          </div>
+        </div>
+        <div class="col quant">
+          <span class="col-tag">量化研究</span>
+          <h3>原因的效果</h3>
+          <p>從「自變項」出發，估計它的「平均效果」是多少。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 福利國家案例</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              <strong>例：</strong>「<strong>左派執政</strong>對社會支出的平均效果為何？工會密度每提高 10%，去商品化指數會增加多少？」<br/><br/>
+              Huber &amp; Stephens (2001)：用 18 個 OECD 國家面板資料估計左派政黨執政對社會支出的平均效果。
+            </div></div>
+          </div>
+        </div>
+      </div>
+      <div class="insight"><strong>關鍵：</strong>兩種取徑互補——質化建立因果機制、量化估計跨案例平均效果。沒有對錯，是<strong>研究目標不同</strong>。</div>
+    </div>
+  </section>
+
+  <!-- ============ S5 CAUSAL CONCEPTS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="因果關係的概念">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>因果關係的概念</h2>
+        <span class="h-en">CONCEPT OF CAUSATION</span>
+        <span class="h-tag">維度 2</span>
+      </div>
+      <div class="compare">
+        <div class="col qual">
+          <span class="col-tag">質化研究</span>
+          <h3>必要與充分條件</h3>
+          <p>「若非 X，則非 Y」（必要條件）；INUS 原因：條件的組合共同充分。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 福利國家案例</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              <strong>例：</strong>「強大的工人階級動員是<strong>社會民主福利體制</strong>的必要條件。」<br/><br/>
+              Hicks, Misra &amp; Ng (1995) 識別早期福利國家的三條獨立因果路徑，每條由不同的條件組合構成。
+            </div></div>
+          </div>
+        </div>
+        <div class="col quant">
+          <span class="col-tag">量化研究</span>
+          <h3>相關性因果</h3>
+          <div class="formula">因果效果 = μᵀ − μᶜ（平均處理效果）</div>
+          <div class="formula">Y = β₁X₁ + β₂X₂ + ε</div>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 福利國家案例</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              <strong>例：</strong>「左派執政每增加 1%，社會支出平均增加 β%。」<br/><br/>
+              Brady &amp; Volden (2006)：以迴歸分析估計政治制度、經濟發展對社會政策慷慨度的獨立效果。
+            </div></div>
+          </div>
+        </div>
+      </div>
+      <div class="insight"><strong>不可直譯：</strong>質化的「必要／充分」邏輯，與量化的「相關性／係數」語言屬於不同的因果觀，<strong>不能直接互換</strong>。</div>
+    </div>
+  </section>
+
+  <!-- ============ S6 MULTIVARIATE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="多變量解釋">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>多變量解釋：兩種模型</h2>
+        <span class="h-en">MULTIVARIATE MODELS</span>
+        <span class="h-tag">維度 3</span>
+      </div>
+      <div class="compare">
+        <div class="col qual">
+          <span class="col-tag">質化研究</span>
+          <h3>布林模型 ・ QCA</h3>
+          <div class="formula">Y = (A · B · c) + (A · C · D · E)</div>
+          <p>「·」=AND、「+」=OR、小寫=否定。關注變項的「<strong>組合</strong>」而非個別效果。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> QCA 案例</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              <strong>福利國家 = </strong>(強工會 · 左派 · 非聯邦) <strong>+</strong> (統合主義 · 基民黨 · 社會夥伴)<br/><br/>
+              路徑一 → 瑞典、挪威；路徑二 → 德國、奧地利。
+            </div></div>
+          </div>
+        </div>
+        <div class="col quant">
+          <span class="col-tag">量化研究</span>
+          <h3>統計模型 ・ 迴歸</h3>
+          <div class="formula">Y = β₀ + β₁X₁ + β₂X₂ + β₃X₃ + ε</div>
+          <p>每個 X 有獨立的 β 係數。關注個別變項的「<strong>淨效果</strong>」。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 迴歸案例</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              社會支出 = β₁(工會密度) + β₂(左派執政年數) + β₃(GDP) + β₄(老年人口比) + ε<br/><br/>
+              估計每個自變項的<strong>獨立淨效果</strong>，不區分國家走哪條因果路徑。
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S7 EQUIFINALITY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="等結果性">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>等結果性 ・ Equifinality</h2>
+        <span class="h-en">EQUIFINALITY</span>
+        <span class="h-tag">維度 4</span>
+      </div>
+      <div class="compare">
+        <div class="col qual">
+          <span class="col-tag">質化研究</span>
+          <h3>少數因果路徑</h3>
+          <p>存在<strong>少數</strong>幾條通往相同結果的不同因果路徑。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> Esping-Andersen 三條路徑</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              <strong>路徑一：</strong>強工人運動＋左派執政 → 社會民主體制（瑞典、丹麥）<br/>
+              <strong>路徑二：</strong>教會傳統＋統合主義 → 保守主義體制（德國、法國）<br/>
+              <strong>路徑三：</strong>自由市場＋弱工會 → 自由主義體制（美國、英國）
+            </div></div>
+          </div>
+        </div>
+        <div class="col quant">
+          <span class="col-tag">量化研究</span>
+          <h3>隱含無數路徑</h3>
+          <p>統計模型中，只要加權總和超過門檻值，結果就會發生。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 迴歸的隱含邏輯</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              β₁X₁+β₂X₂+β₃X₃ 超過某門檻有<strong>無數種組合方式</strong>。不追蹤個別國家的「路徑」。<br/><br/>
+              在量化文獻中，「等結果性」這個詞甚至不是方法論詞彙的一部分。
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S8 SECTION 2 DIVIDER ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第二部分：範圍與選樣">
+    <div class="slide-inner">
+      <div class="big-num">貳</div>
+      <p class="part">PART 02</p>
+      <h2>範圍、個案選擇與概括化</h2>
+      <p class="sec-en">Scope, Case Selection &amp; Generalization</p>
+      <p class="sec-q">
+        質化：把分析範圍縮小，避免異質性破壞理論。<br/>
+        量化：把樣本擴大，最大化統計槓桿。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S9 SCOPE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="範圍與概括化">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>範圍與因果概括化</h2>
+        <span class="h-en">SCOPE &amp; GENERALIZATION</span>
+        <span class="h-tag">維度 5</span>
+      </div>
+      <div class="compare">
+        <div class="col qual">
+          <span class="col-tag">質化研究</span>
+          <h3>窄化範圍</h3>
+          <p>避免因果異質性：新案例可能打破既有理論。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              <strong>Skocpol (1979)：</strong>社會革命理論僅適用於未被殖民的農業官僚國家（法、俄、中）。<br/><br/>
+              Esping-Andersen 的體制分類最初只適用 OECD 先進民主國家——擴展到東亞或拉美時，學者寧可發展新類型，而非強行套用。
+            </div></div>
+          </div>
+        </div>
+        <div class="col quant">
+          <span class="col-tag">量化研究</span>
+          <h3>廣泛概括</h3>
+          <p>大樣本最大化統計槓桿與概括化能力。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              <strong>Huber &amp; Stephens (2001)：</strong>涵蓋 18 個 OECD 國家、跨越數十年的面板資料。<br/><br/>
+              將次要的國家特殊因素歸入誤差項。只要條件獨立性成立，遺漏少數國家特殊變項也無妨。
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S10 CASE SELECTION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="個案選擇">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>個案選擇實踐</h2>
+        <span class="h-en">CASE SELECTION</span>
+        <span class="h-tag">維度 6</span>
+      </div>
+      <div class="compare">
+        <div class="col qual">
+          <span class="col-tag">質化研究</span>
+          <h3>依變項上選樣</h3>
+          <p>先選「結果有發生」的正面案例，加上負面案例對比，避免 (0,0,0) 案例。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 案例與邏輯</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              研究「慷慨福利國家」 → 先選瑞典、丹麥，再納入美國作對比。<br/><br/>
+              (0,0,0) 案例（無強工會、無左派、無慷慨福利）數量龐大但對理論測試<strong>槓桿有限</strong>。
+            </div></div>
+          </div>
+        </div>
+        <div class="col quant">
+          <span class="col-tag">量化研究</span>
+          <h3>隨機抽樣</h3>
+          <p>不依變項值選案例（避免選擇偏誤），最大化所有變項的變異。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 案例與邏輯</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              納入<strong>所有 OECD 國家</strong>（高/低支出皆含），以隨機選擇為理想。<br/><br/>
+              量化研究者認為 (0,0,0) 案例對於估計平均效果<strong>不可或缺</strong>，能增加變異並降低標準誤。
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S11 SECTION 3 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第三部分：數據與證據">
+    <div class="slide-inner">
+      <div class="big-num">參</div>
+      <p class="part">PART 03</p>
+      <h2>數據、證據與誤差</h2>
+      <p class="sec-en">Weighting, Substantive Cases, Lack of Fit</p>
+      <p class="sec-q">
+        質化：證據像偵探辦案，鐵證的權重不對等。<br/>
+        量化：所有觀察值先驗上同等重要。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S12 WEIGHTING ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="觀察值加權">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>觀察值的加權</h2>
+        <span class="h-en">WEIGHTING OBSERVATIONS</span>
+        <span class="h-tag">維度 7</span>
+      </div>
+      <div class="compare">
+        <div class="col qual">
+          <span class="col-tag">質化研究</span>
+          <h3>尋找「鐵證」</h3>
+          <p>「<strong>因果過程觀察</strong>」（Causal-process observation）：一個關鍵證據可能推翻整個理論。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 福利國家案例</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              如果發現瑞典工會在關鍵時期實際上<strong>反對</strong>社會保險立法，那麼「權力資源論」的核心機制就會被根本性質疑——即使整體相關仍然成立。
+            </div></div>
+          </div>
+        </div>
+        <div class="col quant">
+          <span class="col-tag">量化研究</span>
+          <h3>觀察整體模式</h3>
+          <p>「<strong>數據集觀察</strong>」（Data-set observation）：單一觀察值無法推翻整體模式。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 福利國家案例</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              即使瑞典是離群值，只要工會密度與社會支出在 18 個 OECD 國家整體呈正相關，<strong>統計結論仍然成立</strong>。
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S13 IMPORTANT CASES ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="重要個案">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>實質上重要的個案</h2>
+        <span class="h-en">SUBSTANTIVELY IMPORTANT CASES</span>
+        <span class="h-tag">維度 8</span>
+      </div>
+      <div class="compare">
+        <div class="col qual">
+          <span class="col-tag">質化研究</span>
+          <h3>有些案例必須被解釋</h3>
+          <p>如果福利國家理論無法解釋瑞典這個典範案例，理論可信度會被嚴重質疑。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 進一步</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              如同 Goldstone 指出：馬克思主義理論若無法解釋法國大革命，整體價值就會動搖。<br/><br/>
+              <strong>「最可能」與「關鍵」案例設計：</strong>選擇理論最應該成立的案例來測試。
+            </div></div>
+          </div>
+        </div>
+        <div class="col quant">
+          <span class="col-tag">量化研究</span>
+          <h3>所有案例地位平等</h3>
+          <p>沒有先驗理由認為瑞典比盧森堡更適合測試理論。離群值不構成致命問題。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 進一步</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              離群值事後會被檢視，但<strong>不會因國家歷史重要性而給予額外權重</strong>。理論與經驗的範圍陳述才是評估基礎。
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S14 LACK OF FIT ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="缺乏擬合">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>缺乏擬合的處理</h2>
+        <span class="h-en">LACK OF FIT</span>
+        <span class="h-tag">維度 9</span>
+      </div>
+      <div class="compare">
+        <div class="col qual">
+          <span class="col-tag">質化研究</span>
+          <h3>解釋特例</h3>
+          <p>不符合理論的案例不能被忽略，必須深入探究「<strong>為什麼偏離</strong>」。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 東亞案例</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              日本雖具備某些「保守主義體制」特徵，卻不完全符合 Esping-Andersen 的分類 → 促進「<strong>東亞福利體制</strong>」理論的發展（Holliday 2000；Kwon 2005）。
+            </div></div>
+          </div>
+        </div>
+        <div class="col quant">
+          <span class="col-tag">量化研究</span>
+          <h3>歸入誤差項</h3>
+          <p>特異因素被視為非系統性誤差，只要不偏誤參數估計即可。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 迴歸的處理</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              日本在迴歸模型中是一個殘差較大的觀察值，但只要其特殊因素不與自變項系統性相關，就不影響 β 的估計。<br/><br/>
+              <em>質化研究者的疑問：「構成誤差項的各種因素到底是什麼？」</em>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S15 SECTION 4 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第四部分：概念與測量">
+    <div class="slide-inner">
+      <div class="big-num">肆</div>
+      <p class="part">PART 04</p>
+      <h2>概念與測量</h2>
+      <p class="sec-en">Concepts &amp; Measurement</p>
+      <p class="sec-q">
+        質化擔心的：概念延伸（conceptual stretching）。<br/>
+        量化擔心的：操作化與測量誤差。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S16 CONCEPTS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="概念與測量">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>概念與測量</h2>
+        <span class="h-en">CONCEPTS &amp; MEASUREMENT</span>
+        <span class="h-tag">維度 10</span>
+      </div>
+      <div class="compare">
+        <div class="col qual">
+          <span class="col-tag">質化研究</span>
+          <h3>概念精確度</h3>
+          <p>擔憂「<strong>概念延伸</strong>」（conceptual stretching）：透過修改概念本身來解決測量問題。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 福利國家案例</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              「福利國家」不能直接套用到所有國家。質化學者發展出：「<strong>發展型福利國家</strong>」（東亞）、「<strong>生產型福利體制</strong>」（Holliday 2000）、「<strong>帶有附加語的民主</strong>」（Collier &amp; Levitsky 1997）。<br/><br/>
+              <strong>目標：</strong>避免將不同性質的東西歸為同類。
+            </div></div>
+          </div>
+        </div>
+        <div class="col quant">
+          <span class="col-tag">量化研究</span>
+          <h3>指標與誤差模型</h3>
+          <p>關注操作化與指標使用，測量誤差可透過統計建模處理。</p>
+          <div class="reveal" onclick="toggleReveal(this)">
+            <div class="reveal-trigger"><span class="arr">▶</span> 福利國家案例</div>
+            <div class="reveal-body"><div class="reveal-body-inner">
+              以「<strong>社會支出佔 GDP 比例</strong>」作為福利國家慷慨度的指標。<br/><br/>
+              <em>質化批評：</em>同樣的支出比例可能意味著完全不同的制度安排——日本和瑞典支出比例可能接近，但制度邏輯完全不同。<br/><br/>
+              <em>量化回應：</em>透過更好的指標（如去商品化指數）和測量誤差模型來改善。
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S17 ESPING-ANDERSEN INTERACTIVE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Esping-Andersen 三體制">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>經典案例：三個福利體制</h2>
+        <span class="h-en">ESPING-ANDERSEN'S THREE WORLDS</span>
+        <span class="h-tag">點選卡片展開</span>
+      </div>
+      <div class="regime-grid">
+        <div class="regime social-dem" onclick="toggleRegime(this)">
+          <h3>社會民主體制</h3>
+          <div class="countries">SWE ・ DNK ・ NOR ・ FIN</div>
+          <ul class="features">
+            <li>普及主義</li>
+            <li>高去商品化</li>
+            <li>國家直接提供服務</li>
+          </ul>
+          <div class="detail">
+            <strong>因果路徑：</strong>強工人運動＋左派執政 → 普及主義福利體制。質化視為一條獨特路徑。
+          </div>
+          <span class="more-hint">▶ 展開</span>
+        </div>
+        <div class="regime conservative" onclick="toggleRegime(this)">
+          <h3>保守主義體制</h3>
+          <div class="countries">DEU ・ FRA ・ AUT ・ ITA</div>
+          <ul class="features">
+            <li>社會保險原則</li>
+            <li>中等去商品化</li>
+            <li>家庭角色重要</li>
+          </ul>
+          <div class="detail">
+            <strong>因果路徑：</strong>教會傳統＋統合主義 → 社會保險型體制，維持既有社會階層。
+          </div>
+          <span class="more-hint">▶ 展開</span>
+        </div>
+        <div class="regime liberal" onclick="toggleRegime(this)">
+          <h3>自由主義體制</h3>
+          <div class="countries">USA ・ GBR ・ AUS ・ CAN</div>
+          <ul class="features">
+            <li>殘補式福利</li>
+            <li>低去商品化</li>
+            <li>市場機制優先</li>
+          </ul>
+          <div class="detail">
+            <strong>因果路徑：</strong>自由市場傳統＋弱工會 → 殘補式福利，鼓勵市場解決方案。
+          </div>
+          <span class="more-hint">▶ 展開</span>
+        </div>
+      </div>
+      <div class="insight">
+        <strong>方法論意涵：</strong>質化視為三條不同的因果路徑（等結果性的經典）；量化則以去商品化指數作為連續變項，估計左派執政、工會密度等的平均效果，<strong>不區分路徑</strong>。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S18 NESTED ANALYSIS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="混合方法：嵌套分析">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>混合方法 ・ Nested Analysis</h2>
+        <span class="h-en">LIEBERMAN (2005)</span>
+        <span class="h-tag">點選卡片展開</span>
+      </div>
+      <p class="lead">Lieberman (2005) 提出「嵌套分析」（Nested Analysis）：把量化與質化串起來用，先廣後深。</p>
+      <div class="flow">
+        <div class="flow-step q1" onclick="toggleFlow(this)">
+          <h3>第一步 ・ 量化</h3>
+          <p>跨案例迴歸建立整體模式。</p>
+          <div class="step-detail">
+            確認「左派執政」與「社會支出」在 OECD 國家中正相關。建立模型，辨識符合與偏離模型的案例。
+          </div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step q2" onclick="toggleFlow(this)">
+          <h3>第二步 ・ 質化</h3>
+          <p>深入個案的過程追蹤。</p>
+          <div class="step-detail">
+            選擇「符合」案例（瑞典）與「偏離」案例（日本）做過程追蹤，理解因果機制如何運作。
+          </div>
+        </div>
+      </div>
+      <div class="insight"><strong>互補：</strong>量化提供廣度，質化提供深度。當代社會研究越來越多走這條路。</div>
+    </div>
+  </section>
+
+  <!-- ============ S19 DISCUSSION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="課堂討論">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>課堂討論</h2>
+        <span class="h-en">CLASS DISCUSSION</span>
+        <span class="h-tag">點選展開提示</span>
+      </div>
+      <div class="discuss-list">
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">問題一</div>
+          <div class="qt">如果你要研究「為什麼台灣建立了全民健保」，你會採用質化還是量化取徑？你會如何設定研究問題？</div>
+          <div class="hint">提示：質化會問「為什麼台灣在 1995 年建立全民健保？」（causes-of-effects），追溯政治動員、政策企業家。量化會問「民主化對健保覆蓋率的平均效果為何？」（effects-of-causes），以跨國資料估計。</div>
+        </div>
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">問題二</div>
+          <div class="qt">Esping-Andersen 的福利體制分類，是質化還是量化研究？「去商品化指數」如何跨越兩種文化？</div>
+          <div class="hint">提示：分類本身是質化的（類型學），但去商品化指數是量化操作化。這個研究跨越了兩種文化，也成為混合方法的經典案例。</div>
+        </div>
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">問題三</div>
+          <div class="qt">如果一個關於福利國家的迴歸模型無法解釋瑞典，質化和量化學者各會如何反應？</div>
+          <div class="hint">提示：質化會認為這是致命問題（瑞典是關鍵案例）；量化可能視為一個離群值，整體模型成立即可。這反映兩種文化對「重要案例」的根本不同。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S20 CONCLUSION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="核心要點">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>核心要點</h2>
+        <span class="h-en">KEY TAKEAWAYS</span>
+        <span class="h-tag">小結</span>
+      </div>
+      <div class="takeaways">
+        <div class="take">
+          <div class="num">壹</div>
+          <div class="txt">質化和量化是不同的研究「文化」，<strong>各有其合理的內在邏輯</strong>。</div>
+        </div>
+        <div class="take">
+          <div class="num">貳</div>
+          <div class="txt">兩者追求不同的研究目標：<strong>解釋特定案例</strong> vs. <strong>估計平均效果</strong>。</div>
+        </div>
+        <div class="take">
+          <div class="num">參</div>
+          <div class="txt">在一種傳統中的「好實踐」可能在另一種傳統中是「壞建議」。</div>
+        </div>
+        <div class="take">
+          <div class="num">肆</div>
+          <div class="txt">理解差異是<strong>跨傳統溝通</strong>與混合方法研究的前提。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S21 FINAL ============ -->
+  <section class="slide slide-title" data-kind="title" data-label="結語">
+    <div class="slide-inner">
+      <p class="subtitle" style="margin-bottom: 20px;">CONCLUSION ・ 結 語</p>
+      <h1 style="font-size: 56px;">不是對錯之爭<br/>是目標的不同</h1>
+      <p class="author" style="margin-top: 28px; max-width: 760px;">
+        優秀的方法論意味著：讓你的<strong>研究工具</strong>與<strong>研究目標</strong>完全對齊。<br/>
+        質化建立深度的因果機制，量化測試廣泛的系統模式——它們是同一張方法論地圖上的兩塊大陸。
+      </p>
+      <p class="author" style="margin-top: 22px; opacity: 0.55; font-style: italic; font-size: 15px;">
+        更好的標籤：統計 vs. 邏輯 ・ 效果估計 vs. 結果解釋 ・ 母體導向 vs. 個案導向
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S22 REFERENCES ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="延伸閱讀">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>延伸閱讀</h2>
+        <span class="h-en">FURTHER READING</span>
+      </div>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <h3>核心文獻</h3>
+          <p>Mahoney, J., &amp; Goertz, G. (2006). "A Tale of Two Cultures." <em>Political Analysis</em>, 14, 227–249.</p>
+          <p>Goertz, G., &amp; Mahoney, J. (2012). <em>A Tale of Two Cultures</em>. Princeton UP.</p>
+        </div>
+        <div class="ref-card">
+          <h3>福利國家研究</h3>
+          <p>Esping-Andersen, G. (1990). <em>The Three Worlds of Welfare Capitalism</em>. Polity.</p>
+          <p>Huber, E., &amp; Stephens, J. (2001). <em>Development and Crisis of the Welfare State</em>. Chicago.</p>
+          <p>Hicks, A., Misra, J., &amp; Ng, T. (1995). <em>ASR</em>.</p>
+        </div>
+        <div class="ref-card">
+          <h3>方法論</h3>
+          <p>King, G., Keohane, R., &amp; Verba, S. (1994). <em>Designing Social Inquiry</em>. Princeton.</p>
+          <p>Brady, H., &amp; Collier, D. (2010). <em>Rethinking Social Inquiry</em> (2nd ed.). Rowman &amp; Littlefield.</p>
+          <p>Ragin, C. (1987). <em>The Comparative Method</em>. UC Press.</p>
+        </div>
+        <div class="ref-card">
+          <h3>混合方法</h3>
+          <p>Lieberman, E. (2005). "Nested Analysis." <em>APSR</em>, 99(3), 435–452.</p>
+          <p>Small, M. L. (2011). "How to Conduct a Mixed Methods Study." <em>ARS</em>, 37, 57–86.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<nav class="navbar">
+  <button class="nav-btn" id="prevBtn" onclick="goPrev()">← 前頁</button>
+  <div class="nav-center">
+    <span><span id="curNum">1</span> / <span id="totNum">23</span></span>
+    <div class="dots" id="dots"></div>
+  </div>
+  <button class="nav-btn" id="nextBtn" onclick="goNext()">下一頁 →</button>
+</nav>
+
+<div class="keyboard-hint">
+  <kbd>←</kbd> <kbd>→</kbd> 切換頁面　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕
+</div>
+
+<!-- TOC overlay -->
+<div class="toc-overlay" id="tocOverlay" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" onclick="toggleToc()">×</button>
+    <h2 class="toc-title">目次 ・ Table of Contents</h2>
+    <p class="toc-sub">點選任一條目跳到該頁</p>
+    <ul class="toc-list" id="tocList"></ul>
+  </div>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let cur = 0;
+
+  document.getElementById('totNum').textContent = total;
+
+  // Build dots & TOC
+  const dotsEl = document.getElementById('dots');
+  const tocEl = document.getElementById('tocList');
+  slides.forEach((s, i) => {
+    const d = document.createElement('span');
+    d.className = 'dot' + (s.dataset.kind === 'section' ? ' is-section' : '');
+    d.title = s.dataset.label || '';
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+
+    const li = document.createElement('li');
+    if (s.dataset.kind === 'section') li.classList.add('is-section');
+    li.innerHTML = `<span class="num">${String(i + 1).padStart(2, '0')}</span><span class="lab">${s.dataset.label || ''}</span><span class="kind">${s.dataset.kind}</span>`;
+    li.onclick = () => { goTo(i); toggleToc(); };
+    tocEl.appendChild(li);
+  });
+
+  function goTo(n) {
+    if (n < 0 || n >= total || n === cur) return;
+    const dir = n > cur ? 1 : -1;
+    slides[cur].classList.remove('is-active');
+    slides[cur].classList.add(dir > 0 ? 'is-prev' : '');
+    cur = n;
+    slides[cur].classList.remove('is-prev');
+    slides[cur].classList.add('is-active');
+    setTimeout(() => slides.forEach((s, i) => { if (i !== cur) s.classList.remove('is-prev'); }), 500);
+    update();
+  }
+  function goPrev() { goTo(cur - 1); }
+  function goNext() { goTo(cur + 1); }
+  function update() {
+    document.getElementById('curNum').textContent = cur + 1;
+    document.getElementById('prevBtn').disabled = cur === 0;
+    document.getElementById('nextBtn').disabled = cur === total - 1;
+    document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('is-active', i === cur));
+  }
+
+  // TOC toggle
+  function toggleToc() {
+    document.getElementById('tocOverlay').classList.toggle('is-shown');
+  }
+
+  // Reveal blocks
+  function toggleReveal(el) {
+    el.classList.toggle('is-open');
+  }
+  function toggleRegime(el) {
+    el.classList.toggle('is-open');
+  }
+  function toggleFlow(el) {
+    el.classList.toggle('is-open');
+  }
+
+  // Overview table click-to-jump
+  document.querySelectorAll('#ov-table tr.clickable').forEach(tr => {
+    tr.onclick = () => {
+      const target = parseInt(tr.dataset.goto);
+      if (!isNaN(target)) goTo(target);
+    };
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('tocOverlay').classList.contains('is-shown')) {
+      if (e.key === 'Escape') toggleToc();
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goNext(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goPrev(); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+    else if (e.key === 'Escape') toggleToc();
+    else if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+  });
+
+  // Touch swipe
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) dx < 0 ? goNext() : goPrev();
+  });
+
+  update();
+</script>
+</body>
+</html>
