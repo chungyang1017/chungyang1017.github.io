@@ -259,10 +259,18 @@ function renderTopJournals(containerId, limit, lang) {
   const items = publicationsData.slice(0, limit);
   const html = items.map(p => {
     // English-original articles always show in English (don't translate to Chinese).
-    // Chinese-original articles show in the page's language.
-    const title = (p.lang === 'en') ? p.title_en : (lang === 'en' ? p.title_en : p.title_zh);
-    const authors = (p.lang === 'en') ? p.authors_en : (lang === 'en' ? p.authors_en : p.authors_zh);
-    const venue = (p.lang === 'en') ? p.venue_en : (lang === 'en' ? p.venue_en : p.venue_zh);
+    // Chinese-original articles: show original on ZH page; show "English（中文原題）" on EN page.
+    let title, authors, venue;
+    if (p.lang === 'en') {
+      title = p.title_en; authors = p.authors_en; venue = p.venue_en;
+    } else if (lang === 'en') {
+      // ZH article on EN page → parallel title "English（中文原題）"
+      title = `${p.title_en}（${p.title_zh}）`;
+      authors = p.authors_en;
+      venue = p.venue_en;
+    } else {
+      title = p.title_zh; authors = p.authors_zh; venue = p.venue_zh;
+    }
     let metaHtml = '';
     if (p.link) {
       const label = linkLabel(p.link.type, lang);
@@ -307,9 +315,15 @@ function renderJournalCardsGrid(containerId, limit, lang) {
   if (!container) return;
   const items = publicationsData.slice(0, limit);
   const html = items.map(p => {
-    const title = (p.lang === 'en') ? p.title_en : (lang === 'en' ? p.title_en : p.title_zh);
-    const authors = (p.lang === 'en') ? p.authors_en : (lang === 'en' ? p.authors_en : p.authors_zh);
-    const venue = (p.lang === 'en') ? p.venue_en : (lang === 'en' ? p.venue_en : p.venue_zh);
+    let title, authors, venue;
+    if (p.lang === 'en') {
+      title = p.title_en; authors = p.authors_en; venue = p.venue_en;
+    } else if (lang === 'en') {
+      title = `${p.title_en}（${p.title_zh}）`;
+      authors = p.authors_en; venue = p.venue_en;
+    } else {
+      title = p.title_zh; authors = p.authors_zh; venue = p.venue_zh;
+    }
     const tag = p.lang === 'zh' ? (lang === 'en' ? 'JOURNAL' : '期刊') : 'JOURNAL';
     let metaHtml = '';
     if (p.link) {
