@@ -4,521 +4,524 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>誰應該提供福利？ ・ 福利社會學 第 4 週 ・ 葉崇揚</title>
-  <meta name="description" content="福利社會學第 4 週互動講義：誰應該提供福利？國家、市場、志願部門與家庭的福利混合經濟。台灣為主、英國與東亞為輔。" />
+  <meta name="description" content="福利社會學第 4 週互動講義（給大一同學）：誰應該提供福利？國家、市場、志願部門與家庭的福利混合經濟。台灣為主、英國與東亞為輔，分頁式互動簡報。" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --chashitsu-bg: #e8dcc4;
       --chashitsu-paper: #f5ecd6;
       --chashitsu-tatami: #d8c8a8;
-      --moss: #3d5a3f;          /* 政府 — 苔 */
-      --water: #5a7a8a;         /* 市場 — 水 */
-      --earth: #8a6a4a;         /* 志願 — 土 */
-      --persimmon: #c47038;     /* 非正式 — 柿 */
+      --moss: #3d5a3f;          /* 公部門 */
+      --water: #5a7a8a;         /* 商業部門 */
+      --earth: #8a6a4a;         /* 志願部門 */
+      --persimmon: #c47038;     /* 非正式部門 */
       --accent: #c43838;        /* 朱印 */
+      --gold: #b8860b;
       --ink: #1f1f1d;
       --ink-soft: rgba(31,31,29,0.78);
       --line: rgba(31,31,29,0.18);
       --line-soft: rgba(31,31,29,0.10);
-      --line-faint: rgba(31,31,29,0.06);
-      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
+      --line-faint: rgba(31,31,29,0.05);
+      --jp: 'Shippori Mincho', 'Noto Serif TC', serif;
       --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
       --sans: 'Inter', 'Helvetica Neue', sans-serif;
+      --mono: 'JetBrains Mono', 'Menlo', monospace;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
-    html { scroll-behavior: smooth; }
+    html, body { height: 100%; overflow: hidden; }
     body {
       font-family: var(--jp);
       background: var(--chashitsu-bg);
       color: var(--ink);
       -webkit-font-smoothing: antialiased;
-      font-size: 17px;
-      line-height: 1.9;
+      font-size: 19px;
+      line-height: 1.95;
       position: relative;
-      overflow-x: hidden;
     }
     .paper-grain {
       position: fixed; inset: 0; pointer-events: none;
       opacity: 0.32; mix-blend-mode: multiply; z-index: 1;
     }
 
-    /* Scroll progress */
-    .scroll-progress {
-      position: fixed; top: 0; left: 0; height: 2px;
-      background: var(--accent); z-index: 200;
-      width: 0%; transition: width 0.1s;
-    }
-
-    /* Header */
-    .top {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(232,220,196,0.93);
+    /* Top bar */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 56px; z-index: 50;
+      background: rgba(232,220,196,0.94);
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line-soft);
-      padding: 14px 36px;
       display: flex; align-items: center; justify-content: space-between;
-      gap: 16px;
+      padding: 0 28px;
     }
-    .top-left { display: flex; align-items: center; gap: 16px; min-width: 0; }
-    .back {
-      font-family: var(--sans); font-size: 11px;
-      letter-spacing: 0.3em; opacity: 0.55;
-      text-decoration: none; color: var(--ink);
-      flex-shrink: 0;
-    }
+    .top-left { display: flex; align-items: center; gap: 14px; }
+    .back { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .back:hover { opacity: 0.85; }
     .top-sep { font-size: 11px; opacity: 0.3; }
-    .top-title { font-family: var(--brush); font-size: 20px; letter-spacing: 0.06em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .top-title small { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.18em; opacity: 0.6; margin-left: 8px; }
+    .top-title { font-family: var(--brush); font-size: 19px; letter-spacing: 0.06em; }
+    .top-title small { font-family: var(--sans); font-size: 12px; letter-spacing: 0.18em; opacity: 0.55; margin-left: 10px; }
+    .top-right { display: flex; align-items: center; gap: 18px; font-family: var(--sans); font-size: 12px; opacity: 0.6; letter-spacing: 0.15em; }
+    .toc-btn {
+      background: transparent; border: 1px solid var(--line);
+      font-family: inherit; font-size: 11.5px; letter-spacing: 0.2em;
+      padding: 5px 12px; cursor: pointer; color: var(--ink); opacity: 0.75;
+    }
+    .toc-btn:hover { background: var(--chashitsu-paper); opacity: 1; }
 
-    .innernav {
-      display: flex; gap: 20px;
-      font-family: var(--sans); font-size: 12px;
-      letter-spacing: 0.22em;
-      overflow-x: auto;
-      scrollbar-width: none;
+    .progress {
+      position: fixed; top: 56px; left: 0;
+      height: 2px; background: var(--accent);
+      z-index: 49; transition: width 0.4s ease;
     }
-    .innernav::-webkit-scrollbar { display: none; }
-    .innernav a {
-      color: var(--ink); text-decoration: none;
-      opacity: 0.5; padding: 4px 0; flex-shrink: 0;
-      border-bottom: 1.5px solid transparent;
-      transition: opacity 0.2s, border-color 0.2s;
-    }
-    .innernav a:hover, .innernav a.is-active { opacity: 1; border-bottom-color: var(--accent); }
 
-    /* Hero */
-    .hero {
-      padding: 72px 60px 56px;
-      position: relative; z-index: 2;
-      border-bottom: 1px solid var(--line-faint);
+    .deck {
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 64px;
+      overflow: hidden; z-index: 2;
     }
-    .hero-inner { max-width: 1100px; margin: 0 auto; }
-    .week-tag {
-      display: inline-flex; align-items: center; gap: 12px;
-      font-family: var(--sans); font-size: 12.5px;
-      letter-spacing: 0.4em; opacity: 0.6;
-      margin-bottom: 20px;
+    .slide {
+      position: absolute; inset: 0;
+      padding: 36px 72px 28px;
+      overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.2,0.7,0.2,1);
     }
-    .week-tag .seal {
+    .slide.is-prev { transform: translateX(-40px); }
+    .slide.is-active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide-inner { max-width: 1080px; margin: 0 auto; }
+
+    .navbar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 64px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .nav-btn {
+      background: transparent; border: 1px solid var(--ink);
+      font-family: var(--jp); font-size: 14px;
+      letter-spacing: 0.15em; color: var(--ink);
+      padding: 9px 22px; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover:not(:disabled) { background: var(--ink); color: var(--chashitsu-paper); }
+    .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; border-color: var(--line); }
+    .nav-center { display: flex; align-items: center; gap: 16px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.18em; opacity: 0.7; }
+    .dots { display: flex; gap: 5px; max-width: 480px; flex-wrap: wrap; justify-content: center; }
+    .dot { width: 7px; height: 7px; background: var(--line); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .dot:hover { background: var(--accent); transform: scale(1.3); }
+    .dot.is-active { background: var(--accent); }
+    .dot.is-section { width: 14px; }
+
+    /* TOC overlay */
+    .toc-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(31,31,29,0.85);
+      backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center;
+      padding: 40px;
+    }
+    .toc-overlay.is-shown { display: flex; animation: fade 0.3s; }
+    .toc-panel {
+      background: var(--chashitsu-paper);
+      max-width: 920px; width: 100%; max-height: 80vh;
+      overflow-y: auto;
+      padding: 36px 44px;
+      border: 1px solid var(--accent);
+      position: relative;
+    }
+    .toc-close {
+      position: absolute; top: 14px; right: 18px;
+      background: transparent; border: none;
+      font-size: 26px; cursor: pointer; opacity: 0.5;
+      font-family: var(--brush); color: var(--ink);
+    }
+    .toc-close:hover { opacity: 1; }
+    .toc-title { font-family: var(--brush); font-size: 26px; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .toc-sub { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 22px; }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; }
+    .toc-list li {
+      padding: 8px 0; border-bottom: 1px dashed var(--line-soft);
+      cursor: pointer; display: flex; align-items: baseline; gap: 14px;
+    }
+    .toc-list li:hover { color: var(--accent); }
+    .toc-list .num { font-family: var(--brush); font-size: 14px; color: var(--accent); min-width: 28px; }
+    .toc-list .lab { font-size: 15px; flex: 1; }
+    .toc-list .kind { font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; opacity: 0.45; }
+    .toc-list .is-section { color: var(--accent); font-weight: 600; }
+
+    /* Slide types */
+    .slide-title {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      padding: 36px 72px;
+    }
+    .slide-title .week-tag {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.4em; opacity: 0.6; margin-bottom: 24px;
+    }
+    .slide-title .seal {
       display: inline-flex; align-items: center; justify-content: center;
-      width: 34px; height: 34px;
+      width: 36px; height: 36px;
       background: var(--accent); color: var(--chashitsu-paper);
       font-family: var(--brush); font-size: 16px;
-      letter-spacing: 0; transform: rotate(-3deg);
+      transform: rotate(-3deg);
     }
-    .hero-title {
-      font-family: var(--brush); font-size: 68px;
-      font-weight: 400; line-height: 1.15; letter-spacing: 0.04em;
-      margin-bottom: 14px;
+    .slide-title h1 {
+      font-family: var(--brush); font-size: 72px;
+      font-weight: 400; line-height: 1.1; letter-spacing: 0.04em;
+      margin-bottom: 18px;
     }
-    .hero-sub {
-      font-family: var(--sans); font-size: 15.5px;
-      letter-spacing: 0.32em; opacity: 0.6;
-      margin-bottom: 28px;
+    .slide-title .subtitle {
+      font-family: var(--sans); font-size: 18px;
+      letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 28px;
     }
-    .hero-lead {
-      font-size: 19px; line-height: 2; max-width: 760px;
-      opacity: 0.9;
+    .slide-title .author {
+      font-size: 18px; opacity: 0.85; line-height: 1.85;
+      max-width: 800px;
     }
-    .hero-lead p + p { margin-top: 16px; }
-    .hero-meta {
-      margin-top: 32px;
-      display: flex; flex-wrap: wrap; gap: 22px;
-      font-family: var(--sans); font-size: 13.5px; opacity: 0.65;
-      letter-spacing: 0.1em;
+    .meta-strip {
+      margin-top: 36px;
+      display: flex; flex-wrap: wrap; gap: 24px;
+      font-family: var(--sans); font-size: 13px; opacity: 0.6;
+      letter-spacing: 0.12em;
     }
 
-    /* Section frame */
-    section {
-      max-width: 1100px; margin: 0 auto;
-      padding: 60px 60px;
-      position: relative; z-index: 2;
+    .slide-section {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      background: linear-gradient(135deg, rgba(196,56,56,0.06) 0%, rgba(216,200,168,0.4) 100%);
+      padding: 36px 72px;
+      position: relative;
     }
-    section.tinted {
-      max-width: 100%;
-      background: rgba(216,200,168,0.32);
-      padding: 60px calc((100% - 1100px) / 2);
+    .slide-section .big-num {
+      font-family: var(--brush); font-size: 240px;
+      color: var(--accent); opacity: 0.15;
+      position: absolute; bottom: 30px; right: 60px;
+      line-height: 1;
     }
-    section.tinted > .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-head {
-      display: flex; align-items: baseline; gap: 18px;
-      margin-bottom: 26px;
-      border-bottom: 1px solid rgba(31,31,29,0.20);
-      padding-bottom: 12px;
+    .slide-section .part {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.45em; opacity: 0.55; margin-bottom: 14px;
     }
-    .section-jp { font-family: var(--brush); font-size: 30px; letter-spacing: 0.08em; }
-    .section-en { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.3em; opacity: 0.6; }
-    .section-note { margin-left: auto; font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.18em; opacity: 0.55; }
-    .section-lead { font-size: 17.5px; line-height: 2; opacity: 0.86; max-width: 800px; margin-bottom: 30px; }
-    .section-lead p + p { margin-top: 14px; }
-
-    /* Pull-quote */
-    .quote {
+    .slide-section h2 {
+      font-family: var(--brush); font-size: 56px;
+      font-weight: 400; letter-spacing: 0.04em;
+      line-height: 1.15; margin-bottom: 14px;
+    }
+    .slide-section .sec-en {
+      font-family: var(--sans); font-size: 16px;
+      letter-spacing: 0.3em; opacity: 0.55; font-style: italic;
+      margin-bottom: 22px;
+    }
+    .slide-section .sec-q {
+      font-size: 19px; opacity: 0.85;
+      max-width: 640px; line-height: 1.95;
       border-left: 3px solid var(--accent);
-      padding: 20px 28px;
-      margin: 30px 0;
-      background: rgba(196,56,56,0.04);
-      font-style: italic; font-size: 18.5px;
-      line-height: 1.9;
+      padding-left: 20px;
     }
-    .quote cite {
-      display: block; font-style: normal;
-      font-family: var(--sans); font-size: 13.5px;
-      letter-spacing: 0.18em; opacity: 0.65;
+
+    .slide-content { padding-top: 28px; }
+    .content-head {
+      margin-bottom: 22px;
+      display: flex; align-items: baseline; gap: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .content-head h2 { font-family: var(--brush); font-size: 38px; font-weight: 400; letter-spacing: 0.04em; }
+    .content-head .h-en { font-family: var(--sans); font-size: 14px; letter-spacing: 0.25em; opacity: 0.55; }
+    .content-head .h-tag { margin-left: auto; font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.3em; opacity: 0.55; }
+
+    .lead {
+      font-size: 18.5px; line-height: 2; opacity: 0.9;
+      max-width: 880px; margin-bottom: 18px;
+    }
+    .lead p + p { margin-top: 14px; }
+    .lead strong { color: var(--accent); }
+    .term-en {
+      font-family: var(--sans); font-style: italic;
+      opacity: 0.7; font-size: 0.9em;
+      margin-left: 2px;
+    }
+
+    /* Scenario / story card */
+    .story {
+      background: var(--chashitsu-paper);
+      border-left: 4px solid var(--accent);
+      padding: 22px 28px;
+      margin: 16px 0;
+    }
+    .story .lab {
+      font-family: var(--sans); font-size: 12.5px;
+      letter-spacing: 0.3em; color: var(--accent); margin-bottom: 8px;
+    }
+    .story h3 {
+      font-family: var(--brush); font-size: 24px;
+      letter-spacing: 0.04em; margin-bottom: 12px;
+    }
+    .story p { font-size: 17px; line-height: 1.95; opacity: 0.9; }
+    .story p + p { margin-top: 10px; }
+
+    /* Two-column compare */
+    .pair {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
       margin-top: 12px;
     }
+    .pair-box {
+      background: var(--chashitsu-paper);
+      border-top: 4px solid;
+      padding: 20px 22px;
+    }
+    .pair-box.a { border-top-color: var(--moss); }
+    .pair-box.b { border-top-color: var(--water); }
+    .pair-box.c { border-top-color: var(--earth); }
+    .pair-box.d { border-top-color: var(--persimmon); }
+    .pair-box .tag {
+      font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.25em; margin-bottom: 8px;
+    }
+    .pair-box.a .tag { color: var(--moss); }
+    .pair-box.b .tag { color: var(--water); }
+    .pair-box.c .tag { color: var(--earth); }
+    .pair-box.d .tag { color: var(--persimmon); }
+    .pair-box h3 {
+      font-family: var(--brush); font-size: 22px;
+      letter-spacing: 0.04em; margin-bottom: 10px;
+    }
+    .pair-box p { font-size: 16px; line-height: 1.9; opacity: 0.88; }
 
-    /* Scenario opener */
-    .scenario {
+    /* Sector card grid (4-col interactive) */
+    .sectors {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 14px; margin-top: 10px;
+    }
+    .sect {
       background: var(--chashitsu-paper);
       border: 1px solid var(--line);
-      padding: 28px 32px;
-      margin-top: 28px;
-      position: relative;
+      padding: 24px 18px 20px;
+      text-align: center;
+      transition: transform 0.25s, border-color 0.25s;
     }
-    .scenario::before {
-      content: "場面"; position: absolute;
-      top: -12px; left: 24px;
-      background: var(--chashitsu-bg);
-      padding: 2px 12px;
-      font-family: var(--brush); font-size: 14px;
-      letter-spacing: 0.1em;
+    .sect:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .sect .glyph {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 56px; height: 56px;
+      font-family: var(--brush); font-size: 28px;
+      color: var(--chashitsu-paper);
+      margin-bottom: 12px;
     }
-    .scenario h3 { font-family: var(--brush); font-size: 24px; font-weight: 400; margin-bottom: 16px; line-height: 1.45; }
-    .scenario p { font-size: 17px; line-height: 2; opacity: 0.88; }
+    .sect.s-state .glyph { background: var(--moss); }
+    .sect.s-market .glyph { background: var(--water); }
+    .sect.s-volun .glyph { background: var(--earth); }
+    .sect.s-info .glyph { background: var(--persimmon); }
+    .sect h4 { font-family: var(--brush); font-size: 19px; letter-spacing: 0.04em; }
+    .sect .en { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.18em; opacity: 0.6; margin-top: 4px; margin-bottom: 10px; }
+    .sect .ex { font-size: 13px; opacity: 0.78; line-height: 1.7; }
+
+    /* Big single sector card (deep dive) */
+    .deep {
+      background: var(--chashitsu-paper);
+      border-top: 5px solid var(--accent);
+      padding: 28px 34px;
+      margin-top: 6px;
+    }
+    .deep.s-state { border-top-color: var(--moss); }
+    .deep.s-market { border-top-color: var(--water); }
+    .deep.s-volun { border-top-color: var(--earth); }
+    .deep.s-info { border-top-color: var(--persimmon); }
+    .deep-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; }
+    .deep-head .gl {
+      font-family: var(--brush); font-size: 28px;
+      width: 44px; height: 44px;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--chashitsu-paper);
+    }
+    .deep.s-state .deep-head .gl { background: var(--moss); }
+    .deep.s-market .deep-head .gl { background: var(--water); }
+    .deep.s-volun .deep-head .gl { background: var(--earth); }
+    .deep.s-info .deep-head .gl { background: var(--persimmon); }
+    .deep h3 { font-family: var(--brush); font-size: 28px; letter-spacing: 0.04em; }
+    .deep .sub-en { font-family: var(--sans); font-size: 13px; letter-spacing: 0.2em; opacity: 0.6; }
+    .deep .lead-line { font-size: 17px; line-height: 1.9; opacity: 0.88; margin: 10px 0 18px; }
+
+    .deep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 14px; }
+    .deep-col h5 {
+      font-family: var(--sans); font-size: 12.5px;
+      letter-spacing: 0.28em; opacity: 0.65; margin-bottom: 10px;
+    }
+    .deep-col ul { list-style: none; padding: 0; }
+    .deep-col li {
+      font-size: 15.5px; line-height: 1.9;
+      padding: 6px 0 6px 16px; position: relative;
+      border-bottom: 1px solid var(--line-faint);
+    }
+    .deep-col li:last-child { border-bottom: none; }
+    .deep-col li::before { content: "・"; position: absolute; left: 0; opacity: 0.5; }
+    .deep-col li strong { color: var(--accent); font-weight: 600; }
+
+    .tw-block {
+      background: rgba(196,56,56,0.05);
+      border-left: 3px solid var(--accent);
+      padding: 14px 20px;
+      margin-top: 16px;
+    }
+    .tw-block .lab {
+      font-family: var(--sans); font-size: 11.5px;
+      letter-spacing: 0.3em; color: var(--accent); margin-bottom: 6px;
+    }
+    .tw-block h4 {
+      font-family: var(--brush); font-size: 18px;
+      letter-spacing: 0.04em; margin-bottom: 6px;
+    }
+    .tw-block p { font-size: 15.5px; line-height: 1.85; opacity: 0.88; }
+
+    /* Stats */
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-top: 18px;
+    }
+    .stat {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 16px 14px;
+      text-align: center;
+    }
+    .stat .n { font-family: var(--brush); font-size: 30px; color: var(--accent); line-height: 1; }
+    .stat .l { font-size: 13.5px; opacity: 0.82; margin-top: 8px; line-height: 1.55; }
+    .stat .src { font-family: var(--sans); font-size: 10.5px; opacity: 0.5; letter-spacing: 0.1em; margin-top: 6px; }
 
     /* Timeline */
-    .timeline {
-      margin-top: 24px;
-      position: relative;
-      padding-left: 36px;
-    }
-    .timeline::before {
-      content: ""; position: absolute;
-      left: 6px; top: 6px; bottom: 6px;
-      width: 2px; background: var(--line);
-    }
-    .tl-item { position: relative; padding: 14px 0 18px; border-bottom: 1px dashed var(--line-soft); }
+    .tl { margin-top: 8px; padding-left: 32px; position: relative; }
+    .tl::before { content: ""; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+    .tl-item { position: relative; padding: 14px 0 16px; border-bottom: 1px dashed var(--line-soft); }
     .tl-item:last-child { border-bottom: none; }
     .tl-item::before {
       content: ""; position: absolute;
-      left: -36px; top: 22px;
-      width: 14px; height: 14px;
-      background: var(--accent);
-      border-radius: 50%;
+      left: -32px; top: 22px; width: 14px; height: 14px;
+      background: var(--accent); border-radius: 50%;
       border: 2px solid var(--chashitsu-bg);
     }
-    .tl-year {
-      font-family: var(--sans); font-size: 13.5px;
-      letter-spacing: 0.2em; opacity: 0.65;
-      margin-bottom: 4px;
+    .tl-yr {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.2em; opacity: 0.65; margin-bottom: 4px;
     }
-    .tl-title { font-family: var(--brush); font-size: 20px; letter-spacing: 0.04em; margin-bottom: 8px; }
-    .tl-body { font-size: 16px; line-height: 1.9; opacity: 0.85; }
-    .tl-tag {
-      display: inline-block;
-      font-family: var(--sans); font-size: 11.5px;
-      letter-spacing: 0.18em;
-      padding: 3px 10px;
-      margin-left: 10px;
-      background: rgba(196,56,56,0.10);
-      color: var(--accent);
-      vertical-align: middle;
-    }
-
-    /* Sectors */
-    .sectors-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin: 8px 0 18px;
-    }
-    .sector-card {
-      background: var(--chashitsu-paper);
-      border: 1px solid var(--line);
-      padding: 26px 18px 20px;
-      cursor: pointer;
-      text-align: center;
-      position: relative;
-      transition: background 0.2s, transform 0.2s, border-color 0.2s;
-    }
-    .sector-card:hover { transform: translateY(-2px); border-color: var(--accent); }
-    .sector-card.is-active { background: #fff8e8; border-color: var(--accent); }
-    .sector-card.is-active::after {
-      content: ""; position: absolute;
-      bottom: -7px; left: 50%; transform: translateX(-50%) rotate(45deg);
-      width: 12px; height: 12px;
-      background: #fff8e8;
-      border-right: 1px solid var(--accent);
-      border-bottom: 1px solid var(--accent);
-    }
-    .sector-glyph {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 56px; height: 56px;
-      font-family: var(--brush); font-size: 30px;
-      color: var(--chashitsu-paper);
-      margin-bottom: 14px;
-    }
-    .sector-card[data-sector="state"] .sector-glyph { background: var(--moss); }
-    .sector-card[data-sector="market"] .sector-glyph { background: var(--water); }
-    .sector-card[data-sector="voluntary"] .sector-glyph { background: var(--earth); }
-    .sector-card[data-sector="informal"] .sector-glyph { background: var(--persimmon); }
-    .sector-name { font-family: var(--brush); font-size: 21px; letter-spacing: 0.06em; }
-    .sector-sub { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.16em; opacity: 0.6; margin-top: 6px; }
-
-    .sector-detail {
-      display: none;
-      background: var(--chashitsu-paper);
-      border: 1px solid var(--accent);
-      padding: 32px 36px 28px;
-      margin-top: 18px;
-      animation: fade 0.3s ease;
-    }
-    .sector-detail.is-active { display: block; }
-    .sd-head {
-      display: flex; align-items: baseline; gap: 14px;
-      padding-bottom: 16px; margin-bottom: 18px;
-      border-bottom: 1px dashed var(--line-soft);
-    }
-    .sd-glyph {
-      width: 36px; height: 36px;
-      display: inline-flex; align-items: center; justify-content: center;
-      font-family: var(--brush); font-size: 20px;
-      color: var(--chashitsu-paper);
-    }
-    .sd-state .sd-glyph { background: var(--moss); }
-    .sd-market .sd-glyph { background: var(--water); }
-    .sd-voluntary .sd-glyph { background: var(--earth); }
-    .sd-informal .sd-glyph { background: var(--persimmon); }
-    .sd-title { font-family: var(--brush); font-size: 26px; letter-spacing: 0.04em; }
-    .sd-en { font-family: var(--sans); font-size: 13.5px; letter-spacing: 0.2em; opacity: 0.6; }
-    .sd-lead { font-size: 17px; line-height: 2; opacity: 0.88; margin-bottom: 24px; }
-
-    .sd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
-    .sd-col h5 {
-      font-family: var(--sans); font-size: 12.5px;
-      letter-spacing: 0.3em; opacity: 0.65;
-      margin-bottom: 12px;
-    }
-    .sd-col ul { list-style: none; padding: 0; }
-    .sd-col li {
-      font-size: 16px; line-height: 1.85;
-      padding: 8px 0 8px 18px; position: relative;
-      border-bottom: 1px solid var(--line-faint);
-    }
-    .sd-col li:last-child { border-bottom: none; }
-    .sd-col li::before {
-      content: "・"; position: absolute; left: 0; opacity: 0.5;
-    }
-    .sd-col li strong { color: var(--accent); font-weight: 600; }
-
-    .country-strip {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 14px; margin-top: 22px;
-    }
-    .country-card {
-      background: rgba(31,31,29,0.025);
-      border-left: 2px solid var(--moss);
-      padding: 14px 18px;
-    }
-    .country-card.tw { border-left-color: var(--accent); }
-    .country-card.uk { border-left-color: var(--water); }
-    .country-card.ea { border-left-color: var(--earth); }
-    .country-flag {
-      font-family: var(--sans); font-size: 12px;
-      letter-spacing: 0.25em; margin-bottom: 8px; opacity: 0.75;
-    }
-    .country-card.tw .country-flag { color: var(--accent); }
-    .country-card.uk .country-flag { color: var(--water); }
-    .country-card.ea .country-flag { color: var(--earth); }
-    .country-card p { font-size: 15px; line-height: 1.8; opacity: 0.88; }
-
-    /* Stats */
-    .stat-row {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 14px; margin-top: 22px;
-    }
-    .stat-box {
-      background: var(--chashitsu-paper);
-      border: 1px solid var(--line);
-      padding: 20px 16px;
-      text-align: center;
-    }
-    .stat-num { font-family: var(--brush); font-size: 34px; color: var(--accent); line-height: 1; }
-    .stat-label { font-size: 14px; opacity: 0.82; margin-top: 10px; line-height: 1.55; }
-    .stat-source { font-family: var(--sans); font-size: 11px; opacity: 0.5; letter-spacing: 0.1em; margin-top: 8px; }
-
-    /* Tab system */
-    .tabs { margin-top: 18px; }
-    .tab-bar {
-      display: flex; gap: 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .tab-btn {
-      background: transparent; border: none;
-      font-family: var(--jp); font-size: 16px;
-      letter-spacing: 0.06em;
-      padding: 14px 24px;
-      color: var(--ink); opacity: 0.55;
-      border-bottom: 2px solid transparent;
-      margin-bottom: -1px;
-      cursor: pointer;
-    }
-    .tab-btn:hover { opacity: 0.85; }
-    .tab-btn.is-active { opacity: 1; border-bottom-color: var(--accent); font-weight: 500; }
-    .tab-panel { display: none; padding: 26px 0; animation: fade 0.3s; }
-    .tab-panel.is-active { display: block; }
-
-    .four-cards {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 14px; margin-top: 4px;
-    }
-    .axiom-card {
-      background: var(--chashitsu-paper);
-      border-left: 3px solid var(--moss);
-      padding: 16px 20px;
-    }
-    .axiom-card h6 { font-family: var(--brush); font-size: 19px; margin-bottom: 8px; letter-spacing: 0.04em; }
-    .axiom-card p { font-size: 15.5px; line-height: 1.85; opacity: 0.85; }
-    .fail-card { border-left-color: var(--accent); }
+    .tl-t { font-family: var(--brush); font-size: 20px; letter-spacing: 0.04em; margin-bottom: 8px; }
+    .tl-b { font-size: 16px; line-height: 1.9; opacity: 0.85; }
+    .tl-tag { display: inline-block; font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.18em; padding: 3px 10px; margin-left: 10px; background: rgba(196,56,56,0.10); color: var(--accent); vertical-align: middle; }
 
     /* Comparison table */
-    .comp-table {
+    .ctab {
       width: 100%; border-collapse: collapse;
-      margin-top: 10px; background: var(--chashitsu-paper);
+      background: var(--chashitsu-paper);
       border: 1px solid var(--line);
-      font-size: 15.5px;
+      font-size: 15px;
+      margin-top: 8px;
     }
-    .comp-table th, .comp-table td {
-      padding: 14px 16px;
+    .ctab th, .ctab td {
+      padding: 11px 13px;
       border-bottom: 1px solid var(--line-soft);
       text-align: left; vertical-align: top;
     }
-    .comp-table th {
-      font-family: var(--brush); font-size: 18px; font-weight: 500;
+    .ctab th {
+      font-family: var(--brush); font-size: 17px; font-weight: 500;
       background: rgba(216,200,168,0.4);
-      letter-spacing: 0.04em;
-      border-bottom: 1px solid var(--line);
     }
-    .comp-table td:first-child {
-      font-family: var(--sans); font-size: 12.5px;
-      letter-spacing: 0.18em; opacity: 0.65;
-      width: 120px; vertical-align: middle;
-    }
-    .comp-table th:nth-child(2), .comp-table td:nth-child(2) { background: rgba(61,90,63,0.06); }
-    .comp-table th:nth-child(3), .comp-table td:nth-child(3) { background: rgba(90,122,138,0.06); }
-    .comp-table th:nth-child(4), .comp-table td:nth-child(4) { background: rgba(138,106,74,0.06); }
-    .comp-table th:nth-child(5), .comp-table td:nth-child(5) { background: rgba(196,112,56,0.06); }
-    .comp-table tr:last-child td { border-bottom: none; }
+    .ctab th:nth-child(2), .ctab td:nth-child(2) { background: rgba(61,90,63,0.06); }
+    .ctab th:nth-child(3), .ctab td:nth-child(3) { background: rgba(90,122,138,0.06); }
+    .ctab th:nth-child(4), .ctab td:nth-child(4) { background: rgba(138,106,74,0.06); }
+    .ctab th:nth-child(5), .ctab td:nth-child(5) { background: rgba(196,112,56,0.06); }
+    .ctab td:first-child { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.18em; opacity: 0.65; width: 100px; vertical-align: middle; }
 
-    /* Country comparison cards */
-    .country-grid {
+    /* Country cards */
+    .nations {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 16px; margin-top: 8px;
+      gap: 14px; margin-top: 8px;
     }
     .nation {
       background: var(--chashitsu-paper);
       border-top: 3px solid var(--accent);
       padding: 22px 24px;
     }
-    .nation.uk { border-top-color: var(--water); }
-    .nation.east { border-top-color: var(--earth); }
-    .nation-name { font-family: var(--brush); font-size: 24px; letter-spacing: 0.06em; }
-    .nation-en { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.2em; opacity: 0.6; margin-top: 4px; margin-bottom: 16px; }
-    .nation h6 { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.22em; opacity: 0.65; margin: 16px 0 8px; }
+    .nation.b { border-top-color: var(--water); }
+    .nation.c { border-top-color: var(--earth); }
+    .nation .nm { font-family: var(--brush); font-size: 22px; letter-spacing: 0.06em; }
+    .nation .nen { font-family: var(--sans); font-size: 12px; letter-spacing: 0.2em; opacity: 0.6; margin: 4px 0 12px; }
+    .nation h6 { font-family: var(--sans); font-size: 12px; letter-spacing: 0.22em; opacity: 0.65; margin: 14px 0 6px; }
     .nation ul { list-style: none; padding: 0; }
-    .nation li {
-      font-size: 15px; line-height: 1.85;
-      padding: 5px 0 5px 14px; position: relative;
-    }
+    .nation li { font-size: 15px; line-height: 1.85; padding: 4px 0 4px 14px; position: relative; }
     .nation li::before { content: "—"; position: absolute; left: 0; opacity: 0.4; }
     .nation li strong { color: var(--accent); font-weight: 600; }
 
-    /* Flip cards */
-    .flip-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 14px; margin-top: 8px;
+    /* Flip cards (issues) */
+    .flips {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; margin-top: 8px;
     }
     .flip {
       perspective: 1000px;
-      height: 270px;
-      cursor: pointer;
+      height: 240px; cursor: pointer;
     }
     .flip-inner {
-      position: relative;
-      width: 100%; height: 100%;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
+      position: relative; width: 100%; height: 100%;
+      transition: transform 0.6s; transform-style: preserve-3d;
     }
     .flip.is-flipped .flip-inner { transform: rotateY(180deg); }
     .flip-face {
-      position: absolute;
-      width: 100%; height: 100%;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      padding: 22px 24px;
+      position: absolute; width: 100%; height: 100%;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      padding: 24px 26px;
       display: flex; flex-direction: column;
       justify-content: center;
     }
-    .flip-front {
-      background: var(--chashitsu-paper);
-      border: 1px solid var(--line);
-      text-align: center;
-    }
-    .flip-front .flip-icon {
-      font-family: var(--brush); font-size: 42px;
-      color: var(--accent); margin-bottom: 14px;
-    }
-    .flip-front h4 { font-family: var(--brush); font-size: 21px; letter-spacing: 0.04em; margin-bottom: 10px; }
-    .flip-front p { font-size: 15px; opacity: 0.82; line-height: 1.75; }
-    .flip-front .hint {
-      margin-top: auto; font-family: var(--sans); font-size: 11px;
-      letter-spacing: 0.25em; opacity: 0.5;
-    }
-    .flip-back {
-      background: var(--ink); color: var(--chashitsu-paper);
-      transform: rotateY(180deg);
-      justify-content: flex-start;
-    }
-    .flip-back h4 { font-family: var(--brush); font-size: 19px; color: var(--chashitsu-paper); margin-bottom: 14px; letter-spacing: 0.04em; }
+    .flip-front { background: var(--chashitsu-paper); border: 1px solid var(--line); text-align: center; }
+    .flip-front .gl { font-family: var(--brush); font-size: 38px; color: var(--accent); margin-bottom: 12px; }
+    .flip-front h4 { font-family: var(--brush); font-size: 20px; margin-bottom: 8px; letter-spacing: 0.04em; }
+    .flip-front p { font-size: 14.5px; opacity: 0.82; line-height: 1.7; }
+    .flip-front .hint { margin-top: auto; font-family: var(--sans); font-size: 11px; letter-spacing: 0.25em; opacity: 0.5; }
+    .flip-back { background: var(--ink); color: var(--chashitsu-paper); transform: rotateY(180deg); justify-content: flex-start; }
+    .flip-back h4 { font-family: var(--brush); font-size: 18px; color: var(--chashitsu-paper); margin-bottom: 12px; letter-spacing: 0.04em; }
     .flip-back ul { list-style: none; padding: 0; }
-    .flip-back li {
-      font-size: 14.5px; line-height: 1.75;
-      padding: 5px 0 5px 14px; position: relative;
-      opacity: 0.92;
-    }
+    .flip-back li { font-size: 14.5px; line-height: 1.75; padding: 4px 0 4px 14px; position: relative; opacity: 0.92; }
     .flip-back li::before { content: "・"; position: absolute; left: 0; opacity: 0.6; }
+
+    /* Insight banner */
+    .insight {
+      margin-top: 18px;
+      padding: 16px 22px;
+      background: rgba(196,56,56,0.06);
+      border-left: 3px solid var(--accent);
+      font-size: 17px; line-height: 1.9;
+    }
+    .insight strong { color: var(--accent); }
 
     /* Scenario interactive */
     .scen-block {
       background: var(--chashitsu-paper);
       border: 1px solid var(--line);
-      padding: 26px 30px;
-      margin-bottom: 18px;
+      padding: 24px 28px;
+      margin-top: 8px;
     }
-    .scen-q { font-family: var(--brush); font-size: 21px; line-height: 1.6; margin-bottom: 10px; letter-spacing: 0.04em; }
-    .scen-detail { font-size: 16px; opacity: 0.82; line-height: 1.9; margin-bottom: 18px; }
-    .scen-options {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-    .scen-option {
+    .scen-q { font-family: var(--brush); font-size: 22px; line-height: 1.55; margin-bottom: 10px; letter-spacing: 0.04em; }
+    .scen-detail { font-size: 16.5px; opacity: 0.85; line-height: 1.95; margin-bottom: 18px; }
+    .scen-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .scen-opt {
       background: var(--chashitsu-bg);
       border: 1px solid var(--line-soft);
-      padding: 16px 14px;
+      padding: 16px 12px;
       text-align: center;
       cursor: pointer;
       font-family: var(--jp); font-size: 15px;
       transition: background 0.2s, border-color 0.2s, color 0.2s;
     }
-    .scen-option:hover { background: #fff8e8; border-color: var(--accent); }
-    .scen-option.is-picked { background: var(--accent); color: var(--chashitsu-paper); border-color: var(--accent); font-weight: 500; }
-    .scen-option.is-mismatch { opacity: 0.5; }
+    .scen-opt:hover { background: #fff8e8; border-color: var(--accent); }
+    .scen-opt.is-picked { background: var(--accent); color: var(--chashitsu-paper); border-color: var(--accent); font-weight: 500; }
+    .scen-opt.is-mismatch { opacity: 0.5; }
     .scen-feedback {
-      margin-top: 18px;
+      margin-top: 16px;
       padding: 16px 20px;
       background: rgba(61,90,63,0.06);
       border-left: 3px solid var(--moss);
@@ -529,198 +532,180 @@
     .scen-feedback strong { color: var(--moss); }
 
     /* Quiz */
-    .score-bar {
-      background: var(--chashitsu-paper);
-      border: 1px solid var(--line);
-      padding: 20px 28px;
-      text-align: center;
-      margin-bottom: 24px;
-      display: flex; align-items: center; justify-content: center; gap: 16px;
-      flex-wrap: wrap;
-    }
-    .score-num {
-      font-family: var(--brush); font-size: 42px;
-      color: var(--accent); line-height: 1;
-    }
-    .score-tot { font-family: var(--brush); font-size: 24px; opacity: 0.5; }
-    .score-label { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.25em; opacity: 0.6; }
-    .progress-track {
-      flex: 1; min-width: 180px;
-      height: 4px; background: var(--line-faint); position: relative;
-    }
-    .progress-fill {
-      position: absolute; left: 0; top: 0; height: 100%;
-      background: var(--accent); width: 0%;
-      transition: width 0.4s;
-    }
-
     .quiz {
       background: var(--chashitsu-paper);
       border: 1px solid var(--line);
-      padding: 26px 30px;
-      margin-bottom: 16px;
+      padding: 24px 28px;
     }
     .quiz-num { font-family: var(--sans); font-size: 13px; letter-spacing: 0.3em; opacity: 0.6; }
-    .quiz-q { font-family: var(--brush); font-size: 20px; line-height: 1.65; margin: 8px 0 18px; letter-spacing: 0.03em; }
+    .quiz-q { font-family: var(--brush); font-size: 22px; line-height: 1.6; margin: 8px 0 18px; letter-spacing: 0.03em; }
     .quiz-opt {
       display: block; width: 100%; text-align: left;
       background: var(--chashitsu-bg);
       border: 1px solid var(--line-soft);
-      padding: 13px 18px;
-      margin-bottom: 10px;
-      font-family: inherit; font-size: 16px;
+      padding: 14px 20px; margin-bottom: 11px;
+      font-family: inherit; font-size: 17px;
       cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
     }
     .quiz-opt:hover:not(:disabled) { background: #fff8e8; border-color: var(--accent); }
     .quiz-opt.is-correct { background: rgba(61,90,63,0.12); border-color: var(--moss); color: var(--moss); font-weight: 600; }
     .quiz-opt.is-wrong { background: rgba(196,56,56,0.08); border-color: var(--accent); color: var(--accent); }
     .quiz-opt:disabled { cursor: default; }
     .quiz-explain {
-      display: none;
-      margin-top: 16px; padding: 16px 22px;
+      display: none; margin-top: 14px;
+      padding: 14px 20px;
       background: rgba(31,31,29,0.04);
       border-left: 3px solid var(--accent);
-      font-size: 15px; line-height: 1.9;
+      font-size: 16px; line-height: 1.9;
     }
     .quiz-explain.is-shown { display: block; animation: fade 0.3s; }
     .quiz-explain strong { color: var(--accent); }
-
-    /* Discussion */
-    .discuss {
-      background: var(--chashitsu-paper);
-      border-left: 3px solid var(--accent);
-      padding: 18px 24px;
-      margin-bottom: 14px;
-    }
-    .discuss .qn { font-family: var(--brush); font-size: 16px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 8px; }
-    .discuss p { font-size: 17px; line-height: 1.9; }
-
-    /* Reading */
-    .reading {
+    .score-pill {
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 10px 20px;
       background: var(--chashitsu-paper);
       border: 1px solid var(--line);
-      padding: 28px 34px;
+      margin-bottom: 18px;
     }
-    .reading-group { margin-bottom: 22px; }
-    .reading-group:last-child { margin-bottom: 0; }
-    .reading-group h6 { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.28em; opacity: 0.65; margin-bottom: 12px; }
-    .reading-group ul { list-style: none; padding: 0; }
-    .reading-group li {
-      font-size: 15px; line-height: 1.9;
-      padding: 8px 0; border-bottom: 1px solid var(--line-faint);
-    }
-    .reading-group li:last-child { border-bottom: none; }
-    .reading-group li i { font-style: italic; }
+    .score-pill .sn { font-family: var(--brush); font-size: 28px; color: var(--accent); line-height: 1; }
+    .score-pill .st { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.25em; opacity: 0.6; }
 
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 32px 60px;
-      max-width: 1100px; margin: 24px auto 0;
-      display: flex; justify-content: space-between;
-      font-family: var(--sans); font-size: 12.5px; opacity: 0.6;
-      letter-spacing: 0.2em;
-      position: relative; z-index: 2;
+    /* Discussion */
+    .discuss { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .discuss-item {
+      background: var(--chashitsu-paper);
+      border-left: 3px solid var(--accent);
+      padding: 16px 22px; cursor: pointer;
     }
+    .discuss-item .qn { font-family: var(--brush); font-size: 17px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 6px; }
+    .discuss-item .qt { font-size: 17.5px; line-height: 1.9; }
+    .discuss-item .hint {
+      max-height: 0; overflow: hidden; opacity: 0;
+      font-size: 15.5px; line-height: 1.9;
+      transition: max-height 0.4s, opacity 0.3s, margin 0.3s, padding 0.3s;
+      color: var(--ink-soft); font-style: italic;
+    }
+    .discuss-item.is-open .hint {
+      max-height: 250px; opacity: 1;
+      margin-top: 12px; padding-top: 12px;
+      border-top: 1px dashed var(--line-soft);
+    }
+
+    /* Reading */
+    .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+    .ref-card {
+      background: var(--chashitsu-paper);
+      border-top: 3px solid var(--accent);
+      padding: 20px 22px;
+    }
+    .ref-card h3 { font-family: var(--brush); font-size: 20px; margin-bottom: 12px; letter-spacing: 0.04em; }
+    .ref-card p { font-size: 15px; line-height: 1.9; padding: 7px 0; border-bottom: 1px solid var(--line-faint); }
+    .ref-card p:last-child { border-bottom: none; }
+    .ref-card em { color: var(--accent); font-style: italic; }
 
     /* Animations */
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+    .keyboard-hint {
+      position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
+      font-family: var(--sans); font-size: 9.5px;
+      letter-spacing: 0.25em; opacity: 0.4;
+      pointer-events: none; z-index: 60;
     }
+    .keyboard-hint kbd { font-family: var(--mono); font-size: 9.5px; background: rgba(31,31,29,0.08); padding: 1px 5px; margin: 0 2px; }
 
     /* Mobile */
     @media (max-width: 760px) {
-      body { font-size: 16px; }
-      .top { padding: 12px 18px; flex-wrap: wrap; gap: 8px; }
-      .top-title { font-size: 16px; }
+      body { font-size: 16.5px; }
+      .topbar { padding: 0 14px; }
+      .top-title { font-size: 15px; }
       .top-title small { display: none; }
-      .innernav { width: 100%; gap: 16px; padding-top: 6px; }
-      .innernav a { font-size: 11px; letter-spacing: 0.18em; }
+      .top-right { display: none; }
+      .toc-btn { font-size: 10.5px; padding: 4px 9px; letter-spacing: 0.18em; }
 
-      .hero { padding: 48px 22px 36px; }
-      .hero-title { font-size: 42px; }
-      .hero-sub { font-size: 13.5px; }
-      .hero-lead { font-size: 17px; line-height: 1.9; }
-      .hero-meta { font-size: 12.5px; }
+      .slide { padding: 26px 22px 20px; }
+      .slide-title { padding: 26px 22px; }
+      .slide-title h1 { font-size: 40px; }
+      .slide-title .subtitle { font-size: 14.5px; letter-spacing: 0.18em; }
+      .slide-title .author { font-size: 16px; }
 
-      section { padding: 40px 22px; }
-      section.tinted { padding: 40px 22px; }
-      .section-jp { font-size: 24px; }
-      .section-note { display: none; }
-      .section-lead { font-size: 16px; line-height: 1.9; }
+      .slide-section { padding: 26px 22px; }
+      .slide-section h2 { font-size: 36px; }
+      .slide-section .sec-en { font-size: 13px; }
+      .slide-section .sec-q { font-size: 16px; }
+      .slide-section .big-num { font-size: 130px; bottom: 20px; right: 20px; }
 
-      .quote { font-size: 16.5px; padding: 16px 22px; }
-      .quote cite { font-size: 12.5px; }
+      .content-head h2 { font-size: 24px; }
+      .content-head .h-en { font-size: 11.5px; }
+      .content-head .h-tag { display: none; }
 
-      .scenario { padding: 22px 20px; }
-      .scenario h3 { font-size: 19px; }
-      .scenario p { font-size: 15.5px; }
+      .lead { font-size: 16px; }
+      .story h3 { font-size: 20px; }
+      .story p { font-size: 15.5px; }
 
-      .timeline { padding-left: 28px; }
-      .timeline::before { left: 4px; }
+      .pair { grid-template-columns: 1fr; gap: 12px; }
+      .pair-box { padding: 18px 20px; }
+      .pair-box h3 { font-size: 19px; }
+      .pair-box p { font-size: 15px; }
+
+      .sectors { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .sect .glyph { width: 48px; height: 48px; font-size: 24px; }
+      .sect h4 { font-size: 17px; }
+
+      .deep { padding: 22px 22px; }
+      .deep h3 { font-size: 24px; }
+      .deep .lead-line { font-size: 15.5px; }
+      .deep-grid { grid-template-columns: 1fr; gap: 16px; }
+      .deep-col li { font-size: 14.5px; }
+
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat .n { font-size: 24px; }
+      .stat .l { font-size: 12.5px; }
+
+      .tl { padding-left: 28px; }
+      .tl::before { left: 4px; }
       .tl-item::before { left: -28px; width: 12px; height: 12px; top: 20px; }
-      .tl-title { font-size: 18px; }
-      .tl-body { font-size: 14.5px; }
-      .tl-year { font-size: 12.5px; }
+      .tl-t { font-size: 17px; }
+      .tl-b { font-size: 14.5px; }
+      .tl-yr { font-size: 12px; }
 
-      .sectors-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      .sector-glyph { width: 48px; height: 48px; font-size: 24px; }
-      .sector-name { font-size: 18px; }
-      .sector-sub { font-size: 11.5px; }
-      .sector-card.is-active::after { display: none; }
-      .sector-detail { padding: 22px 22px; }
-      .sd-title { font-size: 22px; }
-      .sd-lead { font-size: 15.5px; }
-      .sd-col li { font-size: 14.5px; }
-      .sd-grid { grid-template-columns: 1fr; gap: 18px; }
-      .country-strip { grid-template-columns: 1fr; gap: 8px; }
-      .country-card p { font-size: 14px; }
+      .ctab { font-size: 13px; display: block; overflow-x: auto; }
+      .ctab th, .ctab td { padding: 8px 10px; }
 
-      .stat-row { grid-template-columns: repeat(2, 1fr); }
-      .stat-num { font-size: 26px; }
-      .stat-label { font-size: 13px; }
+      .nations { grid-template-columns: 1fr; }
 
-      .tab-bar { overflow-x: auto; scrollbar-width: none; }
-      .tab-bar::-webkit-scrollbar { display: none; }
-      .tab-btn { padding: 11px 16px; font-size: 14.5px; flex-shrink: 0; }
-      .four-cards { grid-template-columns: 1fr; }
-      .axiom-card h6 { font-size: 17px; }
-      .axiom-card p { font-size: 14.5px; }
-
-      .comp-table { font-size: 13.5px; display: block; overflow-x: auto; }
-      .comp-table th, .comp-table td { padding: 10px 12px; }
-      .comp-table th { font-size: 16px; }
-
-      .country-grid { grid-template-columns: 1fr; }
-      .nation-name { font-size: 22px; }
-      .nation li { font-size: 14px; }
-
-      .flip-grid { grid-template-columns: 1fr; }
-      .flip { height: 240px; }
-      .flip-front h4 { font-size: 19px; }
-      .flip-front p { font-size: 14px; }
-      .flip-back li { font-size: 13.5px; }
+      .flips { grid-template-columns: 1fr; }
+      .flip { height: 230px; }
 
       .scen-options { grid-template-columns: repeat(2, 1fr); }
-      .scen-option { font-size: 14px; padding: 13px 10px; }
+      .scen-opt { font-size: 14px; padding: 13px 8px; }
       .scen-q { font-size: 18px; }
       .scen-detail { font-size: 14.5px; }
       .scen-feedback { font-size: 14.5px; }
 
       .quiz { padding: 22px 22px; }
       .quiz-num { font-size: 12px; }
-      .quiz-q { font-size: 17px; }
+      .quiz-q { font-size: 18px; }
       .quiz-opt { font-size: 14.5px; padding: 12px 16px; }
       .quiz-explain { font-size: 14px; }
 
-      .discuss p { font-size: 15.5px; }
+      .discuss-item .qt { font-size: 16px; }
 
-      .reading { padding: 22px 22px; }
-      .reading-group li { font-size: 13.5px; }
+      .ref-grid { grid-template-columns: 1fr; }
+      .ref-card p { font-size: 13.5px; }
 
-      footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 11px; }
+      .navbar { padding: 0 14px; height: 58px; }
+      .nav-btn { padding: 7px 14px; font-size: 13px; letter-spacing: 0.1em; }
+      .dots { max-width: 200px; }
+      .nav-center { font-size: 12px; gap: 10px; }
+
+      .toc-panel { padding: 24px 22px; }
+      .toc-list { grid-template-columns: 1fr; gap: 0; }
+      .toc-list .lab { font-size: 13.5px; }
+
+      .keyboard-hint { display: none; }
     }
   </style>
 </head>
@@ -736,1211 +721,1470 @@
   <rect width="100%" height="100%" filter="url(#paper-noise)" />
 </svg>
 
-<div class="scroll-progress" id="scrollProgress"></div>
-
-<header class="top">
+<header class="topbar">
   <div class="top-left">
     <a href="../../teaching-zh.html" class="back">← 茶室</a>
     <span class="top-sep">·</span>
-    <span class="top-title">福利社會學<small>第 4 週・誰應該提供福利？</small></span>
+    <span class="top-title">誰應該提供福利？<small>福利社會學 第 4 週</small></span>
   </div>
-  <nav class="innernav" aria-label="Sections">
-    <a href="#intro">概念</a>
-    <a href="#timeline">脈絡</a>
-    <a href="#sectors">四部門</a>
-    <a href="#market">市場</a>
-    <a href="#compare">比較</a>
-    <a href="#countries">國際</a>
-    <a href="#issues">議題</a>
-    <a href="#scenario">情境</a>
-    <a href="#quiz">測驗</a>
-    <a href="#discuss">討論</a>
-  </nav>
+  <div class="top-right">
+    <span>大一同學適用</span>
+    <button class="toc-btn" onclick="toggleToc()">目次 ・ TOC</button>
+  </div>
 </header>
 
-<!-- ───────── HERO ───────── -->
-<section class="hero" style="padding-top: 72px;">
-  <div class="hero-inner">
-    <div class="week-tag">
-      <span class="seal">學</span>
-      <span>週 4 ・ 3/19 ・ WEEK 4</span>
-    </div>
-    <h1 class="hero-title">誰應該提供福利？</h1>
-    <p class="hero-sub">WHO SHOULD PROVIDE WELFARE — 國家、市場、志願部門與家庭</p>
-    <div class="hero-lead">
-      <p>
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ============ S0 TITLE ============ -->
+  <section class="slide slide-title is-active" data-kind="title" data-label="封面">
+    <div class="slide-inner">
+      <div class="week-tag">
+        <span class="seal">學</span>
+        <span>第 4 週 ・ 3/19 ・ WEEK 4</span>
+      </div>
+      <h1>誰應該提供福利？</h1>
+      <p class="subtitle">WHO SHOULD PROVIDE WELFARE — 國家、市場、志願部門與家庭</p>
+      <p class="author">
         七十歲那年，你需要有人陪你去醫院、需要有人幫你買菜、需要有人在半夜把你扶起來。<br/>
-        那個人——是政府派來的、市場買來的、教會志工、還是你的女兒？
+        那個人——是政府派來的、市場買來的、教會志工，還是你的女兒？
       </p>
-      <p>
-        這個問題沒有單一答案。世界上每個社會都用自己的方式組合「四個部門」——政府、市場、志願組織、家庭——來回應同樣的人類需求。本週課程，我們從這個組合的歷史、邏輯與台灣經驗，理解「福利混合經濟」背後真正的政治選擇。
+      <div class="meta-strip">
+        <span>福利社會學 ・ 葉崇揚</span>
+        <span>東吳大學社會學系</span>
+        <span>2026 春學期</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S1 OPENING SCENARIO ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="情境：阿嬤的早晨">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>情境 ・ 阿嬤的早晨</h2>
+        <span class="h-en">A MORNING IN TAIWAN</span>
+        <span class="h-tag">★ 開場故事</span>
+      </div>
+      <p class="lead">先讀一個故事。讀完，你應該就懂這堂課要談的問題了。</p>
+      <div class="story">
+        <span class="lab">CASE ・ 台中清水</span>
+        <h3>清水鎮的週二早晨七點</h3>
+        <p>阿嬤 78 歲，輕度失智。子女兩個都在台北科技業上班，週末偶爾才回去。她的早晨是這樣的：</p>
+        <p><strong>七點</strong>　外籍看護工阿蒂（印尼籍）替阿嬤量血壓、煮稀飯。阿蒂的工錢由家屬付，每月 27,000 元。</p>
+        <p><strong>九點</strong>　里長交辦的長照 C 級巷弄站志工陳姊來陪阿嬤做手指操。這個據點是政府委辦給在地的天主教社福基金會做的。</p>
+        <p><strong>十點</strong>　住對門的鄰居王太太順道按了門鈴問一聲：「阿嬤今天有沒有吃東西？」</p>
+      </div>
+      <div class="insight">
+        <strong>看出來了嗎？</strong>這個早晨，阿嬤的福利來自<strong>四個不同的部門</strong>——市場（外籍看護）、政府＋NPO（C 級據點）、非正式（鄰居）。這不是自然的，是台灣三十年來福利政策一步步「拼」出來的結果。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S2 LASSWELL ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="分配是政治">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>分配，是一場政治</h2>
+        <span class="h-en">WELFARE AS DISTRIBUTION</span>
+      </div>
+      <p class="lead">
+        福利政策的本質是社會在問一個老問題：「<strong>誰拿到什麼、什麼時候拿、用什麼方式拿</strong>」<span class="term-en">(Who Gets What, When, How)</span>。這個問題之所以重要，是因為它背後還藏著一個更前面的問題——「<strong>誰來給</strong>」？這件事不是自然的，是被社會選擇出來的。
       </p>
-    </div>
-    <div class="hero-meta">
-      <span>福利社會學</span>
-      <span>葉崇揚 ・ 東吳大學社會學系</span>
-      <span>2026 春學期</span>
-    </div>
-  </div>
-</section>
-
-<!-- ───────── INTRO ───────── -->
-<section id="intro">
-  <div class="section-head">
-    <span class="section-jp">分配是一場政治</span>
-    <span class="section-en">WELFARE AS DISTRIBUTION</span>
-  </div>
-  <div class="section-lead">
-    <p>
-      福利政策的本質，是社會在問一個老問題：「誰拿到什麼、什麼時候拿、用什麼方式拿？」（Who Gets What, When, How）這個問題之所以重要，是因為在它之前的隱藏問題是：「誰來給？」——這件事不是自然的，是被選擇出來的。
-    </p>
-  </div>
-
-  <div class="quote">
-    The study of politics is the study of influence and the influential. The influential are those who get the most of what there is to get. Those who get the most are elite; the rest are mass.
-    <cite>— Harold D. Lasswell, <i>Politics: Who Gets What, When, How</i> (1936/1958)</cite>
-  </div>
-
-  <div class="scenario">
-    <h3>場面：阿嬤的早晨</h3>
-    <p>
-      臺中清水，週二早上七點。阿嬤 78 歲，輕度失智。子女都在台北上班。她的早晨是：外籍看護工阿蒂（市場）替她量血壓、煮稀飯；九點，里長交辦的長照 C 級巷弄站（政府＋NPO 委辦）志工陳姊（志願）來陪她做手指操；十點，住對門的鄰居（非正式）順道按了門鈴問一聲。
-    </p>
-    <p style="margin-top: 12px; font-style: italic; color: var(--accent); font-size: 14.5px;">
-      ——這個早晨，四個部門全到齊了。但這不是自然的，是台灣三十年福利政策一步步「拼」出來的結果。
-    </p>
-  </div>
-</section>
-
-<!-- ───────── TIMELINE ───────── -->
-<section class="tinted" id="timeline">
-  <div class="section-inner">
-    <div class="section-head">
-      <span class="section-jp">歷史脈絡</span>
-      <span class="section-en">HISTORICAL CONTEXT — 福利國家的危機與多元化</span>
-    </div>
-    <div class="section-lead">
-      <p>
-        「福利混合經濟」（mixed economy of welfare）這個詞之所以出現在 1970 年代，是因為原本被視為理所當然的「政府獨攬福利」的模式正在崩解。下面把全球與台灣的關鍵節點放在一起：
-      </p>
-    </div>
-
-    <div class="timeline">
-      <div class="tl-item">
-        <p class="tl-year">1942 ・ 1945</p>
-        <h4 class="tl-title">Beveridge Report 與英國福利國家成立</h4>
-        <p class="tl-body">
-          William Beveridge 在《Social Insurance and Allied Services》提出對抗「五大惡」——匱乏、疾病、無知、骯髒、懶散——的全面社會保險構想。1945 年工黨上台，1948 年 NHS 成立。「政府是福利唯一提供者」成為戰後西方標準。
-        </p>
+      <div class="story">
+        <span class="lab">QUOTE ・ Lasswell 1936</span>
+        <h3>Politics: Who Gets What, When, How</h3>
+        <p style="font-style: italic;">「政治研究就是研究影響力——以及那些有影響力的人。能拿到最多資源的人是菁英，剩下的就是大眾。」</p>
+        <p style="margin-top: 8px; opacity: 0.7; font-size: 15px;">— Harold D. Lasswell, <i>Politics: Who Gets What, When, How</i> (1936)</p>
       </div>
-      <div class="tl-item">
-        <p class="tl-year">1945–1970</p>
-        <h4 class="tl-title">福利國家的黃金時代</h4>
-        <p class="tl-body">
-          西歐高經濟成長＋低失業率＋穩定家庭結構，支撐了大規模公共福利擴張。Esping-Andersen 後來把這時期的差異整理為三種「福利資本主義」：自由（美英）、保守（德法）、社會民主（瑞典）。
-        </p>
-      </div>
-      <div class="tl-item">
-        <p class="tl-year">1973 ・ 1979</p>
-        <h4 class="tl-title">兩次石油危機與「福利國家危機」</h4>
-        <p class="tl-body">
-          停滯性通膨摧毀公共財政、官僚體系遭批失能、人口老化壓力浮現。新右派攻擊福利國家「養懶人」，左派批評其家父長式管控。「政府獨大」的合法性鬆動了。
-        </p>
-      </div>
-      <div class="tl-item">
-        <p class="tl-year">1980s</p>
-        <h4 class="tl-title">福利多元主義興起<span class="tl-tag">理論轉向</span></h4>
-        <p class="tl-body">
-          Norman Johnson《<i>The Welfare State in Transition</i>》（1987）系統提出「福利多元主義」（welfare pluralism）：福利應由國家、市場、志願部門、非正式部門共同提供。Thatcher 推動 NHS 內部市場化、社區照顧法（1990）讓地方政府成為「採購者」。
-        </p>
-      </div>
-      <div class="tl-item">
-        <p class="tl-year">1995</p>
-        <h4 class="tl-title">台灣全民健保上路<span class="tl-tag">台灣節點</span></h4>
-        <p class="tl-body">
-          台灣選擇「強單一保險人＋多元提供者」的混合模式：政府當保險人、私立醫院當主要提供者、家屬負擔自費部分。這個結構決定了之後二十年台灣健康照護的基本盤。
-        </p>
-      </div>
-      <div class="tl-item">
-        <p class="tl-year">2000</p>
-        <h4 class="tl-title">日本介護保險上路<span class="tl-tag">東亞</span></h4>
-        <p class="tl-body">
-          日本明確走向「福利混合經濟」：政府當保險人、社會福祉法人與營利機構共同提供長照服務、家屬保留照顧責任。這套設計後來成為韓國（2008）與台灣長照政策反覆參照的範本。
-        </p>
-      </div>
-      <div class="tl-item">
-        <p class="tl-year">2007 ・ 2017</p>
-        <h4 class="tl-title">台灣長照 1.0 ・ 長照 2.0<span class="tl-tag">台灣節點</span></h4>
-        <p class="tl-body">
-          長照 1.0（2007）以「補助＋公辦民營」為主；2.0（2017）改採稅收制、擴張 ABC 級巷弄站，把志願組織與在地社區拉進服務輸送。然而：26 萬名外籍看護工與 70%+ 由女性家屬承擔的非正式照顧，仍然是這套體系真正的「隱形地基」。
-        </p>
-      </div>
-      <div class="tl-item">
-        <p class="tl-year">2010s ・ 至今</p>
-        <h4 class="tl-title">公私協力、社會企業、平台勞動</h4>
-        <p class="tl-body">
-          英國「Big Society」（2010）試圖把更多福利交給志願部門；台灣社會住宅由政府＋租屋市場＋NPO 包租代管混合操作；Uber Eats、Foodpanda 把社會風險（保險、退休）打回個人——「誰提供福利」的邊界仍在持續移動。
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───────── SECTORS ───────── -->
-<section id="sectors">
-  <div class="section-head">
-    <span class="section-jp">四つの部門</span>
-    <span class="section-en">FOUR SECTORS</span>
-    <span class="section-note">點選下方任一部門，展開詳細與台灣案例</span>
-  </div>
-  <div class="section-lead">
-    <p>
-      Norman Johnson、Martin Powell 等人把福利提供整理成四個部門。每個部門有不同的「運作邏輯」——政府靠公權力、市場靠價格、志願部門靠使命、家庭靠情感與義務。每個部門也有自己擅長與失能之處。
-    </p>
-  </div>
-
-  <div class="sectors-grid">
-    <div class="sector-card" data-sector="state" onclick="pickSector('state')">
-      <div class="sector-glyph">公</div>
-      <div class="sector-name">政府部門</div>
-      <div class="sector-sub">THE STATE</div>
-    </div>
-    <div class="sector-card" data-sector="market" onclick="pickSector('market')">
-      <div class="sector-glyph">市</div>
-      <div class="sector-name">商業部門</div>
-      <div class="sector-sub">THE MARKET</div>
-    </div>
-    <div class="sector-card" data-sector="voluntary" onclick="pickSector('voluntary')">
-      <div class="sector-glyph">志</div>
-      <div class="sector-name">志願部門</div>
-      <div class="sector-sub">VOLUNTARY</div>
-    </div>
-    <div class="sector-card" data-sector="informal" onclick="pickSector('informal')">
-      <div class="sector-glyph">家</div>
-      <div class="sector-name">非正式部門</div>
-      <div class="sector-sub">INFORMAL</div>
-    </div>
-  </div>
-
-  <!-- STATE -->
-  <div class="sector-detail sd-state" id="sd-state">
-    <div class="sd-head">
-      <span class="sd-glyph">公</span>
-      <div>
-        <div class="sd-title">政府部門 ・ 公部門</div>
-        <div class="sd-en">THE STATE / PUBLIC SECTOR</div>
-      </div>
-    </div>
-    <p class="sd-lead">
-      透過課稅與法律授予的公權力，承擔保障公民基本權利的責任。政府部門的特殊性，在於它是唯一具有「強制力」的部門——它可以強制納稅、強制納保、強制就學。
-    </p>
-
-    <div class="sd-grid">
-      <div class="sd-col">
-        <h5>五大功能</h5>
-        <ul>
-          <li><strong>政策制定：</strong>決定福利的方向、優先順序、給付水準</li>
-          <li><strong>直接提供：</strong>由公務體系直接提供現金給付或服務</li>
-          <li><strong>計畫與督導：</strong>規劃輸送體系、監督執行品質</li>
-          <li><strong>管制與品質：</strong>設定資格、審核、稽核、申訴機制</li>
-          <li><strong>財務支持：</strong>稅收撥款、稅式支出（tax expenditure）、補助</li>
-        </ul>
-      </div>
-      <div class="sd-col">
-        <h5>當代角色：不只「提供者」</h5>
-        <ul>
-          <li>純提供者（provider）：公立學校、公立醫院</li>
-          <li>採購者（purchaser）：用稅金向私立或 NPO 買服務</li>
-          <li>管制者（regulator）：制定品質標準、監督</li>
-          <li>促能者（enabler）：補貼、減稅、撥款給其他部門</li>
-          <li>「政府縮減」常常不是退場、而是<strong>角色轉換</strong></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="country-strip">
-      <div class="country-card tw">
-        <p class="country-flag">台灣 ・ TAIWAN</p>
-        <p>全民健保（1995，單一保險人）、長照 2.0（2017，稅收制）、國民年金（2008）、勞保老年給付、育兒津貼、公共托育準公共化。政府是「規則制定＋付錢的人」，但實際提供者多為私部門與 NPO。</p>
-      </div>
-      <div class="country-card uk">
-        <p class="country-flag">英國 ・ UNITED KINGDOM</p>
-        <p>NHS（1948）是經典「政府直接提供」的代表——稅收支撐、由國家僱用醫師、免費就醫。社會住宅曾是議會所有，1980s 之後「Right to Buy」大量私有化。</p>
-      </div>
-      <div class="country-card ea">
-        <p class="country-flag">東亞 ・ EAST ASIA</p>
-        <p>日本介護保險、韓國國民健康保險，皆採「政府當保險人、混合提供」模式；新加坡 CPF（中央公積金）則是政府強制儲蓄＋個人帳戶，政府介入深但個人責任重。</p>
-      </div>
-    </div>
-
-    <div class="stat-row">
-      <div class="stat-box">
-        <div class="stat-num">99.9%</div>
-        <div class="stat-label">台灣全民健保<br/>覆蓋率</div>
-        <div class="stat-source">衛福部 2024</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">7,529 億</div>
-        <div class="stat-label">台灣健保<br/>總支出（NTD）</div>
-        <div class="stat-source">2023 年度</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">22.4%</div>
-        <div class="stat-label">台灣社福預算<br/>佔中央政府總預算</div>
-        <div class="stat-source">主計總處 2024</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">9.2%</div>
-        <div class="stat-label">英國 NHS 支出<br/>佔 GDP</div>
-        <div class="stat-source">OECD 2023</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MARKET -->
-  <div class="sector-detail sd-market" id="sd-market">
-    <div class="sd-head">
-      <span class="sd-glyph">市</span>
-      <div>
-        <div class="sd-title">商業部門 ・ 市場</div>
-        <div class="sd-en">THE MARKET / COMMERCIAL SECTOR</div>
-      </div>
-    </div>
-    <p class="sd-lead">
-      依資本主義邏輯運作：依價格交易、追求利潤、資源依購買力分配。市場的優勢是效率與創新，劣勢是必然排除沒有購買力的人。
-    </p>
-
-    <div class="sd-grid">
-      <div class="sd-col">
-        <h5>市場提供福利的兩種型態</h5>
-        <ul>
-          <li><strong>直接服務：</strong>私立醫院、私立托嬰、私立長照機構、私人住宅</li>
-          <li><strong>金融商品：</strong>商業健康險、長照險、年金險、退休金帳戶</li>
-          <li>由「個人」或「雇主」買單；無購買力者被排除</li>
-          <li>「私立」不等於「市場」——若收入主要來自政府委辦，更接近被政府使用的工具</li>
-        </ul>
-      </div>
-      <div class="sd-col">
-        <h5>商品化與去商品化</h5>
-        <ul>
-          <li>Esping-Andersen：福利國家的核心是「<strong>去商品化</strong>」——讓人不必把勞動賣給市場也能維持基本生活</li>
-          <li>市場主導的福利（如美國 401k、私立醫療）反向強化「商品化」</li>
-          <li>台灣健保是強去商品化、長照卻偏商品化（家屬自付＋外勞）</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="country-strip">
-      <div class="country-card tw">
-        <p class="country-flag">台灣 ・ TAIWAN</p>
-        <p>機構式長照中私立佔 80%+；商業健康險市場巨大（每人平均持有 2.6 張壽險＋醫療險）；勞退新制自提採類 401k 設計；準公共幼兒園是「政府訂價的私立」。</p>
-      </div>
-      <div class="country-card uk">
-        <p class="country-flag">英國 ・ UK</p>
-        <p>NHS 內部市場化（internal market, 1991）：醫院之間競爭、GP 為購買者；BUPA 等私立保險為補充選項；私校（public schools）長期承擔精英教育。</p>
-      </div>
-      <div class="country-card ea">
-        <p class="country-flag">東亞 ・ EAST ASIA</p>
-        <p>日本介護保險允許營利公司加入長照市場；韓國長期療養保險亦同；香港、新加坡的公立醫療＋私立醫療共存制度，是「政府保底＋市場分層」的代表。</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- VOLUNTARY -->
-  <div class="sector-detail sd-voluntary" id="sd-voluntary">
-    <div class="sd-head">
-      <span class="sd-glyph">志</span>
-      <div>
-        <div class="sd-title">志願部門 ・ 第三部門</div>
-        <div class="sd-en">VOLUNTARY / NONPROFIT SECTOR</div>
-      </div>
-    </div>
-    <p class="sd-lead">
-      Salamon &amp; Anheier（1997）給的五項定義：正式且有組織、民間性質、非利益分配、自我治理、志願性。簡單說：可以收費、可以營運，但不分配盈餘給創辦人或股東；獨立於政府之外、自願加入。
-    </p>
-
-    <div class="sd-grid">
-      <div class="sd-col">
-        <h5>核心特徵</h5>
-        <ul>
-          <li><strong>正式且有組織：</strong>有章程、有立案</li>
-          <li><strong>民間性質：</strong>不是政府機關</li>
-          <li><strong>非利益分配：</strong>盈餘必須再投入使命</li>
-          <li><strong>自我治理：</strong>獨立決策結構</li>
-          <li><strong>志願性：</strong>有志願參與成分</li>
-        </ul>
-      </div>
-      <div class="sd-col">
-        <h5>角色：補充？替代？合作？</h5>
-        <ul>
-          <li><strong>補充模式：</strong>填補政府不足（多數台灣案例）</li>
-          <li><strong>替代模式：</strong>取代政府提供（部分英國案例）</li>
-          <li><strong>夥伴模式：</strong>政府委辦、公私協力（德國「輔助性原則」）</li>
-          <li>挑戰：政府委辦比例過高時，NPO 容易失去獨立性、變成「政府的延伸手」</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="country-strip">
-      <div class="country-card tw">
-        <p class="country-flag">台灣 ・ TAIWAN</p>
-        <p>伊甸基金會（身障）、家扶基金會（兒童）、門諾基金會（東部長照）、創世基金會（街友與植物人）、聯合勸募。長照 2.0 大量委辦給在地 NPO。</p>
-      </div>
-      <div class="country-card uk">
-        <p class="country-flag">英國 ・ UK</p>
-        <p>慈善傳統最深的國家之一：Oxfam、Barnardo's、Age UK、Shelter（無家者）、Citizens Advice。Charity Commission 嚴格規範。NHS 之外大量由 charity 補位。</p>
-      </div>
-      <div class="country-card ea">
-        <p class="country-flag">東亞 ・ EAST ASIA</p>
-        <p>日本「社會福祉法人」是介於公私之間的特殊法人，承擔大量長照與兒童照顧；韓國「社會福祉法人」類似。德國的「Caritas、Diakonie」六大團體（補助性原則）是另一種典型。</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- INFORMAL -->
-  <div class="sector-detail sd-informal" id="sd-informal">
-    <div class="sd-head">
-      <span class="sd-glyph">家</span>
-      <div>
-        <div class="sd-title">非正式部門 ・ 家庭與社區</div>
-        <div class="sd-en">INFORMAL SECTOR — FAMILY &amp; COMMUNITY</div>
-      </div>
-    </div>
-    <p class="sd-lead">
-      最古老、最龐大、也最常被低估的福利提供者。家人之間、鄰里之間、朋友之間的照顧、陪伴、金錢協助——統統屬於這個部門。在東亞，孝道文化＋儒家倫理長期將大量責任留在家庭內部。
-    </p>
-
-    <div class="sd-grid">
-      <div class="sd-col">
-        <h5>主要面向</h5>
-        <ul>
-          <li>父母照顧子女、子女反哺父母</li>
-          <li>夫妻間的照顧、隔代教養</li>
-          <li>鄰里互助、宗親會、同鄉會</li>
-          <li>未支薪：勞動價值不被計入 GDP</li>
-          <li>東亞「家庭主義」福利體制（Esping-Andersen 補修）</li>
-        </ul>
-      </div>
-      <div class="sd-col">
-        <h5>性別與階級的隱形成本</h5>
-        <ul>
-          <li>家庭照顧責任長期由<strong>女性</strong>承擔</li>
-          <li>女性勞動參與率因照顧責任降低</li>
-          <li>「外籍看護工」化解部分壓力，但把問題輸出到他國女性</li>
-          <li>富裕家庭可購買服務、貧困家庭只能由女兒承擔——非正式部門與階級高度相關</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="country-strip">
-      <div class="country-card tw">
-        <p class="country-flag">台灣 ・ TAIWAN</p>
-        <p>外籍看護工 26 萬人是全球最高比例之一；家庭照顧者 70%+ 為女性；長照 2.0 雖然擴張公共服務，但「家屬負主要責任」仍是預設。</p>
-      </div>
-      <div class="country-card uk">
-        <p class="country-flag">英國 ・ UK</p>
-        <p>「Carers UK」估計約 670 萬人提供無償照顧；2014 年《Care Act》首度明文承認非正式照顧者的權利與支持。</p>
-      </div>
-      <div class="country-card ea">
-        <p class="country-flag">東亞 ・ EAST ASIA</p>
-        <p>日本「介護離職」每年約 10 萬人（多為中年女性）；韓國低生育率部分被歸因於照顧責任落在女性；新加坡明文「祖父母可申請孫照顧津貼」，把家庭定為主要單位。</p>
-      </div>
-    </div>
-
-    <div class="stat-row">
-      <div class="stat-box">
-        <div class="stat-num">≈70%</div>
-        <div class="stat-label">台灣家庭照顧者<br/>中女性佔比</div>
-        <div class="stat-source">中華民國家庭照顧者關懷總會</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">26 萬</div>
-        <div class="stat-label">台灣外籍看護工<br/>實際在工人數</div>
-        <div class="stat-source">勞動部 2024</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">670 萬</div>
-        <div class="stat-label">英國非正式<br/>照顧者人數</div>
-        <div class="stat-source">Carers UK 2023</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">≈10 萬／年</div>
-        <div class="stat-label">日本「介護離職」<br/>人數</div>
-        <div class="stat-source">日本厚生勞働省</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───────── MARKET DEEP DIVE ───────── -->
-<section class="tinted" id="market">
-  <div class="section-inner">
-    <div class="section-head">
-      <span class="section-jp">市場與福利</span>
-      <span class="section-en">THE MARKET — IDEAL VS. FAILURE</span>
-    </div>
-    <div class="section-lead">
-      <p>
-        經濟學中的「市場」是一個理想型——只有當下面四個假設成立時，市場才能達成最有效率的資源配置。但現實中，這四個條件在福利服務領域<strong>幾乎沒有一項能成立</strong>。
+      <p class="lead">
+        Lasswell 講的是「拿到」這一邊。但我們這週要往前一步，問另一邊——「<strong>誰給</strong>」？答案有四個可能：<strong>政府</strong> <span class="term-en">(state)</span>、<strong>市場</strong> <span class="term-en">(market)</span>、<strong>志願組織</strong> <span class="term-en">(voluntary sector)</span>、<strong>家庭與社區</strong> <span class="term-en">(informal sector)</span>。每一個社會都用自己的方式組合這四個，這個組合就叫「<strong>福利混合經濟</strong>」<span class="term-en">(mixed economy of welfare)</span>。
       </p>
     </div>
+  </section>
 
-    <div class="tabs" id="marketTabs">
-      <div class="tab-bar">
-        <button class="tab-btn is-active" data-tab="ideal">有效市場假設</button>
-        <button class="tab-btn" data-tab="fail">市場失靈</button>
-        <button class="tab-btn" data-tab="welfare">福利商品的特殊性</button>
-        <button class="tab-btn" data-tab="case">台灣現場</button>
-      </div>
-
-      <div class="tab-panel is-active" data-panel="ideal">
-        <div class="four-cards">
-          <div class="axiom-card">
-            <h6>完全競爭</h6>
-            <p>多數買賣雙方、實力相當；沒有人能單方面決定價格。<i>—— 但長照市場常常一個鄉只有一兩家機構。</i></p>
-          </div>
-          <div class="axiom-card">
-            <h6>完全市場</h6>
-            <p>所有「願意付錢的需求」都能被市場滿足。<i>—— 但極重度失能者、無依老人，市場根本不想接。</i></p>
-          </div>
-          <div class="axiom-card">
-            <h6>無外部性</h6>
-            <p>交易只影響買賣雙方，不影響第三方。<i>—— 但你打疫苗保護的不只是自己。</i></p>
-          </div>
-          <div class="axiom-card">
-            <h6>完全資訊</h6>
-            <p>買賣雙方對品質、價格擁有對等資訊。<i>—— 但你怎麼判斷哪間長照機構真的有好好照顧你媽？</i></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="tab-panel" data-panel="fail">
-        <div class="four-cards">
-          <div class="axiom-card fail-card">
-            <h6>資訊不對稱</h6>
-            <p>醫療、照顧的品質難以事前評估。等你發現照顧品質差，往往已經出事。Akerlof 的「檸檬市場」會劣幣驅逐良幣。</p>
-          </div>
-          <div class="axiom-card fail-card">
-            <h6>外部性</h6>
-            <p>教育、預防醫學、疫苗——個人決策對社會有正外部性。市場下會「供給不足」。</p>
-          </div>
-          <div class="axiom-card fail-card">
-            <h6>公共財</h6>
-            <p>國防、公共衛生、空氣品質——非排他性、非敵對性，市場無法收費，會被市場放棄。</p>
-          </div>
-          <div class="axiom-card fail-card">
-            <h6>排除效果</h6>
-            <p>沒錢的人買不到。當服務涉及生存、尊嚴、機會（如醫療、教育、住宅），「買不起」就等於「社會排除」。</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="tab-panel" data-panel="welfare">
-        <div class="section-lead" style="margin-bottom: 14px;">
-          <p>福利商品還有一些「特別不適合純市場」的性質：</p>
-        </div>
-        <div class="four-cards">
-          <div class="axiom-card">
-            <h6>需求不可預測</h6>
-            <p>誰會在哪一天得癌症、誰會在哪一年失能——個人無法準確預測，需要保險邏輯而非交易邏輯。</p>
-          </div>
-          <div class="axiom-card">
-            <h6>需求與支付能力反向相關</h6>
-            <p>越窮的人健康越差、越需要醫療；但越窮的人越買不起保險。市場邏輯會放大不平等。</p>
-          </div>
-          <div class="axiom-card">
-            <h6>「值得性」判斷</h6>
-            <p>誰值得拿到福利？這是社會選擇而非市場選擇——「老人值得照顧」不是因為老人付得起。</p>
-          </div>
-          <div class="axiom-card">
-            <h6>道德風險與逆選擇</h6>
-            <p>商業健康險：健康的人不買、生病的人搶買，導致保費爆炸。這是純市場無法解決的結構問題。</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="tab-panel" data-panel="case">
-        <div class="four-cards">
-          <div class="axiom-card">
-            <h6>長照機構選擇難題</h6>
-            <p>家屬替阿嬤找機構，但根本無法判斷照顧品質。衛福部評鑑公開，仍有大量資訊落差——這就是教科書級的資訊不對稱。</p>
-          </div>
-          <div class="axiom-card">
-            <h6>商業長照險的賣不動</h6>
-            <p>台灣商業長照險滲透率長期偏低。健康人覺得「我不會用到」、有家族病史的人「保險公司不收」——逆選擇典型。</p>
-          </div>
-          <div class="axiom-card">
-            <h6>準公共幼兒園</h6>
-            <p>政府訂價＋私立經營＋政府補助差額——是台灣對「市場無法保障可負擔幼托」的回應。但「準公共」=「政府用補貼把私人服務拉進公共範疇」。</p>
-          </div>
-          <div class="axiom-card">
-            <h6>偏鄉沒有長照機構</h6>
-            <p>市場邏輯下，需求量小、利潤薄的偏鄉自然不會有業者進駐。長照 ABC 級的「巷弄站」就是用 NPO ＋政府補助補位。</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───────── COMPARISON TABLE ───────── -->
-<section id="compare">
-  <div class="section-head">
-    <span class="section-jp">四つの部門 ・ 一覧</span>
-    <span class="section-en">FOUR SECTORS AT A GLANCE</span>
-  </div>
-  <div class="section-lead">
-    <p>
-      把四個部門放在同一張表上，可以看出它們其實在處理「同樣的事，但用完全不同的邏輯」。沒有一個部門是萬能的，這也是「混合經濟」之所以必要。
-    </p>
-  </div>
-
-  <table class="comp-table">
-    <thead>
-      <tr>
-        <th>面向</th>
-        <th>政府 公</th>
-        <th>市場 市</th>
-        <th>志願 志</th>
-        <th>家庭 家</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>運作邏輯</td>
-        <td>公權力與法律</td>
-        <td>價格與利潤</td>
-        <td>使命與認同</td>
-        <td>情感與義務</td>
-      </tr>
-      <tr>
-        <td>資金來源</td>
-        <td>稅收、社會保險費</td>
-        <td>使用者付費</td>
-        <td>捐款＋政府補助</td>
-        <td>無償勞動</td>
-      </tr>
-      <tr>
-        <td>分配原則</td>
-        <td>權利／需求</td>
-        <td>支付能力</td>
-        <td>使命所定義的對象</td>
-        <td>親緣／血緣</td>
-      </tr>
-      <tr>
-        <td>主要優勢</td>
-        <td>普及、強制、規模</td>
-        <td>效率、創新、選擇</td>
-        <td>彈性、在地、信任</td>
-        <td>即時、情感、無償</td>
-      </tr>
-      <tr>
-        <td>主要限制</td>
-        <td>官僚化、缺彈性</td>
-        <td>排除窮人、製造不平等</td>
-        <td>規模有限、不穩定</td>
-        <td>性別／世代不平等</td>
-      </tr>
-      <tr>
-        <td>台灣代表</td>
-        <td>全民健保、長照 2.0</td>
-        <td>私立長照、商業保險</td>
-        <td>伊甸、家扶、門諾</td>
-        <td>外籍看護、女兒照顧</td>
-      </tr>
-      <tr>
-        <td>主要服務對象</td>
-        <td>全體公民</td>
-        <td>有購買力者</td>
-        <td>使命定義的群體</td>
-        <td>家庭成員</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- ───────── COUNTRY COMPARISON ───────── -->
-<section class="tinted" id="countries">
-  <div class="section-inner">
-    <div class="section-head">
-      <span class="section-jp">国際比較</span>
-      <span class="section-en">INTERNATIONAL COMPARISON — TAIWAN, UK, EAST ASIA</span>
-    </div>
-    <div class="section-lead">
-      <p>
-        同樣的四個部門，每個社會「組合」的方式不同。下面把台灣、英國、與東亞代表（日本／韓國）的福利混合經濟整理一遍。重點不是哪個比較好，而是<strong>歷史路徑</strong>如何決定了今天的樣子。
+  <!-- ============ S3 SECTION 1 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第一部分：歷史脈絡">
+    <div class="slide-inner">
+      <div class="big-num">壹</div>
+      <p class="part">PART 01</p>
+      <h2>福利的歷史脈絡</h2>
+      <p class="sec-en">A Brief History of the Welfare State</p>
+      <p class="sec-q">
+        為什麼「政府要提供福利」這件事，是 20 世紀的發明？<br/>
+        而「政府不只是唯一的提供者」，又是 1980 年代之後才浮現的共識？
       </p>
     </div>
+  </section>
 
-    <div class="country-grid">
-      <div class="nation">
-        <div class="nation-name">台灣</div>
-        <div class="nation-en">TAIWAN ・ 後進福利國家</div>
-        <h6>主導部門</h6>
-        <ul>
-          <li>政府＋家庭並重，市場填位、NPO 承接委辦</li>
-          <li><strong>健保強去商品化</strong>，<strong>長照偏家庭化＋市場化</strong></li>
-        </ul>
-        <h6>典型制度</h6>
-        <ul>
-          <li>全民健保（單一保險人＋多元提供）</li>
-          <li>長照 2.0（稅收制＋ABC 級＋外籍看護）</li>
-          <li>勞退新制（個人帳戶＋自提）</li>
-          <li>準公共托育</li>
-        </ul>
-        <h6>結構性議題</h6>
-        <ul>
-          <li>外籍看護工 26 萬人：把照顧責任輸出到他國</li>
-          <li>女性家庭照顧者 70%+</li>
-          <li>低生育率與照顧責任分配高度相關</li>
-        </ul>
+  <!-- ============ S4 BEVERIDGE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="1942 戰後英國">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>1942 ・ 戰後英國的「五大惡」</h2>
+        <span class="h-en">BEVERIDGE REPORT</span>
+        <span class="h-tag">起點</span>
       </div>
-
-      <div class="nation uk">
-        <div class="nation-name">英國</div>
-        <div class="nation-en">UNITED KINGDOM ・ Beveridge 模式</div>
-        <h6>主導部門</h6>
-        <ul>
-          <li>歷史上以政府為主（NHS、社福），1980s 後大量市場化＋NPO 承接</li>
-          <li>「Big Society」（2010）試圖加重志願部門</li>
-        </ul>
-        <h6>典型制度</h6>
-        <ul>
-          <li>NHS（1948，稅收＋政府直接提供）</li>
-          <li>普及性兒童津貼、老年年金</li>
-          <li>1990 社區照顧法：地方政府當<strong>採購者</strong></li>
-          <li>2014 Care Act：首度承認非正式照顧者</li>
-        </ul>
-        <h6>結構性議題</h6>
-        <ul>
-          <li>NHS 等待時間爆炸、私部門擴張</li>
-          <li>670 萬名非正式照顧者</li>
-          <li>自由主義福利體制傾向（Esping-Andersen）</li>
-        </ul>
+      <p class="lead">
+        二戰打到一半，英國經濟學家 William Beveridge 寫了一份報告 <i>《Social Insurance and Allied Services》</i>（1942），主張戰後的英國應該對抗「<strong>五大惡</strong>」<span class="term-en">(Five Giant Evils)</span>。
+      </p>
+      <div class="pair" style="grid-template-columns: repeat(5, 1fr);">
+        <div class="pair-box a"><span class="tag">WANT</span><h3 style="font-size: 18px;">匱乏</h3><p style="font-size: 14px;">最低生活保障不夠</p></div>
+        <div class="pair-box b"><span class="tag">DISEASE</span><h3 style="font-size: 18px;">疾病</h3><p style="font-size: 14px;">看不起醫生、付不起藥</p></div>
+        <div class="pair-box c"><span class="tag">IGNORANCE</span><h3 style="font-size: 18px;">無知</h3><p style="font-size: 14px;">教育機會不平等</p></div>
+        <div class="pair-box d"><span class="tag">SQUALOR</span><h3 style="font-size: 18px;">骯髒</h3><p style="font-size: 14px;">居住環境惡劣</p></div>
+        <div class="pair-box a"><span class="tag">IDLENESS</span><h3 style="font-size: 18px;">懶散</h3><p style="font-size: 14px;">失業沒事做</p></div>
       </div>
+      <p class="lead" style="margin-top: 22px;">
+        1945 年工黨上台、1948 年成立 <strong>NHS（National Health Service）</strong>——稅收支撐、由國家僱用醫師、看病<strong>免費</strong>。「政府是福利唯一提供者」從此變成戰後西方福利國家的標準。台灣的全民健保（1995）某種程度上就是這個傳統的延伸。
+      </p>
+    </div>
+  </section>
 
-      <div class="nation east">
-        <div class="nation-name">東亞</div>
-        <div class="nation-en">EAST ASIA ・ 日本／韓國</div>
-        <h6>主導部門</h6>
-        <ul>
-          <li>政府當保險人＋社會福祉法人為主要提供者＋家庭仍是預設</li>
-          <li>「<strong>家庭主義福利體制</strong>」（Esping-Andersen 後續修正）</li>
-        </ul>
-        <h6>典型制度</h6>
-        <ul>
-          <li>日本介護保險（2000）／韓國長期療養保險（2008）</li>
-          <li>社會福祉法人：介於公私之間</li>
-          <li>普及性年金（國民年金＋厚生年金 / 國民年金＋國民年金保險）</li>
-        </ul>
-        <h6>結構性議題</h6>
-        <ul>
-          <li>日本「介護離職」、女性退出勞動市場</li>
-          <li>韓國低生育率＋照顧責任性別化</li>
-          <li>新加坡：CPF 個人儲蓄帳戶模式</li>
-        </ul>
+  <!-- ============ S5 GOLDEN AGE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="1945–1970 黃金時代">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>1945–1970 ・ 福利國家的黃金時代</h2>
+        <span class="h-en">THE GOLDEN AGE</span>
+      </div>
+      <p class="lead">
+        戰後二十五年，西歐進入福利國家的黃金時代——高經濟成長 ＋ 低失業率 ＋ 穩定的家庭結構，支撐了大規模公共福利擴張。但每個國家走的路其實不同。丹麥學者 Esping-Andersen 把這時期的差異整理成<strong>三種福利資本主義</strong> <span class="term-en">(Three Worlds of Welfare Capitalism)</span>：
+      </p>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a">
+          <span class="tag">SOCIAL DEMOCRATIC</span>
+          <h3>社會民主</h3>
+          <p>瑞典、丹麥、挪威。普及主義——人人有份。政府直接提供托育、長照、教育、醫療，「從搖籃到墳墓」。稅高、給付高。</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">CONSERVATIVE</span>
+          <h3>保守主義</h3>
+          <p>德國、法國、義大利。職業別社會保險。給付看你是哪個職業的人，男主外女主內的家庭預設深植。</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">LIBERAL</span>
+          <h3>自由主義</h3>
+          <p>美國、英國、澳洲。最少政府介入。福利只給「真的窮」的人（資產調查），中產階級自行向市場購買。</p>
+        </div>
+      </div>
+      <p class="lead" style="margin-top: 18px;">
+        台灣呢？學者後來把東亞社會（台、日、韓）歸類為「<strong>家庭主義福利體制</strong>」<span class="term-en">(familialistic welfare regime)</span>——政府介入有限、家庭（特別是女性）承擔大量照顧責任。這是 Esping-Andersen 原本沒寫到的「第四種」。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S6 CRISIS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="1970s 危機">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>1970s ・ 福利國家的危機</h2>
+        <span class="h-en">THE CRISIS</span>
+      </div>
+      <p class="lead">
+        到了 1970 年代，黃金時代結束了。三件事一起發生：
+      </p>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box d">
+          <span class="tag">經濟衝擊</span>
+          <h3>1973 與 1979 兩次石油危機</h3>
+          <p>停滯性通膨——失業率高、通膨也高、政府稅收下降。「政府沒錢了」成為現實。</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">人口轉型</span>
+          <h3>老化＋少子化</h3>
+          <p>戰後嬰兒潮開始老化，需要福利的人變多；生育率下降，繳稅的年輕人變少。財務結構崩壞。</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">意識型態</span>
+          <h3>新右派批判</h3>
+          <p>柴契爾夫人、雷根崛起，主張「政府養懶人」「市場才有效率」。福利國家的<strong>合法性</strong> <span class="term-en">(legitimacy)</span> 開始動搖。</p>
+        </div>
+      </div>
+      <div class="insight">
+        <strong>結果是：</strong>「政府獨大」的模式撐不下去了。問題變成——既然政府不能（或不應）獨攬，那福利還可以由誰提供？這就是下一張要談的「<strong>福利多元主義</strong>」<span class="term-en">(welfare pluralism)</span> 的起點。
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ───────── KEY ISSUES (FLIP) ───────── -->
-<section id="issues">
-  <div class="section-head">
-    <span class="section-jp">六つの論点</span>
-    <span class="section-en">SIX KEY ISSUES — 點選翻面</span>
-  </div>
-  <div class="section-lead">
-    <p>
-      福利混合經濟不只是「誰來提供」的技術問題，更是六個層面的政治選擇。點選下方卡片翻面，看每個議題的台灣情境。
-    </p>
-  </div>
+  <!-- ============ S7 PLURALISM ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="1980s 多元主義">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>1980s ・ 福利多元主義興起</h2>
+        <span class="h-en">WELFARE PLURALISM</span>
+      </div>
+      <p class="lead">
+        英國學者 <strong>Norman Johnson</strong> 1987 年的書 <i>《The Welfare State in Transition》</i> 系統提出：福利不應該由政府獨攬，應該由<strong>四個部門</strong>共同負擔。這個概念又叫「<strong>福利混合經濟</strong>」<span class="term-en">(mixed economy of welfare)</span>。
+      </p>
+      <div class="story">
+        <span class="lab">SHIFT ・ 政府角色的轉換</span>
+        <h3>「政府縮減」≠「政府退場」</h3>
+        <p>1980 年代以後，西方國家政府的角色從「<strong>純提供者</strong>」<span class="term-en">(provider)</span> 變成至少四種角色：</p>
+        <p>· <strong>採購者</strong> <span class="term-en">(purchaser)</span>：用稅金向私立機構或 NPO 買服務（英國 1990 NHS 內部市場化）</p>
+        <p>· <strong>管制者</strong> <span class="term-en">(regulator)</span>：制定品質標準、監督執行（如台灣長照機構評鑑）</p>
+        <p>· <strong>促能者</strong> <span class="term-en">(enabler)</span>：用補貼與稅式優惠鼓勵其他部門（如台灣準公共托育）</p>
+        <p>· <strong>純提供者</strong>：仍保留少數核心服務（如台灣公立醫院、公立學校）</p>
+      </div>
+      <p class="lead">
+        所以當你聽到「政府縮減福利」時，要再多看一層——它通常不是「退場」，而是「<strong>角色轉換</strong>」。錢仍從政府來，但服務由其他部門做。
+      </p>
+    </div>
+  </section>
 
-  <div class="flip-grid">
-    <div class="flip" onclick="this.classList.toggle('is-flipped')">
-      <div class="flip-inner">
-        <div class="flip-face flip-front">
-          <div class="flip-icon">処</div>
-          <h4>可及性 Accessibility</h4>
-          <p>福利能不能真的「碰得到」每一個需要的人？</p>
-          <span class="hint">點選翻面</span>
+  <!-- ============ S8 TAIWAN NHI ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="1995 台灣健保">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>1995 ・ 台灣全民健保</h2>
+        <span class="h-en">TAIWAN'S NATIONAL HEALTH INSURANCE</span>
+        <span class="h-tag">★ 台灣節點</span>
+      </div>
+      <p class="lead">
+        1990 年代以前，台灣只有<strong>勞保、公保、農保</strong>等職業別保險，覆蓋率約 57%。1995 年 3 月 1 日，全民健保上路，三年內覆蓋率衝到 95%+，現在是 99.9%。台灣的健保用了什麼設計？
+      </p>
+      <div class="story">
+        <span class="lab">SYSTEM ・ 強單一保險人＋多元提供者</span>
+        <h3>「政府當保險人，醫院（公與私）當提供者」</h3>
+        <p>台灣健保是「<strong>強單一保險人</strong>」<span class="term-en">(single-payer)</span>——政府一個人收錢、付錢，這讓政府有<strong>強大的議價能力</strong>，可以壓低藥價、壓低給付，維持低保費高覆蓋。但實際的醫療服務由公立醫院、私立醫院（長庚、馬偕、慈濟）、診所共同提供。</p>
+        <p>這正是「福利混合經濟」的實例——政府＋市場＋志願部門（教會醫院屬此類）三個部門合作。</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n">99.9%</div><div class="l">健保覆蓋率</div><div class="src">衛福部 2024</div></div>
+        <div class="stat"><div class="n">7,529 億</div><div class="l">健保總支出（NTD）</div><div class="src">2023 年度</div></div>
+        <div class="stat"><div class="n">23,500 元</div><div class="l">每人年均健保費</div><div class="src">中央健保署</div></div>
+        <div class="stat"><div class="n">5.4%</div><div class="l">健保支出佔 GDP</div><div class="src">OECD 比較中偏低</div></div>
+      </div>
+      <p class="lead" style="margin-top: 18px; font-size: 16.5px; opacity: 0.82;">
+        但健保也不是完美——後面我們會講到，「市場失靈」的領域（如長照、無依老人照顧）健保並沒有解決。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S9 LONG-TERM CARE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="2007/2017 長照">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>2007 / 2017 ・ 台灣長照 1.0 與 2.0</h2>
+        <span class="h-en">LONG-TERM CARE</span>
+        <span class="h-tag">★ 台灣節點</span>
+      </div>
+      <p class="lead">
+        台灣老化速度全球前段班——65 歲以上人口從 7%（高齡化社會）到 14%（高齡社會）只花 25 年（法國花了 115 年）。長照變成不能不面對的課題。
+      </p>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">2007</span>
+          <h3>長照 1.0</h3>
+          <p>採「<strong>補助＋公辦民營</strong>」為主：政府補助個案部分費用，實際服務由私立機構或 NPO 提供。對偏鄉幫助有限。</p>
         </div>
-        <div class="flip-face flip-back">
-          <h4>台灣場景</h4>
+        <div class="pair-box b">
+          <span class="tag">2017</span>
+          <h3>長照 2.0</h3>
+          <p>改採<strong>稅收制</strong>，擴張「<strong>ABC 級巷弄站</strong>」服務網絡——A 級綜合服務、B 級複合型、C 級巷弄站。希望把服務拉進每個社區。</p>
+        </div>
+      </div>
+      <div class="story" style="margin-top: 18px;">
+        <span class="lab">隱形地基</span>
+        <h3>26 萬名外籍看護工</h3>
+        <p>長照 2.0 雖然擴張，但台灣長照真正的<strong>隱形地基</strong>，是 26 萬名外籍家庭看護工（多來自印尼、菲律賓、越南），加上約 70% 由女性家屬承擔的非正式照顧。</p>
+        <p>這代表台灣的長照其實仍是「<strong>家庭主義</strong>」——只是把家庭照顧責任部分轉嫁給跨國的便宜女性勞動力。這個議題我們在後面「全球照顧鏈」會深入。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S10 SECTION 2 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第二部分：四大部門">
+    <div class="slide-inner">
+      <div class="big-num">貳</div>
+      <p class="part">PART 02</p>
+      <h2>四大福利提供部門</h2>
+      <p class="sec-en">The Four Sectors of Welfare Provision</p>
+      <p class="sec-q">
+        每個部門有不同的運作邏輯、不同的擅長與失能之處。<br/>
+        沒有一個部門是萬能的——這就是為什麼需要「混合」。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S11 SECTOR OVERVIEW ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="四部門總覽">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>四個部門 ・ 一覽</h2>
+        <span class="h-en">FOUR SECTORS AT A GLANCE</span>
+      </div>
+      <p class="lead">
+        接下來四張，我們會逐一深入每個部門。先用一個生活化的例子記住它們：<strong>你今天去看病</strong>——
+      </p>
+      <div class="sectors">
+        <div class="sect s-state">
+          <div class="glyph">公</div>
+          <h4>政府部門</h4>
+          <div class="en">THE STATE</div>
+          <p class="ex">健保卡刷下去 → 政府付了大部分</p>
+        </div>
+        <div class="sect s-market">
+          <div class="glyph">市</div>
+          <h4>商業部門</h4>
+          <div class="en">THE MARKET</div>
+          <p class="ex">私立醫院、自費自付額、商業醫療險</p>
+        </div>
+        <div class="sect s-volun">
+          <div class="glyph">志</div>
+          <h4>志願部門</h4>
+          <div class="en">VOLUNTARY</div>
+          <p class="ex">慈濟、馬偕、門諾——教會與基金會醫院</p>
+        </div>
+        <div class="sect s-info">
+          <div class="glyph">家</div>
+          <h4>非正式部門</h4>
+          <div class="en">INFORMAL</div>
+          <p class="ex">媽媽幫你掛號、姊姊請假陪你看診</p>
+        </div>
+      </div>
+      <p class="lead" style="margin-top: 22px;">
+        看出來了嗎？「看病」這個簡單的事，四個部門都同時在運作。福利體系就是這四個部門怎麼分工、誰多誰少的問題。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S12 GOVERNMENT ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="政府部門深度">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>政府部門</h2>
+        <span class="h-en">THE STATE / PUBLIC SECTOR</span>
+        <span class="h-tag">部門 1/4</span>
+      </div>
+      <div class="deep s-state">
+        <div class="deep-head">
+          <span class="gl">公</span>
+          <div>
+            <h3>透過稅收與法律授予的公權力</h3>
+            <p class="sub-en">FUNDED BY TAX, BACKED BY LAW</p>
+          </div>
+        </div>
+        <p class="lead-line">
+          政府的特殊性，在於它是<strong>唯一具有強制力的部門</strong>——它可以強制納稅、強制納保、強制就學。其他三個部門都不行。
+        </p>
+        <div class="deep-grid">
+          <div class="deep-col">
+            <h5>五大功能</h5>
+            <ul>
+              <li><strong>政策制定</strong>：決定福利的方向、優先順序、給付水準</li>
+              <li><strong>直接提供</strong>：公務體系直接提供服務（公立醫院、學校）</li>
+              <li><strong>計畫與督導</strong>：規劃輸送體系、監督執行品質</li>
+              <li><strong>管制與品質</strong>：設資格、稽核、申訴</li>
+              <li><strong>財務支持</strong>：撥款、稅式優惠、補助</li>
+            </ul>
+          </div>
+          <div class="deep-col">
+            <h5>當代政府的四種角色</h5>
+            <ul>
+              <li><strong>純提供者</strong> <span class="term-en">(provider)</span>：公立學校、公立醫院</li>
+              <li><strong>採購者</strong> <span class="term-en">(purchaser)</span>：用稅金向私立／NPO 買服務</li>
+              <li><strong>管制者</strong> <span class="term-en">(regulator)</span>：制定標準、監督</li>
+              <li><strong>促能者</strong> <span class="term-en">(enabler)</span>：補貼、減稅、撥款</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tw-block">
+          <span class="lab">台灣案例</span>
+          <h4>全民健保 ・ 長照 2.0 ・ 國民年金 ・ 育兒津貼</h4>
+          <p>全民健保（1995，單一保險人）、長照 2.0（2017，稅收制）、國民年金（2008，給沒有勞保的人）、勞保老年給付、育兒津貼、準公共托育。政府是「規則制定＋付錢的人」，但實際提供者多為私部門與 NPO。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S13 MARKET ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="商業部門深度">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>商業部門</h2>
+        <span class="h-en">THE MARKET / COMMERCIAL SECTOR</span>
+        <span class="h-tag">部門 2/4</span>
+      </div>
+      <div class="deep s-market">
+        <div class="deep-head">
+          <span class="gl">市</span>
+          <div>
+            <h3>依資本主義邏輯運作的福利提供者</h3>
+            <p class="sub-en">FOR-PROFIT, PRICE-DRIVEN</p>
+          </div>
+        </div>
+        <p class="lead-line">
+          市場的優勢是<strong>效率與創新</strong>，劣勢是<strong>必然排除沒有購買力的人</strong>。福利不能只靠市場，但完全沒市場也不行。
+        </p>
+        <div class="deep-grid">
+          <div class="deep-col">
+            <h5>市場提供福利的兩種型態</h5>
+            <ul>
+              <li><strong>直接服務</strong>：私立醫院、私立托嬰、私立長照機構、私人住宅</li>
+              <li><strong>金融商品</strong>：商業健康險、長照險、年金險、退休金帳戶</li>
+              <li>由「個人」或「雇主」買單</li>
+              <li>無購買力者被自動排除——這就是「<strong>市場失靈</strong>」<span class="term-en">(market failure)</span></li>
+            </ul>
+          </div>
+          <div class="deep-col">
+            <h5>商品化 vs 去商品化</h5>
+            <ul>
+              <li>Esping-Andersen 提出「<strong>去商品化</strong>」<span class="term-en">(decommodification)</span></li>
+              <li>意思：人不必把勞動賣給市場，也能維持基本生活</li>
+              <li>福利國家越強 → 去商品化程度越高</li>
+              <li>市場主導的福利會反向「<strong>商品化</strong>」——把社會風險還給個人</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tw-block">
+          <span class="lab">台灣案例</span>
+          <h4>機構式長照 80% 私立 ・ 商業險滲透率全球高</h4>
+          <p>機構式長照中私立佔 80%+；台灣商業健康險市場巨大（每人平均持有 2.6 張壽險＋醫療險）；勞退新制自提採類 401k 設計（政府訂規則，但你自己投資管理）；準公共幼兒園其實是「政府訂價＋政府補助＋私立經營」的混合體。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S14 VOLUNTARY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="志願部門深度">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>志願部門 ・ NPO</h2>
+        <span class="h-en">VOLUNTARY / NONPROFIT SECTOR</span>
+        <span class="h-tag">部門 3/4</span>
+      </div>
+      <div class="deep s-volun">
+        <div class="deep-head">
+          <span class="gl">志</span>
+          <div>
+            <h3>不分配利益、使命驅動的「第三部門」</h3>
+            <p class="sub-en">MISSION-DRIVEN, NON-DISTRIBUTING</p>
+          </div>
+        </div>
+        <p class="lead-line">
+          學者 Salamon &amp; Anheier (1997) 給的五項定義：<strong>正式有組織、民間性質、不分配盈餘、自我治理、有志願參與</strong>。簡單說：可以收費、可以營運，但盈餘不分給創辦人或股東；獨立於政府。
+        </p>
+        <div class="deep-grid">
+          <div class="deep-col">
+            <h5>NPO 的五項特徵</h5>
+            <ul>
+              <li><strong>正式且有組織</strong>：有章程、有立案</li>
+              <li><strong>民間性質</strong>：不是政府機關</li>
+              <li><strong>不分配盈餘</strong>：賺的錢必須再投入使命</li>
+              <li><strong>自我治理</strong>：獨立決策結構</li>
+              <li><strong>志願參與</strong>：有志工、捐款人成分</li>
+            </ul>
+          </div>
+          <div class="deep-col">
+            <h5>NPO 與政府的三種關係</h5>
+            <ul>
+              <li><strong>補充</strong> <span class="term-en">(supplement)</span>：填補政府不足（多數台灣 NPO）</li>
+              <li><strong>替代</strong> <span class="term-en">(substitute)</span>：取代政府（如部分英國 charity）</li>
+              <li><strong>夥伴</strong> <span class="term-en">(partner)</span>：政府委辦、公私協力（如德國「補助性原則」）</li>
+              <li>挑戰：委辦比例過高 → NPO 失去獨立性，變成「政府的延伸手」</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tw-block">
+          <span class="lab">台灣案例</span>
+          <h4>伊甸 ・ 家扶 ・ 門諾 ・ 創世 ・ 聯合勸募</h4>
+          <p><strong>伊甸基金會</strong>（身障服務先驅）、<strong>家扶基金會</strong>（兒少扶助）、<strong>門諾基金會</strong>（東部偏遠長照）、<strong>創世基金會</strong>（街友、植物人）、<strong>聯合勸募</strong>（整合社會捐款）。長照 2.0 大量委辦給在地 NPO 做 ABC 級據點——這既是 NPO 的擴張機會，也是它們失去獨立性的風險。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S15 INFORMAL ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="非正式部門深度">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>非正式部門 ・ 家庭與社區</h2>
+        <span class="h-en">INFORMAL SECTOR — FAMILY &amp; COMMUNITY</span>
+        <span class="h-tag">部門 4/4</span>
+      </div>
+      <div class="deep s-info">
+        <div class="deep-head">
+          <span class="gl">家</span>
+          <div>
+            <h3>最古老、最龐大、最常被低估的提供者</h3>
+            <p class="sub-en">THE INVISIBLE FOUNDATION</p>
+          </div>
+        </div>
+        <p class="lead-line">
+          家人之間、鄰里之間、朋友之間的照顧與陪伴，<strong>不被支薪、不被計入 GDP</strong>，但它撐起了所有福利體系的底部。在東亞，這個部門因為「孝道」與儒家倫理特別發達——也因此特別沉重。
+        </p>
+        <div class="deep-grid">
+          <div class="deep-col">
+            <h5>主要面向</h5>
+            <ul>
+              <li>父母照顧子女、子女反哺父母</li>
+              <li>夫妻相互照顧、隔代教養</li>
+              <li>鄰里互助、宗親會、同鄉會</li>
+              <li>未支薪 → 勞動價值不被承認</li>
+              <li>東亞「<strong>家庭主義福利體制</strong>」<span class="term-en">(familialistic regime)</span></li>
+            </ul>
+          </div>
+          <div class="deep-col">
+            <h5>性別與階級的隱形成本</h5>
+            <ul>
+              <li>家庭照顧責任主要由<strong>女性</strong>承擔</li>
+              <li>女性勞動參與率因照顧責任驟降</li>
+              <li>富裕家庭可購買服務，貧困家庭只能由女兒承擔</li>
+              <li>外籍看護工化解部分壓力，但把問題輸出到他國女性</li>
+            </ul>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="n">≈70%</div><div class="l">台灣家庭照顧者中<br/>女性佔比</div><div class="src">家總會</div></div>
+          <div class="stat"><div class="n">26 萬</div><div class="l">外籍家庭看護工<br/>實際在工人數</div><div class="src">勞動部 2024</div></div>
+          <div class="stat"><div class="n">670 萬</div><div class="l">英國非正式<br/>照顧者人數</div><div class="src">Carers UK 2023</div></div>
+          <div class="stat"><div class="n">≈10 萬／年</div><div class="l">日本「介護離職」<br/>（為照顧離職）</div><div class="src">厚生勞動省</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S16 SECTION 3 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第三部分：市場為什麼不能解決所有事">
+    <div class="slide-inner">
+      <div class="big-num">參</div>
+      <p class="part">PART 03</p>
+      <h2>市場為什麼不能解決所有福利</h2>
+      <p class="sec-en">Why Market Cannot Provide Welfare Alone</p>
+      <p class="sec-q">
+        如果市場真的「最有效率」，那為什麼世界上沒有任何國家把醫療、教育、長照完全交給市場？<br/>
+        因為福利商品不是普通商品。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S17 IDEAL MARKET ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="理想市場 4 假設">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>理想市場的 4 個假設</h2>
+        <span class="h-en">THE IDEAL MARKET</span>
+      </div>
+      <p class="lead">
+        經濟學課本裡的「市場」是<strong>理想型</strong>——只有當下面四個條件全部成立，市場才能達到最有效率的資源配置。但福利服務領域，這四個幾乎都不成立。
+      </p>
+      <div class="pair" style="grid-template-columns: 1fr 1fr;">
+        <div class="pair-box a">
+          <span class="tag">假設 1</span>
+          <h3>完全競爭 <span class="term-en">(perfect competition)</span></h3>
+          <p>多數買賣雙方、實力相當，沒有人能單方面決定價格。<br/><i>但長照市場常常一個鄉鎮只有一兩家機構。</i></p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">假設 2</span>
+          <h3>完全市場 <span class="term-en">(complete market)</span></h3>
+          <p>所有「願意付錢的需求」都能被市場滿足。<br/><i>但極重度失能、無依老人，市場根本不想接。</i></p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">假設 3</span>
+          <h3>無外部性 <span class="term-en">(no externality)</span></h3>
+          <p>交易只影響買賣雙方，不影響第三方。<br/><i>但你打疫苗保護的不只是自己。</i></p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">假設 4</span>
+          <h3>完全資訊 <span class="term-en">(perfect information)</span></h3>
+          <p>買賣雙方對品質、價格擁有對等資訊。<br/><i>但你怎麼判斷哪間長照機構真的有好好照顧你媽？</i></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S18 MARKET FAILURE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="市場失靈 4 種">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>市場失靈的 4 種樣態</h2>
+        <span class="h-en">MARKET FAILURE</span>
+      </div>
+      <p class="lead">
+        當理想市場的假設不成立，就會出現「<strong>市場失靈</strong>」<span class="term-en">(market failure)</span>。福利領域的市場失靈特別嚴重——這就是為什麼政府必須介入。
+      </p>
+      <div class="pair" style="grid-template-columns: 1fr 1fr;">
+        <div class="pair-box d">
+          <span class="tag">失靈 1</span>
+          <h3>資訊不對稱</h3>
+          <p>醫療、照顧的品質難以事前評估。等你發現照顧很糟，往往已經出事。經濟學家 Akerlof 的「<strong>檸檬市場</strong>」<span class="term-en">(market for lemons)</span> 理論：劣幣會驅逐良幣。</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">失靈 2</span>
+          <h3>外部性</h3>
+          <p>教育、預防醫學、疫苗——個人決策對社會有<strong>正外部性</strong>。你受教育受益的不只是你，整個社會都受惠。但市場不會把社會利益算進個人的選擇，結果<strong>供給不足</strong>。</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">失靈 3</span>
+          <h3>公共財特性</h3>
+          <p>國防、公衛、空氣品質——具有「<strong>非排他性</strong>＋<strong>非敵對性</strong>」<span class="term-en">(non-excludable, non-rivalrous)</span>，市場無法收費，會被市場放棄。</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">失靈 4</span>
+          <h3>排除效果</h3>
+          <p>沒錢的人買不到。當服務涉及<strong>生存、尊嚴、機會</strong>（醫療、教育、住宅），「買不起」就等於「<strong>社會排除</strong>」<span class="term-en">(social exclusion)</span>。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S19 WELFARE GOODS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="福利商品的特殊性">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>福利商品為什麼特別不適合純市場</h2>
+        <span class="h-en">WHY WELFARE IS DIFFERENT</span>
+      </div>
+      <p class="lead">
+        除了市場失靈，福利商品還有 4 個「<strong>特別不適合市場</strong>」的性質：
+      </p>
+      <div class="pair" style="grid-template-columns: 1fr 1fr;">
+        <div class="pair-box c">
+          <span class="tag">特殊 1</span>
+          <h3>需求不可預測</h3>
+          <p>誰會在哪一天得癌症、誰會在哪一年失能——個人無法準確預測，需要「<strong>保險邏輯</strong>」<span class="term-en">(insurance logic)</span> 而非交易邏輯。</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">特殊 2</span>
+          <h3>需求與支付能力反向相關</h3>
+          <p>越窮的人健康越差、越需要醫療；但越窮的人越買不起保險。市場邏輯會<strong>放大不平等</strong>。</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">特殊 3</span>
+          <h3>「值得性」判斷</h3>
+          <p>誰值得拿到福利？這是<strong>社會選擇</strong>而非市場選擇。「老人值得照顧」不是因為老人付得起。</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">特殊 4</span>
+          <h3>道德風險＋逆選擇</h3>
+          <p>商業健康險：健康的人不買、生病的人搶買，<strong>逆選擇</strong> <span class="term-en">(adverse selection)</span> 導致保費爆炸。台灣商業長照險就是這樣賣不動的。</p>
+        </div>
+      </div>
+      <div class="insight">
+        <strong>結論：</strong>福利不能完全交給市場。但完全不靠市場也不行——因為政府的官僚化、無彈性也是限制。「<strong>混合</strong>」是現實的選擇。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S20 TAIWAN MARKET CASES ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="台灣市場現場">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>台灣的市場失靈現場</h2>
+        <span class="h-en">MARKET FAILURE IN TAIWAN</span>
+        <span class="h-tag">★ 台灣案例</span>
+      </div>
+      <p class="lead">
+        理論講完，看四個你可能聽過的<strong>台灣現場</strong>：
+      </p>
+      <div class="pair" style="grid-template-columns: 1fr 1fr;">
+        <div class="pair-box d">
+          <span class="tag">案例 1</span>
+          <h3>長照機構選擇難題</h3>
+          <p>家屬替阿嬤找機構，但根本無法判斷照顧品質。衛福部評鑑公開，仍有大量資訊落差——<strong>資訊不對稱</strong>的教科書級案例。</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">案例 2</span>
+          <h3>商業長照險賣不動</h3>
+          <p>台灣商業長照險滲透率長期偏低。健康人覺得「我不會用到」、有家族病史的人「保險公司不收」——<strong>逆選擇典型</strong>。</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">案例 3</span>
+          <h3>準公共幼兒園</h3>
+          <p>政府訂價＋私立經營＋政府補助差額。「準公共」就是<strong>政府用補貼把私立服務拉進公共範疇</strong>，因為純市場做不到「人人付得起的幼托」。</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">案例 4</span>
+          <h3>偏鄉沒有長照機構</h3>
+          <p>市場邏輯下，需求量小、利潤薄的偏鄉自然不會有業者進駐。長照 ABC 級的「巷弄站」就是用 NPO ＋政府補助補位市場留下的洞。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S21 SECTION 4 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第四部分：比較">
+    <div class="slide-inner">
+      <div class="big-num">肆</div>
+      <p class="part">PART 04</p>
+      <h2>比較 ・ Comparison</h2>
+      <p class="sec-en">Sectors and Countries Side by Side</p>
+      <p class="sec-q">
+        把四個部門擺在一起、把幾個國家擺在一起，<br/>
+        你會看出「混合的方式」其實有很多種。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S22 SECTOR COMPARISON ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="四部門比較表">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>四個部門 ・ 一張表</h2>
+        <span class="h-en">FOUR SECTORS COMPARED</span>
+      </div>
+      <table class="ctab">
+        <thead>
+          <tr>
+            <th>面向</th>
+            <th>政府 公</th>
+            <th>市場 市</th>
+            <th>志願 志</th>
+            <th>家庭 家</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>運作邏輯</td><td>公權力與法律</td><td>價格與利潤</td><td>使命與認同</td><td>情感與義務</td></tr>
+          <tr><td>資金來源</td><td>稅收、社會保險費</td><td>使用者付費</td><td>捐款＋政府補助</td><td>無償勞動</td></tr>
+          <tr><td>分配原則</td><td>權利／需求</td><td>支付能力</td><td>使命所定義的對象</td><td>親緣／血緣</td></tr>
+          <tr><td>主要優勢</td><td>普及、強制、規模</td><td>效率、創新、選擇</td><td>彈性、在地、信任</td><td>即時、情感、無償</td></tr>
+          <tr><td>主要限制</td><td>官僚化、缺彈性</td><td>排除窮人、製造不平等</td><td>規模有限、不穩定</td><td>性別／世代不平等</td></tr>
+          <tr><td>台灣代表</td><td>全民健保、長照 2.0</td><td>私立長照、商業保險</td><td>伊甸、家扶、門諾</td><td>外籍看護、女兒照顧</td></tr>
+          <tr><td>主要對象</td><td>全體公民</td><td>有購買力者</td><td>使命定義的群體</td><td>家庭成員</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ S23 COUNTRY COMPARISON ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="跨國比較">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>跨國比較 ・ 台灣／英國／東亞</h2>
+        <span class="h-en">INTERNATIONAL COMPARISON</span>
+      </div>
+      <p class="lead">
+        同樣四個部門，不同社會「混合」的方式不同。歷史路徑決定了今天的樣子。
+      </p>
+      <div class="nations">
+        <div class="nation">
+          <div class="nm">台灣</div>
+          <div class="nen">TAIWAN ・ 後進福利國家</div>
+          <h6>主導部門</h6>
           <ul>
-            <li>長照 ABC 級在都會密集、偏鄉稀疏</li>
-            <li>原住民部落、離島的服務輸送斷裂</li>
-            <li>數位落差讓老人無法線上申請</li>
-            <li>「便利商店比長照據點密」的偏鄉</li>
+            <li>政府＋家庭並重，市場填位</li>
+            <li><strong>健保</strong>強去商品化、<strong>長照</strong>偏家庭化</li>
+          </ul>
+          <h6>典型制度</h6>
+          <ul>
+            <li>全民健保（單一保險人）</li>
+            <li>長照 2.0（稅收制）</li>
+            <li>勞退新制（個人帳戶）</li>
+            <li>準公共托育</li>
+          </ul>
+          <h6>結構性議題</h6>
+          <ul>
+            <li>26 萬外籍看護工</li>
+            <li>70%+ 女性家庭照顧者</li>
+            <li>低生育率與照顧責任高度相關</li>
+          </ul>
+        </div>
+        <div class="nation b">
+          <div class="nm">英國</div>
+          <div class="nen">UNITED KINGDOM ・ Beveridge 模式</div>
+          <h6>主導部門</h6>
+          <ul>
+            <li>歷史上政府為主，1980s 後大量市場化</li>
+            <li>「Big Society」（2010）試圖加重 NPO</li>
+          </ul>
+          <h6>典型制度</h6>
+          <ul>
+            <li>NHS（1948，稅收＋政府提供）</li>
+            <li>普及兒童津貼、老年年金</li>
+            <li>1990 社區照顧法：地方政府當<strong>採購者</strong></li>
+            <li>2014 Care Act：承認非正式照顧者</li>
+          </ul>
+          <h6>結構性議題</h6>
+          <ul>
+            <li>NHS 等待時間爆炸、私部門擴張</li>
+            <li>670 萬名非正式照顧者</li>
+          </ul>
+        </div>
+        <div class="nation c">
+          <div class="nm">東亞</div>
+          <div class="nen">EAST ASIA ・ 日本／韓國</div>
+          <h6>主導部門</h6>
+          <ul>
+            <li>政府當保險人＋NPO 為提供者＋家庭仍是預設</li>
+            <li>「<strong>家庭主義福利體制</strong>」</li>
+          </ul>
+          <h6>典型制度</h6>
+          <ul>
+            <li>日本介護保險（2000）</li>
+            <li>韓國長期療養保險（2008）</li>
+            <li>社會福祉法人（介於公私之間）</li>
+          </ul>
+          <h6>結構性議題</h6>
+          <ul>
+            <li>日本「介護離職」、女性退出職場</li>
+            <li>韓國低生育率＋照顧責任性別化</li>
+            <li>新加坡：CPF 強制儲蓄帳戶</li>
           </ul>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="flip" onclick="this.classList.toggle('is-flipped')">
-      <div class="flip-inner">
-        <div class="flip-face flip-front">
-          <div class="flip-icon">差</div>
-          <h4>個人化 vs. 一致性</h4>
-          <p>每個人需求都不同，但標準化才公平？</p>
-          <span class="hint">點選翻面</span>
-        </div>
-        <div class="flip-face flip-back">
-          <h4>制度比較</h4>
-          <ul>
-            <li>英國：個人預算（Personal Budget）讓使用者自選服務</li>
-            <li>台灣：長照給付以「等級＋項目」標準化</li>
-            <li>日本介護保險：依照護等級給點數，再讓使用者選機構</li>
-            <li>核心張力：尊重差異 vs. 確保公平</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip" onclick="this.classList.toggle('is-flipped')">
-      <div class="flip-inner">
-        <div class="flip-face flip-front">
-          <div class="flip-icon">商</div>
-          <h4>商品化 Commodification</h4>
-          <p>當福利可以「買賣」，會發生什麼？</p>
-          <span class="hint">點選翻面</span>
-        </div>
-        <div class="flip-face flip-back">
-          <h4>核心觀念</h4>
-          <ul>
-            <li>Esping-Andersen：福利國家＝去商品化</li>
-            <li>美國醫療＝高度商品化的反面教材</li>
-            <li>台灣健保＝去商品化、長照＝部分商品化</li>
-            <li>商品化會把社會風險還給個人</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip" onclick="this.classList.toggle('is-flipped')">
-      <div class="flip-inner">
-        <div class="flip-face flip-front">
-          <div class="flip-icon">女</div>
-          <h4>性別與照顧</h4>
-          <p>「家庭照顧」其實往往是「女性照顧」</p>
-          <span class="hint">點選翻面</span>
-        </div>
-        <div class="flip-face flip-back">
-          <h4>數據與議題</h4>
-          <ul>
-            <li>台灣照顧者 70%+ 為女性</li>
-            <li>照顧離職以中年女性為主</li>
-            <li>外籍看護工本身也是女性勞動力跨國轉移</li>
-            <li>「家庭化」福利＝女性勞動補貼</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip" onclick="this.classList.toggle('is-flipped')">
-      <div class="flip-inner">
-        <div class="flip-face flip-front">
-          <div class="flip-icon">協</div>
-          <h4>公私協力的兩難</h4>
-          <p>政府委辦 NPO，是合作還是收編？</p>
-          <span class="hint">點選翻面</span>
-        </div>
-        <div class="flip-face flip-back">
-          <h4>結構困境</h4>
-          <ul>
-            <li>NPO 收入過度依賴政府委辦＝獨立性流失</li>
-            <li>競標壓低成本＝NPO 員工低薪化</li>
-            <li>「績效指標」改變 NPO 服務樣貌</li>
-            <li>台灣長照 2.0 把這個問題推到極致</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip" onclick="this.classList.toggle('is-flipped')">
-      <div class="flip-inner">
-        <div class="flip-face flip-front">
-          <div class="flip-icon">境</div>
-          <h4>跨國照顧鏈</h4>
-          <p>當你媽的看護來自越南，全球的不平等就連在了一起</p>
-          <span class="hint">點選翻面</span>
-        </div>
-        <div class="flip-face flip-back">
-          <h4>結構觀察</h4>
-          <ul>
-            <li>台灣 26 萬外籍看護工：印尼、菲律賓、越南為主</li>
-            <li>她們在台照顧台灣老人，自己的小孩留在母國</li>
-            <li>「全球照顧鏈」（Hochschild）：照顧不平等沿著國界外移</li>
-            <li>香港、新加坡、義大利亦同</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───────── SCENARIO INTERACTIVE ───────── -->
-<section class="tinted" id="scenario">
-  <div class="section-inner">
-    <div class="section-head">
-      <span class="section-jp">場面演習</span>
-      <span class="section-en">SCENARIOS — 你會選哪個部門？</span>
-    </div>
-    <div class="section-lead">
-      <p>
-        以下三個情境，沒有「絕對正確」的答案。請依你的判斷選一個你認為應該主要負責的部門，看看對應的分析。試著想：你的選擇背後，反映了什麼樣的價值？
+  <!-- ============ S24 SECTION 5 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第五部分：關鍵議題">
+    <div class="slide-inner">
+      <div class="big-num">伍</div>
+      <p class="part">PART 05</p>
+      <h2>關鍵議題</h2>
+      <p class="sec-en">Six Key Issues</p>
+      <p class="sec-q">
+        福利混合經濟不只是「誰來提供」的技術問題，<br/>
+        更是六個層面的政治選擇。點選下方卡片翻面，看每個議題的台灣情境。
       </p>
     </div>
+  </section>
 
-    <div class="scen-block" data-scen="elder">
-      <p class="scen-q">情境 1：80 歲輕度失智、獨居老人，子女在台北上班</p>
-      <p class="scen-detail">阿嬤住台中沙鹿，輕度失智，行動還可以但常忘記吃藥。子女兩位都在台北科技業，週末偶爾才回去。你認為「主要」應該由哪個部門承擔？</p>
-      <div class="scen-options">
-        <button class="scen-option" data-pick="state" onclick="pickScen('elder', 'state', this)">公 ・ 政府</button>
-        <button class="scen-option" data-pick="market" onclick="pickScen('elder', 'market', this)">市 ・ 市場</button>
-        <button class="scen-option" data-pick="voluntary" onclick="pickScen('elder', 'voluntary', this)">志 ・ NPO</button>
-        <button class="scen-option" data-pick="informal" onclick="pickScen('elder', 'informal', this)">家 ・ 家庭</button>
+  <!-- ============ S25 ISSUES (FLIP) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="六個關鍵議題（翻面）">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>六個關鍵議題</h2>
+        <span class="h-en">KEY ISSUES — 點選翻面</span>
       </div>
-      <div class="scen-feedback" id="fb-elder"></div>
-    </div>
-
-    <div class="scen-block" data-scen="child">
-      <p class="scen-q">情境 2：雙薪小家庭，1 歲幼兒的日間照顧</p>
-      <p class="scen-detail">夫妻兩人都是上班族，月收入合計約 8 萬。住台北大安區，附近公托抽不到。你認為這個 1 歲小孩白天的照顧，主要應該由誰提供？</p>
-      <div class="scen-options">
-        <button class="scen-option" data-pick="state" onclick="pickScen('child', 'state', this)">公 ・ 政府</button>
-        <button class="scen-option" data-pick="market" onclick="pickScen('child', 'market', this)">市 ・ 市場</button>
-        <button class="scen-option" data-pick="voluntary" onclick="pickScen('child', 'voluntary', this)">志 ・ NPO</button>
-        <button class="scen-option" data-pick="informal" onclick="pickScen('child', 'informal', this)">家 ・ 家庭</button>
+      <div class="flips" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="flip" onclick="this.classList.toggle('is-flipped')">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="gl">處</div>
+              <h4>可及性<br/><span class="term-en">(Accessibility)</span></h4>
+              <p>福利能不能真的「碰得到」每一個需要的人？</p>
+              <span class="hint">點選翻面</span>
+            </div>
+            <div class="flip-face flip-back">
+              <h4>台灣場景</h4>
+              <ul>
+                <li>長照 ABC 級在都會密、偏鄉稀</li>
+                <li>原住民部落、離島的服務輸送斷裂</li>
+                <li>數位落差讓老人無法線上申請</li>
+                <li>「便利商店比長照據點密」的現實</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="flip" onclick="this.classList.toggle('is-flipped')">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="gl">差</div>
+              <h4>個人化 vs 一致性<br/><span class="term-en">(Personalization vs Uniformity)</span></h4>
+              <p>每個人需求都不同，但標準化才公平？</p>
+              <span class="hint">點選翻面</span>
+            </div>
+            <div class="flip-face flip-back">
+              <h4>制度比較</h4>
+              <ul>
+                <li>英國：個人預算（Personal Budget）</li>
+                <li>台灣：長照給付以「等級＋項目」標準化</li>
+                <li>日本介護保險：給點數＋自選機構</li>
+                <li>核心張力：尊重差異 vs. 確保公平</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="flip" onclick="this.classList.toggle('is-flipped')">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="gl">商</div>
+              <h4>商品化<br/><span class="term-en">(Commodification)</span></h4>
+              <p>當福利可以「買賣」，會發生什麼？</p>
+              <span class="hint">點選翻面</span>
+            </div>
+            <div class="flip-face flip-back">
+              <h4>核心觀念</h4>
+              <ul>
+                <li>Esping-Andersen：福利國家＝去商品化</li>
+                <li>美國醫療＝高度商品化的反面教材</li>
+                <li>台灣健保＝去商品化、長照＝部分商品化</li>
+                <li>商品化會把社會風險還給個人</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="flip" onclick="this.classList.toggle('is-flipped')">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="gl">女</div>
+              <h4>性別與照顧<br/><span class="term-en">(Gender &amp; Care)</span></h4>
+              <p>「家庭照顧」其實往往是「女性照顧」</p>
+              <span class="hint">點選翻面</span>
+            </div>
+            <div class="flip-face flip-back">
+              <h4>數據與議題</h4>
+              <ul>
+                <li>台灣照顧者 70%+ 為女性</li>
+                <li>照顧離職以中年女性為主</li>
+                <li>外籍看護是女性勞動力的跨國轉移</li>
+                <li>「家庭化」福利＝對女性勞動的隱形補貼</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="flip" onclick="this.classList.toggle('is-flipped')">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="gl">協</div>
+              <h4>公私協力的兩難<br/><span class="term-en">(Public-Private Partnership Dilemma)</span></h4>
+              <p>政府委辦 NPO，是合作還是收編？</p>
+              <span class="hint">點選翻面</span>
+            </div>
+            <div class="flip-face flip-back">
+              <h4>結構困境</h4>
+              <ul>
+                <li>NPO 收入過度依賴政府委辦＝獨立性流失</li>
+                <li>競標壓低成本＝NPO 員工低薪化</li>
+                <li>「績效指標」改變 NPO 服務樣貌</li>
+                <li>台灣長照 2.0 把這個張力推到極致</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="flip" onclick="this.classList.toggle('is-flipped')">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="gl">境</div>
+              <h4>跨國照顧鏈<br/><span class="term-en">(Global Care Chain)</span></h4>
+              <p>當你媽的看護來自越南，全球的不平等就連在了一起</p>
+              <span class="hint">點選翻面</span>
+            </div>
+            <div class="flip-face flip-back">
+              <h4>結構觀察</h4>
+              <ul>
+                <li>台灣 26 萬外籍看護：印、菲、越為主</li>
+                <li>她們在台照顧台灣老人，自己的小孩留在母國</li>
+                <li>「全球照顧鏈」（Hochschild）：照顧不平等沿國界外移</li>
+                <li>香港、新加坡、義大利亦同</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="scen-feedback" id="fb-child"></div>
     </div>
+  </section>
 
-    <div class="scen-block" data-scen="homeless">
-      <p class="scen-q">情境 3：街友中年男性，有酒癮、心理困擾、無工作能力</p>
-      <p class="scen-detail">A 先生 52 歲，長期住街頭，與家人完全失聯，有酒精依賴。冬天夜裡氣溫 8 度。你認為這個人最需要的福利協助，主要應該由誰提供？</p>
-      <div class="scen-options">
-        <button class="scen-option" data-pick="state" onclick="pickScen('homeless', 'state', this)">公 ・ 政府</button>
-        <button class="scen-option" data-pick="market" onclick="pickScen('homeless', 'market', this)">市 ・ 市場</button>
-        <button class="scen-option" data-pick="voluntary" onclick="pickScen('homeless', 'voluntary', this)">志 ・ NPO</button>
-        <button class="scen-option" data-pick="informal" onclick="pickScen('homeless', 'informal', this)">家 ・ 家庭</button>
+  <!-- ============ S26 SECTION 6 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第六部分：情境演習">
+    <div class="slide-inner">
+      <div class="big-num">陸</div>
+      <p class="part">PART 06</p>
+      <h2>情境演習</h2>
+      <p class="sec-en">Scenarios — Which Sector Would You Choose?</p>
+      <p class="sec-q">
+        理論講夠了，動腦時間。<br/>
+        三個情境，沒有「絕對正確」的答案——<br/>
+        看看你的選擇背後，反映了什麼價值。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S27 SCENARIO 1 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="情境 1：失智阿嬤">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>情境 1 ・ 80 歲輕度失智阿嬤</h2>
+        <span class="h-en">SCENARIO 1</span>
+        <span class="h-tag">★ 互動</span>
       </div>
-      <div class="scen-feedback" id="fb-homeless"></div>
+      <div class="scen-block" data-scen="elder">
+        <p class="scen-q">阿嬤住台中沙鹿，輕度失智，行動還可以但常忘記吃藥。子女兩位都在台北科技業，週末偶爾才回去。你認為「主要」應該由哪個部門承擔？</p>
+        <p class="scen-detail">先想一下你的選擇與理由，再點下面任一選項看回饋分析。</p>
+        <div class="scen-options">
+          <button class="scen-opt" data-pick="state" onclick="pickScen('elder', 'state', this)">公 ・ 政府</button>
+          <button class="scen-opt" data-pick="market" onclick="pickScen('elder', 'market', this)">市 ・ 市場</button>
+          <button class="scen-opt" data-pick="voluntary" onclick="pickScen('elder', 'voluntary', this)">志 ・ NPO</button>
+          <button class="scen-opt" data-pick="informal" onclick="pickScen('elder', 'informal', this)">家 ・ 家庭</button>
+        </div>
+        <div class="scen-feedback" id="fb-elder"></div>
+      </div>
     </div>
+  </section>
+
+  <!-- ============ S28 SCENARIO 2 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="情境 2：雙薪幼托">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>情境 2 ・ 雙薪小家庭的 1 歲幼兒</h2>
+        <span class="h-en">SCENARIO 2</span>
+        <span class="h-tag">★ 互動</span>
+      </div>
+      <div class="scen-block" data-scen="child">
+        <p class="scen-q">夫妻兩人都是上班族，月收合計約 8 萬。住台北大安區，附近公托抽不到。你認為這個 1 歲小孩白天的照顧，主要應該由誰提供？</p>
+        <p class="scen-detail">想想看：你的家可能就是這個情境。</p>
+        <div class="scen-options">
+          <button class="scen-opt" data-pick="state" onclick="pickScen('child', 'state', this)">公 ・ 政府</button>
+          <button class="scen-opt" data-pick="market" onclick="pickScen('child', 'market', this)">市 ・ 市場</button>
+          <button class="scen-opt" data-pick="voluntary" onclick="pickScen('child', 'voluntary', this)">志 ・ NPO</button>
+          <button class="scen-opt" data-pick="informal" onclick="pickScen('child', 'informal', this)">家 ・ 家庭</button>
+        </div>
+        <div class="scen-feedback" id="fb-child"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S29 SCENARIO 3 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="情境 3：街友">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>情境 3 ・ 街友 A 先生</h2>
+        <span class="h-en">SCENARIO 3</span>
+        <span class="h-tag">★ 互動</span>
+      </div>
+      <div class="scen-block" data-scen="homeless">
+        <p class="scen-q">A 先生 52 歲，長期住街頭，與家人完全失聯，有酒精依賴。冬天夜裡氣溫 8 度。你認為這個人最需要的福利協助，主要應該由誰提供？</p>
+        <p class="scen-detail">想想看：當「家庭」這個預設崩解時，誰會接手？</p>
+        <div class="scen-options">
+          <button class="scen-opt" data-pick="state" onclick="pickScen('homeless', 'state', this)">公 ・ 政府</button>
+          <button class="scen-opt" data-pick="market" onclick="pickScen('homeless', 'market', this)">市 ・ 市場</button>
+          <button class="scen-opt" data-pick="voluntary" onclick="pickScen('homeless', 'voluntary', this)">志 ・ NPO</button>
+          <button class="scen-opt" data-pick="informal" onclick="pickScen('homeless', 'informal', this)">家 ・ 家庭</button>
+        </div>
+        <div class="scen-feedback" id="fb-homeless"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S30 SECTION 7 QUIZ ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第七部分：自我測驗">
+    <div class="slide-inner">
+      <div class="big-num">柒</div>
+      <p class="part">PART 07</p>
+      <h2>自我測驗</h2>
+      <p class="sec-en">Self-Check ・ 8 題</p>
+      <p class="sec-q">
+        檢驗本週學習。每題作答後出現解析。<br/>
+        答錯沒關係，重點是看完解析能想清楚。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ Q1 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q1">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q1</h2>
+        <span class="h-en">HISTORY</span>
+        <span class="h-tag">1/8</span>
+      </div>
+      <div class="score-pill">
+        <span class="sn"><span id="scoreNum">0</span></span>
+        <span class="st">分 / 8</span>
+      </div>
+      <div class="quiz" data-correct="b">
+        <div class="quiz-num">歷史脈絡</div>
+        <h3 class="quiz-q">「福利多元主義」<span class="term-en">(welfare pluralism)</span> 主要興起於哪個年代？背景為何？</h3>
+        <button class="quiz-opt" data-opt="a">A. 1950 年代，戰後重建需求強烈</button>
+        <button class="quiz-opt" data-opt="b">B. 1980 年代，福利國家面臨財政危機與正當性危機</button>
+        <button class="quiz-opt" data-opt="c">C. 1990 年代，全球化與蘇聯解體</button>
+        <button class="quiz-opt" data-opt="d">D. 2010 年代，社會企業興起</button>
+        <div class="quiz-explain">
+          <strong>正解：B。</strong>1970 年代兩次石油危機後，福利國家面臨停滯性通膨、官僚批評、人口老化等壓力。Norman Johnson《<i>The Welfare State in Transition</i>》（1987）成為福利多元主義的代表作，主張福利應由<strong>多個部門共同承擔</strong>，不能由政府獨攬。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Q2 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q2">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q2</h2>
+        <span class="h-en">VOLUNTARY SECTOR</span>
+        <span class="h-tag">2/8</span>
+      </div>
+      <div class="quiz" data-correct="c">
+        <div class="quiz-num">志願部門</div>
+        <h3 class="quiz-q">下列哪一項<strong>不是</strong> Salamon &amp; Anheier (1997) 對志願部門 (NPO) 的定義要素？</h3>
+        <button class="quiz-opt" data-opt="a">A. 正式且有組織</button>
+        <button class="quiz-opt" data-opt="b">B. 不分配盈餘</button>
+        <button class="quiz-opt" data-opt="c">C. 由政府機關直接管轄</button>
+        <button class="quiz-opt" data-opt="d">D. 自我治理</button>
+        <div class="quiz-explain">
+          <strong>正解：C。</strong>NPO 五大特徵：正式且有組織、民間性質、不分配盈餘、自我治理、志願性。「民間性質」意味著它<i>獨立於</i>政府之外——「政府直接管轄」恰好違背 NPO 的核心特徵。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Q3 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q3">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q3</h2>
+        <span class="h-en">TAIWAN NHI</span>
+        <span class="h-tag">3/8</span>
+      </div>
+      <div class="quiz" data-correct="b">
+        <div class="quiz-num">台灣全民健保</div>
+        <h3 class="quiz-q">台灣全民健保（1995）的制度設計，最接近以下哪一種混合經濟組合？</h3>
+        <button class="quiz-opt" data-opt="a">A. 政府當保險人＋政府當提供者（如英國 NHS）</button>
+        <button class="quiz-opt" data-opt="b">B. 政府當單一保險人＋多元（公私 NPO）提供者</button>
+        <button class="quiz-opt" data-opt="c">C. 多元保險人＋政府當提供者</button>
+        <button class="quiz-opt" data-opt="d">D. 純市場提供＋政府最後底線</button>
+        <div class="quiz-explain">
+          <strong>正解：B。</strong>台灣健保是「強單一保險人＋多元提供者」設計：政府是唯一保險人，但實際醫療由公立醫院、私立醫院、診所共同提供。這個結構讓政府握有強大的議價能力，是健保得以維持低保費、廣覆蓋的關鍵。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Q4 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q4">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q4</h2>
+        <span class="h-en">MARKET FAILURE</span>
+        <span class="h-tag">4/8</span>
+      </div>
+      <div class="quiz" data-correct="d">
+        <div class="quiz-num">市場失靈</div>
+        <h3 class="quiz-q">關於「市場失靈」<span class="term-en">(market failure)</span> 在福利服務中的表現，下列敘述何者<strong>最不正確</strong>？</h3>
+        <button class="quiz-opt" data-opt="a">A. 長照機構的照顧品質難以事前評估，是資訊不對稱的典型</button>
+        <button class="quiz-opt" data-opt="b">B. 商業健康險容易出現逆選擇——健康者不買、病患搶買</button>
+        <button class="quiz-opt" data-opt="c">C. 偏鄉缺乏業者進駐，反映市場對需求量小地區的退出</button>
+        <button class="quiz-opt" data-opt="d">D. 只要政府退出市場，這些失靈現象就會自然消失</button>
+        <div class="quiz-explain">
+          <strong>正解：D。</strong>市場失靈是市場本身的<strong>結構性問題</strong>（資訊、外部性、公共財、排除效果），與政府介入與否無關。事實上，市場失靈正是政府必須介入福利提供的核心理由之一。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Q5 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q5">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q5</h2>
+        <span class="h-en">DECOMMODIFICATION</span>
+        <span class="h-tag">5/8</span>
+      </div>
+      <div class="quiz" data-correct="a">
+        <div class="quiz-num">去商品化</div>
+        <h3 class="quiz-q">Esping-Andersen 提出「去商品化」<span class="term-en">(decommodification)</span> 的核心意義是？</h3>
+        <button class="quiz-opt" data-opt="a">A. 讓人不必把勞動賣給市場，也能維持基本生活</button>
+        <button class="quiz-opt" data-opt="b">B. 把所有公共服務改為市場交易</button>
+        <button class="quiz-opt" data-opt="c">C. 讓商品的價格降到市場最低</button>
+        <button class="quiz-opt" data-opt="d">D. 取消所有政府提供的福利</button>
+        <div class="quiz-explain">
+          <strong>正解：A。</strong>「去商品化」指個人或家庭可以在<strong>不必完全依賴市場</strong>的條件下維持可接受的生活水準。福利國家越強，去商品化程度越高（北歐 ＞ 歐陸 ＞ 英美）。台灣健保是強去商品化、長照則弱。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Q6 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q6">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q6</h2>
+        <span class="h-en">FAMILIALISTIC REGIME</span>
+        <span class="h-tag">6/8</span>
+      </div>
+      <div class="quiz" data-correct="c">
+        <div class="quiz-num">家庭主義福利體制</div>
+        <h3 class="quiz-q">台灣長照政策中，哪個現象最能反映「家庭主義福利體制」<span class="term-en">(familialistic regime)</span> 的特徵？</h3>
+        <button class="quiz-opt" data-opt="a">A. 全民健保覆蓋率 99.9%</button>
+        <button class="quiz-opt" data-opt="b">B. 私立長照機構佔機構式照顧 80%+</button>
+        <button class="quiz-opt" data-opt="c">C. 26 萬名外籍看護工＋ 70%+ 女性家庭照顧者</button>
+        <button class="quiz-opt" data-opt="d">D. 長照 2.0 採稅收制</button>
+        <div class="quiz-explain">
+          <strong>正解：C。</strong>家庭主義福利體制的核心特徵：<strong>照顧責任主要由家庭（特別是女性）承擔</strong>，政府介入有限。台灣的外籍看護＋女性家庭照顧者並不是「家庭以外的力量」——而是把照顧責任維持在家戶範圍內、再用便宜的女性勞動力支撐它。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Q7 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q7">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q7</h2>
+        <span class="h-en">UK COMMUNITY CARE</span>
+        <span class="h-tag">7/8</span>
+      </div>
+      <div class="quiz" data-correct="b">
+        <div class="quiz-num">英國社區照顧</div>
+        <h3 class="quiz-q">英國 1990 年《社區照顧法》之後，地方政府的角色發生什麼變化？</h3>
+        <button class="quiz-opt" data-opt="a">A. 從採購者變成直接提供者</button>
+        <button class="quiz-opt" data-opt="b">B. 從直接提供者變成採購者（向 NPO 與市場買服務）</button>
+        <button class="quiz-opt" data-opt="c">C. 完全退出社區照顧，由家庭承擔</button>
+        <button class="quiz-opt" data-opt="d">D. 把所有服務都收回中央政府</button>
+        <div class="quiz-explain">
+          <strong>正解：B。</strong>英國 1990 NHS &amp; Community Care Act 是 Thatcher 時期的「準市場化」改革：地方政府不再直接提供照顧，改為評估個案需求、向 NPO 與市場「採購」服務。「政府不直接做、但決定錢怎麼花」就是當代福利混合經濟的核心模式。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Q8 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="測驗 Q8">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自我測驗 Q8</h2>
+        <span class="h-en">GLOBAL CARE CHAIN</span>
+        <span class="h-tag">8/8</span>
+      </div>
+      <div class="quiz" data-correct="d">
+        <div class="quiz-num">全球照顧鏈</div>
+        <h3 class="quiz-q">Hochschild 提出的「全球照顧鏈」<span class="term-en">(global care chain)</span> 最能解釋哪個現象？</h3>
+        <button class="quiz-opt" data-opt="a">A. 政府委辦 NPO 的合約壓低成本</button>
+        <button class="quiz-opt" data-opt="b">B. 私立長照機構的品質落差</button>
+        <button class="quiz-opt" data-opt="c">C. 商業健康險的逆選擇問題</button>
+        <button class="quiz-opt" data-opt="d">D. 越南婦女赴台擔任看護、留下小孩在母國照顧</button>
+        <div class="quiz-explain">
+          <strong>正解：D。</strong>Arlie Hochschild 的「全球照顧鏈」描述：富國女性外出工作 → 雇用窮國女性來家裡照顧 → 窮國女性把自己的小孩託給更窮的女性或家鄉長輩 → 形成<strong>跨國的照顧不平等鏈條</strong>。台灣 26 萬外籍看護工正是這條鏈的一環。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S39 DISCUSSION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="課堂討論">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>課堂討論</h2>
+        <span class="h-en">CLASS DISCUSSION</span>
+        <span class="h-tag">點選展開提示</span>
+      </div>
+      <p class="lead">下次上課前，請帶著對下列三題的想法。沒有標準答案——重點是你的論證能不能說服別人。</p>
+      <div class="discuss">
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">問 1</div>
+          <div class="qt">如果你是行政院長，你會選擇<strong>擴大長照公共化</strong>（增稅、蓋公立機構），還是<strong>強化外籍看護＋家屬補貼</strong>（維持家庭主義）？請從「四個部門的優勢與限制」來論證你的選擇。</div>
+          <div class="hint">提示：兩條路各有代價。公共化要面對增稅阻力與行政膨脹；家庭主義延續性別與階級不平等，且依賴跨國女性勞動力。哪個代價你能說服選民買單？</div>
+        </div>
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">問 2</div>
+          <div class="qt">你住在花蓮玉里，距離最近的長照機構車程 40 分鐘。四個部門中，你預期哪一個最可能幫到你的家人？哪一個最可能缺席？這反映了什麼結構性問題？</div>
+          <div class="hint">提示：偏鄉的市場部門幾乎不存在，志願部門（如門諾）扮演關鍵角色，政府的 ABC 級據點密度低。「可及性」不只是地理距離，還有資訊落差。</div>
+        </div>
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">問 3</div>
+          <div class="qt">「照顧不應該只是家庭的事」——你同意這句話嗎？如果政府＋市場把照顧責任接過去，可能會帶來什麼新的問題？</div>
+          <div class="hint">提示：去家庭化＝去性別化嗎？市場化照顧服務會把更多女性勞動轉為支薪工作，但同時製造階級分化（誰雇誰的看護）。全球照顧鏈是這個問題的全球化版本。</div>
+        </div>
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">問 4</div>
+          <div class="qt">外籍看護工 26 萬人，是台灣長照「真正的隱形地基」。如果有一天移工輸出國全面禁止女性外移工作，台灣的長照體系會發生什麼事？這暴露了我們的福利混合經濟有什麼結構性脆弱？</div>
+          <div class="hint">提示：印尼、越南正在探討禁止家庭看護外移的政策。台灣對這個風險的準備極少。長照 2.0 完全沒有設計「外籍看護退場」的替代方案。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S40 CONCLUSION ============ -->
+  <section class="slide slide-title" data-kind="title" data-label="結語">
+    <div class="slide-inner">
+      <p class="subtitle" style="margin-bottom: 20px;">CONCLUSION ・ 結 語</p>
+      <h1 style="font-size: 56px;">福利不是「給」的<br/>是「分配」的</h1>
+      <p class="author" style="margin-top: 28px; max-width: 800px;">
+        我們在這堂課看到：政府、市場、志願組織、家庭——<strong>每個部門都有它能做的事，也都有它做不到的</strong>。沒有完美的部門，只有怎麼把它們<strong>組合起來</strong>的政治選擇。<br/><br/>
+        台灣的健保是世界級的成就，但長照仍倚賴 26 萬名外籍看護＋家庭裡的女兒、媳婦。「誰來提供福利」不是技術題，是我們這個社會回答<strong>「我們欠彼此什麼」</strong>的歷史回聲。
+      </p>
+      <p class="author" style="margin-top: 22px; opacity: 0.55; font-style: italic; font-size: 16px;">
+        下週我們會繼續往下挖：除了「誰來給」，還有<strong>「給什麼」</strong>——現金、服務、稅式優惠⋯⋯不同的給付方式，又會帶來什麼後果？
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S41 READING ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="延伸閱讀">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>延伸閱讀</h2>
+        <span class="h-en">FURTHER READING</span>
+      </div>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <h3>核心文本</h3>
+          <p>Johnson, N. (1987). <em>The Welfare State in Transition</em>. Brighton: Wheatsheaf.</p>
+          <p>Powell, M. (ed.) (2007). <em>Understanding the Mixed Economy of Welfare</em>. Bristol: Policy Press.</p>
+          <p>Esping-Andersen, G. (1990). <em>The Three Worlds of Welfare Capitalism</em>. Cambridge: Polity.</p>
+          <p>Salamon, L. M., &amp; Anheier, H. K. (1997). <em>Defining the Nonprofit Sector</em>. Manchester UP.</p>
+        </div>
+        <div class="ref-card">
+          <h3>性別、家庭、跨國照顧</h3>
+          <p>Hochschild, A. R. (2000). "Global Care Chains and Emotional Surplus Value," in <i>On the Edge: Living with Global Capitalism</i>.</p>
+          <p>Daly, M., &amp; Lewis, J. (2000). "The Concept of Social Care." <em>British Journal of Sociology</em>, 51(2), 281–298.</p>
+          <p>藍佩嘉（2008）。《跨國灰姑娘：當東南亞幫傭遇上台灣新富家庭》。台北：行人。</p>
+        </div>
+        <div class="ref-card">
+          <h3>東亞與台灣</h3>
+          <p>林萬億（2022）。《社會福利》（增訂版）。台北：五南。</p>
+          <p>呂寶靜編（2011）。《社會工作與台灣社會》（第二版）。台北：巨流。</p>
+          <p>Peng, I., &amp; Wong, J. (2010). "East Asian Welfare State Transition." <em>Comparative Social Research</em>.</p>
+        </div>
+        <div class="ref-card">
+          <h3>入門讀本</h3>
+          <p>Sealey, C. (2015). <em>Social Policy Simplified</em>. Palgrave.</p>
+          <p>Gilbert, N., &amp; Terrell, P.（2012）。《社會福利政策》。台北：雙葉。</p>
+          <p>李易駿（2014）。《社會福利概論》（第三版）。台北：洪葉。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<nav class="navbar">
+  <button class="nav-btn" id="prevBtn" onclick="goPrev()">← 前頁</button>
+  <div class="nav-center">
+    <span><span id="curNum">1</span> / <span id="totNum">42</span></span>
+    <div class="dots" id="dots"></div>
   </div>
-</section>
+  <button class="nav-btn" id="nextBtn" onclick="goNext()">下一頁 →</button>
+</nav>
 
-<!-- ───────── QUIZ ───────── -->
-<section id="quiz">
-  <div class="section-head">
-    <span class="section-jp">小テスト</span>
-    <span class="section-en">SELF-CHECK ・ 8 題</span>
+<div class="keyboard-hint">
+  <kbd>←</kbd> <kbd>→</kbd> 切換頁面　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕
+</div>
+
+<div class="toc-overlay" id="tocOverlay" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" onclick="toggleToc()">×</button>
+    <h2 class="toc-title">目次 ・ Table of Contents</h2>
+    <p class="toc-sub">點選任一條目跳到該頁</p>
+    <ul class="toc-list" id="tocList"></ul>
   </div>
-  <div class="section-lead">
-    <p>檢驗本週學習成果。每題作答後會出現解析。</p>
-  </div>
-
-  <div class="score-bar">
-    <div>
-      <span class="score-num" id="scoreNum">0</span>
-      <span class="score-tot"> / 8</span>
-    </div>
-    <div class="score-label">得分</div>
-    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-  </div>
-
-  <div class="quiz" data-q="1" data-correct="b">
-    <div class="quiz-num">Q 01</div>
-    <h4 class="quiz-q">「福利多元主義」（welfare pluralism）這個概念主要興起於哪個年代？背景為何？</h4>
-    <button class="quiz-opt" data-opt="a">A. 1950 年代，戰後重建需求強烈</button>
-    <button class="quiz-opt" data-opt="b">B. 1980 年代，福利國家面臨財政與正當性危機</button>
-    <button class="quiz-opt" data-opt="c">C. 1990 年代，全球化與蘇聯解體</button>
-    <button class="quiz-opt" data-opt="d">D. 2010 年代，社會企業興起</button>
-    <div class="quiz-explain">
-      <strong>正解：B。</strong>1970 年代兩次石油危機後，福利國家面臨停滯性通膨、財政壓力、官僚批評與人口老化等問題。Norman Johnson《<i>The Welfare State in Transition</i>》（1987）成為福利多元主義的代表作，主張福利提供應由多個部門共同承擔。
-    </div>
-  </div>
-
-  <div class="quiz" data-q="2" data-correct="c">
-    <div class="quiz-num">Q 02</div>
-    <h4 class="quiz-q">下列哪一項<strong>不是</strong> Salamon &amp; Anheier（1997）對志願部門（NPO）的定義要素？</h4>
-    <button class="quiz-opt" data-opt="a">A. 正式且有組織</button>
-    <button class="quiz-opt" data-opt="b">B. 非利益分配</button>
-    <button class="quiz-opt" data-opt="c">C. 由政府機關直接管轄</button>
-    <button class="quiz-opt" data-opt="d">D. 自我治理</button>
-    <div class="quiz-explain">
-      <strong>正解：C。</strong>NPO 五大特徵：正式且有組織、民間性質、非利益分配、自我治理、志願性。「民間性質」意味著它<i>獨立於</i>政府之外，「政府直接管轄」恰好違背 NPO 的核心特徵。
-    </div>
-  </div>
-
-  <div class="quiz" data-q="3" data-correct="b">
-    <div class="quiz-num">Q 03</div>
-    <h4 class="quiz-q">台灣全民健保（1995）的制度設計，最接近以下哪一種混合經濟組合？</h4>
-    <button class="quiz-opt" data-opt="a">A. 政府當保險人＋政府當提供者（如英國 NHS）</button>
-    <button class="quiz-opt" data-opt="b">B. 政府當單一保險人＋多元（公私 NPO）提供者</button>
-    <button class="quiz-opt" data-opt="c">C. 多元保險人＋政府當提供者</button>
-    <button class="quiz-opt" data-opt="d">D. 純市場提供＋政府最後底線</button>
-    <div class="quiz-explain">
-      <strong>正解：B。</strong>台灣健保是典型的「強單一保險人＋多元提供者」設計：政府當唯一的保險人收費＋給付，但實際醫療服務則由公立醫院、私立醫院、診所共同提供。這個結構讓政府握有強大的議價能力與資料管控，是健保得以維持低保費、廣覆蓋的關鍵之一。
-    </div>
-  </div>
-
-  <div class="quiz" data-q="4" data-correct="d">
-    <div class="quiz-num">Q 04</div>
-    <h4 class="quiz-q">關於「市場失靈」在福利服務中的表現，下列敘述何者<strong>最不正確</strong>？</h4>
-    <button class="quiz-opt" data-opt="a">A. 長照機構的照顧品質難以事前評估，是資訊不對稱的典型</button>
-    <button class="quiz-opt" data-opt="b">B. 商業健康險容易出現逆選擇——健康者不買、病患搶買</button>
-    <button class="quiz-opt" data-opt="c">C. 偏鄉缺乏業者進駐，反映市場對需求量小地區的退出</button>
-    <button class="quiz-opt" data-opt="d">D. 只要政府退出市場，這些失靈現象就會自然消失</button>
-    <div class="quiz-explain">
-      <strong>正解：D。</strong>市場失靈是市場本身的結構性問題（資訊、外部性、公共財、排除效果），與政府介入與否無關。事實上，市場失靈正是政府介入福利提供的核心理由之一。
-    </div>
-  </div>
-
-  <div class="quiz" data-q="5" data-correct="a">
-    <div class="quiz-num">Q 05</div>
-    <h4 class="quiz-q">Esping-Andersen 提出「去商品化」（decommodification）的核心意義是？</h4>
-    <button class="quiz-opt" data-opt="a">A. 讓人不必把勞動賣給市場，也能維持基本生活</button>
-    <button class="quiz-opt" data-opt="b">B. 把所有公共服務改為市場交易</button>
-    <button class="quiz-opt" data-opt="c">C. 讓商品的價格降到市場最低</button>
-    <button class="quiz-opt" data-opt="d">D. 取消所有政府提供的福利</button>
-    <div class="quiz-explain">
-      <strong>正解：A。</strong>「去商品化」指的是個人或家庭可以在不必依賴市場的條件下維持可接受的生活水準。福利國家越強，去商品化程度越高（北歐 ＞ 歐陸 ＞ 英美）。台灣健保是強去商品化、長照則是弱去商品化的代表。
-    </div>
-  </div>
-
-  <div class="quiz" data-q="6" data-correct="c">
-    <div class="quiz-num">Q 06</div>
-    <h4 class="quiz-q">台灣長期照顧政策中，下列哪個現象最能反映「家庭主義福利體制」的特徵？</h4>
-    <button class="quiz-opt" data-opt="a">A. 全民健保覆蓋率 99.9%</button>
-    <button class="quiz-opt" data-opt="b">B. 私立長照機構佔機構式照顧 80%+</button>
-    <button class="quiz-opt" data-opt="c">C. 26 萬名外籍看護工＋ 70%+ 女性家庭照顧者</button>
-    <button class="quiz-opt" data-opt="d">D. 長照 2.0 採稅收制</button>
-    <div class="quiz-explain">
-      <strong>正解：C。</strong>「家庭主義福利體制」（familialistic welfare regime）的核心特徵是：照顧責任主要由家庭（特別是女性）承擔，政府介入有限。台灣的外籍看護＋女性家庭照顧者並不是「家庭以外的力量」，而是把照顧責任維持在家戶範圍內、再用便宜的女性勞動力支撐它。
-    </div>
-  </div>
-
-  <div class="quiz" data-q="7" data-correct="b">
-    <div class="quiz-num">Q 07</div>
-    <h4 class="quiz-q">英國 1990 年《社區照顧法》之後，地方政府的角色發生什麼變化？</h4>
-    <button class="quiz-opt" data-opt="a">A. 從採購者變成直接提供者</button>
-    <button class="quiz-opt" data-opt="b">B. 從直接提供者變成採購者（向 NPO 與市場買服務）</button>
-    <button class="quiz-opt" data-opt="c">C. 完全退出社區照顧，由家庭承擔</button>
-    <button class="quiz-opt" data-opt="d">D. 把所有服務都收回中央政府</button>
-    <div class="quiz-explain">
-      <strong>正解：B。</strong>英國 1990 NHS &amp; Community Care Act 是 Thatcher 時期重要的「準市場化」改革：地方政府不再直接提供照顧服務，而是評估個案需求、用預算向 NPO 與市場「採購」服務。這種「政府不直接做、但是決定錢怎麼花」的模式，正是當代福利混合經濟的核心。
-    </div>
-  </div>
-
-  <div class="quiz" data-q="8" data-correct="d">
-    <div class="quiz-num">Q 08</div>
-    <h4 class="quiz-q">Hochschild 提出的「全球照顧鏈」（global care chain）最能解釋哪個現象？</h4>
-    <button class="quiz-opt" data-opt="a">A. 政府委辦 NPO 的合約壓低成本</button>
-    <button class="quiz-opt" data-opt="b">B. 私立長照機構的品質落差</button>
-    <button class="quiz-opt" data-opt="c">C. 商業健康險的逆選擇問題</button>
-    <button class="quiz-opt" data-opt="d">D. 越南婦女赴台擔任看護、留下小孩在母國照顧</button>
-    <div class="quiz-explain">
-      <strong>正解：D。</strong>Arlie Hochschild 所稱的「全球照顧鏈」描述：富國女性外出工作 → 雇用窮國女性來家裡照顧 → 窮國女性把自己的小孩託給更窮的女性或家鄉長輩 → 形成跨國的照顧不平等鏈條。台灣 26 萬外籍看護工正是這條鏈的一環。
-    </div>
-  </div>
-</section>
-
-<!-- ───────── DISCUSSION ───────── -->
-<section class="tinted" id="discuss">
-  <div class="section-inner">
-    <div class="section-head">
-      <span class="section-jp">課堂討論</span>
-      <span class="section-en">CLASS DISCUSSION</span>
-    </div>
-    <div class="section-lead">
-      <p>下次上課前，請帶著對下列三題的想法。沒有標準答案——重點是你的論證能否說服別人。</p>
-    </div>
-
-    <div class="discuss">
-      <p class="qn">問 1</p>
-      <p>如果你是行政院長，你會選擇<strong>擴大長照公共化</strong>（增稅、蓋公立機構）、還是<strong>強化外籍看護＋家屬補貼</strong>（維持家庭主義）？請從「四個部門的優勢與限制」來論證你的選擇。</p>
-    </div>
-
-    <div class="discuss">
-      <p class="qn">問 2</p>
-      <p>你住在花蓮玉里，距離最近的長照機構車程 40 分鐘。四個部門中，你預期哪一個最可能幫到你的家人？哪一個最可能缺席？這反映了什麼結構性問題？</p>
-    </div>
-
-    <div class="discuss">
-      <p class="qn">問 3</p>
-      <p>「照顧不應該只是家庭的事」——你同意這句話嗎？如果政府＋市場把照顧責任接過去，可能會帶來什麼新的問題？（提示：想想商品化、全球照顧鏈、女性勞動）</p>
-    </div>
-
-    <div class="discuss">
-      <p class="qn">問 4</p>
-      <p>外籍看護工 26 萬人，是台灣長照「真正的隱形地基」。如果有一天移工輸出國全面禁止女性外移工作，台灣的長照體系會發生什麼事？這暴露了我們的福利混合經濟有什麼結構性脆弱？</p>
-    </div>
-  </div>
-</section>
-
-<!-- ───────── READING ───────── -->
-<section id="reading">
-  <div class="section-head">
-    <span class="section-jp">参考文献</span>
-    <span class="section-en">FURTHER READING</span>
-  </div>
-
-  <div class="reading">
-    <div class="reading-group">
-      <h6>核心文本</h6>
-      <ul>
-        <li>Johnson, N. (1987). <i>The Welfare State in Transition: The Theory and Practice of Welfare Pluralism</i>. Brighton: Wheatsheaf.</li>
-        <li>Powell, M. (ed.) (2007). <i>Understanding the Mixed Economy of Welfare</i>. Bristol: Policy Press.</li>
-        <li>Esping-Andersen, G. (1990). <i>The Three Worlds of Welfare Capitalism</i>. Cambridge: Polity Press.</li>
-        <li>Salamon, L. M., &amp; Anheier, H. K. (1997). <i>Defining the Nonprofit Sector: A Cross-National Analysis</i>. Manchester: Manchester University Press.</li>
-      </ul>
-    </div>
-
-    <div class="reading-group">
-      <h6>性別、家庭、跨國照顧</h6>
-      <ul>
-        <li>Hochschild, A. R. (2000). "Global Care Chains and Emotional Surplus Value," in W. Hutton &amp; A. Giddens (eds.) <i>On the Edge: Living with Global Capitalism</i>.</li>
-        <li>Daly, M., &amp; Lewis, J. (2000). "The Concept of Social Care and the Analysis of Contemporary Welfare States." <i>British Journal of Sociology</i>, 51(2), 281–298.</li>
-        <li>藍佩嘉（2008）。《跨國灰姑娘：當東南亞幫傭遇上台灣新富家庭》。台北：行人。</li>
-      </ul>
-    </div>
-
-    <div class="reading-group">
-      <h6>東亞與台灣脈絡</h6>
-      <ul>
-        <li>林萬億（2022）。《社會福利》（增訂版）。台北：五南。</li>
-        <li>呂寶靜編（2011）。《社會工作與台灣社會》（第二版）。台北：巨流。</li>
-        <li>Peng, I., &amp; Wong, J. (2010). "East Asian Welfare State Transition: From the Developmental State to a Social Investment State?" <i>Comparative Social Research</i>.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <span>福利社會學 ・ 第 4 週</span>
-  <span>葉崇揚 ・ 東吳大學社會學系</span>
-  <span>2026 ・ 春</span>
-</footer>
+</div>
 
 <script>
-// ── Sector toggle ──
-function pickSector(id) {
-  const cards = document.querySelectorAll('.sector-card');
-  const details = document.querySelectorAll('.sector-detail');
-  const target = document.getElementById('sd-' + id);
-  const card = document.querySelector(`.sector-card[data-sector="${id}"]`);
-  const isAlreadyOpen = card.classList.contains('is-active');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let cur = 0;
+  document.getElementById('totNum').textContent = total;
 
-  cards.forEach(c => c.classList.remove('is-active'));
-  details.forEach(d => d.classList.remove('is-active'));
-
-  if (!isAlreadyOpen) {
-    card.classList.add('is-active');
-    target.classList.add('is-active');
-    setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
-  }
-}
-
-// ── Tabs ──
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const wrap = btn.closest('.tabs');
-    const tab = btn.dataset.tab;
-    wrap.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('is-active'));
-    wrap.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('is-active'));
-    btn.classList.add('is-active');
-    wrap.querySelector(`.tab-panel[data-panel="${tab}"]`).classList.add('is-active');
+  // dots & toc
+  const dotsEl = document.getElementById('dots');
+  const tocEl = document.getElementById('tocList');
+  slides.forEach((s, i) => {
+    const d = document.createElement('span');
+    d.className = 'dot' + (s.dataset.kind === 'section' ? ' is-section' : '');
+    d.title = s.dataset.label || '';
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+    const li = document.createElement('li');
+    if (s.dataset.kind === 'section') li.classList.add('is-section');
+    li.innerHTML = `<span class="num">${String(i + 1).padStart(2, '0')}</span><span class="lab">${s.dataset.label || ''}</span><span class="kind">${s.dataset.kind}</span>`;
+    li.onclick = () => { goTo(i); toggleToc(); };
+    tocEl.appendChild(li);
   });
-});
 
-// ── Scenario interactive ──
-const scenFeedbacks = {
-  elder: {
-    state: { label: '政府', body: '<strong>合理選擇之一。</strong>長照 2.0 體系正是為這種情境設計：A 級失智據點、B 級日照中心、C 級巷弄站可提供混合服務。但純公共方案在輕度失智的「日常陪伴」上密度仍不足，所以實務上常與其他部門搭配。' },
-    market: { label: '市場', body: '<strong>務實但有風險。</strong>外籍看護工是台灣的常見選擇，能提供 24 小時陪伴。但這條路把社會風險（雇主責任、看護身心健康、照顧品質判斷）丟回家庭；且輕度失智不一定符合外籍看護的申請門檻。' },
-    voluntary: { label: 'NPO', body: '<strong>關鍵的支援。</strong>門諾基金會、弘道老人福利基金會等在地 NPO 提供日間照顧、共餐、訪視服務，補足正式照顧的縫隙。但 NPO 規模有限，無法獨自承擔全國性需求。' },
-    informal: { label: '家庭', body: '<strong>傳統預設、現實壓力。</strong>「子女回家照顧」是東亞社會的傳統期待，但在雙薪化、少子化、城鄉移居的當代台灣，這個預設正在崩解。完全交給家庭，會把成本與壓力（特別是對女兒、媳婦）推到極致。' }
-  },
-  child: {
-    state: { label: '政府', body: '<strong>許多家長的首選，但供給嚴重不足。</strong>公托每月費用 7,000–10,000 元，但抽籤錄取率常低於 30%。「政府主導」是理想，但實際上還沒做到。' },
-    market: { label: '市場', body: '<strong>多數家庭的現實。</strong>私立托嬰每月約 18,000–28,000 元，幾乎佔家庭可支配所得四分之一。準公共化制度（政府補助、業者收費上限）是政府用市場手段補位公共不足。' },
-    voluntary: { label: 'NPO', body: '<strong>規模有限。</strong>少數教會或基金會提供托育，但相對於台灣每年新生兒，NPO 托育的覆蓋面非常小。' },
-    informal: { label: '家庭', body: '<strong>常見但代價高。</strong>「祖父母帶孫」是台灣真實樣貌，但意味著祖父母重新進入無薪照顧勞動；或夫妻其中一方（多為女性）退出職場——這正是台灣女性勞參率在 30 歲之後驟降的結構原因。' }
-  },
-  homeless: {
-    state: { label: '政府', body: '<strong>正當的選擇。</strong>遊民屬政府社會救助與心理衛生體系責任，《社會救助法》、《精神衛生法》皆有規範。但實務上：戶籍門檻、行政繁瑣、人力不足讓許多街友無法即時取得協助。' },
-    market: { label: '市場', body: '<strong>幾乎不可能。</strong>街友沒有購買力，是「市場失靈」最極端的例子。市場邏輯下，無購買力者直接被排除——這正是為什麼這類個案需要其他部門接手。' },
-    voluntary: { label: 'NPO', body: '<strong>實務上的關鍵角色。</strong>創世基金會、人安基金會、芒草心慈善協會在街友議題上扮演關鍵：寒冬送餐、街友外展、培力就業。NPO 的彈性與在地網絡，是政府體系難以取代的。' },
-    informal: { label: '家庭', body: '<strong>幾乎不可行。</strong>本案家屬已失聯——這正是「家庭主義福利體制」的失能時刻：當家庭網絡瓦解，預設家庭承擔的福利模式就會把人推向街頭。' }
+  function goTo(n) {
+    if (n < 0 || n >= total || n === cur) return;
+    const dir = n > cur ? 1 : -1;
+    slides[cur].classList.remove('is-active');
+    if (dir > 0) slides[cur].classList.add('is-prev');
+    cur = n;
+    slides[cur].classList.remove('is-prev');
+    slides[cur].classList.add('is-active');
+    setTimeout(() => slides.forEach((s, i) => { if (i !== cur) s.classList.remove('is-prev'); }), 500);
+    update();
   }
-};
+  function goPrev() { goTo(cur - 1); }
+  function goNext() { goTo(cur + 1); }
+  function update() {
+    document.getElementById('curNum').textContent = cur + 1;
+    document.getElementById('prevBtn').disabled = cur === 0;
+    document.getElementById('nextBtn').disabled = cur === total - 1;
+    document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('is-active', i === cur));
+  }
 
-function pickScen(scen, choice, btn) {
-  const block = document.querySelector(`.scen-block[data-scen="${scen}"]`);
-  block.querySelectorAll('.scen-option').forEach(o => {
-    o.classList.remove('is-picked');
-    o.classList.add('is-mismatch');
-  });
-  btn.classList.add('is-picked');
-  btn.classList.remove('is-mismatch');
-  const data = scenFeedbacks[scen][choice];
-  const fb = document.getElementById('fb-' + scen);
-  fb.innerHTML = `<strong>你選了：${data.label}部門。</strong> ${data.body}`;
-  fb.classList.add('is-shown');
-}
+  function toggleToc() {
+    document.getElementById('tocOverlay').classList.toggle('is-shown');
+  }
 
-// ── Quiz ──
-let answered = 0;
-let score = 0;
-document.querySelectorAll('.quiz').forEach(quiz => {
-  const correct = quiz.dataset.correct;
-  const opts = quiz.querySelectorAll('.quiz-opt');
-  opts.forEach(opt => {
-    opt.addEventListener('click', () => {
-      if (quiz.dataset.done) return;
-      quiz.dataset.done = '1';
-      const picked = opt.dataset.opt;
-      opts.forEach(o => {
-        o.disabled = true;
-        if (o.dataset.opt === correct) o.classList.add('is-correct');
-        else if (o.dataset.opt === picked) o.classList.add('is-wrong');
+  // Scenario interactive
+  const scenFeedbacks = {
+    elder: {
+      state: { label: '政府', body: '<strong>合理選擇之一。</strong>長照 2.0 體系正是為這種情境設計：A 級失智據點、B 級日照、C 級巷弄站可提供混合服務。但純公共方案在輕度失智的「日常陪伴」上密度仍不足，所以實務上常與其他部門搭配。' },
+      market: { label: '市場', body: '<strong>務實但有風險。</strong>外籍看護工是台灣常見選擇，能提供 24 小時陪伴。但這條路把社會風險（雇主責任、看護身心、品質判斷）丟回家庭；輕度失智不一定符合外籍看護申請門檻。' },
+      voluntary: { label: 'NPO', body: '<strong>關鍵的支援。</strong>門諾基金會、弘道老人福利基金會等在地 NPO 提供日照、共餐、訪視，補足正式照顧縫隙。但 NPO 規模有限，無法獨自承擔全國性需求。' },
+      informal: { label: '家庭', body: '<strong>傳統預設、現實壓力。</strong>「子女回家照顧」是東亞傳統期待，但在雙薪化、少子化、城鄉移居的當代台灣，這個預設正崩解。完全交給家庭，會把成本（特別是對女兒、媳婦）推到極致。' }
+    },
+    child: {
+      state: { label: '政府', body: '<strong>許多家長的首選，但供給嚴重不足。</strong>公托每月費用 7,000–10,000 元，但抽籤錄取率常低於 30%。「政府主導」是理想，實際上還沒做到。' },
+      market: { label: '市場', body: '<strong>多數家庭的現實。</strong>私立托嬰每月約 18,000–28,000 元，幾乎佔家庭可支配所得四分之一。準公共化制度（政府補助、業者收費上限）是政府用市場手段補位公共不足。' },
+      voluntary: { label: 'NPO', body: '<strong>規模有限。</strong>少數教會或基金會提供托育，但相對於台灣每年新生兒，NPO 托育的覆蓋面非常小。' },
+      informal: { label: '家庭', body: '<strong>常見但代價高。</strong>「祖父母帶孫」是台灣真實樣貌，意味著祖父母重新進入無薪照顧勞動；或夫妻其中一方（多為女性）退出職場——這正是台灣女性勞參率在 30 歲之後驟降的結構原因。' }
+    },
+    homeless: {
+      state: { label: '政府', body: '<strong>正當的選擇。</strong>遊民屬政府社會救助與心理衛生體系責任，《社會救助法》、《精神衛生法》皆有規範。但實務上：戶籍門檻、行政繁瑣、人力不足讓許多街友無法即時取得協助。' },
+      market: { label: '市場', body: '<strong>幾乎不可能。</strong>街友沒有購買力，是「市場失靈」最極端的例子。市場邏輯下，無購買力者直接被排除——這正是為什麼這類個案需要其他部門接手。' },
+      voluntary: { label: 'NPO', body: '<strong>實務上的關鍵角色。</strong>創世基金會、人安基金會、芒草心慈善協會在街友議題上扮演關鍵：寒冬送餐、街友外展、培力就業。NPO 的彈性與在地網絡，是政府體系難以取代的。' },
+      informal: { label: '家庭', body: '<strong>幾乎不可行。</strong>本案家屬已失聯——這正是「家庭主義福利體制」的失能時刻：當家庭網絡瓦解，預設家庭承擔的福利模式就會把人推向街頭。' }
+    }
+  };
+  function pickScen(scen, choice, btn) {
+    const block = document.querySelector(`.scen-block[data-scen="${scen}"]`);
+    block.querySelectorAll('.scen-opt').forEach(o => {
+      o.classList.remove('is-picked');
+      o.classList.add('is-mismatch');
+    });
+    btn.classList.add('is-picked');
+    btn.classList.remove('is-mismatch');
+    const data = scenFeedbacks[scen][choice];
+    const fb = document.getElementById('fb-' + scen);
+    fb.innerHTML = `<strong>你選了：${data.label}部門。</strong> ${data.body}`;
+    fb.classList.add('is-shown');
+  }
+
+  // Quiz
+  let quizScore = 0;
+  document.querySelectorAll('.quiz').forEach(quiz => {
+    const correct = quiz.dataset.correct;
+    const opts = quiz.querySelectorAll('.quiz-opt');
+    opts.forEach(opt => {
+      opt.addEventListener('click', () => {
+        if (quiz.dataset.done) return;
+        quiz.dataset.done = '1';
+        const picked = opt.dataset.opt;
+        opts.forEach(o => {
+          o.disabled = true;
+          if (o.dataset.opt === correct) o.classList.add('is-correct');
+          else if (o.dataset.opt === picked) o.classList.add('is-wrong');
+        });
+        if (picked === correct) {
+          quizScore++;
+          const sn = document.getElementById('scoreNum');
+          if (sn) sn.textContent = quizScore;
+        }
+        quiz.querySelector('.quiz-explain').classList.add('is-shown');
       });
-      if (picked === correct) score++;
-      answered++;
-      document.getElementById('scoreNum').textContent = score;
-      document.getElementById('progressFill').style.width = (answered / 8 * 100) + '%';
-      quiz.querySelector('.quiz-explain').classList.add('is-shown');
     });
   });
-});
 
-// ── Smooth scroll & active nav ──
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const tgt = document.querySelector(a.getAttribute('href'));
-    if (tgt) {
-      e.preventDefault();
-      tgt.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Keyboard + touch
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('tocOverlay').classList.contains('is-shown')) {
+      if (e.key === 'Escape') toggleToc();
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goNext(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goPrev(); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+    else if (e.key === 'Escape') toggleToc();
+    else if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
     }
   });
-});
 
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.innernav a');
-window.addEventListener('scroll', () => {
-  const y = window.scrollY + 120;
-  sections.forEach(sec => {
-    if (sec.offsetTop <= y && sec.offsetTop + sec.offsetHeight > y) {
-      navLinks.forEach(l => l.classList.remove('is-active'));
-      const link = document.querySelector(`.innernav a[href="#${sec.id}"]`);
-      if (link) link.classList.add('is-active');
-    }
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) dx < 0 ? goNext() : goPrev();
   });
-  const total = document.body.scrollHeight - window.innerHeight;
-  document.getElementById('scrollProgress').style.width = total > 0 ? (window.scrollY / total * 100) + '%' : '0%';
-});
+
+  update();
 </script>
+
 <script>
   // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
   // 偶爾因 sticky header + backdrop-filter 而整頁空白。
