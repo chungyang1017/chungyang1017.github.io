@@ -272,7 +272,7 @@
     footer .links a:hover { opacity: 1; color: var(--accent); }
     footer .sep { opacity: 0.4; margin: 0 0.6em; }
 
-    /* Sakura blizzard (spring only) */
+    /* Sakura blizzard (spring only) — real petal silhouette */
     .sakura-layer {
       position: fixed; inset: 0;
       pointer-events: none; overflow: hidden;
@@ -280,22 +280,20 @@
     }
     .petal {
       position: absolute; top: -40px;
-      width: 12px; height: 12px;
-      background: radial-gradient(ellipse at 30% 30%,
-        rgba(255,225,235,0.95) 0%,
-        rgba(241,178,200,0.85) 35%,
-        rgba(217,138,168,0.55) 70%,
-        rgba(217,138,168,0) 100%);
-      border-radius: 150% 0 150% 0 / 0 150% 0 150%;
-      opacity: 0.85;
-      filter: blur(0.4px);
+      width: 18px; height: 18px;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><radialGradient id='g' cx='50%25' cy='40%25' r='65%25'><stop offset='0%25' stop-color='%23fff0f6'/><stop offset='55%25' stop-color='%23f5bccd'/><stop offset='100%25' stop-color='%23d98aa8'/></radialGradient></defs><path d='M50 95 C 22 90 6 62 18 32 C 26 14 42 10 50 24 C 58 10 74 14 82 32 C 94 62 78 90 50 95 Z' fill='url(%23g)' stroke='%23c47090' stroke-width='1.2' stroke-opacity='0.45'/></svg>");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: 0.9;
+      filter: drop-shadow(0 1px 1px rgba(196,80,120,0.18));
       will-change: transform;
       animation: sakura-fall linear infinite;
     }
     @keyframes sakura-fall {
-      0%   { transform: translate(0, -40px) rotate(0deg); }
-      50%  { transform: translate(var(--drift, 60px), 50vh) rotate(360deg); }
-      100% { transform: translate(calc(var(--drift, 60px) * 0.4), 110vh) rotate(720deg); }
+      0%   { transform: translate(0, -40px) rotate(var(--rot-start, 0deg)); }
+      50%  { transform: translate(var(--drift, 60px), 50vh) rotate(calc(var(--rot-start, 0deg) + 360deg)); }
+      100% { transform: translate(calc(var(--drift, 60px) * 0.4), 110vh) rotate(calc(var(--rot-start, 0deg) + 720deg)); }
     }
     @media (prefers-reduced-motion: reduce) {
       .sakura-layer { display: none; }
@@ -506,12 +504,14 @@
       var drift = (Math.random() - 0.3) * 220;
       var dur = 11 + Math.random() * 14;
       var delay = -Math.random() * dur;
-      var op = 0.55 + Math.random() * 0.4;
+      var op = 0.6 + Math.random() * 0.35;
+      var rotStart = Math.random() * 360;
       p.style.cssText =
         'left:' + startX + 'vw;' +
         'width:' + size + 'px;height:' + size + 'px;' +
         'opacity:' + op + ';' +
         '--drift:' + drift + 'px;' +
+        '--rot-start:' + rotStart + 'deg;' +
         'animation-duration:' + dur + 's;' +
         'animation-delay:' + delay + 's;';
       layer.appendChild(p);
