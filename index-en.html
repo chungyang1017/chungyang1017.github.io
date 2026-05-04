@@ -327,7 +327,7 @@
 </header>
 
 <section class="hero" aria-label="Genkan ・ Entrance">
-  <img class="hero-img" src="images/photography/dscf5975_1.jpg" alt="" />
+  <img class="hero-img" id="heroImg" src="images/photography/dscf5975_1.jpg" alt="" />
   <div class="hero-veil"></div>
   <div class="hero-inner">
     <p class="hero-eyebrow"><span class="jp">玄關</span>· GENKAN</p>
@@ -432,12 +432,34 @@
   <span>Reiwa 8 ・ Spring</span>
 </footer>
 
+<script src="js/photo-data.js"></script>
 <script>
+  // Random hero image — picks a different landscape/xpan photo each visit
+  (function() {
+    if (typeof photoData === 'undefined' || !photoData.length) return;
+    var eligible = photoData.filter(function(p) {
+      return p.shape === 'landscape' || p.shape === 'xpan';
+    });
+    if (!eligible.length) return;
+    var pick = eligible[Math.floor(Math.random() * eligible.length)];
+    var img = document.getElementById('heroImg');
+    if (img && pick.src) img.src = pick.src;
+  })();
+
   // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
   // 偶爾因 sticky header + backdrop-filter 而整頁空白。
   // 偵測到從快取還原時，強制觸發一次重繪。
   window.addEventListener('pageshow', function(e) {
     if (e.persisted) {
+      if (typeof photoData !== 'undefined' && photoData.length) {
+        var landscapes = photoData.filter(function(p) {
+          return p.shape === 'landscape' || p.shape === 'xpan';
+        });
+        if (landscapes.length) {
+          var img = document.getElementById('heroImg');
+          if (img) img.src = landscapes[Math.floor(Math.random() * landscapes.length)].src;
+        }
+      }
       document.body.style.display = 'none';
       void document.body.offsetHeight;
       document.body.style.display = '';
