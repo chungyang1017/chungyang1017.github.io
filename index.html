@@ -256,6 +256,35 @@
     footer .links a:hover { opacity: 1; color: var(--accent); }
     footer .sep { opacity: 0.4; margin: 0 0.6em; }
 
+    /* ── 櫻吹雪 sakura blizzard（春季） ───────────── */
+    .sakura-layer {
+      position: fixed; inset: 0;
+      pointer-events: none; overflow: hidden;
+      z-index: 5;
+    }
+    .petal {
+      position: absolute; top: -40px;
+      width: 12px; height: 12px;
+      background: radial-gradient(ellipse at 30% 30%,
+        rgba(255,225,235,0.95) 0%,
+        rgba(241,178,200,0.85) 35%,
+        rgba(217,138,168,0.55) 70%,
+        rgba(217,138,168,0) 100%);
+      border-radius: 150% 0 150% 0 / 0 150% 0 150%;
+      opacity: 0.85;
+      filter: blur(0.4px);
+      will-change: transform;
+      animation: sakura-fall linear infinite;
+    }
+    @keyframes sakura-fall {
+      0%   { transform: translate(0, -40px) rotate(0deg); }
+      50%  { transform: translate(var(--drift, 60px), 50vh) rotate(360deg); }
+      100% { transform: translate(calc(var(--drift, 60px) * 0.4), 110vh) rotate(720deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sakura-layer { display: none; }
+    }
+
     /* ── Mobile RWD ────────────────────────────────── */
     @media (max-width: 760px) {
       .top { padding: 14px 20px; }
@@ -424,17 +453,64 @@
 
 <script src="js/photo-data.js"></script>
 <script>
-  // 玄關 hero 隨機選圖：春天就用春信系列的橫幅照片
-  (function() {
-    if (typeof photoData === 'undefined' || !photoData.length) return;
-    var eligible = photoData.filter(function(p) {
-      return p.shape === 'landscape' && p.themes && p.themes.indexOf('harugasumi') !== -1;
+  // 玄關 hero 依月份自動切換季節主題的隨機橫幅照片
+  // 3–5 春信 ・ 6–8 青嵐 ・ 9–11 紅葉 ・ 12,1,2 雪明
+  function getSeasonTheme() {
+    var m = new Date().getMonth() + 1;
+    if (m >= 3 && m <= 5) return 'harugasumi';
+    if (m >= 6 && m <= 8) return 'aoarashi';
+    if (m >= 9 && m <= 11) return 'kouyou';
+    return 'yukiakari';
+  }
+  function pickHeroPhoto() {
+    if (typeof photoData === 'undefined' || !photoData.length) return null;
+    var theme = getSeasonTheme();
+    var pool = photoData.filter(function(p) {
+      return p.shape === 'landscape' && p.themes && p.themes.indexOf(theme) !== -1;
     });
-    if (!eligible.length) return;
-    var pick = eligible[Math.floor(Math.random() * eligible.length)];
+    // 季節池為空則退回到所有橫幅
+    if (!pool.length) {
+      pool = photoData.filter(function(p) { return p.shape === 'landscape'; });
+    }
+    if (!pool.length) return null;
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+  (function() {
+    var pick = pickHeroPhoto();
     var img = document.getElementById('heroImg');
-    if (img && pick.src) img.src = pick.src;
+    if (img && pick && pick.src) img.src = pick.src;
   })();
+
+  // 櫻吹雪 — 只在春天（3–5 月）出現
+  function sakuraStorm() {
+    var m = new Date().getMonth() + 1;
+    if (m < 3 || m > 5) return;
+    if (document.querySelector('.sakura-layer')) return;
+    var layer = document.createElement('div');
+    layer.className = 'sakura-layer';
+    layer.setAttribute('aria-hidden', 'true');
+    var N = 36;
+    for (var i = 0; i < N; i++) {
+      var p = document.createElement('span');
+      p.className = 'petal';
+      var size = 8 + Math.random() * 10;
+      var startX = Math.random() * 100;
+      var drift = (Math.random() - 0.3) * 220;
+      var dur = 11 + Math.random() * 14;
+      var delay = -Math.random() * dur;
+      var op = 0.55 + Math.random() * 0.4;
+      p.style.cssText =
+        'left:' + startX + 'vw;' +
+        'width:' + size + 'px;height:' + size + 'px;' +
+        'opacity:' + op + ';' +
+        '--drift:' + drift + 'px;' +
+        'animation-duration:' + dur + 's;' +
+        'animation-delay:' + delay + 's;';
+      layer.appendChild(p);
+    }
+    document.body.appendChild(layer);
+  }
+  sakuraStorm();
 
   // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
   // 偶爾因 sticky header + backdrop-filter 而整頁空白。
@@ -442,15 +518,9 @@
   window.addEventListener('pageshow', function(e) {
     if (e.persisted) {
       // BFCache 還原時也要重新隨機選圖
-      if (typeof photoData !== 'undefined' && photoData.length) {
-        var spring = photoData.filter(function(p) {
-          return p.shape === 'landscape' && p.themes && p.themes.indexOf('harugasumi') !== -1;
-        });
-        if (spring.length) {
-          var img = document.getElementById('heroImg');
-          if (img) img.src = spring[Math.floor(Math.random() * spring.length)].src;
-        }
-      }
+      var pickB = pickHeroPhoto();
+      var imgB = document.getElementById('heroImg');
+      if (imgB && pickB && pickB.src) imgB.src = pickB.src;
       document.body.style.display = 'none';
       void document.body.offsetHeight;
       document.body.style.display = '';
