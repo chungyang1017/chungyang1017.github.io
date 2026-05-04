@@ -424,11 +424,11 @@
 
 <script src="js/photo-data.js"></script>
 <script>
-  // 玄關 hero 隨機選圖：每次重新整理都換一張橫幅或寬幅照片
+  // 玄關 hero 隨機選圖：春天就用春信系列的橫幅照片
   (function() {
     if (typeof photoData === 'undefined' || !photoData.length) return;
     var eligible = photoData.filter(function(p) {
-      return p.shape === 'landscape' || p.shape === 'xpan';
+      return p.shape === 'landscape' && p.themes && p.themes.indexOf('harugasumi') !== -1;
     });
     if (!eligible.length) return;
     var pick = eligible[Math.floor(Math.random() * eligible.length)];
@@ -443,12 +443,12 @@
     if (e.persisted) {
       // BFCache 還原時也要重新隨機選圖
       if (typeof photoData !== 'undefined' && photoData.length) {
-        var landscapes = photoData.filter(function(p) {
-          return p.shape === 'landscape' || p.shape === 'xpan';
+        var spring = photoData.filter(function(p) {
+          return p.shape === 'landscape' && p.themes && p.themes.indexOf('harugasumi') !== -1;
         });
-        if (landscapes.length) {
+        if (spring.length) {
           var img = document.getElementById('heroImg');
-          if (img) img.src = landscapes[Math.floor(Math.random() * landscapes.length)].src;
+          if (img) img.src = spring[Math.floor(Math.random() * spring.length)].src;
         }
       }
       document.body.style.display = 'none';

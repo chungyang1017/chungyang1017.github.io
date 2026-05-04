@@ -434,11 +434,11 @@
 
 <script src="js/photo-data.js"></script>
 <script>
-  // Random hero image — picks a different landscape/xpan photo each visit
+  // Random hero image — spring (harugasumi) landscape photos for the season
   (function() {
     if (typeof photoData === 'undefined' || !photoData.length) return;
     var eligible = photoData.filter(function(p) {
-      return p.shape === 'landscape' || p.shape === 'xpan';
+      return p.shape === 'landscape' && p.themes && p.themes.indexOf('harugasumi') !== -1;
     });
     if (!eligible.length) return;
     var pick = eligible[Math.floor(Math.random() * eligible.length)];
@@ -452,12 +452,12 @@
   window.addEventListener('pageshow', function(e) {
     if (e.persisted) {
       if (typeof photoData !== 'undefined' && photoData.length) {
-        var landscapes = photoData.filter(function(p) {
-          return p.shape === 'landscape' || p.shape === 'xpan';
+        var spring = photoData.filter(function(p) {
+          return p.shape === 'landscape' && p.themes && p.themes.indexOf('harugasumi') !== -1;
         });
-        if (landscapes.length) {
+        if (spring.length) {
           var img = document.getElementById('heroImg');
-          if (img) img.src = landscapes[Math.floor(Math.random() * landscapes.length)].src;
+          if (img) img.src = spring[Math.floor(Math.random() * spring.length)].src;
         }
       }
       document.body.style.display = 'none';
