@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>葉崇揚 ・ 文庫 ・ 隨筆</title>
+  <meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 隨筆．從漫畫、流行文化、社會數據觀察日本、韓國、台灣、中國的精神底層變遷。" />
+  <link rel="alternate" hreflang="zh-Hant" href="essays-zh.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Klee+One:wght@400;600&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bunko-bg: #f4ecd8;
+      --bunko-paper: #fcf6e6;
+      --paper-card: #fcf6e6;
+      --moss: #5a7a4a;
+      --accent: #c43838;
+      --water: #5a7a8a;
+      --ink: #1f1f1d;
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --klee: 'Klee One', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: var(--jp);
+      background: var(--bunko-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .grid-bg {
+      position: fixed; inset: 0; pointer-events: none;
+      opacity: 0.04; z-index: 1;
+    }
+
+    /* Header */
+    .top {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(244,236,216,0.93);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      padding: 14px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-left { display: flex; align-items: center; gap: 16px; }
+    .back {
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.3em; opacity: 0.55;
+      text-decoration: none; color: var(--ink);
+    }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .name-block { display: inline-flex; align-items: baseline; gap: 8px; }
+    .name-jp { font-family: var(--brush); font-size: 22px; letter-spacing: 0.1em; }
+    .name-en { font-family: var(--sans); font-size: 13px; letter-spacing: 0.08em; opacity: 0.7; }
+    .nav { display: flex; gap: 22px; font-size: 12px; letter-spacing: 0.25em; }
+    .nav a {
+      color: var(--ink); text-decoration: none;
+      opacity: 0.5; padding-bottom: 4px;
+    }
+    .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
+    .nav .nav-jp { font-size: 10px; opacity: 0.55; letter-spacing: 0.18em; margin-left: 2px; font-family: var(--jp); }
+    .nav .lang { border-left: 1px solid var(--line); padding-left: 22px; font-family: var(--sans); }
+
+    /* Hero */
+    .hero {
+      padding: 70px 60px 50px;
+      max-width: 1280px; margin: 0 auto;
+      position: relative; z-index: 2;
+      border-bottom: 1px solid rgba(31,31,29,0.06);
+    }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 0.5em;
+      opacity: 0.5; margin-bottom: 20px;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: end;
+    }
+    .hero-title {
+      margin: 0; font-family: var(--brush);
+      font-size: 88px; font-weight: 400;
+      line-height: 1; letter-spacing: 0.05em;
+    }
+    .hero-sub {
+      margin-top: 12px; font-size: 14px;
+      letter-spacing: 0.3em; opacity: 0.55;
+    }
+    .hero-desc {
+      margin-top: 28px; font-size: 16px;
+      line-height: 2; opacity: 0.85;
+      max-width: 540px;
+    }
+    .hero-desc a { color: var(--accent); border-bottom: 1px dashed var(--accent); text-decoration: none; }
+
+    /* Featured */
+    .featured {
+      background: var(--paper-card);
+      padding: 32px 36px;
+      border: 1px solid var(--line);
+      position: relative;
+    }
+    .featured::before {
+      content: ""; position: absolute;
+      left: -2px; top: 0; bottom: 0;
+      width: 2px; background: var(--accent);
+    }
+    .feat-eyebrow {
+      font-size: 10px; letter-spacing: 0.4em;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .feat-tags {
+      display: flex; gap: 8px; margin-bottom: 16px;
+      font-size: 11px; opacity: 0.65;
+    }
+    .feat-tags span {
+      padding: 3px 10px; border: 1px solid rgba(31,31,29,0.3);
+      letter-spacing: 0.05em;
+    }
+    .feat-title {
+      margin: 0; font-family: var(--brush);
+      font-size: 28px; font-weight: 400;
+      letter-spacing: 0.04em; line-height: 1.3;
+    }
+    .feat-en {
+      font-size: 12.5px; font-style: italic;
+      opacity: 0.6; margin-top: 6px;
+    }
+    .feat-excerpt {
+      margin-top: 20px; font-size: 14.5px;
+      line-height: 1.95; opacity: 0.88;
+      font-family: var(--klee);
+    }
+    .feat-foot {
+      margin-top: 24px; padding-top: 16px;
+      border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between;
+      font-size: 11px; opacity: 0.6;
+      letter-spacing: 0.2em; font-family: var(--sans);
+    }
+    .feat-link {
+      color: var(--accent); text-decoration: none;
+      letter-spacing: 0.2em;
+    }
+
+    /* Section */
+    .section-wrap {
+      padding: 50px 60px;
+      max-width: 1280px; margin: 0 auto;
+      position: relative; z-index: 2;
+    }
+    .section-head {
+      display: flex; align-items: baseline; gap: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(31,31,29,0.20);
+    }
+    .section-num { font-family: var(--brush); font-size: 28px; opacity: 0.55; letter-spacing: 0.05em; }
+    .section-title { font-family: var(--brush); font-size: 28px; letter-spacing: 0.1em; }
+    .section-en { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.5; }
+    .section-note { margin-left: auto; font-family: var(--sans); font-size: 13px; letter-spacing: 0.2em; opacity: 0.6; }
+
+    /* Filter buttons */
+    .filters {
+      margin-left: auto;
+      display: flex; gap: 4px;
+    }
+    .filter-btn {
+      background: transparent;
+      border: 1px solid rgba(31,31,29,0.3);
+      padding: 6px 12px;
+      font-family: var(--jp); font-size: 12px;
+      cursor: pointer; letter-spacing: 0.1em;
+      color: var(--ink);
+      transition: background 0.15s, color 0.15s;
+    }
+    .filter-btn.active {
+      background: var(--ink); color: var(--bunko-bg);
+    }
+    .filter-btn:hover { border-color: var(--accent); }
+
+    /* Article list */
+    .article-list { margin-top: 16px; }
+    .article-row {
+      display: grid;
+      grid-template-columns: 110px 70px 1fr 80px;
+      gap: 24px; padding: 22px 0;
+      border-bottom: 1px solid rgba(31,31,29,0.12);
+      align-items: baseline;
+      text-decoration: none; color: var(--ink);
+      transition: background 0.15s;
+    }
+    .article-row:hover { background: rgba(252,246,230,0.5); }
+    .article-row:hover .article-title { color: var(--accent); }
+    .art-date {
+      font-family: var(--sans); font-size: 12.5px;
+      opacity: 0.55; letter-spacing: 0.1em;
+    }
+    .art-cat {
+      font-size: 11px; opacity: 0.7;
+      padding: 3px 9px;
+      border: 1px solid rgba(31,31,29,0.25);
+      justify-self: start; letter-spacing: 0.04em;
+    }
+    .article-title {
+      margin: 0; font-size: 17px;
+      font-weight: 500; line-height: 1.55;
+      transition: color 0.2s;
+    }
+    .article-en {
+      font-size: 12px; opacity: 0.55;
+      margin-top: 5px; font-style: italic;
+    }
+    .art-read {
+      font-size: 11px; opacity: 0.5;
+      text-align: right; font-family: var(--sans);
+    }
+
+    /* Tag cloud */
+    .tags {
+      margin-top: 28px;
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    .tag {
+      padding: 8px 16px;
+      background: var(--paper-card);
+      border: 1px solid var(--line);
+      font-family: var(--brush);
+      letter-spacing: 0.05em;
+    }
+    .tag .count {
+      margin-left: 8px; font-size: 10px;
+      opacity: 0.5; font-family: var(--sans);
+    }
+
+    /* Mission quote */
+    .mission {
+      margin: 24px auto;
+      max-width: 1280px;
+      padding: 36px 60px;
+      font-family: var(--brush);
+      font-size: 22px; letter-spacing: 0.05em;
+      text-align: center;
+      color: var(--ink); opacity: 0.85;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      position: relative; z-index: 2;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 60px;
+      max-width: 1280px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      font-size: 11px; opacity: 0.55;
+      letter-spacing: 0.2em;
+      font-family: var(--sans);
+      position: relative; z-index: 2;
+    }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      .top { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
+      .nav { gap: 12px; font-size: 10px; letter-spacing: 0.16em; }
+      .nav a.nav-sub { display: none; }
+      .nav .lang { padding-left: 12px; }
+
+      .hero { padding: 40px 22px 32px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .hero-title { font-size: 56px; }
+      .hero-sub { font-size: 12px; }
+      .hero-desc { font-size: 15px; margin-top: 22px; }
+
+      .featured { padding: 22px; }
+      .feat-title { font-size: 22px; }
+      .feat-en { font-size: 11.5px; }
+      .feat-excerpt { font-size: 13.5px; }
+
+      .section-wrap { padding: 36px 22px; }
+      .section-head { flex-wrap: wrap; gap: 12px; }
+      .section-num, .section-title { font-size: 22px; }
+      .section-en { font-size: 10px; letter-spacing: 0.22em; }
+
+      .filters { width: 100%; flex-wrap: wrap; margin-left: 0; }
+      .filter-btn { font-size: 11px; padding: 5px 10px; }
+
+      .article-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+      .art-date { font-size: 11px; }
+      .art-cat { font-size: 10px; }
+      .article-title { font-size: 15.5px; }
+      .article-en { font-size: 11px; }
+      .art-read { display: none; }
+
+      .tags { gap: 8px; }
+      .tag { padding: 6px 12px; font-size: 14px; }
+
+      .mission { padding: 24px 22px; font-size: 16px; }
+
+      footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+
+<svg class="grid-bg" aria-hidden="true">
+  <defs>
+    <pattern id="manuscript" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="20" height="20" fill="none" stroke="#1f1f1d" stroke-width="0.3" />
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#manuscript)" />
+</svg>
+
+<header class="top">
+  <div class="top-left">
+    <a href="index.html" class="back">← 玄關</a>
+    <span class="top-sep">·</span>
+    <span class="name-block">
+      <span class="name-jp">葉崇揚</span>
+      <span class="name-en">（Chung-Yang Yeh）</span>
+    </span>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html" class="nav-sub">玄關</a>
+    <a href="about-zh.html" class="nav-sub">簡介 <span class="nav-jp">（軒）</span></a>
+    <a href="academic-zh.html" class="nav-sub">學術 <span class="nav-jp">（書院）</span></a>
+    <a href="photography-zh.html" class="nav-sub">寫真 <span class="nav-jp">（縁側）</span></a>
+    <a href="teaching-zh.html" class="nav-sub">教學 <span class="nav-jp">（茶室）</span></a>
+    <a href="essays-zh.html" class="is-current">隨筆 <span class="nav-jp">（文庫）</span></a>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="hero-eyebrow">第六室 · 文庫 BUNKO</p>
+  <div class="hero-grid">
+    <div>
+      <h1 class="hero-title">隨筆</h1>
+      <p class="hero-sub">ZUIHITSU ・ 思索の余白</p>
+      <p class="hero-desc">
+        論文寫不下的，留在這裡。<br/>
+        東亞觀察、社會政策的旁觀札記、讀書心得，與一些不打算被引用的話。學術的嚴謹會在 <a href="academic-zh.html">書院</a>，這裡是相對輕快但仍認真的書寫。
+      </p>
+    </div>
+
+    <article class="featured">
+      <div class="feat-eyebrow">● FEATURED ・ 2026.02.07</div>
+      <div class="feat-tags">
+        <span>日本</span>
+        <span>政治</span>
+        <span>漫畫</span>
+      </div>
+      <h2 class="feat-title">另一個從漫畫走出來的人物：以《政治最前線》與《島耕作》解讀高市早苗</h2>
+      <p class="feat-en">From a Manga Frame: Reading Sanae Takaichi through <em>The Politics</em> and <em>Kosaku Shima</em></p>
+      <p class="feat-excerpt">
+        當大谷翔平在洛杉磯創下漫畫《棒球大聯盟》也未曾預演的二刀流紀錄，日本社會看到的是「向外延伸的夢」；而在永田町，另一個從漫畫走出來的人物正穩定接近權力的最高點。本文借《政治最前線》的「方法」與《島耕作》的「焦慮」，解讀高市早苗所代表的日本「絕對現實主義」。
+      </p>
+      <div class="feat-foot">
+        <span>READ ・ 12 MIN</span>
+        <a href="commentary/2026-takaichi.html" class="feat-link">續きを読む →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section-wrap">
+  <div class="section-head">
+    <span class="section-num">壱</span>
+    <span class="section-title">目錄</span>
+    <span class="section-en">· INDEX ・ <span id="article-count">1</span> 篇</span>
+    <div class="filters">
+      <button class="filter-btn active" data-cat="all">全</button>
+      <button class="filter-btn" data-cat="日本">日本</button>
+      <button class="filter-btn" data-cat="韓國">韓國</button>
+      <button class="filter-btn" data-cat="台灣">台灣</button>
+      <button class="filter-btn" data-cat="中國">中國</button>
+      <button class="filter-btn" data-cat="社政">社政</button>
+      <button class="filter-btn" data-cat="讀書">讀書</button>
+    </div>
+  </div>
+
+  <div class="article-list" id="article-list">
+
+    <a href="commentary/2026-takaichi.html" class="article-row" data-cat="日本">
+      <span class="art-date">2026.02.07</span>
+      <span class="art-cat">日本</span>
+      <div>
+        <h3 class="article-title">另一個從漫畫走出來的人物：以《政治最前線》與《島耕作》解讀高市早苗</h3>
+        <p class="article-en">From a Manga Frame: Reading Sanae Takaichi through <em>The Politics</em> and <em>Kosaku Shima</em></p>
+      </div>
+      <span class="art-read">12 min</span>
+    </a>
+
+    <!-- 後續文章將陸續新增 -->
+
+  </div>
+</section>
+
+<aside class="mission">
+  「東亞，不是一個地理名詞，而是一個還在成形的故事。」
+</aside>
+
+<section class="section-wrap">
+  <div class="section-head">
+    <span class="section-num">弐</span>
+    <span class="section-title">標籤</span>
+    <span class="section-en">· TAGS</span>
+  </div>
+  <div class="tags">
+    <span class="tag">日本<span class="count">1</span></span>
+    <span class="tag">政治<span class="count">1</span></span>
+    <span class="tag">漫畫<span class="count">1</span></span>
+    <span class="tag">流行文化<span class="count">1</span></span>
+  </div>
+</section>
+
+<footer>
+  <span>YEH CHUNG-YANG ・ 隨筆</span>
+  <span>2026 ・ 春 ・ 文庫</span>
+</footer>
+
+<script>
+  // BFCache restore
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      document.body.style.display = 'none';
+      void document.body.offsetHeight;
+      document.body.style.display = '';
+    }
+  });
+
+  // Filter
+  const buttons = document.querySelectorAll('.filter-btn');
+  const rows = document.querySelectorAll('.article-row');
+  const countEl = document.getElementById('article-count');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      let visible = 0;
+      rows.forEach(r => {
+        const show = cat === 'all' || r.dataset.cat === cat;
+        r.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      countEl.textContent = visible;
+    });
+  });
+</script>
+</body>
+</html>
