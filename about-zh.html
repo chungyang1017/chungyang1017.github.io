@@ -90,10 +90,10 @@
       justify-content: space-between;
     }
     .name-vertical {
-      writing-mode: vertical-rl;
       font-family: var(--brush);
-      font-size: 96px; line-height: 1.05;
-      letter-spacing: 0.2em;
+      font-size: 88px; line-height: 1.05;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
     }
     .name-romaji {
       margin-top: 18px; font-size: 12px;
@@ -314,7 +314,7 @@
 
       .hero { padding: 40px 22px 32px; }
       .hero-grid { grid-template-columns: 1fr; gap: 32px; min-height: auto; }
-      .name-vertical { writing-mode: horizontal-tb; font-size: 56px; letter-spacing: 0.1em; }
+      .name-vertical { font-size: 56px; letter-spacing: 0.06em; }
       .portrait { max-width: 280px; margin: 0 auto; }
       .hero-right { font-size: 15px; line-height: 1.95; }
       .hero-right p .num { font-size: 22px; }
@@ -389,9 +389,7 @@
 
     <div class="hero-left">
       <div>
-        <div class="name-vertical">
-          葉<br/>崇<br/>揚
-        </div>
+        <div class="name-vertical">葉崇揚</div>
         <div class="name-romaji">YEH CHUNG-YANG ・ よう・ちょうよう</div>
       </div>
       <div class="title-block">
