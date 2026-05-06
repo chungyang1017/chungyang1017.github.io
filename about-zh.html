@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>葉崇揚 ・ 軒 ・ 簡介</title>
+  <meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 東吳大學社會學系教授．比較東亞福利國家、年金政策、社會投資、福利態度。" />
+  <link rel="alternate" hreflang="zh-Hant" href="about-zh.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --noki-bg: #ede4ce;
+      --noki-paper: #f5ecd6;
+      --paper-card: #f8f0dc;
+      --moss: #5a7a4a;
+      --accent: #c43838;
+      --water: #5a7a8a;
+      --ink: #1f1f1d;
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: var(--jp);
+      background: var(--noki-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .paper-grain {
+      position: fixed; inset: 0; pointer-events: none;
+      opacity: 0.32; mix-blend-mode: multiply; z-index: 1;
+    }
+
+    /* Header */
+    .top {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(237,228,206,0.93);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      padding: 14px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-left { display: flex; align-items: center; gap: 16px; }
+    .back {
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.3em; opacity: 0.55;
+      text-decoration: none; color: var(--ink);
+    }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .name-block { display: inline-flex; align-items: baseline; gap: 8px; }
+    .name-jp { font-family: var(--brush); font-size: 22px; letter-spacing: 0.1em; }
+    .name-en { font-family: var(--sans); font-size: 13px; letter-spacing: 0.08em; opacity: 0.7; }
+    .nav { display: flex; gap: 22px; font-size: 12px; letter-spacing: 0.25em; }
+    .nav a {
+      color: var(--ink); text-decoration: none;
+      opacity: 0.5; padding-bottom: 4px;
+    }
+    .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
+    .nav .nav-jp { font-size: 10px; opacity: 0.55; letter-spacing: 0.18em; margin-left: 2px; font-family: var(--jp); }
+    .nav .lang { border-left: 1px solid var(--line); padding-left: 22px; font-family: var(--sans); }
+
+    /* Hero — tategaki + portrait + intro */
+    .hero {
+      padding: 70px 60px 50px;
+      max-width: 1280px; margin: 0 auto;
+      position: relative; z-index: 2;
+      border-bottom: 1px solid rgba(31,31,29,0.06);
+    }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 0.5em;
+      opacity: 0.5; margin-bottom: 28px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px 1fr;
+      gap: 56px; align-items: stretch;
+      min-height: 460px;
+    }
+    .hero-left {
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+    }
+    .name-vertical {
+      writing-mode: vertical-rl;
+      font-family: var(--brush);
+      font-size: 96px; line-height: 1.05;
+      letter-spacing: 0.2em;
+    }
+    .name-romaji {
+      margin-top: 18px; font-size: 12px;
+      letter-spacing: 0.32em; opacity: 0.55;
+      font-family: var(--sans);
+    }
+    .title-block { margin-top: 24px; }
+    .title-zh { font-size: 16px; line-height: 1.7; opacity: 0.88; }
+    .title-en { font-size: 12px; opacity: 0.55; margin-top: 4px; font-style: italic; }
+
+    .portrait {
+      background: linear-gradient(135deg, var(--moss), var(--water));
+      position: relative; aspect-ratio: 3/4; overflow: hidden;
+      align-self: start;
+    }
+    .portrait-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      mix-blend-mode: multiply; opacity: 0.95;
+    }
+    .portrait-seal {
+      position: absolute; left: 16px; bottom: 12px;
+      font-size: 10px; color: var(--noki-paper); opacity: 0.78;
+      letter-spacing: 0.3em; font-family: var(--sans);
+    }
+    .portrait-fallback {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--brush); font-size: 110px;
+      color: var(--noki-paper); opacity: 0.85;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-right {
+      display: flex; flex-direction: column;
+      justify-content: center; gap: 24px;
+      font-size: 16px; line-height: 2.05;
+    }
+    .hero-right p {
+      margin: 0; opacity: 0.9;
+      font-family: 'Klee One', var(--jp);
+    }
+    .hero-right p .num {
+      font-family: var(--brush); font-size: 28px;
+      margin-right: 8px; opacity: 0.55;
+      vertical-align: -2px;
+    }
+
+    /* Section */
+    .section-wrap {
+      padding: 50px 60px;
+      max-width: 1280px; margin: 0 auto;
+      position: relative; z-index: 2;
+    }
+    .section-head {
+      display: flex; align-items: baseline; gap: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(31,31,29,0.20);
+    }
+    .section-num { font-family: var(--brush); font-size: 28px; opacity: 0.55; letter-spacing: 0.05em; }
+    .section-title { font-family: var(--brush); font-size: 28px; letter-spacing: 0.1em; }
+    .section-en { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.5; }
+
+    /* Expertise tags */
+    .expertise {
+      margin-top: 28px;
+      display: flex; flex-wrap: wrap; gap: 12px;
+    }
+    .exp-tag {
+      padding: 14px 22px;
+      background: var(--paper-card);
+      border: 1px solid var(--line);
+    }
+    .exp-jp {
+      font-family: var(--brush); font-size: 17px;
+      letter-spacing: 0.04em;
+    }
+    .exp-en {
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.18em; opacity: 0.6;
+      margin-top: 3px;
+    }
+
+    /* Two-column edu + career */
+    .two-col {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+    .col-head {
+      display: flex; align-items: baseline; gap: 14px;
+      padding-bottom: 12px; margin-bottom: 18px;
+      border-bottom: 1px solid rgba(31,31,29,0.20);
+    }
+    .col-num { font-family: var(--brush); font-size: 22px; opacity: 0.55; }
+    .col-title { font-family: var(--brush); font-size: 22px; letter-spacing: 0.08em; }
+    .col-en { font-family: var(--sans); font-size: 10px; letter-spacing: 0.3em; opacity: 0.5; }
+
+    .timeline-row {
+      display: grid; grid-template-columns: 100px 1fr;
+      gap: 22px; padding: 14px 0;
+      border-bottom: 1px solid rgba(31,31,29,0.10);
+    }
+    .timeline-row:last-child { border-bottom: none; }
+    .timeline-year {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.1em; opacity: 0.6;
+    }
+    .timeline-title { font-size: 15px; font-weight: 500; }
+    .timeline-org { font-size: 13px; opacity: 0.7; margin-top: 4px; }
+    .timeline-detail {
+      font-size: 12px; opacity: 0.55;
+      margin-top: 2px; font-style: italic;
+    }
+
+    /* Awards grid */
+    .awards-grid {
+      margin-top: 28px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .award-card {
+      background: var(--paper-card);
+      padding: 20px 24px;
+      border-left: 3px solid var(--accent);
+    }
+    .award-year {
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.25em; color: var(--accent);
+      opacity: 0.85; margin-bottom: 6px;
+    }
+    .award-name {
+      font-family: var(--brush); font-size: 17px;
+      letter-spacing: 0.04em;
+    }
+    .award-detail {
+      font-size: 12px; opacity: 0.65;
+      margin-top: 4px; font-style: italic;
+    }
+
+    /* Service / Editor list */
+    .service-list { margin-top: 28px; }
+    .service-row {
+      display: grid; grid-template-columns: 110px 1fr;
+      gap: 22px; padding: 14px 0;
+      border-bottom: 1px solid rgba(31,31,29,0.10);
+      align-items: baseline;
+    }
+    .service-tag {
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.22em; color: var(--accent);
+    }
+    .service-text { font-size: 14.5px; line-height: 1.7; }
+    .service-text em { font-style: italic; opacity: 0.8; }
+
+    /* Contact */
+    .contact-grid {
+      margin-top: 28px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+    .contact-block { display: flex; flex-direction: column; gap: 18px; }
+    .contact-label {
+      font-family: var(--sans); font-size: 10px;
+      letter-spacing: 0.3em; opacity: 0.5;
+      margin-bottom: 6px;
+    }
+    .contact-email {
+      font-size: 18px; color: var(--ink);
+      text-decoration: none; font-family: var(--sans);
+      border-bottom: 1px solid rgba(31,31,29,0.4);
+      padding-bottom: 2px;
+      align-self: flex-start;
+    }
+    .contact-email:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .contact-text { font-size: 14px; line-height: 1.75; }
+    .contact-link-row {
+      display: grid; grid-template-columns: 130px 1fr;
+      gap: 16px; padding: 12px 0;
+      border-bottom: 1px solid rgba(31,31,29,0.12);
+    }
+    .contact-link-label {
+      font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.2em; opacity: 0.7;
+    }
+    .contact-link-val {
+      font-family: var(--sans); font-size: 13px;
+    }
+    .contact-link-val a {
+      color: var(--ink); text-decoration: none;
+      border-bottom: 1px dotted rgba(31,31,29,0.4);
+    }
+    .contact-link-val a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 60px;
+      max-width: 1280px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      font-size: 11px; opacity: 0.55;
+      letter-spacing: 0.2em;
+      font-family: var(--sans);
+      position: relative; z-index: 2;
+    }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      .top { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
+      .nav { gap: 12px; font-size: 10px; letter-spacing: 0.16em; }
+      .nav a.nav-sub { display: none; }
+      .nav .lang { padding-left: 12px; }
+
+      .hero { padding: 40px 22px 32px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; min-height: auto; }
+      .name-vertical { writing-mode: horizontal-tb; font-size: 56px; letter-spacing: 0.1em; }
+      .portrait { max-width: 280px; margin: 0 auto; }
+      .hero-right { font-size: 15px; line-height: 1.95; }
+      .hero-right p .num { font-size: 22px; }
+
+      .section-wrap { padding: 36px 22px; }
+      .section-num, .section-title { font-size: 22px; }
+      .section-en { font-size: 10px; letter-spacing: 0.22em; }
+
+      .expertise { gap: 8px; }
+      .exp-tag { padding: 10px 16px; }
+      .exp-jp { font-size: 15px; }
+      .exp-en { font-size: 10px; }
+
+      .two-col { grid-template-columns: 1fr; gap: 36px; }
+      .timeline-row { grid-template-columns: 80px 1fr; gap: 14px; padding: 12px 0; }
+      .timeline-year { font-size: 12px; }
+      .timeline-title { font-size: 14px; }
+      .timeline-org { font-size: 12px; }
+      .timeline-detail { font-size: 11px; }
+
+      .awards-grid { grid-template-columns: 1fr; gap: 12px; }
+      .award-card { padding: 16px 18px; }
+      .award-name { font-size: 15px; }
+      .award-detail { font-size: 11px; }
+
+      .service-row { grid-template-columns: 90px 1fr; gap: 14px; padding: 12px 0; }
+      .service-tag { font-size: 10px; letter-spacing: 0.18em; }
+      .service-text { font-size: 13.5px; }
+
+      .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+      .contact-email { font-size: 15px; }
+      .contact-link-row { grid-template-columns: 110px 1fr; gap: 12px; }
+
+      footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+
+<svg class="paper-grain" aria-hidden="true">
+  <defs>
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#paper-noise)" />
+</svg>
+
+<header class="top">
+  <div class="top-left">
+    <a href="index.html" class="back">← 玄關</a>
+    <span class="top-sep">·</span>
+    <span class="name-block">
+      <span class="name-jp">葉崇揚</span>
+      <span class="name-en">（Chung-Yang Yeh）</span>
+    </span>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html" class="nav-sub">玄關</a>
+    <a href="about-zh.html" class="is-current">簡介 <span class="nav-jp">（軒）</span></a>
+    <a href="academic-zh.html" class="nav-sub">學術 <span class="nav-jp">（書院）</span></a>
+    <a href="photography-zh.html" class="nav-sub">寫真 <span class="nav-jp">（縁側）</span></a>
+    <a href="teaching-zh.html" class="nav-sub">教學 <span class="nav-jp">（茶室）</span></a>
+    <a href="essays-zh.html" class="nav-sub">隨筆 <span class="nav-jp">（文庫）</span></a>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="hero-eyebrow">第一室 · 軒 NOKI</p>
+  <div class="hero-grid">
+
+    <div class="hero-left">
+      <div>
+        <div class="name-vertical">
+          葉<br/>崇<br/>揚
+        </div>
+        <div class="name-romaji">YEH CHUNG-YANG ・ よう・ちょうよう</div>
+      </div>
+      <div class="title-block">
+        <div class="title-zh">東吳大學社會學系 · 教授</div>
+        <div class="title-en">Professor, Department of Sociology, Soochow University</div>
+      </div>
+    </div>
+
+    <div class="portrait">
+      <img src="photo.jpg" alt="葉崇揚" class="portrait-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+      <div class="portrait-fallback" style="display:none;">葉</div>
+      <span class="portrait-seal">PORTRAIT · 台北 2026</span>
+    </div>
+
+    <div class="hero-right">
+      <p><span class="num">一</span>福利國家研究者，從英國念博士回來，把比較福利體制的視野放進台灣與東亞的脈絡。長年關注年金、社會投資、福利態度與不平等。</p>
+      <p><span class="num">二</span>研究在比較與制度分析之間移動。希望文字硬一點、視野軟一點——資料是可驗證的，但社會永遠比模型多一層。</p>
+      <p><span class="num">三</span>近年的興趣是福利市場、福利金融化，以及監管型福利國家的崛起。同時也在思考：福利政策怎麼回應一個不斷縮小、變老、變不平等的台灣。</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section-wrap">
+  <div class="section-head">
+    <span class="section-num">壱</span>
+    <span class="section-title">研究領域</span>
+    <span class="section-en">· RESEARCH INTERESTS</span>
+  </div>
+  <div class="expertise">
+    <div class="exp-tag">
+      <div class="exp-jp">比較東亞福利國家</div>
+      <div class="exp-en">EAST ASIAN WELFARE STATES</div>
+    </div>
+    <div class="exp-tag">
+      <div class="exp-jp">年金政策</div>
+      <div class="exp-en">PENSION POLICY</div>
+    </div>
+    <div class="exp-tag">
+      <div class="exp-jp">社會投資</div>
+      <div class="exp-en">SOCIAL INVESTMENT</div>
+    </div>
+    <div class="exp-tag">
+      <div class="exp-jp">福利態度</div>
+      <div class="exp-en">WELFARE ATTITUDES</div>
+    </div>
+    <div class="exp-tag">
+      <div class="exp-jp">貧窮與生命歷程</div>
+      <div class="exp-en">POVERTY &amp; LIFE COURSE</div>
+    </div>
+    <div class="exp-tag">
+      <div class="exp-jp">社會研究方法</div>
+      <div class="exp-en">RESEARCH METHODOLOGY</div>
+    </div>
+  </div>
+</section>
+
+<section class="section-wrap">
+  <div class="two-col">
+
+    <div>
+      <div class="col-head">
+        <span class="col-num">弐</span>
+        <span class="col-title">學歷</span>
+        <span class="col-en">· EDUCATION</span>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-year">2010 – 2014</div>
+        <div>
+          <div class="timeline-title">PhD ・ 社會學與社會政策</div>
+          <div class="timeline-org">University of Southampton, UK</div>
+          <div class="timeline-detail">Public-Private Pension Mix in East Asia</div>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-year">2003 – 2006</div>
+        <div>
+          <div class="timeline-title">Master ・ 社會福利研究所</div>
+          <div class="timeline-org">國立中正大學</div>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-year">1999 – 2003</div>
+        <div>
+          <div class="timeline-title">學士 ・ 社會政策與社會工作</div>
+          <div class="timeline-org">國立暨南國際大學</div>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-year">2003 – 2004</div>
+        <div>
+          <div class="timeline-title">交換研究 ・ Visiting Student</div>
+          <div class="timeline-org">Bielefeld University ／ Bremen GSSS, Germany</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="col-head">
+        <span class="col-num">参</span>
+        <span class="col-title">經歷</span>
+        <span class="col-en">· APPOINTMENTS</span>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-year">2024 –</div>
+        <div>
+          <div class="timeline-title">教授</div>
+          <div class="timeline-org">東吳大學 社會學系</div>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-year">2020 – 2024</div>
+        <div>
+          <div class="timeline-title">副教授</div>
+          <div class="timeline-org">東吳大學 社會學系</div>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-year">2018 – 2020</div>
+        <div>
+          <div class="timeline-title">助理教授</div>
+          <div class="timeline-org">東吳大學 社會學系</div>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-year">2017 – 2018</div>
+        <div>
+          <div class="timeline-title">助理教授</div>
+          <div class="timeline-org">亞洲大學 社會工作學系</div>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-year">2015 – 2017</div>
+        <div>
+          <div class="timeline-title">博士後研究員</div>
+          <div class="timeline-org">中央研究院 人文社會科學研究中心</div>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-year">2015 – 2017</div>
+        <div>
+          <div class="timeline-title">兼任助理教授</div>
+          <div class="timeline-org">元智大學 社會暨政策科學學系</div>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-year">2015</div>
+        <div>
+          <div class="timeline-title">CRPD 辦公室專案經理</div>
+          <div class="timeline-org">衛生福利部</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section-wrap">
+  <div class="section-head">
+    <span class="section-num">肆</span>
+    <span class="section-title">獲獎</span>
+    <span class="section-en">· AWARDS &amp; HONOURS</span>
+  </div>
+  <div class="awards-grid">
+    <div class="award-card">
+      <div class="award-year">2025</div>
+      <div class="award-name">國科會研究獎勵</div>
+      <div class="award-detail">NSTC Research Excellence Award</div>
+    </div>
+    <div class="award-card">
+      <div class="award-year">2024</div>
+      <div class="award-name">研究成果優異減授課時數</div>
+      <div class="award-detail">4 學分 ・ 連續三年 ・ 東吳大學</div>
+    </div>
+    <div class="award-card">
+      <div class="award-year">2023</div>
+      <div class="award-name">東吳大學 雷德獎</div>
+      <div class="award-detail">青年學者獎 ・ Young Scholar Award</div>
+    </div>
+    <div class="award-card">
+      <div class="award-year">2023</div>
+      <div class="award-name">國科會研究獎勵</div>
+      <div class="award-detail">NSTC Research Excellence Award</div>
+    </div>
+    <div class="award-card">
+      <div class="award-year">2021</div>
+      <div class="award-name">科技部研究獎勵</div>
+      <div class="award-detail">MOST Research Excellence Award</div>
+    </div>
+    <div class="award-card">
+      <div class="award-year">2019</div>
+      <div class="award-name">科技部新進人員研究獎勵</div>
+      <div class="award-detail">MOST New Faculty Research Award</div>
+    </div>
+    <div class="award-card">
+      <div class="award-year">2013 – 2014</div>
+      <div class="award-name">蔣經國國際學術交流基金會</div>
+      <div class="award-detail">海外博士論文獎助 ・ Dissertation Fellowship</div>
+    </div>
+    <div class="award-card">
+      <div class="award-year">2010 – 2013</div>
+      <div class="award-name">教育部公費留學獎學金</div>
+      <div class="award-detail">Public Scholarship of ROC</div>
+    </div>
+  </div>
+</section>
+
+<section class="section-wrap">
+  <div class="section-head">
+    <span class="section-num">伍</span>
+    <span class="section-title">學術服務</span>
+    <span class="section-en">· ACADEMIC SERVICE</span>
+  </div>
+  <div class="service-list">
+    <div class="service-row">
+      <span class="service-tag">GUEST EDITOR</span>
+      <div class="service-text"><em>Journal of Ageing and Social Policy</em>，特刊：Pension Reforms in East Asia（forthcoming）</div>
+    </div>
+    <div class="service-row">
+      <span class="service-tag">GUEST EDITOR</span>
+      <div class="service-text"><em>Asia Pacific Journal of Social Work and Development</em>，特刊：Social Development and Social Policy Responses in the Covid-19 Pandemic（2022）</div>
+    </div>
+    <div class="service-row">
+      <span class="service-tag">COMMITTEE</span>
+      <div class="service-text">East Asian Social Policy (EASP) Research Network ・ Junior Committee Member（2019–）</div>
+    </div>
+    <div class="service-row">
+      <span class="service-tag">REVIEWER</span>
+      <div class="service-text">Journal of Asian Public Policy ・ Asia-Pacific Journal of Social Work and Development ・ Journal of Ageing and Social Policy ・ Japanese Journal of Political Science ・ Social Science Quarterly ・ Social Policy and Society ・ Journal of International and Comparative Social Policy ・ Comparative Political Studies ・ Social Policy and Administration</div>
+    </div>
+  </div>
+</section>
+
+<section class="section-wrap">
+  <div class="section-head">
+    <span class="section-num">陸</span>
+    <span class="section-title">聯絡</span>
+    <span class="section-en">· CONTACT</span>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-block">
+      <div>
+        <div class="contact-label">EMAIL</div>
+        <a href="mailto:chungyang.yeh@gmail.com" class="contact-email">chungyang.yeh@gmail.com</a>
+      </div>
+      <div>
+        <div class="contact-label">研究室 OFFICE</div>
+        <div class="contact-text">台北市 ・ 士林區 ・ 林溪路 70 號（111002）<br/>東吳大學 社會學系</div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-label">LINKS</div>
+      <div class="contact-link-row">
+        <span class="contact-link-label">GOOGLE SCHOLAR</span>
+        <span class="contact-link-val"><a href="https://scholar.google.com/citations?user=NOXHl3IAAAAJ" target="_blank" rel="noopener">scholar.google.com</a></span>
+      </div>
+      <div class="contact-link-row">
+        <span class="contact-link-label">ORCID</span>
+        <span class="contact-link-val"><a href="https://orcid.org/0000-0001-7325-9529" target="_blank" rel="noopener">0000-0001-7325-9529</a></span>
+      </div>
+      <div class="contact-link-row">
+        <span class="contact-link-label">GITHUB</span>
+        <span class="contact-link-val"><a href="https://github.com/chungyang1017" target="_blank" rel="noopener">@chungyang1017</a></span>
+      </div>
+      <div class="contact-link-row">
+        <span class="contact-link-label">INSTAGRAM</span>
+        <span class="contact-link-val"><a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener">@chungyang.yeh</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>YEH CHUNG-YANG</span>
+  <span>2026 ・ 春 ・ 軒</span>
+</footer>
+
+<script>
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      document.body.style.display = 'none';
+      void document.body.offsetHeight;
+      document.body.style.display = '';
+    }
+  });
+</script>
+</body>
+</html>

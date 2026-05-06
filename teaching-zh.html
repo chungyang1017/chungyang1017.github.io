@@ -118,6 +118,123 @@
       box-shadow: 2px 2px 0 rgba(196,56,56,0.25);
     }
 
+    /* Hero stats — 期數／科目／學期 */
+    .stats {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 60px 56px;
+      position: relative; z-index: 2;
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--line);
+    }
+    .stat {
+      background: var(--chashitsu-paper);
+      padding: 22px 26px;
+    }
+    .stat-num {
+      font-family: var(--brush); font-size: 38px;
+      line-height: 1; letter-spacing: 0.02em;
+    }
+    .stat-zh {
+      font-size: 13px; opacity: 0.75;
+      margin-top: 8px;
+    }
+    .stat-en {
+      font-family: var(--sans); font-size: 10px;
+      letter-spacing: 0.28em; opacity: 0.5;
+      margin-top: 3px;
+    }
+
+    /* Course catalog — overview cards */
+    .catalog {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 28px;
+    }
+    .cat-card {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 24px 22px 20px;
+      position: relative;
+      min-height: 170px;
+      display: flex; flex-direction: column;
+    }
+    .cat-card::before {
+      content: ""; position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+    }
+    .cat-card.is-grad::before { background: var(--moss); }
+    .cat-card.is-undg::before { background: var(--accent); }
+    .cat-card.is-other::before { background: var(--water); }
+    .cat-head {
+      display: flex; justify-content: space-between;
+      font-size: 10px; letter-spacing: 0.25em;
+      font-family: var(--sans); margin-bottom: 12px;
+    }
+    .cat-code { opacity: 0.7; }
+    .cat-level {
+      font-family: var(--sans);
+      letter-spacing: 0.25em;
+    }
+    .cat-card.is-grad .cat-level { color: var(--moss); }
+    .cat-card.is-undg .cat-level { color: var(--accent); }
+    .cat-card.is-other .cat-level { color: var(--water); }
+    .cat-title {
+      font-family: var(--brush); font-size: 21px;
+      font-weight: 400; letter-spacing: 0.04em;
+      flex: 1; line-height: 1.35;
+    }
+    .cat-en {
+      font-size: 12px; font-style: italic;
+      opacity: 0.6; margin-top: 4px;
+    }
+    .cat-foot {
+      margin-top: 14px; padding-top: 12px;
+      border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between;
+      font-size: 11px; opacity: 0.65;
+      font-family: var(--sans);
+      letter-spacing: 0.05em;
+    }
+
+    /* Timeline — history of past semesters */
+    .timeline {
+      margin-top: 28px;
+      position: relative;
+      padding-left: 24px;
+    }
+    .timeline::before {
+      content: ""; position: absolute;
+      left: 4px; top: 8px; bottom: 8px;
+      width: 1px; background: rgba(31,31,29,0.30);
+    }
+    .term-row {
+      display: grid; grid-template-columns: 130px 1fr;
+      gap: 32px; padding: 14px 0;
+      position: relative; align-items: baseline;
+    }
+    .term-row::before {
+      content: ""; position: absolute;
+      left: -24px; top: 22px;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--chashitsu-paper);
+      border: 1.5px solid var(--moss);
+    }
+    .term-row.is-now::before { background: var(--moss); }
+    .term-label {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.15em; opacity: 0.6;
+    }
+    .term-row.is-now .term-label { opacity: 1; color: var(--moss); }
+    .term-courses { display: flex; gap: 8px; flex-wrap: wrap; }
+    .term-pill {
+      font-size: 12.5px; padding: 5px 10px;
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+    }
+
     /* Section heading */
     .section-wrap {
       padding: 56px 60px 80px;
@@ -361,6 +478,25 @@
       .week-note { font-size: 13px; }
 
       footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 11px; }
+
+      .stats { padding: 0 22px 36px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat { padding: 16px 18px; }
+      .stat-num { font-size: 28px; }
+      .stat-zh { font-size: 12px; }
+      .stat-en { font-size: 9px; letter-spacing: 0.22em; }
+
+      .catalog { grid-template-columns: 1fr; gap: 12px; }
+      .cat-card { padding: 18px 18px 16px; min-height: 130px; }
+      .cat-title { font-size: 18px; }
+      .cat-en { font-size: 11px; }
+      .cat-head { font-size: 9px; letter-spacing: 0.22em; }
+      .cat-foot { font-size: 10.5px; }
+
+      .timeline { padding-left: 20px; }
+      .term-row { grid-template-columns: 95px 1fr; gap: 16px; padding: 10px 0; }
+      .term-label { font-size: 12px; letter-spacing: 0.12em; }
+      .term-pill { font-size: 11.5px; padding: 4px 8px; }
     }
   </style>
 </head>
@@ -387,10 +523,11 @@
   </div>
   <nav class="nav" aria-label="Sections">
     <a href="index.html" class="nav-sub">玄關</a>
+    <a href="about-zh.html" class="nav-sub">簡介 <span class="nav-jp">（軒）</span></a>
     <a href="academic-zh.html" class="nav-sub">學術 <span class="nav-jp">（書院）</span></a>
     <a href="photography-zh.html" class="nav-sub">寫真 <span class="nav-jp">（縁側）</span></a>
     <a href="teaching-zh.html" class="is-current">教學 <span class="nav-jp">（茶室）</span></a>
-    <a href="teaching.html" class="lang">EN</a>
+    <a href="essays-zh.html" class="nav-sub">隨筆 <span class="nav-jp">（文庫）</span></a>
   </nav>
 </header>
 
@@ -414,6 +551,172 @@
         授業中・2 門課程
       </p>
     </aside>
+  </div>
+</section>
+
+<section class="stats" aria-label="教學統計">
+  <div class="stats-grid">
+    <div class="stat">
+      <div class="stat-num">8</div>
+      <div class="stat-zh">學期 ・ 東吳</div>
+      <div class="stat-en">SEMESTERS @ SCU</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">7</div>
+      <div class="stat-zh">開設課程</div>
+      <div class="stat-en">COURSES TAUGHT</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-zh">本學期課程</div>
+      <div class="stat-en">CURRENT TERM</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-zh">減授課時數獎勵</div>
+      <div class="stat-en">RESEARCH-LOAD ＷAIVERS</div>
+    </div>
+  </div>
+</section>
+
+<section class="section-wrap">
+  <div class="section-head">
+    <span class="section-jp">課程目錄</span>
+    <span class="section-en">COURSE CATALOG</span>
+    <span class="section-note">擔任過的主要課程</span>
+  </div>
+
+  <div class="catalog">
+    <article class="cat-card is-grad">
+      <div class="cat-head">
+        <span class="cat-code">SOC ・ 碩士班</span>
+        <span class="cat-level">GRADUATE</span>
+      </div>
+      <h3 class="cat-title">社會研究法</h3>
+      <p class="cat-en">Social Research Methods</p>
+      <div class="cat-foot">
+        <span>研究所</span>
+        <span>本學期 ・ 第 4 期</span>
+      </div>
+    </article>
+
+    <article class="cat-card is-undg">
+      <div class="cat-head">
+        <span class="cat-code">SOC ・ 大學部</span>
+        <span class="cat-level">UNDERGRADUATE</span>
+      </div>
+      <h3 class="cat-title">福利社會學</h3>
+      <p class="cat-en">Sociology of Welfare</p>
+      <div class="cat-foot">
+        <span>大一必修</span>
+        <span>本學期 ・ 第 5 期</span>
+      </div>
+    </article>
+
+    <article class="cat-card is-undg">
+      <div class="cat-head">
+        <span class="cat-code">SOC ・ 大學部</span>
+        <span class="cat-level">UNDERGRADUATE</span>
+      </div>
+      <h3 class="cat-title">社會政策</h3>
+      <p class="cat-en">Social Policy</p>
+      <div class="cat-foot">
+        <span>大三選修</span>
+        <span>共開設 4 期</span>
+      </div>
+    </article>
+
+    <article class="cat-card is-grad">
+      <div class="cat-head">
+        <span class="cat-code">SOC ・ 碩士班</span>
+        <span class="cat-level">GRADUATE</span>
+      </div>
+      <h3 class="cat-title">社會福利專題</h3>
+      <p class="cat-en">Topics in Social Welfare</p>
+      <div class="cat-foot">
+        <span>研究所</span>
+        <span>共開設 3 期</span>
+      </div>
+    </article>
+
+    <article class="cat-card is-undg">
+      <div class="cat-head">
+        <span class="cat-code">SOC ・ 大學部</span>
+        <span class="cat-level">UNDERGRADUATE</span>
+      </div>
+      <h3 class="cat-title">社會學</h3>
+      <p class="cat-en">Introduction to Sociology</p>
+      <div class="cat-foot">
+        <span>大一通識</span>
+        <span>共開設 2 期</span>
+      </div>
+    </article>
+
+    <article class="cat-card is-other">
+      <div class="cat-head">
+        <span class="cat-code">SOC ・ 大學部</span>
+        <span class="cat-level">UNDERGRADUATE</span>
+      </div>
+      <h3 class="cat-title">比較社會政策</h3>
+      <p class="cat-en">Comparative Social Policy</p>
+      <div class="cat-foot">
+        <span>大四選修</span>
+        <span>共開設 2 期</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section-wrap">
+  <div class="section-head">
+    <span class="section-jp">學期軌跡</span>
+    <span class="section-en">SEMESTER TIMELINE</span>
+    <span class="section-note">近三年</span>
+  </div>
+
+  <div class="timeline">
+    <div class="term-row is-now">
+      <div class="term-label">2026 春</div>
+      <div class="term-courses">
+        <span class="term-pill">社會研究法</span>
+        <span class="term-pill">福利社會學</span>
+      </div>
+    </div>
+    <div class="term-row">
+      <div class="term-label">2025 秋</div>
+      <div class="term-courses">
+        <span class="term-pill">社會政策</span>
+        <span class="term-pill">社會福利專題</span>
+      </div>
+    </div>
+    <div class="term-row">
+      <div class="term-label">2025 春</div>
+      <div class="term-courses">
+        <span class="term-pill">社會研究法</span>
+        <span class="term-pill">福利社會學</span>
+      </div>
+    </div>
+    <div class="term-row">
+      <div class="term-label">2024 秋</div>
+      <div class="term-courses">
+        <span class="term-pill">社會政策</span>
+        <span class="term-pill">比較社會政策</span>
+      </div>
+    </div>
+    <div class="term-row">
+      <div class="term-label">2024 春</div>
+      <div class="term-courses">
+        <span class="term-pill">社會研究法</span>
+        <span class="term-pill">福利社會學</span>
+      </div>
+    </div>
+    <div class="term-row">
+      <div class="term-label">2023 秋</div>
+      <div class="term-courses">
+        <span class="term-pill">社會政策</span>
+        <span class="term-pill">社會福利專題</span>
+      </div>
+    </div>
   </div>
 </section>
 
