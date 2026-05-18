@@ -11,16 +11,6 @@
 const photoData = [
 
   // ── 春信 SPRING ──
-  { num: '168', src: 'images/photography/dscf9747_xd3.jpg', year: 2026, themes: ['harugasumi'], shape: 'square',
-    title_jp: '春の一刻', title_en: 'A Moment of Spring', title_zh: '春日一隅',
-    haiku_jp: '春の昼／光が静かに／降りてくる',
-    haiku_en: 'spring noon — / the light slowly / descends',
-    haiku_zh: '春午／光線靜靜地／降下' },
-  { num: '169', src: 'images/photography/dscf7691_1.jpg', year: 2026, themes: ['harugasumi'], shape: 'portrait',
-    title_jp: '縦の春', title_en: 'Vertical Spring', title_zh: '直立的春',
-    haiku_jp: '春の風／立ち止まる時／空を見上ぐ',
-    haiku_en: 'spring breeze — / pausing for a moment / to look up at the sky',
-    haiku_zh: '春風／佇足之際／仰望天空' },
   { num: '136', src: 'images/photography/img_9078.jpg', themes: ['harugasumi'], shape: 'landscape',
     title_jp: '春の家族', title_en: 'Spring Family', title_zh: '春日家族',
     haiku_jp: '桜の下／三世代の／春の朝',
@@ -101,6 +91,16 @@ const photoData = [
     haiku_jp: '春の野や／何もせぬまま／日が暮れる',
     haiku_en: 'spring meadow — / doing nothing at all / the sun goes down',
     haiku_zh: '春野／無所事事／日已西斜' },
+  { num: '168', src: 'images/photography/dscf9747_xd3.jpg', year: 2026, themes: ['harugasumi'], shape: 'square',
+    title_jp: '春の一刻', title_en: 'A Moment of Spring', title_zh: '春日一隅',
+    haiku_jp: '春の昼／光が静かに／降りてくる',
+    haiku_en: 'spring noon — / the light slowly / descends',
+    haiku_zh: '春午／光線靜靜地／降下' },
+  { num: '169', src: 'images/photography/dscf7691_1.jpg', year: 2026, themes: ['harugasumi'], shape: 'portrait',
+    title_jp: '縦の春', title_en: 'Vertical Spring', title_zh: '直立的春',
+    haiku_jp: '春の風／立ち止まる時／空を見上ぐ',
+    haiku_en: 'spring breeze — / pausing for a moment / to look up at the sky',
+    haiku_zh: '春風／佇足之際／仰望天空' },
 
   // ── 青嵐 SUMMER ──
   { num: '035', src: 'images/photography/img_3506.jpg', year: 2024, themes: ['aoarashi'], shape: 'square',
