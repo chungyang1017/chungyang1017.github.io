@@ -21,12 +21,12 @@
 
 const publicationsData = [
   { year: 2026, lang: 'en',
-    title_zh: '東亞的住宅自有與公共年金：取捨真的存在嗎？', title_en: 'Homeownership and Public Pensions in East Asia: Is the Trade-off Real?',
-    authors_zh: 'Ku, I., Yeh, C-Y.*, Yuyama, A., Heo, Y-C. and Kim, D. （*通訊作者）',
-    authors_en: 'Ku, I., Yeh, C-Y.*, Yuyama, A., Heo, Y-C. and Kim, D. (*Corresponding author)',
+    title_zh: '東亞的住宅自有與公共年金：取捨真的存在嗎？', title_en: 'Homeownership and Public Pensions in East Asia: Is the Trade-Off Real?',
+    authors_zh: 'Ku, I., Yeh, C-Y.*, Heo, Y-C., Yuyama, A. and Kim, D. （*通訊作者）',
+    authors_en: 'Ku, I., Yeh, C-Y.*, Heo, Y-C., Yuyama, A. and Kim, D. (*Corresponding author)',
     venue_zh: 'Journal of East Asian Studies', venue_en: 'Journal of East Asian Studies',
-    vol: 'forthcoming',
-    link: { type: 'doi', url: 'https://doi.org/10.1017/S1598240826100332' },
+    vol: '1–26',
+    link: { type: 'doi', url: 'https://doi.org/10.1017/jea.2026.10033' },
     badge: 'SSCI',
     metrics: { if: '1.6', rank: 'Q1 Area Studies', year: 2024 } },
 
