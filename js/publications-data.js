@@ -25,7 +25,9 @@ const publicationsData = [
     authors_zh: 'Ku, I., Kim, D. and Yeh, C-Y.', authors_en: 'Ku, I., Kim, D. and Yeh, C-Y.',
     venue_zh: 'Journal of Poverty and Social Justice', venue_en: 'Journal of Poverty and Social Justice',
     vol: '',
-    link: null },
+    link: null,
+    badge: 'SSCI',
+    metrics: { if: '1.1', rank: 'Q2 Social Sciences, Interdisciplinary', year: 2025 } },
 
   { year: 2026, lang: 'en',
     title_zh: '東亞的住宅自有與公共年金：取捨真的存在嗎？', title_en: 'Homeownership and Public Pensions in East Asia: Is the Trade-Off Real?',
