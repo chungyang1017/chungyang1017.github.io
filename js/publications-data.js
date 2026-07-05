@@ -20,6 +20,13 @@
 // ─────────────────────────────────────────────
 
 const publicationsData = [
+  { year: 2026, lang: 'en', forthcoming: true,
+    title_zh: '老年貧窮的三個面向：所得、消費與財富', title_en: 'Older Adults\' Poverty in Three Dimensions: Income, Consumption, and Wealth',
+    authors_zh: 'Ku, I., Kim, D. and Yeh, C-Y.', authors_en: 'Ku, I., Kim, D. and Yeh, C-Y.',
+    venue_zh: 'Journal of Poverty and Social Justice', venue_en: 'Journal of Poverty and Social Justice',
+    vol: '',
+    link: null },
+
   { year: 2026, lang: 'en',
     title_zh: '東亞的住宅自有與公共年金：取捨真的存在嗎？', title_en: 'Homeownership and Public Pensions in East Asia: Is the Trade-Off Real?',
     authors_zh: 'Ku, I., Yeh, C-Y.*, Heo, Y-C., Yuyama, A. and Kim, D. （*通訊作者）',
@@ -307,7 +314,7 @@ function renderTopJournals(containerId, limit, lang) {
     }
     return `
       <article class="j-row">
-        <div class="j-year">${p.year}</div>
+        <div class="j-year">${p.forthcoming ? 'Forthcoming' : p.year}</div>
         <div>
           <h3 class="j-title">${escapeHtml(title)}</h3>
           <div class="j-authors">${escapeHtml(authors)}</div>
@@ -374,10 +381,10 @@ function renderJournalCardsGrid(containerId, limit, lang) {
     }
     return `
       <article class="j-card">
-        <div class="j-card-head"><span class="j-card-tag">${tag}</span><span class="j-card-year">${p.year}</span></div>
+        <div class="j-card-head"><span class="j-card-tag">${tag}</span><span class="j-card-year">${p.forthcoming ? 'Forthcoming' : p.year}</span></div>
         <h3 class="j-card-title">${escapeHtml(title)}</h3>
         <div class="j-card-authors">${escapeHtml(authors)}</div>
-        <div class="j-card-foot">${escapeHtml(venue)} · ${escapeHtml(p.vol)}</div>
+        <div class="j-card-foot">${escapeHtml(venue)}${p.vol ? ' · ' + escapeHtml(p.vol) : ''}</div>
         ${metricsLine}
         <div class="j-card-meta">${metaHtml}</div>
       </article>`;
