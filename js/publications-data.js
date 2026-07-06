@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-//  PUBLICATIONS DATA · 期刊論文資料（31 篇）
+//  PUBLICATIONS DATA · 期刊論文資料（32 篇）
 //  Single source of truth for journal articles.
 //  Used by: academic-zh.html, academic.html (top 10),
 //           publications/publications-zh.html, publications/publications.html (full list — TODO: refactor).
