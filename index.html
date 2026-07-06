@@ -1,716 +1,1130 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>葉崇揚 ・ 玄關 ・ Genkan</title>
-  <meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 學術、攝影、教學。三つの部屋。お好きなところから。" />
-  <link rel="alternate" hreflang="zh-Hant" href="index.html" />
-  <link rel="alternate" hreflang="en" href="index-en.html" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    /* ── Spring palette (from design system) ───────── */
-    :root {
-      --sand: #efe9d9;       /* 春沙 */
-      --moss: #5a7a4a;       /* 春苔 */
-      --accent: #d98aa8;     /* 桜 sakura */
-      --water: #7a9aa8;
-      --ink: #2a2a28;
-      --ink-deep: #2a2624;   /* 玄關底色 — 春の宵 */
-      --shoin: #f5edd8;      /* 書院 */
-      --engawa: #f0e2d6;     /* 縁側 — 桜白 */
-      --chashitsu: #e8dcc4;  /* 茶室 */
-      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
-      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
-      --sans: 'Inter', 'Helvetica Neue', sans-serif;
-      --ease-ink: cubic-bezier(.19,1,.22,1);
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>葉崇揚 ・ 玄關 ・ Chung-Yang Yeh</title>
+<meta name="description" content="葉崇揚（Chung-Yang Yeh）。東吳大學社會學系，福利國家與社會政策研究者。學術、攝影、教學、隨筆——三間屋子，任選一扇門走進來。">
+<link rel="alternate" hreflang="zh-Hant" href="index.html">
+<link rel="alternate" hreflang="en" href="index-en.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Yuji+Syuku&family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Serif+TC:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   葉崇揚 ・ 玄關 — 純水墨留白版（suiboku）
+   宣紙 · 余白 · 墨韻 · 花散る
+   沉浸式捲動敘事：全屏水墨 hero + 四章逐段揭示。
+   內容為葉崇揚教授的真實學術／攝影／教學／隨筆。
+   所有圖形以 CSS / SVG / Canvas 生成，無外部圖檔。
+   （技術骨架取自 sakura-A-suiboku.html，內容全數置換。）
+   ============================================================ */
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    html, body { height: 100%; }
-    body {
-      font-family: var(--jp);
-      background: var(--ink-deep);
-      color: var(--sand);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
+:root{
+  --paper:      #efe9d9;   /* 砂色 · 和紙の地 */
+  --paper-deep: #e6dfca;   /* 陰影の紙 */
+  --moss:       #5a7a4a;   /* 苔緑 */
+  --moss-soft:  #7d976f;
+  --sakura:     #d98aa8;   /* 桜 accent */
+  --sakura-pale:#eec3d3;
+  --sumi:       #2a2624;   /* 深墨 */
+  --sumi-soft:  #4a433f;
+  --sumi-faint: #6f665f;
+  --hair:       rgba(42,38,36,.14);
+  --ease:       cubic-bezier(.22,.61,.36,1);
+}
 
-    /* ── Sticky header ─────────────────────────────── */
-    .top {
-      position: sticky; top: 0; z-index: 20;
-      background: rgba(42,38,36,0.86);
-      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      padding: 16px 48px;
-      display: flex; justify-content: space-between; align-items: center;
-      border-bottom: 1px solid rgba(232,226,212,0.08);
-    }
-    .brand { display: inline-flex; align-items: baseline; gap: 10px; }
-    .brand-name { font-family: var(--brush); font-size: 28px; letter-spacing: 0.1em; }
-    .brand-romaji { font-family: var(--sans); font-style: italic; font-size: 15px; letter-spacing: 0.06em; opacity: 0.8; }
-    .seal {
-      width: 36px; height: 36px;
-      background: var(--accent); color: #f8f5ec;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--brush); font-size: 17px;
-      transform: rotate(-3deg);
-      box-shadow: 2px 2px 0 rgba(196,56,56,0.25);
-      flex-shrink: 0;
-    }
-    .nav {
-      display: flex; gap: 24px;
-      font-size: 12px; letter-spacing: 0.25em;
-    }
-    .nav a {
-      color: var(--sand); text-decoration: none;
-      opacity: 0.55; transition: opacity 0.3s;
-    }
-    .nav a.is-current, .nav a:hover { opacity: 0.95; }
-    .nav .nav-jp { font-size: 10px; opacity: 0.55; letter-spacing: 0.18em; margin-left: 2px; font-family: var(--jp); }
-    .nav .lang {
-      border-left: 1px solid rgba(232,226,212,0.18);
-      padding-left: 24px;
-      font-family: var(--sans);
-    }
+*{ margin:0; padding:0; box-sizing:border-box; }
 
-    /* ── Genkan hero ───────────────────────────────── */
-    .hero {
-      position: relative;
-      min-height: 70vh;
-      overflow: hidden;
-    }
-    .hero-img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center bottom;
-      opacity: 0.82;
-      will-change: transform;
-    }
-    .hero-veil {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 66% 56% at 50% 44%, rgba(42,38,36,0.52) 0%, rgba(42,38,36,0) 66%),
-        linear-gradient(180deg, rgba(42,38,36,0.12) 0%, rgba(42,38,36,0) 40%, rgba(42,38,36,0.8) 100%);
-    }
-    .hero-inner {
-      position: relative;
-      padding: 120px 60px 80px;
-      text-align: center;
-      text-shadow: 0 2px 26px rgba(20,17,16,0.55), 0 1px 3px rgba(20,17,16,0.4);
-    }
-    .hero-eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.5em;
-      opacity: 0.65;
-      margin-bottom: 28px;
-      font-family: var(--sans);
-      text-transform: uppercase;
-    }
-    .hero-eyebrow .jp { font-family: var(--jp); margin-right: 0.5em; letter-spacing: 0.4em; }
-    .hero-title {
-      margin: 0;
-      font-family: var(--brush);
-      font-size: 88px;
-      line-height: 1.1;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-    }
-    .hero-sub {
-      margin-top: 24px;
-      font-size: 14px;
-      opacity: 0.7;
-      letter-spacing: 0.2em;
-    }
-    .hero-jp {
-      display: block; margin-top: 10px;
-      font-size: 12px; letter-spacing: 0.14em;
-      opacity: 0.6; font-family: var(--jp);
-    }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
 
-    /* ── Three rooms ───────────────────────────────── */
-    .rooms {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      min-height: 70vh;
-      border-top: 1px solid rgba(232,226,212,0.08);
-    }
-    .room {
-      position: relative;
-      color: var(--ink);
-      text-decoration: none;
-      cursor: pointer;
-      padding: 60px 40px;
-      display: flex; flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
-      transition: background 0.6s ease;
-    }
-    .room:not(:last-child) { border-right: 1px solid rgba(31,31,29,0.13); }
-    .room.is-shoin { background: var(--shoin); --room-accent: var(--ink); }
-    .room.is-engawa { background: var(--engawa); --room-accent: var(--accent); }
-    .room.is-chashitsu { background: var(--chashitsu); --room-accent: var(--moss); }
+body{
+  background:var(--paper);
+  color:var(--sumi);
+  font-family:'Noto Serif TC','Noto Serif JP',serif;
+  font-weight:400;
+  line-height:1.85;
+  overflow-x:hidden;
+  position:relative;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
 
-    .room.is-disabled { cursor: default; }
-    .room.is-disabled .room-arrow { opacity: 0.35; }
+/* ---- 宣紙質地：SVG noise を CSS で全面に敷く ---- */
+.paper-grain{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(120% 90% at 78% -8%, rgba(217,138,168,.09), transparent 46%),
+    radial-gradient(130% 100% at 12% 108%, rgba(90,122,74,.08), transparent 50%),
+    var(--paper);
+  mix-blend-mode:normal;
+}
+.paper-grain::before{
+  content:""; position:absolute; inset:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+  opacity:.05; mix-blend-mode:multiply;
+}
+.paper-grain::after{
+  content:""; position:absolute; inset:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23f)' opacity='0.7'/></svg>");
+  opacity:.045; mix-blend-mode:multiply;
+}
 
-    .shoji {
-      position: absolute; inset: 0;
-      opacity: 0.12;
-      transition: opacity 0.6s ease;
-      pointer-events: none;
-    }
-    .room:hover .shoji { opacity: 0.05; }
+/* ---- 花瓣 canvas ---- */
+#petals{
+  position:fixed; inset:0; z-index:2; pointer-events:none;
+}
 
-    .light-shaft {
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg,
-        transparent 0%,
-        var(--room-accent) 60%,
-        transparent 100%);
-      opacity: 0;
-      transition: opacity 0.8s ease;
-      pointer-events: none;
-      mix-blend-mode: multiply;
-    }
-    .room:hover .light-shaft { opacity: 0.08; }
+/* ---- 縦書きの縁取り（落款・銘） ---- */
+.frame-mark{
+  position:fixed; z-index:4; pointer-events:none;
+  writing-mode:vertical-rl; text-orientation:mixed;
+  font-family:'Yuji Syuku',serif;
+  color:var(--sumi-faint);
+  letter-spacing:.42em;
+  opacity:.62;
+}
+.frame-mark.right{ top:clamp(84px,16vh,160px); right:clamp(14px,3.4vw,42px); font-size:clamp(11px,1.35vw,14px); }
+.frame-mark.left { bottom:clamp(70px,14vh,140px); left:clamp(14px,3.4vw,42px);  font-size:clamp(11px,1.2vw,13px); color:var(--moss); opacity:.5; }
 
-    .room-head {
-      position: relative;
-      font-size: 11px;
-      letter-spacing: 0.35em;
-      opacity: 0.6;
-    }
-    .room-head .num { display: inline-block; }
-    .room-head .sep { display: inline-block; margin: 0 0.5em; }
+/* ---- 落款印（朱の角印）---- */
+.seal{
+  position:fixed; z-index:4; pointer-events:none;
+  bottom:clamp(24px,5vh,52px); right:clamp(20px,4vw,52px);
+  width:clamp(40px,5.2vw,56px); height:clamp(40px,5.2vw,56px);
+  display:grid; place-items:center;
+  border:2px solid #b24a5c; border-radius:5px;
+  color:#b24a5c; opacity:.72;
+  font-family:'Yuji Syuku',serif; font-size:clamp(15px,1.9vw,20px);
+  line-height:.98; text-align:center; letter-spacing:-.04em;
+  box-shadow:inset 0 0 0 1px rgba(178,74,92,.25);
+  transform:rotate(-1.5deg);
+}
+.seal span{ display:block; }
 
-    .room-center {
-      position: relative;
-      text-align: center;
-      flex: 1;
-      display: flex; flex-direction: column;
-      justify-content: center;
-    }
-    .room-label {
-      font-family: var(--brush);
-      font-size: 110px;
-      line-height: 1;
-      letter-spacing: 0.04em;
-      color: var(--room-accent);
-      transform: translateY(0);
-      transition: transform 0.6s ease;
-    }
-    .room:hover .room-label { transform: translateY(-4px); }
-    .room-cn {
-      margin-top: 16px;
-      font-size: 12px;
-      letter-spacing: 0.3em;
-      opacity: 0.65;
-    }
+/* ================= 全体レイアウト ================= */
+main{ position:relative; z-index:3; }
 
-    .room-foot {
-      position: relative;
-      font-size: 13px;
-      line-height: 1.7;
-      opacity: 0.6;
-      transition: opacity 0.6s ease;
-    }
-    .room:hover .room-foot { opacity: 0.85; }
-    .room-arrow {
-      margin-top: 14px;
-      font-size: 11px;
-      letter-spacing: 0.3em;
-      color: var(--room-accent);
-    }
+.wrap{ width:min(1180px,90vw); margin-inline:auto; }
 
-    /* ── Continuation strip (sand) ─────────────────── */
-    .strip {
-      background: var(--sand);
-      color: var(--ink);
-      padding: 80px 60px;
-      position: relative;
-      overflow: hidden;
-    }
-    .strip-inner { max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
-    .strip-eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.4em;
-      opacity: 0.5;
-      margin-bottom: 16px;
-    }
-    .strip-title {
-      margin: 0;
-      font-family: var(--brush);
-      font-size: 36px;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-    }
-    .strip-body {
-      margin-top: 24px;
-      font-size: 14px;
-      line-height: 2;
-      opacity: 0.7;
-    }
-    .strip-jp { display: block; margin-top: 8px; font-size: 12.5px; opacity: 0.6; letter-spacing: 0.12em; }
-    /* 水墨の一枝：strip 背景に淡く */
-    .ink-branch-strip {
-      position: absolute; right: -3%; bottom: -30%;
-      width: min(48vw, 480px); height: auto;
-      opacity: 0.14; pointer-events: none;
-      mix-blend-mode: multiply; z-index: 0;
-    }
+/* ================= ナビ ================= */
+nav{
+  position:fixed; top:0; left:0; right:0; z-index:6;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:clamp(16px,2.4vh,26px) clamp(18px,4vw,52px);
+  transition:background .6s var(--ease), backdrop-filter .6s var(--ease), border-color .6s var(--ease);
+  border-bottom:1px solid transparent;
+}
+nav.docked{
+  background:rgba(239,233,217,.72);
+  backdrop-filter:blur(9px) saturate(1.05);
+  -webkit-backdrop-filter:blur(9px) saturate(1.05);
+  border-bottom-color:var(--hair);
+}
+.brand{
+  font-family:'Shippori Mincho',serif; font-weight:600;
+  font-size:clamp(17px,2vw,21px); letter-spacing:.12em;
+  color:var(--sumi); display:flex; align-items:baseline; gap:.55em;
+  text-decoration:none;
+}
+.brand .en{ font-family:'Inter',sans-serif; font-weight:400; font-size:.56em; letter-spacing:.2em; color:var(--sumi-faint); }
+.navlinks{ display:flex; gap:clamp(16px,2vw,30px); list-style:none; align-items:center; }
+.navlinks a{
+  text-decoration:none; color:var(--sumi-soft);
+  font-family:'Shippori Mincho',serif; font-size:clamp(13px,1.4vw,15px);
+  letter-spacing:.08em; position:relative; padding-bottom:3px;
+  transition:color .4s var(--ease);
+}
+.navlinks a::after{
+  content:""; position:absolute; left:0; bottom:-2px; height:1px; width:0;
+  background:var(--sakura); transition:width .45s var(--ease);
+}
+.navlinks a:hover{ color:var(--sumi); }
+.navlinks a:hover::after{ width:100%; }
+.navlinks a.is-current{ color:var(--sumi); }
+.navlinks a.is-current::after{ width:100%; background:var(--sumi-faint); }
+.navlinks a.lang{
+  font-family:'Inter',sans-serif; font-size:.86em; letter-spacing:.24em;
+  padding-left:clamp(14px,1.6vw,22px); margin-left:clamp(2px,.6vw,8px);
+  border-left:1px solid var(--hair);
+}
+.navlinks a.lang::after{ background:var(--sakura); }
+.nav-toggle{ display:none; }
 
-    /* ── Footer ────────────────────────────────────── */
-    footer {
-      background: var(--ink-deep);
-      padding: 32px 60px;
-      display: flex; justify-content: space-between;
-      font-size: 11px; opacity: 0.55;
-      letter-spacing: 0.2em;
-      font-family: var(--sans);
-    }
-    footer .links a { color: var(--sand); text-decoration: none; opacity: 0.85; transition: opacity 0.2s; }
-    footer .links a:hover { opacity: 1; color: var(--accent); }
-    footer .sep { opacity: 0.4; margin: 0 0.6em; }
+/* ================= HERO ================= */
+.hero{
+  position:relative; min-height:100svh;
+  display:grid; grid-template-columns:1fr; align-items:center;
+  padding:clamp(96px,16vh,150px) 0 clamp(60px,10vh,90px);
+  overflow:hidden;
+}
+.hero .wrap{ position:relative; z-index:3; }
 
-    /* ══ 水墨動態層 ══════════════════════════════════ */
-    /* 花瓣 canvas：全頁飄落，內容之上、導覽之下 */
-    #petals { position: fixed; inset: 0; z-index: 8; pointer-events: none; }
-    /* 宣紙質地：全面に淡く敷く */
-    .paper-grain { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-    .paper-grain::after {
-      content: ""; position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
-      opacity: 0.05; mix-blend-mode: overlay;
-    }
-    /* 內容層級：grain の上へ */
-    .hero, .rooms, .strip, footer { position: relative; z-index: 1; }
+/* 水墨の桜枝（SVG）— hero 背景に大きく，右上から垂れる */
+.ink-branch{
+  position:absolute; z-index:1; pointer-events:none;
+  top:clamp(-40px,-4vh,-10px); right:clamp(-120px,-8vw,-40px);
+  width:clamp(560px,72vw,1000px); height:auto;
+  opacity:.96;
+  will-change:transform;
+  filter:drop-shadow(0 18px 30px rgba(42,38,36,.05));
+}
+/* うっすら二枚目の枝（余白側，左下）で奥行き */
+.ink-branch.echo{
+  top:auto; right:auto;
+  bottom:clamp(-60px,-6vh,-20px); left:clamp(-160px,-12vw,-80px);
+  width:clamp(320px,42vw,560px);
+  transform:scaleX(-1) rotate(6deg);
+  opacity:.34;
+}
 
-    /* scroll 揭示 */
-    .reveal {
-      opacity: 0; transform: translateY(26px);
-      transition: opacity 0.85s var(--ease-ink), transform 0.85s var(--ease-ink);
-    }
-    .reveal.in { opacity: 1; transform: none; }
-    .reveal.d1 { transition-delay: 0.09s; }
-    .reveal.d2 { transition-delay: 0.18s; }
-    .reveal.d3 { transition-delay: 0.27s; }
+.eyebrow{
+  font-family:'Inter',sans-serif; font-weight:400;
+  font-size:clamp(11px,1.2vw,13px); letter-spacing:.42em;
+  text-transform:uppercase; color:var(--moss);
+  margin-bottom:clamp(22px,3.4vh,34px);
+  display:flex; align-items:center; gap:1em;
+}
+.eyebrow::before{ content:""; width:clamp(26px,4vw,52px); height:1px; background:var(--moss-soft); opacity:.7; }
+.eyebrow .jp{ font-family:'Shippori Mincho',serif; letter-spacing:.4em; color:var(--sumi-faint); }
 
-    /* ── Mobile RWD ────────────────────────────────── */
-    @media (max-width: 760px) {
-      .top { padding: 14px 20px; }
-      .seal { width: 32px; height: 32px; font-size: 15px; }
-      .brand-name { font-size: 22px; letter-spacing: 0.08em; }
-      .brand-romaji { font-size: 12px; }
-      .nav { gap: 14px; font-size: 10px; letter-spacing: 0.2em; }
-      .nav .lang { padding-left: 14px; }
-      /* hide secondary rooms in nav on small screens; keep current + lang */
-      .nav a.nav-sub { display: none; }
+.hero h1{
+  font-family:'Yuji Syuku',serif; font-weight:400;
+  font-size:clamp(76px,19vw,220px); line-height:.92;
+  letter-spacing:.04em; color:var(--sumi);
+  margin-bottom:clamp(14px,2.4vh,26px);
+  position:relative;
+}
+.hero h1 .kanji{
+  display:inline-block; position:relative;
+  background:linear-gradient(178deg,var(--sumi) 0%, var(--sumi) 58%, #3d3733 100%);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+/* 墨のにじみを一文字の背後に */
+.hero h1 .kanji::after{
+  content:""; position:absolute; z-index:-1;
+  left:-8%; top:2%; width:116%; height:96%;
+  background:radial-gradient(58% 54% at 42% 46%, rgba(42,38,36,.10), transparent 70%);
+  filter:blur(6px);
+}
+.hero h1 .romaji{
+  display:block;
+  font-family:'Inter',sans-serif; font-weight:300;
+  font-size:clamp(15px,3.4vw,30px); letter-spacing:.5em;
+  text-transform:uppercase; color:var(--sakura);
+  margin-top:clamp(10px,1.8vh,20px); margin-left:.28em;
+  text-indent:.5em;
+}
 
-      .hero-inner { padding: 70px 24px 56px; }
-      .hero-eyebrow { font-size: 10px; letter-spacing: 0.4em; margin-bottom: 20px; }
-      .hero-title { font-size: 52px; letter-spacing: 0.04em; }
-      .hero-sub { font-size: 12px; letter-spacing: 0.16em; margin-top: 18px; }
-      .hero-jp { font-size: 11px; }
+.hero-poem{
+  font-family:'Shippori Mincho',serif; font-weight:400;
+  font-size:clamp(17px,2.2vw,26px); line-height:1.9;
+  color:var(--sumi-soft); max-width:28ch;
+  margin-top:clamp(30px,5vh,52px);
+  position:relative; padding-left:clamp(16px,2.4vw,26px);
+}
+.hero-poem::before{
+  content:""; position:absolute; left:0; top:.35em; bottom:.35em; width:2px;
+  background:linear-gradient(var(--sakura),var(--sakura-pale));
+  opacity:.65;
+}
+.hero-poem .jp{
+  display:block; font-family:'Shippori Mincho',serif; font-weight:400;
+  font-size:clamp(12px,1.4vw,15px); letter-spacing:.14em;
+  color:var(--sumi-faint); line-height:1.7; margin-top:.8em;
+}
 
-      .rooms {
-        grid-template-columns: 1fr;
-        min-height: 0;
-      }
-      .room {
-        padding: 40px 32px;
-        min-height: 280px;
-      }
-      .room:not(:last-child) {
-        border-right: none;
-        border-bottom: 1px solid rgba(31,31,29,0.13);
-      }
-      .room-label { font-size: 84px; }
-      .room-cn { font-size: 11px; letter-spacing: 0.25em; }
-      .room-head { font-size: 10px; letter-spacing: 0.3em; }
-      .room-foot { font-size: 12px; }
+.scroll-cue{
+  position:absolute; z-index:3; left:50%; transform:translateX(-50%);
+  bottom:clamp(24px,4vh,42px);
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  font-family:'Inter',sans-serif; font-size:10px; letter-spacing:.42em;
+  text-transform:uppercase; color:var(--sumi-faint);
+  animation:floatCue 3.4s var(--ease) infinite;
+}
+.scroll-cue .line{ width:1px; height:clamp(30px,6vh,52px); background:linear-gradient(var(--sumi-faint),transparent); }
+@keyframes floatCue{ 0%,100%{ transform:translate(-50%,0); opacity:.8 } 50%{ transform:translate(-50%,7px); opacity:.4 } }
 
-      .strip { padding: 56px 24px; }
-      .strip-title { font-size: 26px; letter-spacing: 0.06em; }
-      .strip-body { font-size: 13px; }
-      .ink-branch-strip { width: 70vw; opacity: 0.1; }
+/* ================= セクション共通 ================= */
+section.chapter{ position:relative; padding:clamp(90px,16vh,180px) 0; }
 
-      footer {
-        padding: 24px 24px;
-        flex-direction: column;
-        gap: 10px;
-        font-size: 10px;
-      }
-    }
+.sec-index{
+  font-family:'Inter',sans-serif; font-weight:400;
+  font-size:clamp(11px,1.1vw,13px); letter-spacing:.42em;
+  text-transform:uppercase; color:var(--moss);
+  margin-bottom:clamp(16px,2.4vh,26px);
+  display:flex; align-items:center; gap:.9em;
+}
+.sec-index .no{ font-family:'Yuji Syuku',serif; font-size:1.5em; color:var(--sakura); letter-spacing:0; }
 
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .reveal { opacity: 1; transform: none; transition: none; }
-      .hero-img { transform: none !important; }
-    }
-  </style>
+.sec-title{
+  font-family:'Shippori Mincho',serif; font-weight:500;
+  font-size:clamp(34px,6vw,72px); line-height:1.06; letter-spacing:.03em;
+  color:var(--sumi); margin-bottom:clamp(20px,3vh,34px);
+}
+.sec-title .brush{ font-family:'Yuji Syuku',serif; font-weight:400; }
+.sec-title .en{
+  display:block; font-family:'Inter',sans-serif; font-weight:300;
+  font-size:clamp(13px,1.5vw,17px); letter-spacing:.34em; text-transform:uppercase;
+  color:var(--sumi-faint); margin-top:.7em;
+}
+.sec-title .en .jp{ font-family:'Shippori Mincho',serif; text-transform:none; letter-spacing:.14em; color:var(--sakura); }
+.sec-body{
+  font-family:'Noto Serif TC','Noto Serif JP',serif; font-weight:300;
+  font-size:clamp(15px,1.6vw,18px); line-height:2.05; color:var(--sumi-soft);
+  max-width:52ch;
+}
+.sec-body + .sec-body{ margin-top:1.4em; }
+.sec-body .jp{
+  display:block; font-family:'Shippori Mincho',serif; font-weight:400;
+  font-size:.86em; line-height:1.85; color:var(--sumi-faint);
+  margin-top:.9em; max-width:56ch; letter-spacing:.06em;
+}
+
+/* 「進入 →」リンク */
+.enter-link{
+  display:inline-flex; align-items:center; gap:.7em;
+  margin-top:clamp(26px,3.6vh,40px);
+  font-family:'Shippori Mincho',serif; font-size:clamp(15px,1.6vw,18px);
+  letter-spacing:.14em; color:var(--sumi);
+  text-decoration:none; position:relative; padding-bottom:5px;
+}
+.enter-link .arrow{
+  font-family:'Inter',sans-serif; font-weight:300; color:var(--sakura);
+  transition:transform .45s var(--ease);
+}
+.enter-link .en{
+  font-family:'Inter',sans-serif; font-weight:300; font-size:.72em;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--sumi-faint);
+}
+.enter-link::after{
+  content:""; position:absolute; left:0; bottom:0; height:1px; width:100%;
+  background:var(--hair); transition:background .4s var(--ease);
+}
+.enter-link:hover{ color:var(--sakura); }
+.enter-link:hover .arrow{ transform:translateX(6px); }
+.enter-link:hover::after{ background:var(--sakura); }
+
+/* --- 交互レイアウト --- */
+.split{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(36px,6vw,90px); align-items:center; }
+.split.rev .col-art{ order:2; }
+
+/* 章ごとの水墨図（円相・墨の断片） */
+.ink-figure{ position:relative; width:100%; aspect-ratio:1/1; }
+.ink-figure svg{ width:100%; height:100%; overflow:visible; }
+
+/* 円相の中の一字 */
+.enso-note{
+  position:absolute; inset:0; display:grid; place-items:center;
+  font-family:'Yuji Syuku',serif; font-size:clamp(40px,7vw,86px);
+  color:var(--sumi); opacity:.9; pointer-events:none;
+}
+
+/* 四季の帯（攝影の四季系列へ） */
+.seasons{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(14px,2vw,26px); margin-top:clamp(30px,5vh,54px); }
+.season{
+  position:relative; padding:clamp(20px,2.6vw,30px) clamp(16px,1.8vw,22px);
+  border-top:1px solid var(--hair);
+  text-decoration:none; display:block;
+  transition:transform .5s var(--ease);
+}
+.season .kanji{ font-family:'Yuji Syuku',serif; font-size:clamp(30px,4.4vw,52px); color:var(--sumi); line-height:1; display:block; }
+.season .en{ display:block; font-family:'Inter',sans-serif; font-size:clamp(10px,1vw,12px); letter-spacing:.3em; text-transform:uppercase; color:var(--sakura); margin-top:.9em; }
+.season .jp{ display:block; font-family:'Shippori Mincho',serif; font-size:clamp(12px,1.2vw,14px); color:var(--sumi-faint); margin-top:.5em; letter-spacing:.08em; }
+.season::before{
+  content:""; position:absolute; top:-1px; left:0; width:0; height:2px; background:var(--sakura);
+  transition:width .8s var(--ease);
+}
+.season.lit::before{ width:38%; }
+.season:hover{ transform:translateY(-4px); }
+.season:hover::before{ width:100%; }
+
+/* 引用・大きな詩句（間・余白） */
+.pull{
+  text-align:center; padding:clamp(60px,12vh,130px) 0;
+  position:relative;
+}
+.pull p{
+  font-family:'Shippori Mincho',serif; font-weight:400;
+  font-size:clamp(24px,4.6vw,54px); line-height:1.7; letter-spacing:.04em;
+  color:var(--sumi); max-width:22ch; margin-inline:auto;
+}
+.pull .en{
+  display:block; font-family:'Inter',sans-serif; font-weight:300; font-style:italic;
+  font-size:clamp(13px,1.6vw,18px); letter-spacing:.04em; color:var(--sakura);
+  margin-top:1.4em; max-width:44ch; margin-inline:auto; line-height:1.7;
+}
+.pull .ma{ /* 間 */ font-family:'Yuji Syuku',serif; display:block; font-size:clamp(30px,5vw,64px); color:var(--sakura-pale); margin-bottom:.4em; }
+
+/* 訪 / footer 導入 */
+.visit{ padding-bottom:clamp(60px,10vh,120px); }
+.visit-grid{ display:grid; grid-template-columns:1.2fr .8fr; gap:clamp(30px,5vw,70px); align-items:end; }
+.visit-lines{ list-style:none; }
+.visit-lines li{
+  padding:clamp(13px,1.8vh,18px) 0; border-bottom:1px solid var(--hair);
+}
+.visit-lines a, .visit-lines .row{
+  display:flex; justify-content:space-between; gap:1.5em; align-items:baseline;
+  font-family:'Shippori Mincho',serif; font-size:clamp(14px,1.5vw,17px); color:var(--sumi-soft);
+  text-decoration:none; transition:color .35s var(--ease);
+}
+.visit-lines a:hover{ color:var(--sakura); }
+.visit-lines .k{ color:var(--sumi); letter-spacing:.06em; }
+.visit-lines a:hover .k{ color:var(--sakura); }
+.visit-lines .v{ font-family:'Inter',sans-serif; font-weight:300; font-size:.94em; color:var(--sumi-faint); letter-spacing:.04em; text-align:right; }
+
+footer{
+  margin-top:clamp(70px,12vh,140px);
+  border-top:1px solid var(--hair);
+  padding:clamp(30px,5vh,48px) 0 clamp(40px,6vh,60px);
+  display:flex; flex-wrap:wrap; gap:16px 24px; justify-content:space-between; align-items:center;
+  font-family:'Inter',sans-serif; font-weight:300; font-size:clamp(11px,1.1vw,13px);
+  letter-spacing:.16em; text-transform:uppercase; color:var(--sumi-faint);
+}
+footer .sig{ font-family:'Shippori Mincho',serif; letter-spacing:.14em; text-transform:none; color:var(--sumi-soft); font-size:1.1em; }
+footer .flinks{ display:flex; gap:.6em; align-items:center; flex-wrap:wrap; }
+footer .flinks a{ color:var(--sumi-faint); text-decoration:none; transition:color .3s; }
+footer .flinks a:hover{ color:var(--sakura); }
+footer .flinks .sep{ opacity:.5; }
+
+/* ================= reveal ================= */
+.reveal{ opacity:0; transform:translateY(34px); transition:opacity 1.15s var(--ease), transform 1.15s var(--ease); will-change:opacity,transform; }
+.reveal.in{ opacity:1; transform:none; }
+.reveal.d1{ transition-delay:.1s } .reveal.d2{ transition-delay:.22s } .reveal.d3{ transition-delay:.34s } .reveal.d4{ transition-delay:.46s }
+
+/* SVG stroke draw-on for ink figures */
+.draw path, .draw line, .draw circle, .draw ellipse{
+  stroke-dasharray:var(--len,1200); stroke-dashoffset:var(--len,1200);
+  transition:stroke-dashoffset 2.4s var(--ease);
+}
+.draw.in path, .draw.in line, .draw.in circle, .draw.in ellipse{ stroke-dashoffset:0; }
+
+/* ================= レスポンシブ（手機 重點：直向堆疊・不硬縮桌機） ================= */
+@media (max-width:820px){
+  body{ line-height:1.8; }
+  .navlinks{
+    position:fixed; inset:0; z-index:5;
+    flex-direction:column; align-items:center; justify-content:center; gap:clamp(20px,3.6vh,30px);
+    background:rgba(239,233,217,.96);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    transform:translateY(-102%); transition:transform .6s var(--ease);
+  }
+  .navlinks.open{ transform:none; }
+  .navlinks a{ font-size:clamp(20px,6vw,26px); }
+  .navlinks a.lang{ border-left:0; padding-left:0; margin-left:0; font-size:clamp(15px,4.5vw,20px); }
+  .nav-toggle{
+    display:flex; flex-direction:column; gap:5px; z-index:6;
+    width:34px; height:24px; justify-content:center; cursor:pointer;
+    background:none; border:0;
+  }
+  .nav-toggle span{ display:block; height:1.6px; width:100%; background:var(--sumi); transition:transform .45s var(--ease), opacity .3s; }
+  .nav-toggle.open span:nth-child(1){ transform:translateY(6.6px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2){ opacity:0; }
+  .nav-toggle.open span:nth-child(3){ transform:translateY(-6.6px) rotate(-45deg); }
+
+  .hero{ padding-top:clamp(110px,20vh,150px); align-items:end; min-height:100svh; }
+  .hero h1{ font-size:clamp(96px,42vw,160px); }
+  .hero h1 .romaji{ font-size:clamp(15px,5vw,22px); letter-spacing:.4em; }
+  .hero-poem{ font-size:clamp(17px,4.8vw,22px); max-width:22ch; }
+  .ink-branch{ width:150vw; right:-40vw; top:-4vh; opacity:.8; }
+  .ink-branch.echo{ display:none; }
+
+  .split{ grid-template-columns:1fr; gap:clamp(30px,7vw,44px); }
+  .split.rev .col-art{ order:0; }
+  .col-art{ max-width:74vw; margin-inline:auto; }
+  .sec-title{ font-size:clamp(38px,11vw,60px); }
+  .seasons{ grid-template-columns:repeat(2,1fr); gap:clamp(12px,3vw,20px); }
+  .visit-grid{ grid-template-columns:1fr; gap:clamp(28px,7vw,40px); }
+  .frame-mark.right{ font-size:11px; right:10px; }
+  .frame-mark.left{ display:none; }
+  .pull p{ font-size:clamp(26px,8vw,40px); max-width:16ch; }
+  footer{ flex-direction:column; align-items:flex-start; gap:12px; }
+}
+
+@media (max-width:400px){
+  .wrap{ width:88vw; }
+  .hero h1{ font-size:clamp(88px,44vw,130px); }
+  .season .kanji{ font-size:clamp(32px,13vw,46px); }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{ animation:none !important; }
+  .reveal{ opacity:1; transform:none; transition:none; }
+  html{ scroll-behavior:auto; }
+  .draw path,.draw line,.draw circle,.draw ellipse{ stroke-dashoffset:0; transition:none; }
+}
+</style>
 </head>
 <body>
 
 <div class="paper-grain" aria-hidden="true"></div>
 <canvas id="petals" aria-hidden="true"></canvas>
 
-<header class="top">
-  <span class="brand">
-    <span class="brand-name">葉崇揚</span><span class="brand-romaji">（Chung-Yang Yeh）</span>
-  </span>
-  <nav class="nav" aria-label="Sections">
-    <a href="index.html" class="is-current">玄關</a>
-    <a href="about-zh.html" class="nav-sub">簡介</a>
-    <a href="academic-zh.html" class="nav-sub">學術</a>
-    <a href="photography-zh.html" class="nav-sub">攝影</a>
-    <a href="teaching-zh.html" class="nav-sub">教學</a>
-    <a href="essays-zh.html" class="nav-sub">隨筆</a>
-    <a href="index-en.html" class="lang">EN</a>
-  </nav>
-</header>
+<span class="frame-mark right" aria-hidden="true">三間屋子 · 任選一扇門</span>
+<span class="frame-mark left" aria-hidden="true">玄關 · GENKAN · 2026 夏</span>
+<div class="seal" aria-hidden="true"><span>崇</span><span>揚</span></div>
 
-<section class="hero" aria-label="玄關">
-  <img class="hero-img" id="heroImg" src="images/photography/dscf5975_1.jpg" alt="" />
-  <div class="hero-veil"></div>
-  <div class="hero-inner">
-    <p class="hero-eyebrow"><span class="jp">玄關</span>· GENKAN</p>
-    <h1 class="hero-title">請進</h1>
-    <p class="hero-sub">三間屋子，任選一扇門走進來。<span class="hero-jp">三つの部屋、お好きなところから。</span></p>
-  </div>
-</section>
+<nav id="nav">
+  <a class="brand" href="index.html">葉崇揚<span class="en">Chung-Yang Yeh</span></a>
+  <button class="nav-toggle" id="navToggle" aria-label="選單" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="navlinks" id="navlinks">
+    <li><a href="index.html" class="is-current">玄關</a></li>
+    <li><a href="about-zh.html">簡介</a></li>
+    <li><a href="academic-zh.html">學術</a></li>
+    <li><a href="photography-zh.html">攝影</a></li>
+    <li><a href="teaching-zh.html">教學</a></li>
+    <li><a href="essays-zh.html">隨筆</a></li>
+    <li><a href="index-en.html" class="lang">EN</a></li>
+  </ul>
+</nav>
 
-<section class="rooms" aria-label="三つの部屋">
-  <a href="academic-zh.html" class="room is-shoin reveal">
-    <svg class="shoji" aria-hidden="true">
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="hero">
+    <!-- 水墨の桜枝 — 主枝（技術は demo A より複製） -->
+    <svg class="ink-branch" id="branch" viewBox="0 0 1000 760" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMin meet">
       <defs>
-        <pattern id="shoji-1" x="0" y="0" width="120" height="180" patternUnits="userSpaceOnUse">
-          <rect width="120" height="180" fill="none" stroke="#1f1f1d" stroke-width="1" />
-          <line x1="60" y1="0" x2="60" y2="180" stroke="#1f1f1d" stroke-width="0.5" />
-          <line x1="0" y1="60" x2="120" y2="60" stroke="#1f1f1d" stroke-width="0.5" />
-          <line x1="0" y1="120" x2="120" y2="120" stroke="#1f1f1d" stroke-width="0.5" />
-        </pattern>
+        <!-- 花の墨だまり：滲ませてから柔らかくぼかす（wet-on-wet の要） -->
+        <filter id="inkbleed" x="-45%" y="-45%" width="190%" height="190%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.014 0.02" numOctaves="4" seed="7" result="t"/>
+          <feDisplacementMap in="SourceGraphic" in2="t" scale="17" xChannelSelector="R" yChannelSelector="G" result="d"/>
+          <feGaussianBlur in="d" stdDeviation="3.4"/>
+        </filter>
+        <!-- 枝の飛白（かすれ）：少し粗いディスプレイス -->
+        <filter id="drybrush" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="turbulence" baseFrequency="0.9 0.08" numOctaves="2" seed="4" result="t"/>
+          <feDisplacementMap in="SourceGraphic" in2="t" scale="3.2"/>
+        </filter>
+        <!-- 花の暈し：中心は水で薄く抜け，外へ滲む -->
+        <radialGradient id="bloom" cx="44%" cy="42%" r="60%">
+          <stop offset="0%"   stop-color="#f3d6e0" stop-opacity="0.34"/>
+          <stop offset="30%"  stop-color="#e7a9c1" stop-opacity="0.58"/>
+          <stop offset="62%"  stop-color="#d98aa8" stop-opacity="0.40"/>
+          <stop offset="100%" stop-color="#d98aa8" stop-opacity="0"/>
+        </radialGradient>
+        <!-- 縁の濃み（水が引いて墨が溜まる際） -->
+        <radialGradient id="bloomEdge" cx="50%" cy="50%" r="52%">
+          <stop offset="0%"   stop-color="#c76d91" stop-opacity="0"/>
+          <stop offset="72%"  stop-color="#c76d91" stop-opacity="0"/>
+          <stop offset="88%"  stop-color="#bd6489" stop-opacity="0.30"/>
+          <stop offset="100%" stop-color="#a9557a" stop-opacity="0.05"/>
+        </radialGradient>
+        <!-- 中央の余白（紙が透ける溜まり） -->
+        <radialGradient id="bloomWhite" cx="46%" cy="44%" r="42%">
+          <stop offset="0%"   stop-color="#f7ecdf" stop-opacity="0.55"/>
+          <stop offset="70%"  stop-color="#f7ecdf" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#f7ecdf" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="inkgrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#211d1b"/>
+          <stop offset="70%" stop-color="#332e2a"/>
+          <stop offset="100%" stop-color="#4a423d"/>
+        </linearGradient>
       </defs>
-      <rect width="100%" height="100%" fill="url(#shoji-1)" />
-    </svg>
-    <div class="light-shaft" aria-hidden="true"></div>
-    <div class="room-head"><span class="num">01</span><span class="sep">·</span>SHOIN · 學術</div>
-    <div class="room-center">
-      <div class="room-label">書院</div>
-      <div class="room-cn">案上 ・ 書 ・ 墨</div>
-    </div>
-    <div class="room-foot">
-      坐擁紙山，論文在此呼吸。
-      <div class="room-arrow">→ 入內</div>
-    </div>
-  </a>
 
-  <a href="photography-zh.html" class="room is-engawa reveal d1">
-    <svg class="shoji" aria-hidden="true">
-      <defs>
-        <pattern id="shoji-2" x="0" y="0" width="120" height="180" patternUnits="userSpaceOnUse">
-          <rect width="120" height="180" fill="none" stroke="#1f1f1d" stroke-width="1" />
-          <line x1="60" y1="0" x2="60" y2="180" stroke="#1f1f1d" stroke-width="0.5" />
-          <line x1="0" y1="60" x2="120" y2="60" stroke="#1f1f1d" stroke-width="0.5" />
-          <line x1="0" y1="120" x2="120" y2="120" stroke="#1f1f1d" stroke-width="0.5" />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#shoji-2)" />
-    </svg>
-    <div class="light-shaft" aria-hidden="true"></div>
-    <div class="room-head"><span class="num">02</span><span class="sep">·</span>ENGAWA · 攝影</div>
-    <div class="room-center">
-      <div class="room-label">縁側</div>
-      <div class="room-cn">簷下 ・ 庭 ・ 季節</div>
-    </div>
-    <div class="room-foot">
-      內外之際，庭園化作一冊書。
-      <div class="room-arrow">→ 入內</div>
-    </div>
-  </a>
+      <!-- 花の暈し群：一房を複数のにじみで構成 -->
+      <g filter="url(#inkbleed)" opacity="0.9">
+        <ellipse cx="250" cy="150" rx="150" ry="126" fill="url(#bloom)"/>
+        <ellipse cx="284" cy="128" rx="70"  ry="60"  fill="url(#bloom)"/>
+        <ellipse cx="214" cy="182" rx="66"  ry="58"  fill="url(#bloom)"/>
+        <ellipse cx="452" cy="96"  rx="116" ry="98"  fill="url(#bloom)"/>
+        <ellipse cx="486" cy="118" rx="58"  ry="52"  fill="url(#bloom)"/>
+        <ellipse cx="628" cy="196" rx="138" ry="118" fill="url(#bloom)"/>
+        <ellipse cx="600" cy="168" rx="64"  ry="56"  fill="url(#bloom)"/>
+        <ellipse cx="666" cy="220" rx="62"  ry="54"  fill="url(#bloom)"/>
+        <ellipse cx="392" cy="252" rx="96"  ry="84"  fill="url(#bloom)"/>
+        <ellipse cx="792" cy="120" rx="86"  ry="76"  fill="url(#bloom)"/>
+        <ellipse cx="160" cy="300" rx="78"  ry="68"  fill="url(#bloom)"/>
+        <ellipse cx="560" cy="360" rx="72"  ry="62"  fill="url(#bloom)"/>
+      </g>
+      <!-- 縁に溜まる濃み -->
+      <g filter="url(#inkbleed)" opacity="0.9">
+        <ellipse cx="250" cy="150" rx="128" ry="108" fill="url(#bloomEdge)"/>
+        <ellipse cx="452" cy="96"  rx="104" ry="88"  fill="url(#bloomEdge)"/>
+        <ellipse cx="628" cy="196" rx="120" ry="102" fill="url(#bloomEdge)"/>
+        <ellipse cx="392" cy="252" rx="86"  ry="74"  fill="url(#bloomEdge)"/>
+        <ellipse cx="792" cy="120" rx="76"  ry="66"  fill="url(#bloomEdge)"/>
+      </g>
+      <!-- 中央に紙が透ける余白 -->
+      <g filter="url(#inkbleed)" opacity="0.85">
+        <ellipse cx="256" cy="146" rx="86" ry="74" fill="url(#bloomWhite)"/>
+        <ellipse cx="456" cy="92"  rx="66" ry="58" fill="url(#bloomWhite)"/>
+        <ellipse cx="632" cy="192" rx="78" ry="68" fill="url(#bloomWhite)"/>
+        <ellipse cx="394" cy="250" rx="52" ry="46" fill="url(#bloomWhite)"/>
+      </g>
 
-  <a href="teaching-zh.html" class="room is-chashitsu reveal d2">
-    <svg class="shoji" aria-hidden="true">
-      <defs>
-        <pattern id="shoji-3" x="0" y="0" width="120" height="180" patternUnits="userSpaceOnUse">
-          <rect width="120" height="180" fill="none" stroke="#1f1f1d" stroke-width="1" />
-          <line x1="60" y1="0" x2="60" y2="180" stroke="#1f1f1d" stroke-width="0.5" />
-          <line x1="0" y1="60" x2="120" y2="60" stroke="#1f1f1d" stroke-width="0.5" />
-          <line x1="0" y1="120" x2="120" y2="120" stroke="#1f1f1d" stroke-width="0.5" />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#shoji-3)" />
-    </svg>
-    <div class="light-shaft" aria-hidden="true"></div>
-    <div class="room-head"><span class="num">03</span><span class="sep">·</span>CHASHITSU · 教學</div>
-    <div class="room-center">
-      <div class="room-label">茶室</div>
-      <div class="room-cn">対座 ・ 一期一会</div>
-    </div>
-    <div class="room-foot">
-      小小的入口，大大的對話。
-      <div class="room-arrow">→ 入內</div>
-    </div>
-  </a>
-</section>
+      <!-- 主枝：太→細，右上から左下へ垂れる一筆 -->
+      <g stroke="url(#inkgrad)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path filter="url(#drybrush)" stroke-width="15"
+          d="M978 40 C 872 96, 792 150, 690 190 C 566 238, 470 250, 372 300 C 300 337, 250 380, 176 430 C 128 462, 92 500, 40 560"/>
+        <!-- 二次枝 -->
+        <path filter="url(#drybrush)" stroke-width="8"
+          d="M690 190 C 700 250, 690 306, 636 372 C 604 411, 560 438, 520 486"/>
+        <path filter="url(#drybrush)" stroke-width="7"
+          d="M452 262 C 420 300, 372 322, 300 356 C 258 376, 220 404, 190 452"/>
+        <path filter="url(#drybrush)" stroke-width="6"
+          d="M792 132 C 828 168, 856 214, 858 276"/>
+        <path filter="url(#drybrush)" stroke-width="5"
+          d="M560 232 C 528 210, 486 202, 440 208"/>
+        <!-- 小枝（かすれた細線） -->
+        <g stroke-width="2.6" opacity="0.86">
+          <path filter="url(#drybrush)" d="M250 240 C 236 268, 230 300, 244 332"/>
+          <path filter="url(#drybrush)" d="M636 300 C 664 316, 690 340, 700 376"/>
+          <path filter="url(#drybrush)" d="M372 300 C 356 276, 330 262, 300 260"/>
+          <path filter="url(#drybrush)" d="M858 240 C 884 256, 900 284, 898 316"/>
+        </g>
+      </g>
 
-<section class="strip">
-  <!-- 水墨の一枝：飛白と滲み -->
-  <svg class="ink-branch-strip" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs>
-      <filter id="drybrush-s" x="-20%" y="-20%" width="140%" height="140%">
-        <feTurbulence type="turbulence" baseFrequency="0.9 0.08" numOctaves="2" seed="4" result="t"/>
-        <feDisplacementMap in="SourceGraphic" in2="t" scale="3.2"/>
-      </filter>
-      <filter id="inkbleed-s" x="-45%" y="-45%" width="190%" height="190%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.014 0.02" numOctaves="4" seed="7" result="t"/>
-        <feDisplacementMap in="SourceGraphic" in2="t" scale="15"/>
-        <feGaussianBlur stdDeviation="3"/>
-      </filter>
-      <radialGradient id="bloom-s" cx="44%" cy="42%" r="60%">
-        <stop offset="0%" stop-color="#e7a9c1" stop-opacity="0.7"/>
-        <stop offset="60%" stop-color="#d98aa8" stop-opacity="0.5"/>
-        <stop offset="100%" stop-color="#d98aa8" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-    <g filter="url(#inkbleed-s)">
-      <ellipse cx="150" cy="120" rx="90" ry="76" fill="url(#bloom-s)"/>
-      <ellipse cx="330" cy="90" rx="70" ry="60" fill="url(#bloom-s)"/>
-      <ellipse cx="250" cy="200" rx="60" ry="52" fill="url(#bloom-s)"/>
-    </g>
-    <g stroke="#2a2624" fill="none" stroke-linecap="round">
-      <path filter="url(#drybrush-s)" stroke-width="13" d="M588 30 C 470 90, 380 140, 280 190 C 200 230, 140 280, 40 360"/>
-      <path filter="url(#drybrush-s)" stroke-width="6" d="M280 190 C 290 250, 270 300, 220 348"/>
-      <path filter="url(#drybrush-s)" stroke-width="5" d="M380 140 C 360 100, 320 84, 276 88"/>
-    </g>
-  </svg>
-  <div class="strip-inner">
-    <p class="strip-eyebrow reveal">続きへ</p>
-    <h2 class="strip-title reveal d1">每個房間，都有各自的空氣。</h2>
-    <p class="strip-body reveal d2">
-      書院是紙與墨的氣味，縁側是風與光，茶室是靜寂與一服茶。<br/>
-      在上面選一扇門，請進。
-      <span class="strip-jp">書院は紙と墨の匂い。縁側は風と光。茶室は静寂と一服。</span>
+      <!-- 花びら・蕊の墨点 -->
+      <g fill="#b76d8d" opacity="0.66">
+        <circle cx="250" cy="150" r="3.4"/><circle cx="238" cy="132" r="2.4"/><circle cx="270" cy="160" r="2.2"/>
+        <circle cx="452" cy="96"  r="3.0"/><circle cx="466" cy="108" r="2.0"/>
+        <circle cx="628" cy="196" r="3.4"/><circle cx="612" cy="182" r="2.2"/><circle cx="644" cy="208" r="2.0"/>
+        <circle cx="392" cy="252" r="2.6"/><circle cx="792" cy="120" r="2.6"/>
+        <circle cx="160" cy="300" r="2.4"/><circle cx="560" cy="360" r="2.2"/>
+      </g>
+      <!-- 蕊（金茶の点） -->
+      <g fill="#8a6b3a" opacity="0.5">
+        <circle cx="252" cy="148" r="1.5"/><circle cx="454" cy="94" r="1.4"/>
+        <circle cx="630" cy="194" r="1.5"/><circle cx="394" cy="250" r="1.3"/>
+      </g>
+    </svg>
+
+    <div class="wrap">
+      <p class="eyebrow reveal"><span class="jp">玄關</span> · Genkan — enter as you like</p>
+      <h1 class="reveal d1">
+        <span class="kanji">玄關</span>
+        <span class="romaji">Chung-Yang Yeh</span>
+      </h1>
+      <p class="hero-poem reveal d2">
+        三間屋子，任選一扇門走進來。
+        <span class="jp">お入りください。三つの部屋、お好きなところから。</span>
+      </p>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <span>Scroll</span>
+      <span class="line"></span>
+    </div>
+  </header>
+
+  <!-- ============ 一・學術 SHOIN ============ -->
+  <section class="chapter" id="academic">
+    <div class="wrap">
+      <div class="split">
+        <div class="col-text">
+          <p class="sec-index reveal"><span class="no">一</span> Chapter · One</p>
+          <h2 class="sec-title reveal d1"><span class="brush">書院</span><span class="en"><span class="jp">學術</span> · Shoin — The Study</span></h2>
+          <p class="sec-body reveal d2">
+            葉崇揚是東吳大學社會學系的教師，長年研究福利國家與社會政策。他關心制度如何分配風險與資源、東亞社會政策的比較，以及人們對福利的態度如何形成。歷年的論文、專書章節與研究計畫，都安放在這間書院裡。
+            <span class="jp">案上に紙が積み、墨が香る。福祉国家と社会政策をめぐる論文と著作は、この書院で静かに息をしている。</span>
+          </p>
+          <p class="sec-body reveal d3">
+            坐擁紙山，讓每一篇文章慢慢呼吸。研究不是一次寫成的，而是跑了很多版、來回修改之後才長出的樣子。
+          </p>
+          <a class="enter-link reveal d3" href="academic-zh.html">
+            <span>進入書院</span><span class="arrow">→</span><span class="en">Academic</span>
+          </a>
+        </div>
+        <div class="col-art reveal d2">
+          <!-- 書卷・硯：円相の中に一筆の書巻と硯 -->
+          <div class="ink-figure">
+            <svg class="draw" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="--len:1300">
+              <defs>
+                <filter id="shoinbrush" x="-20%" y="-20%" width="140%" height="140%">
+                  <feTurbulence type="turbulence" baseFrequency="0.6 0.05" numOctaves="2" seed="9" result="t"/>
+                  <feDisplacementMap in="SourceGraphic" in2="t" scale="4"/>
+                </filter>
+                <radialGradient id="inkstone" cx="50%" cy="42%" r="60%">
+                  <stop offset="0%" stop-color="#3a3430" stop-opacity="0.92"/>
+                  <stop offset="70%" stop-color="#2a2624" stop-opacity="0.72"/>
+                  <stop offset="100%" stop-color="#2a2624" stop-opacity="0.34"/>
+                </radialGradient>
+              </defs>
+              <!-- 円相（書院の丸窓） -->
+              <path filter="url(#shoinbrush)" d="M300 74 C 250 38, 176 34, 122 66 C 60 102, 34 176, 52 244 C 70 314, 138 362, 214 358 C 292 354, 352 292, 352 216 C 352 168, 332 122, 296 92"
+                stroke="#2a2624" stroke-width="12" stroke-linecap="round"/>
+              <!-- 巻物（開いた書巻）：一筆の帯 -->
+              <path filter="url(#shoinbrush)" d="M116 210 C 150 196, 250 196, 288 210 C 250 226, 150 226, 116 210 Z"
+                fill="#efe9d9" stroke="#2a2624" stroke-width="3.4"/>
+              <!-- 巻きの両端 -->
+              <ellipse cx="116" cy="210" rx="9" ry="20" fill="#4a433f" filter="url(#shoinbrush)"/>
+              <ellipse cx="288" cy="210" rx="9" ry="20" fill="#4a433f" filter="url(#shoinbrush)"/>
+              <!-- 巻物の上の文字列（かすれ線） -->
+              <g stroke="#6f665f" stroke-width="1.5" opacity="0.6" fill="none">
+                <path d="M150 204 L 254 204"/>
+                <path d="M150 210 L 254 210"/>
+                <path d="M150 216 L 236 216"/>
+              </g>
+              <!-- 硯（すずり）と溜まった墨 -->
+              <ellipse cx="200" cy="286" rx="66" ry="24" fill="url(#inkstone)" stroke="#2a2624" stroke-width="3" filter="url(#shoinbrush)"/>
+              <ellipse cx="212" cy="288" rx="30" ry="10" fill="#1c1917" opacity="0.85"/>
+              <!-- 筆一本（斜めに置く） -->
+              <g filter="url(#shoinbrush)">
+                <path d="M132 268 L 250 300" stroke="#4a433f" stroke-width="6" stroke-linecap="round"/>
+                <path d="M250 300 L 268 306" stroke="#2a2624" stroke-width="9" stroke-linecap="round"/>
+              </g>
+              <!-- 散った一片の花びら -->
+              <path d="M300 120 C 314 112, 330 120, 328 136 C 320 132, 308 132, 300 120 Z" fill="#d98aa8" opacity="0.8" filter="url(#shoinbrush)"/>
+            </svg>
+            <span class="enso-note">學</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 引用（間・余白） ============ -->
+  <div class="pull wrap">
+    <p class="reveal">
+      <span class="ma">間</span>
+      留白，是給下一句話的位置。
+      <span class="en">The space we leave empty is the space that speaks.</span>
     </p>
   </div>
-</section>
 
-<footer>
-  <span>YEH CHUNG-YANG</span>
-  <span class="links">
-    <a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener">INSTAGRAM</a>
-    <span class="sep">·</span>
-    <a href="https://www.flickr.com/photos/young1017/" target="_blank" rel="noopener">FLICKR</a>
-  </span>
-  <span>2026 ・ 夏</span>
-</footer>
+  <!-- ============ 二・攝影 ENGAWA ============ -->
+  <section class="chapter" id="photography">
+    <div class="wrap">
+      <div class="split rev">
+        <div class="col-art reveal d1">
+          <div class="ink-figure">
+            <!-- 縁側・庭：円相の中に簷廊の線と庭石・月 -->
+            <svg class="draw" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="--len:1400">
+              <defs>
+                <filter id="engbrush" x="-20%" y="-20%" width="140%" height="140%">
+                  <feTurbulence type="turbulence" baseFrequency="0.55 0.05" numOctaves="2" seed="5" result="t"/>
+                  <feDisplacementMap in="SourceGraphic" in2="t" scale="3.6"/>
+                </filter>
+                <radialGradient id="moon" cx="50%" cy="50%" r="52%">
+                  <stop offset="0%" stop-color="#f7ecdf" stop-opacity="0.9"/>
+                  <stop offset="70%" stop-color="#eec3d3" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#eec3d3" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <!-- 円相 -->
+              <path filter="url(#engbrush)" d="M298 78 C 248 42, 174 40, 122 72 C 62 108, 38 180, 56 246 C 74 314, 140 360, 214 356 C 290 352, 348 290, 348 216 C 348 170, 328 124, 294 96"
+                stroke="#2a2624" stroke-width="11" stroke-linecap="round"/>
+              <!-- 淡い月 -->
+              <circle cx="150" cy="150" r="42" fill="url(#moon)"/>
+              <!-- 縁側の板（水平の一筆と柱） -->
+              <g filter="url(#engbrush)">
+                <path d="M96 250 L 306 250" stroke="#4a433f" stroke-width="7" stroke-linecap="round"/>
+                <path d="M96 266 L 306 266" stroke="#6f665f" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+                <!-- 柱 -->
+                <path d="M126 250 L 126 190" stroke="#2a2624" stroke-width="6" stroke-linecap="round"/>
+                <!-- 軒（庇）の斜め線 -->
+                <path d="M112 176 C 170 162, 240 162, 300 176" stroke="#2a2624" stroke-width="5" fill="none" stroke-linecap="round"/>
+              </g>
+              <!-- 庭石（据えられた石） -->
+              <ellipse cx="232" cy="300" rx="34" ry="16" fill="#4a433f" opacity="0.9" filter="url(#engbrush)"/>
+              <ellipse cx="180" cy="308" rx="18" ry="9" fill="#6f665f" opacity="0.7" filter="url(#engbrush)"/>
+              <!-- 砂目の波紋 -->
+              <g stroke="#6f665f" stroke-width="1.3" opacity="0.45" fill="none">
+                <path d="M120 322 C 170 312, 250 312, 296 322"/>
+                <path d="M112 334 C 168 322, 256 322, 306 334"/>
+              </g>
+              <!-- 散った花びら二片 -->
+              <path d="M286 128 C 300 120, 316 128, 314 144 C 306 140, 294 140, 286 128 Z" fill="#d98aa8" opacity="0.78" filter="url(#engbrush)"/>
+              <path d="M244 210 C 256 204, 270 210, 268 224 C 260 220, 250 220, 244 210 Z" fill="#e7a9c1" opacity="0.66" filter="url(#engbrush)"/>
+            </svg>
+            <span class="enso-note">觀</span>
+          </div>
+        </div>
+        <div class="col-text">
+          <p class="sec-index reveal"><span class="no">二</span> Chapter · Two</p>
+          <h2 class="sec-title reveal d1"><span class="brush">縁側</span><span class="en"><span class="jp">攝影</span> · Engawa — The Veranda</span></h2>
+          <p class="sec-body reveal d2">
+            攝影是葉崇揚近三十年來，與研究並行的另一種觀看方式。相機讓他停在內外之間，看季節如何在光裡改變一個地方。這些照片依節氣收成九個季節系列。
+            <span class="jp">縁側は、内と外のあわい。風と光のなかで、庭がひとつの冊子になる。</span>
+          </p>
+          <p class="sec-body reveal d3">
+            寫論文是把世界拆開來理解；攝影則是把它整個接住。兩者在他身上並行了很久。
+          </p>
+          <a class="enter-link reveal d3" href="photography-zh.html">
+            <span>走向縁側</span><span class="arrow">→</span><span class="en">Photography</span>
+          </a>
+        </div>
+      </div>
 
-<script src="js/photo-data.js"></script>
+      <!-- 四季の帯 — 攝影の季節系列へ -->
+      <div class="seasons">
+        <a class="season reveal d1" href="photography-zh.html"><span class="kanji">春</span><span class="en">Haru · Spring</span><span class="jp">春信 ・ 花ひらく</span></a>
+        <a class="season reveal d2" href="photography-zh.html"><span class="kanji">夏</span><span class="en">Natsu · Summer</span><span class="jp">青嵐 ・ 緑ふかし</span></a>
+        <a class="season reveal d3" href="photography-zh.html"><span class="kanji">秋</span><span class="en">Aki · Autumn</span><span class="jp">紅葉 ・ 色づく</span></a>
+        <a class="season reveal d4" href="photography-zh.html"><span class="kanji">冬</span><span class="en">Fuyu · Winter</span><span class="jp">雪明 ・ しづか</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 三・教學 CHASHITSU ============ -->
+  <section class="chapter" id="teaching">
+    <div class="wrap">
+      <div class="split">
+        <div class="col-text">
+          <p class="sec-index reveal"><span class="no">三</span> Chapter · Three</p>
+          <h2 class="sec-title reveal d1"><span class="brush">茶室</span><span class="en"><span class="jp">教學</span> · Chashitsu — The Tea Room</span></h2>
+          <p class="sec-body reveal d2">
+            一期一会——每一堂課都是一次不會重來的相遇。茶室的入口很小，人要低頭才進得去；但門後的對話可以很大。這裡放的是葉崇揚開設的課程、教學理念與給學生的話。
+            <span class="jp">一期一会。にじり口は小さく、頭を垂れて入る。けれど、その先の対話は大きい。</span>
+          </p>
+          <p class="sec-body reveal d3">
+            小小的入口，大大的對話。教學於他，是把研究裡學到的提問方式，遞到下一雙手上。
+          </p>
+          <a class="enter-link reveal d3" href="teaching-zh.html">
+            <span>入席茶室</span><span class="arrow">→</span><span class="en">Teaching</span>
+          </a>
+        </div>
+        <div class="col-art reveal d2">
+          <div class="ink-figure">
+            <!-- 茶碗（楽茶碗）: demo A 工藝章のSVGを参照して構成 -->
+            <svg class="draw" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="--len:1400">
+              <defs>
+                <radialGradient id="teabowl" cx="50%" cy="38%" r="62%">
+                  <stop offset="0%" stop-color="#3a3430" stop-opacity="0.9"/>
+                  <stop offset="70%" stop-color="#2a2624" stop-opacity="0.7"/>
+                  <stop offset="100%" stop-color="#2a2624" stop-opacity="0.3"/>
+                </radialGradient>
+                <filter id="chabrush" x="-20%" y="-20%" width="140%" height="140%">
+                  <feTurbulence type="turbulence" baseFrequency="0.7 0.06" numOctaves="2" seed="3" result="t"/>
+                  <feDisplacementMap in="SourceGraphic" in2="t" scale="3.4"/>
+                </filter>
+              </defs>
+              <!-- 茶碗（楽茶碗）: 一筆のにじみ -->
+              <path filter="url(#chabrush)" d="M96 214 C 96 300, 150 344, 200 344 C 250 344, 304 300, 304 214 C 268 232, 132 232, 96 214 Z"
+                fill="url(#teabowl)" stroke="#2a2624" stroke-width="4"/>
+              <ellipse cx="200" cy="212" rx="104" ry="26" fill="none" stroke="#2a2624" stroke-width="4" filter="url(#chabrush)"/>
+              <ellipse cx="200" cy="212" rx="104" ry="26" fill="#efe9d9" opacity="0.5"/>
+              <!-- 抹茶の緑 -->
+              <ellipse cx="200" cy="212" rx="84" ry="19" fill="#5a7a4a" opacity="0.62"/>
+              <ellipse cx="188" cy="207" rx="30" ry="8" fill="#7d976f" opacity="0.5"/>
+              <!-- 湯気（かすれ線） -->
+              <g stroke="#6f665f" stroke-width="1.6" fill="none" opacity="0.4" stroke-linecap="round">
+                <path d="M176 190 C 166 168, 186 156, 176 132 C 170 116, 184 104, 178 86"/>
+                <path d="M224 190 C 234 168, 214 156, 224 132 C 230 116, 216 104, 222 86"/>
+              </g>
+              <!-- 散った一片の花びら -->
+              <path d="M300 120 C 314 112, 330 120, 328 136 C 320 132, 308 132, 300 120 Z" fill="#d98aa8" opacity="0.8" filter="url(#chabrush)"/>
+            </svg>
+            <span class="enso-note">教</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 四・隨筆 BUNKO ============ -->
+  <section class="chapter" id="essays">
+    <div class="wrap">
+      <div class="split rev">
+        <div class="col-art reveal d1">
+          <div class="ink-figure">
+            <!-- 文庫・筆と紙：円相の中に筆・紙束・墨点 -->
+            <svg class="draw" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="--len:1400">
+              <defs>
+                <filter id="bunbrush" x="-20%" y="-20%" width="140%" height="140%">
+                  <feTurbulence type="turbulence" baseFrequency="0.6 0.06" numOctaves="2" seed="8" result="t"/>
+                  <feDisplacementMap in="SourceGraphic" in2="t" scale="3.4"/>
+                </filter>
+              </defs>
+              <!-- 円相 -->
+              <path filter="url(#bunbrush)" d="M300 76 C 250 40, 176 38, 122 70 C 62 106, 36 178, 54 246 C 72 314, 138 360, 214 356 C 290 352, 350 290, 350 216 C 350 168, 330 122, 296 94"
+                stroke="#2a2624" stroke-width="11" stroke-linecap="round"/>
+              <!-- 重ねた紙（文庫の紙束） -->
+              <g filter="url(#bunbrush)">
+                <path d="M120 246 L 260 246 L 272 258 L 132 258 Z" fill="#efe9d9" stroke="#6f665f" stroke-width="1.6"/>
+                <path d="M126 232 L 266 232 L 278 244 L 138 244 Z" fill="#f2ecdd" stroke="#6f665f" stroke-width="1.6"/>
+                <path d="M132 218 L 272 218 L 284 230 L 144 230 Z" fill="#f6f0e2" stroke="#2a2624" stroke-width="2.2"/>
+              </g>
+              <!-- 紙の上の文字列（走り書き） -->
+              <g stroke="#6f665f" stroke-width="1.4" opacity="0.6" fill="none" stroke-linecap="round">
+                <path d="M156 224 C 176 220, 196 226, 214 222"/>
+                <path d="M156 226 L 240 226" opacity="0.5"/>
+              </g>
+              <!-- 筆（立てかけた一本）：穂は下 -->
+              <g filter="url(#bunbrush)">
+                <path d="M244 96 L 210 214" stroke="#4a433f" stroke-width="7" stroke-linecap="round"/>
+                <!-- 穂先（墨含み） -->
+                <path d="M210 214 C 204 226, 200 236, 206 246 C 214 238, 218 226, 216 214 Z" fill="#2a2624"/>
+                <!-- 筆尻の紐 -->
+                <path d="M244 96 C 250 88, 258 88, 262 96" stroke="#b24a5c" stroke-width="2.4" fill="none" opacity="0.7"/>
+              </g>
+              <!-- 落ちた墨点 -->
+              <circle cx="176" cy="286" r="6" fill="#2a2624" opacity="0.8" filter="url(#bunbrush)"/>
+              <circle cx="192" cy="298" r="3" fill="#2a2624" opacity="0.6"/>
+              <!-- 散った一片の花びら -->
+              <path d="M292 128 C 306 120, 322 128, 320 144 C 312 140, 300 140, 292 128 Z" fill="#d98aa8" opacity="0.78" filter="url(#bunbrush)"/>
+            </svg>
+            <span class="enso-note">筆</span>
+          </div>
+        </div>
+        <div class="col-text">
+          <p class="sec-index reveal"><span class="no">四</span> Chapter · Four</p>
+          <h2 class="sec-title reveal d1"><span class="brush">文庫</span><span class="en"><span class="jp">隨筆</span> · Bunko — The Library</span></h2>
+          <p class="sec-body reveal d2">
+            文庫收的是論文之外的文字：隨筆、評論，以及一些不方便寫進學術格式裡的想法。研究要克制，隨筆可以任性一點——它們往往是正式論文的前身，或是它容納不下的餘韻。
+            <span class="jp">文庫には、論文の外側のことば。随筆と評論、そして書式に収まらなかった思いが積もる。</span>
+          </p>
+          <p class="sec-body reveal d3">
+            有些話，先在這裡試著說說看。磨利了，才走進書院。
+          </p>
+          <a class="enter-link reveal d3" href="essays-zh.html">
+            <span>翻開文庫</span><span class="arrow">→</span><span class="en">Essays</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 訪 · 玄關を出る前に ============ -->
+  <section class="chapter visit" id="visit">
+    <div class="wrap">
+      <div class="visit-grid">
+        <div class="col-text">
+          <p class="sec-index reveal"><span class="no">終</span> Coda · Visit</p>
+          <h2 class="sec-title reveal d1"><span class="brush">訪</span><span class="en"><span class="jp">請進</span> · Come In</span></h2>
+          <p class="sec-body reveal d2">
+            門一直開著。從哪一間屋子走進來都可以，也歡迎再聯絡。留一段時間，慢慢逛。
+            <span class="jp">門はいつでも開いている。どの部屋からでも、どうぞ。</span>
+          </p>
+        </div>
+        <div class="col-info reveal d2">
+          <ul class="visit-lines">
+            <li><a href="about-zh.html"><span class="k">簡介 · About</span><span class="v">Who I am</span></a></li>
+            <li><a href="academic-zh.html"><span class="k">學術 · 書院</span><span class="v">Shoin</span></a></li>
+            <li><a href="photography-zh.html"><span class="k">攝影 · 縁側</span><span class="v">Engawa</span></a></li>
+            <li><a href="teaching-zh.html"><span class="k">教學 · 茶室</span><span class="v">Chashitsu</span></a></li>
+            <li><a href="essays-zh.html"><span class="k">隨筆 · 文庫</span><span class="v">Bunko</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <footer>
+        <span class="sig">葉崇揚 · Chung-Yang Yeh</span>
+        <span class="flinks">
+          <a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener">INSTAGRAM</a>
+          <span class="sep">·</span>
+          <a href="https://www.flickr.com/photos/young1017/" target="_blank" rel="noopener">FLICKR</a>
+        </span>
+        <span>2026 ・ 夏</span>
+      </footer>
+    </div>
+  </section>
+
+</main>
+
 <script>
-  // 玄關 hero 依月份自動切換季節主題的隨機橫幅照片
-  // 3–5 春信 ・ 6–8 青嵐 ・ 9–11 紅葉 ・ 12,1,2 雪明
-  function getSeasonTheme() {
-    var m = new Date().getMonth() + 1;
-    if (m >= 3 && m <= 5) return 'harugasumi';
-    if (m >= 6 && m <= 8) return 'aoarashi';
-    if (m >= 9 && m <= 11) return 'kouyou';
-    return 'yukiakari';
-  }
-  function pickHeroPhoto() {
-    if (typeof photoData === 'undefined' || !photoData.length) return null;
-    var theme = getSeasonTheme();
-    var pool = photoData.filter(function(p) {
-      return p.shape === 'landscape' && p.themes && p.themes.indexOf(theme) !== -1;
-    });
-    // 季節池為空則退回到所有橫幅
-    if (!pool.length) {
-      pool = photoData.filter(function(p) { return p.shape === 'landscape'; });
-    }
-    if (!pool.length) return null;
-    return pool[Math.floor(Math.random() * pool.length)];
-  }
-  (function() {
-    var pick = pickHeroPhoto();
-    var img = document.getElementById('heroImg');
-    if (img && pick && pick.src) img.src = pick.src;
-  })();
-
-
-  // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
-  // 偶爾因 sticky header + backdrop-filter 而整頁空白。
-  // 偵測到從快取還原時，強制觸發一次重繪。
-  window.addEventListener('pageshow', function(e) {
-    if (e.persisted) {
-      // BFCache 還原時也要重新隨機選圖
-      var pickB = pickHeroPhoto();
-      var imgB = document.getElementById('heroImg');
-      if (imgB && pickB && pickB.src) imgB.src = pickB.src;
-      document.body.style.display = 'none';
-      void document.body.offsetHeight;
-      document.body.style.display = '';
-    }
-  });
-</script>
-
-<!-- ══ 水墨動態：花瓣 · scroll 揭示 · 視差 ══════════════ -->
-<script>
-(function () {
+(() => {
   "use strict";
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── scroll 揭示（IntersectionObserver） ── */
-  var revealables = document.querySelectorAll('.reveal');
-  var markIn = function (el) { el.classList.add('in'); };
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      for (var i = 0; i < entries.length; i++) {
-        if (entries[i].isIntersecting) { markIn(entries[i].target); io.unobserve(entries[i].target); }
-      }
-    }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
-    revealables.forEach(function (el) { io.observe(el); });
-    // Failsafe：可視初期表示を必ず担保（背景タブで凍結対策）
-    var revealVisibleNow = function () {
-      var vh = window.innerHeight;
-      revealables.forEach(function (el) {
-        if (el.classList.contains('in')) return;
-        var r = el.getBoundingClientRect();
-        if (r.top < vh * 0.96 && r.bottom > 0) { markIn(el); io.unobserve(el); }
-      });
-    };
-    document.addEventListener('visibilitychange', function () { if (!document.hidden) revealVisibleNow(); });
-    window.addEventListener('pageshow', revealVisibleNow);
-    setTimeout(revealVisibleNow, 2400);
-  } else {
-    revealables.forEach(markIn);
-  }
+  /* ========== ナビ：docked & 手機 toggle ========== */
+  const nav = document.getElementById('nav');
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navlinks');
+  const onScrollNav = () => nav.classList.toggle('docked', window.scrollY > 40);
+  onScrollNav();
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open'); toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
 
-  /* ── hero 照片の微視差 ── */
-  var heroImg = document.getElementById('heroImg');
-  var ticking = false;
-  function parallax() {
-    var y = window.scrollY;
-    if (heroImg && y < window.innerHeight * 1.2) {
-      heroImg.style.transform = 'translate3d(0,' + (y * 0.12) + 'px,0)';
+  /* ========== Intersection Observer：reveal + season + draw ========== */
+  const revealables = document.querySelectorAll('.reveal, .draw, .season');
+  const markIn = (el) => {
+    el.classList.add('in');
+    if (el.classList.contains('season')) el.classList.add('lit');
+  };
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries){
+      if (e.isIntersecting){ markIn(e.target); io.unobserve(e.target); }
     }
-    ticking = false;
-  }
-  if (!reduceMotion) {
-    window.addEventListener('scroll', function () {
-      if (!ticking) { requestAnimationFrame(parallax); ticking = true; }
-    }, { passive: true });
-  }
+  }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+  revealables.forEach(el => io.observe(el));
 
-  /* ── 花瓣：Canvas 粒子 ── */
-  var canvas = document.getElementById('petals');
-  if (!canvas || !canvas.getContext) return;
-  var ctx = canvas.getContext('2d');
-  var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-  var petals = [];
-  var palette = [
-    ['#f4d7e2', '#e3a7c0'],
-    ['#eec3d3', '#d98aa8'],
-    ['#f7e6ee', '#e9b9cd'],
-    ['#e7a9c1', '#c76d91']
+  // Failsafe：背景タブ等で CSS トランジションが凍り，要素が opacity:0 のまま
+  // 取り残されるのを防ぐ。可視の初期表示は必ず担保する。
+  const revealVisibleNow = () => {
+    const vh = window.innerHeight;
+    revealables.forEach(el => {
+      if (el.classList.contains('in')) return;
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.94 && r.bottom > 0){ markIn(el); io.unobserve(el); }
+    });
+  };
+  // タブが前面化した瞬間に，画面内の要素を確実に表示させる
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) revealVisibleNow(); });
+  window.addEventListener('pageshow', revealVisibleNow);
+  // 念のための最終保険：数秒後に first-view を強制表示（IO 未発火対策）
+  setTimeout(revealVisibleNow, 2600);
+
+  /* ========== 視差：hero の墨枝＋詩句 ========== */
+  const branch = document.getElementById('branch');
+  const heroPoem = document.querySelector('.hero-poem');
+  let ticking = false;
+  const parallax = () => {
+    const y = window.scrollY;
+    if (branch) branch.style.transform = `translate3d(${y * 0.045}px, ${y * 0.14}px, 0) rotate(${y * 0.004}deg)`;
+    if (heroPoem && y < window.innerHeight) heroPoem.style.transform = `translateY(${y * -0.06}px)`;
+    ticking = false;
+  };
+  const requestTick = () => {
+    if (!ticking){ requestAnimationFrame(() => { parallax(); onScrollNav(); }); ticking = true; }
+    else onScrollNav();
+  };
+  window.addEventListener('scroll', () => { if (!reduceMotion) requestTick(); else onScrollNav(); }, { passive:true });
+
+  /* ========== 花瓣：Canvas 粒子 ========== */
+  const canvas = document.getElementById('petals');
+  const ctx = canvas.getContext('2d');
+  let W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const petals = [];
+
+  const palette = [
+    ['#f4d7e2','#e3a7c0'], // 淡
+    ['#eec3d3','#d98aa8'], // 桜
+    ['#f7e6ee','#e9b9cd'], // 近白
+    ['#e7a9c1','#c76d91']  // 濃
   ];
 
-  function resize() {
+  function resize(){
     W = window.innerWidth; H = window.innerHeight;
     canvas.width = W * dpr; canvas.height = H * dpr;
     canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var target = Math.round(Math.min(42, Math.max(14, W / 28)));
+    // 画面幅に応じた自然な数（手機は控えめ：桌機 ~400-600px幅で中庸，狭幅で減量）
+    const target = Math.round(Math.min(46, Math.max(16, W / 26)));
     while (petals.length < target) petals.push(makePetal(true));
     while (petals.length > target) petals.pop();
   }
 
-  function makePetal(spawnAnywhere) {
-    var size = 7 + Math.random() * 12;
-    var pal = palette[(Math.random() * palette.length) | 0];
+  function makePetal(spawnAnywhere){
+    const size = 7 + Math.random() * 12;           // 花びらの大きさ
+    const pal = palette[(Math.random() * palette.length) | 0];
     return {
       x: Math.random() * W,
       y: spawnAnywhere ? Math.random() * H : -20 - Math.random() * 80,
-      size: size,
-      vy: 0.35 + Math.random() * 0.6 + size * 0.02,
+      size,
+      // 落下・横流れ
+      vy: 0.35 + Math.random() * 0.65 + size * 0.02,
       vx: (Math.random() - 0.5) * 0.5,
+      // 揺れ（swing）
       sway: 0.6 + Math.random() * 1.4,
       swaySpeed: 0.008 + Math.random() * 0.014,
       phase: Math.random() * Math.PI * 2,
+      // 回転（3D的なひらめき）
       rot: Math.random() * Math.PI * 2,
       vrot: (Math.random() - 0.5) * 0.03,
       flip: Math.random() * Math.PI * 2,
       vflip: 0.02 + Math.random() * 0.035,
       c1: pal[0], c2: pal[1],
-      alpha: 0.5 + Math.random() * 0.4
+      alpha: 0.55 + Math.random() * 0.4
     };
   }
 
-  function drawPetal(p) {
-    var s = p.size;
-    var squish = Math.abs(Math.cos(p.flip));
+  // 一枚の花びら（切れ込みのある桜形）を描く
+  function drawPetal(p){
+    const s = p.size;
+    const squish = Math.abs(Math.cos(p.flip)); // 0..1 で厚み方向の見え（ひらめき）
     ctx.save();
     ctx.translate(p.x, p.y);
     ctx.rotate(p.rot);
-    ctx.scale(1, 0.35 + 0.65 * squish);
+    ctx.scale(1, 0.35 + 0.65 * squish);         // フリップで縦に潰れる
     ctx.globalAlpha = p.alpha * (0.5 + 0.5 * squish);
-    var g = ctx.createLinearGradient(0, -s, 0, s);
-    g.addColorStop(0, p.c1); g.addColorStop(1, p.c2);
+
+    const g = ctx.createLinearGradient(0, -s, 0, s);
+    g.addColorStop(0, p.c1);
+    g.addColorStop(1, p.c2);
     ctx.fillStyle = g;
+
+    // 桜の花びら：先端に切れ込み（notch）
     ctx.beginPath();
-    ctx.moveTo(0, s * 0.92);
-    ctx.bezierCurveTo(s * 0.62, s * 0.5, s * 0.5, -s * 0.55, s * 0.14, -s * 0.86);
-    ctx.quadraticCurveTo(0, -s * 0.66, -s * 0.14, -s * 0.86);
-    ctx.bezierCurveTo(-s * 0.5, -s * 0.55, -s * 0.62, s * 0.5, 0, s * 0.92);
-    ctx.closePath(); ctx.fill();
+    ctx.moveTo(0, s * 0.92);                                   // 付け根
+    ctx.bezierCurveTo( s*0.62, s*0.5,  s*0.5, -s*0.55,  s*0.14, -s*0.86);
+    ctx.quadraticCurveTo(0, -s*0.66, -s*0.14, -s*0.86);       // 先端の切れ込み
+    ctx.bezierCurveTo(-s*0.5, -s*0.55, -s*0.62, s*0.5, 0, s*0.92);
+    ctx.closePath();
+    ctx.fill();
+
+    // 中央の淡い筋
     ctx.globalAlpha *= 0.4;
-    ctx.strokeStyle = p.c2; ctx.lineWidth = Math.max(0.5, s * 0.05);
-    ctx.beginPath(); ctx.moveTo(0, s * 0.78); ctx.lineTo(0, -s * 0.6); ctx.stroke();
+    ctx.strokeStyle = p.c2;
+    ctx.lineWidth = Math.max(0.5, s * 0.05);
+    ctx.beginPath();
+    ctx.moveTo(0, s * 0.78);
+    ctx.lineTo(0, -s * 0.6);
+    ctx.stroke();
+
     ctx.restore();
   }
 
-  var scrollBoost = 0, lastScrollY = window.scrollY;
-  window.addEventListener('scroll', function () {
-    var dy = Math.abs(window.scrollY - lastScrollY);
+  let scrollBoost = 0, lastScrollY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const dy = Math.abs(window.scrollY - lastScrollY);
     lastScrollY = window.scrollY;
-    scrollBoost = Math.min(3.0, scrollBoost + dy * 0.006);
-  }, { passive: true });
+    scrollBoost = Math.min(3.2, scrollBoost + dy * 0.006); // 捲るほど花が舞う
+  }, { passive:true });
 
-  var windPhase = 0, raf;
-  function frame() {
+  // 風：ゆっくり変動するグローバル横流れ
+  let windPhase = 0;
+
+  let raf;
+  function frame(){
     ctx.clearRect(0, 0, W, H);
     windPhase += 0.0016;
-    var wind = Math.sin(windPhase) * 0.5 + Math.sin(windPhase * 2.3) * 0.22;
+    const wind = Math.sin(windPhase) * 0.5 + Math.sin(windPhase * 2.3) * 0.22;
     scrollBoost *= 0.94;
-    for (var i = 0; i < petals.length; i++) {
-      var p = petals[i];
+
+    for (const p of petals){
       p.phase += p.swaySpeed;
-      p.flip += p.vflip;
-      p.rot += p.vrot + Math.sin(p.phase) * 0.006;
+      p.flip  += p.vflip;
+      p.rot   += p.vrot + Math.sin(p.phase) * 0.006;
       p.x += p.vx + Math.sin(p.phase) * p.sway * 0.3 + wind;
       p.y += p.vy * (1 + scrollBoost);
-      if (p.y - p.size > H) { Object.assign(p, makePetal(false)); p.y = -20; }
-      if (p.x < -30) p.x = W + 20; else if (p.x > W + 30) p.x = -20;
+
+      // 画面外で再投入
+      if (p.y - p.size > H){ Object.assign(p, makePetal(false)); p.y = -20; }
+      if (p.x < -30) p.x = W + 20;
+      else if (p.x > W + 30) p.x = -20;
+
       drawPetal(p);
     }
     raf = requestAnimationFrame(frame);
   }
 
-  function start() {
+  function start(){
     resize();
-    if (!reduceMotion) { cancelAnimationFrame(raf); frame(); }
-    else { ctx.clearRect(0, 0, W, H); for (var i = 0; i < Math.min(10, petals.length); i++) { petals[i].y = Math.random() * H; drawPetal(petals[i]); } }
+    if (!reduceMotion){ cancelAnimationFrame(raf); frame(); }
+    else { // 静止：数枚だけ淡く配置
+      ctx.clearRect(0,0,W,H);
+      for (const p of petals.slice(0, 10)){ p.y = Math.random()*H; drawPetal(p); }
+    }
   }
 
-  var rt;
-  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(start, 180); }, { passive: true });
-  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(start); setTimeout(start, 700); }
-  else { window.addEventListener('load', start); }
+  let rt;
+  window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(start, 180); }, { passive:true });
+
+  // フォント適用後にレイアウト確定 → 起動
+  if (document.fonts && document.fonts.ready){
+    document.fonts.ready.then(start);
+    setTimeout(start, 700); // 保険
+  } else {
+    window.addEventListener('load', start);
+  }
   start();
 
-  document.addEventListener('visibilitychange', function () {
+  // タブ非表示で一時停止（省エネ）
+  document.addEventListener('visibilitychange', () => {
     if (document.hidden) cancelAnimationFrame(raf);
     else if (!reduceMotion) frame();
   });
