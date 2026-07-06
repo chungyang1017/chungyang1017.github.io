@@ -131,9 +131,9 @@
     DROP_RADIUS: 0.018,    // 注入水滴的半徑（相對 UV，越小越尖銳）
     DROP_STRENGTH_CLICK: 0.55,  // 點擊落滴的高度
     DROP_STRENGTH_DRAG: 0.14,   // 拖曳連續落滴的高度（較輕，避免拖出巨浪）
-    DROP_STRENGTH_IDLE: 0.30,   // 閒置自動落滴的高度
-    IDLE_MIN: 1.6,         // 閒置後自動落滴的最短間隔（秒）
-    IDLE_MAX: 3.4          // 最長間隔（秒）
+    DROP_STRENGTH_IDLE: 0.42,   // 閒置自動落滴的高度
+    IDLE_MIN: 0.5,         // 閒置後自動落滴的最短間隔（秒）
+    IDLE_MAX: 1.5          // 最長間隔（秒）
   };
 
   var reduceMotion = window.matchMedia &&
@@ -500,7 +500,7 @@
       var now = performance.now();
       if (!reduceMotion && now >= nextIdle) {
         // 只有在使用者一段時間沒動時才自動落滴，避免和互動打架
-        if (now - lastActivity > 900) {
+        if (now - lastActivity > 350) {
           addDrop(rand(0.12, 0.88), rand(0.12, 0.88), CONFIG.DROP_STRENGTH_IDLE);
         }
         nextIdle = now + rand(CONFIG.IDLE_MIN, CONFIG.IDLE_MAX) * 1000;
@@ -509,7 +509,11 @@
       stepSim();
       render();
 
-      if (!started) { started = true; hideMsg(); }
+      if (!started) {
+        started = true; hideMsg();
+        // 開場：盪開一串漣漪，一載入就明顯在動（不必等點擊或閒置）
+        for (var so = 0; so < 7; so++) addDrop(rand(0.15, 0.85), rand(0.15, 0.85), CONFIG.DROP_STRENGTH_IDLE * 1.5);
+      }
       requestAnimationFrame(loop);
     }
 
