@@ -357,15 +357,15 @@
 <script>
   // ── Series definitions（同原攝影頁）
   const SERIES = [
-    { id: 'harugasumi', jp: '春信',  romaji: 'Shunshin',  en: 'Spring',          zh: '春信',   place: '櫻花季', primary: '#d98aa8' },
-    { id: 'aoarashi',   jp: '青嵐',  romaji: 'Aoarashi',  en: 'Summer',          zh: '青嵐',   place: '盛夏', primary: '#5a9a6a' },
-    { id: 'kouyou',     jp: '紅葉',  romaji: 'Kōyō',      en: 'Autumn',          zh: '紅葉',   place: '京都・東京', primary: '#d0603a' },
-    { id: 'yukiakari',  jp: '雪明',  romaji: 'Yukiakari', en: 'Winter',          zh: '雪明',   place: '北海道', primary: '#9fb4c4' },
-    { id: 'kaiyou',     jp: '潮騒',  romaji: 'Shiosai',   en: 'Tideline',        zh: '潮聲',   place: '海岸', primary: '#5a8aa8' },
-    { id: 'sansui',     jp: '山水',  romaji: 'Sansui',    en: 'Landscape',       zh: '山水',   place: '山海', primary: '#6a9a7a' },
-    { id: 'street',     jp: '街',    romaji: 'Machi',     en: 'Street',          zh: '街頭',   place: '台北 ・ 京都', primary: '#c0a060' },
-    { id: 'xpan',       jp: 'Xpan',  romaji: 'Panoramic', en: 'Xpan ・ 65×24',   zh: 'Xpan',  place: '寬幅', primary: '#b0864a' },
-    { id: 'ginen',      jp: '銀塩',  romaji: 'Ginen',     en: 'Silver Halide',   zh: '銀鹽',   place: '正片掃描', primary: '#a89a80' },
+    { id: 'harugasumi', jp: '春信',  romaji: 'Shunshin',  en: 'Spring',          zh: '春信',   place: 'Cherry Season', primary: '#d98aa8' },
+    { id: 'aoarashi',   jp: '青嵐',  romaji: 'Aoarashi',  en: 'Summer',          zh: '青嵐',   place: 'Midsummer', primary: '#5a9a6a' },
+    { id: 'kouyou',     jp: '紅葉',  romaji: 'Kōyō',      en: 'Autumn',          zh: '紅葉',   place: 'Kyoto · Tokyo', primary: '#d0603a' },
+    { id: 'yukiakari',  jp: '雪明',  romaji: 'Yukiakari', en: 'Winter',          zh: '雪明',   place: 'Hokkaido', primary: '#9fb4c4' },
+    { id: 'kaiyou',     jp: '潮騒',  romaji: 'Shiosai',   en: 'Tideline',        zh: '潮聲',   place: 'Coast', primary: '#5a8aa8' },
+    { id: 'sansui',     jp: '山水',  romaji: 'Sansui',    en: 'Landscape',       zh: '山水',   place: 'Mountain place: '山海' Sea', primary: '#6a9a7a' },
+    { id: 'street',     jp: '街',    romaji: 'Machi',     en: 'Street',          zh: '街頭',   place: 'Taipei · Kyoto', primary: '#c0a060' },
+    { id: 'xpan',       jp: 'Xpan',  romaji: 'Panoramic', en: 'Xpan ・ 65×24',   zh: 'Xpan',  place: 'Panoramic', primary: '#b0864a' },
+    { id: 'ginen',      jp: '銀塩',  romaji: 'Ginen',     en: 'Silver Halide',   zh: '銀鹽',   place: 'Film Scan', primary: '#a89a80' },
   ];
 
   const seriesIndex = {};
@@ -395,7 +395,7 @@
           <h2 class="series-name">${sr.jp}</h2>
           <p class="series-romaji">${sr.en}</p>
           <p class="series-haiku">${haikuZh}</p>
-          <p class="series-meta"><span class="n">${photos.length}</span>枚<span class="place">${sr.place}</span></p>
+          <p class="series-meta"><span class="n">${photos.length}</span> frames<span class="place">${sr.place}</span></p>
           <span class="series-enter">翻閱 <span class="arw">→</span></span>
         </div>`;
       screen.addEventListener('click', () => openBook(sr.id, 0));
