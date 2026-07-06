@@ -2,9 +2,9 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>葉崇揚 ・ 縁側 ・ 寫真</title>
-  <meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 寫真九系列：街頭、春信、青嵐、紅葉、雪明、潮騒、山水、Xpan、銀鹽。" />
+  <meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 寫真九系列：春信、青嵐、紅葉、雪明、潮聲、山水、街、Xpan、銀鹽。" />
   <link rel="alternate" hreflang="zh-Hant" href="photography-zh.html" />
   <link rel="alternate" hreflang="en" href="photography.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,199 +12,186 @@
   <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Klee+One:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --engawa-bg: #e0d8c0;
-      --engawa-paper: #f0ebd5;
-      --moss: #3d5a3f;
-      --accent: #c43838;
-      --water: #5a7a8a;
-      --ink: #1f1f1d;
-      --line: rgba(31,31,29,0.18);
-      --line-soft: rgba(31,31,29,0.10);
+      --ink-deep: #0e1512;      /* 深水墨底 */
+      --ink-soft: #1a2420;
+      --sand:      #eef1ea;     /* 淺字 */
+      --sand-soft: #dfe4da;
+      --ink-faint: #96a89f;     /* 深底上的淡字 */
+      --accent:    #6fa89e;     /* 水青（與首頁一致） */
+      --accent-pale:#a9c9c0;
+      --hair-d:   rgba(232,238,228,0.12);
       --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
       --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
       --hand: 'Klee One', cursive;
       --sans: 'Inter', 'Helvetica Neue', sans-serif;
       --ease-ink: cubic-bezier(.19,1,.22,1);
+      --ease: cubic-bezier(.22,.61,.36,1);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
       font-family: var(--jp);
-      background: var(--engawa-bg);
-      color: var(--ink);
+      background: var(--ink-deep);
+      color: var(--sand);
       -webkit-font-smoothing: antialiased;
       line-height: 1.7;
       position: relative;
       overflow-x: hidden;
+      min-height: 100vh;
     }
     body.is-book-open { overflow: hidden; }
 
-    /* Engawa wood floor (subtle background) */
-    .engawa-floor {
-      position: fixed; inset: 0;
-      pointer-events: none;
-      opacity: 0.06; z-index: 1;
-    }
+    /* 花瓣 canvas（極淡，不搶照片） */
+    #petals { position: fixed; inset: 0; z-index: 40; pointer-events: none; }
 
-    /* Header */
+    /* ── Header（深色玻璃 sticky） ── */
     .top {
       position: sticky; top: 0; z-index: 50;
-      background: rgba(224,216,192,0.93);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--line-soft);
+      background: rgba(14,21,18,0.72);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--hair-d);
       padding: 14px 48px;
       display: flex; align-items: center; justify-content: space-between;
     }
     .top-left { display: flex; align-items: center; gap: 16px; }
-    .back { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .back { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.6; text-decoration: none; color: var(--sand); }
+    .back:hover { opacity: 1; }
     .top-sep { font-size: 11px; opacity: 0.3; }
     .name-block { display: inline-flex; align-items: baseline; gap: 8px; }
-    .name-jp { font-family: var(--brush); font-size: 22px; letter-spacing: 0.1em; }
-    .name-en { font-family: var(--sans); font-size: 13px; letter-spacing: 0.08em; opacity: 0.7; }
+    .name-jp { font-family: var(--brush); font-size: 22px; letter-spacing: 0.1em; color: var(--sand); }
+    .name-en { font-family: var(--sans); font-size: 13px; letter-spacing: 0.08em; opacity: 0.6; }
     .nav { display: flex; gap: 24px; font-size: 12px; letter-spacing: 0.25em; }
-    .nav a { color: var(--ink); text-decoration: none; opacity: 0.5; padding-bottom: 4px; }
+    .nav a { color: var(--sand); text-decoration: none; opacity: 0.5; padding-bottom: 4px; transition: opacity .3s; }
+    .nav a:hover { opacity: 0.9; }
     .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
-    .nav .nav-jp { font-size: 10px; opacity: 0.55; letter-spacing: 0.18em; margin-left: 2px; font-family: var(--jp); }
-    .nav .lang { border-left: 1px solid var(--line); padding-left: 24px; font-family: var(--sans); }
+    .nav .lang { border-left: 1px solid var(--hair-d); padding-left: 24px; font-family: var(--sans); }
 
-    /* Hero */
+    /* ── Hero（深色開場） ── */
     .hero {
-      padding: 80px 60px 50px;
+      padding: 84px 60px 40px;
       position: relative; z-index: 2;
-      border-bottom: 1px solid rgba(31,31,29,0.06);
+      max-width: 1280px; margin: 0 auto;
     }
-    .hero-inner { max-width: 1280px; margin: 0 auto; }
-    .hero-eyebrow { font-size: 11px; letter-spacing: 0.5em; opacity: 0.5; margin-bottom: 16px; }
-    .hero-title { margin: 0; font-family: var(--brush); font-size: 88px; font-weight: 400; line-height: 1; letter-spacing: 0.05em; }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 0.5em; opacity: 0.5; margin-bottom: 16px; color: var(--accent-pale); }
+    .hero-title { margin: 0; font-family: var(--brush); font-size: 88px; font-weight: 400; line-height: 1; letter-spacing: 0.05em; color: var(--sand); }
     .hero-sub { margin-top: 12px; font-size: 14px; letter-spacing: 0.3em; opacity: 0.55; }
-    .hero-desc { margin-top: 32px; font-size: 17px; line-height: 2; opacity: 0.82; max-width: 760px; }
+    .hero-desc { margin-top: 28px; font-size: 16px; line-height: 2; opacity: 0.82; max-width: 760px; }
+    .hero-desc .jp { display: block; font-family: var(--jp); font-size: 13px; opacity: 0.6; margin-top: 10px; letter-spacing: 0.06em; }
 
-    /* ── Series index (jump-to bar) ── */
-    .ph-index { padding: 32px 60px 0; max-width: 1320px; margin: 0 auto; position: relative; z-index: 2; }
+    /* ── 系列跳轉 bar（深色） ── */
+    .ph-index { padding: 8px 60px 0; max-width: 1320px; margin: 0 auto; position: relative; z-index: 2; }
     .ph-index-eyebrow {
       font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em;
-      color: var(--accent); text-transform: uppercase;
-      margin-bottom: 1.2rem;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 1rem;
     }
-    .ph-index-eyebrow .jp { font-family: var(--jp); margin-right: 0.5em; letter-spacing: 0.4em; text-transform: none; color: var(--ink); }
+    .ph-index-eyebrow .jp { font-family: var(--jp); margin-right: 0.5em; letter-spacing: 0.4em; text-transform: none; color: var(--sand); }
     .ph-index-list {
       display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0;
-      border-top: 1px solid rgba(31,31,29,0.18);
-      border-bottom: 1px solid rgba(31,31,29,0.18);
+      border-top: 1px solid var(--hair-d); border-bottom: 1px solid var(--hair-d);
     }
-    .ph-index-list li {
-      flex: 1 0 auto;
-      border-right: 1px solid rgba(31,31,29,0.10);
-    }
+    .ph-index-list li { flex: 1 0 auto; border-right: 1px solid var(--hair-d); }
     .ph-index-list li:last-child { border-right: none; }
     .ph-index-list button {
-      display: block; width: 100%;
-      background: transparent; border: none;
-      padding: 1.1rem 1.4rem; cursor: pointer;
-      text-align: left; color: var(--ink); font-family: inherit;
-      transition: background 0.3s;
+      display: block; width: 100%; background: transparent; border: none;
+      padding: 1rem 1.3rem; cursor: pointer; text-align: left; color: var(--sand);
+      font-family: inherit; transition: background 0.3s;
     }
-    .ph-index-list button:hover { background: rgba(31,31,29,0.05); }
-    .ph-index-list .name-jp {
-      display: block; font-family: var(--brush);
-      font-size: 1.2rem; letter-spacing: 0.12em; margin-bottom: 0.25rem;
-    }
-    .ph-index-list .name-en {
-      display: block; font-family: var(--sans); font-size: 0.72rem;
-      color: rgba(31,31,29,0.55); letter-spacing: 0.18em; text-transform: uppercase;
-    }
-    .ph-index-list .count {
-      font-family: var(--sans); font-size: 0.7rem;
-      color: var(--accent); margin-left: 0.4rem;
-    }
+    .ph-index-list button:hover { background: rgba(232,238,228,0.06); }
+    .ph-index-list .name-jp { display: block; font-family: var(--brush); font-size: 1.15rem; letter-spacing: 0.12em; margin-bottom: 0.2rem; color: var(--sand); }
+    .ph-index-list .name-en { display: block; font-family: var(--sans); font-size: 0.68rem; color: var(--ink-faint); letter-spacing: 0.18em; text-transform: uppercase; }
+    .ph-index-list .count { font-family: var(--sans); font-size: 0.66rem; color: var(--accent); margin-left: 0.4rem; }
 
-    /* ── Series rows (9 categories top→bottom, each scrolls horizontally) ── */
-    .series-rows { padding: 24px 0 80px; max-width: 1320px; margin: 0 auto; position: relative; z-index: 2; }
-    .series-row { padding: 32px 0 28px; border-top: 1px solid rgba(31,31,29,0.16); scroll-margin-top: 90px; }
-    .series-row:first-child { border-top: none; padding-top: 16px; }
-    .series-row-head {
-      display: flex; align-items: baseline; justify-content: space-between;
-      gap: 16px;
-      padding: 0 60px 18px;
+    /* ══ 全螢幕系列段 ══════════════════════════════ */
+    .series-screens { position: relative; z-index: 2; }
+    .series-screen {
+      position: relative; min-height: 100svh;
+      display: grid; align-items: center;
+      overflow: hidden; cursor: pointer;
+      border-top: 1px solid var(--hair-d);
     }
-    .series-row-title { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
-    .series-row-jp { font-family: var(--brush); font-size: 34px; letter-spacing: 0.06em; line-height: 1; }
-    .series-row-en {
-      font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em;
-      opacity: 0.5; text-transform: uppercase;
+    .series-screen-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      will-change: transform;
+      transition: transform 1.4s var(--ease-ink);
+      transform: scale(1.03);
     }
-    .series-row-meta {
-      font-family: var(--sans); font-size: 11px; opacity: 0.55;
-      letter-spacing: 0.2em; white-space: nowrap;
+    .series-screen:hover .series-screen-bg { transform: scale(1.06); }
+    .series-veil {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 60% at 32% 50%, rgba(10,16,13,0.5) 0%, rgba(10,16,13,0) 62%),
+        linear-gradient(180deg, rgba(10,16,13,0.72) 0%, rgba(10,16,13,0.28) 20%, rgba(10,16,13,0.28) 58%, rgba(10,16,13,0.82) 100%);
     }
-    .series-row-meta .count-num { color: var(--accent); margin-right: 0.5em; }
-    .series-row-meta .place { margin-left: 14px; }
+    .series-inner {
+      position: relative; z-index: 2;
+      width: min(1180px, 88vw); margin-inline: auto;
+      padding: 100px 0;
+      text-shadow: 0 2px 24px rgba(10,16,13,0.6), 0 1px 3px rgba(10,16,13,0.5);
+    }
+    .series-eyebrow {
+      font-family: var(--sans); font-size: 12px; letter-spacing: 0.4em;
+      text-transform: uppercase; color: var(--accent-pale);
+      margin-bottom: 22px; display: flex; align-items: center; gap: 14px;
+    }
+    .series-eyebrow::before { content: ""; width: 38px; height: 1px; background: var(--sr-accent, var(--accent-pale)); opacity: 0.8; }
+    .series-name {
+      font-family: var(--brush); font-weight: 400;
+      font-size: clamp(64px, 11vw, 150px); line-height: 0.98; letter-spacing: 0.05em;
+      color: var(--sand); margin-bottom: 6px;
+    }
+    .series-romaji {
+      font-family: var(--sans); font-weight: 300;
+      font-size: clamp(13px, 1.5vw, 17px); letter-spacing: 0.34em;
+      text-transform: uppercase; color: var(--accent-pale); margin-bottom: 26px;
+    }
+    .series-haiku {
+      font-family: var(--jp); font-weight: 400;
+      font-size: clamp(17px, 2vw, 24px); line-height: 2.1;
+      color: var(--sand); max-width: 26ch;
+      padding-left: 18px; position: relative; opacity: 0.95;
+    }
+    .series-haiku::before {
+      content: ""; position: absolute; left: 0; top: 0.3em; bottom: 0.3em; width: 2px;
+      background: var(--sr-accent, var(--accent)); opacity: 0.75;
+    }
+    .series-meta {
+      margin-top: 26px; font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.2em; color: var(--ink-faint);
+    }
+    .series-meta .n { color: var(--sr-accent, var(--accent)); font-size: 1.15em; margin-right: 0.2em; }
+    .series-meta .place { margin-left: 12px; }
+    .series-enter {
+      display: inline-flex; align-items: center; gap: 0.6em;
+      margin-top: 30px; font-family: var(--jp); font-size: 15px; letter-spacing: 0.16em;
+      color: var(--sand); border-bottom: 1px solid var(--sr-accent, var(--accent));
+      padding-bottom: 3px; transition: gap 0.35s var(--ease);
+    }
+    .series-screen:hover .series-enter { gap: 1em; }
+    .series-enter .arw { font-family: var(--sans); }
 
-    .series-row-scroll {
-      display: flex; gap: 12px;
-      overflow-x: auto; overflow-y: hidden;
-      padding: 4px 60px 18px;
-      scroll-snap-type: x proximity;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-color: rgba(31,31,29,0.25) transparent;
-    }
-    .series-row-scroll::-webkit-scrollbar { height: 6px; }
-    .series-row-scroll::-webkit-scrollbar-track { background: transparent; }
-    .series-row-scroll::-webkit-scrollbar-thumb { background: rgba(31,31,29,0.20); border-radius: 3px; }
-    .series-row-scroll::-webkit-scrollbar-thumb:hover { background: rgba(31,31,29,0.35); }
-
-    .thumb {
-      flex: 0 0 auto;
-      height: 240px;
-      background: rgba(31,31,29,0.08);
-      border: none; padding: 0; margin: 0;
-      cursor: pointer; position: relative;
-      overflow: hidden;
-      scroll-snap-align: start;
-      transition: transform 0.3s ease;
-    }
-    .thumb img {
-      height: 100%; width: auto;
-      display: block; object-fit: cover;
-      transition: transform 0.5s ease, filter 0.3s ease;
-      filter: saturate(0.95);
-    }
-    .thumb:hover img { transform: scale(1.04); filter: saturate(1.05); }
-    .thumb-num {
-      position: absolute; left: 8px; bottom: 6px;
-      font-family: var(--sans); font-size: 9px;
-      letter-spacing: 0.18em; color: #f8f0dc;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.6);
-      opacity: 0; transition: opacity 0.25s;
-      pointer-events: none;
-    }
-    .thumb:hover .thumb-num { opacity: 0.9; }
-
-    /* Footer */
+    /* ── Footer ── */
     footer {
-      border-top: 1px solid var(--line);
-      padding: 32px 60px;
-      max-width: 1280px; margin: 0 auto;
+      border-top: 1px solid var(--hair-d);
+      padding: 32px 60px; max-width: 1280px; margin: 0 auto;
       display: flex; justify-content: space-between;
       font-size: 11px; opacity: 0.55; letter-spacing: 0.2em;
-      font-family: var(--sans);
-      position: relative; z-index: 2;
+      font-family: var(--sans); position: relative; z-index: 2;
     }
 
-    /* ── Lightbox (classic style) ── */
+    /* ══ Lightbox（完全沿用原攝影頁，不動） ══ */
     .lightbox {
       position: fixed; inset: 0; z-index: 100;
-      background: rgba(15,12,9,0.96);
+      background: rgba(8,10,9,0.97);
       display: none; align-items: center; justify-content: center;
-      padding: 2rem;
-      cursor: zoom-out;
+      padding: 2rem; cursor: zoom-out;
     }
     .lightbox.is-open { display: flex; }
     .lightbox-figure {
       max-width: 96vw; max-height: 92vh;
       display: flex; flex-direction: row; align-items: center;
-      gap: 2.5rem;
-      cursor: default;
+      gap: 2.5rem; cursor: default;
     }
     .lightbox-img {
       max-width: 70vw; max-height: 88vh;
@@ -213,75 +200,53 @@
     }
     .lightbox-img.is-flipping { opacity: 0; }
     .lightbox-caption {
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      max-height: 80vh;
-      color: rgba(232,226,212,0.78);
+      writing-mode: vertical-rl; text-orientation: mixed;
+      max-height: 80vh; color: rgba(232,226,212,0.78);
       display: flex; flex-direction: column;
-      gap: 1.6rem; align-items: flex-start;
-      padding: 1rem 0;
+      gap: 1.6rem; align-items: flex-start; padding: 1rem 0;
     }
     .lightbox-caption .lb-title {
-      font-family: var(--jp); font-size: 14px;
-      letter-spacing: 0.22em;
+      font-family: var(--jp); font-size: 14px; letter-spacing: 0.22em;
       color: rgba(232,226,212,0.5);
     }
     .lightbox-caption .lb-title .romaji {
-      font-family: var(--sans); font-style: italic;
-      font-size: 12px; color: rgba(232,226,212,0.4);
-      letter-spacing: 0.08em;
-      display: block; margin-top: 0.5rem;
-      writing-mode: horizontal-tb;
+      font-family: var(--sans); font-style: italic; font-size: 12px;
+      color: rgba(232,226,212,0.4); letter-spacing: 0.08em;
+      display: block; margin-top: 0.5rem; writing-mode: horizontal-tb;
     }
     .lightbox-caption .lb-haiku-jp {
       font-family: var(--jp); font-size: 1.4rem; line-height: 2.4;
-      color: rgba(232,226,212,0.95);
-      letter-spacing: 0.18em;
+      color: rgba(232,226,212,0.95); letter-spacing: 0.18em;
     }
     .lightbox-caption .lb-haiku-zh {
       font-family: var(--jp); font-size: 1.05rem; line-height: 2.1;
-      color: rgba(232,226,212,0.65);
-      letter-spacing: 0.14em;
+      color: rgba(232,226,212,0.65); letter-spacing: 0.14em;
     }
     .lightbox-close, .lightbox-prev, .lightbox-next {
-      position: absolute;
-      background: rgba(232,226,212,0.06);
-      border: 1px solid rgba(232,226,212,0.18);
-      color: rgba(232,226,212,0.9);
-      width: 44px; height: 44px;
-      font-size: 1.5rem; line-height: 1;
+      position: absolute; background: rgba(232,226,212,0.06);
+      border: 1px solid rgba(232,226,212,0.18); color: rgba(232,226,212,0.9);
+      width: 44px; height: 44px; font-size: 1.5rem; line-height: 1;
       display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer; transition: background 0.2s, border-color 0.2s;
     }
     .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
-      background: rgba(196,56,56,0.25); border-color: rgba(196,56,56,0.5);
+      background: rgba(111,168,158,0.28); border-color: rgba(111,168,158,0.55);
     }
     .lightbox-close { top: 1.25rem; right: 1.25rem; }
     .lightbox-prev { left: 1.25rem; top: 50%; transform: translateY(-50%); }
     .lightbox-next { right: 1.25rem; top: 50%; transform: translateY(-50%); }
     .lightbox-counter {
       position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
-      font-family: var(--sans); font-size: 0.78rem;
-      letter-spacing: 0.18em;
+      font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.18em;
       color: rgba(232,226,212,0.55);
     }
 
-    /* ══ 水墨動態層 ══════════════════════════════════ */
-    #petals { position: fixed; inset: 0; z-index: 40; pointer-events: none; }
-    .paper-grain { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-    .paper-grain::after {
-      content: ""; position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
-      opacity: 0.06; mix-blend-mode: multiply;
-    }
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s var(--ease-ink), transform 0.8s var(--ease-ink); }
-    .reveal.in { opacity: 1; transform: none; }
-    .reveal.d1 { transition-delay: 0.08s; }
-    .reveal.d2 { transition-delay: 0.16s; }
-    .reveal.d3 { transition-delay: 0.24s; }
+    /* ── reveal（漸進增強：預設可見，js 就緒才隱藏待揭示） ── */
+    .reveal { opacity: 1; }
+    .js-anim .reveal { opacity: 0; transform: translateY(28px); transition: opacity 1s var(--ease-ink), transform 1s var(--ease-ink); will-change: opacity, transform; }
+    .js-anim .reveal.in { opacity: 1; transform: none; }
 
-    /* Mobile */
+    /* ── Mobile ── */
     @media (max-width: 760px) {
       .top { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
       .top-left { gap: 10px; }
@@ -292,40 +257,26 @@
       .nav a.nav-sub { display: none; }
       .nav .lang { padding-left: 14px; }
 
-      .hero { padding: 50px 22px 32px; }
+      .hero { padding: 54px 22px 26px; }
       .hero-title { font-size: 56px; }
       .hero-sub { font-size: 12px; }
-      .hero-desc { font-size: 16px; margin-top: 24px; }
+      .hero-desc { font-size: 15px; margin-top: 22px; }
 
-      .ph-index { padding: 22px 22px 0; }
+      .ph-index { padding: 6px 22px 0; }
       .ph-index-list { flex-direction: column; }
-      .ph-index-list li { flex: 1 1 auto; border-right: none; border-bottom: 1px solid rgba(31,31,29,0.10); }
+      .ph-index-list li { flex: 1 1 auto; border-right: none; border-bottom: 1px solid var(--hair-d); }
       .ph-index-list li:last-child { border-bottom: none; }
-      .ph-index-list button { padding: 0.9rem 1.1rem; }
-      .ph-index-list .name-jp { font-size: 1.1rem; }
-      .ph-index-list .name-en { font-size: 0.7rem; }
 
-      .series-rows { padding: 14px 0 56px; }
-      .series-row { padding: 22px 0 18px; }
-      .series-row-head { padding: 0 22px 12px; gap: 10px; }
-      .series-row-jp { font-size: 26px; }
-      .series-row-en { font-size: 10px; letter-spacing: 0.22em; }
-      .series-row-meta { font-size: 10px; }
-      .series-row-meta .place { margin-left: 8px; }
-      .series-row-scroll { padding: 4px 22px 14px; gap: 8px; }
-      .thumb { height: 180px; }
+      .series-inner { width: 84vw; padding: 80px 0; }
+      .series-name { font-size: clamp(52px, 17vw, 92px); }
+      .series-haiku { max-width: none; font-size: clamp(16px, 4.6vw, 21px); }
 
-      /* Lightbox: photo on top, caption below (horizontal text) */
       .lightbox { padding: 1rem; }
-      .lightbox-figure { flex-direction: column; gap: 1rem; max-width: 96vw; max-height: 92vh; }
+      .lightbox-figure { flex-direction: column; gap: 1rem; }
       .lightbox-img { max-width: 92vw; max-height: 65vh; }
       .lightbox-caption {
-        writing-mode: horizontal-tb;
-        flex-direction: column;
-        max-height: none;
-        text-align: center;
-        padding: 0;
-        gap: 0.6rem;
+        writing-mode: horizontal-tb; flex-direction: column;
+        max-height: none; text-align: center; padding: 0; gap: 0.6rem;
       }
       .lightbox-caption .lb-title { font-size: 11px; letter-spacing: 0.2em; }
       .lightbox-caption .lb-haiku-jp { font-size: 1.05rem; line-height: 1.85; letter-spacing: 0.1em; }
@@ -337,24 +288,15 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1 !important; transform: none !important; transition: none; }
+      .series-screen-bg { transform: none !important; transition: none; }
     }
   </style>
 </head>
 <body>
 
-<div class="paper-grain" aria-hidden="true"></div>
 <canvas id="petals" aria-hidden="true"></canvas>
-
-<svg class="engawa-floor" aria-hidden="true">
-  <defs>
-    <pattern id="planks" x="0" y="0" width="200" height="60" patternUnits="userSpaceOnUse">
-      <line x1="0" y1="0" x2="200" y2="0" stroke="#1f1f1d" stroke-width="0.6" />
-      <line x1="80" y1="0" x2="80" y2="60" stroke="#1f1f1d" stroke-width="0.4" />
-    </pattern>
-  </defs>
-  <rect width="100%" height="100%" fill="url(#planks)" />
-</svg>
 
 <header class="top">
   <div class="top-left">
@@ -377,16 +319,13 @@
 </header>
 
 <section class="hero">
-  <div class="hero-inner">
-    <p class="hero-eyebrow reveal">第三室 · 縁側 ENGAWA</p>
-    <h1 class="hero-title reveal d1">寫真</h1>
-    <p class="hero-sub reveal d1">PHOTOGRAPHY · 9 系列 · 171 件作品</p>
-    <p class="hero-desc reveal d2">
-      内と外の境。庭が一冊の本となる場所。<br/>
-      於我而言，寫真是一種觀察與敘事的方法。將近三十年來，它與研究並行——一種以文字深入，一種以光影靠近。<br/>
-      作品依九個系列分類：春信、青嵐、紅葉、雪明、潮聲、山水、街、Xpan、銀鹽。與其說是有計畫的專案，更像是被光與季節推著走的紀錄。它們合起來，是一份緩慢的觀看。
-    </p>
-  </div>
+  <p class="hero-eyebrow reveal">第三室 · 縁側 ENGAWA</p>
+  <h1 class="hero-title reveal">寫真</h1>
+  <p class="hero-sub reveal">PHOTOGRAPHY · 9 系列 · 171 件作品</p>
+  <p class="hero-desc reveal">
+    内と外の境。庭が一冊の本となる場所。將近三十年來，寫真與研究並行——一種以文字深入，一種以光影靠近。往下捲，九個系列一屏一屏展開；點任一系列，翻閱其中每一張。
+    <span class="jp">研究と並走してきた、もう一つの眼差し。九つの季節。</span>
+  </p>
 </section>
 
 <div class="ph-index">
@@ -394,14 +333,14 @@
   <ul class="ph-index-list" id="series-index"></ul>
 </div>
 
-<div class="series-rows" id="series-rows"></div>
+<div class="series-screens" id="series-rows"></div>
 
 <footer>
   <span>YEH CHUNG-YANG</span>
   <span>2026 ・ 夏 ・ 縁側</span>
 </footer>
 
-<!-- Classic lightbox -->
+<!-- Lightbox（沿用原攝影頁，不動） -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
   <button class="lightbox-close" id="lightbox-close" type="button" aria-label="關閉">×</button>
   <button class="lightbox-prev" id="lightbox-prev" type="button" aria-label="前">‹</button>
@@ -415,65 +354,56 @@
 
 <script src="js/photo-data.js"></script>
 <script>
-  // ── Series definitions (matches photo-data.js theme ids)
+  // ── Series definitions（同原攝影頁）
   const SERIES = [
     { id: 'harugasumi', jp: '春信',  romaji: 'Shunshin',  en: 'Spring',          zh: '春信',   place: '櫻花季', primary: '#d98aa8' },
-    { id: 'aoarashi',   jp: '青嵐',  romaji: 'Aoarashi',  en: 'Summer',          zh: '青嵐',   place: '盛夏', primary: '#5a7a4a' },
-    { id: 'kouyou',     jp: '紅葉',  romaji: 'Kōyō',      en: 'Autumn',          zh: '紅葉',   place: '京都・東京', primary: '#c43838' },
-    { id: 'yukiakari',  jp: '雪明',  romaji: 'Yukiakari', en: 'Winter',          zh: '雪明',   place: '北海道', primary: '#a0a8ad' },
-    { id: 'kaiyou',     jp: '潮騒',  romaji: 'Shiosai',   en: 'Tideline',        zh: '潮聲',   place: '海岸', primary: '#5a7a8a' },
-    { id: 'sansui',     jp: '山水',  romaji: 'Sansui',    en: 'Landscape',       zh: '山水',   place: '山海', primary: '#3d5a3f' },
-    { id: 'street',     jp: '街',    romaji: 'Machi',     en: 'Street',          zh: '街頭',   place: '台北 ・ 京都', primary: '#1f1f1d' },
-    { id: 'xpan',       jp: 'Xpan',  romaji: 'Panoramic', en: 'Xpan ・ 65×24',   zh: 'Xpan',  place: '寬幅', primary: '#7a5a3a' },
-    { id: 'ginen',      jp: '銀塩',  romaji: 'Ginen',     en: 'Silver Halide',   zh: '銀鹽',   place: '正片掃描', primary: '#6b6256' },
+    { id: 'aoarashi',   jp: '青嵐',  romaji: 'Aoarashi',  en: 'Summer',          zh: '青嵐',   place: '盛夏', primary: '#5a9a6a' },
+    { id: 'kouyou',     jp: '紅葉',  romaji: 'Kōyō',      en: 'Autumn',          zh: '紅葉',   place: '京都・東京', primary: '#d0603a' },
+    { id: 'yukiakari',  jp: '雪明',  romaji: 'Yukiakari', en: 'Winter',          zh: '雪明',   place: '北海道', primary: '#9fb4c4' },
+    { id: 'kaiyou',     jp: '潮騒',  romaji: 'Shiosai',   en: 'Tideline',        zh: '潮聲',   place: '海岸', primary: '#5a8aa8' },
+    { id: 'sansui',     jp: '山水',  romaji: 'Sansui',    en: 'Landscape',       zh: '山水',   place: '山海', primary: '#6a9a7a' },
+    { id: 'street',     jp: '街',    romaji: 'Machi',     en: 'Street',          zh: '街頭',   place: '台北 ・ 京都', primary: '#c0a060' },
+    { id: 'xpan',       jp: 'Xpan',  romaji: 'Panoramic', en: 'Xpan ・ 65×24',   zh: 'Xpan',  place: '寬幅', primary: '#b0864a' },
+    { id: 'ginen',      jp: '銀塩',  romaji: 'Ginen',     en: 'Silver Halide',   zh: '銀鹽',   place: '正片掃描', primary: '#a89a80' },
   ];
 
-  // ── Build per-series photo lists from photoData
   const seriesIndex = {};
-  SERIES.forEach(sr => {
-    seriesIndex[sr.id] = photoData.filter(p => p.themes && p.themes.includes(sr.id));
-  });
+  SERIES.forEach(sr => { seriesIndex[sr.id] = photoData.filter(p => p.themes && p.themes.includes(sr.id)); });
 
-  // ── Render 9 series rows, each with horizontal-scroll thumbnails
-  function renderRows() {
+  // ── 全螢幕系列段：每系列一屏，代表照背景＋系列名俳句＋翻閱
+  function renderScreens() {
     const root = document.getElementById('series-rows');
+    let si = 0;
     SERIES.forEach(sr => {
       const photos = seriesIndex[sr.id] || [];
       if (photos.length === 0) return;
+      const cover = photos[0];
+      const coverSrc = cover.src;
+      const haikuZh = (cover.haiku_zh || '').replace(/[／\/]\s*/g, '<br>');
+      const eager = si < 3 ? 'eager' : 'lazy';
 
-      const row = document.createElement('section');
-      row.className = 'series-row reveal';
-      row.dataset.seriesId = sr.id;
-
-      const head = document.createElement('div');
-      head.className = 'series-row-head';
-      head.innerHTML = `
-        <div class="series-row-title">
-          <span class="series-row-jp">${sr.jp}</span>
-          <span class="series-row-en">${sr.romaji} · ${sr.en}</span>
-        </div>
-        <div class="series-row-meta"><span class="count-num">${photos.length}</span>枚<span class="place">${sr.place}</span></div>
-      `;
-
-      const scroll = document.createElement('div');
-      scroll.className = 'series-row-scroll';
-      photos.forEach((p, i) => {
-        const t = document.createElement('button');
-        t.className = 'thumb';
-        t.type = 'button';
-        const alt = p.title_zh || p.title_jp || ('No.' + p.num);
-        t.innerHTML = `<img src="${p.src}" alt="${alt}" loading="lazy"><span class="thumb-num">No.${p.num}</span>`;
-        t.addEventListener('click', () => openBook(sr.id, i));
-        scroll.appendChild(t);
-      });
-
-      row.appendChild(head);
-      row.appendChild(scroll);
-      root.appendChild(row);
+      const screen = document.createElement('section');
+      screen.className = 'series-screen reveal';
+      screen.dataset.seriesId = sr.id;
+      screen.style.setProperty('--sr-accent', sr.primary);
+      screen.innerHTML = `
+        <img class="series-screen-bg" src="${coverSrc}" alt="${sr.zh}系列代表作" loading="${eager}">
+        <div class="series-veil"></div>
+        <div class="series-inner">
+          <p class="series-eyebrow">${sr.romaji} · ${sr.en}</p>
+          <h2 class="series-name">${sr.jp}</h2>
+          <p class="series-romaji">${sr.zh}</p>
+          <p class="series-haiku">${haikuZh}</p>
+          <p class="series-meta"><span class="n">${photos.length}</span>枚<span class="place">${sr.place}</span></p>
+          <span class="series-enter">翻閱 <span class="arw">→</span></span>
+        </div>`;
+      screen.addEventListener('click', () => openBook(sr.id, 0));
+      root.appendChild(screen);
+      si++;
     });
   }
 
-  // ── Render jump-to bar (clicking a series scrolls to its row)
+  // ── 系列跳轉 bar：點系列 → 平滑捲到該系列段
   function renderIndex() {
     const indexList = document.getElementById('series-index');
     SERIES.forEach(sr => {
@@ -483,25 +413,26 @@
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.innerHTML = `<span class="name-jp">${sr.jp}</span><span class="name-en">${sr.en}<span class="count">${photos.length}</span></span>`;
-      btn.addEventListener('click', () => openBook(sr.id, 0));
+      btn.addEventListener('click', () => {
+        const seg = document.querySelector(`.series-screen[data-series-id="${sr.id}"]`);
+        if (seg) seg.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
       li.appendChild(btn);
       indexList.appendChild(li);
     });
   }
 
-  renderRows();
+  renderScreens();
   renderIndex();
 
-  // ── Lightbox
-  // Classic lightbox
-  let lbState = null; // { sr, photos, idx }
+  // ══ Lightbox（完全沿用原攝影頁邏輯，未改動） ══
+  let lbState = null;
   let isFlipping = false;
   const lbEl = document.getElementById('lightbox');
   const lbImg = document.getElementById('lightbox-img');
   const lbCap = document.getElementById('lightbox-caption');
   const lbCounter = document.getElementById('lightbox-counter');
 
-  // Rebind: series cards open lightbox instead of book
   function openBook(seriesId, idx = 0) {
     const sr = SERIES.find(s => s.id === seriesId);
     const photos = seriesIndex[seriesId] || [];
@@ -565,10 +496,40 @@
   });
 </script>
 
+<!-- reveal 揭示（首頁漸進增強版：IO 為主，scroll／計時器備援） -->
 <script>
-  // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
-  // 偶爾因 sticky header + backdrop-filter 而整頁空白。
-  // 偵測到從快取還原時，強制觸發一次重繪。
+(function () {
+  "use strict";
+  document.documentElement.classList.add('js-anim');
+  var revealables = document.querySelectorAll('.reveal');
+  var markIn = function (el) { el.classList.add('in'); };
+  var revealVisibleNow = function () {
+    var vh = window.innerHeight;
+    revealables.forEach(function (el) {
+      if (el.classList.contains('in')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.98 && r.bottom > 0) markIn(el);
+    });
+  };
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) if (entries[i].isIntersecting) markIn(entries[i].target);
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    revealables.forEach(function (el) { io.observe(el); });
+  } else {
+    revealables.forEach(markIn);
+  }
+  window.addEventListener('scroll', revealVisibleNow, { passive: true });
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) revealVisibleNow(); });
+  window.addEventListener('pageshow', revealVisibleNow);
+  setTimeout(revealVisibleNow, 400);
+  setTimeout(revealVisibleNow, 1600);
+  revealVisibleNow();
+})();
+</script>
+
+<!-- BFCache 還原修復（iOS Safari sticky+backdrop 空白對策） -->
+<script>
   window.addEventListener('pageshow', function(e) {
     if (e.persisted) {
       document.body.style.display = 'none';
@@ -578,144 +539,78 @@
   });
 </script>
 
-<!-- ══ 水墨動態：花瓣（淡）· scroll 揭示 ══════════════ -->
+<!-- 花瓣：Canvas 粒子（極淡，深色上淺色，不搶照片） -->
 <script>
 (function () {
   "use strict";
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ── scroll 揭示（系列逐段浮現） ── */
-  var revealables = document.querySelectorAll('.reveal');
-  var markIn = function (el) { el.classList.add('in'); };
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      for (var i = 0; i < entries.length; i++) {
-        if (entries[i].isIntersecting) { markIn(entries[i].target); io.unobserve(entries[i].target); }
-      }
-    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-    revealables.forEach(function (el) { io.observe(el); });
-    var revealVisibleNow = function () {
-      var vh = window.innerHeight;
-      revealables.forEach(function (el) {
-        if (el.classList.contains('in')) return;
-        var r = el.getBoundingClientRect();
-        if (r.top < vh * 0.98 && r.bottom > 0) { markIn(el); io.unobserve(el); }
-      });
-    };
-    document.addEventListener('visibilitychange', function () { if (!document.hidden) revealVisibleNow(); });
-    window.addEventListener('pageshow', revealVisibleNow);
-    setTimeout(revealVisibleNow, 2400);
-  } else {
-    revealables.forEach(markIn);
-  }
-
-  /* ── 花瓣：Canvas 粒子（畫廊用，淡而少，不搶照片） ── */
   var canvas = document.getElementById('petals');
   if (!canvas || !canvas.getContext) return;
   var ctx = canvas.getContext('2d');
   var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
   var petals = [];
-  var palette = [
-    ['#f4d7e2', '#e3a7c0'],
-    ['#eec3d3', '#d98aa8'],
-    ['#f7e6ee', '#e9b9cd'],
-    ['#e7a9c1', '#c76d91']
-  ];
+  var palette = [ ['#dfe9e4', '#a9c9c0'], ['#eef1ea', '#c9d8d0'], ['#cfe0d8', '#9fc0b6'] ];
 
   function resize() {
     W = window.innerWidth; H = window.innerHeight;
     canvas.width = W * dpr; canvas.height = H * dpr;
     canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var target = Math.round(Math.min(28, Math.max(8, W / 44)));
+    var target = Math.round(Math.min(20, Math.max(6, W / 60)));
     while (petals.length < target) petals.push(makePetal(true));
     while (petals.length > target) petals.pop();
   }
-
-  function makePetal(spawnAnywhere) {
-    var size = 6 + Math.random() * 10;
+  function makePetal(anywhere) {
+    var size = 5 + Math.random() * 8;
     var pal = palette[(Math.random() * palette.length) | 0];
     return {
-      x: Math.random() * W,
-      y: spawnAnywhere ? Math.random() * H : -20 - Math.random() * 80,
-      size: size,
-      vy: 0.3 + Math.random() * 0.5 + size * 0.02,
-      vx: (Math.random() - 0.5) * 0.5,
-      sway: 0.6 + Math.random() * 1.4,
-      swaySpeed: 0.008 + Math.random() * 0.014,
-      phase: Math.random() * Math.PI * 2,
-      rot: Math.random() * Math.PI * 2,
-      vrot: (Math.random() - 0.5) * 0.03,
-      flip: Math.random() * Math.PI * 2,
-      vflip: 0.02 + Math.random() * 0.035,
-      c1: pal[0], c2: pal[1],
-      alpha: 0.28 + Math.random() * 0.32
+      x: Math.random() * W, y: anywhere ? Math.random() * H : -20 - Math.random() * 80,
+      size: size, vy: 0.25 + Math.random() * 0.4 + size * 0.02, vx: (Math.random() - 0.5) * 0.4,
+      sway: 0.6 + Math.random() * 1.2, swaySpeed: 0.008 + Math.random() * 0.012,
+      phase: Math.random() * Math.PI * 2, rot: Math.random() * Math.PI * 2, vrot: (Math.random() - 0.5) * 0.025,
+      flip: Math.random() * Math.PI * 2, vflip: 0.02 + Math.random() * 0.03,
+      c1: pal[0], c2: pal[1], alpha: 0.14 + Math.random() * 0.2
     };
   }
-
   function drawPetal(p) {
-    var s = p.size;
-    var squish = Math.abs(Math.cos(p.flip));
-    ctx.save();
-    ctx.translate(p.x, p.y);
-    ctx.rotate(p.rot);
-    ctx.scale(1, 0.35 + 0.65 * squish);
+    var s = p.size, squish = Math.abs(Math.cos(p.flip));
+    ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.scale(1, 0.35 + 0.65 * squish);
     ctx.globalAlpha = p.alpha * (0.5 + 0.5 * squish);
     var g = ctx.createLinearGradient(0, -s, 0, s);
-    g.addColorStop(0, p.c1); g.addColorStop(1, p.c2);
-    ctx.fillStyle = g;
-    ctx.beginPath();
-    ctx.moveTo(0, s * 0.92);
+    g.addColorStop(0, p.c1); g.addColorStop(1, p.c2); ctx.fillStyle = g;
+    ctx.beginPath(); ctx.moveTo(0, s * 0.92);
     ctx.bezierCurveTo(s * 0.62, s * 0.5, s * 0.5, -s * 0.55, s * 0.14, -s * 0.86);
     ctx.quadraticCurveTo(0, -s * 0.66, -s * 0.14, -s * 0.86);
     ctx.bezierCurveTo(-s * 0.5, -s * 0.55, -s * 0.62, s * 0.5, 0, s * 0.92);
-    ctx.closePath(); ctx.fill();
-    ctx.restore();
+    ctx.closePath(); ctx.fill(); ctx.restore();
   }
-
   var scrollBoost = 0, lastScrollY = window.scrollY;
   window.addEventListener('scroll', function () {
-    var dy = Math.abs(window.scrollY - lastScrollY);
-    lastScrollY = window.scrollY;
-    scrollBoost = Math.min(2.4, scrollBoost + dy * 0.005);
+    var dy = Math.abs(window.scrollY - lastScrollY); lastScrollY = window.scrollY;
+    scrollBoost = Math.min(2.0, scrollBoost + dy * 0.004);
   }, { passive: true });
-
   var windPhase = 0, raf;
   function frame() {
-    ctx.clearRect(0, 0, W, H);
-    windPhase += 0.0015;
-    var wind = Math.sin(windPhase) * 0.45 + Math.sin(windPhase * 2.3) * 0.2;
+    ctx.clearRect(0, 0, W, H); windPhase += 0.0014;
+    var wind = Math.sin(windPhase) * 0.4 + Math.sin(windPhase * 2.3) * 0.18;
     scrollBoost *= 0.94;
     for (var i = 0; i < petals.length; i++) {
       var p = petals[i];
-      p.phase += p.swaySpeed;
-      p.flip += p.vflip;
-      p.rot += p.vrot + Math.sin(p.phase) * 0.006;
-      p.x += p.vx + Math.sin(p.phase) * p.sway * 0.3 + wind;
-      p.y += p.vy * (1 + scrollBoost);
+      p.phase += p.swaySpeed; p.flip += p.vflip; p.rot += p.vrot + Math.sin(p.phase) * 0.006;
+      p.x += p.vx + Math.sin(p.phase) * p.sway * 0.3 + wind; p.y += p.vy * (1 + scrollBoost);
       if (p.y - p.size > H) { Object.assign(p, makePetal(false)); p.y = -20; }
       if (p.x < -30) p.x = W + 20; else if (p.x > W + 30) p.x = -20;
       drawPetal(p);
     }
     raf = requestAnimationFrame(frame);
   }
-
-  function start() {
-    resize();
-    if (!reduceMotion) { cancelAnimationFrame(raf); frame(); }
-    else { ctx.clearRect(0, 0, W, H); }
-  }
-
+  function start() { resize(); if (!reduceMotion) { cancelAnimationFrame(raf); frame(); } else { ctx.clearRect(0, 0, W, H); } }
   var rt;
   window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(start, 180); }, { passive: true });
   if (document.fonts && document.fonts.ready) { document.fonts.ready.then(start); setTimeout(start, 700); }
   else { window.addEventListener('load', start); }
   start();
-
-  document.addEventListener('visibilitychange', function () {
-    if (document.hidden) cancelAnimationFrame(raf);
-    else if (!reduceMotion) frame();
-  });
+  document.addEventListener('visibilitychange', function () { if (document.hidden) cancelAnimationFrame(raf); else if (!reduceMotion) frame(); });
 })();
 </script>
 </body>
