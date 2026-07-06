@@ -354,9 +354,10 @@ footer .links a{ color:var(--sand); text-decoration:none; opacity:.8; transition
 footer .links a:hover{ opacity:1; color:var(--accent); }
 footer .sep{ opacity:.4; margin:0 .55em; }
 
-/* reveal */
-.reveal{ opacity:0; transform:translateY(30px); transition:opacity 1.05s var(--ease-ink), transform 1.05s var(--ease-ink); will-change:opacity,transform; }
-.reveal.in{ opacity:1; transform:none; }
+/* reveal（漸進增強：預設可見；JS 就緒才隱藏待揭示，IO 失效也不會讓照片永久隱形） */
+.reveal{ opacity:1; }
+.js-anim .reveal{ opacity:0; transform:translateY(30px); transition:opacity 1.05s var(--ease-ink), transform 1.05s var(--ease-ink); will-change:opacity,transform; }
+.js-anim .reveal.in{ opacity:1; transform:none; }
 .reveal.d1{ transition-delay:.1s } .reveal.d2{ transition-delay:.22s } .reveal.d3{ transition-delay:.34s } .reveal.d4{ transition-delay:.46s }
 
 /* ══ 手機 RWD：章節直向堆疊 ══ */
@@ -474,7 +475,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
       <div class="split reveal">
         <div class="col-photo">
           <div class="photo-frame">
-            <img src="images/photography/dscf7649_1.jpg" alt="冬湖枯木，樹與樹影交融" loading="lazy" />
+            <img src="images/photography/dscf7649_1.jpg" alt="冬湖枯木，樹與樹影交融" loading="eager" />
             <div class="photo-veil"></div>
             <span class="photo-mark">山水 · 冬</span>
             <span class="photo-cap"><span class="t">影上之影</span><span class="en">Shadow upon Shadow</span></span>
@@ -502,7 +503,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
       <div class="split rev reveal">
         <div class="col-photo">
           <div class="photo-frame">
-            <img src="images/photography/dscf5661.jpg" alt="青楓透過天光，綠得透亮" loading="lazy" />
+            <img src="images/photography/dscf5661.jpg" alt="青楓透過天光，綠得透亮" loading="eager" />
             <div class="photo-veil"></div>
             <span class="photo-mark">青嵐 · 夏</span>
             <span class="photo-cap"><span class="t">青楓</span><span class="en">Green Maple</span></span>
@@ -545,7 +546,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
       <div class="split reveal">
         <div class="col-photo">
           <div class="photo-frame">
-            <img src="images/photography/dscf7154_1.jpg" alt="白樺立於紅葉之中" loading="lazy" />
+            <img src="images/photography/dscf7154_1.jpg" alt="白樺立於紅葉之中" loading="eager" />
             <div class="photo-veil"></div>
             <span class="photo-mark">紅葉 · 秋</span>
             <span class="photo-cap"><span class="t">白與紅</span><span class="en">White and Crimson</span></span>
@@ -573,7 +574,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
       <div class="split rev reveal">
         <div class="col-photo">
           <div class="photo-frame">
-            <img src="images/photography/l1000839.jpg" alt="夜街之中，一盞燈亮起，蒸氣升騰" loading="lazy" />
+            <img src="images/photography/l1000839.jpg" alt="夜街之中，一盞燈亮起，蒸氣升騰" loading="eager" />
             <div class="photo-veil"></div>
             <span class="photo-mark">街 · 夜</span>
             <span class="photo-cap"><span class="t">夜屋台</span><span class="en">Night Stall</span></span>
@@ -810,33 +811,38 @@ footer .sep{ opacity:.4; margin:0 .55em; }
     });
   });
 
-  /* reveal 揭示（IntersectionObserver）＋ failsafe */
+  /* reveal 揭示：IO 為主，scroll／計時器為備援（IO 萬一未觸發也保證顯示照片） */
+  document.documentElement.classList.add('js-anim');
   var revealables = document.querySelectorAll('.reveal, .season');
   var markIn = function (el) {
     el.classList.add('in');
     if (el.classList.contains('season')) el.classList.add('lit');
   };
+  var revealVisibleNow = function () {
+    var vh = window.innerHeight;
+    revealables.forEach(function (el) {
+      if (el.classList.contains('in')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.98 && r.bottom > 0) markIn(el);
+    });
+  };
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       for (var i = 0; i < entries.length; i++) {
-        if (entries[i].isIntersecting) { markIn(entries[i].target); io.unobserve(entries[i].target); }
+        if (entries[i].isIntersecting) markIn(entries[i].target);
       }
-    }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
     revealables.forEach(function (el) { io.observe(el); });
-    var revealVisibleNow = function () {
-      var vh = window.innerHeight;
-      revealables.forEach(function (el) {
-        if (el.classList.contains('in')) return;
-        var r = el.getBoundingClientRect();
-        if (r.top < vh * 0.96 && r.bottom > 0) { markIn(el); io.unobserve(el); }
-      });
-    };
-    document.addEventListener('visibilitychange', function () { if (!document.hidden) revealVisibleNow(); });
-    window.addEventListener('pageshow', revealVisibleNow);
-    setTimeout(revealVisibleNow, 2400);
   } else {
     revealables.forEach(markIn);
   }
+  // 多重備援：捲動 / 分頁還原 / 計時器都補顯示進入視窗者
+  window.addEventListener('scroll', revealVisibleNow, { passive: true });
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) revealVisibleNow(); });
+  window.addEventListener('pageshow', revealVisibleNow);
+  setTimeout(revealVisibleNow, 400);
+  setTimeout(revealVisibleNow, 1600);
+  revealVisibleNow();
 
   /* 視差：hero 文字輕飄 + 章節照片輕微上浮 */
   var heroInner = document.querySelector('.hero-inner');
