@@ -1,0 +1,683 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>涼 · 水面漣漪</title>
+<style>
+  /* 全域重置：全屏、無捲動 */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #0a1512;   /* 深水色底，載入前的過渡色 */
+    font-family: "Noto Serif TC", "Songti TC", "PingFang TC", serif;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: none;    /* 觸控時不觸發捲動／縮放，讓拖曳注入漣漪 */
+  }
+
+  /* 水面畫布：填滿整個視窗 */
+  #water {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: crosshair;
+  }
+
+  /* 極淡的暗角遮罩，讓角落文字可讀、同時聚焦中央水面 */
+  #vignette {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;   /* 不攔截點擊，讓事件穿透到畫布 */
+    background:
+      radial-gradient(120% 120% at 50% 42%,
+        rgba(0,0,0,0) 55%,
+        rgba(4,20,16,0.28) 100%);
+    z-index: 2;
+  }
+
+  /* 角落淡標題 */
+  #title {
+    position: fixed;
+    left: clamp(24px, 5vw, 64px);
+    bottom: clamp(24px, 5vh, 56px);
+    z-index: 3;
+    pointer-events: none;
+    color: rgba(255,255,255,0.82);
+    text-shadow: 0 2px 18px rgba(0,0,0,0.55), 0 0 2px rgba(0,0,0,0.4);
+    user-select: none;
+    opacity: 0;
+    animation: fadeIn 2.4s ease 0.6s forwards;
+  }
+  #title .kanji {
+    font-size: clamp(56px, 11vw, 128px);
+    font-weight: 500;
+    line-height: 0.9;
+    letter-spacing: 0.04em;
+    /* 毛筆意象：極淡的青綠暈染 */
+    background: linear-gradient(160deg, #eafff7 0%, #bfe8dc 60%, #7fbfae 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 3px 20px rgba(0,0,0,0.45));
+  }
+  #title .hint {
+    margin-top: 0.5em;
+    font-size: clamp(11px, 1.4vw, 15px);
+    letter-spacing: 0.32em;
+    text-transform: lowercase;
+    color: rgba(233, 255, 248, 0.62);
+    font-family: "PingFang TC", system-ui, sans-serif;
+  }
+
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  /* 載入／錯誤提示 */
+  #msg {
+    position: fixed;
+    inset: 0;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+    text-align: center;
+    padding: 24px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #title { animation: none; opacity: 1; }
+  }
+</style>
+
+<canvas id="water"></canvas>
+<div id="vignette"></div>
+<div id="title" aria-hidden="true">
+  <div class="kanji">涼</div>
+  <div class="hint">touch the water</div>
+</div>
+<div id="msg">水面整理中…</div>
+
+<script>
+/* =========================================================================
+   夏日水面漣漪 · WebGL 高度場模擬（方案 A）
+   -------------------------------------------------------------------------
+   原理：
+   1. 用兩張浮點 framebuffer 做 ping-pong，儲存水面「高度場」。
+   2. simulation shader 每幀跑波動方程：
+        h_new = (上+下+左+右)/2 − h_prev，再乘 damping 讓漣漪衰減。
+   3. 點擊／拖曳／閒置自動落滴：在對應 UV 位置注入一團高斯凸起。
+   4. render shader 取高度場的鄰點梯度當位移量，偏移 UV 去採樣底圖
+      → 折射扭曲；再用梯度算一點鏡面高光，讓水面發亮、清涼。
+   -------------------------------------------------------------------------
+   可調校參數集中在 CONFIG，方便給葉老師看不同手感時快速改一個值。
+   ========================================================================= */
+
+(function () {
+  "use strict";
+
+  var CONFIG = {
+    IMAGE_SRC: "images/photography/img_3506.jpg", // 底圖（相對路徑）
+    SIM_SCALE: 0.5,        // 模擬解析度相對螢幕的比例（降採樣保流暢，0.5＝一半）
+    SIM_MAX: 640,          // 模擬緩衝的最長邊上限（再高幾乎看不出差、只吃效能）
+    DPR_CAP: 2,            // devicePixelRatio 上限
+    DAMPING: 0.965,        // 阻尼：越接近 1 漣漪越持久（0.965＝優雅地散去）
+    REFRACTION: 0.42,      // 折射位移強度（水靜謐 → 不宜太大）
+    HIGHLIGHT: 0.55,       // 鏡面高光強度
+    DROP_RADIUS: 0.018,    // 注入水滴的半徑（相對 UV，越小越尖銳）
+    DROP_STRENGTH_CLICK: 0.55,  // 點擊落滴的高度
+    DROP_STRENGTH_DRAG: 0.14,   // 拖曳連續落滴的高度（較輕，避免拖出巨浪）
+    DROP_STRENGTH_IDLE: 0.30,   // 閒置自動落滴的高度
+    IDLE_MIN: 1.6,         // 閒置後自動落滴的最短間隔（秒）
+    IDLE_MAX: 3.4          // 最長間隔（秒）
+  };
+
+  var reduceMotion = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var canvas = document.getElementById("water");
+  var msgEl = document.getElementById("msg");
+
+  // 嘗試取得 WebGL context（優先 webgl，其次 experimental）
+  var gl = canvas.getContext("webgl", { antialias: false, depth: false, alpha: false, preserveDrawingBuffer: false }) ||
+           canvas.getContext("experimental-webgl", { antialias: false, depth: false, alpha: false });
+
+  // 載入底圖，成功後才啟動 WebGL；任一步失敗 → 走 Canvas 2D 後備。
+  var img = new Image();
+  img.crossOrigin = "anonymous";
+  img.onload = function () {
+    var ok = false;
+    if (gl) {
+      try { ok = initWebGL(gl, img); } catch (e) { ok = false; console.warn("WebGL 初始化失敗，改用 2D 後備：", e); }
+    }
+    if (!ok) initCanvas2D(img);
+  };
+  img.onerror = function () {
+    msgEl.textContent = "底圖載入失敗：" + CONFIG.IMAGE_SRC;
+    msgEl.style.color = "rgba(255,180,180,0.85)";
+  };
+  img.src = CONFIG.IMAGE_SRC;
+
+  function hideMsg() { msgEl.style.opacity = "0"; }
+
+  /* ======================================================================
+     方案 A：WebGL 實作
+     ====================================================================== */
+  function initWebGL(gl, image) {
+    // 需要浮點紋理來存高度場；沒有 OES_texture_float 就退回 2D。
+    var floatExt = gl.getExtension("OES_texture_float");
+    if (!floatExt) return false;
+    // 部分裝置可 render 到 float，但無 linear 過濾 → 用 NEAREST 即可，不需 linear 擴充。
+
+    var dpr = Math.min(window.devicePixelRatio || 1, CONFIG.DPR_CAP);
+
+    /* ---- 著色器原始碼 ---- */
+    var VERT = [
+      "attribute vec2 aPos;",
+      "varying vec2 vUv;",
+      "void main(){",
+      "  vUv = aPos * 0.5 + 0.5;",           // clip space (-1..1) → uv (0..1)
+      "  gl_Position = vec4(aPos, 0.0, 1.0);",
+      "}"
+    ].join("\n");
+
+    // 模擬 shader：讀前兩幀高度場，輸出新高度到 R 通道。
+    var SIM_FRAG = [
+      "precision highp float;",
+      "varying vec2 vUv;",
+      "uniform sampler2D uPrev;",   // t-1 幀高度
+      "uniform sampler2D uCurr;",   // t   幀高度
+      "uniform vec2 uTexel;",       // 1/尺寸，取鄰點用
+      "uniform float uDamping;",
+      // 落滴注入：位置、半徑、強度（一次一滴；多滴由多次 pass 疊加，這裡用陣列簡化為單點迴圈）
+      "uniform vec2 uDrop;",        // 落滴 uv（-1 表示本幀無落滴）
+      "uniform float uDropR;",
+      "uniform float uDropStrength;",
+      "void main(){",
+      "  float c  = texture2D(uCurr, vUv).r;",
+      "  float p  = texture2D(uPrev, vUv).r;",
+      "  float l  = texture2D(uCurr, vUv - vec2(uTexel.x, 0.0)).r;",
+      "  float r  = texture2D(uCurr, vUv + vec2(uTexel.x, 0.0)).r;",
+      "  float u  = texture2D(uCurr, vUv - vec2(0.0, uTexel.y)).r;",
+      "  float d  = texture2D(uCurr, vUv + vec2(0.0, uTexel.y)).r;",
+      // 波動方程：新高度 = 鄰點平均*2 − 前一幀，再乘阻尼衰減
+      "  float h = ((l + r + u + d) * 0.5 - p) * uDamping;",
+      // 落滴：在 uDrop 附近加一團高斯凸起（uDrop.x<0 代表本幀不落滴）",
+      "  if (uDrop.x >= 0.0) {",
+      "    float dist = distance(vUv, uDrop);",
+      "    float g = exp(- (dist*dist) / (uDropR*uDropR));",
+      "    h += g * uDropStrength;",
+      "  }",
+      "  gl_FragColor = vec4(h, 0.0, 0.0, 1.0);",
+      "}"
+    ].join("\n");
+
+    // 渲染 shader：用高度場梯度折射底圖 + 鏡面高光。
+    var RENDER_FRAG = [
+      "precision highp float;",
+      "varying vec2 vUv;",
+      "uniform sampler2D uHeight;",  // 高度場
+      "uniform sampler2D uImage;",   // 底圖
+      "uniform vec2 uTexel;",        // 高度場的 texel（取梯度）
+      "uniform vec2 uImgScale;",     // cover 縮放（把圖等比填滿螢幕）
+      "uniform float uRefraction;",
+      "uniform float uHighlight;",
+      "void main(){",
+      // 中央對齊的 cover：先把 uv 以 0.5 為中心縮放
+      "  vec2 iuv = (vUv - 0.5) * uImgScale + 0.5;",
+      // 高度場梯度（鄰點差）＝水面斜率，決定折射方向與強度
+      "  float hL = texture2D(uHeight, vUv - vec2(uTexel.x, 0.0)).r;",
+      "  float hR = texture2D(uHeight, vUv + vec2(uTexel.x, 0.0)).r;",
+      "  float hU = texture2D(uHeight, vUv - vec2(0.0, uTexel.y)).r;",
+      "  float hD = texture2D(uHeight, vUv + vec2(0.0, uTexel.y)).r;",
+      "  vec2 grad = vec2(hR - hL, hD - hU);",
+      // 折射：沿斜率反方向偏移採樣座標
+      "  vec2 off = grad * uRefraction;",
+      "  vec2 suv = iuv - off;",
+      "  vec3 col = texture2D(uImage, suv).rgb;",
+      // 鏡面高光：水面法線與斜向光的點積，做柔和的亮邊
+      "  vec3 normal = normalize(vec3(-grad * 2.0, 1.0));",
+      "  vec3 lightDir = normalize(vec3(-0.35, -0.55, 0.75));",
+      "  float spec = pow(max(dot(normal, lightDir), 0.0), 18.0);",
+      "  col += spec * uHighlight;",
+      // 依斜率大小做極淡的明暗，強化水面立體感（清涼但不搶戲）
+      "  float shade = 1.0 + (hR - hL) * 0.25;",
+      "  col *= shade;",
+      "  gl_FragColor = vec4(col, 1.0);",
+      "}"
+    ].join("\n");
+
+    function compile(type, src) {
+      var s = gl.createShader(type);
+      gl.shaderSource(s, src);
+      gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+        console.error("Shader 編譯錯誤：", gl.getShaderInfoLog(s), "\n", src);
+        throw new Error("shader compile");
+      }
+      return s;
+    }
+    function program(vsSrc, fsSrc) {
+      var p = gl.createProgram();
+      gl.attachShader(p, compile(gl.VERTEX_SHADER, vsSrc));
+      gl.attachShader(p, compile(gl.FRAGMENT_SHADER, fsSrc));
+      gl.bindAttribLocation(p, 0, "aPos");
+      gl.linkProgram(p);
+      if (!gl.getProgramParameter(p, gl.LINK_STATUS)) {
+        console.error("Program 連結錯誤：", gl.getProgramInfoLog(p));
+        throw new Error("program link");
+      }
+      return p;
+    }
+
+    var simProg = program(VERT, SIM_FRAG);
+    var renderProg = program(VERT, RENDER_FRAG);
+
+    // 全螢幕四邊形（兩個三角形）
+    var quad = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+      -1, -1, 1, -1, -1, 1,
+      -1, 1, 1, -1, 1, 1
+    ]), gl.STATIC_DRAW);
+
+    // uniform 位置
+    var uSim = {
+      prev: gl.getUniformLocation(simProg, "uPrev"),
+      curr: gl.getUniformLocation(simProg, "uCurr"),
+      texel: gl.getUniformLocation(simProg, "uTexel"),
+      damping: gl.getUniformLocation(simProg, "uDamping"),
+      drop: gl.getUniformLocation(simProg, "uDrop"),
+      dropR: gl.getUniformLocation(simProg, "uDropR"),
+      dropStrength: gl.getUniformLocation(simProg, "uDropStrength")
+    };
+    var uRender = {
+      height: gl.getUniformLocation(renderProg, "uHeight"),
+      image: gl.getUniformLocation(renderProg, "uImage"),
+      texel: gl.getUniformLocation(renderProg, "uTexel"),
+      imgScale: gl.getUniformLocation(renderProg, "uImgScale"),
+      refraction: gl.getUniformLocation(renderProg, "uRefraction"),
+      highlight: gl.getUniformLocation(renderProg, "uHighlight")
+    };
+
+    // 底圖紋理（clamp + linear，讓折射採樣平滑）
+    var imgTex = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, imgTex);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);  // 讓圖片方向與 uv 一致
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, image);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+
+    // 高度場的兩張 float 紋理 + framebuffer
+    var simW = 0, simH = 0;
+    var texA, texB, fboA, fboB;
+
+    function makeHeightTexture(w, h) {
+      var t = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, t);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, w, h, 0, gl.RGBA, gl.FLOAT, null);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+      return t;
+    }
+    function makeFBO(tex) {
+      var f = gl.createFramebuffer();
+      gl.bindFramebuffer(gl.FRAMEBUFFER, f);
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, tex, 0);
+      return f;
+    }
+
+    var canRenderFloat = true;
+
+    function allocSim(w, h) {
+      simW = w; simH = h;
+      texA = makeHeightTexture(w, h);
+      texB = makeHeightTexture(w, h);
+      fboA = makeFBO(texA);
+      fboB = makeFBO(texB);
+      // 檢查 float FBO 是否可用；不行就整體退回 2D
+      var status = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
+      if (status !== gl.FRAMEBUFFER_COMPLETE) { canRenderFloat = false; }
+      // 清空高度場
+      gl.bindFramebuffer(gl.FRAMEBUFFER, fboA); gl.clearColor(0,0,0,1); gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, fboB); gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    }
+
+    var cssW = 0, cssH = 0, imgScaleX = 1, imgScaleY = 1;
+
+    function resize() {
+      cssW = window.innerWidth; cssH = window.innerHeight;
+      canvas.width = Math.round(cssW * dpr);
+      canvas.height = Math.round(cssH * dpr);
+      canvas.style.width = cssW + "px";
+      canvas.style.height = cssH + "px";
+
+      // cover 縮放：比較螢幕與圖片長寬比，算出要放大的軸
+      var imgAspect = image.width / image.height;
+      var scrAspect = cssW / cssH;
+      if (scrAspect > imgAspect) {
+        // 螢幕較寬 → 以寬為準，縱向裁切（uv 的 y 要縮小取樣範圍）
+        imgScaleX = 1.0;
+        imgScaleY = imgAspect / scrAspect;
+      } else {
+        imgScaleX = scrAspect / imgAspect;
+        imgScaleY = 1.0;
+      }
+
+      // 模擬緩衝尺寸：降採樣 + 上限
+      var longEdge = Math.max(cssW, cssH) * CONFIG.SIM_SCALE;
+      var scale = longEdge > CONFIG.SIM_MAX ? CONFIG.SIM_MAX / longEdge : 1;
+      var sw = Math.max(2, Math.round(cssW * CONFIG.SIM_SCALE * scale));
+      var sh = Math.max(2, Math.round(cssH * CONFIG.SIM_SCALE * scale));
+      if (sw !== simW || sh !== simH) allocSim(sw, sh);
+    }
+    resize();
+    if (!canRenderFloat) return false;  // float FBO 不完整 → 讓外層改用 2D
+
+    window.addEventListener("resize", function () {
+      clearTimeout(resize._t);
+      resize._t = setTimeout(resize, 120);  // 防抖，避免拖動視窗時狂重建緩衝
+    });
+
+    function bindQuad(prog) {
+      gl.useProgram(prog);
+      gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+      gl.enableVertexAttribArray(0);
+      gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+    }
+
+    // 本幀待注入的落滴佇列（拖曳一幀可能多點，逐一 pass）
+    var drops = [];
+    function addDrop(uvx, uvy, strength) {
+      drops.push({ x: uvx, y: uvy, s: strength });
+    }
+
+    /* ---- 互動：把螢幕座標轉成 uv，注入漣漪 ---- */
+    var pointerDown = false;
+    var lastActivity = performance.now();
+
+    function toUv(clientX, clientY) {
+      var rect = canvas.getBoundingClientRect();
+      var x = (clientX - rect.left) / rect.width;
+      var y = 1.0 - (clientY - rect.top) / rect.height; // 翻轉 y 對齊高度場
+      return [x, y];
+    }
+
+    canvas.addEventListener("pointerdown", function (e) {
+      pointerDown = true;
+      lastActivity = performance.now();
+      var uv = toUv(e.clientX, e.clientY);
+      addDrop(uv[0], uv[1], CONFIG.DROP_STRENGTH_CLICK);
+      canvas.setPointerCapture && canvas.setPointerCapture(e.pointerId);
+    });
+    canvas.addEventListener("pointermove", function (e) {
+      if (!pointerDown) return;
+      lastActivity = performance.now();
+      // 拖曳：沿路徑補間落滴，避免快速拖曳出現斷點
+      var uv = toUv(e.clientX, e.clientY);
+      addDrop(uv[0], uv[1], CONFIG.DROP_STRENGTH_DRAG);
+    });
+    function endPointer() { pointerDown = false; }
+    canvas.addEventListener("pointerup", endPointer);
+    canvas.addEventListener("pointercancel", endPointer);
+    canvas.addEventListener("pointerleave", endPointer);
+
+    // 閒置自動落滴排程
+    var nextIdle = performance.now() + rand(CONFIG.IDLE_MIN, CONFIG.IDLE_MAX) * 1000;
+    function rand(a, b) { return a + Math.random() * (b - a); }
+
+    /* ---- 主迴圈 ---- */
+    var running = true;
+    document.addEventListener("visibilitychange", function () {
+      running = !document.hidden;
+      if (running) { lastActivity = performance.now(); nextIdle = performance.now() + 400; requestAnimationFrame(loop); }
+    });
+
+    var started = false;
+
+    function stepSim() {
+      // 若本幀無落滴，跑一次無注入的模擬；有落滴則每滴一次 pass。
+      var passes = drops.length > 0 ? drops.length : 1;
+      gl.viewport(0, 0, simW, simH);
+      bindQuad(simProg);
+      gl.uniform2f(uSim.texel, 1 / simW, 1 / simH);
+      gl.uniform1f(uSim.damping, CONFIG.DAMPING);
+      gl.uniform1f(uSim.dropR, CONFIG.DROP_RADIUS);
+
+      for (var i = 0; i < passes; i++) {
+        // 目標寫到 fboB，讀 texA(curr) 與 上一狀態
+        gl.bindFramebuffer(gl.FRAMEBUFFER, fboB);
+        gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, texB); // prev = 舊的 B（t-1）
+        gl.uniform1i(uSim.prev, 0);
+        gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, texA); // curr = A（t）
+        gl.uniform1i(uSim.curr, 1);
+
+        if (i < drops.length) {
+          gl.uniform2f(uSim.drop, drops[i].x, drops[i].y);
+          gl.uniform1f(uSim.dropStrength, drops[i].s);
+        } else {
+          gl.uniform2f(uSim.drop, -1.0, -1.0);
+          gl.uniform1f(uSim.dropStrength, 0.0);
+        }
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+        // ping-pong：交換 A/B，新結果變成 curr
+        var tt = texA; texA = texB; texB = tt;
+        var ff = fboA; fboA = fboB; fboB = ff;
+      }
+      drops.length = 0;
+    }
+
+    function render() {
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      bindQuad(renderProg);
+      gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, texA); // 最新高度場
+      gl.uniform1i(uRender.height, 0);
+      gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, imgTex);
+      gl.uniform1i(uRender.image, 1);
+      gl.uniform2f(uRender.texel, 1 / simW, 1 / simH);
+      gl.uniform2f(uRender.imgScale, imgScaleX, imgScaleY);
+      gl.uniform1f(uRender.refraction, CONFIG.REFRACTION);
+      gl.uniform1f(uRender.highlight, CONFIG.HIGHLIGHT);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+    }
+
+    function loop() {
+      if (!running) return;
+
+      // 閒置自動落滴（reduced-motion 時關閉）
+      var now = performance.now();
+      if (!reduceMotion && now >= nextIdle) {
+        // 只有在使用者一段時間沒動時才自動落滴，避免和互動打架
+        if (now - lastActivity > 900) {
+          addDrop(rand(0.12, 0.88), rand(0.12, 0.88), CONFIG.DROP_STRENGTH_IDLE);
+        }
+        nextIdle = now + rand(CONFIG.IDLE_MIN, CONFIG.IDLE_MAX) * 1000;
+      }
+
+      stepSim();
+      render();
+
+      if (!started) { started = true; hideMsg(); }
+      requestAnimationFrame(loop);
+    }
+
+    // reduced-motion：仍可點，但不自動；先落一滴讓畫面有生氣（極輕），再進迴圈
+    requestAnimationFrame(loop);
+    return true;
+  }
+
+  /* ======================================================================
+     方案 B（後備）：Canvas 2D · Hugo Elias 高度場演算法
+     只有在無 WebGL / 無浮點紋理時才會啟用，確保任何裝置都能看到效果。
+     ====================================================================== */
+  function initCanvas2D(image) {
+    var ctx = canvas.getContext("2d");
+    if (!ctx) { msgEl.textContent = "此瀏覽器不支援 Canvas。"; return; }
+
+    var dpr = Math.min(window.devicePixelRatio || 1, CONFIG.DPR_CAP);
+    var DAMP = CONFIG.DAMPING;
+
+    // 降採樣的模擬網格
+    var gw, gh, cur, prev;
+    // 離屏 canvas：先把底圖以 cover 畫到模擬解析度，再逐像素折射輸出
+    var srcCanvas = document.createElement("canvas");
+    var srcCtx = srcCanvas.getContext("2d");
+    var outImage, outData, srcData;
+    var cssW, cssH;
+
+    function resize() {
+      cssW = window.innerWidth; cssH = window.innerHeight;
+      canvas.width = Math.round(cssW * dpr);
+      canvas.height = Math.round(cssH * dpr);
+      canvas.style.width = cssW + "px";
+      canvas.style.height = cssH + "px";
+
+      // 模擬網格：明顯降採樣（2D 較重），並限制上限
+      var scale = CONFIG.SIM_SCALE * 0.7;
+      var longEdge = Math.max(cssW, cssH) * scale;
+      if (longEdge > CONFIG.SIM_MAX) scale *= CONFIG.SIM_MAX / longEdge;
+      gw = Math.max(2, Math.round(cssW * scale));
+      gh = Math.max(2, Math.round(cssH * scale));
+
+      cur = new Float32Array(gw * gh);
+      prev = new Float32Array(gw * gh);
+
+      // 底圖 cover 到 (gw,gh)
+      srcCanvas.width = gw; srcCanvas.height = gh;
+      var imgAspect = image.width / image.height;
+      var boxAspect = gw / gh;
+      var dw, dh, dx, dy;
+      if (boxAspect > imgAspect) { dw = gw; dh = gw / imgAspect; dx = 0; dy = (gh - dh) / 2; }
+      else { dh = gh; dw = gh * imgAspect; dy = 0; dx = (gw - dw) / 2; }
+      srcCtx.drawImage(image, dx, dy, dw, dh);
+      srcData = srcCtx.getImageData(0, 0, gw, gh);
+
+      outImage = srcCtx.createImageData(gw, gh);
+      outData = outImage.data;
+
+      // 把主畫布縮放對應到模擬網格（用 nearest 放大即可，速度優先）
+      ctx.imageSmoothingEnabled = true;
+    }
+    resize();
+    window.addEventListener("resize", function () {
+      clearTimeout(resize._t); resize._t = setTimeout(resize, 150);
+    });
+
+    function drop(gx, gy, strength) {
+      var r = Math.max(2, Math.round(gw * CONFIG.DROP_RADIUS * 2.2));
+      for (var y = -r; y <= r; y++) {
+        for (var x = -r; x <= r; x++) {
+          var px = gx + x, py = gy + y;
+          if (px < 1 || py < 1 || px >= gw - 1 || py >= gh - 1) continue;
+          var d2 = x * x + y * y;
+          if (d2 > r * r) continue;
+          var g = Math.exp(-d2 / (r * r * 0.5));
+          prev[py * gw + px] += g * strength * 512; // 2D 用整數尺度，放大係數
+        }
+      }
+    }
+
+    var pointerDown = false;
+    var lastActivity = performance.now();
+    function toGrid(clientX, clientY) {
+      var rect = canvas.getBoundingClientRect();
+      var gx = Math.round((clientX - rect.left) / rect.width * gw);
+      var gy = Math.round((clientY - rect.top) / rect.height * gh);
+      return [gx, gy];
+    }
+    canvas.addEventListener("pointerdown", function (e) {
+      pointerDown = true; lastActivity = performance.now();
+      var p = toGrid(e.clientX, e.clientY); drop(p[0], p[1], CONFIG.DROP_STRENGTH_CLICK);
+      canvas.setPointerCapture && canvas.setPointerCapture(e.pointerId);
+    });
+    canvas.addEventListener("pointermove", function (e) {
+      if (!pointerDown) return; lastActivity = performance.now();
+      var p = toGrid(e.clientX, e.clientY); drop(p[0], p[1], CONFIG.DROP_STRENGTH_DRAG);
+    });
+    function endP() { pointerDown = false; }
+    canvas.addEventListener("pointerup", endP);
+    canvas.addEventListener("pointercancel", endP);
+
+    function rand(a, b) { return a + Math.random() * (b - a); }
+    var nextIdle = performance.now() + rand(CONFIG.IDLE_MIN, CONFIG.IDLE_MAX) * 1000;
+
+    var running = true;
+    document.addEventListener("visibilitychange", function () {
+      running = !document.hidden;
+      if (running) { lastActivity = performance.now(); requestAnimationFrame(loop); }
+    });
+
+    var refraction = CONFIG.REFRACTION * 40; // 2D 位移用像素為單位，換算係數
+    var started = false;
+
+    function loop() {
+      if (!running) return;
+      var now = performance.now();
+      if (!reduceMotion && now >= nextIdle) {
+        if (now - lastActivity > 900) {
+          var gx = Math.round(rand(0.12, 0.88) * gw);
+          var gy = Math.round(rand(0.12, 0.88) * gh);
+          drop(gx, gy, CONFIG.DROP_STRENGTH_IDLE);
+        }
+        nextIdle = now + rand(CONFIG.IDLE_MIN, CONFIG.IDLE_MAX) * 1000;
+      }
+
+      // 波傳播：cur = (四鄰和)/2 − prev，乘阻尼
+      var w = gw, h = gh;
+      for (var y = 1; y < h - 1; y++) {
+        var row = y * w;
+        for (var x = 1; x < w - 1; x++) {
+          var i = row + x;
+          var val = ((prev[i - 1] + prev[i + 1] + prev[i - w] + prev[i + w]) * 0.5) - cur[i];
+          cur[i] = val * DAMP;
+        }
+      }
+      // 交換 cur/prev
+      var tmp = prev; prev = cur; cur = tmp;
+
+      // 依高度差折射：像素位移取樣底圖
+      var s = srcData.data, o = outData;
+      for (var y2 = 0; y2 < h; y2++) {
+        for (var x2 = 0; x2 < w; x2++) {
+          var idx = y2 * w + x2;
+          var xl = prev[(y2) * w + Math.max(0, x2 - 1)];
+          var xr = prev[(y2) * w + Math.min(w - 1, x2 + 1)];
+          var yu = prev[Math.max(0, y2 - 1) * w + x2];
+          var yd = prev[Math.min(h - 1, y2 + 1) * w + x2];
+          var dx = (xl - xr) * refraction;
+          var dy = (yu - yd) * refraction;
+          var sx = Math.max(0, Math.min(w - 1, (x2 + dx) | 0));
+          var sy = Math.max(0, Math.min(h - 1, (y2 + dy) | 0));
+          var si = (sy * w + sx) * 4;
+          var oi = idx * 4;
+          // 高光：斜率越大越亮一點
+          var light = 1 + (xl - xr) * 0.06;
+          o[oi] = Math.min(255, s[si] * light);
+          o[oi + 1] = Math.min(255, s[si + 1] * light);
+          o[oi + 2] = Math.min(255, s[si + 2] * light);
+          o[oi + 3] = 255;
+        }
+      }
+      srcCtx.putImageData(outImage, 0, 0);
+      // 放大到全畫布
+      ctx.drawImage(srcCanvas, 0, 0, w, h, 0, 0, canvas.width, canvas.height);
+
+      if (!started) { started = true; hideMsg(); }
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  }
+})();
+</script>
