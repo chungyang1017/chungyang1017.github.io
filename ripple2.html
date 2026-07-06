@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>玄關 · 夏の水面</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600&family=Noto+Serif+TC:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* 夏の水面 — 清涼色票（無櫻粉） */
+  :root{
+    --ink:#1c2420; --paper:#eef1ea;
+    --mizu:#5a8a8c;      /* 水縹 */
+    --midori:#4a7a52;    /* 夏綠 */
+    --sans:'Inter','Helvetica Neue',sans-serif;
+    --jp:'Shippori Mincho','Noto Serif TC',serif;
+    --brush:'Yuji Syuku','Shippori Mincho',serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;}
+  body{background:#0e1512;overflow:hidden;font-family:var(--jp);color:var(--paper);}
+
+  #stage{position:fixed;inset:0;}
+  /* 水波 canvas：填滿、可互動 */
+  #water{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:crosshair;}
+  /* 遮罩：讓白字在亮水面上可讀 */
+  .veil{position:absolute;inset:0;pointer-events:none;z-index:2;
+    background:
+      radial-gradient(ellipse 70% 60% at 34% 52%, rgba(14,21,18,.5) 0%, rgba(14,21,18,0) 62%),
+      linear-gradient(180deg, rgba(14,21,18,.5) 0%, rgba(14,21,18,.06) 22%, rgba(14,21,18,.04) 55%, rgba(14,21,18,.72) 100%);}
+
+  /* 內容層：不擋點擊（穿透到水面） */
+  .layer{position:absolute;inset:0;z-index:3;pointer-events:none;}
+  .layer a{pointer-events:auto;}
+
+  nav{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
+    padding:clamp(16px,2.4vh,26px) clamp(20px,4vw,52px);}
+  .brand{font-family:var(--brush);font-size:clamp(20px,2.4vw,28px);letter-spacing:.1em;
+    text-shadow:0 1px 12px rgba(0,0,0,.5);}
+  .brand small{font-family:var(--sans);font-style:italic;font-size:13px;opacity:.8;margin-left:8px;letter-spacing:.05em;}
+  .navlinks{display:flex;gap:clamp(14px,2vw,26px);font-size:12px;letter-spacing:.22em;}
+  .navlinks a{color:var(--paper);text-decoration:none;opacity:.72;transition:opacity .3s;text-shadow:0 1px 10px rgba(0,0,0,.6);}
+  .navlinks a:hover{opacity:1;}
+  .navlinks .lang{padding-left:clamp(14px,1.6vw,22px);border-left:1px solid rgba(238,241,234,.3);}
+
+  .hero-c{position:absolute;left:clamp(24px,6vw,90px);top:50%;transform:translateY(-52%);
+    text-shadow:0 2px 26px rgba(10,16,13,.6),0 1px 3px rgba(10,16,13,.5);}
+  .eyebrow{font-family:var(--sans);font-size:12px;letter-spacing:.42em;opacity:.7;margin-bottom:22px;
+    display:flex;align-items:center;gap:14px;}
+  .eyebrow::before{content:"";width:38px;height:1px;background:rgba(238,241,234,.6);}
+  .eyebrow .jp{font-family:var(--jp);letter-spacing:.3em;}
+  .kanji{font-family:var(--brush);font-size:clamp(76px,13vw,190px);line-height:.96;letter-spacing:.04em;}
+  .romaji{font-family:var(--sans);font-size:clamp(13px,1.5vw,17px);letter-spacing:.34em;color:#a9c4c4;margin-top:4px;}
+  .sub{margin-top:clamp(20px,3vh,34px);padding-left:20px;border-left:1px solid rgba(238,241,234,.4);
+    font-size:clamp(15px,1.5vw,18px);line-height:2;max-width:30ch;}
+  .sub .jp{display:block;margin-top:8px;font-size:13px;opacity:.62;letter-spacing:.1em;}
+
+  .hint{position:absolute;left:50%;bottom:clamp(22px,5vh,44px);transform:translateX(-50%);
+    font-family:var(--sans);font-size:11px;letter-spacing:.3em;opacity:.6;text-align:center;
+    text-shadow:0 1px 10px rgba(0,0,0,.6);}
+  .hint .cue{display:block;width:1px;height:34px;margin:12px auto 0;
+    background:linear-gradient(rgba(238,241,234,.7),transparent);}
+
+  .seal{position:absolute;right:clamp(20px,4vw,52px);bottom:clamp(22px,5vh,46px);
+    width:clamp(40px,5vw,54px);height:clamp(40px,5vw,54px);display:grid;place-items:center;
+    border:2px solid var(--midori);border-radius:5px;color:var(--midori);opacity:.78;
+    font-family:var(--brush);font-size:clamp(15px,1.9vw,20px);line-height:.98;text-align:center;
+    transform:rotate(-2deg);background:rgba(14,21,18,.18);}
+  .seal span{display:block;}
+
+  #msg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;
+    font-family:var(--sans);font-size:13px;letter-spacing:.3em;color:rgba(238,241,234,.7);
+    transition:opacity .8s ease;pointer-events:none;}
+
+  @media(max-width:760px){
+    .navlinks a:not(.lang):not(.is-current){display:none;}
+    .hero-c{left:22px;right:22px;}
+    .sub{max-width:none;}
+  }
+  @media(prefers-reduced-motion:reduce){ #water{cursor:default;} }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="water"></canvas>
+  <div id="msg">水面をととのえています…</div>
+  <div class="veil"></div>
+
+  <div class="layer">
+    <nav>
+      <span class="brand">葉崇揚<small>Chung-Yang Yeh</small></span>
+      <span class="navlinks">
+        <a href="index.html" class="is-current">玄關</a>
+        <a href="about-zh.html">簡介</a>
+        <a href="academic-zh.html">學術</a>
+        <a href="photography-zh.html">攝影</a>
+        <a href="teaching-zh.html">教學</a>
+        <a href="essays-zh.html">隨筆</a>
+        <a href="index-en.html" class="lang">EN</a>
+      </span>
+    </nav>
+
+    <div class="hero-c">
+      <p class="eyebrow"><span class="jp">玄關</span>GENKAN · 夏の水面</p>
+      <div class="kanji">玄關</div>
+      <div class="romaji">YEH CHUNG-YANG</div>
+      <p class="sub">綠楓垂水，錦鯉不驚。<br>觸水成漣漪，請進。
+        <span class="jp">水にふれてください。夏の、しずかな一波。</span>
+      </p>
+    </div>
+
+    <div class="hint">觸／拖／右鍵，水面就盪開<span class="cue"></span></div>
+    <div class="seal"><span>崇</span><span>揚</span></div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   夏の水面 — 純 Canvas 2D 水波（Hugo Elias 高度場 + 折射位移）
+   不用 WebGL，所有裝置皆可；左鍵／右鍵／拖曳／閒置皆能盪波。
+   ============================================================ */
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var canvas = document.getElementById("water");
+  var ctx = canvas.getContext("2d");
+  var msgEl = document.getElementById("msg");
+
+  var CONFIG = {
+    SIM_MAX: 380,       // 模擬緩衝長邊上限（越小越快、漣漪越粗）
+    DAMPING: 0.96,      // 阻尼（越接近 1 越持久）
+    REFRACT: 1.5,       // 折射位移（高度差 → 像素）
+    RADIUS: 3,          // 落滴半徑（sim 格）
+    S_CLICK: 6.0,       // 點擊/右鍵強度（高度單位、小值）
+    S_DRAG: 2.4,        // 拖曳強度
+    S_IDLE: 3.4,        // 閒置落滴強度
+    IDLE_MIN: 0.6, IDLE_MAX: 1.6
+  };
+
+  var W=0,H=0, sw=0,sh=0, cur=null,prev=null;
+  var src=null, out=null, buf=null, bufCtx=null;
+  var img = new Image();
+  var ready=false, started=false, raf=0;
+  var lastActivity=0, nextIdle=0;
+
+  function resize(){
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = W; canvas.height = H;
+    var ratio = Math.min(1, CONFIG.SIM_MAX / Math.max(W,H));
+    sw = Math.max(2, Math.round(W*ratio));
+    sh = Math.max(2, Math.round(H*ratio));
+    cur = new Float32Array(sw*sh);
+    prev = new Float32Array(sw*sh);
+    // 底圖以 cover 畫到 sim 尺寸的離屏 buffer，取像素
+    buf = document.createElement("canvas");
+    buf.width = sw; buf.height = sh;
+    bufCtx = buf.getContext("2d");
+    drawCover(bufCtx, img, sw, sh);
+    src = bufCtx.getImageData(0,0,sw,sh);
+    out = bufCtx.createImageData(sw,sh);
+  }
+
+  function drawCover(c, image, w, h){
+    var iw=image.naturalWidth||image.width, ih=image.naturalHeight||image.height;
+    var s=Math.max(w/iw, h/ih), dw=iw*s, dh=ih*s;
+    c.clearRect(0,0,w,h);
+    c.drawImage(image, (w-dw)/2, (h-dh)/2, dw, dh);
+  }
+
+  function disturbSim(sx, sy, strength){
+    var r=CONFIG.RADIUS;
+    for(var y=-r;y<=r;y++){
+      var yy=sy+y; if(yy<1||yy>=sh-1) continue;
+      for(var x=-r;x<=r;x++){
+        var xx=sx+x; if(xx<1||xx>=sw-1) continue;
+        if(x*x+y*y> r*r) continue;
+        prev[yy*sw+xx] += strength;
+      }
+    }
+  }
+  function disturb(dispX, dispY, strength){
+    if(!ready) return;
+    var sx=Math.round(dispX/W*sw), sy=Math.round(dispY/H*sh);
+    disturbSim(sx, sy, strength);
+    lastActivity=now();
+  }
+  function now(){ return (window.performance&&performance.now)?performance.now():Date.now(); }
+
+  function step(){
+    var C=cur, P=prev, d=CONFIG.DAMPING, w=sw;
+    for(var y=1;y<sh-1;y++){
+      var row=y*w;
+      for(var x=1;x<sw-1;x++){
+        var i=row+x;
+        var v=((P[i-1]+P[i+1]+P[i-w]+P[i+w])*0.5 - C[i])*d;
+        C[i]=v;
+      }
+    }
+    var t=cur; cur=prev; prev=t; // swap：新高度在 prev
+  }
+
+  function render(){
+    var P=prev, s=src.data, o=out.data, w=sw, k=CONFIG.REFRACT;
+    for(var y=0;y<sh;y++){
+      for(var x=0;x<w;x++){
+        var i=y*w+x;
+        var xl = x>0 ? P[i-1] : P[i];
+        var xr = x<w-1 ? P[i+1] : P[i];
+        var yu = y>0 ? P[i-w] : P[i];
+        var yd = y<sh-1 ? P[i+w] : P[i];
+        var dx = (xl-xr)*k, dy=(yu-yd)*k;
+        var sx = x + (dx|0), sy = y + (dy|0);
+        if(sx<0)sx=0; else if(sx>=w)sx=w-1;
+        if(sy<0)sy=0; else if(sy>=sh)sy=sh-1;
+        var si=(sy*w+sx)<<2, oi=i<<2;
+        // 高光：波峰略亮（用水平梯度近似受光），加上下限避免爆掉
+        var lum = 1 + (xl-xr)*0.02;
+        if(lum<0.75)lum=0.75; else if(lum>1.4)lum=1.4;
+        var r=s[si]*lum, g=s[si+1]*lum, b=s[si+2]*lum;
+        o[oi]  = r>255?255:(r<0?0:r);
+        o[oi+1]= g>255?255:(g<0?0:g);
+        o[oi+2]= b>255?255:(b<0?0:b);
+        o[oi+3]= 255;
+      }
+    }
+    bufCtx.putImageData(out,0,0);
+    // sim buffer 放大到全螢幕
+    ctx.imageSmoothingEnabled = true;
+    ctx.drawImage(buf, 0,0,sw,sh, 0,0,W,H);
+  }
+
+  function loop(){
+    var t=now();
+    if(!reduce && t>=nextIdle){
+      if(t-lastActivity>500){
+        disturbSim(2+((Math.random()*(sw-4))|0), 2+((Math.random()*(sh-4))|0), CONFIG.S_IDLE);
+      }
+      nextIdle = t + (CONFIG.IDLE_MIN + Math.random()*(CONFIG.IDLE_MAX-CONFIG.IDLE_MIN))*1000;
+    }
+    step();
+    render();
+    if(!started){ started=true; msgEl.style.opacity="0"; }
+    raf = requestAnimationFrame(loop);
+  }
+
+  function seedOpening(){
+    // 一載入就盪開一串漣漪（不必等點擊）
+    for(var n=0;n<9;n++){
+      disturbSim(2+((Math.random()*(sw-4))|0), 2+((Math.random()*(sh-4))|0), CONFIG.S_IDLE);
+    }
+  }
+
+  function start(){
+    resize();
+    ready=true;
+    seedOpening();
+    lastActivity=now(); nextIdle=now()+400;
+    cancelAnimationFrame(raf);
+    if(reduce){ // 靜止：畫一次帶開場漣漪的水面
+      for(var k=0;k<3;k++) step();
+      render(); msgEl.style.opacity="0";
+    } else { loop(); }
+  }
+
+  /* ---- 互動：左鍵 / 右鍵 / 拖曳 / 觸控 ---- */
+  var dragging=false;
+  canvas.addEventListener("pointerdown", function(e){
+    dragging=true;
+    try{ canvas.setPointerCapture(e.pointerId); }catch(_){}
+    disturb(e.clientX, e.clientY, CONFIG.S_CLICK);
+  });
+  canvas.addEventListener("pointermove", function(e){
+    if(!dragging) return;
+    disturb(e.clientX, e.clientY, CONFIG.S_DRAG);
+  });
+  function endDrag(e){ dragging=false; try{ canvas.releasePointerCapture(e.pointerId); }catch(_){} }
+  canvas.addEventListener("pointerup", endDrag);
+  canvas.addEventListener("pointercancel", endDrag);
+  // 右鍵：擋掉選單、盪一波
+  canvas.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+    disturb(e.clientX, e.clientY, CONFIG.S_CLICK);
+  });
+
+  var rt;
+  window.addEventListener("resize", function(){ clearTimeout(rt); rt=setTimeout(start,160); }, {passive:true});
+  document.addEventListener("visibilitychange", function(){
+    if(document.hidden){ cancelAnimationFrame(raf); }
+    else if(ready && !reduce){ lastActivity=now(); nextIdle=now()+300; cancelAnimationFrame(raf); loop(); }
+  });
+
+  img.onload = start;
+  img.onerror = function(){ msgEl.textContent = "底圖載入失敗"; };
+  img.src = "images/photography/img_3506.jpg";
+})();
+</script>
+</body>
+</html>
