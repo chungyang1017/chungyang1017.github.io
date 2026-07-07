@@ -74,6 +74,19 @@
   .about-hero .text p:last-child{margin-bottom:0}
   .about-hero .text p .num{font-family:var(--display);color:var(--accent);margin-right:10px}
 
+  /* About scroll-head：right-hand vertical portrait, in line with the kanji + text */
+  .scroll-head.about-head{grid-template-columns:240px 1fr 244px;gap:48px;align-items:center}
+  .about-head .right{padding-top:0}
+  .about-head .portrait-col{position:relative;aspect-ratio:3/4;max-height:400px;overflow:hidden;background:linear-gradient(160deg,#3d5a3f,#1f1f1d)}
+  .about-head .portrait-col img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%}
+  .about-head .portrait-col .fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;font-family:var(--display);font-size:80px;color:var(--sand);opacity:.4}
+  .about-head .portrait-col .cap{position:absolute;left:14px;bottom:12px;color:var(--sand);font-family:var(--latin);font-size:10px;letter-spacing:.2em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .profile-text{max-width:680px}
+  .profile-text h3{font-family:var(--display);font-size:24px;font-weight:400;line-height:1.5;letter-spacing:.04em;margin:0 0 24px;text-wrap:pretty}
+  .profile-text p{font-size:14.5px;line-height:2.05;color:var(--ink-soft);margin:0 0 1.1em;text-wrap:pretty}
+  .profile-text p:last-child{margin-bottom:0}
+  .profile-text .pn{font-family:var(--display);color:var(--accent);margin-right:10px}
+
   .table{width:100%;border-collapse:collapse;font-size:14px}
   .table th,.table td{text-align:left;padding:14px 0;border-bottom:1px solid var(--rule);vertical-align:top}
   .table th{width:96px;font-family:var(--latin);font-size:11px;letter-spacing:.1em;color:var(--ink-quiet);font-weight:400}
@@ -110,6 +123,8 @@
     .scroll-head{grid-template-columns:1fr;gap:24px;padding:64px 22px}
     .scroll-head .kanji{font-size:110px}
     .scroll-head .right{padding-top:0}
+    .scroll-head.about-head{grid-template-columns:1fr}
+    .about-head .portrait-col{aspect-ratio:16/10;max-height:320px}
     .about-hero{grid-template-columns:1fr}
     .about-hero .portrait{min-height:340px}
     .about-hero .text{padding:44px 24px}
@@ -143,7 +158,7 @@
   <a class="lang" href="about-zh.html">中</a>
 </header>
 
-<section class="scroll-head samon">
+<section class="scroll-head about-head samon">
   <div>
     <div class="index reveal">伍</div>
     <div class="kanji reveal">介</div>
@@ -153,21 +168,28 @@
     <div class="sub reveal">About · CV · Contact</div>
     <div class="lede reveal">A welfare-state researcher and Professor of Sociology at Soochow University. After a PhD in the UK, bringing a comparative welfare-regime lens to Taiwan and East Asia — pensions, social investment, welfare attitudes, and inequality.</div>
   </div>
-</section>
-
-<section class="about-hero">
-  <div class="portrait">
+  <div class="portrait-col reveal">
     <img src="photo.jpg" alt="Chung-Yang Yeh" onerror="this.style.display='none';this.parentNode.querySelector('.fallback').style.display='flex'">
     <div class="fallback">葉</div>
-    <div class="vname">葉崇揚</div>
-    <div class="cap">PORTRAIT · TAIPEI 2026</div>
+    <div class="cap">TAIPEI 2026</div>
   </div>
-  <div class="text samon">
-    <div class="e">Profile · Professor of Sociology</div>
-    <h1>Writing between institutions and society —<br>a researcher of the welfare state.</h1>
-    <p><span class="num">1</span>A welfare-state researcher. After completing my PhD in the United Kingdom, I brought a comparative welfare-regime lens back to Taiwan and East Asia. My long-standing concerns are pensions, social investment, welfare attitudes, and inequality.</p>
-    <p><span class="num">2</span>My work moves between comparative and institutional analysis. I want the prose to be hard and the vision soft — data should be verifiable, yet society always holds one more layer than the model.</p>
-    <p><span class="num">3</span>Recent interests run to welfare markets, the financialisation of welfare, and the rise of the regulatory welfare state. I am also asking how social policy should answer to a Taiwan that keeps shrinking, ageing, and growing more unequal.</p>
+</section>
+
+<section class="scroll-section samon">
+  <div class="row">
+    <div class="meta-col reveal">
+      <div class="num">伍の序</div>
+      <div class="big">述</div>
+      <h2>Profile</h2>
+      <div class="sub">Biography</div>
+      <p>On the research, the methods, and the concerns of recent years.</p>
+    </div>
+    <div class="profile-text reveal">
+      <h3>Writing between institutions and society — a researcher of the welfare state.</h3>
+      <p><span class="pn">1</span>A welfare-state researcher. After completing my PhD in the United Kingdom, I brought a comparative welfare-regime lens back to Taiwan and East Asia. My long-standing concerns are pensions, social investment, welfare attitudes, and inequality.</p>
+      <p><span class="pn">2</span>My work moves between comparative and institutional analysis. I want the prose to be hard and the vision soft — data should be verifiable, yet society always holds one more layer than the model.</p>
+      <p><span class="pn">3</span>Recent interests run to welfare markets, the financialisation of welfare, and the rise of the regulatory welfare state. I am also asking how social policy should answer to a Taiwan that keeps shrinking, ageing, and growing more unequal.</p>
+    </div>
   </div>
 </section>
 
