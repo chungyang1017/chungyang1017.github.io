@@ -1,440 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chung-Yang Yeh ・ Shoin ・ Academic</title>
-  <meta name="description" content="Chung-Yang Yeh ・ Professor of Social Policy, Soochow University. Comparative welfare states, East Asian social policy, pension politics." />
-  <link rel="alternate" hreflang="zh-Hant" href="academic-zh.html" />
-  <link rel="alternate" hreflang="en" href="academic.html" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --shoin-bg: #f0e8d4;
-      --shoin-paper: #fcf6e6;
-      --moss: #3d5a3f;
-      --accent: #c43838;
-      --water: #5a7a8a;
-      --ink: #1f1f1d;
-      --line: rgba(31,31,29,0.18);
-      --line-soft: rgba(31,31,29,0.10);
-      --jp: 'Shippori Mincho', 'Noto Serif JP', serif;
-      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
-      --display: 'Cormorant Garamond', serif;
-      --sans: 'Inter', 'Helvetica Neue', sans-serif;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
-    body {
-      font-family: var(--display);
-      background: var(--shoin-bg);
-      color: var(--ink);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.7;
-      position: relative;
-      overflow-x: hidden;
-    }
-    .paper-grain { position: fixed; inset: 0; pointer-events: none; opacity: 0.35; mix-blend-mode: multiply; z-index: 1; }
-    .top {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(240,232,212,0.93);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--line-soft);
-      padding: 14px 48px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .top-left { display: flex; align-items: center; gap: 16px; }
-    .back { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.55; text-decoration: none; color: var(--ink); text-transform: uppercase; }
-    .top-sep { font-size: 11px; opacity: 0.3; }
-    .seal {
-      width: 36px; height: 36px; background: var(--accent); color: #f8f5ec;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--brush); font-size: 17px; transform: rotate(-3deg);
-      box-shadow: 2px 2px 0 rgba(196,56,56,0.25); flex-shrink: 0;
-    }
-    .name-block { display: inline-flex; align-items: baseline; gap: 8px; }
-    .name-jp { font-family: var(--brush); font-size: 22px; letter-spacing: 0.1em; }
-    .name-en { font-family: var(--sans); font-style: italic; font-size: 13px; letter-spacing: 0.06em; opacity: 0.7; text-transform: none; }
-    .nav { display: flex; gap: 24px; font-size: 12px; letter-spacing: 0.25em; font-family: var(--sans); text-transform: uppercase; }
-    .nav a { color: var(--ink); text-decoration: none; opacity: 0.5; padding-bottom: 4px; }
-    .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
-    .nav .nav-jp { font-size: 9px; opacity: 0.55; letter-spacing: 0.18em; margin-left: 2px; font-family: var(--jp); text-transform: none; }
-    .nav .lang { border-left: 1px solid var(--line); padding-left: 24px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Academic · Chung-Yang Yeh</title>
+<meta name="description" content="Chung-Yang Yeh ・ Professor of Social Policy, Soochow University. Comparative welfare states, East Asian social policy, pension politics — journal articles, books, chapters and conference papers.">
+<link rel="alternate" hreflang="zh-Hant" href="academic-zh.html">
+<link rel="alternate" hreflang="en" href="academic.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600&family=Yuji+Syuku&family=Klee+One:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* 包 B · 方案 2 卷軸 — 共用樣式（pack-scroll _shared.css） */
+  :root{
+    --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
+    --moss:#3d5a3f; --accent:#c43838; --water:#5a7a8a;
+    --ink:#1f1f1d; --ink-soft:rgba(31,31,29,.72); --ink-quiet:rgba(31,31,29,.5);
+    --rule:rgba(31,31,29,.12);
+    --serif:"Shippori Mincho","Noto Serif TC","Noto Serif JP",serif;
+    --display:"Yuji Syuku",serif;
+    --latin:"Inter",sans-serif;
+    --kana:"Klee One",serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{ background:var(--sand); color:var(--ink); font-family:var(--serif); font-feature-settings:"palt"; -webkit-font-smoothing:antialiased; }
+  a{color:inherit}
 
-    .hero {
-      padding: 80px 60px 50px;
-      position: relative; z-index: 2;
-      border-bottom: 1px solid rgba(31,31,29,0.06);
-    }
-    .hero-inner { display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: end; max-width: 1280px; margin: 0 auto; }
-    .hero-eyebrow { font-size: 11px; letter-spacing: 0.5em; opacity: 0.5; margin-bottom: 16px; font-family: var(--sans); text-transform: uppercase; }
-    .hero-eyebrow .jp { font-family: var(--jp); margin-right: 0.4em; letter-spacing: 0.4em; text-transform: none; }
-    .hero-title { margin: 0; font-family: var(--brush); font-size: 88px; font-weight: 400; line-height: 1; letter-spacing: 0.05em; }
-    .hero-title-en { margin-top: 18px; font-family: var(--display); font-style: italic; font-size: 28px; letter-spacing: 0.06em; opacity: 0.85; }
-    .hero-sub { margin-top: 8px; font-size: 14px; letter-spacing: 0.3em; opacity: 0.55; font-family: var(--sans); text-transform: uppercase; }
-    .hero-desc { margin-top: 32px; font-size: 20px; line-height: 1.95; opacity: 0.82; max-width: 600px; }
-    .hero-desc .jp { display: block; font-family: var(--jp); font-size: 17px; opacity: 0.85; margin-bottom: 8px; }
-    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(31,31,29,0.18); }
-    .stat { background: var(--shoin-paper); padding: 22px 24px; }
-    .stat-num { font-family: var(--brush); font-size: 50px; line-height: 1; }
-    .stat-label { font-size: 16.5px; margin-top: 8px; opacity: 0.78; font-style: italic; }
-    .stat-en { font-size: 11px; letter-spacing: 0.25em; opacity: 0.5; margin-top: 4px; font-family: var(--sans); text-transform: uppercase; }
+  /* 卷軸感頂部 */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--sand) 94%,transparent);
+    backdrop-filter:blur(8px);
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 48px;border-bottom:1px solid var(--rule);
+  }
+  .nav .brand{display:flex;gap:16px;align-items:baseline}
+  .nav .seal{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:42px;height:42px;background:var(--accent);color:var(--sand);
+    font-family:var(--display);font-size:20px;
+    transform:rotate(-3deg);box-shadow:2px 2px 0 rgba(196,56,56,.25);
+    text-decoration:none;
+  }
+  .nav .name{font-family:var(--display);font-size:18px;letter-spacing:.1em;line-height:1;text-decoration:none}
+  .nav .name small{display:block;font-family:var(--latin);font-size:9px;letter-spacing:.3em;color:var(--ink-quiet);margin-top:4px}
+  .nav nav{display:flex;gap:24px;font-size:12px;letter-spacing:.2em}
+  .nav nav a{color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:1px solid transparent;transition:.2s}
+  .nav nav a:hover{border-bottom-color:var(--ink)}
+  .nav nav a.is-active{color:var(--accent);border-bottom-color:var(--accent)}
+  .nav .lang{border-left:1px solid var(--rule);padding-left:24px;font-family:var(--latin);font-size:12px;letter-spacing:.2em;color:var(--ink-soft);text-decoration:none}
 
-    .tabs-wrap { padding: 40px 60px 0; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
-    .tabs-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(31,31,29,0.20); }
-    .tabs { display: flex; gap: 4px; }
-    .tab {
-      background: transparent; border: none; padding: 14px 24px;
-      font-family: inherit; font-size: 15px;
-      color: rgba(31,31,29,0.6); border-bottom: 2px solid transparent;
-      margin-bottom: -1px; cursor: pointer; letter-spacing: 0.1em;
-      font-style: italic;
-    }
-    .tab.is-active { color: var(--ink); border-bottom-color: var(--accent); }
-    .tab .jp { font-family: var(--brush); margin-right: 10px; font-style: normal; }
-    .tab .en { font-size: 10px; letter-spacing: 0.25em; opacity: 0.6; font-family: var(--sans); font-style: normal; }
-    .tab .n { font-size: 11px; margin-left: 10px; opacity: 0.5; font-family: var(--sans); font-style: normal; }
-    .view-toggle { display: flex; gap: 4px; }
-    .view-btn {
-      background: transparent; color: var(--ink); border: 1px solid var(--ink);
-      padding: 6px 14px; font-family: inherit; font-size: 11px; letter-spacing: 0.2em;
-      cursor: pointer; text-transform: uppercase;
-    }
-    .view-btn.is-active { background: var(--ink); color: var(--shoin-bg); }
+  /* 砂紋 */
+  .samon{position:relative}
+  .samon::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.08;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='60'><g fill='none' stroke='%233d5a3f' stroke-width='.6'><path d='M 0 30 Q 50 22 100 30 T 200 30'/><path d='M 0 36 Q 50 28 100 36 T 200 36'/><path d='M 0 42 Q 50 34 100 42 T 200 42'/><path d='M 0 48 Q 50 40 100 48 T 200 48'/></g></svg>");
+  }
 
-    .content { padding: 40px 60px 80px; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
-    .pane { display: none; }
-    .pane.is-active { display: block; }
+  /* 卷軸開頭：左大漢字 + 右內容 */
+  .scroll-head{
+    display:grid;grid-template-columns:380px 1fr;gap:60px;
+    padding:120px 60px;max-width:1280px;margin:0 auto;
+    position:relative;border-top:1px solid var(--rule);
+    background:var(--sand-light);
+  }
+  .scroll-head .index{font-family:var(--display);font-size:24px;color:var(--ink-quiet);margin-bottom:8px}
+  .scroll-head .kanji{font-family:var(--display);font-size:160px;line-height:.9;letter-spacing:0}
+  .scroll-head h1{margin:24px 0 8px;font-family:var(--display);font-size:36px;font-weight:400;letter-spacing:.1em}
+  .scroll-head .sub{font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);margin-bottom:20px;font-family:var(--latin);text-transform:uppercase}
+  .scroll-head .lede{font-size:15px;line-height:2;color:var(--ink-soft);max-width:460px;text-wrap:pretty}
+  .scroll-head .right{padding-top:56px;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start}
 
-    .j-list { display: flex; flex-direction: column; }
-    .j-row { display: grid; grid-template-columns: 60px 1fr 200px; gap: 32px; padding: 24px 0; border-bottom: 1px solid rgba(31,31,29,0.10); align-items: baseline; }
-    .j-year { font-family: var(--sans); font-size: 14px; letter-spacing: 0.15em; opacity: 0.55; }
-    .j-title { margin: 0; font-family: var(--display); font-style: italic; font-size: 22px; font-weight: 500; line-height: 1.45; }
-    .j-authors { margin-top: 10px; font-size: 16px; opacity: 0.78; font-style: italic; }
-    .j-meta-line { margin-top: 12px; display: flex; gap: 14px; flex-wrap: wrap; font-size: 13.5px; font-family: var(--sans); opacity: 0.7; letter-spacing: 0.05em; }
-    .j-meta-line .doi { color: var(--accent); }
-    .j-meta-line .oa { color: var(--moss); }
-    .j-meta-line .jif { color: rgba(31,31,29,0.62); font-style: italic; letter-spacing: 0.02em; }
-    .j-meta-line .jif-y { opacity: 0.6; font-style: normal; letter-spacing: 0.08em; font-size: 11.5px; margin-left: 2px; }
-    .j-venue { text-align: right; }
-    .j-venue .name { font-size: 16.5px; opacity: 0.88; font-style: italic; }
-    .j-venue .vol { font-size: 13.5px; opacity: 0.6; margin-top: 4px; font-family: var(--sans); }
+  /* 段落分節 — 卷軸交替背景 */
+  .scroll-section{
+    padding:96px 60px;max-width:1280px;margin:0 auto;
+    border-top:1px solid var(--rule);position:relative;
+  }
+  .scroll-section.alt{background:var(--sand-light)}
+  .scroll-section .row{ display:grid;grid-template-columns:320px 1fr;gap:60px;align-items:start; }
+  .scroll-section .row.right{grid-template-columns:1fr 320px}
+  .scroll-section .row.right .left-col{order:2}
+  .scroll-section .meta-col .num{font-family:var(--display);font-size:22px;opacity:.4;margin-bottom:8px}
+  .scroll-section .meta-col .big{font-family:var(--display);font-size:96px;line-height:.95;letter-spacing:0}
+  .scroll-section .meta-col h2{margin:20px 0 8px;font-family:var(--display);font-size:30px;font-weight:400;letter-spacing:.1em}
+  .scroll-section .meta-col .sub{font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);margin-bottom:20px;font-family:var(--latin);text-transform:uppercase}
+  .scroll-section .meta-col p{font-size:14px;line-height:1.95;color:var(--ink-soft);max-width:280px;margin:0;text-wrap:pretty}
 
-    .j-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .j-card { background: var(--shoin-paper); border: 1px solid rgba(31,31,29,0.15); padding: 24px 22px; position: relative; display: flex; flex-direction: column; min-height: 280px; }
-    .j-card-head { display: flex; justify-content: space-between; margin-bottom: 16px; }
-    .j-card-tag { font-size: 10px; color: var(--accent); letter-spacing: 0.25em; font-family: var(--sans); }
-    .j-card-year { font-size: 11px; opacity: 0.5; font-family: var(--sans); }
-    .j-card-title { margin: 0; font-family: var(--display); font-style: italic; font-size: 17.5px; font-weight: 500; line-height: 1.5; flex: 1; }
-    .j-card-authors { margin-top: 16px; font-size: 13px; opacity: 0.65; font-style: italic; line-height: 1.5; }
-    .j-card-foot { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(31,31,29,0.15); font-size: 12px; font-family: var(--sans); opacity: 0.6; }
-    .j-card-meta { margin-top: 8px; display: flex; justify-content: space-between; font-size: 10px; font-family: var(--sans); }
-    .j-card-meta .oa { color: var(--moss); letter-spacing: 0.15em; }
-    .j-card-jif { margin-top: 10px; font-family: var(--sans); font-size: 10.5px; color: rgba(31,31,29,0.6); font-style: italic; letter-spacing: 0.02em; }
-    .j-card-jif-y { opacity: 0.6; font-style: normal; letter-spacing: 0.08em; }
-    .seal-multi { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; background: var(--accent); color: #f8f5ec; display: flex; align-items: center; justify-content: center; font-family: var(--brush); font-size: 14px; transform: rotate(-3deg); }
+  /* footer */
+  .foot{ border-top:1px solid var(--rule); padding:48px 60px; display:flex;justify-content:space-between; font-size:11px;letter-spacing:.2em;color:var(--ink-quiet); }
 
-    /* Books — single column, wide horizontal layout (matches publications page) */
-    .b-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
-    .b-card { background: var(--shoin-paper); padding: 28px; display: grid; grid-template-columns: 160px 1fr; gap: 32px; border: 1px solid rgba(31,31,29,0.15); position: relative; color: inherit; text-decoration: none; transition: background 0.25s, border-color 0.25s, transform 0.25s; }
-    .b-card:hover { background: #fff8e8; border-color: rgba(31,31,29,0.25); transform: translateY(-2px); }
-    .b-more { display: inline-block; margin-top: 14px; font-size: 12px; letter-spacing: 0.2em; color: var(--accent); font-family: var(--sans); text-transform: uppercase; }
-    .b-cover { width: 160px; min-height: 220px; background: rgba(31,31,29,0.05); overflow: hidden; }
-    .b-cover img { display: block; width: 100%; height: auto; object-fit: cover; }
-    .b-tag { font-size: 11px; color: var(--accent); letter-spacing: 0.3em; margin-bottom: 12px; font-family: var(--sans); }
-    .b-title { margin: 0; font-family: var(--brush); font-size: 30px; font-weight: 400; letter-spacing: 0.04em; line-height: 1.25; }
-    .b-sub { margin-top: 10px; font-size: 17px; opacity: 0.78; font-style: italic; }
-    .b-desc { margin-top: 16px; font-size: 17px; opacity: 0.82; line-height: 1.9; }
-    .b-foot { margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(31,31,29,0.15); display: flex; justify-content: space-between; gap: 12px; font-size: 13px; font-family: var(--sans); opacity: 0.7; }
+  /* ── 學術頁專屬 ── */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:8px}
+  .stats > div{background:var(--sand);padding:28px 24px}
+  .stats .n{font-family:var(--display);font-size:46px;line-height:1}
+  .stats .l{font-family:var(--display);font-size:15px;letter-spacing:.1em;margin-top:10px}
+  .stats .le{font-size:11px;letter-spacing:.2em;color:var(--ink-quiet);margin-top:12px;font-family:var(--latin);text-transform:uppercase;line-height:1.4}
 
-    .ch-list { display: flex; flex-direction: column; }
-    .ch-row { display: grid; grid-template-columns: 60px 1fr; gap: 32px; padding: 22px 0; border-bottom: 1px solid rgba(31,31,29,0.10); }
-    .ch-row .y { font-family: var(--sans); font-size: 15px; letter-spacing: 0.15em; opacity: 0.6; }
-    .ch-row h3 { margin: 0; font-family: var(--display); font-style: italic; font-size: 21px; font-weight: 500; line-height: 1.5; }
-    .ch-row .au { margin-top: 10px; font-size: 16px; opacity: 0.78; font-style: italic; }
-    .ch-row .src { margin-top: 10px; font-size: 16px; opacity: 0.82; line-height: 1.75; }
+  /* 發表列表（動態 render 輸出：.j-row / .ch-row / .c-row） */
+  .pub-list{display:flex;flex-direction:column}
+  .pub-list article{background:var(--paper);border:1px solid var(--rule);margin-bottom:-1px;padding:22px 26px;display:grid;gap:20px;align-items:baseline}
+  .pub-list .j-row{grid-template-columns:74px 1fr 200px}
+  .pub-list .ch-row,.pub-list .c-row{grid-template-columns:66px 1fr}
+  .pub-list .j-year,.pub-list .y{font-family:var(--latin);font-size:13px;letter-spacing:.1em;color:var(--ink-quiet)}
+  .pub-list h3,.pub-list .j-title{font-family:var(--serif);font-size:16px;line-height:1.62;font-weight:500;margin:0 0 8px;text-wrap:pretty}
+  .pub-list .j-authors,.pub-list .au{font-size:12px;color:var(--ink-soft);line-height:1.7}
+  .pub-list .src,.pub-list .v{font-size:12px;color:var(--ink-soft);line-height:1.7;margin-top:6px;font-style:italic}
+  .pub-list .j-venue{font-size:12.5px;font-style:italic;color:var(--ink-soft);text-align:right;line-height:1.5}
+  .pub-list .j-venue .vol{font-style:normal;font-family:var(--latin);font-size:10px;letter-spacing:.05em;color:var(--ink-quiet);margin-top:4px}
+  .pub-list .j-meta-line{margin-top:10px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .pub-list .doi{font-family:var(--latin);font-size:11px;letter-spacing:.08em;color:var(--accent);text-decoration:none}
+  .pub-list .doi:hover{text-decoration:underline}
+  .pub-list .oa{font-family:var(--latin);font-size:10px;letter-spacing:.12em;color:var(--moss)}
+  .pub-list .jif{font-family:var(--latin);font-size:10px;letter-spacing:.03em;color:var(--ink-quiet)}
+  .pub-list .jif-y{opacity:.7}
+  .see-all{margin-top:26px;font-family:var(--latin);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+  .see-all a{color:var(--accent);text-decoration:none}
+  .see-all a:hover{text-decoration:underline}
 
-    .commentary {
-      max-width: 1280px; margin: 0 auto;
-      padding: 60px 60px 80px;
-      position: relative; z-index: 2;
-      border-top: 1px solid rgba(31,31,29,0.10);
-    }
-    .commentary-head { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 36px; }
-    .commentary-eyebrow { font-size: 11px; letter-spacing: 0.5em; opacity: 0.5; margin-bottom: 12px; font-family: var(--sans); text-transform: uppercase; }
-    .commentary-title-zh { font-family: var(--brush); font-size: 40px; font-weight: 400; letter-spacing: 0.05em; line-height: 1; margin: 0; }
-    .commentary-sub { margin-top: 10px; font-size: 14px; letter-spacing: 0.3em; opacity: 0.55; font-family: var(--sans); text-transform: uppercase; }
-    .commentary-intro { font-size: 16.5px; line-height: 1.95; opacity: 0.78; max-width: 560px; font-style: italic; }
-    .commentary-intro strong { color: var(--accent); font-weight: 500; }
-    .commentary-card {
-      display: block; text-decoration: none; color: var(--ink);
-      background: var(--shoin-paper);
-      border: 1px solid rgba(31,31,29,0.12);
-      padding: 32px 36px; margin-bottom: 16px;
-      transition: background 0.3s, border-color 0.3s;
-    }
-    .commentary-card:hover { background: #fff8e8; border-color: rgba(31,31,29,0.22); }
-    .commentary-meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 11px; letter-spacing: 0.2em; opacity: 0.6; margin-bottom: 14px; font-family: var(--sans); text-transform: uppercase; }
-    .commentary-meta .num { font-family: var(--jp); letter-spacing: 0.3em; color: var(--accent); }
-    .commentary-meta .tag { padding: 2px 8px; background: rgba(31,31,29,0.10); letter-spacing: 0.15em; }
-    .commentary-card-title { font-family: var(--display); font-style: italic; font-size: 24px; font-weight: 500; line-height: 1.4; letter-spacing: 0.02em; margin: 0 0 14px; }
-    .commentary-card-excerpt { font-size: 17.5px; line-height: 1.95; opacity: 0.82; }
-    .commentary-arrow { display: inline-block; margin-top: 18px; font-size: 13px; letter-spacing: 0.18em; color: var(--accent); font-family: var(--sans); text-transform: uppercase; }
-    .commentary-more { display: inline-block; margin-top: 14px; font-size: 14px; letter-spacing: 0.18em; color: var(--accent); text-decoration: none; font-family: var(--sans); text-transform: uppercase; }
-    .commentary-more:hover { text-decoration: underline; }
+  /* 專書 */
+  .books{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .b-card{display:block;background:var(--paper);border:1px solid var(--rule);text-decoration:none;color:inherit;transition:.2s;padding:28px}
+  .b-card:hover{background:var(--sand-light)}
+  .b-year{font-family:var(--latin);font-size:11px;letter-spacing:.2em;color:var(--ink-quiet);text-transform:uppercase}
+  .b-title{font-family:var(--display);font-size:24px;font-weight:400;margin:10px 0 4px;letter-spacing:.04em;line-height:1.4}
+  .b-sub{font-size:13px;color:var(--ink-soft);line-height:1.7;margin-bottom:14px}
+  .b-desc{font-size:13px;color:var(--ink-soft);line-height:1.85;margin-bottom:16px;text-wrap:pretty}
+  .b-foot{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--ink-soft);border-top:1px solid var(--rule);padding-top:14px}
+  .b-foot .pub{font-family:var(--latin);letter-spacing:.06em;color:var(--ink-quiet)}
 
-    .c-list { display: flex; flex-direction: column; }
-    .c-row { display: grid; grid-template-columns: 60px 1fr; gap: 32px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid rgba(31,31,29,0.10); }
-    .c-row .y { font-family: var(--sans); font-size: 15px; opacity: 0.6; letter-spacing: 0.1em; }
-    .c-row h3 { margin: 0; font-family: var(--display); font-style: italic; font-size: 19px; font-weight: 500; line-height: 1.55; }
-    .c-row .au { margin-top: 8px; font-size: 15px; opacity: 0.78; font-style: italic; }
-    .c-row .v { margin-top: 8px; font-size: 15px; opacity: 0.78; line-height: 1.55; }
+  /* ── reveal（漸進增強：預設可見；js 就緒才隱藏待揭示） ── */
+  .reveal{opacity:1}
+  .js-anim .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.19,1,.22,1),transform .8s cubic-bezier(.19,1,.22,1)}
+  .js-anim .reveal.in{opacity:1;transform:none}
 
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 32px 60px;
-      max-width: 1280px; margin: 0 auto;
-      display: flex; justify-content: space-between;
-      font-size: 11px; opacity: 0.55; letter-spacing: 0.2em;
-      font-family: var(--sans); text-transform: uppercase;
-      position: relative; z-index: 2;
-    }
-
-    @media (max-width: 760px) {
-      .top { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
-      .top-left { gap: 10px; }
-      .back { font-size: 10px; letter-spacing: 0.22em; }
-      .seal { width: 30px; height: 30px; font-size: 14px; }
-      .name-jp { font-size: 16px; }
-      .name-en { font-size: 8px; }
-      .nav { gap: 14px; font-size: 10px; letter-spacing: 0.18em; }
-      .nav a.nav-sub { display: none; }
-      .nav .lang { padding-left: 14px; }
-
-      .hero { padding: 50px 22px 32px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
-      .hero-title { font-size: 56px; }
-      .hero-title-en { font-size: 22px; margin-top: 12px; }
-      .hero-sub { font-size: 12px; letter-spacing: 0.22em; }
-      .hero-desc { font-size: 17.5px; margin-top: 24px; }
-      .hero-desc .jp { font-size: 15.5px; }
-      .stat-num { font-size: 38px; }
-      .stat-label { font-size: 14px; }
-      .stat-en { font-size: 10px; }
-
-      .tabs-wrap { padding: 28px 22px 0; }
-      .tabs-bar { flex-direction: column; align-items: stretch; gap: 14px; padding-bottom: 0; }
-      .tabs { overflow-x: auto; }
-      .tab { padding: 12px 14px; font-size: 13px; flex-shrink: 0; }
-      .tab .en { display: none; }
-      .view-toggle { justify-content: flex-end; }
-
-      .content { padding: 28px 22px 56px; }
-      .j-row { grid-template-columns: 1fr; gap: 8px; padding: 18px 0; }
-      .j-venue { text-align: left; }
-      .j-grid { grid-template-columns: 1fr; }
-
-      .b-grid { grid-template-columns: 1fr; }
-      .b-card { grid-template-columns: 100px 1fr; gap: 18px; padding: 18px; }
-      .b-cover { width: 100px; min-height: 140px; }
-      .b-title { font-size: 22px; }
-
-      .c-row { grid-template-columns: 1fr; gap: 4px; padding: 16px 0; }
-
-      footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 10px; }
-    }
-  </style>
+  /* ── Mobile ── */
+  @media (max-width:820px){
+    .nav{padding:12px 20px;flex-wrap:wrap;gap:10px}
+    .nav nav{gap:14px;font-size:10px;letter-spacing:.14em;order:3;width:100%;justify-content:space-between}
+    .nav .lang{padding-left:14px}
+    .scroll-head{grid-template-columns:1fr;gap:24px;padding:64px 22px}
+    .scroll-head .kanji{font-size:110px}
+    .scroll-head .right{padding-top:0}
+    .scroll-section{padding:56px 22px}
+    .scroll-section .row,.scroll-section .row.right{grid-template-columns:1fr;gap:28px}
+    .scroll-section .row.right .left-col,.scroll-section .row.right > div:first-child{order:2}
+    .scroll-section .meta-col .big{font-size:72px}
+    .stats{grid-template-columns:1fr 1fr}
+    .stats .n{font-size:38px}
+    .pub-list .j-row{grid-template-columns:52px 1fr}
+    .pub-list .j-venue{grid-column:2;text-align:left;margin-top:6px}
+    .books{grid-template-columns:1fr}
+    .foot{padding:32px 22px;flex-direction:column;gap:8px}
+  }
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1!important;transform:none!important;transition:none} }
+</style>
 </head>
 <body>
 
-<svg class="paper-grain" aria-hidden="true">
-  <defs>
-    <filter id="paper-noise">
-      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
-      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
-    </filter>
-  </defs>
-  <rect width="100%" height="100%" filter="url(#paper-noise)" />
-</svg>
-
-<header class="top">
-  <div class="top-left">
-    <a href="index-en.html" class="back">← HOME</a>
-    <span class="top-sep">·</span>
-    <span class="name-block">
-      <span class="name-jp">葉崇揚</span>
-      <span class="name-en">（Chung-Yang Yeh）</span>
-    </span>
+<header class="nav">
+  <div class="brand">
+    <a class="seal" href="index-en.html">葉</a>
+    <a class="name" href="index-en.html">葉崇揚<small>YEH CHUNG-YANG</small></a>
   </div>
-  <nav class="nav" aria-label="Sections">
-    <a href="index-en.html" class="nav-sub">Home</a>
-    <a href="academic.html" class="is-current">Academic</a>
-    <a href="photography.html" class="nav-sub">Photography</a>
-    <a href="teaching-zh.html" class="nav-sub">Teaching</a>
-    <a href="academic-zh.html" class="lang">中</a>
+  <nav>
+    <a href="index-en.html">Home</a>
+    <a href="academic.html" class="is-active">Academic</a>
+    <a href="photography.html">Photography</a>
+    <a href="teaching.html">Teaching</a>
+    <a href="essays.html">Essays</a>
+    <a href="about.html">About</a>
   </nav>
+  <a class="lang" href="academic-zh.html">中</a>
 </header>
 
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <p class="hero-eyebrow">Room II ・ <span class="jp">書院</span> SHOIN</p>
-      <h1 class="hero-title">學術</h1>
-      <p class="hero-title-en">The Study</p>
-      <p class="hero-sub">ACADEMIC WORKS</p>
-      <p class="hero-desc">
-        <span class="jp">紙の山に座する。論文が呼吸する場所。</span>
-        Professor of Social Policy at Soochow University. A comparative welfare-state researcher writing at the intersection of East-Asian social policy, pension politics, and welfare attitudes.
-      </p>
+<section class="scroll-head samon">
+  <div>
+    <div class="index reveal">壱</div>
+    <div class="kanji reveal">學</div>
+  </div>
+  <div class="right">
+    <h1 class="reveal">Academic</h1>
+    <div class="sub reveal">ACADEMIC · PUBLICATIONS</div>
+    <div class="lede reveal">Professor of Social Policy at Soochow University, Taipei. A comparative welfare-state researcher, writing at the intersection of East Asian social policy, pension politics, and welfare attitudes — where the papers breathe, one by one, quietly holding the outline of an age.</div>
+  </div>
+</section>
+
+<!-- Stats + Journal Articles -->
+<section class="scroll-section samon">
+  <div class="stats reveal">
+    <div><div class="n">32</div><div class="le">Journal<br>Articles</div></div>
+    <div><div class="n">2</div><div class="le">Books</div></div>
+    <div><div class="n">17</div><div class="le">Book<br>Chapters</div></div>
+    <div><div class="n">20</div><div class="le">Conferences</div></div>
+  </div>
+
+  <div class="row" style="margin-top:56px">
+    <div class="meta-col reveal">
+      <div class="num">壱の壱</div>
+      <div class="big">表</div>
+      <h2>Articles</h2>
+      <div class="sub">Articles · 32</div>
+      <p>Peer-reviewed journal articles, indexed in SSCI / TSSCI / CSSCI. Recent representative works below; full list via the link.</p>
     </div>
-    <div class="stats">
-      <div class="stat"><div class="stat-num">32</div><div class="stat-label">Journal articles</div><div class="stat-en">JOURNAL</div></div>
-      <div class="stat"><div class="stat-num">2</div><div class="stat-label">Books</div><div class="stat-en">BOOK</div></div>
-      <div class="stat"><div class="stat-num">17</div><div class="stat-label">Chapters</div><div class="stat-en">CHAPTER</div></div>
-      <div class="stat"><div class="stat-num">20</div><div class="stat-label">Conferences</div><div class="stat-en">CONF.</div></div>
+    <div>
+      <div class="pub-list reveal" id="academic-journals-list"></div>
+      <p class="see-all reveal"><a href="publications/publications.html#journals">View all 32 journal articles →</a></p>
     </div>
   </div>
 </section>
 
-<div class="tabs-wrap">
-  <div class="tabs-bar">
-    <div class="tabs" role="tablist">
-      <button class="tab is-active" data-tab="journal" role="tab"><span class="jp">期刊</span><span class="en">JOURNAL</span><span class="n">32</span></button>
-      <button class="tab" data-tab="book" role="tab"><span class="jp">專書</span><span class="en">BOOK</span><span class="n">2</span></button>
-      <button class="tab" data-tab="chapter" role="tab"><span class="jp">章節</span><span class="en">CHAPTER</span><span class="n">17</span></button>
-      <button class="tab" data-tab="conf" role="tab"><span class="jp">研討會</span><span class="en">CONFERENCE</span><span class="n">20</span></button>
-    </div>
-    <div class="view-toggle" id="view-toggle">
-      <button class="view-btn is-active" data-view="list">目錄式 LIST</button>
-      <button class="view-btn" data-view="grid">札式 CARD</button>
-    </div>
-  </div>
-</div>
-
-<div class="content">
-  <div class="pane is-active" data-pane="journal">
-    <!-- Auto-rendered top 10 from js/publications-data.js (single source of truth) -->
-    <div class="j-list" data-view-pane="list" id="academic-journals-list"></div>
-    <div class="j-grid" data-view-pane="grid" id="academic-journals-grid" style="display:none;"></div>
-    <p style="margin-top: 28px; text-align: center; font-size: 13px; opacity: 0.6;"><a href="publications/publications.html#journals" style="color: var(--accent); text-decoration: none; letter-spacing: 0.18em; font-family: var(--sans); text-transform: uppercase;">View all 32 journal articles →</a></p>
-  </div>
-
-  <div class="pane" data-pane="book">
-    <div class="b-grid">
-      <a href="books/pension-reform-2026-en.html" class="b-card">
-        <div class="b-cover">
-          <img src="images/books/pension-reform-2026-cover.jpg" alt="The Buried Welfare Years: Challenges and Solutions of Taiwan's Pension Reform" loading="lazy" />
-        </div>
-        <div>
-          <div class="b-tag">BOOK · 2026</div>
-          <h3 class="b-title">葬送的福利年（金）</h3>
+<!-- Books -->
+<section class="scroll-section alt samon">
+  <div class="row right">
+    <div>
+      <div class="books">
+        <a class="b-card reveal" href="books/pension-reform-2026-en.html">
+          <div class="b-year">2026 · Edited</div>
+          <div class="b-title">葬送的福利年（金）</div>
           <div class="b-sub">Challenges and Solutions of Taiwan's Pension Reform</div>
           <div class="b-desc">Taiwan's Labour Insurance fund will run out by 2028 — not just a financial black hole, but a rupture in the country's intergenerational contract. This volume reframes the debate beyond the conventional, drawing on European and Japanese reforms to address generational justice, gender equality, labour market change, and pension financialisation.</div>
-          <span class="b-more">Synopsis &amp; Contents →</span>
-          <div class="b-foot"><span>Edited by Yeh, Chen, Shih &amp; Ku</span><span>Taipei: Chuliu</span></div>
-        </div>
-      </a>
-      <a href="books/east-asian-welfare-2018-en.html" class="b-card">
-        <div class="b-cover">
-          <img src="images/books/east-asian-welfare-2018.jpg" alt="The Transforming East Asian Welfare Regimes" loading="lazy" />
-        </div>
-        <div>
-          <div class="b-tag">BOOK · 2018</div>
-          <h3 class="b-title">轉型中的東亞福利體制</h3>
+          <div class="b-foot"><span>Edited by Yeh, Chen, Shih &amp; Ku</span><span class="pub">Taipei: Chuliu</span></div>
+        </a>
+        <a class="b-card reveal" href="books/east-asian-welfare-2018-en.html">
+          <div class="b-year">2018 · Sole author</div>
+          <div class="b-title">轉型中的東亞福利體制</div>
           <div class="b-sub">The Transforming East Asian Welfare Regimes</div>
           <div class="b-desc">A comparative study of welfare-regime reform across Taiwan, Japan, Singapore, South Korea and Hong Kong. Examines why political-economic transitions led to divergent reform pathways, and rethinks the limitations of the standard "East Asian welfare regime" perspective.</div>
-          <span class="b-more">Synopsis &amp; Contents →</span>
-          <div class="b-foot"><span>Yeh, C-Y. (sole author)</span><span>Hong Kong: City Univ. of HK Press</span></div>
-        </div>
-      </a>
+          <div class="b-foot"><span>Yeh, C-Y. (sole author)</span><span class="pub">Hong Kong: City Univ. of HK Press</span></div>
+        </a>
+      </div>
+    </div>
+    <div class="meta-col reveal">
+      <div class="num">壱の弐</div>
+      <div class="big">著</div>
+      <h2>Books</h2>
+      <div class="sub">Books · 2</div>
+      <p>One edited volume, one sole-authored. Click through for synopsis and contents.</p>
     </div>
   </div>
-
-  <div class="pane" data-pane="chapter">
-    <!-- Auto-rendered top 10 from js/chapters-data.js -->
-    <div class="ch-list" id="academic-chapters-list"></div>
-    <p style="margin-top: 28px; text-align: center; font-size: 13px; opacity: 0.6;"><a href="publications/publications.html#chapters" style="color: var(--accent); text-decoration: none; letter-spacing: 0.18em; font-family: var(--sans); text-transform: uppercase;">View all 17 chapters →</a></p>
-  </div>
-
-  <div class="pane" data-pane="conf">
-    <!-- Auto-rendered top 10 from js/conferences-data.js -->
-    <div class="c-list" id="academic-conferences-list"></div>
-    <p style="margin-top: 28px; text-align: center; font-size: 13px; opacity: 0.6;"><a href="publications/publications.html#conference" style="color: var(--accent); text-decoration: none; letter-spacing: 0.18em; font-family: var(--sans); text-transform: uppercase;">View all 20 conferences →</a></p>
-  </div>
-</div>
-
-<section class="commentary" id="commentary">
-  <div class="commentary-head">
-    <div>
-      <p class="commentary-eyebrow">Room II · SHOIN ・ Side Notes</p>
-      <h2 class="commentary-title-zh">隨筆</h2>
-      <p class="commentary-sub">COMMENTARY ・ East Asia, Frontline</p>
-    </div>
-    <p class="commentary-intro">
-      <strong>East Asia, Frontline</strong> ── reading the underlying mood of Japan, Korea, Taiwan and China through manga, popular culture, and social data. A lighter but still serious register, alongside the academic writing.
-    </p>
-  </div>
-
-  <a href="commentary/2026-takaichi-en.html" class="commentary-card">
-    <div class="commentary-meta">
-      <span class="num">No. 〇〇一</span>
-      <span>2026.02.07</span>
-      <span class="tag">JAPAN</span>
-    </div>
-    <h3 class="commentary-card-title">Another figure walking out of a manga: Reading Sanae Takaichi through Seijika Mae and Shima Kōsaku</h3>
-    <p class="commentary-card-excerpt">
-      As Shohei Ohtani sets a two-way record in Los Angeles that even <em>Major</em> never rehearsed, Japan looks at "an outward-stretching dream"; meanwhile in Nagatachō another manga-born figure approaches the summit of power. The essay reads Takaichi through the "method" of <em>Seijika Mae</em> and the "anxiety" of <em>Shima Kōsaku</em> as Japan's "absolute realism".
-    </p>
-    <span class="commentary-arrow">Read full essay →</span>
-  </a>
-  <a href="commentary/" class="commentary-more">All commentary →</a>
 </section>
 
-<footer>
-  <span>YEH CHUNG-YANG</span>
-  <span>Reiwa 8 ・ Spring ・ Shoin</span>
+<!-- Book Chapters -->
+<section class="scroll-section samon">
+  <div class="row">
+    <div class="meta-col reveal">
+      <div class="num">壱の参</div>
+      <div class="big">章</div>
+      <h2>Chapters</h2>
+      <div class="sub">Chapters · 17</div>
+      <p>Chapters in edited volumes, at home and abroad. Recent representative works below.</p>
+    </div>
+    <div>
+      <div class="pub-list reveal" id="academic-chapters-list"></div>
+      <p class="see-all reveal"><a href="publications/publications.html#chapters">View all 17 chapters →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- Conferences -->
+<section class="scroll-section alt samon">
+  <div class="row right">
+    <div>
+      <div class="pub-list reveal" id="academic-conferences-list"></div>
+      <p class="see-all reveal"><a href="publications/publications.html#conference">View all 20 conferences →</a></p>
+    </div>
+    <div class="meta-col reveal">
+      <div class="num">壱の肆</div>
+      <div class="big">講</div>
+      <h2>Conferences</h2>
+      <div class="sub">Conferences · 20</div>
+      <p>Presentations at academic conferences, at home and abroad. Recent representative works below.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <span>葉崇揚 · YEH CHUNG-YANG</span>
+  <span>Academic</span>
 </footer>
 
 <script src="js/publications-data.js"></script>
 <script src="js/chapters-data.js"></script>
 <script src="js/conferences-data.js"></script>
 <script>
-  // Auto-render top N from data files (single source of truth — edit js/*-data.js to update)
   renderTopJournals('academic-journals-list', 10, 'en');
-  renderJournalCardsGrid('academic-journals-grid', 6, 'en');
   renderTopChapters('academic-chapters-list', 10, 'en');
   renderTopConferences('academic-conferences-list', 10, 'en');
-
-  const tabs = document.querySelectorAll('.tab');
-  const panes = document.querySelectorAll('.pane');
-  const viewToggle = document.getElementById('view-toggle');
-  tabs.forEach(t => t.addEventListener('click', () => {
-    const id = t.dataset.tab;
-    tabs.forEach(x => x.classList.toggle('is-active', x === t));
-    panes.forEach(p => p.classList.toggle('is-active', p.dataset.pane === id));
-    viewToggle.style.display = id === 'journal' ? 'flex' : 'none';
-  }));
-  document.querySelectorAll('.view-btn').forEach(b => b.addEventListener('click', () => {
-    const v = b.dataset.view;
-    document.querySelectorAll('.view-btn').forEach(x => x.classList.toggle('is-active', x === b));
-    document.querySelectorAll('[data-view-pane]').forEach(p => {
-      p.style.display = p.dataset.viewPane === v ? (v === 'grid' ? 'grid' : 'flex') : 'none';
-    });
-  }));
 </script>
 
+<!-- reveal 揭示（漸進增強：IO 為主，scroll／計時器備援） -->
 <script>
-  // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
-  // 偶爾因 sticky header + backdrop-filter 而整頁空白。
-  // 偵測到從快取還原時，強制觸發一次重繪。
-  window.addEventListener('pageshow', function(e) {
-    if (e.persisted) {
-      document.body.style.display = 'none';
-      void document.body.offsetHeight;
-      document.body.style.display = '';
-    }
+(function () {
+  "use strict";
+  document.documentElement.classList.add('js-anim');
+  var revealables = document.querySelectorAll('.reveal');
+  var markIn = function (el) { el.classList.add('in'); };
+  var revealVisibleNow = function () {
+    var vh = window.innerHeight;
+    revealables.forEach(function (el) {
+      if (el.classList.contains('in')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.98 && r.bottom > 0) markIn(el);
+    });
+  };
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) if (entries[i].isIntersecting) markIn(entries[i].target);
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+    revealables.forEach(function (el) { io.observe(el); });
+  } else { revealables.forEach(markIn); }
+  window.addEventListener('scroll', revealVisibleNow, { passive: true });
+  window.addEventListener('pageshow', revealVisibleNow);
+  setTimeout(revealVisibleNow, 400); setTimeout(revealVisibleNow, 1600);
+  revealVisibleNow();
+})();
+</script>
+
+<!-- BFCache 還原修復 -->
+<script>
+  window.addEventListener('pageshow', function(e){
+    if (e.persisted) { document.body.style.display='none'; void document.body.offsetHeight; document.body.style.display=''; }
   });
 </script>
 </body>
