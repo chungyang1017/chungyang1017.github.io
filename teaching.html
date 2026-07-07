@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teaching · Chung-Yang Yeh</title>
+<meta name="description" content="Chung-Yang Yeh ・ Department of Sociology, Soochow University ・ This term: Social Research Methods (graduate), Sociology of Welfare (undergraduate).">
+<link rel="alternate" hreflang="zh-Hant" href="teaching-zh.html">
+<link rel="alternate" hreflang="en" href="teaching.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600&family=Yuji+Syuku&family=Klee+One:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
+    --moss:#3d5a3f; --accent:#c43838; --water:#5a7a8a;
+    --ink:#1f1f1d; --ink-soft:rgba(31,31,29,.72); --ink-quiet:rgba(31,31,29,.5);
+    --rule:rgba(31,31,29,.12);
+    --serif:"Shippori Mincho","Noto Serif TC","Noto Serif JP",serif;
+    --display:"Yuji Syuku",serif;
+    --latin:"Inter",sans-serif;
+    --kana:"Klee One",serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{ background:var(--sand); color:var(--ink); font-family:var(--serif); font-feature-settings:"palt"; -webkit-font-smoothing:antialiased; }
+  a{color:inherit}
+
+  .nav{ position:sticky;top:0;z-index:50; background:color-mix(in srgb,var(--sand) 94%,transparent); backdrop-filter:blur(8px); display:flex;justify-content:space-between;align-items:center; padding:16px 48px;border-bottom:1px solid var(--rule); }
+  .nav .brand{display:flex;gap:16px;align-items:baseline}
+  .nav .seal{ display:inline-flex;align-items:center;justify-content:center; width:42px;height:42px;background:var(--accent);color:var(--sand); font-family:var(--display);font-size:20px; transform:rotate(-3deg);box-shadow:2px 2px 0 rgba(196,56,56,.25); text-decoration:none; }
+  .nav .name{font-family:var(--display);font-size:18px;letter-spacing:.1em;line-height:1;text-decoration:none}
+  .nav .name small{display:block;font-family:var(--latin);font-size:9px;letter-spacing:.3em;color:var(--ink-quiet);margin-top:4px}
+  .nav nav{display:flex;gap:24px;font-size:12px;letter-spacing:.2em}
+  .nav nav a{color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:1px solid transparent;transition:.2s}
+  .nav nav a:hover{border-bottom-color:var(--ink)}
+  .nav nav a.is-active{color:var(--accent);border-bottom-color:var(--accent)}
+  .nav .lang{border-left:1px solid var(--rule);padding-left:24px;font-family:var(--latin);font-size:12px;letter-spacing:.2em;color:var(--ink-soft);text-decoration:none}
+
+  .samon{position:relative}
+  .samon::before{ content:"";position:absolute;inset:0;pointer-events:none;opacity:.08; background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='60'><g fill='none' stroke='%233d5a3f' stroke-width='.6'><path d='M 0 30 Q 50 22 100 30 T 200 30'/><path d='M 0 36 Q 50 28 100 36 T 200 36'/><path d='M 0 42 Q 50 34 100 42 T 200 42'/><path d='M 0 48 Q 50 40 100 48 T 200 48'/></g></svg>"); }
+
+  .scroll-head{ display:grid;grid-template-columns:380px 1fr;gap:60px; padding:120px 60px;max-width:1280px;margin:0 auto; position:relative;border-top:1px solid var(--rule); background:var(--sand-light); }
+  .scroll-head .index{font-family:var(--display);font-size:24px;color:var(--ink-quiet);margin-bottom:8px}
+  .scroll-head .kanji{font-family:var(--display);font-size:160px;line-height:.9;letter-spacing:0}
+  .scroll-head h1{margin:24px 0 8px;font-family:var(--display);font-size:36px;font-weight:400;letter-spacing:.1em}
+  .scroll-head .sub{font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);margin-bottom:20px;font-family:var(--latin);text-transform:uppercase}
+  .scroll-head .lede{font-size:15px;line-height:2;color:var(--ink-soft);max-width:470px;text-wrap:pretty}
+  .scroll-head .right{padding-top:56px;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start}
+
+  .scroll-section{ padding:96px 60px;max-width:1280px;margin:0 auto; border-top:1px solid var(--rule);position:relative; }
+  .scroll-section.alt{background:var(--sand-light)}
+  .scroll-section .row{ display:grid;grid-template-columns:320px 1fr;gap:60px;align-items:start; }
+  .scroll-section .meta-col .num{font-family:var(--display);font-size:22px;opacity:.4;margin-bottom:8px}
+  .scroll-section .meta-col .big{font-family:var(--display);font-size:96px;line-height:.95;letter-spacing:0}
+  .scroll-section .meta-col h2{margin:20px 0 8px;font-family:var(--display);font-size:30px;font-weight:400;letter-spacing:.1em}
+  .scroll-section .meta-col .sub{font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);margin-bottom:20px;font-family:var(--latin);text-transform:uppercase}
+  .scroll-section .meta-col p{font-size:14px;line-height:1.95;color:var(--ink-soft);max-width:280px;margin:0;text-wrap:pretty}
+
+  .foot{ border-top:1px solid var(--rule); padding:48px 60px; display:flex;justify-content:space-between; font-size:11px;letter-spacing:.2em;color:var(--ink-quiet); }
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:8px}
+  .stats > div{background:var(--sand);padding:28px 24px}
+  .stats .n{font-family:var(--display);font-size:46px;line-height:1}
+  .stats .le{font-size:11px;letter-spacing:.2em;color:var(--ink-quiet);margin-top:12px;font-family:var(--latin);text-transform:uppercase;line-height:1.4}
+
+  .course-wrap{display:flex;flex-direction:column;gap:24px}
+  .course{background:var(--paper);border:1px solid var(--rule);padding:40px 44px}
+  .course-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding-bottom:22px;margin-bottom:24px}
+  .course-tag{font-family:var(--latin);font-size:10px;letter-spacing:.24em;color:var(--accent);text-transform:uppercase}
+  .course-title{font-family:var(--display);font-size:30px;font-weight:400;margin:10px 0 2px;letter-spacing:.05em}
+  .course-en{font-family:var(--latin);font-size:11.5px;letter-spacing:.16em;color:var(--ink-quiet);text-transform:uppercase}
+  .course-meta{text-align:right;font-size:12px;color:var(--ink-soft);line-height:1.85;font-family:var(--latin);letter-spacing:.06em}
+  .course-meta b{font-family:var(--display);font-size:15px;color:var(--ink)}
+  .course-desc{font-size:14px;line-height:1.95;color:var(--ink-soft);text-wrap:pretty}
+  .course-desc p{margin:0 0 1em}
+  .blk{margin-top:26px}
+  .blk .lab{font-family:var(--latin);font-size:11px;letter-spacing:.24em;color:var(--ink-quiet);text-transform:uppercase;margin-bottom:14px}
+  .obj-list{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+  .obj-list li{font-size:13px;line-height:1.7;color:var(--ink-soft);padding-left:22px;position:relative;text-wrap:pretty}
+  .obj-list li::before{content:"—";position:absolute;left:0;color:var(--accent)}
+  .books-2{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+  .bk ul{margin:0;padding:0;list-style:none}
+  .bk li{font-size:12.5px;line-height:1.65;color:var(--ink-soft);margin-bottom:11px;text-wrap:pretty}
+  .syllabus-cta{display:inline-block;font-family:var(--latin);font-size:11px;letter-spacing:.18em;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:11px 20px;text-transform:uppercase;transition:.2s}
+  .syllabus-cta:hover{background:var(--accent);color:var(--sand)}
+  .week-table{display:grid;grid-template-columns:1fr 1fr;gap:0 44px}
+  .wk{display:grid;grid-template-columns:34px 46px 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--rule);font-size:12.5px;align-items:baseline}
+  .wk .wn{font-family:var(--display);color:var(--ink-quiet);font-size:13px}
+  .wk .wd{font-family:var(--latin);font-size:10px;color:var(--ink-quiet);letter-spacing:.04em}
+  .wk .wt{color:var(--ink-soft);line-height:1.5;text-wrap:pretty}
+  .wk.off .wt{color:var(--ink-quiet);font-style:italic}
+  .wk .wt a{color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)}
+  .wk .wt .tag{font-family:var(--latin);font-size:9px;letter-spacing:.14em;color:var(--accent);margin-left:6px;white-space:nowrap}
+
+  .reveal{opacity:1}
+  .js-anim .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.19,1,.22,1),transform .8s cubic-bezier(.19,1,.22,1)}
+  .js-anim .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:820px){
+    .nav{padding:12px 20px;flex-wrap:wrap;gap:10px}
+    .nav nav{gap:14px;font-size:10px;letter-spacing:.14em;order:3;width:100%;justify-content:space-between}
+    .nav .lang{padding-left:14px}
+    .scroll-head{grid-template-columns:1fr;gap:24px;padding:64px 22px}
+    .scroll-head .kanji{font-size:110px}
+    .scroll-head .right{padding-top:0}
+    .scroll-section{padding:56px 22px}
+    .scroll-section .row{grid-template-columns:1fr;gap:28px}
+    .scroll-section .meta-col .big{font-size:72px}
+    .stats{grid-template-columns:1fr 1fr}
+    .stats .n{font-size:38px}
+    .course{padding:28px 22px}
+    .course-head{gap:12px}
+    .course-meta{text-align:left}
+    .books-2{grid-template-columns:1fr;gap:24px}
+    .week-table{grid-template-columns:1fr;gap:0}
+    .foot{padding:32px 22px;flex-direction:column;gap:8px}
+  }
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1!important;transform:none!important;transition:none} }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="brand">
+    <a class="seal" href="index-en.html">葉</a>
+    <a class="name" href="index-en.html">葉崇揚<small>YEH CHUNG-YANG</small></a>
+  </div>
+  <nav>
+    <a href="index-en.html">Home</a>
+    <a href="academic.html">Academic</a>
+    <a href="photography.html">Photography</a>
+    <a href="teaching.html" class="is-active">Teaching</a>
+    <a href="essays.html">Essays</a>
+    <a href="about.html">About</a>
+  </nav>
+  <a class="lang" href="teaching-zh.html">中</a>
+</header>
+
+<section class="scroll-head samon">
+  <div>
+    <div class="index reveal">参</div>
+    <div class="kanji reveal">教</div>
+  </div>
+  <div class="right">
+    <h1 class="reveal">Teaching</h1>
+    <div class="sub reveal">Teaching · Ichi-go Ichi-e</div>
+    <div class="lede reveal">One seat, one meeting — <i>ichi-go ichi-e</i>. The classroom is where my students and I brew a question together: from the shaping of the welfare state to the first draft of a research design. Each class happens only once.</div>
+  </div>
+</section>
+
+<section class="scroll-section samon">
+  <div class="stats reveal">
+    <div><div class="n">8</div><div class="le">Semesters<br>@ SCU</div></div>
+    <div><div class="n">2</div><div class="le">Courses<br>Taught</div></div>
+    <div><div class="n">2</div><div class="le">This<br>Term</div></div>
+    <div><div class="n">3</div><div class="le">Research<br>Waivers</div></div>
+  </div>
+
+  <div class="row" style="margin-top:56px">
+    <div class="meta-col reveal">
+      <div class="num">参の壱</div>
+      <div class="big">授</div>
+      <h2>Courses</h2>
+      <div class="sub">Courses · 2026 Spring</div>
+      <p>Department of Sociology, Soochow University. One graduate seminar, one undergraduate course — from research design to welfare regimes.</p>
+    </div>
+
+    <div class="course-wrap">
+      <!-- Social Research Methods -->
+      <article class="course reveal">
+        <div class="course-head">
+          <div>
+            <div class="course-tag">Graduate</div>
+            <h3 class="course-title">Social Research Methods</h3>
+            <div class="course-en">社會研究法</div>
+          </div>
+          <div class="course-meta"><b>MA</b>3 credits<br>Tue 09:00–12:00<br>2026 Spring</div>
+        </div>
+        <div class="course-desc">
+          <p>Research is not a recipe but a long argument about what counts as evidence and how we can know. The course begins with the philosophy of science and epistemology — Popper's falsification, Hempel's covering law, the standoff between positivism and interpretivism — then enters the central methodological debate within social science: King-Keohane-Verba's <i>Designing Social Inquiry</i> and the Brady-Collier response.</p>
+          <p>The middle weeks work through the core of research design: causal inference, mechanisms, case selection, measurement validity. The later weeks introduce advanced tools — QCA, historical comparative analysis, process tracing, and mixed methods — closing with each student's own research proposal. By the end, the hope is that everyone can cross the qualitative/quantitative divide and find their own methodological voice.</p>
+        </div>
+
+        <div class="blk">
+          <div class="lab">Objectives</div>
+          <ul class="obj-list">
+            <li>Build a foundation in the philosophy of science and epistemology</li>
+            <li>Master the core of research design: causal inference, mechanisms, case selection, measurement validity</li>
+            <li>Learn advanced tools: QCA, historical comparative analysis, process tracing</li>
+            <li>Cultivate a perspective that crosses the qualitative / quantitative divide</li>
+            <li>Develop rigorous, inference-driven research design</li>
+            <li>Complete an original, scholarly independent research proposal</li>
+          </ul>
+        </div>
+
+        <div class="blk">
+          <div class="lab">Reading</div>
+          <div class="books-2">
+            <div class="bk">
+              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">Core Texts</div>
+              <ul>
+                <li>King, G., Keohane, R. O. &amp; Verba, S. (1994). <i>Designing Social Inquiry</i>. Princeton UP.</li>
+                <li>Brady, H. E. &amp; Collier, D. (eds.) (2010). <i>Rethinking Social Inquiry</i>, 2nd ed. Rowman &amp; Littlefield.</li>
+                <li>Goertz, G. &amp; Mahoney, J. (2012). <i>A Tale of Two Cultures</i>. Princeton UP.</li>
+                <li>Gerring, J. &amp; Seawright, J. (2022). <i>Finding Your Social Science Project</i>. Cambridge UP.</li>
+              </ul>
+            </div>
+            <div class="bk">
+              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">Further Reading</div>
+              <ul>
+                <li>Alford, R. R. (1998). <i>The Craft of Inquiry</i>. Oxford UP.</li>
+                <li>Schutt, R. (2014). <i>Investigating the Social World</i>, 8th ed. Sage.</li>
+                <li>Gerring, J. (2012). <i>Social Science Methodology</i>, 2nd ed. Cambridge UP.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="blk">
+          <a class="syllabus-cta" href="teaching/syllabi/2026spring-social-research-methods.pdf">Full Syllabus PDF →</a>
+        </div>
+
+        <div class="blk">
+          <div class="lab">Weekly Schedule · 18 Weeks</div>
+          <div class="week-table">
+            <div class="wk"><span class="wn">1</span><span class="wd">2/24</span><span class="wt">Introduction: the "science" question in social science</span></div>
+            <div class="wk"><span class="wn">2</span><span class="wd">3/3</span><span class="wt">The ghost of philosophy of science: from Popper to Hempel</span></div>
+            <div class="wk"><span class="wn">3</span><span class="wd">3/10</span><span class="wt">The epistemological battlefield: positivism vs. interpretivism</span></div>
+            <div class="wk"><span class="wn">4</span><span class="wd">3/17</span><span class="wt">Where design begins: research questions and theory building</span></div>
+            <div class="wk"><span class="wn">5</span><span class="wd">3/24</span><span class="wt"><a href="teaching/social-research-methods/week05-two-cultures.html">Two cultures: variables vs. the logic of cases</a><span class="tag">→ Interactive</span></span></div>
+            <div class="wk"><span class="wn">6</span><span class="wd">3/31</span><span class="wt">The logic of inference: KKV's declaration</span></div>
+            <div class="wk off"><span class="wn">7</span><span class="wd">4/7</span><span class="wt">Academic exchange week (no class)</span></div>
+            <div class="wk"><span class="wn">8</span><span class="wd">4/14</span><span class="wt">Causation: correlation vs. mechanism</span></div>
+            <div class="wk"><span class="wn">9</span><span class="wd">4/21</span><span class="wt"><a href="teaching/social-research-methods/week09-selection-bias.html">Case selection: bias vs. strategy</a><span class="tag">→ Interactive</span></span></div>
+            <div class="wk"><span class="wn">10</span><span class="wd">4/28</span><span class="wt">Measurement and data: precision vs. depth</span></div>
+            <div class="wk"><span class="wn">11</span><span class="wd">5/5</span><span class="wt">The small-N problem: more cases vs. process tracing</span></div>
+            <div class="wk"><span class="wn">12</span><span class="wd">5/12</span><span class="wt">Synthesis: diverse tools, shared standards</span></div>
+            <div class="wk"><span class="wn">13</span><span class="wd">5/19</span><span class="wt">The logic of comparison and QCA</span></div>
+            <div class="wk"><span class="wn">14</span><span class="wd">5/26</span><span class="wt">Time and history: historical institutionalism</span></div>
+            <div class="wk"><span class="wn">15</span><span class="wd">6/2</span><span class="wt">Interpretation and discourse (guest lecture)</span></div>
+            <div class="wk"><span class="wn">16</span><span class="wd">6/9</span><span class="wt">Mixed methods and research-design workshop</span></div>
+            <div class="wk"><span class="wn">17</span><span class="wd">6/16</span><span class="wt">Research proposal presentations</span></div>
+            <div class="wk off"><span class="wn">18</span><span class="wd">6/23</span><span class="wt">Flexible week</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sociology of Welfare -->
+      <article class="course reveal">
+        <div class="course-head">
+          <div>
+            <div class="course-tag">Undergraduate</div>
+            <h3 class="course-title">Sociology of Welfare</h3>
+            <div class="course-en">福利社會學</div>
+          </div>
+          <div class="course-meta"><b>1st-year required</b>3 credits<br>Thu 12:00–15:00<br>2026 Spring</div>
+        </div>
+        <div class="course-desc">
+          <p>"We must understand society, and we must serve it." This line from Yang Mao-chun opens the course. From a sociological standpoint, it introduces the basic concepts of welfare — poverty, inequality, redistribution, generation, and employment — and how social policy answers these long-standing problems.</p>
+          <p>We start from everyday questions: who can afford tuition, who gets health insurance, whether pensions will still be there, who carries the burden of long-term care — then turn back to the values and political choices behind institutional design. Social policy is, at heart, a matter of distribution: "Who gets What, When, How" (Lasswell, 1958) — which is also what public sociology has to say to society. The hope is that the course gives you not only theory, but a glimpse of the careers ahead.</p>
+        </div>
+
+        <div class="blk">
+          <div class="lab">Objectives</div>
+          <ul class="obj-list">
+            <li>Understand the basic ideas of welfare sociologically (poverty, inequality, redistribution, generation, employment)</li>
+            <li>See how social welfare policy helps address social problems</li>
+            <li>Grasp the distributive questions: who gets, who provides, what benefit, where the money comes from</li>
+            <li>Recognize institutional variety and ideological debate across welfare states</li>
+            <li>Cultivate a public-sociology perspective linked to future careers</li>
+          </ul>
+        </div>
+
+        <div class="blk">
+          <div class="lab">Reading</div>
+          <div class="books-2">
+            <div class="bk">
+              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">Core Texts</div>
+              <ul>
+                <li>Gilbert, N. &amp; Terrell, P. (2012). <i>Dimensions of Social Welfare Policy</i>. (Chinese ed., Taipei: Yeh Yeh.)</li>
+                <li>Gregory, L. (2018). <i>Exploring Welfare Debates</i>. Bristol: Policy Press.</li>
+                <li>Sealey, C. (2015). <i>Social Policy Simplified</i>. Palgrave.</li>
+              </ul>
+            </div>
+            <div class="bk">
+              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">Further Reading</div>
+              <ul>
+                <li>Li, Y-C. (2014). <i>Principles of Social Policy</i>. Taipei: Wu-Nan.</li>
+                <li>Li, Y-C. (2014). <i>Introduction to Social Welfare</i>, 3rd ed. Taipei: Hung-Yeh.</li>
+                <li><i>The Student's Companion to Social Policy</i> (Chinese ed., 2006). Taipei: Socio.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="blk">
+          <a class="syllabus-cta" href="teaching/syllabi/2026spring-sociology-of-welfare.pdf">Full Syllabus PDF →</a>
+        </div>
+
+        <div class="blk">
+          <div class="lab">Weekly Schedule · 18 Weeks</div>
+          <div class="week-table">
+            <div class="wk"><span class="wn">1</span><span class="wd">2/26</span><span class="wt">Overview: why study social welfare?</span></div>
+            <div class="wk"><span class="wn">2</span><span class="wd">3/5</span><span class="wt">What is welfare? Why does it matter to us?</span></div>
+            <div class="wk"><span class="wn">3</span><span class="wd">3/12</span><span class="wt">Who should receive welfare? Citizenship, need, equality</span></div>
+            <div class="wk"><span class="wn">4</span><span class="wd">3/19</span><span class="wt"><a href="teaching/sociology-of-welfare/week04-who-provides.html">Who should provide welfare? State, market, or nonprofit</a><span class="tag">→ Interactive</span></span></div>
+            <div class="wk"><span class="wn">5</span><span class="wd">3/26</span><span class="wt">What benefits to provide?</span></div>
+            <div class="wk off"><span class="wn">6</span><span class="wd">4/2</span><span class="wt">Academic exchange week (no class)</span></div>
+            <div class="wk off"><span class="wn">7</span><span class="wd">4/9</span><span class="wt">Film screening</span></div>
+            <div class="wk"><span class="wn">8</span><span class="wd">4/16</span><span class="wt">Where does the money for welfare come from?</span></div>
+            <div class="wk off"><span class="wn">9</span><span class="wd">4/23</span><span class="wt">Midterm</span></div>
+            <div class="wk"><span class="wn">10</span><span class="wd">4/30</span><span class="wt">The values and ideologies of welfare</span></div>
+            <div class="wk"><span class="wn">11</span><span class="wd">5/7</span><span class="wt">What is a welfare state?</span></div>
+            <div class="wk"><span class="wn">12</span><span class="wd">5/14</span><span class="wt">Can welfare solve poverty? Social assistance</span></div>
+            <div class="wk"><span class="wn">13</span><span class="wd">5/21</span><span class="wt">Social insurance — pensions</span></div>
+            <div class="wk"><span class="wn">14</span><span class="wd">5/28</span><span class="wt">Social insurance — health</span></div>
+            <div class="wk"><span class="wn">15</span><span class="wd">6/4</span><span class="wt">Employment &amp; unemployment policy: welfare and your future work</span></div>
+            <div class="wk"><span class="wn">16</span><span class="wd">6/11</span><span class="wt">Childcare and long-term care</span></div>
+            <div class="wk off"><span class="wn">17</span><span class="wd">6/18</span><span class="wt">Final exam week</span></div>
+            <div class="wk off"><span class="wn">18</span><span class="wd">6/25</span><span class="wt">Flexible week</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <span>葉崇揚 · YEH CHUNG-YANG</span>
+  <span>Teaching</span>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  document.documentElement.classList.add('js-anim');
+  var revealables = document.querySelectorAll('.reveal');
+  var markIn = function (el) { el.classList.add('in'); };
+  var revealVisibleNow = function () {
+    var vh = window.innerHeight;
+    revealables.forEach(function (el) {
+      if (el.classList.contains('in')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.98 && r.bottom > 0) markIn(el);
+    });
+  };
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) if (entries[i].isIntersecting) markIn(entries[i].target);
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+    revealables.forEach(function (el) { io.observe(el); });
+  } else { revealables.forEach(markIn); }
+  window.addEventListener('scroll', revealVisibleNow, { passive: true });
+  window.addEventListener('pageshow', revealVisibleNow);
+  setTimeout(revealVisibleNow, 400); setTimeout(revealVisibleNow, 1600);
+  revealVisibleNow();
+})();
+</script>
+
+<script>
+  window.addEventListener('pageshow', function(e){
+    if (e.persisted) { document.body.style.display='none'; void document.body.offsetHeight; document.body.style.display=''; }
+  });
+</script>
+</body>
+</html>

@@ -1,1089 +1,398 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>葉崇揚 ・ 茶室 ・ 教學</title>
-  <meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 東吳大學社會學系．本學期課程：社會研究法、福利社會學。" />
-  <link rel="alternate" hreflang="zh-Hant" href="teaching-zh.html" />
-  <link rel="alternate" hreflang="en" href="teaching.html" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --chashitsu-bg: #e8dcc4;        /* 茶室主色 */
-      --chashitsu-paper: #f5ecd6;     /* 紙白偏暖 */
-      --chashitsu-tatami: #d8c8a8;    /* 疊席 */
-      --moss: #3d5a3f;
-      --accent: #c43838;              /* 朱印 */
-      --water: #5a7a8a;
-      --ink: #1f1f1d;
-      --line: rgba(31,31,29,0.18);
-      --line-soft: rgba(31,31,29,0.10);
-      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
-      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
-      --sans: 'Inter', 'Helvetica Neue', sans-serif;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
-    body {
-      font-family: var(--jp);
-      background: var(--chashitsu-bg);
-      color: var(--ink);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.7;
-      position: relative;
-      overflow-x: hidden;
-    }
-    .paper-grain {
-      position: fixed; inset: 0; pointer-events: none;
-      opacity: 0.32; mix-blend-mode: multiply; z-index: 1;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>教學 Teaching · 葉崇揚</title>
+<meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 東吳大學社會學系 ・ 本學期課程：社會研究法（碩士班）、福利社會學（大學部）。">
+<link rel="alternate" hreflang="zh-Hant" href="teaching-zh.html">
+<link rel="alternate" hreflang="en" href="teaching.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600&family=Yuji+Syuku&family=Klee+One:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* 包 B · 方案 2 卷軸 — 共用樣式（pack-scroll _shared.css） */
+  :root{
+    --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
+    --moss:#3d5a3f; --accent:#c43838; --water:#5a7a8a;
+    --ink:#1f1f1d; --ink-soft:rgba(31,31,29,.72); --ink-quiet:rgba(31,31,29,.5);
+    --rule:rgba(31,31,29,.12);
+    --serif:"Shippori Mincho","Noto Serif TC","Noto Serif JP",serif;
+    --display:"Yuji Syuku",serif;
+    --latin:"Inter",sans-serif;
+    --kana:"Klee One",serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{ background:var(--sand); color:var(--ink); font-family:var(--serif); font-feature-settings:"palt"; -webkit-font-smoothing:antialiased; }
+  a{color:inherit}
 
-    /* Header */
-    .top {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(232,220,196,0.93);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--line-soft);
-      padding: 14px 48px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .top-left { display: flex; align-items: center; gap: 16px; }
-    .back {
-      font-family: var(--sans); font-size: 11px;
-      letter-spacing: 0.3em; opacity: 0.55;
-      text-decoration: none; color: var(--ink);
-    }
-    .top-sep { font-size: 11px; opacity: 0.3; }
-    .name-block { display: inline-flex; align-items: baseline; gap: 8px; }
-    .name-jp { font-family: var(--brush); font-size: 22px; letter-spacing: 0.1em; }
-    .name-en { font-family: var(--sans); font-size: 13px; letter-spacing: 0.08em; opacity: 0.7; }
-    .nav { display: flex; gap: 24px; font-size: 12px; letter-spacing: 0.25em; }
-    .nav a {
-      color: var(--ink); text-decoration: none;
-      opacity: 0.5; padding-bottom: 4px;
-    }
-    .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
-    .nav .nav-jp { font-size: 10px; opacity: 0.55; letter-spacing: 0.18em; margin-left: 2px; font-family: var(--jp); }
-    .nav .lang { border-left: 1px solid var(--line); padding-left: 24px; font-family: var(--sans); }
+  /* 卷軸感頂部 */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--sand) 94%,transparent);
+    backdrop-filter:blur(8px);
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 48px;border-bottom:1px solid var(--rule);
+  }
+  .nav .brand{display:flex;gap:16px;align-items:baseline}
+  .nav .seal{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:42px;height:42px;background:var(--accent);color:var(--sand);
+    font-family:var(--display);font-size:20px;
+    transform:rotate(-3deg);box-shadow:2px 2px 0 rgba(196,56,56,.25);
+    text-decoration:none;
+  }
+  .nav .name{font-family:var(--display);font-size:18px;letter-spacing:.1em;line-height:1;text-decoration:none}
+  .nav .name small{display:block;font-family:var(--latin);font-size:9px;letter-spacing:.3em;color:var(--ink-quiet);margin-top:4px}
+  .nav nav{display:flex;gap:24px;font-size:12px;letter-spacing:.2em}
+  .nav nav a{color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:1px solid transparent;transition:.2s}
+  .nav nav a:hover{border-bottom-color:var(--ink)}
+  .nav nav a.is-active{color:var(--accent);border-bottom-color:var(--accent)}
+  .nav .lang{border-left:1px solid var(--rule);padding-left:24px;font-family:var(--latin);font-size:12px;letter-spacing:.2em;color:var(--ink-soft);text-decoration:none}
 
-    /* Hero */
-    .hero {
-      padding: 80px 60px 50px;
-      position: relative; z-index: 2;
-      border-bottom: 1px solid rgba(31,31,29,0.06);
-    }
-    .hero-inner {
-      display: grid; grid-template-columns: 1fr 360px;
-      gap: 60px; align-items: end;
-      max-width: 1280px; margin: 0 auto;
-    }
-    .hero-eyebrow {
-      font-size: 11px; letter-spacing: 0.5em;
-      opacity: 0.5; margin-bottom: 16px;
-    }
-    .hero-title {
-      margin: 0; font-family: var(--brush);
-      font-size: 88px; font-weight: 400;
-      line-height: 1; letter-spacing: 0.05em;
-    }
-    .hero-sub {
-      margin-top: 12px; font-size: 14px;
-      letter-spacing: 0.3em; opacity: 0.55;
-    }
-    .hero-desc {
-      margin-top: 32px; font-size: 19px;
-      line-height: 2; opacity: 0.86; max-width: 640px;
-    }
+  /* 砂紋 */
+  .samon{position:relative}
+  .samon::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.08;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='60'><g fill='none' stroke='%233d5a3f' stroke-width='.6'><path d='M 0 30 Q 50 22 100 30 T 200 30'/><path d='M 0 36 Q 50 28 100 36 T 200 36'/><path d='M 0 42 Q 50 34 100 42 T 200 42'/><path d='M 0 48 Q 50 40 100 48 T 200 48'/></g></svg>");
+  }
 
-    /* Hero side — semester badge */
-    .term-card {
-      background: var(--chashitsu-paper);
-      border: 1px solid var(--line);
-      padding: 26px 28px;
-      position: relative;
-    }
-    .term-eyebrow { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.3em; opacity: 0.6; }
-    .term-title { font-family: var(--brush); font-size: 38px; letter-spacing: 0.06em; margin-top: 8px; line-height: 1.15; }
-    .term-meta { margin-top: 14px; font-size: 15px; opacity: 0.82; line-height: 1.85; }
-    .term-seal {
-      position: absolute; top: -16px; right: 22px;
-      width: 44px; height: 44px;
-      background: var(--accent); color: #f8f5ec;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--brush); font-size: 16px;
-      transform: rotate(-4deg);
-      box-shadow: 2px 2px 0 rgba(196,56,56,0.25);
-    }
+  /* 卷軸開頭 */
+  .scroll-head{
+    display:grid;grid-template-columns:380px 1fr;gap:60px;
+    padding:120px 60px;max-width:1280px;margin:0 auto;
+    position:relative;border-top:1px solid var(--rule);
+    background:var(--sand-light);
+  }
+  .scroll-head .index{font-family:var(--display);font-size:24px;color:var(--ink-quiet);margin-bottom:8px}
+  .scroll-head .kanji{font-family:var(--display);font-size:160px;line-height:.9;letter-spacing:0}
+  .scroll-head h1{margin:24px 0 8px;font-family:var(--display);font-size:36px;font-weight:400;letter-spacing:.1em}
+  .scroll-head .sub{font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);margin-bottom:20px;font-family:var(--latin);text-transform:uppercase}
+  .scroll-head .lede{font-size:15px;line-height:2;color:var(--ink-soft);max-width:460px;text-wrap:pretty}
+  .scroll-head .right{padding-top:56px;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start}
 
-    /* Hero stats — 期數／科目／學期 */
-    .stats {
-      max-width: 1280px; margin: 0 auto;
-      padding: 0 60px 56px;
-      position: relative; z-index: 2;
-    }
-    .stats-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 1px; background: var(--line);
-    }
-    .stat {
-      background: var(--chashitsu-paper);
-      padding: 22px 26px;
-    }
-    .stat-num {
-      font-family: var(--brush); font-size: 38px;
-      line-height: 1; letter-spacing: 0.02em;
-    }
-    .stat-zh {
-      font-size: 13px; opacity: 0.75;
-      margin-top: 8px;
-    }
-    .stat-en {
-      font-family: var(--sans); font-size: 10px;
-      letter-spacing: 0.28em; opacity: 0.5;
-      margin-top: 3px;
-    }
+  /* 段落分節 */
+  .scroll-section{ padding:96px 60px;max-width:1280px;margin:0 auto; border-top:1px solid var(--rule);position:relative; }
+  .scroll-section.alt{background:var(--sand-light)}
+  .scroll-section .row{ display:grid;grid-template-columns:320px 1fr;gap:60px;align-items:start; }
+  .scroll-section .meta-col .num{font-family:var(--display);font-size:22px;opacity:.4;margin-bottom:8px}
+  .scroll-section .meta-col .big{font-family:var(--display);font-size:96px;line-height:.95;letter-spacing:0}
+  .scroll-section .meta-col h2{margin:20px 0 8px;font-family:var(--display);font-size:30px;font-weight:400;letter-spacing:.1em}
+  .scroll-section .meta-col .sub{font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);margin-bottom:20px;font-family:var(--latin);text-transform:uppercase}
+  .scroll-section .meta-col p{font-size:14px;line-height:1.95;color:var(--ink-soft);max-width:280px;margin:0;text-wrap:pretty}
 
-    /* Course catalog — overview cards */
-    .catalog {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 16px; margin-top: 28px;
-    }
-    .cat-card {
-      background: var(--chashitsu-paper);
-      border: 1px solid var(--line);
-      padding: 24px 22px 20px;
-      position: relative;
-      min-height: 170px;
-      display: flex; flex-direction: column;
-    }
-    .cat-card::before {
-      content: ""; position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 4px;
-    }
-    .cat-card.is-grad::before { background: var(--moss); }
-    .cat-card.is-undg::before { background: var(--accent); }
-    .cat-card.is-other::before { background: var(--water); }
-    .cat-head {
-      display: flex; justify-content: space-between;
-      font-size: 10px; letter-spacing: 0.25em;
-      font-family: var(--sans); margin-bottom: 12px;
-    }
-    .cat-code { opacity: 0.7; }
-    .cat-level {
-      font-family: var(--sans);
-      letter-spacing: 0.25em;
-    }
-    .cat-card.is-grad .cat-level { color: var(--moss); }
-    .cat-card.is-undg .cat-level { color: var(--accent); }
-    .cat-card.is-other .cat-level { color: var(--water); }
-    .cat-title {
-      font-family: var(--brush); font-size: 21px;
-      font-weight: 400; letter-spacing: 0.04em;
-      flex: 1; line-height: 1.35;
-    }
-    .cat-en {
-      font-size: 12px; font-style: italic;
-      opacity: 0.6; margin-top: 4px;
-    }
-    .cat-foot {
-      margin-top: 14px; padding-top: 12px;
-      border-top: 1px solid var(--line);
-      display: flex; justify-content: space-between;
-      font-size: 11px; opacity: 0.65;
-      font-family: var(--sans);
-      letter-spacing: 0.05em;
-    }
+  /* footer */
+  .foot{ border-top:1px solid var(--rule); padding:48px 60px; display:flex;justify-content:space-between; font-size:11px;letter-spacing:.2em;color:var(--ink-quiet); }
 
-    /* Timeline — history of past semesters */
-    .timeline {
-      margin-top: 28px;
-      position: relative;
-      padding-left: 24px;
-    }
-    .timeline::before {
-      content: ""; position: absolute;
-      left: 4px; top: 8px; bottom: 8px;
-      width: 1px; background: rgba(31,31,29,0.30);
-    }
-    .term-row {
-      display: grid; grid-template-columns: 130px 1fr;
-      gap: 32px; padding: 14px 0;
-      position: relative; align-items: baseline;
-    }
-    .term-row::before {
-      content: ""; position: absolute;
-      left: -24px; top: 22px;
-      width: 9px; height: 9px;
-      border-radius: 50%;
-      background: var(--chashitsu-paper);
-      border: 1.5px solid var(--moss);
-    }
-    .term-row.is-now::before { background: var(--moss); }
-    .term-label {
-      font-family: var(--sans); font-size: 13px;
-      letter-spacing: 0.15em; opacity: 0.6;
-    }
-    .term-row.is-now .term-label { opacity: 1; color: var(--moss); }
-    .term-courses { display: flex; gap: 8px; flex-wrap: wrap; }
-    .term-pill {
-      font-size: 12.5px; padding: 5px 10px;
-      background: var(--chashitsu-paper);
-      border: 1px solid var(--line);
-    }
+  /* ── 教學頁專屬 ── */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:8px}
+  .stats > div{background:var(--sand);padding:28px 24px}
+  .stats .n{font-family:var(--display);font-size:46px;line-height:1}
+  .stats .l{font-family:var(--display);font-size:15px;letter-spacing:.1em;margin-top:10px}
+  .stats .le{font-size:10px;letter-spacing:.24em;color:var(--ink-quiet);margin-top:4px;font-family:var(--latin);text-transform:uppercase}
 
-    /* Section heading */
-    .section-wrap {
-      padding: 56px 60px 80px;
-      max-width: 1280px; margin: 0 auto;
-      position: relative; z-index: 2;
-    }
-    .section-head {
-      display: flex; align-items: baseline; gap: 18px;
-      margin-bottom: 28px;
-      border-bottom: 1px solid rgba(31,31,29,0.20);
-      padding-bottom: 14px;
-    }
-    .section-jp { font-family: var(--brush); font-size: 30px; letter-spacing: 0.08em; }
-    .section-en { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.3em; opacity: 0.6; }
-    .section-note { margin-left: auto; font-family: var(--sans); font-size: 13px; letter-spacing: 0.2em; opacity: 0.6; }
+  .course-wrap{display:flex;flex-direction:column;gap:24px}
+  .course{background:var(--paper);border:1px solid var(--rule);padding:40px 44px}
+  .course-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding-bottom:22px;margin-bottom:24px}
+  .course-tag{font-family:var(--latin);font-size:10px;letter-spacing:.24em;color:var(--accent);text-transform:uppercase}
+  .course-title{font-family:var(--display);font-size:30px;font-weight:400;margin:10px 0 2px;letter-spacing:.05em}
+  .course-en{font-family:var(--latin);font-size:11.5px;letter-spacing:.16em;color:var(--ink-quiet);text-transform:uppercase}
+  .course-meta{text-align:right;font-size:12px;color:var(--ink-soft);line-height:1.85;font-family:var(--latin);letter-spacing:.06em}
+  .course-meta b{font-family:var(--display);font-size:15px;color:var(--ink)}
+  .course-desc{font-size:14px;line-height:1.95;color:var(--ink-soft);text-wrap:pretty}
+  .course-desc p{margin:0 0 1em}
+  .blk{margin-top:26px}
+  .blk .lab{font-family:var(--latin);font-size:11px;letter-spacing:.24em;color:var(--ink-quiet);text-transform:uppercase;margin-bottom:14px}
+  .obj-list{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+  .obj-list li{font-size:13px;line-height:1.7;color:var(--ink-soft);padding-left:22px;position:relative;text-wrap:pretty}
+  .obj-list li::before{content:"—";position:absolute;left:0;color:var(--accent)}
+  .books-2{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+  .bk ul{margin:0;padding:0;list-style:none}
+  .bk li{font-size:12.5px;line-height:1.65;color:var(--ink-soft);margin-bottom:11px;text-wrap:pretty}
+  .syllabus-cta{display:inline-block;font-family:var(--latin);font-size:11px;letter-spacing:.18em;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:11px 20px;text-transform:uppercase;transition:.2s}
+  .syllabus-cta:hover{background:var(--accent);color:var(--sand)}
+  .week-table{display:grid;grid-template-columns:1fr 1fr;gap:0 44px}
+  .wk{display:grid;grid-template-columns:34px 46px 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--rule);font-size:12.5px;align-items:baseline}
+  .wk .wn{font-family:var(--display);color:var(--ink-quiet);font-size:13px}
+  .wk .wd{font-family:var(--latin);font-size:10px;color:var(--ink-quiet);letter-spacing:.04em}
+  .wk .wt{color:var(--ink-soft);line-height:1.5;text-wrap:pretty}
+  .wk.off .wt{color:var(--ink-quiet);font-style:italic}
+  .wk .wt a{color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)}
+  .wk .wt .tag{font-family:var(--latin);font-size:9px;letter-spacing:.14em;color:var(--accent);margin-left:6px;white-space:nowrap}
 
-    /* Course cards */
-    .courses { display: grid; grid-template-columns: 1fr; gap: 28px; }
-    .course {
-      background: var(--chashitsu-paper);
-      border: 1px solid var(--line);
-      padding: 32px 36px 30px;
-      position: relative;
-    }
-    .course::before {
-      content: ""; position: absolute;
-      top: 14px; left: 14px; right: 14px; bottom: 14px;
-      border: 1px solid rgba(31,31,29,0.07);
-      pointer-events: none;
-    }
-    .course-head {
-      display: grid; grid-template-columns: 1fr auto;
-      gap: 24px; align-items: start;
-      padding-bottom: 22px; margin-bottom: 22px;
-      border-bottom: 1px dashed rgba(31,31,29,0.18);
-    }
-    .course-tag {
-      display: inline-block;
-      font-family: var(--sans); font-size: 12px;
-      letter-spacing: 0.3em; color: var(--accent);
-      margin-bottom: 12px;
-    }
-    .course-title { margin: 0; font-family: var(--brush); font-size: 36px; font-weight: 400; letter-spacing: 0.04em; line-height: 1.2; }
-    .course-en { margin-top: 8px; font-family: var(--sans); font-size: 15.5px; letter-spacing: 0.08em; opacity: 0.7; font-style: italic; }
+  /* reveal */
+  .reveal{opacity:1}
+  .js-anim .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.19,1,.22,1),transform .8s cubic-bezier(.19,1,.22,1)}
+  .js-anim .reveal.in{opacity:1;transform:none}
 
-    .course-meta {
-      text-align: right;
-      font-family: var(--sans); font-size: 14px;
-      opacity: 0.82; line-height: 1.9;
-      letter-spacing: 0.04em;
-    }
-    .course-meta .label { display: inline-block; min-width: 50px; opacity: 0.6; letter-spacing: 0.18em; font-size: 12.5px; }
-
-    .course-body {
-      display: grid; grid-template-columns: 1fr 360px;
-      gap: 40px; align-items: start;
-    }
-    .course-desc {
-      font-size: 17.5px; line-height: 2; opacity: 0.9;
-    }
-    .course-desc p + p { margin-top: 14px; }
-    .course-objectives {
-      margin-top: 22px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(31,31,29,0.10);
-    }
-    .obj-label { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.3em; opacity: 0.6; margin-bottom: 12px; }
-    .obj-list { list-style: none; padding: 0; margin: 0; }
-    .obj-list li {
-      padding-left: 18px; position: relative;
-      font-size: 16px; line-height: 1.85; opacity: 0.88;
-    }
-    .obj-list li::before {
-      content: "・"; position: absolute; left: 0; opacity: 0.5;
-    }
-
-    /* Right column: materials & resources */
-    .resources {
-      background: rgba(31,31,29,0.025);
-      border-left: 2px solid rgba(196,56,56,0.4);
-      padding: 22px 24px;
-      position: relative;
-    }
-    .resources-head {
-      display: flex; align-items: baseline; gap: 12px;
-      margin-bottom: 16px;
-    }
-    .resources-jp { font-family: var(--brush); font-size: 20px; letter-spacing: 0.08em; }
-    .resources-en { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.3em; opacity: 0.55; }
-    .res-group { margin-bottom: 18px; }
-    .res-group:last-child { margin-bottom: 0; }
-    .res-group-label {
-      font-family: var(--sans); font-size: 12px;
-      letter-spacing: 0.25em; opacity: 0.6;
-      margin-bottom: 10px;
-    }
-    .res-list { list-style: none; padding: 0; margin: 0; }
-    .res-list li {
-      font-size: 15px; line-height: 1.75;
-      padding: 8px 0; border-bottom: 1px solid rgba(31,31,29,0.08);
-    }
-    .res-list li:last-child { border-bottom: none; }
-    .res-list a { color: var(--ink); text-decoration: none; border-bottom: 1px dotted rgba(31,31,29,0.4); }
-    .res-list a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-    .res-list .meta { font-family: var(--sans); font-size: 12.5px; opacity: 0.6; margin-left: 4px; }
-
-    .syllabus-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      margin-top: 14px;
-      font-family: var(--sans); font-size: 13px;
-      letter-spacing: 0.22em;
-      color: var(--accent); text-decoration: none;
-      border: 1px solid var(--accent);
-      padding: 9px 16px;
-      transition: background 0.2s, color 0.2s;
-    }
-    .syllabus-cta:hover { background: var(--accent); color: var(--chashitsu-paper); }
-
-    /* Weekly schedule (inside <details>) */
-    .weekly {
-      grid-column: 1 / -1;
-      margin-top: 4px;
-      border-top: 1px solid rgba(31,31,29,0.10);
-      padding-top: 22px;
-    }
-    .weekly summary {
-      cursor: pointer; list-style: none;
-      display: inline-flex; align-items: center; gap: 12px;
-      font-family: var(--sans); font-size: 13.5px;
-      letter-spacing: 0.25em; color: var(--accent);
-      padding: 8px 0;
-    }
-    .weekly summary::-webkit-details-marker { display: none; }
-    .weekly summary::after {
-      content: "▾"; font-size: 12px; opacity: 0.7;
-      transition: transform 0.25s;
-    }
-    .weekly[open] summary::after { transform: rotate(180deg); }
-    .weekly-jp { font-family: var(--brush); font-size: 20px; letter-spacing: 0.06em; color: var(--ink); margin-right: 4px; }
-    .weekly-list { margin-top: 18px; display: flex; flex-direction: column; }
-    .week {
-      display: grid;
-      grid-template-columns: 60px 84px 1fr;
-      gap: 18px;
-      padding: 18px 0;
-      border-bottom: 1px solid rgba(31,31,29,0.08);
-      align-items: baseline;
-    }
-    .week:last-child { border-bottom: none; }
-    .week-num {
-      font-family: var(--brush); font-size: 24px;
-      letter-spacing: 0.04em; opacity: 0.6;
-    }
-    .week-date {
-      font-family: var(--sans); font-size: 13.5px;
-      letter-spacing: 0.1em; opacity: 0.65;
-    }
-    .week-body { }
-    .week-topic { font-size: 17px; font-weight: 500; line-height: 1.55; }
-    .week-readings { margin-top: 10px; list-style: none; padding: 0; }
-    .week-readings li {
-      font-size: 14.5px; line-height: 1.75;
-      padding: 3px 0; opacity: 0.82;
-      font-family: var(--sans);
-    }
-    .week-readings li.req::before {
-      content: "★"; color: var(--accent);
-      font-size: 11px; margin-right: 6px; opacity: 0.85;
-    }
-    .week-readings li:not(.req) { padding-left: 16px; opacity: 0.66; font-size: 14px; }
-    .week-readings li i, .week-readings li em { font-style: italic; }
-    .week-note { font-style: italic; opacity: 0.65; font-size: 14.5px; }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 32px 60px;
-      max-width: 1280px; margin: 0 auto;
-      display: flex; justify-content: space-between;
-      font-size: 11px; opacity: 0.55;
-      letter-spacing: 0.2em;
-      font-family: var(--sans);
-      position: relative; z-index: 2;
-    }
-
-    /* Mobile RWD */
-    @media (max-width: 760px) {
-      .top { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
-      .top-left { gap: 10px; }
-      .back { font-size: 10px; letter-spacing: 0.22em; }
-      .name-jp { font-size: 16px; }
-      .name-en { font-size: 8px; }
-      .nav { gap: 14px; font-size: 10px; letter-spacing: 0.18em; }
-      .nav a.nav-sub { display: none; }
-      .nav .lang { padding-left: 14px; }
-
-      .hero { padding: 50px 22px 32px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 28px; }
-      .hero-title { font-size: 56px; }
-      .hero-sub { font-size: 12px; }
-      .hero-desc { font-size: 16px; margin-top: 24px; }
-
-      .term-card { padding: 22px; }
-      .term-title { font-size: 28px; }
-      .term-seal { width: 38px; height: 38px; font-size: 13px; top: -14px; right: 16px; }
-
-      .section-wrap { padding: 36px 22px 56px; }
-      .section-jp { font-size: 24px; }
-      .section-en { font-size: 11.5px; }
-      .section-note { display: none; }
-
-      .course { padding: 22px 18px 20px; }
-      .course::before { display: none; }
-      .course-head { grid-template-columns: 1fr; gap: 12px; padding-bottom: 16px; margin-bottom: 16px; }
-      .course-meta { text-align: left; font-size: 13px; }
-      .course-meta .label { font-size: 11.5px; }
-      .course-title { font-size: 26px; }
-      .course-en { font-size: 13.5px; }
-      .course-tag { font-size: 11px; }
-      .course-body { grid-template-columns: 1fr; gap: 24px; }
-      .course-desc { font-size: 16px; line-height: 1.9; }
-      .obj-list li { font-size: 14.5px; }
-      .obj-label { font-size: 11.5px; }
-
-      .resources { padding: 20px 20px; }
-      .resources-jp { font-size: 18px; }
-      .resources-en { font-size: 11px; }
-      .res-list li { font-size: 13.5px; }
-      .res-list .meta { font-size: 11.5px; }
-      .res-group-label { font-size: 11.5px; }
-      .syllabus-cta { font-size: 12px; }
-
-      .weekly summary { font-size: 12.5px; }
-      .weekly-jp { font-size: 18px; }
-      .week { grid-template-columns: 44px 64px 1fr; gap: 12px; padding: 14px 0; }
-      .week-num { font-size: 20px; }
-      .week-date { font-size: 12.5px; }
-      .week-topic { font-size: 15px; }
-      .week-readings li { font-size: 13px; }
-      .week-readings li:not(.req) { font-size: 12.5px; }
-      .week-note { font-size: 13px; }
-
-      footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 11px; }
-
-      .stats { padding: 0 22px 36px; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .stat { padding: 16px 18px; }
-      .stat-num { font-size: 28px; }
-      .stat-zh { font-size: 12px; }
-      .stat-en { font-size: 9px; letter-spacing: 0.22em; }
-
-      .catalog { grid-template-columns: 1fr; gap: 12px; }
-      .cat-card { padding: 18px 18px 16px; min-height: 130px; }
-      .cat-title { font-size: 18px; }
-      .cat-en { font-size: 11px; }
-      .cat-head { font-size: 9px; letter-spacing: 0.22em; }
-      .cat-foot { font-size: 10.5px; }
-
-      .timeline { padding-left: 20px; }
-      .term-row { grid-template-columns: 95px 1fr; gap: 16px; padding: 10px 0; }
-      .term-label { font-size: 12px; letter-spacing: 0.12em; }
-      .term-pill { font-size: 11.5px; padding: 4px 8px; }
-    }
-  </style>
+  /* Mobile */
+  @media (max-width:820px){
+    .nav{padding:12px 20px;flex-wrap:wrap;gap:10px}
+    .nav nav{gap:14px;font-size:10px;letter-spacing:.14em;order:3;width:100%;justify-content:space-between}
+    .nav .lang{padding-left:14px}
+    .scroll-head{grid-template-columns:1fr;gap:24px;padding:64px 22px}
+    .scroll-head .kanji{font-size:110px}
+    .scroll-head .right{padding-top:0}
+    .scroll-section{padding:56px 22px}
+    .scroll-section .row{grid-template-columns:1fr;gap:28px}
+    .scroll-section .meta-col .big{font-size:72px}
+    .stats{grid-template-columns:1fr 1fr}
+    .stats .n{font-size:38px}
+    .course{padding:28px 22px}
+    .course-head{gap:12px}
+    .course-meta{text-align:left}
+    .books-2{grid-template-columns:1fr;gap:24px}
+    .week-table{grid-template-columns:1fr;gap:0}
+    .foot{padding:32px 22px;flex-direction:column;gap:8px}
+  }
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1!important;transform:none!important;transition:none} }
+</style>
 </head>
 <body>
 
-<svg class="paper-grain" aria-hidden="true">
-  <defs>
-    <filter id="paper-noise">
-      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
-      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
-    </filter>
-  </defs>
-  <rect width="100%" height="100%" filter="url(#paper-noise)" />
-</svg>
-
-<header class="top">
-  <div class="top-left">
-    <a href="index.html" class="back">← 玄關</a>
-    <span class="top-sep">·</span>
-    <span class="name-block">
-      <span class="name-jp">葉崇揚</span>
-      <span class="name-en">（Chung-Yang Yeh）</span>
-    </span>
+<header class="nav">
+  <div class="brand">
+    <a class="seal" href="index.html">葉</a>
+    <a class="name" href="index.html">葉崇揚<small>YEH CHUNG-YANG</small></a>
   </div>
-  <nav class="nav" aria-label="Sections">
-    <a href="index.html" class="nav-sub">玄關</a>
-    <a href="about-zh.html" class="nav-sub">簡介</a>
-    <a href="academic-zh.html" class="nav-sub">學術</a>
-    <a href="photography-zh.html" class="nav-sub">攝影</a>
-    <a href="teaching-zh.html" class="is-current">教學</a>
-    <a href="essays-zh.html" class="nav-sub">隨筆</a>
+  <nav>
+    <a href="index.html">首頁</a>
+    <a href="academic-zh.html">學術</a>
+    <a href="photography-zh.html">攝影</a>
+    <a href="teaching-zh.html" class="is-active">教學</a>
+    <a href="essays-zh.html">隨筆</a>
+    <a href="about-zh.html">簡介</a>
   </nav>
+  <a class="lang" href="teaching.html">EN</a>
 </header>
 
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <p class="hero-eyebrow">第三室 · 茶室 CHASHITSU</p>
-      <h1 class="hero-title">教學</h1>
-      <p class="hero-sub">TEACHING ・ 一期一会</p>
-      <p class="hero-desc">
-        小さな入り口、大きな対話。<br/>
-        一席對座、一期一会。教室是我與學生共同沏一壺問題的所在——從福利國家的形構，到一份社會研究計畫的初稿。每一堂，都是僅此一次的相遇。
-      </p>
-    </div>
-    <aside class="term-card">
-      <span class="term-seal">學</span>
-      <p class="term-eyebrow">本学期 · CURRENT TERM</p>
-      <h2 class="term-title">2026<br/>春學期</h2>
-      <p class="term-meta">
-        東吳大學社會學系<br/>
-        授業中・2 門課程
-      </p>
-    </aside>
+<section class="scroll-head samon">
+  <div>
+    <div class="index reveal">参</div>
+    <div class="kanji reveal">教</div>
+  </div>
+  <div class="right">
+    <h1 class="reveal">教學</h1>
+    <div class="sub reveal">Teaching · 一期一会</div>
+    <div class="lede reveal">一席對座、一期一会。教室是我與學生共同沏一壺問題的所在——從福利國家的形構，到一份社會研究計畫的初稿。每一堂，都是僅此一次的相遇。</div>
   </div>
 </section>
 
-<section class="stats" aria-label="教學統計">
-  <div class="stats-grid">
-    <div class="stat">
-      <div class="stat-num">8</div>
-      <div class="stat-zh">學期 ・ 東吳</div>
-      <div class="stat-en">SEMESTERS @ SCU</div>
+<section class="scroll-section samon">
+  <div class="stats reveal">
+    <div><div class="n">8</div><div class="l">學期・東吳</div><div class="le">Semesters</div></div>
+    <div><div class="n">2</div><div class="l">開設課程</div><div class="le">Courses</div></div>
+    <div><div class="n">2</div><div class="l">本學期</div><div class="le">This Term</div></div>
+    <div><div class="n">3</div><div class="l">減授獎勵</div><div class="le">Waivers</div></div>
+  </div>
+
+  <div class="row" style="margin-top:56px">
+    <div class="meta-col reveal">
+      <div class="num">参の壱</div>
+      <div class="big">授</div>
+      <h2>本學期課程</h2>
+      <div class="sub">Courses · 2026 Spring</div>
+      <p>東吳大學社會學系。一門碩士班、一門大學部——從研究設計到福利體制。</p>
     </div>
-    <div class="stat">
-      <div class="stat-num">2</div>
-      <div class="stat-zh">開設課程</div>
-      <div class="stat-en">COURSES TAUGHT</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">2</div>
-      <div class="stat-zh">本學期課程</div>
-      <div class="stat-en">CURRENT TERM</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">3</div>
-      <div class="stat-zh">減授課時數獎勵</div>
-      <div class="stat-en">RESEARCH-LOAD ＷAIVERS</div>
+
+    <div class="course-wrap">
+      <!-- 社會研究法 -->
+      <article class="course reveal">
+        <div class="course-head">
+          <div>
+            <div class="course-tag">研究所 · Graduate</div>
+            <h3 class="course-title">社會研究法</h3>
+            <div class="course-en">Social Research Methods</div>
+          </div>
+          <div class="course-meta"><b>碩士班</b>3 學分<br>週二 09:00–12:00<br>2026 春</div>
+        </div>
+        <div class="course-desc">
+          <p>科學研究不是一道食譜，而是一場關於「什麼算是證據、我們如何能知道」的長期辯論。本課程從科學哲學與知識論起步——Popper 的否證、Hempel 的覆蓋律、實證主義與詮釋學派的對峙——再走入社會科學內部最重要的方法論論戰：King-Keohane-Verba 的《Designing Social Inquiry》與 Brady-Collier 的回應。</p>
+          <p>中段處理研究設計的核心環節：因果推論、機制分析、案例選擇、測量效度；後段引介進階方法工具——QCA、歷史比較分析、過程追蹤與混合方法——並收尾於每位同學自己的研究計畫書。一學期下來，期望大家能跨越質化／量化的界線，找到屬於自己的方法語言。</p>
+        </div>
+
+        <div class="blk">
+          <div class="lab">課程目標 · Objectives</div>
+          <ul class="obj-list">
+            <li>奠定科學哲學與知識論的基礎</li>
+            <li>掌握研究設計核心：因果推論、機制分析、案例選擇、測量效度</li>
+            <li>學習進階方法工具：QCA、歷史比較分析、過程追蹤</li>
+            <li>培養跨越質化／量化界線的學術視野</li>
+            <li>建立嚴謹且具科學推論邏輯的研究設計能力</li>
+            <li>完成一份具原創性與學術價值的獨立研究計畫書</li>
+          </ul>
+        </div>
+
+        <div class="blk">
+          <div class="lab">書目 · Reading</div>
+          <div class="books-2">
+            <div class="bk">
+              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">指定教科書</div>
+              <ul>
+                <li>King, Keohane &amp; Verba（2012）《好研究如何設計？：用量化邏輯做質化研究》。台北：群學。（原著 1994, Princeton UP）</li>
+                <li>Brady, H. E. &amp; Collier, D. (eds.) (2010). <i>Rethinking Social Inquiry</i>, 2nd ed. Rowman &amp; Littlefield.</li>
+                <li>Goertz, G. &amp; Mahoney, J. (2012). <i>A Tale of Two Cultures</i>. Princeton UP.</li>
+                <li>Gerring, J. &amp; Seawright, J. (2022). <i>Finding Your Social Science Project</i>. Cambridge UP.</li>
+              </ul>
+            </div>
+            <div class="bk">
+              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">參考書</div>
+              <ul>
+                <li>Alford, R. R. (1998). <i>The Craft of Inquiry</i>. Oxford UP.（王志弘譯, 2011, 群學）</li>
+                <li>Schutt, R. (2014). <i>Investigating the Social World</i>, 8th ed. Sage.</li>
+                <li>Gerring, J. (2012). <i>Social Science Methodology</i>, 2nd ed. Cambridge UP.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="blk">
+          <a class="syllabus-cta" href="teaching/syllabi/2026spring-social-research-methods.pdf">完整課綱 PDF →</a>
+        </div>
+
+        <div class="blk">
+          <div class="lab">週次大綱 · 18 週</div>
+          <div class="week-table">
+            <div class="wk"><span class="wn">一</span><span class="wd">2/24</span><span class="wt">課程導論：社會科學的「科學」之爭</span></div>
+            <div class="wk"><span class="wn">二</span><span class="wd">3/3</span><span class="wt">科學哲學的幽靈：從 Popper 到 Hempel</span></div>
+            <div class="wk"><span class="wn">三</span><span class="wd">3/10</span><span class="wt">知識論的戰場：實證主義 vs. 詮釋／批判</span></div>
+            <div class="wk"><span class="wn">四</span><span class="wd">3/17</span><span class="wt">研究設計的起點：研究問題與理論建構</span></div>
+            <div class="wk"><span class="wn">五</span><span class="wd">3/24</span><span class="wt"><a href="teaching/social-research-methods/week05-two-cultures.html">兩種文化：變項語言 vs. 個案邏輯</a><span class="tag">→ 互動講義</span></span></div>
+            <div class="wk"><span class="wn">六</span><span class="wd">3/31</span><span class="wt">推論的邏輯：KKV 的宣戰</span></div>
+            <div class="wk off"><span class="wn">七</span><span class="wd">4/7</span><span class="wt">學術交流週（停課）</span></div>
+            <div class="wk"><span class="wn">八</span><span class="wd">4/14</span><span class="wt">因果關係：相關性 vs. 機制</span></div>
+            <div class="wk"><span class="wn">九</span><span class="wd">4/21</span><span class="wt"><a href="teaching/social-research-methods/week09-selection-bias.html">案例選擇：偏差 vs. 策略</a><span class="tag">→ 互動講義</span></span></div>
+            <div class="wk"><span class="wn">十</span><span class="wd">4/28</span><span class="wt">測量與資料：精確 vs. 深度</span></div>
+            <div class="wk"><span class="wn">十一</span><span class="wd">5/5</span><span class="wt">小 N 的困境：增加 N vs. 過程追蹤</span></div>
+            <div class="wk"><span class="wn">十二</span><span class="wd">5/12</span><span class="wt">總結辯證：多元工具與共享標準</span></div>
+            <div class="wk"><span class="wn">十三</span><span class="wd">5/19</span><span class="wt">比較研究的邏輯與 QCA</span></div>
+            <div class="wk"><span class="wn">十四</span><span class="wd">5/26</span><span class="wt">時間與歷史：歷史制度主義</span></div>
+            <div class="wk"><span class="wn">十五</span><span class="wd">6/2</span><span class="wt">詮釋與論述（演講）</span></div>
+            <div class="wk"><span class="wn">十六</span><span class="wd">6/9</span><span class="wt">混合方法與研究設計工作坊</span></div>
+            <div class="wk"><span class="wn">十七</span><span class="wd">6/16</span><span class="wt">研究計劃書口頭報告</span></div>
+            <div class="wk off"><span class="wn">十八</span><span class="wd">6/23</span><span class="wt">彈性上課週</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 福利社會學 -->
+      <article class="course reveal">
+        <div class="course-head">
+          <div>
+            <div class="course-tag">大學部 · Undergraduate</div>
+            <h3 class="course-title">福利社會學</h3>
+            <div class="course-en">Sociology of Welfare</div>
+          </div>
+          <div class="course-meta"><b>大一必修</b>3 學分<br>週四 12:00–15:00<br>2026 春</div>
+        </div>
+        <div class="course-desc">
+          <p>「我們要了解社會，我們更要服務社會。」楊懋春先生的這句話，是這門課的起點。本課程從社會學的角度，帶同學認識福利的基本概念——貧窮、不平等、重分配、世代與就業——並理解社會政策如何回應這些長期的社會問題。</p>
+          <p>我們會從生活裡的議題切入：誰付得起學費、誰拿得到健保、年金能不能領到、長照誰來扛？再回頭看制度設計背後的價值與政治選擇。社會政策本質上是一場分配——「Who gets What, When, How」（Lasswell, 1958）——這也是公共社會學想對社會說的話。期望這門課不只給你理論，更讓你看見未來的職業可能性。</p>
+        </div>
+
+        <div class="blk">
+          <div class="lab">課程目標 · Objectives</div>
+          <ul class="obj-list">
+            <li>從社會學的角度理解福利的基本理念與概念（貧窮、不平等、重分配、世代、就業）</li>
+            <li>瞭解社會福利政策如何協助我們解決各種社會問題</li>
+            <li>掌握「誰取得／誰提供／給付什麼／錢從哪來」的分配議題</li>
+            <li>認識福利國家的制度差異與意識形態爭論</li>
+            <li>培養公共社會學的實踐視角，連結未來的職業想像</li>
+          </ul>
+        </div>
+
+        <div class="blk">
+          <div class="lab">書目 · Reading</div>
+          <div class="books-2">
+            <div class="bk">
+              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">指定教科書</div>
+              <ul>
+                <li>Gilbert, N. &amp; Terrell, P.（2012）《社會福利政策》。黃志忠、曾蕙瑜譯。台北：雙葉。</li>
+                <li>Gregory, L. (2018). <i>Exploring Welfare Debates</i>. Bristol: Policy Press.</li>
+                <li>Sealey, C. (2015). <i>Social Policy Simplified</i>. Palgrave.</li>
+              </ul>
+            </div>
+            <div class="bk">
+              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">參考書</div>
+              <ul>
+                <li>李易駿（2014）《社會政策原理》。台北：五南。</li>
+                <li>李易駿（2014）《社會福利概論》（第三版）。台北：洪葉。</li>
+                <li>國立編譯館主譯（2006）《解讀社會政策》。台北：群學。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="blk">
+          <a class="syllabus-cta" href="teaching/syllabi/2026spring-sociology-of-welfare.pdf">完整課綱 PDF →</a>
+        </div>
+
+        <div class="blk">
+          <div class="lab">週次大綱 · 18 週</div>
+          <div class="week-table">
+            <div class="wk"><span class="wn">一</span><span class="wd">2/26</span><span class="wt">課程概述：為什麼要學社會福利？</span></div>
+            <div class="wk"><span class="wn">二</span><span class="wd">3/5</span><span class="wt">福利是什麼？為什麼福利跟我們息息相關？</span></div>
+            <div class="wk"><span class="wn">三</span><span class="wd">3/12</span><span class="wt">誰應該取得福利？：公民資格、需求與平等</span></div>
+            <div class="wk"><span class="wn">四</span><span class="wd">3/19</span><span class="wt"><a href="teaching/sociology-of-welfare/week04-who-provides.html">誰應該提供福利？：國家、市場或非營利組織</a><span class="tag">→ 互動講義</span></span></div>
+            <div class="wk"><span class="wn">五</span><span class="wd">3/26</span><span class="wt">提供什麼給付呢？</span></div>
+            <div class="wk off"><span class="wn">六</span><span class="wd">4/2</span><span class="wt">學術交流週（停課）</span></div>
+            <div class="wk off"><span class="wn">七</span><span class="wd">4/9</span><span class="wt">電影欣賞</span></div>
+            <div class="wk"><span class="wn">八</span><span class="wd">4/16</span><span class="wt">福利的「錢（finance）」從哪裡來？</span></div>
+            <div class="wk off"><span class="wn">九</span><span class="wd">4/23</span><span class="wt">期中考</span></div>
+            <div class="wk"><span class="wn">十</span><span class="wd">4/30</span><span class="wt">福利的價值與意識形態</span></div>
+            <div class="wk"><span class="wn">十一</span><span class="wd">5/7</span><span class="wt">什麼是福利國家？</span></div>
+            <div class="wk"><span class="wn">十二</span><span class="wd">5/14</span><span class="wt">福利可以解決「貧窮」嗎？社會救助</span></div>
+            <div class="wk"><span class="wn">十三</span><span class="wd">5/21</span><span class="wt">「社會」保險——年金保險</span></div>
+            <div class="wk"><span class="wn">十四</span><span class="wd">5/28</span><span class="wt">「社會」保險——健康保險</span></div>
+            <div class="wk"><span class="wn">十五</span><span class="wd">6/4</span><span class="wt">就業政策與失業政策：福利與你未來的就業</span></div>
+            <div class="wk"><span class="wn">十六</span><span class="wd">6/11</span><span class="wt">兒童照顧與長期照顧</span></div>
+            <div class="wk off"><span class="wn">十七</span><span class="wd">6/18</span><span class="wt">期末考週</span></div>
+            <div class="wk off"><span class="wn">十八</span><span class="wd">6/25</span><span class="wt">彈性週</span></div>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="section-wrap">
-  <div class="section-head">
-    <span class="section-jp">課程目錄</span>
-    <span class="section-en">COURSE CATALOG</span>
-    <span class="section-note">擔任過的主要課程</span>
-  </div>
-
-  <div class="catalog">
-    <article class="cat-card is-grad">
-      <div class="cat-head">
-        <span class="cat-code">SOC ・ 碩士班</span>
-        <span class="cat-level">GRADUATE</span>
-      </div>
-      <h3 class="cat-title">社會研究法</h3>
-      <p class="cat-en">Social Research Methods</p>
-      <div class="cat-foot">
-        <span>研究所</span>
-        <span>本學期</span>
-      </div>
-    </article>
-
-    <article class="cat-card is-undg">
-      <div class="cat-head">
-        <span class="cat-code">SOC ・ 大學部</span>
-        <span class="cat-level">UNDERGRADUATE</span>
-      </div>
-      <h3 class="cat-title">福利社會學</h3>
-      <p class="cat-en">Sociology of Welfare</p>
-      <div class="cat-foot">
-        <span>大一必修</span>
-        <span>本學期</span>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="section-wrap">
-  <div class="section-head">
-    <span class="section-jp">學期軌跡</span>
-    <span class="section-en">SEMESTER TIMELINE</span>
-    <span class="section-note">近三年</span>
-  </div>
-
-  <div class="timeline">
-    <div class="term-row is-now">
-      <div class="term-label">2026 春</div>
-      <div class="term-courses">
-        <span class="term-pill">社會研究法</span>
-        <span class="term-pill">福利社會學</span>
-      </div>
-    </div>
-    <div class="term-row">
-      <div class="term-label">2025 秋</div>
-      <div class="term-courses">
-        <span class="term-pill">尚未填入</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section-wrap">
-  <div class="section-head">
-    <span class="section-jp">本學期課程</span>
-    <span class="section-en">COURSES OF THIS TERM</span>
-    <span class="section-note">click ・ 教材就在卡片內</span>
-  </div>
-
-  <div class="courses">
-
-    <!-- Course 1 — 社會研究法（碩士班）-->
-    <article class="course">
-      <header class="course-head">
-        <div>
-          <span class="course-tag">研究所 · GRADUATE</span>
-          <h3 class="course-title">社會研究法</h3>
-          <p class="course-en">Social Research Methods</p>
-        </div>
-        <div class="course-meta">
-          <div><span class="label">學程</span>碩士班</div>
-          <div><span class="label">學分</span>3 學分</div>
-          <div><span class="label">時段</span>週二 ・ 09:00–12:00</div>
-          <div><span class="label">教室</span>待填</div>
-        </div>
-      </header>
-
-      <div class="course-body">
-        <div>
-          <div class="course-desc">
-            <p>
-              科學研究不是一道食譜，而是一場關於「什麼算是證據、我們如何能知道」的長期辯論。本課程從科學哲學與知識論起步——Popper 的否證、Hempel 的覆蓋律、實證主義與詮釋學派的對峙——再走入社會科學內部最重要的方法論論戰：King-Keohane-Verba 的《Designing Social Inquiry》與 Brady-Collier 的回應。
-            </p>
-            <p>
-              中段課程處理研究設計的核心環節：因果推論、機制分析、案例選擇、測量效度；後段引介進階方法工具——QCA、歷史比較分析、過程追蹤與混合方法——並收尾於每位同學自己的研究計畫書。一學期下來，期望大家能跨越質化／量化的界線，找到屬於自己的方法語言。
-            </p>
-          </div>
-          <div class="course-objectives">
-            <p class="obj-label">課程目標 · OBJECTIVES</p>
-            <ul class="obj-list">
-              <li>奠定科學哲學與知識論的基礎</li>
-              <li>掌握研究設計的核心：因果推論、機制分析、案例選擇、測量效度</li>
-              <li>學習進階方法工具：QCA、歷史比較分析、過程追蹤</li>
-              <li>培養跨越質化／量化界線的學術視野</li>
-              <li>建立嚴謹且具科學推論邏輯的研究設計能力</li>
-              <li>完成一份具原創性與學術價值的獨立研究計畫書</li>
-            </ul>
-          </div>
-        </div>
-
-        <aside class="resources">
-          <div class="resources-head">
-            <span class="resources-jp">教材・資料</span>
-            <span class="resources-en">MATERIALS</span>
-          </div>
-
-          <div class="res-group">
-            <p class="res-group-label">指定教科書</p>
-            <ul class="res-list">
-              <li>King, G., Keohane, R. O., &amp; Verba, S.（2012）。《好研究如何設計？：用量化邏輯做質化研究》。台北：群學。<span class="meta">(原著 1994, Princeton UP)</span></li>
-              <li>Brady, H. E., &amp; Collier, D. (eds.) (2010). <i>Rethinking Social Inquiry: Diverse Tools, Shared Standards</i>, 2nd ed. Rowman &amp; Littlefield.</li>
-              <li>Goertz, G., &amp; Mahoney, J. (2012). <i>A Tale of Two Cultures: Qualitative and Quantitative Research in the Social Sciences</i>. Princeton UP.</li>
-              <li>Gerring, J., &amp; Seawright, J. (2022). <i>Finding Your Social Science Project</i>. Cambridge UP.</li>
-            </ul>
-          </div>
-
-          <div class="res-group">
-            <p class="res-group-label">參考書</p>
-            <ul class="res-list">
-              <li>Alford, R. R. (1998). <i>The Craft of Inquiry</i>. Oxford UP.<span class="meta">(王志弘譯, 2011, 群學)</span></li>
-              <li>Schutt, R. (2014). <i>Investigating the Social World</i>, 8th ed. Sage.</li>
-              <li>Gerring, J. (2012). <i>Social Science Methodology: A Unified Framework</i>, 2nd ed. Cambridge UP.</li>
-            </ul>
-          </div>
-
-          <a href="teaching/syllabi/2026spring-social-research-methods.pdf" class="syllabus-cta">完整課綱 PDF →</a>
-        </aside>
-
-        <details class="weekly">
-          <summary>
-            <span class="weekly-jp">週次大綱</span>
-            <span>WEEKLY SCHEDULE</span>
-          </summary>
-
-          <div class="weekly-list">
-
-            <div class="week">
-              <div class="week-num">01</div>
-              <div class="week-date">2/24</div>
-              <div class="week-body">
-                <div class="week-topic">課程導論：社會科學的「科學」之爭</div>
-                <ul class="week-readings"><li class="week-note">分派指定閱讀文獻</li></ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">02</div>
-              <div class="week-date">3/3</div>
-              <div class="week-body">
-                <div class="week-topic">科學哲學的幽靈：從 Popper 到 Hempel</div>
-                <ul class="week-readings">
-                  <li class="req">陳瑞麟（2010）。《科學哲學：理論與歷史》。台北：群學。<span class="meta">(第 3、4 章)</span></li>
-                  <li class="req">Patrick Baert（2011）。《社會科學哲學》。台北：群學。<span class="meta">(第 3 章)</span></li>
-                  <li>Popper, K. (1959). <i>The Logic of Scientific Discovery</i>. (Ch. 1)</li>
-                  <li>Hempel, C. G. (1965). "The Function of General Laws in History," in <i>Aspects of Scientific Explanation</i>.</li>
-                  <li>Godfrey-Smith, P. (2003). <i>Theory and Reality</i>. (Ch. 4)</li>
-                  <li>Rosenberg, A. (2015). <i>Philosophy of Social Science</i>. (Ch. 2)</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">03</div>
-              <div class="week-date">3/10</div>
-              <div class="week-body">
-                <div class="week-topic">知識論的戰場：實證主義 vs. 詮釋／批判</div>
-                <ul class="week-readings">
-                  <li class="req">Polanyi, M. (1958). <i>Personal Knowledge: Towards a Post-Critical Philosophy</i>. Chicago UP. (Ch. 1, 4)<span class="meta">[中譯本來源待確認]</span></li>
-                  <li class="req">Patrick Baert（2011）。《社會科學哲學》。台北：群學。<span class="meta">(第 4–5 章)</span></li>
-                  <li>Geertz, C. (1973). "Thick Description," in <i>The Interpretation of Cultures</i>.</li>
-                  <li>Flyvbjerg, B. (2001). <i>Making Social Science Matter</i>. (Ch. 4)</li>
-                  <li>Lincoln, Y. S., &amp; Guba, E. G. (2000). "Paradigmatic Controversies, Contradictions, and Emerging Confluences," in <i>Handbook of Qualitative Research</i>.</li>
-                  <li>Habermas, J. (1988). <i>On the Logic of the Social Sciences</i>.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">04</div>
-              <div class="week-date">3/17</div>
-              <div class="week-body">
-                <div class="week-topic">研究設計的起點：研究問題與理論建構</div>
-                <ul class="week-readings">
-                  <li class="req">Alford, R. R. (1998). <i>The Craft of Inquiry</i>. (Ch. 2, 3)</li>
-                  <li class="req">Gerring, J., &amp; Seawright, J. (2022). <i>Finding Your Social Science Project</i>. (Ch. 2)</li>
-                  <li>Merton, R. K. (1968). "On Sociological Theories of the Middle Range," in <i>Social Theory and Social Structure</i>.</li>
-                  <li>Swedberg, R. (2012). "Theorizing in Sociology and Social Science." <i>Theory and Society</i>, 41(1), 1–40.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">05</div>
-              <div class="week-date">3/24</div>
-              <div class="week-body">
-                <div class="week-topic"><a href="teaching/social-research-methods/week05-two-cultures.html" style="color:var(--accent); text-decoration:none; border-bottom:1px dashed var(--accent);">兩種文化：變項語言 vs. 個案邏輯</a> <span style="font-family:var(--sans); font-size:10px; letter-spacing:0.2em; color:var(--accent); margin-left:6px;">→ 互動講義</span></div>
-                <ul class="week-readings">
-                  <li class="req">Goertz, G., &amp; Mahoney, J. (2012). <i>A Tale of Two Cultures</i>. (Ch. 1)</li>
-                  <li>Mahoney, J., &amp; Goertz, G. (2006). "A Tale of Two Cultures." <i>Political Analysis</i>, 14(3), 227–249.</li>
-                  <li>Becker, H. S. (1998). <i>Tricks of the Trade</i>. (Ch. 4)</li>
-                  <li>Blumer, H. (1956). "Sociological Analysis and the Variable." <i>ASR</i>, 21(6), 683–690.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">06</div>
-              <div class="week-date">3/31</div>
-              <div class="week-body">
-                <div class="week-topic">推論的邏輯：KKV 的宣戰</div>
-                <ul class="week-readings">
-                  <li class="req">King, Keohane, &amp; Verba (1994). <i>Designing Social Inquiry</i>. (Ch. 1, 2)</li>
-                  <li class="req">Brady &amp; Collier (2010). <i>Rethinking Social Inquiry</i>. (Ch. 1: Refocusing the Discussion of Methodology)</li>
-                  <li class="req">Brady &amp; Collier (2010). (Ch. 3: Critiques and Responses)</li>
-                  <li>McKeown, T. J. (1999). "Case Studies and the Statistical Worldview." <i>International Organization</i>, 53(1), 161–190.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">07</div>
-              <div class="week-date">4/7</div>
-              <div class="week-body">
-                <div class="week-topic">學術交流週（停課）</div>
-                <ul class="week-readings"><li class="week-note">放假，請閱讀 KKV 全書。</li></ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">08</div>
-              <div class="week-date">4/14</div>
-              <div class="week-body">
-                <div class="week-topic">因果關係：相關性 vs. 機制</div>
-                <ul class="week-readings">
-                  <li class="req">KKV (1994). <i>Designing Social Inquiry</i>. (Ch. 3)</li>
-                  <li class="req">Brady &amp; Collier (2010). (Ch. 10: Process Tracing and Causal Inference)</li>
-                  <li>Brady &amp; Collier (2010). (Ch. 11: On Types of Scientific Inquiry)</li>
-                  <li>Hedström, P., &amp; Ylikoski, P. (2010). "Causal Mechanisms in the Social Sciences." <i>ARS</i>, 36, 49–67.</li>
-                  <li>Falleti, T. G., &amp; Lynch, J. F. (2009). "Context and Causal Mechanisms in Political Analysis." <i>CPS</i>, 42(9), 1143–1166.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">09</div>
-              <div class="week-date">4/21</div>
-              <div class="week-body">
-                <div class="week-topic"><a href="teaching/social-research-methods/week09-selection-bias.html" style="color:var(--accent); text-decoration:none; border-bottom:1px dashed var(--accent);">案例選擇：偏差 vs. 策略</a> <span style="font-family:var(--sans); font-size:10px; letter-spacing:0.2em; color:var(--accent); margin-left:6px;">→ 互動講義</span></div>
-                <ul class="week-readings">
-                  <li class="req">KKV (1994). (Ch. 4)</li>
-                  <li class="req">Brady &amp; Collier (2010). (Ch. 6: Case Selection: Insights and Pitfalls)</li>
-                  <li class="req">Brady &amp; Collier (2010). (Ch. 5: How the Cases You Choose Affect the Answers You Get)</li>
-                  <li>Geddes, B. (1990). <i>Political Analysis</i>, 2(1), 131–150.</li>
-                  <li>Seawright, J., &amp; Gerring, J. (2008). "Case Selection Techniques." <i>PRQ</i>, 61(2), 294–308.</li>
-                  <li>George, A. L., &amp; Bennett, A. (2005). <i>Case Studies and Theory Development in the Social Sciences</i>.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">10</div>
-              <div class="week-date">4/28</div>
-              <div class="week-body">
-                <div class="week-topic">測量與資料：精確 vs. 深度</div>
-                <ul class="week-readings">
-                  <li class="req">KKV (1994). (Ch. 5)</li>
-                  <li class="req">Brady &amp; Collier (2010). (Ch. 8: Measurement Validity)</li>
-                  <li>Adcock, R., &amp; Collier, D. (2001). "Measurement Validity." <i>APSR</i>, 95(3), 529–546.</li>
-                  <li>Sartori, G. (1970). "Concept Misformation in Comparative Politics." <i>APSR</i>, 64(4), 1033–1053.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">11</div>
-              <div class="week-date">5/5</div>
-              <div class="week-body">
-                <div class="week-topic">小 N 的困境：增加 N vs. 過程追蹤</div>
-                <ul class="week-readings">
-                  <li class="req">KKV (1994). (Ch. 6)</li>
-                  <li class="req">Brady &amp; Collier (2010). (Ch. 9: Data Set Observations vs. Causal Process Observations)</li>
-                  <li class="req">Brady &amp; Collier (2010). (Ch. 13: Sources of Leverage in Causal Inference)</li>
-                  <li>Collier, D. (2011). "Understanding Process Tracing." <i>PS</i>, 44(4), 823–830.</li>
-                  <li>Collier, D., &amp; Mahoney, J. (1996). "Insights and Pitfalls." <i>World Politics</i>, 49(1), 56–91.</li>
-                  <li>Mahoney, J. (2000). "Strategies of Causal Inference in Small N Analysis." <i>Sociological Methods &amp; Research</i>, 28(4), 387–424.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">12</div>
-              <div class="week-date">5/12</div>
-              <div class="week-body">
-                <div class="week-topic">總結辯證：多元工具與共享標準</div>
-                <ul class="week-readings">
-                  <li class="req">Brady &amp; Collier (2010). (Ch. 7: The Importance of Research Design — KKV 團隊回應)</li>
-                  <li>Brady &amp; Collier (2010). (Ch. 14: Toward a Pluralistic Vision of Methodology)</li>
-                  <li>Beck, N. (2006). "Is Causal Process Observation an Oxymoron?" <i>Political Analysis</i>, 14(3), 347–352.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">13</div>
-              <div class="week-date">5/19</div>
-              <div class="week-body">
-                <div class="week-topic">比較研究的邏輯與 QCA</div>
-                <ul class="week-readings">
-                  <li class="req">Ragin, C. C. (1987). <i>The Comparative Method</i>. (Ch. 6)</li>
-                  <li>Schneider, C. Q., &amp; Wagemann, C. (2010). "Standards of Good Practice in QCA and Fuzzy Sets." <i>Comparative Sociology</i>, 9(3), 397–418.</li>
-                  <li>Ragin, C. C. (2008). <i>Redesigning Social Inquiry</i>. (Ch. 1)</li>
-                  <li>Mahoney, J. (2004). "Comparative Historical Methodology." <i>ARS</i>, 30, 81–101.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">14</div>
-              <div class="week-date">5/26</div>
-              <div class="week-body">
-                <div class="week-topic">時間與歷史：歷史制度主義</div>
-                <ul class="week-readings">
-                  <li class="req">Pierson, P. (2004). <i>Politics in Time</i>. (Ch. 1)</li>
-                  <li class="req">Mahoney, J., &amp; Thelen, K. (2010). "A Theory of Gradual Institutional Change," in <i>Explaining Institutional Change</i>.</li>
-                  <li>Thelen, K. (1999). "Historical Institutionalism in Comparative Politics." <i>ARPS</i>, 2, 369–404.</li>
-                  <li>Skocpol, T. (1984). "Emerging Agendas and Recurrent Strategies in Historical Sociology," in <i>Vision and Method in Historical Sociology</i>.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">15</div>
-              <div class="week-date">6/2</div>
-              <div class="week-body">
-                <div class="week-topic">詮釋與論述（演講）</div>
-                <ul class="week-readings"><li class="week-note">講者與閱讀待定。</li></ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">16</div>
-              <div class="week-date">6/9</div>
-              <div class="week-body">
-                <div class="week-topic">混合方法與研究設計工作坊</div>
-                <ul class="week-readings">
-                  <li class="req">Creswell, J. W., &amp; Plano Clark, V. L. (2017). <i>Designing and Conducting Mixed Methods Research</i>. (Ch. 3)</li>
-                  <li class="req">Small, M. L. (2011). "How to Conduct a Mixed Methods Study." <i>ARS</i>, 37, 57–86.</li>
-                  <li>Lieberman, E. S. (2005). "Nested Analysis." <i>APSR</i>, 99(3), 435–452.</li>
-                  <li>Pearce, L. D. (2012). "Mixed Methods Inquiry in Sociology." <i>ABS</i>, 56(6), 829–848.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">17</div>
-              <div class="week-date">6/16</div>
-              <div class="week-body">
-                <div class="week-topic">研究計劃書口頭報告</div>
-                <ul class="week-readings"><li class="week-note">每位同學針對自己的期末報告，報告 20 分鐘。</li></ul>
-              </div>
-            </div>
-
-            <div class="week">
-              <div class="week-num">18</div>
-              <div class="week-date">6/23</div>
-              <div class="week-body">
-                <div class="week-topic">彈性上課週</div>
-                <ul class="week-readings"><li class="week-note">視進度而定。</li></ul>
-              </div>
-            </div>
-
-          </div>
-        </details>
-      </div>
-    </article>
-
-    <!-- Course 2 — 福利社會學（大一）-->
-    <article class="course">
-      <header class="course-head">
-        <div>
-          <span class="course-tag">大學部 · UNDERGRADUATE</span>
-          <h3 class="course-title">福利社會學</h3>
-          <p class="course-en">Sociology of Welfare</p>
-        </div>
-        <div class="course-meta">
-          <div><span class="label">學程</span>大學部</div>
-          <div><span class="label">學分</span>3 學分</div>
-          <div><span class="label">時段</span>週四 ・ 12:00–15:00</div>
-          <div><span class="label">教室</span>待填</div>
-        </div>
-      </header>
-
-      <div class="course-body">
-        <div>
-          <div class="course-desc">
-            <p>
-              「我們要了解社會，我們更要服務社會。」楊懋春先生的這句話，是這門課的起點。本課程從社會學的角度，帶同學認識福利的基本概念——貧窮、不平等、重分配、世代與就業——並理解社會政策如何回應這些長期的社會問題。
-            </p>
-            <p>
-              我們會從生活裡的議題切入：誰付得起學費、誰拿得到健保、年金能不能領到、長照誰來扛？再回頭看制度設計背後的價值與政治選擇。社會政策本質上是一場分配——「Who gets What, When, How」（Lasswell, 1958）——而這也是公共社會學想對社會說的話。期望這門課不只給你理論，更讓你看見未來的職業可能性。
-            </p>
-          </div>
-          <div class="course-objectives">
-            <p class="obj-label">課程目標 · OBJECTIVES</p>
-            <ul class="obj-list">
-              <li>從社會學的角度理解福利的基本理念與概念（貧窮、不平等、重分配、世代、就業）</li>
-              <li>瞭解社會福利政策如何協助我們解決各種社會問題</li>
-              <li>掌握「誰取得／誰提供／給付什麼／錢從哪來」的分配議題</li>
-              <li>認識福利國家的制度差異與意識形態爭論</li>
-              <li>培養公共社會學的實踐視角，連結未來的職業想像</li>
-            </ul>
-          </div>
-        </div>
-
-        <aside class="resources">
-          <div class="resources-head">
-            <span class="resources-jp">教材・資料</span>
-            <span class="resources-en">MATERIALS</span>
-          </div>
-
-          <div class="res-group">
-            <p class="res-group-label">指定教科書</p>
-            <ul class="res-list">
-              <li>Gilbert, N., &amp; Terrell, P.（2012）。《社會福利政策》（<i>Dimensions of Social Welfare Policy</i>）。黃志忠、曾蕙瑜合譯。台北：雙葉。</li>
-              <li>Gregory, L. (2018). <i>Exploring Welfare Debates: Key Concepts and Questions</i>. Bristol: Policy Press.</li>
-              <li>Sealey, C. (2015). <i>Social Policy Simplified: Connecting Theory with People's Lives</i>. Basingstoke: Palgrave.</li>
-            </ul>
-          </div>
-
-          <div class="res-group">
-            <p class="res-group-label">參考書</p>
-            <ul class="res-list">
-              <li>李易駿（2014）。《社會政策原理》。台北：五南。</li>
-              <li>李易駿（2014）。《社會福利概論》（第三版）。台北：洪葉。</li>
-              <li>國立編譯館主譯（2006）。《解讀社會政策》（<i>The Student's Companion to Social Policy</i>）。台北：群學。</li>
-            </ul>
-          </div>
-
-          <div class="res-group">
-            <p class="res-group-label">作業</p>
-            <ul class="res-list">
-              <li>讀書心得報告：約 A4 1,500 字（字型 12、單行間距）</li>
-              <li>期末報告</li>
-            </ul>
-          </div>
-
-          <a href="teaching/syllabi/2026spring-sociology-of-welfare.pdf" class="syllabus-cta">完整課綱 PDF →</a>
-        </aside>
-
-        <details class="weekly">
-          <summary>
-            <span class="weekly-jp">週次大綱</span>
-            <span>WEEKLY SCHEDULE</span>
-          </summary>
-
-          <div class="weekly-list">
-            <div class="week"><div class="week-num">01</div><div class="week-date">2/26</div><div class="week-body"><div class="week-topic">課程概述：為什麼要學社會福利？</div></div></div>
-            <div class="week"><div class="week-num">02</div><div class="week-date">3/5</div><div class="week-body"><div class="week-topic">福利是什麼？為什麼福利跟我們息息相關？</div></div></div>
-            <div class="week"><div class="week-num">03</div><div class="week-date">3/12</div><div class="week-body"><div class="week-topic">誰應該取得福利？：公民資格、需求與平等</div></div></div>
-            <div class="week"><div class="week-num">04</div><div class="week-date">3/19</div><div class="week-body"><div class="week-topic"><a href="teaching/sociology-of-welfare/week04-who-provides.html" style="color:var(--accent); text-decoration:none; border-bottom:1px dashed var(--accent);">誰應該提供福利？：國家、市場或非營利組織</a> <span style="font-family:var(--sans); font-size:10px; letter-spacing:0.2em; color:var(--accent); margin-left:6px;">→ 互動講義</span></div></div></div>
-            <div class="week"><div class="week-num">05</div><div class="week-date">3/26</div><div class="week-body"><div class="week-topic">提供什麼給付呢？</div></div></div>
-            <div class="week"><div class="week-num">06</div><div class="week-date">4/2</div><div class="week-body"><div class="week-topic">學術交流週（停課）</div></div></div>
-            <div class="week"><div class="week-num">07</div><div class="week-date">4/9</div><div class="week-body"><div class="week-topic">電影欣賞</div></div></div>
-            <div class="week"><div class="week-num">08</div><div class="week-date">4/16</div><div class="week-body"><div class="week-topic">福利的「錢（finance）」從哪裡來？</div></div></div>
-            <div class="week"><div class="week-num">09</div><div class="week-date">4/23</div><div class="week-body"><div class="week-topic">期中考</div></div></div>
-            <div class="week"><div class="week-num">10</div><div class="week-date">4/30</div><div class="week-body"><div class="week-topic">福利的價值與意識形態</div></div></div>
-            <div class="week"><div class="week-num">11</div><div class="week-date">5/7</div><div class="week-body"><div class="week-topic">什麼是福利國家？</div></div></div>
-            <div class="week"><div class="week-num">12</div><div class="week-date">5/14</div><div class="week-body"><div class="week-topic">福利可以解決「貧窮」嗎？社會救助</div></div></div>
-            <div class="week"><div class="week-num">13</div><div class="week-date">5/21</div><div class="week-body"><div class="week-topic">「社會」保險——年金保險</div></div></div>
-            <div class="week"><div class="week-num">14</div><div class="week-date">5/28</div><div class="week-body"><div class="week-topic">「社會」保險——健康保險</div></div></div>
-            <div class="week"><div class="week-num">15</div><div class="week-date">6/4</div><div class="week-body"><div class="week-topic">為什麼福利和你未來的就業有關呢？——就業政策與失業政策</div></div></div>
-            <div class="week"><div class="week-num">16</div><div class="week-date">6/11</div><div class="week-body"><div class="week-topic">兒童照顧與長期照顧</div></div></div>
-            <div class="week"><div class="week-num">17</div><div class="week-date">6/18</div><div class="week-body"><div class="week-topic">期末考週</div></div></div>
-            <div class="week"><div class="week-num">18</div><div class="week-date">6/25</div><div class="week-body"><div class="week-topic">彈性週</div></div></div>
-          </div>
-        </details>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<footer>
-  <span>YEH CHUNG-YANG</span>
-  <span>2026 ・ 春 ・ 茶室</span>
+<footer class="foot">
+  <span>葉崇揚 · YEH CHUNG-YANG</span>
+  <span>教學 · Teaching</span>
 </footer>
 
+<!-- reveal 揭示（漸進增強：IO 為主，scroll／計時器備援） -->
 <script>
-  // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
-  // 偶爾因 sticky header + backdrop-filter 而整頁空白。
-  // 偵測到從快取還原時，強制觸發一次重繪。
-  window.addEventListener('pageshow', function(e) {
-    if (e.persisted) {
-      document.body.style.display = 'none';
-      void document.body.offsetHeight;
-      document.body.style.display = '';
-    }
+(function () {
+  "use strict";
+  document.documentElement.classList.add('js-anim');
+  var revealables = document.querySelectorAll('.reveal');
+  var markIn = function (el) { el.classList.add('in'); };
+  var revealVisibleNow = function () {
+    var vh = window.innerHeight;
+    revealables.forEach(function (el) {
+      if (el.classList.contains('in')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.98 && r.bottom > 0) markIn(el);
+    });
+  };
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) if (entries[i].isIntersecting) markIn(entries[i].target);
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+    revealables.forEach(function (el) { io.observe(el); });
+  } else { revealables.forEach(markIn); }
+  window.addEventListener('scroll', revealVisibleNow, { passive: true });
+  window.addEventListener('pageshow', revealVisibleNow);
+  setTimeout(revealVisibleNow, 400); setTimeout(revealVisibleNow, 1600);
+  revealVisibleNow();
+})();
+</script>
+
+<!-- BFCache 還原修復 -->
+<script>
+  window.addEventListener('pageshow', function(e){
+    if (e.persisted) { document.body.style.display='none'; void document.body.offsetHeight; document.body.style.display=''; }
   });
 </script>
 </body>
