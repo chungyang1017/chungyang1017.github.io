@@ -14,7 +14,7 @@
   /* ================================================================
      紅葉 · 紅葉總覽（水墨風格）
      骨幹＝攝影頁設計語言（:root / 字體 / nav / lightbox / samon）
-     頂部＝水墨紅葉 hero（宣紙質地 + 紅楓葉 canvas + 墨枝 SVG，色系由青綠改紅金）
+     頂部＝水墨紅葉 hero（宣紙質地 + イロハモミジ楓葉 canvas + 楓樹 SVG）
      ================================================================ */
   :root{
     --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
@@ -108,7 +108,7 @@
   }
   .hero .wrap{ position:relative; z-index:3; width:min(1180px,90vw); margin-inline:auto; }
 
-  /* 水墨の楓枝（SVG）— hero 背景，右上垂落 */
+  /* 水墨の楓樹（SVG）— hero 背景，右上一株楓 */
   .ink-branch{
     position:absolute; z-index:2; pointer-events:none;
     top:clamp(-30px,-3vh,-6px); right:clamp(-120px,-8vw,-40px);
@@ -338,102 +338,300 @@
 
   <!-- ============ 水墨紅葉 HERO ============ -->
   <header class="hero" id="hero">
-    <!-- 水墨の楓枝 — 主枝（秋楓，色系由青綠改紅金）-->
+    <!-- 水墨の楓樹 — 主幹＋分枝＋紅金葉叢（イロハモミジ葉形，非抽象暈染）-->
     <svg class="ink-branch" id="branch" viewBox="0 0 1000 760" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMin meet">
       <defs>
-        <filter id="inkbleed" x="-45%" y="-45%" width="190%" height="190%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.014 0.02" numOctaves="4" seed="7" result="t"/>
-          <feDisplacementMap in="SourceGraphic" in2="t" scale="17" xChannelSelector="R" yChannelSelector="G" result="d"/>
-          <feGaussianBlur in="d" stdDeviation="3.4"/>
-        </filter>
         <filter id="drybrush" x="-20%" y="-20%" width="140%" height="140%">
           <feTurbulence type="turbulence" baseFrequency="0.9 0.08" numOctaves="2" seed="4" result="t"/>
           <feDisplacementMap in="SourceGraphic" in2="t" scale="3.2"/>
         </filter>
-        <radialGradient id="bloom" cx="44%" cy="42%" r="60%">
-          <stop offset="0%"   stop-color="#f4d7a8" stop-opacity="0.34"/>
-          <stop offset="30%"  stop-color="#e2a24e" stop-opacity="0.56"/>
-          <stop offset="62%"  stop-color="#c95f2a" stop-opacity="0.42"/>
-          <stop offset="100%" stop-color="#c95f2a" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="bloomEdge" cx="50%" cy="50%" r="52%">
-          <stop offset="0%"   stop-color="#a5352a" stop-opacity="0"/>
-          <stop offset="72%"  stop-color="#a5352a" stop-opacity="0"/>
-          <stop offset="88%"  stop-color="#9a3320" stop-opacity="0.30"/>
-          <stop offset="100%" stop-color="#822a1a" stop-opacity="0.05"/>
-        </radialGradient>
-        <radialGradient id="bloomWhite" cx="46%" cy="44%" r="42%">
-          <stop offset="0%"   stop-color="#f7ecd8" stop-opacity="0.55"/>
-          <stop offset="70%"  stop-color="#f7ecd8" stop-opacity="0.12"/>
-          <stop offset="100%" stop-color="#f7ecd8" stop-opacity="0"/>
-        </radialGradient>
         <linearGradient id="inkgrad" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stop-color="#211d1b"/>
           <stop offset="70%" stop-color="#332e2a"/>
           <stop offset="100%" stop-color="#4a423d"/>
         </linearGradient>
+        <radialGradient id="warmGlow" cx="50%" cy="46%" r="56%">
+          <stop offset="0%" stop-color="#f2cf9b" stop-opacity="0.30"/>
+          <stop offset="55%" stop-color="#e2a24e" stop-opacity="0.14"/>
+          <stop offset="100%" stop-color="#e2a24e" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="trunkFade" x1="0" y1="430" x2="0" y2="762" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#fff"/>
+          <stop offset="0.72" stop-color="#fff"/>
+          <stop offset="1" stop-color="#fff" stop-opacity="0.05"/>
+        </linearGradient>
+        <mask id="trunkMask"><rect width="1000" height="762" fill="url(#trunkFade)"/></mask>
+        <!-- イロハモミジ：近景精細葉（7 裂＋鋸齒＋掌狀脈＋葉柄）-->
+        <g id="lfD">
+          <path d="M-0.153 0.158L-0.237 0.154L-0.263 0.211L-0.313 0.177L-0.345 0.225L-0.395 0.191L-0.433 0.2L-0.464 0.187L-0.45 0.157L-0.416 0.137L-0.404 0.078L-0.348 0.09L-0.335 0.031L-0.277 0.054L-0.221 0.012L-0.3 -0.025L-0.404 -0.006L-0.456 -0.078L-0.562 -0.071L-0.614 -0.144L-0.689 -0.172L-0.731 -0.209L-0.676 -0.22L-0.597 -0.204L-0.515 -0.237L-0.428 -0.176L-0.346 -0.209L-0.268 -0.137L-0.182 -0.125L-0.234 -0.208L-0.35 -0.28L-0.36 -0.39L-0.471 -0.474L-0.481 -0.584L-0.54 -0.673L-0.56 -0.743L-0.498 -0.705L-0.429 -0.623L-0.326 -0.583L-0.275 -0.454L-0.173 -0.413L-0.136 -0.282L-0.07 -0.21L-0.062 -0.312L-0.113 -0.452L-0.054 -0.556L-0.093 -0.704L-0.033 -0.808L-0.027 -0.926L0 -1L0.027 -0.926L0.033 -0.808L0.093 -0.704L0.054 -0.556L0.113 -0.452L0.062 -0.312L0.07 -0.21L0.136 -0.282L0.173 -0.413L0.275 -0.454L0.326 -0.583L0.429 -0.623L0.498 -0.705L0.56 -0.743L0.54 -0.673L0.481 -0.584L0.471 -0.474L0.36 -0.39L0.35 -0.28L0.234 -0.208L0.182 -0.125L0.268 -0.137L0.346 -0.209L0.428 -0.176L0.515 -0.237L0.597 -0.204L0.676 -0.22L0.731 -0.209L0.689 -0.172L0.614 -0.144L0.562 -0.071L0.456 -0.078L0.404 -0.006L0.3 -0.025L0.221 0.012L0.277 0.054L0.335 0.031L0.348 0.09L0.404 0.078L0.416 0.137L0.45 0.157L0.464 0.187L0.433 0.2L0.395 0.191L0.345 0.225L0.313 0.177L0.263 0.211L0.237 0.154L0.153 0.158Z"/>
+          <path d="M0 0.16Q0.08 0.6 0.05 0.98M0 0.16L-0.417 0.169M0 0.16L-0.658 -0.189M0 0.16L-0.504 -0.668M0 0.16L0 -0.9M0 0.16L0.504 -0.668M0 0.16L0.658 -0.189M0 0.16L0.417 0.169" fill="none" stroke="#7c2a16" stroke-opacity="0.5" stroke-width="0.045" stroke-linecap="round"/>
+        </g>
+        <!-- イロハモミジ：遠中景簡化葉（7 裂輪廓）-->
+        <path id="lfS" d="M-0.153 0.158L-0.241 0.148L-0.282 0.22L-0.393 0.201L-0.464 0.187L-0.423 0.129L-0.356 0.037L-0.276 0.061L-0.221 0.012L-0.302 -0.034L-0.448 -0.017L-0.622 -0.134L-0.731 -0.209L-0.599 -0.216L-0.389 -0.223L-0.274 -0.131L-0.182 -0.125L-0.231 -0.218L-0.388 -0.327L-0.494 -0.582L-0.56 -0.743L-0.423 -0.636L-0.208 -0.463L-0.146 -0.283L-0.07 -0.21L-0.054 -0.319L-0.115 -0.519L-0.045 -0.815L0 -1L0.045 -0.815L0.115 -0.519L0.054 -0.319L0.07 -0.21L0.146 -0.283L0.208 -0.463L0.423 -0.636L0.56 -0.743L0.494 -0.582L0.388 -0.327L0.231 -0.218L0.182 -0.125L0.274 -0.131L0.389 -0.223L0.599 -0.216L0.731 -0.209L0.622 -0.134L0.448 -0.017L0.302 -0.034L0.221 0.012L0.276 0.061L0.356 0.037L0.423 0.129L0.464 0.187L0.393 0.201L0.282 0.22L0.241 0.148L0.153 0.158Z"/>
       </defs>
 
-      <!-- 紅葉の暈し群 -->
-      <g filter="url(#inkbleed)" opacity="0.9">
-        <ellipse cx="250" cy="150" rx="150" ry="126" fill="url(#bloom)"/>
-        <ellipse cx="284" cy="128" rx="70"  ry="60"  fill="url(#bloom)"/>
-        <ellipse cx="214" cy="182" rx="66"  ry="58"  fill="url(#bloom)"/>
-        <ellipse cx="452" cy="96"  rx="116" ry="98"  fill="url(#bloom)"/>
-        <ellipse cx="486" cy="118" rx="58"  ry="52"  fill="url(#bloom)"/>
-        <ellipse cx="628" cy="196" rx="138" ry="118" fill="url(#bloom)"/>
-        <ellipse cx="600" cy="168" rx="64"  ry="56"  fill="url(#bloom)"/>
-        <ellipse cx="666" cy="220" rx="62"  ry="54"  fill="url(#bloom)"/>
-        <ellipse cx="392" cy="252" rx="96"  ry="84"  fill="url(#bloom)"/>
-        <ellipse cx="792" cy="120" rx="86"  ry="76"  fill="url(#bloom)"/>
-        <ellipse cx="160" cy="300" rx="78"  ry="68"  fill="url(#bloom)"/>
-        <ellipse cx="560" cy="360" rx="72"  ry="62"  fill="url(#bloom)"/>
-      </g>
-      <g filter="url(#inkbleed)" opacity="0.9">
-        <ellipse cx="250" cy="150" rx="128" ry="108" fill="url(#bloomEdge)"/>
-        <ellipse cx="452" cy="96"  rx="104" ry="88"  fill="url(#bloomEdge)"/>
-        <ellipse cx="628" cy="196" rx="120" ry="102" fill="url(#bloomEdge)"/>
-        <ellipse cx="392" cy="252" rx="86"  ry="74"  fill="url(#bloomEdge)"/>
-        <ellipse cx="792" cy="120" rx="76"  ry="66"  fill="url(#bloomEdge)"/>
-      </g>
-      <g filter="url(#inkbleed)" opacity="0.85">
-        <ellipse cx="256" cy="146" rx="86" ry="74" fill="url(#bloomWhite)"/>
-        <ellipse cx="456" cy="92"  rx="66" ry="58" fill="url(#bloomWhite)"/>
-        <ellipse cx="632" cy="192" rx="78" ry="68" fill="url(#bloomWhite)"/>
-        <ellipse cx="394" cy="250" rx="52" ry="46" fill="url(#bloomWhite)"/>
-      </g>
+      <!-- 極淡暖光暈（底）-->
+      <ellipse cx="520" cy="230" rx="440" ry="250" fill="url(#warmGlow)"/>
 
-      <!-- 主枝 -->
-      <g stroke="url(#inkgrad)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path filter="url(#drybrush)" stroke-width="15"
-          d="M978 40 C 872 96, 792 150, 690 190 C 566 238, 470 250, 372 300 C 300 337, 250 380, 176 430 C 128 462, 92 500, 40 560"/>
-        <path filter="url(#drybrush)" stroke-width="8"
-          d="M690 190 C 700 250, 690 306, 636 372 C 604 411, 560 438, 520 486"/>
-        <path filter="url(#drybrush)" stroke-width="7"
-          d="M452 262 C 420 300, 372 322, 300 356 C 258 376, 220 404, 190 452"/>
-        <path filter="url(#drybrush)" stroke-width="6"
-          d="M792 132 C 828 168, 856 214, 858 276"/>
-        <path filter="url(#drybrush)" stroke-width="5"
-          d="M560 232 C 528 210, 486 202, 440 208"/>
-        <g stroke-width="2.6" opacity="0.86">
-          <path filter="url(#drybrush)" d="M250 240 C 236 268, 230 300, 244 332"/>
-          <path filter="url(#drybrush)" d="M636 300 C 664 316, 690 340, 700 376"/>
-          <path filter="url(#drybrush)" d="M372 300 C 356 276, 330 262, 300 260"/>
-          <path filter="url(#drybrush)" d="M858 240 C 884 256, 900 284, 898 316"/>
+      <!-- 主幹・分枝（乾筆觸、底部淡出如墨暈）-->
+      <g stroke="url(#inkgrad)" fill="none" stroke-linecap="round" stroke-linejoin="round" mask="url(#trunkMask)">
+        <path filter="url(#drybrush)" stroke-width="30" d="M806 782 C792 700 798 640 784 566 C772 500 758 452 738 396"/>
+        <path filter="url(#drybrush)" stroke-width="18" d="M738 396 C720 340 700 300 668 258"/>
+        <path filter="url(#drybrush)" stroke-width="14" opacity="0.8" d="M776 782 C780 720 788 690 790 664"/>
+        <path filter="url(#drybrush)" stroke-width="12" d="M748 430 C660 380 560 350 470 330 C380 310 300 306 228 316"/>
+        <path filter="url(#drybrush)" stroke-width="5" d="M300 308 C260 296 236 286 208 268"/>
+        <path filter="url(#drybrush)" stroke-width="4.5" d="M228 316 C196 322 172 334 150 352"/>
+        <path filter="url(#drybrush)" stroke-width="10" d="M736 386 C712 320 690 272 650 224 C622 190 590 166 552 148"/>
+        <path filter="url(#drybrush)" stroke-width="4" d="M610 200 C576 186 546 182 512 186"/>
+        <path filter="url(#drybrush)" stroke-width="4" d="M552 148 C520 132 492 126 458 128"/>
+        <path filter="url(#drybrush)" stroke-width="9" d="M744 400 C780 340 802 292 826 240 C840 210 850 186 856 158"/>
+        <path filter="url(#drybrush)" stroke-width="4" d="M826 240 C850 228 872 222 894 222"/>
+        <path filter="url(#drybrush)" stroke-width="9" d="M768 500 C700 492 640 498 578 516 C536 528 500 544 470 566"/>
+        <path filter="url(#drybrush)" stroke-width="4" d="M578 516 C546 508 518 508 490 514"/>
+        <path filter="url(#drybrush)" stroke-width="4" d="M470 330 C452 306 436 292 412 278"/>
+        <g stroke="#4a423d" opacity="0.55">
+          <path filter="url(#drybrush)" stroke-width="2.2" d="M799 770 C789 700 793 648 782 588"/>
+          <path filter="url(#drybrush)" stroke-width="1.8" d="M812 774 C800 706 804 652 792 590"/>
         </g>
       </g>
 
-      <!-- 紅葉の葉点・秋光の点 -->
-      <g fill="#c25a2a" opacity="0.6">
-        <circle cx="250" cy="150" r="3.4"/><circle cx="238" cy="132" r="2.4"/><circle cx="270" cy="160" r="2.2"/>
-        <circle cx="452" cy="96"  r="3.0"/><circle cx="466" cy="108" r="2.0"/>
-        <circle cx="628" cy="196" r="3.4"/><circle cx="612" cy="182" r="2.2"/><circle cx="644" cy="208" r="2.0"/>
-        <circle cx="392" cy="252" r="2.6"/><circle cx="792" cy="120" r="2.6"/>
-        <circle cx="160" cy="300" r="2.4"/><circle cx="560" cy="360" r="2.2"/>
+      <!-- 樹冠：遠景葉團（暗紅打底）-->
+      <g>
+        <use href="#lfS" transform="translate(238.7 330) rotate(115.4) scale(45.31)" fill="#8f231e" opacity="0.62"/>
+        <use href="#lfS" transform="translate(217.7 300) rotate(-94.8) scale(37.6)" fill="#8f231e" opacity="0.56"/>
+        <use href="#lfS" transform="translate(153 328.3) rotate(236.5) scale(50.49)" fill="#8f231e" opacity="0.74"/>
+        <use href="#lfS" transform="translate(290 300.8) rotate(75.2) scale(47.08)" fill="#8f231e" opacity="0.74"/>
+        <use href="#lfS" transform="translate(278.4 253.9) rotate(54.8) scale(46.63)" fill="#8f231e" opacity="0.71"/>
+        <use href="#lfS" transform="translate(264.4 268.8) rotate(55.7) scale(38.06)" fill="#8f231e" opacity="0.6"/>
+        <use href="#lfS" transform="translate(150.6 325.2) rotate(258.1) scale(48.85)" fill="#8f231e" opacity="0.58"/>
+        <use href="#lfS" transform="translate(398 256.1) rotate(78.3) scale(38.61)" fill="#a5321c" opacity="0.63"/>
+        <use href="#lfS" transform="translate(390.7 251) rotate(53.9) scale(48.72)" fill="#a5321c" opacity="0.6"/>
+        <use href="#lfS" transform="translate(361.4 274.6) rotate(241) scale(39.59)" fill="#a5321c" opacity="0.59"/>
+        <use href="#lfS" transform="translate(384.2 287.6) rotate(190.3) scale(46.86)" fill="#a5321c" opacity="0.71"/>
+        <use href="#lfS" transform="translate(420.2 322.5) rotate(149.9) scale(39.91)" fill="#a5321c" opacity="0.66"/>
+        <use href="#lfS" transform="translate(318.6 247.1) rotate(-106.6) scale(49.08)" fill="#a5321c" opacity="0.59"/>
+        <use href="#lfS" transform="translate(324.2 295.9) rotate(233.1) scale(50.59)" fill="#a5321c" opacity="0.66"/>
+        <use href="#lfS" transform="translate(555.6 160.4) rotate(32.5) scale(49.94)" fill="#96291b" opacity="0.74"/>
+        <use href="#lfS" transform="translate(465 196.5) rotate(228.4) scale(46.73)" fill="#96291b" opacity="0.75"/>
+        <use href="#lfS" transform="translate(547.8 175.8) rotate(118) scale(47.08)" fill="#96291b" opacity="0.75"/>
+        <use href="#lfS" transform="translate(543.5 166.6) rotate(28.7) scale(53.54)" fill="#96291b" opacity="0.75"/>
+        <use href="#lfS" transform="translate(509 148) rotate(-22.7) scale(43.7)" fill="#96291b" opacity="0.6"/>
+        <use href="#lfS" transform="translate(541.8 164.9) rotate(24.7) scale(48.69)" fill="#96291b" opacity="0.58"/>
+        <use href="#lfS" transform="translate(617.9 187.9) rotate(122) scale(52.03)" fill="#96291b" opacity="0.73"/>
+        <use href="#lfS" transform="translate(653.8 169.5) rotate(197.1) scale(44.74)" fill="#c05a26" opacity="0.63"/>
+        <use href="#lfS" transform="translate(683.4 120.4) rotate(-59.9) scale(43.81)" fill="#c05a26" opacity="0.7"/>
+        <use href="#lfS" transform="translate(652.1 135.4) rotate(255.7) scale(36.5)" fill="#c05a26" opacity="0.61"/>
+        <use href="#lfS" transform="translate(700.4 134.2) rotate(94.8) scale(42.61)" fill="#c05a26" opacity="0.72"/>
+        <use href="#lfS" transform="translate(711.1 175.3) rotate(143.5) scale(44.9)" fill="#c05a26" opacity="0.7"/>
+        <use href="#lfS" transform="translate(605 150.4) rotate(259.7) scale(39.78)" fill="#c05a26" opacity="0.6"/>
+        <use href="#lfS" transform="translate(670.5 134.7) rotate(218.8) scale(37.56)" fill="#c05a26" opacity="0.61"/>
+        <use href="#lfS" transform="translate(874.6 230.9) rotate(148.5) scale(34.56)" fill="#bf5a28" opacity="0.7"/>
+        <use href="#lfS" transform="translate(790 165) rotate(-34.9) scale(42.63)" fill="#bf5a28" opacity="0.58"/>
+        <use href="#lfS" transform="translate(853.9 201.8) rotate(120.6) scale(36.13)" fill="#bf5a28" opacity="0.65"/>
+        <use href="#lfS" transform="translate(873.9 213.8) rotate(143) scale(34.19)" fill="#bf5a28" opacity="0.6"/>
+        <use href="#lfS" transform="translate(831.6 156.9) rotate(8.7) scale(42.36)" fill="#bf5a28" opacity="0.55"/>
+        <use href="#lfS" transform="translate(862.4 150.8) rotate(41.6) scale(38.19)" fill="#bf5a28" opacity="0.66"/>
+        <use href="#lfS" transform="translate(795.9 243.3) rotate(228) scale(38.14)" fill="#bf5a28" opacity="0.57"/>
+        <use href="#lfS" transform="translate(647.2 287.3) rotate(95.2) scale(43.15)" fill="#7e1f16" opacity="0.74"/>
+        <use href="#lfS" transform="translate(638.8 227.3) rotate(11.8) scale(43.58)" fill="#7e1f16" opacity="0.57"/>
+        <use href="#lfS" transform="translate(624.9 288) rotate(112.8) scale(33.84)" fill="#7e1f16" opacity="0.65"/>
+        <use href="#lfS" transform="translate(627.9 321) rotate(153.1) scale(41.48)" fill="#7e1f16" opacity="0.65"/>
+        <use href="#lfS" transform="translate(607.8 298.3) rotate(229.8) scale(43.51)" fill="#7e1f16" opacity="0.63"/>
+        <use href="#lfS" transform="translate(684.5 253.2) rotate(67.1) scale(35.45)" fill="#7e1f16" opacity="0.56"/>
+        <use href="#lfS" transform="translate(666.4 316.6) rotate(136.1) scale(34.72)" fill="#7e1f16" opacity="0.7"/>
+        <use href="#lfS" transform="translate(471.6 382.5) rotate(148.2) scale(41.62)" fill="#9e2f18" opacity="0.62"/>
+        <use href="#lfS" transform="translate(471.2 386.8) rotate(186.4) scale(39.88)" fill="#9e2f18" opacity="0.66"/>
+        <use href="#lfS" transform="translate(497.9 398.8) rotate(116) scale(39.49)" fill="#9e2f18" opacity="0.55"/>
+        <use href="#lfS" transform="translate(495.4 371.4) rotate(55.5) scale(33.89)" fill="#9e2f18" opacity="0.69"/>
+        <use href="#lfS" transform="translate(400.5 370.7) rotate(-55) scale(41.64)" fill="#9e2f18" opacity="0.61"/>
+        <use href="#lfS" transform="translate(503.7 384.1) rotate(122.3) scale(36.16)" fill="#9e2f18" opacity="0.64"/>
+        <use href="#lfS" transform="translate(440.2 337.6) rotate(-31.1) scale(41.31)" fill="#9e2f18" opacity="0.64"/>
+        <use href="#lfS" transform="translate(507.7 515.1) rotate(39.9) scale(23.23)" fill="#a5321c" opacity="0.68"/>
+        <use href="#lfS" transform="translate(529.2 565.7) rotate(121.9) scale(27.7)" fill="#a5321c" opacity="0.7"/>
+        <use href="#lfS" transform="translate(515.6 522.4) rotate(60.4) scale(30.65)" fill="#a5321c" opacity="0.67"/>
+        <use href="#lfS" transform="translate(464.4 567.5) rotate(230.7) scale(31.43)" fill="#a5321c" opacity="0.64"/>
+        <use href="#lfS" transform="translate(148.1 398.3) rotate(144.2) scale(26.03)" fill="#c9612a" opacity="0.65"/>
+        <use href="#lfS" transform="translate(97 372.6) rotate(267) scale(21.82)" fill="#c9612a" opacity="0.72"/>
+        <use href="#lfS" transform="translate(112.4 387.1) rotate(188.9) scale(22.7)" fill="#c9612a" opacity="0.63"/>
+        <use href="#lfS" transform="translate(115.4 380.8) rotate(194.6) scale(24.7)" fill="#c9612a" opacity="0.58"/>
       </g>
-      <g fill="#d69a3a" opacity="0.52">
-        <circle cx="252" cy="148" r="1.5"/><circle cx="454" cy="94" r="1.4"/>
-        <circle cx="630" cy="194" r="1.5"/><circle cx="394" cy="250" r="1.3"/>
+      <!-- 樹冠：中景葉叢（紅→橙→金）-->
+      <g>
+        <use href="#lfS" transform="translate(187.7 336) rotate(254.9) scale(25)" fill="#d75f2b" opacity="0.92"/>
+        <use href="#lfS" transform="translate(236.1 318.5) rotate(149.3) scale(25.48)" fill="#c0492a" opacity="0.93"/>
+        <use href="#lfS" transform="translate(249.3 287.8) rotate(53.5) scale(21.43)" fill="#d75f2b" opacity="0.79"/>
+        <use href="#lfS" transform="translate(244.2 251.8) rotate(4) scale(25.99)" fill="#b8431c" opacity="0.98"/>
+        <use href="#lfS" transform="translate(209.4 294.6) rotate(-93.1) scale(23.24)" fill="#b8431c" opacity="0.94"/>
+        <use href="#lfS" transform="translate(270 280) rotate(61.4) scale(20.07)" fill="#b8431c" opacity="0.86"/>
+        <use href="#lfS" transform="translate(169.8 270.9) rotate(-82.6) scale(20.6)" fill="#b8431c" opacity="0.83"/>
+        <use href="#lfS" transform="translate(221.6 358.7) rotate(146) scale(23.23)" fill="#c0492a" opacity="0.97"/>
+        <use href="#lfS" transform="translate(217 284) rotate(-27.3) scale(18.93)" fill="#8f231e" opacity="0.94"/>
+        <use href="#lfS" transform="translate(245.3 288.4) rotate(45.4) scale(22.88)" fill="#c0492a" opacity="0.85"/>
+        <use href="#lfS" transform="translate(247.7 260.9) rotate(21.3) scale(23.24)" fill="#b8431c" opacity="0.97"/>
+        <use href="#lfS" transform="translate(264 276.2) rotate(41.7) scale(24.73)" fill="#b8431c" opacity="0.92"/>
+        <use href="#lfS" transform="translate(218.5 292.9) rotate(10.5) scale(20.14)" fill="#b8431c" opacity="0.94"/>
+        <use href="#lfS" transform="translate(191.7 244) rotate(-14.4) scale(18.83)" fill="#c0492a" opacity="0.9"/>
+        <use href="#lfS" transform="translate(236.6 293.9) rotate(72.9) scale(19.85)" fill="#c0492a" opacity="0.89"/>
+        <use href="#lfS" transform="translate(219.3 304) rotate(165.1) scale(18.8)" fill="#8f231e" opacity="0.89"/>
+        <use href="#lfS" transform="translate(471.2 277.1) rotate(72.1) scale(20.34)" fill="#c9612a" opacity="0.79"/>
+        <use href="#lfS" transform="translate(381.3 222.4) rotate(-37.7) scale(25.69)" fill="#c9612a" opacity="0.95"/>
+        <use href="#lfS" transform="translate(391.8 290.1) rotate(134.9) scale(23.66)" fill="#e0a23c" opacity="0.88"/>
+        <use href="#lfS" transform="translate(416.5 235) rotate(31.2) scale(26.26)" fill="#b8431c" opacity="0.92"/>
+        <use href="#lfS" transform="translate(399.8 203.6) rotate(23.7) scale(25.43)" fill="#e0a23c" opacity="0.95"/>
+        <use href="#lfS" transform="translate(400.1 299.8) rotate(170.4) scale(27.2)" fill="#c9612a" opacity="0.86"/>
+        <use href="#lfS" transform="translate(301.2 273.6) rotate(253.7) scale(26.79)" fill="#b8431c" opacity="0.82"/>
+        <use href="#lfS" transform="translate(419.6 248.9) rotate(65.6) scale(20.05)" fill="#c9612a" opacity="0.95"/>
+        <use href="#lfS" transform="translate(375.9 338.2) rotate(163) scale(24.15)" fill="#b8431c" opacity="0.94"/>
+        <use href="#lfS" transform="translate(454.7 236.7) rotate(89.8) scale(22.47)" fill="#c9612a" opacity="0.92"/>
+        <use href="#lfS" transform="translate(366.3 270.7) rotate(272.8) scale(20.26)" fill="#b8431c" opacity="0.95"/>
+        <use href="#lfS" transform="translate(452.7 232.4) rotate(97) scale(24.27)" fill="#b8431c" opacity="0.87"/>
+        <use href="#lfS" transform="translate(414.2 290.2) rotate(115.8) scale(19.32)" fill="#d75f2b" opacity="0.84"/>
+        <use href="#lfS" transform="translate(425.3 225.4) rotate(61.2) scale(24.18)" fill="#b8431c" opacity="0.9"/>
+        <use href="#lfS" transform="translate(346.4 228.1) rotate(-75.7) scale(23.08)" fill="#d75f2b" opacity="0.9"/>
+        <use href="#lfS" transform="translate(358.2 332.2) rotate(173.8) scale(26.12)" fill="#d75f2b" opacity="0.85"/>
+        <use href="#lfS" transform="translate(525.2 186.9) rotate(219.4) scale(25.82)" fill="#b8431c" opacity="0.97"/>
+        <use href="#lfS" transform="translate(531.4 200.5) rotate(196.3) scale(25.65)" fill="#eab24e" opacity="0.94"/>
+        <use href="#lfS" transform="translate(562.2 178.5) rotate(96.5) scale(27.28)" fill="#c0492a" opacity="0.85"/>
+        <use href="#lfS" transform="translate(491.4 190.4) rotate(262.8) scale(21.25)" fill="#c0492a" opacity="0.88"/>
+        <use href="#lfS" transform="translate(562.8 229.4) rotate(147.5) scale(21.86)" fill="#c0492a" opacity="0.85"/>
+        <use href="#lfS" transform="translate(539.3 150.5) rotate(-6.2) scale(23.36)" fill="#c9612a" opacity="0.89"/>
+        <use href="#lfS" transform="translate(490.6 198.4) rotate(258.9) scale(21.85)" fill="#eab24e" opacity="0.96"/>
+        <use href="#lfS" transform="translate(580.2 232.1) rotate(144.2) scale(21.64)" fill="#c0492a" opacity="0.78"/>
+        <use href="#lfS" transform="translate(508.7 157.8) rotate(-98.5) scale(28.55)" fill="#c0492a" opacity="0.94"/>
+        <use href="#lfS" transform="translate(540.1 169.5) rotate(14.2) scale(27.57)" fill="#b8431c" opacity="0.97"/>
+        <use href="#lfS" transform="translate(539.2 178.9) rotate(161.4) scale(24.29)" fill="#eab24e" opacity="0.96"/>
+        <use href="#lfS" transform="translate(509.7 210.8) rotate(219.1) scale(21.96)" fill="#c0492a" opacity="0.86"/>
+        <use href="#lfS" transform="translate(458.3 196.7) rotate(239.7) scale(25.39)" fill="#eab24e" opacity="0.82"/>
+        <use href="#lfS" transform="translate(569.1 125.7) rotate(47.1) scale(21.13)" fill="#eab24e" opacity="0.87"/>
+        <use href="#lfS" transform="translate(567.9 222.9) rotate(145.7) scale(25.48)" fill="#c0492a" opacity="0.94"/>
+        <use href="#lfS" transform="translate(479.4 163) rotate(-80) scale(25.79)" fill="#c9612a" opacity="0.82"/>
+        <use href="#lfS" transform="translate(746 106.4) rotate(64.7) scale(18.39)" fill="#e0a23c" opacity="0.92"/>
+        <use href="#lfS" transform="translate(694.5 96.5) rotate(-20.5) scale(23.75)" fill="#e0a23c" opacity="0.83"/>
+        <use href="#lfS" transform="translate(685.8 160.3) rotate(157.8) scale(24.13)" fill="#eab24e" opacity="0.82"/>
+        <use href="#lfS" transform="translate(664.1 148.5) rotate(207) scale(23.75)" fill="#eab24e" opacity="0.94"/>
+        <use href="#lfS" transform="translate(731.7 102.6) rotate(28) scale(21.88)" fill="#d75f2b" opacity="0.89"/>
+        <use href="#lfS" transform="translate(657.9 188.1) rotate(200.7) scale(22.92)" fill="#eab24e" opacity="0.81"/>
+        <use href="#lfS" transform="translate(710.3 81.7) rotate(14.6) scale(18.51)" fill="#eab24e" opacity="0.88"/>
+        <use href="#lfS" transform="translate(698.5 132.8) rotate(103.1) scale(25.83)" fill="#d75f2b" opacity="0.82"/>
+        <use href="#lfS" transform="translate(707.1 149.8) rotate(143.2) scale(19.72)" fill="#d75f2b" opacity="0.84"/>
+        <use href="#lfS" transform="translate(685.1 161.4) rotate(197.2) scale(19.28)" fill="#e0a23c" opacity="0.97"/>
+        <use href="#lfS" transform="translate(683.7 124.1) rotate(-81.6) scale(24.92)" fill="#e0a23c" opacity="0.88"/>
+        <use href="#lfS" transform="translate(695.8 70.4) rotate(14.5) scale(25.1)" fill="#e0a23c" opacity="0.87"/>
+        <use href="#lfS" transform="translate(685.7 115.3) rotate(-6.2) scale(25.99)" fill="#e0a23c" opacity="0.92"/>
+        <use href="#lfS" transform="translate(629 162.2) rotate(216.4) scale(23.31)" fill="#e0a23c" opacity="0.89"/>
+        <use href="#lfS" transform="translate(648.4 178.8) rotate(228.2) scale(21.12)" fill="#e0a23c" opacity="0.82"/>
+        <use href="#lfS" transform="translate(748.4 123) rotate(58.5) scale(20.01)" fill="#e0a23c" opacity="0.83"/>
+        <use href="#lfS" transform="translate(851.6 145.5) rotate(1.7) scale(21.59)" fill="#c0492a" opacity="0.8"/>
+        <use href="#lfS" transform="translate(843 206.3) rotate(175.3) scale(22.38)" fill="#c9612a" opacity="0.82"/>
+        <use href="#lfS" transform="translate(859.2 158.5) rotate(-2) scale(20.4)" fill="#c9612a" opacity="0.97"/>
+        <use href="#lfS" transform="translate(839.2 191) rotate(253) scale(22.83)" fill="#c9612a" opacity="0.96"/>
+        <use href="#lfS" transform="translate(835.9 204.3) rotate(175.9) scale(21.44)" fill="#c9612a" opacity="0.79"/>
+        <use href="#lfS" transform="translate(851.3 193.2) rotate(127) scale(18.25)" fill="#c9612a" opacity="0.8"/>
+        <use href="#lfS" transform="translate(809.6 190.6) rotate(253) scale(19.75)" fill="#c0492a" opacity="0.86"/>
+        <use href="#lfS" transform="translate(861.6 204.2) rotate(164.2) scale(20.55)" fill="#eab24e" opacity="0.82"/>
+        <use href="#lfS" transform="translate(788.7 217.3) rotate(274.6) scale(18.67)" fill="#e0a23c" opacity="0.9"/>
+        <use href="#lfS" transform="translate(879.9 163.4) rotate(42.2) scale(21.05)" fill="#e0a23c" opacity="0.78"/>
+        <use href="#lfS" transform="translate(842.7 179) rotate(-6.5) scale(20.55)" fill="#e0a23c" opacity="0.93"/>
+        <use href="#lfS" transform="translate(783.6 185.1) rotate(-59.7) scale(18.78)" fill="#eab24e" opacity="0.9"/>
+        <use href="#lfS" transform="translate(778.6 221.5) rotate(212.4) scale(18.22)" fill="#eab24e" opacity="0.84"/>
+        <use href="#lfS" transform="translate(770.9 160.4) rotate(-57.7) scale(16.55)" fill="#c9612a" opacity="0.9"/>
+        <use href="#lfS" transform="translate(821.3 152.1) rotate(-8.4) scale(19.03)" fill="#e0a23c" opacity="0.78"/>
+        <use href="#lfS" transform="translate(855.4 189.8) rotate(99.9) scale(23.14)" fill="#c0492a" opacity="0.82"/>
+        <use href="#lfS" transform="translate(609.5 265.3) rotate(-29.7) scale(20.31)" fill="#8f231e" opacity="0.9"/>
+        <use href="#lfS" transform="translate(628.1 293.1) rotate(127.4) scale(23.38)" fill="#8f231e" opacity="0.91"/>
+        <use href="#lfS" transform="translate(602.5 297.2) rotate(235.5) scale(21.41)" fill="#b8431c" opacity="0.79"/>
+        <use href="#lfS" transform="translate(639.9 277.2) rotate(43.6) scale(20.4)" fill="#9e2f18" opacity="0.9"/>
+        <use href="#lfS" transform="translate(548.6 283.3) rotate(-98.4) scale(22.03)" fill="#9e2f18" opacity="0.89"/>
+        <use href="#lfS" transform="translate(624.9 292.4) rotate(126.4) scale(23.75)" fill="#8f231e" opacity="0.96"/>
+        <use href="#lfS" transform="translate(623.3 242.5) rotate(31) scale(22.76)" fill="#b8431c" opacity="0.93"/>
+        <use href="#lfS" transform="translate(558.7 268.4) rotate(-57) scale(21.73)" fill="#8f231e" opacity="0.94"/>
+        <use href="#lfS" transform="translate(611.4 292.8) rotate(258) scale(22.62)" fill="#b8431c" opacity="0.85"/>
+        <use href="#lfS" transform="translate(649.1 337.3) rotate(151.3) scale(20.36)" fill="#b8431c" opacity="0.94"/>
+        <use href="#lfS" transform="translate(650.1 302.2) rotate(102.5) scale(19.15)" fill="#9e2f18" opacity="0.81"/>
+        <use href="#lfS" transform="translate(640.8 243.6) rotate(57) scale(21.24)" fill="#b8431c" opacity="0.87"/>
+        <use href="#lfS" transform="translate(609.4 303.9) rotate(181.9) scale(22.12)" fill="#9e2f18" opacity="0.95"/>
+        <use href="#lfS" transform="translate(585.8 297.5) rotate(228.9) scale(18.22)" fill="#b8431c" opacity="0.9"/>
+        <use href="#lfS" transform="translate(574.9 306.8) rotate(253.5) scale(23.57)" fill="#b8431c" opacity="0.83"/>
+        <use href="#lfS" transform="translate(601.9 311.5) rotate(251.2) scale(24.23)" fill="#9e2f18" opacity="0.89"/>
+        <use href="#lfS" transform="translate(479.1 409.9) rotate(134.2) scale(19.7)" fill="#c9612a" opacity="0.92"/>
+        <use href="#lfS" transform="translate(466.7 368.4) rotate(-46.2) scale(16.75)" fill="#c0492a" opacity="0.94"/>
+        <use href="#lfS" transform="translate(478.2 332.6) rotate(19.9) scale(16.11)" fill="#c0492a" opacity="0.89"/>
+        <use href="#lfS" transform="translate(488.2 348.1) rotate(70) scale(17.76)" fill="#c9612a" opacity="0.94"/>
+        <use href="#lfS" transform="translate(497.8 405) rotate(162.8) scale(19.63)" fill="#c0492a" opacity="0.94"/>
+        <use href="#lfS" transform="translate(402.6 380.2) rotate(228.5) scale(16.93)" fill="#c9612a" opacity="0.82"/>
+        <use href="#lfS" transform="translate(469.4 362.1) rotate(-11.2) scale(17.85)" fill="#c0492a" opacity="0.94"/>
+        <use href="#lfS" transform="translate(494.4 384.5) rotate(82.7) scale(21.45)" fill="#9e2f18" opacity="0.87"/>
+        <use href="#lfS" transform="translate(441.4 343) rotate(-14.7) scale(15.66)" fill="#c9612a" opacity="0.91"/>
+        <use href="#lfS" transform="translate(421.1 390.4) rotate(242.6) scale(20.7)" fill="#c0492a" opacity="0.89"/>
+        <use href="#lfS" transform="translate(463.3 347) rotate(3.6) scale(15.5)" fill="#9e2f18" opacity="0.88"/>
+        <use href="#lfS" transform="translate(408.7 357.5) rotate(-69.9) scale(16.07)" fill="#9e2f18" opacity="0.9"/>
+        <use href="#lfS" transform="translate(491.1 339.1) rotate(33.1) scale(20.73)" fill="#9e2f18" opacity="0.84"/>
+        <use href="#lfS" transform="translate(449.3 388) rotate(228.2) scale(21.96)" fill="#c9612a" opacity="0.94"/>
+        <use href="#lfS" transform="translate(462.7 369.1) rotate(-46.5) scale(20.05)" fill="#9e2f18" opacity="0.94"/>
+        <use href="#lfS" transform="translate(435.8 351.6) rotate(-88.6) scale(16.21)" fill="#c0492a" opacity="0.85"/>
+        <use href="#lfS" transform="translate(511.8 581.3) rotate(132.3) scale(11.92)" fill="#d75f2b" opacity="0.94"/>
+        <use href="#lfS" transform="translate(516.6 520.8) rotate(-3.5) scale(16.8)" fill="#d75f2b" opacity="0.95"/>
+        <use href="#lfS" transform="translate(478 535.7) rotate(-32.6) scale(15.14)" fill="#d75f2b" opacity="0.82"/>
+        <use href="#lfS" transform="translate(533.5 568.9) rotate(115.6) scale(11.71)" fill="#e0a23c" opacity="0.8"/>
+        <use href="#lfS" transform="translate(504.4 546.6) rotate(32.8) scale(16.27)" fill="#e0a23c" opacity="0.98"/>
+        <use href="#lfS" transform="translate(462.1 527.3) rotate(-31.7) scale(15.3)" fill="#d75f2b" opacity="0.91"/>
+        <use href="#lfS" transform="translate(459.4 523.5) rotate(-85.1) scale(12.24)" fill="#b8431c" opacity="0.81"/>
+        <use href="#lfS" transform="translate(505.8 576.2) rotate(191.9) scale(13.38)" fill="#d75f2b" opacity="0.92"/>
+        <use href="#lfS" transform="translate(504.8 547.1) rotate(50.7) scale(15.43)" fill="#e0a23c" opacity="0.8"/>
+        <use href="#lfS" transform="translate(480.2 539.5) rotate(-77.1) scale(14.22)" fill="#e0a23c" opacity="0.96"/>
+        <use href="#lfS" transform="translate(168.3 356.8) rotate(75.9) scale(13.43)" fill="#eab24e" opacity="0.95"/>
+        <use href="#lfS" transform="translate(116.5 345.4) rotate(-47.6) scale(14.36)" fill="#eab24e" opacity="0.82"/>
+        <use href="#lfS" transform="translate(126.3 400.7) rotate(197.3) scale(12.96)" fill="#c9612a" opacity="0.89"/>
+        <use href="#lfS" transform="translate(124.3 342.6) rotate(16.6) scale(14.17)" fill="#c9612a" opacity="0.79"/>
+        <use href="#lfS" transform="translate(119.4 343.9) rotate(-43.9) scale(10.31)" fill="#eab24e" opacity="0.84"/>
+        <use href="#lfS" transform="translate(157.8 365.1) rotate(94.7) scale(12.01)" fill="#eab24e" opacity="0.93"/>
+        <use href="#lfS" transform="translate(109.2 337.1) rotate(-55.8) scale(11.23)" fill="#c9612a" opacity="0.87"/>
+        <use href="#lfS" transform="translate(107.2 390) rotate(256.1) scale(14.23)" fill="#eab24e" opacity="0.95"/>
+        <use href="#lfS" transform="translate(110.4 372.4) rotate(232.8) scale(12.82)" fill="#c9612a" opacity="0.88"/>
+        <use href="#lfS" transform="translate(162.6 397) rotate(131.7) scale(13.86)" fill="#eab24e" opacity="0.85"/>
+      </g>
+      <!-- 穿出葉叢的枝梢 -->
+      <g stroke="url(#inkgrad)" fill="none" stroke-linecap="round" opacity="0.85">
+        <path filter="url(#drybrush)" stroke-width="3.5" d="M638 214 C610 196 586 186 556 182"/>
+        <path filter="url(#drybrush)" stroke-width="3.5" d="M804 260 C820 236 832 214 840 192"/>
+        <path filter="url(#drybrush)" stroke-width="3.5" d="M410 300 C380 292 352 290 322 296"/>
+      </g>
+      <!-- 樹冠：近景精細葉＋飄離葉 -->
+      <g>
+        <use href="#lfD" transform="translate(271.9 341.1) rotate(140.9) scale(21.82)" fill="#d75f2b"/>
+        <use href="#lfD" transform="translate(255.5 366.5) rotate(101.2) scale(22.75)" fill="#8f231e"/>
+        <use href="#lfD" transform="translate(260.7 363.5) rotate(208.4) scale(15.49)" fill="#b8431c"/>
+        <use href="#lfD" transform="translate(367 311.7) rotate(118.9) scale(19.98)" fill="#e0a23c"/>
+        <use href="#lfD" transform="translate(359.1 319.1) rotate(203.4) scale(21.89)" fill="#c9612a"/>
+        <use href="#lfD" transform="translate(332.4 298.8) rotate(155.6) scale(19.4)" fill="#b8431c"/>
+        <use href="#lfD" transform="translate(493.5 235.8) rotate(205.3) scale(21.15)" fill="#eab24e"/>
+        <use href="#lfD" transform="translate(572.3 226.6) rotate(205.3) scale(15.49)" fill="#eab24e"/>
+        <use href="#lfD" transform="translate(588.1 205.9) rotate(116.2) scale(20.48)" fill="#eab24e"/>
+        <use href="#lfD" transform="translate(747.3 179.9) rotate(167.9) scale(16.22)" fill="#eab24e"/>
+        <use href="#lfD" transform="translate(749 148.5) rotate(202) scale(20.43)" fill="#d75f2b"/>
+        <use href="#lfD" transform="translate(633.3 156.8) rotate(141.1) scale(20.47)" fill="#e0a23c"/>
+        <use href="#lfD" transform="translate(873.6 231.8) rotate(163.7) scale(19.47)" fill="#e0a23c"/>
+        <use href="#lfD" transform="translate(791 231.4) rotate(201.1) scale(20.51)" fill="#c0492a"/>
+        <use href="#lfD" transform="translate(815.8 235.3) rotate(127.8) scale(16.21)" fill="#c0492a"/>
+        <use href="#lfD" transform="translate(578.3 313.6) rotate(108.8) scale(22.37)" fill="#b8431c"/>
+        <use href="#lfD" transform="translate(578.6 327.8) rotate(193.5) scale(20.04)" fill="#b8431c"/>
+        <use href="#lfD" transform="translate(614 333.4) rotate(106.6) scale(16.21)" fill="#9e2f18"/>
+        <use href="#lfD" transform="translate(412.3 408.4) rotate(174.3) scale(17.94)" fill="#c9612a"/>
+        <use href="#lfD" transform="translate(415.1 404.5) rotate(201.6) scale(20.87)" fill="#c0492a"/>
+        <use href="#lfD" transform="translate(441.6 407.6) rotate(193.8) scale(22.22)" fill="#9e2f18"/>
+        <use href="#lfD" transform="translate(467.7 566.3) rotate(182.5) scale(18.6)" fill="#b8431c"/>
+        <use href="#lfD" transform="translate(546.8 573.3) rotate(178.1) scale(18.89)" fill="#d75f2b"/>
+        <use href="#lfD" transform="translate(111.4 395.2) rotate(105.1) scale(19.01)" fill="#eab24e"/>
+        <use href="#lfD" transform="translate(93.5 386.8) rotate(146.1) scale(19.78)" fill="#c9612a"/>
+        <use href="#lfD" transform="translate(448 140) rotate(200) scale(20)" fill="#e0a23c"/>
+        <use href="#lfD" transform="translate(504 198) rotate(190) scale(18)" fill="#b8431c"/>
+        <use href="#lfD" transform="translate(200 282) rotate(205) scale(19)" fill="#c9612a"/>
+        <use href="#lfD" transform="translate(884 238) rotate(182) scale(17)" fill="#eab24e"/>
+        <use href="#lfD" transform="translate(484 528) rotate(195) scale(16)" fill="#c0492a"/>
+        <use href="#lfD" transform="translate(352 462) rotate(214) scale(13)" fill="#eab24e" opacity="0.8"/>
+        <use href="#lfD" transform="translate(566 472) rotate(148) scale(11)" fill="#b8431c" opacity="0.7"/>
+        <use href="#lfD" transform="translate(268 478) rotate(246) scale(12)" fill="#d75f2b" opacity="0.6"/>
+        <use href="#lfD" transform="translate(634 560) rotate(166) scale(12)" fill="#e0a23c" opacity="0.55"/>
       </g>
     </svg>
 
@@ -593,7 +791,7 @@
   });
 </script>
 
-<!-- 楓葉 canvas + 墨枝視差（移植自 sakura-A-suiboku，去除 nav 專用邏輯）-->
+<!-- 楓葉 canvas + 楓樹視差（移植自 sakura-A-suiboku，去除 nav 專用邏輯）-->
 <script>
 (() => {
   "use strict";
@@ -623,7 +821,7 @@
     while (petals.length > target) petals.pop();
   }
   function makePetal(spawnAnywhere){
-    const size = 7 + Math.random() * 12;
+    const size = 9 + Math.random() * 13;   // 稍大，讓 7 裂葉形讀得出來
     const pal = palette[(Math.random() * palette.length) | 0];
     return {
       x: Math.random() * W,
@@ -642,14 +840,43 @@
       alpha: 0.5 + Math.random() * 0.4
     };
   }
-  // 楓葉輪廓（單位化，中心原點，葉尖朝上 -y、葉柄朝下 +y；掌狀多尖放射）
-  const MAPLE = [
-    [ 0.00,-1.00],[ 0.20,-0.46],[ 0.60,-0.60],[ 0.40,-0.16],
-    [ 0.95,-0.02],[ 0.42, 0.22],[ 0.54, 0.62],[ 0.16, 0.50],
-    [ 0.00, 0.98],[-0.16, 0.50],[-0.54, 0.62],[-0.42, 0.22],
-    [-0.95,-0.02],[-0.40,-0.16],[-0.60,-0.60],[-0.20,-0.46]
+  // ── イロハモミジ葉形（程序生成，單位座標：葉尖朝上 -y、葉柄朝下 +y）──
+  // 招牌特徵：7 個細長裂片、裂間深切近中心、緣帶鋸齒、掌狀放射葉脈、細長葉柄
+  const LOBES = [
+    { a:-112, r:0.50 }, { a:-74, r:0.76 }, { a:-37, r:0.93 }, { a:0, r:1.00 },
+    { a:  37, r:0.93 }, { a: 74, r:0.76 }, { a:112, r:0.50 }
   ];
-  function drawPetal(p){            // 紅楓葉（掌狀，沿用花瓣物理，僅改楓葉輪廓）
+  const LEAF = (() => {
+    const P = [];
+    const rad = d => d * Math.PI / 180;
+    const pt = (r, a) => [r * Math.sin(rad(a)), -r * Math.cos(rad(a))];
+    const SINUS = 0.26, LBASE = 0.22;                 // 深裂：裂間切回近中心
+    const TS = [0.07, 0.26, 0.40, 0.60, 0.74, 0.90];  // 裂片邊緣取樣點
+    const TM = [0.85, 1.0, 0.48, 1.0, 0.50, 0.95];    // 寬↔縮交替＝鋸齒
+    P.push(pt(LBASE, -136));                          // 葉基（左）
+    LOBES.forEach((L, i) => {
+      const a = rad(L.a);
+      const dx = Math.sin(a), dy = -Math.cos(a);      // 裂片中軸方向
+      const ex = Math.cos(a), ey = Math.sin(a);       // 垂直方向
+      const wMax = 0.115 * (0.72 + 0.28 * L.r);       // 半寬（細長裂片）
+      const edge = (t, side, m) => {
+        const r = SINUS + (L.r - SINUS) * t;
+        const w = wMax * (Math.sqrt(t) * (1 - t)) / 0.385 * m; // 中段最寬、兩端收尖
+        return [dx * r + ex * side * w, dy * r + ey * side * w];
+      };
+      for (let k = 0; k < TS.length; k++) P.push(edge(TS[k], -1, TM[k]));
+      P.push(pt(L.r, L.a));                           // 裂片尖
+      for (let k = TS.length - 1; k >= 0; k--) P.push(edge(TS[k], 1, TM[k]));
+      if (i < LOBES.length - 1) P.push(pt(SINUS * 0.85, (L.a + LOBES[i + 1].a) / 2)); // 裂間深切
+    });
+    P.push(pt(LBASE, 136));                           // 葉基（右）
+    return P;
+  })();
+  const VEINS = LOBES.map(L => {
+    const a = L.a * Math.PI / 180;
+    return [0.9 * L.r * Math.sin(a), -0.9 * L.r * Math.cos(a)];
+  });
+  function drawLeaf(p){             // 紅葉（イロハモミジ；沿用花瓣物理，翻滾旋轉飄落）
     const s = p.size;
     const squish = Math.abs(Math.cos(p.flip));
     ctx.save();
@@ -657,25 +884,28 @@
     ctx.rotate(p.rot);
     ctx.scale(1, 0.35 + 0.65 * squish);
     ctx.globalAlpha = p.alpha * (0.5 + 0.5 * squish);
+    // 細長葉柄（由葉基向下）
+    ctx.strokeStyle = p.c2;
+    ctx.lineWidth = Math.max(0.6, s * 0.05);
+    ctx.beginPath();
+    ctx.moveTo(0, s * 0.16);
+    ctx.quadraticCurveTo(s * 0.08, s * 0.6, s * 0.05, s * 0.98);
+    ctx.stroke();
+    // 葉身：7 裂掌狀輪廓（含鋸齒）
     const g = ctx.createLinearGradient(0, -s, 0, s);
     g.addColorStop(0, p.c1); g.addColorStop(1, p.c2);
     ctx.fillStyle = g;
-    // 楓葉：掌狀多尖放射輪廓
     ctx.beginPath();
-    ctx.moveTo(MAPLE[0][0] * s, MAPLE[0][1] * s);
-    for (let i = 1; i < MAPLE.length; i++) ctx.lineTo(MAPLE[i][0] * s, MAPLE[i][1] * s);
+    ctx.moveTo(LEAF[0][0] * s, LEAF[0][1] * s);
+    for (let i = 1; i < LEAF.length; i++) ctx.lineTo(LEAF[i][0] * s, LEAF[i][1] * s);
     ctx.closePath();
     ctx.fill();
-    // 掌狀葉脈：近葉柄的中心往主尖放射
+    // 掌狀葉脈：由葉基放射至每一裂片尖
     ctx.globalAlpha *= 0.4;
     ctx.strokeStyle = p.c2;
-    ctx.lineWidth = Math.max(0.5, s * 0.05);
+    ctx.lineWidth = Math.max(0.45, s * 0.04);
     ctx.beginPath();
-    ctx.moveTo(0, s * 0.5);  ctx.lineTo(0, -s * 0.86);      // 中脈
-    ctx.moveTo(0, s * 0.1);  ctx.lineTo( s * 0.56, -s * 0.5); // 右上脈
-    ctx.moveTo(0, s * 0.1);  ctx.lineTo(-s * 0.56, -s * 0.5); // 左上脈
-    ctx.moveTo(0, s * 0.1);  ctx.lineTo( s * 0.84, 0);      // 右側脈
-    ctx.moveTo(0, s * 0.1);  ctx.lineTo(-s * 0.84, 0);      // 左側脈
+    for (const v of VEINS){ ctx.moveTo(0, s * 0.16); ctx.lineTo(v[0] * s, v[1] * s); }
     ctx.stroke();
     ctx.restore();
   }
@@ -702,14 +932,14 @@
       if (p.y - p.size > H){ Object.assign(p, makePetal(false)); p.y = -20; }
       if (p.x < -30) p.x = W + 20;
       else if (p.x > W + 30) p.x = -20;
-      drawPetal(p);
+      drawLeaf(p);
     }
     raf = requestAnimationFrame(frame);
   }
   function start(){
     resize();
     if (!reduceMotion){ cancelAnimationFrame(raf); frame(); }
-    else { ctx.clearRect(0,0,W,H); for (const p of petals.slice(0, 8)){ p.y = Math.random()*H; drawPetal(p); } }
+    else { ctx.clearRect(0,0,W,H); for (const p of petals.slice(0, 8)){ p.y = Math.random()*H; drawLeaf(p); } }
   }
   let rt;
   window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(start, 180); }, { passive:true });
@@ -721,7 +951,7 @@
     else if (!reduceMotion) frame();
   });
 
-  /* 墨枝視差 */
+  /* 楓樹視差 */
   const branch = document.getElementById('branch');
   let ticking = false;
   const parallax = () => {
