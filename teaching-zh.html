@@ -130,6 +130,14 @@
   .term-panel.is-on{display:block}
   .course-tba{font-size:13.5px;line-height:1.9;color:var(--ink-quiet);font-style:italic;margin-top:4px}
 
+  /* 課程卡（列表頁）：整卡可點 → 課程大綱頁 syllabus-zh.html?course=<id> */
+  .course-card{display:block;text-decoration:none;color:inherit;cursor:pointer;
+    transition:transform .3s cubic-bezier(.19,1,.22,1),box-shadow .3s,border-color .3s}
+  .course-card:hover{transform:translateY(-3px);border-color:rgba(196,56,56,.45);box-shadow:0 14px 34px rgba(31,31,29,.09)}
+  .card-cta{display:inline-block;margin-top:22px;font-family:var(--latin);font-size:11px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase}
+  .card-cta .ar{display:inline-block;transition:transform .3s cubic-bezier(.19,1,.22,1)}
+  .course-card:hover .card-cta .ar{transform:translateX(5px)}
+
   /* 季節頂圖 */
   .season-banner{position:relative;height:clamp(260px,42vh,440px);overflow:hidden;border-bottom:1px solid var(--rule)}
   .season-banner img{width:100%;height:100%;object-fit:cover;display:block}
@@ -237,193 +245,14 @@
       <button class="term-tab" data-term="term-1142">114 學年度・第二學期</button>
     </div>
 
-    <!-- 115 學年度第一學期 -->
+    <!-- 115 學年度第一學期（課程卡由 js/course-data.js 渲染） -->
     <div class="term-panel is-on" id="term-1151">
-      <div class="course-wrap">
-        <article class="course">
-          <div class="course-head">
-            <div>
-              <div class="course-tag">大學部 · Undergraduate</div>
-              <h3 class="course-title">社會政策</h3>
-              <div class="course-en">Social Policy</div>
-            </div>
-            <div class="course-meta"><b>大學部</b>115 學年度<br>第一學期</div>
-          </div>
-          <p class="course-tba">課程大綱籌備中——課程描述、課程目標、指定書目與 18 週大綱，將於開學前更新。</p>
-        </article>
-        <article class="course">
-          <div class="course-head">
-            <div>
-              <div class="course-tag">研究所 · Graduate</div>
-              <h3 class="course-title">生命歷程與社會政策</h3>
-              <div class="course-en">Life Course &amp; Social Policy</div>
-            </div>
-            <div class="course-meta"><b>碩士班</b>115 學年度<br>第一學期</div>
-          </div>
-          <p class="course-tba">課程大綱籌備中——課程描述、課程目標、指定書目與 18 週大綱，將於開學前更新。</p>
-        </article>
-      </div>
+      <div class="course-wrap" data-term="1151"></div>
     </div>
 
-    <!-- 114 學年度第二學期 -->
+    <!-- 114 學年度第二學期（課程卡由 js/course-data.js 渲染） -->
     <div class="term-panel" id="term-1142">
-      <div class="course-wrap">
-      <!-- 社會研究法 -->
-      <article class="course reveal">
-        <div class="course-head">
-          <div>
-            <div class="course-tag">研究所 · Graduate</div>
-            <h3 class="course-title">社會研究法</h3>
-            <div class="course-en">Social Research Methods</div>
-          </div>
-          <div class="course-meta"><b>碩士班</b>3 學分<br>週二 09:00–12:00<br>2026 春</div>
-        </div>
-        <div class="course-desc">
-          <p>科學研究不是一道食譜，而是一場關於「什麼算是證據、我們如何能知道」的長期辯論。本課程從科學哲學與知識論起步——Popper 的否證、Hempel 的覆蓋律、實證主義與詮釋學派的對峙——再走入社會科學內部最重要的方法論論戰：King-Keohane-Verba 的《Designing Social Inquiry》與 Brady-Collier 的回應。</p>
-          <p>中段處理研究設計的核心環節：因果推論、機制分析、案例選擇、測量效度；後段引介進階方法工具——QCA、歷史比較分析、過程追蹤與混合方法——並收尾於每位同學自己的研究計畫書。一學期下來，期望大家能跨越質化／量化的界線，找到屬於自己的方法語言。</p>
-        </div>
-
-        <div class="blk">
-          <div class="lab">課程目標 · Objectives</div>
-          <ul class="obj-list">
-            <li>奠定科學哲學與知識論的基礎</li>
-            <li>掌握研究設計核心：因果推論、機制分析、案例選擇、測量效度</li>
-            <li>學習進階方法工具：QCA、歷史比較分析、過程追蹤</li>
-            <li>培養跨越質化／量化界線的學術視野</li>
-            <li>建立嚴謹且具科學推論邏輯的研究設計能力</li>
-            <li>完成一份具原創性與學術價值的獨立研究計畫書</li>
-          </ul>
-        </div>
-
-        <div class="blk">
-          <div class="lab">書目 · Reading</div>
-          <div class="books-2">
-            <div class="bk">
-              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">指定教科書</div>
-              <ul>
-                <li>King, Keohane &amp; Verba（2012）《好研究如何設計？：用量化邏輯做質化研究》。台北：群學。（原著 1994, Princeton UP）</li>
-                <li>Brady, H. E. &amp; Collier, D. (eds.) (2010). <i>Rethinking Social Inquiry</i>, 2nd ed. Rowman &amp; Littlefield.</li>
-                <li>Goertz, G. &amp; Mahoney, J. (2012). <i>A Tale of Two Cultures</i>. Princeton UP.</li>
-                <li>Gerring, J. &amp; Seawright, J. (2022). <i>Finding Your Social Science Project</i>. Cambridge UP.</li>
-              </ul>
-            </div>
-            <div class="bk">
-              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">參考書</div>
-              <ul>
-                <li>Alford, R. R. (1998). <i>The Craft of Inquiry</i>. Oxford UP.（王志弘譯, 2011, 群學）</li>
-                <li>Schutt, R. (2014). <i>Investigating the Social World</i>, 8th ed. Sage.</li>
-                <li>Gerring, J. (2012). <i>Social Science Methodology</i>, 2nd ed. Cambridge UP.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="blk">
-          <a class="syllabus-cta" href="teaching/syllabi/2026spring-social-research-methods.pdf">完整課綱 PDF →</a>
-        </div>
-
-        <div class="blk">
-          <div class="lab">週次大綱 · 18 週</div>
-          <div class="week-table">
-            <div class="wk"><span class="wn">一</span><span class="wd">2/24</span><span class="wt">課程導論：社會科學的「科學」之爭</span></div>
-            <div class="wk"><span class="wn">二</span><span class="wd">3/3</span><span class="wt">科學哲學的幽靈：從 Popper 到 Hempel</span></div>
-            <div class="wk"><span class="wn">三</span><span class="wd">3/10</span><span class="wt">知識論的戰場：實證主義 vs. 詮釋／批判</span></div>
-            <div class="wk"><span class="wn">四</span><span class="wd">3/17</span><span class="wt">研究設計的起點：研究問題與理論建構</span></div>
-            <div class="wk"><span class="wn">五</span><span class="wd">3/24</span><span class="wt"><a href="teaching/social-research-methods/week05-two-cultures.html">兩種文化：變項語言 vs. 個案邏輯</a><span class="tag">→ 互動講義</span></span></div>
-            <div class="wk"><span class="wn">六</span><span class="wd">3/31</span><span class="wt">推論的邏輯：KKV 的宣戰</span></div>
-            <div class="wk off"><span class="wn">七</span><span class="wd">4/7</span><span class="wt">學術交流週（停課）</span></div>
-            <div class="wk"><span class="wn">八</span><span class="wd">4/14</span><span class="wt">因果關係：相關性 vs. 機制</span></div>
-            <div class="wk"><span class="wn">九</span><span class="wd">4/21</span><span class="wt"><a href="teaching/social-research-methods/week09-selection-bias.html">案例選擇：偏差 vs. 策略</a><span class="tag">→ 互動講義</span></span></div>
-            <div class="wk"><span class="wn">十</span><span class="wd">4/28</span><span class="wt">測量與資料：精確 vs. 深度</span></div>
-            <div class="wk"><span class="wn">十一</span><span class="wd">5/5</span><span class="wt">小 N 的困境：增加 N vs. 過程追蹤</span></div>
-            <div class="wk"><span class="wn">十二</span><span class="wd">5/12</span><span class="wt">總結辯證：多元工具與共享標準</span></div>
-            <div class="wk"><span class="wn">十三</span><span class="wd">5/19</span><span class="wt">比較研究的邏輯與 QCA</span></div>
-            <div class="wk"><span class="wn">十四</span><span class="wd">5/26</span><span class="wt">時間與歷史：歷史制度主義</span></div>
-            <div class="wk"><span class="wn">十五</span><span class="wd">6/2</span><span class="wt">詮釋與論述（演講）</span></div>
-            <div class="wk"><span class="wn">十六</span><span class="wd">6/9</span><span class="wt">混合方法與研究設計工作坊</span></div>
-            <div class="wk"><span class="wn">十七</span><span class="wd">6/16</span><span class="wt">研究計劃書口頭報告</span></div>
-            <div class="wk off"><span class="wn">十八</span><span class="wd">6/23</span><span class="wt">彈性上課週</span></div>
-          </div>
-        </div>
-      </article>
-
-      <!-- 福利社會學 -->
-      <article class="course reveal">
-        <div class="course-head">
-          <div>
-            <div class="course-tag">大學部 · Undergraduate</div>
-            <h3 class="course-title">福利社會學</h3>
-            <div class="course-en">Sociology of Welfare</div>
-          </div>
-          <div class="course-meta"><b>大一必修</b>3 學分<br>週四 12:00–15:00<br>2026 春</div>
-        </div>
-        <div class="course-desc">
-          <p>「我們要了解社會，我們更要服務社會。」楊懋春先生的這句話，是這門課的起點。本課程從社會學的角度，帶同學認識福利的基本概念——貧窮、不平等、重分配、世代與就業——並理解社會政策如何回應這些長期的社會問題。</p>
-          <p>我們會從生活裡的議題切入：誰付得起學費、誰拿得到健保、年金能不能領到、長照誰來扛？再回頭看制度設計背後的價值與政治選擇。社會政策本質上是一場分配——「Who gets What, When, How」（Lasswell, 1958）——這也是公共社會學想對社會說的話。期望這門課不只給你理論，更讓你看見未來的職業可能性。</p>
-        </div>
-
-        <div class="blk">
-          <div class="lab">課程目標 · Objectives</div>
-          <ul class="obj-list">
-            <li>從社會學的角度理解福利的基本理念與概念（貧窮、不平等、重分配、世代、就業）</li>
-            <li>瞭解社會福利政策如何協助我們解決各種社會問題</li>
-            <li>掌握「誰取得／誰提供／給付什麼／錢從哪來」的分配議題</li>
-            <li>認識福利國家的制度差異與意識形態爭論</li>
-            <li>培養公共社會學的實踐視角，連結未來的職業想像</li>
-          </ul>
-        </div>
-
-        <div class="blk">
-          <div class="lab">書目 · Reading</div>
-          <div class="books-2">
-            <div class="bk">
-              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">指定教科書</div>
-              <ul>
-                <li>Gilbert, N. &amp; Terrell, P.（2012）《社會福利政策》。黃志忠、曾蕙瑜譯。台北：雙葉。</li>
-                <li>Gregory, L. (2018). <i>Exploring Welfare Debates</i>. Bristol: Policy Press.</li>
-                <li>Sealey, C. (2015). <i>Social Policy Simplified</i>. Palgrave.</li>
-              </ul>
-            </div>
-            <div class="bk">
-              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">參考書</div>
-              <ul>
-                <li>李易駿（2014）《社會政策原理》。台北：五南。</li>
-                <li>李易駿（2014）《社會福利概論》（第三版）。台北：洪葉。</li>
-                <li>國立編譯館主譯（2006）《解讀社會政策》。台北：群學。</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="blk">
-          <a class="syllabus-cta" href="teaching/syllabi/2026spring-sociology-of-welfare.pdf">完整課綱 PDF →</a>
-        </div>
-
-        <div class="blk">
-          <div class="lab">週次大綱 · 18 週</div>
-          <div class="week-table">
-            <div class="wk"><span class="wn">一</span><span class="wd">2/26</span><span class="wt">課程概述：為什麼要學社會福利？</span></div>
-            <div class="wk"><span class="wn">二</span><span class="wd">3/5</span><span class="wt">福利是什麼？為什麼福利跟我們息息相關？</span></div>
-            <div class="wk"><span class="wn">三</span><span class="wd">3/12</span><span class="wt">誰應該取得福利？：公民資格、需求與平等</span></div>
-            <div class="wk"><span class="wn">四</span><span class="wd">3/19</span><span class="wt"><a href="teaching/sociology-of-welfare/week04-who-provides.html">誰應該提供福利？：國家、市場或非營利組織</a><span class="tag">→ 互動講義</span></span></div>
-            <div class="wk"><span class="wn">五</span><span class="wd">3/26</span><span class="wt">提供什麼給付呢？</span></div>
-            <div class="wk off"><span class="wn">六</span><span class="wd">4/2</span><span class="wt">學術交流週（停課）</span></div>
-            <div class="wk off"><span class="wn">七</span><span class="wd">4/9</span><span class="wt">電影欣賞</span></div>
-            <div class="wk"><span class="wn">八</span><span class="wd">4/16</span><span class="wt">福利的「錢（finance）」從哪裡來？</span></div>
-            <div class="wk off"><span class="wn">九</span><span class="wd">4/23</span><span class="wt">期中考</span></div>
-            <div class="wk"><span class="wn">十</span><span class="wd">4/30</span><span class="wt">福利的價值與意識形態</span></div>
-            <div class="wk"><span class="wn">十一</span><span class="wd">5/7</span><span class="wt">什麼是福利國家？</span></div>
-            <div class="wk"><span class="wn">十二</span><span class="wd">5/14</span><span class="wt">福利可以解決「貧窮」嗎？社會救助</span></div>
-            <div class="wk"><span class="wn">十三</span><span class="wd">5/21</span><span class="wt">「社會」保險——年金保險</span></div>
-            <div class="wk"><span class="wn">十四</span><span class="wd">5/28</span><span class="wt">「社會」保險——健康保險</span></div>
-            <div class="wk"><span class="wn">十五</span><span class="wd">6/4</span><span class="wt">就業政策與失業政策：福利與你未來的就業</span></div>
-            <div class="wk"><span class="wn">十六</span><span class="wd">6/11</span><span class="wt">兒童照顧與長期照顧</span></div>
-            <div class="wk off"><span class="wn">十七</span><span class="wd">6/18</span><span class="wt">期末考週</span></div>
-            <div class="wk off"><span class="wn">十八</span><span class="wd">6/25</span><span class="wt">彈性週</span></div>
-          </div>
-        </div>
-      </article>
-      </div>
+      <div class="course-wrap" data-term="1142"></div>
     </div>
     </div>
   </div>
@@ -433,6 +262,38 @@
   <span>葉崇揚 · YEH CHUNG-YANG</span>
   <span>教學 · Teaching</span>
 </footer>
+
+<!-- 課程卡渲染（單一資料來源：js/course-data.js；點卡 → syllabus-zh.html?course=<id>） -->
+<script src="js/course-data.js"></script>
+<script>
+(function(){
+  if (typeof courseData === 'undefined') return;
+  document.querySelectorAll('.course-wrap[data-term]').forEach(function(wrap){
+    var term = wrap.getAttribute('data-term');
+    var html = '';
+    courseData.filter(function(c){ return c.term === term; }).forEach(function(c){
+      var lines = [];
+      if (c.credits) lines.push(c.credits + ' 學分');
+      if (c.time_zh) lines.push(c.time_zh);
+      if (c.term_zh) lines.push(c.term_zh);
+      var meta = '<b>' + c.level_zh + '</b>' + lines.join('<br>');
+      var body = c.tba_zh
+        ? '<p class="course-tba">' + c.tba_zh + '</p>'
+        : '<div class="course-desc">' + c.desc_zh.map(function(p){ return '<p>' + p + '</p>'; }).join('') + '</div>';
+      html += '<a class="course course-card reveal" href="syllabus-zh.html?course=' + c.id + '">'
+        + '<div class="course-head"><div>'
+        + '<div class="course-tag">' + c.tag_zh + '</div>'
+        + '<h3 class="course-title">' + c.title_zh + '</h3>'
+        + '<div class="course-en">' + c.title_en + '</div>'
+        + '</div><div class="course-meta">' + meta + '</div></div>'
+        + body
+        + '<span class="card-cta">查看大綱 <span class="ar">→</span></span>'
+        + '</a>';
+    });
+    wrap.innerHTML = html;
+  });
+})();
+</script>
 
 <!-- 學期切換 -->
 <script>

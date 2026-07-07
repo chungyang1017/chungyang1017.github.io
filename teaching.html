@@ -101,6 +101,14 @@
   .term-panel.is-on{display:block}
   .course-tba{font-size:13.5px;line-height:1.9;color:var(--ink-quiet);font-style:italic;margin-top:4px}
 
+  /* Course card (list page): whole card links to syllabus.html?course=<id> */
+  .course-card{display:block;text-decoration:none;color:inherit;cursor:pointer;
+    transition:transform .3s cubic-bezier(.19,1,.22,1),box-shadow .3s,border-color .3s}
+  .course-card:hover{transform:translateY(-3px);border-color:rgba(196,56,56,.45);box-shadow:0 14px 34px rgba(31,31,29,.09)}
+  .card-cta{display:inline-block;margin-top:22px;font-family:var(--latin);font-size:11px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase}
+  .card-cta .ar{display:inline-block;transition:transform .3s cubic-bezier(.19,1,.22,1)}
+  .course-card:hover .card-cta .ar{transform:translateX(5px)}
+
   /* 季節頂圖 */
   .season-banner{position:relative;height:clamp(260px,42vh,440px);overflow:hidden;border-bottom:1px solid var(--rule)}
   .season-banner img{width:100%;height:100%;object-fit:cover;display:block}
@@ -115,7 +123,7 @@
 
   @media (max-width:820px){
     .nav{padding:12px 20px;flex-wrap:wrap;gap:10px}
-    .nav nav{gap:14px;font-size:12px;letter-spacing:.14em;order:3;width:100%;justify-content:space-between}
+    .nav nav{gap:8px 14px;font-size:12px;letter-spacing:.14em;order:3;width:100%;justify-content:space-between;flex-wrap:wrap}
     .nav .lang{padding-left:14px}
     .scroll-head{grid-template-columns:1fr;gap:24px;padding:64px 22px}
     .scroll-head .kanji{font-size:110px}
@@ -131,6 +139,10 @@
     .books-2{grid-template-columns:1fr;gap:24px}
     .week-table{grid-template-columns:1fr;gap:0}
     .foot{padding:32px 22px;flex-direction:column;gap:8px}
+  }
+  /* ≤480px：英文 nav 六連結一行放不下，換行後 space-between 會把第二行拉到兩端，改置中 */
+  @media (max-width:480px){
+    .nav nav{justify-content:center;column-gap:18px}
   }
   @media (prefers-reduced-motion:reduce){ .reveal{opacity:1!important;transform:none!important;transition:none} }
 
@@ -207,193 +219,14 @@
       <button class="term-tab" data-term="term-1142">Spring 2026 · AY114-2</button>
     </div>
 
-    <!-- AY115-1 (Fall 2026) -->
+    <!-- AY115-1 (Fall 2026) — cards rendered from js/course-data.js -->
     <div class="term-panel is-on" id="term-1151">
-      <div class="course-wrap">
-        <article class="course">
-          <div class="course-head">
-            <div>
-              <div class="course-tag">Undergraduate</div>
-              <h3 class="course-title">Social Policy</h3>
-              <div class="course-en">社會政策</div>
-            </div>
-            <div class="course-meta"><b>Undergrad</b>Fall 2026<br>AY115-1</div>
-          </div>
-          <p class="course-tba">Syllabus in preparation — description, objectives, readings and the weekly schedule will be posted before the term begins.</p>
-        </article>
-        <article class="course">
-          <div class="course-head">
-            <div>
-              <div class="course-tag">Graduate</div>
-              <h3 class="course-title">Life Course &amp; Social Policy</h3>
-              <div class="course-en">生命歷程與社會政策</div>
-            </div>
-            <div class="course-meta"><b>MA</b>Fall 2026<br>AY115-1</div>
-          </div>
-          <p class="course-tba">Syllabus in preparation — description, objectives, readings and the weekly schedule will be posted before the term begins.</p>
-        </article>
-      </div>
+      <div class="course-wrap" data-term="1151"></div>
     </div>
 
-    <!-- AY114-2 (Spring 2026) -->
+    <!-- AY114-2 (Spring 2026) — cards rendered from js/course-data.js -->
     <div class="term-panel" id="term-1142">
-      <div class="course-wrap">
-      <!-- Social Research Methods -->
-      <article class="course reveal">
-        <div class="course-head">
-          <div>
-            <div class="course-tag">Graduate</div>
-            <h3 class="course-title">Social Research Methods</h3>
-            <div class="course-en">社會研究法</div>
-          </div>
-          <div class="course-meta"><b>MA</b>3 credits<br>Tue 09:00–12:00<br>2026 Spring</div>
-        </div>
-        <div class="course-desc">
-          <p>Research is not a recipe but a long argument about what counts as evidence and how we can know. The course begins with the philosophy of science and epistemology — Popper's falsification, Hempel's covering law, the standoff between positivism and interpretivism — then enters the central methodological debate within social science: King-Keohane-Verba's <i>Designing Social Inquiry</i> and the Brady-Collier response.</p>
-          <p>The middle weeks work through the core of research design: causal inference, mechanisms, case selection, measurement validity. The later weeks introduce advanced tools — QCA, historical comparative analysis, process tracing, and mixed methods — closing with each student's own research proposal. By the end, the hope is that everyone can cross the qualitative/quantitative divide and find their own methodological voice.</p>
-        </div>
-
-        <div class="blk">
-          <div class="lab">Objectives</div>
-          <ul class="obj-list">
-            <li>Build a foundation in the philosophy of science and epistemology</li>
-            <li>Master the core of research design: causal inference, mechanisms, case selection, measurement validity</li>
-            <li>Learn advanced tools: QCA, historical comparative analysis, process tracing</li>
-            <li>Cultivate a perspective that crosses the qualitative / quantitative divide</li>
-            <li>Develop rigorous, inference-driven research design</li>
-            <li>Complete an original, scholarly independent research proposal</li>
-          </ul>
-        </div>
-
-        <div class="blk">
-          <div class="lab">Reading</div>
-          <div class="books-2">
-            <div class="bk">
-              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">Core Texts</div>
-              <ul>
-                <li>King, G., Keohane, R. O. &amp; Verba, S. (1994). <i>Designing Social Inquiry</i>. Princeton UP.</li>
-                <li>Brady, H. E. &amp; Collier, D. (eds.) (2010). <i>Rethinking Social Inquiry</i>, 2nd ed. Rowman &amp; Littlefield.</li>
-                <li>Goertz, G. &amp; Mahoney, J. (2012). <i>A Tale of Two Cultures</i>. Princeton UP.</li>
-                <li>Gerring, J. &amp; Seawright, J. (2022). <i>Finding Your Social Science Project</i>. Cambridge UP.</li>
-              </ul>
-            </div>
-            <div class="bk">
-              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">Further Reading</div>
-              <ul>
-                <li>Alford, R. R. (1998). <i>The Craft of Inquiry</i>. Oxford UP.</li>
-                <li>Schutt, R. (2014). <i>Investigating the Social World</i>, 8th ed. Sage.</li>
-                <li>Gerring, J. (2012). <i>Social Science Methodology</i>, 2nd ed. Cambridge UP.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="blk">
-          <a class="syllabus-cta" href="teaching/syllabi/2026spring-social-research-methods.pdf">Full Syllabus PDF →</a>
-        </div>
-
-        <div class="blk">
-          <div class="lab">Weekly Schedule · 18 Weeks</div>
-          <div class="week-table">
-            <div class="wk"><span class="wn">1</span><span class="wd">2/24</span><span class="wt">Introduction: the "science" question in social science</span></div>
-            <div class="wk"><span class="wn">2</span><span class="wd">3/3</span><span class="wt">The ghost of philosophy of science: from Popper to Hempel</span></div>
-            <div class="wk"><span class="wn">3</span><span class="wd">3/10</span><span class="wt">The epistemological battlefield: positivism vs. interpretivism</span></div>
-            <div class="wk"><span class="wn">4</span><span class="wd">3/17</span><span class="wt">Where design begins: research questions and theory building</span></div>
-            <div class="wk"><span class="wn">5</span><span class="wd">3/24</span><span class="wt"><a href="teaching/social-research-methods/week05-two-cultures.html">Two cultures: variables vs. the logic of cases</a><span class="tag">→ Interactive</span></span></div>
-            <div class="wk"><span class="wn">6</span><span class="wd">3/31</span><span class="wt">The logic of inference: KKV's declaration</span></div>
-            <div class="wk off"><span class="wn">7</span><span class="wd">4/7</span><span class="wt">Academic exchange week (no class)</span></div>
-            <div class="wk"><span class="wn">8</span><span class="wd">4/14</span><span class="wt">Causation: correlation vs. mechanism</span></div>
-            <div class="wk"><span class="wn">9</span><span class="wd">4/21</span><span class="wt"><a href="teaching/social-research-methods/week09-selection-bias.html">Case selection: bias vs. strategy</a><span class="tag">→ Interactive</span></span></div>
-            <div class="wk"><span class="wn">10</span><span class="wd">4/28</span><span class="wt">Measurement and data: precision vs. depth</span></div>
-            <div class="wk"><span class="wn">11</span><span class="wd">5/5</span><span class="wt">The small-N problem: more cases vs. process tracing</span></div>
-            <div class="wk"><span class="wn">12</span><span class="wd">5/12</span><span class="wt">Synthesis: diverse tools, shared standards</span></div>
-            <div class="wk"><span class="wn">13</span><span class="wd">5/19</span><span class="wt">The logic of comparison and QCA</span></div>
-            <div class="wk"><span class="wn">14</span><span class="wd">5/26</span><span class="wt">Time and history: historical institutionalism</span></div>
-            <div class="wk"><span class="wn">15</span><span class="wd">6/2</span><span class="wt">Interpretation and discourse (guest lecture)</span></div>
-            <div class="wk"><span class="wn">16</span><span class="wd">6/9</span><span class="wt">Mixed methods and research-design workshop</span></div>
-            <div class="wk"><span class="wn">17</span><span class="wd">6/16</span><span class="wt">Research proposal presentations</span></div>
-            <div class="wk off"><span class="wn">18</span><span class="wd">6/23</span><span class="wt">Flexible week</span></div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Sociology of Welfare -->
-      <article class="course reveal">
-        <div class="course-head">
-          <div>
-            <div class="course-tag">Undergraduate</div>
-            <h3 class="course-title">Sociology of Welfare</h3>
-            <div class="course-en">福利社會學</div>
-          </div>
-          <div class="course-meta"><b>1st-year required</b>3 credits<br>Thu 12:00–15:00<br>2026 Spring</div>
-        </div>
-        <div class="course-desc">
-          <p>"We must understand society, and we must serve it." This line from Yang Mao-chun opens the course. From a sociological standpoint, it introduces the basic concepts of welfare — poverty, inequality, redistribution, generation, and employment — and how social policy answers these long-standing problems.</p>
-          <p>We start from everyday questions: who can afford tuition, who gets health insurance, whether pensions will still be there, who carries the burden of long-term care — then turn back to the values and political choices behind institutional design. Social policy is, at heart, a matter of distribution: "Who gets What, When, How" (Lasswell, 1958) — which is also what public sociology has to say to society. The hope is that the course gives you not only theory, but a glimpse of the careers ahead.</p>
-        </div>
-
-        <div class="blk">
-          <div class="lab">Objectives</div>
-          <ul class="obj-list">
-            <li>Understand the basic ideas of welfare sociologically (poverty, inequality, redistribution, generation, employment)</li>
-            <li>See how social welfare policy helps address social problems</li>
-            <li>Grasp the distributive questions: who gets, who provides, what benefit, where the money comes from</li>
-            <li>Recognize institutional variety and ideological debate across welfare states</li>
-            <li>Cultivate a public-sociology perspective linked to future careers</li>
-          </ul>
-        </div>
-
-        <div class="blk">
-          <div class="lab">Reading</div>
-          <div class="books-2">
-            <div class="bk">
-              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">Core Texts</div>
-              <ul>
-                <li>Gilbert, N. &amp; Terrell, P. (2012). <i>Dimensions of Social Welfare Policy</i>. (Chinese ed., Taipei: Yeh Yeh.)</li>
-                <li>Gregory, L. (2018). <i>Exploring Welfare Debates</i>. Bristol: Policy Press.</li>
-                <li>Sealey, C. (2015). <i>Social Policy Simplified</i>. Palgrave.</li>
-              </ul>
-            </div>
-            <div class="bk">
-              <div style="font-size:12px;color:var(--ink);margin-bottom:10px;font-family:var(--display)">Further Reading</div>
-              <ul>
-                <li>Li, Y-C. (2014). <i>Principles of Social Policy</i>. Taipei: Wu-Nan.</li>
-                <li>Li, Y-C. (2014). <i>Introduction to Social Welfare</i>, 3rd ed. Taipei: Hung-Yeh.</li>
-                <li><i>The Student's Companion to Social Policy</i> (Chinese ed., 2006). Taipei: Socio.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="blk">
-          <a class="syllabus-cta" href="teaching/syllabi/2026spring-sociology-of-welfare.pdf">Full Syllabus PDF →</a>
-        </div>
-
-        <div class="blk">
-          <div class="lab">Weekly Schedule · 18 Weeks</div>
-          <div class="week-table">
-            <div class="wk"><span class="wn">1</span><span class="wd">2/26</span><span class="wt">Overview: why study social welfare?</span></div>
-            <div class="wk"><span class="wn">2</span><span class="wd">3/5</span><span class="wt">What is welfare? Why does it matter to us?</span></div>
-            <div class="wk"><span class="wn">3</span><span class="wd">3/12</span><span class="wt">Who should receive welfare? Citizenship, need, equality</span></div>
-            <div class="wk"><span class="wn">4</span><span class="wd">3/19</span><span class="wt"><a href="teaching/sociology-of-welfare/week04-who-provides.html">Who should provide welfare? State, market, or nonprofit</a><span class="tag">→ Interactive</span></span></div>
-            <div class="wk"><span class="wn">5</span><span class="wd">3/26</span><span class="wt">What benefits to provide?</span></div>
-            <div class="wk off"><span class="wn">6</span><span class="wd">4/2</span><span class="wt">Academic exchange week (no class)</span></div>
-            <div class="wk off"><span class="wn">7</span><span class="wd">4/9</span><span class="wt">Film screening</span></div>
-            <div class="wk"><span class="wn">8</span><span class="wd">4/16</span><span class="wt">Where does the money for welfare come from?</span></div>
-            <div class="wk off"><span class="wn">9</span><span class="wd">4/23</span><span class="wt">Midterm</span></div>
-            <div class="wk"><span class="wn">10</span><span class="wd">4/30</span><span class="wt">The values and ideologies of welfare</span></div>
-            <div class="wk"><span class="wn">11</span><span class="wd">5/7</span><span class="wt">What is a welfare state?</span></div>
-            <div class="wk"><span class="wn">12</span><span class="wd">5/14</span><span class="wt">Can welfare solve poverty? Social assistance</span></div>
-            <div class="wk"><span class="wn">13</span><span class="wd">5/21</span><span class="wt">Social insurance — pensions</span></div>
-            <div class="wk"><span class="wn">14</span><span class="wd">5/28</span><span class="wt">Social insurance — health</span></div>
-            <div class="wk"><span class="wn">15</span><span class="wd">6/4</span><span class="wt">Employment &amp; unemployment policy: welfare and your future work</span></div>
-            <div class="wk"><span class="wn">16</span><span class="wd">6/11</span><span class="wt">Childcare and long-term care</span></div>
-            <div class="wk off"><span class="wn">17</span><span class="wd">6/18</span><span class="wt">Final exam week</span></div>
-            <div class="wk off"><span class="wn">18</span><span class="wd">6/25</span><span class="wt">Flexible week</span></div>
-          </div>
-        </div>
-      </article>
-      </div>
+      <div class="course-wrap" data-term="1142"></div>
     </div>
     </div>
   </div>
@@ -403,6 +236,38 @@
   <span>葉崇揚 · YEH CHUNG-YANG</span>
   <span>Teaching</span>
 </footer>
+
+<!-- Course cards rendered from the single data source: js/course-data.js -->
+<script src="js/course-data.js"></script>
+<script>
+(function(){
+  if (typeof courseData === 'undefined') return;
+  document.querySelectorAll('.course-wrap[data-term]').forEach(function(wrap){
+    var term = wrap.getAttribute('data-term');
+    var html = '';
+    courseData.filter(function(c){ return c.term === term; }).forEach(function(c){
+      var lines = [];
+      if (c.credits) lines.push(c.credits + ' credits');
+      if (c.time_en) lines.push(c.time_en);
+      if (c.term_en) lines.push(c.term_en);
+      var meta = '<b>' + c.level_en + '</b>' + lines.join('<br>');
+      var body = c.tba_en
+        ? '<p class="course-tba">' + c.tba_en + '</p>'
+        : '<div class="course-desc">' + c.desc_en.map(function(p){ return '<p>' + p + '</p>'; }).join('') + '</div>';
+      html += '<a class="course course-card reveal" href="syllabus.html?course=' + c.id + '">'
+        + '<div class="course-head"><div>'
+        + '<div class="course-tag">' + c.tag_en + '</div>'
+        + '<h3 class="course-title">' + c.title_en + '</h3>'
+        + '<div class="course-en">' + c.title_zh + '</div>'
+        + '</div><div class="course-meta">' + meta + '</div></div>'
+        + body
+        + '<span class="card-cta">View Syllabus <span class="ar">→</span></span>'
+        + '</a>';
+    });
+    wrap.innerHTML = html;
+  });
+})();
+</script>
 
 <script>
 (function(){
