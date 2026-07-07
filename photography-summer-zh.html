@@ -14,7 +14,7 @@
   /* ================================================================
      青嵐 · 青葉總覽（水墨風格）
      骨幹＝攝影頁設計語言（:root / 字體 / nav / lightbox / samon）
-     頂部＝水墨青楓 hero（宣紙質地 + 青葉 canvas + 墨枝 SVG，色系由粉櫻改青綠）
+     頂部＝水墨山溪 hero（宣紙質地 + 溪流 SVG + 順流粒子 canvas）
      ================================================================ */
   :root{
     --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
@@ -62,10 +62,7 @@
     opacity:.045; mix-blend-mode:multiply;
   }
 
-  /* ── 花瓣 canvas（固定全頁，內容之下、稀疏飄落）── */
-  #petals{ position:fixed; inset:0; z-index:1; pointer-events:none; }
-
-  /* 內容層（在花瓣之上；花瓣從透明處透出）*/
+  /* 內容層 */
   .page{ position:relative; z-index:2; }
 
   /* ── 砂紋（水波紋理，沿用攝影頁）── */
@@ -108,14 +105,21 @@
   }
   .hero .wrap{ position:relative; z-index:3; width:min(1180px,90vw); margin-inline:auto; }
 
-  /* 水墨の桜枝（SVG）— hero 背景，右上垂落 */
-  .ink-branch{
-    position:absolute; z-index:2; pointer-events:none;
-    top:clamp(-30px,-3vh,-6px); right:clamp(-120px,-8vw,-40px);
-    width:clamp(560px,72vw,1000px); height:auto;
-    opacity:.96; will-change:transform;
-    filter:drop-shadow(0 18px 30px rgba(42,38,36,.05));
+  /* 山溪（SVG）— hero 背景：下方橫貫的主流＋右上入水的支流 */
+  .ink-stream{
+    position:absolute; z-index:1; pointer-events:none;
+    left:-3%; top:-3%; width:106%; height:106%;
+    will-change:transform;
   }
+  /* 順流粒子 canvas（青葉・水沫・波光，只在 hero 內）
+     注意：canvas 是 replaced element，inset:0 不會自動撐滿，必須明確給 width/height */
+  #flow{ position:absolute; inset:0; width:100%; height:100%; z-index:2; pointer-events:none; }
+  /* 流線：沿溪緩緩前行（reduced-motion 由全域規則停用）*/
+  .flow-line{ animation:flowDash var(--d,24s) linear infinite; }
+  @keyframes flowDash{ to{ stroke-dashoffset:var(--off,-680); } }
+  /* 波光：水面明滅 */
+  .glint{ opacity:.12; animation:glintPulse var(--gd,4.5s) ease-in-out var(--gdel,0s) infinite; }
+  @keyframes glintPulse{ 0%,100%{ opacity:.08 } 50%{ opacity:.6 } }
 
   .eyebrow{
     font-family:var(--latin); font-weight:400;
@@ -288,7 +292,7 @@
     .hero h1{ font-size:clamp(76px,30vw,140px); }
     .hero h1 .romaji{ font-size:clamp(13px,4.4vw,20px); letter-spacing:.26em; }
     .hero-poem{ font-size:clamp(16px,4.4vw,21px); max-width:26ch; }
-    .ink-branch{ width:150vw; right:-42vw; top:-2vh; opacity:.82; }
+    .ink-stream{ opacity:.88; }
     .hero-mark{ display:none; }
     .wall-head{ grid-template-columns:1fr; gap:18px; padding-top:clamp(48px,8vh,72px); }
     .wall-head .wh-kanji{ font-size:clamp(56px,18vw,96px); }
@@ -316,7 +320,6 @@
 <body>
 
 <div class="paper-grain" aria-hidden="true"></div>
-<canvas id="petals" aria-hidden="true"></canvas>
 
 <header class="nav">
   <div class="brand">
@@ -336,108 +339,113 @@
 
 <main class="page">
 
-  <!-- ============ 水墨青楓 HERO ============ -->
+  <!-- ============ 水墨山溪 HERO ============ -->
   <header class="hero" id="hero">
-    <!-- 水墨の桜枝 — 主枝（移植自 sakura-A-suiboku）-->
-    <svg class="ink-branch" id="branch" viewBox="0 0 1000 760" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMin meet">
+    <!-- 山溪 — 墨暈水體（wash）＋流線（flow-line）＋溪石（錨點）＋波光（glint）-->
+    <svg class="ink-stream" id="stream" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
-        <filter id="inkbleed" x="-45%" y="-45%" width="190%" height="190%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.014 0.02" numOctaves="4" seed="7" result="t"/>
-          <feDisplacementMap in="SourceGraphic" in2="t" scale="17" xChannelSelector="R" yChannelSelector="G" result="d"/>
-          <feGaussianBlur in="d" stdDeviation="3.4"/>
+        <filter id="inkbleed" x="-30%" y="-30%" width="160%" height="160%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="4" seed="7" result="t"/>
+          <feDisplacementMap in="SourceGraphic" in2="t" scale="16" xChannelSelector="R" yChannelSelector="G" result="d"/>
+          <feGaussianBlur in="d" stdDeviation="2.6"/>
         </filter>
-        <filter id="drybrush" x="-20%" y="-20%" width="140%" height="140%">
-          <feTurbulence type="turbulence" baseFrequency="0.9 0.08" numOctaves="2" seed="4" result="t"/>
-          <feDisplacementMap in="SourceGraphic" in2="t" scale="3.2"/>
+        <filter id="stonebleed" x="-30%" y="-30%" width="160%" height="160%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="3" seed="11" result="t"/>
+          <feDisplacementMap in="SourceGraphic" in2="t" scale="9"/>
+          <feGaussianBlur stdDeviation="0.6"/>
         </filter>
-        <radialGradient id="bloom" cx="44%" cy="42%" r="60%">
-          <stop offset="0%"   stop-color="#d7e8c6" stop-opacity="0.34"/>
-          <stop offset="30%"  stop-color="#9fc487" stop-opacity="0.56"/>
-          <stop offset="62%"  stop-color="#6fa15c" stop-opacity="0.42"/>
-          <stop offset="100%" stop-color="#6fa15c" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="bloomEdge" cx="50%" cy="50%" r="52%">
-          <stop offset="0%"   stop-color="#4f7a45" stop-opacity="0"/>
-          <stop offset="72%"  stop-color="#4f7a45" stop-opacity="0"/>
-          <stop offset="88%"  stop-color="#437a3c" stop-opacity="0.30"/>
-          <stop offset="100%" stop-color="#356030" stop-opacity="0.05"/>
-        </radialGradient>
-        <radialGradient id="bloomWhite" cx="46%" cy="44%" r="42%">
-          <stop offset="0%"   stop-color="#eef4e4" stop-opacity="0.55"/>
-          <stop offset="70%"  stop-color="#eef4e4" stop-opacity="0.12"/>
-          <stop offset="100%" stop-color="#eef4e4" stop-opacity="0"/>
-        </radialGradient>
-        <linearGradient id="inkgrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#211d1b"/>
-          <stop offset="70%" stop-color="#332e2a"/>
-          <stop offset="100%" stop-color="#4a423d"/>
+        <linearGradient id="waterA" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0"  stop-color="#6a95a4"/>
+          <stop offset=".5" stop-color="#5a7a8a"/>
+          <stop offset="1"  stop-color="#6aa38f"/>
+        </linearGradient>
+        <linearGradient id="waterB" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#7fb0a0"/>
+          <stop offset="1" stop-color="#5a7a8a"/>
+        </linearGradient>
+        <linearGradient id="stoneG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"   stop-color="#4a5a50"/>
+          <stop offset=".55" stop-color="#37423c"/>
+          <stop offset="1"   stop-color="#232b27"/>
         </linearGradient>
       </defs>
 
-      <!-- 花の暈し群 -->
-      <g filter="url(#inkbleed)" opacity="0.9">
-        <ellipse cx="250" cy="150" rx="150" ry="126" fill="url(#bloom)"/>
-        <ellipse cx="284" cy="128" rx="70"  ry="60"  fill="url(#bloom)"/>
-        <ellipse cx="214" cy="182" rx="66"  ry="58"  fill="url(#bloom)"/>
-        <ellipse cx="452" cy="96"  rx="116" ry="98"  fill="url(#bloom)"/>
-        <ellipse cx="486" cy="118" rx="58"  ry="52"  fill="url(#bloom)"/>
-        <ellipse cx="628" cy="196" rx="138" ry="118" fill="url(#bloom)"/>
-        <ellipse cx="600" cy="168" rx="64"  ry="56"  fill="url(#bloom)"/>
-        <ellipse cx="666" cy="220" rx="62"  ry="54"  fill="url(#bloom)"/>
-        <ellipse cx="392" cy="252" rx="96"  ry="84"  fill="url(#bloom)"/>
-        <ellipse cx="792" cy="120" rx="86"  ry="76"  fill="url(#bloom)"/>
-        <ellipse cx="160" cy="300" rx="78"  ry="68"  fill="url(#bloom)"/>
-        <ellipse cx="560" cy="360" rx="72"  ry="62"  fill="url(#bloom)"/>
-      </g>
-      <g filter="url(#inkbleed)" opacity="0.9">
-        <ellipse cx="250" cy="150" rx="128" ry="108" fill="url(#bloomEdge)"/>
-        <ellipse cx="452" cy="96"  rx="104" ry="88"  fill="url(#bloomEdge)"/>
-        <ellipse cx="628" cy="196" rx="120" ry="102" fill="url(#bloomEdge)"/>
-        <ellipse cx="392" cy="252" rx="86"  ry="74"  fill="url(#bloomEdge)"/>
-        <ellipse cx="792" cy="120" rx="76"  ry="66"  fill="url(#bloomEdge)"/>
-      </g>
-      <g filter="url(#inkbleed)" opacity="0.85">
-        <ellipse cx="256" cy="146" rx="86" ry="74" fill="url(#bloomWhite)"/>
-        <ellipse cx="456" cy="92"  rx="66" ry="58" fill="url(#bloomWhite)"/>
-        <ellipse cx="632" cy="192" rx="78" ry="68" fill="url(#bloomWhite)"/>
-        <ellipse cx="394" cy="250" rx="52" ry="46" fill="url(#bloomWhite)"/>
+      <!-- 支流 wash（右上入水，補位原墨枝）-->
+      <g filter="url(#inkbleed)" stroke-linecap="round">
+        <path d="M1288 -80 C 1244 120, 1168 290, 1120 430 C 1086 530, 1072 575, 1050 645" stroke="url(#waterB)" stroke-width="64" opacity=".09"/>
+        <path d="M1304 -60 C 1272 140, 1206 300, 1152 448 C 1118 540, 1100 585, 1078 652" stroke="#8fb3bd" stroke-width="30" opacity=".11"/>
       </g>
 
-      <!-- 主枝 -->
-      <g stroke="url(#inkgrad)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path filter="url(#drybrush)" stroke-width="15"
-          d="M978 40 C 872 96, 792 150, 690 190 C 566 238, 470 250, 372 300 C 300 337, 250 380, 176 430 C 128 462, 92 500, 40 560"/>
-        <path filter="url(#drybrush)" stroke-width="8"
-          d="M690 190 C 700 250, 690 306, 636 372 C 604 411, 560 438, 520 486"/>
-        <path filter="url(#drybrush)" stroke-width="7"
-          d="M452 262 C 420 300, 372 322, 300 356 C 258 376, 220 404, 190 452"/>
-        <path filter="url(#drybrush)" stroke-width="6"
-          d="M792 132 C 828 168, 856 214, 858 276"/>
-        <path filter="url(#drybrush)" stroke-width="5"
-          d="M560 232 C 528 210, 486 202, 440 208"/>
-        <g stroke-width="2.6" opacity="0.86">
-          <path filter="url(#drybrush)" d="M250 240 C 236 268, 230 300, 244 332"/>
-          <path filter="url(#drybrush)" d="M636 300 C 664 316, 690 340, 700 376"/>
-          <path filter="url(#drybrush)" d="M372 300 C 356 276, 330 262, 300 260"/>
-          <path filter="url(#drybrush)" d="M858 240 C 884 256, 900 284, 898 316"/>
-        </g>
+      <!-- 主流 wash（下方橫貫的水體）-->
+      <g filter="url(#inkbleed)" stroke-linecap="round">
+        <path d="M-60 656 C 180 712, 370 606, 570 644 C 770 682, 840 742, 1040 702 C 1220 666, 1335 632, 1500 672" stroke="url(#waterA)" stroke-width="260" opacity=".05"/>
+        <path d="M-60 640 C 180 700, 360 590, 560 630 C 760 670, 830 730, 1030 690 C 1210 655, 1330 620, 1500 660" stroke="url(#waterA)" stroke-width="150" opacity=".13"/>
+        <path d="M-60 610 C 200 660, 380 570, 580 606 C 780 642, 850 700, 1050 665 C 1230 632, 1340 600, 1500 636" stroke="#8fb3bd" stroke-width="86" opacity=".12"/>
+        <path d="M-60 690 C 190 740, 400 640, 600 672 C 800 706, 860 760, 1060 724 C 1240 692, 1350 662, 1500 700" stroke="#6aa38f" stroke-width="70" opacity=".09"/>
       </g>
 
-      <!-- 青葉の葉点・水面の光点 -->
-      <g fill="#5f9152" opacity="0.62">
-        <circle cx="250" cy="150" r="3.4"/><circle cx="238" cy="132" r="2.4"/><circle cx="270" cy="160" r="2.2"/>
-        <circle cx="452" cy="96"  r="3.0"/><circle cx="466" cy="108" r="2.0"/>
-        <circle cx="628" cy="196" r="3.4"/><circle cx="612" cy="182" r="2.2"/><circle cx="644" cy="208" r="2.0"/>
-        <circle cx="392" cy="252" r="2.6"/><circle cx="792" cy="120" r="2.6"/>
-        <circle cx="160" cy="300" r="2.4"/><circle cx="560" cy="360" r="2.2"/>
+      <!-- 流線（順流而動）-->
+      <g stroke-linecap="round">
+        <path class="flow-line" style="--d:26s;--off:-680" d="M-40 588 C 160 636, 360 556, 560 590 C 720 616, 800 664, 990 636 C 1180 608, 1320 592, 1480 620" stroke="#5a7a8a" stroke-width="2.4" opacity=".38" stroke-dasharray="140 220 80 240"/>
+        <path class="flow-line" style="--d:32s;--off:-700" d="M-40 636 C 180 686, 380 596, 575 628 C 745 656, 815 700, 1010 668 C 1190 640, 1330 618, 1480 652" stroke="#6aa38f" stroke-width="2" opacity=".34" stroke-dasharray="180 260 60 200"/>
+        <path class="flow-line" style="--d:15s;--off:-680" d="M-40 616 C 170 660, 370 576, 566 608 C 736 636, 806 682, 1000 652 C 1185 624, 1325 604, 1480 636" stroke="#f6faf3" stroke-width="1.8" opacity=".5" stroke-dasharray="26 340 14 300"/>
+        <path class="flow-line" style="--d:36s;--off:-880" d="M-40 676 C 190 722, 400 630, 610 662 C 790 690, 850 738, 1050 706 C 1230 676, 1350 652, 1480 688" stroke="#5a7a8a" stroke-width="2.6" opacity=".3" stroke-dasharray="200 300 120 260"/>
+        <path class="flow-line" style="--d:18s;--off:-668" d="M-40 700 C 200 744, 420 652, 630 684 C 800 710, 870 752, 1070 722 C 1240 694, 1360 672, 1480 706" stroke="#eef4ee" stroke-width="1.4" opacity=".42" stroke-dasharray="18 300 30 320"/>
+        <path class="flow-line" style="--d:28s;--off:-730" d="M-40 564 C 150 606, 350 532, 545 562 C 705 586, 785 626, 975 602 C 1165 578, 1310 566, 1480 594" stroke="#9cc191" stroke-width="1.6" opacity=".3" stroke-dasharray="120 280 70 260"/>
+        <!-- 支流の流線 -->
+        <path class="flow-line" style="--d:22s;--off:-580" d="M1282 -60 C 1246 120, 1176 288, 1128 430 C 1096 524, 1080 572, 1058 642" stroke="#5a7a8a" stroke-width="1.8" opacity=".32" stroke-dasharray="110 200 60 210"/>
+        <path class="flow-line" style="--d:14s;--off:-542" d="M1300 -50 C 1272 130, 1206 300, 1156 444 C 1122 536, 1104 582, 1082 650" stroke="#f6faf3" stroke-width="1.3" opacity=".38" stroke-dasharray="16 260 26 240"/>
       </g>
-      <g fill="#aac48a" opacity="0.5">
-        <circle cx="252" cy="148" r="1.5"/><circle cx="454" cy="94" r="1.4"/>
-        <circle cx="630" cy="194" r="1.5"/><circle cx="394" cy="250" r="1.3"/>
+
+      <!-- 溪石（壓在流線之上＝水繞石行）-->
+      <g filter="url(#stonebleed)">
+        <ellipse cx="698" cy="692" rx="52" ry="9" fill="#2a3532" opacity=".14"/>
+        <ellipse cx="898" cy="710" rx="66" ry="11" fill="#2a3532" opacity=".14"/>
+        <ellipse cx="1182" cy="658" rx="40" ry="8" fill="#2a3532" opacity=".12"/>
+        <ellipse cx="254" cy="720" rx="32" ry="7" fill="#2a3532" opacity=".12"/>
+        <path d="M655 660 C 655 635, 678 618, 702 620 C 728 622, 742 638, 740 658 C 738 678, 716 688, 692 686 C 670 684, 655 676, 655 660 Z" fill="url(#stoneG)" opacity=".92"/>
+        <path d="M840 668 C 838 634, 868 612, 902 616 C 938 620, 954 642, 950 670 C 946 696, 914 708, 882 704 C 856 700, 842 690, 840 668 Z" fill="url(#stoneG)" opacity=".94"/>
+        <path d="M948 690 C 948 674, 962 664, 978 666 C 994 668, 1002 678, 1000 692 C 998 704, 984 710, 970 708 C 958 706, 948 700, 948 690 Z" fill="url(#stoneG)" opacity=".88"/>
+        <path d="M1150 630 C 1150 610, 1168 598, 1188 601 C 1206 604, 1216 616, 1214 632 C 1212 648, 1194 656, 1176 653 C 1160 650, 1150 644, 1150 630 Z" fill="url(#stoneG)" opacity=".9"/>
+        <path d="M230 698 C 230 682, 244 672, 258 674 C 272 676, 281 686, 279 700 C 277 712, 263 718, 250 716 C 239 714, 230 708, 230 698 Z" fill="url(#stoneG)" opacity=".85"/>
+        <!-- 石上苔意 -->
+        <ellipse cx="690" cy="632" rx="24" ry="9" fill="#5c8a54" opacity=".3"/>
+        <ellipse cx="886" cy="628" rx="32" ry="11" fill="#5c8a54" opacity=".3"/>
+        <ellipse cx="1178" cy="610" rx="18" ry="7" fill="#5c8a54" opacity=".28"/>
+        <ellipse cx="250" cy="682" rx="13" ry="5" fill="#5c8a54" opacity=".26"/>
+      </g>
+
+      <!-- 石際白泡（上游側湧起）與石後細紋 -->
+      <g stroke-linecap="round" fill="none">
+        <path class="flow-line" style="--d:6s;--off:-56"  d="M642 642 C 636 656, 636 672, 644 684" stroke="#f6faf3" stroke-width="2.5" opacity=".5" stroke-dasharray="5 9"/>
+        <path class="flow-line" style="--d:6.5s;--off:-64" d="M826 640 C 818 656, 818 676, 828 692" stroke="#f6faf3" stroke-width="2.8" opacity=".5" stroke-dasharray="6 10"/>
+        <path class="flow-line" style="--d:5.5s;--off:-52" d="M1138 612 C 1132 624, 1132 638, 1140 648" stroke="#f6faf3" stroke-width="2.2" opacity=".46" stroke-dasharray="5 8"/>
+        <path d="M744 660 q 26 6 50 2" stroke="#5a7a8a" stroke-width="1.5" opacity=".28"/>
+        <path d="M748 674 q 22 6 42 3" stroke="#5a7a8a" stroke-width="1.3" opacity=".22"/>
+        <path d="M956 676 q 30 6 56 0" stroke="#5a7a8a" stroke-width="1.5" opacity=".28"/>
+        <path d="M962 690 q 26 7 48 2" stroke="#5a7a8a" stroke-width="1.3" opacity=".22"/>
+        <path d="M1218 634 q 22 5 40 1" stroke="#5a7a8a" stroke-width="1.3" opacity=".24"/>
+      </g>
+
+      <!-- 波光（明滅）-->
+      <g fill="#f6faf3">
+        <ellipse class="glint" style="--gd:3.8s;--gdel:.2s"  cx="340"  cy="622" rx="11" ry="2.2"/>
+        <ellipse class="glint" style="--gd:5.1s;--gdel:1.4s" cx="472"  cy="600" rx="9"  ry="1.9"/>
+        <ellipse class="glint" style="--gd:4.4s;--gdel:2.6s" cx="430"  cy="634" rx="12" ry="2.4"/>
+        <ellipse class="glint" style="--gd:5.8s;--gdel:.9s"  cx="934"  cy="646" rx="10" ry="2"/>
+        <ellipse class="glint" style="--gd:4.1s;--gdel:1.9s" cx="1122" cy="620" rx="11" ry="2.2"/>
+        <ellipse class="glint" style="--gd:6.2s;--gdel:3.1s" cx="778"  cy="702" rx="9"  ry="1.8"/>
+        <ellipse class="glint" style="--gd:4.9s;--gdel:2.2s" cx="243"  cy="655" rx="8"  ry="1.7"/>
+        <ellipse class="glint" style="--gd:5.5s;--gdel:.5s"  cx="1258" cy="640" rx="10" ry="2"/>
+        <ellipse class="glint" style="--gd:4.6s;--gdel:1.1s" cx="1180" cy="380" rx="7"  ry="1.6"/>
+        <ellipse class="glint" style="--gd:5.2s;--gdel:2.8s" cx="1236" cy="180" rx="7"  ry="1.5"/>
       </g>
     </svg>
 
-    <span class="hero-mark" aria-hidden="true">青葉のころ</span>
+    <!-- 順流粒子 canvas（青葉・水沫・波光）-->
+    <canvas id="flow" aria-hidden="true"></canvas>
+
+    <span class="hero-mark" aria-hidden="true">せせらぎ</span>
 
     <div class="wrap">
       <p class="eyebrow reveal">夏 · Summer in green &amp; water</p>
@@ -446,8 +454,8 @@
         <span class="romaji">青嵐 · Aoarashi · Summer</span>
       </h1>
       <p class="hero-poem reveal d2">
-        雨後的青葉，苔與水面的光。京都的六月。
-        <span class="en">After the rain, green leaves — moss and the light on water. June in Kyoto.</span>
+        山間的流水，苔上的光。京都的六月。
+        <span class="en">A mountain stream between the stones, light on the moss. June in Kyoto.</span>
       </p>
     </div>
 
@@ -593,74 +601,99 @@
   });
 </script>
 
-<!-- 花瓣 canvas + 墨枝視差（移植自 sakura-A-suiboku，去除 nav 專用邏輯）-->
+<!-- 順流粒子 canvas + 溪流視差（青葉・水沫・波光沿溪帶漂流）-->
 <script>
 (() => {
   "use strict";
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const canvas = document.getElementById('petals');
+  const canvas = document.getElementById('flow');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
+  const TAU = Math.PI * 2;
   let W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-  const petals = [];
-  // 青葉パレット（淡→濃，一組偏水色，對應春天的粉櫻四組）
-  const palette = [
+  const drift = [];
+  // 浮葉パレット（青葉，浮在水面）
+  const leafPalette = [
     ['#cfe3bf','#7aa863'],
     ['#bcd9a6','#5f9150'],
     ['#a9cf98','#4f8a4a'],
-    ['#c2e0cf','#6aa38f'],
     ['#94bf82','#3d6a3a']
   ];
 
   function resize(){
-    W = window.innerWidth; H = window.innerHeight;
-    canvas.width = W * dpr; canvas.height = H * dpr;
-    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    // 量測父層 hero（不能讀 canvas 自身，避免 buffer→clientWidth 回饋放大）
+    const rect = canvas.parentElement.getBoundingClientRect();
+    W = Math.round(rect.width); H = Math.round(rect.height);
+    canvas.width = Math.max(1, W * dpr); canvas.height = Math.max(1, H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const target = Math.round(Math.min(34, Math.max(12, W / 34))); // 稀疏
-    while (petals.length < target) petals.push(makePetal(true));
-    while (petals.length > target) petals.pop();
+    const target = Math.round(Math.min(30, Math.max(14, W / 46)));
+    while (drift.length < target) drift.push(makeDrifter(true));
+    while (drift.length > target) drift.pop();
   }
-  function makePetal(spawnAnywhere){
-    const size = 7 + Math.random() * 12;
-    const pal = palette[(Math.random() * palette.length) | 0];
-    return {
-      x: Math.random() * W,
-      y: spawnAnywhere ? Math.random() * H : -20 - Math.random() * 80,
-      size,
-      vy: 0.35 + Math.random() * 0.65 + size * 0.02,
-      vx: (Math.random() - 0.5) * 0.5,
-      sway: 0.6 + Math.random() * 1.4,
-      swaySpeed: 0.008 + Math.random() * 0.014,
-      phase: Math.random() * Math.PI * 2,
-      rot: Math.random() * Math.PI * 2,
-      vrot: (Math.random() - 0.5) * 0.03,
-      flip: Math.random() * Math.PI * 2,
-      vflip: 0.02 + Math.random() * 0.035,
-      c1: pal[0], c2: pal[1],
-      alpha: 0.5 + Math.random() * 0.4
+  function makeDrifter(spawnAnywhere){
+    const r = Math.random();
+    const type = r < 0.14 ? 'leaf' : (r < 0.62 ? 'foam' : 'glint');
+    const p = {
+      type,
+      x: spawnAnywhere ? Math.random() * W : -30 - Math.random() * 60,
+      yBase: H * (0.62 + Math.random() * 0.26),      // 溪帶：hero 下方
+      seed: Math.random() * TAU,
+      phase: Math.random() * TAU,
+      bobSpeed: 0.010 + Math.random() * 0.018,       // 浮沉
+      bobAmp: 1.5 + Math.random() * 3.5,
+      vx: 0.30 + Math.random() * 0.55                // 順流（向右）
     };
+    if (type === 'leaf'){
+      const pal = leafPalette[(Math.random() * leafPalette.length) | 0];
+      p.size = 8 + Math.random() * 8;
+      p.c1 = pal[0]; p.c2 = pal[1];
+      p.rot = Math.random() * TAU;
+      p.vrot = (Math.random() - 0.5) * 0.012;
+      p.flip = Math.random() * TAU;
+      p.vflip = 0.006 + Math.random() * 0.012;
+      p.alpha = 0.55 + Math.random() * 0.3;
+      p.vx *= 0.9;
+    } else if (type === 'foam'){
+      p.size = 1.8 + Math.random() * 2.6;
+      p.alpha = 0.3 + Math.random() * 0.3;
+      p.vx *= 1.25;
+    } else {                                          // glint 波光
+      p.size = 1.4 + Math.random() * 1.8;
+      p.tilt = (Math.random() - 0.5) * 0.5;
+      p.alpha = 0.4 + Math.random() * 0.35;
+      p.vx *= 0.7;
+    }
+    return p;
   }
-  function drawPetal(p){            // 青葉（葉片，沿用花瓣物理，僅改葉形）
+  function pathY(p){ // 沿溪帶蜿蜒 + 輕微浮沉
+    return p.yBase + Math.sin(p.x * 0.004 + p.seed) * 12 + Math.sin(p.phase) * p.bobAmp;
+  }
+
+  function drawLeaf(p, y){          // 浮在水面的青葉（翻轉幅度小、帶水影）
     const s = p.size;
-    const squish = Math.abs(Math.cos(p.flip));
+    const squish = 0.55 + 0.45 * Math.abs(Math.cos(p.flip));
     ctx.save();
-    ctx.translate(p.x, p.y);
+    ctx.globalAlpha = p.alpha * 0.16;
+    ctx.fillStyle = '#31463f';
+    ctx.beginPath();
+    ctx.ellipse(p.x + s * 0.2, y + s * 0.7, s * 0.85, s * 0.2, 0, 0, TAU);
+    ctx.fill();
+    ctx.restore();
+    ctx.save();
+    ctx.translate(p.x, y);
     ctx.rotate(p.rot);
-    ctx.scale(1, 0.35 + 0.65 * squish);
-    ctx.globalAlpha = p.alpha * (0.5 + 0.5 * squish);
+    ctx.scale(1, squish);
+    ctx.globalAlpha = p.alpha;
     const g = ctx.createLinearGradient(0, -s, 0, s);
     g.addColorStop(0, p.c1); g.addColorStop(1, p.c2);
     ctx.fillStyle = g;
-    // 葉形：上下皆尖的柳葉／楓葉單片
     ctx.beginPath();
     ctx.moveTo(0, -s * 0.98);
-    ctx.bezierCurveTo( s*0.52, -s*0.44,  s*0.5, s*0.46,  0, s*0.98);
-    ctx.bezierCurveTo(-s*0.5, s*0.46, -s*0.52, -s*0.44, 0, -s*0.98);
+    ctx.bezierCurveTo( s * 0.52, -s * 0.44,  s * 0.5, s * 0.46,  0, s * 0.98);
+    ctx.bezierCurveTo(-s * 0.5,  s * 0.46, -s * 0.52, -s * 0.44, 0, -s * 0.98);
     ctx.closePath();
     ctx.fill();
-    // 葉脈：中肋 + 兩側脈
     ctx.globalAlpha *= 0.42;
     ctx.strokeStyle = p.c2;
     ctx.lineWidth = Math.max(0.5, s * 0.05);
@@ -671,37 +704,68 @@
     ctx.stroke();
     ctx.restore();
   }
+  function drawFoam(p, y){          // 白色水沫（軟點，明滅呼吸）
+    ctx.save();
+    ctx.globalAlpha = p.alpha * (0.65 + 0.35 * Math.sin(p.phase * 1.7 + p.seed));
+    const rr = p.size * 2.2;
+    const g = ctx.createRadialGradient(p.x, y, 0, p.x, y, rr);
+    g.addColorStop(0, 'rgba(252,253,250,0.95)');
+    g.addColorStop(0.55, 'rgba(154,183,178,0.30)');
+    g.addColorStop(1, 'rgba(154,183,178,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(p.x, y, rr, 0, TAU); ctx.fill();
+    ctx.restore();
+  }
+  function drawGlint(p, y){         // 細碎波光（白光壓在波影上）
+    const tw = 0.2 + 0.8 * Math.abs(Math.sin(p.phase * 1.3 + p.seed));
+    ctx.save();
+    ctx.translate(p.x, y);
+    ctx.rotate(p.tilt);
+    ctx.globalAlpha = p.alpha * tw;
+    ctx.fillStyle = 'rgba(90,122,138,0.55)';
+    ctx.beginPath(); ctx.ellipse(0, 1.2, p.size * 3.1, p.size * 0.62, 0, 0, TAU); ctx.fill();
+    ctx.fillStyle = '#fbfdf9';
+    ctx.beginPath(); ctx.ellipse(0, 0, p.size * 2.6, p.size * 0.45, 0, 0, TAU); ctx.fill();
+    ctx.restore();
+  }
 
   let scrollBoost = 0, lastScrollY = window.scrollY;
   window.addEventListener('scroll', () => {
     const dy = Math.abs(window.scrollY - lastScrollY);
     lastScrollY = window.scrollY;
-    scrollBoost = Math.min(3.2, scrollBoost + dy * 0.006);
+    scrollBoost = Math.min(2.4, scrollBoost + dy * 0.005);
   }, { passive:true });
 
   let windPhase = 0, raf;
   function frame(){
     ctx.clearRect(0, 0, W, H);
     windPhase += 0.0016;
-    const wind = Math.sin(windPhase) * 0.5 + Math.sin(windPhase * 2.3) * 0.22;
+    const wind = Math.sin(windPhase) * 0.12 + Math.sin(windPhase * 2.3) * 0.05; // 流速微變
     scrollBoost *= 0.94;
-    for (const p of petals){
-      p.phase += p.swaySpeed;
-      p.flip  += p.vflip;
-      p.rot   += p.vrot + Math.sin(p.phase) * 0.006;
-      p.x += p.vx + Math.sin(p.phase) * p.sway * 0.3 + wind;
-      p.y += p.vy * (1 + scrollBoost);
-      if (p.y - p.size > H){ Object.assign(p, makePetal(false)); p.y = -20; }
-      if (p.x < -30) p.x = W + 20;
-      else if (p.x > W + 30) p.x = -20;
-      drawPetal(p);
+    for (const p of drift){
+      p.phase += p.bobSpeed;
+      if (p.type === 'leaf'){ p.flip += p.vflip; p.rot += p.vrot + Math.sin(p.phase) * 0.003; }
+      p.x += (p.vx + wind) * (1 + scrollBoost * 0.5);      // 順流向右，捲動時流速微升
+      if (p.x - 40 > W) Object.assign(p, makeDrifter(false));
+      const y = pathY(p);
+      if (p.type === 'leaf') drawLeaf(p, y);
+      else if (p.type === 'foam') drawFoam(p, y);
+      else drawGlint(p, y);
     }
     raf = requestAnimationFrame(frame);
   }
   function start(){
     resize();
     if (!reduceMotion){ cancelAnimationFrame(raf); frame(); }
-    else { ctx.clearRect(0,0,W,H); for (const p of petals.slice(0, 8)){ p.y = Math.random()*H; drawPetal(p); } }
+    else {
+      ctx.clearRect(0, 0, W, H);
+      for (const p of drift.slice(0, 10)){
+        const y = pathY(p);
+        if (p.type === 'leaf') drawLeaf(p, y);
+        else if (p.type === 'foam') drawFoam(p, y);
+        else drawGlint(p, y);
+      }
+    }
   }
   let rt;
   window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(start, 180); }, { passive:true });
@@ -713,12 +777,12 @@
     else if (!reduceMotion) frame();
   });
 
-  /* 墨枝視差 */
-  const branch = document.getElementById('branch');
+  /* 溪流視差（水面隨捲動緩緩滑走）*/
+  const stream = document.getElementById('stream');
   let ticking = false;
   const parallax = () => {
     const y = window.scrollY;
-    if (branch) branch.style.transform = `translate3d(${y * 0.045}px, ${y * 0.14}px, 0) rotate(${y * 0.004}deg)`;
+    if (stream) stream.style.transform = `translate3d(${y * 0.035}px, ${y * -0.02}px, 0)`;
     ticking = false;
   };
   window.addEventListener('scroll', () => {
