@@ -312,7 +312,10 @@
         + `<div class="meta"><span>${sr.place}</span><span>${photos.length} frames</span></div>`
         + `<h3>${sr.jp}</h3>`
         + `<p class="desc">${sr.desc}</p>`;
-      card.addEventListener('click', () => openBook(sr.id, 0));
+      card.addEventListener('click', () => {
+        if (sr.id === 'harugasumi') { location.href = 'photography-spring.html'; return; }
+        openBook(sr.id, 0);
+      });
       grid.appendChild(card);
       i++;
     });
