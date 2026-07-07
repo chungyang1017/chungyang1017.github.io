@@ -623,11 +623,23 @@ footer .sep{ opacity:.4; margin:0 .55em; }
   var ctx = canvas.getContext("2d");
   var msgEl = document.getElementById("msg");
 
+  /* 自然感四要素：
+     ① 觸點注入＝高斯壓痕（柔和鐘形、先下陷再回彈），不是平頂圓盤尖刺
+     ② 阻尼 0.985＝漣漪約 2–4 秒自然消散；固定 60Hz 模擬步長，高更新率螢幕衰減一致
+     ③ 拖曳＝沿移動路徑連續注入小擾動、強度隨速度（像手指劃過水面）
+     ④ 渲染＝次像素雙線性折射＋斜向光影、亮度夾限防過曝，波紋圓潤無鋸齒 */
   var CONFIG = {
     SIM_MAX: (window.innerWidth < 760 ? 260 : 380),
-    DAMPING: 0.96, REFRACT: 1.5, RADIUS: 3,
-    S_CLICK: 6.0, S_DRAG: 2.4, S_IDLE: 3.4,
-    IDLE_MIN: 0.6, IDLE_MAX: 1.6
+    DAMPING: 0.985,                  // 波紋壽命（原 0.96 一秒即死）
+    REFRACT: 2.0,                    // 折射位移倍率（次像素取樣）
+    SHADE:   0.018,                  // 波面明暗強度
+    LUM_MIN: 0.80, LUM_MAX: 1.30,    // 亮度夾限：高光不過曝
+    STEP_MS: 1000/60,                // 固定模擬步長
+    CLICK_AMP: -12, CLICK_SIG: 2.6,  // 點觸：較深較寬的壓痕
+    DRAG_AMP: -2.2, DRAG_VEL: -1.4, DRAG_MAX: -7, DRAG_SIG: 1.7, // 拖曳（隨速度加深）
+    RAIN_AMP: -5,  RAIN_SIG: 2.0,    // 偶落雨滴（環境生命感，幅度小不搶戲）
+    RAIN_MIN: 3,   RAIN_MAX: 8,      // 3–8 秒一滴
+    QUIET_MS: 2500                   // 互動後隔這麼久才恢復落雨
   };
 
   var W=0,H=0, sw=0,sh=0, cur=null,prev=null;
@@ -641,6 +653,8 @@ footer .sep{ opacity:.4; margin:0 .55em; }
   function resize(){
     W = window.innerWidth; H = window.innerHeight;
     canvas.width = W; canvas.height = H;
+    ctx.imageSmoothingEnabled = true;
+    try{ ctx.imageSmoothingQuality = "high"; }catch(e){}
     var ratio = Math.min(1, CONFIG.SIM_MAX / Math.max(W,H));
     sw = Math.max(2, Math.round(W*ratio));
     sh = Math.max(2, Math.round(H*ratio));
@@ -661,21 +675,24 @@ footer .sep{ opacity:.4; margin:0 .55em; }
     c.drawImage(image, (w-dw)/2, (h-dh)/2, dw, dh);
   }
 
-  function disturbSim(sx, sy, strength){
-    var r=CONFIG.RADIUS;
+  /* 高斯壓痕：柔和鐘形注入（sigma 單位＝模擬格；amp 負值＝水面先下陷） */
+  function splashSim(sx, sy, amp, sigma){
+    var r = Math.max(2, Math.ceil(sigma*2.5));
+    var inv = 1/(2*sigma*sigma);
     for(var y=-r;y<=r;y++){
       var yy=sy+y; if(yy<1||yy>=sh-1) continue;
+      var row=yy*sw;
       for(var x=-r;x<=r;x++){
         var xx=sx+x; if(xx<1||xx>=sw-1) continue;
-        if(x*x+y*y> r*r) continue;
-        prev[yy*sw+xx] += strength;
+        var g = Math.exp(-(x*x+y*y)*inv);
+        if(g<0.02) continue;
+        prev[row+xx] += amp*g;
       }
     }
   }
-  function disturb(dispX, dispY, strength){
+  function splash(dispX, dispY, amp, sigma){
     if(!ready) return;
-    var sx=Math.round(dispX/W*sw), sy=Math.round(dispY/H*sh);
-    disturbSim(sx, sy, strength);
+    splashSim(Math.round(dispX/W*sw), Math.round(dispY/H*sh), amp, sigma);
     lastActivity=now();
   }
 
@@ -691,69 +708,96 @@ footer .sep{ opacity:.4; margin:0 .55em; }
     }
     var t=cur; cur=prev; prev=t;
   }
+
+  /* 渲染：中央差分梯度 → 次像素雙線性折射 ＋ 斜向光影（防鋸齒、防過曝） */
   function render(){
-    var P=prev, s=src.data, o=out.data, w=sw, k=CONFIG.REFRACT;
-    for(var y=0;y<sh;y++){
+    var P=prev, s=src.data, o=out.data, w=sw, h=sh;
+    var k=CONFIG.REFRACT, shd=CONFIG.SHADE, lmin=CONFIG.LUM_MIN, lmax=CONFIG.LUM_MAX;
+    var wm=w-1.001, hm=h-1.001, w4=w<<2;
+    for(var y=0;y<h;y++){
+      var ymw=(y>0?y-1:y)*w, ypw=(y<h-1?y+1:y)*w;
       for(var x=0;x<w;x++){
         var i=y*w+x;
-        var xl = x>0 ? P[i-1] : P[i];
-        var xr = x<w-1 ? P[i+1] : P[i];
-        var yu = y>0 ? P[i-w] : P[i];
-        var yd = y<sh-1 ? P[i+w] : P[i];
-        var dx = (xl-xr)*k, dy=(yu-yd)*k;
-        var sx = x + (dx|0), sy = y + (dy|0);
-        if(sx<0)sx=0; else if(sx>=w)sx=w-1;
-        if(sy<0)sy=0; else if(sy>=sh)sy=sh-1;
-        var si=(sy*w+sx)<<2, oi=i<<2;
-        var lum = 1 + (xl-xr)*0.02;
-        if(lum<0.75)lum=0.75; else if(lum>1.4)lum=1.4;
-        var r=s[si]*lum, g=s[si+1]*lum, b=s[si+2]*lum;
-        o[oi]  = r>255?255:(r<0?0:r);
-        o[oi+1]= g>255?255:(g<0?0:g);
-        o[oi+2]= b>255?255:(b<0?0:b);
+        var gx=(x>0?P[i-1]:P[i]) - (x<w-1?P[i+1]:P[i]);
+        var gy=P[ymw+x] - P[ypw+x];
+        var fx=x+gx*k, fy=y+gy*k;
+        if(fx<0)fx=0; else if(fx>wm)fx=wm;
+        if(fy<0)fy=0; else if(fy>hm)fy=hm;
+        var x0=fx|0, y0=fy|0, tx=fx-x0, ty=fy-y0;
+        var i00=(y0*w+x0)<<2, i01=i00+w4;
+        var w00=(1-tx)*(1-ty), w10=tx*(1-ty), w01=(1-tx)*ty, w11=tx*ty;
+        var lum=1+(gx+gy)*shd;
+        if(lum<lmin)lum=lmin; else if(lum>lmax)lum=lmax;
+        var oi=i<<2;
+        var r=(s[i00]*w00+s[i00+4]*w10+s[i01]*w01+s[i01+4]*w11)*lum;
+        var g=(s[i00+1]*w00+s[i00+5]*w10+s[i01+1]*w01+s[i01+5]*w11)*lum;
+        var b=(s[i00+2]*w00+s[i00+6]*w10+s[i01+2]*w01+s[i01+6]*w11)*lum;
+        o[oi]  = r>255?255:r;
+        o[oi+1]= g>255?255:g;
+        o[oi+2]= b>255?255:b;
         o[oi+3]= 255;
       }
     }
     bufCtx.putImageData(out,0,0);
-    ctx.imageSmoothingEnabled = true;
     ctx.drawImage(buf, 0,0,sw,sh, 0,0,W,H);
   }
 
-  function loop(){
+  /* 主迴圈：固定步長模擬（60/120Hz 螢幕衰減一致；無步進的幀不重繪省電） */
+  var lastT=0, acc=0;
+  function loop(ts){
+    raf = requestAnimationFrame(loop);
+    if(!lastT) lastT=ts;
+    var dt=ts-lastT; lastT=ts;
+    if(dt>100) dt=100;
+    acc+=dt;
     var t=now();
     if(!reduce && t>=nextIdle){
-      if(t-lastActivity>500){
-        disturbSim(2+((Math.random()*(sw-4))|0), 2+((Math.random()*(sh-4))|0), CONFIG.S_IDLE);
+      if(t-lastActivity>CONFIG.QUIET_MS){
+        splashSim(((sw*(0.08+Math.random()*0.84))|0), ((sh*(0.08+Math.random()*0.84))|0), CONFIG.RAIN_AMP, CONFIG.RAIN_SIG);
       }
-      nextIdle = t + (CONFIG.IDLE_MIN + Math.random()*(CONFIG.IDLE_MAX-CONFIG.IDLE_MIN))*1000;
+      nextIdle = t + (CONFIG.RAIN_MIN + Math.random()*(CONFIG.RAIN_MAX-CONFIG.RAIN_MIN))*1000;
     }
-    step(); render();
+    var n=0;
+    while(acc>=CONFIG.STEP_MS && n<3){ step(); acc-=CONFIG.STEP_MS; n++; }
+    if(acc>CONFIG.STEP_MS) acc=CONFIG.STEP_MS;
+    if(n>0 || !started) render();
     if(!started){ started=true; msgEl.style.opacity="0"; }
-    raf = requestAnimationFrame(loop);
   }
   function seedOpening(){
-    for(var n=0;n<9;n++){
-      disturbSim(2+((Math.random()*(sw-4))|0), 2+((Math.random()*(sh-4))|0), CONFIG.S_IDLE);
+    for(var n=0;n<4;n++){
+      splashSim(((sw*(0.15+Math.random()*0.7))|0), ((sh*(0.15+Math.random()*0.7))|0), CONFIG.RAIN_AMP*1.3, CONFIG.RAIN_SIG+0.5);
     }
   }
   function start(){
     resize(); ready=true; seedOpening();
-    lastActivity=now(); nextIdle=now()+400;
+    lastActivity=now()-CONFIG.QUIET_MS; nextIdle=now()+1200; lastT=0; acc=0;
     cancelAnimationFrame(raf);
     if(reduce){ for(var k=0;k<3;k++) step(); render(); msgEl.style.opacity="0"; }
-    else { loop(); }
+    else { raf=requestAnimationFrame(loop); }
   }
 
   /* ---- 互動：在 window 監聽（不捕捉指標，才不擋捲動與導覽點擊） ---- */
-  var dragging=false, downX=0, downY=0, moved=false;
+  var dragging=false, lastX=0, lastY=0, lastMoveT=0;
   window.addEventListener("pointerdown", function(e){
-    dragging=true; moved=false; downX=e.clientX; downY=e.clientY;
-    disturb(e.clientX, e.clientY, CONFIG.S_CLICK);
+    dragging=true; lastX=e.clientX; lastY=e.clientY; lastMoveT=now();
+    splash(e.clientX, e.clientY, CONFIG.CLICK_AMP, CONFIG.CLICK_SIG);
   }, {passive:true});
+  /* 拖曳＝手指劃過水面：沿路徑內插連續注入，快劃痕深、慢劃痕淺 */
   window.addEventListener("pointermove", function(e){
-    if(!dragging) return;
-    if(Math.abs(e.clientX-downX)+Math.abs(e.clientY-downY) > 4) moved=true;
-    disturb(e.clientX, e.clientY, CONFIG.S_DRAG);
+    if(!dragging || !ready) return;
+    var x=e.clientX, y=e.clientY, dx=x-lastX, dy=y-lastY;
+    var dist=Math.sqrt(dx*dx+dy*dy);
+    if(dist<3) return;
+    var t=now(), dt=t-lastMoveT; if(dt<1)dt=1;
+    var amp=CONFIG.DRAG_AMP + (dist/dt)*CONFIG.DRAG_VEL;
+    if(amp<CONFIG.DRAG_MAX) amp=CONFIG.DRAG_MAX;
+    var stepPx=Math.max(3, (W/sw)*1.6);
+    var nPts=Math.min(20, Math.max(1, Math.round(dist/stepPx)));
+    for(var j=1;j<=nPts;j++){
+      var f=j/nPts;
+      splash(lastX+dx*f, lastY+dy*f, amp, CONFIG.DRAG_SIG);
+    }
+    lastX=x; lastY=y; lastMoveT=t;
   }, {passive:true});
   function endDrag(){ dragging=false; }
   window.addEventListener("pointerup", endDrag, {passive:true});
@@ -761,16 +805,16 @@ footer .sep{ opacity:.4; margin:0 .55em; }
   // 右鍵：擋掉選單、盪一波
   window.addEventListener("contextmenu", function(e){
     e.preventDefault();
-    disturb(e.clientX, e.clientY, CONFIG.S_CLICK);
+    splash(e.clientX, e.clientY, CONFIG.CLICK_AMP, CONFIG.CLICK_SIG);
   });
-  // 捲動：水面隨之輕盪
+  // 捲動：水面隨之輕盪（幅度小，只是被風拂過）
   var lastSY = window.scrollY||0, accum=0;
   window.addEventListener("scroll", function(){
     var y = window.scrollY||0, dy=Math.abs(y-lastSY); lastSY=y;
     accum += dy;
-    if(accum > 70){
+    if(accum > 90){
       accum = 0;
-      if(ready && !reduce) disturb(Math.random()*W, H*(0.28+Math.random()*0.5), CONFIG.S_DRAG*0.9);
+      if(ready && !reduce) splash(Math.random()*W, H*(0.28+Math.random()*0.5), CONFIG.DRAG_MAX*0.4, CONFIG.DRAG_SIG);
     }
   }, {passive:true});
 
@@ -778,8 +822,14 @@ footer .sep{ opacity:.4; margin:0 .55em; }
   window.addEventListener("resize", function(){ clearTimeout(rt); rt=setTimeout(start,160); }, {passive:true});
   document.addEventListener("visibilitychange", function(){
     if(document.hidden){ cancelAnimationFrame(raf); }
-    else if(ready && !reduce){ lastActivity=now(); nextIdle=now()+300; cancelAnimationFrame(raf); loop(); }
+    else if(ready && !reduce){ lastActivity=now(); nextIdle=now()+1500; lastT=0; acc=0; cancelAnimationFrame(raf); raf=requestAnimationFrame(loop); }
   });
+
+  /* 除錯掛鉤（僅供自動化驗證：讀取場能量與峰值，不影響行為） */
+  window.__water = {
+    energy:function(){ if(!prev) return 0; var e=0; for(var i=0;i<prev.length;i++) e+=prev[i]*prev[i]; return e; },
+    peak:function(){ if(!prev) return 0; var m=0; for(var i=0;i<prev.length;i++){ var a=prev[i]<0?-prev[i]:prev[i]; if(a>m)m=a; } return m; }
+  };
 
   img.onload = start;
   img.onerror = function(){ if(msgEl) msgEl.textContent = "底圖載入失敗"; };
