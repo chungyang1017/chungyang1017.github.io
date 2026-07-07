@@ -99,7 +99,7 @@
   .course-title{font-family:var(--display);font-size:30px;font-weight:400;margin:10px 0 2px;letter-spacing:.05em}
   .course-en{font-family:var(--latin);font-size:11.5px;letter-spacing:.16em;color:var(--ink-quiet);text-transform:uppercase}
   .course-meta{text-align:right;font-size:12px;color:var(--ink-soft);line-height:1.85;font-family:var(--latin);letter-spacing:.06em}
-  .course-meta b{font-family:var(--display);font-size:15px;color:var(--ink)}
+  .course-meta b{font-family:var(--display);font-size:15px;color:var(--ink);display:block;margin-bottom:3px}
   .course-desc{font-size:14px;line-height:1.95;color:var(--ink-soft);text-wrap:pretty}
   .course-desc p{margin:0 0 1em}
   .blk{margin-top:26px}
@@ -122,6 +122,14 @@
   .wk .wt .tag{font-family:var(--latin);font-size:9px;letter-spacing:.14em;color:var(--accent);margin-left:6px;white-space:nowrap}
 
   /* reveal */
+  .term-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px}
+  .term-tab{font-family:var(--display);font-size:15px;letter-spacing:.05em;padding:12px 22px;border:1px solid var(--rule);background:var(--paper);color:var(--ink-soft);cursor:pointer;transition:.2s}
+  .term-tab:hover{border-color:var(--ink)}
+  .term-tab.is-on{background:var(--ink);color:var(--sand);border-color:var(--ink)}
+  .term-panel{display:none}
+  .term-panel.is-on{display:block}
+  .course-tba{font-size:13.5px;line-height:1.9;color:var(--ink-quiet);font-style:italic;margin-top:4px}
+
   .reveal{opacity:1}
   .js-anim .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.19,1,.22,1),transform .8s cubic-bezier(.19,1,.22,1)}
   .js-anim .reveal.in{opacity:1;transform:none}
@@ -182,7 +190,7 @@
 <section class="scroll-section samon">
   <div class="stats reveal">
     <div><div class="n">8</div><div class="l">學期・東吳</div><div class="le">Semesters</div></div>
-    <div><div class="n">2</div><div class="l">開設課程</div><div class="le">Courses</div></div>
+    <div><div class="n">4</div><div class="l">開設課程</div><div class="le">Courses</div></div>
     <div><div class="n">2</div><div class="l">本學期</div><div class="le">This Term</div></div>
     <div><div class="n">3</div><div class="l">減授獎勵</div><div class="le">Waivers</div></div>
   </div>
@@ -191,12 +199,47 @@
     <div class="meta-col reveal">
       <div class="num">参の壱</div>
       <div class="big">授</div>
-      <h2>本學期課程</h2>
-      <div class="sub">Courses · 2026 Spring</div>
-      <p>東吳大學社會學系。一門碩士班、一門大學部——從研究設計到福利體制。</p>
+      <h2>課程</h2>
+      <div class="sub">Courses · By Semester</div>
+      <p>東吳大學社會學系。依學期整理——點選學期，看該學期開設的課。</p>
     </div>
 
-    <div class="course-wrap">
+    <div class="term-tabs reveal">
+      <button class="term-tab is-on" data-term="term-1151">115 學年度・第一學期</button>
+      <button class="term-tab" data-term="term-1142">114 學年度・第二學期</button>
+    </div>
+
+    <!-- 115 學年度第一學期 -->
+    <div class="term-panel is-on" id="term-1151">
+      <div class="course-wrap">
+        <article class="course">
+          <div class="course-head">
+            <div>
+              <div class="course-tag">大學部 · Undergraduate</div>
+              <h3 class="course-title">社會政策</h3>
+              <div class="course-en">Social Policy</div>
+            </div>
+            <div class="course-meta"><b>大學部</b>115 學年度<br>第一學期</div>
+          </div>
+          <p class="course-tba">課程大綱籌備中——課程描述、課程目標、指定書目與 18 週大綱，將於開學前更新。</p>
+        </article>
+        <article class="course">
+          <div class="course-head">
+            <div>
+              <div class="course-tag">研究所 · Graduate</div>
+              <h3 class="course-title">生命歷程與社會政策</h3>
+              <div class="course-en">Life Course &amp; Social Policy</div>
+            </div>
+            <div class="course-meta"><b>碩士班</b>115 學年度<br>第一學期</div>
+          </div>
+          <p class="course-tba">課程大綱籌備中——課程描述、課程目標、指定書目與 18 週大綱，將於開學前更新。</p>
+        </article>
+      </div>
+    </div>
+
+    <!-- 114 學年度第二學期 -->
+    <div class="term-panel" id="term-1142">
+      <div class="course-wrap">
       <!-- 社會研究法 -->
       <article class="course reveal">
         <div class="course-head">
@@ -352,6 +395,7 @@
           </div>
         </div>
       </article>
+      </div>
     </div>
   </div>
 </section>
@@ -360,6 +404,24 @@
   <span>葉崇揚 · YEH CHUNG-YANG</span>
   <span>教學 · Teaching</span>
 </footer>
+
+<!-- 學期切換 -->
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.term-tab');
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      var id=t.getAttribute('data-term');
+      tabs.forEach(function(x){ x.classList.toggle('is-on', x===t); });
+      document.querySelectorAll('.term-panel').forEach(function(p){
+        var on=(p.id===id);
+        p.classList.toggle('is-on', on);
+        if(on) p.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
+      });
+    });
+  });
+})();
+</script>
 
 <!-- reveal 揭示（漸進增強：IO 為主，scroll／計時器備援） -->
 <script>
