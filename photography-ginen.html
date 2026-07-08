@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gin-en · Silver Halide — Chung-Yang Yeh</title>
+<meta name="description" content="Gin-en · scanned positives — film grain, light, the warmth of silver halide. An overview of Chung-Yang Yeh's film photographs in a warm silver-print, contact-sheet style.">
+<link rel="alternate" hreflang="zh-Hant" href="photography-ginen-zh.html">
+<link rel="alternate" hreflang="en" href="photography-ginen.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Serif+TC:wght@300;400;500;600&family=Yuji+Syuku&family=Klee+One:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ================================================================
+     銀塩 · 底片總覽（銀鹽暖調・暗房）
+     骨幹＝攝影頁設計語言（:root / 字體 / nav / lightbox / samon）
+     頂部＝暗房 hero（暖米白紙面 + 斜射暖光束 + 晾掛正片條 + 浮塵 canvas）
+     全頁＝極細底片顆粒 grain overlay；照片牆＝接觸印樣 contact sheet
+     ================================================================ */
+  :root{
+    --sand:#ece4d1; --sand-light:#f5eedd; --paper:#fdfbf4;
+    --moss:#3d5a3f; --accent:#c43838; --water:#5a7a8a;
+    --ink:#232019; --ink-soft:rgba(35,32,25,.72); --ink-quiet:rgba(35,32,25,.5);
+    --rule:rgba(35,32,25,.12);
+    --serif:"Shippori Mincho","Noto Serif JP","Noto Serif TC",serif;
+    --display:"Yuji Syuku",serif;
+    --latin:"Inter",sans-serif;
+    --kana:"Klee One",serif;
+    /* 銀塩補充色（對應春天 --sakura／--sakura-pale：銀灰＋暗房琥珀）*/
+    --gin:#6f695b; --gin-pale:#b3ac9c;
+    --amber:#b9812f; --amber-deep:#96621f;
+    --sumi:#2b2620; --sumi-soft:#4c4438; --sumi-faint:#716a58;
+    --hair:rgba(35,32,25,.12);
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--sand); color:var(--ink);
+    font-family:var(--serif); font-feature-settings:"palt";
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    position:relative; min-height:100vh;
+  }
+  body.is-book-open{overflow:hidden}
+  a{color:inherit}
+
+  /* ── 暖米白紙面（固定全頁底層：右上琥珀微暈＝光束源，左下銀灰）── */
+  .paper-grain{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(120% 90% at 82% -8%, rgba(202,142,54,.11), transparent 46%),
+      radial-gradient(130% 100% at 10% 108%, rgba(111,105,91,.09), transparent 50%),
+      var(--sand);
+  }
+  .paper-grain::before{
+    content:""; position:absolute; inset:0;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+    opacity:.05; mix-blend-mode:multiply;
+  }
+  .paper-grain::after{
+    content:""; position:absolute; inset:0;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23f)' opacity='0.7'/></svg>");
+    opacity:.045; mix-blend-mode:multiply;
+  }
+
+  /* ── 底片顆粒 grain overlay（固定全頁最上層＝連照片一起罩住；
+        比其他頁明顯一點點、但不干擾閱讀。lightbox z100 在其上不受影響）── */
+  .film-grain{
+    position:fixed; inset:0; z-index:60; pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23g)' opacity='0.55'/></svg>");
+    opacity:.09; mix-blend-mode:multiply;
+  }
+
+  /* ── 浮塵 canvas（固定全頁，內容之下、極慢極稀疏的暖白光點）── */
+  #dust{ position:fixed; inset:0; z-index:1; pointer-events:none; }
+
+  /* 內容層（在浮塵之上；浮塵從透明處透出）*/
+  .page{ position:relative; z-index:2; }
+
+  /* ── 砂紋（水波紋理，沿用攝影頁、改銀灰）── */
+  .samon{position:relative}
+  .samon::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.07;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='60'><g fill='none' stroke='%236f695b' stroke-width='.6'><path d='M 0 30 Q 50 22 100 30 T 200 30'/><path d='M 0 36 Q 50 28 100 36 T 200 36'/><path d='M 0 42 Q 50 34 100 42 T 200 42'/><path d='M 0 48 Q 50 40 100 48 T 200 48'/></g></svg>");
+  }
+
+  /* ── 頂部導覽（沿用攝影頁）── */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--sand) 90%,transparent);
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 48px;border-bottom:1px solid var(--rule);
+  }
+  .nav .brand{display:flex;gap:16px;align-items:baseline}
+  .nav .seal{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:42px;height:42px;background:var(--accent);color:var(--sand);
+    font-family:var(--display);font-size:20px;
+    transform:rotate(-3deg);box-shadow:2px 2px 0 rgba(196,56,56,.25);
+    text-decoration:none;
+  }
+  .nav .name{font-family:var(--display);font-size:18px;letter-spacing:.1em;line-height:1;text-decoration:none}
+  .nav .name small{display:block;font-family:var(--latin);font-size:9px;letter-spacing:.3em;color:var(--ink-quiet);margin-top:4px}
+  .nav nav{display:flex;gap:24px;font-size:16px;letter-spacing:.2em}
+  .nav nav a{color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:1px solid transparent;transition:.2s}
+  .nav nav a:hover{border-bottom-color:var(--ink)}
+  .nav nav a.is-active{color:var(--accent);border-bottom-color:var(--accent)}
+  .nav .lang{border-left:1px solid var(--rule);padding-left:24px;font-family:var(--latin);font-size:16px;letter-spacing:.2em;color:var(--ink-soft);text-decoration:none}
+
+  /* ================= 暗房 HERO ================= */
+  .hero{
+    position:relative; min-height:100svh;
+    display:grid; grid-template-columns:1fr; align-items:center;
+    padding:clamp(80px,14vh,140px) 0 clamp(56px,10vh,88px);
+    overflow:hidden;
+  }
+  .hero .wrap{ position:relative; z-index:3; width:min(1180px,90vw); margin-inline:auto; }
+
+  /* 暗房場景（SVG）— hero 背景：右上斜射的暖光束＋晾掛的正片條 */
+  .darkroom{
+    position:absolute; z-index:1; pointer-events:none;
+    inset:0; width:100%; height:100%;
+    will-change:transform;
+  }
+  /* 光束：緩慢呼吸（reduced-motion 由全域規則停用）*/
+  .beam-breathe{ animation:beamPulse 9s ease-in-out infinite; }
+  @keyframes beamPulse{ 0%,100%{ opacity:.72 } 50%{ opacity:1 } }
+  /* 正片條：垂掛微擺 */
+  .fstrip{ transform-box:fill-box; transform-origin:50% 0%; animation:filmSway var(--sd,12s) ease-in-out var(--sdel,0s) infinite; }
+  @keyframes filmSway{ 0%,100%{ transform:rotate(.7deg) } 50%{ transform:rotate(-.7deg) } }
+
+  .eyebrow{
+    font-family:var(--latin); font-weight:400;
+    font-size:clamp(11px,1.2vw,13px); letter-spacing:.5em;
+    text-transform:uppercase; color:var(--gin);
+    margin-bottom:clamp(20px,3.2vh,32px);
+    display:flex; align-items:center; gap:1em;
+  }
+  .eyebrow::before{ content:""; width:clamp(26px,4vw,52px); height:1px; background:var(--gin); opacity:.55; }
+
+  .hero h1{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(66px,15vw,176px); line-height:.92;
+    letter-spacing:.06em; color:var(--sumi);
+    margin:0 0 clamp(12px,2vh,22px);
+    position:relative;
+  }
+  .hero h1 .kanji{
+    display:inline-block; position:relative;
+    background:linear-gradient(178deg,var(--sumi) 0%, var(--sumi) 58%, #40382d 100%);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .hero h1 .kanji::after{
+    content:""; position:absolute; z-index:-1;
+    left:-6%; top:2%; width:112%; height:96%;
+    background:radial-gradient(58% 54% at 42% 46%, rgba(43,38,32,.10), transparent 70%);
+    filter:blur(6px);
+  }
+  .hero h1 .romaji{
+    display:block;
+    font-family:var(--latin); font-weight:300;
+    font-size:clamp(13px,2.4vw,22px); letter-spacing:.32em;
+    text-transform:uppercase; color:var(--amber);
+    margin-top:clamp(14px,2vh,22px); margin-left:.28em; text-indent:.32em;
+  }
+
+  .hero-poem{
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(16px,2.1vw,24px); line-height:1.95;
+    color:var(--sumi-soft); max-width:34ch;
+    margin-top:clamp(26px,4.4vh,46px);
+    position:relative; padding-left:clamp(16px,2.4vw,26px);
+  }
+  .hero-poem::before{
+    content:""; position:absolute; left:0; top:.35em; bottom:.35em; width:2px;
+    background:linear-gradient(var(--amber),var(--gin-pale)); opacity:.65;
+  }
+  .hero-poem .en{
+    display:block; font-family:var(--latin); font-weight:300; font-style:italic;
+    font-size:clamp(13px,1.5vw,16px); letter-spacing:.01em;
+    color:var(--sumi-faint); line-height:1.7; margin-top:.7em;
+  }
+
+  /* hero 縦書きの落款（右）*/
+  .hero-mark{
+    position:absolute; z-index:3; pointer-events:none;
+    top:clamp(96px,17vh,180px); right:clamp(16px,3.4vw,46px);
+    writing-mode:vertical-rl; text-orientation:mixed;
+    font-family:var(--display); color:var(--sumi-faint);
+    letter-spacing:.42em; opacity:.55;
+    font-size:clamp(11px,1.35vw,14px);
+  }
+
+  .scroll-cue{
+    position:absolute; z-index:3; left:50%; transform:translateX(-50%);
+    bottom:clamp(22px,4vh,40px);
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    font-family:var(--latin); font-size:10px; letter-spacing:.42em;
+    text-transform:uppercase; color:var(--sumi-faint);
+    animation:floatCue 3.4s var(--ease) infinite;
+  }
+  .scroll-cue .line{ width:1px; height:clamp(30px,6vh,52px); background:linear-gradient(var(--sumi-faint),transparent); }
+  @keyframes floatCue{ 0%,100%{ transform:translate(-50%,0); opacity:.8 } 50%{ transform:translate(-50%,7px); opacity:.4 } }
+
+  /* ================= 照片牆前導 ================= */
+  .wall-head{
+    max-width:1280px; margin:0 auto;
+    padding:clamp(64px,11vh,120px) clamp(22px,4vw,60px) clamp(30px,5vh,52px);
+    border-top:1px solid var(--rule);
+    display:grid; grid-template-columns:auto 1fr; gap:clamp(24px,4vw,60px); align-items:end;
+  }
+  .wall-head .wh-kanji{ font-family:var(--display); font-size:clamp(64px,9vw,120px); line-height:.86; color:var(--sumi); letter-spacing:.04em; }
+  .wall-head .wh-right{ padding-bottom:6px; }
+  .wall-head .wh-sub{ font-family:var(--latin); font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:var(--ink-quiet); margin-bottom:14px; }
+  .wall-head .wh-lede{ font-size:15px; line-height:2; color:var(--ink-soft); max-width:52ch; margin:0; text-wrap:pretty; }
+  .wall-head .wh-lede .accent{ color:var(--amber); font-weight:500; }
+
+  /* ================= 照片牆 masonry（接觸印樣 contact sheet）================= */
+  .wall-wrap{ max-width:1280px; margin:0 auto; padding:0 clamp(22px,4vw,60px) clamp(70px,12vh,120px); position:relative; }
+  .wall{ display:grid; grid-template-columns:repeat(3,1fr); grid-auto-rows:8px; grid-auto-flow:row dense; gap:clamp(14px,1.9vw,24px); }
+
+  .tile{
+    position:relative; display:block; margin:0; padding:0; border:0;
+    font-family:inherit; color:inherit; text-align:left; cursor:zoom-in;
+    overflow:hidden; background:var(--ink); border-radius:2px;
+    grid-row-end:span 30; /* JS 精算前的占位 */
+    opacity:0; transform:translateY(0);
+    transition:opacity .7s var(--ease), transform .5s var(--ease), box-shadow .5s var(--ease);
+  }
+  .tile.in{ opacity:1; }
+  .tile.xpan{ grid-column:1 / -1; }
+  /* 印樣細白內框（contact sheet frame）*/
+  .tile::after{
+    content:""; position:absolute; inset:7px; z-index:1; pointer-events:none;
+    border:1px solid rgba(253,251,244,.55); border-radius:1px;
+  }
+  .tile img{
+    display:block; width:100%; height:100%; object-fit:cover;
+    transition:transform .7s cubic-bezier(.19,1,.22,1), filter .5s var(--ease);
+  }
+  /* shape → 縮圖裁切比例（原圖在 lightbox 完整呈現）*/
+  .tile[data-shape="landscape"]{ aspect-ratio:3/2; }
+  .tile[data-shape="portrait"]{ aspect-ratio:2/3; }
+  .tile[data-shape="square"]{ aspect-ratio:1/1; }
+  .tile[data-shape="xpan"]{ aspect-ratio:64/23; }
+
+  .tile .tveil{ position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(to top, rgba(22,17,10,.6), rgba(22,17,10,0) 44%);
+    opacity:0; transition:opacity .45s var(--ease); }
+  .tile .tlabel{ position:absolute; left:0; right:0; bottom:0; pointer-events:none;
+    padding:14px 16px; display:flex; flex-direction:column; gap:3px; color:var(--sand);
+    opacity:0; transform:translateY(8px); transition:opacity .45s var(--ease), transform .45s var(--ease); }
+  .tile .tlabel .tno{ font-family:var(--latin); font-size:10px; letter-spacing:.22em; opacity:.82; }
+  .tile .tlabel .ttl{ font-family:var(--display); font-size:clamp(16px,1.5vw,20px); letter-spacing:.05em; line-height:1.15; }
+  .tile .tseal{ position:absolute; left:12px; top:12px; width:32px;height:32px;
+    background:var(--accent); color:var(--sand); display:flex;align-items:center;justify-content:center;
+    font-family:var(--display); font-size:14px; transform:rotate(-3deg);
+    opacity:0; transition:opacity .45s var(--ease); z-index:2; }
+  /* 印樣角落編號（film edge code：琥珀小字、常駐）*/
+  .tile .tframe{ position:absolute; right:13px; bottom:11px; z-index:2; pointer-events:none;
+    font-family:var(--latin); font-weight:500; font-size:9px; letter-spacing:.24em;
+    color:rgba(240,196,120,.95); text-shadow:0 1px 3px rgba(22,15,6,.6); }
+  .tile:hover{ transform:translateY(-5px); box-shadow:0 20px 38px rgba(60,44,18,.2); }
+  .tile:hover img{ transform:scale(1.055); }
+  .tile:hover .tveil{ opacity:1; }
+  .tile:hover .tlabel{ opacity:1; transform:none; }
+  .tile:hover .tseal{ opacity:.94; }
+  .tile:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+
+  /* ── footer ── */
+  .foot{ border-top:1px solid var(--rule); padding:44px 60px; display:flex;justify-content:space-between;align-items:center;
+    font-size:12px;letter-spacing:.16em;color:var(--ink-quiet); gap:16px; flex-wrap:wrap; }
+  .foot a{ text-decoration:none; color:var(--ink-soft); font-family:var(--serif); letter-spacing:.1em; transition:color .3s; }
+  .foot a:hover{ color:var(--accent); }
+
+  /* ══ Lightbox（完全沿用攝影頁）══ */
+  .lightbox{ position:fixed;inset:0;z-index:100; background:rgba(15,12,9,.96); display:none;align-items:center;justify-content:center; padding:2rem;cursor:zoom-out; touch-action:pan-y;overscroll-behavior:contain; }
+  .lightbox.is-open{display:flex}
+  .lightbox-figure{ max-width:96vw;max-height:92vh; display:flex;flex-direction:row;align-items:center; gap:2.5rem;cursor:default; }
+  .lb-stage{ position:relative;display:grid;place-items:center; }
+  .lightbox-img{ max-width:70vw;max-height:88vh;object-fit:contain;display:block; will-change:transform; user-select:none;-webkit-user-select:none;-webkit-user-drag:none; }
+  .lb-stage img.lb-abs{ position:absolute;top:50%;left:50%;visibility:hidden; }
+  @keyframes lbCapIn{from{opacity:0}to{opacity:1}}
+  .lightbox-caption{ writing-mode:vertical-rl;text-orientation:mixed; max-height:80vh;color:rgba(232,226,212,.78); display:flex;flex-direction:column; gap:1.6rem;align-items:flex-start;padding:1rem 0; }
+  .lightbox-caption .lb-title{font-family:var(--serif);font-size:14px;letter-spacing:.22em;color:rgba(232,226,212,.5)}
+  .lightbox-caption .lb-title .romaji{font-family:var(--latin);font-style:italic;font-size:12px;color:rgba(232,226,212,.4);letter-spacing:.08em;display:block;margin-top:.5rem;writing-mode:horizontal-tb}
+  .lightbox-caption .lb-haiku-jp{font-family:var(--serif);font-size:1.4rem;line-height:2.4;color:rgba(232,226,212,.95);letter-spacing:.18em}
+  .lightbox-caption .lb-haiku-zh{font-family:var(--serif);font-size:1.05rem;line-height:2.1;color:rgba(232,226,212,.65);letter-spacing:.14em}
+  .lightbox-close,.lightbox-prev,.lightbox-next{ position:absolute;z-index:2;background:rgba(232,226,212,.06); border:1px solid rgba(232,226,212,.18);color:rgba(232,226,212,.9); width:44px;height:44px;font-size:1.5rem;line-height:1; display:flex;align-items:center;justify-content:center;cursor:pointer; transition:background .2s,border-color .2s; }
+  .lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{background:rgba(196,56,56,.25);border-color:rgba(196,56,56,.5)}
+  .lightbox-close{top:1.25rem;right:1.25rem}
+  .lightbox-prev{left:1.25rem;top:50%;transform:translateY(-50%)}
+  .lightbox-next{right:1.25rem;top:50%;transform:translateY(-50%)}
+  .lightbox-counter{position:absolute;z-index:2;bottom:1.5rem;left:50%;transform:translateX(-50%);font-family:var(--latin);font-size:.78rem;letter-spacing:.18em;color:rgba(232,226,212,.55)}
+
+  /* ── reveal（漸進增強）── */
+  .reveal{opacity:1}
+  .js-anim .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .js-anim .reveal.in{opacity:1;transform:none}
+  .js-anim .reveal.d1{transition-delay:.1s}
+  .js-anim .reveal.d2{transition-delay:.22s}
+  .js-anim .reveal.d3{transition-delay:.34s}
+
+  /* ── Mobile（手機扁平化，不複製桌機隱喻）── */
+  @media (max-width:820px){
+    .nav{padding:12px 20px;flex-wrap:wrap;gap:10px}
+    .nav nav{gap:14px;font-size:12px;letter-spacing:.14em;order:3;width:100%;justify-content:space-between}
+    .nav .lang{padding-left:14px}
+    .hero{ min-height:auto; padding:clamp(20px,4vh,40px) 0 clamp(32px,6vh,52px); align-items:start; }
+    .hero h1{ font-size:clamp(76px,30vw,140px); }
+    .hero h1 .romaji{ font-size:clamp(13px,4.4vw,20px); letter-spacing:.26em; }
+    .hero-poem{ font-size:clamp(16px,4.4vw,21px); max-width:26ch; }
+    .darkroom{ opacity:.85; }
+    #hang{ display:none; }  /* 手機不硬縮晾片隱喻：只留斜射暖光束（扁平化）*/
+    .hero-mark{ display:none; }
+    .wall-head{ grid-template-columns:1fr; gap:18px; padding-top:clamp(48px,8vh,72px); }
+    .wall-head .wh-kanji{ font-size:clamp(56px,18vw,96px); }
+    .wall{ grid-template-columns:1fr 1fr; }
+    .tile::after{ inset:5px; }
+    .foot{ padding:32px 22px; flex-direction:column; gap:10px; align-items:flex-start; }
+    .lightbox{padding:1rem}
+    .lightbox-figure{flex-direction:column;gap:1rem}
+    .lightbox-img{max-width:92vw;max-height:65vh}
+    .lightbox-caption{writing-mode:horizontal-tb;flex-direction:column;max-height:none;text-align:center;padding:0;gap:.6rem}
+    .lightbox-caption .lb-haiku-jp{font-size:1.05rem;line-height:1.85;letter-spacing:.1em}
+    .lightbox-prev,.lightbox-next{width:38px;height:38px;font-size:1.2rem}
+  }
+  @media (max-width:520px){
+    .wall{ grid-template-columns:1fr; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    .reveal{opacity:1!important;transform:none!important;transition:none}
+    .tile{opacity:1!important}
+    .tile img,.tile:hover img{transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="paper-grain" aria-hidden="true"></div>
+<canvas id="dust" aria-hidden="true"></canvas>
+<div class="film-grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="brand">
+    <a class="seal" href="index-en.html">葉</a>
+    <a class="name" href="index-en.html">葉崇揚<small>YEH CHUNG-YANG</small></a>
+  </div>
+  <nav>
+    <a href="index-en.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="academic.html">Academic</a>
+    <a href="photography.html" class="is-active">Photography</a>
+    <a href="teaching.html">Teaching</a>
+    <a href="essays.html">Essays</a>
+  </nav>
+  <a class="lang" href="photography-ginen-zh.html">中</a>
+</header>
+
+<main class="page">
+
+  <!-- ============ 暗房 HERO ============ -->
+  <header class="hero" id="hero">
+    <!-- 暗房場景 — 右上斜射的暖光束＋晾掛的正片條（銀塩專屬）-->
+    <svg class="darkroom" id="darkroom" viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMin slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="beamG" x1=".88" y1="0" x2=".26" y2="1">
+          <stop offset="0"   stop-color="#f2c37c" stop-opacity=".5"/>
+          <stop offset=".45" stop-color="#eab369" stop-opacity=".2"/>
+          <stop offset="1"   stop-color="#e9b466" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="beamCore" x1=".88" y1="0" x2=".26" y2="1">
+          <stop offset="0"   stop-color="#fbe3b3" stop-opacity=".6"/>
+          <stop offset=".55" stop-color="#f5cf8d" stop-opacity=".18"/>
+          <stop offset="1"   stop-color="#f5cf8d" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0"  stop-color="#f6d79c" stop-opacity=".55"/>
+          <stop offset="1"  stop-color="#f6d79c" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="beamBlur"><feGaussianBlur stdDeviation="26"/></filter>
+        <filter id="beamBlur2"><feGaussianBlur stdDeviation="11"/></filter>
+        <!-- 正片格：對著光的兩種暖調畫面 -->
+        <linearGradient id="frameA" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"  stop-color="#d9ab62"/>
+          <stop offset=".6" stop-color="#a98a54"/>
+          <stop offset="1"  stop-color="#6f6a5e"/>
+        </linearGradient>
+        <linearGradient id="frameB" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"  stop-color="#b7a887"/>
+          <stop offset=".55" stop-color="#8d8168"/>
+          <stop offset="1"  stop-color="#57503f"/>
+        </linearGradient>
+        <!-- 片孔（sprocket）與畫格 pattern：以各條片自身座標系鋪排 -->
+        <pattern id="sprockets" width="76" height="24" patternUnits="userSpaceOnUse">
+          <rect x="6"  y="8" width="10" height="7" rx="1.6" fill="#efe7d3" opacity=".92"/>
+          <rect x="60" y="8" width="10" height="7" rx="1.6" fill="#efe7d3" opacity=".92"/>
+        </pattern>
+        <pattern id="framesA" width="76" height="56" patternUnits="userSpaceOnUse">
+          <rect x="19" y="6" width="38" height="44" rx="2" fill="url(#frameA)" opacity=".82"/>
+        </pattern>
+        <pattern id="framesB" width="76" height="56" patternUnits="userSpaceOnUse">
+          <rect x="19" y="6" width="38" height="44" rx="2" fill="url(#frameB)" opacity=".82"/>
+        </pattern>
+      </defs>
+
+      <!-- 斜射暖光束（右上 → 左下，緩慢呼吸）-->
+      <g class="beam-breathe">
+        <ellipse cx="1305" cy="-30" rx="300" ry="170" fill="url(#lampGlow)"/>
+        <polygon points="1035,-80 1440,-80 560,980 130,980" fill="url(#beamG)" filter="url(#beamBlur)"/>
+        <polygon points="1185,-80 1330,-80 430,980 250,980" fill="url(#beamCore)" filter="url(#beamBlur2)" opacity=".85"/>
+      </g>
+
+      <!-- 晾片繩 -->
+      <line x1="960" y1="40" x2="1440" y2="22" stroke="#57503f" stroke-width="1.4" opacity=".5"/>
+
+      <!-- 正片條（掛起晾乾，微擺）-->
+      <g id="hang">
+        <!-- 條一：長 -->
+        <g transform="translate(1088 34)">
+          <g class="fstrip" style="--sd:13s">
+            <rect x="26" y="-14" width="24" height="26" rx="2" fill="#8b8578" opacity=".85"/>
+            <rect x="30" y="-14" width="4"  height="26" fill="#a49d8d" opacity=".8"/>
+            <rect x="0" y="8" width="76" height="420" rx="3" fill="#332d24" opacity=".88"/>
+            <rect x="0" y="8" width="76" height="420" fill="url(#sprockets)"/>
+            <rect x="0" y="14" width="76" height="408" fill="url(#framesA)"/>
+          </g>
+        </g>
+        <!-- 條二：短、稍晚相位 -->
+        <g transform="translate(1268 28)">
+          <g class="fstrip" style="--sd:10.5s;--sdel:-4s">
+            <rect x="26" y="-14" width="24" height="26" rx="2" fill="#8b8578" opacity=".85"/>
+            <rect x="30" y="-14" width="4"  height="26" fill="#a49d8d" opacity=".8"/>
+            <rect x="0" y="8" width="76" height="308" rx="3" fill="#332d24" opacity=".88"/>
+            <rect x="0" y="8" width="76" height="308" fill="url(#sprockets)"/>
+            <rect x="0" y="14" width="76" height="296" fill="url(#framesB)"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+
+    <span class="hero-mark" aria-hidden="true">銀塩のころ</span>
+
+    <div class="wrap">
+      <p class="eyebrow reveal">銀 · Silver halide</p>
+      <h1 class="reveal d1">
+        <span class="kanji">銀塩</span>
+        <span class="romaji">銀塩 · Gin-en · Silver Halide</span>
+      </h1>
+      <p class="hero-poem reveal d2">
+        Scanned positives — film grain, light, the warmth of silver halide.
+      </p>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <span>Scroll</span>
+      <span class="line"></span>
+    </div>
+  </header>
+
+  <!-- ============ 照片牆前導 ============ -->
+  <section class="wall-head samon">
+    <div class="wh-kanji reveal">銀</div>
+    <div class="wh-right">
+      <div class="wh-sub reveal">GIN-EN · SILVER HALIDE · <span id="ginenCount">—</span> FRAMES</div>
+      <p class="wh-lede reveal d1">
+        These are positives lifted from the film canister and held up to the light — <span class="accent">grain, halation, and the warmth of silver halide slowly developing in the darkroom.</span> Tap any one to leaf through slowly, as if reading a contact sheet on the light table.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ 照片牆 ============ -->
+  <section class="wall-wrap">
+    <div class="wall" id="wall"></div>
+  </section>
+
+  <!-- ============ footer ============ -->
+  <footer class="foot">
+    <a href="photography.html">← Photography</a>
+    <span>銀塩 · Gin-en · <span id="ginenCountFoot">—</span> Frames · 2026</span>
+  </footer>
+
+</main>
+
+<!-- Lightbox（沿用攝影頁） -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close">×</button>
+  <button class="lightbox-prev" id="lightbox-prev" type="button" aria-label="Previous">‹</button>
+  <button class="lightbox-next" id="lightbox-next" type="button" aria-label="Next">›</button>
+  <figure class="lightbox-figure">
+    <div class="lb-stage" id="lb-stage">
+      <img class="lightbox-img" id="lightbox-img" alt="" draggable="false" />
+      <img class="lightbox-img lb-abs" alt="" draggable="false" aria-hidden="true" />
+      <img class="lightbox-img lb-abs" alt="" draggable="false" aria-hidden="true" />
+    </div>
+    <figcaption class="lightbox-caption" id="lightbox-caption"></figcaption>
+  </figure>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
+<script src="js/photo-data.js"></script>
+<script>
+  // ── 銀塩照片（動態 filter，張數以實際資料為準）──
+  // 注意：photo-data.js 用 `const photoData`（詞法全域，不掛在 window 上），故以裸識別字參照
+  const ginen = (typeof photoData !== 'undefined' ? photoData : []).filter(p => p.themes && p.themes.includes('ginen'));
+  document.getElementById('ginenCount').textContent = ginen.length;
+  document.getElementById('ginenCountFoot').textContent = ginen.length;
+
+  // ── 照片牆渲染（接觸印樣：細白內框＋角落琥珀編號）──
+  const wall = document.getElementById('wall');
+  ginen.forEach((p, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'tile' + (p.shape === 'xpan' ? ' xpan' : '');
+    b.dataset.shape = p.shape;
+    b.setAttribute('aria-label', (p.title_en || ('No. ' + p.num)) + ' — Enlarge');
+    b.innerHTML =
+        `<img src="${p.src}" alt="${p.title_en || ''}" loading="${i < 6 ? 'eager' : 'lazy'}">`
+      + `<span class="tseal">銀</span>`
+      + `<span class="tveil"></span>`
+      + `<span class="tlabel"><span class="tno">No. ${p.num}</span><span class="ttl">${p.title_en || ''}</span></span>`
+      + `<span class="tframe">${p.num}</span>`;
+    b.addEventListener('click', () => openLightbox(i));
+    wall.appendChild(b);
+  });
+
+  // ── row-span masonry（依 aspect-ratio 即時算高，不必等圖載入）──
+  function layoutMasonry() {
+    const cs = getComputedStyle(wall);
+    const rowUnit = parseFloat(cs.gridAutoRows) || 8;
+    const gap = parseFloat(cs.rowGap) || 0;
+    const tiles = wall.querySelectorAll('.tile');
+    tiles.forEach(t => { t.style.gridRowEnd = ''; });      // 先全部歸零
+    tiles.forEach(t => {
+      const h = t.getBoundingClientRect().height;
+      const span = Math.max(1, Math.round((h + gap) / (rowUnit + gap)));
+      t.style.gridRowEnd = 'span ' + span;
+    });
+  }
+  layoutMasonry();
+  window.addEventListener('load', layoutMasonry);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutMasonry);
+  let rlt;
+  window.addEventListener('resize', () => { clearTimeout(rlt); rlt = setTimeout(layoutMasonry, 160); }, { passive: true });
+
+  // ══ Lightbox（iPhone 相簿式滑動切換：鄰圖預載＋跟手拖曳＋可中斷動畫）══
+  let lbState = null;
+  const lbEl = document.getElementById('lightbox');
+  const lbStage = document.getElementById('lb-stage');
+  const lbLayers = Array.from(lbStage.querySelectorAll('img'));
+  const lbCap = document.getElementById('lightbox-caption');
+  const lbCounter = document.getElementById('lightbox-counter');
+  const lbReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const LB_GAP = 40;                                  // 相鄰照片間距 px
+  const LB_EASE = 'cubic-bezier(0.32, 0.72, 0, 1)';   // iOS 慣用 easing
+  const LB_DUR = 380;                                 // 翻頁動畫時長 ms
+  let lbCur = 0;                                      // lbLayers 中目前主圖的索引
+  let lbAnim = null;                                  // 進行中動畫 {finalize}
+  let lbDrag = null;                                  // 進行中拖曳狀態
+  let lbSuppressClick = false;                        // 拖曳結束抑制背景點擊關閉
+  const lbPreloaded = new Set();
+
+  function lbPreload(src) { if (!src || lbPreloaded.has(src)) return; lbPreloaded.add(src); const im = new Image(); im.src = src; }
+  function lbPreloadNeighbors() {
+    if (!lbState) return;
+    const { photos, idx } = lbState, n = photos.length;
+    if (n > 1) { lbPreload(photos[(idx + 1) % n].src); lbPreload(photos[(idx - 1 + n) % n].src); }
+  }
+  function lbNextEl() { return lbLayers[(lbCur + 1) % 3]; }
+  function lbPrevEl() { return lbLayers[(lbCur + 2) % 3]; }
+
+  // 依目前 idx 重設三層：主圖 in-flow 置中，prev/next 絕對定位待命
+  function lbSyncLayers() {
+    if (!lbState) return;
+    const { photos, idx } = lbState;
+    const cur = lbLayers[lbCur];
+    cur.classList.remove('lb-abs');
+    cur.style.transition = 'none'; cur.style.transform = ''; cur.style.opacity = ''; cur.style.visibility = 'visible';
+    if (cur.dataset.src !== photos[idx].src) { cur.src = photos[idx].src; cur.dataset.src = photos[idx].src; }
+    cur.alt = photos[idx].title_en || ('No. ' + photos[idx].num);
+    [[lbNextEl(), photos[idx + 1]], [lbPrevEl(), photos[idx - 1]]].forEach(([el, p]) => {
+      el.classList.add('lb-abs');
+      el.style.transition = 'none'; el.style.transform = 'translate(-50%,-50%)'; el.style.opacity = ''; el.style.visibility = 'hidden';
+      el.alt = '';
+      if (p) { if (el.dataset.src !== p.src) { el.src = p.src; el.dataset.src = p.src; } el.dataset.has = '1'; }
+      else el.dataset.has = '';
+    });
+    lbPreloadNeighbors();
+  }
+  // 滑動距離：兩張圖半寬相加＋間距（圖未載入時以視窗寬度保底）
+  function lbDist(el) {
+    const wc = lbLayers[lbCur].getBoundingClientRect().width || window.innerWidth;
+    const wn = (el.dataset.has ? el.getBoundingClientRect().width : 0) || wc;
+    return (wc + wn) / 2 + LB_GAP;
+  }
+  // 以位移 x 佈局三層（next 在右 +dN、prev 在左 -dP）
+  function lbSetOffset(x, dN, dP) {
+    lbLayers[lbCur].style.transform = `translateX(${x}px)`;
+    const nx = lbNextEl(), pv = lbPrevEl();
+    if (nx.dataset.has) { nx.style.visibility = 'visible'; nx.style.transform = `translate(-50%,-50%) translateX(${x + dN}px)`; }
+    if (pv.dataset.has) { pv.style.visibility = 'visible'; pv.style.transform = `translate(-50%,-50%) translateX(${x - dP}px)`; }
+  }
+  // 動畫至 targetX；dir:+1 翻下一張 / -1 翻上一張 / 0 彈回。結束（或被接管）時 finalize 收尾
+  function lbAnimateTo(targetX, dir, dur, dN, dP) {
+    const cur = lbLayers[lbCur], nx = lbNextEl(), pv = lbPrevEl();
+    [cur, nx, pv].forEach(el => { el.style.transition = `transform ${dur}ms ${LB_EASE}, opacity ${dur}ms ${LB_EASE}`; });
+    lbSetOffset(targetX, dN, dP);
+    if (dir !== 0) { cur.style.opacity = '0.35'; (dir > 0 ? nx : pv).style.opacity = '1'; }
+    let done = false, timer;
+    const finalize = () => {
+      if (done) return; done = true;
+      clearTimeout(timer); cur.removeEventListener('transitionend', onEnd); lbAnim = null;
+      if (dir > 0) lbCur = (lbCur + 1) % 3;
+      else if (dir < 0) lbCur = (lbCur + 2) % 3;
+      lbSyncLayers();
+    };
+    const onEnd = e => { if (e.propertyName === 'transform' && e.target === cur) finalize(); };
+    cur.addEventListener('transitionend', onEnd);
+    timer = setTimeout(finalize, dur + 80);
+    lbAnim = { finalize };
+  }
+
+  function openLightbox(idx = 0) {
+    if (!ginen.length) return;
+    lbState = { sr: { jp: '銀塩' }, photos: ginen, idx };
+    document.body.classList.add('is-book-open');
+    lbEl.classList.add('is-open');
+    lbEl.setAttribute('aria-hidden', 'false');
+    lbSyncLayers();
+    renderLbText();
+  }
+  function closeLb() {
+    if (lbAnim) lbAnim.finalize();   // 動畫中途關閉：瞬間收尾、旗標歸零（不再卡死）
+    lbDrag = null;
+    lbState = null;
+    document.body.classList.remove('is-book-open');
+    lbEl.classList.remove('is-open');
+    lbEl.setAttribute('aria-hidden', 'true');
+  }
+  // 按鍵／按鈕翻頁：動畫中再按＝前一段瞬間完成、立即接續（連打不卡死）
+  function lbGo(dir) {
+    if (!lbState || lbDrag) return;
+    if (lbAnim) lbAnim.finalize();
+    const { photos, idx } = lbState;
+    const t = idx + dir;
+    if (t < 0 || t >= photos.length) return;
+    lbState.idx = t;
+    renderLbText();
+    if (lbReduce) { lbSyncLayers(); return; }          // 減少動態：直接切換
+    const nx = lbNextEl(), pv = lbPrevEl();
+    const inEl = dir > 0 ? nx : pv;
+    const dN = lbDist(nx), dP = lbDist(pv);
+    [lbLayers[lbCur], nx, pv].forEach(el => { el.style.transition = 'none'; });
+    lbSetOffset(0, dN, dP);
+    (dir > 0 ? pv : nx).style.visibility = 'hidden';   // 未參與的一側不出場
+    inEl.style.opacity = '0.55';
+    void lbStage.offsetWidth;                          // force reflow 讓起點生效
+    lbAnimateTo(dir > 0 ? -dN : dP, dir, LB_DUR, dN, dP);
+  }
+  function nextLb() { lbGo(1); }
+  function prevLb() { lbGo(-1); }
+  function renderLbText() {
+    const { sr, photos, idx } = lbState;
+    const photo = photos[idx];
+    const titleZh = photo.title_en || photo.title_jp || '';
+    const titleJp = photo.title_jp || '';
+    const haikuJp = (photo.haiku_jp || '').replace(/[／\/]\s*/g, '<br>');
+    const haikuZh = (photo.haiku_en || '').replace(/[／\/]\s*/g, '<br>');
+    let html = '';
+    if (titleZh) html += `<div class="lb-title">No. ${photo.num} ・ ${titleZh}${titleJp && titleJp !== titleZh ? `<span class="romaji">${titleJp}</span>` : ''}</div>`;
+    if (haikuJp) html += `<div class="lb-haiku-jp">${haikuJp}</div>`;
+    if (haikuZh) html += `<div class="lb-haiku-zh">${haikuZh}</div>`;
+    lbCap.innerHTML = html;
+    lbCounter.textContent = `${sr.jp} ・ ${String(idx + 1).padStart(3, '0')} / ${String(photos.length).padStart(3, '0')}`;
+    if (!lbReduce) { lbCap.style.animation = 'none'; void lbCap.offsetWidth; lbCap.style.animation = 'lbCapIn .32s ease'; }
+  }
+
+  // ── 觸控／滑鼠拖曳：1:1 跟手、先鎖軸向、邊界 rubber-band ──
+  function lbPointerDown(e) {
+    if (!lbState || lbReduce || lbDrag) return;
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (e.target.closest('button') || e.target.closest('.lightbox-caption')) return;
+    if (lbAnim) lbAnim.finalize();                     // 接管進行中的動畫
+    lbDrag = { id: e.pointerId, x0: e.clientX, y0: e.clientY, axis: null, x: 0, lastX: e.clientX, lastT: e.timeStamp, v: 0, dN: 0, dP: 0 };
+  }
+  function lbPointerMove(e) {
+    if (!lbDrag || e.pointerId !== lbDrag.id) return;
+    const dx = e.clientX - lbDrag.x0, dy = e.clientY - lbDrag.y0;
+    if (!lbDrag.axis) {
+      if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+      lbDrag.axis = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';   // 垂直滑動不誤觸
+      if (lbDrag.axis === 'h') {
+        lbDrag.dN = lbDist(lbNextEl()); lbDrag.dP = lbDist(lbPrevEl());
+        [lbLayers[lbCur], lbNextEl(), lbPrevEl()].forEach(el => { el.style.transition = 'none'; el.style.opacity = ''; });
+      }
+    }
+    if (lbDrag.axis !== 'h') return;
+    const dt = Math.max(1, e.timeStamp - lbDrag.lastT);
+    lbDrag.v = lbDrag.v * 0.7 + ((e.clientX - lbDrag.lastX) / dt) * 0.3;   // 平滑速度 px/ms
+    lbDrag.lastX = e.clientX; lbDrag.lastT = e.timeStamp;
+    const { photos, idx } = lbState;
+    let x = dx;
+    if ((dx > 0 && idx === 0) || (dx < 0 && idx === photos.length - 1)) x = dx * 0.3;  // rubber-band 阻尼
+    lbDrag.x = x;
+    lbSetOffset(x, lbDrag.dN, lbDrag.dP);
+  }
+  function lbPointerUp(e) {
+    if (!lbDrag || e.pointerId !== lbDrag.id) return;
+    const d = lbDrag; lbDrag = null;
+    if (d.axis !== 'h' || !lbState) return;
+    lbSuppressClick = true; setTimeout(() => { lbSuppressClick = false; }, 0);
+    const { photos, idx } = lbState;
+    const canNext = idx < photos.length - 1, canPrev = idx > 0;
+    const w = lbLayers[lbCur].getBoundingClientRect().width || window.innerWidth;
+    const thresh = Math.min(w, window.innerWidth) / 3;         // 位移門檻：約 1/3 寬
+    let dir = 0;
+    if (d.v <= -0.5 && canNext) dir = 1;                       // 快甩優先看速度
+    else if (d.v >= 0.5 && canPrev) dir = -1;
+    else if (d.x <= -thresh && canNext) dir = 1;
+    else if (d.x >= thresh && canPrev) dir = -1;
+    if (dir !== 0) {
+      lbState.idx = idx + dir;
+      renderLbText();
+      const target = dir > 0 ? -d.dN : d.dP;
+      const remain = Math.abs(target - d.x);
+      const dur = Math.max(180, Math.min(LB_DUR, Math.abs(d.v) > 0.2 ? remain / Math.abs(d.v) : LB_DUR));
+      lbAnimateTo(target, dir, dur, d.dN, d.dP);
+    } else {
+      lbAnimateTo(0, 0, Math.max(160, Math.min(300, Math.abs(d.x) * 1.2)), d.dN, d.dP);  // 彈回
+    }
+  }
+  function lbPointerCancel(e) {
+    if (!lbDrag || e.pointerId !== lbDrag.id) return;
+    const d = lbDrag; lbDrag = null;
+    if (d.axis === 'h' && lbState) lbAnimateTo(0, 0, 240, d.dN, d.dP);
+  }
+  lbEl.addEventListener('pointerdown', lbPointerDown);
+  window.addEventListener('pointermove', lbPointerMove, { passive: true });
+  window.addEventListener('pointerup', lbPointerUp);
+  window.addEventListener('pointercancel', lbPointerCancel);
+  lbStage.addEventListener('dragstart', e => e.preventDefault());
+
+  document.getElementById('lightbox-close').addEventListener('click', closeLb);
+  document.getElementById('lightbox-prev').addEventListener('click', e => { e.stopPropagation(); prevLb(); });
+  document.getElementById('lightbox-next').addEventListener('click', e => { e.stopPropagation(); nextLb(); });
+  lbEl.addEventListener('click', e => { if (!lbSuppressClick && e.target === lbEl) closeLb(); });
+  document.querySelector('.lightbox-figure').addEventListener('click', e => e.stopPropagation());
+  document.addEventListener('keydown', e => {
+    if (!lbState) return;
+    if (e.key === 'Escape') closeLb();
+    else if (e.key === 'ArrowRight') nextLb();
+    else if (e.key === 'ArrowLeft') prevLb();
+  });
+</script>
+
+<!-- 浮塵 canvas + 晾片視差（銀塩專屬：暗房光束裡的塵——極細、極慢、稀疏）-->
+<script>
+(() => {
+  "use strict";
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const canvas = document.getElementById('dust');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const motes = [];
+  window.__dustFrames = 0;   // 驗證用：動畫幀計數
+
+  function resize(){
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const target = Math.round(Math.min(24, Math.max(9, W / 84))); // 極稀疏
+    while (motes.length < target) motes.push(makeMote());
+    while (motes.length > target) motes.pop();
+  }
+  function makeMote(){
+    const big = Math.random() < 0.18;   // 偶爾一顆較大的失焦塵（bokeh）
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: big ? 1.9 + Math.random() * 1.5 : 0.55 + Math.random() * 1.05,
+      vx: (Math.random() - 0.5) * 0.07,
+      vy: -0.015 - Math.random() * 0.06,          // 微微上飄（光束裡的塵）
+      sway: 0.25 + Math.random() * 0.55,
+      swaySpeed: 0.002 + Math.random() * 0.005,
+      phase: Math.random() * Math.PI * 2,
+      tw: 0.004 + Math.random() * 0.008,          // 明滅速度
+      twPhase: Math.random() * Math.PI * 2,
+      base: big ? 0.16 : 0.24 + Math.random() * 0.26
+    };
+  }
+  function drawMote(m){
+    const a = m.base * (0.35 + 0.65 * (0.5 + 0.5 * Math.sin(m.twPhase)));
+    const g = ctx.createRadialGradient(m.x, m.y, 0, m.x, m.y, m.r * 3.2);
+    g.addColorStop(0,   `rgba(255,246,226,${(a * 0.95).toFixed(3)})`);
+    g.addColorStop(0.4, `rgba(233,180,102,${(a * 0.55).toFixed(3)})`);
+    g.addColorStop(1,   'rgba(233,180,102,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(m.x, m.y, m.r * 3.2, 0, Math.PI * 2); ctx.fill();
+    // 中心一點更亮的核
+    ctx.fillStyle = `rgba(255,250,238,${(a * 0.8).toFixed(3)})`;
+    ctx.beginPath(); ctx.arc(m.x, m.y, Math.max(0.4, m.r * 0.55), 0, Math.PI * 2); ctx.fill();
+  }
+  let raf;
+  function frame(){
+    ctx.clearRect(0, 0, W, H);
+    for (const m of motes){
+      m.phase += m.swaySpeed;
+      m.twPhase += m.tw;
+      m.x += m.vx + Math.sin(m.phase) * m.sway * 0.06;
+      m.y += m.vy;
+      if (m.y < -12){ Object.assign(m, makeMote()); m.y = H + 10; }
+      if (m.x < -12) m.x = W + 8;
+      else if (m.x > W + 12) m.x = -8;
+      drawMote(m);
+    }
+    window.__dustFrames++;
+    raf = requestAnimationFrame(frame);
+  }
+  function start(){
+    resize();
+    if (!reduceMotion){ cancelAnimationFrame(raf); frame(); }
+    else { ctx.clearRect(0,0,W,H); for (const m of motes.slice(0, 7)){ m.y = Math.random()*H; drawMote(m); } }
+  }
+  let rt;
+  window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(start, 180); }, { passive:true });
+  if (document.fonts && document.fonts.ready){ document.fonts.ready.then(start); setTimeout(start, 700); }
+  else { window.addEventListener('load', start); }
+  start();
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) cancelAnimationFrame(raf);
+    else if (!reduceMotion) frame();
+  });
+
+  /* 晾片視差（對應春天墨枝視差：正片條隨捲動輕移）*/
+  const hang = document.getElementById('hang');
+  let ticking = false;
+  const parallax = () => {
+    const y = window.scrollY;
+    if (hang) hang.style.transform = `translate3d(${y * 0.02}px, ${y * 0.09}px, 0)`;
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (reduceMotion) return;
+    if (!ticking){ requestAnimationFrame(parallax); ticking = true; }
+  }, { passive:true });
+})();
+</script>
+
+<!-- reveal 揭示（漸進增強：IO + scroll/計時器備援）-->
+<script>
+(function () {
+  "use strict";
+  document.documentElement.classList.add('js-anim');
+  var els = document.querySelectorAll('.reveal, .tile');
+  var markIn = function (el) { el.classList.add('in'); };
+  var visNow = function () {
+    var vh = window.innerHeight;
+    els.forEach(function (el) {
+      if (el.classList.contains('in')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.98 && r.bottom > 0) markIn(el);
+    });
+  };
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) if (entries[i].isIntersecting) { markIn(entries[i].target); io.unobserve(entries[i].target); }
+    }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  } else els.forEach(markIn);
+  window.addEventListener('scroll', visNow, { passive: true });
+  window.addEventListener('pageshow', visNow);
+  setTimeout(visNow, 400); setTimeout(visNow, 1600); visNow();
+})();
+</script>
+
+<!-- BFCache 還原修復 -->
+<script>
+  window.addEventListener('pageshow', function(e){
+    if (e.persisted) { document.body.style.display='none'; void document.body.offsetHeight; document.body.style.display=''; }
+  });
+</script>
+</body>
+</html>
