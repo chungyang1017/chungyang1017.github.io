@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Academic · Chung-Yang Yeh</title>
-<meta name="description" content="Chung-Yang Yeh ・ Professor of Social Policy, Soochow University. Comparative welfare states, East Asian social policy, pension politics — journal articles, books, chapters and conference papers.">
+<meta name="description" content="Chung-Yang Yeh ・ Professor of Social Policy, Soochow University. Comparative welfare states, East Asian social policy, pension politics — journal articles, books, chapters, conference papers and research grants.">
 <link rel="alternate" hreflang="zh-Hant" href="academic-zh.html">
 <link rel="alternate" hreflang="en" href="academic.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,7 +91,7 @@
   .foot{ border-top:1px solid var(--rule); padding:48px 60px; display:flex;justify-content:space-between; font-size:11px;letter-spacing:.2em;color:var(--ink-quiet); }
 
   /* ── 學術頁專屬 ── */
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:8px}
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:8px}
   .stats > div{background:var(--sand);padding:28px 24px}
   .stats .n{font-family:var(--display);font-size:46px;line-height:1}
   .stats .l{font-family:var(--display);font-size:15px;letter-spacing:.1em;margin-top:10px}
@@ -117,6 +117,14 @@
   .see-all{margin-top:26px;font-family:var(--latin);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
   .see-all a{color:var(--accent);text-decoration:none}
   .see-all a:hover{text-decoration:underline}
+
+  /* 研究計畫 Research grants */
+  .grant-list{display:flex;flex-direction:column}
+  .grant-list article{background:var(--paper);border:1px solid var(--rule);margin-bottom:-1px;padding:22px 26px;display:grid;grid-template-columns:158px 1fr;gap:20px;align-items:baseline}
+  .grant-list .g-period{font-family:var(--latin);font-size:13px;letter-spacing:.06em;color:var(--ink-quiet)}
+  .grant-list h3{font-family:var(--serif);font-size:16px;line-height:1.62;font-weight:500;margin:0 0 8px;text-wrap:pretty}
+  .grant-list .g-no{font-family:var(--latin);font-size:12.5px;letter-spacing:.04em;color:var(--ink-soft);line-height:1.7}
+  .grant-list .g-role{font-family:var(--serif);color:var(--ink-quiet)}
 
   /* 專書 */
   .books{display:grid;grid-template-columns:1fr 1fr;gap:24px}
@@ -156,6 +164,8 @@
     .scroll-section .meta-col .big{font-size:72px}
     .stats{grid-template-columns:1fr 1fr}
     .stats .n{font-size:38px}
+    .stats > div:last-child{grid-column:1/-1}
+    .grant-list article{grid-template-columns:1fr;gap:8px}
     .pub-list .j-row{grid-template-columns:52px 1fr}
     .pub-list .j-venue{grid-column:2;text-align:left;margin-top:6px}
     .books{grid-template-columns:1fr}
@@ -177,6 +187,8 @@
   .b-sub{font-size:14.5px}
   .b-desc{font-size:14.5px}
   .b-foot{font-size:13.5px}
+  .grant-list h3{font-size:17.5px}
+  .grant-list .g-no{font-size:13.5px}
 </style>
 </head>
 <body>
@@ -222,6 +234,7 @@
     <div><div class="n">2</div><div class="le">Books</div></div>
     <div><div class="n">17</div><div class="le">Book<br>Chapters</div></div>
     <div><div class="n">20</div><div class="le">Conferences</div></div>
+    <div><div class="n">6</div><div class="le">Research<br>Grants</div></div>
   </div>
 
   <div class="row" style="margin-top:56px">
@@ -300,6 +313,65 @@
       <h2>Conferences</h2>
       <div class="sub">Conferences · 20</div>
       <p>Presentations at academic conferences, at home and abroad. Recent representative works below.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Research Grants -->
+<section class="scroll-section samon">
+  <div class="row">
+    <div class="meta-col reveal">
+      <div class="num">壱の伍</div>
+      <div class="big">研</div>
+      <h2>Grants</h2>
+      <div class="sub">Research Grants · 6</div>
+      <p>Research grants from Taiwan's National Science and Technology Council (formerly the Ministry of Science and Technology), 2018 to the present — following the comparative axis of East Asian welfare states, one question deeper at a time.</p>
+    </div>
+    <div>
+      <div class="grant-list reveal">
+        <article>
+          <div class="g-period">2025.08 – 2026.07</div>
+          <div>
+            <h3>Building Welfare Markets: Comparing East Asian Welfare States</h3>
+            <div class="g-no">NSTC 114-2410-H-031-090 · National Science and Technology Council</div>
+          </div>
+        </article>
+        <article>
+          <div class="g-period">2023.08 – 2025.07</div>
+          <div>
+            <h3>Marketisation and Financialisation of Pension Systems and the Rise of the Regulatory Welfare State in East Asian Welfare States</h3>
+            <div class="g-no">NSTC 112-2410-H-031-039-MY2 · National Science and Technology Council</div>
+          </div>
+        </article>
+        <article>
+          <div class="g-period">2021.08 – 2023.07</div>
+          <div>
+            <h3>Shaping and Managing Pension Politics: East Asian Welfare States in International Comparison</h3>
+            <div class="g-no">MOST 110-2410-H-031-052-MY2 · Ministry of Science and Technology</div>
+          </div>
+        </article>
+        <article>
+          <div class="g-period">2020.08 – 2021.07</div>
+          <div>
+            <h3>Female Labour Force Participation Rate and Family Policy: A Social Investment Perspective</h3>
+            <div class="g-no">MOST 109-2410-H-194-024 · Ministry of Science and Technology <span class="g-role">Co-Principal Investigator</span></div>
+          </div>
+        </article>
+        <article>
+          <div class="g-period">2019.08 – 2021.07</div>
+          <div>
+            <h3>The Micro-Foundation of the Transformation from Passive Protection to Activation: A Comparative Study of East Asian Welfare States</h3>
+            <div class="g-no">MOST 108-2410-H-031-069-MY2 · Ministry of Science and Technology</div>
+          </div>
+        </article>
+        <article>
+          <div class="g-period">2018.01 – 2018.12</div>
+          <div>
+            <h3>From Productivist to Social Investment: The Transformation of Comparative East Asian Welfare States</h3>
+            <div class="g-no">MOST 107-2410-H-031-065 · Ministry of Science and Technology</div>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </section>

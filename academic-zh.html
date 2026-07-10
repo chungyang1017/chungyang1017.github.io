@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>學術 Academic · 葉崇揚</title>
-<meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 東吳大學社會學系 ・ 比較福利國家研究：期刊論文、專書、專書章節與研討會發表一覽。">
+<meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 東吳大學社會學系 ・ 比較福利國家研究：期刊論文、專書、專書章節、研討會發表與國科會研究計畫一覽。">
 <link rel="alternate" hreflang="zh-Hant" href="academic-zh.html">
 <link rel="alternate" hreflang="en" href="academic.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,7 +91,7 @@
   .foot{ border-top:1px solid var(--rule); padding:48px 60px; display:flex;justify-content:space-between; font-size:11px;letter-spacing:.2em;color:var(--ink-quiet); }
 
   /* ── 學術頁專屬 ── */
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:8px}
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:8px}
   .stats > div{background:var(--sand);padding:28px 24px}
   .stats .n{font-family:var(--display);font-size:46px;line-height:1}
   .stats .l{font-family:var(--display);font-size:15px;letter-spacing:.1em;margin-top:10px}
@@ -117,6 +117,14 @@
   .see-all{margin-top:26px;font-family:var(--latin);font-size:12px;letter-spacing:.16em}
   .see-all a{color:var(--accent);text-decoration:none}
   .see-all a:hover{text-decoration:underline}
+
+  /* 研究計畫 */
+  .grant-list{display:flex;flex-direction:column}
+  .grant-list article{background:var(--paper);border:1px solid var(--rule);margin-bottom:-1px;padding:22px 26px;display:grid;grid-template-columns:158px 1fr;gap:20px;align-items:baseline}
+  .grant-list .g-period{font-family:var(--latin);font-size:13px;letter-spacing:.06em;color:var(--ink-quiet)}
+  .grant-list h3{font-family:var(--serif);font-size:16px;line-height:1.62;font-weight:500;margin:0 0 8px;text-wrap:pretty}
+  .grant-list .g-no{font-family:var(--latin);font-size:12.5px;letter-spacing:.04em;color:var(--ink-soft);line-height:1.7}
+  .grant-list .g-role{font-family:var(--serif);color:var(--ink-quiet)}
 
   /* 專書 */
   .books{display:grid;grid-template-columns:1fr 1fr;gap:24px}
@@ -156,6 +164,8 @@
     .scroll-section .meta-col .big{font-size:72px}
     .stats{grid-template-columns:1fr 1fr}
     .stats .n{font-size:38px}
+    .stats > div:last-child{grid-column:1/-1}
+    .grant-list article{grid-template-columns:1fr;gap:8px}
     .pub-list .j-row{grid-template-columns:52px 1fr}
     .pub-list .j-venue{grid-column:2;text-align:left;margin-top:6px}
     .books{grid-template-columns:1fr}
@@ -173,6 +183,8 @@
   .b-sub{font-size:14.5px}
   .b-desc{font-size:14.5px}
   .b-foot{font-size:13.5px}
+  .grant-list h3{font-size:17.5px}
+  .grant-list .g-no{font-size:13.5px}
 </style>
 </head>
 <body>
@@ -218,6 +230,7 @@
     <div><div class="n">2</div><div class="l">專書</div><div class="le">Book</div></div>
     <div><div class="n">17</div><div class="l">專書章節</div><div class="le">Chapter</div></div>
     <div><div class="n">20</div><div class="l">研討會</div><div class="le">Conference</div></div>
+    <div><div class="n">6</div><div class="l">研究計畫</div><div class="le">Grants</div></div>
   </div>
 
   <div class="row" style="margin-top:56px">
@@ -296,6 +309,65 @@
       <h2>研討會</h2>
       <div class="sub">Conferences · 20</div>
       <p>國內外學術會議發表。以下為近年代表作。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 研究計畫 -->
+<section class="scroll-section samon">
+  <div class="row">
+    <div class="meta-col reveal">
+      <div class="num">壱の伍</div>
+      <div class="big">研</div>
+      <h2>研究計畫</h2>
+      <div class="sub">Research Grants · 6</div>
+      <p>國家科學及技術委員會（前科技部）專題研究計畫。二〇一八年迄今，沿著東亞福利國家的比較軸線，一題一題往深處走。</p>
+    </div>
+    <div>
+      <div class="grant-list reveal">
+        <article>
+          <div class="g-period">2025.08 – 2026.07</div>
+          <div>
+            <h3>打造福利市場：比較東亞福利國家</h3>
+            <div class="g-no">NSTC 114-2410-H-031-090 · 國家科學及技術委員會</div>
+          </div>
+        </article>
+        <article>
+          <div class="g-period">2023.08 – 2025.07</div>
+          <div>
+            <h3>比較東亞福利國家的年金市場化和金融化和管制型福利國家的興起</h3>
+            <div class="g-no">NSTC 112-2410-H-031-039-MY2 · 國家科學及技術委員會</div>
+          </div>
+        </article>
+        <article>
+          <div class="g-period">2021.08 – 2023.07</div>
+          <div>
+            <h3>形塑與管理年金政治：國際比較下的東亞福利國家</h3>
+            <div class="g-no">MOST 110-2410-H-031-052-MY2 · 科技部</div>
+          </div>
+        </article>
+        <article>
+          <div class="g-period">2020.08 – 2021.07</div>
+          <div>
+            <h3>女性勞動參與率與家庭政策：社會投資的觀點</h3>
+            <div class="g-no">MOST 109-2410-H-194-024 · 科技部 <span class="g-role">共同主持人</span></div>
+          </div>
+        </article>
+        <article>
+          <div class="g-period">2019.08 – 2021.07</div>
+          <div>
+            <h3>從消極保障到積極促進的微觀基礎：東亞福利國家的比較分析</h3>
+            <div class="g-no">MOST 108-2410-H-031-069-MY2 · 科技部</div>
+          </div>
+        </article>
+        <article>
+          <div class="g-period">2018.01 – 2018.12</div>
+          <div>
+            <h3>從生產主義到社會投資：東亞福利國家轉型的比較政治經濟學</h3>
+            <div class="g-no">MOST 107-2410-H-031-065 · 科技部</div>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </section>
