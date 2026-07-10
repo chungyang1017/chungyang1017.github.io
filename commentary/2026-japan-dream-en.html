@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>When the Manga Comes True: Japan's Power to Dream ・ Zuihitsu ・ Yeh Chung-Yang</title>
+  <meta name="description" content="From Shohei Ohtani to the World Cup dream of Captain Tsubasa and Blue Lock — how a society turns the panels of a comic, frame by frame, into reality." />
+  <link rel="alternate" hreflang="zh-Hant" href="2026-japan-dream.html" />
+  <link rel="alternate" hreflang="en" href="2026-japan-dream-en.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --shoin-bg: #f5edd8;
+      --shoin-paper: #fcf6e6;
+      --moss: #5a7a4a;
+      --accent: #d98aa8;
+      --water: #7a9aa8;
+      --ink: #2a2a28;
+      --ink-mid: #5a534d;
+      --ink-mute: #8a8378;
+      --ink-deep: #2a2624;
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+      --serif: 'Noto Serif JP', 'Shippori Mincho', Georgia, serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--serif);
+      background: var(--shoin-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.95;
+    }
+
+    .top {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(245,237,216,0.93);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      padding: 14px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-left { display: flex; align-items: center; gap: 16px; }
+    .back { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .name-block { display: inline-flex; align-items: baseline; gap: 8px; }
+    .name-jp { font-family: var(--brush); font-size: 22px; letter-spacing: 0.1em; }
+    .name-en { font-family: var(--sans); font-size: 13px; letter-spacing: 0.08em; opacity: 0.7; }
+    .nav { display: flex; gap: 24px; font-size: 12px; letter-spacing: 0.22em; }
+    .nav a { color: var(--ink); text-decoration: none; opacity: 0.5; padding-bottom: 4px; }
+    .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
+    .nav .lang { border-left: 1px solid var(--line); padding-left: 24px; font-family: var(--jp); }
+
+    .article-cover {
+      max-width: 1100px; margin: 2.5rem auto 0;
+      padding: 0 2rem;
+    }
+    .article-cover figure {
+      position: relative; overflow: hidden;
+      box-shadow: 0 24px 50px -28px rgba(31,31,29,0.4);
+    }
+    .article-cover img { display: block; width: 100%; height: auto; aspect-ratio: 65/24; object-fit: cover; }
+    .article-cover figcaption {
+      position: absolute; right: 1.4rem; bottom: 1rem;
+      color: rgba(252,246,230,0.92);
+      text-align: right; font-family: var(--sans);
+      font-size: 0.7rem; letter-spacing: 0.18em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      display: flex; flex-direction: column; gap: 0.2rem;
+    }
+    .article-cover .cap-num { color: var(--accent); }
+    .article-cover .cap-title { font-family: var(--jp); font-style: italic; font-size: 0.78rem; letter-spacing: 0.06em; }
+    .article-cover .cap-year { opacity: 0.7; font-size: 0.65rem; }
+
+    .article {
+      max-width: 820px; margin: 0 auto;
+      padding: 3.5rem 2.5rem 4rem;
+    }
+    .article-eyebrow {
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+    .article-eyebrow a { color: inherit; text-decoration: none; transition: opacity 0.2s; }
+    .article-eyebrow a:hover { opacity: 0.7; }
+
+    .article-title {
+      font-family: var(--serif); font-weight: 500;
+      font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+      line-height: 1.32; letter-spacing: 0.01em;
+      margin-bottom: 1.1rem;
+      color: var(--ink-deep);
+    }
+    .article-subtitle {
+      font-family: var(--jp);
+      font-size: 1.05rem; line-height: 1.55;
+      color: var(--ink-mid);
+      margin-bottom: 2rem;
+      letter-spacing: 0.04em;
+    }
+    .article-byline {
+      display: flex; flex-wrap: wrap; gap: 0.85rem 1.4rem;
+      padding-bottom: 2rem; margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--line-soft);
+      font-family: var(--sans); font-size: 0.78rem;
+      letter-spacing: 0.16em; color: var(--ink-mid);
+    }
+    .byline-author { color: var(--accent); }
+    .byline-tag {
+      padding: 0.18rem 0.55rem;
+      border: 1px solid rgba(217,138,168,0.45);
+      color: var(--accent); font-size: 0.7rem;
+      letter-spacing: 0.22em;
+    }
+
+    .article-body p.lead {
+      font-family: var(--serif); font-weight: 500;
+      font-size: 1.2rem; line-height: 1.9;
+      letter-spacing: 0.005em;
+      color: var(--ink-deep);
+      margin-bottom: 2rem;
+      padding-left: 1.4rem;
+      border-left: 2px solid var(--accent);
+    }
+    .article-body p {
+      font-size: 1.05rem; line-height: 1.95;
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.003em;
+      color: var(--ink);
+    }
+    .article-body p em { color: var(--ink-deep); font-style: italic; }
+    .article-body strong { font-weight: 600; color: var(--ink-deep); }
+
+    .article-body hr {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 3rem auto;
+      width: 60%;
+      position: relative;
+    }
+    .article-body hr::after {
+      content: '◇';
+      position: absolute;
+      left: 50%; top: -0.7em;
+      transform: translateX(-50%);
+      background: var(--shoin-bg);
+      padding: 0 0.6rem;
+      color: var(--accent); font-size: 0.85rem;
+    }
+
+    .inline-photo { margin: 2.5rem -1rem; }
+    .inline-photo figure {
+      position: relative; overflow: hidden;
+      box-shadow: 0 18px 40px -22px rgba(31,31,29,0.35);
+    }
+    .inline-photo img { display: block; width: 100%; height: auto; }
+
+    .photo-slot {
+      margin: 2.5rem -1rem;
+      border: 1px dashed rgba(217,138,168,0.55);
+      background: var(--shoin-paper);
+      padding: 2.6rem 1.5rem;
+      text-align: center;
+      display: flex; flex-direction: column; gap: 0.5rem;
+      align-items: center; justify-content: center;
+      min-height: 190px;
+    }
+    .photo-slot .slot-icon { color: var(--accent); font-size: 1.2rem; opacity: 0.8; }
+    .photo-slot .slot-k { font-family: var(--serif); color: var(--ink-mid); font-size: 1rem; letter-spacing: 0.02em; }
+    .photo-slot .slot-e { font-family: var(--sans); color: var(--ink-mute); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; }
+
+    .colophon {
+      margin: 2.5rem 0 2rem;
+      padding: 1.8rem 2rem;
+      background: var(--shoin-paper);
+      border: 1px solid var(--line-soft);
+    }
+    .colophon-label {
+      font-family: var(--sans); font-size: 0.72rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.85rem;
+    }
+    .colophon p {
+      font-size: 0.95rem; line-height: 1.8;
+      color: var(--ink-mid);
+      margin-bottom: 0.85rem;
+      font-family: var(--serif);
+    }
+    .colophon p:last-child { margin-bottom: 0; }
+
+    .article-foot {
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 0.85rem;
+      margin-top: 2.5rem; padding-top: 1.6rem;
+      border-top: 1px solid var(--line-soft);
+      font-family: var(--sans); font-size: 0.76rem;
+      letter-spacing: 0.16em; color: var(--ink-mute);
+    }
+    .article-foot .back {
+      color: var(--accent); text-decoration: none;
+      letter-spacing: 0.2em;
+    }
+    .article-foot .back:hover { opacity: 0.75; }
+
+    footer {
+      border-top: 1px solid var(--line-soft);
+      padding: 30px 60px;
+      max-width: 1280px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      font-size: 11px; opacity: 0.55; letter-spacing: 0.2em;
+      font-family: var(--sans);
+    }
+    footer .links { display: flex; gap: 18px; }
+    footer .links a { color: var(--ink); text-decoration: none; opacity: 0.85; transition: opacity 0.2s; }
+    footer .links a:hover { opacity: 1; color: var(--accent); }
+
+    @media (max-width: 760px) {
+      .top { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
+      .top-left { gap: 10px; }
+      .back { font-size: 10px; letter-spacing: 0.22em; }
+      .name-jp { font-size: 16px; }
+      .name-en { font-size: 8px; }
+      .nav { gap: 12px; font-size: 10px; letter-spacing: 0.14em; }
+      .nav .lang { padding-left: 12px; }
+      .article-cover { padding: 0 1rem; margin-top: 1.4rem; }
+      .article { padding: 2.4rem 1.4rem 3rem; }
+      .article-title { font-size: 1.5rem; }
+      .article-subtitle { font-size: 0.95rem; }
+      .article-body p.lead { font-size: 1.08rem; padding-left: 1rem; }
+      .article-body p { font-size: 1rem; }
+      .inline-photo, .photo-slot { margin: 2rem 0; }
+      footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-left">
+    <a href="../index-en.html" class="back">← HOME</a>
+    <span class="top-sep">·</span>
+    <span class="name-block">
+      <span class="name-jp">葉崇揚</span>
+      <span class="name-en">（Chung-Yang Yeh）</span>
+    </span>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="../index-en.html" class="nav-sub">Home</a>
+    <a href="../academic.html" class="nav-sub">Academic</a>
+    <a href="../photography.html" class="nav-sub">Photography</a>
+    <a href="index-en.html" class="is-current">Zuihitsu</a>
+    <a href="2026-japan-dream.html" class="lang">中</a>
+  </nav>
+</header>
+
+<div class="article-cover">
+  <figure>
+    <img src="../images/photography/dscf3861_4.jpg" alt="Fuji and Bridge" />
+    <figcaption>
+      <span class="cap-num">No. 〇六四</span>
+      <span class="cap-title">Fuji and Bridge ・ Xpan 65×24</span>
+      <span class="cap-year">Photograph: Yeh Chung-Yang</span>
+    </figcaption>
+  </figure>
+</div>
+
+<article class="article">
+
+  <p class="article-eyebrow">
+    <a href="index-en.html">← Zuihitsu ・ East Asia Frontline No. 〇〇二</a>
+  </p>
+
+  <h1 class="article-title">
+    When the Manga Comes True: Japan's Power to Dream
+  </h1>
+
+  <p class="article-subtitle">
+    當漫畫成真：日本的「夢想力」——從大谷翔平，到《足球小將》與《藍色監獄》的世界盃之夢
+  </p>
+
+  <div class="article-byline">
+    <span class="byline-author">Chung-Yang Yeh × Claude</span>
+    <span class="byline-date">10 July 2026</span>
+    <span class="byline-tag">Japan</span>
+  </div>
+
+  <div class="article-body">
+
+    <p class="lead">
+      Baseball, not football, is Japan's true national sport. In Takuya Mitsuda's manga <em>MAJOR</em>, Goro Shigeno claws his way from a Japanese little-league diamond all the way to the American major leagues; back then, the idea of a Japanese player conquering MLB sounded like the kind of daydream only a comic would dare to draw. A child would close the book, step back into the real world, and know, more or less, that it was only a story.
+    </p>
+
+    <p>
+      And then reality produced Shohei Ohtani — more outlandish than any manga would have dared. A two-way player, he is at once his team's ace pitcher and the most dangerous bat in its lineup. In 2024 he became the first man in major-league history to go 50-50 — fifty home runs and fifty stolen bases in a single season; in 2025 he hit fifty-five homers and climbed back onto the mound. He has taken the Most Valuable Player award unanimously for three straight years — his fourth in all, a tally surpassed only by Barry Bonds, and every one of his four won by a unanimous vote, a feat no player had managed before. Across these two seasons he has also carried the Dodgers to back-to-back World Series titles; the only other man in half a century to pair consecutive MVPs with consecutive championships was Joe Morgan of the 1970s Reds. And in the final of the 2023 World Baseball Classic, he took the mound for the last half-inning and struck out his own Angels teammate, the superstar Mike Trout, to win it for Japan — a script even a manga artist might have hesitated to write. The ceiling of the imagination, punched clean through by reality.
+    </p>
+
+    <p>
+      This is what I find most beguiling about what I would call Japan's "power to dream": when a society keeps daring to dream, and keeps building toward the dream, what it finally grows can be more improbable than its own fiction. The power to dream is not idle fantasy — it comes with a blueprint: dare to imagine, and then be willing to plan, and to do the work. Baseball is Japan's national game, and this power shows there most richly, most naturally. But what truly won me over is that the same force reshaped a sport at which Japan once had no gift at all — football. And on the football road, you can see the dream-engine with perfect clarity: manga.
+    </p>
+
+    <hr />
+
+    <p>
+      Rewind to 1981. That year, Yoichi Takahashi began serialising <em>Captain Tsubasa</em> (キャプテン翼). In an age when Japanese football was still a wasteland — no professional league, defeat after defeat abroad — this comic drew the game as something joyful and thrilling before the country had ever lived it: Tsubasa Ozora's line, "the ball is my friend"; dribbles like dancing; bicycle kicks and impossible shots, each wilder than the last; rivals and comrades like Genzo Wakabayashi and Kojiro Hyuga. Tsubasa's dream was simple and enormous — pull on the Japan shirt and bring home the World Cup. That dream fed a whole generation of Japanese children. Many who grew up on Tsubasa really did become players — the ones who carried 1998 and 2002; and many believe the steady climb in Japan's grassroots registration from the 1980s onward was, in no small part, a fire this manga lit. Even world-class stars in Europe and South America — Zidane, Messi, Iniesta, Torres — grew up reading it. The dream was drawn first, and only then kicked into being.
+    </p>
+
+    <p>
+      Drawn is one thing; Japan also went and built it. In 2005 the Japan Football Association set a goal that sounded almost delusional: to host a World Cup on home soil before 2050, and to have Japan lift the trophy. The declaration even carried a tagline — <em>yume ga aru kara tsuyoku naru</em>, because we have a dream, we grow strong — and they cut that terrifyingly large dream into stages, and pushed forward one frame at a time. That way of building had in fact begun in 1993: that May, the J.League kicked off, in the plainest, most patient way imaginable, by first tending the soil. Yet that very October, in the final World Cup qualifier against Iraq in Doha, with Japan needing only to hold the lead to qualify for the first time, an equaliser in the dying seconds shattered the dream in an instant — the "Agony of Doha" that Japanese fans will never forget. Elsewhere, that kind of pain might have made a nation give up. Japan did not. The league played on, the academies kept building, and four years later, in 1997, a golden goal from Masayuki Okano in extra time beat Iran and won a World Cup ticket for the first time — a night remembered as the "Joy of Johor Bahru." At France 1998, Japan finally stood on the stage it had chased for decades. And all of it was being drawn in real time: Kenichi Muraeda's <em>Our Field</em> (俺たちのフィールド) ran from 1992 to 1998, tracking real events almost step for step — the J.League's opening, the Agony of Doha — and its final chapter stopped at Japan's opening match against Argentina at France 1998. Whatever happened on the pitch, the manga turned it into a story at the very same moment.
+    </p>
+
+    <div class="photo-slot" data-slot="manga">
+      <span class="slot-icon">◈</span>
+      <span class="slot-k">〔 Manga panel ・ <em>Our Field</em> (Ore-tachi no Field) 〕</span>
+      <span class="slot-e">Manga image to be placed · rights-cleared</span>
+    </div>
+
+    <hr />
+
+    <p>
+      In truth, Japan got here not only by daring to win, but by learning how to lose. At the 2018 World Cup in Russia, in the round of 16, Japan led Belgium 2-0 — probably the closest they had ever come to the quarter-finals, close enough to touch the handle of the door. But Belgium clawed it back, and in the 94th minute, with a textbook lightning counterattack that ran the length of the pitch from a Japanese corner, sank them at the death, 3-2. When the whistle went, the Japanese players dropped to the turf, and the whole world's heart broke for them. But the remarkable thing came afterward: Japan did not file it away as bad luck and turn the page. They took those dozen-odd seconds apart, frame by frame — how did the counter unfold? In those seconds, what did we fail to do? For years, that defeat, known as "the 14 Seconds of Rostov," became a text Japanese football chewed over again and again. Because to them, failure was never the thing to fear. What was truly to be feared was a failure that meant nothing — that taught you nothing, and was simply let go.
+    </p>
+
+    <p>
+      That grit — grinding failure into fuel — bore fruit four years later in Qatar. At the 2022 World Cup, Japan were drawn into a so-called "group of death," standing alongside two former world champions: Germany and Spain. Against Germany, Japan fell behind in the first half; once, that would have been the end of it. This time, they sent on fresh legs after the break, and goals from Ritsu Doan and Takuma Asano turned it around, 2-1, leaving the four-star Germans stunned. Against Spain, the script all but repeated: behind again, level again through Doan — and then the ball the whole of Japan still holds its breath to describe. Kaoru Mitoma chased down a ball that looked, for all the world, to have already rolled over the byline, refused to give up, hooked it back at the last instant and cut it across for Ao Tanaka to bundle home. In the slow-motion replay, a mere millimetre of the ball was still touching the line; Japan came to call it "Mitoma's Millimetre." It was that millimetre — that single refusal to lift a foot before the ball was truly out — that put Japan top of the group, and shut the former world champions of Germany out of the last sixteen altogether. And in that moment, how many blurted it out: this is <em>Captain Tsubasa</em> come true.
+    </p>
+
+    <p>
+      And so, between these near-misses and finally-did-its, Japan's dream quietly leveled up — from "can we even reach the World Cup" to "why aren't we winning it yet." That new ambition, too, the manga drew in step: <em>Blue Lock</em> (ブルーロック, serialised from 2018), written by Muneyuki Kaneshiro and drawn by Yusuke Nomura. Its premise is almost the JFA's anxiety set straight onto the page — Japan keeps stalling in the round of 16, so what is missing? The answer: a striker who can deliver the killing blow on the world stage. So the story invents a facility called "Blue Lock," locks up several hundred of the nation's most gifted strikers, and through a nearly cruel, radically selfish competition forges the one striker who can win Japan the World Cup. Its hero, Yoichi Isagi, no longer wants merely to "take part"; he wants to become the best in the world. From Tsubasa's "the ball is my friend" to Isagi's "I will become the world's greatest striker," you can feel the dream shift up an entire gear — from loving the game, to having to win it.
+    </p>
+
+    <p>
+      And what the manga feeds children was never only the dream of winning, but how to rise after you fall. In Motoyuki Tanaka's <em>BE BLUES! ~Ao ni Nare~</em>, the hero Ryu Ichijo — once a prodigy everyone tipped for greatness — is struck by a car on the very day he is called up to the youth national team, and badly hurt; for a while, whether he can even play again is an open question, and the whole manga is about how he claws his way, inch by inch, back onto the pitch. That story of falling to the very bottom and standing up again is, in the end, the same thing Japanese football learned first-hand in Doha and in Rostov — the manga teaches children not only to dream, but how, once a dream shatters, to put themselves back together piece by piece. Add <em>Shoot!</em> (シュート！) and the rest, one after another, and football manga becomes a conveyor belt that never powers down, handing "dare to dream, and dare to get up again" from one generation to the next.
+    </p>
+
+    <hr />
+
+    <p>
+      And at the very moment I write this, the 2026 World Cup is being played out across stadiums in the United States, Canada, and Mexico — and you can almost see the road that has been laid, frame by frame, since 1981. In their opening match, against the orange of the Netherlands — a side all of Asia once looked up to — Japan, trailing, simply refused to concede the point, chasing and chasing until, in the closing minutes, Daichi Kamada dragged the score level at 2-2. Think about it: a Japanese football that thirty-odd years ago was a wasteland, losing every game it played, can now stand before the Netherlands, draw level and walk off without a flicker of fear in its eyes — that alone is a kind of declaration. Then came a 4-0 rout of Tunisia, making Japan the first Asian side ever to score four in a single World Cup match. Barely four minutes in, Kamada scored the fastest goal in Japan's World Cup history; but the moment that raised every hair was the flowing third goal — Ao Tanaka drove a sharp vertical pass out of the back, Ayase Ueda flicked it first-time with his right foot, an exquisite touch that threaded it through Tunisia's last line, and Junya Ito, already breaking in behind, calmly slid it past the keeper one-on-one. From the ball out of defence, to the split-second flick up front, to Ito bursting through the back line — two or three touches, seamless, as smooth as a panel out of <em>Captain Tsubasa</em> (and remember: both of Japan's aces, Kaoru Mitoma and Takefusa Kubo, were sidelined by injury that night, and Japan still won at their ease). A 1-1 draw with Sweden in the final group game sent Japan through as runners-up, and then, in the round of 32, they ran into Brazil, five-time world champions. They fought to the final whistle, only for Gabriel Martinelli to settle it late, 2-1. When the whistle blew, Japan had fallen at the knockout door once more — for yes, to this day, Japan has never won a single World Cup knockout match.
+    </p>
+
+    <div class="photo-slot" data-slot="worldcup">
+      <span class="slot-icon">◈</span>
+      <span class="slot-k">〔 Japan at the 2026 World Cup 〕</span>
+      <span class="slot-e">Photograph to be placed · rights-cleared</span>
+    </div>
+
+    <p>
+      So what makes Japan formidable is not merely that it dares to name a goal too large for others to say aloud. Having said it, they go and earnestly build the system to make it real. Culturally, there is the dream-engine of manga, from <em>Captain Tsubasa</em> to <em>Blue Lock</em>, one baton after another; institutionally, there is the grounding-engine of the J.League and the JFA — the academies, the ten- and twenty-year plans pushed forward one frame at a time. The two engines pull in the same direction: manga lets children dare to imagine, the league and the association give those daring children somewhere to go, and once the two connect, the dream begins to roll forward on its own. And they are patient enough — knowing the foundation takes ten or twenty years to lay — to keep laying it, year after year, without flipping the table over a single Doha, a single Brazil.
+    </p>
+
+    <p>
+      Other countries in East Asia, frankly, cannot quite pull this off. Some are bold enough to proclaim a vision but lack the patience to finish the foundation; others put their heads down and toil but don't quite dare to dream that big. What is rare about Japan is that it has brought together two things that so often pull against each other — daring to dream, and being willing to plan and to act.
+    </p>
+
+    <p>
+      And what moves me most is, in fact, the other side of all this. From the dream that shattered in seconds at Doha in 1993, to the dream that fell a step short against Brazil in 2026, thirty-three years have passed — thirty-three years of walking up to the knockout door, again and again, and being shut out, again and again. Anyone else would long since have resigned themselves: "this is probably as far as we go." Japan did not. They do not fear losing; what they fear is losing for nothing — and so Doha, and Rostov, and this time Brazil, every heartbreak, they bend down and pick up, take apart and look at clearly, and turn into fuel for the next time. The day after a loss, the league plays on, the academies keep building, and children still cradle their manga, imagining themselves the next Tsubasa, the next Isagi. And those children who really did grow up on Tsubasa are now scattered across the pitches of Europe — in the 2025-26 season alone, more than a hundred Japanese players were turning out across the divisions of Europe, a ninety-per-cent rise in just five years. The dream did not stay on the page; it grew into an entire generation, kicking their way, one by one, onto the highest stage in the world. What is truly moving about daring to dream is never that it succeeds on the first try; it is that, even as it falls short time after time, there is always someone willing to believe once more, to build one more year, to pass the ball to the next child.
+    </p>
+
+    <p>
+      Return to that line — "because we have a dream, we grow strong." The order is always dream first, strength after: first allow yourself to imagine something that looks too far off, even a little laughable, and then, frame by frame, year by year, lay the road toward it. From Tsubasa's "the ball is my friend," to Isagi's "I will become the best in the world," to the hundred-plus Japanese children who have kicked their way into Europe today, we have watched a society turn the panels of a comic — frame by frame, pitch by pitch — into reality. And if you asked me to name the finest example of this power to dream, it could only be Shohei Ohtani: the most complete, most astonishing crystallisation of that force — a man who lives "what even a manga wouldn't dare draw" as his ordinary day, who has shown with his own hands how far "dare to dream first, then build it frame by frame" can go. A society that can raise a Tsubasa into an Ohtani — for it to turn the World Cup of <em>Captain Tsubasa</em> and <em>Blue Lock</em> real as well, the only question left may truly be: which tournament. So now, when the Japanese say they mean to lift the World Cup before 2050, I cannot bring myself to laugh anymore. I even, a little, believe them.
+    </p>
+
+    <hr />
+
+    <div class="colophon">
+      <p class="colophon-label">Note from the Author</p>
+      <p>
+        This essay was written during the 2026 World Cup. Japan's results here — the 2-2 draw with the Netherlands, the 4-0 win over Tunisia, the 2-1 round-of-32 defeat to Brazil — and the count of Japanese players in Europe were checked against public reporting by FIFA, ESPN, and NHK; Shohei Ohtani's records were checked against official MLB data. The reading of a "power to dream," and the final responsibility for it, rest with the author.
+      </p>
+      <p>
+        Co-written with Claude (Anthropic) through extended discussion. This is the second installment of the <em>East Asia Frontline</em> column — after Sanae Takaichi, a continued reading of the spiritual ground of Japanese society through the seams of manga and popular culture.
+      </p>
+    </div>
+
+    <div class="article-foot">
+      <span>No. 〇〇二 ・ Zuihitsu ・ East Asia Frontline ・ 2026.07.10</span>
+      <a href="index-en.html" class="back">← Back to Column</a>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <span>YEH CHUNG-YANG · ZUIHITSU</span>
+  <div class="links">
+    <a href="../index-en.html">Home</a>
+    <a href="../academic.html">Academic</a>
+    <a href="../photography.html">Photography</a>
+  </div>
+  <span>2026 ・ Summer</span>
+</footer>
+
+</body>
+</html>

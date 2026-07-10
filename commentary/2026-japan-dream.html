@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>當漫畫成真：日本的「夢想力」 ・ 隨筆 ・ 葉崇揚</title>
+  <meta name="description" content="從大谷翔平，到《足球小將》《藍色監獄》的世界盃之夢——一個社會如何把漫畫裡的分鏡，一格一格踢成、打成現實。" />
+  <link rel="alternate" hreflang="zh-Hant" href="2026-japan-dream.html" />
+  <link rel="alternate" hreflang="en" href="2026-japan-dream-en.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── Spring 學術 palette (matches site) ───────── */
+    :root {
+      --shoin-bg: #f5edd8;
+      --shoin-paper: #fcf6e6;
+      --moss: #5a7a4a;
+      --accent: #d98aa8;
+      --water: #7a9aa8;
+      --ink: #2a2a28;
+      --ink-mid: #5a534d;
+      --ink-mute: #8a8378;
+      --ink-deep: #2a2624;
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--jp);
+      background: var(--shoin-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      line-height: 2.0;
+    }
+
+    /* Header */
+    .top {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(245,237,216,0.93);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      padding: 14px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-left { display: flex; align-items: center; gap: 16px; }
+    .back { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .name-block { display: inline-flex; align-items: baseline; gap: 8px; }
+    .name-jp { font-family: var(--brush); font-size: 22px; letter-spacing: 0.1em; }
+    .name-en { font-family: var(--sans); font-size: 13px; letter-spacing: 0.08em; opacity: 0.7; }
+    .nav { display: flex; gap: 24px; font-size: 12px; letter-spacing: 0.25em; }
+    .nav a { color: var(--ink); text-decoration: none; opacity: 0.5; padding-bottom: 4px; }
+    .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
+    .nav .nav-jp { font-size: 10px; opacity: 0.55; letter-spacing: 0.18em; margin-left: 2px; font-family: var(--jp); }
+    .nav .lang { border-left: 1px solid var(--line); padding-left: 24px; font-family: var(--sans); }
+
+    /* Cover photo */
+    .article-cover {
+      max-width: 1100px; margin: 2.5rem auto 0;
+      padding: 0 2rem;
+    }
+    .article-cover figure {
+      position: relative; overflow: hidden;
+      box-shadow: 0 24px 50px -28px rgba(31,31,29,0.4);
+    }
+    .article-cover img { display: block; width: 100%; height: auto; aspect-ratio: 65/24; object-fit: cover; }
+    .article-cover figcaption {
+      position: absolute; right: 1.4rem; bottom: 1rem;
+      color: rgba(252,246,230,0.92);
+      text-align: right; font-family: var(--sans);
+      font-size: 0.7rem; letter-spacing: 0.18em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      display: flex; flex-direction: column; gap: 0.2rem;
+    }
+    .article-cover .cap-num { color: var(--accent); }
+    .article-cover .cap-title { font-family: var(--jp); font-style: normal; font-size: 0.78rem; letter-spacing: 0.12em; }
+    .article-cover .cap-year { opacity: 0.7; font-size: 0.65rem; }
+
+    /* Article body */
+    .article {
+      max-width: 880px; margin: 0 auto;
+      padding: 3.5rem 2.5rem 4rem;
+    }
+    .article-eyebrow {
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+    .article-eyebrow a { color: inherit; text-decoration: none; transition: opacity 0.2s; }
+    .article-eyebrow a:hover { opacity: 0.7; }
+
+    .article-title {
+      font-family: var(--jp); font-weight: 500;
+      font-size: clamp(1.7rem, 3.4vw, 2.55rem);
+      line-height: 1.4; letter-spacing: 0.02em;
+      margin-bottom: 1.1rem;
+      color: var(--ink-deep);
+    }
+    .article-subtitle {
+      font-family: var(--sans); font-style: italic;
+      font-size: 1.05rem; line-height: 1.55;
+      color: var(--ink-mid);
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+    }
+    .article-byline {
+      display: flex; flex-wrap: wrap; gap: 0.85rem 1.4rem;
+      padding-bottom: 2rem; margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--line-soft);
+      font-family: var(--sans); font-size: 0.78rem;
+      letter-spacing: 0.16em; color: var(--ink-mid);
+    }
+    .byline-author { color: var(--accent); }
+    .byline-tag {
+      padding: 0.18rem 0.55rem;
+      border: 1px solid rgba(217,138,168,0.45);
+      color: var(--accent); font-size: 0.7rem;
+      letter-spacing: 0.22em;
+    }
+
+    .article-body p.lead {
+      font-family: var(--brush);
+      font-size: 1.25rem; line-height: 2.0;
+      letter-spacing: 0.04em;
+      color: var(--ink-deep);
+      margin-bottom: 2rem;
+      padding-left: 1.4rem;
+      border-left: 2px solid var(--accent);
+    }
+    .article-body p {
+      font-size: 1.04rem; line-height: 2.0;
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+    }
+    .article-body p em { color: var(--accent); font-style: italic; }
+    .article-body strong { font-weight: 600; color: var(--ink-deep); }
+
+    .article-body h2 {
+      font-family: var(--brush); font-weight: 400;
+      font-size: 1.65rem;
+      margin: 3rem 0 1.4rem;
+      letter-spacing: 0.04em;
+      color: var(--ink-deep);
+      display: flex; align-items: baseline; gap: 0.85rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .article-body h2 .num {
+      font-family: var(--brush);
+      font-size: 1rem;
+      color: var(--accent);
+      padding: 0.2rem 0.55rem;
+      border: 1px solid rgba(217,138,168,0.5);
+      flex-shrink: 0;
+    }
+
+    .article-body blockquote {
+      margin: 2rem 0;
+      padding: 1.6rem 1.8rem;
+      background: var(--shoin-paper);
+      border-left: 3px solid var(--moss);
+    }
+    .article-body blockquote p {
+      margin: 0;
+      font-size: 1rem; line-height: 1.95;
+      color: var(--ink-mid);
+      font-family: var(--jp);
+    }
+
+    .article-body hr {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 3rem auto;
+      width: 60%;
+      position: relative;
+    }
+    .article-body hr::after {
+      content: '◇';
+      position: absolute;
+      left: 50%; top: -0.7em;
+      transform: translateX(-50%);
+      background: var(--shoin-bg);
+      padding: 0 0.6rem;
+      color: var(--accent); font-size: 0.85rem;
+    }
+
+    /* Inline photos */
+    .inline-photo {
+      margin: 2.5rem -1rem;
+    }
+    .inline-photo figure {
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 40px -22px rgba(31,31,29,0.35);
+    }
+    .inline-photo img { display: block; width: 100%; height: auto; }
+    .inline-photo figcaption {
+      position: absolute; right: 0.9rem; bottom: 0.7rem;
+      color: rgba(252,246,230,0.92);
+      text-align: right; font-family: var(--sans);
+      font-size: 0.65rem; letter-spacing: 0.18em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      display: flex; flex-direction: column; gap: 0.15rem;
+    }
+    .inline-photo .cap-num { color: var(--accent); }
+    .inline-photo .cap-title { font-family: var(--jp); font-size: 0.72rem; letter-spacing: 0.1em; }
+    .inline-photo .cap-year { opacity: 0.7; font-size: 0.6rem; }
+
+    /* Reserved image slot (rights-safe placeholder) */
+    .photo-slot {
+      margin: 2.5rem -1rem;
+      border: 1px dashed rgba(217,138,168,0.55);
+      background: var(--shoin-paper);
+      padding: 2.6rem 1.5rem;
+      text-align: center;
+      display: flex; flex-direction: column; gap: 0.5rem;
+      align-items: center; justify-content: center;
+      min-height: 190px;
+    }
+    .photo-slot .slot-icon { color: var(--accent); font-size: 1.2rem; opacity: 0.8; }
+    .photo-slot .slot-k { font-family: var(--jp); color: var(--ink-mid); font-size: 1rem; letter-spacing: 0.1em; }
+    .photo-slot .slot-e { font-family: var(--sans); color: var(--ink-mute); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; }
+
+    /* Colophon */
+    .colophon {
+      margin: 2.5rem 0 2rem;
+      padding: 1.8rem 2rem;
+      background: var(--shoin-paper);
+      border: 1px solid var(--line-soft);
+    }
+    .colophon-label {
+      font-family: var(--sans); font-size: 0.72rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.85rem;
+    }
+    .colophon p {
+      font-size: 0.95rem; line-height: 1.85;
+      color: var(--ink-mid);
+      margin-bottom: 0.85rem;
+      font-family: var(--jp);
+    }
+    .colophon p:last-child { margin-bottom: 0; }
+
+    /* Article foot */
+    .article-foot {
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 0.85rem;
+      margin-top: 2.5rem; padding-top: 1.6rem;
+      border-top: 1px solid var(--line-soft);
+      font-family: var(--sans); font-size: 0.76rem;
+      letter-spacing: 0.16em; color: var(--ink-mute);
+    }
+    .article-foot .back {
+      color: var(--accent); text-decoration: none;
+      letter-spacing: 0.2em;
+    }
+    .article-foot .back:hover { opacity: 0.75; }
+
+    footer {
+      border-top: 1px solid var(--line-soft);
+      padding: 30px 60px;
+      max-width: 1280px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      font-size: 11px; opacity: 0.55; letter-spacing: 0.2em;
+      font-family: var(--sans);
+    }
+    footer .links { display: flex; gap: 18px; }
+    footer .links a { color: var(--ink); text-decoration: none; opacity: 0.85; transition: opacity 0.2s; }
+    footer .links a:hover { opacity: 1; color: var(--accent); }
+
+    @media (max-width: 760px) {
+      .top { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
+      .top-left { gap: 10px; }
+      .back { font-size: 10px; letter-spacing: 0.22em; }
+      .name-jp { font-size: 16px; }
+      .name-en { font-size: 8px; }
+      .nav { gap: 12px; font-size: 10px; letter-spacing: 0.16em; }
+      .nav a.nav-sub { display: none; }
+      .nav .lang { padding-left: 12px; }
+
+      .article-cover { padding: 0 1rem; margin-top: 1.4rem; }
+      .article { padding: 2.4rem 1.4rem 3rem; }
+      .article-title { font-size: 1.55rem; }
+      .article-subtitle { font-size: 0.95rem; }
+      .article-body p.lead { font-size: 1.1rem; padding-left: 1rem; }
+      .article-body p { font-size: 1rem; }
+      .article-body h2 { font-size: 1.35rem; flex-direction: row; }
+      .inline-photo, .photo-slot { margin: 2rem 0; }
+
+      footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-left">
+    <a href="../index.html" class="back">← 首頁</a>
+    <span class="top-sep">·</span>
+    <span class="name-block">
+      <span class="name-jp">葉崇揚</span>
+      <span class="name-en">（Chung-Yang Yeh）</span>
+    </span>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="../index.html" class="nav-sub">首頁</a>
+    <a href="../academic-zh.html" class="nav-sub">學術</a>
+    <a href="../photography-zh.html" class="nav-sub">攝影</a>
+    <a href="index.html" class="is-current">隨筆</a>
+    <a href="2026-japan-dream-en.html" class="lang">EN</a>
+  </nav>
+</header>
+
+<div class="article-cover">
+  <figure>
+    <img src="../images/photography/dscf3861_4.jpg" alt="富士與橋" />
+    <figcaption>
+      <span class="cap-num">No. 〇六四</span>
+      <span class="cap-title">富士與橋 ・ Xpan 65×24</span>
+      <span class="cap-year">攝・葉崇揚</span>
+    </figcaption>
+  </figure>
+</div>
+
+<article class="article">
+
+  <p class="article-eyebrow">
+    <a href="index.html">← 隨筆 ・ 東亞觀察最前線 No. 〇〇二</a>
+  </p>
+
+  <h1 class="article-title">
+    當漫畫成真：日本的「夢想力」
+  </h1>
+
+  <p class="article-subtitle">
+    When the Manga Comes True: Japan's Power to Dream — from Shohei Ohtani to the World Cup dream of <em>Captain Tsubasa</em> and <em>Blue Lock</em>
+  </p>
+
+  <div class="article-byline">
+    <span class="byline-author">葉崇揚 × Claude</span>
+    <span class="byline-date">2026 年 7 月 10 日</span>
+    <span class="byline-tag">日本 ・ Japan</span>
+  </div>
+
+  <div class="article-body">
+
+    <p class="lead">
+      棒球，才是日本真正的國球。滿田拓也的《棒球大聯盟》（MAJOR）裡，茂野吾郎從日本的少棒場，一路拚進美國大聯盟；在當年，「一個日本人稱霸美職」這種情節，聽起來就是只有漫畫才敢畫的白日夢。孩子闔上漫畫、走回現實，多半也明白那終究只是故事。
+    </p>
+
+    <p>
+      然後，現實生出了一個大谷翔平——誇張到連漫畫都不敢這樣畫。他是投打二刀流，一個人同時是球隊的王牌投手，又是打線上最有威脅的強打者；二〇二四年，他打出大聯盟史上第一個「五十轟五十盜」，二〇二五年又敲出五十五支全壘打、還重新站回投手丘。他連續三年拿下全票最有價值球員（生涯第四座，史上只有貝瑞・邦茲比他多；而且這四座全是「全票」通過，前無古人）。這兩年，他更帶著道奇連莊世界大賽冠軍——同時做到衛冕冠軍又連莊 MVP 的，過去半個世紀只有一九七〇年代紅人隊的 Joe Morgan 辦到過。更別說二〇二三年世界棒球經典賽的冠軍戰，他在最後一個半局登板，親手三振掉自己在天使的當家隊友、超級球星楚奧特（Mike Trout），替日本封王；這種安排，連漫畫家都不一定敢寫。漫畫想像力的天花板，就這樣被現實一拳打穿。
+    </p>
+
+    <p>
+      這正是我想說的「夢想力」最迷人的地方：當一個社會持續敢做夢、又持續往夢裡蓋，它最後長出來的東西，會比它自己的虛構還要離譜。夢想力不是空想，是有工程圖的——敢做夢，而且願意規劃、願意動手。棒球是日本的國球，這份夢想力在這裡展現得最濃、也最理所當然。但真正讓我服氣的，是它連一項日本原本毫無天分的運動，都能硬生生改造過來——足球。而在足球這條路上，你可以把那台「造夢的引擎」看得一清二楚：漫畫。
+    </p>
+
+    <hr />
+
+    <p>
+      把時間拉回一九八一年。那一年，高橋陽一開始連載《足球小將》（キャプテン翼）。在那個日本足球還是一片荒地的年代——沒有職業聯賽、國際賽總是輸——這部漫畫先一步把足球畫得又熱血又快樂：大空翼那句「球是我的朋友」，帶球過人像跳舞，倒掛金鉤、必殺射門一記比一記誇張，還有若林源三、日向小次郎這些「既生瑜、何生亮」的對手與隊友。翼小將的夢很簡單也很大——披上日本隊球衣，把世界盃捧回來。這個夢，餵養了一整代日本小孩。那些看著翼小將長大的孩子，後來很多真的成了球員，成了把一九九八、二〇〇二撐起來的人；許多人也相信，日本基層足球的註冊人口會從八〇年代一路往上爬，這部漫畫正是點火的人之一。就連 Zidane、Messi、Iniesta、Torres 這些歐洲、南美的頂級球星，小時候也是看這部長大的。夢，是先被畫出來的，再被踢出來。
+    </p>
+
+    <p>
+      畫歸畫，日本也真的動手去蓋。日本足協在二〇〇五年立下一個聽起來近乎狂妄的目標：二〇五〇年以前，要在自己的土地上辦一屆世界盃，並且由日本隊捧起冠軍；那份宣言還配了一句副標——「夢があるから強くなる」，因為有夢，才會變強。而且他們把這個大到嚇人的夢，切成一格一格的階段往前推。這種蓋法，其實一九九三年就開始了：那年五月，日本職業足球聯賽（J聯盟）正式開踢，用最笨也最實在的方法，從把土壤養好做起。可是同一年十月，日本在多哈對伊拉克的世界盃資格賽最後一戰，眼看只要守住比分就能第一次晉級，卻在終場前的最後一擊被追平，夢在幾秒之內碎掉——這就是日本球迷永遠記得的「多哈悲劇」。換作別的地方，這種痛也許就讓人算了；日本沒有。聯賽照辦，青訓照蓋，四年後的一九九七年，靠岡野雅行在延長賽的黃金進球擊敗伊朗，第一次拿到世界盃門票，那一夜被稱作「柔佛巴魯的狂喜」。一九九八年法國世界盃，日本終於站上了那個他們追了幾十年的舞台。而這一整段歷史，漫畫也同步畫著：村枝賢一的《足球好小子》（俺たちのフィールド）從一九九二畫到一九九八，幾乎踩著真實事件在走——J聯盟開幕畫了，多哈悲劇畫了，最後一回，就停在一九九八年日本對阿根廷的世界盃首戰。現實在球場上發生什麼，漫畫就在同一時間，把它畫成故事。
+    </p>
+
+    <div class="photo-slot" data-slot="manga">
+      <span class="slot-icon">◈</span>
+      <span class="slot-k">〔圖 · 《足球好小子》（俺たちのフィールド）漫畫〕</span>
+      <span class="slot-e">Manga panel to be placed · rights-cleared image</span>
+    </div>
+
+    <hr />
+
+    <p>
+      其實，日本能走到今天，靠的不只是敢贏，更是懂得怎麼面對輸。二〇一八年俄羅斯世界盃十六強，日本對比利時一度二比零領先——那大概是他們史上最接近八強的一次，近到幾乎能碰到那扇門的把手。可是比利時把比分追了回來，最後在第九十四分鐘，用一次教科書般的閃電反擊，從日本的一記角球一路推到對面球門，補時絕殺，三比二。終場哨響，日本球員一個個癱倒在草皮上，全世界都替他們心碎。但真正了不起的，是那之後：日本沒有把它當成一次倒楣就翻頁，而是把那短短十幾秒拆開來、一格一格地看——球是怎麼被反擊的？那幾秒鐘，我們到底少做了什麼？此後好幾年，這場被稱為「羅斯托夫的十四秒」的敗仗，成了日本足球反覆咀嚼的教材。因為對他們來說，失敗從來不可怕；真正可怕的，是失敗得毫無意義、什麼都沒學到，就這樣算了。
+    </p>
+
+    <p>
+      那股「把失敗磨成養分」的狠勁，四年後就在卡達開了花。二〇二二年世界盃，日本被分進所謂的「死亡之組」，同組站著兩支捧過世界盃的老牌霸主——德國和西班牙。對德國那場，日本上半場先失一球，換作以前大概就低頭了；但這一次，他們下半場換上生力軍，靠堂安律和淺野拓磨連扳兩城，二比一逆轉，把四星德國逼得當場失措。對西班牙，劇本幾乎重演：又是先落後，又是堂安律扳平，接著是那一顆全日本至今說起來還會屏住呼吸的球——三笘薫追著一顆看起來早已滾出底線的死球，就是不放棄，在最後一刻把它撈了回來、倒三角回傳，田中碧推進空門。慢動作重播裡，那顆球只剩薄薄一毫米還壓在線上，日本人後來就叫它「三笘的一毫米」。就是這一毫米、這一次「球還沒出界以前，我絕不鬆腳」的倔強，把日本頂上了小組第一，也把昔日的世界冠軍德國，硬生生擋在了十六強門外。那一刻，多少人脫口而出：這根本就是《足球小將》的劇本成真了。
+    </p>
+
+    <p>
+      而日本的夢，也就在這樣一次次「差一點」與「終於做到了」之間，悄悄升級了——從「能不能踢進世界盃」，變成「憑什麼還贏不了」。而這股新的野心，漫畫又一次同步畫了出來：金城宗幸原作、ノ村優介作畫的《藍色監獄》（ブルーロック，二〇一八年起連載）。它的前提，幾乎是把日本足協的焦慮直接搬上紙面——日本一再止步十六強，到底缺什麼？答案是：缺一個能在世界舞台上一劍封喉的前鋒。於是故事虛構出一座叫「藍色監獄」的設施，把全國幾百個最有天分的前鋒關進去，用近乎殘酷、極致利己的競爭，去淬煉出那唯一一個能替日本奪下世界盃的射手。主角潔世一要的，不再只是「參與」，而是「成為世界第一」。從大空翼的「球是我的朋友」，到潔世一的「我要成為世界最強前鋒」，你會發現夢的等級整個換了一階——從愛上足球，到非贏不可。
+    </p>
+
+    <p>
+      而漫畫餵給孩子的，從來不只是奪冠的夢，還有跌倒之後怎麼再站起來。田中モトユキ的《BE BLUES！～青になれ～》，主角一条龍原是眾人看好的天才少年，卻在入選少年國家隊的那一天被車撞成重傷，一度連還能不能再踢球都成了問號；整部漫畫，講的就是他怎麼從那個谷底、一寸一寸地把自己爬回綠茵場。這種「跌到最底、再重新站起來」的故事，和日本足球在多哈、在羅斯托夫親身學到的，其實是同一件事——漫畫不只教孩子做夢，也教他們在夢碎之後，怎麼把自己一塊一塊拼回去。再加上《足球風雲》（シュート！）這些一部接一部的作品，足球漫畫就像一條不斷電的輸送帶，一代又一代，把「敢做夢、也敢跌倒重來」這件事，交到孩子手上。
+    </p>
+
+    <hr />
+
+    <p>
+      而就在寫下這篇文章的此刻，二〇二六年的世界盃正在美加墨三國的球場上打著，你幾乎能看見那條從一九八一年一路鋪過來的路。小組賽首戰，面對那支曾讓整個亞洲仰望的橙衣荷蘭，日本在落後之下始終不肯認輸、一路苦苦追趕，直到終場前，才由鎌田大地把比分硬生生扳成二比二。想想看：三十幾年前還是一片荒地、國際賽逢戰必輸的日本足球，如今能站在荷蘭面前扳平離場、眼神裡沒有半分膽怯——光是這一幕，本身就是一種宣告。接著一場四比零血洗突尼西亞，成為世界盃史上第一支單場踢進四球的亞洲球隊。開賽才第四分鐘，鎌田就攻進日本世界盃史上最快的一顆進球；而全場最讓人起雞皮疙瘩的，是那記行雲流水的第三球——田中碧從自家陣地送出一記銳利的直塞，上田綺世不停球、用右腳輕輕一撥，一記絕妙的觸傳就把球送穿突尼西亞的最後防線，早已插到身後的伊東純也單刀面對門將、冷靜推射入網。從後場直塞、到前場一觸即發的挑傳、再到伊東從防線背後殺出的破門，兩三下就一氣呵成，順得像《足球小將》裡才畫得出來的分鏡（別忘了，那場三笘薫和久保建英兩張王牌都因傷缺陣，日本照樣贏得從容）。最後一戰再和瑞典一比一言和，日本以小組第二晉級，然後在三十二強撞上五度奪冠的巴西。他們一路拚到終場，仍被馬丁內利（Gabriel Martinelli）在尾聲一劍封喉，一比二落敗。哨音響起，日本又一次倒在淘汰賽的門口——是的，直到今天，日本從來沒有贏過任何一場世界盃的淘汰賽。
+    </p>
+
+    <div class="photo-slot" data-slot="worldcup">
+      <span class="slot-icon">◈</span>
+      <span class="slot-k">〔圖 · 本屆日本世界盃〕</span>
+      <span class="slot-e">Japan at the 2026 World Cup · rights-cleared image</span>
+    </div>
+
+    <p>
+      所以日本厲害的地方，不只是敢喊一個大到別人不敢喊的目標。他們喊完之後，會認真去蓋實現它的那套系統。文化上，有漫畫這台造夢的引擎，從《足球小將》到《藍色監獄》，一棒接一棒；制度上，有 J聯盟和足協這台落地的引擎，青訓學院、一格一格往前推的十年、二十年計畫。兩台引擎朝同一個方向使力：漫畫讓孩子敢想，聯賽和足協讓敢想的孩子有地方去，這兩件事一接上，夢就開始自己往前滾。而且他們夠有耐性，知道地基得花十年、二十年才蓋得起來，就真的一年一年蓋下去，不會因為一次多哈、一次巴西的失敗就掀桌走人。
+    </p>
+
+    <p>
+      東亞其他國家，坦白說不太做得到這件事。有的很敢喊願景，卻沒耐性把地基蓋完；有的很會埋頭苦幹，卻不太敢把夢做得那麼大。日本難得的，是把「敢做夢」和「肯規劃、肯行動」這兩件常常互相拉扯的事，湊到了一起。
+    </p>
+
+    <p>
+      而最讓我動容的，其實是這件事的另一面。從一九九三年多哈那個在幾秒之內碎掉的夢，到二〇二六年在巴西面前差一步的夢，中間隔了三十三年——三十三年，一次又一次走到淘汰賽的門口，一次又一次被擋在門外。換作別人，早該認命說一句「我們大概就到這裡了」。可是日本沒有。他們不怕輸，最怕的是輸得沒有意義；於是多哈也好、羅斯托夫也好、這一次的巴西也好，每一次心碎，都被他們彎下腰撿起來、拆開來看清楚，再變成下一次的養分。輸完的隔天，聯賽照踢，青訓照蓋，孩子照樣捧著漫畫，把自己想像成下一個大空翼、下一個潔世一。而那些當年真的看著翼小將長大的孩子，如今散落在整個歐洲的草皮上——光是二〇二五／二六賽季，就有一百一十幾位日本球員在歐洲各級聯賽踢球，短短五年之間成長了九成。夢沒有留在紙上，它長成了一整個世代，一個一個，把自己踢進了世界最高的舞台。敢做夢真正動人的地方，從來不是它一次就成功；而是它明明一次次落空，卻總還有人願意再相信一次、再蓋一年、再把球傳給下一個孩子。
+    </p>
+
+    <p>
+      回到那句「因為有夢，才會變強」——它的順序始終是夢在前、強在後：先允許自己去想一件看起來太遠、甚至有點好笑的事，再一格一格、一年一年，把路鋪過去。從大空翼的「球是我的朋友」，到潔世一的「我要成為世界第一」，再到今天一百多個把自己踢進歐洲的日本孩子，我們親眼看著一個社會，怎麼把漫畫裡的分鏡，一格一格、一棒一腳，打成、也踢成現實。而如果要我指出這股「夢想力」最好的例子，那一定是大谷翔平——他就是這股力量最完整、也最驚人的結晶：一個把「連漫畫都不敢畫」活成日常的人，一個親手證明了「先敢做夢，再一格一格把它蓋出來」到底能走多遠的男人。一個能把大空翼養成大谷翔平的社會，要把《足球小將》與《藍色監獄》裡那座世界盃也踢成真，剩下的，也許真的只是——哪一屆而已。所以現在，當日本人說他們要在二〇五〇年以前捧起世界盃，我已經一點都笑不出來了。我甚至，有點相信。
+    </p>
+
+    <hr />
+
+    <div class="colophon">
+      <p class="colophon-label">作者按 ・ Note from the Author</p>
+      <p>
+        本文寫於二〇二六年世界盃期間。文中日本隊的賽事（對荷蘭二比二、四比零突尼西亞、三十二強一比二不敵巴西）與旅歐球員人數，均查證自 FIFA、ESPN、NHK 等公開報導；棒球部分大谷翔平的紀錄，查證自 MLB 官方資料。至於「夢想力」的判斷與最終文責，由作者承擔。
+      </p>
+      <p>
+        本文由葉崇揚與 Claude（Anthropic）共同討論、共筆完成。這是「東亞觀察最前線」的第二篇——在高市早苗之後，繼續從漫畫與流行文化的縫隙，讀日本這個社會的精神底層。
+      </p>
+    </div>
+
+    <div class="article-foot">
+      <span>No. 〇〇二 ・ 隨筆 ・ 東亞觀察最前線 ・ 2026.07.10</span>
+      <a href="index.html" class="back">← 回到專欄目錄</a>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <span>YEH CHUNG-YANG · 隨筆</span>
+  <div class="links">
+    <a href="../index.html">首頁</a>
+    <a href="../academic-zh.html">學術</a>
+    <a href="../photography-zh.html">攝影</a>
+  </div>
+  <span>2026 ・ 夏</span>
+</footer>
+
+</body>
+</html>
