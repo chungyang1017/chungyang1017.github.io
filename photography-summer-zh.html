@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>青嵐 Aoarashi · 水墨青楓 — 葉崇揚</title>
-<meta name="description" content="青嵐 · 雨後的青葉，苔與水面的光。京都的六月。水墨青楓風格的夏天照片總覽。">
+<title>螢 Hotaru · 薄暮の蛍 — 葉崇揚</title>
+<meta name="description" content="螢火蟲 · 薄暮的水邊，草間浮起點點光。京都的初夏。以群螢薄暮為引，夏天照片總覽。">
 <link rel="alternate" hreflang="zh-Hant" href="photography-summer-zh.html">
 <link rel="alternate" hreflang="en" href="photography-summer.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,9 +12,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Serif+TC:wght@300;400;500;600&family=Yuji+Syuku&family=Klee+One:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   /* ================================================================
-     青嵐 · 青葉總覽（水墨風格）
+     螢 · 夏日總覽（薄暮群螢）
      骨幹＝攝影頁設計語言（:root / 字體 / nav / lightbox / samon）
-     頂部＝水墨山溪 hero（宣紙質地 + 溪流 SVG + 順流粒子 canvas）
+     頂部＝薄暮螢火 hero（暮色漸層 + 蘆葦剪影 SVG + 群螢明滅 canvas）
      ================================================================ */
   :root{
     --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
@@ -30,6 +30,9 @@
     --sumi:#2a2624; --sumi-soft:#4a433f; --sumi-faint:#6f665f;
     --hair:rgba(31,31,29,.12);
     --ease:cubic-bezier(.22,.61,.36,1);
+    /* 薄暮群螢：暮色與螢光（僅 hero 使用）*/
+    --dusk-deep:#22383a; --dusk-mid:#47635f; --dusk-hi:#a7b3a6;
+    --hotaru:#e9f2a0; --hotaru-warm:#f4d777; --hotaru-ivory:#f4f6e2;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
@@ -96,21 +99,35 @@
   .nav nav a.is-active{color:var(--accent);border-bottom-color:var(--accent)}
   .nav .lang{border-left:1px solid var(--rule);padding-left:24px;font-family:var(--latin);font-size:16px;letter-spacing:.2em;color:var(--ink-soft);text-decoration:none}
 
-  /* ================= 水墨青楓 HERO ================= */
+  /* ================= 薄暮螢火 HERO ================= */
   .hero{
     position:relative; min-height:100svh;
     display:grid; grid-template-columns:1fr; align-items:center;
     padding:clamp(80px,14vh,140px) 0 clamp(56px,10vh,88px);
     overflow:hidden;
+    /* 暮色漸層：頂端接宣紙砂色 → 中段沉入暮青 → 下段最深（螢光對比帶）→ 底再回砂色（與照片牆銜接不留硬邊）*/
+    background:linear-gradient(180deg,
+      var(--sand) 0%,
+      #d3d3c0 9%,
+      #a7b3a6 22%,
+      #6f8a86 37%,
+      #47635f 52%,
+      #2c4744 68%,
+      #22383a 82%,
+      #33494a 92%,
+      var(--sand) 100%);
   }
   .hero .wrap{ position:relative; z-index:3; width:min(1180px,90vw); margin-inline:auto; }
 
-  /* 山溪（SVG）— hero 背景：下方橫貫的主流＋右上入水的支流 */
-  .ink-stream{
+  /* 蘆葦剪影（SVG）— hero 底部橫向草叢＋遠山＋水面微光 */
+  .reeds{
     position:absolute; z-index:1; pointer-events:none;
-    left:-3%; top:-3%; width:106%; height:106%;
+    left:0; bottom:0; width:100%; height:78%;
     will-change:transform;
   }
+  /* 蘆葦輕擺（各叢不同節律；reduced-motion 由全域停用）*/
+  .reed-sway{ transform-box:fill-box; transform-origin:50% 100%; animation:reedSway var(--sw,8s) var(--ease) var(--swd,0s) infinite; }
+  @keyframes reedSway{ 0%,100%{ transform:rotate(-1deg) } 50%{ transform:rotate(1.1deg) } }
   /* 順流粒子 canvas（青葉・水沫・波光，只在 hero 內）
      注意：canvas 是 replaced element，inset:0 不會自動撐滿，必須明確給 width/height */
   #flow{ position:absolute; inset:0; width:100%; height:100%; z-index:2; pointer-events:none; }
@@ -124,11 +141,12 @@
   .eyebrow{
     font-family:var(--latin); font-weight:400;
     font-size:clamp(11px,1.2vw,13px); letter-spacing:.5em;
-    text-transform:uppercase; color:var(--moss);
+    text-transform:uppercase; color:var(--hotaru);
     margin-bottom:clamp(20px,3.2vh,32px);
     display:flex; align-items:center; gap:1em;
+    text-shadow:0 0 18px rgba(233,242,160,.35);
   }
-  .eyebrow::before{ content:""; width:clamp(26px,4vw,52px); height:1px; background:var(--moss); opacity:.55; }
+  .eyebrow::before{ content:""; width:clamp(26px,4vw,52px); height:1px; background:var(--hotaru); opacity:.6; }
 
   .hero h1{
     font-family:var(--serif); font-weight:600;
@@ -137,41 +155,45 @@
     margin:0 0 clamp(12px,2vh,22px);
     position:relative;
   }
+  .hero h1{ color:var(--hotaru-ivory); }
   .hero h1 .kanji{
     display:inline-block; position:relative;
-    background:linear-gradient(178deg,var(--sumi) 0%, var(--sumi) 58%, #3d3733 100%);
+    background:linear-gradient(176deg,var(--hotaru-ivory) 0%, #e4ecb4 46%, var(--hotaru) 78%, var(--hotaru-warm) 100%);
     -webkit-background-clip:text; background-clip:text;
     -webkit-text-fill-color:transparent;
   }
+  /* 字後暖光暈：像螢火本身的光 */
   .hero h1 .kanji::after{
     content:""; position:absolute; z-index:-1;
-    left:-6%; top:2%; width:112%; height:96%;
-    background:radial-gradient(58% 54% at 42% 46%, rgba(42,38,36,.10), transparent 70%);
-    filter:blur(6px);
+    left:-14%; top:-6%; width:128%; height:112%;
+    background:radial-gradient(56% 52% at 44% 48%, rgba(233,242,160,.30), rgba(244,215,119,.12) 46%, transparent 72%);
+    filter:blur(14px);
   }
   .hero h1 .romaji{
     display:block;
     font-family:var(--latin); font-weight:300;
     font-size:clamp(13px,2.4vw,22px); letter-spacing:.32em;
-    text-transform:uppercase; color:var(--aoba);
+    text-transform:uppercase; color:var(--hotaru-pale,#cfe0a0);
     margin-top:clamp(14px,2vh,22px); margin-left:.28em; text-indent:.32em;
+    text-shadow:0 0 16px rgba(233,242,160,.25);
   }
 
   .hero-poem{
     font-family:var(--serif); font-weight:400;
     font-size:clamp(16px,2.1vw,24px); line-height:1.95;
-    color:var(--sumi-soft); max-width:34ch;
+    color:rgba(244,246,226,.9); max-width:34ch;
     margin-top:clamp(26px,4.4vh,46px);
     position:relative; padding-left:clamp(16px,2.4vw,26px);
+    text-shadow:0 1px 16px rgba(20,30,28,.4);
   }
   .hero-poem::before{
     content:""; position:absolute; left:0; top:.35em; bottom:.35em; width:2px;
-    background:linear-gradient(var(--aoba),var(--aoba-pale)); opacity:.65;
+    background:linear-gradient(var(--hotaru),var(--hotaru-warm)); opacity:.7;
   }
   .hero-poem .en{
     display:block; font-family:var(--latin); font-weight:300; font-style:italic;
     font-size:clamp(13px,1.5vw,16px); letter-spacing:.01em;
-    color:var(--sumi-faint); line-height:1.7; margin-top:.7em;
+    color:rgba(233,238,214,.62); line-height:1.7; margin-top:.7em;
   }
 
   /* hero 縦書きの落款（右）*/
@@ -179,9 +201,10 @@
     position:absolute; z-index:3; pointer-events:none;
     top:clamp(96px,17vh,180px); right:clamp(16px,3.4vw,46px);
     writing-mode:vertical-rl; text-orientation:mixed;
-    font-family:var(--display); color:var(--sumi-faint);
-    letter-spacing:.42em; opacity:.55;
+    font-family:var(--display); color:rgba(233,242,160,.5);
+    letter-spacing:.42em; opacity:.72;
     font-size:clamp(11px,1.35vw,14px);
+    text-shadow:0 0 14px rgba(233,242,160,.28);
   }
 
   .scroll-cue{
@@ -189,10 +212,10 @@
     bottom:clamp(22px,4vh,40px);
     display:flex; flex-direction:column; align-items:center; gap:10px;
     font-family:var(--latin); font-size:10px; letter-spacing:.42em;
-    text-transform:uppercase; color:var(--sumi-faint);
+    text-transform:uppercase; color:rgba(233,238,214,.6);
     animation:floatCue 3.4s var(--ease) infinite;
   }
-  .scroll-cue .line{ width:1px; height:clamp(30px,6vh,52px); background:linear-gradient(var(--sumi-faint),transparent); }
+  .scroll-cue .line{ width:1px; height:clamp(30px,6vh,52px); background:linear-gradient(rgba(233,242,160,.6),transparent); }
   @keyframes floatCue{ 0%,100%{ transform:translate(-50%,0); opacity:.8 } 50%{ transform:translate(-50%,7px); opacity:.4 } }
 
   /* ================= 照片牆前導 ================= */
@@ -294,7 +317,7 @@
     .hero h1{ font-size:clamp(76px,30vw,140px); }
     .hero h1 .romaji{ font-size:clamp(13px,4.4vw,20px); letter-spacing:.26em; }
     .hero-poem{ font-size:clamp(16px,4.4vw,21px); max-width:26ch; }
-    .ink-stream{ opacity:.88; }
+    .reeds{ opacity:.94; height:66%; }
     .hero-mark{ display:none; }
     .wall-head{ grid-template-columns:1fr; gap:18px; padding-top:clamp(48px,8vh,72px); }
     .wall-head .wh-kanji{ font-size:clamp(56px,18vw,96px); }
@@ -341,123 +364,111 @@
 
 <main class="page">
 
-  <!-- ============ 水墨山溪 HERO ============ -->
+  <!-- ============ 薄暮螢火 HERO ============ -->
   <header class="hero" id="hero">
-    <!-- 山溪 — 墨暈水體（wash）＋流線（flow-line）＋溪石（錨點）＋波光（glint）-->
-    <svg class="ink-stream" id="stream" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- 蘆葦剪影 — 遠山＋水面微光＋墨色蘆葦叢（各叢輕擺）-->
+    <svg class="reeds" id="reeds" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
-        <filter id="inkbleed" x="-30%" y="-30%" width="160%" height="160%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="4" seed="7" result="t"/>
-          <feDisplacementMap in="SourceGraphic" in2="t" scale="16" xChannelSelector="R" yChannelSelector="G" result="d"/>
-          <feGaussianBlur in="d" stdDeviation="2.6"/>
+        <filter id="reedbleed" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.014 0.022" numOctaves="3" seed="7" result="t"/>
+          <feDisplacementMap in="SourceGraphic" in2="t" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.5"/>
         </filter>
-        <filter id="stonebleed" x="-30%" y="-30%" width="160%" height="160%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="3" seed="11" result="t"/>
-          <feDisplacementMap in="SourceGraphic" in2="t" scale="9"/>
-          <feGaussianBlur stdDeviation="0.6"/>
-        </filter>
-        <linearGradient id="waterA" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0"  stop-color="#6a95a4"/>
-          <stop offset=".5" stop-color="#5a7a8a"/>
-          <stop offset="1"  stop-color="#6aa38f"/>
+        <linearGradient id="reedG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"   stop-color="#3c5854"/>
+          <stop offset=".42" stop-color="#1e2f2c"/>
+          <stop offset="1"   stop-color="#0f1917"/>
         </linearGradient>
-        <linearGradient id="waterB" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#7fb0a0"/>
-          <stop offset="1" stop-color="#5a7a8a"/>
+        <linearGradient id="hillFar" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#33494a"/>
+          <stop offset="1" stop-color="#243a3b"/>
         </linearGradient>
-        <linearGradient id="stoneG" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0"   stop-color="#4a5a50"/>
-          <stop offset=".55" stop-color="#37423c"/>
-          <stop offset="1"   stop-color="#232b27"/>
+        <linearGradient id="waterSheen" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"  stop-color="#3a5658" stop-opacity="0"/>
+          <stop offset=".5" stop-color="#456260" stop-opacity=".5"/>
+          <stop offset="1"  stop-color="#22383a" stop-opacity="0"/>
         </linearGradient>
       </defs>
 
-      <!-- 支流 wash（右上入水，補位原墨枝）-->
-      <g filter="url(#inkbleed)" stroke-linecap="round">
-        <path d="M1288 -80 C 1244 120, 1168 290, 1120 430 C 1086 530, 1072 575, 1050 645" stroke="url(#waterB)" stroke-width="64" opacity=".09"/>
-        <path d="M1304 -60 C 1272 140, 1206 300, 1152 448 C 1118 540, 1100 585, 1078 652" stroke="#8fb3bd" stroke-width="30" opacity=".11"/>
+      <!-- 遠山（暮色剪影，兩層景深）-->
+      <g filter="url(#reedbleed)">
+        <path d="M-40 694 C 260 640, 520 680, 780 656 C 1020 634, 1240 668, 1480 644 L1480 900 L-40 900 Z" fill="url(#hillFar)" opacity=".4"/>
+        <path d="M-40 748 C 300 712, 600 746, 900 722 C 1140 704, 1320 734, 1480 716 L1480 900 L-40 900 Z" fill="#1b2b2c" opacity=".5"/>
       </g>
 
-      <!-- 主流 wash（下方橫貫的水體）-->
-      <g filter="url(#inkbleed)" stroke-linecap="round">
-        <path d="M-60 656 C 180 712, 370 606, 570 644 C 770 682, 840 742, 1040 702 C 1220 666, 1335 632, 1500 672" stroke="url(#waterA)" stroke-width="260" opacity=".05"/>
-        <path d="M-60 640 C 180 700, 360 590, 560 630 C 760 670, 830 730, 1030 690 C 1210 655, 1330 620, 1500 660" stroke="url(#waterA)" stroke-width="150" opacity=".13"/>
-        <path d="M-60 610 C 200 660, 380 570, 580 606 C 780 642, 850 700, 1050 665 C 1230 632, 1340 600, 1500 636" stroke="#8fb3bd" stroke-width="86" opacity=".12"/>
-        <path d="M-60 690 C 190 740, 400 640, 600 672 C 800 706, 860 760, 1060 724 C 1240 692, 1350 662, 1500 700" stroke="#6aa38f" stroke-width="70" opacity=".09"/>
-      </g>
-
-      <!-- 流線（順流而動）-->
+      <!-- 水面微光帶（螢光將在此倒映）-->
+      <rect x="-40" y="812" width="1520" height="98" fill="url(#waterSheen)"/>
       <g stroke-linecap="round">
-        <path class="flow-line" style="--d:26s;--off:-680" d="M-40 588 C 160 636, 360 556, 560 590 C 720 616, 800 664, 990 636 C 1180 608, 1320 592, 1480 620" stroke="#5a7a8a" stroke-width="2.4" opacity=".38" stroke-dasharray="140 220 80 240"/>
-        <path class="flow-line" style="--d:32s;--off:-700" d="M-40 636 C 180 686, 380 596, 575 628 C 745 656, 815 700, 1010 668 C 1190 640, 1330 618, 1480 652" stroke="#6aa38f" stroke-width="2" opacity=".34" stroke-dasharray="180 260 60 200"/>
-        <path class="flow-line" style="--d:15s;--off:-680" d="M-40 616 C 170 660, 370 576, 566 608 C 736 636, 806 682, 1000 652 C 1185 624, 1325 604, 1480 636" stroke="#f6faf3" stroke-width="1.8" opacity=".5" stroke-dasharray="26 340 14 300"/>
-        <path class="flow-line" style="--d:36s;--off:-880" d="M-40 676 C 190 722, 400 630, 610 662 C 790 690, 850 738, 1050 706 C 1230 676, 1350 652, 1480 688" stroke="#5a7a8a" stroke-width="2.6" opacity=".3" stroke-dasharray="200 300 120 260"/>
-        <path class="flow-line" style="--d:18s;--off:-668" d="M-40 700 C 200 744, 420 652, 630 684 C 800 710, 870 752, 1070 722 C 1240 694, 1360 672, 1480 706" stroke="#eef4ee" stroke-width="1.4" opacity=".42" stroke-dasharray="18 300 30 320"/>
-        <path class="flow-line" style="--d:28s;--off:-730" d="M-40 564 C 150 606, 350 532, 545 562 C 705 586, 785 626, 975 602 C 1165 578, 1310 566, 1480 594" stroke="#9cc191" stroke-width="1.6" opacity=".3" stroke-dasharray="120 280 70 260"/>
-        <!-- 支流の流線 -->
-        <path class="flow-line" style="--d:22s;--off:-580" d="M1282 -60 C 1246 120, 1176 288, 1128 430 C 1096 524, 1080 572, 1058 642" stroke="#5a7a8a" stroke-width="1.8" opacity=".32" stroke-dasharray="110 200 60 210"/>
-        <path class="flow-line" style="--d:14s;--off:-542" d="M1300 -50 C 1272 130, 1206 300, 1156 444 C 1122 536, 1104 582, 1082 650" stroke="#f6faf3" stroke-width="1.3" opacity=".38" stroke-dasharray="16 260 26 240"/>
+        <path d="M120 848 q 60 5 128 0" stroke="#8fb0ad" stroke-width="1.2" opacity=".28"/>
+        <path d="M560 864 q 80 6 168 1" stroke="#8fb0ad" stroke-width="1.2" opacity=".24"/>
+        <path d="M980 842 q 70 5 150 0" stroke="#8fb0ad" stroke-width="1.2" opacity=".26"/>
       </g>
 
-      <!-- 溪石（壓在流線之上＝水繞石行）-->
-      <g filter="url(#stonebleed)">
-        <ellipse cx="698" cy="692" rx="52" ry="9" fill="#2a3532" opacity=".14"/>
-        <ellipse cx="898" cy="710" rx="66" ry="11" fill="#2a3532" opacity=".14"/>
-        <ellipse cx="1182" cy="658" rx="40" ry="8" fill="#2a3532" opacity=".12"/>
-        <ellipse cx="254" cy="720" rx="32" ry="7" fill="#2a3532" opacity=".12"/>
-        <path d="M655 660 C 655 635, 678 618, 702 620 C 728 622, 742 638, 740 658 C 738 678, 716 688, 692 686 C 670 684, 655 676, 655 660 Z" fill="url(#stoneG)" opacity=".92"/>
-        <path d="M840 668 C 838 634, 868 612, 902 616 C 938 620, 954 642, 950 670 C 946 696, 914 708, 882 704 C 856 700, 842 690, 840 668 Z" fill="url(#stoneG)" opacity=".94"/>
-        <path d="M948 690 C 948 674, 962 664, 978 666 C 994 668, 1002 678, 1000 692 C 998 704, 984 710, 970 708 C 958 706, 948 700, 948 690 Z" fill="url(#stoneG)" opacity=".88"/>
-        <path d="M1150 630 C 1150 610, 1168 598, 1188 601 C 1206 604, 1216 616, 1214 632 C 1212 648, 1194 656, 1176 653 C 1160 650, 1150 644, 1150 630 Z" fill="url(#stoneG)" opacity=".9"/>
-        <path d="M230 698 C 230 682, 244 672, 258 674 C 272 676, 281 686, 279 700 C 277 712, 263 718, 250 716 C 239 714, 230 708, 230 698 Z" fill="url(#stoneG)" opacity=".85"/>
-        <!-- 石上苔意 -->
-        <ellipse cx="690" cy="632" rx="24" ry="9" fill="#5c8a54" opacity=".3"/>
-        <ellipse cx="886" cy="628" rx="32" ry="11" fill="#5c8a54" opacity=".3"/>
-        <ellipse cx="1178" cy="610" rx="18" ry="7" fill="#5c8a54" opacity=".28"/>
-        <ellipse cx="250" cy="682" rx="13" ry="5" fill="#5c8a54" opacity=".26"/>
-      </g>
-
-      <!-- 石際白泡（上游側湧起）與石後細紋 -->
-      <g stroke-linecap="round" fill="none">
-        <path class="flow-line" style="--d:6s;--off:-56"  d="M642 642 C 636 656, 636 672, 644 684" stroke="#f6faf3" stroke-width="2.5" opacity=".5" stroke-dasharray="5 9"/>
-        <path class="flow-line" style="--d:6.5s;--off:-64" d="M826 640 C 818 656, 818 676, 828 692" stroke="#f6faf3" stroke-width="2.8" opacity=".5" stroke-dasharray="6 10"/>
-        <path class="flow-line" style="--d:5.5s;--off:-52" d="M1138 612 C 1132 624, 1132 638, 1140 648" stroke="#f6faf3" stroke-width="2.2" opacity=".46" stroke-dasharray="5 8"/>
-        <path d="M744 660 q 26 6 50 2" stroke="#5a7a8a" stroke-width="1.5" opacity=".28"/>
-        <path d="M748 674 q 22 6 42 3" stroke="#5a7a8a" stroke-width="1.3" opacity=".22"/>
-        <path d="M956 676 q 30 6 56 0" stroke="#5a7a8a" stroke-width="1.5" opacity=".28"/>
-        <path d="M962 690 q 26 7 48 2" stroke="#5a7a8a" stroke-width="1.3" opacity=".22"/>
-        <path d="M1218 634 q 22 5 40 1" stroke="#5a7a8a" stroke-width="1.3" opacity=".24"/>
-      </g>
-
-      <!-- 波光（明滅）-->
-      <g fill="#f6faf3">
-        <ellipse class="glint" style="--gd:3.8s;--gdel:.2s"  cx="340"  cy="622" rx="11" ry="2.2"/>
-        <ellipse class="glint" style="--gd:5.1s;--gdel:1.4s" cx="472"  cy="600" rx="9"  ry="1.9"/>
-        <ellipse class="glint" style="--gd:4.4s;--gdel:2.6s" cx="430"  cy="634" rx="12" ry="2.4"/>
-        <ellipse class="glint" style="--gd:5.8s;--gdel:.9s"  cx="934"  cy="646" rx="10" ry="2"/>
-        <ellipse class="glint" style="--gd:4.1s;--gdel:1.9s" cx="1122" cy="620" rx="11" ry="2.2"/>
-        <ellipse class="glint" style="--gd:6.2s;--gdel:3.1s" cx="778"  cy="702" rx="9"  ry="1.8"/>
-        <ellipse class="glint" style="--gd:4.9s;--gdel:2.2s" cx="243"  cy="655" rx="8"  ry="1.7"/>
-        <ellipse class="glint" style="--gd:5.5s;--gdel:.5s"  cx="1258" cy="640" rx="10" ry="2"/>
-        <ellipse class="glint" style="--gd:4.6s;--gdel:1.1s" cx="1180" cy="380" rx="7"  ry="1.6"/>
-        <ellipse class="glint" style="--gd:5.2s;--gdel:2.8s" cx="1236" cy="180" rx="7"  ry="1.5"/>
+      <!-- 蘆葦叢（墨色剪影；各叢自有輕擺節律）-->
+      <g filter="url(#reedbleed)" stroke-linecap="round" fill="none">
+        <!-- 左緣高叢（框景）＋芒穗 -->
+        <g class="reed-sway" style="--sw:9s;--swd:0s">
+          <path d="M60 920 C 46 760, 40 640, 30 520" stroke="url(#reedG)" stroke-width="5"/>
+          <path d="M96 920 C 92 780, 96 660, 108 556" stroke="url(#reedG)" stroke-width="4.2"/>
+          <path d="M130 920 C 132 800, 146 700, 168 612" stroke="url(#reedG)" stroke-width="3.4"/>
+          <path d="M78 922 C 70 800, 66 700, 60 604" stroke="#2b433f" stroke-width="1.4" opacity=".5"/>
+          <g transform="translate(30 520)" stroke="#61796f" stroke-width="1.3" opacity=".62">
+            <path d="M0 4 C -8 -16, -12 -34, -10 -54"/>
+            <path d="M0 4 C 6 -14, 8 -32, 6 -52"/>
+            <path d="M0 4 C -2 -18, -2 -38, 0 -58"/>
+            <path d="M0 4 C 12 -12, 18 -28, 21 -46"/>
+            <path d="M0 4 C -14 -12, -22 -26, -27 -42"/>
+          </g>
+        </g>
+        <!-- 左中叢 -->
+        <g class="reed-sway" style="--sw:7.4s;--swd:-1.2s">
+          <path d="M300 924 C 292 812, 292 720, 300 640" stroke="url(#reedG)" stroke-width="4.2"/>
+          <path d="M336 924 C 340 820, 356 736, 380 664" stroke="url(#reedG)" stroke-width="3.4"/>
+          <path d="M270 926 C 258 828, 250 748, 244 678" stroke="url(#reedG)" stroke-width="2.8"/>
+        </g>
+        <!-- 右中叢 -->
+        <g class="reed-sway" style="--sw:8.6s;--swd:-.6s">
+          <path d="M1024 924 C 1018 806, 1020 712, 1030 628" stroke="url(#reedG)" stroke-width="4.4"/>
+          <path d="M1066 924 C 1072 812, 1090 720, 1116 640" stroke="url(#reedG)" stroke-width="3.6"/>
+          <path d="M992 926 C 980 820, 972 736, 968 660" stroke="url(#reedG)" stroke-width="2.8"/>
+          <path d="M1044 926 C 1040 812, 1044 712, 1052 620" stroke="#2b433f" stroke-width="1.4" opacity=".5"/>
+        </g>
+        <!-- 右緣高叢（框景）＋芒穗 -->
+        <g class="reed-sway" style="--sw:9.8s;--swd:-2s">
+          <path d="M1380 920 C 1392 758, 1398 636, 1408 512" stroke="url(#reedG)" stroke-width="5"/>
+          <path d="M1342 920 C 1340 780, 1336 660, 1326 548" stroke="url(#reedG)" stroke-width="4.2"/>
+          <path d="M1310 920 C 1306 800, 1296 702, 1278 614" stroke="url(#reedG)" stroke-width="3.4"/>
+          <g transform="translate(1408 512)" stroke="#61796f" stroke-width="1.3" opacity=".62">
+            <path d="M0 4 C 8 -16, 12 -34, 10 -54"/>
+            <path d="M0 4 C -6 -14, -8 -32, -6 -52"/>
+            <path d="M0 4 C 2 -18, 2 -38, 0 -58"/>
+            <path d="M0 4 C -12 -12, -18 -28, -21 -46"/>
+            <path d="M0 4 C 14 -12, 22 -26, 27 -42"/>
+          </g>
+        </g>
+        <!-- 中央疏落短叢 -->
+        <g class="reed-sway" style="--sw:8s;--swd:-3s">
+          <path d="M660 926 C 654 840, 654 772, 660 712" stroke="url(#reedG)" stroke-width="3.2"/>
+          <path d="M690 926 C 694 846, 706 782, 724 726" stroke="url(#reedG)" stroke-width="2.6"/>
+          <path d="M628 928 C 620 850, 616 792, 614 740" stroke="url(#reedG)" stroke-width="2.2"/>
+        </g>
       </g>
     </svg>
 
-    <!-- 順流粒子 canvas（青葉・水沫・波光）-->
+    <!-- 群螢 canvas（薄暮明滅・緩緩游移・水面倒影）-->
     <canvas id="flow" aria-hidden="true"></canvas>
 
-    <span class="hero-mark" aria-hidden="true">せせらぎ</span>
+    <span class="hero-mark" aria-hidden="true">ほたる</span>
 
     <div class="wrap">
-      <p class="eyebrow reveal">夏 · Summer in green &amp; water</p>
+      <p class="eyebrow reveal">夏 · Fireflies at dusk</p>
       <h1 class="reveal d1">
-        <span class="kanji">青嵐</span>
-        <span class="romaji">青嵐 · Aoarashi · Summer</span>
+        <span class="kanji">螢</span>
+        <span class="romaji">螢 · Hotaru · Summer</span>
       </h1>
       <p class="hero-poem reveal d2">
-        山間的流水，苔上的光。京都的六月。
-        <span class="en">A mountain stream between the stones, light on the moss. June in Kyoto.</span>
+        薄暮的水邊，草間浮起點點光。京都的初夏。
+        <span class="en">At dusk by the water, points of light rise from the grass. Early summer in Kyoto.</span>
       </p>
     </div>
 
@@ -471,9 +482,9 @@
   <section class="wall-head samon">
     <div class="wh-kanji reveal">夏</div>
     <div class="wh-right">
-      <div class="wh-sub reveal">AOARASHI · SUMMER IN GREEN · <span id="summerCount">—</span> 枚</div>
+      <div class="wh-sub reveal">HOTARU · FIREFLIES AT DUSK · <span id="summerCount">—</span> 枚</div>
       <p class="wh-lede reveal d1">
-        以下這些，是幾個夏天裡在綠意與水光之間按下的快門——<span class="accent">雨後的青楓、苔上的水珠，與琉璃光院映在水面的一片綠。</span>點任一張，在青嵐之間慢慢翻閱。
+        夏天是白晝的綠，也是入夜的光。以下這些，是幾個夏天裡在綠意與水光之間按下的快門——<span class="accent">雨後的青楓、苔上的水珠，與琉璃光院映在水面的一片綠。</span>點任一張，慢慢翻閱。
       </p>
     </div>
   </section>
@@ -486,7 +497,7 @@
   <!-- ============ footer ============ -->
   <footer class="foot">
     <a href="photography-zh.html">← 攝影 Photography</a>
-    <span>青嵐 · <span id="summerCountFoot">—</span> 枚 · 水墨青楓 demo · 2026</span>
+    <span>螢 · <span id="summerCountFoot">—</span> 枚 · 薄暮の蛍 demo · 2026</span>
   </footer>
 
 </main>
@@ -761,7 +772,7 @@
   });
 </script>
 
-<!-- 順流粒子 canvas + 溪流視差（青葉・水沫・波光沿溪帶漂流）-->
+<!-- 群螢 canvas（薄暮明滅・緩緩游移・水面倒影）＋蘆葦視差 -->
 <script>
 (() => {
   "use strict";
@@ -772,14 +783,8 @@
   const ctx = canvas.getContext('2d');
   const TAU = Math.PI * 2;
   let W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-  const drift = [];
-  // 浮葉パレット（青葉，浮在水面）
-  const leafPalette = [
-    ['#cfe3bf','#7aa863'],
-    ['#bcd9a6','#5f9150'],
-    ['#a9cf98','#4f8a4a'],
-    ['#94bf82','#3d6a3a']
-  ];
+  let waterY = 0;                 // 水面線（螢光倒影用）
+  const flies = [];
 
   function resize(){
     // 量測父層 hero（不能讀 canvas 自身，避免 buffer→clientWidth 回饋放大）
@@ -787,145 +792,111 @@
     W = Math.round(rect.width); H = Math.round(rect.height);
     canvas.width = Math.max(1, W * dpr); canvas.height = Math.max(1, H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const target = Math.round(Math.min(30, Math.max(14, W / 46)));
-    while (drift.length < target) drift.push(makeDrifter(true));
-    while (drift.length > target) drift.pop();
+    waterY = H * 0.9;
+    const target = Math.round(Math.min(28, Math.max(12, W / 44)));
+    while (flies.length < target) flies.push(makeFly());
+    while (flies.length > target) flies.pop();
   }
-  function makeDrifter(spawnAnywhere){
-    const r = Math.random();
-    const type = r < 0.14 ? 'leaf' : (r < 0.62 ? 'foam' : 'glint');
-    const p = {
-      type,
-      x: spawnAnywhere ? Math.random() * W : -30 - Math.random() * 60,
-      yBase: H * (0.62 + Math.random() * 0.26),      // 溪帶：hero 下方
-      seed: Math.random() * TAU,
-      phase: Math.random() * TAU,
-      bobSpeed: 0.010 + Math.random() * 0.018,       // 浮沉
-      bobAmp: 1.5 + Math.random() * 3.5,
-      vx: 0.30 + Math.random() * 0.55                // 順流（向右）
+
+  // 一隻螢火蟲：depth 決定遠近（大小／亮度／速度／光暈）
+  function makeFly(){
+    const depth = Math.random();                 // 0 遠 … 1 近
+    const near = 0.4 + depth * 0.6;
+    return {
+      x: Math.random() * W,
+      y: H * (0.42 + Math.random() * 0.46),      // 多在草間～水面之上
+      near,
+      r: 1.0 + near * 2.0,                       // 核心半徑
+      glow: 9 + near * 20,                       // 光暈半徑
+      // 游移：兩層不同頻率的正弦，做出徘徊
+      ax: Math.random() * TAU, axS: 0.006 + Math.random() * 0.010, axA: 10 + Math.random() * 18,
+      ay: Math.random() * TAU, ayS: 0.005 + Math.random() * 0.008, ayA: 7 + Math.random() * 13,
+      drift: (Math.random() - 0.5) * 0.12,       // 緩慢水平漂移
+      rise: -(0.015 + Math.random() * 0.05),     // 微微上浮
+      blinkT: 2.4 + Math.random() * 3.8,         // 明滅週期（秒）
+      blinkP: Math.random() * TAU,
+      hue: Math.random(),                        // 0 黃綠 … 1 琥珀
+      trail: []
     };
-    if (type === 'leaf'){
-      const pal = leafPalette[(Math.random() * leafPalette.length) | 0];
-      p.size = 8 + Math.random() * 8;
-      p.c1 = pal[0]; p.c2 = pal[1];
-      p.rot = Math.random() * TAU;
-      p.vrot = (Math.random() - 0.5) * 0.012;
-      p.flip = Math.random() * TAU;
-      p.vflip = 0.006 + Math.random() * 0.012;
-      p.alpha = 0.55 + Math.random() * 0.3;
-      p.vx *= 0.9;
-    } else if (type === 'foam'){
-      p.size = 1.8 + Math.random() * 2.6;
-      p.alpha = 0.3 + Math.random() * 0.3;
-      p.vx *= 1.25;
-    } else {                                          // glint 波光
-      p.size = 1.4 + Math.random() * 1.8;
-      p.tilt = (Math.random() - 0.5) * 0.5;
-      p.alpha = 0.4 + Math.random() * 0.35;
-      p.vx *= 0.7;
-    }
-    return p;
-  }
-  function pathY(p){ // 沿溪帶蜿蜒 + 輕微浮沉
-    return p.yBase + Math.sin(p.x * 0.004 + p.seed) * 12 + Math.sin(p.phase) * p.bobAmp;
   }
 
-  function drawLeaf(p, y){          // 浮在水面的青葉（翻轉幅度小、帶水影）
-    const s = p.size;
-    const squish = 0.55 + 0.45 * Math.abs(Math.cos(p.flip));
-    ctx.save();
-    ctx.globalAlpha = p.alpha * 0.16;
-    ctx.fillStyle = '#31463f';
-    ctx.beginPath();
-    ctx.ellipse(p.x + s * 0.2, y + s * 0.7, s * 0.85, s * 0.2, 0, 0, TAU);
-    ctx.fill();
-    ctx.restore();
-    ctx.save();
-    ctx.translate(p.x, y);
-    ctx.rotate(p.rot);
-    ctx.scale(1, squish);
-    ctx.globalAlpha = p.alpha;
-    const g = ctx.createLinearGradient(0, -s, 0, s);
-    g.addColorStop(0, p.c1); g.addColorStop(1, p.c2);
+  // 明滅亮度（0..1）：多數時間偏暗，短暫亮起 → 螢火閃爍感
+  function glowAmt(f, t){
+    let s = Math.sin((t / f.blinkT) * TAU + f.blinkP) * 0.5 + 0.5;   // 0..1
+    s = Math.pow(s, 2.2);                                            // 壓低均值、拉高尖峰
+    return 0.1 + s * 0.9;
+  }
+  // 螢光色：黃綠 → 琥珀
+  function tone(f, a){
+    const r = Math.round(196 + f.hue * 52);   // 196..248
+    const g = Math.round(238 - f.hue * 36);   // 238..202
+    const b = Math.round(120 - f.hue * 42);   // 120..78
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+  }
+
+  function drawFly(f, gx, gy, amt, mirror){
+    const a = amt * (mirror ? 0.22 : 1);
+    if (a <= 0.02) return;
+    // 外暈
+    let g = ctx.createRadialGradient(gx, gy, 0, gx, gy, f.glow);
+    g.addColorStop(0, tone(f, 0.5 * a));
+    g.addColorStop(0.4, tone(f, 0.16 * a));
+    g.addColorStop(1, tone(f, 0));
     ctx.fillStyle = g;
-    ctx.beginPath();
-    ctx.moveTo(0, -s * 0.98);
-    ctx.bezierCurveTo( s * 0.52, -s * 0.44,  s * 0.5, s * 0.46,  0, s * 0.98);
-    ctx.bezierCurveTo(-s * 0.5,  s * 0.46, -s * 0.52, -s * 0.44, 0, -s * 0.98);
-    ctx.closePath();
-    ctx.fill();
-    ctx.globalAlpha *= 0.42;
-    ctx.strokeStyle = p.c2;
-    ctx.lineWidth = Math.max(0.5, s * 0.05);
-    ctx.beginPath();
-    ctx.moveTo(0, -s * 0.82); ctx.lineTo(0, s * 0.86);
-    ctx.moveTo(0, -s * 0.18); ctx.lineTo( s * 0.30, s * 0.10);
-    ctx.moveTo(0, -s * 0.18); ctx.lineTo(-s * 0.30, s * 0.10);
-    ctx.stroke();
-    ctx.restore();
-  }
-  function drawFoam(p, y){          // 白色水沫（軟點，明滅呼吸）
-    ctx.save();
-    ctx.globalAlpha = p.alpha * (0.65 + 0.35 * Math.sin(p.phase * 1.7 + p.seed));
-    const rr = p.size * 2.2;
-    const g = ctx.createRadialGradient(p.x, y, 0, p.x, y, rr);
-    g.addColorStop(0, 'rgba(252,253,250,0.95)');
-    g.addColorStop(0.55, 'rgba(154,183,178,0.30)');
-    g.addColorStop(1, 'rgba(154,183,178,0)');
+    ctx.beginPath(); ctx.arc(gx, gy, f.glow, 0, TAU); ctx.fill();
+    // 核心（近白暖心）
+    const cr = f.r * 2.4;
+    g = ctx.createRadialGradient(gx, gy, 0, gx, gy, cr);
+    g.addColorStop(0, 'rgba(250,255,224,' + (0.95 * a) + ')');
+    g.addColorStop(0.5, tone(f, 0.8 * a));
+    g.addColorStop(1, tone(f, 0));
     ctx.fillStyle = g;
-    ctx.beginPath(); ctx.arc(p.x, y, rr, 0, TAU); ctx.fill();
-    ctx.restore();
-  }
-  function drawGlint(p, y){         // 細碎波光（白光壓在波影上）
-    const tw = 0.2 + 0.8 * Math.abs(Math.sin(p.phase * 1.3 + p.seed));
-    ctx.save();
-    ctx.translate(p.x, y);
-    ctx.rotate(p.tilt);
-    ctx.globalAlpha = p.alpha * tw;
-    ctx.fillStyle = 'rgba(90,122,138,0.55)';
-    ctx.beginPath(); ctx.ellipse(0, 1.2, p.size * 3.1, p.size * 0.62, 0, 0, TAU); ctx.fill();
-    ctx.fillStyle = '#fbfdf9';
-    ctx.beginPath(); ctx.ellipse(0, 0, p.size * 2.6, p.size * 0.45, 0, 0, TAU); ctx.fill();
-    ctx.restore();
+    ctx.beginPath(); ctx.arc(gx, gy, cr, 0, TAU); ctx.fill();
   }
 
-  let scrollBoost = 0, lastScrollY = window.scrollY;
-  window.addEventListener('scroll', () => {
-    const dy = Math.abs(window.scrollY - lastScrollY);
-    lastScrollY = window.scrollY;
-    scrollBoost = Math.min(2.4, scrollBoost + dy * 0.005);
-  }, { passive:true });
-
-  let windPhase = 0, raf;
-  function frame(){
+  let raf, t0 = 0;
+  function frame(now){
+    if (!t0) t0 = now;
+    const t = (now - t0) / 1000;                 // 秒
     ctx.clearRect(0, 0, W, H);
-    windPhase += 0.0016;
-    const wind = Math.sin(windPhase) * 0.12 + Math.sin(windPhase * 2.3) * 0.05; // 流速微變
-    scrollBoost *= 0.94;
-    for (const p of drift){
-      p.phase += p.bobSpeed;
-      if (p.type === 'leaf'){ p.flip += p.vflip; p.rot += p.vrot + Math.sin(p.phase) * 0.003; }
-      p.x += (p.vx + wind) * (1 + scrollBoost * 0.5);      // 順流向右，捲動時流速微升
-      if (p.x - 40 > W) Object.assign(p, makeDrifter(false));
-      const y = pathY(p);
-      if (p.type === 'leaf') drawLeaf(p, y);
-      else if (p.type === 'foam') drawFoam(p, y);
-      else drawGlint(p, y);
+    ctx.globalCompositeOperation = 'lighter';    // 加法混色 → 光暈相疊更亮
+    const wind = Math.sin(t * 0.13) * 0.06;      // 極輕的共同微風
+    for (const f of flies){
+      f.ax += f.axS; f.ay += f.ayS;
+      f.x += f.drift + wind + Math.cos(f.ax) * f.axS * f.axA;
+      f.y += f.rise + Math.sin(f.ay) * f.ayS * f.ayA;
+      // 邊界回收
+      if (f.x < -46) f.x = W + 46; else if (f.x > W + 46) f.x = -46;
+      if (f.y < H * 0.30){ f.y = H * (0.74 + Math.random() * 0.14); f.x = Math.random() * W; f.trail.length = 0; }
+      const amt = glowAmt(f, t);
+      // 尾跡（短、淡）
+      f.trail.push([f.x, f.y]);
+      if (f.trail.length > 5) f.trail.shift();
+      for (let i = 0; i < f.trail.length - 1; i++){
+        const k = (i + 1) / f.trail.length;
+        drawFly(f, f.trail[i][0], f.trail[i][1], amt * 0.10 * k, false);
+      }
+      // 本體
+      drawFly(f, f.x, f.y, amt, false);
+      // 水面倒影（近水面者，帶橫向微顫）
+      if (f.y > H * 0.58){
+        drawFly(f, f.x + Math.sin(t * 1.3 + f.blinkP) * 2.5, waterY + (waterY - f.y), amt, true);
+      }
     }
+    ctx.globalCompositeOperation = 'source-over';
     raf = requestAnimationFrame(frame);
+  }
+
+  function staticScatter(){
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    for (const f of flies.slice(0, 14)) drawFly(f, f.x, f.y, 0.85, false);
+    ctx.globalCompositeOperation = 'source-over';
   }
   function start(){
     resize();
-    if (!reduceMotion){ cancelAnimationFrame(raf); frame(); }
-    else {
-      ctx.clearRect(0, 0, W, H);
-      for (const p of drift.slice(0, 10)){
-        const y = pathY(p);
-        if (p.type === 'leaf') drawLeaf(p, y);
-        else if (p.type === 'foam') drawFoam(p, y);
-        else drawGlint(p, y);
-      }
-    }
+    if (!reduceMotion){ cancelAnimationFrame(raf); t0 = 0; raf = requestAnimationFrame(frame); }
+    else staticScatter();
   }
   let rt;
   window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(start, 180); }, { passive:true });
@@ -934,15 +905,15 @@
   start();
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) cancelAnimationFrame(raf);
-    else if (!reduceMotion) frame();
+    else if (!reduceMotion){ if (!W || !H){ start(); return; } t0 = 0; raf = requestAnimationFrame(frame); }
   });
 
-  /* 溪流視差（水面隨捲動緩緩滑走）*/
-  const stream = document.getElementById('stream');
+  /* 蘆葦視差（隨捲動輕移）*/
+  const reeds = document.getElementById('reeds');
   let ticking = false;
   const parallax = () => {
     const y = window.scrollY;
-    if (stream) stream.style.transform = `translate3d(${y * 0.035}px, ${y * -0.02}px, 0)`;
+    if (reeds) reeds.style.transform = 'translate3d(0,' + (y * 0.05) + 'px,0)';
     ticking = false;
   };
   window.addEventListener('scroll', () => {
