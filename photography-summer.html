@@ -108,11 +108,12 @@
     /* 暮色漸層：頂端接宣紙砂色 → 中段沉入暮青 → 下段最深（螢光對比帶）→ 底再回砂色（與照片牆銜接不留硬邊）*/
     background:linear-gradient(180deg,
       var(--sand) 0%,
-      #d3d3c0 9%,
-      #a7b3a6 22%,
-      #6f8a86 37%,
-      #47635f 52%,
-      #2c4744 68%,
+      #aeb4a6 6%,
+      #728880 15%,
+      #4c6763 27%,
+      #375350 40%,
+      #294341 54%,
+      #213736 68%,
       #22383a 82%,
       #33494a 92%,
       var(--sand) 100%);
@@ -792,7 +793,7 @@
     canvas.width = Math.max(1, W * dpr); canvas.height = Math.max(1, H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     waterY = H * 0.9;
-    const target = Math.round(Math.min(28, Math.max(12, W / 44)));
+    const target = Math.round(Math.min(40, Math.max(18, W / 33)));
     while (flies.length < target) flies.push(makeFly());
     while (flies.length > target) flies.pop();
   }
@@ -803,15 +804,15 @@
     const near = 0.4 + depth * 0.6;
     return {
       x: Math.random() * W,
-      y: H * (0.42 + Math.random() * 0.46),      // 多在草間～水面之上
+      y: H * (0.06 + Math.random() * 0.9),       // 佈滿整個畫面（上下皆有）
       near,
       r: 1.0 + near * 2.0,                       // 核心半徑
       glow: 9 + near * 20,                       // 光暈半徑
-      // 游移：兩層不同頻率的正弦，做出徘徊
-      ax: Math.random() * TAU, axS: 0.006 + Math.random() * 0.010, axA: 10 + Math.random() * 18,
-      ay: Math.random() * TAU, ayS: 0.005 + Math.random() * 0.008, ayA: 7 + Math.random() * 13,
-      drift: (Math.random() - 0.5) * 0.12,       // 緩慢水平漂移
-      rise: -(0.015 + Math.random() * 0.05),     // 微微上浮
+      // 游移：兩層不同頻率的正弦，做出四處飛舞的徘徊（垂直幅度放大）
+      ax: Math.random() * TAU, axS: 0.005 + Math.random() * 0.010, axA: 12 + Math.random() * 22,
+      ay: Math.random() * TAU, ayS: 0.004 + Math.random() * 0.008, ayA: 16 + Math.random() * 30,
+      drift: (Math.random() - 0.5) * 0.14,       // 緩慢水平漂移
+      vdrift: (Math.random() - 0.5) * 0.05,      // 緩慢垂直漂移（於上下緣柔和回頭）
       blinkT: 2.4 + Math.random() * 3.8,         // 明滅週期（秒）
       blinkP: Math.random() * TAU,
       hue: Math.random(),                        // 0 黃綠 … 1 琥珀
@@ -831,6 +832,13 @@
     const g = Math.round(238 - f.hue * 36);   // 238..202
     const b = Math.round(120 - f.hue * 42);   // 120..78
     return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+  }
+  // 背景亮度包絡：上緣／下緣接近砂色，螢光在此壓暗，避免糊成一團
+  function bgVis(y){
+    const t = y / H;
+    if (t < 0.15) return Math.max(0.12, (t - 0.02) / 0.13);
+    if (t > 0.9)  return Math.max(0.12, (1 - t) / 0.1);
+    return 1;
   }
 
   function drawFly(f, gx, gy, amt, mirror){
@@ -863,11 +871,12 @@
     for (const f of flies){
       f.ax += f.axS; f.ay += f.ayS;
       f.x += f.drift + wind + Math.cos(f.ax) * f.axS * f.axA;
-      f.y += f.rise + Math.sin(f.ay) * f.ayS * f.ayA;
-      // 邊界回收
+      f.y += f.vdrift + Math.sin(f.ay) * f.ayS * f.ayA;
+      // 水平環繞；垂直在上下緣柔和回頭（維持在整個畫面內飛舞）
       if (f.x < -46) f.x = W + 46; else if (f.x > W + 46) f.x = -46;
-      if (f.y < H * 0.30){ f.y = H * (0.74 + Math.random() * 0.14); f.x = Math.random() * W; f.trail.length = 0; }
-      const amt = glowAmt(f, t);
+      if (f.y < H * 0.05){ f.y = H * 0.05; f.vdrift = Math.abs(f.vdrift) + 0.008; }
+      else if (f.y > H * 0.97){ f.y = H * 0.97; f.vdrift = -Math.abs(f.vdrift) - 0.008; }
+      const amt = glowAmt(f, t) * bgVis(f.y);
       // 尾跡（短、淡）
       f.trail.push([f.x, f.y]);
       if (f.trail.length > 5) f.trail.shift();
@@ -889,7 +898,7 @@
   function staticScatter(){
     ctx.clearRect(0, 0, W, H);
     ctx.globalCompositeOperation = 'lighter';
-    for (const f of flies.slice(0, 14)) drawFly(f, f.x, f.y, 0.85, false);
+    for (const f of flies.slice(0, 16)) drawFly(f, f.x, f.y, 0.85 * bgVis(f.y), false);
     ctx.globalCompositeOperation = 'source-over';
   }
   function start(){
