@@ -656,7 +656,10 @@
     const cur = lbLayers[lbCur], nx = lbNextEl(), pv = lbPrevEl();
     [cur, nx, pv].forEach(el => { el.style.transition = `transform ${dur}ms ${LB_EASE}, opacity ${dur}ms ${LB_EASE}`; });
     lbSetOffset(targetX, dN, dP);
-    if (dir !== 0) { cur.style.opacity = '0.35'; (dir > 0 ? nx : pv).style.opacity = '1'; }
+    // 單向翻頁：反向鄰圖不入場、離場圖淡出至 0（修換頁殘影）
+    if (dir > 0) pv.style.visibility = 'hidden';
+    else if (dir < 0) nx.style.visibility = 'hidden';
+    if (dir !== 0) { cur.style.opacity = '0'; (dir > 0 ? nx : pv).style.opacity = '1'; }
     let done = false, timer;
     const finalize = () => {
       if (done) return; done = true;
