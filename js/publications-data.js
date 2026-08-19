@@ -26,7 +26,8 @@ const publicationsData = [
     venue_zh: 'Journal of Aging & Social Policy', venue_en: 'Journal of Aging & Social Policy',
     vol: '',
     link: null,
-    badge: 'SSCI' },
+    badge: 'SSCI',
+    metrics: { if: '1.8', rank: 'Q3 Gerontology', year: 2025 } },
 
   { year: 2026, lang: 'en', forthcoming: true,
     title_zh: '老年貧窮的三個面向：所得、消費與財富', title_en: 'Older Adults\' Poverty in Three Dimensions: Income, Consumption, and Wealth',
