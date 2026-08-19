@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-//  PUBLICATIONS DATA · 期刊論文資料（32 篇）
+//  PUBLICATIONS DATA · 期刊論文資料（33 篇）
 //  Single source of truth for journal articles.
 //  Used by: academic-zh.html, academic.html (top 10),
 //           publications/publications-zh.html, publications/publications.html (full list — TODO: refactor).
@@ -20,6 +20,14 @@
 // ─────────────────────────────────────────────
 
 const publicationsData = [
+  { year: 2026, lang: 'en', forthcoming: true,
+    title_zh: '形塑與管理年金緊縮的政治：台灣的政黨與認同分歧', title_en: 'Shaping and Managing the Politics of Pension Retrenchment: Partisan and Identity Cleavages in Taiwan',
+    authors_zh: 'Yeh, C-Y., Liou, Y-S. and Lue, J-D.', authors_en: 'Yeh, C-Y., Liou, Y-S. and Lue, J-D.',
+    venue_zh: 'Journal of Aging & Social Policy', venue_en: 'Journal of Aging & Social Policy',
+    vol: '',
+    link: null,
+    badge: 'SSCI' },
+
   { year: 2026, lang: 'en', forthcoming: true,
     title_zh: '老年貧窮的三個面向：所得、消費與財富', title_en: 'Older Adults\' Poverty in Three Dimensions: Income, Consumption, and Wealth',
     authors_zh: 'Ku, I., Kim, D. and Yeh, C-Y.', authors_en: 'Ku, I., Kim, D. and Yeh, C-Y.',
