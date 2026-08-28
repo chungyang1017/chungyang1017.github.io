@@ -4,6 +4,21 @@
 //  Edit this file to add a new conference paper; pages auto-update.
 // ─────────────────────────────────────────────
 const conferencesData = [
+  { year: 2026,
+    title_zh: 'Criteria for Identifying Deserving Beneficiaries of Developmental Social Policies in Taiwan: A Conjoint Analysis',
+    title_en: 'Criteria for Identifying Deserving Beneficiaries of Developmental Social Policies in Taiwan: A Conjoint Analysis',
+    authors: 'Huang, F-Y., Yeh, C-Y., Hong, I., Wang, J. and Ku, Y-W.',
+    venue: '2026 ESPAnet Annual Conference, 26–28 Aug 2026, ISEG, University of Lisbon, Portugal' },
+  { year: 2026,
+    title_zh: 'The Real or the Perceived? Income Inequality and Welfare Attitudes in Europe: A Multilevel Analysis',
+    title_en: 'The Real or the Perceived? Income Inequality and Welfare Attitudes in Europe: A Multilevel Analysis',
+    authors: 'Huang, F-Y., Yeh, C-Y., Wu, X. and Lin, J-D.',
+    venue: '2026 ESPAnet Annual Conference, 26–28 Aug 2026, ISEG, University of Lisbon, Portugal' },
+  { year: 2026,
+    title_zh: 'The Governance Signal: Why Pandemic Mortality Matters More than Economic Relief for Healthcare Policy Support',
+    title_en: 'The Governance Signal: Why Pandemic Mortality Matters More than Economic Relief for Healthcare Policy Support',
+    authors: 'Huang, F-Y., Yeh, C-Y. and Fung, K.',
+    venue: '2026 ESPAnet Annual Conference, 26–28 Aug 2026, ISEG, University of Lisbon, Portugal' },
   { year: 2025,
     title_zh: 'Introduction: Digitalization, Precarious Work, and Welfare State in Asia',
     title_en: 'Introduction: Digitalization, Precarious Work, and Welfare State in Asia',
