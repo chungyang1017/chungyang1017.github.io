@@ -92,7 +92,9 @@
 
   /* ── 學術頁專屬 ── */
   .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:8px}
-  .stats > div{background:var(--sand);padding:28px 24px}
+  .stats > a{background:var(--sand);padding:28px 24px;display:block;color:inherit;text-decoration:none}
+  .stats > a:hover .n{color:var(--accent)}
+  [id^="sec-"]{scroll-margin-top:84px}
   .stats .n{font-family:var(--display);font-size:46px;line-height:1}
   .stats .l{font-family:var(--display);font-size:15px;letter-spacing:.1em;margin-top:10px}
   .stats .le{font-size:10px;letter-spacing:.26em;color:var(--ink-quiet);margin-top:4px;font-family:var(--latin);text-transform:uppercase}
@@ -164,7 +166,7 @@
     .scroll-section .meta-col .big{font-size:72px}
     .stats{grid-template-columns:1fr 1fr}
     .stats .n{font-size:38px}
-    .stats > div:last-child{grid-column:1/-1}
+    .stats > a:last-child{grid-column:1/-1}
     .grant-list article{grid-template-columns:1fr;gap:8px}
     .pub-list .j-row{grid-template-columns:52px 1fr}
     .pub-list .j-venue{grid-column:2;text-align:left;margin-top:6px}
@@ -226,30 +228,30 @@
 <!-- 統計 + 論文 -->
 <section class="scroll-section samon">
   <div class="stats reveal">
-    <div><div class="n">33</div><div class="l">期刊論文</div><div class="le">Journal</div></div>
-    <div><div class="n">2</div><div class="l">專書</div><div class="le">Book</div></div>
-    <div><div class="n">17</div><div class="l">專書章節</div><div class="le">Chapter</div></div>
-    <div><div class="n">18</div><div class="l">研討會</div><div class="le">Conference</div></div>
-    <div><div class="n">7</div><div class="l">研究計畫</div><div class="le">Grants</div></div>
+    <a href="#sec-journals"><div class="n" data-count="journal">33</div><div class="l">期刊論文</div><div class="le">Journal</div></a>
+    <a href="#sec-books"><div class="n" data-count="book">2</div><div class="l">專書</div><div class="le">Book</div></a>
+    <a href="#sec-chapters"><div class="n" data-count="chapter">17</div><div class="l">專書章節</div><div class="le">Chapter</div></a>
+    <a href="#sec-conferences"><div class="n" data-count="conf">18</div><div class="l">研討會（近五年）</div><div class="le">Conference</div></a>
+    <a href="#sec-grants"><div class="n" data-count="grants">7</div><div class="l">研究計畫</div><div class="le">Grants</div></a>
   </div>
 
-  <div class="row" style="margin-top:56px">
+  <div class="row" id="sec-journals" style="margin-top:56px">
     <div class="meta-col reveal">
       <div class="num">壱の壱</div>
       <div class="big">表</div>
       <h2>論文</h2>
-      <div class="sub">Articles · 33</div>
+      <div class="sub">Articles · <span data-count="journal">33</span></div>
       <p>期刊論文，收錄於 SSCI／TSSCI／CSSCI 等索引。以下為近年代表作，完整清單見連結。</p>
     </div>
     <div>
       <div class="pub-list reveal" id="academic-journals-list"></div>
-      <p class="see-all reveal"><a href="publications/publications-zh.html#journals">查看全部 32 篇期刊論文 →</a></p>
+      <p class="see-all reveal"><a href="publications/publications-zh.html#journals">查看全部 <span data-count="journal">33</span> 篇期刊論文 →</a></p>
     </div>
   </div>
 </section>
 
 <!-- 專書 -->
-<section class="scroll-section alt samon">
+<section class="scroll-section alt samon" id="sec-books">
   <div class="row right">
     <div>
       <div class="books">
@@ -273,54 +275,54 @@
       <div class="num">壱の弐</div>
       <div class="big">著</div>
       <h2>專書</h2>
-      <div class="sub">Books · 2</div>
+      <div class="sub">Books · <span data-count="book">2</span></div>
       <p>主編一部、獨著一部。點入看內容簡介。</p>
     </div>
   </div>
 </section>
 
 <!-- 專書章節 -->
-<section class="scroll-section samon">
+<section class="scroll-section samon" id="sec-chapters">
   <div class="row">
     <div class="meta-col reveal">
       <div class="num">壱の参</div>
       <div class="big">章</div>
       <h2>專書章節</h2>
-      <div class="sub">Chapters · 17</div>
+      <div class="sub">Chapters · <span data-count="chapter">17</span></div>
       <p>收錄於國內外各家專書的章節。以下為近年代表作。</p>
     </div>
     <div>
       <div class="pub-list reveal" id="academic-chapters-list"></div>
-      <p class="see-all reveal"><a href="publications/publications-zh.html#chapters">查看全部 17 篇章節 →</a></p>
+      <p class="see-all reveal"><a href="publications/publications-zh.html#chapters">查看全部 <span data-count="chapter">17</span> 篇章節 →</a></p>
     </div>
   </div>
 </section>
 
 <!-- 研討會 -->
-<section class="scroll-section alt samon">
+<section class="scroll-section alt samon" id="sec-conferences">
   <div class="row right">
     <div>
       <div class="pub-list reveal" id="academic-conferences-list"></div>
-      <p class="see-all reveal"><a href="publications/publications-zh.html#conference">查看全部 18 場研討會 →</a></p>
+      <p class="see-all reveal"><a href="publications/publications-zh.html#conference">查看全部 <span data-count="conf">18</span> 場研討會 →</a></p>
     </div>
     <div class="meta-col reveal">
       <div class="num">壱の肆</div>
       <div class="big">講</div>
       <h2>研討會</h2>
-      <div class="sub">Conferences · 18</div>
+      <div class="sub">Conferences · <span data-count="conf">18</span></div>
       <p>國內外學術會議發表。以下為近年代表作。</p>
     </div>
   </div>
 </section>
 
 <!-- 研究計畫 -->
-<section class="scroll-section samon">
+<section class="scroll-section samon" id="sec-grants">
   <div class="row">
     <div class="meta-col reveal">
       <div class="num">壱の伍</div>
       <div class="big">研</div>
       <h2>研究計畫</h2>
-      <div class="sub">Research Grants · 7</div>
+      <div class="sub">Research Grants · <span data-count="grants">7</span></div>
       <p>國家科學及技術委員會（前科技部）專題研究計畫。二〇一八年迄今，沿著東亞福利國家的比較軸線，一題一題往深處走。</p>
     </div>
     <div>
@@ -387,6 +389,7 @@
 <script src="js/publications-data.js"></script>
 <script src="js/chapters-data.js"></script>
 <script src="js/conferences-data.js"></script>
+<script src="js/pub-counts.js"></script>
 <script>
   renderTopJournals('academic-journals-list', 10, 'zh');
   renderTopChapters('academic-chapters-list', 10, 'zh');
