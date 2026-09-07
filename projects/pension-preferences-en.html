@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multidimensional Pension Policy Preferences ・ Research Project ・ Chung-Yang Yeh</title>
+<meta name="description" content="Multidimensional Pension Policy Preferences: Information, Political Exchange, and Public Preferences for Pension Reform in East Asia. A three-year NSTC research project (NSTC 115-2410-H-031-023-SS3), PI Chung-Yang Yeh.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Yuji+Syuku&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
+    --accent:#c43838;
+    --ink:#1f1f1d; --ink-soft:rgba(31,31,29,.72); --ink-quiet:rgba(31,31,29,.5);
+    --rule:rgba(31,31,29,.12);
+    --serif:"Shippori Mincho","Noto Serif TC","Noto Serif JP",serif;
+    --display:"Yuji Syuku",serif;
+    --latin:"Inter",sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--sand);color:var(--ink);font-family:var(--serif);font-feature-settings:"palt";-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 48px}
+
+  .top{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--rule)}
+  .top .brand{display:flex;align-items:center;gap:14px;color:var(--ink);text-decoration:none}
+  .top .seal{width:42px;height:42px;background:var(--accent);color:var(--sand);font-family:var(--display);font-size:20px;display:flex;align-items:center;justify-content:center}
+  .top .name{font-family:var(--display);font-size:18px;letter-spacing:.1em}
+  .top .name small{display:block;font-family:var(--latin);font-size:9px;letter-spacing:.3em;color:var(--ink-quiet);margin-top:4px}
+  .top .tag{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);text-transform:uppercase}
+
+  .hero{background:var(--sand-light);border-bottom:1px solid var(--rule);padding:96px 0 72px}
+  .hero .grid{display:grid;grid-template-columns:200px minmax(0,1fr);gap:48px}
+  .hero .index{font-family:var(--display);font-size:24px;color:var(--ink-quiet);margin-bottom:8px}
+  .hero .kanji{font-family:var(--display);font-size:150px;line-height:.95}
+  .hero .right{display:flex;flex-direction:column;gap:20px;justify-content:flex-end}
+  .hero .eyebrow{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--accent);text-transform:uppercase}
+  .hero h1{margin:0;font-weight:600;font-size:clamp(26px,3vw,40px);line-height:1.5;letter-spacing:.02em;text-wrap:pretty}
+  .hero .lede{font-size:15px;line-height:2;color:var(--ink-soft);max-width:640px;text-wrap:pretty}
+
+  .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:-1px}
+  .facts>div{background:var(--sand);padding:26px 24px}
+  .facts .k{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--ink-quiet);text-transform:uppercase}
+  .facts .v{font-size:17px;margin-top:10px}
+  .facts .v.latin{font-family:var(--latin);font-size:15px;letter-spacing:.02em;margin-top:12px}
+
+  .section{padding-top:88px}
+  .sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap}
+  .sec-head .no{font-family:var(--display);font-size:22px;color:var(--ink-quiet)}
+  .sec-head h2{margin:0;font-family:var(--display);font-weight:400;font-size:32px;letter-spacing:.1em}
+  .sec-head .sub{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);text-transform:uppercase}
+
+  .axes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
+  .axes .card{background:var(--paper);border:1px solid var(--rule);padding:32px 28px;display:flex;flex-direction:column;gap:16px}
+  .axes .t{font-family:var(--display);font-size:30px;line-height:1.4;color:var(--accent)}
+  .axes p{margin:0;font-size:14px;line-height:2;color:var(--ink-soft);text-wrap:pretty}
+
+  .design-grid{display:grid;grid-template-columns:380px minmax(0,1fr);gap:48px;margin-top:40px}
+  .design-grid .lede{font-size:15px;line-height:2.1;color:var(--ink-soft);text-wrap:pretty}
+  .rows{display:flex;flex-direction:column}
+  .rows article{background:var(--paper);border:1px solid var(--rule);margin-bottom:-1px;padding:22px 26px;display:grid;grid-template-columns:158px minmax(0,1fr);gap:20px;align-items:baseline}
+  .rows .k{font-family:var(--latin);font-size:12px;letter-spacing:.1em;color:var(--ink-quiet);text-transform:uppercase}
+  .rows .v{font-size:15px;line-height:1.8}
+  .rows .v.quiet{color:var(--ink-soft)}
+
+  .timeline article{grid-template-columns:158px 120px minmax(0,1fr)}
+  .timeline .period{font-family:var(--latin);font-size:13px;letter-spacing:.06em;color:var(--ink-quiet)}
+  .timeline .yr{font-weight:600;font-size:16px}
+
+  .two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}
+  .output-box{background:var(--paper);border:1px solid var(--rule);margin-top:40px;padding:32px 26px;font-size:15px;line-height:2;color:var(--ink-quiet)}
+  .last{padding-bottom:96px}
+
+  footer{border-top:1px solid var(--rule);background:var(--sand-light);padding:40px 0}
+  footer .inner{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap}
+  footer .grant{font-size:13px;color:var(--ink-quiet)}
+  footer .sig{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--ink-quiet);text-transform:uppercase}
+
+  @media (max-width:900px){
+    .wrap{padding:0 24px}
+    .top{padding:16px 24px}
+    .top .tag{display:none}
+    .hero{padding:64px 0 48px}
+    .hero .grid{grid-template-columns:1fr;gap:24px}
+    .hero .kanji{font-size:96px}
+    .facts{grid-template-columns:1fr 1fr}
+    .axes{grid-template-columns:1fr}
+    .design-grid{grid-template-columns:1fr;gap:28px}
+    .rows article{grid-template-columns:1fr;gap:8px}
+    .timeline article{grid-template-columns:1fr;gap:8px}
+    .two-col{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <a class="brand" href="../index-en.html">
+    <span class="seal">年</span>
+    <span class="name">葉崇揚<small>CHUNG-YANG YEH</small></span>
+  </a>
+  <div style="display:flex;align-items:center;gap:24px">
+    <div class="tag">NSTC Research Project · 2026 – 2029</div>
+    <a class="lang" href="pension-preferences.html" style="font-family:var(--latin);font-size:16px;letter-spacing:.2em;color:var(--ink-soft);border-left:1px solid var(--rule);padding-left:24px">中</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap grid">
+    <div>
+      <div class="index">Research Project</div>
+      <div class="kanji">年金</div>
+    </div>
+    <div class="right">
+      <div class="eyebrow">NSTC Research Project</div>
+      <h1>Multidimensional Pension Policy Preferences:<br>Information, Political Exchange, and Public Preferences for Pension Reform in East Asia</h1>
+      <p class="lede">Pension reform is a challenge East Asian welfare states share: institutions must respond to population ageing and fiscal pressure, yet reform stalls in the face of public opinion. This project asks — where do public preferences for pension reform come from, how are they moved by information, and how are they won over by political exchange?</p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="facts">
+    <div><div class="k">Period</div><div class="v">Aug 2026 – Jul 2029 (3 years)</div></div>
+    <div><div class="k">Funding</div><div class="v">National Science and Technology Council</div></div>
+    <div><div class="k">Grant No.</div><div class="v latin">NSTC 115-2410-H-031-023-SS3</div></div>
+    <div><div class="k">Principal Investigator</div><div class="v">Chung-Yang Yeh · Soochow University</div></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">壱</span><h2>Three Axes</h2><span class="sub">研究主軸</span></div>
+    <div class="axes">
+      <div class="card">
+        <div class="t">Multidimensional preferences</div>
+        <p>Preferences for pension reform are not a simple yes or no. Unpacking them into trade-offs over benefit levels, financing mixes, retirement ages and intergenerational allocation maps the inner structure of public preferences.</p>
+      </div>
+      <div class="card">
+        <div class="t">Information</div>
+        <p>Public understanding of pension systems is often limited. When information about system finances, demographic trends and reform consequences is laid out, how do preferences move? This axis examines the role of information in preference formation.</p>
+      </div>
+      <div class="card">
+        <div class="t">Political exchange</div>
+        <p>Reform is never a referendum on a single policy; it is an exchange of packages and compensation. Which combinations of political exchange make painful reform acceptable to the public?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">弐</span><h2>Research Design</h2><span class="sub">研究設計</span></div>
+    <div class="design-grid">
+      <div class="lede">The project is built around cross-national survey experiments fielded simultaneously across East Asian societies — conjoint experiments ask respondents to choose between complete reform packages rather than react to single policies.</div>
+      <div class="rows">
+        <article><div class="k">Method</div><div class="v">Conjoint and survey experiments</div></article>
+        <article><div class="k">Cases</div><div class="v">Taiwan, Japan and South Korea (planned)</div></article>
+        <article><div class="k">Data</div><div class="v quiet">[TBD: sample size and survey mode]</div></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">参</span><h2>Timeline</h2><span class="sub">三年期程</span></div>
+    <div class="rows timeline" style="margin-top:40px">
+      <article><div class="period">2026.08 – 2027.07</div><div class="yr">Year 1</div><div class="v quiet">[TBD: year-one focus]</div></article>
+      <article><div class="period">2027.08 – 2028.07</div><div class="yr">Year 2</div><div class="v quiet">[TBD: year-two focus]</div></article>
+      <article><div class="period">2028.08 – 2029.07</div><div class="yr">Year 3</div><div class="v quiet">[TBD: year-three focus]</div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section last">
+  <div class="wrap two-col">
+    <div>
+      <div class="sec-head"><span class="no">肆</span><h2>Team</h2><span class="sub">研究團隊</span></div>
+      <div class="rows" style="margin-top:40px">
+        <article><div class="k">PI</div><div class="v">Chung-Yang Yeh · Professor, Department of Sociology, Soochow University</div></article>
+        <article><div class="k">Members</div><div class="v">Hong-Yong Lim · Professor, Department of Social Work, National Pingtung University of Science and Technology</div></article>
+      </div>
+    </div>
+    <div>
+      <div class="sec-head"><span class="no">伍</span><h2>Output</h2><span class="sub">研究成果</span></div>
+      <div class="output-box">Project output — papers, conference presentations and datasets — will be updated over the course of the project.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap inner">
+    <div class="grant">This project is funded by the National Science and Technology Council (NSTC 115-2410-H-031-023-SS3).</div>
+    <div class="sig">Chung-Yang Yeh · Soochow University</div>
+  </div>
+</footer>
+
+</body>
+</html>
