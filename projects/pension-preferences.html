@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>多面向的年金政策偏好 ・ 研究計畫 ・ 葉崇揚</title>
+<meta name="description" content="多面向的年金政策偏好：資訊、政治交換與東亞社會大眾的年金改革偏好分析。國科會三年期專題研究計畫（NSTC 115-2410-H-031-023-SS3），主持人葉崇揚。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Yuji+Syuku&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
+    --accent:#c43838;
+    --ink:#1f1f1d; --ink-soft:rgba(31,31,29,.72); --ink-quiet:rgba(31,31,29,.5);
+    --rule:rgba(31,31,29,.12);
+    --serif:"Shippori Mincho","Noto Serif TC","Noto Serif JP",serif;
+    --display:"Yuji Syuku",serif;
+    --latin:"Inter",sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--sand);color:var(--ink);font-family:var(--serif);font-feature-settings:"palt";-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 48px}
+
+  .top{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--rule)}
+  .top .brand{display:flex;align-items:center;gap:14px;color:var(--ink);text-decoration:none}
+  .top .seal{width:42px;height:42px;background:var(--accent);color:var(--sand);font-family:var(--display);font-size:20px;display:flex;align-items:center;justify-content:center}
+  .top .name{font-family:var(--display);font-size:18px;letter-spacing:.1em}
+  .top .name small{display:block;font-family:var(--latin);font-size:9px;letter-spacing:.3em;color:var(--ink-quiet);margin-top:4px}
+  .top .tag{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);text-transform:uppercase}
+
+  .hero{background:var(--sand-light);border-bottom:1px solid var(--rule);padding:96px 0 72px}
+  .hero .grid{display:grid;grid-template-columns:200px minmax(0,1fr);gap:48px}
+  .hero .index{font-family:var(--display);font-size:24px;color:var(--ink-quiet);margin-bottom:8px}
+  .hero .kanji{font-family:var(--display);font-size:150px;line-height:.95}
+  .hero .right{display:flex;flex-direction:column;gap:20px;justify-content:flex-end}
+  .hero .eyebrow{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--accent);text-transform:uppercase}
+  .hero h1{margin:0;font-weight:600;font-size:clamp(26px,3vw,40px);line-height:1.5;letter-spacing:.02em;text-wrap:pretty}
+  .hero .lede{font-size:15px;line-height:2;color:var(--ink-soft);max-width:640px;text-wrap:pretty}
+
+  .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:-1px}
+  .facts>div{background:var(--sand);padding:26px 24px}
+  .facts .k{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--ink-quiet);text-transform:uppercase}
+  .facts .v{font-size:17px;margin-top:10px}
+  .facts .v.latin{font-family:var(--latin);font-size:15px;letter-spacing:.02em;margin-top:12px}
+
+  .section{padding-top:88px}
+  .sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap}
+  .sec-head .no{font-family:var(--display);font-size:22px;color:var(--ink-quiet)}
+  .sec-head h2{margin:0;font-family:var(--display);font-weight:400;font-size:32px;letter-spacing:.1em}
+  .sec-head .sub{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);text-transform:uppercase}
+
+  .axes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
+  .axes .card{background:var(--paper);border:1px solid var(--rule);padding:32px 28px;display:flex;flex-direction:column;gap:16px}
+  .axes .t{font-family:var(--display);font-size:30px;line-height:1.4;color:var(--accent)}
+  .axes p{margin:0;font-size:14px;line-height:2;color:var(--ink-soft);text-wrap:pretty}
+
+  .design-grid{display:grid;grid-template-columns:380px minmax(0,1fr);gap:48px;margin-top:40px}
+  .design-grid .lede{font-size:15px;line-height:2.1;color:var(--ink-soft);text-wrap:pretty}
+  .rows{display:flex;flex-direction:column}
+  .rows article{background:var(--paper);border:1px solid var(--rule);margin-bottom:-1px;padding:22px 26px;display:grid;grid-template-columns:158px minmax(0,1fr);gap:20px;align-items:baseline}
+  .rows .k{font-family:var(--latin);font-size:12px;letter-spacing:.1em;color:var(--ink-quiet);text-transform:uppercase}
+  .rows .v{font-size:15px;line-height:1.8}
+  .rows .v.quiet{color:var(--ink-soft)}
+
+  .timeline article{grid-template-columns:158px 120px minmax(0,1fr)}
+  .timeline .period{font-family:var(--latin);font-size:13px;letter-spacing:.06em;color:var(--ink-quiet)}
+  .timeline .yr{font-weight:600;font-size:16px}
+
+  .two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}
+  .output-box{background:var(--paper);border:1px solid var(--rule);margin-top:40px;padding:32px 26px;font-size:15px;line-height:2;color:var(--ink-quiet)}
+  .last{padding-bottom:96px}
+
+  footer{border-top:1px solid var(--rule);background:var(--sand-light);padding:40px 0}
+  footer .inner{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap}
+  footer .grant{font-size:13px;color:var(--ink-quiet)}
+  footer .sig{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--ink-quiet);text-transform:uppercase}
+
+  @media (max-width:900px){
+    .wrap{padding:0 24px}
+    .top{padding:16px 24px}
+    .top .tag{display:none}
+    .hero{padding:64px 0 48px}
+    .hero .grid{grid-template-columns:1fr;gap:24px}
+    .hero .kanji{font-size:96px}
+    .facts{grid-template-columns:1fr 1fr}
+    .axes{grid-template-columns:1fr}
+    .design-grid{grid-template-columns:1fr;gap:28px}
+    .rows article{grid-template-columns:1fr;gap:8px}
+    .timeline article{grid-template-columns:1fr;gap:8px}
+    .two-col{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <a class="brand" href="../index.html">
+    <span class="seal">年</span>
+    <span class="name">葉崇揚<small>CHUNG-YANG YEH</small></span>
+  </a>
+  <div style="display:flex;align-items:center;gap:24px">
+    <div class="tag">NSTC Research Project · 2026 – 2029</div>
+    <a class="lang" href="pension-preferences-en.html" style="font-family:var(--latin);font-size:16px;letter-spacing:.2em;color:var(--ink-soft);border-left:1px solid var(--rule);padding-left:24px">EN</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap grid">
+    <div>
+      <div class="index">研究計畫</div>
+      <div class="kanji">年金</div>
+    </div>
+    <div class="right">
+      <div class="eyebrow">Multidimensional Pension Policy Preferences</div>
+      <h1>多面向的年金政策偏好：<br>資訊、政治交換與東亞社會大眾的年金改革偏好分析</h1>
+      <p class="lede">年金改革是東亞福利國家共同的難題：制度必須回應人口老化與財政壓力，改革卻往往在民意面前卻步。本計畫追問——社會大眾的年金改革偏好從何而來？它如何被資訊改變、被政治交換說服？</p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="facts">
+    <div><div class="k">Period</div><div class="v">2026.08 – 2029.07（三年期）</div></div>
+    <div><div class="k">Funding</div><div class="v">國家科學及技術委員會</div></div>
+    <div><div class="k">Grant No.</div><div class="v latin">NSTC 115-2410-H-031-023-SS3</div></div>
+    <div><div class="k">Principal Investigator</div><div class="v">葉崇揚 · 東吳大學社會學系</div></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">壱</span><h2>研究主軸</h2><span class="sub">Three Axes</span></div>
+    <div class="axes">
+      <div class="card">
+        <div class="t">多面向的年金偏好</div>
+        <p>年金改革偏好並非單純的支持或反對。把它拆開成給付水準、財源組合、退休年齡與世代分配的權衡，描繪社會大眾偏好的內在結構。</p>
+      </div>
+      <div class="card">
+        <div class="t">資訊</div>
+        <p>民眾對年金制度的理解往往有限。當制度財務、人口趨勢與改革後果的資訊被攤開，偏好會如何移動？檢視資訊在偏好形成中的角色。</p>
+      </div>
+      <div class="card">
+        <div class="t">政治交換</div>
+        <p>改革從來不是單一政策的公投，而是配套與補償的交換。哪些政治交換的組合，能讓社會大眾接受痛苦的改革？</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">弐</span><h2>研究設計</h2><span class="sub">Design</span></div>
+    <div class="design-grid">
+      <div class="lede">以跨國比較的調查實驗為核心，在東亞社會同步施測——用聯合實驗（conjoint experiment）讓受訪者在完整的改革方案之間做選擇，而不是對單一政策表態。</div>
+      <div class="rows">
+        <article><div class="k">Method</div><div class="v">聯合實驗與調查實驗（conjoint / survey experiments）</div></article>
+        <article><div class="k">Cases</div><div class="v">台灣、日本、南韓（預計）</div></article>
+        <article><div class="k">Data</div><div class="v quiet">【待補：樣本規模與調查方式】</div></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">参</span><h2>三年期程</h2><span class="sub">Timeline</span></div>
+    <div class="rows timeline" style="margin-top:40px">
+      <article><div class="period">2026.08 – 2027.07</div><div class="yr">第一年</div><div class="v quiet">【待補：第一年工作重點】</div></article>
+      <article><div class="period">2027.08 – 2028.07</div><div class="yr">第二年</div><div class="v quiet">【待補：第二年工作重點】</div></article>
+      <article><div class="period">2028.08 – 2029.07</div><div class="yr">第三年</div><div class="v quiet">【待補：第三年工作重點】</div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section last">
+  <div class="wrap two-col">
+    <div>
+      <div class="sec-head"><span class="no">肆</span><h2>研究團隊</h2><span class="sub">Team</span></div>
+      <div class="rows" style="margin-top:40px">
+        <article><div class="k">PI</div><div class="v">葉崇揚 · 東吳大學社會學系教授</div></article>
+        <article><div class="k">Members</div><div class="v">林宏陽 · 國立屏東科技大學社會工作系教授</div></article>
+      </div>
+    </div>
+    <div>
+      <div class="sec-head"><span class="no">伍</span><h2>研究成果</h2><span class="sub">Output</span></div>
+      <div class="output-box">計畫成果（論文、研討會發表、資料集）將於執行期間陸續更新。</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap inner">
+    <div class="grant">本計畫由國家科學及技術委員會補助（NSTC 115-2410-H-031-023-SS3）。</div>
+    <div class="sig">Chung-Yang Yeh · Soochow University</div>
+  </div>
+</footer>
+
+</body>
+</html>
