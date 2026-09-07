@@ -322,18 +322,18 @@
 
 <header class="nav">
   <div class="brand">
-    <a class="seal" href="index.html">葉</a>
-    <a class="name" href="index.html">葉崇揚<small>YEH CHUNG-YANG</small></a>
+    <a class="seal" href="index-en.html">葉</a>
+    <a class="name" href="index-en.html">葉崇揚<small>YEH CHUNG-YANG</small></a>
   </div>
   <nav>
-    <a href="index.html">首頁</a>
-    <a href="about-zh.html">簡介</a>
-    <a href="academic-zh.html">學術</a>
-    <a href="photography-zh.html" class="is-active">攝影</a>
-    <a href="teaching-zh.html">教學</a>
-    <a href="essays-zh.html">隨筆</a>
+    <a href="index-en.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="academic.html">Research</a>
+    <a href="photography.html" class="is-active">Photography</a>
+    <a href="teaching.html">Teaching</a>
+    <a href="essays.html">Essays</a>
   </nav>
-  <a class="lang" href="photography.html">EN</a>
+  <a class="lang" href="photography-autumn-zh.html">中</a>
 </header>
 
 <main class="page">
@@ -640,14 +640,13 @@
     <span class="hero-mark" aria-hidden="true">錦秋のころ</span>
 
     <div class="wrap">
-      <p class="eyebrow reveal">秋 · Autumn in red &amp; gold</p>
+      <p class="eyebrow reveal">Autumn · in red &amp; gold</p>
       <h1 class="reveal d1">
         <span class="kanji">紅葉</span>
         <span class="romaji">紅葉 · Kōyō · Autumn</span>
       </h1>
       <p class="hero-poem reveal d2">
-        燃燒的山。京都與東京，秋深時的紅與金。
-        <span class="en">The burning hills — Kyoto and Tokyo, red and gold in the deep of autumn.</span>
+        The burning hills — Kyoto and Tokyo, red and gold in the deep of autumn.
       </p>
     </div>
 
@@ -661,9 +660,9 @@
   <section class="wall-head samon">
     <div class="wh-kanji reveal">秋</div>
     <div class="wh-right">
-      <div class="wh-sub reveal">KOUYOU · AUTUMN IN RED · <span id="autumnCount">—</span> 枚</div>
+      <div class="wh-sub reveal">KOUYOU · AUTUMN IN RED · <span id="autumnCount">—</span> FRAMES</div>
       <p class="wh-lede reveal d1">
-        以下這些，是幾個秋天裡在紅與金之間按下的快門——<span class="accent">燃燒的山壁、寺院白牆邊的一株楓紅，與上高地落葉松映在池面的金黃。</span>點任一張，在紅葉之間慢慢翻閱。
+        These are the frames of a few autumns, pressed between red and gold — <span class="accent">the burning hillsides, a single crimson maple by a temple's white wall, and the gold of Kamikōchi's larches mirrored on the pond.</span> Tap any one to leaf slowly through the crimson leaves.
       </p>
     </div>
   </section>
@@ -675,17 +674,17 @@
 
   <!-- ============ footer ============ -->
   <footer class="foot">
-    <a href="photography-zh.html">← 攝影 Photography</a>
-    <span>紅葉 · <span id="autumnCountFoot">—</span> 枚 · 水墨紅葉 demo · 2026</span>
+    <a href="photography.html">← Photography</a>
+    <span>紅葉 · Kōyō · <span id="autumnCountFoot">—</span> Frames · 2026</span>
   </footer>
 
 </main>
 
 <!-- Lightbox（沿用攝影頁） -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
-  <button class="lightbox-close" id="lightbox-close" type="button" aria-label="關閉">×</button>
-  <button class="lightbox-prev" id="lightbox-prev" type="button" aria-label="前">‹</button>
-  <button class="lightbox-next" id="lightbox-next" type="button" aria-label="次">›</button>
+  <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close">×</button>
+  <button class="lightbox-prev" id="lightbox-prev" type="button" aria-label="Previous">‹</button>
+  <button class="lightbox-next" id="lightbox-next" type="button" aria-label="Next">›</button>
   <figure class="lightbox-figure">
     <div class="lb-stage" id="lb-stage">
       <img class="lightbox-img" id="lightbox-img" alt="" draggable="false" />
@@ -712,12 +711,12 @@
     b.type = 'button';
     b.className = 'tile' + (p.shape === 'xpan' ? ' xpan' : '');
     b.dataset.shape = p.shape;
-    b.setAttribute('aria-label', (p.title_zh || ('No. ' + p.num)) + ' — 放大檢視');
+    b.setAttribute('aria-label', (p.title_en || ('No. ' + p.num)) + ' — Enlarge');
     b.innerHTML =
-        `<img src="${p.src}" alt="${p.title_zh || ''}" loading="${i < 6 ? 'eager' : 'lazy'}">`
+        `<img src="${p.src}" alt="${p.title_en || ''}" loading="${i < 6 ? 'eager' : 'lazy'}">`
       + `<span class="tseal">秋</span>`
       + `<span class="tveil"></span>`
-      + `<span class="tlabel"><span class="tno">No. ${p.num}</span><span class="ttl">${p.title_zh || ''}</span></span>`;
+      + `<span class="tlabel"><span class="tno">No. ${p.num}</span><span class="ttl">${p.title_en || ''}</span></span>`;
     b.addEventListener('click', () => openLightbox(i));
     wall.appendChild(b);
   });
@@ -775,7 +774,7 @@
     cur.classList.remove('lb-abs');
     cur.style.transition = 'none'; cur.style.transform = ''; cur.style.opacity = ''; cur.style.visibility = 'visible';
     if (cur.dataset.src !== photos[idx].src) { cur.src = photos[idx].src; cur.dataset.src = photos[idx].src; }
-    cur.alt = photos[idx].title_zh || ('No. ' + photos[idx].num);
+    cur.alt = photos[idx].title_en || ('No. ' + photos[idx].num);
     [[lbNextEl(), photos[idx + 1]], [lbPrevEl(), photos[idx - 1]]].forEach(([el, p]) => {
       el.classList.add('lb-abs');
       el.style.transition = 'none'; el.style.transform = 'translate(-50%,-50%)'; el.style.opacity = ''; el.style.visibility = 'hidden';
@@ -863,10 +862,10 @@
   function renderLbText() {
     const { sr, photos, idx } = lbState;
     const photo = photos[idx];
-    const titleZh = photo.title_zh || photo.title_jp || '';
+    const titleZh = photo.title_en || photo.title_jp || '';
     const titleJp = photo.title_jp || '';
     const haikuJp = (photo.haiku_jp || '').replace(/[／\/]\s*/g, '<br>');
-    const haikuZh = (photo.haiku_zh || '').replace(/[／\/]\s*/g, '<br>');
+    const haikuZh = (photo.haiku_en || '').replace(/[／\/]\s*/g, '<br>');
     let html = '';
     if (titleZh) html += `<div class="lb-title">No. ${photo.num} ・ ${titleZh}${titleJp && titleJp !== titleZh ? `<span class="romaji">${titleJp}</span>` : ''}</div>`;
     if (haikuJp) html += `<div class="lb-haiku-jp">${haikuJp}</div>`;

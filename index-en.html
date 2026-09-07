@@ -440,7 +440,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
   <ul class="navlinks" id="navlinks">
     <li><a href="index-en.html" class="is-current">Home</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="academic.html">Academic</a></li>
+    <li><a href="academic.html">Research</a></li>
     <li><a href="photography.html">Photography</a></li>
     <li><a href="teaching.html">Teaching</a></li>
     <li><a href="essays.html">Essays</a></li>
@@ -484,7 +484,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
         </div>
         <div class="col-text">
           <p class="sec-index"><span class="no">一</span> Chapter · One</p>
-          <h2 class="sec-title">Scholarship<span class="en">學術</span></h2>
+          <h2 class="sec-title">Research<span class="en">學術</span></h2>
           <p class="sec-body">
             The Department of Sociology at Soochow University, Taipei. A researcher of the welfare state and social policy — searching, between institutions, class, and generations, for the lives the numbers leave in shadow.
             <span class="jp">東呉大学社会学部。福祉国家と社会政策の研究。</span>
@@ -563,7 +563,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
           <p class="sec-body">
             Social policy, comparative welfare, research methods — abstract theory turned into something you can actually understand and use.
           </p>
-          <a class="enter" href="teaching-zh.html">Enter <span class="arw">→</span></a>
+          <a class="enter" href="teaching.html">Enter <span class="arw">→</span></a>
         </div>
       </div>
     </div>
@@ -591,7 +591,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
           <p class="sec-body">
             A night stall lights up, steam rising — a single life, still going on. Writing is the little warmth kept for it.
           </p>
-          <a class="enter" href="essays-zh.html">Enter <span class="arw">→</span></a>
+          <a class="enter" href="essays.html">Enter <span class="arw">→</span></a>
         </div>
       </div>
     </div>
@@ -758,10 +758,12 @@ footer .sep{ opacity:.4; margin:0 .55em; }
       }
       nextIdle = t + (CONFIG.RAIN_MIN + Math.random()*(CONFIG.RAIN_MAX-CONFIG.RAIN_MIN))*1000;
     }
+    if(koiOn && ready) updateKoi((dt>50?50:dt)/1000);
     var n=0;
     while(acc>=CONFIG.STEP_MS && n<3){ step(); acc-=CONFIG.STEP_MS; n++; }
     if(acc>CONFIG.STEP_MS) acc=CONFIG.STEP_MS;
-    if(n>0 || !started) render();
+    if(n>0 || !started || koiOn) render();
+    if(koiOn && ready) for(var ki=0;ki<koi.length;ki++) drawKoi(koi[ki]);
     if(!started){ started=true; msgEl.style.opacity="0"; }
   }
   function seedOpening(){
@@ -770,7 +772,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
     }
   }
   function start(){
-    resize(); ready=true; seedOpening();
+    resize(); ready=true; seedOpening(); initKoi();
     lastActivity=now()-CONFIG.QUIET_MS; nextIdle=now()+1200; lastT=0; acc=0;
     cancelAnimationFrame(raf);
     if(reduce){ for(var k=0;k<3;k++) step(); render(); msgEl.style.opacity="0"; }
@@ -782,6 +784,17 @@ footer .sep{ opacity:.4; margin:0 .55em; }
   window.addEventListener("pointerdown", function(e){
     dragging=true; lastX=e.clientX; lastY=e.clientY; lastMoveT=now();
     splash(e.clientX, e.clientY, CONFIG.CLICK_AMP, CONFIG.CLICK_SIG);
+    if(koiOn) for(var ki=0;ki<koi.length;ki++){ var kk=koi[ki], sdx=kk.x-e.clientX, sdy=kk.y-e.clientY, sd2=sdx*sdx+sdy*sdy;
+      var sr=Math.max(KOI.STARTLE_R, kk.len*2.4);
+      if(sd2 < sr*sr){
+        var close = sd2 < (kk.len*1.15)*(kk.len*1.15);  /* 點在魚身上＝全力驚逃；附近＝受驚走避 */
+        kk.startle = close?1.5:0.85;
+        kk.threatX=e.clientX; kk.threatY=e.clientY;
+        kk.spd = Math.max(kk.spd, kk.cruise*(close?5.5:3.2));  /* C 形急衝：速度瞬間拉滿 */
+        kk.tgt = sd2>1 ? Math.atan2(sdy,sdx)+rand(-0.3,0.3) : kk.dir+rand(-0.6,0.6); /* 正中魚心→沿游向竄出 */
+        kk.wanderT = 2;
+        koiSplash(kk.x,kk.y, close?-6:-3.5, 2.0);              /* 驚起的水花 */
+      } }
   }, {passive:true});
   /* 拖曳＝手指劃過水面：沿路徑內插連續注入，快劃痕深、慢劃痕淺 */
   window.addEventListener("pointermove", function(e){
@@ -798,6 +811,13 @@ footer .sep{ opacity:.4; margin:0 .55em; }
       var f=j/nPts;
       splash(lastX+dx*f, lastY+dy*f, amp, CONFIG.DRAG_SIG);
     }
+    /* 手指／滑鼠劃過魚身：也會嚇得竄逃 */
+    if(koiOn) for(var km=0;km<koi.length;km++){ var kf=koi[km], fdx=kf.x-x, fdy=kf.y-y;
+      if(fdx*fdx+fdy*fdy < (kf.len*1.2)*(kf.len*1.2) && kf.startle<0.5){
+        kf.startle=0.9; kf.threatX=x; kf.threatY=y;
+        kf.spd=Math.max(kf.spd, kf.cruise*3.5);
+        koiSplash(kf.x,kf.y,-4,1.8);
+      } }
     lastX=x; lastY=y; lastMoveT=t;
   }, {passive:true});
   function endDrag(){ dragging=false; }
@@ -823,14 +843,298 @@ footer .sep{ opacity:.4; margin:0 .55em; }
   window.addEventListener("resize", function(){ clearTimeout(rt); rt=setTimeout(start,160); }, {passive:true});
   document.addEventListener("visibilitychange", function(){
     if(document.hidden){ cancelAnimationFrame(raf); }
-    else if(ready && !reduce){ lastActivity=now(); nextIdle=now()+1500; lastT=0; acc=0; cancelAnimationFrame(raf); raf=requestAnimationFrame(loop); }
+    else if(ready && !reduce){ if(!W||!H){ start(); return; } /* 背景分頁 0 尺寸載入的保險 */
+      lastActivity=now(); nextIdle=now()+1500; lastT=0; acc=0; cancelAnimationFrame(raf); raf=requestAnimationFrame(loop); }
   });
 
   /* 除錯掛鉤（僅供自動化驗證：讀取場能量與峰值，不影響行為） */
   window.__water = {
     energy:function(){ if(!prev) return 0; var e=0; for(var i=0;i<prev.length;i++) e+=prev[i]*prev[i]; return e; },
-    peak:function(){ if(!prev) return 0; var m=0; for(var i=0;i<prev.length;i++){ var a=prev[i]<0?-prev[i]:prev[i]; if(a>m)m=a; } return m; }
+    peak:function(){ if(!prev) return 0; var m=0; for(var i=0;i<prev.length;i++){ var a=prev[i]<0?-prev[i]:prev[i]; if(a>m)m=a; } return m; },
+    koiDbg:function(){ return koi.map(function(k){ return [Math.round(k.x),Math.round(k.y),Math.round(k.spd),Math.round(k.startle*100)/100]; }); }
   };
+
+  /* ══ 錦鯉 · 兩尾小紅白（照片級）══
+     魚形貼圖直接取自底圖照片（琉璃光院）裡的那尾真鯉魚：羽化去背＋轉正，沿脊椎切成細條帶變形＝游動擺尾。
+     真實感來自照片本身（水波柔焦、緋白斑、水下色調），動作來自脊椎跟隨模擬；尾流注入水面高度場(koiSplash)。
+     點到魚身（或拖曳劃過）：C 形急轉＋爆衝竄逃、驚起水花，隨後才緩緩回到巡游。 */
+  var koiOn = !reduce;
+  var koi = [];
+  var KOI = { SEG: 11, RIPPLE_SIG: 1.5, STARTLE_R: 150, MARGIN: 0.09 };
+  function rand(a,b){ return a + Math.random()*(b-a); }
+  function angNorm(a){ while(a>Math.PI)a-=6.2831853; while(a<-Math.PI)a+=6.2831853; return a; }
+
+  function makeKoi(cfg){
+    var minside=Math.min(W,H);
+    var len=Math.max(72, Math.min(156, minside*0.15))*cfg.scale;  /* 小鯉魚（含尾鰭全長） */
+    var k={ x:cfg.x, y:cfg.y, dir:cfg.dir, len:len, seg:len/KOI.SEG,
+      spd:rand(22,28)*cfg.spdK, cruise:rand(22,28)*cfg.spdK, tgt:cfg.dir,
+      phase:Math.random()*6.283, beat:2.6, sway:len*0.075, swayMul:1,
+      wanderT:0, startle:0, threatX:0, threatY:0,
+      spine:[], ptx:cfg.x, pty:cfg.y, us:null, spr:cfg.spr, sprSh:cfg.sprSh };
+    for(var i=0;i<=KOI.SEG;i++) k.spine.push({ x:cfg.x-Math.cos(cfg.dir)*k.seg*i, y:cfg.y-Math.sin(cfg.dir)*k.seg*i });
+    return k;
+  }
+  function initKoi(){
+    koi.length=0; if(!koiOn) return;
+    /* 兩尾同源不同貌：乙尾鏡翻花紋＋色相微調＋縮小，看起來是另一尾 */
+    var sa=buildKoiSprite(false,''), sb=buildKoiSprite(true,'hue-rotate(-10deg) saturate(0.94)');
+    koi.push(makeKoi({ x:W*0.30, y:H*0.44, dir:0.5, scale:1.0, spdK:1.0, spr:sa.spr, sprSh:sa.sh }));
+    koi.push(makeKoi({ x:W*0.68, y:H*0.60, dir:3.5, scale:0.84, spdK:1.12, spr:sb.spr, sprSh:sb.sh }));
+  }
+  function koiSplash(dx,dy,amp,sig){ if(!ready) return; splashSim(Math.round(dx/W*sw), Math.round(dy/H*sh), amp, sig); }
+
+  function undulate(k){
+    var sp=k.spine, N=sp.length, us=new Array(N);
+    for(var i=0;i<N;i++){
+      var a=sp[i>0?i-1:0], b=sp[i<N-1?i+1:N-1];
+      var dx=b.x-a.x, dy=b.y-a.y, d=Math.sqrt(dx*dx+dy*dy)||1;
+      var nx=-dy/d, ny=dx/d;
+      var off=k.sway*k.swayMul*Math.pow(i/(N-1),1.5)*Math.sin(k.phase - i*0.55);
+      us[i]={ x:sp[i].x+nx*off, y:sp[i].y+ny*off, nx:nx, ny:ny, dx:dx/d, dy:dy/d };
+    }
+    return us;
+  }
+  /* —— 照片貼圖管線 —— */
+  /* 真魚在照片中的輪廓（影像比例座標，頭在右端；koi-lab 校準） */
+  var KOI_POLY=[
+    [.505,.643],[.490,.634],[.468,.628],[.442,.625],[.412,.627],[.380,.631],
+    [.348,.637],[.312,.645],[.274,.656],[.234,.669],[.194,.684],[.158,.702],
+    [.127,.722],[.102,.741],[.086,.758],[.080,.774],[.090,.789],[.112,.796],
+    [.140,.795],[.172,.788],[.207,.777],[.243,.764],[.279,.752],[.315,.740],
+    [.351,.727],[.387,.712],[.423,.696],[.458,.678],[.488,.661]
+  ];
+  var KOI_HEADP=[.505,.643], KOI_TAILP=[.083,.780];
+  /* 切出貼圖：照片紋理＋參數化鯉魚剪影模板（圓吻、肩寬、尾柄收細、分叉半透明尾鰭、胸鰭）。
+     flipV=沿魚軸鏡翻花紋；filt=色相微調（做出第二尾）。回傳 {spr, sh(柔邊陰影)} */
+  function buildKoiSprite(flipV, filt){
+    if(!img.naturalWidth) return {spr:null, sh:null};
+    var Wp=img.naturalWidth, Hp=img.naturalHeight, P=KOI_POLY, hd=KOI_HEADP, tl=KOI_TAILP;
+    var xs=[], ys=[], j;
+    for(j=0;j<P.length;j++){ xs.push(P[j][0]); ys.push(P[j][1]); }
+    var pad=0.02;
+    var bx0=Math.min.apply(0,xs)-pad, bx1=Math.max.apply(0,xs)+pad;
+    var by0=Math.min.apply(0,ys)-pad, by1=Math.max.apply(0,ys)+pad;
+    var cw=Math.round((bx1-bx0)*Wp), ch=Math.round((by1-by0)*Hp);
+    var crop=document.createElement('canvas'); crop.width=cw; crop.height=ch;
+    var gc=crop.getContext('2d');
+    if('filter' in gc) gc.filter='contrast(1.07) saturate(1.06) '+(filt||'');
+    gc.drawImage(img, bx0*Wp,by0*Hp,cw,ch, 0,0,cw,ch);
+    if('filter' in gc) gc.filter='none';
+    /* 轉正（頭朝左、魚軸水平）＋可沿軸鏡翻 —— 先不去背，整片紋理進貼圖 */
+    var hx=(hd[0]-bx0)*Wp, hy=(hd[1]-by0)*Hp, tx=(tl[0]-bx0)*Wp, ty=(tl[1]-by0)*Hp;
+    var ang=Math.atan2(ty-hy,tx-hx), axis=Math.sqrt((tx-hx)*(tx-hx)+(ty-hy)*(ty-hy));
+    var spr=document.createElement('canvas');
+    spr.width=Math.round(axis*1.04); spr.height=Math.round(axis*0.40);
+    var gs=spr.getContext('2d');
+    gs.save();
+    gs.translate(0,spr.height/2); if(flipV) gs.scale(1,-1);
+    gs.rotate(-ang); gs.translate(-hx,-hy);
+    gs.drawImage(crop,0,0);
+    gs.restore();
+    /* 參數化剪影：身體（頭在照片頭、尾鰭落在照片紅尾斑上）＋分叉尾鰭（半透明漸層） */
+    var cy2=spr.height/2, body=axis*0.78, maxHW=body*0.145;
+    var finL=axis*0.24, xp2=body, xe2=xp2+finL, we2=maxHW*1.2, xf2=xe2-finL*0.34;
+    function prof(t){
+      var head=t<0.30?Math.pow(Math.sin((t/0.30)*1.5707963),0.75):1;
+      var taper=t>0.30?1-0.72*Math.pow((t-0.30)/0.70,1.35):1;
+      return head*taper;
+    }
+    var wp2=prof(1)*maxHW;
+    var m1=document.createElement('canvas'); m1.width=spr.width; m1.height=spr.height;
+    var gm1=m1.getContext('2d'), i2, tt;
+    gm1.fillStyle='#fff'; gm1.beginPath(); gm1.moveTo(0,cy2);
+    for(i2=1;i2<=24;i2++){ tt=i2/24; gm1.lineTo(tt*body, cy2-prof(tt)*maxHW); }
+    for(i2=24;i2>=1;i2--){ tt=i2/24; gm1.lineTo(tt*body, cy2+prof(tt)*maxHW); }
+    gm1.closePath(); gm1.fill();
+    /* 柔邊（shadowBlur 技法，不依賴 ctx.filter） */
+    var m2=document.createElement('canvas'); m2.width=spr.width; m2.height=spr.height;
+    var gm2=m2.getContext('2d');
+    gm2.shadowColor='#fff'; gm2.shadowBlur=Math.round(spr.width*0.009);
+    gm2.shadowOffsetX=spr.width+spr.height; gm2.shadowOffsetY=0;
+    gm2.drawImage(m1,-(spr.width+spr.height),0);
+    gs.globalCompositeOperation='destination-in';
+    gs.drawImage(m2,0,0);
+    gs.globalCompositeOperation='source-over';
+    /* —— 細部彩繪：貼在照片身體上、剪裁於魚身輪廓內 —— */
+    function bodyPath(g){
+      g.beginPath(); g.moveTo(0,cy2);
+      var bi;
+      for(bi=1;bi<=24;bi++) g.lineTo((bi/24)*body, cy2-prof(bi/24)*maxHW);
+      for(bi=24;bi>=1;bi--) g.lineTo((bi/24)*body, cy2+prof(bi/24)*maxHW);
+      g.closePath();
+    }
+    gs.save(); bodyPath(gs); gs.clip();
+    /* 立體感：兩側壓暗、背脊提亮（把被水糊掉的體積感補回來） */
+    var vg=gs.createLinearGradient(0,cy2-maxHW,0,cy2+maxHW);
+    vg.addColorStop(0,'rgba(52,74,66,.15)'); vg.addColorStop(0.24,'rgba(52,74,66,0)');
+    vg.addColorStop(0.5,'rgba(255,253,244,.10)');
+    vg.addColorStop(0.76,'rgba(52,74,66,0)'); vg.addColorStop(1,'rgba(52,74,66,.15)');
+    gs.fillStyle=vg; gs.fillRect(0,0,spr.width,spr.height);
+    /* 鱗紋：五列交錯小弧、極淡，縮小後成細緻鱗片質感 */
+    gs.lineWidth=Math.max(1,maxHW*0.045); gs.strokeStyle='rgba(104,80,60,.075)';
+    for(var srow=-2;srow<=2;srow++){
+      var sy=cy2+srow*maxHW*0.34, sx0=body*(0.26+((srow&1)?0.028:0));
+      for(var sx=sx0; sx<body*0.93; sx+=body*0.056){
+        gs.beginPath(); gs.arc(sx,sy,maxHW*0.19,-1.05,1.05); gs.stroke();
+      }
+    }
+    /* 背鰭：背中線後段的窄鰭影＋中線 */
+    gs.fillStyle='rgba(140,100,75,.16)';
+    gs.beginPath(); gs.moveTo(body*0.50,cy2);
+    gs.quadraticCurveTo(body*0.68, cy2-maxHW*0.12, body*0.86, cy2);
+    gs.quadraticCurveTo(body*0.68, cy2+maxHW*0.12, body*0.50, cy2);
+    gs.closePath(); gs.fill();
+    gs.strokeStyle='rgba(90,62,44,.16)'; gs.lineWidth=Math.max(1,maxHW*0.05);
+    gs.beginPath(); gs.moveTo(body*0.50,cy2); gs.lineTo(body*0.88,cy2); gs.stroke();
+    /* 頭頂光澤 */
+    var hg=gs.createRadialGradient(body*0.13,cy2,1, body*0.13,cy2,maxHW*0.9);
+    hg.addColorStop(0,'rgba(255,252,242,.15)'); hg.addColorStop(1,'rgba(255,252,242,0)');
+    gs.fillStyle=hg; gs.fillRect(0,0,body*0.32,spr.height);
+    /* 眼睛一對＋眼神光 */
+    for(var se=-1;se<=1;se+=2){
+      var eyx=body*0.105, eyy=cy2+se*prof(0.105)*maxHW*0.70;
+      gs.fillStyle='rgba(28,20,14,.78)';
+      gs.beginPath(); gs.arc(eyx,eyy,maxHW*0.095,0,6.283); gs.fill();
+      gs.fillStyle='rgba(255,255,255,.35)';
+      gs.beginPath(); gs.arc(eyx-maxHW*0.03,eyy-maxHW*0.03,maxHW*0.03,0,6.283); gs.fill();
+    }
+    gs.restore();
+    /* 尾鰭改手繪：照片尾端盡是斜紋水波、救不回來——直接畫半透明分叉尾鰭（取魚身緋色調）＋鰭條。
+       顯示時整體縮到約 1/10，邊緣自然柔化，無需再羽化 */
+    var fgrad=gs.createLinearGradient(xp2,0,xe2,0);
+    fgrad.addColorStop(0,'rgba(196,88,40,.58)');
+    fgrad.addColorStop(0.55,'rgba(226,142,84,.40)');
+    fgrad.addColorStop(1,'rgba(248,240,228,.20)');
+    gs.fillStyle=fgrad; gs.beginPath(); gs.moveTo(xp2-maxHW*0.12,cy2-wp2);
+    gs.quadraticCurveTo(xp2+finL*0.45, cy2-we2*0.85, xe2, cy2-we2);
+    gs.quadraticCurveTo(xe2-finL*0.30, cy2-we2*0.25, xf2, cy2);
+    gs.quadraticCurveTo(xe2-finL*0.30, cy2+we2*0.25, xe2, cy2+we2);
+    gs.quadraticCurveTo(xp2+finL*0.45, cy2+we2*0.85, xp2-maxHW*0.12, cy2+wp2);
+    gs.closePath(); gs.fill();
+    gs.strokeStyle='rgba(250,242,228,.26)'; gs.lineWidth=Math.max(1.2,maxHW*0.045); gs.lineCap='round';
+    for(var r2=-3;r2<=3;r2++){
+      gs.beginPath(); gs.moveTo(xp2,cy2+r2*wp2*0.24);
+      gs.quadraticCurveTo(xp2+finL*0.55, cy2+(r2/3)*we2*0.5, xe2-finL*0.10, cy2+(r2/3)*we2*0.85);
+      gs.stroke();
+    }
+    /* 胸鰭一對：後掠半透明乳白小扇 —— 「魚」的關鍵記號 */
+    for(var s2=-1;s2<=1;s2+=2){
+      var px0=body*0.23, py0=cy2+s2*prof(0.23)*maxHW*0.72;
+      gs.beginPath(); gs.moveTo(px0,py0);
+      gs.quadraticCurveTo(px0+body*0.10, cy2+s2*maxHW*1.55, px0+body*0.22, cy2+s2*maxHW*1.30);
+      gs.quadraticCurveTo(px0+body*0.17, cy2+s2*maxHW*0.78, px0,py0);
+      gs.closePath();
+      gs.fillStyle='rgba(248,238,222,.36)'; gs.fill();
+      gs.strokeStyle='rgba(150,110,86,.14)'; gs.lineWidth=Math.max(1,maxHW*0.04); gs.stroke();
+      gs.strokeStyle='rgba(255,250,240,.24)'; gs.lineWidth=Math.max(1,maxHW*0.045); gs.lineCap='round';
+      for(var r3=1;r3<=3;r3++){
+        gs.beginPath(); gs.moveTo(px0,py0);
+        gs.quadraticCurveTo(px0+body*0.085, cy2+s2*maxHW*(0.85+r3*0.20), px0+body*(0.13+r3*0.028), cy2+s2*maxHW*(0.92+r3*0.13));
+        gs.stroke();
+      }
+    }
+    /* 陰影版：剪影→暗色→柔邊 */
+    var sil=document.createElement('canvas'); sil.width=spr.width; sil.height=spr.height;
+    var g1=sil.getContext('2d');
+    g1.drawImage(spr,0,0);
+    g1.globalCompositeOperation='source-in'; g1.fillStyle='#0c1e20'; g1.fillRect(0,0,sil.width,sil.height);
+    var sh=document.createElement('canvas'); sh.width=spr.width; sh.height=spr.height;
+    var g2=sh.getContext('2d');
+    g2.shadowColor='#0c1e20'; g2.shadowBlur=Math.round(spr.width*0.02); g2.shadowOffsetX=spr.width+spr.height; g2.shadowOffsetY=0;
+    g2.drawImage(sil,-(spr.width+spr.height),0);
+    return { spr:spr, sh:sh };
+  }
+  /* 取脊椎上分數位置的內插點（f 以節為單位 0..SEG） */
+  function spineAt(k,f){
+    var us=k.us, N=us.length-1;
+    if(f<0)f=0; else if(f>N)f=N;
+    var i=f|0; if(i>=N)i=N-1;
+    var t=f-i, a=us[i], b=us[i+1];
+    return { x:a.x+(b.x-a.x)*t, y:a.y+(b.y-a.y)*t, dx:a.dx+(b.dx-a.dx)*t, dy:a.dy+(b.dy-a.dy)*t };
+  }
+  /* 條帶變形：貼圖沿脊椎切 24 條各自平移旋轉＝身體彎曲游動。
+     條帶先以 destination-over 畫進透明圖層（相鄰重疊 2px 補縫、先畫者在上所以不疊深），
+     再整層貼上主畫布。陰影＝柔邊暗影版走同一流程（位移＋透明），跟著身體一起彎。 */
+  function drawKoi(k){
+    var us=k.us; if(!us || !k.spr) return;
+    var spr=k.spr, NS=30, sw=spr.width/NS, sc=k.len/spr.width, dh=spr.height*sc;
+    var minx=1e9,miny=1e9,maxx=-1e9,maxy=-1e9,i,u;
+    for(i=0;i<us.length;i++){ u=us[i];
+      if(u.x<minx)minx=u.x; if(u.x>maxx)maxx=u.x;
+      if(u.y<miny)miny=u.y; if(u.y>maxy)maxy=u.y; }
+    var pad=Math.ceil(dh), ox=Math.floor(minx)-pad, oy=Math.floor(miny)-pad;
+    var LW=Math.ceil(maxx-minx)+pad*2+2, LH=Math.ceil(maxy-miny)+pad*2+2;
+    var L=k.layer||(k.layer=document.createElement('canvas'));
+    if(L.width<LW) L.width=LW;
+    if(L.height<LH) L.height=LH;
+    var gl=L.getContext('2d');
+    for(var pass=0; pass<2; pass++){
+      var im=pass?k.spr:k.sprSh;
+      gl.setTransform(1,0,0,1,0,0);
+      gl.clearRect(0,0,L.width,L.height);
+      gl.globalCompositeOperation='destination-over';
+      for(i=0;i<NS;i++){
+        var f=((i+0.5)*sw)/spr.width * k.len / k.seg;
+        var p=spineAt(k,f), a2=Math.atan2(p.dy,p.dx);
+        gl.setTransform(1,0,0,1,0,0);
+        gl.translate(p.x-ox, p.y-oy); gl.rotate(a2);
+        gl.drawImage(im, i*sw,0,sw,spr.height, -sw*sc/2-1, -dh/2, sw*sc+2, dh);
+      }
+      gl.setTransform(1,0,0,1,0,0);
+      gl.globalCompositeOperation='source-over';
+      if(pass){ ctx.drawImage(L, ox, oy); }
+      else { ctx.save(); ctx.globalAlpha=0.30;
+        ctx.drawImage(L, ox+k.len*0.045, oy+k.len*0.10); ctx.restore(); }
+    }
+  }
+  function updateKoi(dt){
+    if(!koiOn || !ready) return;
+    var minside=Math.min(W,H), margin=minside*KOI.MARGIN;
+    for(var n=0;n<koi.length;n++){
+      var k=koi[n];
+      k.wanderT-=dt;
+      if(k.startle>0){
+        /* 竄逃：持續背向威脅點猛游，帶驚慌小顫；期間不換漫游目標 */
+        var fx=k.x-k.threatX, fy=k.y-k.threatY;
+        if(fx*fx+fy*fy>1) k.tgt=Math.atan2(fy,fx)+Math.sin(k.phase*0.7)*0.18;
+      } else if(k.wanderT<=0){ k.tgt=k.dir+rand(-0.8,0.8); k.wanderT=rand(1.5,3.4); }
+      k.tgt+=Math.sin(k.phase*0.13)*0.004;
+      if(k.x<margin||k.x>W-margin||k.y<margin||k.y>H-margin) k.tgt=Math.atan2(H*0.5-k.y, W*0.5-k.x)+rand(-0.3,0.3);
+      for(var m=0;m<koi.length;m++){ if(m===n)continue; var o=koi[m], ddx=k.x-o.x, ddy=k.y-o.y, dd=Math.sqrt(ddx*ddx+ddy*ddy), md=(k.len+o.len)*0.5;
+        if(dd<md&&dd>0.01) k.tgt=Math.atan2(ddy,ddx)+rand(-0.25,0.25); }
+      var maxTurn=(k.startle>0?6.5:1.15)*dt, da=angNorm(k.tgt-k.dir);
+      if(da>maxTurn)da=maxTurn; else if(da<-maxTurn)da=-maxTurn; k.dir+=da;
+      var want;
+      if(k.startle>0){
+        want=k.cruise*(1.5+4.0*Math.min(1,k.startle));   /* 最高約 5.5 倍巡速爆衝，隨驚嚇消退 */
+        k.swayMul=1+0.35*Math.min(1,k.startle);          /* 驚慌時擺尾加大 */
+        k.startle-=dt;
+      } else {
+        k.swayMul+=(1-k.swayMul)*Math.min(1,dt*4);
+        want=k.cruise*(0.84+0.24*Math.sin(k.phase*0.05+n*2.6));  /* 巡游忽快忽慢：擺尾—滑行 */
+        want*=(1-Math.min(0.5,Math.abs(da)/(dt||0.016)*0.12));
+      }
+      k.spd+=(want-k.spd)*Math.min(1,dt*(k.startle>0?8:3));
+      k.beat=2.2+k.spd*0.035; k.phase+=k.beat*6.2831853*dt;
+      k.x+=Math.cos(k.dir)*k.spd*dt; k.y+=Math.sin(k.dir)*k.spd*dt;
+      var sp=k.spine; sp[0].x=k.x; sp[0].y=k.y;
+      /* 脊椎跟隨＋關節角度限制（每節最多 0.38 rad）：急轉時不打摺、身體平滑成 C 形 */
+      var pa=k.dir+3.1415927;
+      for(var i=1;i<sp.length;i++){
+        var jx=sp[i].x-sp[i-1].x, jy=sp[i].y-sp[i-1].y;
+        var ja=angNorm(Math.atan2(jy,jx)-pa);
+        if(ja>0.38)ja=0.38; else if(ja<-0.38)ja=-0.38;
+        pa+=ja;
+        sp[i].x=sp[i-1].x+Math.cos(pa)*k.seg; sp[i].y=sp[i-1].y+Math.sin(pa)*k.seg;
+      }
+      k.us=undulate(k);
+      var tail=k.us[k.us.length-1], tdx=tail.x-k.ptx, tdy=tail.y-k.pty, ts=Math.sqrt(tdx*tdx+tdy*tdy);
+      koiSplash(tail.x,tail.y, -Math.min(k.startle>0?7:4.5, 0.5+ts*0.6), KOI.RIPPLE_SIG);
+      koiSplash(k.x,k.y, -Math.min(1.6,k.spd*0.03), 1.2);
+      k.ptx=tail.x; k.pty=tail.y;
+    }
+  }
 
   img.onload = start;
   img.onerror = function(){ if(msgEl) msgEl.textContent = "底圖載入失敗"; };
