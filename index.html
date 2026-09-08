@@ -9,7 +9,7 @@
 <link rel="alternate" hreflang="en" href="index-en.html" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="images/photography/img_3506.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="images/photography/img_3506-water.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="images/koi-natural-atlas.webp">
 <link rel="preload" as="image" href="images/koi-gold-silver-atlas.webp">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Yuji+Syuku&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -478,7 +478,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
       <div class="split reveal">
         <div class="col-photo">
           <div class="photo-frame">
-            <img src="images/photography/dscf7154_1.jpg" alt="白樺立於紅葉之中" loading="lazy" />
+            <img src="images/photography/dscf7154_1.jpg" alt="白樺立於紅葉之中" loading="lazy" fetchpriority="low" />
             <div class="photo-veil"></div>
             <span class="photo-mark">紅葉 · 秋</span>
             <span class="photo-cap"><span class="t">白與紅</span><span class="en">White and Crimson</span></span>
@@ -506,7 +506,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
       <div class="split rev reveal">
         <div class="col-photo">
           <div class="photo-frame">
-            <img src="images/photography/dscf4989_xd3_1.jpg" alt="合歡山雲海，層巒沒入晨霧，天際一抹朱紅" loading="lazy" />
+            <img src="images/photography/dscf4989_xd3_1.jpg" alt="合歡山雲海，層巒沒入晨霧，天際一抹朱紅" loading="lazy" fetchpriority="low" />
             <div class="photo-veil"></div>
             <span class="photo-mark">山水 · 晨</span>
             <span class="photo-cap"><span class="t">雲海</span><span class="en">Sea of Clouds</span></span>
@@ -549,7 +549,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
       <div class="split reveal">
         <div class="col-photo">
           <div class="photo-frame">
-            <img src="images/photography/dscf4933_6.jpg" alt="冬日窗邊，微光靜積" loading="lazy" />
+            <img src="images/photography/dscf4933_6.jpg" alt="冬日窗邊，微光靜積" loading="lazy" fetchpriority="low" />
             <div class="photo-veil"></div>
             <span class="photo-mark">雪明 · 冬</span>
             <span class="photo-cap"><span class="t">寂靜</span><span class="en">Stillness</span></span>
@@ -577,7 +577,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
       <div class="split rev reveal">
         <div class="col-photo">
           <div class="photo-frame">
-            <img src="images/photography/img20260329_18390699.jpg" alt="湖上黎明，船舟聚於木造棧橋" loading="lazy" />
+            <img src="images/photography/img20260329_18390699.jpg" alt="湖上黎明，船舟聚於木造棧橋" loading="lazy" fetchpriority="low" />
             <div class="photo-veil"></div>
             <span class="photo-mark">湖 · 曉</span>
             <span class="photo-cap"><span class="t">黎明棧橋</span><span class="en">Dawn Pier</span></span>
@@ -1089,7 +1089,7 @@ Use case: photorealistic-natural. Asset type: transparent PNG texture atlas for 
 
   img.onload = start;
   img.onerror = function(){ if(msgEl) msgEl.textContent = "底圖載入失敗"; };
-  img.src = "images/photography/img_3506.jpg";
+  img.src = "images/photography/img_3506-water.jpg";  /* 水面模擬只有 380px，用 1024px 版本（167KB）取代 2000px 原圖（466KB）加快啟動 */
 })();
 </script>
 
