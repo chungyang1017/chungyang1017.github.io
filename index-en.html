@@ -1072,12 +1072,11 @@ Use case: photorealistic-natural. Asset type: transparent PNG texture atlas for 
         q.x=p.x+Math.cos(angle)*k.seg;q.y=p.y+Math.sin(angle)*k.seg;
       }
       k.us=undulate(k);k.wakeT+=dt;
-      // 游動要看得見水紋：尾鰭每 0.16 秒留下柔和尾流（擺尾出力、爆衝越大越明顯），頭部推開一圈小弓形波
+      // A submerged fish leaves a faint, intermittent wake, not a constant splash.
       if(k.wakeT>0.16){
         k.wakeT=0;
         var tail=k.us[KOI.SEG];
-        koiSplash(tail.x,tail.y,-(1.8+k.effort*2.6+burst*5.0),1.5);
-        koiSplash(k.x,k.y,-(0.45+k.spd*0.012),1.2);
+        koiSplash(tail.x,tail.y,-(0.12+burst*0.7),1.1);
       }
     }
   }
