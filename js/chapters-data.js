@@ -7,7 +7,7 @@
 const chaptersData = [
   { year: 2026,
     title_zh: '台灣年金改革的危機和轉機',
-    title_en: 'The Crisis and Turning Point of Taiwan\'s Pension Reform',
+    title_en: 'The Crisis and Turning Point of Pension Reform in Taiwan',
     authors_zh: '葉崇揚、陳芬苓、施世駿、古允文',
     authors_en: 'Yeh, C-Y., Chen, F-L., Shih, S-J. and Ku, Y-W.',
     src_zh: '收錄於葉崇揚、陳芬苓、施世駿、古允文（編著）《葬送的福利年（金）》。台北：巨流。',
