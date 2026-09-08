@@ -784,7 +784,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
   /* ---- 互動：在 window 監聽（不捕捉指標，才不擋捲動與導覽點擊） ---- */
   var dragging=false, lastX=0, lastY=0, lastMoveT=0;
   window.addEventListener("pointerdown", function(e){
-    if(e.target.closest("a,button,input,select,textarea") || window.scrollY>H*0.7) return;
+    if(e.target.closest("a,button,input,select,textarea")) return;
     dragging=true; lastX=e.clientX; lastY=e.clientY; lastMoveT=now();
     splash(e.clientX, e.clientY, CONFIG.CLICK_AMP, CONFIG.CLICK_SIG);
     startleKoi(e.clientX,e.clientY,false);
