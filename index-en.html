@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="images/photography/img_3506.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="images/koi-natural-atlas.webp">
+<link rel="preload" as="image" href="images/koi-gold-silver-atlas.webp">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Yuji+Syuku&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
@@ -476,7 +478,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
       <div class="split reveal">
         <div class="col-photo">
           <div class="photo-frame">
-            <img src="images/photography/dscf7154_1.jpg" alt="A white birch standing amid crimson autumn leaves" loading="eager" />
+            <img src="images/photography/dscf7154_1.jpg" alt="A white birch standing amid crimson autumn leaves" loading="lazy" />
             <div class="photo-veil"></div>
             <span class="photo-mark">紅葉 · 秋</span>
             <span class="photo-cap"><span class="t">White and Crimson</span><span class="en">白與紅</span></span>
@@ -504,7 +506,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
       <div class="split rev reveal">
         <div class="col-photo">
           <div class="photo-frame">
-            <img src="images/photography/dscf4989_xd3_1.jpg" alt="Sea of clouds over Hehuanshan, layered ridges fading into dawn mist, a band of vermilion at the horizon" loading="eager" />
+            <img src="images/photography/dscf4989_xd3_1.jpg" alt="Sea of clouds over Hehuanshan, layered ridges fading into dawn mist, a band of vermilion at the horizon" loading="lazy" />
             <div class="photo-veil"></div>
             <span class="photo-mark">山水 · 晨</span>
             <span class="photo-cap"><span class="t">Sea of Clouds</span><span class="en">雲海</span></span>
@@ -547,7 +549,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
       <div class="split reveal">
         <div class="col-photo">
           <div class="photo-frame">
-            <img src="images/photography/dscf4933_6.jpg" alt="A thin light on the winter window" loading="eager" />
+            <img src="images/photography/dscf4933_6.jpg" alt="A thin light on the winter window" loading="lazy" />
             <div class="photo-veil"></div>
             <span class="photo-mark">雪明 · 冬</span>
             <span class="photo-cap"><span class="t">Stillness</span><span class="en">寂靜</span></span>
@@ -575,7 +577,7 @@ footer .sep{ opacity:.4; margin:0 .55em; }
       <div class="split rev reveal">
         <div class="col-photo">
           <div class="photo-frame">
-            <img src="images/photography/img20260329_18390699.jpg" alt="Dawn over the lake, boats gathered at a wooden pier" loading="eager" />
+            <img src="images/photography/img20260329_18390699.jpg" alt="Dawn over the lake, boats gathered at a wooden pier" loading="lazy" />
             <div class="photo-veil"></div>
             <span class="photo-mark">湖 · 曉</span>
             <span class="photo-cap"><span class="t">Dawn Pier</span><span class="en">黎明棧橋</span></span>
@@ -1082,8 +1084,8 @@ Use case: photorealistic-natural. Asset type: transparent PNG texture atlas for 
   }
   koiAtlas.onload=koiAccentAtlas.onload=function(){if(ready){initKoi();if(reduce){render();koi.forEach(drawKoi);}}};
   koiAtlas.onerror=koiAccentAtlas.onerror=function(){if(msgEl){msgEl.textContent='Unable to load the koi. Please refresh.';msgEl.style.opacity='1';}};
-  koiAtlas.src='images/koi-natural-atlas.png';
-  koiAccentAtlas.src='images/koi-gold-silver-atlas.png';
+  koiAtlas.src='images/koi-natural-atlas.webp';
+  koiAccentAtlas.src='images/koi-gold-silver-atlas.webp';
 
   img.onload = start;
   img.onerror = function(){ if(msgEl) msgEl.textContent = "Unable to load the pond image."; };
