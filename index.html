@@ -782,9 +782,14 @@ footer .sep{ opacity:.4; margin:0 .55em; }
   }
 
   /* ---- 互動：在 window 監聽（不捕捉指標，才不擋捲動與導覽點擊） ---- */
-  var dragging=false, lastX=0, lastY=0, lastMoveT=0;
+  var dragging=false, lastX=0, lastY=0, lastMoveT=0, touchTap=null;
   window.addEventListener("pointerdown", function(e){
     if(e.target.closest("a,button,input,select,textarea")) return;
+    if(e.pointerType==="touch"){
+      /* 觸控：先不濺水。手指可能是要捲頁；放開時確認是輕點（幾乎沒移動）才濺 */
+      touchTap={x:e.clientX, y:e.clientY, t:now()};
+      return;
+    }
     dragging=true; lastX=e.clientX; lastY=e.clientY; lastMoveT=now();
     splash(e.clientX, e.clientY, CONFIG.CLICK_AMP, CONFIG.CLICK_SIG);
     startleKoi(e.clientX,e.clientY,false);
@@ -807,7 +812,17 @@ footer .sep{ opacity:.4; margin:0 .55em; }
     startleKoi(x,y,true);
     lastX=x; lastY=y; lastMoveT=t;
   }, {passive:true});
-  function endDrag(){ dragging=false; }
+  function endDrag(e){
+    dragging=false;
+    if(touchTap && e && e.type==="pointerup" && e.pointerType==="touch"){
+      var tdx=e.clientX-touchTap.x, tdy=e.clientY-touchTap.y;
+      if(tdx*tdx+tdy*tdy<100 && now()-touchTap.t<500){
+        splash(e.clientX, e.clientY, CONFIG.CLICK_AMP, CONFIG.CLICK_SIG);
+        startleKoi(e.clientX,e.clientY,false);
+      }
+    }
+    touchTap=null;
+  }
   window.addEventListener("pointerup", endDrag, {passive:true});
   window.addEventListener("pointercancel", endDrag, {passive:true});
   // 右鍵：擋掉選單、盪一波
@@ -826,8 +841,24 @@ footer .sep{ opacity:.4; margin:0 .55em; }
     }
   }, {passive:true});
 
+  /* 手機捲動時網址列收合只改視窗高度：不重置水面（否則每次捲動都清空、重丟開場水滴而閃一下），只調畫布尺寸 */
+  function softResize(){
+    W = window.innerWidth; H = window.innerHeight;
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    canvas.width = Math.round(W*dpr); canvas.height = Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.imageSmoothingEnabled = true;
+    try{ ctx.imageSmoothingQuality = "high"; }catch(e){}
+    if(reduce) render();
+  }
   var rt;
-  window.addEventListener("resize", function(){ clearTimeout(rt); rt=setTimeout(start,160); }, {passive:true});
+  window.addEventListener("resize", function(){
+    clearTimeout(rt);
+    rt=setTimeout(function(){
+      if(ready && window.innerWidth===W && Math.abs(window.innerHeight-H) < H*0.35) softResize();
+      else start();
+    },160);
+  }, {passive:true});
   document.addEventListener("visibilitychange", function(){
     if(document.hidden){ cancelAnimationFrame(raf); }
     else if(ready && !reduce){ if(!W||!H){ start(); return; } /* 背景分頁 0 尺寸載入的保險 */
@@ -1041,11 +1072,12 @@ Use case: photorealistic-natural. Asset type: transparent PNG texture atlas for 
         q.x=p.x+Math.cos(angle)*k.seg;q.y=p.y+Math.sin(angle)*k.seg;
       }
       k.us=undulate(k);k.wakeT+=dt;
-      // A submerged fish leaves a faint, intermittent wake, not a constant splash.
+      // 游動要看得見水紋：尾鰭每 0.16 秒留下柔和尾流（擺尾出力、爆衝越大越明顯），頭部推開一圈小弓形波
       if(k.wakeT>0.16){
         k.wakeT=0;
         var tail=k.us[KOI.SEG];
-        koiSplash(tail.x,tail.y,-(0.12+burst*0.7),1.1);
+        koiSplash(tail.x,tail.y,-(4.0+k.effort*4.0+burst*5.0),1.8);
+        koiSplash(k.x,k.y,-(1.0+k.spd*0.02),1.4);
       }
     }
   }
