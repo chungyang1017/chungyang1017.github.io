@@ -98,6 +98,21 @@
   .bk-label{font-size:14px;color:var(--ink);margin-bottom:12px;font-family:var(--display)}
   .bk ul{margin:0;padding:0;list-style:none}
   .bk li{font-size:12.5px;line-height:1.65;color:var(--ink-soft);margin-bottom:11px;text-wrap:pretty}
+  .bk li a.u,.rd li a.u{display:inline-block;font-family:var(--latin);font-size:11px;letter-spacing:.02em;color:var(--water);text-decoration:none;border-bottom:1px dashed rgba(90,122,138,.5);word-break:break-all;margin-left:6px}
+  .bk li a.u:hover,.rd li a.u:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  /* 各週閱讀書目 */
+  .rd-note{font-size:12.5px;color:var(--ink-quiet);margin-bottom:18px}
+  .rd-note b{color:var(--accent);font-weight:500}
+  .rd-week{border-top:1px solid var(--rule);padding:22px 0 14px}
+  .rd-head{display:grid;grid-template-columns:34px 46px 1fr;gap:10px;align-items:baseline;margin-bottom:12px}
+  .rd-head .wn{font-family:var(--display);color:var(--ink-quiet);font-size:14.5px}
+  .rd-head .wd{font-family:var(--latin);font-size:10px;color:var(--ink-quiet);letter-spacing:.04em}
+  .rd-head .wt{font-family:var(--display);font-size:16px;color:var(--ink);line-height:1.5;letter-spacing:.03em}
+  .rd ul{margin:0;padding:0 0 0 90px;list-style:none}
+  .rd li{font-size:14px;line-height:1.7;color:var(--ink-soft);margin-bottom:9px;padding-left:20px;position:relative;text-wrap:pretty}
+  .rd li::before{content:"·";position:absolute;left:4px;color:var(--ink-quiet)}
+  .rd li.core{color:var(--ink)}
+  .rd li.core::before{content:"★";left:0;color:var(--accent);font-size:11px;top:2px}
   .week-table{display:grid;grid-template-columns:1fr 1fr;gap:0 44px}
   .wk{display:grid;grid-template-columns:34px 46px 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--rule);font-size:12.5px;align-items:baseline}
   .wk .wn{font-family:var(--display);color:var(--ink-quiet);font-size:13px}
@@ -150,6 +165,7 @@
     .course-meta{text-align:left}
     .books-2{grid-template-columns:1fr;gap:24px}
     .week-table{grid-template-columns:1fr;gap:0}
+    .rd ul{padding-left:0}
     .foot{padding:32px 22px;flex-direction:column;gap:8px}
   }
   @media (prefers-reduced-motion:reduce){ .reveal{opacity:1!important;transform:none!important;transition:none} }
@@ -254,6 +270,20 @@
   </div>
 </section>
 
+<!-- 綱の伍 · 各週閱讀書目 -->
+<section class="scroll-section samon" id="sec-readings">
+  <div class="row">
+    <div class="meta-col reveal">
+      <div class="num">綱の伍</div>
+      <div class="big">文</div>
+      <h2>各週閱讀書目</h2>
+      <div class="sub">Weekly Readings</div>
+      <p id="readings-note"></p>
+    </div>
+    <div class="rd reveal" id="c-readings"></div>
+  </div>
+</section>
+
 <!-- 課綱籌備中 -->
 <section class="scroll-section samon" id="sec-tba" hidden>
   <div class="row">
@@ -291,7 +321,7 @@
 <script>
 (function(){
   var $ = function(s){ return document.querySelector(s); };
-  var mainSecs = ['#sec-desc','#sec-obj','#sec-weeks','#sec-books'];
+  var mainSecs = ['#sec-desc','#sec-obj','#sec-weeks','#sec-books','#sec-readings'];
   var hideMain = function(){ mainSecs.forEach(function(s){ $(s).hidden = true; }); };
   var id = new URLSearchParams(location.search).get('course');
   var c = (typeof courseData !== 'undefined')
@@ -346,10 +376,14 @@
     return;
   }
 
-  // 簡介
-  $('#c-desc').innerHTML = c.desc_zh.map(function(p){ return '<p>' + p + '</p>'; }).join('');
-  // 課程目標
-  $('#c-obj').innerHTML = c.objectives_zh.map(function(o){ return '<li>' + o + '</li>'; }).join('');
+  // 簡介（無此欄位則隱藏）
+  if (c.desc_zh && c.desc_zh.length) {
+    $('#c-desc').innerHTML = c.desc_zh.map(function(p){ return '<p>' + p + '</p>'; }).join('');
+  } else { $('#sec-desc').hidden = true; }
+  // 課程目標（無此欄位則隱藏）
+  if (c.objectives_zh && c.objectives_zh.length) {
+    $('#c-obj').innerHTML = c.objectives_zh.map(function(o){ return '<li>' + o + '</li>'; }).join('');
+  } else { $('#sec-obj').hidden = true; }
   // 每週進度
   $('#weeks-note').textContent = '共 ' + c.weeks_zh.length + ' 週';
   $('#c-weeks').innerHTML = c.weeks_zh.map(function(w){
@@ -357,15 +391,38 @@
     if (w.tag) t += '<span class="tag">' + w.tag + '</span>';
     return '<div class="wk' + (w.off ? ' off' : '') + '"><span class="wn">' + w.n + '</span><span class="wd">' + (w.date || '') + '</span><span class="wt">' + t + '</span></div>';
   }).join('');
+  // 書目條目：字串，或 {t, u}（u＝網址）
+  var item = function(i){
+    if (typeof i === 'string') return i;
+    return i.t + (i.u ? ' <a class="u" href="' + i.u + '" target="_blank" rel="noopener">' + i.u.replace(/^https?:\/\//,'') + '</a>' : '');
+  };
   // 指定閱讀
   if (c.books_zh && c.books_zh.length) {
     $('#c-books').innerHTML = c.books_zh.map(function(g){
       return '<div class="bk"><div class="bk-label">' + g.label + '</div><ul>'
-        + g.items.map(function(i){ return '<li>' + i + '</li>'; }).join('') + '</ul></div>';
+        + g.items.map(function(i){ return '<li>' + item(i) + '</li>'; }).join('') + '</ul></div>';
     }).join('');
   } else {
     $('#sec-books').hidden = true;
   }
+  // 各週閱讀書目
+  if (c.readings_zh && c.readings_zh.length) {
+    var total = c.readings_zh.reduce(function(s, w){ return s + w.items.length; }, 0);
+    $('#readings-note').textContent = '共 ' + c.readings_zh.length + ' 週、' + total + ' 筆；★ 為核心閱讀';
+    $('#c-readings').innerHTML = c.readings_zh.map(function(w){
+      return '<div class="rd-week"><div class="rd-head"><span class="wn">' + w.n + '</span><span class="wd">' + (w.date || '') + '</span><span class="wt">' + w.title + '</span></div><ul>'
+        + w.items.map(function(i){ return '<li' + (i.c ? ' class="core"' : '') + '>' + item(i) + '</li>'; }).join('') + '</ul></div>';
+    }).join('');
+  } else {
+    $('#sec-readings').hidden = true;
+  }
+  // 章節編號依實際顯示的區塊重排（綱の壱…）
+  var nums = ['壱','弐','参','肆','伍'], k = 0;
+  mainSecs.forEach(function(sel){
+    var sec = $(sel); if (sec.hidden) return;
+    sec.querySelector('.num').textContent = '綱の' + nums[k];
+    sec.classList.toggle('alt', k % 2 === 1); k++;
+  });
 })();
 </script>
 
