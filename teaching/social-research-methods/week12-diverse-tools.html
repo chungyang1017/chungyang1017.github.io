@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>社會研究法與KKV的對話 ・ 社會研究法 第 12 週 ・ 葉崇揚</title>
+  <meta name="description" content="社會研究法第 12 週互動講義：Brady &amp; Collier《Rethinking Social Inquiry》導讀——KKV 的統一推論邏輯、Tarrow 的跨越鴻溝、DSO 與 CPO 兩種因果推論槓桿。分頁式互動簡報。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --chashitsu-bg: #e8dcc4;
+      --chashitsu-paper: #f5ecd6;
+      --chashitsu-tatami: #d8c8a8;
+      --moss: #3d5a3f;
+      --water: #5a7a8a;
+      --earth: #8a6a4a;
+      --persimmon: #c47038;
+      --accent: #c43838;
+      --gold: #b8860b;
+      --ink: #1f1f1d;
+      --ink-soft: rgba(31,31,29,0.78);
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --line-faint: rgba(31,31,29,0.05);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+      --mono: 'JetBrains Mono', 'Menlo', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: var(--jp);
+      background: var(--chashitsu-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 19px;
+      line-height: 1.95;
+      position: relative;
+    }
+    .paper-grain {
+      position: fixed; inset: 0; pointer-events: none;
+      opacity: 0.32; mix-blend-mode: multiply; z-index: 1;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 56px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .top-left { display: flex; align-items: center; gap: 14px; }
+    .back { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .back:hover { opacity: 0.85; }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .top-title { font-family: var(--brush); font-size: 19px; letter-spacing: 0.06em; }
+    .top-title small { font-family: var(--sans); font-size: 12px; letter-spacing: 0.18em; opacity: 0.55; margin-left: 10px; }
+    .top-right { display: flex; align-items: center; gap: 18px; font-family: var(--sans); font-size: 12px; opacity: 0.6; letter-spacing: 0.15em; }
+    .toc-btn {
+      background: transparent; border: 1px solid var(--line);
+      font-family: inherit; font-size: 11.5px; letter-spacing: 0.2em;
+      padding: 5px 12px; cursor: pointer; color: var(--ink); opacity: 0.75;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .toc-btn:hover { background: var(--chashitsu-paper); opacity: 1; }
+
+    /* ── Progress bar ── */
+    .progress {
+      position: fixed; top: 56px; left: 0;
+      height: 2px; background: var(--accent);
+      z-index: 49; transition: width 0.4s ease;
+    }
+
+    /* ── Slide deck ── */
+    .deck {
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 64px;
+      overflow: hidden; z-index: 2;
+    }
+    .slide {
+      position: absolute; inset: 0;
+      padding: 36px 72px 28px;
+      overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.2,0.7,0.2,1);
+    }
+    .slide.is-prev { transform: translateX(-40px); }
+    .slide.is-active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide-inner { max-width: 1080px; margin: 0 auto; }
+
+    /* ── Bottom nav ── */
+    .navbar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 64px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .nav-btn {
+      background: transparent; border: 1px solid var(--ink);
+      font-family: var(--jp); font-size: 14px;
+      letter-spacing: 0.15em; color: var(--ink);
+      padding: 9px 22px; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover:not(:disabled) { background: var(--ink); color: var(--chashitsu-paper); }
+    .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; border-color: var(--line); color: var(--ink); }
+    .nav-center { display: flex; align-items: center; gap: 16px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.18em; opacity: 0.7; }
+    .dots { display: flex; gap: 5px; max-width: 480px; overflow: hidden; flex-wrap: wrap; justify-content: center; }
+    .dot { width: 7px; height: 7px; background: var(--line); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .dot:hover { background: var(--accent); transform: scale(1.3); }
+    .dot.is-active { background: var(--accent); }
+    .dot.is-section { width: 14px; }
+
+    /* ── TOC overlay ── */
+    .toc-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(31,31,29,0.85);
+      backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center;
+      padding: 40px;
+    }
+    .toc-overlay.is-shown { display: flex; animation: fade 0.3s; }
+    .toc-panel {
+      background: var(--chashitsu-paper);
+      max-width: 920px; width: 100%; max-height: 80vh;
+      overflow-y: auto;
+      padding: 36px 44px;
+      border: 1px solid var(--accent);
+      position: relative;
+    }
+    .toc-close {
+      position: absolute; top: 14px; right: 18px;
+      background: transparent; border: none;
+      font-size: 26px; cursor: pointer; opacity: 0.5;
+      font-family: var(--brush); color: var(--ink);
+    }
+    .toc-close:hover { opacity: 1; }
+    .toc-title { font-family: var(--brush); font-size: 26px; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .toc-sub { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 22px; }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; }
+    .toc-list li { padding: 8px 0; border-bottom: 1px dashed var(--line-soft); cursor: pointer; display: flex; align-items: baseline; gap: 14px; transition: color 0.2s; }
+    .toc-list li:hover { color: var(--accent); }
+    .toc-list .num { font-family: var(--brush); font-size: 14px; color: var(--accent); min-width: 28px; }
+    .toc-list .lab { font-size: 15px; flex: 1; }
+    .toc-list .kind { font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; opacity: 0.45; }
+    .toc-list .is-section { color: var(--accent); font-weight: 600; }
+
+    /* ── Slide types ── */
+    .slide-title {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      padding: 36px 72px;
+    }
+    .slide-title .week-tag {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.4em; opacity: 0.6; margin-bottom: 24px;
+    }
+    .slide-title .seal {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      background: var(--accent); color: var(--chashitsu-paper);
+      font-family: var(--brush); font-size: 16px;
+      transform: rotate(-3deg);
+    }
+    .slide-title h1 { font-family: var(--brush); font-size: 68px; font-weight: 400; line-height: 1.25; letter-spacing: 0.04em; margin-bottom: 18px; }
+    .slide-title .subtitle { font-family: var(--sans); font-size: 16px; letter-spacing: 0.18em; opacity: 0.6; margin-bottom: 26px; }
+    .slide-title .author { font-size: 17px; opacity: 0.85; line-height: 1.7; max-width: 760px; }
+    .slide-title .author cite { font-style: italic; color: var(--accent); }
+    .meta-strip { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 22px; font-family: var(--sans); font-size: 13px; opacity: 0.6; letter-spacing: 0.1em; }
+
+    .slide-section {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      background: linear-gradient(135deg, rgba(196,56,56,0.06) 0%, rgba(216,200,168,0.4) 100%);
+      padding: 36px 72px;
+    }
+    .slide-section .big-num {
+      font-family: var(--brush); font-size: 240px;
+      color: var(--accent); opacity: 0.15;
+      position: absolute; bottom: 30px; right: 60px;
+      line-height: 1;
+    }
+    .slide-section .part { font-family: var(--sans); font-size: 13px; letter-spacing: 0.45em; opacity: 0.55; margin-bottom: 14px; }
+    .slide-section h2 { font-family: var(--brush); font-size: 56px; font-weight: 400; letter-spacing: 0.04em; line-height: 1.15; margin-bottom: 20px; }
+    .slide-section .sec-q { font-size: 19px; opacity: 0.85; max-width: 660px; line-height: 1.9; border-left: 3px solid var(--accent); padding-left: 20px; }
+
+    .slide-content { padding-top: 28px; }
+    .content-head { margin-bottom: 24px; display: flex; align-items: baseline; gap: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+    .content-head h2 { font-family: var(--brush); font-size: 38px; font-weight: 400; letter-spacing: 0.04em; }
+    .content-head .h-en { font-family: var(--sans); font-size: 13px; letter-spacing: 0.22em; opacity: 0.55; }
+    .content-head .h-tag { margin-left: auto; font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.3em; opacity: 0.55; }
+
+    /* ── Reusable text primitives ── */
+    .lead { font-size: 18.5px; line-height: 1.95; opacity: 0.88; max-width: 880px; margin-bottom: 16px; }
+    .lead strong { color: var(--accent); }
+    .sub-h { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.28em; color: var(--accent); margin: 18px 0 8px; }
+    .sub-h:first-child { margin-top: 0; }
+    .p { font-size: 16.5px; line-height: 1.9; opacity: 0.9; }
+    .p + .p { margin-top: 8px; }
+    .plain-list { list-style: none; padding: 0; margin: 6px 0 0; display: flex; flex-direction: column; gap: 6px; }
+    .plain-list li { font-size: 16.5px; line-height: 1.85; opacity: 0.9; padding-left: 18px; position: relative; }
+    .plain-list li::before { content: "・"; position: absolute; left: 0; opacity: 0.5; }
+    .foot-note { margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--line-soft); font-family: var(--sans); font-size: 13px; opacity: 0.55; letter-spacing: 0.04em; }
+    .quote-box { background: var(--chashitsu-paper); border-left: 3px solid var(--accent); padding: 20px 26px; margin: 16px 0; font-style: italic; font-size: 18.5px; line-height: 1.95; }
+    .quote-box cite { display: block; font-style: normal; font-family: var(--sans); font-size: 13px; letter-spacing: 0.16em; opacity: 0.65; margin-top: 14px; }
+    .insight { margin-top: 18px; padding: 16px 24px; background: rgba(196,56,56,0.06); border-left: 3px solid var(--accent); font-size: 17px; line-height: 1.9; }
+    .insight strong { color: var(--accent); }
+
+    /* Numbered take-list */
+    .takeaways { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .take { display: flex; align-items: flex-start; gap: 20px; padding: 15px 22px; background: var(--chashitsu-paper); border: 1px solid var(--line); }
+    .take .num { font-family: var(--brush); font-size: 28px; color: var(--accent); line-height: 1; min-width: 46px; }
+    .take .txt { font-size: 16.5px; line-height: 1.85; padding-top: 2px; }
+    .take .txt strong { color: var(--accent); }
+
+    /* Clickable jump-list (outline) */
+    .jump-list { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+    .jump-item { display: flex; align-items: flex-start; gap: 20px; padding: 16px 22px; background: var(--chashitsu-paper); border: 1px solid var(--line); cursor: pointer; transition: border-color 0.2s, transform 0.2s; }
+    .jump-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .jump-item .num { font-family: var(--brush); font-size: 26px; color: var(--accent); min-width: 42px; line-height: 1; }
+    .jump-item .txt strong { display: block; margin-bottom: 4px; font-size: 17px; }
+    .jump-item .txt span { font-size: 14px; opacity: 0.72; }
+    .jump-hint { margin-top: 12px; font-family: var(--sans); font-size: 12px; letter-spacing: 0.18em; color: var(--accent); opacity: 0.85; text-align: center; }
+
+    /* Three-card grid */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 12px; }
+    .why-card { background: var(--chashitsu-paper); border: 1px solid var(--line); padding: 20px 22px; transition: transform 0.3s, border-color 0.3s; }
+    .why-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .why-card h3 { font-family: var(--brush); font-size: 20px; letter-spacing: 0.03em; margin-bottom: 8px; }
+    .why-card p { font-size: 15.5px; line-height: 1.85; opacity: 0.88; }
+    .why-card .tag { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.08em; color: var(--accent); opacity: 0.9; display: block; margin-bottom: 8px; }
+
+    /* DSO/CPO-style two-column comparison (generic, reused for all A-vs-B slides) */
+    .dso-cpo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+    .dc-card { background: var(--chashitsu-paper); border-top: 4px solid var(--line); padding: 20px 24px; }
+    .dc-card.dso { border-top-color: var(--water); }
+    .dc-card.cpo { border-top-color: var(--moss); }
+    .dc-card .ab { font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; padding: 4px 12px; display: inline-block; margin-bottom: 10px; background: rgba(31,31,29,0.05); color: var(--ink-soft); }
+    .dc-card.dso .ab { background: rgba(90,122,138,0.15); color: var(--water); }
+    .dc-card.cpo .ab { background: rgba(61,90,63,0.15); color: var(--moss); }
+    .dc-card h3 { font-family: var(--brush); font-size: 22px; letter-spacing: 0.03em; margin-bottom: 10px; }
+    .dc-card p { font-size: 16px; line-height: 1.9; opacity: 0.9; }
+    .dc-card .plain-list { margin-top: 8px; }
+
+    /* Comparison table */
+    .cmp-table { width: 100%; border-collapse: collapse; background: var(--chashitsu-paper); border: 1px solid var(--line); font-size: 16px; margin-top: 10px; }
+    .cmp-table th, .cmp-table td { padding: 13px 16px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: top; }
+    .cmp-table th { font-family: var(--brush); font-size: 17px; font-weight: 500; background: rgba(216,200,168,0.4); }
+    .cmp-table th:nth-child(2), .cmp-table td:nth-child(2) { background: rgba(106,74,58,0.05); }
+    .cmp-table th:nth-child(3), .cmp-table td:nth-child(3) { background: rgba(58,90,122,0.05); }
+    .cmp-table td:first-child { font-family: var(--sans); font-size: 13px; letter-spacing: 0.05em; opacity: 0.7; width: 160px; vertical-align: middle; }
+
+    /* Term list (name : description rows) */
+    .term-list { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+    .term-row { display: flex; gap: 22px; padding: 14px 20px; background: var(--chashitsu-paper); border: 1px solid var(--line); align-items: flex-start; }
+    .term-row .name { font-family: var(--brush); font-size: 18px; color: var(--accent); min-width: 210px; letter-spacing: 0.02em; }
+    .term-row .name small { font-family: var(--sans); font-size: 12.5px; opacity: 0.6; letter-spacing: 0.04em; display: block; margin-top: 2px; }
+    .term-row .desc { flex: 1; font-size: 16px; line-height: 1.85; opacity: 0.9; }
+
+    /* Timeline list */
+    .timeline { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-direction: column; gap: 14px; }
+    .timeline li { font-size: 16px; line-height: 1.85; opacity: 0.92; }
+    .timeline .yr { font-family: var(--brush); color: var(--accent); margin-right: 6px; font-size: 17px; }
+    .timeline .arrow { display: block; margin-top: 4px; padding-left: 8px; opacity: 0.85; }
+
+    /* Study cards (labeled-line case studies) */
+    .study-grid { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+    .study-card { background: var(--chashitsu-paper); border-left: 3px solid var(--accent); padding: 18px 24px; }
+    .study-card h3 { font-family: var(--brush); font-size: 19px; letter-spacing: 0.03em; margin-bottom: 8px; }
+    .study-card .line { font-size: 15.5px; line-height: 1.85; opacity: 0.9; margin-top: 5px; }
+    .study-card .line b { font-family: var(--sans); font-size: 12px; letter-spacing: 0.12em; color: var(--accent); margin-right: 8px; }
+
+    /* Trade-off rows */
+    .tradeoff-list { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .tradeoff { background: var(--chashitsu-paper); border: 1px solid var(--line); padding: 15px 22px; }
+    .tradeoff .pair { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; font-family: var(--brush); font-size: 18px; letter-spacing: 0.02em; }
+    .tradeoff .pair .vs { font-family: var(--sans); font-size: 12px; opacity: 0.5; letter-spacing: 0.1em; }
+    .tradeoff .pair .b { color: var(--accent); }
+    .tradeoff .desc { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line-soft); font-size: 14.5px; line-height: 1.8; opacity: 0.85; }
+
+    /* Stat flow (before/after figures) */
+    .stat-flow { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; margin-top: 10px; }
+    .stat-box3 { text-align: center; background: var(--chashitsu-paper); border: 1px solid var(--line); padding: 22px 30px; min-width: 170px; }
+    .stat-box3 .val { font-family: var(--brush); font-size: 40px; color: var(--accent); line-height: 1; }
+    .stat-box3 .lab { margin-top: 10px; font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.1em; opacity: 0.7; }
+    .stat-arrow2 { font-size: 28px; color: var(--accent); opacity: 0.7; }
+    .stat-note { font-family: var(--sans); font-size: 13px; opacity: 0.6; font-style: italic; }
+
+    /* Discussion questions */
+    .discuss-list { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+    .discuss-item { background: var(--chashitsu-paper); border-left: 3px solid var(--accent); padding: 18px 24px; }
+    .discuss-item .qn { font-family: var(--brush); font-size: 16px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 8px; }
+    .discuss-item .qt { font-family: var(--brush); font-size: 19px; line-height: 1.6; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .discuss-item .intro { font-size: 15.5px; opacity: 0.85; margin-bottom: 6px; }
+
+    /* References */
+    .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+    .ref-card { background: var(--chashitsu-paper); border-top: 3px solid var(--accent); padding: 20px 22px; }
+    .ref-card h3 { font-family: var(--brush); font-size: 20px; margin-bottom: 14px; letter-spacing: 0.04em; }
+    .ref-card p { font-size: 15px; line-height: 1.85; padding: 8px 0; border-bottom: 1px solid var(--line-faint); }
+    .ref-card p:last-child { border-bottom: none; }
+    .ref-card em { color: var(--accent); font-style: italic; }
+
+    .keyboard-hint { position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%); font-family: var(--sans); font-size: 9.5px; letter-spacing: 0.25em; opacity: 0.4; pointer-events: none; z-index: 60; }
+    .keyboard-hint kbd { font-family: var(--mono); font-size: 9.5px; background: rgba(31,31,29,0.08); padding: 1px 5px; margin: 0 2px; }
+
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      .topbar { padding: 0 14px; }
+      .top-title { font-size: 15px; }
+      .top-title small { display: none; }
+      .top-right { display: none; }
+      .toc-btn { font-size: 10.5px; padding: 4px 9px; letter-spacing: 0.18em; }
+
+      .slide { padding: 26px 22px 20px; }
+      .slide-title { padding: 26px 22px; }
+      .slide-title h1 { font-size: 40px; }
+      .slide-title .subtitle { font-size: 13px; letter-spacing: 0.12em; }
+      .slide-title .author { font-size: 15px; }
+      .meta-strip { font-size: 11.5px; gap: 12px; }
+
+      .slide-section { padding: 26px 22px; }
+      .slide-section h2 { font-size: 34px; }
+      .slide-section .sec-q { font-size: 16px; }
+      .slide-section .big-num { font-size: 130px; bottom: 20px; right: 20px; }
+
+      .content-head h2 { font-size: 24px; }
+      .content-head .h-en { font-size: 11px; }
+      .content-head .h-tag { display: none; }
+
+      .why-grid { grid-template-columns: 1fr; }
+      .dso-cpo { grid-template-columns: 1fr; }
+      .cmp-table { font-size: 12.5px; display: block; overflow-x: auto; }
+      .cmp-table th, .cmp-table td { padding: 9px 10px; }
+      .term-row { flex-direction: column; gap: 6px; }
+      .term-row .name { min-width: auto; }
+      .study-card { padding: 14px 18px; }
+      .tradeoff .pair { font-size: 15px; }
+      .stat-flow { gap: 14px; }
+      .stat-box3 { padding: 16px 20px; min-width: 130px; }
+      .stat-box3 .val { font-size: 30px; }
+      .jump-item { padding: 13px 16px; gap: 14px; }
+      .ref-grid { grid-template-columns: 1fr; }
+
+      .navbar { padding: 0 14px; height: 58px; }
+      .nav-btn { padding: 7px 14px; font-size: 13px; letter-spacing: 0.1em; }
+      .dots { max-width: 200px; }
+      .nav-center { font-size: 12px; gap: 10px; }
+
+      .toc-panel { padding: 24px 22px; }
+      .toc-list { grid-template-columns: 1fr; gap: 0; }
+      .toc-list .lab { font-size: 13.5px; }
+
+      .keyboard-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<svg class="paper-grain" aria-hidden="true">
+  <defs>
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#paper-noise)" />
+</svg>
+
+<header class="topbar">
+  <div class="top-left">
+    <a href="../../teaching-zh.html" class="back">← 教學</a>
+    <span class="top-sep">·</span>
+    <span class="top-title">與KKV的對話<small>社研法 第 12 週</small></span>
+  </div>
+  <div class="top-right">
+    <span>KKV ・ Tarrow ・ Brady &amp; Collier</span>
+    <button class="toc-btn" onclick="toggleToc()">目次 ・ TOC</button>
+  </div>
+</header>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ============ S1 (slide1) TITLE ============ -->
+  <section class="slide slide-title is-active" data-kind="title" data-label="封面">
+    <div class="slide-inner">
+      <div class="week-tag">
+        <span class="seal">研</span>
+        <span>第 12 週 ・ WEEK 12</span>
+      </div>
+      <h1>社會研究法<br/>與KKV的對話</h1>
+      <p class="subtitle">RETHINKING SOCIAL INQUIRY ・ DIVERSE TOOLS, SHARED STANDARDS</p>
+      <p class="author">Brady &amp; Collier<cite>《Rethinking Social Inquiry: Diverse Tools, Shared Standards》</cite>導讀</p>
+      <div class="meta-strip">
+        <span>授課教師：葉崇揚教授</span>
+        <span>東吳大學社會學系</span>
+        <span>適用對象：碩士班學生</span>
+        <span>約120分鐘 ・ 共43張</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S2 (slide2) 本講綱要 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="本講綱要">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>本講綱要</h2>
+        <span class="h-tag">★ 點選跳轉</span>
+      </div>
+      <div class="jump-list">
+        <div class="jump-item" data-goto="3"><div class="num">01</div><div class="txt"><strong>為什麼這場對話重要？</strong><span>從KKV到Brady &amp; Collier</span></div></div>
+        <div class="jump-item" data-goto="8"><div class="num">02</div><div class="txt"><strong>Tarrow跨越鴻溝的嘗試</strong><span>過程追蹤、非系統變項、三角檢證</span></div></div>
+        <div class="jump-item" data-goto="16"><div class="num">03</div><div class="txt"><strong>KKV的回應</strong><span>堅持統一推論邏輯</span></div></div>
+        <div class="jump-item" data-goto="20"><div class="num">04</div><div class="txt"><strong>四大批判主題</strong><span>重要研究、概念測量、選樣偏誤、因果模型</span></div></div>
+        <div class="jump-item" data-goto="28"><div class="num">05</div><div class="txt"><strong>DSO與CPO的區辨</strong><span>因果推論的兩種槓桿來源</span></div></div>
+        <div class="jump-item" data-goto="35"><div class="num">06</div><div class="txt"><strong>總結與對社會政策研究的啟示</strong><span>共享標準、混合方法、東亞應用</span></div></div>
+      </div>
+      <div class="jump-hint">點選任一項，跳到對應段落 →</div>
+    </div>
+  </section>
+
+  <!-- ============ S3 (slide3) 學習目標 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="學習目標">
+    <div class="slide-inner">
+      <div class="content-head"><h2>學習目標</h2></div>
+      <p class="lead">修完本講後，同學應能：</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">1</div><div class="txt">理解KKV（1994）建立統一推論邏輯的方法論企圖，以及Brady &amp; Collier對此企圖的核心挑戰</div></div>
+        <div class="take"><div class="num">2</div><div class="txt">辨識DSO（資料集觀察值）與CPO（因果過程觀察值）的差異，並能舉例說明二者在因果推論中的不同槓桿</div></div>
+        <div class="take"><div class="num">3</div><div class="txt">比較截斷選樣偏誤與社會過程選樣偏誤，並能在自己的研究設計中辨認潛在偏誤</div></div>
+        <div class="take"><div class="num">4</div><div class="txt">說明機率性與決定性因果模型的取捨，並判斷研究問題適合哪一種模型</div></div>
+        <div class="take"><div class="num">5</div><div class="txt">將本書方法論觀點應用於東亞社會政策研究的個案設計與資料解讀</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S4 (slide4) 為什麼這場對話重要？ ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="為什麼這場對話重要？">
+    <div class="slide-inner">
+      <div class="content-head"><h2>為什麼這場對話重要？</h2></div>
+      <div class="dso-cpo">
+        <div class="dc-card">
+          <h3>方法論的根本分歧</h3>
+          <p class="p">質性 vs. 量化</p>
+          <ul class="plain-list">
+            <li>案例研究的價值是否被低估？</li>
+            <li>推論邏輯是否唯一？</li>
+            <li>概念形成與測量的地位</li>
+            <li>因果機制如何被識別？</li>
+          </ul>
+        </div>
+        <div class="dc-card">
+          <h3>學術背景</h3>
+          <ul class="timeline">
+            <li><span class="yr">1994年</span>KKV出版《Designing Social Inquiry》<span class="arrow">→ 主張：質性研究應遵循量化研究的推論邏輯</span></li>
+            <li><span class="yr">2004年</span>Brady &amp; Collier主編本書<span class="arrow">→ 集體回應：質性方法有其獨特貢獻</span></li>
+            <li><span class="yr">2010年</span>第二版增補<span class="arrow">→ 提出DSO/CPO區辨</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="foot-note">本講主要依據Brady &amp; Collier (2010, 2nd ed.) 第10-13章與附錄。</p>
+    </div>
+  </section>
+
+  <!-- ============ S5 (slide5) KKV (1994) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="KKV (1994)《Designing Social Inquiry》">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>KKV (1994)《Designing Social Inquiry》</h2>
+        <span class="h-en">DESIGNING SOCIAL INQUIRY</span>
+      </div>
+      <p class="lead">質性研究應採用量化研究的推論邏輯</p>
+      <div class="why-grid">
+        <div class="why-card"><h3>Gary King</h3><p>Harvard 政治學家<br/>量化方法論大師</p></div>
+        <div class="why-card"><h3>Robert Keohane</h3><p>Princeton 國際關係<br/>新自由制度主義</p></div>
+        <div class="why-card"><h3>Sidney Verba</h3><p>Harvard 政治學家<br/>比較政治經典作者</p></div>
+      </div>
+      <p class="sub-h" style="margin-top:22px;">DSI的學術影響力</p>
+      <ul class="plain-list">
+        <li>成為政治學、社會學研究方法的標準教科書</li>
+        <li>確立「統一推論邏輯」的方法論主流地位</li>
+        <li>把貝氏因果推論帶入質性研究的視野</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ S6 (slide6) KKV的核心主張：四項命題 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="KKV的核心主張：四項命題">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>KKV的核心主張：四項命題</h2>
+        <span class="h-en">KING, KEOHANE &amp; VERBA (1994)</span>
+      </div>
+      <div class="takeaways">
+        <div class="take"><div class="num">1</div><div class="txt"><strong>推論邏輯的統一性</strong><br/>質性與量化研究面對的因果推論挑戰本質相同</div></div>
+        <div class="take"><div class="num">2</div><div class="txt"><strong>增加觀察值數（N）</strong><br/>提升槓桿、降低偏誤；單一個案應拆解為多個觀察值</div></div>
+        <div class="take"><div class="num">3</div><div class="txt"><strong>避免選樣偏誤</strong><br/>依依變項選樣造成截斷，會誤導因果推論</div></div>
+        <div class="take"><div class="num">4</div><div class="txt"><strong>明確的因果框架</strong><br/>採用機率取向（Neyman-Rubin-Holland反事實架構）</div></div>
+      </div>
+      <p class="foot-note">King, Keohane, &amp; Verba (1994). Designing Social Inquiry. Princeton University Press.</p>
+    </div>
+  </section>
+
+  <!-- ============ S7 (slide7) KKV方法論統一化的企圖 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="KKV方法論統一化的企圖">
+    <div class="slide-inner">
+      <div class="content-head"><h2>KKV方法論統一化的企圖</h2></div>
+      <div class="quote-box">「質性研究的劣勢，是因為它沒有遵循量化研究的嚴格邏輯」</div>
+      <p class="sub-h">DSI的隱含預設</p>
+      <ul class="plain-list">
+        <li>量化方法是「黃金標準」，質性方法是次等替代品</li>
+        <li>個案研究的問題在於「自由度不足」（low degrees of freedom）</li>
+        <li>解方：在單一個案中萃取更多觀察值，將質性研究「量化化」</li>
+        <li>概念形成、理論建構不在DSI討論範圍內，因為它們不是推論問題</li>
+      </ul>
+      <div class="insight"><strong>對質性研究者的衝擊：</strong>你們不是在做「另一種」科學，你們是在做不夠好的量化科學。</div>
+    </div>
+  </section>
+
+  <!-- ============ S8 (slide8) Brady & Collier 的整體回應 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Brady &amp; Collier 的整體回應">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Brady &amp; Collier 的整體回應</h2>
+        <span class="h-en">DIVERSE TOOLS, SHARED STANDARDS</span>
+      </div>
+      <p class="lead">Diverse Tools, Shared Standards：多元工具，共享標準</p>
+      <div class="why-grid">
+        <div class="why-card"><h3>1. 認識論上的多元</h3><p>推論的「標準」可以共享，但達致推論的「工具」必然多元</p></div>
+        <div class="why-card"><h3>2. 方法論的取捨</h3><p>沒有單一最優方法；不同方法在不同情境下各有強項與弱點</p></div>
+        <div class="why-card"><h3>3. 概念與測量回歸中心</h3><p>質性研究的核心貢獻在概念形成、機制識別，這不是次等工作</p></div>
+      </div>
+      <div class="insight"><strong>關鍵主張：</strong>這不是反量化，而是反「方法論的霸權」。</div>
+    </div>
+  </section>
+
+  <!-- ============ S9 (slide9) PART 1 DIVIDER ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第一部分：Tarrow 的跨越鴻溝">
+    <div class="slide-inner">
+      <div class="big-num">壹</div>
+      <p class="part">PART 01</p>
+      <h2>Tarrow 的跨越鴻溝</h2>
+      <p class="sec-q">第10章「跨越量化-質性的鴻溝」<br/>六種跨越工具 ｜ 三角檢證 ｜ 過程追蹤的爭辯</p>
+    </div>
+  </section>
+
+  <!-- ============ S10 (slide10) Tarrow對DSI的核心批判 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Tarrow對DSI的核心批判">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Tarrow對DSI的核心批判</h2>
+        <span class="h-en">BRIDGING THE QUANTITATIVE-QUALITATIVE DIVIDE</span>
+      </div>
+      <p class="lead">DSI雖宣稱統一推論邏輯，卻把質性研究圖式化、邊緣化</p>
+      <p class="sub-h">兩大誤讀</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">1</div><div class="txt"><strong>過程追蹤被簡化為「增加觀察值」工具</strong><br/>DSI誤解George &amp; McKeown原意。過程追蹤是要連結政策階段、辨識決策成因，是不同的推論邏輯，不是補N不足。</div></div>
+        <div class="take"><div class="num">2</div><div class="txt"><strong>排除「非系統性變異」的危險</strong><br/>DSI主張剔除非系統變項，但歷史關鍵事件正是「非典型」的重要轉折點。剔除即抹除歷史性。</div></div>
+      </div>
+      <p class="foot-note">Tarrow (2010) Bridging the Quantitative-Qualitative Divide. 第10章。</p>
+    </div>
+  </section>
+
+  <!-- ============ S11 (slide11) 補充：過程追蹤的不同推論邏輯 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="補充：過程追蹤的不同推論邏輯">
+    <div class="slide-inner">
+      <div class="content-head"><h2>補充：過程追蹤的不同推論邏輯</h2></div>
+      <div class="dso-cpo">
+        <div class="dc-card" style="border-top-color: var(--water);">
+          <h3>KKV的詮釋</h3>
+          <ul class="plain-list">
+            <li>目的：增加N</li>
+            <li>把單一案例切分為多個觀察值</li>
+            <li>本質：仍是相關分析</li>
+            <li>邏輯：同質的推論邏輯</li>
+          </ul>
+        </div>
+        <div class="dc-card" style="border-top-color: var(--earth);">
+          <h3>Tarrow / George的詮釋</h3>
+          <ul class="plain-list">
+            <li>目的：識別因果機制</li>
+            <li>追蹤政策決策的時序與聯繫</li>
+            <li>本質：尋找「煙槍證據」</li>
+            <li>邏輯：異質的推論邏輯</li>
+          </ul>
+        </div>
+      </div>
+      <p class="foot-note">Bennett &amp; Checkel (2015) 後續發展出「煙槍檢驗」、「箍環檢驗」等具體判準。</p>
+    </div>
+  </section>
+
+  <!-- ============ S12 (slide12) 非系統性變異的價值：兩個案例 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="非系統性變異的價值：兩個案例">
+    <div class="slide-inner">
+      <div class="content-head"><h2>非系統性變異的價值：兩個案例</h2></div>
+      <p class="lead">DSI說：剔除非系統變項。Tarrow說：那是歷史關鍵時刻。</p>
+      <div class="study-grid">
+        <div class="study-card">
+          <h3>案例1：Tilly 對歐洲革命的事件史分析</h3>
+          <p class="line">法國大革命的「群眾動員形態轉變」是長時段中的關鍵轉折點。若依KKV邏輯把它當作離群值剔除，整個歐洲集體行動的歷史轉變就被抹除。</p>
+        </div>
+        <div class="study-card">
+          <h3>案例2：Laba 對波蘭團結工聯的詮釋反駁</h3>
+          <p class="line">主流文獻認為團結工聯是「知識分子主導」。Laba透過工人組織的具體運作細節指出，這是工人階級自發動員。細節不是雜訊，是關鍵反證。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S13 (slide13) Tarrow 的六種跨越工具 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Tarrow 的六種跨越工具">
+    <div class="slide-inner">
+      <div class="content-head"><h2>Tarrow 的六種跨越工具</h2></div>
+      <div class="takeaways">
+        <div class="take"><div class="num">1</div><div class="txt"><strong>過程追蹤</strong><br/>辨識因果機制的時序鋪排</div></div>
+        <div class="take"><div class="num">2</div><div class="txt"><strong>系統/非系統變項區辨</strong><br/>保留歷史關鍵事件</div></div>
+        <div class="take"><div class="num">3</div><div class="txt"><strong>量化輪廓中框定質性研究</strong><br/>宏觀資料定位個案</div></div>
+        <div class="take"><div class="num">4</div><div class="txt"><strong>為量化骨架補質性血肉</strong><br/>迴歸結果的機制詮釋</div></div>
+        <div class="take"><div class="num">5</div><div class="txt"><strong>量質順序安排</strong><br/>前測、後解、迭代</div></div>
+        <div class="take"><div class="num">6</div><div class="txt"><strong>三角檢證</strong><br/>多元資料交叉驗證</div></div>
+      </div>
+      <p class="foot-note">Tarrow (2010) 整理出量質結合的具體實作建議。</p>
+    </div>
+  </section>
+
+  <!-- ============ S14 (slide14) 三角檢證：不同邏輯，還是不同資料？ ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="三角檢證：不同邏輯，還是不同資料？">
+    <div class="slide-inner">
+      <div class="content-head"><h2>三角檢證：不同邏輯，還是不同資料？</h2></div>
+      <p class="lead">Tarrow vs. KKV的關鍵分歧</p>
+      <div class="dso-cpo">
+        <div class="dc-card" style="border-top-color: var(--water);">
+          <h3>Tarrow的立場</h3>
+          <ul class="plain-list">
+            <li>三角檢證運用不同推論邏輯</li>
+            <li>量化建立關聯，質性辨識機制</li>
+            <li>二者互補，本質不同</li>
+            <li>例：迴歸顯示制度變項顯著，但唯有過程追蹤才能說出制度「如何」運作</li>
+          </ul>
+        </div>
+        <div class="dc-card" style="border-top-color: var(--earth);">
+          <h3>KKV的立場</h3>
+          <ul class="plain-list">
+            <li>三角檢證只是多元「資料來源」</li>
+            <li>推論邏輯仍是統一的</li>
+            <li>質性資料服務於相同的因果推論</li>
+            <li>差別在資料形式，不在邏輯結構</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S15 (slide15) Tarrow引用的經典案例(1) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Tarrow引用的經典案例(1)">
+    <div class="slide-inner">
+      <div class="content-head"><h2>Tarrow引用的經典案例(1)</h2></div>
+      <div class="study-grid">
+        <div class="study-card">
+          <h3>Putnam（1993）《讓民主運轉起來》</h3>
+          <p class="line"><b>問題</b>為什麼義大利北部地方政府績效優於南部？</p>
+          <p class="line"><b>量化</b>以「制度績效指數」測量20個區域</p>
+          <p class="line"><b>質性</b>對中世紀城市共和傳統與南部封建遺緒的歷史追溯</p>
+          <p class="line"><b>結論</b>「社會資本」概念由質性研究提供，量化檢驗其績效後果</p>
+        </div>
+        <div class="study-card">
+          <h3>McAdam（1988）《自由之夏》</h3>
+          <p class="line"><b>問題</b>誰會持續投入1964年密西西比公民權運動？</p>
+          <p class="line"><b>量化</b>申請者基本資料與參與紀錄的迴歸分析</p>
+          <p class="line"><b>質性</b>對撤退者與留下者的深度訪談</p>
+          <p class="line"><b>結論</b>「社會嵌入性」是關鍵中介機制，無法只靠變項萃取</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S16 (slide16) Tarrow引用的經典案例(2) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Tarrow引用的經典案例(2)">
+    <div class="slide-inner">
+      <div class="content-head"><h2>Tarrow引用的經典案例(2)</h2></div>
+      <div class="study-grid">
+        <div class="study-card">
+          <h3>Tilly 歐洲集體行動的事件史分析</h3>
+          <p class="line">蒐集英、法數百年的抗爭事件，建立「事件目錄」</p>
+          <p class="line"><b>量化</b>呈現集體行動的長期趨勢</p>
+          <p class="line"><b>質性</b>詮釋抗爭形態的歷史轉變（local→national, reactive→proactive）</p>
+          <p class="line"><b>啟示</b>量化趨勢分析必須配合歷史脈絡的詮釋</p>
+        </div>
+        <div class="study-card">
+          <h3>Bunce《新領導者是否帶來差別？》</h3>
+          <p class="line"><b>問題</b>政治繼任是否造成政策變遷？</p>
+          <p class="line"><b>量化</b>跨國跨時的政策支出資料</p>
+          <p class="line"><b>質性</b>以蘇聯領導人交替（Khrushchev→Brezhnev）為深度案例</p>
+          <p class="line"><b>啟示</b>質性深掘確認量化關聯背後的政治運作機制</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S17 (slide17) PART 2 DIVIDER ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第二部分：KKV 的回應">
+    <div class="slide-inner">
+      <div class="big-num">貳</div>
+      <p class="part">PART 02</p>
+      <h2>KKV 的回應</h2>
+      <p class="sec-q">第11章「研究設計的重要性」<br/>堅持統一邏輯 ｜ 個案研究的重新詮釋 ｜ 對批評者的反駁</p>
+    </div>
+  </section>
+
+  <!-- ============ S18 (slide18) KKV：堅持統一推論邏輯 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="KKV：堅持統一推論邏輯">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>KKV：堅持統一推論邏輯</h2>
+        <span class="h-en">THE IMPORTANCE OF RESEARCH DESIGN</span>
+      </div>
+      <div class="quote-box">「我們同意量質結合，但必須由統一邏輯指引」</div>
+      <p class="sub-h">KKV的回應策略</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">1</div><div class="txt"><strong>同意Tarrow的「量質結合」目標</strong></div></div>
+        <div class="take"><div class="num">2</div><div class="txt"><strong>但結合的「邏輯」仍須統一</strong><br/>三角檢證不是不同邏輯，是不同來源服務於同一推論</div></div>
+        <div class="take"><div class="num">3</div><div class="txt"><strong>過程追蹤本質上仍是觀察值增加</strong><br/>每個機制環節就是一個可被驗證的觀察單位</div></div>
+        <div class="take"><div class="num">4</div><div class="txt"><strong>重要的不是「方法名稱」，而是推論的嚴格性</strong></div></div>
+      </div>
+      <p class="foot-note">King, Keohane, &amp; Verba (2010) The Importance of Research Design. 第11章。</p>
+    </div>
+  </section>
+
+  <!-- ============ S19 (slide19) KKV對個案研究的重新詮釋 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="KKV對個案研究的重新詮釋">
+    <div class="slide-inner">
+      <div class="content-head"><h2>KKV對個案研究的重新詮釋</h2></div>
+      <div class="quote-box">「好的個案研究本來就嵌入學術社群，N從來不是1」</div>
+      <div class="term-list">
+        <div class="term-row"><div class="name">Lijphart<br/>比利時研究</div><div class="desc">看似單一國家，實則運用前人對其他國家的資料做有效推論</div></div>
+        <div class="term-row"><div class="name">Bates<br/>肯亞案例</div><div class="desc">依變項是「公共政策變異」而非「農業失敗」；有變異就能推論</div></div>
+        <div class="term-row"><div class="name">Allen<br/>《納粹奪權》</div><div class="desc">純描述性歷史，社會科學必須走得比它更遠</div></div>
+        <div class="term-row"><div class="name">Katzenstein<br/>小國研究</div><div class="desc">因迴避因果語言而模糊化推論</div></div>
+      </div>
+      <p class="foot-note">KKV (2010) 主張：被批評為「N=1」的研究其實隱含豐富觀察值。</p>
+    </div>
+  </section>
+
+  <!-- ============ S20 (slide20) KKV的反駁：個案研究真的是N=1嗎？ ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="KKV的反駁：個案研究真的是N=1嗎？">
+    <div class="slide-inner">
+      <div class="content-head"><h2>KKV的反駁：個案研究真的是N=1嗎？</h2></div>
+      <p class="sub-h">KKV的反駁邏輯</p>
+      <p class="p">Rogowski等人誤把個案研究的「案例數=1」混淆為「觀察值=1」。實際上一個個案研究有多個可觀察的因果含意（observable causal implications）。</p>
+      <p class="sub-h">但Brady等人質疑</p>
+      <p class="p">增加N有四項代價：</p>
+      <div class="takeaways" style="margin-top:10px;">
+        <div class="take"><div class="num">1</div><div class="txt"><strong>概念延展（concept stretching）</strong>：硬要相同概念套到不同脈絡</div></div>
+        <div class="take"><div class="num">2</div><div class="txt"><strong>測量效度損失</strong>：細緻區分被粗化</div></div>
+        <div class="take"><div class="num">3</div><div class="txt"><strong>因果同質性違反</strong>：不同案例的機制可能根本不同</div></div>
+        <div class="take"><div class="num">4</div><div class="txt"><strong>脈絡知識流失</strong>：歷史時序、政治結構被均質化</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S21 (slide21) PART 3 DIVIDER ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第三部分：四大批判主題">
+    <div class="slide-inner">
+      <div class="big-num">參</div>
+      <p class="part">PART 03</p>
+      <h2>四大批判主題</h2>
+      <p class="sec-q">第12章「批判、回應與取捨」<br/>重要研究 ｜ 概念測量 ｜ 選樣偏誤 ｜ 因果模型</p>
+    </div>
+  </section>
+
+  <!-- ============ S22 (slide22) 批判一：從事重要的研究 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="批判一：從事重要的研究">
+    <div class="slide-inner">
+      <div class="content-head"><h2>批判一：從事重要的研究</h2></div>
+      <p class="lead">DSI對理論建構與創造力的指引不足</p>
+      <p class="sub-h">批評者</p>
+      <p class="p">Rogowski、McKeown、Ragin、Munck</p>
+      <p class="sub-h">核心主張</p>
+      <ul class="plain-list">
+        <li>DSI過度關注「如何避免錯誤推論」，忽略「如何發現重要問題」</li>
+        <li>無變異設計（no-variance design）也可以是洞見來源</li>
+        <li>例：研究革命為何「不」發生，可揭示穩定的條件</li>
+      </ul>
+      <p class="sub-h">DSI的回應</p>
+      <p class="p">DSI明確不處理理論生成，只關注推論評估</p>
+    </div>
+  </section>
+
+  <!-- ============ S23 (slide23) 批判二：概念化與測量被忽視 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="批判二：概念化與測量被忽視">
+    <div class="slide-inner">
+      <div class="content-head"><h2>批判二：概念化與測量被忽視</h2></div>
+      <p class="lead">效度是脈絡特定的，必須以理論為基礎</p>
+      <p class="sub-h">批評者</p>
+      <p class="p">Brady、Bartels、Laitin 等指出DSI的四個盲點：</p>
+      <ul class="plain-list">
+        <li>忽視概念形成本身的複雜性</li>
+        <li>輕忽類型學（typology）作為理論工具的價值</li>
+        <li>過度樂觀看待測量誤差的可處理性</li>
+        <li>忽略測量的脈絡特定性</li>
+      </ul>
+      <p class="sub-h">心理計量學的支持</p>
+      <p class="p">Bollen、Shepard、Messick指出，測量理論的根本基礎就是質性的成對比較</p>
+    </div>
+  </section>
+
+  <!-- ============ S24 (slide24) 補充：概念延展的危險 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="補充：概念延展的危險">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>補充：概念延展的危險（Sartori的警告）</h2>
+        <span class="h-en">PRODUCTIVIST WELFARE REGIME</span>
+      </div>
+      <div class="quote-box">「將概念硬套到不同脈絡，會犧牲概念的精確性」</div>
+      <div class="dso-cpo">
+        <div class="dc-card" style="border-top-color: var(--accent);">
+          <h3>錯誤的擴展</h3>
+          <p class="p">把歐洲「福利國家」概念直接套到東亞</p>
+          <ul class="plain-list">
+            <li>假設東亞國家也具備工會、社民政黨、權力資源動員邏輯</li>
+            <li>結果：誤把東亞當成「殘補型」、忽略其「生產主義」邏輯</li>
+            <li>解釋力下降，類型學失準</li>
+          </ul>
+        </div>
+        <div class="dc-card" style="border-top-color: var(--moss);">
+          <h3>更恰當的處理</h3>
+          <p class="p">提出新概念：生產性福利體制</p>
+          <ul class="plain-list">
+            <li>Holliday (2000)：productivist welfare regime</li>
+            <li>強調社會政策從屬於經濟發展目標</li>
+            <li>保留概念的脈絡特定性</li>
+            <li>維持與歐洲理論的對話空間</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S25 (slide25) 批判三：選樣偏誤被誤導 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="批判三：選樣偏誤被誤導">
+    <div class="slide-inner">
+      <div class="content-head"><h2>批判三：選樣偏誤被誤導</h2></div>
+      <p class="lead">DSI過度警告研究者引發的偏誤，卻忽視更普遍的偏誤</p>
+      <p class="sub-h">DSI的標準警告</p>
+      <p class="p">不要依依變項選樣！例如只研究「成功的革命」而不研究失敗者，會造成截斷偏誤（truncation bias）。</p>
+      <p class="sub-h">Brady等人的反駁</p>
+      <ul class="plain-list">
+        <li>DSI的截斷偏誤警告，其實只是「研究者引發的偏誤」。</li>
+        <li>真正普遍且嚴重的，是「社會與政治過程本身造成的選樣偏誤」</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ S26 (slide26) 兩種選樣偏誤的差別 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="兩種選樣偏誤的差別">
+    <div class="slide-inner">
+      <div class="content-head"><h2>兩種選樣偏誤的差別</h2></div>
+      <div class="dso-cpo">
+        <div class="dc-card" style="border-top-color: var(--water);">
+          <h3>DSI關注：截斷偏誤</h3>
+          <ul class="plain-list">
+            <li>來源：研究者選樣不當</li>
+            <li>解方：擴大樣本、納入失敗案例</li>
+            <li>例：研究革命成功者卻不研究失敗者</li>
+            <li>例：只研究成功的企業而忽略倒閉企業</li>
+            <li>處理方式：相對直接</li>
+          </ul>
+        </div>
+        <div class="dc-card" style="border-top-color: var(--earth);">
+          <h3>Brady關注：社會過程偏誤</h3>
+          <ul class="plain-list">
+            <li>來源：社會過程本身的自我選擇</li>
+            <li>Heckman的工會問題（誰加入工會非隨機）</li>
+            <li>Przeworski 的體制崩潰選樣</li>
+            <li>例：失業者的福利申請傾向、誰會被納入社會調查</li>
+            <li>處理方式：複雜，需要設計或統計方法</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S27 (slide27) 批判四：機率 vs. 決定性因果模型 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="批判四：機率 vs. 決定性因果模型">
+    <div class="slide-inner">
+      <div class="content-head"><h2>批判四：機率 vs. 決定性因果模型</h2></div>
+      <p class="lead">DSI排他性採用機率取向，忽略必要與充分原因</p>
+      <div class="dso-cpo">
+        <div class="dc-card" style="border-top-color: var(--water);">
+          <h3>機率性因果</h3>
+          <p class="p" style="opacity:.7;font-size:14.5px;letter-spacing:.04em;">Neyman-Rubin-Holland 反事實架構</p>
+          <ul class="plain-list">
+            <li>「X增加，Y發生機率上升」</li>
+            <li>適合：大樣本、有變異</li>
+            <li>回歸與實驗的標準框架</li>
+            <li>DSI 唯一採用的模型</li>
+          </ul>
+        </div>
+        <div class="dc-card" style="border-top-color: var(--earth);">
+          <h3>決定性因果</h3>
+          <p class="p" style="opacity:.7;font-size:14.5px;letter-spacing:.04em;">Ragin、Dion、Braumoeller &amp; Goertz</p>
+          <ul class="plain-list">
+            <li>「X為Y的必要/充分條件」</li>
+            <li>適合：小樣本、特定機制</li>
+            <li>QCA、貝氏取向、全個案設計</li>
+            <li>Seawright「全個案設計」對Skocpol革命研究最有用</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S28 (slide28) 方法論的本質：取捨 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="方法論的本質：取捨">
+    <div class="slide-inner">
+      <div class="content-head"><h2>方法論的本質：取捨（trade-offs）</h2></div>
+      <p class="lead">沒有單一最優方法，只有不同的取捨組合</p>
+      <div class="tradeoff-list">
+        <div class="tradeoff"><div class="pair"><span>量化精確性</span><span class="vs">vs.</span><span class="b">未經檢驗的假設</span></div><div class="desc">高精確統計常仰賴未檢驗的條件獨立性假設</div></div>
+        <div class="tradeoff"><div class="pair"><span>納入所有變項</span><span class="vs">vs.</span><span class="b">限制變項以維持槓桿</span></div><div class="desc">為避免遺漏變項偏誤而增加變項，會稀釋有限樣本的推論力</div></div>
+        <div class="tradeoff"><div class="pair"><span>隨機抽樣代表性</span><span class="vs">vs.</span><span class="b">仔細個案選擇的密切聚焦</span></div><div class="desc">隨機性換取一般化；個案選擇換取深度理解</div></div>
+        <div class="tradeoff"><div class="pair"><span>增加 N</span><span class="vs">vs.</span><span class="b">概念延展、效度損失、脈絡知識流失</span></div><div class="desc">規模擴大與細緻度之間的根本張力</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S29 (slide29) PART 4 DIVIDER ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第四部分：DSO 與 CPO">
+    <div class="slide-inner">
+      <div class="big-num">肆</div>
+      <p class="part">PART 04</p>
+      <h2>DSO 與 CPO</h2>
+      <p class="sec-q">第13章「因果推論中的槓桿來源」<br/>本書最重要的原創概念貢獻</p>
+    </div>
+  </section>
+
+  <!-- ============ S30 (slide30) 兩種觀察值：DSO vs. CPO ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="兩種觀察值：DSO vs. CPO">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>兩種觀察值：DSO vs. CPO</h2>
+        <span class="h-en">DATA-SET OBSERVATION VS. CAUSAL-PROCESS OBSERVATION</span>
+      </div>
+      <p class="lead">方法論最根本的鴻溝不是質量vs.數量，是觀察值的「型態」</p>
+      <div class="dso-cpo">
+        <div class="dc-card dso">
+          <span class="ab">DSO ・ Data-Set Observation</span>
+          <h3>DSO 資料集觀察值</h3>
+          <ul class="plain-list">
+            <li>矩形資料集中的「列」</li>
+            <li>每一觀察值在所有變項上有完整數據</li>
+            <li>用於計算迴歸係數、檢驗顯著性</li>
+            <li>槓桿來源：N+變異</li>
+          </ul>
+        </div>
+        <div class="dc-card cpo">
+          <span class="ab">CPO ・ Causal-Process Observation</span>
+          <h3>CPO 因果過程觀察值</h3>
+          <ul class="plain-list">
+            <li>「關於脈絡、過程或機制的資料片段」</li>
+            <li>對因果推論提供決定性槓桿</li>
+            <li>可推翻或鞏固DSO的推論結果</li>
+            <li>槓桿來源：機制證據+脈絡</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S31 (slide31) CPO的四種類型 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="CPO的四種類型">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>CPO的四種類型</h2>
+        <span class="h-en">INDEPENDENCE ・ MECHANISM ・ TEMPORAL ORDER ・ AUXILIARY</span>
+      </div>
+      <div class="term-list">
+        <div class="term-row"><div class="name">獨立性<small>Independence</small></div><div class="desc">確認自變項與誤差項是否真的獨立（驗證迴歸假設）</div></div>
+        <div class="term-row"><div class="name">中介機制<small>Mechanism</small></div><div class="desc">辨識X→Y之間的中間步驟與運作邏輯</div></div>
+        <div class="term-row"><div class="name">時序<small>Temporal Order</small></div><div class="desc">判定因果方向（X是否在Y之前發生）</div></div>
+        <div class="term-row"><div class="name">輔助假設<small>Auxiliary</small></div><div class="desc">檢驗整體論證所倚賴的隱含假設</div></div>
+      </div>
+      <p class="foot-note">Collier, Brady, &amp; Seawright (2010) 整理出CPO的不同功能類型。</p>
+    </div>
+  </section>
+
+  <!-- ============ S32 (slide32) 經典案例：2000年佛州大選 (1) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="經典案例：2000年佛州大選 (1)">
+    <div class="slide-inner">
+      <div class="content-head"><h2>經典案例：2000年佛州大選 (1) Lott的DSO推論</h2></div>
+      <div class="quote-box">「媒體早宣布結果，讓布希在狹長地帶損失了1萬票」</div>
+      <p class="sub-h">事件背景</p>
+      <p class="p">2000年總統大選，佛州投票結果決定全國勝負。Bush vs. Gore僅差數百票。</p>
+      <p class="sub-h">媒體效應疑雲</p>
+      <ul class="plain-list">
+        <li>佛州西北「狹長地帶（Panhandle）」屬中部時區，比東部時區晚一小時關閉投票。</li>
+        <li>電視網在當地投票尚未結束時，便宣布Gore在佛州東部勝出。</li>
+      </ul>
+      <p class="sub-h">Lott的推論（DSO型）</p>
+      <p class="p">差異中之差異迴歸（DID）顯示布希在狹長地帶損失約10,000票</p>
+    </div>
+  </section>
+
+  <!-- ============ S33 (slide33) 經典案例：2000年佛州大選 (2) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="經典案例：2000年佛州大選 (2)">
+    <div class="slide-inner">
+      <div class="content-head"><h2>經典案例：2000年佛州大選 (2) Brady的CPO反駁</h2></div>
+      <p class="lead">Brady用四個CPO推翻Lott的萬票結論</p>
+      <div class="takeaways">
+        <div class="take"><div class="num" style="font-size:19px;">CPO 1</div><div class="txt"><strong>投票時間分布</strong><br/>媒體宣布Gore勝出時，狹長地帶實際只剩約10分鐘投票時間</div></div>
+        <div class="take"><div class="num" style="font-size:19px;">CPO 2</div><div class="txt"><strong>媒體暴露率</strong><br/>並非所有選民都在這段時間內收看電視</div></div>
+        <div class="take"><div class="num" style="font-size:19px;">CPO 3</div><div class="txt"><strong>聽到預測者比例</strong><br/>在收看者中，實際聽到預測訊息者更少</div></div>
+        <div class="take"><div class="num" style="font-size:19px;">CPO 4</div><div class="txt"><strong>實際改變投票</strong><br/>聽到預測中，會因此放棄投票或改投者更少</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S34 (slide34) 經典案例：2000年佛州大選 (3) 結論 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="經典案例：2000年佛州大選 (3)">
+    <div class="slide-inner">
+      <div class="content-head"><h2>經典案例：2000年佛州大選 (3) 結論</h2></div>
+      <div class="stat-flow">
+        <div class="stat-box3"><div class="val">10,000</div><div class="lab">Lott 的 DSO 推論</div></div>
+        <div class="stat-arrow2">→</div>
+        <div class="stat-box3"><div class="val">≤ 224</div><div class="lab">Brady 的 CPO 上限估計</div></div>
+        <div class="stat-note">實際可能僅數十票</div>
+      </div>
+      <p class="sub-h" style="margin-top:24px;">方法論啟示</p>
+      <ul class="plain-list">
+        <li>強大的DSO推論可被精準的CPO推翻</li>
+        <li>CPO逐步剔除Lott推論的隱含假設（投票時間、暴露、訊息接收、行為改變）</li>
+        <li>因果推論不只看「平均效應」，更要看「機制路徑是否成立」</li>
+        <li>完美示範CPO與DSO的互補與張力</li>
+      </ul>
+      <p class="foot-note">Brady (2010) 附錄。</p>
+    </div>
+  </section>
+
+  <!-- ============ S35 (slide35) 質量區辨的四個向度 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="質量區辨的四個向度">
+    <div class="slide-inner">
+      <div class="content-head"><h2>質量區辨的四個向度（部分獨立）</h2></div>
+      <p class="lead">「質性vs.量化」其實是四個獨立向度的混合</p>
+      <table class="cmp-table">
+        <thead><tr><th>向度</th><th>質性端</th><th>量化端</th></tr></thead>
+        <tbody>
+          <tr><td>1. 測量水準</td><td>類別、次序</td><td>等距、等比</td></tr>
+          <tr><td>2. N 大小</td><td>小N</td><td>大N</td></tr>
+          <tr><td>3. 統計檢定</td><td>不使用</td><td>使用</td></tr>
+          <tr><td>4. 厚/薄分析</td><td>厚描述</td><td>薄描述</td></tr>
+        </tbody>
+      </table>
+      <div class="insight">一個研究可以是「小N＋大N分析＋厚描述」的組合，並非二元對立。</div>
+    </div>
+  </section>
+
+  <!-- ============ S36 (slide36) PART 5 DIVIDER ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第五部分：總結與應用">
+    <div class="slide-inner">
+      <div class="big-num">伍</div>
+      <p class="part">PART 05</p>
+      <h2>總結與應用</h2>
+      <p class="sec-q">從方法論辯論回到自己的研究設計</p>
+    </div>
+  </section>
+
+  <!-- ============ S37 (slide37) 共享標準的方向 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="共享標準的方向">
+    <div class="slide-inner">
+      <div class="content-head"><h2>共享標準的方向</h2></div>
+      <p class="lead">推論邏輯是統一但多元的</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">1</div><div class="txt"><strong>DSO與CPO並存</strong><br/>兩種不同推論型態都可建立因果槓桿</div></div>
+        <div class="take"><div class="num">2</div><div class="txt"><strong>管理取捨</strong><br/>方法論核心是「在情境中做選擇」而非單向最大化</div></div>
+        <div class="take"><div class="num">3</div><div class="txt"><strong>巢狀推論</strong><br/>Nested inference: 量質觀察值在同一研究中互補</div></div>
+        <div class="take"><div class="num">4</div><div class="txt"><strong>警惕技術化</strong><br/>簡單工具搭配良好設計，常勝過複雜技術</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S38 (slide38) 對社會政策研究的啟示 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="對社會政策研究的啟示">
+    <div class="slide-inner">
+      <div class="content-head"><h2>對社會政策研究的啟示</h2></div>
+      <p class="lead">Brady &amp; Collier 的觀點如何指引我們？</p>
+      <div class="study-grid">
+        <div class="study-card"><h3>啟示一：制度分析需要CPO</h3><p class="line">福利國家研究的因果機制（如責難規避、政策回饋）無法只靠迴歸係數，須以時序追蹤建立</p></div>
+        <div class="study-card"><h3>啟示二：概念形成的東亞挑戰</h3><p class="line">歐洲概念套到東亞會概念延展。需要在地化的概念建構，如「生產性福利體制」、「壓縮現代性」</p></div>
+        <div class="study-card"><h3>啟示三：選樣偏誤的政策資料問題</h3><p class="line">福利受領者與非受領者並非隨機，需考慮自我選擇（如Heckman模型應用）</p></div>
+        <div class="study-card"><h3>啟示四：個案研究＋跨國比較的混合策略</h3><p class="line">深掘單一國家機制 + 跨國變項分析 = 巢狀推論的典型應用</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S39 (slide39) 應用案例：東亞福利國家研究 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="應用案例：東亞福利國家研究">
+    <div class="slide-inner">
+      <div class="content-head"><h2>應用案例：東亞福利國家研究</h2></div>
+      <div class="why-grid">
+        <div class="why-card">
+          <h3>案例1：年金改革政治</h3>
+          <span class="tag">DSO + CPO 結合</span>
+          <p>跨國年金支出資料（DSO）顯示制度變遷的關聯；過程追蹤（CPO）揭露政黨競爭、責難規避如何運作</p>
+        </div>
+        <div class="why-card">
+          <h3>案例2：福利態度的混合方法</h3>
+          <span class="tag">ISSP調查 + 深度訪談</span>
+          <p>迴歸顯示體制評價影響福利支持；訪談機制追蹤體制評價如何被經濟發展主義意識型態形塑</p>
+        </div>
+        <div class="why-card">
+          <h3>案例3：聯合分析實驗</h3>
+          <span class="tag">新型實驗設計</span>
+          <p>Conjoint experiment同時測量「值得幫助的貧困者」判準（量化），並以後續訪談辨識判斷邏輯（質性）</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S40 (slide40) 課堂討論 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="課堂討論">
+    <div class="slide-inner">
+      <div class="content-head"><h2>課堂討論</h2></div>
+      <div class="discuss-list">
+        <div class="discuss-item">
+          <div class="qn">問題一</div>
+          <div class="qt">你的研究比較像DSO還是CPO思維？</div>
+          <p class="intro">請以自己正在進行的研究主題為例，思考：</p>
+          <ul class="plain-list">
+            <li>若採DSO取向，需要什麼樣的資料集？</li>
+            <li>若採CPO取向，要追蹤哪些機制證據？</li>
+            <li>兩者如何結合才能形成強而有力的推論？</li>
+          </ul>
+        </div>
+        <div class="discuss-item">
+          <div class="qn">問題二</div>
+          <div class="qt">歐洲概念在東亞，會發生概念延展嗎？</div>
+          <p class="intro">請選擇一個你熟悉的歐洲概念，分析：</p>
+          <ul class="plain-list">
+            <li>在原始脈絡下這個概念測量了什麼？</li>
+            <li>套到台灣或其他東亞案例時，會犧牲什麼面向？</li>
+            <li>是否需要在地化的替代概念？</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S41 (slide41) 課堂討論（續） ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="課堂討論（續）">
+    <div class="slide-inner">
+      <div class="content-head"><h2>課堂討論（續）</h2></div>
+      <div class="discuss-list">
+        <div class="discuss-item">
+          <div class="qn">問題三</div>
+          <div class="qt">選樣偏誤是「研究者」造成的還是「社會過程」造成的？</div>
+          <p class="intro">以「誰會申請低收入戶」為例，分析：</p>
+          <ul class="plain-list">
+            <li>申請者與非申請者的差異從何而來？</li>
+            <li>若只研究申請者，會錯失什麼？</li>
+            <li>如何設計補救措施？（資料/方法/概念三個層次）</li>
+          </ul>
+        </div>
+        <div class="discuss-item">
+          <div class="qn">問題四</div>
+          <div class="qt">你的研究問題適合機率因果或決定性因果？</div>
+          <p class="intro">請評估：</p>
+          <ul class="plain-list">
+            <li>你的研究問題是「平均效應大不大」還是「必要條件是否存在」？</li>
+            <li>若採機率取向，需要什麼樣本規模？</li>
+            <li>若採決定性取向，QCA是否適用？</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S42 (slide42) 本講小結 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="本講小結">
+    <div class="slide-inner">
+      <div class="content-head"><h2>本講小結</h2></div>
+      <div class="takeaways">
+        <div class="take"><div class="num">01</div><div class="txt">KKV 確立了統一推論邏輯的方法論主流地位</div></div>
+        <div class="take"><div class="num">02</div><div class="txt">Brady &amp; Collier 主張多元工具、共享標準</div></div>
+        <div class="take"><div class="num">03</div><div class="txt">Tarrow 提出六種跨越鴻溝的具體工具</div></div>
+        <div class="take"><div class="num">04</div><div class="txt">四大批判：重要研究、概念測量、選樣偏誤、因果模型</div></div>
+        <div class="take"><div class="num">05</div><div class="txt">DSO 與 CPO 是因果推論的兩種槓桿來源</div></div>
+        <div class="take"><div class="num">06</div><div class="txt">方法論的本質是取捨，而非單向最大化</div></div>
+      </div>
+      <div class="quote-box" style="margin-top:20px; text-align:center;">社會研究法的真正課題：在自己的問題裡，學會取捨。</div>
+    </div>
+  </section>
+
+  <!-- ============ S43 (slide43) 延伸閱讀 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="延伸閱讀">
+    <div class="slide-inner">
+      <div class="content-head"><h2>延伸閱讀</h2></div>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <h3>必讀（本書）</h3>
+          <p>Brady, H. E. &amp; Collier, D. (Eds.) (2010). <em>Rethinking Social Inquiry: Diverse Tools, Shared Standards</em> (2nd ed.). Rowman &amp; Littlefield. 第10-13章＋附錄</p>
+          <p>King, G., Keohane, R. O., &amp; Verba, S. (1994). <em>Designing Social Inquiry</em>. Princeton University Press.</p>
+        </div>
+        <div class="ref-card">
+          <h3>建議延伸</h3>
+          <p>Bennett, A. &amp; Checkel, J. T. (Eds.) (2015). <em>Process Tracing: From Metaphor to Analytic Tool</em>. Cambridge UP.</p>
+          <p>George, A. L. &amp; Bennett, A. (2005). <em>Case Studies and Theory Development in the Social Sciences</em>. MIT Press.</p>
+          <p>Goertz, G. &amp; Mahoney, J. (2012). <em>A Tale of Two Cultures</em>. Princeton UP.</p>
+          <p>Ragin, C. C. (2008). <em>Redesigning Social Inquiry: Fuzzy Sets and Beyond</em>. Univ. of Chicago Press.</p>
+          <p>Mahoney, J. &amp; Goertz, G. (2006). A Tale of Two Cultures. <em>Political Analysis</em>, 14(3), 227-249.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<nav class="navbar">
+  <button class="nav-btn" id="prevBtn" onclick="goPrev()">← 前頁</button>
+  <div class="nav-center">
+    <span><span id="curNum">1</span> / <span id="totNum">43</span></span>
+    <div class="dots" id="dots"></div>
+  </div>
+  <button class="nav-btn" id="nextBtn" onclick="goNext()">下一頁 →</button>
+</nav>
+
+<div class="keyboard-hint">
+  <kbd>←</kbd> <kbd>→</kbd> 切換頁面　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕
+</div>
+
+<div class="toc-overlay" id="tocOverlay" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" onclick="toggleToc()">×</button>
+    <h2 class="toc-title">目次 ・ Table of Contents</h2>
+    <p class="toc-sub">點選任一條目跳到該頁</p>
+    <ul class="toc-list" id="tocList"></ul>
+  </div>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let cur = 0;
+  document.getElementById('totNum').textContent = total;
+
+  const dotsEl = document.getElementById('dots');
+  const tocEl = document.getElementById('tocList');
+  slides.forEach((s, i) => {
+    const d = document.createElement('span');
+    d.className = 'dot' + (s.dataset.kind === 'section' ? ' is-section' : '');
+    d.title = s.dataset.label || '';
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+    const li = document.createElement('li');
+    if (s.dataset.kind === 'section') li.classList.add('is-section');
+    li.innerHTML = `<span class="num">${String(i + 1).padStart(2, '0')}</span><span class="lab">${s.dataset.label || ''}</span><span class="kind">${s.dataset.kind}</span>`;
+    li.onclick = () => { goTo(i); toggleToc(); };
+    tocEl.appendChild(li);
+  });
+
+  function goTo(n) {
+    if (n < 0 || n >= total || n === cur) return;
+    const dir = n > cur ? 1 : -1;
+    slides[cur].classList.remove('is-active');
+    if (dir > 0) slides[cur].classList.add('is-prev');
+    cur = n;
+    slides[cur].classList.remove('is-prev');
+    slides[cur].classList.add('is-active');
+    setTimeout(() => slides.forEach((s, i) => { if (i !== cur) s.classList.remove('is-prev'); }), 500);
+    update();
+  }
+  function goPrev() { goTo(cur - 1); }
+  function goNext() { goTo(cur + 1); }
+  function update() {
+    document.getElementById('curNum').textContent = cur + 1;
+    document.getElementById('prevBtn').disabled = cur === 0;
+    document.getElementById('nextBtn').disabled = cur === total - 1;
+    document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('is-active', i === cur));
+  }
+  function toggleToc() { document.getElementById('tocOverlay').classList.toggle('is-shown'); }
+
+  // Click-to-jump (used by S2's outline)
+  document.querySelectorAll('[data-goto]').forEach(el => {
+    el.onclick = () => {
+      const target = parseInt(el.dataset.goto);
+      if (!isNaN(target)) goTo(target);
+    };
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('tocOverlay').classList.contains('is-shown')) {
+      if (e.key === 'Escape') toggleToc();
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goNext(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goPrev(); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+    else if (e.key === 'Escape') toggleToc();
+    else if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+  });
+
+  // Touch swipe
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) dx < 0 ? goNext() : goPrev();
+  });
+
+  update();
+</script>
+<script>
+  // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
+  // 偶爾因 sticky header + backdrop-filter 而整頁空白。
+  // 偵測到從快取還原時，強制觸發一次重繪。
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      document.body.style.display = 'none';
+      void document.body.offsetHeight;
+      document.body.style.display = '';
+    }
+  });
+</script>
+</body>
+</html>
