@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>社會科學中的因果推論 ・ 社會研究法 第 8 週 ・ 葉崇揚</title>
+  <meta name="description" content="社會研究法第 8 週互動講義：KKV《Designing Social Inquiry》與 Brady &amp; Collier《Rethinking Social Inquiry》的方法論對話——反事實定義、研究設計工具、理論建構五大規則、DSO/CPO 區分與過程追蹤四大因果檢驗。分頁式互動簡報。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --chashitsu-bg: #e8dcc4;
+      --chashitsu-paper: #f5ecd6;
+      --chashitsu-tatami: #d8c8a8;
+      --moss: #3d5a3f;
+      --water: #5a7a8a;
+      --earth: #8a6a4a;
+      --persimmon: #c47038;
+      --accent: #c43838;
+      --qual: #6a4a3a;            /* 質性 — 棕 */
+      --qual-bg: rgba(106,74,58,0.08);
+      --quant: #3a5a7a;           /* 量化 — 藍 */
+      --quant-bg: rgba(58,90,122,0.08);
+      --ink: #1f1f1d;
+      --ink-soft: rgba(31,31,29,0.78);
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --line-faint: rgba(31,31,29,0.05);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+      --mono: 'JetBrains Mono', 'Menlo', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: var(--jp);
+      background: var(--chashitsu-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 19px;
+      line-height: 1.95;
+      position: relative;
+    }
+    .paper-grain {
+      position: fixed; inset: 0; pointer-events: none;
+      opacity: 0.32; mix-blend-mode: multiply; z-index: 1;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 56px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .top-left { display: flex; align-items: center; gap: 14px; }
+    .back {
+      font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.25em; opacity: 0.55;
+      text-decoration: none; color: var(--ink);
+    }
+    .back:hover { opacity: 0.85; }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .top-title {
+      font-family: var(--brush); font-size: 19px;
+      letter-spacing: 0.06em;
+    }
+    .top-title small {
+      font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.18em; opacity: 0.55; margin-left: 10px;
+    }
+    .top-right {
+      display: flex; align-items: center; gap: 18px;
+      font-family: var(--sans); font-size: 12px; opacity: 0.6; letter-spacing: 0.15em;
+    }
+    .toc-btn {
+      background: transparent; border: 1px solid var(--line);
+      font-family: inherit; font-size: 11.5px;
+      letter-spacing: 0.2em;
+      padding: 5px 12px;
+      cursor: pointer; color: var(--ink); opacity: 0.75;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .toc-btn:hover { background: var(--chashitsu-paper); opacity: 1; }
+
+    /* ── Progress bar ── */
+    .progress {
+      position: fixed; top: 56px; left: 0;
+      height: 2px; background: var(--accent);
+      z-index: 49; transition: width 0.4s ease;
+    }
+
+    /* ── Slide deck ── */
+    .deck {
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 64px;
+      overflow: hidden;
+      z-index: 2;
+    }
+    .slide {
+      position: absolute; inset: 0;
+      padding: 36px 72px 28px;
+      overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.2,0.7,0.2,1);
+    }
+    .slide.is-prev { transform: translateX(-40px); }
+    .slide.is-active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide-inner { max-width: 1080px; margin: 0 auto; }
+
+    /* ── Bottom nav ── */
+    .navbar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 64px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .nav-btn {
+      background: transparent; border: 1px solid var(--ink);
+      font-family: var(--jp); font-size: 14px;
+      letter-spacing: 0.15em; color: var(--ink);
+      padding: 9px 22px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover:not(:disabled) { background: var(--ink); color: var(--chashitsu-paper); }
+    .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; border-color: var(--line); color: var(--ink); }
+    .nav-center {
+      display: flex; align-items: center; gap: 16px;
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.18em; opacity: 0.7;
+    }
+    .dots {
+      display: flex; gap: 5px;
+      max-width: 480px; overflow: hidden; flex-wrap: wrap;
+      justify-content: center;
+    }
+    .dot {
+      width: 7px; height: 7px;
+      background: var(--line);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .dot:hover { background: var(--accent); transform: scale(1.3); }
+    .dot.is-active { background: var(--accent); }
+    .dot.is-section { width: 14px; }
+
+    /* ── TOC overlay ── */
+    .toc-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(31,31,29,0.85);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 40px;
+    }
+    .toc-overlay.is-shown { display: flex; animation: fade 0.3s; }
+    .toc-panel {
+      background: var(--chashitsu-paper);
+      max-width: 920px; width: 100%; max-height: 80vh;
+      overflow-y: auto;
+      padding: 36px 44px;
+      border: 1px solid var(--accent);
+      position: relative;
+    }
+    .toc-close {
+      position: absolute; top: 14px; right: 18px;
+      background: transparent; border: none;
+      font-size: 26px; cursor: pointer; opacity: 0.5;
+      font-family: var(--brush); color: var(--ink);
+    }
+    .toc-close:hover { opacity: 1; }
+    .toc-title { font-family: var(--brush); font-size: 26px; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .toc-sub { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 22px; }
+    .toc-list {
+      list-style: none; padding: 0; margin: 0;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px;
+    }
+    .toc-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--line-soft);
+      cursor: pointer;
+      display: flex; align-items: baseline; gap: 14px;
+      transition: color 0.2s;
+    }
+    .toc-list li:hover { color: var(--accent); }
+    .toc-list .num {
+      font-family: var(--brush); font-size: 14px;
+      color: var(--accent); min-width: 28px;
+    }
+    .toc-list .lab { font-size: 15px; flex: 1; }
+    .toc-list .kind {
+      font-family: var(--sans); font-size: 10px;
+      letter-spacing: 0.2em; opacity: 0.45;
+    }
+    .toc-list .is-section { color: var(--accent); font-weight: 600; }
+
+    /* ── Slide types ── */
+    /* TITLE slide */
+    .slide-title {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      padding: 36px 72px;
+    }
+    .slide-title .week-tag {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.4em; opacity: 0.6;
+      margin-bottom: 24px;
+    }
+    .slide-title .seal {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      background: var(--accent); color: var(--chashitsu-paper);
+      font-family: var(--brush); font-size: 16px;
+      transform: rotate(-3deg);
+    }
+    .slide-title h1 {
+      font-family: var(--brush); font-size: 68px;
+      font-weight: 400; line-height: 1.2; letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+    .slide-title .subtitle {
+      font-family: var(--sans); font-size: 17px;
+      letter-spacing: 0.05em; opacity: 0.65;
+      margin-bottom: 28px; max-width: 780px; line-height: 1.7;
+    }
+    .slide-title .author {
+      font-size: 17px; opacity: 0.85; line-height: 1.7;
+      max-width: 700px;
+    }
+    .slide-title .author cite { font-style: italic; color: var(--accent); }
+    .dual-badges { display: flex; gap: 14px; margin-top: 32px; }
+    .dual-badges span {
+      padding: 10px 22px;
+      font-family: var(--brush); font-size: 17px;
+      letter-spacing: 0.08em;
+      border: 1px solid;
+    }
+    .badge-qual { color: var(--qual); border-color: var(--qual); background: var(--qual-bg); }
+    .badge-quant { color: var(--quant); border-color: var(--quant); background: var(--quant-bg); }
+    .meta-strip {
+      margin-top: 36px;
+      display: flex; flex-wrap: wrap; gap: 24px;
+      font-family: var(--sans); font-size: 13px; opacity: 0.6;
+      letter-spacing: 0.12em;
+    }
+
+    /* SECTION DIVIDER slide */
+    .slide-section {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      background: linear-gradient(135deg, rgba(196,56,56,0.06) 0%, rgba(216,200,168,0.4) 100%);
+      padding: 36px 72px;
+    }
+    .slide-section .big-num {
+      font-family: var(--brush); font-size: 240px;
+      color: var(--accent); opacity: 0.15;
+      position: absolute;
+      bottom: 30px; right: 60px;
+      line-height: 1;
+    }
+    .slide-section .part {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.35em; opacity: 0.55;
+      margin-bottom: 14px;
+    }
+    .slide-section h2 {
+      font-family: var(--brush); font-size: 56px;
+      font-weight: 400; letter-spacing: 0.04em;
+      line-height: 1.2; margin-bottom: 14px;
+      max-width: 760px;
+    }
+    .slide-section .sec-en {
+      font-family: var(--sans); font-size: 16px;
+      letter-spacing: 0.3em; opacity: 0.55; font-style: italic;
+      margin-bottom: 4px;
+    }
+    .slide-section .sec-sub {
+      font-family: var(--jp); font-size: 19px;
+      letter-spacing: 0.04em; opacity: 0.7;
+      margin-top: 4px;
+    }
+
+    /* CONTENT slide */
+    .slide-content { padding-top: 28px; }
+    .content-head {
+      margin-bottom: 24px;
+      display: flex; align-items: baseline; gap: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .content-head h2 {
+      font-family: var(--brush); font-size: 40px;
+      font-weight: 400; letter-spacing: 0.04em;
+    }
+    .content-head .h-en {
+      font-family: var(--sans); font-size: 14px;
+      letter-spacing: 0.2em; opacity: 0.55;
+    }
+    .content-head .h-tag {
+      margin-left: auto;
+      font-family: var(--sans); font-size: 12.5px;
+      letter-spacing: 0.3em; opacity: 0.55;
+    }
+
+    /* ── Lead text ── */
+    .lead { font-size: 18.5px; line-height: 2; opacity: 0.9; max-width: 900px; margin-bottom: 18px; }
+    .lead p + p { margin-top: 12px; }
+    .lead strong { color: var(--accent); }
+
+    /* ── Formula box ── */
+    .formula-box {
+      font-family: var(--mono); font-size: 17px;
+      background: rgba(31,31,29,0.05);
+      padding: 12px 20px; margin: 12px 0 18px;
+      border-left: 3px solid var(--accent);
+      display: inline-block;
+    }
+
+    /* ── Insight banner ── */
+    .insight {
+      margin-top: 16px; padding: 16px 24px;
+      background: rgba(196,56,56,0.06);
+      border-left: 3px solid var(--accent);
+      font-size: 16.5px; line-height: 1.9;
+    }
+    .insight strong { color: var(--accent); }
+    .insight .lbl {
+      display: block; font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.25em; color: var(--accent); opacity: 0.85; margin-bottom: 6px;
+    }
+
+    /* ── Generic grid + panel system ── */
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 10px; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 10px; }
+    .panel {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--line);
+      padding: 20px 22px;
+    }
+    .panel.c-quant { border-top-color: var(--quant); }
+    .panel.c-qual { border-top-color: var(--qual); }
+    .panel.c-water { border-top-color: var(--water); }
+    .panel.c-moss { border-top-color: var(--moss); }
+    .panel.c-earth { border-top-color: var(--earth); }
+    .panel.c-persimmon { border-top-color: var(--persimmon); }
+    .panel.c-accent { border-top-color: var(--accent); }
+    .panel .tag {
+      display: inline-block; font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 10px;
+    }
+    .panel h3 { font-family: var(--brush); font-size: 22px; margin-bottom: 10px; letter-spacing: 0.04em; }
+    .panel p { font-size: 16.5px; line-height: 1.9; opacity: 0.9; }
+    .panel p + p { margin-top: 8px; }
+    .panel ul { list-style: none; padding: 0; margin-top: 6px; }
+    .panel li {
+      padding-left: 16px; position: relative; margin-bottom: 7px;
+      font-size: 16.5px; line-height: 1.85; opacity: 0.9;
+    }
+    .panel li::before { content: "・"; position: absolute; left: 0; opacity: 0.5; }
+    .panel strong { color: var(--accent); }
+
+    /* ── Numbered badge ── */
+    .nbadge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--accent); color: var(--chashitsu-paper);
+      font-family: var(--brush); font-size: 18px;
+    }
+
+    /* ── Goal grid (學習目標) ── */
+    .goal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+    .goal-card {
+      display: flex; align-items: flex-start; gap: 16px;
+      background: var(--chashitsu-paper); border: 1px solid var(--line);
+      padding: 18px 20px;
+      animation: rise 0.5s ease backwards;
+    }
+    .goal-card.is-wide { grid-column: 1 / -1; }
+    .goal-card p { font-size: 17px; line-height: 1.85; opacity: 0.92; padding-top: 4px; }
+
+    /* ── Rule grid (理論建構規則) ── */
+    .rule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 10px; }
+    .rule-grid.cols3 { grid-template-columns: repeat(3, 1fr); }
+    .rule-card {
+      background: var(--chashitsu-paper); border: 1px solid var(--line);
+      padding: 22px; animation: rise 0.5s ease backwards;
+    }
+    .rule-card .nbadge { margin-bottom: 14px; }
+    .rule-card h3 { font-family: var(--brush); font-size: 22px; margin-bottom: 10px; letter-spacing: 0.04em; }
+    .rule-card p { font-size: 16.5px; line-height: 1.9; opacity: 0.9; }
+    .rule-card .ex {
+      margin-top: 12px; padding-top: 12px;
+      border-top: 1px dashed var(--line-soft);
+      font-size: 15.5px; line-height: 1.85;
+    }
+    .rule-card .ex .lbl {
+      display: block; font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.2em; opacity: 0.5; margin-bottom: 4px;
+    }
+
+    /* ── Takeaways (小結／綱要) ── */
+    .takeaways { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .take {
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 14px 22px;
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      animation: rise 0.5s ease backwards;
+    }
+    .take .num { font-family: var(--brush); font-size: 34px; color: var(--accent); line-height: 1.1; min-width: 50px; }
+    .take .txt { font-size: 17.5px; line-height: 1.9; }
+    .take strong { color: var(--accent); }
+
+    /* ── DSO / CPO cards (reused from week09 pattern) ── */
+    .dso-cpo { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
+    .dc-card {
+      background: var(--chashitsu-paper);
+      border-top: 4px solid;
+      padding: 20px 22px;
+    }
+    .dc-card.dso { border-top-color: var(--water); }
+    .dc-card.cpo { border-top-color: var(--moss); }
+    .dc-card .ab {
+      display: inline-block; font-family: var(--sans); font-size: 12.5px;
+      letter-spacing: 0.15em; padding: 3px 10px; margin-bottom: 12px;
+    }
+    .dc-card.dso .ab { background: rgba(90,122,138,0.15); color: var(--water); }
+    .dc-card.cpo .ab { background: rgba(61,90,63,0.15); color: var(--moss); }
+    .dc-card h3 { font-family: var(--brush); font-size: 23px; letter-spacing: 0.04em; margin-bottom: 10px; }
+    .dc-card p { font-size: 16px; line-height: 1.9; opacity: 0.9; }
+    .dc-card .lbl { display: block; font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.15em; opacity: 0.6; margin: 8px 0 3px; }
+    .dc-card ul { list-style: none; padding: 0; margin-top: 4px; }
+    .dc-card li { padding-left: 14px; position: relative; margin-bottom: 5px; font-size: 15.5px; opacity: 0.9; }
+    .dc-card li::before { content: "・"; position: absolute; left: 0; opacity: 0.5; }
+
+    /* ── Potential-outcomes diagram ── */
+    .po-diagram { display: flex; align-items: stretch; gap: 14px; margin: 16px 0; flex-wrap: wrap; }
+    .po-box {
+      flex: 1; min-width: 190px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      background: var(--chashitsu-paper);
+      border-left: 4px solid var(--line);
+    }
+    .po-box.fact { border-left-color: var(--quant); }
+    .po-box.counter { border-left-color: var(--qual); border-style: dashed; }
+    .po-box .lab { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.18em; opacity: 0.6; margin-bottom: 6px; }
+    .po-box .val { font-size: 16px; line-height: 1.7; }
+    .po-sym {
+      align-self: center; font-family: var(--brush); font-size: 26px;
+      color: var(--accent); opacity: 0.75; padding: 0 4px;
+    }
+
+    /* ── Target SVG (不偏性／效率) ── */
+    .target-wrap { text-align: center; }
+    .target-wrap svg { width: 130px; height: 130px; }
+    .target-cap { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.15em; opacity: 0.6; margin-top: 6px; }
+
+    /* ── Power chips (確認力／排除力) ── */
+    .power-row { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+    .power-chip {
+      font-family: var(--sans); font-size: 12px; letter-spacing: 0.1em;
+      padding: 3px 11px; border: 1px solid var(--line); opacity: 0.75;
+    }
+    .power-chip.hi { border-color: var(--accent); color: var(--accent); opacity: 1; font-weight: 600; }
+
+    /* ── Four-test grid ── */
+    .test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+    .test-card {
+      background: var(--chashitsu-paper); border: 1px solid var(--line);
+      border-top: 4px solid var(--line); padding: 20px 22px;
+    }
+    .test-card.straw { border-top-color: var(--earth); }
+    .test-card.hoop { border-top-color: var(--water); }
+    .test-card.gun { border-top-color: var(--persimmon); }
+    .test-card.dd { border-top-color: var(--accent); }
+    .test-card h3 { font-family: var(--brush); font-size: 21px; letter-spacing: 0.03em; }
+    .test-card .en { font-family: var(--sans); font-size: 12px; letter-spacing: 0.12em; opacity: 0.55; margin-bottom: 10px; }
+    .test-card p { font-size: 16px; line-height: 1.85; opacity: 0.9; }
+
+    /* ── Logic matrix (2x2) ── */
+    .matrix-wrap { margin-top: 16px; display: flex; gap: 10px; }
+    .matrix-yaxis {
+      writing-mode: vertical-rl; text-orientation: mixed;
+      font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.2em;
+      opacity: 0.6; display: flex; align-items: center; justify-content: center;
+      transform: rotate(180deg);
+    }
+    .matrix { flex: 1; }
+    .matrix-cols {
+      display: grid; grid-template-columns: 130px 1fr 1fr; gap: 2px; margin-bottom: 2px;
+    }
+    .matrix-cols .ph {}
+    .matrix-cols .ch {
+      font-family: var(--sans); font-size: 13px; letter-spacing: 0.1em;
+      opacity: 0.7; text-align: center; padding: 8px 4px;
+    }
+    .matrix-row { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 2px; margin-bottom: 2px; }
+    .matrix-row .rh {
+      font-family: var(--sans); font-size: 13px; letter-spacing: 0.1em;
+      opacity: 0.7; display: flex; align-items: center; justify-content: center;
+      text-align: center; background: rgba(31,31,29,0.03); padding: 8px;
+    }
+    .matrix-cell {
+      background: var(--chashitsu-paper); border-top: 4px solid var(--line);
+      padding: 14px 16px;
+    }
+    .matrix-cell.straw { border-top-color: var(--earth); }
+    .matrix-cell.hoop { border-top-color: var(--water); }
+    .matrix-cell.gun { border-top-color: var(--persimmon); }
+    .matrix-cell.dd { border-top-color: var(--accent); }
+    .matrix-cell h4 { font-family: var(--brush); font-size: 18px; margin-bottom: 4px; }
+    .matrix-cell .en { font-family: var(--sans); font-size: 10.5px; opacity: 0.55; margin-bottom: 6px; }
+    .matrix-cell p { font-size: 14px; line-height: 1.7; opacity: 0.88; }
+    .matrix-foot { margin-top: 12px; font-family: var(--sans); font-size: 12.5px; opacity: 0.55; letter-spacing: 0.08em; }
+
+    /* ── Checklist (研究設計檢核清單) ── */
+    .checklist { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+    .check-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 15px 20px;
+      background: var(--chashitsu-paper); border: 1px solid var(--line);
+      cursor: pointer; transition: border-color 0.2s, opacity 0.2s;
+    }
+    .check-item:hover { border-color: var(--accent); }
+    .check-item .box {
+      width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;
+      border: 1.5px solid var(--ink); position: relative;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .check-item.is-checked .box { background: var(--moss); border-color: var(--moss); }
+    .check-item.is-checked .box::after {
+      content: "✓"; position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--chashitsu-paper); font-size: 14px; font-weight: 700;
+    }
+    .check-item .txt { font-size: 16.5px; line-height: 1.8; }
+    .check-item.is-checked .txt { opacity: 0.55; text-decoration: line-through; text-decoration-color: rgba(31,31,29,0.35); }
+    .checklist-hint {
+      margin-top: 12px; font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.15em; opacity: 0.5; text-align: center;
+    }
+
+    /* ── Discussion ── */
+    .discuss-list { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .discuss-item {
+      background: var(--chashitsu-paper);
+      border-left: 3px solid var(--accent);
+      padding: 16px 22px;
+    }
+    .discuss-item .qn { font-family: var(--brush); font-size: 17px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 6px; }
+    .discuss-item .qt { font-size: 18px; line-height: 1.9; }
+
+    /* ── References ── */
+    .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+    .ref-card {
+      background: var(--chashitsu-paper);
+      border-top: 3px solid var(--accent);
+      padding: 20px 22px;
+    }
+    .ref-card h3 { font-family: var(--brush); font-size: 20px; margin-bottom: 14px; letter-spacing: 0.04em; }
+    .ref-card p { font-size: 15.5px; line-height: 1.9; padding: 8px 0; border-bottom: 1px solid var(--line-faint); }
+    .ref-card p:last-child { border-bottom: none; }
+    .ref-card em { color: var(--accent); font-style: italic; }
+    .ref-card a {
+      color: var(--ink); text-decoration: none;
+      border-bottom: 1px dotted rgba(31,31,29,0.4);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .ref-card a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .ref-card a:hover em { color: var(--accent); }
+
+    .keyboard-hint {
+      position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
+      font-family: var(--sans); font-size: 9.5px;
+      letter-spacing: 0.25em; opacity: 0.4;
+      pointer-events: none; z-index: 60;
+    }
+    .keyboard-hint kbd {
+      font-family: var(--mono); font-size: 9.5px;
+      background: rgba(31,31,29,0.08);
+      padding: 1px 5px; margin: 0 2px;
+    }
+
+    /* ── Animations ── */
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    .slide.is-active .goal-card:nth-child(1) { animation-delay: 0.03s; }
+    .slide.is-active .goal-card:nth-child(2) { animation-delay: 0.09s; }
+    .slide.is-active .goal-card:nth-child(3) { animation-delay: 0.15s; }
+    .slide.is-active .goal-card:nth-child(4) { animation-delay: 0.21s; }
+    .slide.is-active .goal-card:nth-child(5) { animation-delay: 0.27s; }
+    .slide.is-active .rule-card:nth-child(1) { animation-delay: 0.05s; }
+    .slide.is-active .rule-card:nth-child(2) { animation-delay: 0.18s; }
+    .slide.is-active .rule-card:nth-child(3) { animation-delay: 0.31s; }
+    .slide.is-active .take:nth-child(1) { animation-delay: 0.05s; }
+    .slide.is-active .take:nth-child(2) { animation-delay: 0.15s; }
+    .slide.is-active .take:nth-child(3) { animation-delay: 0.25s; }
+    .slide.is-active .take:nth-child(4) { animation-delay: 0.35s; }
+    .slide.is-active .take:nth-child(5) { animation-delay: 0.45s; }
+    .slide.is-active .take:nth-child(6) { animation-delay: 0.55s; }
+
+    /* ── Mobile ── */
+    @media (max-width: 760px) {
+      .topbar { padding: 0 14px; }
+      .top-title { font-size: 15px; }
+      .top-title small { display: none; }
+      .top-right { display: none; }
+      .toc-btn { font-size: 10.5px; padding: 4px 9px; letter-spacing: 0.18em; }
+
+      .slide { padding: 26px 22px 20px; }
+      .slide-title { padding: 26px 22px; }
+      .slide-title h1 { font-size: 38px; }
+      .slide-title .subtitle { font-size: 14.5px; }
+      .slide-title .author { font-size: 15px; }
+      .dual-badges span { padding: 8px 16px; font-size: 14px; }
+      .meta-strip { font-size: 11.5px; gap: 14px; }
+
+      .slide-section { padding: 26px 22px; }
+      .slide-section h2 { font-size: 34px; }
+      .slide-section .sec-en { font-size: 13px; }
+      .slide-section .sec-sub { font-size: 15.5px; }
+      .slide-section .big-num { font-size: 140px; bottom: 20px; right: 20px; }
+
+      .content-head { flex-wrap: wrap; }
+      .content-head h2 { font-size: 25px; }
+      .content-head .h-en { font-size: 11.5px; }
+      .content-head .h-tag { display: none; }
+
+      .lead { font-size: 15.5px; }
+      .grid2, .grid3, .goal-grid, .rule-grid, .rule-grid.cols3, .dso-cpo, .test-grid { grid-template-columns: 1fr; }
+      .goal-card.is-wide { grid-column: auto; }
+      .matrix-wrap { flex-direction: column; }
+      .matrix-yaxis { writing-mode: horizontal-tb; transform: none; }
+      .matrix-cols, .matrix-row { grid-template-columns: 90px 1fr 1fr; font-size: 12px; }
+      .matrix-cell { padding: 10px; }
+      .matrix-cell h4 { font-size: 15px; }
+      .matrix-cell p { font-size: 12px; }
+      .po-diagram { flex-direction: column; }
+      .po-sym { align-self: center; }
+      .ref-grid { grid-template-columns: 1fr; }
+
+      .navbar { padding: 0 14px; height: 58px; }
+      .nav-btn { padding: 7px 14px; font-size: 13px; letter-spacing: 0.1em; }
+      .dots { max-width: 200px; }
+      .nav-center { font-size: 12px; gap: 10px; }
+
+      .toc-panel { padding: 24px 22px; }
+      .toc-list { grid-template-columns: 1fr; gap: 0; }
+      .toc-list .lab { font-size: 13.5px; }
+
+      .keyboard-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<svg class="paper-grain" aria-hidden="true">
+  <defs>
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#paper-noise)" />
+</svg>
+
+<header class="topbar">
+  <div class="top-left">
+    <a href="../../teaching-zh.html" class="back">← 教學</a>
+    <span class="top-sep">·</span>
+    <span class="top-title">社會科學中的因果推論<small>社研法 第 8 週</small></span>
+  </div>
+  <div class="top-right">
+    <span>King, Keohane &amp; Verba (1994); Brady &amp; Collier (2010)</span>
+    <button class="toc-btn" onclick="toggleToc()">目次 ・ TOC</button>
+  </div>
+</header>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ============ 1 TITLE ============ -->
+  <section class="slide slide-title is-active" data-kind="title" data-label="封面">
+    <div class="slide-inner">
+      <div class="week-tag">
+        <span class="seal">研</span>
+        <span>第 8 週 ・ WEEK 8</span>
+      </div>
+      <h1>社會科學中的因果推論</h1>
+      <p class="subtitle">KKV《Designing Social Inquiry》與 Brady &amp; Collier《Rethinking Social Inquiry》的對話</p>
+      <p class="author">
+        東吳大學社會學系｜社會研究法（碩士班）<br/>
+        授課教師：葉崇揚
+      </p>
+      <div class="dual-badges">
+        <span class="badge-quant">KKV</span>
+        <span class="badge-qual">RSI ・ Brady &amp; Collier</span>
+      </div>
+      <div class="meta-strip">
+        <span>社會研究法 ・ 葉崇揚</span>
+        <span>東吳大學社會學系</span>
+        <span>2026 春學期</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2 OUTLINE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="本講綱要">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>本講綱要</h2>
+        <span class="h-en">OUTLINE</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <div class="takeaways">
+        <div class="take"><div class="num">壹</div><div class="txt">導論：社會科學中因果推論的核心問題</div></div>
+        <div class="take"><div class="num">貳</div><div class="txt">KKV 的因果推論架構：反事實定義與根本問題</div></div>
+        <div class="take"><div class="num">參</div><div class="txt">KKV 的研究設計工具：同質性、獨立性、不偏性與效率</div></div>
+        <div class="take"><div class="num">肆</div><div class="txt">KKV 的理論建構五大規則</div></div>
+        <div class="take"><div class="num">伍</div><div class="txt">質性方法的回應：DSO 與 CPO 的區分</div></div>
+        <div class="take"><div class="num">陸</div><div class="txt">過程追蹤與四大因果檢驗</div></div>
+        <div class="take"><div class="num">柒</div><div class="txt">案例研究：從流行病學到國際政治</div></div>
+        <div class="take"><div class="num">捌</div><div class="txt">綜合討論：量化與質性的對話與整合</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3 LEARNING GOALS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="學習目標">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>學習目標</h2>
+        <span class="h-en">LEARNING GOALS</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <div class="goal-grid">
+        <div class="goal-card"><div class="nbadge">1</div><p>理解 KKV 對因果推論的反事實定義及其核心假設</p></div>
+        <div class="goal-card"><div class="nbadge">2</div><p>分析不偏性與效率在研究設計中的意涵</p></div>
+        <div class="goal-card"><div class="nbadge">3</div><p>比較 DSO（Data-Set Observations）與 CPO（Causal-Process Observations）的差異</p></div>
+        <div class="goal-card"><div class="nbadge">4</div><p>評估過程追蹤的四大因果檢驗如何強化質性研究</p></div>
+        <div class="goal-card is-wide"><div class="nbadge">5</div><p>應用因果推論的概念分析社會政策案例</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4 SECTION 一 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="一、導論">
+    <div class="slide-inner">
+      <div class="big-num">壹</div>
+      <p class="part">一、導論</p>
+      <h2>社會科學中因果推論的核心問題</h2>
+    </div>
+  </section>
+
+  <!-- ============ 5 WHY CAUSAL INFERENCE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="為什麼因果推論如此重要">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>為什麼因果推論如此重要？</h2>
+        <span class="h-en">WHY CAUSAL INFERENCE MATTERS</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead"><strong>核心問題</strong>　社會科學研究的兩大目標：</p>
+      <div class="grid2">
+        <div class="panel c-quant">
+          <span class="tag">描述性推論 ・ DESCRIPTIVE INFERENCE</span>
+          <p>使用已觀察到的現象來推斷尚未觀察到的現象</p>
+        </div>
+        <div class="panel c-accent">
+          <span class="tag">因果推論 ・ CAUSAL INFERENCE</span>
+          <p>探究變數之間的因果效應</p>
+        </div>
+      </div>
+      <p class="lead" style="margin-top: 20px;"><strong>方法論辯論</strong></p>
+      <div class="grid2">
+        <div class="panel c-quant">
+          <span class="tag">KKV（1994）主張</span>
+          <p>質性與量化研究共享統一的推論邏輯</p>
+        </div>
+        <div class="panel c-qual">
+          <span class="tag">Brady &amp; Collier（2010）回應</span>
+          <p>質性研究有其獨特的因果推論工具，不能完全化約為統計邏輯</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6 TWO BOOKS DIALOGUE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="兩本著作的對話關係">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>兩本著作的對話關係</h2>
+        <span class="h-en">A DIALOGUE BETWEEN TWO BOOKS</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <div class="grid2">
+        <div class="panel c-quant">
+          <h3>KKV《Designing Social Inquiry》</h3>
+          <p><strong>核心立場：</strong>統一推論邏輯（unified logic of inference）</p>
+          <p style="margin-top: 10px;"><strong>關鍵概念：</strong></p>
+          <ul>
+            <li>反事實因果定義</li>
+            <li>因果推論的根本問題</li>
+            <li>不偏性與效率</li>
+            <li>理論建構五大規則</li>
+          </ul>
+        </div>
+        <div class="panel c-qual">
+          <h3>RSI《Rethinking Social Inquiry》</h3>
+          <p><strong>核心立場：</strong>質性方法有獨特貢獻</p>
+          <p style="margin-top: 10px;"><strong>關鍵概念：</strong></p>
+          <ul>
+            <li>DSO vs. CPO</li>
+            <li>過程追蹤（Process Tracing）</li>
+            <li>四大因果檢驗</li>
+            <li>量化與質性的互補</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7 SECTION 二 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="二、KKV 的因果推論架構">
+    <div class="slide-inner">
+      <div class="big-num">貳</div>
+      <p class="part">二、KKV 的因果推論架構</p>
+      <h2>反事實定義與因果推論的根本問題</h2>
+    </div>
+  </section>
+
+  <!-- ============ 8 COUNTERFACTUAL DEFINITION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="因果效應的反事實定義">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>因果效應的反事實定義</h2>
+        <span class="h-en">THE COUNTERFACTUAL DEFINITION</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead"><strong>核心定義</strong><br/>因果效應 ＝ 在其他條件不變之下，某一解釋變數的值改變，所導致被解釋變數值的變化。</p>
+      <div class="formula-box">Y₁（接受處遇）— Y₀（未接受處遇）＝ 因果效應（δᵢ）</div>
+      <p class="lead" style="margin-top: 6px;"><strong>社會政策範例</strong></p>
+      <p class="lead">問題：「擴大社會救助方案」是否降低了貧窮率？</p>
+      <div class="po-diagram">
+        <div class="po-box fact">
+          <div class="lab">Y₁ ・ 事實</div>
+          <div class="val">實施方案後的貧窮率</div>
+        </div>
+        <div class="po-sym">−</div>
+        <div class="po-box counter">
+          <div class="lab">Y₀ ・ 反事實（無法直接觀察）</div>
+          <div class="val">若未實施方案的貧窮率</div>
+        </div>
+        <div class="po-sym">＝</div>
+        <div class="po-box">
+          <div class="lab">因果效應</div>
+          <div class="val">Y₁ − Y₀</div>
+        </div>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>KKV (1994), Chapter 3</p>
+    </div>
+  </section>
+
+  <!-- ============ 9 FUNDAMENTAL PROBLEM ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="因果推論的根本問題">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>因果推論的根本問題</h2>
+        <span class="h-en">THE FUNDAMENTAL PROBLEM</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead">我們永遠無法同時觀察到同一個體在「接受處遇」和「未接受處遇」兩種狀態下的結果。</p>
+      <div class="grid2">
+        <div class="panel c-accent">
+          <h3>問題的意涵</h3>
+          <ul>
+            <li>個體層次的因果效應（δᵢ）本質上不可觀察</li>
+            <li>我們只能估計平均因果效應</li>
+            <li>需要透過研究設計來克服</li>
+          </ul>
+        </div>
+        <div class="panel c-quant">
+          <h3>解決策略</h3>
+          <ul>
+            <li>隨機分派（實驗設計）</li>
+            <li>單位同質性假設</li>
+            <li>條件獨立性假設</li>
+          </ul>
+        </div>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>KKV (1994), Chapter 3; Holland (1986)</p>
+    </div>
+  </section>
+
+  <!-- ============ 10 SYSTEMATIC / NONSYSTEMATIC ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="系統性成分與非系統性成分">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>系統性成分與非系統性成分</h2>
+        <span class="h-en">SYSTEMATIC &amp; NONSYSTEMATIC COMPONENTS</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead">KKV 的核心分解公式：Y = 系統性成分 + 非系統性成分</p>
+      <div class="formula-box">yᵢ = μ（可被解釋變數預測的部分）+ εᵢ（隨機誤差）</div>
+      <div class="grid2">
+        <div class="panel c-quant">
+          <h3>系統性成分（Systematic）</h3>
+          <ul>
+            <li>可被理論和解釋變數預測</li>
+            <li>是我們關心的因果效應所在</li>
+            <li>透過好的研究設計來識別</li>
+          </ul>
+        </div>
+        <div class="panel c-earth">
+          <h3>非系統性成分（Non-systematic）</h3>
+          <ul>
+            <li>隨機誤差，不可預測</li>
+            <li>期望值為零 E(εᵢ) = 0</li>
+            <li>不影響估計的不偏性</li>
+          </ul>
+        </div>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>KKV (1994), Chapter 3</p>
+    </div>
+  </section>
+
+  <!-- ============ 11 SECTION 三 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="三、KKV 的研究設計工具">
+    <div class="slide-inner">
+      <div class="big-num">參</div>
+      <p class="part">三、KKV 的研究設計工具</p>
+      <h2>單位同質性、條件獨立性、不偏性與效率</h2>
+    </div>
+  </section>
+
+  <!-- ============ 12 UNIT HOMOGENEITY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="單位同質性假設">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>單位同質性假設（Unit Homogeneity）</h2>
+        <span class="h-en">UNIT HOMOGENEITY</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead">定義：在解釋變數值相同的情況下，不同觀察單位的被解釋變數期望值相同。</p>
+      <div class="formula-box">若 Xᵢ = Xⱼ，則 E(Yᵢ) = E(Yⱼ)</div>
+      <div class="grid2">
+        <div class="panel c-quant">
+          <h3>政策研究範例</h3>
+          <ul>
+            <li>比較兩個實施相同最低工資政策的城市</li>
+            <li>假設：在政策條件相同下，兩城市的就業效果應相同</li>
+            <li>若不成立：城市間的結構差異會混淆因果推論</li>
+          </ul>
+        </div>
+        <div class="panel c-accent">
+          <h3>潛在問題</h3>
+          <ul>
+            <li>社會科學中很難完全滿足</li>
+            <li>國家/城市/個人之間存在大量不可觀察的異質性</li>
+            <li>需搭配條件獨立性來放寬假設</li>
+          </ul>
+        </div>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>KKV (1994), Chapter 3</p>
+    </div>
+  </section>
+
+  <!-- ============ 13 CONDITIONAL INDEPENDENCE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="條件獨立性假設">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>條件獨立性假設（Conditional Independence）</h2>
+        <span class="h-en">CONDITIONAL INDEPENDENCE</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead">定義：在控制了相關變數之後，解釋變數的值與被解釋變數的誤差項（非系統性成分）之間相互獨立。</p>
+      <div class="formula-box">X ⊥ ε ∣ Z（控制變數 Z 之後）</div>
+      <div class="panel c-accent">
+        <h3>為什麼重要？</h3>
+        <p>若違反此假設 → 選擇偏誤（Selection Bias）</p>
+        <p>例如：研究「職業訓練」對就業的效果，但參加訓練的人本來就更積極求職</p>
+        <p>解釋變數（是否參加訓練）與誤差項（個人積極度）相關 → 估計有偏</p>
+        <p style="margin-top: 12px;">隨機分派是最直接的保證方式，但在觀察性研究中需依賴統計控制或自然實驗</p>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>KKV (1994), Chapter 3</p>
+    </div>
+  </section>
+
+  <!-- ============ 14 UNBIASEDNESS / EFFICIENCY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="不偏性與效率">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>不偏性（Unbiasedness）與效率（Efficiency）</h2>
+        <span class="h-en">UNBIASEDNESS &amp; EFFICIENCY</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <div class="grid2">
+        <div class="panel c-quant">
+          <h3>不偏性</h3>
+          <p>定義：估計量的期望值等於真實參數值</p>
+          <div class="formula-box" style="margin: 8px 0;">E(β̂) = β</div>
+          <div class="target-wrap" style="margin: 10px 0;">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="70" fill="var(--line-faint)" stroke="var(--line)"/>
+              <circle cx="80" cy="80" r="46" fill="var(--chashitsu-paper)" stroke="var(--line)"/>
+              <circle cx="80" cy="80" r="22" fill="var(--line-faint)" stroke="var(--line)"/>
+              <circle cx="80" cy="80" r="3" fill="var(--accent)"/>
+              <circle cx="128.3" cy="92.9" r="4" fill="var(--quant)" opacity="0.85"/>
+              <circle cx="109.0" cy="130.2" r="4" fill="var(--quant)" opacity="0.85"/>
+              <circle cx="68.6" cy="122.5" r="4" fill="var(--quant)" opacity="0.85"/>
+              <circle cx="23.6" cy="100.5" r="4" fill="var(--quant)" opacity="0.85"/>
+              <circle cx="32.9" cy="58.0" r="4" fill="var(--quant)" opacity="0.85"/>
+              <circle cx="64.3" cy="36.8" r="4" fill="var(--quant)" opacity="0.85"/>
+              <circle cx="108.0" cy="31.5" r="4" fill="var(--quant)" opacity="0.85"/>
+              <circle cx="125.1" cy="63.6" r="4" fill="var(--quant)" opacity="0.85"/>
+            </svg>
+            <div class="target-cap">平均落點在靶心，但每次分散</div>
+          </div>
+          <p>如同靶心：多次射擊的平均落點恰好在靶心</p>
+          <p>不代表每次都正確，而是系統性地不偏離</p>
+          <p>違反 → 系統性偏誤</p>
+        </div>
+        <div class="panel c-earth">
+          <h3>效率</h3>
+          <p>定義：在不偏估計量中，變異數最小者</p>
+          <div class="formula-box" style="margin: 8px 0;">Var(β̂) → 最小</div>
+          <div class="target-wrap" style="margin: 10px 0;">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="70" fill="var(--line-faint)" stroke="var(--line)"/>
+              <circle cx="80" cy="80" r="46" fill="var(--chashitsu-paper)" stroke="var(--line)"/>
+              <circle cx="80" cy="80" r="22" fill="var(--line-faint)" stroke="var(--line)"/>
+              <circle cx="80" cy="80" r="3" fill="var(--accent)"/>
+              <circle cx="84.9" cy="80.9" r="4" fill="var(--earth)" opacity="0.9"/>
+              <circle cx="80.0" cy="87.0" r="4" fill="var(--earth)" opacity="0.9"/>
+              <circle cx="74.1" cy="81.0" r="4" fill="var(--earth)" opacity="0.9"/>
+              <circle cx="78.3" cy="75.3" r="4" fill="var(--earth)" opacity="0.9"/>
+              <circle cx="83.1" cy="77.4" r="4" fill="var(--earth)" opacity="0.9"/>
+            </svg>
+            <div class="target-cap">每次都集中在靶心附近</div>
+          </div>
+          <p>如同靶心：不只平均在靶心，而且每次都很集中</p>
+          <p>樣本數越大，效率通常越高</p>
+          <p>資訊越多 → 估計越精確</p>
+        </div>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>KKV (1994), Chapter 3</p>
+    </div>
+  </section>
+
+  <!-- ============ 15 SECTION 四 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="四、KKV 的理論建構五大規則">
+    <div class="slide-inner">
+      <div class="big-num">肆</div>
+      <p class="part">四、KKV 的理論建構五大規則</p>
+      <h2>好理論的條件</h2>
+    </div>
+  </section>
+
+  <!-- ============ 16 RULES 1-2 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="理論建構規則（一）">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>理論建構規則（一）：可否證性與內在一致性</h2>
+        <span class="h-en">RULE 1 &amp; 2</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <div class="rule-grid">
+        <div class="rule-card">
+          <div class="nbadge">1</div>
+          <h3>可否證性（Falsifiability）</h3>
+          <p>理論必須產生可被經驗證據否證的預測</p>
+          <div class="ex">
+            <span class="lbl">範例</span>
+            ✓「民主國家之間不會發生戰爭」→ 可否證<br/>
+            ✗「政治受多重因素影響」→ 無法否證
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="nbadge">2</div>
+          <h3>內在一致性</h3>
+          <p>理論內部的命題之間不能相互矛盾</p>
+          <div class="ex">
+            <span class="lbl">範例</span>
+            ✗ 同時主張「全球化削弱福利國家」又主張「全球化促進社會保障擴張」<br/>
+            → 除非清楚界定範圍條件
+          </div>
+        </div>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>KKV (1994), Chapter 3</p>
+    </div>
+  </section>
+
+  <!-- ============ 17 RULES 3-5 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="理論建構規則（二）">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>理論建構規則（二）：變數選擇、具體性與涵蓋範圍</h2>
+        <span class="h-en">RULE 3, 4 &amp; 5</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <div class="rule-grid cols3">
+        <div class="rule-card">
+          <div class="nbadge">3</div>
+          <h3>依變數選擇</h3>
+          <p>不可只根據依變數來選擇案例</p>
+          <div class="ex">
+            <span class="lbl">範例</span>
+            ✗ 只研究「革命成功」的案例來解釋革命原因<br/>
+            ✓ 同時納入成功與失敗的案例
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="nbadge">4</div>
+          <h3>盡可能具體</h3>
+          <p>理論應該產出具體可操作化的預測</p>
+          <div class="ex">
+            <span class="lbl">範例</span>
+            ✗「制度影響政策」<br/>
+            ✓「否決點越多，政策改革越困難」(Tsebelis, 2002)
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="nbadge">5</div>
+          <h3>涵蓋範圍</h3>
+          <p>好理論應盡可能涵蓋更多可觀察的意涵</p>
+          <div class="ex">
+            <span class="lbl">意義</span>
+            產出越多可檢驗的假設 → 理論越有力<br/>
+            提高研究的槓桿效應（leverage）
+          </div>
+        </div>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>KKV (1994), Chapter 3</p>
+    </div>
+  </section>
+
+  <!-- ============ 18 SECTION 五 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="五、質性方法的回應">
+    <div class="slide-inner">
+      <div class="big-num">伍</div>
+      <p class="part">五、質性方法的回應</p>
+      <h2>DSO 與 CPO 的區分</h2>
+    </div>
+  </section>
+
+  <!-- ============ 19 BENNETT'S CRITIQUE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Bennett 對 KKV 的批評">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Bennett 對 KKV 的批評</h2>
+        <span class="h-en">BENNETT'S CRITIQUE</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead"><strong>Andrew Bennett 的核心論點（RSI, Chapter 10）</strong></p>
+      <p class="lead">KKV 的統一邏輯過度強調「資料集觀察」（DSO），忽略了質性研究者透過「因果過程觀察」（CPO）進行推論的獨特貢獻。</p>
+      <div class="panel c-accent">
+        <h3>三大批評</h3>
+        <ul>
+          <li>KKV 將因果推論窄化為跨案例的共變關係</li>
+          <li>忽視案例內部的因果機制追蹤</li>
+          <li>低估了過程追蹤（process tracing）作為獨立推論工具的效力</li>
+        </ul>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>Bennett (2010) in Brady &amp; Collier, Ch.10</p>
+    </div>
+  </section>
+
+  <!-- ============ 20 DSO vs CPO ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="DSO 與 CPO：兩種觀察的區分">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>DSO 與 CPO：兩種觀察的區分</h2>
+        <span class="h-en">TWO TYPES OF OBSERVATIONS</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <div class="dso-cpo">
+        <div class="dc-card dso">
+          <span class="ab">DSO ・ Data-Set Observations</span>
+          <h3>資料集觀察</h3>
+          <span class="lbl">定義</span>
+          <p>跨案例的共變觀察，通常記錄為變數矩陣中的數值</p>
+          <span class="lbl">特點</span>
+          <ul>
+            <li>以「案例 × 變數」格式呈現</li>
+            <li>適用於大樣本比較</li>
+            <li>揭示相關性但非機制</li>
+          </ul>
+        </div>
+        <div class="dc-card cpo">
+          <span class="ab">CPO ・ Causal-Process Observations</span>
+          <h3>因果過程觀察</h3>
+          <span class="lbl">定義</span>
+          <p>案例內部的因果機制觀察，提供因果過程的直接證據</p>
+          <span class="lbl">特點</span>
+          <ul>
+            <li>聚焦於單一案例的深層脈絡</li>
+            <li>追蹤從原因到結果的鏈結</li>
+            <li>提供機制層次的因果證據</li>
+          </ul>
+        </div>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>Brady (2010); Collier, Brady &amp; Seawright (2010)</p>
+    </div>
+  </section>
+
+  <!-- ============ 21 DSO vs CPO EXAMPLE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="DSO vs. CPO 實例比較">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>DSO vs. CPO 實例比較</h2>
+        <span class="h-en">A WORKED EXAMPLE</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead">研究問題：「民主化是否促進社會福利擴張？」</p>
+      <div class="grid2">
+        <div class="panel c-water">
+          <h3>DSO 取向</h3>
+          <ul>
+            <li>蒐集 100 個國家的面板資料</li>
+            <li>測量民主程度（Polity IV 分數）</li>
+            <li>測量社會支出佔 GDP 比例</li>
+            <li>跑迴歸 → 發現正相關</li>
+            <li>但無法確認因果機制</li>
+          </ul>
+        </div>
+        <div class="panel c-moss">
+          <h3>CPO 取向</h3>
+          <ul>
+            <li>深入南韓民主化（1987）個案</li>
+            <li>追蹤勞工運動→政黨競爭→福利立法的過程</li>
+            <li>檢視決策者的動機與制度脈絡</li>
+            <li>識別具體的因果機制</li>
+            <li>但難以推論到其他案例</li>
+          </ul>
+        </div>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>Bennett (2010); 範例改編自東亞福利國家文獻</p>
+    </div>
+  </section>
+
+  <!-- ============ 22 SECTION 六 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="六、過程追蹤與四大因果檢驗">
+    <div class="slide-inner">
+      <div class="big-num">陸</div>
+      <p class="part">六、過程追蹤與四大因果檢驗</p>
+      <h2>過程追蹤與四大因果檢驗</h2>
+      <p class="sec-en">Process Tracing &amp; Causal Tests</p>
+    </div>
+  </section>
+
+  <!-- ============ 23 PROCESS TRACING ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="過程追蹤">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>過程追蹤（Process Tracing）</h2>
+        <span class="h-en">PROCESS TRACING</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead"><strong>定義與核心概念</strong></p>
+      <p class="lead">過程追蹤是一種在單一案例內部，透過檢視因果過程中的診斷性證據（diagnostic evidence），來推論因果關係是否成立的方法。</p>
+      <p class="lead">核心邏輯：不同於迴歸分析依賴跨案例的共變，過程追蹤檢驗的是因果鏈條中的每個環節是否存在預期的證據。</p>
+      <p class="lead" style="margin-top: 4px;"><strong>三大特徵</strong></p>
+      <div class="grid3">
+        <div class="panel c-quant"><h3>案例內推論</h3><p>在單一案例內部尋找因果證據，而非跨案例比較</p></div>
+        <div class="panel c-earth"><h3>機制導向</h3><p>關注的是「如何」（how）而非僅是「是否」（whether）</p></div>
+        <div class="panel c-accent"><h3>診斷性證據</h3><p>不同類型的證據有不同的確認力與排除力</p></div>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>Bennett (2010), Ch.10; Collier (2011)</p>
+    </div>
+  </section>
+
+  <!-- ============ 24 FOUR TESTS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="四大因果檢驗">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>四大因果檢驗（Van Evera 的分類）</h2>
+        <span class="h-en">VAN EVERA'S FOUR TESTS</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <div class="test-grid">
+        <div class="test-card straw">
+          <h3>稻草人檢驗</h3>
+          <div class="en">Straw-in-the-Wind</div>
+          <div class="power-row"><span class="power-chip">確認力: 低</span><span class="power-chip">排除力: 低</span></div>
+          <p>提供相關但非決定性的證據。通過檢驗只是稍微增加信心，未通過也只是稍微降低。</p>
+        </div>
+        <div class="test-card hoop">
+          <h3>環狀檢驗</h3>
+          <div class="en">Hoop Test</div>
+          <div class="power-row"><span class="power-chip">確認力: 低</span><span class="power-chip hi">排除力: 高</span></div>
+          <p>必要條件檢驗。未通過則排除該假說，但通過並不能確認。如嫌疑犯必須在案發現場。</p>
+        </div>
+        <div class="test-card gun">
+          <h3>冒煙的槍</h3>
+          <div class="en">Smoking Gun</div>
+          <div class="power-row"><span class="power-chip hi">確認力: 高</span><span class="power-chip">排除力: 低</span></div>
+          <p>充分條件檢驗。通過則強力確認假說，但未通過不能排除。如找到嫌疑犯持槍的影像。</p>
+        </div>
+        <div class="test-card dd">
+          <h3>雙重決定性</h3>
+          <div class="en">Doubly Decisive</div>
+          <div class="power-row"><span class="power-chip hi">確認力: 高</span><span class="power-chip hi">排除力: 高</span></div>
+          <p>同時具有高確認力和高排除力。通過即確認，未通過即排除。在社會科學中極為罕見。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 25 LOGIC MATRIX ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="四大檢驗的邏輯矩陣">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>四大檢驗的邏輯矩陣</h2>
+        <span class="h-en">THE LOGIC MATRIX</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <div class="matrix-wrap">
+        <div class="matrix-yaxis">確認力</div>
+        <div class="matrix">
+          <div class="matrix-cols">
+            <div class="ph"></div>
+            <div class="ch">排除力低</div>
+            <div class="ch">排除力高</div>
+          </div>
+          <div class="matrix-row">
+            <div class="rh">確認力低</div>
+            <div class="matrix-cell straw">
+              <h4>稻草人檢驗</h4>
+              <div class="en">Straw-in-the-Wind</div>
+              <p>「旁證」：提供線索但不具決定性</p>
+            </div>
+            <div class="matrix-cell hoop">
+              <h4>環狀檢驗</h4>
+              <div class="en">Hoop Test</div>
+              <p>「必要條件」：不通過就出局</p>
+            </div>
+          </div>
+          <div class="matrix-row">
+            <div class="rh">確認力高</div>
+            <div class="matrix-cell gun">
+              <h4>冒煙的槍</h4>
+              <div class="en">Smoking Gun</div>
+              <p>「鐵證」：通過就定案</p>
+            </div>
+            <div class="matrix-cell dd">
+              <h4>雙重決定性</h4>
+              <div class="en">Doubly Decisive</div>
+              <p>「終極檢驗」：一錘定音</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="matrix-foot">Van Evera (1997); Bennett (2010)</p>
+    </div>
+  </section>
+
+  <!-- ============ 26 HOOP TEST DETAIL ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="環狀檢驗詳解">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>環狀檢驗（Hoop Test）詳解</h2>
+        <span class="h-en">HOOP TEST IN DEPTH</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead">邏輯：設定一個「必要條件」，假說必須通過才能留在候選名單上。</p>
+      <div class="grid2">
+        <div class="panel c-water">
+          <h3>偵探類比</h3>
+          <p>嫌疑犯必須在案發當天在案發城市。如果有不在場證明，直接排除。但在案發城市並不代表就是兇手。</p>
+        </div>
+        <div class="panel c-accent">
+          <h3>社會政策範例</h3>
+          <p>假說：「勞工運動是福利國家擴張的主要推動力」</p>
+          <p>環狀檢驗：福利擴張時期是否存在活躍的勞工運動？</p>
+          <p>若不存在 → 排除此假說</p>
+          <p>若存在 → 通過，但尚需進一步檢驗（可能是其他因素）</p>
+        </div>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>Bennett (2010); Van Evera (1997)</p>
+    </div>
+  </section>
+
+  <!-- ============ 27 SMOKING GUN DETAIL ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="冒煙的槍檢驗詳解">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>冒煙的槍檢驗（Smoking Gun Test）詳解</h2>
+        <span class="h-en">SMOKING GUN TEST IN DEPTH</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead">邏輯：找到「充分條件」的證據，一旦發現即可確認假說。</p>
+      <div class="grid2">
+        <div class="panel c-persimmon">
+          <h3>偵探類比</h3>
+          <p>在監視器畫面中看到嫌疑犯持槍射擊。找到了就確認是兇手，但沒找到不代表不是（可能沒有監視器）。</p>
+        </div>
+        <div class="panel c-accent">
+          <h3>社會政策範例</h3>
+          <p>假說：「政府因選舉壓力而擴大年金給付」</p>
+          <p>冒煙的槍：找到內閣會議紀錄明確記載「為贏得選舉而提高年金」</p>
+          <p>若找到 → 強力確認此假說</p>
+          <p>若未找到 → 不能排除（紀錄可能不公開）</p>
+        </div>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>Bennett (2010); Van Evera (1997)</p>
+    </div>
+  </section>
+
+  <!-- ============ 28 SECTION 七 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="七、案例研究">
+    <div class="slide-inner">
+      <div class="big-num">柒</div>
+      <p class="part">七、案例研究</p>
+      <h2>從流行病學到國際政治</h2>
+    </div>
+  </section>
+
+  <!-- ============ 29 JOHN SNOW ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="微觀案例：John Snow 與霍亂">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>微觀案例：John Snow 與霍亂（1854）</h2>
+        <span class="h-en">JOHN SNOW &amp; CHOLERA</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead"><strong>經典的過程追蹤範例</strong></p>
+      <div class="panel c-earth">
+        <h3>背景</h3>
+        <p>1854年倫敦 Broad Street 霍亂爆發，主流理論認為是「瘴氣」（miasma）所致。</p>
+      </div>
+      <div class="panel c-water" style="margin-top: 14px;">
+        <h3>Snow 的過程追蹤</h3>
+        <p>環狀檢驗：霍亂病例是否集中在特定水源附近？→ 是（Broad Street 水泵）</p>
+        <p>冒煙的槍：有人住在水泵附近但喝其他水源是否倖免？→ 是（啤酒廠工人）</p>
+        <p>額外證據：移除水泵把手後，疫情是否緩解？→ 是</p>
+      </div>
+      <p class="insight" style="margin-top: 14px;"><span class="lbl">啟示</span>Snow 在尚無細菌理論的情況下，透過系統性的過程追蹤，建立了「水源傳播」的因果推論。這是 CPO 方法的經典示範。</p>
+      <p class="insight"><span class="lbl">出處</span>Bennett (2010), Ch.10; Snow (1855)</p>
+    </div>
+  </section>
+
+  <!-- ============ 30 SEMMELWEIS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="微觀案例：Semmelweis 與產褥熱">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>微觀案例：Semmelweis 與產褥熱（1847）</h2>
+        <span class="h-en">SEMMELWEIS &amp; CHILDBED FEVER</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead"><strong>另一個經典的過程追蹤</strong></p>
+      <div class="panel c-earth">
+        <h3>背景</h3>
+        <p>維也納總醫院兩個產房的產婦死亡率差異巨大（第一產房 10% vs. 第二產房 4%）。</p>
+      </div>
+      <div class="panel c-water" style="margin-top: 14px;">
+        <h3>Semmelweis 的推論過程</h3>
+        <p>排除假說：宗教因素、分娩姿勢、心理恐懼 → 各項環狀檢驗均不通過</p>
+        <p>關鍵線索：同事解剖後被刺傷，症狀與產褥熱相同 → 冒煙的槍</p>
+        <p>因果機制：醫學生從解剖室直接進入產房 → 屍體微粒傳播</p>
+        <p>介入驗證：實施洗手措施後，死亡率降至 1% → 雙重決定性</p>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>Bennett (2010), Ch.10; Semmelweis (1861)</p>
+    </div>
+  </section>
+
+  <!-- ============ 31 FASHODA ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="宏觀案例：1898 法紹達危機">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>宏觀案例：1898 法紹達危機</h2>
+        <span class="h-en">THE FASHODA INCIDENT</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead"><strong>民主和平論的過程追蹤檢驗</strong></p>
+      <div class="panel c-earth">
+        <h3>背景</h3>
+        <p>英法兩國（均為民主國家）在蘇丹法紹達（Fashoda）發生嚴重對峙，幾乎走向戰爭。</p>
+      </div>
+      <div class="panel c-water" style="margin-top: 14px;">
+        <h3>過程追蹤的問題</h3>
+        <p>民主和平論主張民主國家之間不會開戰。但法紹達危機為何最終沒有演變為戰爭？</p>
+      </div>
+      <div class="panel c-accent" style="margin-top: 14px;">
+        <h3>檢驗結果</h3>
+        <p>環狀檢驗：法國決策者是否因為英國是民主國家而退讓？→ 證據薄弱</p>
+        <p>替代解釋：法國海軍實力不足、德國威脅更大 → 更有說服力</p>
+        <p>結論：此案例對民主和平論的因果機制支持度有限</p>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>Bennett (2010), Ch.10</p>
+    </div>
+  </section>
+
+  <!-- ============ 32 SOVIET 1989 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="宏觀案例：1989 蘇聯不干預東歐">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>宏觀案例：1989 蘇聯不干預東歐</h2>
+        <span class="h-en">SOVIET NON-INTERVENTION, 1989</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead"><strong>觀念的力量：冷戰結束的過程追蹤</strong></p>
+      <div class="panel c-earth">
+        <h3>背景</h3>
+        <p>1989 年東歐劇變，蘇聯決定不出兵干預。這一決策改變了世界格局。</p>
+      </div>
+      <div class="grid2" style="margin-top: 14px;">
+        <div class="panel c-quant">
+          <h3>現實主義</h3>
+          <p>蘇聯因物質實力衰退而被迫放手</p>
+        </div>
+        <div class="panel c-qual">
+          <h3>建構主義</h3>
+          <p>戈巴契夫的「新思維」（觀念轉變）使蘇聯主動選擇不干預</p>
+        </div>
+      </div>
+      <div class="panel c-accent" style="margin-top: 14px;">
+        <h3>過程追蹤證據</h3>
+        <p>冒煙的槍：戈巴契夫私下言論與內部備忘錄顯示他真心相信「共同歐洲家園」理念</p>
+        <p>環狀檢驗：蘇聯當時仍有軍事能力干預，排除了「被迫」的解釋</p>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>Bennett (2010), Ch.10; English (2000)</p>
+    </div>
+  </section>
+
+  <!-- ============ 33 SECTION 補充 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="補充：Freedman 的方法論反思">
+    <div class="slide-inner">
+      <div class="big-num">補</div>
+      <p class="part">補充：Freedman 的方法論反思</p>
+      <h2>科學探究的類型</h2>
+      <p class="sec-sub">RSI, Chapter 11</p>
+    </div>
+  </section>
+
+  <!-- ============ 34 FREEDMAN CRITIQUE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Freedman：對統計模型的批判">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Freedman：對統計模型的批判</h2>
+        <span class="h-en">FREEDMAN'S CRITIQUE OF STATISTICAL MODELS</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <p class="lead"><strong>David Freedman 的核心主張</strong></p>
+      <p class="lead">統計模型不等於因果推論。在缺乏堅實理論基礎和適當研究設計的情況下，再複雜的統計技術也無法產生可靠的因果推論。</p>
+      <div class="panel c-accent">
+        <h3>Freedman 的警告</h3>
+        <ul>
+          <li>迴歸模型的假設（線性、獨立性、常態分佈）在社會科學中經常被違反</li>
+          <li>「控制變數」的選擇往往是任意的，不同模型規格產生不同結果</li>
+          <li>統計顯著性（p 值）不等於實質重要性</li>
+          <li>觀察性研究中，統計調整無法替代真正的隨機分派</li>
+        </ul>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>Freedman (2010) in Brady &amp; Collier, Ch.11</p>
+    </div>
+  </section>
+
+  <!-- ============ 35 GOOD VS BAD RESEARCH ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Freedman：好研究與壞研究的對比">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Freedman：好研究與壞研究的對比</h2>
+        <span class="h-en">GOOD VS. BAD RESEARCH</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <div class="grid2">
+        <div class="panel c-quant">
+          <h3>好研究：Snow 的霍亂研究</h3>
+          <ul>
+            <li>清晰的因果假說</li>
+            <li>自然實驗設計（不同水源公司的用戶比較）</li>
+            <li>多重證據來源交叉驗證</li>
+            <li>結合統計數據與個案調查</li>
+            <li>介入實驗（移除水泵把手）確認因果關係</li>
+          </ul>
+        </div>
+        <div class="panel c-accent">
+          <h3>壞研究的特徵</h3>
+          <ul>
+            <li>理論薄弱，靠「資料探勘」找關係</li>
+            <li>任意選擇控制變數</li>
+            <li>依賴 p 值而非實質意義</li>
+            <li>忽略測量誤差與遺漏變數</li>
+            <li>對模型假設不做診斷性檢查</li>
+          </ul>
+        </div>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>Freedman (2010), Ch.11</p>
+    </div>
+  </section>
+
+  <!-- ============ 36 SECTION 八 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="八、綜合討論">
+    <div class="slide-inner">
+      <div class="big-num">捌</div>
+      <p class="part">八、綜合討論</p>
+      <h2>量化與質性的對話與整合</h2>
+    </div>
+  </section>
+
+  <!-- ============ 37 COMPLEMENTARITY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="量化與質性方法的互補">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>量化與質性方法的互補</h2>
+        <span class="h-en">COMPLEMENTARITY</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <div class="grid3">
+        <div class="panel c-quant">
+          <h3>量化方法</h3>
+          <span class="tag">（KKV 取向）</span>
+          <ul>
+            <li>大樣本跨案例比較</li>
+            <li>識別共變關係</li>
+            <li>控制混淆變數</li>
+            <li>估計平均因果效應</li>
+            <li>外部效度較高</li>
+          </ul>
+        </div>
+        <div class="panel c-qual">
+          <h3>質性方法</h3>
+          <span class="tag">（RSI 取向）</span>
+          <ul>
+            <li>小樣本深度分析</li>
+            <li>追蹤因果機制</li>
+            <li>提供脈絡理解</li>
+            <li>識別必要/充分條件</li>
+            <li>內部效度較高</li>
+          </ul>
+        </div>
+        <div class="panel c-accent">
+          <h3>整合策略</h3>
+          <ul>
+            <li>量化識別相關→質性追蹤機制</li>
+            <li>質性建構理論→量化檢驗推廣</li>
+            <li>巢狀分析（nested analysis）</li>
+            <li>多方法三角驗證</li>
+            <li>互相補足推論弱點</li>
+          </ul>
+        </div>
+      </div>
+      <p class="insight"><span class="lbl">出處</span>Bennett (2010); Freedman (2010); Lieberman (2005)</p>
+    </div>
+  </section>
+
+  <!-- ============ 38 CHECKLIST ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="研究設計檢核清單">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>研究設計檢核清單</h2>
+        <span class="h-en">RESEARCH DESIGN CHECKLIST</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <div class="checklist">
+        <div class="check-item" onclick="this.classList.toggle('is-checked')"><div class="box"></div><div class="txt">你的因果假說是否清晰可否證？（KKV 規則 1）</div></div>
+        <div class="check-item" onclick="this.classList.toggle('is-checked')"><div class="box"></div><div class="txt">你是否清楚定義了反事實情境？（因果效應定義）</div></div>
+        <div class="check-item" onclick="this.classList.toggle('is-checked')"><div class="box"></div><div class="txt">你的案例選擇是否避免了依變數選擇偏誤？（KKV 規則 3）</div></div>
+        <div class="check-item" onclick="this.classList.toggle('is-checked')"><div class="box"></div><div class="txt">你是否考慮了單位同質性或條件獨立性假設的合理性？</div></div>
+        <div class="check-item" onclick="this.classList.toggle('is-checked')"><div class="box"></div><div class="txt">你的研究是否同時運用 DSO 和 CPO 來強化推論？</div></div>
+        <div class="check-item" onclick="this.classList.toggle('is-checked')"><div class="box"></div><div class="txt">如果使用過程追蹤，你運用了哪些因果檢驗？</div></div>
+        <div class="check-item" onclick="this.classList.toggle('is-checked')"><div class="box"></div><div class="txt">你的統計模型假設是否經過檢驗？（Freedman 的警告）</div></div>
+        <div class="check-item" onclick="this.classList.toggle('is-checked')"><div class="box"></div><div class="txt">你的研究發現是否具有實質意義，而非僅有統計顯著性？</div></div>
+      </div>
+      <p class="checklist-hint">點選項目自我檢核</p>
+    </div>
+  </section>
+
+  <!-- ============ 39 DISCUSSION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="課堂討論">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>課堂討論</h2>
+        <span class="h-en">CLASS DISCUSSION</span>
+      </div>
+      <div class="discuss-list">
+        <div class="discuss-item">
+          <div class="qn">問題一</div>
+          <div class="qt">在你的研究領域中，KKV 的「統一推論邏輯」是否適用？如果質性研究有獨特的推論邏輯，那是什麼？</div>
+        </div>
+        <div class="discuss-item">
+          <div class="qn">問題二</div>
+          <div class="qt">試想一個你感興趣的社會政策議題，你會如何設計一個結合 DSO 和 CPO 的研究？分別會使用哪些因果檢驗？</div>
+        </div>
+        <div class="discuss-item">
+          <div class="qn">問題三</div>
+          <div class="qt">Freedman 對統計模型的批判，對你目前使用（或計畫使用）的研究方法有何啟示？</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 40 SUMMARY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="本講小結">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>本講小結</h2>
+        <span class="h-en">KEY TAKEAWAYS</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <div class="takeaways">
+        <div class="take"><div class="num">壹</div><div class="txt">KKV 建立了以反事實為基礎的因果推論架構，強調不偏性與效率</div></div>
+        <div class="take"><div class="num">貳</div><div class="txt">理論建構需滿足五大規則：可否證性、一致性、變數選擇、具體性、涵蓋範圍</div></div>
+        <div class="take"><div class="num">參</div><div class="txt">Bennett 提出 DSO 與 CPO 的區分，強調質性方法的獨特貢獻</div></div>
+        <div class="take"><div class="num">肆</div><div class="txt">過程追蹤的四大因果檢驗提供了系統化的案例內推論工具</div></div>
+        <div class="take"><div class="num">伍</div><div class="txt">Freedman 警告統計模型不能替代良好的研究設計與理論思考</div></div>
+        <div class="take"><div class="num">陸</div><div class="txt">最佳實踐：整合量化與質性方法，互相補足推論弱點</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 41 FURTHER READING ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="延伸閱讀">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>延伸閱讀</h2>
+        <span class="h-en">FURTHER READING</span>
+        <span class="h-tag">社會研究法｜東吳大學社會學系</span>
+      </div>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <h3>必讀</h3>
+          <p><a href="https://scholar.google.com/scholar?q=King+Keohane+Verba+1994+Designing+Social+Inquiry" target="_blank" rel="noopener">King, G., Keohane, R. O., &amp; Verba, S. (1994). <em>Designing Social Inquiry</em>. Princeton University Press. (Ch. 3)</a></p>
+          <p><a href="https://scholar.google.com/scholar?q=Bennett+2010+Process+Tracing+and+Causal+Inference+Rethinking+Social+Inquiry" target="_blank" rel="noopener">Bennett, A. (2010). Process Tracing and Causal Inference. In Brady &amp; Collier (Eds.), <em>Rethinking Social Inquiry</em> (2nd ed., Ch. 10).</a></p>
+          <p><a href="https://scholar.google.com/scholar?q=Freedman+2010+On+Types+of+Scientific+Inquiry+Rethinking+Social+Inquiry" target="_blank" rel="noopener">Freedman, D. A. (2010). On Types of Scientific Inquiry. In Brady &amp; Collier (Eds.), <em>Rethinking Social Inquiry</em> (2nd ed., Ch. 11).</a></p>
+        </div>
+        <div class="ref-card">
+          <h3>推薦</h3>
+          <p><a href="https://scholar.google.com/scholar?q=Van+Evera+1997+Guide+to+Methods+for+Students+of+Political+Science" target="_blank" rel="noopener">Van Evera, S. (1997). <em>Guide to Methods for Students of Political Science</em>. Cornell University Press.</a></p>
+          <p><a href="https://scholar.google.com/scholar?q=Collier+2011+Understanding+Process+Tracing+PS+Political+Science" target="_blank" rel="noopener">Collier, D. (2011). Understanding Process Tracing. <em>PS: Political Science &amp; Politics</em>, 44(4), 823-830.</a></p>
+          <p><a href="https://scholar.google.com/scholar?q=Lieberman+2005+Nested+Analysis+as+a+Mixed-Method+Strategy" target="_blank" rel="noopener">Lieberman, E. S. (2005). Nested Analysis as a Mixed-Method Strategy. <em>American Political Science Review</em>, 99(3), 435-452.</a></p>
+          <p><a href="https://scholar.google.com/scholar?q=Beach+Pedersen+2019+Process-Tracing+Methods" target="_blank" rel="noopener">Beach, D., &amp; Pedersen, R. B. (2019). <em>Process-Tracing Methods</em> (2nd ed.). University of Michigan Press.</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 42 CLOSING ============ -->
+  <section class="slide slide-title" data-kind="title" data-label="謝謝聆聽">
+    <div class="slide-inner">
+      <h1>謝謝聆聽</h1>
+      <p class="subtitle">QUESTIONS &amp; DISCUSSION</p>
+      <p class="author">
+        葉崇揚｜東吳大學社會學系<br/>
+        chungyang.yeh@gmail.com
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<nav class="navbar">
+  <button class="nav-btn" id="prevBtn" onclick="goPrev()">← 前頁</button>
+  <div class="nav-center">
+    <span><span id="curNum">1</span> / <span id="totNum">42</span></span>
+    <div class="dots" id="dots"></div>
+  </div>
+  <button class="nav-btn" id="nextBtn" onclick="goNext()">下一頁 →</button>
+</nav>
+
+<div class="keyboard-hint">
+  <kbd>←</kbd> <kbd>→</kbd> 切換頁面　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕
+</div>
+
+<!-- TOC overlay -->
+<div class="toc-overlay" id="tocOverlay" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" onclick="toggleToc()">×</button>
+    <h2 class="toc-title">目次 ・ Table of Contents</h2>
+    <p class="toc-sub">點選任一條目跳到該頁</p>
+    <ul class="toc-list" id="tocList"></ul>
+  </div>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let cur = 0;
+
+  document.getElementById('totNum').textContent = total;
+
+  // Build dots & TOC
+  const dotsEl = document.getElementById('dots');
+  const tocEl = document.getElementById('tocList');
+  slides.forEach((s, i) => {
+    const d = document.createElement('span');
+    d.className = 'dot' + (s.dataset.kind === 'section' ? ' is-section' : '');
+    d.title = s.dataset.label || '';
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+
+    const li = document.createElement('li');
+    if (s.dataset.kind === 'section') li.classList.add('is-section');
+    li.innerHTML = `<span class="num">${String(i + 1).padStart(2, '0')}</span><span class="lab">${s.dataset.label || ''}</span><span class="kind">${s.dataset.kind}</span>`;
+    li.onclick = () => { goTo(i); toggleToc(); };
+    tocEl.appendChild(li);
+  });
+
+  function goTo(n) {
+    if (n < 0 || n >= total || n === cur) return;
+    const dir = n > cur ? 1 : -1;
+    slides[cur].classList.remove('is-active');
+    if (dir > 0) slides[cur].classList.add('is-prev');
+    cur = n;
+    slides[cur].classList.remove('is-prev');
+    slides[cur].classList.add('is-active');
+    setTimeout(() => slides.forEach((s, i) => { if (i !== cur) s.classList.remove('is-prev'); }), 500);
+    update();
+  }
+  function goPrev() { goTo(cur - 1); }
+  function goNext() { goTo(cur + 1); }
+  function update() {
+    document.getElementById('curNum').textContent = cur + 1;
+    document.getElementById('prevBtn').disabled = cur === 0;
+    document.getElementById('nextBtn').disabled = cur === total - 1;
+    document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('is-active', i === cur));
+  }
+
+  // TOC toggle
+  function toggleToc() {
+    document.getElementById('tocOverlay').classList.toggle('is-shown');
+  }
+
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('tocOverlay').classList.contains('is-shown')) {
+      if (e.key === 'Escape') toggleToc();
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goNext(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goPrev(); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+    else if (e.key === 'Escape') toggleToc();
+    else if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+  });
+
+  // Touch swipe
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) dx < 0 ? goNext() : goPrev();
+  });
+
+  update();
+</script>
+<script>
+  // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
+  // 偶爾因 sticky header + backdrop-filter 而整頁空白。
+  // 偵測到從快取還原時，強制觸發一次重繪。
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      document.body.style.display = 'none';
+      void document.body.offsetHeight;
+      document.body.style.display = '';
+    }
+  });
+</script>
+</body>
+</html>
