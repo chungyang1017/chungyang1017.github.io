@@ -690,7 +690,7 @@ A transparent PNG sprite sheet: exactly FOUR separate photorealistic single Japa
     canvas.width=Math.max(1,Math.round(W*dpr));canvas.height=Math.max(1,Math.round(H*dpr));
     ctx.setTransform(dpr,0,0,dpr,0,0);
     for(const p of petals){p.x*=W/oldW;p.y*=H/oldH;}
-    const count=W<600?43:86;
+    const count=W<600?57:115;
     while(petals.length<count)petals.push(makePetal());
     petals.length=count;draw();
   }
