@@ -279,7 +279,7 @@
       var meta = '<b>' + c.level_zh + '</b>' + lines.join('<br>');
       var body = c.tba_zh
         ? '<p class="course-tba">' + c.tba_zh + '</p>'
-        : '<div class="course-desc">' + c.desc_zh.map(function(p){ return '<p>' + p + '</p>'; }).join('') + '</div>';
+        : (c.desc_zh ? '<div class="course-desc">' + c.desc_zh.map(function(p){ return '<p>' + p + '</p>'; }).join('') + '</div>' : '');
       html += '<a class="course course-card reveal" href="syllabus-zh.html?course=' + c.id + '">'
         + '<div class="course-head"><div>'
         + '<div class="course-tag">' + c.tag_zh + '</div>'
