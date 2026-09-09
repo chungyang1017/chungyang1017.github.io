@@ -679,7 +679,7 @@ A transparent PNG sprite sheet: exactly FOUR separate photorealistic single Japa
   const rand=(a,b)=>a+Math.random()*(b-a);
   function makePetal(){
     const depth=Math.random();
-    return {x:rand(-20,W+20),y:rand(-90,H+30),size:8+depth*12,depth,
+    return {x:rand(-20,W+20),y:rand(-90,H+30),size:6.8+depth*10.2,depth,
       drift:rand(-2,3),phase:rand(0,TAU),frequency:rand(.28,.55),sway:rand(4,9),
       rotation:rand(-Math.PI,Math.PI),spin:rand(-.16,.16),tilt:rand(0,TAU),tumble:rand(.25,.48),
       sprite:Math.floor(rand(0,4)),distance:0};
