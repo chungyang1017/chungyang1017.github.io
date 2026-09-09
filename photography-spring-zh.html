@@ -15,7 +15,7 @@
   /* ================================================================
      春信 · 櫻花總覽（水墨風格）
      骨幹＝攝影頁設計語言（:root / 字體 / nav / lightbox / samon）
-     頂部＝No. 136 春日家族原照 + 寫實櫻花瓣，緩慢飄落，每秒下降 0.8 CSS 公分
+     頂部＝No. 136 春日家族原照 + 寫實櫻花瓣，緩慢飄落，每秒下降 0.96 CSS 公分
      ================================================================ */
   :root{
     --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
@@ -674,7 +674,7 @@ A transparent PNG sprite sheet: exactly FOUR separate photorealistic single Japa
   const atlas=new Image(),petals=[],TAU=Math.PI*2;
   // CSS absolute units: 1 inch = 96 CSS px, 1 inch = 2.54 cm.
   // This is screen-space descent, not a claim about physical monitor dimensions.
-  const FALL_CM_PER_SECOND=.8,FALL_PX_PER_SECOND=FALL_CM_PER_SECOND*96/2.54;
+  const FALL_CM_PER_SECOND=.96,FALL_PX_PER_SECOND=FALL_CM_PER_SECOND*96/2.54;
   let W=0,H=0,time=0,last=null,raf=0,inView=true,ready=false;
   const rand=(a,b)=>a+Math.random()*(b-a);
   function makePetal(){
@@ -690,7 +690,7 @@ A transparent PNG sprite sheet: exactly FOUR separate photorealistic single Japa
     canvas.width=Math.max(1,Math.round(W*dpr));canvas.height=Math.max(1,Math.round(H*dpr));
     ctx.setTransform(dpr,0,0,dpr,0,0);
     for(const p of petals){p.x*=W/oldW;p.y*=H/oldH;}
-    const count=W<600?32:64;
+    const count=W<600?43:86;
     while(petals.length<count)petals.push(makePetal());
     petals.length=count;draw();
   }
@@ -700,7 +700,7 @@ A transparent PNG sprite sheet: exactly FOUR separate photorealistic single Japa
     for(const p of petals){
       const flutter=Math.sin(time*p.frequency+p.phase);
       p.x+=(p.drift+wind+flutter*p.sway)*dt;
-      // Vertical descent stays at a gentle 0.8 CSS cm/s; gusts and tumbling affect x/rotation only.
+      // Vertical descent stays at a gentle 0.96 CSS cm/s; gusts and tumbling affect x/rotation only.
       const fall=FALL_PX_PER_SECOND*dt;p.y+=fall;p.distance+=fall;
       p.rotation+=(p.spin+flutter*.05)*dt;p.tilt+=p.tumble*dt;
       if(p.y>H+40){p.y=-100+(p.y-H-40)%(H+140);p.x=rand(-20,W+20);}
