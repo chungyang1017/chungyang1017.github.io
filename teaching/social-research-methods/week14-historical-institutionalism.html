@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>歷史制度論 ・ 社會研究法 第 14 週 ・ 葉崇揚</title>
+  <meta name="description" content="社會研究法第 14 週互動講義：歷史制度論的核心概念——三大新制度論、關鍵轉折點、路徑依賴、政策回饋與再生機制，涵蓋 Hall &amp; Taylor、Thelen、Pierson 等文獻，以及歐洲國家建構、拉美勞工政治、福利體制與東亞／台灣案例。分頁式互動簡報。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --chashitsu-bg: #e8dcc4;
+      --chashitsu-paper: #f5ecd6;
+      --chashitsu-tatami: #d8c8a8;
+      --moss: #3d5a3f;
+      --water: #5a7a8a;
+      --earth: #8a6a4a;
+      --persimmon: #c47038;
+      --accent: #c43838;
+      --gold: #b8860b;
+      --ink: #1f1f1d;
+      --ink-soft: rgba(31,31,29,0.78);
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --line-faint: rgba(31,31,29,0.05);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+      --mono: 'JetBrains Mono', 'Menlo', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: var(--jp);
+      background: var(--chashitsu-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 19px;
+      line-height: 1.95;
+      position: relative;
+    }
+    .paper-grain {
+      position: fixed; inset: 0; pointer-events: none;
+      opacity: 0.32; mix-blend-mode: multiply; z-index: 1;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 56px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .top-left { display: flex; align-items: center; gap: 14px; }
+    .back { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .back:hover { opacity: 0.85; }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .top-title { font-family: var(--brush); font-size: 19px; letter-spacing: 0.06em; }
+    .top-title small { font-family: var(--sans); font-size: 12px; letter-spacing: 0.18em; opacity: 0.55; margin-left: 10px; }
+    .top-right { display: flex; align-items: center; gap: 18px; font-family: var(--sans); font-size: 12px; opacity: 0.6; letter-spacing: 0.15em; }
+    .toc-btn {
+      background: transparent; border: 1px solid var(--line);
+      font-family: inherit; font-size: 11.5px; letter-spacing: 0.2em;
+      padding: 5px 12px; cursor: pointer; color: var(--ink); opacity: 0.75;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .toc-btn:hover { background: var(--chashitsu-paper); opacity: 1; }
+
+    /* ── Progress bar ── */
+    .progress {
+      position: fixed; top: 56px; left: 0;
+      height: 2px; background: var(--accent);
+      z-index: 49; transition: width 0.4s ease;
+    }
+
+    /* ── Slide deck ── */
+    .deck {
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 64px;
+      overflow: hidden; z-index: 2;
+    }
+    .slide {
+      position: absolute; inset: 0;
+      padding: 36px 72px 28px;
+      overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.2,0.7,0.2,1);
+    }
+    .slide.is-prev { transform: translateX(-40px); }
+    .slide.is-active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide-inner { max-width: 1080px; margin: 0 auto; }
+
+    /* ── Bottom nav ── */
+    .navbar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 64px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .nav-btn {
+      background: transparent; border: 1px solid var(--ink);
+      font-family: var(--jp); font-size: 14px;
+      letter-spacing: 0.15em; color: var(--ink);
+      padding: 9px 22px; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover:not(:disabled) { background: var(--ink); color: var(--chashitsu-paper); }
+    .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; border-color: var(--line); color: var(--ink); }
+    .nav-center { display: flex; align-items: center; gap: 16px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.18em; opacity: 0.7; }
+    .dots { display: flex; gap: 5px; max-width: 480px; overflow: hidden; flex-wrap: wrap; justify-content: center; }
+    .dot { width: 7px; height: 7px; background: var(--line); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .dot:hover { background: var(--accent); transform: scale(1.3); }
+    .dot.is-active { background: var(--accent); }
+    .dot.is-section { width: 14px; }
+
+    /* ── TOC overlay ── */
+    .toc-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(31,31,29,0.85);
+      backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center;
+      padding: 40px;
+    }
+    .toc-overlay.is-shown { display: flex; animation: fade 0.3s; }
+    .toc-panel {
+      background: var(--chashitsu-paper);
+      max-width: 920px; width: 100%; max-height: 80vh;
+      overflow-y: auto;
+      padding: 36px 44px;
+      border: 1px solid var(--accent);
+      position: relative;
+    }
+    .toc-close {
+      position: absolute; top: 14px; right: 18px;
+      background: transparent; border: none;
+      font-size: 26px; cursor: pointer; opacity: 0.5;
+      font-family: var(--brush); color: var(--ink);
+    }
+    .toc-close:hover { opacity: 1; }
+    .toc-title { font-family: var(--brush); font-size: 26px; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .toc-sub { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 22px; }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; }
+    .toc-list li { padding: 8px 0; border-bottom: 1px dashed var(--line-soft); cursor: pointer; display: flex; align-items: baseline; gap: 14px; transition: color 0.2s; }
+    .toc-list li:hover { color: var(--accent); }
+    .toc-list .num { font-family: var(--brush); font-size: 14px; color: var(--accent); min-width: 28px; }
+    .toc-list .lab { font-size: 15px; flex: 1; }
+    .toc-list .kind { font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; opacity: 0.45; }
+    .toc-list .is-section { color: var(--accent); font-weight: 600; }
+
+    /* ── Slide types ── */
+    .slide-title { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 36px 72px; }
+    .slide-title .week-tag { display: inline-flex; align-items: center; gap: 14px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.4em; opacity: 0.6; margin-bottom: 24px; }
+    .slide-title .seal { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--accent); color: var(--chashitsu-paper); font-family: var(--brush); font-size: 16px; transform: rotate(-3deg); }
+    .slide-title h1 { font-family: var(--brush); font-size: 74px; font-weight: 400; line-height: 1.1; letter-spacing: 0.04em; margin-bottom: 18px; }
+    .slide-title .subtitle { font-family: var(--sans); font-size: 17px; letter-spacing: 0.22em; opacity: 0.6; margin-bottom: 28px; }
+    .slide-title .author { font-size: 17px; opacity: 0.85; line-height: 1.85; max-width: 760px; }
+    .slide-title .author cite { font-style: italic; color: var(--accent); }
+    .meta-strip { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 24px; font-family: var(--sans); font-size: 13px; opacity: 0.6; letter-spacing: 0.12em; }
+
+    .slide-section {
+      display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+      background: linear-gradient(135deg, rgba(196,56,56,0.06) 0%, rgba(216,200,168,0.4) 100%);
+      padding: 36px 72px;
+    }
+    .slide-section .big-num { font-family: var(--brush); font-size: 240px; color: var(--accent); opacity: 0.15; position: absolute; bottom: 30px; right: 60px; line-height: 1; }
+    .slide-section .part { font-family: var(--sans); font-size: 13px; letter-spacing: 0.4em; opacity: 0.55; margin-bottom: 14px; }
+    .slide-section h2 { font-family: var(--brush); font-size: 58px; font-weight: 400; letter-spacing: 0.04em; line-height: 1.15; margin-bottom: 14px; }
+    .slide-section .sec-en { font-family: var(--sans); font-size: 16px; letter-spacing: 0.3em; opacity: 0.55; font-style: italic; margin-bottom: 22px; }
+    .slide-section .sec-q { font-size: 19px; opacity: 0.85; max-width: 640px; line-height: 1.9; border-left: 3px solid var(--accent); padding-left: 20px; }
+
+    .slide-content { padding-top: 28px; }
+    .content-head { margin-bottom: 22px; display: flex; align-items: baseline; gap: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .content-head h2 { font-family: var(--brush); font-size: 38px; font-weight: 400; letter-spacing: 0.04em; }
+    .content-head .h-en { font-family: var(--sans); font-size: 13.5px; letter-spacing: 0.2em; opacity: 0.55; font-style: italic; }
+    .content-head .h-tag { margin-left: auto; font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.1em; opacity: 0.45; }
+
+    .lead { font-size: 19px; line-height: 2; opacity: 0.88; max-width: 880px; margin-bottom: 20px; }
+    .lead p + p { margin-top: 14px; }
+    .lead strong { color: var(--accent); }
+
+    /* ── Source footer (per-slide unit / citation, restored from original deck) ── */
+    .slide-foot {
+      margin-top: 22px; padding-top: 10px; border-top: 1px solid var(--line-soft);
+      display: flex; justify-content: space-between; gap: 16px;
+      font-family: var(--sans); font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase; opacity: 0.48;
+    }
+    .slide-section .slide-foot { border-top-color: rgba(31,31,29,0.15); position: absolute; left: 72px; right: 72px; bottom: 26px; }
+
+    /* ── Concept definition box ── */
+    .concept-box { background: var(--chashitsu-paper); border-left: 4px solid var(--accent); padding: 22px 28px; margin-top: 6px; }
+    .concept-box .term { font-family: var(--brush); font-size: 25px; color: var(--ink); display: block; margin-bottom: 8px; }
+    .concept-box .term em { font-family: var(--sans); font-style: italic; font-weight: 400; opacity: 0.55; font-size: 15.5px; margin-left: 12px; letter-spacing: 0.02em; }
+    .concept-box p { font-size: 18px; line-height: 1.95; opacity: 0.92; }
+    .concept-box strong { color: var(--accent); }
+
+    /* ── Comparison two columns (generic) ── */
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+    .col { background: var(--chashitsu-paper); border-top: 4px solid; padding: 22px 24px 20px; }
+    .col.c-water { border-top-color: var(--water); }
+    .col.c-accent { border-top-color: var(--accent); }
+    .col.c-earth { border-top-color: var(--earth); }
+    .col.c-gold { border-top-color: var(--gold); }
+    .col.c-persimmon { border-top-color: var(--persimmon); }
+    .col-tag { display: inline-block; font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.28em; padding: 4px 12px; margin-bottom: 14px; }
+    .col.c-water .col-tag { background: rgba(90,122,138,0.12); color: var(--water); }
+    .col.c-accent .col-tag { background: rgba(196,56,56,0.1); color: var(--accent); }
+    .col.c-earth .col-tag { background: rgba(138,106,74,0.12); color: var(--earth); }
+    .col.c-gold .col-tag { background: rgba(184,134,11,0.12); color: var(--gold); }
+    .col.c-persimmon .col-tag { background: rgba(196,112,56,0.12); color: var(--persimmon); }
+    .col h3 { font-family: var(--brush); font-size: 25px; font-weight: 400; letter-spacing: 0.04em; margin-bottom: 6px; }
+    .col .lat { display: block; font-family: var(--sans); font-size: 13px; font-style: italic; opacity: 0.55; margin-bottom: 12px; }
+    .col p { font-size: 17px; line-height: 1.95; opacity: 0.9; }
+    .col p + p { margin-top: 10px; }
+    .col strong { color: var(--accent); }
+    .col .note { margin-top: 12px; font-size: 15px; color: var(--ink-soft); opacity: 0.65; }
+
+    /* ── Quote box ── */
+    .quote-box { background: var(--chashitsu-paper); border-left: 3px solid var(--accent); padding: 20px 26px; margin: 18px 0; font-style: italic; font-size: 18.5px; line-height: 1.95; }
+    .quote-box cite { display: block; font-style: normal; font-family: var(--sans); font-size: 13.5px; letter-spacing: 0.16em; opacity: 0.62; margin-top: 12px; }
+
+    /* ── Numbered item list (mirrors source's <ol class="numbered">) ── */
+    .num-list { list-style: none; padding: 0; counter-reset: ni; display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+    .num-list.is-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 40px; }
+    .num-item { counter-increment: ni; position: relative; padding-left: 58px; }
+    .num-item::before {
+      content: counter(ni, decimal-leading-zero);
+      position: absolute; left: 0; top: -3px;
+      font-family: var(--brush); font-size: 30px; color: var(--accent); line-height: 1;
+    }
+    .num-item .nt { display: block; font-family: var(--jp); font-weight: 600; font-size: 18.5px; color: var(--ink); margin-bottom: 3px; }
+    .num-item p { font-size: 16.5px; line-height: 1.85; opacity: 0.9; }
+    .num-item strong { color: var(--accent); }
+
+    /* ── Dual-case grid (mirrors source's paired case boxes) ── */
+    .dc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+    .dc-card { background: var(--chashitsu-paper); border: 1px solid var(--line); border-top: 4px solid; padding: 20px 24px; }
+    .dc-card.dc-a { border-top-color: var(--earth); }
+    .dc-card.dc-b { border-top-color: var(--water); }
+    .dc-card h3 { font-family: var(--brush); font-size: 21px; letter-spacing: 0.03em; margin-bottom: 14px; }
+    .dc-card dl { display: flex; flex-direction: column; gap: 8px; }
+    .dc-card dl div { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line-soft); }
+    .dc-card dl div:last-of-type { border-bottom: none; }
+    .dc-card dt { font-family: var(--sans); font-size: 12px; letter-spacing: 0.14em; opacity: 0.55; min-width: 60px; flex-shrink: 0; padding-top: 1px; }
+    .dc-card dd { font-size: 15.5px; line-height: 1.7; opacity: 0.92; }
+    .dc-card .arrow-out { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line-soft); font-family: var(--sans); font-size: 13.5px; color: var(--accent); letter-spacing: 0.04em; }
+    .dc-card.dc-a .arrow-out { color: var(--earth); }
+    .dc-card.dc-b .arrow-out { color: var(--water); }
+
+    /* ── Comparison table (3-column) ── */
+    .cmp-table { width: 100%; border-collapse: collapse; background: var(--chashitsu-paper); border: 1px solid var(--line); font-size: 16px; margin-top: 10px; }
+    .cmp-table th, .cmp-table td { padding: 13px 16px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: top; }
+    .cmp-table th { font-family: var(--brush); font-size: 17.5px; font-weight: 500; background: rgba(216,200,168,0.4); }
+    .cmp-table th:nth-child(2), .cmp-table td:nth-child(2) { background: rgba(90,122,138,0.05); }
+    .cmp-table th:nth-child(3), .cmp-table td:nth-child(3) { background: rgba(184,134,11,0.05); }
+    .cmp-table th:nth-child(4), .cmp-table td:nth-child(4) { background: rgba(196,56,56,0.05); }
+    .cmp-table td:first-child { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.1em; opacity: 0.6; width: 130px; vertical-align: middle; }
+
+    /* ── Insight banner ── */
+    .insight { margin-top: 18px; padding: 15px 22px; background: rgba(196,56,56,0.06); border-left: 3px solid var(--accent); font-size: 16.5px; line-height: 1.9; }
+    .insight strong { color: var(--accent); }
+
+    /* ── Regime cards (Esping-Andersen, click to expand) ── */
+    .regime-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 10px; }
+    .regime { background: var(--chashitsu-paper); border: 1px solid var(--line); padding: 20px 22px; cursor: pointer; transition: border-color 0.25s, transform 0.25s; position: relative; min-height: 210px; }
+    .regime:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .regime.liberal { border-top: 4px solid var(--water); }
+    .regime.conservative { border-top: 4px solid var(--earth); }
+    .regime.social-dem { border-top: 4px solid var(--moss); }
+    .regime h3 { font-family: var(--brush); font-size: 22px; letter-spacing: 0.03em; margin-bottom: 4px; }
+    .regime .lat { font-family: var(--sans); font-size: 12px; font-style: italic; opacity: 0.55; margin-bottom: 12px; display: block; }
+    .regime .fx { font-size: 15px; line-height: 1.85; opacity: 0.88; }
+    .regime .fx b { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.12em; opacity: 0.6; font-weight: 600; margin-right: 4px; }
+    .regime .detail { font-size: 13.5px; line-height: 1.75; padding-top: 0; border-top: 0 dashed var(--line-soft); max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.3s, padding 0.3s, border 0.3s; }
+    .regime.is-open .detail { max-height: 240px; opacity: 1; padding-top: 12px; border-top: 1px dashed var(--line-soft); margin-top: 12px; }
+    .regime .detail b { color: var(--accent); }
+    .regime .more-hint { position: absolute; bottom: 12px; right: 16px; font-family: var(--sans); font-size: 10px; letter-spacing: 0.18em; color: var(--accent); opacity: 0.75; }
+
+    /* ── Diagram wrapper ── */
+    .diagram-wrap { margin-top: 10px; background: var(--chashitsu-paper); border: 1px solid var(--line); padding: 18px 22px 14px; }
+    .diagram-wrap svg { width: 100%; height: auto; display: block; }
+    .diagram-cap { margin-top: 8px; font-family: var(--sans); font-size: 12px; letter-spacing: 0.08em; opacity: 0.55; text-align: center; }
+
+    /* ── Stage flow (QWERTY / process steps) ── */
+    .stage-flow { display: flex; align-items: stretch; gap: 10px; margin-top: 8px; }
+    .stage-flow .stage { flex: 1; background: var(--chashitsu-paper); border: 1px solid var(--line); border-top: 4px solid var(--earth); padding: 16px 16px; text-align: center; }
+    .stage-flow .stage:nth-child(1) { border-top-color: var(--ink); }
+    .stage-flow .stage:nth-child(3) { border-top-color: var(--accent); }
+    .stage-flow .stage:nth-child(5) { border-top-color: var(--accent); }
+    .stage-flow .stage:nth-child(7) { border-top-color: var(--earth); }
+    .stage-flow .stage .sn { font-family: var(--brush); font-size: 24px; color: var(--accent); }
+    .stage-flow .stage h4 { font-family: var(--jp); font-size: 16.5px; margin: 6px 0 2px; }
+    .stage-flow .stage .en { font-family: var(--sans); font-size: 11px; font-style: italic; opacity: 0.55; }
+    .stage-flow .arrow { align-self: center; font-size: 20px; color: var(--accent); opacity: 0.55; }
+
+    /* ── Discussion grid (static, matches source's non-interactive 2-col grid) ── */
+    .hi-discuss { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 6px; }
+    .hi-q { background: var(--chashitsu-paper); border-top: 2px solid var(--accent); padding: 16px 20px; }
+    .hi-q .qn { font-family: var(--brush); font-size: 18px; color: var(--accent); letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
+    .hi-q p { font-size: 15.5px; line-height: 1.85; }
+    .hi-q strong { color: var(--accent); }
+
+    /* ── Takeaways-style course map ── */
+    .takeaways { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .takeaways.is-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
+    .take { display: flex; align-items: flex-start; gap: 18px; padding: 14px 20px; background: var(--chashitsu-paper); border: 1px solid var(--line); }
+    .take .num { font-family: var(--brush); font-size: 32px; color: var(--accent); line-height: 1; min-width: 44px; }
+    .take .txt { font-size: 16.5px; line-height: 1.8; }
+    .take .txt b { display: block; font-family: var(--jp); font-weight: 600; font-size: 17px; margin-bottom: 2px; }
+    .take strong { color: var(--accent); }
+
+    .keyboard-hint { position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%); font-family: var(--sans); font-size: 9.5px; letter-spacing: 0.25em; opacity: 0.4; pointer-events: none; z-index: 60; }
+    .keyboard-hint kbd { font-family: var(--mono); font-size: 9.5px; background: rgba(31,31,29,0.08); padding: 1px 5px; margin: 0 2px; }
+
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ── Mobile ── */
+    @media (max-width: 760px) {
+      .topbar { padding: 0 14px; }
+      .top-title { font-size: 15px; }
+      .top-title small { display: none; }
+      .top-right { display: none; }
+      .toc-btn { font-size: 10.5px; padding: 4px 9px; letter-spacing: 0.18em; }
+
+      .slide { padding: 26px 20px 20px; }
+      .slide-title { padding: 26px 20px; }
+      .slide-title h1 { font-size: 42px; }
+      .slide-title .subtitle { font-size: 13.5px; letter-spacing: 0.14em; }
+      .slide-title .author { font-size: 15px; }
+      .meta-strip { font-size: 11.5px; gap: 12px; }
+
+      .slide-section { padding: 26px 20px; }
+      .slide-section h2 { font-size: 36px; }
+      .slide-section .sec-en { font-size: 13px; }
+      .slide-section .sec-q { font-size: 16px; }
+      .slide-section .big-num { font-size: 130px; bottom: 20px; right: 16px; }
+      .slide-section .slide-foot { left: 20px; right: 20px; }
+
+      .content-head h2 { font-size: 25px; }
+      .content-head .h-en { font-size: 11px; }
+      .content-head .h-tag { display: none; }
+
+      .compare, .dc-grid, .regime-grid, .takeaways.is-grid, .num-list.is-grid, .hi-discuss { grid-template-columns: 1fr; }
+      .stage-flow { flex-direction: column; }
+      .stage-flow .arrow { transform: rotate(90deg); }
+
+      .navbar { padding: 0 14px; height: 58px; }
+      .nav-btn { padding: 7px 14px; font-size: 13px; letter-spacing: 0.1em; }
+      .dots { max-width: 200px; }
+      .nav-center { font-size: 12px; gap: 10px; }
+
+      .toc-panel { padding: 24px 20px; }
+      .toc-list { grid-template-columns: 1fr; gap: 0; }
+      .toc-list .lab { font-size: 13.5px; }
+
+      .keyboard-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<svg class="paper-grain" aria-hidden="true">
+  <defs>
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#paper-noise)" />
+</svg>
+
+<header class="topbar">
+  <div class="top-left">
+    <a href="../../teaching-zh.html" class="back">← 教學</a>
+    <span class="top-sep">·</span>
+    <span class="top-title">歷史制度論<small>社研法 第 14 週</small></span>
+  </div>
+  <div class="top-right">
+    <span>Hall &amp; Taylor (1996) ・ Thelen (1999) ・ Pierson (2004)</span>
+    <button class="toc-btn" onclick="toggleToc()">目次 ・ TOC</button>
+  </div>
+</header>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ============ S00 (投影片 00/33) 封面 ============ -->
+  <section class="slide slide-title is-active" data-kind="title" data-label="封面">
+    <div class="slide-inner">
+      <div class="week-tag">
+        <span class="seal">研</span>
+        <span>第 14 週 ・ WEEK 14</span>
+      </div>
+      <h1>歷史制度論</h1>
+      <p class="subtitle">A LECTURE IN HISTORICAL COMPARATIVE ANALYSIS</p>
+      <p class="author">
+        Historical Institutionalism in Comparative Politics ・ 三大新制度論、關鍵轉折點、路徑依賴、政策回饋與再生機制，並延伸至歐洲國家建構、拉美勞工政治、福利體制與東亞／台灣案例。
+      </p>
+      <div class="meta-strip">
+        <span>講授 ・ 葉崇揚 教授</span>
+        <span>東吳大學社會學系</span>
+        <span>建議時間 150 分鐘</span>
+        <span>33 張投影片（含封面）</span>
+        <span>2026 春學期</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S01 (投影片 01/33) 課程地圖 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="課程地圖">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>課程地圖</h2>
+        <span class="h-en">Where we are going</span>
+        <span class="h-tag">01 ／ 33</span>
+      </div>
+      <div class="takeaways is-grid">
+        <div class="take"><div class="num">01</div><div class="txt"><b>制度論的興起</b>為什麼是「歷史」制度論？三大學派的分裂與對話</div></div>
+        <div class="take"><div class="num">02</div><div class="txt"><b>紅鯡魚與真正的爭點</b>Thelen 1999 對兩派差異的釐清</div></div>
+        <div class="take"><div class="num">03</div><div class="txt"><b>關鍵轉折點</b>制度形成的時刻：起源、分岔、不可逆</div></div>
+        <div class="take"><div class="num">04</div><div class="txt"><b>路徑依賴</b>QWERTY 模型與其政治學限制</div></div>
+        <div class="take"><div class="num">05</div><div class="txt"><b>政策回饋</b>政策如何創造政治：兩種回饋機制</div></div>
+        <div class="take"><div class="num">06</div><div class="txt"><b>再生機制與制度變遷</b>不同機制 → 不同脆弱性 → 不同變遷</div></div>
+        <div class="take"><div class="num">07</div><div class="txt"><b>Pierson 的時間性</b>把政治放回時間中</div></div>
+        <div class="take"><div class="num">08</div><div class="txt"><b>東亞應用</b>壓縮現代性、台灣年金、福利態度</div></div>
+      </div>
+      <div class="slide-foot"><span>Historical Institutionalism</span><span>Soochow University · 2026</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S02 (投影片 02/33) UNIT Ⅰ 分節頁 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="Ⅰ. 制度論的興起">
+    <div class="slide-inner">
+      <div class="big-num">壹</div>
+      <p class="part">第一部分 ・ PART ONE ・ 02／33</p>
+      <h2>Ⅰ　制度論的興起</h2>
+      <p class="sec-en">The Rise of New Institutionalism</p>
+      <p class="sec-q">制度為何重要？三大新制度論如何分裂、又如何對話？我們從 Hall &amp; Taylor (1996) 的分類圖譜開始，建立後續討論的概念地基。</p>
+    </div>
+    <div class="slide-foot"><span>UNIT Ⅰ · THE RISE</span><span>Three Schools of Institutionalism</span></div>
+  </section>
+
+  <!-- ============ S03 (投影片 03/33) 為什麼是制度 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="為什麼是制度">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>為什麼是<span style="color:var(--accent)">制度</span>？</h2>
+        <span class="h-en">Why does institutional analysis matter?</span>
+        <span class="h-tag">03 ／ 33</span>
+      </div>
+      <p class="lead">1980 年代後，「行為主義」與「結構功能論」對解釋政治經濟發展的限制逐漸暴露。學者重新發現：在「個人偏好」與「鉅觀結構」之間，<strong>制度</strong>作為中觀層次的分析單位，能解釋為何相似的社會結構在不同國家產生不同的政治結果。</p>
+      <div class="compare">
+        <div class="col c-water">
+          <span class="col-tag">THREE CORE QUESTIONS</span>
+          <h3>三個核心問題</h3>
+          <p>制度從哪裡來？<em>institutional origins</em><br/>制度如何維持？<em>institutional reproduction</em><br/>制度如何變遷？<em>institutional change</em></p>
+        </div>
+        <div class="col c-accent">
+          <span class="col-tag">CENTRAL CLAIM</span>
+          <h3>核心主張</h3>
+          <p>制度不是中立的協調機制，而是<strong>政治衝突的產物</strong>，並反過來形塑後續政治。制度具有「黏性」（stickiness），但這份黏性是政治地被維繫的，不是自動的。</p>
+        </div>
+      </div>
+      <div class="slide-foot"><span>UNIT Ⅰ · 03</span><span>Hall &amp; Taylor 1996</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S04 (投影片 04/33) 三大新制度論 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="三大新制度論">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>三大新制度論</h2>
+        <span class="h-en">Three New Institutionalisms</span>
+        <span class="h-tag">04 ／ 33</span>
+      </div>
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 1100 440" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <style>
+              .lbl{font-family:'Inter',sans-serif;font-size:19px;fill:#1f1f1d}
+              .ttl{font-family:'Shippori Mincho',serif;font-size:24px;font-weight:700;fill:#1f1f1d}
+              .lat{font-family:'Inter',sans-serif;font-style:italic;font-size:18px;fill:#7a7568}
+              .sub{font-family:'Inter',sans-serif;font-size:18px;fill:#7a7568}
+            </style>
+          </defs>
+          <g transform="translate(60,20)">
+            <rect x="0" y="0" width="300" height="380" fill="none" stroke="#1f1f1d" stroke-width="1.5"/>
+            <rect x="0" y="0" width="300" height="50" fill="#5a7a8a"/>
+            <text x="150" y="32" text-anchor="middle" class="ttl" fill="#f5ecd6">理性選擇制度論</text>
+            <text x="150" y="76" text-anchor="middle" class="lat">Rational Choice Institutionalism</text>
+            <line x1="20" y1="100" x2="280" y2="100" stroke="#1f1f1d" stroke-width=".8"/>
+            <text x="20" y="135" class="lbl"><tspan font-weight="700">制度</tspan>　協調機制 / 均衡</text>
+            <text x="20" y="170" class="lbl"><tspan font-weight="700">行動者</tspan>　理性、效用極大化</text>
+            <text x="20" y="205" class="lbl"><tspan font-weight="700">偏好</tspan>　外生、普遍</text>
+            <text x="20" y="240" class="lbl"><tspan font-weight="700">起源</tspan>　功能性、由設計</text>
+            <text x="20" y="275" class="lbl"><tspan font-weight="700">時間觀</tspan>　均衡分析</text>
+            <text x="20" y="320" class="sub">代表：Shepsle, Weingast,</text>
+            <text x="20" y="342" class="sub">North (early), Levi, Bates</text>
+          </g>
+          <g transform="translate(400,20)">
+            <rect x="0" y="0" width="300" height="380" fill="none" stroke="#1f1f1d" stroke-width="1.5"/>
+            <rect x="0" y="0" width="300" height="50" fill="#c43838"/>
+            <text x="150" y="32" text-anchor="middle" class="ttl" fill="#f5ecd6">歷史制度論</text>
+            <text x="150" y="76" text-anchor="middle" class="lat">Historical Institutionalism</text>
+            <line x1="20" y1="100" x2="280" y2="100" stroke="#1f1f1d" stroke-width=".8"/>
+            <text x="20" y="135" class="lbl"><tspan font-weight="700">制度</tspan>　歷史過程的遺產</text>
+            <text x="20" y="170" class="lbl"><tspan font-weight="700">行動者</tspan>　被制度形塑</text>
+            <text x="20" y="205" class="lbl"><tspan font-weight="700">偏好</tspan>　內生、脈絡化</text>
+            <text x="20" y="240" class="lbl"><tspan font-weight="700">起源</tspan>　政治衝突</text>
+            <text x="20" y="275" class="lbl"><tspan font-weight="700">時間觀</tspan>　序列／過程</text>
+            <text x="20" y="320" class="sub">代表：Skocpol, Thelen,</text>
+            <text x="20" y="342" class="sub">Pierson, Mahoney, Ertman</text>
+          </g>
+          <g transform="translate(740,20)">
+            <rect x="0" y="0" width="300" height="380" fill="none" stroke="#1f1f1d" stroke-width="1.5"/>
+            <rect x="0" y="0" width="300" height="50" fill="#b8860b"/>
+            <text x="150" y="32" text-anchor="middle" class="ttl" fill="#f5ecd6">社會學制度論</text>
+            <text x="150" y="76" text-anchor="middle" class="lat">Sociological Institutionalism</text>
+            <line x1="20" y1="100" x2="280" y2="100" stroke="#1f1f1d" stroke-width=".8"/>
+            <text x="20" y="135" class="lbl"><tspan font-weight="700">制度</tspan>　共享文化腳本</text>
+            <text x="20" y="170" class="lbl"><tspan font-weight="700">行動者</tspan>　遵循正當性</text>
+            <text x="20" y="205" class="lbl"><tspan font-weight="700">偏好</tspan>　被文化建構</text>
+            <text x="20" y="240" class="lbl"><tspan font-weight="700">起源</tspan>　文化模仿、同形</text>
+            <text x="20" y="275" class="lbl"><tspan font-weight="700">時間觀</tspan>　腳本傳承</text>
+            <text x="20" y="320" class="sub">代表：Meyer, DiMaggio,</text>
+            <text x="20" y="342" class="sub">Powell, Zucker, Scott</text>
+          </g>
+        </svg>
+      </div>
+      <div class="slide-foot"><span>UNIT Ⅰ · 04</span><span>Three Institutionalisms compared</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S05 (投影片 05/33) 兩種制度概念 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="兩種制度概念">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>兩種「制度」概念</h2>
+        <span class="h-en">Two ways of thinking about institutions</span>
+        <span class="h-tag">05 ／ 33</span>
+      </div>
+      <div class="compare">
+        <div class="col c-water">
+          <span class="col-tag">RATIONAL CHOICE</span>
+          <h3>理性選擇</h3>
+          <span class="lat">Institutions as coordination devices</span>
+          <p>制度作為「協調機制」，提供共同預期與承諾，使行動者能達成並維繫<strong>均衡</strong>。Shepsle &amp; Weingast (1981) 對美國國會的分析、Moravcsik (1993) 對歐盟整合的分析皆屬此類。</p>
+          <p>制度被理解為「行動者刻意設計來解決集體行動問題」的產物：透過降低交易成本、提供承諾機制，使合作得以可能。</p>
+        </div>
+        <div class="col c-accent">
+          <span class="col-tag">HISTORICAL INSTITUTIONALISM</span>
+          <h3>歷史制度論</h3>
+          <span class="lat">Institutions as historical legacies</span>
+          <p>制度作為<strong>具體歷史過程的遺產</strong>，鑲嵌在更廣的政治社會脈絡之中。同樣的「制度形式」在不同歷史脈絡下可能有完全不同的運作邏輯。</p>
+          <p>關鍵不是「制度如何協調行動者」，而是「制度從什麼樣的政治衝突中浮現？又如何在持續變動的環境中被政治地維繫？」</p>
+        </div>
+      </div>
+      <div class="slide-foot"><span>UNIT Ⅰ · 05</span><span>Equilibrium vs. Legacy</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S06 (投影片 06/33) UNIT Ⅱ 分節頁 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="Ⅱ. 紅鯡魚與真正的爭點">
+    <div class="slide-inner">
+      <div class="big-num">貳</div>
+      <p class="part">第二部分 ・ PART TWO ・ 06／33</p>
+      <h2>Ⅱ　紅鯡魚與真正的爭點</h2>
+      <p class="sec-en">Red Herrings &amp; Real Issues</p>
+      <p class="sec-q">Thelen (1999) 主張：兩派的多數差異是被誇大的。我們先剝開三條「紅鯡魚」，再聚焦真正的核心爭點：均衡秩序 vs. 歷史過程。</p>
+    </div>
+    <div class="slide-foot"><span>UNIT Ⅱ · THELEN 1999</span><span>What really divides RC and HI?</span></div>
+  </section>
+
+  <!-- ============ S07 (投影片 07/33) 三條紅鯡魚 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="三條紅鯡魚">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>三條「紅鯡魚」</h2>
+        <span class="h-en">Three exaggerated differences between RC and HI</span>
+        <span class="h-tag">07 ／ 33</span>
+      </div>
+      <ol class="num-list">
+        <li class="num-item"><span class="nt">理論 vs 經驗工作</span><p>傳統印象：RC 重理論，HI 重經驗。Thelen：兩派都做假設驅動的研究。差別在於<strong>假設從何而來</strong>：HI 從觀察到的經驗謎題出發；RC 從理論預測與觀察行為的偏差出發。</p></li>
+        <li class="num-item"><span class="nt">偏好內生 vs 外生</span><p>傳統印象：RC 把偏好當外生給定，HI 主張偏好被制度形塑。Thelen：RC 也必須將偏好「脈絡化」（如墨西哥立法者不能連任的案例）。HI 也越來越重視微觀基礎。</p></li>
+        <li class="num-item"><span class="nt">功能 vs 歷史觀</span><p>傳統印象：RC 以制度的功能解釋制度的存在。Thelen：North (1990)、Knight (1992) 等 RC 學者已轉向歷史視角。功能主義並不是 RC 的本質特徵。</p></li>
+      </ol>
+      <div class="slide-foot"><span>UNIT Ⅱ · 07</span><span>Thelen (1999) §1</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S08 (投影片 08/33) 真正的爭點 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="真正的爭點">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>真正的爭點</h2>
+        <span class="h-en">Equilibrium order vs. historical process</span>
+        <span class="h-tag">08 ／ 33</span>
+      </div>
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 1100 340" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <style>
+              .ttl{font-family:'Shippori Mincho',serif;font-size:28px;font-weight:700;fill:#1f1f1d}
+              .lbl{font-family:'Inter',sans-serif;font-size:19px;fill:#2d2a26}
+              .lat{font-family:'Inter',sans-serif;font-style:italic;font-size:18px;fill:#7a7568}
+              .sub{font-family:'Inter',sans-serif;font-size:18px;fill:#7a7568}
+            </style>
+          </defs>
+          <g transform="translate(40,30)">
+            <text x="0" y="0" class="ttl">均衡秩序</text>
+            <text x="0" y="26" class="lat">Equilibrium order</text>
+            <path d="M0,140 Q120,80 240,140" stroke="#5a7a8a" stroke-width="2.5" fill="none"/>
+            <circle cx="120" cy="120" r="12" fill="#5a7a8a"/>
+            <text x="0" y="190" class="lbl">制度＝協調機制</text>
+            <text x="0" y="218" class="lbl">維繫均衡點</text>
+            <text x="0" y="256" class="sub">變遷＝從一個均衡</text>
+            <text x="0" y="278" class="sub">移到另一個均衡</text>
+          </g>
+          <line x1="430" y1="30" x2="430" y2="300" stroke="#1f1f1d" stroke-width=".8" stroke-dasharray="3,4"/>
+          <text x="430" y="170" text-anchor="middle" class="lat" font-size="20">vs.</text>
+          <g transform="translate(540,30)">
+            <text x="0" y="0" class="ttl">歷史過程</text>
+            <text x="0" y="26" class="lat">Historical process</text>
+            <path d="M0,140 C100,120 200,160 300,130 S480,150 480,140" stroke="#c43838" stroke-width="2" fill="none"/>
+            <path d="M0,160 C100,180 200,150 300,170 S480,150 480,160" stroke="#b8860b" stroke-width="2" fill="none"/>
+            <path d="M0,180 C100,160 200,190 300,150 S480,170 480,180" stroke="#8a6a4a" stroke-width="2" fill="none"/>
+            <circle cx="0" cy="160" r="4" fill="#1f1f1d"/>
+            <circle cx="480" cy="160" r="4" fill="#1f1f1d"/>
+            <text x="0" y="210" class="lbl">制度＝歷史遺產</text>
+            <text x="0" y="238" class="lbl">多重時序基礎</text>
+            <text x="0" y="276" class="sub">變遷＝不同制度過程</text>
+            <text x="0" y="298" class="sub">的碰撞、互動、不同步</text>
+          </g>
+        </svg>
+      </div>
+      <p style="font-size:16.5px;color:var(--ink-soft);line-height:1.8;margin-top:10px">「歷史制度論將<strong>時序與時間性</strong>（timing and temporality）放回政治分析的核心」<span style="font-family:var(--sans);font-style:italic;opacity:.6;font-size:14.5px">　Orren &amp; Skowronek 1994</span></p>
+      <div class="slide-foot"><span>UNIT Ⅱ · 08</span><span>The genuine divide</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S09 (投影片 09/33) UNIT Ⅲ 分節頁 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="Ⅲ. 關鍵轉折點">
+    <div class="slide-inner">
+      <div class="big-num">參</div>
+      <p class="part">第三部分 ・ PART THREE ・ 09／33</p>
+      <h2>Ⅲ　關鍵轉折點</h2>
+      <p class="sec-en">Critical Junctures</p>
+      <p class="sec-q">制度形成的「關鍵時刻」：少數可能性中走上一條路，後續路徑被部分鎖定。這是歷史制度論最具影響力的概念之一。</p>
+    </div>
+    <div class="slide-foot"><span>UNIT Ⅲ · CRITICAL JUNCTURES</span><span>When &amp; how institutions form</span></div>
+  </section>
+
+  <!-- ============ S10 (投影片 10/33) 關鍵轉折點概念 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="關鍵轉折點概念">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>關鍵轉折點</h2>
+        <span class="h-en">Critical Junctures</span>
+        <span class="h-tag">10 ／ 33</span>
+      </div>
+      <div class="concept-box">
+        <span class="term">關鍵轉折點 <em>critical juncture</em></span>
+        <p>在制度發展的某一短暫時期內，行動者面臨數個結構性可能性，最終的選擇將形成<strong>持續且難以逆轉</strong>的制度遺產，使後續政治發展沿著特定軌跡展開。</p>
+      </div>
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 1100 260" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <style>
+              .lbl{font-family:'Inter',sans-serif;font-size:19px;fill:#1f1f1d}
+              .ttl{font-family:'Shippori Mincho',serif;font-size:20px;font-weight:700;fill:#1f1f1d}
+              .lat{font-family:'Inter',sans-serif;font-style:italic;font-size:18px;fill:#7a7568}
+            </style>
+          </defs>
+          <line x1="80" y1="130" x2="240" y2="130" stroke="#1f1f1d" stroke-width="1.2"/>
+          <circle cx="240" cy="130" r="9" fill="#c43838"/>
+          <text x="240" y="92" text-anchor="middle" class="ttl">關鍵轉折</text>
+          <text x="240" y="112" text-anchor="middle" class="lat">junction</text>
+          <line x1="240" y1="130" x2="1020" y2="52" stroke="#8a6a4a" stroke-width="2" stroke-linecap="round"/>
+          <line x1="240" y1="130" x2="1020" y2="130" stroke="#b8860b" stroke-width="2" stroke-linecap="round"/>
+          <line x1="240" y1="130" x2="1020" y2="208" stroke="#c43838" stroke-width="2" stroke-linecap="round"/>
+          <line x1="240" y1="130" x2="700" y2="14" stroke="#1f1f1d" stroke-width="1" stroke-dasharray="3,3" opacity=".25"/>
+          <line x1="240" y1="130" x2="700" y2="246" stroke="#1f1f1d" stroke-width="1" stroke-dasharray="3,3" opacity=".25"/>
+          <circle cx="1020" cy="52" r="6" fill="#8a6a4a"/>
+          <circle cx="1020" cy="130" r="6" fill="#b8860b"/>
+          <circle cx="1020" cy="208" r="6" fill="#c43838"/>
+          <text x="1040" y="56" class="lbl">路徑 A</text>
+          <text x="1040" y="134" class="lbl">路徑 B</text>
+          <text x="1040" y="212" class="lbl">路徑 C</text>
+          <text x="80" y="160" class="lbl">先決條件</text>
+          <text x="80" y="180" class="lat">antecedents</text>
+          <text x="540" y="245" text-anchor="middle" class="lat" font-size="18">分歧軌跡 / divergent trajectories</text>
+        </svg>
+      </div>
+      <div class="slide-foot"><span>UNIT Ⅲ · 10</span><span>Capoccia &amp; Kelemen 2007</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S11 (投影片 11/33) 案例：Ertman ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例：Ertman">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例：Ertman 與歐洲國家建構</h2>
+        <span class="h-en">The Birth of Leviathan (1997)</span>
+        <span class="h-tag">11 ／ 33</span>
+      </div>
+      <p class="lead" style="margin-bottom:14px">Ertman 主張：歐洲各國 18 世紀的「國家結構」差異，可由<strong>「持續軍事競爭來臨的時序」</strong>解釋。同一個「軍事壓力」，因為發生在不同的歷史時點，可運用的「行政技術」不同，造成了截然不同的國家形式。</p>
+      <div class="dc-grid">
+        <div class="dc-card dc-a">
+          <h3>早期軍事競爭（12–15 世紀）</h3>
+          <dl>
+            <div><dt>時點</dt><dd>識字率低、現代科層尚未發明</dd></div>
+            <div><dt>解方</dt><dd>賣官鬻爵 + 包稅制</dd></div>
+            <div><dt>受益者</dt><dd>包稅商人、買官者</dd></div>
+            <div><dt>後果</dt><dd>庇護式國家、議會發展遲緩</dd></div>
+          </dl>
+          <div class="arrow-out">→ 法國、西班牙等</div>
+        </div>
+        <div class="dc-card dc-b">
+          <h3>晚期軍事競爭（17–18 世紀）</h3>
+          <dl>
+            <div><dt>時點</dt><dd>識字率高、科層技術已成熟</dd></div>
+            <div><dt>解方</dt><dd>專業官僚體系</dd></div>
+            <div><dt>受益者</dt><dd>行政專業階層</dd></div>
+            <div><dt>後果</dt><dd>科層自主性、議會制度發展</dd></div>
+          </dl>
+          <div class="arrow-out">→ 普魯士、英格蘭等</div>
+        </div>
+      </div>
+      <div class="slide-foot"><span>UNIT Ⅲ · 11</span><span>Same pressure, different timing → different states</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S12 (投影片 12/33) UNIT Ⅳ 分節頁 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="Ⅳ. 路徑依賴">
+    <div class="slide-inner">
+      <div class="big-num">肆</div>
+      <p class="part">第四部分 ・ PART FOUR ・ 12／33</p>
+      <h2>Ⅳ　路徑依賴</h2>
+      <p class="sec-en">Path Dependence</p>
+      <p class="sec-q">為什麼「初始選擇」如此重要？早期形成的制度為何難以扭轉？我們檢視三個版本的路徑依賴：經濟學技術模型、社會學文化腳本、歷史制度論的整合視角。</p>
+    </div>
+    <div class="slide-foot"><span>UNIT Ⅳ · PATH DEPENDENCE</span><span>QWERTY and beyond</span></div>
+  </section>
+
+  <!-- ============ S13 (投影片 13/33) QWERTY 模型 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="QWERTY 模型">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>QWERTY 模型</h2>
+        <span class="h-en">David (1985), Arthur (1989)</span>
+        <span class="h-tag">13 ／ 33</span>
+      </div>
+      <p class="lead" style="margin-bottom:10px">某些技術因偶然或小規模事件取得早期優勢，隨著採用者增加，<strong>報酬遞增</strong>使該技術愈來愈難被取代，即使後來的替代方案可能更有效率。經典案例：QWERTY 鍵盤、VHS 對 Betamax、微軟 Windows 對 Mac OS。</p>
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 1100 300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <style>
+              .lbl{font-family:'Inter',sans-serif;font-size:19px;fill:#1f1f1d}
+              .lat{font-family:'Inter',sans-serif;font-style:italic;font-size:18px;fill:#7a7568}
+              .sub{font-family:'Inter',sans-serif;font-size:18px;fill:#7a7568}
+            </style>
+          </defs>
+          <line x1="60" y1="200" x2="1040" y2="200" stroke="#1f1f1d" stroke-width="1.2"/>
+          <g>
+            <circle cx="120" cy="200" r="6" fill="#1f1f1d"/>
+            <text x="120" y="180" text-anchor="middle" class="lbl" font-weight="700">①</text>
+            <text x="120" y="235" text-anchor="middle" class="lbl">關鍵轉折</text>
+            <text x="120" y="258" text-anchor="middle" class="sub">multiple options open</text>
+          </g>
+          <g>
+            <circle cx="380" cy="200" r="6" fill="#c43838"/>
+            <text x="380" y="180" text-anchor="middle" class="lbl" font-weight="700">②</text>
+            <text x="380" y="235" text-anchor="middle" class="lbl">初始選擇</text>
+            <text x="380" y="258" text-anchor="middle" class="sub">contingent choice</text>
+          </g>
+          <g>
+            <circle cx="660" cy="200" r="6" fill="#8a6a4a"/>
+            <text x="660" y="180" text-anchor="middle" class="lbl" font-weight="700">③</text>
+            <text x="660" y="235" text-anchor="middle" class="lbl">自我強化</text>
+            <text x="660" y="258" text-anchor="middle" class="sub">increasing returns</text>
+          </g>
+          <g>
+            <circle cx="940" cy="200" r="6" fill="#8a6a4a"/>
+            <text x="940" y="180" text-anchor="middle" class="lbl" font-weight="700">④</text>
+            <text x="940" y="235" text-anchor="middle" class="lbl">鎖定</text>
+            <text x="940" y="258" text-anchor="middle" class="sub">lock-in</text>
+          </g>
+          <path d="M120,80 L380,100 L660,120 L940,160" stroke="#c43838" stroke-width="1.5" fill="none" opacity=".6"/>
+          <path d="M120,320 L380,300 L660,280 L940,240" stroke="#c43838" stroke-width="1.5" fill="none" opacity=".6"/>
+          <path d="M120,80 L380,100 L660,120 L940,160 L940,240 L660,280 L380,300 L120,320 Z" fill="#c43838" opacity=".08"/>
+          <text x="120" y="60" class="lat">options narrow over time →</text>
+        </svg>
+      </div>
+      <div class="slide-foot"><span>UNIT Ⅳ · 13</span><span>Increasing returns &amp; lock-in</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S14 (投影片 14/33) QWERTY 的局限 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="QWERTY 的局限">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>QWERTY 模型的政治學限制</h2>
+        <span class="h-en">Why the QWERTY model is too contingent and too deterministic for politics</span>
+        <span class="h-tag">14 ／ 33</span>
+      </div>
+      <div class="compare">
+        <div class="col c-accent">
+          <span class="col-tag">TOO CONTINGENT</span>
+          <h3>太偶然</h3>
+          <p>把關鍵轉折點視為近乎空白的選擇時刻，能被小事件「翻轉」。但政治世界很少有真正的空白起點，<strong>關鍵轉折點背後通常有系統性的前提條件</strong>，包括時序、序列、與不同政治經濟過程的互動。</p>
+        </div>
+        <div class="col c-earth">
+          <span class="col-tag">TOO DETERMINISTIC</span>
+          <h3>太決定論</h3>
+          <p>QWERTY 模型假設一旦選擇形成，路徑就只會越走越窄。但政治生活不像技術市場，<strong>失敗者不會消失</strong>。他們會忍耐等待時機、在既有框架內追求顛覆性目標，制度可能被反向利用（如美國產業關係中的職位分類制度）。</p>
+        </div>
+      </div>
+      <div class="quote-box">
+        <p>"For those who are disadvantaged by prevailing institutions, adapting may mean biding their time until conditions shift, or working within the existing framework in pursuit of goals different from — even subversive to — those of the institution's designers."</p>
+        <cite>Thelen 1999, p. 385</cite>
+      </div>
+      <div class="slide-foot"><span>UNIT Ⅳ · 14</span><span>Losers do not disappear in politics</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S15 (投影片 15/33) 三種路徑依賴對照 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="三種路徑依賴對照">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>三種路徑依賴的對照</h2>
+        <span class="h-en">Three theoretical accounts of path dependence</span>
+        <span class="h-tag">15 ／ 33</span>
+      </div>
+      <table class="cmp-table">
+        <thead>
+          <tr><th></th><th>經濟學版本</th><th>社會學版本</th><th>歷史制度論版本</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>核心隱喻</td><td>市場、技術選擇</td><td>文化腳本、認知</td><td>政治衝突、權力</td></tr>
+          <tr><td>再生機制</td><td>協調效果 / 增益報酬</td><td>同形、正當性</td><td>多重機制（協調、分配、規範）</td></tr>
+          <tr><td>對失敗者</td><td>消失（破產退出）</td><td>被同化（接受腳本）</td><td>持續存在、伺機而動</td></tr>
+          <tr><td>變遷的來源</td><td>外生衝擊</td><td>典範轉移</td><td>再生機制的內部瓦解</td></tr>
+          <tr><td>代表學者</td><td>David, Arthur, North (early)</td><td>DiMaggio &amp; Powell, Meyer</td><td>Pierson, Thelen, Mahoney</td></tr>
+        </tbody>
+      </table>
+      <div class="slide-foot"><span>UNIT Ⅳ · 15</span><span>Comparative path dependence</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S16 (投影片 16/33) UNIT Ⅴ 分節頁 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="Ⅴ. 政策回饋">
+    <div class="slide-inner">
+      <div class="big-num">伍</div>
+      <p class="part">第五部分 ・ PART FIVE ・ 16／33</p>
+      <h2>Ⅴ　政策回饋</h2>
+      <p class="sec-en">Policy Feedback</p>
+      <p class="sec-q">政策不僅是「政治的結果」，更是「政治的原因」。一旦政策制定，會回過頭來形塑利益、認知與政治參與的可能性。這是 Pierson (1993) 的核心命題。</p>
+    </div>
+    <div class="slide-foot"><span>UNIT Ⅴ · POLICY FEEDBACK</span><span>When effect becomes cause</span></div>
+  </section>
+
+  <!-- ============ S17 (投影片 17/33) 政策回饋概念 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="政策回饋概念">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>政策回饋</h2>
+        <span class="h-en">Policy creates politics</span>
+        <span class="h-tag">17 ／ 33</span>
+      </div>
+      <div class="concept-box">
+        <span class="term">政策回饋 <em>policy feedback</em></span>
+        <p>政策一旦制定，會透過<strong>重塑利益、改變資源分配、形塑認知與政治參與</strong>，回過頭來改變後續的政治可能性。Pierson (1993) 將此命題系統化為歷史制度論的核心分析工具之一。</p>
+      </div>
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 1100 300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <style>
+              .ttl{font-family:'Shippori Mincho',serif;font-size:19px;font-weight:700;fill:#1f1f1d}
+              .lbl{font-family:'Inter',sans-serif;font-size:19px;fill:#1f1f1d}
+              .lat{font-family:'Inter',sans-serif;font-style:italic;font-size:18px;fill:#7a7568}
+            </style>
+            <marker id="arrowhead14" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+              <polygon points="0 0, 10 4, 0 8" fill="#1f1f1d"/>
+            </marker>
+          </defs>
+          <g transform="translate(550,150)">
+            <g transform="translate(0,-110)">
+              <rect x="-110" y="-28" width="220" height="56" fill="#c43838" stroke="#1f1f1d" stroke-width="1"/>
+              <text x="0" y="-2" text-anchor="middle" class="ttl" fill="#f5ecd6">政策 / 制度</text>
+              <text x="0" y="18" text-anchor="middle" class="lat" fill="#f5ecd6">policy</text>
+            </g>
+            <g transform="translate(170,0)">
+              <rect x="-90" y="-28" width="180" height="56" fill="none" stroke="#1f1f1d" stroke-width="1.2"/>
+              <text x="0" y="-2" text-anchor="middle" class="ttl" font-size="18">利益重組</text>
+              <text x="0" y="18" text-anchor="middle" class="lat">interest formation</text>
+            </g>
+            <g transform="translate(0,110)">
+              <rect x="-110" y="-28" width="220" height="56" fill="#8a6a4a" stroke="#1f1f1d" stroke-width="1"/>
+              <text x="0" y="-2" text-anchor="middle" class="ttl" fill="#f5ecd6">政治場域改變</text>
+              <text x="0" y="18" text-anchor="middle" class="lat" fill="#f5ecd6">political arena reshaped</text>
+            </g>
+            <g transform="translate(-170,0)">
+              <rect x="-90" y="-28" width="180" height="56" fill="none" stroke="#1f1f1d" stroke-width="1.2"/>
+              <text x="0" y="-2" text-anchor="middle" class="ttl" font-size="18">認知與規範</text>
+              <text x="0" y="18" text-anchor="middle" class="lat">cognitive frames</text>
+            </g>
+            <path d="M 75,-102 Q 145,-64 108,-11" stroke="#1f1f1d" stroke-width="1.4" fill="none" marker-end="url(#arrowhead14)"/>
+            <path d="M 108,11 Q 145,64 65,100" stroke="#1f1f1d" stroke-width="1.4" fill="none" marker-end="url(#arrowhead14)"/>
+            <path d="M -65,100 Q -145,64 -108,11" stroke="#1f1f1d" stroke-width="1.4" fill="none" marker-end="url(#arrowhead14)"/>
+            <path d="M -108,-11 Q -145,-64 -75,-102" stroke="#1f1f1d" stroke-width="1.4" fill="none" marker-end="url(#arrowhead14)"/>
+          </g>
+        </svg>
+      </div>
+      <div class="slide-foot"><span>UNIT Ⅴ · 17</span><span>Pierson 1993</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S18 (投影片 18/33) 兩種回饋機制 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="兩種回饋機制">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>兩種回饋機制</h2>
+        <span class="h-en">Coordination effects &amp; distributional effects</span>
+        <span class="h-tag">18 ／ 33</span>
+      </div>
+      <div class="compare">
+        <div class="col c-water">
+          <span class="col-tag">COORDINATION EFFECTS</span>
+          <h3>協調效果</h3>
+          <p>制度一旦建立，行動者會調整策略以反映並強化制度邏輯。</p>
+          <p><strong>案例：</strong>Streeck 對德國的分析。職業教育訓練與集中化集體談判等制度「強迫並促成」企業採取高技能、高附加價值生產策略。一旦企業沿此路徑投資，就會依賴這些制度的延續，形成自我強化的循環。</p>
+          <div class="note">→ 強調行動者「適應」既有制度的方式</div>
+        </div>
+        <div class="col c-earth">
+          <span class="col-tag">DISTRIBUTIONAL EFFECTS</span>
+          <h3>分配效果</h3>
+          <p>制度不是中立的協調機制，而是<strong>反映、再生產並放大</strong>特定權力分布。政策回饋會主動促進某些團體的組織與權力，同時邊緣化其他團體。</p>
+          <p><strong>案例：</strong>Skocpol 對美國的分析。內戰退伍軍人的福利政策創造了自我意識的利益團體（退伍軍人與其遺孀），並使其他團體難以以其他理由要求國家保護。</p>
+          <div class="note">→ 強調制度的「權力分配」面向</div>
+        </div>
+      </div>
+      <div class="slide-foot"><span>UNIT Ⅴ · 18</span><span>Two feedback mechanisms</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S19 (投影片 19/33) 案例：三種福利體制 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例：三種福利體制">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例：三種福利體制</h2>
+        <span class="h-en">Esping-Andersen (1990) and their reproduction mechanisms</span>
+        <span class="h-tag">19 ／ 33</span>
+      </div>
+      <p class="lead" style="margin-bottom:6px">三種福利體制不僅在<strong>政策內容</strong>上不同，更重要的是其<strong>再生機制</strong>不同。這意味著它們對「特定外部變遷」的脆弱性也不同。<span style="opacity:.55;font-size:15px">（點選卡片展開再生機制與脆弱性）</span></p>
+      <div class="regime-grid">
+        <div class="regime liberal" onclick="toggleRegime(this)">
+          <h3>自由主義</h3>
+          <span class="lat">Liberal</span>
+          <div class="fx"><b>代表</b>美、英、澳<br/><b>基礎</b>市場優先、殘補式</div>
+          <div class="detail"><b>再生：</b>中產階級退出公共福利、依賴私部門。<br/><b>脆弱性：</b>經濟衰退、貧富惡化 → 政治正當性危機。</div>
+          <span class="more-hint">▶ 展開</span>
+        </div>
+        <div class="regime conservative" onclick="toggleRegime(this)">
+          <h3>保守—統合主義</h3>
+          <span class="lat">Conservative-Corporatist</span>
+          <div class="fx"><b>代表</b>德、法、義<br/><b>基礎</b>職業地位、家庭責任</div>
+          <div class="detail"><b>再生：</b>單一賺取者家庭模型＋階層化保險。<br/><b>脆弱性：</b>性別角色、家庭結構變遷 → 制度錯置。</div>
+          <span class="more-hint">▶ 展開</span>
+        </div>
+        <div class="regime social-dem" onclick="toggleRegime(this)">
+          <h3>社會民主</h3>
+          <span class="lat">Social-Democratic</span>
+          <div class="fx"><b>代表</b>瑞典、丹麥、挪威<br/><b>基礎</b>普及主義、平等</div>
+          <div class="detail"><b>再生：</b>中產階級的「條件式同意」（Rothstein）。<br/><b>脆弱性：</b>個人化、私部門服務興起 → 退出標準化。</div>
+          <span class="more-hint">▶ 展開</span>
+        </div>
+      </div>
+      <div class="slide-foot"><span>UNIT Ⅴ · 19</span><span>Different regimes, different vulnerabilities</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S20 (投影片 20/33) 案例：Skocpol ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例：Skocpol">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例：保衛士兵與母親</h2>
+        <span class="h-en">Skocpol (1992) on US social policy</span>
+        <span class="h-tag">20 ／ 33</span>
+      </div>
+      <p class="lead" style="margin-bottom:10px">為什麼美國發展出獨特的「軍人遺孀＋母親」福利模式，而非歐洲式的全面性勞工社會保險？Skocpol 以歷史制度論回答這個謎題。</p>
+      <ol class="num-list">
+        <li class="num-item"><span class="nt">國家分裂與庇護式政黨</span><p>美國早期國家結構分裂、政黨依賴庇護關係，使統一的勞工階級難以形成統合性的政治力量。</p></li>
+        <li class="num-item"><span class="nt">內戰退伍軍人福利的擴張</span><p>南北戰爭後對退伍軍人與遺孀的給付，是美國最早的大規模社會給付。</p></li>
+        <li class="num-item"><span class="nt">政策回饋創造利益團體</span><p>給付政策創造了「自我意識的利益團體」（退伍軍人協會），擁有政治動員資源。</p></li>
+        <li class="num-item"><span class="nt">排擠效應</span><p>退伍軍人團體佔據了「福利的政治空間」，使其他團體（如勞工）難以以其他理由要求國家保護。</p></li>
+        <li class="num-item"><span class="nt">母性主義路徑</span><p>1900 年代女性改革者轉而推動「母性保護」政策（產婦給付、最低工資），開啟與歐洲不同的「母性福利」軌跡。</p></li>
+      </ol>
+      <div class="slide-foot"><span>UNIT Ⅴ · 20</span><span>Policy feedback creates political possibilities</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S21 (投影片 21/33) UNIT Ⅵ 分節頁 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="Ⅵ. 再生機制與制度變遷">
+    <div class="slide-inner">
+      <div class="big-num">陸</div>
+      <p class="part">第六部分 ・ PART SIX ・ 21／33</p>
+      <h2>Ⅵ　再生機制與制度變遷</h2>
+      <p class="sec-en">Reproduction Mechanisms &amp; Change</p>
+      <p class="sec-q">不同制度由不同機制維繫，因此對不同的「外部變遷」具有不同脆弱性。理解制度如何建構，就能洞察制度如何瓦解。</p>
+    </div>
+    <div class="slide-foot"><span>UNIT Ⅵ · REPRODUCTION</span><span>Knowing how it was built shows how it falls</span></div>
+  </section>
+
+  <!-- ============ S22 (投影片 22/33) 案例：拉美勞工 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例：拉美勞工">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例：拉美勞工納編比較</h2>
+        <span class="h-en">Collier &amp; Collier (1991) Shaping the Political Arena</span>
+        <span class="h-tag">22 ／ 33</span>
+      </div>
+      <p class="lead" style="margin-bottom:14px">同樣是 20 世紀拉美勞工被「納編」進政治體系，但<strong>納編方式</strong>不同，<strong>再生機制</strong>不同，因此後來的<strong>制度脆弱性</strong>也不同。這是「關鍵轉折點」+「再生機制」分析的經典範例。</p>
+      <div class="dc-grid">
+        <div class="dc-card dc-a">
+          <h3>墨西哥：庇護式納編</h3>
+          <dl>
+            <div><dt>納編方式</dt><dd>PRI 透過國家資源連結勞工</dd></div>
+            <div><dt>再生機制</dt><dd>深入社會的庇護網絡</dd></div>
+            <div><dt>日常運作</dt><dd>工作、住房、福利 → 政治忠誠</dd></div>
+            <div><dt>脆弱性</dt><dd>經濟危機 → 庇護資源萎縮 → PRI 霸權鬆動（1990s）</dd></div>
+          </dl>
+        </div>
+        <div class="dc-card dc-b">
+          <h3>巴西：鎮壓式納編</h3>
+          <dl>
+            <div><dt>納編方式</dt><dd>勞工被監控、邊緣化</dd></div>
+            <div><dt>再生機制</dt><dd>持續的勞工排斥</dd></div>
+            <div><dt>日常運作</dt><dd>控制 + 異化 → 勞工政治孤立</dd></div>
+            <div><dt>脆弱性</dt><dd>民主化、社運興起 → 勞工政黨崛起（PT）</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="slide-foot"><span>UNIT Ⅵ · 22</span><span>Different mechanisms, different vulnerabilities</span></div>
+    </div>
+  </section>
+
+  <!-- ============ S23 (投影片 23/33) 不同步性 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="不同步性">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>不同步性：制度間的碰撞</h2>
+        <span class="h-en">Orren &amp; Skowronek (1994): multiple orders, multiple temporalities</span>
+        <span class="h-tag">23 ／ 33</span>
+      </div>
+      <p class="lead" style="margin-bottom:6px">政治體系不是單一同質的制度安排，而是<strong>不同制度的疊加</strong>，每一個制度有自己的時序基礎。這些制度的「碰撞」「漏洞」「時差」，是制度變遷的重要來源。</p>
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 1100 260" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <style>
+              .ttl{font-family:'Shippori Mincho',serif;font-size:19px;font-weight:700;fill:#1f1f1d}
+              .lbl{font-family:'Inter',sans-serif;font-size:19px;fill:#1f1f1d}
+              .yr{font-family:'Inter',sans-serif;font-size:17px;fill:#7a7568}
+            </style>
+          </defs>
+          <g transform="translate(40,30)">
+            <text x="0" y="0" class="ttl">家族／家庭制度</text>
+            <line x1="0" y1="15" x2="1020" y2="15" stroke="#c43838" stroke-width="3"/>
+            <text x="0" y="35" class="yr">1900</text>
+            <text x="1020" y="35" text-anchor="end" class="yr">2025</text>
+          </g>
+          <g transform="translate(40,80)">
+            <text x="0" y="0" class="ttl">工業／勞動制度</text>
+            <line x1="180" y1="15" x2="1020" y2="15" stroke="#8a6a4a" stroke-width="3"/>
+            <text x="180" y="35" class="yr">1950</text>
+          </g>
+          <g transform="translate(40,130)">
+            <text x="0" y="0" class="ttl">社會保險制度</text>
+            <line x1="320" y1="15" x2="1020" y2="15" stroke="#b8860b" stroke-width="3"/>
+            <text x="320" y="35" class="yr">1980</text>
+          </g>
+          <g transform="translate(40,180)">
+            <text x="0" y="0" class="ttl">後工業／服務經濟</text>
+            <line x1="600" y1="15" x2="1020" y2="15" stroke="#c43838" stroke-width="3" stroke-dasharray="2,4"/>
+            <text x="600" y="35" class="yr">2000</text>
+          </g>
+          <text x="540" y="238" text-anchor="middle" class="ttl" font-size="18" fill="#c43838">↑ 不同步制度的「碰撞」 ↑</text>
+          <text x="540" y="258" text-anchor="middle" class="lbl" font-size="15" fill="#7a7568">collisions, gaps, lags between institutional orders</text>
+        </svg>
+      </div>
+      <div class="slide-foot"><span>UNIT Ⅵ · 23</span><span>Change comes from collisions</span></div>
+    </div>
+  </section>
+
