@@ -7,6 +7,7 @@
 <meta name="description" content="銀塩 · 正片掃描。底片的顆粒與光，銀鹽的溫度。銀鹽暖調、接觸印樣風格的底片作品總覽。">
 <link rel="alternate" hreflang="zh-Hant" href="photography-ginen-zh.html">
 <link rel="alternate" hreflang="en" href="photography-ginen.html">
+<link rel="preload" as="image" href="images/ginen-darkroom.png" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Serif+TC:wght@300;400;500;600&family=Yuji+Syuku&family=Klee+One:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -14,7 +15,7 @@
   /* ================================================================
      銀塩 · 底片總覽（銀鹽暖調・暗房）
      骨幹＝攝影頁設計語言（:root / 字體 / nav / lightbox / samon）
-     頂部＝暗房 hero（暖米白紙面 + 斜射暖光束 + 晾掛正片條 + 浮塵 canvas）
+     頂部＝寫實暗房情境（安全燈 + 晾掛底片與照片 + 極細浮塵）
      全頁＝極細底片顆粒 grain overlay；照片牆＝接觸印樣 contact sheet
      ================================================================ */
   :root{
@@ -73,7 +74,7 @@
   }
 
   /* ── 浮塵 canvas（固定全頁，內容之下、極慢極稀疏的暖白光點）── */
-  #dust{ position:fixed; inset:0; z-index:1; pointer-events:none; }
+  #dust{ position:absolute; inset:0; width:100%; height:100%; z-index:2; pointer-events:none; }
 
   /* 內容層（在浮塵之上；浮塵從透明處透出）*/
   .page{ position:relative; z-index:2; }
@@ -118,18 +119,13 @@
   }
   .hero .wrap{ position:relative; z-index:3; width:min(1180px,90vw); margin-inline:auto; }
 
-  /* 暗房場景（SVG）— hero 背景：右上斜射的暖光束＋晾掛的正片條 */
-  .darkroom{
-    position:absolute; z-index:1; pointer-events:none;
-    inset:0; width:100%; height:100%;
-    will-change:transform;
-  }
-  /* 光束：緩慢呼吸（reduced-motion 由全域規則停用）*/
-  .beam-breathe{ animation:beamPulse 9s ease-in-out infinite; }
-  @keyframes beamPulse{ 0%,100%{ opacity:.72 } 50%{ opacity:1 } }
-  /* 正片條：垂掛微擺 */
-  .fstrip{ transform-box:fill-box; transform-origin:50% 0%; animation:filmSway var(--sd,12s) ease-in-out var(--sdel,0s) infinite; }
-  @keyframes filmSway{ 0%,100%{ transform:rotate(.7deg) } 50%{ transform:rotate(-.7deg) } }
+  .hero{ background:#130b09; }
+  .darkroom-photo{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:0% 50%; z-index:0; pointer-events:none; }
+  .hero::before{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(90deg,rgba(10,6,4,.35),rgba(10,6,4,.08) 45%,transparent 68%); }
+  .hero .wrap{ width:min(32vw,440px); margin-left:5vw; margin-right:auto; --sumi:#f1e5d2; --sumi-soft:#e5d4bd; --sumi-faint:#cbb59b; --gin:#ccb297; --amber:#dab486; text-shadow:0 2px 12px rgba(0,0,0,.4); }
+  .hero .hero-mark,.hero .scroll-cue{ color:#cbb59b; }
+  .hero .scroll-cue .line{ background:linear-gradient(#cbb59b,transparent); }
 
   .eyebrow{
     font-family:var(--latin); font-weight:400;
@@ -149,7 +145,7 @@
   }
   .hero h1 .kanji{
     display:inline-block; position:relative;
-    background:linear-gradient(178deg,var(--sumi) 0%, var(--sumi) 58%, #40382d 100%);
+    background:linear-gradient(178deg,var(--sumi) 0%, var(--sumi) 58%, #d3b18b 100%);
     -webkit-background-clip:text; background-clip:text;
     -webkit-text-fill-color:transparent;
   }
@@ -313,8 +309,11 @@
     .hero h1{ font-size:clamp(76px,30vw,140px); }
     .hero h1 .romaji{ font-size:clamp(13px,4.4vw,20px); letter-spacing:.26em; }
     .hero-poem{ font-size:clamp(16px,4.4vw,21px); max-width:26ch; }
-    .darkroom{ opacity:.85; }
-    #hang{ display:none; }  /* 手機不硬縮晾片隱喻：只留斜射暖光束（扁平化）*/
+    .hero{ padding-bottom:calc(100vw * 2 / 3 + 32px); }
+    .hero .wrap{ width:90vw; margin-inline:auto; }
+    .darkroom-photo{ inset:auto 0 0; height:auto; object-fit:contain; }
+    .hero::before{ height:45px; top:auto; bottom:calc(100vw * 2 / 3 - 45px); background:linear-gradient(#130b09,transparent); }
+    .scroll-cue{ display:none; }
     .hero-mark{ display:none; }
     .wall-head{ grid-template-columns:1fr; gap:18px; padding-top:clamp(48px,8vh,72px); }
     .wall-head .wh-kanji{ font-size:clamp(56px,18vw,96px); }
@@ -343,7 +342,6 @@
 <body>
 
 <div class="paper-grain" aria-hidden="true"></div>
-<canvas id="dust" aria-hidden="true"></canvas>
 <div class="film-grain" aria-hidden="true"></div>
 
 <header class="nav">
@@ -366,83 +364,9 @@
 
   <!-- ============ 暗房 HERO ============ -->
   <header class="hero" id="hero">
-    <!-- 暗房場景 — 右上斜射的暖光束＋晾掛的正片條（銀塩專屬）-->
-    <svg class="darkroom" id="darkroom" viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMin slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="beamG" x1=".88" y1="0" x2=".26" y2="1">
-          <stop offset="0"   stop-color="#f2c37c" stop-opacity=".5"/>
-          <stop offset=".45" stop-color="#eab369" stop-opacity=".2"/>
-          <stop offset="1"   stop-color="#e9b466" stop-opacity="0"/>
-        </linearGradient>
-        <linearGradient id="beamCore" x1=".88" y1="0" x2=".26" y2="1">
-          <stop offset="0"   stop-color="#fbe3b3" stop-opacity=".6"/>
-          <stop offset=".55" stop-color="#f5cf8d" stop-opacity=".18"/>
-          <stop offset="1"   stop-color="#f5cf8d" stop-opacity="0"/>
-        </linearGradient>
-        <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0"  stop-color="#f6d79c" stop-opacity=".55"/>
-          <stop offset="1"  stop-color="#f6d79c" stop-opacity="0"/>
-        </radialGradient>
-        <filter id="beamBlur"><feGaussianBlur stdDeviation="26"/></filter>
-        <filter id="beamBlur2"><feGaussianBlur stdDeviation="11"/></filter>
-        <!-- 正片格：對著光的兩種暖調畫面 -->
-        <linearGradient id="frameA" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0"  stop-color="#d9ab62"/>
-          <stop offset=".6" stop-color="#a98a54"/>
-          <stop offset="1"  stop-color="#6f6a5e"/>
-        </linearGradient>
-        <linearGradient id="frameB" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0"  stop-color="#b7a887"/>
-          <stop offset=".55" stop-color="#8d8168"/>
-          <stop offset="1"  stop-color="#57503f"/>
-        </linearGradient>
-        <!-- 片孔（sprocket）與畫格 pattern：以各條片自身座標系鋪排 -->
-        <pattern id="sprockets" width="76" height="24" patternUnits="userSpaceOnUse">
-          <rect x="6"  y="8" width="10" height="7" rx="1.6" fill="#efe7d3" opacity=".92"/>
-          <rect x="60" y="8" width="10" height="7" rx="1.6" fill="#efe7d3" opacity=".92"/>
-        </pattern>
-        <pattern id="framesA" width="76" height="56" patternUnits="userSpaceOnUse">
-          <rect x="19" y="6" width="38" height="44" rx="2" fill="url(#frameA)" opacity=".82"/>
-        </pattern>
-        <pattern id="framesB" width="76" height="56" patternUnits="userSpaceOnUse">
-          <rect x="19" y="6" width="38" height="44" rx="2" fill="url(#frameB)" opacity=".82"/>
-        </pattern>
-      </defs>
-
-      <!-- 斜射暖光束（右上 → 左下，緩慢呼吸）-->
-      <g class="beam-breathe">
-        <ellipse cx="1305" cy="-30" rx="300" ry="170" fill="url(#lampGlow)"/>
-        <polygon points="1035,-80 1440,-80 560,980 130,980" fill="url(#beamG)" filter="url(#beamBlur)"/>
-        <polygon points="1185,-80 1330,-80 430,980 250,980" fill="url(#beamCore)" filter="url(#beamBlur2)" opacity=".85"/>
-      </g>
-
-      <!-- 晾片繩 -->
-      <line x1="960" y1="40" x2="1440" y2="22" stroke="#57503f" stroke-width="1.4" opacity=".5"/>
-
-      <!-- 正片條（掛起晾乾，微擺）-->
-      <g id="hang">
-        <!-- 條一：長 -->
-        <g transform="translate(1088 34)">
-          <g class="fstrip" style="--sd:13s">
-            <rect x="26" y="-14" width="24" height="26" rx="2" fill="#8b8578" opacity=".85"/>
-            <rect x="30" y="-14" width="4"  height="26" fill="#a49d8d" opacity=".8"/>
-            <rect x="0" y="8" width="76" height="420" rx="3" fill="#332d24" opacity=".88"/>
-            <rect x="0" y="8" width="76" height="420" fill="url(#sprockets)"/>
-            <rect x="0" y="14" width="76" height="408" fill="url(#framesA)"/>
-          </g>
-        </g>
-        <!-- 條二：短、稍晚相位 -->
-        <g transform="translate(1268 28)">
-          <g class="fstrip" style="--sd:10.5s;--sdel:-4s">
-            <rect x="26" y="-14" width="24" height="26" rx="2" fill="#8b8578" opacity=".85"/>
-            <rect x="30" y="-14" width="4"  height="26" fill="#a49d8d" opacity=".8"/>
-            <rect x="0" y="8" width="76" height="308" rx="3" fill="#332d24" opacity=".88"/>
-            <rect x="0" y="8" width="76" height="308" fill="url(#sprockets)"/>
-            <rect x="0" y="14" width="76" height="296" fill="url(#framesB)"/>
-          </g>
-        </g>
-      </g>
-    </svg>
+    <!-- AI-generated darkroom simulation, separate from the photographer's gallery. -->
+    <img class="darkroom-photo" id="darkroomPhoto" src="images/ginen-darkroom.png" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
+    <canvas id="dust" aria-hidden="true"></canvas>
 
     <span class="hero-mark" aria-hidden="true">銀塩のころ</span>
 
@@ -762,99 +686,52 @@
   });
 </script>
 
-<!-- 浮塵 canvas + 晾片視差（銀塩專屬：暗房光束裡的塵——極細、極慢、稀疏）-->
+<!-- Restrained darkroom safelight and dust animation.
+Generated with the built-in image tool; simulated drying prints reference the photographer's works:
+No. 155 Curve and Conversation; No. 159 Dawn Pier; No. 160 Belltower by the Sea; No. 163 Tree on the Plain.
+Scene prompt: Use case: photorealistic-natural. Create a cinematic but believable documentary-style photograph of a real traditional photographic darkroom, wide landscape 1536x1024, for a personal photographer's website hero. The scene is a simulated darkroom, not an illustration. A dim red safelight off the upper right softly illuminates the scene with deep burgundy-red and restrained warm amber highlights, rich charcoal shadows, realistic low light exposure. Main subject across the CENTER and RIGHT TWO THIRDS: two taut thin drying wires with small metal spring clips holding several long vertical developed 35mm film negative strips with realistic perforations on both sides and distinct translucent image frames, and five to six separate wet black-and-white photographic prints with white borders hanging to dry at different heights. Prints show understated generic Japanese nature landscapes: trees, a stream, mountains, branches; no people, no readable writing. Film strips are narrow and varied lengths, prints are naturally rectangular with subtle curled bottom corners and faint damp sheen, correct gravity and convincing clips. Keep the hanging prints and negatives clearly recognizable, well separated and detailed. Background: small worn darkroom, a photographic enlarger further behind toward right, shallow developing trays on a workbench along the lower right, a few modest tools and bottles softly out of focus, authentic utilitarian surfaces. LEFTMOST THIRD must remain a naturally dark low contrast wall with little clutter, usable as negative space for pale title and poem overlay; no objects close to the camera obstructing that area. Framing shows hanging wire near upper quarter, clips and photos mostly between x 650-1450 and y 250-720, bottom third has a shadowed workbench. Eye-level 35mm lens, realistic perspective and depth of field, nuanced analog film-like texture without heavy grain, no excessive fog, no theatrical light rays, no fantasy glow, no bright white daylight, no neon, no text, no logos, no watermark. Make the film strips and drying photographic prints the unmistakable focus.
+Final compositing prompt: Use case: compositing. Image 1 is the darkroom EDIT TARGET. Images 2 through 7 are the photographer's actual works to insert as prints. Change ONLY the image contents and aspect ratios of the SIX hanging paper prints in Image 1. Preserve the darkroom, red safelight, wires, metal clips, hanging negative strips, enlarger, trays, wall, framing, perspective and dark left-third negative space. Replace ALL generic pictures with faithful black-and-white printed reproductions of the supplied photographs, retaining recognizable original compositions and subjects, not newly invented similar scenes. Map: upper-left print = Image 2, curved stepped plaza with the two small seated people at lower right (use landscape paper, do not rotate the scene); upper-middle print = Image 3, dawn pier with rowboats symmetrically flanking the central wooden pier and distant mountain silhouette (landscape paper); upper-right print = Image 4, tall belltower by the sea with distant breakwater (portrait paper); lower-left print = Image 5, large tree at left, open meadow and distant mountain range (landscape paper); lower-middle print = Image 6, receding layers of misty mountain ridges (landscape paper); lower-right print = Image 7, delicate cherry blossoms and branches on pale background (landscape paper). Resize hanging paper rectangles as needed to fit each complete photo's aspect ratio with small white borders, preserving ample gaps so prints and negative strips do not overlap. Fit each photo within its print rather than cropping away key subjects. These are neutral black-and-white photo images seen under the room's dim warm red safelight, not color prints, with realistic warm lighting on white paper and subtle damp paper sheen. Keep source photo geometry and relative subject placement as faithful as possible; change only grayscale rendering, perspective required by the hanging paper, and safelight illumination. No extra scenery or extra prints; no added writing, labels or captions. Preserve realism, subtle paper curl and gravity. Output landscape1536x1024.
+-->
 <script>
 (() => {
-  "use strict";
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const canvas = document.getElementById('dust');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-  const motes = [];
-  window.__dustFrames = 0;   // 驗證用：動畫幀計數
-
+  'use strict';
+  const hero=document.getElementById('hero'),canvas=document.getElementById('dust');
+  const ctx=canvas.getContext('2d'),motion=matchMedia('(prefers-reduced-motion: reduce)');
+  let W=0,H=0,time=0,last=0,raf=0,inView=true;
+  const motes=[],rand=(a,b)=>a+Math.random()*(b-a);
   function resize(){
-    W = window.innerWidth; H = window.innerHeight;
-    canvas.width = W * dpr; canvas.height = H * dpr;
-    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const target = Math.round(Math.min(24, Math.max(9, W / 84))); // 極稀疏
-    while (motes.length < target) motes.push(makeMote());
-    while (motes.length > target) motes.pop();
+    const r=hero.getBoundingClientRect(),oldW=W||r.width,oldH=H||r.height;
+    W=r.width;H=r.height;const dpr=Math.min(devicePixelRatio||1,2);
+    canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+    for(const m of motes){m.x*=W/oldW;m.y*=H/oldH;}
+    const count=W<600?10:18;
+    while(motes.length<count)motes.push({x:rand(.35,1)*W,y:rand(0,1)*H,r:rand(.35,.85),vx:rand(-.7,.7),vy:rand(-1.3,-.4),phase:rand(0,Math.PI*2)});
+    motes.length=count;draw();
   }
-  function makeMote(){
-    const big = Math.random() < 0.18;   // 偶爾一顆較大的失焦塵（bokeh）
-    return {
-      x: Math.random() * W,
-      y: Math.random() * H,
-      r: big ? 1.9 + Math.random() * 1.5 : 0.55 + Math.random() * 1.05,
-      vx: (Math.random() - 0.5) * 0.07,
-      vy: -0.015 - Math.random() * 0.06,          // 微微上飄（光束裡的塵）
-      sway: 0.25 + Math.random() * 0.55,
-      swaySpeed: 0.002 + Math.random() * 0.005,
-      phase: Math.random() * Math.PI * 2,
-      tw: 0.004 + Math.random() * 0.008,          // 明滅速度
-      twPhase: Math.random() * Math.PI * 2,
-      base: big ? 0.16 : 0.24 + Math.random() * 0.26
-    };
-  }
-  function drawMote(m){
-    const a = m.base * (0.35 + 0.65 * (0.5 + 0.5 * Math.sin(m.twPhase)));
-    const g = ctx.createRadialGradient(m.x, m.y, 0, m.x, m.y, m.r * 3.2);
-    g.addColorStop(0,   `rgba(255,246,226,${(a * 0.95).toFixed(3)})`);
-    g.addColorStop(0.4, `rgba(233,180,102,${(a * 0.55).toFixed(3)})`);
-    g.addColorStop(1,   'rgba(233,180,102,0)');
-    ctx.fillStyle = g;
-    ctx.beginPath(); ctx.arc(m.x, m.y, m.r * 3.2, 0, Math.PI * 2); ctx.fill();
-    // 中心一點更亮的核
-    ctx.fillStyle = `rgba(255,250,238,${(a * 0.8).toFixed(3)})`;
-    ctx.beginPath(); ctx.arc(m.x, m.y, Math.max(0.4, m.r * 0.55), 0, Math.PI * 2); ctx.fill();
-  }
-  let raf;
-  function frame(){
-    ctx.clearRect(0, 0, W, H);
-    for (const m of motes){
-      m.phase += m.swaySpeed;
-      m.twPhase += m.tw;
-      m.x += m.vx + Math.sin(m.phase) * m.sway * 0.06;
-      m.y += m.vy;
-      if (m.y < -12){ Object.assign(m, makeMote()); m.y = H + 10; }
-      if (m.x < -12) m.x = W + 8;
-      else if (m.x > W + 12) m.x = -8;
-      drawMote(m);
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    // Restrained safelight variation; avoid a visibly pulsing or flickering lamp.
+    const glow=ctx.createRadialGradient(W*.87,H*.2,0,W*.87,H*.2,W*.65);
+    glow.addColorStop(0,`rgba(154,28,15,${.017+.004*Math.sin(time*.3)})`);glow.addColorStop(1,'rgba(154,28,15,0)');
+    ctx.fillStyle=glow;ctx.fillRect(0,0,W,H);
+    for(const m of motes){
+      ctx.fillStyle=`rgba(222,163,120,${.065+.045*(.5+.5*Math.sin(time*.32+m.phase))})`;
+      ctx.beginPath();ctx.arc(m.x,m.y,m.r,0,Math.PI*2);ctx.fill();
     }
-    window.__dustFrames++;
-    raf = requestAnimationFrame(frame);
   }
-  function start(){
-    resize();
-    if (!reduceMotion){ cancelAnimationFrame(raf); frame(); }
-    else { ctx.clearRect(0,0,W,H); for (const m of motes.slice(0, 7)){ m.y = Math.random()*H; drawMote(m); } }
+  function frame(stamp){
+    raf=0;if(document.hidden||!inView||motion.matches){last=0;return;}
+    const dt=last?Math.min(.1,(stamp-last)/1000):0;last=stamp;time+=dt;
+    for(const m of motes){m.x+=(m.vx+Math.sin(time*.2+m.phase)*.5)*dt;m.y+=m.vy*dt;
+      if(m.y<-5)m.y=H+5;if(m.x<-5)m.x=W+5;else if(m.x>W+5)m.x=-5;}
+    draw();raf=requestAnimationFrame(frame);
   }
-  let rt;
-  window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(start, 180); }, { passive:true });
-  if (document.fonts && document.fonts.ready){ document.fonts.ready.then(start); setTimeout(start, 700); }
-  else { window.addEventListener('load', start); }
-  start();
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) cancelAnimationFrame(raf);
-    else if (!reduceMotion) frame();
-  });
-
-  /* 晾片視差（對應春天墨枝視差：正片條隨捲動輕移）*/
-  const hang = document.getElementById('hang');
-  let ticking = false;
-  const parallax = () => {
-    const y = window.scrollY;
-    if (hang) hang.style.transform = `translate3d(${y * 0.02}px, ${y * 0.09}px, 0)`;
-    ticking = false;
-  };
-  window.addEventListener('scroll', () => {
-    if (reduceMotion) return;
-    if (!ticking){ requestAnimationFrame(parallax); ticking = true; }
-  }, { passive:true });
+  function resume(){cancelAnimationFrame(raf);raf=0;last=0;if(!document.hidden&&inView&&!motion.matches)raf=requestAnimationFrame(frame);else draw();}
+  let timer;window.addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(()=>{resize();resume();},150);},{passive:true});
+  document.addEventListener('visibilitychange',resume);motion.addEventListener('change',resume);
+  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;resume();}).observe(hero);
+  if(document.fonts)document.fonts.ready.then(()=>{resize();resume();});resize();resume();
+  window.__darkroom={state:()=>({active:!!raf,reduced:motion.matches,time,count:motes.length,dimensions:[W,H],photoReady:document.getElementById('darkroomPhoto').naturalWidth>0})};
 })();
 </script>
 
