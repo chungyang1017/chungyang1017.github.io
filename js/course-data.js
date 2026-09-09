@@ -370,8 +370,6 @@ const courseData = [
         'Gerring, J. (2012). <i>Social Science Methodology</i>, 2nd ed. Cambridge UP.'
       ]}
     ],
-    pdf: 'teaching/syllabi/2026spring-social-research-methods.pdf',
-    pdf_label_zh: '完整課綱 PDF →', pdf_label_en: 'Full Syllabus PDF →',
     weeks_zh: [
       { n: '一',   date: '2/24', topic: '課程導論：社會科學的「科學」之爭' },
       { n: '二',   date: '3/3',  topic: '科學哲學的幽靈：從 Popper 到 Hempel' },
@@ -554,8 +552,6 @@ const courseData = [
         '<i>The Student\'s Companion to Social Policy</i> (Chinese ed., 2006). Taipei: Socio.'
       ]}
     ],
-    pdf: 'teaching/syllabi/2026spring-sociology-of-welfare.pdf',
-    pdf_label_zh: '完整課綱 PDF →', pdf_label_en: 'Full Syllabus PDF →',
     weeks_zh: [
       { n: '一',   date: '2/26', topic: '課程概述：為什麼要學社會福利？' },
       { n: '二',   date: '3/5',  topic: '福利是什麼？為什麼福利跟我們息息相關？' },
