@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>提供什麼給付呢？ ・ 福利社會學 第 5 週 ・ 葉崇揚</title>
+  <meta name="description" content="福利社會學第 5 週互動講義（給大一同學）：提供什麼給付呢？現金、服務、實物、福利券、機會、權力——六種社會供給形式，以及選擇與社會控制的政治論辯。分頁式互動簡報。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --chashitsu-bg: #e8dcc4;
+      --chashitsu-paper: #f5ecd6;
+      --chashitsu-tatami: #d8c8a8;
+      --moss: #3d5a3f;          /* 公部門 */
+      --water: #5a7a8a;         /* 商業部門 */
+      --earth: #8a6a4a;         /* 志願部門 */
+      --persimmon: #c47038;     /* 非正式部門 */
+      --accent: #c43838;        /* 朱印 */
+      --gold: #b8860b;
+      --ink: #1f1f1d;
+      --ink-soft: rgba(31,31,29,0.78);
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --line-faint: rgba(31,31,29,0.05);
+      --jp: 'Shippori Mincho', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+      --mono: 'JetBrains Mono', 'Menlo', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: var(--jp);
+      background: var(--chashitsu-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 21px;
+      line-height: 2;
+      position: relative;
+    }
+    .paper-grain {
+      position: fixed; inset: 0; pointer-events: none;
+      opacity: 0.32; mix-blend-mode: multiply; z-index: 1;
+    }
+
+    /* Top bar */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 56px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .top-left { display: flex; align-items: center; gap: 14px; }
+    .back { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .back:hover { opacity: 0.85; }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .top-title { font-family: var(--brush); font-size: 19px; letter-spacing: 0.06em; }
+    .top-title small { font-family: var(--sans); font-size: 12px; letter-spacing: 0.18em; opacity: 0.55; margin-left: 10px; }
+    .top-right { display: flex; align-items: center; gap: 18px; font-family: var(--sans); font-size: 12px; opacity: 0.6; letter-spacing: 0.15em; }
+    .toc-btn {
+      background: transparent; border: 1px solid var(--line);
+      font-family: inherit; font-size: 11.5px; letter-spacing: 0.2em;
+      padding: 5px 12px; cursor: pointer; color: var(--ink); opacity: 0.75;
+    }
+    .toc-btn:hover { background: var(--chashitsu-paper); opacity: 1; }
+
+    .progress {
+      position: fixed; top: 56px; left: 0;
+      height: 2px; background: var(--accent);
+      z-index: 49; transition: width 0.4s ease;
+    }
+
+    .deck {
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 64px;
+      overflow: hidden; z-index: 2;
+    }
+    .slide {
+      position: absolute; inset: 0;
+      padding: 36px 72px 28px;
+      overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.2,0.7,0.2,1);
+    }
+    .slide.is-prev { transform: translateX(-40px); }
+    .slide.is-active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide-inner { max-width: 1080px; margin: 0 auto; }
+
+    .navbar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 64px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .nav-btn {
+      background: transparent; border: 1px solid var(--ink);
+      font-family: var(--jp); font-size: 14px;
+      letter-spacing: 0.15em; color: var(--ink);
+      padding: 9px 22px; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover:not(:disabled) { background: var(--ink); color: var(--chashitsu-paper); }
+    .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; border-color: var(--line); }
+    .nav-center { display: flex; align-items: center; gap: 16px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.18em; opacity: 0.7; }
+    .dots { display: flex; gap: 5px; max-width: 480px; flex-wrap: wrap; justify-content: center; }
+    .dot { width: 7px; height: 7px; background: var(--line); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .dot:hover { background: var(--accent); transform: scale(1.3); }
+    .dot.is-active { background: var(--accent); }
+    .dot.is-section { width: 14px; }
+
+    /* TOC overlay */
+    .toc-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(31,31,29,0.85);
+      backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center;
+      padding: 40px;
+    }
+    .toc-overlay.is-shown { display: flex; animation: fade 0.3s; }
+    .toc-panel {
+      background: var(--chashitsu-paper);
+      max-width: 920px; width: 100%; max-height: 80vh;
+      overflow-y: auto;
+      padding: 36px 44px;
+      border: 1px solid var(--accent);
+      position: relative;
+    }
+    .toc-close {
+      position: absolute; top: 14px; right: 18px;
+      background: transparent; border: none;
+      font-size: 26px; cursor: pointer; opacity: 0.5;
+      font-family: var(--brush); color: var(--ink);
+    }
+    .toc-close:hover { opacity: 1; }
+    .toc-title { font-family: var(--brush); font-size: 26px; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .toc-sub { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 22px; }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; }
+    .toc-list li {
+      padding: 8px 0; border-bottom: 1px dashed var(--line-soft);
+      cursor: pointer; display: flex; align-items: baseline; gap: 14px;
+    }
+    .toc-list li:hover { color: var(--accent); }
+    .toc-list .num { font-family: var(--brush); font-size: 14px; color: var(--accent); min-width: 28px; }
+    .toc-list .lab { font-size: 15px; flex: 1; }
+    .toc-list .kind { font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; opacity: 0.45; }
+    .toc-list .is-section { color: var(--accent); font-weight: 600; }
+
+    /* Slide types */
+    .slide-title {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      padding: 36px 72px;
+    }
+    .slide-title .week-tag {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.4em; opacity: 0.6; margin-bottom: 24px;
+    }
+    .slide-title .seal {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      background: var(--accent); color: var(--chashitsu-paper);
+      font-family: var(--brush); font-size: 16px;
+      transform: rotate(-3deg);
+    }
+    .slide-title h1 {
+      font-family: var(--brush); font-size: 72px;
+      font-weight: 400; line-height: 1.1; letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+    .slide-title .subtitle {
+      font-family: var(--sans); font-size: 18px;
+      letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 28px;
+    }
+    .slide-title .author {
+      font-size: 18px; opacity: 0.85; line-height: 1.85;
+      max-width: 800px;
+    }
+    .meta-strip {
+      margin-top: 36px;
+      display: flex; flex-wrap: wrap; gap: 24px;
+      font-family: var(--sans); font-size: 13px; opacity: 0.6;
+      letter-spacing: 0.12em;
+    }
+
+    .slide-section {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      background: linear-gradient(135deg, rgba(196,56,56,0.06) 0%, rgba(216,200,168,0.4) 100%);
+      padding: 36px 72px;
+      position: relative;
+    }
+    .slide-section .big-num {
+      font-family: var(--brush); font-size: 240px;
+      color: var(--accent); opacity: 0.15;
+      position: absolute; bottom: 30px; right: 60px;
+      line-height: 1;
+    }
+    .slide-section .part {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.45em; opacity: 0.55; margin-bottom: 14px;
+    }
+    .slide-section h2 {
+      font-family: var(--brush); font-size: 56px;
+      font-weight: 400; letter-spacing: 0.04em;
+      line-height: 1.15; margin-bottom: 14px;
+    }
+    .slide-section .sec-en {
+      font-family: var(--sans); font-size: 16px;
+      letter-spacing: 0.3em; opacity: 0.55; font-style: italic;
+      margin-bottom: 22px;
+    }
+    .slide-section .sec-q {
+      font-size: 19px; opacity: 0.85;
+      max-width: 640px; line-height: 1.95;
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+    }
+
+    .slide-content { padding-top: 28px; }
+    .content-head {
+      margin-bottom: 22px;
+      display: flex; align-items: baseline; gap: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .content-head h2 { font-family: var(--brush); font-size: 44px; font-weight: 400; letter-spacing: 0.04em; }
+    .content-head .h-en { font-family: var(--sans); font-size: 15.5px; letter-spacing: 0.25em; opacity: 0.6; }
+    .content-head .h-tag { margin-left: auto; font-family: var(--sans); font-size: 14px; letter-spacing: 0.3em; opacity: 0.6; }
+
+    .lead {
+      font-size: 21px; line-height: 2.05; opacity: 0.9;
+      max-width: 920px; margin-bottom: 20px;
+    }
+    .lead p + p { margin-top: 16px; }
+    .lead strong { color: var(--accent); }
+    .term-en {
+      font-family: var(--sans); font-style: italic;
+      opacity: 0.7; font-size: 0.85em;
+      margin-left: 3px;
+    }
+
+    /* Scenario / story card */
+    .story {
+      background: var(--chashitsu-paper);
+      border-left: 4px solid var(--accent);
+      padding: 24px 30px;
+      margin: 18px 0;
+    }
+    .story .lab {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.3em; color: var(--accent); margin-bottom: 10px;
+    }
+    .story h3 {
+      font-family: var(--brush); font-size: 26px;
+      letter-spacing: 0.04em; margin-bottom: 14px;
+    }
+    .story p { font-size: 19px; line-height: 2; opacity: 0.9; }
+    .story p + p { margin-top: 12px; }
+
+    /* Two-column compare */
+    .pair {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+      margin-top: 12px;
+    }
+    .pair-box {
+      background: var(--chashitsu-paper);
+      border-top: 4px solid;
+      padding: 20px 22px;
+    }
+    .pair-box.a { border-top-color: var(--moss); }
+    .pair-box.b { border-top-color: var(--water); }
+    .pair-box.c { border-top-color: var(--earth); }
+    .pair-box.d { border-top-color: var(--persimmon); }
+    .pair-box .tag {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.25em; margin-bottom: 10px;
+    }
+    .pair-box.a .tag { color: var(--moss); }
+    .pair-box.b .tag { color: var(--water); }
+    .pair-box.c .tag { color: var(--earth); }
+    .pair-box.d .tag { color: var(--persimmon); }
+    .pair-box h3 {
+      font-family: var(--brush); font-size: 25px;
+      letter-spacing: 0.04em; margin-bottom: 12px;
+    }
+    .pair-box p { font-size: 18.5px; line-height: 1.95; opacity: 0.9; }
+
+    /* Sector card grid (4-col interactive) */
+    .sectors {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 14px; margin-top: 10px;
+    }
+    .sect {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 24px 18px 20px;
+      text-align: center;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .sect:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .sect .glyph {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 56px; height: 56px;
+      font-family: var(--brush); font-size: 28px;
+      color: var(--chashitsu-paper);
+      margin-bottom: 12px;
+    }
+    .sect.s-state .glyph { background: var(--moss); }
+    .sect.s-market .glyph { background: var(--water); }
+    .sect.s-volun .glyph { background: var(--earth); }
+    .sect.s-info .glyph { background: var(--persimmon); }
+    .sect h4 { font-family: var(--brush); font-size: 19px; letter-spacing: 0.04em; }
+    .sect .en { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.18em; opacity: 0.6; margin-top: 4px; margin-bottom: 10px; }
+    .sect .ex { font-size: 13px; opacity: 0.78; line-height: 1.7; }
+
+    /* Big single sector card (deep dive) */
+    .deep {
+      background: var(--chashitsu-paper);
+      border-top: 5px solid var(--accent);
+      padding: 28px 34px;
+      margin-top: 6px;
+    }
+    .deep.s-state { border-top-color: var(--moss); }
+    .deep.s-market { border-top-color: var(--water); }
+    .deep.s-volun { border-top-color: var(--earth); }
+    .deep.s-info { border-top-color: var(--persimmon); }
+    .deep-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; }
+    .deep-head .gl {
+      font-family: var(--brush); font-size: 28px;
+      width: 44px; height: 44px;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--chashitsu-paper);
+    }
+    .deep.s-state .deep-head .gl { background: var(--moss); }
+    .deep.s-market .deep-head .gl { background: var(--water); }
+    .deep.s-volun .deep-head .gl { background: var(--earth); }
+    .deep.s-info .deep-head .gl { background: var(--persimmon); }
+    .deep h3 { font-family: var(--brush); font-size: 28px; letter-spacing: 0.04em; }
+    .deep .sub-en { font-family: var(--sans); font-size: 13px; letter-spacing: 0.2em; opacity: 0.6; }
+    .deep .lead-line { font-size: 19.5px; line-height: 1.95; opacity: 0.9; margin: 12px 0 20px; }
+
+    .deep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 16px; }
+    .deep-col h5 {
+      font-family: var(--sans); font-size: 14px;
+      letter-spacing: 0.28em; opacity: 0.7; margin-bottom: 12px;
+    }
+    .deep-col ul { list-style: none; padding: 0; }
+    .deep-col li {
+      font-size: 18px; line-height: 1.95;
+      padding: 8px 0 8px 18px; position: relative;
+      border-bottom: 1px solid var(--line-faint);
+    }
+    .deep-col li:last-child { border-bottom: none; }
+    .deep-col li::before { content: "・"; position: absolute; left: 0; opacity: 0.5; }
+    .deep-col li strong { color: var(--accent); font-weight: 600; }
+
+    .tw-block {
+      background: rgba(196,56,56,0.05);
+      border-left: 3px solid var(--accent);
+      padding: 14px 20px;
+      margin-top: 16px;
+    }
+    .tw-block .lab {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.3em; color: var(--accent); margin-bottom: 8px;
+    }
+    .tw-block h4 {
+      font-family: var(--brush); font-size: 21px;
+      letter-spacing: 0.04em; margin-bottom: 8px;
+    }
+    .tw-block p { font-size: 18px; line-height: 1.95; opacity: 0.9; }
+
+    /* Stats */
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-top: 18px;
+    }
+    .stat {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 16px 14px;
+      text-align: center;
+    }
+    .stat .n { font-family: var(--brush); font-size: 34px; color: var(--accent); line-height: 1; }
+    .stat .l { font-size: 15.5px; opacity: 0.85; margin-top: 10px; line-height: 1.6; }
+    .stat .src { font-family: var(--sans); font-size: 12px; opacity: 0.55; letter-spacing: 0.1em; margin-top: 8px; }
+
+    /* Timeline */
+    .tl { margin-top: 8px; padding-left: 32px; position: relative; }
+    .tl::before { content: ""; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+    .tl-item { position: relative; padding: 14px 0 16px; border-bottom: 1px dashed var(--line-soft); }
+    .tl-item:last-child { border-bottom: none; }
+    .tl-item::before {
+      content: ""; position: absolute;
+      left: -32px; top: 22px; width: 14px; height: 14px;
+      background: var(--accent); border-radius: 50%;
+      border: 2px solid var(--chashitsu-bg);
+    }
+    .tl-yr {
+      font-family: var(--sans); font-size: 14.5px;
+      letter-spacing: 0.2em; opacity: 0.7; margin-bottom: 5px;
+    }
+    .tl-t { font-family: var(--brush); font-size: 22px; letter-spacing: 0.04em; margin-bottom: 10px; }
+    .tl-b { font-size: 18px; line-height: 1.95; opacity: 0.88; }
+    .tl-tag { display: inline-block; font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.18em; padding: 3px 10px; margin-left: 10px; background: rgba(196,56,56,0.10); color: var(--accent); vertical-align: middle; }
+
+    /* Comparison table */
+    .ctab {
+      width: 100%; border-collapse: collapse;
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      font-size: 17px;
+      margin-top: 10px;
+    }
+    .ctab th, .ctab td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line-soft);
+      text-align: left; vertical-align: top;
+    }
+    .ctab th {
+      font-family: var(--brush); font-size: 19px; font-weight: 500;
+      background: rgba(216,200,168,0.4);
+    }
+    .ctab th:nth-child(2), .ctab td:nth-child(2) { background: rgba(61,90,63,0.06); }
+    .ctab th:nth-child(3), .ctab td:nth-child(3) { background: rgba(90,122,138,0.06); }
+    .ctab th:nth-child(4), .ctab td:nth-child(4) { background: rgba(138,106,74,0.06); }
+    .ctab th:nth-child(5), .ctab td:nth-child(5) { background: rgba(196,112,56,0.06); }
+    .ctab td:first-child { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.18em; opacity: 0.65; width: 100px; vertical-align: middle; }
+
+    /* Country cards */
+    .nations {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin-top: 8px;
+    }
+    .nation {
+      background: var(--chashitsu-paper);
+      border-top: 3px solid var(--accent);
+      padding: 22px 24px;
+    }
+    .nation.b { border-top-color: var(--water); }
+    .nation.c { border-top-color: var(--earth); }
+    .nation .nm { font-family: var(--brush); font-size: 25px; letter-spacing: 0.06em; }
+    .nation .nen { font-family: var(--sans); font-size: 13.5px; letter-spacing: 0.2em; opacity: 0.65; margin: 5px 0 14px; }
+    .nation h6 { font-family: var(--sans); font-size: 13.5px; letter-spacing: 0.22em; opacity: 0.7; margin: 16px 0 8px; }
+    .nation ul { list-style: none; padding: 0; }
+    .nation li { font-size: 17px; line-height: 1.9; padding: 5px 0 5px 14px; position: relative; }
+    .nation li::before { content: "—"; position: absolute; left: 0; opacity: 0.4; }
+    .nation li strong { color: var(--accent); font-weight: 600; }
+
+    /* Flip cards (issues) */
+    .flips {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; margin-top: 8px;
+    }
+    .flip {
+      perspective: 1000px;
+      height: 290px; cursor: pointer;
+    }
+    .flip-inner {
+      position: relative; width: 100%; height: 100%;
+      transition: transform 0.6s; transform-style: preserve-3d;
+    }
+    .flip.is-flipped .flip-inner { transform: rotateY(180deg); }
+    .flip-face {
+      position: absolute; width: 100%; height: 100%;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      padding: 24px 26px;
+      display: flex; flex-direction: column;
+      justify-content: center;
+    }
+    .flip-front { background: var(--chashitsu-paper); border: 1px solid var(--line); text-align: center; }
+    .flip-front h4 { font-family: var(--brush); font-size: 24px; margin-bottom: 12px; letter-spacing: 0.04em; }
+    .flip-front p { font-size: 17px; opacity: 0.85; line-height: 1.75; }
+    .flip-front .hint { margin-top: auto; font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.25em; opacity: 0.55; }
+    .flip-back { background: var(--ink); color: var(--chashitsu-paper); transform: rotateY(180deg); justify-content: flex-start; }
+    .flip-back h4 { font-family: var(--brush); font-size: 21px; color: var(--chashitsu-paper); margin-bottom: 14px; letter-spacing: 0.04em; }
+    .flip-back ul { list-style: none; padding: 0; }
+    .flip-back li { font-size: 16.5px; line-height: 1.8; padding: 5px 0 5px 14px; position: relative; opacity: 0.92; }
+    .flip-back li::before { content: "・"; position: absolute; left: 0; opacity: 0.6; }
+
+    /* Insight banner */
+    .insight {
+      margin-top: 18px;
+      padding: 16px 22px;
+      background: rgba(196,56,56,0.06);
+      border-left: 3px solid var(--accent);
+      font-size: 17px; line-height: 1.9;
+    }
+    .insight strong { color: var(--accent); }
+
+    /* Scenario interactive */
+    .scen-block {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 24px 28px;
+      margin-top: 8px;
+    }
+    .scen-q { font-family: var(--brush); font-size: 25px; line-height: 1.55; margin-bottom: 12px; letter-spacing: 0.04em; }
+    .scen-detail { font-size: 18.5px; opacity: 0.85; line-height: 1.95; margin-bottom: 20px; }
+    .scen-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .scen-opt {
+      background: var(--chashitsu-bg);
+      border: 1px solid var(--line-soft);
+      padding: 18px 12px;
+      text-align: center;
+      cursor: pointer;
+      font-family: var(--jp); font-size: 17px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .scen-opt:hover { background: #fff8e8; border-color: var(--accent); }
+    .scen-opt.is-picked { background: var(--accent); color: var(--chashitsu-paper); border-color: var(--accent); font-weight: 500; }
+    .scen-opt.is-mismatch { opacity: 0.5; }
+    .scen-feedback {
+      margin-top: 18px;
+      padding: 18px 22px;
+      background: rgba(61,90,63,0.06);
+      border-left: 3px solid var(--moss);
+      font-size: 17.5px; line-height: 1.95;
+      display: none;
+    }
+    .scen-feedback.is-shown { display: block; animation: fade 0.3s; }
+    .scen-feedback strong { color: var(--moss); }
+
+    /* Quiz */
+    .quiz {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 24px 28px;
+    }
+    .quiz-num { font-family: var(--sans); font-size: 14px; letter-spacing: 0.3em; opacity: 0.65; }
+    .quiz-q { font-family: var(--brush); font-size: 25px; line-height: 1.6; margin: 10px 0 20px; letter-spacing: 0.03em; }
+    .quiz-opt {
+      display: block; width: 100%; text-align: left;
+      background: var(--chashitsu-bg);
+      border: 1px solid var(--line-soft);
+      padding: 16px 22px; margin-bottom: 12px;
+      font-family: inherit; font-size: 19px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .quiz-opt:hover:not(:disabled) { background: #fff8e8; border-color: var(--accent); }
+    .quiz-opt.is-correct { background: rgba(61,90,63,0.12); border-color: var(--moss); color: var(--moss); font-weight: 600; }
+    .quiz-opt.is-wrong { background: rgba(196,56,56,0.08); border-color: var(--accent); color: var(--accent); }
+    .quiz-opt:disabled { cursor: default; }
+    .quiz-explain {
+      display: none; margin-top: 16px;
+      padding: 16px 22px;
+      background: rgba(31,31,29,0.04);
+      border-left: 3px solid var(--accent);
+      font-size: 18px; line-height: 1.95;
+    }
+    .quiz-explain.is-shown { display: block; animation: fade 0.3s; }
+    .quiz-explain strong { color: var(--accent); }
+    .score-pill {
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 10px 20px;
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      margin-bottom: 18px;
+    }
+    .score-pill .sn { font-family: var(--brush); font-size: 28px; color: var(--accent); line-height: 1; }
+    .score-pill .st { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.25em; opacity: 0.6; }
+
+    /* Discussion */
+    .discuss { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .discuss-item {
+      background: var(--chashitsu-paper);
+      border-left: 3px solid var(--accent);
+      padding: 16px 22px; cursor: pointer;
+    }
+    .discuss-item .qn { font-family: var(--brush); font-size: 19px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 8px; }
+    .discuss-item .qt { font-size: 19.5px; line-height: 1.95; }
+    .discuss-item .hint {
+      max-height: 0; overflow: hidden; opacity: 0;
+      font-size: 17px; line-height: 1.95;
+      transition: max-height 0.4s, opacity 0.3s, margin 0.3s, padding 0.3s;
+      color: var(--ink-soft); font-style: italic;
+    }
+    .discuss-item.is-open .hint {
+      max-height: 250px; opacity: 1;
+      margin-top: 12px; padding-top: 12px;
+      border-top: 1px dashed var(--line-soft);
+    }
+
+    /* Reading */
+    .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+    .ref-card {
+      background: var(--chashitsu-paper);
+      border-top: 3px solid var(--accent);
+      padding: 20px 22px;
+    }
+    .ref-card h3 { font-family: var(--brush); font-size: 22px; margin-bottom: 14px; letter-spacing: 0.04em; }
+    .ref-card p { font-size: 17px; line-height: 1.9; padding: 9px 0; border-bottom: 1px solid var(--line-faint); }
+    .ref-card p:last-child { border-bottom: none; }
+    .ref-card em { color: var(--accent); font-style: italic; }
+    .ref-card a {
+      color: var(--ink); text-decoration: none;
+      border-bottom: 1px dotted rgba(31,31,29,0.4);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .ref-card a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .ref-card a:hover em { color: var(--accent); }
+
+    /* Click-to-reveal case (used inside concept slides) */
+    details.case {
+      background: rgba(196,56,56,0.04);
+      border-left: 3px solid var(--accent);
+      margin-top: 14px;
+      padding: 0;
+    }
+    details.case + details.case { margin-top: 8px; }
+    details.case summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 12px 20px;
+      font-family: var(--sans);
+      font-size: 14.5px;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      transition: background 0.2s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    details.case summary:hover { background: rgba(196,56,56,0.08); }
+    details.case summary::-webkit-details-marker { display: none; }
+    details.case summary::before {
+      content: "▸";
+      display: inline-block;
+      transition: transform 0.25s;
+      color: var(--accent);
+      font-size: 14px;
+    }
+    details.case[open] summary::before { transform: rotate(90deg); }
+    details.case .case-body {
+      padding: 4px 22px 18px 38px;
+      font-size: 16px;
+      line-height: 1.9;
+      animation: fade 0.3s;
+    }
+    details.case .case-body h5 {
+      font-family: var(--brush);
+      font-size: 19px;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+    details.case .case-body p { margin-bottom: 8px; opacity: 0.9; }
+    details.case .case-body p:last-child { margin-bottom: 0; }
+    details.case .case-body strong { color: var(--accent); }
+    details.case .case-body ul {
+      list-style: none; padding: 0; margin: 8px 0 4px;
+    }
+    details.case .case-body li {
+      padding: 4px 0 4px 16px; position: relative;
+      font-size: 15.5px;
+    }
+    details.case .case-body li::before {
+      content: "・"; position: absolute; left: 0; opacity: 0.5;
+    }
+
+    /* Animations */
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+    .keyboard-hint {
+      position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
+      font-family: var(--sans); font-size: 9.5px;
+      letter-spacing: 0.25em; opacity: 0.4;
+      pointer-events: none; z-index: 60;
+    }
+    .keyboard-hint kbd { font-family: var(--mono); font-size: 9.5px; background: rgba(31,31,29,0.08); padding: 1px 5px; margin: 0 2px; }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      body { font-size: 16.5px; }
+      .topbar { padding: 0 14px; }
+      .top-title { font-size: 15px; }
+      .top-title small { display: none; }
+      .top-right { display: none; }
+      .toc-btn { font-size: 10.5px; padding: 4px 9px; letter-spacing: 0.18em; }
+
+      .slide { padding: 26px 22px 20px; }
+      .slide-title { padding: 26px 22px; }
+      .slide-title h1 { font-size: 40px; }
+      .slide-title .subtitle { font-size: 14.5px; letter-spacing: 0.18em; }
+      .slide-title .author { font-size: 16px; }
+
+      .slide-section { padding: 26px 22px; }
+      .slide-section h2 { font-size: 36px; }
+      .slide-section .sec-en { font-size: 13px; }
+      .slide-section .sec-q { font-size: 16px; }
+      .slide-section .big-num { font-size: 130px; bottom: 20px; right: 20px; }
+
+      .content-head h2 { font-size: 24px; }
+      .content-head .h-en { font-size: 11.5px; }
+      .content-head .h-tag { display: none; }
+
+      .lead { font-size: 16px; }
+      .story h3 { font-size: 20px; }
+      .story p { font-size: 15.5px; }
+
+      .pair { grid-template-columns: 1fr; gap: 12px; }
+      .pair-box { padding: 18px 20px; }
+      .pair-box h3 { font-size: 19px; }
+      .pair-box p { font-size: 15px; }
+
+      .sectors { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .sect .glyph { width: 48px; height: 48px; font-size: 24px; }
+      .sect h4 { font-size: 17px; }
+
+      .deep { padding: 22px 22px; }
+      .deep h3 { font-size: 24px; }
+      .deep .lead-line { font-size: 15.5px; }
+      .deep-grid { grid-template-columns: 1fr; gap: 16px; }
+      .deep-col li { font-size: 14.5px; }
+
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat .n { font-size: 24px; }
+      .stat .l { font-size: 12.5px; }
+
+      .tl { padding-left: 28px; }
+      .tl::before { left: 4px; }
+      .tl-item::before { left: -28px; width: 12px; height: 12px; top: 20px; }
+      .tl-t { font-size: 17px; }
+      .tl-b { font-size: 14.5px; }
+      .tl-yr { font-size: 12px; }
+
+      .ctab { font-size: 13px; display: block; overflow-x: auto; }
+      .ctab th, .ctab td { padding: 8px 10px; }
+
+      .nations { grid-template-columns: 1fr; }
+
+      .flips { grid-template-columns: 1fr; }
+      .flip { height: 230px; }
+
+      .scen-options { grid-template-columns: repeat(2, 1fr); }
+      .scen-opt { font-size: 14px; padding: 13px 8px; }
+      .scen-q { font-size: 18px; }
+      .scen-detail { font-size: 14.5px; }
+      .scen-feedback { font-size: 14.5px; }
+
+      .quiz { padding: 22px 22px; }
+      .quiz-num { font-size: 12px; }
+      .quiz-q { font-size: 18px; }
+      .quiz-opt { font-size: 14.5px; padding: 12px 16px; }
+      .quiz-explain { font-size: 14px; }
+
+      .discuss-item .qt { font-size: 16px; }
+
+      .ref-grid { grid-template-columns: 1fr; }
+      .ref-card p { font-size: 13.5px; }
+
+      .navbar { padding: 0 14px; height: 58px; }
+      .nav-btn { padding: 7px 14px; font-size: 13px; letter-spacing: 0.1em; }
+      .dots { max-width: 200px; }
+      .nav-center { font-size: 12px; gap: 10px; }
+
+      .toc-panel { padding: 24px 22px; }
+      .toc-list { grid-template-columns: 1fr; gap: 0; }
+      .toc-list .lab { font-size: 13.5px; }
+
+      .keyboard-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<svg class="paper-grain" aria-hidden="true">
+  <defs>
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#paper-noise)" />
+</svg>
+
+<header class="topbar">
+  <div class="top-left">
+    <a href="../../teaching-zh.html" class="back">← 教學</a>
+    <span class="top-sep">·</span>
+    <span class="top-title">提供什麼給付呢？<small>福利社會學 第 5 週</small></span>
+  </div>
+  <div class="top-right">
+    <span>大一同學適用</span>
+    <button class="toc-btn" onclick="toggleToc()">目次 ・ TOC</button>
+  </div>
+</header>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ============ S0 TITLE ============ -->
+  <section class="slide slide-title is-active" data-kind="title" data-label="封面">
+    <div class="slide-inner">
+      <div class="week-tag">
+        <span class="seal">學</span>
+        <span>第 5 週 ・ 3/26 ・ WEEK 5</span>
+      </div>
+      <h1>提供什麼給付呢？</h1>
+      <p class="subtitle">WHAT BENEFITS ARE PROVIDED — 現金、服務、實物、福利券、機會、權力</p>
+      <p class="author">
+        社會福利要給出去的，不只是「有沒有給」，還有「用什麼形式給」。<br/>
+        現金、服務、實物、福利券、機會，或是權力本身——每一種形式背後，都是「選擇的自由」與「集體的管制」之間的一次政治抉擇。
+      </p>
+      <div class="meta-strip">
+        <span>福利社會學 ・ 葉崇揚</span>
+        <span>東吳大學社會學系</span>
+        <span>2026 春學期</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S1 AGENDA ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="今日綱要">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>今日綱要</h2>
+        <span class="h-en">TODAY'S AGENDA</span>
+      </div>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-yr">01</div>
+          <div class="tl-t">分析架構的四個面向</div>
+          <div class="tl-b">What 面向是今日主題</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">02</div>
+          <div class="tl-t">現金 vs. 實物的歷史論辯</div>
+          <div class="tl-b">Alva Myrdal 的關鍵主張</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">03</div>
+          <div class="tl-t">六種社會供給形式</div>
+          <div class="tl-b">現金、服務、實物、福利券、機會、權力</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">04</div>
+          <div class="tl-t">台灣案例對照</div>
+          <div class="tl-b">各形式在台灣的具體制度案例</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">05</div>
+          <div class="tl-t">議題思考</div>
+          <div class="tl-b">選擇 vs. 社會控制的論辯</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">06</div>
+          <div class="tl-t">課堂活動</div>
+          <div class="tl-b">如果你是政策設計師…</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S2 FRAMEWORK ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="分析架構的四個面向">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>分析架構的四個面向</h2>
+        <span class="h-en">ANALYTICAL FRAMEWORK</span>
+        <span class="h-tag">Gilbert &amp; Terrell (2013)</span>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="pair-box a">
+          <span class="tag">WHO</span>
+          <h3 style="font-size: 21px;">社會分配的基礎</h3>
+          <p style="font-size: 15px;">從「選擇性」到「普及性」。針對誰？如何認定資格？</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">WHAT ・ ★ 今日主題</span>
+          <h3 style="font-size: 21px;">供給的分配型態</h3>
+          <p style="font-size: 15px;">從「無形」到「具體」。提供哪種形式的給付？</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">FINANCE</span>
+          <h3 style="font-size: 21px;">供給的資金籌措</h3>
+          <p style="font-size: 15px;">稅收、社會保費、使用者付費。錢從哪裡來？</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">HOW</span>
+          <h3 style="font-size: 21px;">供給的輸送策略</h3>
+          <p style="font-size: 15px;">從「公部門」到「私人機構」。由誰來提供？</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S3 SECTION PART 01 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第一部分：供給的形式">
+    <div class="slide-inner">
+      <div class="big-num">壹</div>
+      <p class="part">PART 01</p>
+      <h2>供給的形式</h2>
+      <p class="sec-en">What: Forms of Social Provision</p>
+      <p class="sec-q">現金・服務・實物・福利券・機會・權力</p>
+    </div>
+  </section>
+
+  <!-- ============ S4 CASH VS IN-KIND DEBATE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="現金vs實物論辯">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>現金 vs. 實物：一場持續的論辯</h2>
+        <span class="h-en">CASH VS. IN-KIND</span>
+      </div>
+      <p class="lead">
+        <strong>歷史脈絡</strong>：1930 年代，瑞典經濟學家 Alva Myrdal 首度在兒童社會福利供給的論述中倡議實物補助，認為以實際物品協助兒童遠比發放現金更有效率，能確保資源真正用於兒童身上。
+      </p>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">支持現金給付的論點</span>
+          <h3 style="font-size: 22px;">效用極大化 ・ 尊嚴 ・ 效率</h3>
+          <p>
+            <strong>效用極大化</strong>：受益者可依自身需求做最佳選擇（福利經濟學觀點）<br/><br/>
+            <strong>受益者尊嚴</strong>：減少污名化、尊重個人自主性<br/><br/>
+            <strong>行政效率</strong>：發放成本低，不需建立實物分配系統
+          </p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">支持實物給付的論點</span>
+          <h3 style="font-size: 22px;">保障需求 ・ 目標明確 ・ 減少疑慮</h3>
+          <p>
+            <strong>保障實際需求</strong>：確保資源確實用於兒童食物、教育等特定目的<br/><br/>
+            <strong>社會目標明確</strong>：政策得以針對特定問題設計回應方案<br/><br/>
+            <strong>減少道德疑慮</strong>：降低公眾對「現金被濫用」的擔憂
+          </p>
+        </div>
+      </div>
+      <div class="insight">
+        <strong>核心論題：</strong>社會控制——以集體利益來管理個人選擇。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S5 SIX FORMS OVERVIEW ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="六種供給形式總覽">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>六種社會供給形式</h2>
+        <span class="h-en">SIX FORMS OF SOCIAL PROVISION</span>
+      </div>
+      <div class="sectors" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="sect s-state">
+          <div class="glyph">現</div>
+          <h4>現金給付</h4>
+          <div class="en">IN-CASH</div>
+          <p class="ex">老農津貼、育兒津貼</p>
+        </div>
+        <div class="sect s-market">
+          <div class="glyph">服</div>
+          <h4>服務</h4>
+          <div class="en">SERVICES</div>
+          <p class="ex">長照服務、就業輔導</p>
+        </div>
+        <div class="sect s-volun">
+          <div class="glyph">實</div>
+          <h4>實物</h4>
+          <div class="en">IN-KIND</div>
+          <p class="ex">口罩配給、食物銀行</p>
+        </div>
+        <div class="sect s-info">
+          <div class="glyph">券</div>
+          <h4>福利券</h4>
+          <div class="en">VOUCHERS</div>
+          <p class="ex">幼教券、振興券</p>
+        </div>
+        <div class="sect s-state">
+          <div class="glyph">機</div>
+          <h4>機會</h4>
+          <div class="en">OPPORTUNITY</div>
+          <p class="ex">原住民升學優待</p>
+        </div>
+        <div class="sect s-market">
+          <div class="glyph">權</div>
+          <h4>權力</h4>
+          <div class="en">POWER</div>
+          <p class="ex">社區發展計畫</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S6 FORM 01 CASH ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="形式01：現金給付">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>形式 01 ・ 現金給付</h2>
+        <span class="h-en">IN-CASH</span>
+        <span class="h-tag">供給形式 1/6</span>
+      </div>
+      <div class="deep s-state">
+        <div class="deep-head">
+          <span class="gl">現</span>
+          <div>
+            <h3>由受益者自由運用的現金給付</h3>
+            <p class="sub-en">CASH, FREELY USED</p>
+          </div>
+        </div>
+        <p class="lead-line">直接提供現金或現金等值給付，讓受益者按照自身需求自由運用，不限定用途。</p>
+        <div class="deep-grid" style="grid-template-columns: 1fr;">
+          <div class="deep-col">
+            <h5>主要特徵</h5>
+            <ul>
+              <li>受益者擁有最大選擇彈性</li>
+              <li>福利經濟學：達到「效用極大化」</li>
+              <li>行政成本相對較低</li>
+              <li>風險：資金不一定用於預期目的</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pair" style="grid-template-columns: repeat(3, 1fr); margin-top: 16px;">
+          <div class="pair-box a">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">老農津貼</h3>
+            <p style="font-size: 15px;">65歲以上農民每月新台幣8,000元（2024年）。不限用途，直接匯入帳戶。</p>
+          </div>
+          <div class="pair-box b">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">育兒津貼</h3>
+            <p style="font-size: 15px;">0-2歲每月5,000元、2-5歲每月3,500元（113年）。家長可自行決定使用方式。</p>
+          </div>
+          <div class="pair-box c">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">低收入戶生活補助</h3>
+            <p style="font-size: 15px;">依家庭收入與人口結構核定每月現金補助，為基本安全網之核心工具。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S7 FORM 02 SERVICES ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="形式02：服務">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>形式 02 ・ 服務</h2>
+        <span class="h-en">SERVICES</span>
+        <span class="h-tag">供給形式 2/6</span>
+      </div>
+      <div class="deep s-market">
+        <div class="deep-head">
+          <span class="gl">服</span>
+          <div>
+            <h3>由專業人員直接提供的協助</h3>
+            <p class="sub-en">DELIVERED BY PROFESSIONALS</p>
+          </div>
+        </div>
+        <p class="lead-line">以個案行為為核心的活動提供，由專業人員直接對受益者施予協助或介入。</p>
+        <div class="deep-grid" style="grid-template-columns: 1fr;">
+          <div class="deep-col">
+            <h5>主要特徵</h5>
+            <ul>
+              <li>需要具備資格的專業人力</li>
+              <li>高度個別化，難以標準化移轉</li>
+              <li>服務本身即為給付，不可轉讓</li>
+              <li>品質高度依賴服務人員能力</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pair" style="grid-template-columns: repeat(3, 1fr); margin-top: 16px;">
+          <div class="pair-box a">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">居家照顧服務</h3>
+            <p style="font-size: 15px;">居服員到府協助日常生活起居，為長照2.0核心措施，依失能程度核定服務時數。</p>
+          </div>
+          <div class="pair-box b">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">就業服務</h3>
+            <p style="font-size: 15px;">全國各地公立就業服務站提供求職媒合、就業諮詢，2023年服務逾200萬人次。</p>
+          </div>
+          <div class="pair-box c">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">家庭暴力防治服務</h3>
+            <p style="font-size: 15px;">各縣市家暴防治中心提供通報、諮詢、庇護及法律協助等一站式服務。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S8 FORM 03 IN-KIND ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="形式03：實物">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>形式 03 ・ 實物</h2>
+        <span class="h-en">IN-KIND / COMMODITIES</span>
+        <span class="h-tag">供給形式 3/6</span>
+      </div>
+      <div class="deep s-volun">
+        <div class="deep-head">
+          <span class="gl">實</span>
+          <div>
+            <h3>直接提供的有形物品或商品</h3>
+            <p class="sub-en">TANGIBLE GOODS</p>
+          </div>
+        </div>
+        <p class="lead-line">直接提供有形的物品或商品作為福利給付，受益者無法自行選擇其他形式。</p>
+        <div class="deep-grid" style="grid-template-columns: 1fr;">
+          <div class="deep-col">
+            <h5>主要特徵</h5>
+            <ul>
+              <li>確保資源確實用於特定目的</li>
+              <li>社會控制功能最為明顯</li>
+              <li>行政成本含倉儲、配送等</li>
+              <li>適用於緊急情況或特定需求</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pair" style="grid-template-columns: repeat(3, 1fr); margin-top: 16px;">
+          <div class="pair-box a">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">COVID-19 口罩實名制（2020）</h3>
+            <p style="font-size: 15px;">全民每週限購2片口罩，以健保卡身分認證配給，確保公平分配，展現強烈實物管制色彩。</p>
+          </div>
+          <div class="pair-box b">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">食物銀行</h3>
+            <p style="font-size: 15px;">台灣各縣市食物銀行收集企業捐贈食品，提供弱勢家庭實物物資，年服務人次逾百萬。</p>
+          </div>
+          <div class="pair-box c">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">學校午餐補助（實物）</h3>
+            <p style="font-size: 15px;">部分縣市針對低收入戶兒童提供免費午餐，直接在校提供餐點（而非現金補助）。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S9 FORM 04 VOUCHERS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="形式04：福利券">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>形式 04 ・ 福利券＆扣抵稅額</h2>
+        <span class="h-en">VOUCHERS &amp; TAX CREDITS</span>
+        <span class="h-tag">供給形式 4/6</span>
+      </div>
+      <div class="deep s-info">
+        <div class="deep-head">
+          <span class="gl">券</span>
+          <div>
+            <h3>限定範圍內的兌換憑證與稅額扣抵</h3>
+            <p class="sub-en">EARMARKED CHOICE</p>
+          </div>
+        </div>
+        <p class="lead-line">可在特定範圍內換取服務或商品的憑證，或直接從稅額中扣抵的租稅優惠。</p>
+        <div class="deep-grid" style="grid-template-columns: 1fr;">
+          <div class="deep-col">
+            <h5>主要特徵</h5>
+            <ul>
+              <li>兼顧選擇自由與目的管制</li>
+              <li>可刺激服務市場的競爭機制</li>
+              <li>擴大消費者選擇，但限定範圍</li>
+              <li>稅額扣抵：中高收入者獲益較多</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pair" style="grid-template-columns: repeat(3, 1fr); margin-top: 16px;">
+          <div class="pair-box a">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">幼兒教育券（幼教券）</h3>
+            <p style="font-size: 15px;">政府提供就讀私立幼兒園兒童每月補助，家長可在核定私立園所使用，不可換現金。</p>
+          </div>
+          <div class="pair-box b">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">振興券（2021年）</h3>
+            <p style="font-size: 15px;">每人500元換取3,000元振興券（五倍卷），限定消費場域，兼具刺激消費與目的管制。</p>
+          </div>
+          <div class="pair-box c">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">所得稅撫養扣除額</h3>
+            <p style="font-size: 15px;">每名受撫養子女可申報一定金額扣除，等同「扣抵稅額」概念，中高所得者獲益較大。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S10 FORM 05 OPPORTUNITY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="形式05：機會">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>形式 05 ・ 機會</h2>
+        <span class="h-en">OPPORTUNITY</span>
+        <span class="h-tag">供給形式 5/6</span>
+      </div>
+      <div class="deep s-state">
+        <div class="deep-head">
+          <span class="gl">機</span>
+          <div>
+            <h3>為特定群體創造的結構性條件</h3>
+            <p class="sub-en">STRUCTURAL CONDITIONS</p>
+          </div>
+        </div>
+        <p class="lead-line">透過激勵機制與制度設計，為特定弱勢群體創造達成目標的結構性條件。</p>
+        <div class="deep-grid" style="grid-template-columns: 1fr;">
+          <div class="deep-col">
+            <h5>主要特徵</h5>
+            <ul>
+              <li>間接形式，難以量化給付價值</li>
+              <li>強調機會平等而非結果平等</li>
+              <li>通常具有長期效益</li>
+              <li>可能引發「公平性」爭議</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pair" style="grid-template-columns: repeat(3, 1fr); margin-top: 16px;">
+          <div class="pair-box a">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">原住民族升學優待</h3>
+            <p style="font-size: 15px;">原住民族學生參加大學入學考試可加分（25%），或設有單獨招生名額，以彌補結構性不平等。</p>
+          </div>
+          <div class="pair-box b">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">職業訓練補助</h3>
+            <p style="font-size: 15px;">勞動部補助失業者、弱勢者免費參加職業訓練課程，提升就業能力，屬機會形式的給付。</p>
+          </div>
+          <div class="pair-box c">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">青年創業與圓夢計畫</h3>
+            <p style="font-size: 15px;">政府提供低利貸款及創業輔導，協助青年創業，以「機會」形式支持自立的可能性。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S11 FORM 06 POWER ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="形式06：權力">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>形式 06 ・ 權力</h2>
+        <span class="h-en">POWER</span>
+        <span class="h-tag">供給形式 6/6</span>
+      </div>
+      <div class="deep s-market">
+        <div class="deep-head">
+          <span class="gl">權</span>
+          <div>
+            <h3>把資源分配決定權轉移給受益群體</h3>
+            <p class="sub-en">EMPOWERMENT</p>
+          </div>
+        </div>
+        <p class="lead-line">透過福利政策機制，將資源分配的決定權由政策主管機關轉移至特定群體手中。</p>
+        <div class="deep-grid" style="grid-template-columns: 1fr;">
+          <div class="deep-col">
+            <h5>主要特徵</h5>
+            <ul>
+              <li>賦權（empowerment）導向</li>
+              <li>參與式福利的核心概念</li>
+              <li>挑戰傳統由上而下的福利模式</li>
+              <li>政治性最強的供給形式</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pair" style="grid-template-columns: repeat(3, 1fr); margin-top: 16px;">
+          <div class="pair-box a">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">身心障礙者權益促進委員會</h3>
+            <p style="font-size: 15px;">《身心障礙者權益保障法》規定委員會需有障礙者代表，法定保障其參與政策制定的決定權。</p>
+          </div>
+          <div class="pair-box b">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">社區發展協會補助</h3>
+            <p style="font-size: 15px;">政府補助社區發展協會，將規劃與執行權限下放至社區，由居民自主決定資源運用方式。</p>
+          </div>
+          <div class="pair-box c">
+            <span class="tag">★ 台灣案例</span>
+            <h3 style="font-size: 19px;">原住民族自治議題</h3>
+            <p style="font-size: 15px;">原住民族基本法保障原住民族對土地與文化政策的參與及決定權，屬權力形式給付之延伸。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S12 TAIWAN CASES TABLE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="台灣案例對照">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>台灣社會福利案例對照</h2>
+        <span class="h-en">TAIWAN CASES COMPARED</span>
+      </div>
+      <table class="ctab">
+        <thead>
+          <tr>
+            <th>形式</th>
+            <th>代表案例</th>
+            <th>發放機關</th>
+            <th>受益對象</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>現金給付</td><td>老農津貼、育兒津貼</td><td>農委會、衛福部</td><td>農民、0-5歲兒童家庭</td></tr>
+          <tr><td>服務</td><td>長照2.0居家服務</td><td>衛福部、縣市政府</td><td>失能長者、身障者</td></tr>
+          <tr><td>實物</td><td>口罩實名制（2020）</td><td>衛福部（健保署）</td><td>全體國民</td></tr>
+          <tr><td>福利券</td><td>幼兒教育券</td><td>教育部</td><td>3-5歲就讀私幼兒童</td></tr>
+          <tr><td>機會</td><td>原住民族升學加分</td><td>教育部</td><td>具原民身分學生</td></tr>
+          <tr><td>權力</td><td>身障者權促委員會</td><td>衛福部（各縣市）</td><td>身心障礙者</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ S13 SECTION PART 02 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第二部分：議題思考">
+    <div class="slide-inner">
+      <div class="big-num">貳</div>
+      <p class="part">PART 02</p>
+      <h2>議題思考</h2>
+      <p class="sec-en">Issue: Choice vs. Social Control</p>
+      <p class="sec-q">選擇的自由　與　集體的管制，如何取得平衡？</p>
+    </div>
+  </section>
+
+  <!-- ============ S14 CHOICE VS SOCIAL CONTROL ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="選擇與社會控制的拉力">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>「選擇」與「社會控制」的拉力</h2>
+        <span class="h-en">CHOICE VS. SOCIAL CONTROL</span>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">強調「選擇」的立場</span>
+          <div class="deep-col">
+            <ul>
+              <li><strong>哲學基礎</strong>：自由主義：個人最了解自己的需求（Hayek, Friedman）</li>
+              <li><strong>政策意涵</strong>：現金給付、教育券——讓受益者自由選擇服務提供者</li>
+              <li><strong>市場競爭</strong>：選擇權可促使服務提供者提升品質（競爭機制）</li>
+              <li><strong>典型主張</strong>：教育券：父母有權為子女選擇最好的學校</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">強調「社會控制」的立場</span>
+          <div class="deep-col">
+            <ul>
+              <li><strong>哲學基礎</strong>：社群主義：集體決策可實現共同利益，個人選擇有其侷限</li>
+              <li><strong>政策意涵</strong>：服務、實物——確保資源用於社會認可的目標</li>
+              <li><strong>父權主義疑慮</strong>：服務提供者比受益者更了解何者對其有利？</li>
+              <li><strong>典型論點</strong>：食物券：確保補助真正用於食物，而非其他消費</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S15 VOUCHER DEEP DIVE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="福利券案例深探">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>福利券案例深探：食物券與教育券</h2>
+        <span class="h-en">VOUCHERS IN PRACTICE: SNAP &amp; EDUCATION</span>
+      </div>
+      <div class="pair">
+        <div class="pair-box b">
+          <span class="tag">美國食物券（SNAP）</span>
+          <div class="deep-col">
+            <ul>
+              <li>美國規模最大的福利券方案之一</li>
+              <li>現稱 SNAP（Supplemental Nutrition Assistance Program）</li>
+              <li>受益者以電子卡消費，限定購買食品</li>
+              <li>不得購買菸酒、餐廳消費、非食品商品</li>
+              <li>2023年：每月約4,200萬人受益</li>
+            </ul>
+          </div>
+          <p style="margin-top: 10px; font-weight: 600; color: var(--accent);">★ 體現「選擇中的管制」——有彈性但有界線</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">教育券（Education Voucher）</span>
+          <div class="deep-col">
+            <ul>
+              <li>1955年 Milton Friedman 首倡</li>
+              <li>主張：政府補助父母、讓其自由選校</li>
+              <li>第一個實驗：北加州 Alum Rock（1970s）</li>
+              <li>台灣案例：幼兒教育券（2003年起）→ 政府補助幼兒就讀私立幼兒園</li>
+              <li>批評：加深教育不平等？公立學校資源流失？</li>
+            </ul>
+          </div>
+          <p style="margin-top: 10px; font-weight: 600; color: var(--accent);">★ 競爭與選擇 vs. 教育公平</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S16 CLASSROOM ACTIVITY (SCENARIO) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="課堂活動（互動）">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>課堂活動：如果你是政策設計師…</h2>
+        <span class="h-en">CLASSROOM ACTIVITY</span>
+        <span class="h-tag">★ 互動</span>
+      </div>
+      <div class="scen-block" data-scen="designer">
+        <p class="scen-q">政府編列預算，要協助一位「三十五歲、單親媽媽、有兩名就學兒童、剛失業」的家庭。你手中有一筆固定預算，你會選擇提供哪一種形式的給付？為什麼？</p>
+        <p class="scen-detail">小組討論（5 分鐘）→ 分享你的選擇與理由。沒有標準答案，關鍵在「為什麼」。點選任一選項，看這個形式的特性分析。</p>
+        <div class="scen-options" style="grid-template-columns: repeat(3, 1fr);">
+          <button class="scen-opt" data-pick="cash" onclick="pickScen('designer', 'cash', this)">A ・ 現金補助<br/><span style="font-size: 13px; opacity: 0.7;">每月5,000元，不限用途</span></button>
+          <button class="scen-opt" data-pick="service" onclick="pickScen('designer', 'service', this)">B ・ 托育服務<br/><span style="font-size: 13px; opacity: 0.7;">提供公托名額，免費</span></button>
+          <button class="scen-opt" data-pick="inkind" onclick="pickScen('designer', 'inkind', this)">C ・ 實物補助<br/><span style="font-size: 13px; opacity: 0.7;">食物箱、學用品配給</span></button>
+          <button class="scen-opt" data-pick="voucher" onclick="pickScen('designer', 'voucher', this)">D ・ 教育券<br/><span style="font-size: 13px; opacity: 0.7;">子女就讀私立補習班抵用</span></button>
+          <button class="scen-opt" data-pick="opportunity" onclick="pickScen('designer', 'opportunity', this)">E ・ 職訓機會<br/><span style="font-size: 13px; opacity: 0.7;">免費職業訓練課程</span></button>
+          <button class="scen-opt" data-pick="power" onclick="pickScen('designer', 'power', this)">F ・ 社區賦權<br/><span style="font-size: 13px; opacity: 0.7;">連結社區資源、培力參與</span></button>
+        </div>
+        <div class="scen-feedback" id="fb-designer"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S17 DISCUSSION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="討論與反思">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>討論與反思</h2>
+        <span class="h-en">CLASS DISCUSSION</span>
+        <span class="h-tag">點選展開提示</span>
+      </div>
+      <div class="discuss">
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">Q1</div>
+          <div class="qt">為什麼同樣是「幫助弱勢兒童」，有人偏好現金津貼，有人偏好托育服務？背後反映的是哪些不同價值取向？</div>
+          <div class="hint">提示：回到現金 vs. 實物的論辯——效用極大化與受益者尊嚴，對照保障實際需求與社會目標明確；也對應「選擇」與「社會控制」兩種立場的哲學基礎（自由主義 vs. 社群主義）。</div>
+        </div>
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">Q2</div>
+          <div class="qt">台灣 COVID-19 口罩政策採取「實物配給」而非「現金補助購買」，這樣的選擇體現了哪種邏輯？你認為這是恰當的嗎？</div>
+          <div class="hint">提示：實物給付的主要特徵之一是「社會控制功能最為明顯」，適用於緊急情況或特定需求——口罩實名制正是這個邏輯下的產物。</div>
+        </div>
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">Q3</div>
+          <div class="qt">教育券被批評可能加深階級不平等——更有資訊與資本的家庭才能善用選擇權。你認為「選擇」與「平等」之間的矛盾如何解決？</div>
+          <div class="hint">提示：教育券兼顧選擇自由與目的管制，但稅額扣抵類的福利券「中高收入者獲益較多」；這正是「選擇」立場（自由主義）與「社會控制」立場（社群主義、父權主義疑慮）拉鋸的縮影。</div>
+        </div>
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">Q4</div>
+          <div class="qt">「權力」作為一種供給形式，與傳統福利給付最大的差異在哪裡？社區發展計畫是否真的算是一種「給付」？</div>
+          <div class="hint">提示：權力形式的主要特徵是賦權導向、參與式福利、挑戰由上而下的模式，是政治性最強的供給形式——回頭想想它和現金、服務、實物有什麼本質上的不同。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<nav class="navbar">
+  <button class="nav-btn" id="prevBtn" onclick="goPrev()">← 前頁</button>
+  <div class="nav-center">
+    <span><span id="curNum">1</span> / <span id="totNum">18</span></span>
+    <div class="dots" id="dots"></div>
+  </div>
+  <button class="nav-btn" id="nextBtn" onclick="goNext()">下一頁 →</button>
+</nav>
+
+<div class="keyboard-hint">
+  <kbd>←</kbd> <kbd>→</kbd> 切換頁面　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕
+</div>
+
+<div class="toc-overlay" id="tocOverlay" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" onclick="toggleToc()">×</button>
+    <h2 class="toc-title">目次 ・ Table of Contents</h2>
+    <p class="toc-sub">點選任一條目跳到該頁</p>
+    <ul class="toc-list" id="tocList"></ul>
+  </div>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let cur = 0;
+  document.getElementById('totNum').textContent = total;
+
+  // dots & toc
+  const dotsEl = document.getElementById('dots');
+  const tocEl = document.getElementById('tocList');
+  slides.forEach((s, i) => {
+    const d = document.createElement('span');
+    d.className = 'dot' + (s.dataset.kind === 'section' ? ' is-section' : '');
+    d.title = s.dataset.label || '';
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+    const li = document.createElement('li');
+    if (s.dataset.kind === 'section') li.classList.add('is-section');
+    li.innerHTML = `<span class="num">${String(i + 1).padStart(2, '0')}</span><span class="lab">${s.dataset.label || ''}</span><span class="kind">${s.dataset.kind}</span>`;
+    li.onclick = () => { goTo(i); toggleToc(); };
+    tocEl.appendChild(li);
+  });
+
+  function goTo(n) {
+    if (n < 0 || n >= total || n === cur) return;
+    const dir = n > cur ? 1 : -1;
+    slides[cur].classList.remove('is-active');
+    if (dir > 0) slides[cur].classList.add('is-prev');
+    cur = n;
+    slides[cur].classList.remove('is-prev');
+    slides[cur].classList.add('is-active');
+    setTimeout(() => slides.forEach((s, i) => { if (i !== cur) s.classList.remove('is-prev'); }), 500);
+    update();
+  }
+  function goPrev() { goTo(cur - 1); }
+  function goNext() { goTo(cur + 1); }
+  function update() {
+    document.getElementById('curNum').textContent = cur + 1;
+    document.getElementById('prevBtn').disabled = cur === 0;
+    document.getElementById('nextBtn').disabled = cur === total - 1;
+    document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('is-active', i === cur));
+  }
+
+  function toggleToc() {
+    document.getElementById('tocOverlay').classList.toggle('is-shown');
+  }
+
+  // Scenario interactive
+  const scenFeedbacks = {
+    designer: {
+      cash: { label: '現金給付', body: '<strong>效用極大化。</strong>直接提供現金，讓受益者按照自身需求自由運用，不限定用途——受益者擁有最大選擇彈性，行政成本也相對較低。風險是：資金不一定用於預期目的。' },
+      service: { label: '服務', body: '<strong>以個案為核心的專業協助。</strong>公托是由專業人員直接提供的服務，高度個別化、服務本身即為給付、不可轉讓。品質高度依賴服務人員能力，但能直接解決「誰來照顧孩子」的問題。' },
+      inkind: { label: '實物', body: '<strong>確保資源用於特定目的。</strong>食物箱、學用品是直接提供的有形物品，受益者無法自行選擇其他形式——社會控制功能最為明顯，適用於緊急情況或特定需求，但行政成本含倉儲、配送等。' },
+      voucher: { label: '福利券', body: '<strong>選擇自由與目的管制的折衷。</strong>教育券可在特定範圍內換取服務，兼顧選擇自由與目的管制，也可能刺激服務市場的競爭機制——但擴大的是「限定範圍」內的選擇，不是不受限制的選擇。' },
+      opportunity: { label: '機會', body: '<strong>間接、長期的結構性條件。</strong>免費職業訓練透過激勵機制與制度設計，創造達成目標的結構性條件——強調機會平等而非結果平等，通常具有長期效益，但難以量化給付價值，短期未必能解決眼前困境。' },
+      power: { label: '權力', body: '<strong>政治性最強的供給形式。</strong>連結社區資源、培力參與，把資源分配的決定權轉移到受益群體手中——是賦權導向、參與式福利的核心概念，但也挑戰了傳統由上而下的福利模式，見效可能較慢。' }
+    }
+  };
+  function pickScen(scen, choice, btn) {
+    const block = document.querySelector(`.scen-block[data-scen="${scen}"]`);
+    block.querySelectorAll('.scen-opt').forEach(o => {
+      o.classList.remove('is-picked');
+      o.classList.add('is-mismatch');
+    });
+    btn.classList.add('is-picked');
+    btn.classList.remove('is-mismatch');
+    const data = scenFeedbacks[scen][choice];
+    const fb = document.getElementById('fb-' + scen);
+    fb.innerHTML = `<strong>你選了：${data.label}。</strong> ${data.body}`;
+    fb.classList.add('is-shown');
+  }
+
+  // Quiz
+  let quizScore = 0;
+  document.querySelectorAll('.quiz').forEach(quiz => {
+    const correct = quiz.dataset.correct;
+    const opts = quiz.querySelectorAll('.quiz-opt');
+    opts.forEach(opt => {
+      opt.addEventListener('click', () => {
+        if (quiz.dataset.done) return;
+        quiz.dataset.done = '1';
+        const picked = opt.dataset.opt;
+        opts.forEach(o => {
+          o.disabled = true;
+          if (o.dataset.opt === correct) o.classList.add('is-correct');
+          else if (o.dataset.opt === picked) o.classList.add('is-wrong');
+        });
+        if (picked === correct) {
+          quizScore++;
+          const sn = document.getElementById('scoreNum');
+          if (sn) sn.textContent = quizScore;
+        }
+        quiz.querySelector('.quiz-explain').classList.add('is-shown');
+      });
+    });
+  });
+
+  // Keyboard + touch
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('tocOverlay').classList.contains('is-shown')) {
+      if (e.key === 'Escape') toggleToc();
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goNext(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goPrev(); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+    else if (e.key === 'Escape') toggleToc();
+    else if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+  });
+
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) dx < 0 ? goNext() : goPrev();
+  });
+
+  update();
+</script>
+
+<script>
+  // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
+  // 偶爾因 sticky header + backdrop-filter 而整頁空白。
+  // 偵測到從快取還原時，強制觸發一次重繪。
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      document.body.style.display = 'none';
+      void document.body.offsetHeight;
+      document.body.style.display = '';
+    }
+  });
+</script>
+</body>
+</html>

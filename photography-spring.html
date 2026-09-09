@@ -7,6 +7,7 @@
 <meta name="description" content="Shunshin · the seven days of cherry — from first bloom to blossom-snow, the year's briefest season. An overview of Chung-Yang Yeh's spring photographs in an ink-wash cherry style.">
 <link rel="alternate" hreflang="zh-Hant" href="photography-spring-zh.html">
 <link rel="alternate" hreflang="en" href="photography-spring.html">
+<link rel="preload" as="image" href="images/photography/img_9078.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Serif+TC:wght@300;400;500;600&family=Yuji+Syuku&family=Klee+One:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -14,7 +15,7 @@
   /* ================================================================
      春信 · 櫻花總覽（水墨風格）
      骨幹＝攝影頁設計語言（:root / 字體 / nav / lightbox / samon）
-     頂部＝水墨櫻花 hero（宣紙質地 + 花瓣 canvas + 墨枝 SVG，移植自 sakura-A-suiboku）
+     頂部＝No. 136 春日家族原照 + 寫實櫻花瓣，緩慢飄落，每秒下降 0.96 CSS 公分
      ================================================================ */
   :root{
     --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
@@ -63,7 +64,7 @@
   }
 
   /* ── 花瓣 canvas（固定全頁，內容之下、稀疏飄落）── */
-  #petals{ position:fixed; inset:0; z-index:1; pointer-events:none; }
+  #petals{ position:absolute; inset:0; width:100%; height:100%; z-index:2; pointer-events:none; }
 
   /* 內容層（在花瓣之上；花瓣從透明處透出）*/
   .page{ position:relative; z-index:2; }
@@ -108,14 +109,11 @@
   }
   .hero .wrap{ position:relative; z-index:3; width:min(1180px,90vw); margin-inline:auto; }
 
-  /* 水墨の桜枝（SVG）— hero 背景，右上垂落 */
-  .ink-branch{
-    position:absolute; z-index:2; pointer-events:none;
-    top:clamp(-30px,-3vh,-6px); right:clamp(-120px,-8vw,-40px);
-    width:clamp(560px,72vw,1000px); height:auto;
-    opacity:.96; will-change:transform;
-    filter:drop-shadow(0 18px 30px rgba(42,38,36,.05));
-  }
+  .hero{ background:#f6eeeb; }
+  .spring-photo{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:56% 50%; z-index:0; pointer-events:none; }
+  .hero::before{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(90deg,rgba(246,238,235,.85),rgba(246,238,235,.64) 24%,rgba(246,238,235,.04) 49%,transparent 65%); }
+  .hero .wrap{ --sakura:#924f61; --sumi:#302326; --sumi-soft:#49363a; --sumi-faint:#654e55; --moss:#664d47; }
 
   .eyebrow{
     font-family:var(--latin); font-weight:400;
@@ -156,7 +154,7 @@
   .hero-poem{
     font-family:var(--serif); font-weight:400;
     font-size:clamp(16px,2.1vw,24px); line-height:1.95;
-    color:var(--sumi-soft); max-width:34ch;
+    color:var(--sumi-soft); max-width:28ch;
     margin-top:clamp(26px,4.4vh,46px);
     position:relative; padding-left:clamp(16px,2.4vw,26px);
   }
@@ -290,7 +288,10 @@
     .hero h1{ font-size:clamp(76px,30vw,140px); }
     .hero h1 .romaji{ font-size:clamp(13px,4.4vw,20px); letter-spacing:.26em; }
     .hero-poem{ font-size:clamp(16px,4.4vw,21px); max-width:26ch; }
-    .ink-branch{ width:150vw; right:-42vw; top:-2vh; opacity:.82; }
+    .hero{ padding-bottom:calc(100vw * 1066 / 1600 + 34px); }
+    .spring-photo{ inset:auto 0 0; width:100%; height:auto; object-fit:contain; }
+    .hero::before{ background:linear-gradient(180deg,#f6eeeb,rgba(246,238,235,0)); height:40px; top:auto; bottom:calc(100vw * 1066 / 1600 - 40px); }
+    .scroll-cue{ display:none; }
     .hero-mark{ display:none; }
     .wall-head{ grid-template-columns:1fr; gap:18px; padding-top:clamp(48px,8vh,72px); }
     .wall-head .wh-kanji{ font-size:clamp(56px,18vw,96px); }
@@ -318,7 +319,6 @@
 <body>
 
 <div class="paper-grain" aria-hidden="true"></div>
-<canvas id="petals" aria-hidden="true"></canvas>
 
 <header class="nav">
   <div class="brand">
@@ -341,168 +341,9 @@
   <!-- ============ 水墨櫻花 HERO ============ -->
   <header class="hero" id="hero">
     <!-- 水墨の桜枝 — 主枝（移植自 sakura-A-suiboku）-->
-    <svg class="ink-branch" id="branch" viewBox="0 0 1000 760" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMin meet">
-      <defs>
-        <filter id="inkbleed" x="-45%" y="-45%" width="190%" height="190%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.014 0.02" numOctaves="4" seed="7" result="t"/>
-          <feDisplacementMap in="SourceGraphic" in2="t" scale="17" xChannelSelector="R" yChannelSelector="G" result="d"/>
-          <feGaussianBlur in="d" stdDeviation="3.4"/>
-        </filter>
-        <filter id="drybrush" x="-20%" y="-20%" width="140%" height="140%">
-          <feTurbulence type="turbulence" baseFrequency="0.9 0.08" numOctaves="2" seed="4" result="t"/>
-          <feDisplacementMap in="SourceGraphic" in2="t" scale="3.2"/>
-        </filter>
-        <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"   stop-color="#eec3d3" stop-opacity="0.30"/>
-          <stop offset="55%"  stop-color="#e7a9c1" stop-opacity="0.16"/>
-          <stop offset="100%" stop-color="#e7a9c1" stop-opacity="0"/>
-        </radialGradient>
-        <linearGradient id="petalGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stop-color="#fdf4f7"/>
-          <stop offset="55%"  stop-color="#f2cbdb"/>
-          <stop offset="100%" stop-color="#e39ab8"/>
-        </linearGradient>
-        <radialGradient id="budGrad" cx="50%" cy="38%" r="70%">
-          <stop offset="0%"   stop-color="#efaec7"/>
-          <stop offset="100%" stop-color="#cf6d94"/>
-        </radialGradient>
-        <!-- 單片櫻花瓣：倒卵形、尖端一道 V 形缺口（切れ込み）。基部在原點、尖端朝上 -->
-        <path id="fpetal" fill="url(#petalGrad)" stroke="#cf7fa2" stroke-width="0.45" stroke-opacity="0.55"
-          d="M0 0 C 2.9 -1.5, 4.9 -4.2, 4.4 -7.4 C 4.0 -9.3, 2.8 -10.5, 1.6 -10.7 Q 0.7 -9.3, 0 -8.0 Q -0.7 -9.3, -1.6 -10.7 C -2.8 -10.5, -4.0 -9.3, -4.4 -7.4 C -4.9 -4.2, -2.9 -1.5, 0 0 Z"/>
-        <!-- 一朵五瓣櫻花：五片缺口瓣＋深粉花心＋蕊 -->
-        <g id="flw">
-          <use href="#fpetal"/>
-          <use href="#fpetal" transform="rotate(72)"/>
-          <use href="#fpetal" transform="rotate(144)"/>
-          <use href="#fpetal" transform="rotate(216)"/>
-          <use href="#fpetal" transform="rotate(288)"/>
-          <g stroke="#b8496f" stroke-width="0.4" stroke-linecap="round">
-            <line x1="0" y1="0" x2="2.6" y2="-2"/><line x1="0" y1="0" x2="-2.6" y2="-2"/>
-            <line x1="0" y1="0" x2="3.1" y2="1.1"/><line x1="0" y1="0" x2="-3.1" y2="1.1"/>
-            <line x1="0" y1="0" x2="1.1" y2="3.1"/><line x1="0" y1="0" x2="-1.1" y2="3.1"/>
-          </g>
-          <g fill="#e9d08e">
-            <circle cx="2.6" cy="-2" r="0.5"/><circle cx="-2.6" cy="-2" r="0.5"/>
-            <circle cx="3.1" cy="1.1" r="0.5"/><circle cx="-3.1" cy="1.1" r="0.5"/>
-            <circle cx="1.1" cy="3.1" r="0.5"/><circle cx="-1.1" cy="3.1" r="0.5"/>
-          </g>
-          <circle r="1.6" fill="#c2547e"/>
-        </g>
-        <!-- 花苞：深粉水滴＋萼片＋短梗 -->
-        <g id="fbud">
-          <path d="M0 -5.2 C 2.6 -3.4, 3.0 -0.2, 0.8 1.6 C 0.3 2, -0.3 2, -0.8 1.6 C -3.0 -0.2, -2.6 -3.4, 0 -5.2 Z" fill="url(#budGrad)" stroke="#c2547e" stroke-width="0.4" stroke-opacity="0.5"/>
-          <path d="M-1.6 1 C -0.6 2.6, 0.6 2.6, 1.6 1 L 0 4.6 Z" fill="#8d7a5b" opacity="0.8"/>
-          <line x1="0" y1="4.2" x2="0" y2="7.4" stroke="#6f665f" stroke-width="0.7" stroke-linecap="round"/>
-        </g>
-        <linearGradient id="inkgrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#211d1b"/>
-          <stop offset="70%" stop-color="#332e2a"/>
-          <stop offset="100%" stop-color="#4a423d"/>
-        </linearGradient>
-      </defs>
-
-      <!-- 花簇後方極淡粉暈（僅柔化，不作主體）-->
-      <g filter="url(#inkbleed)">
-        <ellipse cx="690" cy="190" rx="150" ry="115" fill="url(#glow)"/>
-        <ellipse cx="795" cy="130" rx="105" ry="85"  fill="url(#glow)"/>
-        <ellipse cx="885" cy="80"  rx="90"  ry="70"  fill="url(#glow)"/>
-        <ellipse cx="505" cy="225" rx="115" ry="85"  fill="url(#glow)"/>
-        <ellipse cx="862" cy="278" rx="80"  ry="68"  fill="url(#glow)"/>
-        <ellipse cx="300" cy="265" rx="85"  ry="68"  fill="url(#glow)"/>
-        <ellipse cx="668" cy="372" rx="95"  ry="72"  fill="url(#glow)"/>
-        <ellipse cx="200" cy="445" rx="72"  ry="60"  fill="url(#glow)"/>
-        <ellipse cx="515" cy="478" rx="68"  ry="56"  fill="url(#glow)"/>
-      </g>
-
-      <!-- 主枝 -->
-      <g stroke="url(#inkgrad)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path filter="url(#drybrush)" stroke-width="15"
-          d="M978 40 C 872 96, 792 150, 690 190 C 566 238, 470 250, 372 300 C 300 337, 250 380, 176 430 C 128 462, 92 500, 40 560"/>
-        <path filter="url(#drybrush)" stroke-width="8"
-          d="M690 190 C 700 250, 690 306, 636 372 C 604 411, 560 438, 520 486"/>
-        <path filter="url(#drybrush)" stroke-width="7"
-          d="M452 262 C 420 300, 372 322, 300 356 C 258 376, 220 404, 190 452"/>
-        <path filter="url(#drybrush)" stroke-width="6"
-          d="M792 132 C 828 168, 856 214, 858 276"/>
-        <path filter="url(#drybrush)" stroke-width="5"
-          d="M560 232 C 528 210, 486 202, 440 208"/>
-        <g stroke-width="2.6" opacity="0.86">
-          <path filter="url(#drybrush)" d="M250 240 C 236 268, 230 300, 244 332"/>
-          <path filter="url(#drybrush)" d="M636 300 C 664 316, 690 340, 700 376"/>
-          <path filter="url(#drybrush)" d="M372 300 C 356 276, 330 262, 300 260"/>
-          <path filter="url(#drybrush)" d="M858 240 C 884 256, 900 284, 898 316"/>
-        </g>
-      </g>
-
-      <!-- 花簇：五瓣櫻花一簇一簇掛在枝上（右上近處大、左下遠處小）-->
-      <g>
-        <!-- 簇一：主枝起點附近（最近、最大）-->
-        <use href="#flw"  transform="translate(892 72)  rotate(-18) scale(3.0)"/>
-        <use href="#flw"  transform="translate(930 54)  rotate(28)  scale(2.5)"/>
-        <use href="#fbud" transform="translate(906 100) rotate(35)  scale(2.2)"/>
-        <!-- 簇二：792,125 支枝 -->
-        <use href="#flw"  transform="translate(790 118) rotate(6)   scale(2.8)"/>
-        <use href="#flw"  transform="translate(826 150) rotate(40)  scale(2.3)"/>
-        <use href="#flw"  transform="translate(760 148) rotate(-28) scale(2.2)"/>
-        <use href="#fbud" transform="translate(818 104) rotate(-15) scale(2.0)"/>
-        <!-- 簇三：690,190 主枝分岔（大簇）-->
-        <use href="#flw"  transform="translate(690 184) rotate(12)  scale(3.0)"/>
-        <use href="#flw"  transform="translate(652 158) rotate(-32) scale(2.6)"/>
-        <use href="#flw"  transform="translate(728 156) rotate(50)  scale(2.4)"/>
-        <use href="#flw"  transform="translate(724 224) rotate(-12) scale(2.5)"/>
-        <use href="#flw"  transform="translate(656 222) rotate(72)  scale(2.1)"/>
-        <use href="#fbud" transform="translate(744 194) rotate(55)  scale(2.1)"/>
-        <use href="#fbud" transform="translate(636 190) rotate(-50) scale(1.9)"/>
-        <!-- 簇四：858,276 支枝末端 -->
-        <use href="#flw"  transform="translate(856 262) rotate(20)  scale(2.2)"/>
-        <use href="#flw"  transform="translate(880 294) rotate(-14) scale(1.9)"/>
-        <use href="#fbud" transform="translate(842 300) rotate(40)  scale(1.8)"/>
-        <use href="#fbud" transform="translate(888 254) rotate(-35) scale(1.6)"/>
-        <!-- 簇五：560,232 → 440,208 小枝 -->
-        <use href="#flw"  transform="translate(542 226) rotate(-22) scale(2.3)"/>
-        <use href="#flw"  transform="translate(500 212) rotate(38)  scale(2.0)"/>
-        <use href="#flw"  transform="translate(460 214) rotate(-46) scale(1.8)"/>
-        <use href="#fbud" transform="translate(526 198) rotate(12)  scale(1.7)"/>
-        <!-- 簇六：452,262 分枝上段 -->
-        <use href="#flw"  transform="translate(430 272) rotate(14)  scale(2.0)"/>
-        <use href="#flw"  transform="translate(396 298) rotate(-30) scale(1.8)"/>
-        <use href="#fbud" transform="translate(448 298) rotate(28)  scale(1.6)"/>
-        <!-- 簇七：300,260 小枝端 -->
-        <use href="#flw"  transform="translate(302 256) rotate(-16) scale(1.8)"/>
-        <use href="#flw"  transform="translate(272 272) rotate(42)  scale(1.6)"/>
-        <use href="#fbud" transform="translate(324 242) rotate(-30) scale(1.4)"/>
-        <!-- 簇八：636,372 / 700,376 垂枝 -->
-        <use href="#flw"  transform="translate(640 368) rotate(26)  scale(1.9)"/>
-        <use href="#flw"  transform="translate(678 386) rotate(-20) scale(1.7)"/>
-        <use href="#flw"  transform="translate(708 370) rotate(52)  scale(1.6)"/>
-        <use href="#fbud" transform="translate(660 350) rotate(10)  scale(1.5)"/>
-        <!-- 簇九：898,316 小枝端 -->
-        <use href="#flw"  transform="translate(896 312) rotate(16)  scale(1.8)"/>
-        <use href="#fbud" transform="translate(910 334) rotate(45)  scale(1.5)"/>
-        <!-- 簇十：520,486 支枝末端（遠、小）-->
-        <use href="#flw"  transform="translate(522 478) rotate(-12) scale(1.6)"/>
-        <use href="#flw"  transform="translate(498 460) rotate(34)  scale(1.4)"/>
-        <use href="#fbud" transform="translate(540 498) rotate(20)  scale(1.4)"/>
-        <!-- 簇十一：244,332 小枝 -->
-        <use href="#flw"  transform="translate(246 330) rotate(24)  scale(1.5)"/>
-        <use href="#fbud" transform="translate(232 352) rotate(-25) scale(1.3)"/>
-        <!-- 簇十二：190,452 支枝末端（最遠、最小）-->
-        <use href="#flw"  transform="translate(192 446) rotate(-26) scale(1.4)"/>
-        <use href="#flw"  transform="translate(216 430) rotate(18)  scale(1.3)"/>
-        <use href="#fbud" transform="translate(176 468) rotate(30)  scale(1.2)"/>
-        <!-- 簇十三：主枝下段收尾 -->
-        <use href="#flw"  transform="translate(122 486) rotate(36)  scale(1.2)"/>
-        <use href="#fbud" transform="translate(98 510)  rotate(-20) scale(1.1)"/>
-      </g>
-      <!-- 風に散る花びら（枝外飄散的單瓣）-->
-      <g opacity="0.8">
-        <use href="#fpetal" transform="translate(360 150) rotate(130) scale(1.6)"/>
-        <use href="#fpetal" transform="translate(300 200) rotate(200) scale(1.3)"/>
-        <use href="#fpetal" transform="translate(240 260) rotate(60)  scale(1.2)"/>
-        <use href="#fpetal" transform="translate(170 340) rotate(160) scale(1.1)"/>
-        <use href="#fpetal" transform="translate(430 380) rotate(240) scale(1.2)"/>
-      </g>
-    </svg>
+    <!-- Original photograph: No. 136, 春日家族. Source image is unchanged. -->
+    <img class="spring-photo" id="springPhoto" src="images/photography/img_9078.jpg" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
+    <canvas id="petals" aria-hidden="true"></canvas>
 
     <span class="hero-mark" aria-hidden="true">散るにまかせて</span>
 
@@ -820,182 +661,81 @@
   });
 </script>
 
-<!-- 花瓣 canvas + 墨枝視差（移植自 sakura-A-suiboku，去除 nav 專用邏輯）-->
+<!-- Photographic sakura petals; vertical speed uses CSS absolute-unit conversion.
+Generated with the built-in image tool. Final prompt:
+A transparent PNG sprite sheet: exactly FOUR separate photorealistic single Japanese cherry blossom PETAL cutouts in a clean 2x2 grid. True transparent alpha channel background, NOT a visual checkerboard or any white backdrop. Each quadrant contains ONE detached single petal only, not a whole flower, no stamens, no leaves, no branches. Pale blush pink and ivory-pink petals like softly backlit spring sakura, subtly darker rose-pink narrow base, rounded broad fan/teardrop shape with a tiny natural notch in the outer tip, thin translucent tissue, very fine radiating veins, delicate uneven natural edges, slight curls and soft fold shading. Top left near flat petal; top right gently cupped three-quarter petal; bottom left subtly curled pale pink petal; bottom right ivory blush petal at slight oblique angle. Botanical macrophotography, realistic understated texture and diffuse natural daylight, no illustration, no icons, no artificial gloss. Each petal fully contained inside its own quadrant with generous transparent margin around it and gutters between all four. Square 1024x1024. No ground, no cast shadows outside the petals, no checkerboard pixels, no labels, no text. Deliver actual RGBA with transparent background.
+-->
 <script>
 (() => {
-  "use strict";
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const canvas = document.getElementById('petals');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-  const petals = [];
-  const palette = [
-    ['#f4d7e2','#e3a7c0'],
-    ['#eec3d3','#d98aa8'],
-    ['#f7e6ee','#e9b9cd'],
-    ['#e7a9c1','#c76d91']
-  ];
-
+  'use strict';
+  const hero=document.getElementById('hero'),canvas=document.getElementById('petals');
+  const ctx=canvas.getContext('2d'),motion=matchMedia('(prefers-reduced-motion: reduce)');
+  const atlas=new Image(),petals=[],TAU=Math.PI*2;
+  // CSS absolute units: 1 inch = 96 CSS px, 1 inch = 2.54 cm.
+  // This is screen-space descent, not a claim about physical monitor dimensions.
+  const FALL_CM_PER_SECOND=.96,FALL_PX_PER_SECOND=FALL_CM_PER_SECOND*96/2.54;
+  let W=0,H=0,time=0,last=null,raf=0,inView=true,ready=false;
+  const rand=(a,b)=>a+Math.random()*(b-a);
+  function makePetal(){
+    const depth=Math.random();
+    return {x:rand(-20,W+20),y:rand(-90,H+30),size:6.8+depth*10.2,depth,
+      drift:rand(-2,3),phase:rand(0,TAU),frequency:rand(.28,.55),sway:rand(4,9),
+      rotation:rand(-Math.PI,Math.PI),spin:rand(-.16,.16),tilt:rand(0,TAU),tumble:rand(.25,.48),
+      sprite:Math.floor(rand(0,4)),distance:0};
+  }
   function resize(){
-    W = window.innerWidth; H = window.innerHeight;
-    canvas.width = W * dpr; canvas.height = H * dpr;
-    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const target = Math.round(Math.min(34, Math.max(12, W / 34))); // 稀疏
-    while (petals.length < target) petals.push(makePetal(true));
-    while (petals.length > target) petals.pop();
+    const rect=hero.getBoundingClientRect(),oldW=W||rect.width,oldH=H||rect.height;
+    W=rect.width;H=rect.height;const dpr=Math.min(devicePixelRatio||1,2);
+    canvas.width=Math.max(1,Math.round(W*dpr));canvas.height=Math.max(1,Math.round(H*dpr));
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    for(const p of petals){p.x*=W/oldW;p.y*=H/oldH;}
+    const count=W<600?57:115;
+    while(petals.length<count)petals.push(makePetal());
+    petals.length=count;draw();
   }
-  function makePetal(spawnAnywhere){
-    const kind = Math.random() < 0.15 ? 'flower' : 'petal';   // 偶爾混入整朵五瓣小花
-    const size = kind === 'flower' ? 8 + Math.random() * 5 : 7 + Math.random() * 12;
-    const pal = palette[(Math.random() * palette.length) | 0];
-    return {
-      kind,
-      x: Math.random() * W,
-      y: spawnAnywhere ? Math.random() * H : -20 - Math.random() * 80,
-      size,
-      vy: 0.35 + Math.random() * 0.65 + size * 0.02,
-      vx: (Math.random() - 0.5) * 0.5,
-      sway: 0.6 + Math.random() * 1.4,
-      swaySpeed: 0.008 + Math.random() * 0.014,
-      phase: Math.random() * Math.PI * 2,
-      rot: Math.random() * Math.PI * 2,
-      vrot: (Math.random() - 0.5) * 0.03,
-      flip: Math.random() * Math.PI * 2,
-      vflip: kind === 'flower' ? 0.012 + Math.random() * 0.02 : 0.02 + Math.random() * 0.035,
-      c1: pal[0], c2: pal[1],
-      alpha: 0.5 + Math.random() * 0.4
-    };
+  function update(dt){
+    time+=dt;
+    const wind=2*Math.sin(time*.12)+Math.sin(time*.25);
+    for(const p of petals){
+      const flutter=Math.sin(time*p.frequency+p.phase);
+      p.x+=(p.drift+wind+flutter*p.sway)*dt;
+      // Vertical descent stays at a gentle 0.96 CSS cm/s; gusts and tumbling affect x/rotation only.
+      const fall=FALL_PX_PER_SECOND*dt;p.y+=fall;p.distance+=fall;
+      p.rotation+=(p.spin+flutter*.05)*dt;p.tilt+=p.tumble*dt;
+      if(p.y>H+40){p.y=-100+(p.y-H-40)%(H+140);p.x=rand(-20,W+20);}
+      if(p.x<-60)p.x=W+40;else if(p.x>W+60)p.x=-40;
+    }
   }
-  // 櫻花瓣輪廓：倒卵形、尖端一道 V 形缺口（切れ込み）。基部在 (0, +0.95s)、尖端朝上
-  function petalPath(s){
-    ctx.moveTo(0, s * 0.95);
-    ctx.bezierCurveTo( s*0.30, s*0.72,  s*0.56, s*0.18,  s*0.50, -s*0.30);
-    ctx.bezierCurveTo( s*0.46, -s*0.66,  s*0.34, -s*0.88,  s*0.20, -s*0.95);
-    ctx.quadraticCurveTo( s*0.10, -s*0.80, 0, -s*0.58);          /* 缺口右壁 */
-    ctx.quadraticCurveTo(-s*0.10, -s*0.80, -s*0.20, -s*0.95);    /* 缺口左壁 */
-    ctx.bezierCurveTo(-s*0.34, -s*0.88, -s*0.46, -s*0.66, -s*0.50, -s*0.30);
-    ctx.bezierCurveTo(-s*0.56, s*0.18, -s*0.30, s*0.72, 0, s*0.95);
-    ctx.closePath();
-  }
-  function petalGradient(p, s){
-    const g = ctx.createLinearGradient(0, -s, 0, s);
-    g.addColorStop(0, '#fbf1f5');   // 尖端近白
-    g.addColorStop(0.55, p.c1);
-    g.addColorStop(1, p.c2);        // 基部色深
-    return g;
-  }
-  function drawSinglePetal(p, s){
-    ctx.fillStyle = petalGradient(p, s);
-    ctx.beginPath(); petalPath(s); ctx.fill();
-    // 邊緣描一圈深一點的粉
-    const keepAlpha = ctx.globalAlpha;
-    ctx.globalAlpha = keepAlpha * 0.45;
-    ctx.strokeStyle = p.c2;
-    ctx.lineWidth = Math.max(0.5, s * 0.07);
-    ctx.beginPath(); petalPath(s); ctx.stroke();
-    // 中脈（基部到缺口下方）
-    ctx.globalAlpha = keepAlpha * 0.3;
-    ctx.lineWidth = Math.max(0.4, s * 0.05);
-    ctx.beginPath(); ctx.moveTo(0, s * 0.7); ctx.lineTo(0, -s * 0.38); ctx.stroke();
-    ctx.globalAlpha = keepAlpha;
-  }
-  function drawBlossom(p, s){
-    const ps = s * 0.72;            // 單片花瓣長度
-    for (let i = 0; i < 5; i++){
-      ctx.save();
-      ctx.rotate(i * Math.PI * 2 / 5);
-      ctx.translate(0, -ps * 0.92); // 基部靠攏花心
-      ctx.fillStyle = petalGradient(p, ps);
-      ctx.beginPath(); petalPath(ps); ctx.fill();
+  function draw(){
+    ctx.clearRect(0,0,W,H);if(!ready)return;
+    const cw=atlas.naturalWidth/2,ch=atlas.naturalHeight/2;
+    for(const p of petals){
+      const face=Math.cos(p.tilt);
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rotation);
+      ctx.transform(.16+.84*Math.abs(face),Math.sin(p.tilt)*.12,0,.85+.15*Math.sin(p.tilt+.7),0,0);
+      ctx.globalAlpha=(.76+p.depth*.24)*(.8+.2*Math.abs(face));
+      ctx.drawImage(atlas,(p.sprite%2)*cw,Math.floor(p.sprite/2)*ch,cw,ch,-p.size/2,-p.size/2,p.size,p.size);
       ctx.restore();
     }
-    // 深粉花心＋放射蕊絲＋淡黃蕊點
-    ctx.strokeStyle = '#b8496f';
-    ctx.lineWidth = Math.max(0.4, s * 0.03);
-    for (let i = 0; i < 6; i++){
-      const a = i * Math.PI / 3 + 0.3;
-      const ex = Math.cos(a) * s * 0.34, ey = Math.sin(a) * s * 0.34;
-      ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(ex, ey); ctx.stroke();
-      ctx.fillStyle = '#e9d08e';
-      ctx.beginPath(); ctx.arc(ex, ey, Math.max(0.6, s * 0.05), 0, Math.PI * 2); ctx.fill();
-    }
-    ctx.fillStyle = '#c2547e';
-    ctx.beginPath(); ctx.arc(0, 0, s * 0.16, 0, Math.PI * 2); ctx.fill();
   }
-  function drawPetal(p){
-    const s = p.size;
-    const squish = Math.abs(Math.cos(p.flip));
-    ctx.save();
-    ctx.translate(p.x, p.y);
-    ctx.rotate(p.rot);
-    if (p.kind === 'flower'){
-      ctx.scale(1, 0.45 + 0.55 * squish);
-      ctx.globalAlpha = p.alpha * (0.6 + 0.4 * squish);
-      drawBlossom(p, s);
-    } else {
-      ctx.scale(1, 0.35 + 0.65 * squish);
-      ctx.globalAlpha = p.alpha * (0.5 + 0.5 * squish);
-      drawSinglePetal(p, s);
-    }
-    ctx.restore();
+  function frame(stamp){
+    raf=0;if(document.hidden||!inView||motion.matches||!ready){last=null;return;}
+    const dt=last===null?0:Math.max(0,(stamp-last)/1000);last=stamp;
+    update(dt);draw();raf=requestAnimationFrame(frame);
   }
-
-  let scrollBoost = 0, lastScrollY = window.scrollY;
-  window.addEventListener('scroll', () => {
-    const dy = Math.abs(window.scrollY - lastScrollY);
-    lastScrollY = window.scrollY;
-    scrollBoost = Math.min(3.2, scrollBoost + dy * 0.006);
-  }, { passive:true });
-
-  let windPhase = 0, raf;
-  function frame(){
-    ctx.clearRect(0, 0, W, H);
-    windPhase += 0.0016;
-    const wind = Math.sin(windPhase) * 0.5 + Math.sin(windPhase * 2.3) * 0.22;
-    scrollBoost *= 0.94;
-    for (const p of petals){
-      p.phase += p.swaySpeed;
-      p.flip  += p.vflip;
-      p.rot   += p.vrot + Math.sin(p.phase) * 0.006;
-      p.x += p.vx + Math.sin(p.phase) * p.sway * 0.3 + wind;
-      p.y += p.vy * (1 + scrollBoost);
-      if (p.y - p.size * 2 > H){ Object.assign(p, makePetal(false)); p.y = -30; }
-      if (p.x < -30) p.x = W + 20;
-      else if (p.x > W + 30) p.x = -20;
-      drawPetal(p);
-    }
-    raf = requestAnimationFrame(frame);
+  function resume(){
+    cancelAnimationFrame(raf);raf=0;last=null;
+    if(!document.hidden&&inView&&!motion.matches&&ready)raf=requestAnimationFrame(frame);else draw();
   }
-  function start(){
-    resize();
-    if (!reduceMotion){ cancelAnimationFrame(raf); frame(); }
-    else { ctx.clearRect(0,0,W,H); for (const p of petals.slice(0, 8)){ p.y = Math.random()*H; drawPetal(p); } }
-  }
-  let rt;
-  window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(start, 180); }, { passive:true });
-  if (document.fonts && document.fonts.ready){ document.fonts.ready.then(start); setTimeout(start, 700); }
-  else { window.addEventListener('load', start); }
-  start();
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) cancelAnimationFrame(raf);
-    else if (!reduceMotion) frame();
-  });
-
-  /* 墨枝視差 */
-  const branch = document.getElementById('branch');
-  let ticking = false;
-  const parallax = () => {
-    const y = window.scrollY;
-    if (branch) branch.style.transform = `translate3d(${y * 0.045}px, ${y * 0.14}px, 0) rotate(${y * 0.004}deg)`;
-    ticking = false;
-  };
-  window.addEventListener('scroll', () => {
-    if (reduceMotion) return;
-    if (!ticking){ requestAnimationFrame(parallax); ticking = true; }
-  }, { passive:true });
+  atlas.onload=()=>{ready=true;resize();resume();};atlas.src='images/spring-sakura-petals.png';
+  let resizeTimer;
+  window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{resize();resume();},150);},{passive:true});
+  document.addEventListener('visibilitychange',resume);motion.addEventListener('change',resume);
+  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;resume();},{threshold:0}).observe(hero);
+  if(document.fonts)document.fonts.ready.then(()=>{resize();resume();});resize();
+  window.__springPetals={state:()=>({ready,active:!!raf,reduced:motion.matches,time,count:petals.length,
+    speedCmPerSecond:FALL_CM_PER_SECOND,speedCssPxPerSecond:FALL_PX_PER_SECOND,
+    dimensions:[W,H],petals:petals.map(p=>({x:p.x,y:p.y,rotation:p.rotation,distance:p.distance}))})};
 })();
 </script>
 
