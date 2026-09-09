@@ -242,7 +242,13 @@
   .film-rail{ position:absolute; left:9px; right:9px; height:30px; display:flex; flex-direction:column; justify-content:space-between; pointer-events:none; }
   .film-rail.top{ top:3px; }
   .film-rail.bottom{ bottom:3px; flex-direction:column-reverse; }
-  .film-code{ display:flex; justify-content:space-between; align-items:center; white-space:nowrap; font:500 9px/12px 'Courier New',monospace; letter-spacing:1px; color:#d4bc72; opacity:.85; }
+  .film-code{ display:flex; justify-content:space-between; align-items:center; white-space:nowrap; font:500 10px/12px Arial,Helvetica,sans-serif; letter-spacing:.15px; color:#efbf32; text-shadow:0 0 .4px #d99b28; }
+  .film-code .edge-number{ font-size:13px; font-weight:700; line-height:12px; }
+  .film-code .edge-brand{ word-spacing:5px; }
+  .film-code .edge-half{ display:flex; align-items:center; gap:2px; font-size:10px; font-weight:600; }
+  .film-code .edge-roll{ font-size:5px; align-self:flex-end; line-height:7px; }
+  .film-code .edge-arrow{ width:13px; height:7px; flex:none; overflow:visible; }
+  .tile[data-shape="portrait"] .edge-arrow{ transform:rotate(90deg); margin:4px 0; }
   .film-holes{ display:flex; justify-content:space-around; gap:5px; padding:2px 0; }
   .film-holes i{ display:block; width:6%; height:11px; border-radius:2px; background:var(--sand); box-shadow:inset 0 1px 2px #0004,0 0 0 .5px #8c816847; }
   .tile[data-shape="portrait"] .film-rail{ top:9px; bottom:9px; width:30px; height:auto; flex-direction:row; }
@@ -451,8 +457,11 @@
     b.setAttribute('aria-label', (p.title_zh || ('No. ' + p.num)) + ' — 放大檢視');
     const holes = '<span class="film-holes">' + '<i></i>'.repeat(8) + '</span>';
     const edge = (side, label) => `<span class="film-rail ${side}" aria-hidden="true"><span class="film-code">${label}</span>${holes}</span>`;
-    b.innerHTML = edge('top', `<span>FUJI RVP50</span><span>${i + 1}</span>`)
-      + edge('bottom', `<span>◁ ${i + 1}A</span><span>RVP50</span>`)
+    // 135 實片：整格號 → FUJI RVP50 → 次格號；下緣是 36、空心右箭頭與半格號。
+    const frameNumber = n => `<span class="edge-number">${n}</span>`;
+    const arrow = '<svg class="edge-arrow" viewBox="0 0 18 9" focusable="false"><path d="M1 1H10L17 4.5L10 8H1Z" fill="none" stroke="currentColor" stroke-width="1.25"/></svg>';
+    b.innerHTML = edge('top', `${frameNumber(i + 1)}<span class="edge-brand">FUJI RVP50</span>${frameNumber(i + 2)}`)
+      + edge('bottom', `${frameNumber(i + 1)}<span class="edge-half"><span class="edge-roll">36</span>${arrow}<span>${i + 1}A</span></span>${frameNumber(i + 2)}`)
       + `<span class="film-window"><img src="${p.src}" alt="${p.title_zh || ''}" loading="${i < 6 ? 'eager' : 'lazy'}">`
       + `<span class="tseal">銀</span>`
       + `<span class="tveil"></span>`
