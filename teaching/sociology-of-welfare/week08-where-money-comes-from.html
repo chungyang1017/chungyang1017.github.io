@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>福利的錢從哪裡來？ ・ 福利社會學 第 8 週 ・ 葉崇揚</title>
+  <meta name="description" content="福利社會學第 8 週互動講義（給大一同學）：福利的「錢」從哪裡來——稅收、保費、費用、捐款四大財源，台灣稅制結構、中央與地方的經費分擔、隨收隨付制與完全提存準備制、福利國家類型與財政挑戰，分頁式互動簡報。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --chashitsu-bg: #e8dcc4;
+      --chashitsu-paper: #f5ecd6;
+      --chashitsu-tatami: #d8c8a8;
+      --moss: #3d5a3f;          /* 公部門 */
+      --water: #5a7a8a;         /* 商業部門 */
+      --earth: #8a6a4a;         /* 志願部門 */
+      --persimmon: #c47038;     /* 非正式部門 */
+      --accent: #c43838;        /* 朱印 */
+      --gold: #b8860b;
+      --ink: #1f1f1d;
+      --ink-soft: rgba(31,31,29,0.78);
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --line-faint: rgba(31,31,29,0.05);
+      --jp: 'Shippori Mincho', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+      --mono: 'JetBrains Mono', 'Menlo', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: var(--jp);
+      background: var(--chashitsu-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 21px;
+      line-height: 2;
+      position: relative;
+    }
+    .paper-grain {
+      position: fixed; inset: 0; pointer-events: none;
+      opacity: 0.32; mix-blend-mode: multiply; z-index: 1;
+    }
+
+    /* Top bar */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 56px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .top-left { display: flex; align-items: center; gap: 14px; }
+    .back { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .back:hover { opacity: 0.85; }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .top-title { font-family: var(--brush); font-size: 19px; letter-spacing: 0.06em; }
+    .top-title small { font-family: var(--sans); font-size: 12px; letter-spacing: 0.18em; opacity: 0.55; margin-left: 10px; }
+    .top-right { display: flex; align-items: center; gap: 18px; font-family: var(--sans); font-size: 12px; opacity: 0.6; letter-spacing: 0.15em; }
+    .toc-btn {
+      background: transparent; border: 1px solid var(--line);
+      font-family: inherit; font-size: 11.5px; letter-spacing: 0.2em;
+      padding: 5px 12px; cursor: pointer; color: var(--ink); opacity: 0.75;
+    }
+    .toc-btn:hover { background: var(--chashitsu-paper); opacity: 1; }
+
+    .progress {
+      position: fixed; top: 56px; left: 0;
+      height: 2px; background: var(--accent);
+      z-index: 49; transition: width 0.4s ease;
+    }
+
+    .deck {
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 64px;
+      overflow: hidden; z-index: 2;
+    }
+    .slide {
+      position: absolute; inset: 0;
+      padding: 36px 72px 28px;
+      overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.2,0.7,0.2,1);
+    }
+    .slide.is-prev { transform: translateX(-40px); }
+    .slide.is-active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide-inner { max-width: 1080px; margin: 0 auto; }
+
+    .navbar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 64px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .nav-btn {
+      background: transparent; border: 1px solid var(--ink);
+      font-family: var(--jp); font-size: 14px;
+      letter-spacing: 0.15em; color: var(--ink);
+      padding: 9px 22px; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover:not(:disabled) { background: var(--ink); color: var(--chashitsu-paper); }
+    .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; border-color: var(--line); }
+    .nav-center { display: flex; align-items: center; gap: 16px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.18em; opacity: 0.7; }
+    .dots { display: flex; gap: 5px; max-width: 480px; flex-wrap: wrap; justify-content: center; }
+    .dot { width: 7px; height: 7px; background: var(--line); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .dot:hover { background: var(--accent); transform: scale(1.3); }
+    .dot.is-active { background: var(--accent); }
+    .dot.is-section { width: 14px; }
+
+    /* TOC overlay */
+    .toc-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(31,31,29,0.85);
+      backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center;
+      padding: 40px;
+    }
+    .toc-overlay.is-shown { display: flex; animation: fade 0.3s; }
+    .toc-panel {
+      background: var(--chashitsu-paper);
+      max-width: 920px; width: 100%; max-height: 80vh;
+      overflow-y: auto;
+      padding: 36px 44px;
+      border: 1px solid var(--accent);
+      position: relative;
+    }
+    .toc-close {
+      position: absolute; top: 14px; right: 18px;
+      background: transparent; border: none;
+      font-size: 26px; cursor: pointer; opacity: 0.5;
+      font-family: var(--brush); color: var(--ink);
+    }
+    .toc-close:hover { opacity: 1; }
+    .toc-title { font-family: var(--brush); font-size: 26px; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .toc-sub { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 22px; }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; }
+    .toc-list li {
+      padding: 8px 0; border-bottom: 1px dashed var(--line-soft);
+      cursor: pointer; display: flex; align-items: baseline; gap: 14px;
+    }
+    .toc-list li:hover { color: var(--accent); }
+    .toc-list .num { font-family: var(--brush); font-size: 14px; color: var(--accent); min-width: 28px; }
+    .toc-list .lab { font-size: 15px; flex: 1; }
+    .toc-list .kind { font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; opacity: 0.45; }
+    .toc-list .is-section { color: var(--accent); font-weight: 600; }
+
+    /* Slide types */
+    .slide-title {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      padding: 36px 72px;
+    }
+    .slide-title .week-tag {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.4em; opacity: 0.6; margin-bottom: 24px;
+    }
+    .slide-title .seal {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      background: var(--accent); color: var(--chashitsu-paper);
+      font-family: var(--brush); font-size: 16px;
+      transform: rotate(-3deg);
+    }
+    .slide-title h1 {
+      font-family: var(--brush); font-size: 72px;
+      font-weight: 400; line-height: 1.1; letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+    .slide-title .subtitle {
+      font-family: var(--sans); font-size: 18px;
+      letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 28px;
+    }
+    .slide-title .author {
+      font-size: 18px; opacity: 0.85; line-height: 1.85;
+      max-width: 800px;
+    }
+    .meta-strip {
+      margin-top: 36px;
+      display: flex; flex-wrap: wrap; gap: 24px;
+      font-family: var(--sans); font-size: 13px; opacity: 0.6;
+      letter-spacing: 0.12em;
+    }
+
+    .slide-section {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      background: linear-gradient(135deg, rgba(196,56,56,0.06) 0%, rgba(216,200,168,0.4) 100%);
+      padding: 36px 72px;
+    }
+    .slide-section .big-num {
+      font-family: var(--brush); font-size: 240px;
+      color: var(--accent); opacity: 0.15;
+      position: absolute; bottom: 30px; right: 60px;
+      line-height: 1;
+    }
+    .slide-section .part {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.45em; opacity: 0.55; margin-bottom: 14px;
+    }
+    .slide-section h2 {
+      font-family: var(--brush); font-size: 56px;
+      font-weight: 400; letter-spacing: 0.04em;
+      line-height: 1.15; margin-bottom: 14px;
+    }
+    .slide-section .sec-en {
+      font-family: var(--sans); font-size: 16px;
+      letter-spacing: 0.3em; opacity: 0.55; font-style: italic;
+      margin-bottom: 22px;
+    }
+    .slide-section .sec-q {
+      font-size: 19px; opacity: 0.85;
+      max-width: 640px; line-height: 1.95;
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+    }
+
+    .slide-content { padding-top: 28px; }
+    .content-head {
+      margin-bottom: 22px;
+      display: flex; align-items: baseline; gap: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .content-head h2 { font-family: var(--brush); font-size: 44px; font-weight: 400; letter-spacing: 0.04em; }
+    .content-head .h-en { font-family: var(--sans); font-size: 15.5px; letter-spacing: 0.25em; opacity: 0.6; }
+    .content-head .h-tag { margin-left: auto; font-family: var(--sans); font-size: 14px; letter-spacing: 0.3em; opacity: 0.6; }
+
+    .lead {
+      font-size: 21px; line-height: 2.05; opacity: 0.9;
+      max-width: 920px; margin-bottom: 20px;
+    }
+    .lead p + p { margin-top: 16px; }
+    .lead strong { color: var(--accent); }
+    .term-en {
+      font-family: var(--sans); font-style: italic;
+      opacity: 0.7; font-size: 0.85em;
+      margin-left: 3px;
+    }
+
+    /* Scenario / story card */
+    .story {
+      background: var(--chashitsu-paper);
+      border-left: 4px solid var(--accent);
+      padding: 24px 30px;
+      margin: 18px 0;
+    }
+    .story .lab {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.3em; color: var(--accent); margin-bottom: 10px;
+    }
+    .story h3 {
+      font-family: var(--brush); font-size: 26px;
+      letter-spacing: 0.04em; margin-bottom: 14px;
+    }
+    .story p { font-size: 19px; line-height: 2; opacity: 0.9; }
+    .story p + p { margin-top: 12px; }
+
+    /* Two-column compare */
+    .pair {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+      margin-top: 12px;
+    }
+    .pair-box {
+      background: var(--chashitsu-paper);
+      border-top: 4px solid;
+      padding: 20px 22px;
+    }
+    .pair-box.a { border-top-color: var(--moss); }
+    .pair-box.b { border-top-color: var(--water); }
+    .pair-box.c { border-top-color: var(--earth); }
+    .pair-box.d { border-top-color: var(--persimmon); }
+    .pair-box .tag {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.25em; margin-bottom: 10px;
+    }
+    .pair-box.a .tag { color: var(--moss); }
+    .pair-box.b .tag { color: var(--water); }
+    .pair-box.c .tag { color: var(--earth); }
+    .pair-box.d .tag { color: var(--persimmon); }
+    .pair-box h3 {
+      font-family: var(--brush); font-size: 25px;
+      letter-spacing: 0.04em; margin-bottom: 12px;
+    }
+    .pair-box p { font-size: 18.5px; line-height: 1.95; opacity: 0.9; }
+
+    /* Cross-section list (standalone, no card wrapper) */
+    .deep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 16px; }
+    .deep-col h5 {
+      font-family: var(--sans); font-size: 14px;
+      letter-spacing: 0.28em; opacity: 0.7; margin-bottom: 12px;
+    }
+    .deep-col ul { list-style: none; padding: 0; }
+    .deep-col li {
+      font-size: 18px; line-height: 1.95;
+      padding: 8px 0 8px 18px; position: relative;
+      border-bottom: 1px solid var(--line-faint);
+    }
+    .deep-col li:last-child { border-bottom: none; }
+    .deep-col li::before { content: "・"; position: absolute; left: 0; opacity: 0.5; }
+    .deep-col li strong { color: var(--accent); font-weight: 600; }
+
+    .tw-block {
+      background: rgba(196,56,56,0.05);
+      border-left: 3px solid var(--accent);
+      padding: 14px 20px;
+      margin-top: 16px;
+    }
+    .tw-block .lab {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.3em; color: var(--accent); margin-bottom: 8px;
+    }
+    .tw-block h4 {
+      font-family: var(--brush); font-size: 21px;
+      letter-spacing: 0.04em; margin-bottom: 8px;
+    }
+    .tw-block p { font-size: 18px; line-height: 1.95; opacity: 0.9; }
+
+    /* Stats */
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-top: 18px;
+    }
+    .stat {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 16px 14px;
+      text-align: center;
+    }
+    .stat .n { font-family: var(--brush); font-size: 34px; color: var(--accent); line-height: 1; }
+    .stat .l { font-size: 15.5px; opacity: 0.85; margin-top: 10px; line-height: 1.6; }
+    .stat .src { font-family: var(--sans); font-size: 12px; opacity: 0.55; letter-spacing: 0.1em; margin-top: 8px; }
+
+    /* Timeline */
+    .tl { margin-top: 8px; padding-left: 32px; position: relative; }
+    .tl::before { content: ""; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+    .tl-item { position: relative; padding: 14px 0 16px; border-bottom: 1px dashed var(--line-soft); }
+    .tl-item:last-child { border-bottom: none; }
+    .tl-item::before {
+      content: ""; position: absolute;
+      left: -32px; top: 22px; width: 14px; height: 14px;
+      background: var(--accent); border-radius: 50%;
+      border: 2px solid var(--chashitsu-bg);
+    }
+    .tl-yr {
+      font-family: var(--sans); font-size: 14.5px;
+      letter-spacing: 0.2em; opacity: 0.7; margin-bottom: 5px;
+    }
+    .tl-t { font-family: var(--brush); font-size: 22px; letter-spacing: 0.04em; margin-bottom: 10px; }
+    .tl-b { font-size: 18px; line-height: 1.95; opacity: 0.88; }
+
+    /* Comparison table */
+    .ctab {
+      width: 100%; border-collapse: collapse;
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      font-size: 17px;
+      margin-top: 10px;
+    }
+    .ctab th, .ctab td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line-soft);
+      text-align: left; vertical-align: top;
+    }
+    .ctab th {
+      font-family: var(--brush); font-size: 19px; font-weight: 500;
+      background: rgba(216,200,168,0.4);
+    }
+    .ctab th:nth-child(2), .ctab td:nth-child(2) { background: rgba(61,90,63,0.06); }
+    .ctab th:nth-child(3), .ctab td:nth-child(3) { background: rgba(90,122,138,0.06); }
+    .ctab th:nth-child(4), .ctab td:nth-child(4) { background: rgba(138,106,74,0.06); }
+    .ctab th:nth-child(5), .ctab td:nth-child(5) { background: rgba(196,112,56,0.06); }
+    .ctab td:first-child { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.18em; opacity: 0.65; width: 100px; vertical-align: middle; }
+
+    /* Country / entity cards */
+    .nations {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin-top: 8px;
+    }
+    .nation {
+      background: var(--chashitsu-paper);
+      border-top: 3px solid var(--accent);
+      padding: 22px 24px;
+    }
+    .nation.b { border-top-color: var(--water); }
+    .nation.c { border-top-color: var(--earth); }
+    .nation .nm { font-family: var(--brush); font-size: 24px; letter-spacing: 0.04em; }
+    .nation .nen { font-family: var(--sans); font-size: 13px; letter-spacing: 0.15em; opacity: 0.6; margin: 8px 0 0; line-height: 1.7; }
+
+    /* Insight banner */
+    .insight {
+      margin-top: 18px;
+      padding: 16px 22px;
+      background: rgba(196,56,56,0.06);
+      border-left: 3px solid var(--accent);
+      font-size: 17px; line-height: 1.9;
+    }
+    .insight strong { color: var(--accent); }
+
+    /* Discussion */
+    .discuss { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .discuss-item {
+      background: var(--chashitsu-paper);
+      border-left: 3px solid var(--accent);
+      padding: 16px 22px; cursor: pointer;
+    }
+    .discuss-item .qn { font-family: var(--brush); font-size: 19px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 8px; }
+    .discuss-item .qt { font-size: 19.5px; line-height: 1.95; }
+    .discuss-item .hint {
+      max-height: 0; overflow: hidden; opacity: 0;
+      font-size: 17px; line-height: 1.95;
+      transition: max-height 0.4s, opacity 0.3s, margin 0.3s, padding 0.3s;
+      color: var(--ink-soft); font-style: italic;
+    }
+    .discuss-item.is-open .hint {
+      max-height: 250px; opacity: 1;
+      margin-top: 12px; padding-top: 12px;
+      border-top: 1px dashed var(--line-soft);
+    }
+
+    /* Reading */
+    .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+    .ref-card {
+      background: var(--chashitsu-paper);
+      border-top: 3px solid var(--accent);
+      padding: 20px 22px;
+    }
+    .ref-card h3 { font-family: var(--brush); font-size: 22px; margin-bottom: 14px; letter-spacing: 0.04em; }
+    .ref-card p { font-size: 17px; line-height: 1.9; padding: 9px 0; border-bottom: 1px solid var(--line-faint); }
+    .ref-card p:last-child { border-bottom: none; }
+    .ref-card em { color: var(--accent); font-style: italic; }
+    .ref-card a {
+      color: var(--ink); text-decoration: none;
+      border-bottom: 1px dotted rgba(31,31,29,0.4);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .ref-card a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .ref-card a:hover em { color: var(--accent); }
+
+    /* Tax-structure donut chart — supplementary diagram, same palette as template */
+    .pie-block { display: flex; align-items: center; gap: 36px; margin-top: 16px; flex-wrap: wrap; }
+    .pie-svg-wrap { position: relative; width: 210px; height: 210px; flex-shrink: 0; }
+    .pie-svg-wrap svg { width: 100%; height: 100%; }
+    .pie-center {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; pointer-events: none;
+    }
+    .pie-center .pc-n { font-family: var(--brush); font-size: 16px; color: var(--accent); line-height: 1.15; white-space: nowrap; }
+    .pie-center .pc-l { font-family: var(--sans); font-size: 10px; letter-spacing: 0.12em; opacity: 0.6; margin-top: 3px; }
+    .pie-legend { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; flex: 1; min-width: 260px; }
+    .pie-legend li { display: flex; align-items: center; gap: 11px; font-size: 17px; }
+    .pie-legend .sw { width: 14px; height: 14px; flex-shrink: 0; }
+    .pie-legend b { margin-left: auto; font-family: var(--sans); font-size: 15.5px; color: var(--accent); font-weight: 600; }
+    .pie-note { font-family: var(--sans); font-size: 13px; opacity: 0.55; letter-spacing: 0.08em; margin-top: 14px; }
+
+    /* Animations */
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+    .keyboard-hint {
+      position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
+      font-family: var(--sans); font-size: 9.5px;
+      letter-spacing: 0.25em; opacity: 0.4;
+      pointer-events: none; z-index: 60;
+    }
+    .keyboard-hint kbd { font-family: var(--mono); font-size: 9.5px; background: rgba(31,31,29,0.08); padding: 1px 5px; margin: 0 2px; }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      body { font-size: 16.5px; }
+      .topbar { padding: 0 14px; }
+      .top-title { font-size: 15px; }
+      .top-title small { display: none; }
+      .top-right { display: none; }
+      .toc-btn { font-size: 10.5px; padding: 4px 9px; letter-spacing: 0.18em; }
+
+      .slide { padding: 26px 22px 20px; }
+      .slide-title { padding: 26px 22px; }
+      .slide-title h1 { font-size: 40px; }
+      .slide-title .subtitle { font-size: 14.5px; letter-spacing: 0.18em; }
+      .slide-title .author { font-size: 16px; }
+
+      .slide-section { padding: 26px 22px; }
+      .slide-section h2 { font-size: 36px; }
+      .slide-section .sec-en { font-size: 13px; }
+      .slide-section .sec-q { font-size: 16px; }
+      .slide-section .big-num { font-size: 130px; bottom: 20px; right: 20px; }
+
+      .content-head h2 { font-size: 24px; }
+      .content-head .h-en { font-size: 11.5px; }
+      .content-head .h-tag { display: none; }
+
+      .lead { font-size: 16px; }
+      .story h3 { font-size: 20px; }
+      .story p { font-size: 15.5px; }
+
+      .pair { grid-template-columns: 1fr; gap: 12px; }
+      .pair-box { padding: 18px 20px; }
+      .pair-box h3 { font-size: 19px; }
+      .pair-box p { font-size: 15px; }
+
+      .deep-grid { grid-template-columns: 1fr; gap: 16px; }
+      .deep-col li { font-size: 14.5px; }
+
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat .n { font-size: 24px; }
+      .stat .l { font-size: 12.5px; }
+
+      .tl { padding-left: 28px; }
+      .tl::before { left: 4px; }
+      .tl-item::before { left: -28px; width: 12px; height: 12px; top: 20px; }
+      .tl-t { font-size: 17px; }
+      .tl-b { font-size: 14.5px; }
+      .tl-yr { font-size: 12px; }
+
+      .ctab { font-size: 13px; display: block; overflow-x: auto; }
+      .ctab th, .ctab td { padding: 8px 10px; }
+
+      .nations { grid-template-columns: 1fr; }
+
+      .pie-block { flex-direction: column; align-items: flex-start; gap: 18px; }
+      .pie-svg-wrap { width: 170px; height: 170px; margin: 0 auto; }
+      .pie-legend { font-size: 14px; }
+      .pie-legend li { font-size: 14px; }
+
+      .discuss-item .qt { font-size: 16px; }
+
+      .ref-grid { grid-template-columns: 1fr; }
+      .ref-card p { font-size: 13.5px; }
+
+      .navbar { padding: 0 14px; height: 58px; }
+      .nav-btn { padding: 7px 14px; font-size: 13px; letter-spacing: 0.1em; }
+      .dots { max-width: 200px; }
+      .nav-center { font-size: 12px; gap: 10px; }
+
+      .toc-panel { padding: 24px 22px; }
+      .toc-list { grid-template-columns: 1fr; gap: 0; }
+      .toc-list .lab { font-size: 13.5px; }
+
+      .keyboard-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<svg class="paper-grain" aria-hidden="true">
+  <defs>
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#paper-noise)" />
+</svg>
+
+<header class="topbar">
+  <div class="top-left">
+    <a href="../../teaching-zh.html" class="back">← 教學</a>
+    <span class="top-sep">·</span>
+    <span class="top-title">福利的錢從哪裡來？<small>福利社會學 第 8 週</small></span>
+  </div>
+  <div class="top-right">
+    <span>大一同學適用</span>
+    <button class="toc-btn" onclick="toggleToc()">目次 ・ TOC</button>
+  </div>
+</header>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ============ S0 TITLE ============ -->
+  <section class="slide slide-title is-active" data-kind="title" data-label="封面">
+    <div class="slide-inner">
+      <div class="week-tag">
+        <span class="seal">學</span>
+        <span>第 8 週 ・ 4/16 ・ WEEK 8</span>
+      </div>
+      <h1>「錢」從哪裡來</h1>
+      <p class="subtitle">WHERE DOES THE MONEY COME FROM — 社會政策的財務基礎</p>
+      <p class="author">
+        葉崇揚 教授<br/>
+        東吳大學社會學系
+      </p>
+      <div class="meta-strip">
+        <span>福利社會學 ・ 葉崇揚</span>
+        <span>東吳大學社會學系</span>
+        <span>2026 春學期</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S1 OUTLINE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="本講綱要">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>本講綱要</h2>
+        <span class="h-en">OUTLINE OF THIS WEEK</span>
+      </div>
+      <p class="lead">今天的六個主題，從「錢從哪裡來」的四種基本財源，一路談到台灣的稅制結構、中央地方分擔、財務準備方式，最後回到福利國家類型與財政挑戰。</p>
+      <div class="nations">
+        <div class="nation">
+          <div class="nm">經費的四大來源</div>
+          <div class="nen">01 ・ 稅收、保費、費用、捐款</div>
+        </div>
+        <div class="nation b">
+          <div class="nm">台灣的稅制結構</div>
+          <div class="nen">02 ・ 2024 年最新數據與國際比較</div>
+        </div>
+        <div class="nation c">
+          <div class="nm">中央 vs. 地方</div>
+          <div class="nen">03 ・ 集權與分權的經費分擔</div>
+        </div>
+        <div class="nation">
+          <div class="nm">稅收 vs. 保費</div>
+          <div class="nen">04 ・ 直接稅、間接稅與社會保險</div>
+        </div>
+        <div class="nation b">
+          <div class="nm">財務準備方式</div>
+          <div class="nen">05 ・ 隨收隨付制 vs. 完全提存準備制</div>
+        </div>
+        <div class="nation c">
+          <div class="nm">福利國家類型與財政挑戰</div>
+          <div class="nen">06 ・ 國際比較與台灣定位</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S2 LEARNING OBJECTIVES ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="學習目標">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>學習目標</h2>
+        <span class="h-en">LEARNING OBJECTIVES</span>
+      </div>
+      <p class="lead">本週結束後，你應該能夠：</p>
+      <div class="deep-col">
+        <ul>
+          <li>理解社會政策的四種主要經費來源及其特性</li>
+          <li>分析台灣 2024 年稅制結構與所得重分配效果</li>
+          <li>比較中央集權與地方分權的經費分擔模式</li>
+          <li>區分隨收隨付制與完全提存準備制的優缺點</li>
+          <li>認識福利國家類型與財政挑戰的關聯</li>
+          <li>應用國際案例思考台灣社會政策財務改革方向</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S3 SECTION 1 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第一部分：經費的四大來源">
+    <div class="slide-inner">
+      <div class="big-num">壹</div>
+      <p class="part">PART 01</p>
+      <h2>經費的四大來源</h2>
+      <p class="sec-en">FOUR SOURCES OF FUNDING</p>
+      <p class="sec-q">
+        稅收、保費、費用、捐款
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S4 FOUR SOURCES ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="經費的四大來源">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>經費的四大來源</h2>
+        <span class="h-en">FOUR SOURCES OF FUNDING</span>
+      </div>
+      <p class="lead">社會政策要花錢，錢從哪裡來？四種基本機制，運作邏輯完全不同。</p>
+      <div class="pair" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="pair-box a">
+          <span class="tag">TAXES</span>
+          <h3>稅收</h3>
+          <p>政府透過課稅取得收入，用於提供公共服務。如所得稅、營業稅、地價稅等。<br/><br/>例：台灣社會救助、英國 NHS</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">CONTRIBUTIONS</span>
+          <h3>保費</h3>
+          <p>由被保險人、雇主、政府三方共同繳納保費，用於社會保險給付。<br/><br/>例：全民健保、勞保、就業保險</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">FEES</span>
+          <h3>費用</h3>
+          <p>使用者付費原則，接受服務時繳交一定費用。<br/><br/>例：健保掛號費、公立托育收費</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">VOLUNTARY GIVING</span>
+          <h3>捐款</h3>
+          <p>民間個人或企業自願捐助，非營利組織主要收入。<br/><br/>例：慈濟基金會、世界展望會</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S5 TAXATION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="稅收：台灣的主要稅種">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>稅收（Taxes）：台灣的主要稅種</h2>
+        <span class="h-en">TAXATION IN TAIWAN</span>
+        <span class="h-tag">★ 台灣案例</span>
+      </div>
+      <p class="lead">
+        台灣的稅收分為「國稅」與「地方稅」兩大類。2024 年全國稅收達 3.76 兆元，創歷史新高，但稅收占 GDP 僅約 14%，在 OECD 國家中屬偏低水準。
+      </p>
+      <div class="deep-grid">
+        <div class="deep-col">
+          <h5>國稅（中央政府）</h5>
+          <ul>
+            <li><strong>綜合所得稅</strong>：個人薪資、股利等所得，累進稅率 5%~40%</li>
+            <li><strong>營利事業所得稅</strong>：企業所得稅率 20%</li>
+            <li><strong>營業稅（VAT）</strong>：消費稅率 5%，為間接稅</li>
+          </ul>
+        </div>
+        <div class="deep-col">
+          <h5>地方稅（縣市政府）</h5>
+          <ul>
+            <li><strong>地價稅</strong>：對土地持有課稅</li>
+            <li><strong>房屋稅</strong>：對房屋持有課稅</li>
+            <li><strong>使用牌照稅</strong>：車輛使用稅</li>
+          </ul>
+        </div>
+      </div>
+      <div class="insight">
+        台灣稅收占 GDP 約 <strong>14%</strong>，遠低於 OECD 平均約 34%。北歐如瑞典約 43%、丹麥約 46%。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S6 SOCIAL INSURANCE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="保費：台灣的社會保險制度">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>保費（Contributions）：台灣的社會保險制度</h2>
+        <span class="h-en">SOCIAL INSURANCE IN TAIWAN</span>
+        <span class="h-tag">★ 台灣案例</span>
+      </div>
+      <p class="lead">
+        社會保險是台灣社會保障制度的核心。由被保險人、雇主、政府三方共同分擔保費，依薪資的一定比例計算。
+      </p>
+      <table class="ctab">
+        <thead>
+          <tr>
+            <th>面向</th>
+            <th>全民健保 NHI</th>
+            <th>勞工保險</th>
+            <th>就業保險</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>保費率</td><td>5.17%</td><td>約 12%</td><td>1%</td></tr>
+          <tr><td>被保險人負擔</td><td>30%</td><td>20%</td><td>20%</td></tr>
+          <tr><td>雇主負擔</td><td>60%</td><td>70%</td><td>70%</td></tr>
+          <tr><td>政府負擔</td><td>10%</td><td>10%</td><td>10%</td></tr>
+          <tr><td>給付內容</td><td>全民納保，提供醫療服務</td><td>生育、傷病、老年、死亡給付</td><td>失業給付、職訓生活津貼</td></tr>
+        </tbody>
+      </table>
+      <div class="tw-block">
+        <span class="lab">國際比較</span>
+        <p>德國社會保險費率約 40%（含健康、年金、失業、長照），法國約 45%。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S7 FEES & DONATIONS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="費用與捐款">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>費用與捐款：使用者付費 vs. 自願捐助</h2>
+        <span class="h-en">FEES VS. VOLUNTARY GIVING</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+        <div class="story">
+          <span class="lab">FEES / USER CHARGES</span>
+          <h3>費用</h3>
+          <p>使用者接受服務時需支付費用，可抑制不必要使用，但也可能造成弱勢者使用障礙。</p>
+          <p><strong>台灣案例：</strong></p>
+          <p>・ 健保部分負擔（門診 50~420 元）</p>
+          <p>・ 公立幼兒園月費（約 2,500 元）</p>
+          <p>・ 長照自付額（16%~30%）</p>
+          <p><strong>國際案例：</strong></p>
+          <p>・ 英國 NHS 處方藥收費（每項 £9.90）</p>
+          <p>・ 日本醫療自付比例（70 歲以下 30%）</p>
+        </div>
+        <div class="story">
+          <span class="lab">VOLUNTARY GIVING</span>
+          <h3>捐款</h3>
+          <p>民間自願捐助，為非營利組織（NPO）與非政府組織（NGO）的主要收入來源。</p>
+          <p><strong>台灣案例：</strong></p>
+          <p>・ 慈濟基金會（年收入逾百億）</p>
+          <p>・ 聯合勸募協會</p>
+          <p>・ 家扶基金會（兒少服務）</p>
+          <p><strong>國際案例：</strong></p>
+          <p>・ 美國 United Way（年募款逾 30 億美元）</p>
+          <p>・ 英國 Oxfam（國際人道救援）</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S8 TAX STRUCTURE PIE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="台灣稅收結構（2024 年）">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>台灣稅收結構（2024 年）</h2>
+        <span class="h-en">TAIWAN'S TAX STRUCTURE</span>
+        <span class="h-tag">★ 台灣案例</span>
+      </div>
+      <div class="pie-block">
+        <div class="pie-svg-wrap">
+          <svg viewBox="0 0 200 200" aria-hidden="true">
+            <path d="M100.000,20.000 A80,80 0 0 1 176.389,123.763 L143.924,113.664 A46,46 0 0 0 100.000,54.000 Z" fill="var(--accent)" />
+            <path d="M176.389,123.763 A80,80 0 0 1 90.971,179.489 L94.809,145.706 A46,46 0 0 0 143.924,113.664 Z" fill="var(--moss)" />
+            <path d="M90.971,179.489 A80,80 0 0 1 27.614,134.062 L58.378,119.586 A46,46 0 0 0 94.809,145.706 Z" fill="var(--water)" />
+            <path d="M27.614,134.062 A80,80 0 0 1 20.077,96.483 L54.044,97.977 A46,46 0 0 0 58.378,119.586 Z" fill="var(--earth)" />
+            <path d="M20.077,96.483 A80,80 0 0 1 23.762,75.757 L56.163,86.060 A46,46 0 0 0 54.044,97.977 Z" fill="var(--persimmon)" />
+            <path d="M23.762,75.757 A80,80 0 0 1 100.000,20.000 L100.000,54.000 A46,46 0 0 0 56.163,86.060 Z" fill="var(--gold)" />
+          </svg>
+          <div class="pie-center">
+            <span class="pc-n">3.76 兆元</span>
+            <span class="pc-l">全國稅收</span>
+          </div>
+        </div>
+        <ul class="pie-legend">
+          <li><span class="sw" style="background:var(--accent)"></span>營利事業所得稅 <b>29.8%</b></li>
+          <li><span class="sw" style="background:var(--moss)"></span>綜合所得稅 <b>22.0%</b></li>
+          <li><span class="sw" style="background:var(--water)"></span>營業稅 <b>16.2%</b></li>
+          <li><span class="sw" style="background:var(--earth)"></span>證券交易稅 <b>7.7%</b></li>
+          <li><span class="sw" style="background:var(--persimmon)"></span>貨物稅 <b>4.2%</b></li>
+          <li><span class="sw" style="background:var(--gold)"></span>其他 <b>20.1%</b></li>
+        </ul>
+      </div>
+      <p class="pie-note">各稅目占全國稅收比例</p>
+      <div class="stats">
+        <div class="stat"><div class="n">3.76 兆元</div><div class="l">全國稅收<br/>創歷史新高，年增 8.8%</div></div>
+        <div class="stat"><div class="n">51.8%</div><div class="l">所得稅合計占比<br/>營所稅 1.12 兆＋綜所稅 0.83 兆</div></div>
+        <div class="stat"><div class="n">+46%</div><div class="l">證交稅年增<br/>受惠台股大漲與 AI 概念股交易熱絡</div></div>
+        <div class="stat"><div class="n">5%</div><div class="l">營業稅稅率<br/>遠低於歐盟平均 VAT 21%</div></div>
+      </div>
+      <p class="lead" style="font-size: 14.5px; opacity: 0.6; margin-top: 12px; margin-bottom: 0;">資料來源：財政部 2024 年賦稅收入統計</p>
+    </div>
+  </section>
+
+  <!-- ============ S9 SECTION 2 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第二部分：集權 vs. 分權">
+    <div class="slide-inner">
+      <div class="big-num">貳</div>
+      <p class="part">PART 02</p>
+      <h2>集權 vs. 分權</h2>
+      <p class="sec-en">CENTRALIZATION VS. DECENTRALIZATION</p>
+      <p class="sec-q">
+        中央政府與地方政府的經費分擔
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S10 CENTRALIZATION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="集權（中央）vs 分權（地方）">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>集權（中央）vs 分權（地方）</h2>
+        <span class="h-en">CENTRALIZATION VS. DECENTRALIZATION</span>
+      </div>
+      <p class="lead">核心問題：經費應由中央統一管理，還是交由地方負責？涉及「誰出錢、誰執行、誰監督」。</p>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">CENTRALIZED</span>
+          <h3>集權模式（中央主導）</h3>
+          <p>全國統一的服務標準與給付水準，確保各地民眾享有一致的福利。<br/><br/><strong>優點：</strong>公平性高、行政效率佳，避免 race to the bottom（福利競逐）。<br/><br/><strong>例：</strong>全民健保、國民年金</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">DECENTRALIZED</span>
+          <h3>分權模式（地方主導）</h3>
+          <p>各地方政府依地區需求自行設計，更能回應在地化的社會需求。<br/><br/><strong>優點：</strong>彈性高、鼓勵政策創新，可回應不同地區的特殊需求。<br/><br/><strong>例：</strong>社會救助、托育補助</p>
+        </div>
+      </div>
+      <div class="insight">
+        核心問題：如何在「全國一致」與「因地制宜」之間取得平衡？
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S11 CENTRAL-LOCAL SHARING ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="中央與地方的經費分擔：台灣實例">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>中央與地方的經費分擔：台灣實例</h2>
+        <span class="h-en">CENTRAL-LOCAL COST SHARING</span>
+        <span class="h-tag">★ 台灣案例</span>
+      </div>
+      <table class="ctab">
+        <thead>
+          <tr>
+            <th>政策</th>
+            <th>中央政府角色</th>
+            <th>地方政府角色</th>
+            <th>分擔模式</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>社會救助</td><td>制定法規<br/>補助部分經費</td><td>主要執行者<br/>負擔大部分經費</td><td>地方為主<br/>中央補助</td></tr>
+          <tr><td>全民健保</td><td>統一管理<br/>負擔大部分經費</td><td>協助收繳保費<br/>分擔部分補助</td><td>中央為主<br/>統一運作</td></tr>
+          <tr><td>長期照顧</td><td>制定政策方向<br/>提供特種基金</td><td>在地服務提供<br/>資源整合</td><td>中央出錢<br/>地方執行</td></tr>
+        </tbody>
+      </table>
+      <div class="insight">
+        <strong>問題：</strong>六都稅收遠高於其他縣市，導致社會福利的地區落差。
+      </div>
+      <div class="tw-block">
+        <span class="lab">國際比較</span>
+        <p>日本介護保險由市町村執行，中央負擔 50%。美國 Medicaid 聯邦出 50%~77%。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S12 SECTION 3 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第三部分：稅收 vs. 保費">
+    <div class="slide-inner">
+      <div class="big-num">參</div>
+      <p class="part">PART 03</p>
+      <h2>稅收 vs. 保費</h2>
+      <p class="sec-en">TAX-BASED VS. CONTRIBUTION-BASED</p>
+      <p class="sec-q">
+        社會政策的兩大財源模式
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S13 TAX VS SHI ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="稅收制 vs 社會保險制">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>稅收制 vs 社會保險制：兩大模式</h2>
+        <span class="h-en">TAX-BASED VS. SOCIAL INSURANCE</span>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">TAX-BASED / BEVERIDGE</span>
+          <h3>稅收制</h3>
+          <p><strong>資金來源：</strong>一般稅收<br/><strong>涵蓋範圍：</strong>全體國民<br/><strong>優點：</strong>涵蓋廣、重分配效果較強<br/><strong>缺點：</strong>稅基易受政治影響<br/><strong>代表國家：</strong>英國（NHS）、北歐（瑞典、丹麥）、澳洲、紐西蘭、加拿大</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">SHI / BISMARCK</span>
+          <h3>社會保險制</h3>
+          <p><strong>資金來源：</strong>雇主與勞工共同繳納保費<br/><strong>涵蓋範圍：</strong>被保險人及其眷屬<br/><strong>優點：</strong>財務獨立、民眾有「權利感」<br/><strong>缺點：</strong>可能排除非正式就業者<br/><strong>代表國家：</strong>德國（俾斯麥模式始祖）、法國、日本、韓國、台灣</p>
+        </div>
+      </div>
+      <div class="insight">
+        台灣是「<strong>混合制</strong>」：全民健保採社會保險但涵蓋全民；社會救助則以稅收為財源。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S14 DIRECT VS INDIRECT TAX ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="直接稅 vs 間接稅">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>直接稅 vs 間接稅：誰在負擔？</h2>
+        <span class="h-en">DIRECT VS. INDIRECT TAX</span>
+      </div>
+      <p class="lead">稅收可區分為「直接稅」（對所得或財產課稅）和「間接稅」（對消費行為課稅），兩者的重分配效果差異很大。</p>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">DIRECT TAX</span>
+          <h3>直接稅</h3>
+          <p>所得稅：賺越多繳越多（累進稅率）<br/>遺產稅：繼承財產時課稅<br/>房屋稅、地價稅：不動產持有課稅<br/><br/><strong>累進性高（progressive）</strong>，有利於縮小貧富差距</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">INDIRECT TAX</span>
+          <h3>間接稅</h3>
+          <p>營業稅（VAT）：消費時課 5%<br/>菸酒稅：特定商品課稅<br/>關稅：進口商品課稅<br/><br/><strong>累退性（regressive）</strong>，窮人消費占所得比高，負擔相對較重</p>
+        </div>
+      </div>
+      <div class="tw-block">
+        <span class="lab">台灣案例</span>
+        <h4>「富人稅」爭議</h4>
+        <p>台灣房地產實價課稅、資本利得稅、囤房稅 2.0（2024 年上路）一直是社會焦點。2024 年房屋稅因囤房稅 2.0 調整而創新高。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S15 INCOME REDISTRIBUTION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="所得分配與重分配效果">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>所得分配與重分配效果</h2>
+        <span class="h-en">INCOME DISTRIBUTION AND REDISTRIBUTION</span>
+      </div>
+      <p class="lead">稅收與社會移轉（如社會救助、老年津貼）可以縮小所得差距。</p>
+      <div class="stats" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat"><div class="n">6.1 倍</div><div class="l">台灣所得差距<br/>（稅前）</div></div>
+        <div class="stat"><div class="n">~4 倍</div><div class="l">台灣所得差距<br/>（稅後＋移轉）</div></div>
+        <div class="stat"><div class="n">0.34</div><div class="l">台灣 Gini 係數<br/>（OECD 平均 0.31）</div></div>
+      </div>
+      <div class="insight">
+        <strong>國際比較：</strong>北歐 Gini 約 0.25~0.28（重分配效果強）；美國約 0.39（較弱）。台灣稅前差距與美國相近，但稅後因社會移轉而縮小。
+      </div>
+      <div class="tw-block">
+        <span class="lab">台灣案例</span>
+        <p>2024 年台灣超徵稅收 5,283 億元，引發「還稅於民」vs.「充實社福」的政策辯論。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S16 SECTION 4 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第四部分：財務準備方式">
+    <div class="slide-inner">
+      <div class="big-num">肆</div>
+      <p class="part">PART 04</p>
+      <h2>財務準備方式</h2>
+      <p class="sec-en">FINANCING METHODS: PAYG VS. FULLY FUNDED</p>
+      <p class="sec-q">
+        隨收隨付制 vs. 完全提存準備制
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S17 PAYG VS FUNDED ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="隨收隨付制 vs 完全提存準備制">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>隨收隨付制 vs 完全提存準備制</h2>
+        <span class="h-en">PAYG VS. FULLY FUNDED</span>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">PAYG</span>
+          <h3>隨收隨付制</h3>
+          <p>今年收的保費，今年就付給付。由現在的年輕人養現在的老人。<br/><br/>比喻：像「自助餐」，今天付錢今天吃。<br/><br/><strong>優點：</strong>制度啟動快、無投資風險<br/><strong>缺點：</strong>人口老化時財務壓力大<br/><strong>代表：</strong>台灣勞保、健保、日本國民年金</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">FULLY FUNDED</span>
+          <h3>完全提存準備制</h3>
+          <p>提前存好未來需要的給付金額，透過投資增值。每人存自己的錢。<br/><br/>比喻：像「定存」，先存錢退休後領。<br/><br/><strong>優點：</strong>不受人口結構影響、財務穩健<br/><strong>缺點：</strong>投資風險、初期費率高<br/><strong>代表：</strong>勞退新制、新加坡 CPF、智利 AFP</p>
+        </div>
+      </div>
+      <div class="tw-block">
+        <span class="lab">台灣案例</span>
+        <p>台灣勞保（PAYG）預估 2028 年面臨破產危機；勞退新制（完全提存）由個人專戶管理。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S18 AGING CHALLENGE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="隨收隨付制的挑戰：人口老化">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>隨收隨付制的挑戰：人口老化</h2>
+        <span class="h-en">THE CHALLENGE OF POPULATION AGING</span>
+      </div>
+      <p class="lead">PAYG 的前提是「繳費的人夠多」。人口老化使年輕勞動人口減少、退休人口增加，制度就面臨危機。</p>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-yr">1990 年</div>
+          <div class="tl-t">14 人養 1 人</div>
+          <div class="tl-b">扶養比</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">2025 年</div>
+          <div class="tl-t">4 人養 1 人</div>
+          <div class="tl-b">扶養比</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">2050 年（預估）</div>
+          <div class="tl-t">1.5 人養 1 人</div>
+          <div class="tl-b">扶養比</div>
+        </div>
+      </div>
+      <div class="insight">
+        <strong>各國因應策略：</strong><br/>
+        ・ 日本：延後退休年齡至 65 歲，多次提高保費率<br/>
+        ・ 法國：2023 年退休年齡 62→64 歲，引發大規模抗議<br/>
+        ・ 瑞典：1998 年引入名義帳戶制（NDC），兼具 PAYG 與個人帳戶優點
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S19 SECTION 5 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第五部分：福利國家類型與財政">
+    <div class="slide-inner">
+      <div class="big-num">伍</div>
+      <p class="part">PART 05</p>
+      <h2>福利國家類型與財政</h2>
+      <p class="sec-en">WELFARE REGIMES AND FISCAL CHALLENGES</p>
+      <p class="sec-q">
+        Esping-Andersen 的三個世界與東亞模式
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S20 THREE WORLDS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="福利國家的三個世界">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>福利國家的三個世界（Esping-Andersen, 1990）</h2>
+        <span class="h-en">THREE WORLDS OF WELFARE CAPITALISM</span>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a">
+          <span class="tag">SOCIAL DEMOCRATIC</span>
+          <h3>社會民主體制</h3>
+          <p><strong>代表：</strong>瑞典、丹麥、挪威<br/><strong>稅負：</strong>高稅（~43% GDP）<br/><strong>財源：</strong>稅收為主<br/><strong>特色：</strong>普遍主義、高重分配</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">CONSERVATIVE</span>
+          <h3>保守統合體制</h3>
+          <p><strong>代表：</strong>德國、法國、義大利<br/><strong>稅負：</strong>中高稅（~38% GDP）<br/><strong>財源：</strong>社會保險為主<br/><strong>特色：</strong>職業分立、家庭主義</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">LIBERAL</span>
+          <h3>自由主義體制</h3>
+          <p><strong>代表：</strong>美國、英國、澳洲<br/><strong>稅負：</strong>低稅（~25% GDP）<br/><strong>財源：</strong>混合制＋市場<br/><strong>特色：</strong>殘補式、資產調查</p>
+        </div>
+      </div>
+      <div class="tw-block">
+        <span class="lab">台灣定位</span>
+        <p>介於保守統合體制與東亞發展型國家之間，社會保險為主體但涵蓋面逐漸擴大。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S21 INTERNATIONAL COMPARISON ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="國際比較：各國財源模式">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>國際比較：各國財源模式</h2>
+        <span class="h-en">INTERNATIONAL COMPARISON</span>
+      </div>
+      <table class="ctab">
+        <thead>
+          <tr>
+            <th>國家</th>
+            <th>主要財源</th>
+            <th>稅負占 GDP</th>
+            <th>年金制度</th>
+            <th>特色</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>瑞典</td><td>稅收為主</td><td>~43%</td><td>NDC 制</td><td>高稅、高福利</td></tr>
+          <tr><td>德國</td><td>社會保險</td><td>~38%</td><td>PAYG</td><td>俾斯麥模式</td></tr>
+          <tr><td>美國</td><td>混合制</td><td>~25%</td><td>PAYG+401k</td><td>市場導向</td></tr>
+          <tr><td>新加坡</td><td>個人帳戶</td><td>~14%</td><td>CPF</td><td>個人責任</td></tr>
+          <tr><td>台灣</td><td>混合制</td><td>~14%</td><td>PAYG+勞退</td><td>稅負偏低</td></tr>
+        </tbody>
+      </table>
+      <div class="insight">
+        台灣稅負占 GDP 約 14%，在主要經濟體中屬最低水準，限制了社會福利的財政空間。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S22 TAIWAN FISCAL CHALLENGES ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="台灣當前的財政挑戰">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>台灣當前的財政挑戰</h2>
+        <span class="h-en">TAIWAN'S FISCAL CHALLENGES TODAY</span>
+        <span class="h-tag">★ 台灣案例</span>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="pair-box d">
+          <span class="tag">挑戰 1</span>
+          <h3 style="font-size: 21px;">勞保破產危機</h3>
+          <p style="font-size: 16.5px;">勞保基金預估 2028 年用罄，改革方案牽涉 1,000 萬勞工權益</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">挑戰 2</span>
+          <h3 style="font-size: 21px;">超徵稅收的運用爭議</h3>
+          <p style="font-size: 16.5px;">2024 年超徵 5,283 億元，「還稅於民」vs.「充實社福基金」</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">挑戰 3</span>
+          <h3 style="font-size: 21px;">低稅負的結構困境</h3>
+          <p style="font-size: 16.5px;">稅收占 GDP 僅 14%，卻要面對高齡化的支出壓力</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">挑戰 4</span>
+          <h3 style="font-size: 21px;">少子女化的雙重衝擊</h3>
+          <p style="font-size: 16.5px;">2023 年台灣生育率 0.87，全球最低之一，勞動力與稅基同時萎縮</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S23 DISCUSSION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="課堂討論">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>課堂討論</h2>
+        <span class="h-en">CLASS DISCUSSION</span>
+        <span class="h-tag">點選展開提示</span>
+      </div>
+      <div class="discuss">
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">問 1</div>
+          <div class="qt">台灣稅負這麼低，應該加稅嗎？加哪一種稅？為什麼？</div>
+          <div class="hint">提示：累進稅 vs. 消費稅的差異。誰在繳稅、誰受益？</div>
+        </div>
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">問 2</div>
+          <div class="qt">台灣勞保可能在 2028 年破產，政府應該怎麼處理？</div>
+          <div class="hint">提示：提高保費？延後退休？降低給付？還是其他方案？</div>
+        </div>
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">問 3</div>
+          <div class="qt">2024 年超徵 5,283 億稅收，你覺得應該還稅於民還是用來充實社福？</div>
+          <div class="hint">提示：想想短期消費 vs. 長期制度永續性。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S24 SUMMARY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="本講小結">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>本講小結</h2>
+        <span class="h-en">SUMMARY</span>
+      </div>
+      <div class="deep-col">
+        <ul>
+          <li>社會政策經費來源包括稅收、保費、費用與捐款四大類。</li>
+          <li>稅收制（Beveridge）與社會保險制（Bismarck）是兩大模式，台灣採混合制。</li>
+          <li>直接稅具累進性，間接稅具累退性。「富人稅」仍是台灣爭議焦點。</li>
+          <li>中央 vs. 地方的經費分擔影響福利提供的公平性與效率。</li>
+          <li>PAYG 面臨人口老化挑戰；台灣勞保預估 2028 年破產。</li>
+          <li>台灣稅負占 GDP 僅 14%，2024 年稅收 3.76 兆創新高但結構性問題仍在。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S25 READING ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="延伸閱讀">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>延伸閱讀</h2>
+        <span class="h-en">FURTHER READING</span>
+      </div>
+      <p class="lead" style="font-size: 14.5px; opacity: 0.65; margin-bottom: 14px;">
+        每筆連結到 Google Scholar 搜尋結果（可查證、找全文、找後續引用）
+      </p>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <h3>核心文本</h3>
+          <p><a href="https://scholar.google.com/scholar?q=Barr+2020+Economics+of+the+Welfare+State+Oxford" target="_blank" rel="noopener">Barr, N. (2020). <em>Economics of the Welfare State</em> (6th ed.). Oxford UP.</a></p>
+          <p><a href="https://scholar.google.com/scholar?q=Esping-Andersen+1990+Three+Worlds+Welfare+Capitalism" target="_blank" rel="noopener">Esping-Andersen, G. (1990). <em>The Three Worlds of Welfare Capitalism</em>. Princeton UP.</a></p>
+          <p><a href="https://scholar.google.com/scholar?q=Pierson+2006+Beyond+the+Welfare+State+Polity" target="_blank" rel="noopener">Pierson, C. (2006). <em>Beyond the Welfare State?</em> (3rd ed.). Polity Press.</a></p>
+          <p><a href="https://scholar.google.com/scholar?q=Bonoli+Shinkawa+2005+Ageing+Pension+Reform+Around+the+World" target="_blank" rel="noopener">Bonoli, G. &amp; Shinkawa, T. (2005). <em>Ageing and Pension Reform Around the World</em>.</a></p>
+        </div>
+        <div class="ref-card">
+          <h3>台灣與官方資料</h3>
+          <p><a href="https://scholar.google.com/scholar?q=林萬億+2012+台灣的社會福利+歷史經驗與制度分析+五南" target="_blank" rel="noopener">林萬億（2012）。<em>《台灣的社會福利：歷史經驗與制度分析》</em>。台北：五南。</a></p>
+          <p><a href="https://scholar.google.com/scholar?q=葉崇揚+2022+東亞福利國家的財政基礎" target="_blank" rel="noopener">葉崇揚（2022）。「東亞福利國家的財政基礎」。</a></p>
+          <p><a href="https://scholar.google.com/scholar?q=財政部+2024+賦稅收入統計" target="_blank" rel="noopener">財政部（2025）。<em>《2024 年賦稅收入統計》</em>。台北：財政部。</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<nav class="navbar">
+  <button class="nav-btn" id="prevBtn" onclick="goPrev()">← 前頁</button>
+  <div class="nav-center">
+    <span><span id="curNum">1</span> / <span id="totNum">26</span></span>
+    <div class="dots" id="dots"></div>
+  </div>
+  <button class="nav-btn" id="nextBtn" onclick="goNext()">下一頁 →</button>
+</nav>
+
+<div class="keyboard-hint">
+  <kbd>←</kbd> <kbd>→</kbd> 切換頁面　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕
+</div>
+
+<div class="toc-overlay" id="tocOverlay" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" onclick="toggleToc()">×</button>
+    <h2 class="toc-title">目次 ・ Table of Contents</h2>
+    <p class="toc-sub">點選任一條目跳到該頁</p>
+    <ul class="toc-list" id="tocList"></ul>
+  </div>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let cur = 0;
+  document.getElementById('totNum').textContent = total;
+
+  // dots & toc
+  const dotsEl = document.getElementById('dots');
+  const tocEl = document.getElementById('tocList');
+  slides.forEach((s, i) => {
+    const d = document.createElement('span');
+    d.className = 'dot' + (s.dataset.kind === 'section' ? ' is-section' : '');
+    d.title = s.dataset.label || '';
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+    const li = document.createElement('li');
+    if (s.dataset.kind === 'section') li.classList.add('is-section');
+    li.innerHTML = `<span class="num">${String(i + 1).padStart(2, '0')}</span><span class="lab">${s.dataset.label || ''}</span><span class="kind">${s.dataset.kind}</span>`;
+    li.onclick = () => { goTo(i); toggleToc(); };
+    tocEl.appendChild(li);
+  });
+
+  function goTo(n) {
+    if (n < 0 || n >= total || n === cur) return;
+    const dir = n > cur ? 1 : -1;
+    slides[cur].classList.remove('is-active');
+    if (dir > 0) slides[cur].classList.add('is-prev');
+    cur = n;
+    slides[cur].classList.remove('is-prev');
+    slides[cur].classList.add('is-active');
+    setTimeout(() => slides.forEach((s, i) => { if (i !== cur) s.classList.remove('is-prev'); }), 500);
+    update();
+  }
+  function goPrev() { goTo(cur - 1); }
+  function goNext() { goTo(cur + 1); }
+  function update() {
+    document.getElementById('curNum').textContent = cur + 1;
+    document.getElementById('prevBtn').disabled = cur === 0;
+    document.getElementById('nextBtn').disabled = cur === total - 1;
+    document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('is-active', i === cur));
+  }
+
+  function toggleToc() {
+    document.getElementById('tocOverlay').classList.toggle('is-shown');
+  }
+
+  // Keyboard + touch
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('tocOverlay').classList.contains('is-shown')) {
+      if (e.key === 'Escape') toggleToc();
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goNext(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goPrev(); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+    else if (e.key === 'Escape') toggleToc();
+    else if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+  });
+
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) dx < 0 ? goNext() : goPrev();
+  });
+
+  update();
+</script>
+
+<script>
+  // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
+  // 偶爾因 sticky header + backdrop-filter 而整頁空白。
+  // 偵測到從快取還原時，強制觸發一次重繪。
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      document.body.style.display = 'none';
+      void document.body.offsetHeight;
+      document.body.style.display = '';
+    }
+  });
+</script>
+</body>
+</html>

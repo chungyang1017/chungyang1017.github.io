@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>什麼是福利國家？ ・ 福利社會學 第 11 週 ・ 葉崇揚</title>
+  <meta name="description" content="福利社會學第 11 週互動講義（給大一同學）：什麼是福利國家？從 Bismarck 與 Beveridge 的歷史起源、Briggs／Spicker／Goodin 的定義，到 Esping-Andersen 三個世界的類型學、東亞與台灣的位置，以及高齡化、零工經濟等當代挑戰。分頁式互動簡報。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --chashitsu-bg: #e8dcc4;
+      --chashitsu-paper: #f5ecd6;
+      --chashitsu-tatami: #d8c8a8;
+      --moss: #3d5a3f;          /* 公部門 */
+      --water: #5a7a8a;         /* 商業部門 */
+      --earth: #8a6a4a;         /* 志願部門 */
+      --persimmon: #c47038;     /* 非正式部門 */
+      --accent: #c43838;        /* 朱印 */
+      --gold: #b8860b;
+      --ink: #1f1f1d;
+      --ink-soft: rgba(31,31,29,0.78);
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --line-faint: rgba(31,31,29,0.05);
+      --jp: 'Shippori Mincho', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+      --mono: 'JetBrains Mono', 'Menlo', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: var(--jp);
+      background: var(--chashitsu-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 21px;
+      line-height: 2;
+      position: relative;
+    }
+    .paper-grain {
+      position: fixed; inset: 0; pointer-events: none;
+      opacity: 0.32; mix-blend-mode: multiply; z-index: 1;
+    }
+
+    /* Top bar */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 56px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .top-left { display: flex; align-items: center; gap: 14px; }
+    .back { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .back:hover { opacity: 0.85; }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .top-title { font-family: var(--brush); font-size: 19px; letter-spacing: 0.06em; }
+    .top-title small { font-family: var(--sans); font-size: 12px; letter-spacing: 0.18em; opacity: 0.55; margin-left: 10px; }
+    .top-right { display: flex; align-items: center; gap: 18px; font-family: var(--sans); font-size: 12px; opacity: 0.6; letter-spacing: 0.15em; }
+    .toc-btn {
+      background: transparent; border: 1px solid var(--line);
+      font-family: inherit; font-size: 11.5px; letter-spacing: 0.2em;
+      padding: 5px 12px; cursor: pointer; color: var(--ink); opacity: 0.75;
+    }
+    .toc-btn:hover { background: var(--chashitsu-paper); opacity: 1; }
+
+    .progress {
+      position: fixed; top: 56px; left: 0;
+      height: 2px; background: var(--accent);
+      z-index: 49; transition: width 0.4s ease;
+    }
+
+    .deck {
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 64px;
+      overflow: hidden; z-index: 2;
+    }
+    .slide {
+      position: absolute; inset: 0;
+      padding: 36px 72px 28px;
+      overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.2,0.7,0.2,1);
+    }
+    .slide.is-prev { transform: translateX(-40px); }
+    .slide.is-active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide-inner { max-width: 1080px; margin: 0 auto; }
+
+    .navbar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 64px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .nav-btn {
+      background: transparent; border: 1px solid var(--ink);
+      font-family: var(--jp); font-size: 14px;
+      letter-spacing: 0.15em; color: var(--ink);
+      padding: 9px 22px; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover:not(:disabled) { background: var(--ink); color: var(--chashitsu-paper); }
+    .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; border-color: var(--line); }
+    .nav-center { display: flex; align-items: center; gap: 16px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.18em; opacity: 0.7; }
+    .dots { display: flex; gap: 5px; max-width: 480px; flex-wrap: wrap; justify-content: center; }
+    .dot { width: 7px; height: 7px; background: var(--line); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .dot:hover { background: var(--accent); transform: scale(1.3); }
+    .dot.is-active { background: var(--accent); }
+    .dot.is-section { width: 14px; }
+
+    /* TOC overlay */
+    .toc-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(31,31,29,0.85);
+      backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center;
+      padding: 40px;
+    }
+    .toc-overlay.is-shown { display: flex; animation: fade 0.3s; }
+    .toc-panel {
+      background: var(--chashitsu-paper);
+      max-width: 920px; width: 100%; max-height: 80vh;
+      overflow-y: auto;
+      padding: 36px 44px;
+      border: 1px solid var(--accent);
+      position: relative;
+    }
+    .toc-close {
+      position: absolute; top: 14px; right: 18px;
+      background: transparent; border: none;
+      font-size: 26px; cursor: pointer; opacity: 0.5;
+      font-family: var(--brush); color: var(--ink);
+    }
+    .toc-close:hover { opacity: 1; }
+    .toc-title { font-family: var(--brush); font-size: 26px; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .toc-sub { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 22px; }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; }
+    .toc-list li {
+      padding: 8px 0; border-bottom: 1px dashed var(--line-soft);
+      cursor: pointer; display: flex; align-items: baseline; gap: 14px;
+    }
+    .toc-list li:hover { color: var(--accent); }
+    .toc-list .num { font-family: var(--brush); font-size: 14px; color: var(--accent); min-width: 28px; }
+    .toc-list .lab { font-size: 15px; flex: 1; }
+    .toc-list .kind { font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; opacity: 0.45; }
+    .toc-list .is-section { color: var(--accent); font-weight: 600; }
+
+    /* Slide types */
+    .slide-title {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      padding: 36px 72px;
+    }
+    .slide-title .week-tag {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.4em; opacity: 0.6; margin-bottom: 24px;
+    }
+    .slide-title .seal {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      background: var(--accent); color: var(--chashitsu-paper);
+      font-family: var(--brush); font-size: 16px;
+      transform: rotate(-3deg);
+    }
+    .slide-title h1 {
+      font-family: var(--brush); font-size: 72px;
+      font-weight: 400; line-height: 1.1; letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+    .slide-title .subtitle {
+      font-family: var(--sans); font-size: 18px;
+      letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 28px;
+    }
+    .slide-title .author {
+      font-size: 18px; opacity: 0.85; line-height: 1.85;
+      max-width: 800px;
+    }
+    .meta-strip {
+      margin-top: 36px;
+      display: flex; flex-wrap: wrap; gap: 24px;
+      font-family: var(--sans); font-size: 13px; opacity: 0.6;
+      letter-spacing: 0.12em;
+    }
+
+    .slide-section {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      background: linear-gradient(135deg, rgba(196,56,56,0.06) 0%, rgba(216,200,168,0.4) 100%);
+      padding: 36px 72px;
+    }
+    .slide-section .big-num {
+      font-family: var(--brush); font-size: 240px;
+      color: var(--accent); opacity: 0.15;
+      position: absolute; bottom: 30px; right: 60px;
+      line-height: 1;
+    }
+    .slide-section .part {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.45em; opacity: 0.55; margin-bottom: 14px;
+    }
+    .slide-section h2 {
+      font-family: var(--brush); font-size: 56px;
+      font-weight: 400; letter-spacing: 0.04em;
+      line-height: 1.15; margin-bottom: 14px;
+    }
+    .slide-section .sec-en {
+      font-family: var(--sans); font-size: 16px;
+      letter-spacing: 0.3em; opacity: 0.55; font-style: italic;
+      margin-bottom: 22px;
+    }
+    .slide-section .sec-q {
+      font-size: 19px; opacity: 0.85;
+      max-width: 640px; line-height: 1.95;
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+    }
+
+    .slide-content { padding-top: 28px; }
+    .content-head {
+      margin-bottom: 22px;
+      display: flex; align-items: baseline; gap: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .content-head h2 { font-family: var(--brush); font-size: 44px; font-weight: 400; letter-spacing: 0.04em; }
+    .content-head .h-en { font-family: var(--sans); font-size: 15.5px; letter-spacing: 0.25em; opacity: 0.6; }
+    .content-head .h-tag { margin-left: auto; font-family: var(--sans); font-size: 14px; letter-spacing: 0.3em; opacity: 0.6; }
+
+    .lead {
+      font-size: 21px; line-height: 2.05; opacity: 0.9;
+      max-width: 920px; margin-bottom: 20px;
+    }
+    .lead p + p { margin-top: 16px; }
+    .lead strong { color: var(--accent); }
+    .term-en {
+      font-family: var(--sans); font-style: italic;
+      opacity: 0.7; font-size: 0.85em;
+      margin-left: 3px;
+    }
+
+    /* Scenario / story card */
+    .story {
+      background: var(--chashitsu-paper);
+      border-left: 4px solid var(--accent);
+      padding: 24px 30px;
+      margin: 18px 0;
+    }
+    .story .lab {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.3em; color: var(--accent); margin-bottom: 10px;
+    }
+    .story h3 {
+      font-family: var(--brush); font-size: 26px;
+      letter-spacing: 0.04em; margin-bottom: 14px;
+    }
+    .story p { font-size: 19px; line-height: 2; opacity: 0.9; }
+    .story p + p { margin-top: 12px; }
+
+    /* Two-column compare */
+    .pair {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+      margin-top: 12px;
+    }
+    .pair-box {
+      background: var(--chashitsu-paper);
+      border-top: 4px solid;
+      padding: 20px 22px;
+    }
+    .pair-box.a { border-top-color: var(--moss); }
+    .pair-box.b { border-top-color: var(--water); }
+    .pair-box.c { border-top-color: var(--earth); }
+    .pair-box.d { border-top-color: var(--persimmon); }
+    .pair-box .tag {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.25em; margin-bottom: 10px;
+    }
+    .pair-box.a .tag { color: var(--moss); }
+    .pair-box.b .tag { color: var(--water); }
+    .pair-box.c .tag { color: var(--earth); }
+    .pair-box.d .tag { color: var(--persimmon); }
+    .pair-box h3 {
+      font-family: var(--brush); font-size: 25px;
+      letter-spacing: 0.04em; margin-bottom: 12px;
+    }
+    .pair-box p { font-size: 18.5px; line-height: 1.95; opacity: 0.9; }
+
+    /* Sector card grid (4-col interactive) */
+    .sectors {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 14px; margin-top: 10px;
+    }
+    .sect {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 24px 18px 20px;
+      text-align: center;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .sect:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .sect .glyph {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 56px; height: 56px;
+      font-family: var(--brush); font-size: 28px;
+      color: var(--chashitsu-paper);
+      margin-bottom: 12px;
+    }
+    .sect.s-state .glyph { background: var(--moss); }
+    .sect.s-market .glyph { background: var(--water); }
+    .sect.s-volun .glyph { background: var(--earth); }
+    .sect.s-info .glyph { background: var(--persimmon); }
+    .sect h4 { font-family: var(--brush); font-size: 19px; letter-spacing: 0.04em; }
+    .sect .en { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.18em; opacity: 0.6; margin-top: 4px; margin-bottom: 10px; }
+    .sect .ex { font-size: 13px; opacity: 0.78; line-height: 1.7; }
+
+    /* Big single sector card (deep dive) */
+    .deep {
+      background: var(--chashitsu-paper);
+      border-top: 5px solid var(--accent);
+      padding: 28px 34px;
+      margin-top: 6px;
+    }
+    .deep.s-state { border-top-color: var(--moss); }
+    .deep.s-market { border-top-color: var(--water); }
+    .deep.s-volun { border-top-color: var(--earth); }
+    .deep.s-info { border-top-color: var(--persimmon); }
+    .deep-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; }
+    .deep-head .gl {
+      font-family: var(--brush); font-size: 28px;
+      width: 44px; height: 44px;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--chashitsu-paper);
+    }
+    .deep.s-state .deep-head .gl { background: var(--moss); }
+    .deep.s-market .deep-head .gl { background: var(--water); }
+    .deep.s-volun .deep-head .gl { background: var(--earth); }
+    .deep.s-info .deep-head .gl { background: var(--persimmon); }
+    .deep h3 { font-family: var(--brush); font-size: 28px; letter-spacing: 0.04em; }
+    .deep .sub-en { font-family: var(--sans); font-size: 13px; letter-spacing: 0.2em; opacity: 0.6; }
+    .deep .lead-line { font-size: 19.5px; line-height: 1.95; opacity: 0.9; margin: 12px 0 20px; }
+
+    .deep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 16px; }
+    .deep-col h5 {
+      font-family: var(--sans); font-size: 14px;
+      letter-spacing: 0.28em; opacity: 0.7; margin-bottom: 12px;
+    }
+    .deep-col ul { list-style: none; padding: 0; }
+    .deep-col li {
+      font-size: 18px; line-height: 1.95;
+      padding: 8px 0 8px 18px; position: relative;
+      border-bottom: 1px solid var(--line-faint);
+    }
+    .deep-col li:last-child { border-bottom: none; }
+    .deep-col li::before { content: "・"; position: absolute; left: 0; opacity: 0.5; }
+    .deep-col li strong { color: var(--accent); font-weight: 600; }
+
+    .tw-block {
+      background: rgba(196,56,56,0.05);
+      border-left: 3px solid var(--accent);
+      padding: 14px 20px;
+      margin-top: 16px;
+    }
+    .tw-block .lab {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.3em; color: var(--accent); margin-bottom: 8px;
+    }
+    .tw-block h4 {
+      font-family: var(--brush); font-size: 21px;
+      letter-spacing: 0.04em; margin-bottom: 8px;
+    }
+    .tw-block p { font-size: 18px; line-height: 1.95; opacity: 0.9; }
+
+    /* Stats */
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-top: 18px;
+    }
+    .stat {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 16px 14px;
+      text-align: center;
+    }
+    .stat .n { font-family: var(--brush); font-size: 34px; color: var(--accent); line-height: 1; }
+    .stat .l { font-size: 15.5px; opacity: 0.85; margin-top: 10px; line-height: 1.6; }
+    .stat .src { font-family: var(--sans); font-size: 12px; opacity: 0.55; letter-spacing: 0.1em; margin-top: 8px; }
+
+    /* Timeline */
+    .tl { margin-top: 8px; padding-left: 32px; position: relative; }
+    .tl::before { content: ""; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+    .tl-item { position: relative; padding: 14px 0 16px; border-bottom: 1px dashed var(--line-soft); }
+    .tl-item:last-child { border-bottom: none; }
+    .tl-item::before {
+      content: ""; position: absolute;
+      left: -32px; top: 22px; width: 14px; height: 14px;
+      background: var(--accent); border-radius: 50%;
+      border: 2px solid var(--chashitsu-bg);
+    }
+    .tl-yr {
+      font-family: var(--sans); font-size: 14.5px;
+      letter-spacing: 0.2em; opacity: 0.7; margin-bottom: 5px;
+    }
+    .tl-t { font-family: var(--brush); font-size: 22px; letter-spacing: 0.04em; margin-bottom: 10px; }
+    .tl-b { font-size: 18px; line-height: 1.95; opacity: 0.88; }
+    .tl-tag { display: inline-block; font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.18em; padding: 3px 10px; margin-left: 10px; background: rgba(196,56,56,0.10); color: var(--accent); vertical-align: middle; }
+
+    /* Comparison table */
+    .ctab {
+      width: 100%; border-collapse: collapse;
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      font-size: 17px;
+      margin-top: 10px;
+    }
+    .ctab th, .ctab td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line-soft);
+      text-align: left; vertical-align: top;
+    }
+    .ctab th {
+      font-family: var(--brush); font-size: 19px; font-weight: 500;
+      background: rgba(216,200,168,0.4);
+    }
+    .ctab th:nth-child(2), .ctab td:nth-child(2) { background: rgba(61,90,63,0.06); }
+    .ctab th:nth-child(3), .ctab td:nth-child(3) { background: rgba(90,122,138,0.06); }
+    .ctab th:nth-child(4), .ctab td:nth-child(4) { background: rgba(138,106,74,0.06); }
+    .ctab th:nth-child(5), .ctab td:nth-child(5) { background: rgba(196,112,56,0.06); }
+    .ctab td:first-child { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.18em; opacity: 0.65; width: 100px; vertical-align: middle; }
+
+    /* Country cards */
+    .nations {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin-top: 8px;
+    }
+    .nation {
+      background: var(--chashitsu-paper);
+      border-top: 3px solid var(--accent);
+      padding: 22px 24px;
+    }
+    .nation.b { border-top-color: var(--water); }
+    .nation.c { border-top-color: var(--earth); }
+    .nation .nm { font-family: var(--brush); font-size: 25px; letter-spacing: 0.06em; }
+    .nation .nen { font-family: var(--sans); font-size: 13.5px; letter-spacing: 0.2em; opacity: 0.65; margin: 5px 0 14px; }
+    .nation h6 { font-family: var(--sans); font-size: 13.5px; letter-spacing: 0.22em; opacity: 0.7; margin: 16px 0 8px; }
+    .nation ul { list-style: none; padding: 0; }
+    .nation li { font-size: 17px; line-height: 1.9; padding: 5px 0 5px 14px; position: relative; }
+    .nation li::before { content: "—"; position: absolute; left: 0; opacity: 0.4; }
+    .nation li strong { color: var(--accent); font-weight: 600; }
+
+    /* Flip cards (issues) */
+    .flips {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; margin-top: 8px;
+    }
+    .flip {
+      perspective: 1000px;
+      height: 290px; cursor: pointer;
+    }
+    .flip-inner {
+      position: relative; width: 100%; height: 100%;
+      transition: transform 0.6s; transform-style: preserve-3d;
+    }
+    .flip.is-flipped .flip-inner { transform: rotateY(180deg); }
+    .flip-face {
+      position: absolute; width: 100%; height: 100%;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      padding: 24px 26px;
+      display: flex; flex-direction: column;
+      justify-content: center;
+    }
+    .flip-front { background: var(--chashitsu-paper); border: 1px solid var(--line); text-align: center; }
+    .flip-front h4 { font-family: var(--brush); font-size: 24px; margin-bottom: 12px; letter-spacing: 0.04em; }
+    .flip-front p { font-size: 17px; opacity: 0.85; line-height: 1.75; }
+    .flip-front .hint { margin-top: auto; font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.25em; opacity: 0.55; }
+    .flip-back { background: var(--ink); color: var(--chashitsu-paper); transform: rotateY(180deg); justify-content: flex-start; }
+    .flip-back h4 { font-family: var(--brush); font-size: 21px; color: var(--chashitsu-paper); margin-bottom: 14px; letter-spacing: 0.04em; }
+    .flip-back ul { list-style: none; padding: 0; }
+    .flip-back li { font-size: 16.5px; line-height: 1.8; padding: 5px 0 5px 14px; position: relative; opacity: 0.92; }
+    .flip-back li::before { content: "・"; position: absolute; left: 0; opacity: 0.6; }
+
+    /* Insight banner */
+    .insight {
+      margin-top: 18px;
+      padding: 16px 22px;
+      background: rgba(196,56,56,0.06);
+      border-left: 3px solid var(--accent);
+      font-size: 17px; line-height: 1.9;
+    }
+    .insight strong { color: var(--accent); }
+
+    /* Scenario interactive */
+    .scen-block {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 24px 28px;
+      margin-top: 8px;
+    }
+    .scen-q { font-family: var(--brush); font-size: 25px; line-height: 1.55; margin-bottom: 12px; letter-spacing: 0.04em; }
+    .scen-detail { font-size: 18.5px; opacity: 0.85; line-height: 1.95; margin-bottom: 20px; }
+    .scen-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .scen-opt {
+      background: var(--chashitsu-bg);
+      border: 1px solid var(--line-soft);
+      padding: 18px 12px;
+      text-align: center;
+      cursor: pointer;
+      font-family: var(--jp); font-size: 17px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .scen-opt:hover { background: #fff8e8; border-color: var(--accent); }
+    .scen-opt.is-picked { background: var(--accent); color: var(--chashitsu-paper); border-color: var(--accent); font-weight: 500; }
+    .scen-opt.is-mismatch { opacity: 0.5; }
+    .scen-feedback {
+      margin-top: 18px;
+      padding: 18px 22px;
+      background: rgba(61,90,63,0.06);
+      border-left: 3px solid var(--moss);
+      font-size: 17.5px; line-height: 1.95;
+      display: none;
+    }
+    .scen-feedback.is-shown { display: block; animation: fade 0.3s; }
+    .scen-feedback strong { color: var(--moss); }
+
+    /* Quiz */
+    .quiz {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 24px 28px;
+    }
+    .quiz-num { font-family: var(--sans); font-size: 14px; letter-spacing: 0.3em; opacity: 0.65; }
+    .quiz-q { font-family: var(--brush); font-size: 25px; line-height: 1.6; margin: 10px 0 20px; letter-spacing: 0.03em; }
+    .quiz-opt {
+      display: block; width: 100%; text-align: left;
+      background: var(--chashitsu-bg);
+      border: 1px solid var(--line-soft);
+      padding: 16px 22px; margin-bottom: 12px;
+      font-family: inherit; font-size: 19px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .quiz-opt:hover:not(:disabled) { background: #fff8e8; border-color: var(--accent); }
+    .quiz-opt.is-correct { background: rgba(61,90,63,0.12); border-color: var(--moss); color: var(--moss); font-weight: 600; }
+    .quiz-opt.is-wrong { background: rgba(196,56,56,0.08); border-color: var(--accent); color: var(--accent); }
+    .quiz-opt:disabled { cursor: default; }
+    .quiz-explain {
+      display: none; margin-top: 16px;
+      padding: 16px 22px;
+      background: rgba(31,31,29,0.04);
+      border-left: 3px solid var(--accent);
+      font-size: 18px; line-height: 1.95;
+    }
+    .quiz-explain.is-shown { display: block; animation: fade 0.3s; }
+    .quiz-explain strong { color: var(--accent); }
+    .score-pill {
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 10px 20px;
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      margin-bottom: 18px;
+    }
+    .score-pill .sn { font-family: var(--brush); font-size: 28px; color: var(--accent); line-height: 1; }
+    .score-pill .st { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.25em; opacity: 0.6; }
+
+    /* Discussion */
+    .discuss { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .discuss-item {
+      background: var(--chashitsu-paper);
+      border-left: 3px solid var(--accent);
+      padding: 16px 22px; cursor: pointer;
+    }
+    .discuss-item .qn { font-family: var(--brush); font-size: 19px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 8px; }
+    .discuss-item .qt { font-size: 19.5px; line-height: 1.95; }
+    .discuss-item .hint {
+      max-height: 0; overflow: hidden; opacity: 0;
+      font-size: 17px; line-height: 1.95;
+      transition: max-height 0.4s, opacity 0.3s, margin 0.3s, padding 0.3s;
+      color: var(--ink-soft); font-style: italic;
+    }
+    .discuss-item.is-open .hint {
+      max-height: 250px; opacity: 1;
+      margin-top: 12px; padding-top: 12px;
+      border-top: 1px dashed var(--line-soft);
+    }
+
+    /* Reading */
+    .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+    .ref-card {
+      background: var(--chashitsu-paper);
+      border-top: 3px solid var(--accent);
+      padding: 20px 22px;
+    }
+    .ref-card h3 { font-family: var(--brush); font-size: 22px; margin-bottom: 14px; letter-spacing: 0.04em; }
+    .ref-card p { font-size: 17px; line-height: 1.9; padding: 9px 0; border-bottom: 1px solid var(--line-faint); }
+    .ref-card p:last-child { border-bottom: none; }
+    .ref-card em { color: var(--accent); font-style: italic; }
+    .ref-card a {
+      color: var(--ink); text-decoration: none;
+      border-bottom: 1px dotted rgba(31,31,29,0.4);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .ref-card a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .ref-card a:hover em { color: var(--accent); }
+
+    /* Click-to-reveal case (used inside concept slides) */
+    details.case {
+      background: rgba(196,56,56,0.04);
+      border-left: 3px solid var(--accent);
+      margin-top: 14px;
+      padding: 0;
+    }
+    details.case + details.case { margin-top: 8px; }
+    details.case summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 12px 20px;
+      font-family: var(--sans);
+      font-size: 14.5px;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      transition: background 0.2s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    details.case summary:hover { background: rgba(196,56,56,0.08); }
+    details.case summary::-webkit-details-marker { display: none; }
+    details.case summary::before {
+      content: "▸";
+      display: inline-block;
+      transition: transform 0.25s;
+      color: var(--accent);
+      font-size: 14px;
+    }
+    details.case[open] summary::before { transform: rotate(90deg); }
+    details.case .case-body {
+      padding: 4px 22px 18px 38px;
+      font-size: 16px;
+      line-height: 1.9;
+      animation: fade 0.3s;
+    }
+    details.case .case-body h5 {
+      font-family: var(--brush);
+      font-size: 19px;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+    details.case .case-body p { margin-bottom: 8px; opacity: 0.9; }
+    details.case .case-body p:last-child { margin-bottom: 0; }
+    details.case .case-body strong { color: var(--accent); }
+    details.case .case-body ul {
+      list-style: none; padding: 0; margin: 8px 0 4px;
+    }
+    details.case .case-body li {
+      padding: 4px 0 4px 16px; position: relative;
+      font-size: 15.5px;
+    }
+    details.case .case-body li::before {
+      content: "・"; position: absolute; left: 0; opacity: 0.5;
+    }
+
+    /* Animations */
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+    .keyboard-hint {
+      position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
+      font-family: var(--sans); font-size: 9.5px;
+      letter-spacing: 0.25em; opacity: 0.4;
+      pointer-events: none; z-index: 60;
+    }
+    .keyboard-hint kbd { font-family: var(--mono); font-size: 9.5px; background: rgba(31,31,29,0.08); padding: 1px 5px; margin: 0 2px; }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      body { font-size: 16.5px; }
+      .topbar { padding: 0 14px; }
+      .top-title { font-size: 15px; }
+      .top-title small { display: none; }
+      .top-right { display: none; }
+      .toc-btn { font-size: 10.5px; padding: 4px 9px; letter-spacing: 0.18em; }
+
+      .slide { padding: 26px 22px 20px; }
+      .slide-title { padding: 26px 22px; }
+      .slide-title h1 { font-size: 40px; }
+      .slide-title .subtitle { font-size: 14.5px; letter-spacing: 0.18em; }
+      .slide-title .author { font-size: 16px; }
+
+      .slide-section { padding: 26px 22px; }
+      .slide-section h2 { font-size: 36px; }
+      .slide-section .sec-en { font-size: 13px; }
+      .slide-section .sec-q { font-size: 16px; }
+      .slide-section .big-num { font-size: 130px; bottom: 20px; right: 20px; }
+
+      .content-head h2 { font-size: 24px; }
+      .content-head .h-en { font-size: 11.5px; }
+      .content-head .h-tag { display: none; }
+
+      .lead { font-size: 16px; }
+      .story h3 { font-size: 20px; }
+      .story p { font-size: 15.5px; }
+
+      .pair { grid-template-columns: 1fr; gap: 12px; }
+      .pair-box { padding: 18px 20px; }
+      .pair-box h3 { font-size: 19px; }
+      .pair-box p { font-size: 15px; }
+
+      .sectors { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .sect .glyph { width: 48px; height: 48px; font-size: 24px; }
+      .sect h4 { font-size: 17px; }
+
+      .deep { padding: 22px 22px; }
+      .deep h3 { font-size: 24px; }
+      .deep .lead-line { font-size: 15.5px; }
+      .deep-grid { grid-template-columns: 1fr; gap: 16px; }
+      .deep-col li { font-size: 14.5px; }
+
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat .n { font-size: 24px; }
+      .stat .l { font-size: 12.5px; }
+
+      .tl { padding-left: 28px; }
+      .tl::before { left: 4px; }
+      .tl-item::before { left: -28px; width: 12px; height: 12px; top: 20px; }
+      .tl-t { font-size: 17px; }
+      .tl-b { font-size: 14.5px; }
+      .tl-yr { font-size: 12px; }
+
+      .ctab { font-size: 13px; display: block; overflow-x: auto; }
+      .ctab th, .ctab td { padding: 8px 10px; }
+
+      .nations { grid-template-columns: 1fr; }
+
+      .flips { grid-template-columns: 1fr; }
+      .flip { height: 230px; }
+
+      .scen-options { grid-template-columns: repeat(2, 1fr); }
+      .scen-opt { font-size: 14px; padding: 13px 8px; }
+      .scen-q { font-size: 18px; }
+      .scen-detail { font-size: 14.5px; }
+      .scen-feedback { font-size: 14.5px; }
+
+      .quiz { padding: 22px 22px; }
+      .quiz-num { font-size: 12px; }
+      .quiz-q { font-size: 18px; }
+      .quiz-opt { font-size: 14.5px; padding: 12px 16px; }
+      .quiz-explain { font-size: 14px; }
+
+      .discuss-item .qt { font-size: 16px; }
+
+      .ref-grid { grid-template-columns: 1fr; }
+      .ref-card p { font-size: 13.5px; }
+
+      .navbar { padding: 0 14px; height: 58px; }
+      .nav-btn { padding: 7px 14px; font-size: 13px; letter-spacing: 0.1em; }
+      .dots { max-width: 200px; }
+      .nav-center { font-size: 12px; gap: 10px; }
+
+      .toc-panel { padding: 24px 22px; }
+      .toc-list { grid-template-columns: 1fr; gap: 0; }
+      .toc-list .lab { font-size: 13.5px; }
+
+      .keyboard-hint { display: none; }
+    }
+  
+    /* Week 11 additions — generic content-card grid, reused across many slide layouts */
+    .cards { display: grid; gap: 14px; margin-top: 12px; }
+    .cards.c2 { grid-template-columns: 1fr 1fr; }
+    .cards.c3 { grid-template-columns: repeat(3, 1fr); }
+    .cards.c4 { grid-template-columns: repeat(4, 1fr); }
+    .cards.c5 { grid-template-columns: repeat(5, 1fr); }
+    .card { background: var(--chashitsu-paper); border-top: 3px solid var(--accent); padding: 18px 20px 16px; }
+    .card.a { border-top-color: var(--moss); }
+    .card.b { border-top-color: var(--water); }
+    .card.c { border-top-color: var(--earth); }
+    .card.d { border-top-color: var(--persimmon); }
+    .card .no { font-family: var(--brush); font-size: 26px; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+    .card.a .no { color: var(--moss); }
+    .card.b .no { color: var(--water); }
+    .card.c .no { color: var(--earth); }
+    .card.d .no { color: var(--persimmon); }
+    .card h4 { font-family: var(--brush); font-size: 19px; letter-spacing: 0.04em; margin-bottom: 6px; }
+    .card .en { display: inline-block; font-family: var(--sans); font-size: 11px; letter-spacing: 0.15em; opacity: 0.55; margin-bottom: 8px; }
+    .card p { font-size: 15.5px; line-height: 1.8; opacity: 0.86; }
+    .card p strong, .pair-box p strong { color: var(--accent); font-weight: 600; }
+    .nation.a { border-top-color: var(--moss); }
+
+    @media (max-width: 760px) {
+      .cards.c2, .cards.c3, .cards.c4, .cards.c5 { grid-template-columns: 1fr 1fr; }
+      .card { padding: 14px 16px 12px; }
+      .card h4 { font-size: 16px; }
+      .card p { font-size: 13.5px; }
+    }
+
+  </style>
+<body>
+
+<svg class="paper-grain" aria-hidden="true">
+  <defs>
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#paper-noise)" />
+</svg>
+
+<header class="topbar">
+  <div class="top-left">
+    <a href="../../teaching-zh.html" class="back">← 教學</a>
+    <span class="top-sep">·</span>
+    <span class="top-title">什麼是福利國家？<small>福利社會學 第 11 週</small></span>
+  </div>
+  <div class="top-right">
+    <span>大一同學適用</span>
+    <button class="toc-btn" onclick="toggleToc()">目次 ・ TOC</button>
+  </div>
+</header>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ============ S00 TITLE ============ -->
+  <section class="slide slide-title is-active" data-kind="title" data-label="封面">
+    <div class="slide-inner">
+      <div class="week-tag">
+        <span class="seal">學</span>
+        <span>第 11 週 ・ 5/7 ・ WEEK 11</span>
+      </div>
+      <h1>福利國家</h1>
+      <p class="subtitle">THE WELFARE STATE — 概念、起源、類型與當代挑戰</p>
+      <p class="author">
+        同樣 28 歲、同樣失業半年，他們的處境差很多。<br/>
+        同樣的人生事件，國家提供的「保護」差異甚大。
+      </p>
+      <div class="meta-strip">
+        <span>福利社會學 ・ 葉崇揚</span>
+        <span>東吳大學社會學系</span>
+        <span>2026 春學期</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S01 OUTLINE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="本講綱要">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>本講綱要</h2>
+        <span class="h-en">LECTURE OUTLINE</span>
+      </div>
+      <div class="cards c2">
+        <div class="card a"><div class="no">01</div><h4>從一個故事開始</h4><p>為什麼我們需要談福利國家？</p></div>
+        <div class="card b"><div class="no">02</div><h4>拆解三個關鍵字</h4><p>福利、國家、福利國家</p></div>
+        <div class="card c"><div class="no">03</div><h4>歷史的兩個源頭</h4><p>Bismarck 與 Beveridge</p></div>
+        <div class="card d"><div class="no">04</div><h4>如何定義福利國家？</h4><p>Briggs、Spicker、Goodin</p></div>
+        <div class="card a"><div class="no">05</div><h4>三個世界</h4><p>Esping-Andersen 類型學</p></div>
+        <div class="card b"><div class="no">06</div><h4>東亞與台灣</h4><p>日本、南韓、台灣</p></div>
+        <div class="card c"><div class="no">07</div><h4>當代挑戰</h4><p>高齡化、零工、氣候</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S02 LEARNING OBJECTIVES ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="學習目標">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>學習目標</h2>
+        <span class="h-en">LEARNING OBJECTIVES</span>
+      </div>
+      <div class="cards c2">
+        <div class="card a"><h4>理解</h4><p>說明「福利」、「國家」、「福利國家」三個概念，並能用自己的話舉例。</p></div>
+        <div class="card b"><h4>分析</h4><p>辨識 Bismarck 與 Beveridge 兩條歷史路徑的差異與遺產。</p></div>
+        <div class="card c"><h4>比較</h4><p>用 Esping-Andersen 三類型比較福利體制，把台灣放進框架。</p></div>
+        <div class="card d"><h4>評估</h4><p>反思台灣福利國家的特色與當代社會風險。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S03 SECTION 1 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第一部分：從一個故事開始">
+    <div class="slide-inner">
+      <span class="part">PART 01</span>
+      <h2>從一個故事開始</h2>
+      <span class="sec-en">WHY DO WE NEED TO TALK ABOUT THE WELFARE STATE?</span>
+      <p class="sec-q">為什麼我們需要談福利國家？</p>
+    </div>
+    <span class="big-num">01</span>
+  </section>
+
+  <!-- ============ S04 TWO FAMILIES ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="兩個家庭的故事">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>兩個家庭的故事</h2>
+        <span class="h-en">TWO FAMILIES, TWO WELFARE STATES</span>
+      </div>
+      <p class="lead">同樣 28 歲、同樣失業半年，他們的處境差很多。</p>
+      <div class="pair">
+        <div class="pair-box a">
+          <div class="tag">阿明 ・ 28 歲 ・ 台北</div>
+          <p><strong>失業給付：</strong>勞保每月約 2.1 萬，最長 6 個月。</p>
+          <p><strong>看病：</strong>健保普及，但住院差額自費。</p>
+          <p><strong>托育：</strong>公托難搶，私托月費 2 萬起。</p>
+          <p><strong>照顧父母：</strong>長照 2.0 居家服務常需等候。</p>
+        </div>
+        <div class="pair-box b">
+          <div class="tag">Anna ・ 28 歲 ・ 瑞典</div>
+          <p><strong>失業給付：</strong>保險替代率 80%，最長 300 日。</p>
+          <p><strong>看病：</strong>公共醫療為主，自付額有上限。</p>
+          <p><strong>托育：</strong>公托普及，月費依所得計算。</p>
+          <p><strong>照顧父母：</strong>居家／機構照顧由稅收支應。</p>
+        </div>
+      </div>
+      <div class="insight">同樣的人生事件，國家提供的「保護」差異甚大。</div>
+    </div>
+  </section>
+
+  <!-- ============ S05 DAILY LIFE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="從你的生活看福利國家">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>從你的生活看福利國家</h2>
+        <span class="h-en">WELFARE STATE IN YOUR DAILY LIFE</span>
+      </div>
+      <p class="lead">你以為福利只跟「老人、窮人」有關？其實你每天都在用。</p>
+      <div class="cards c3">
+        <div class="card a"><h4>看病</h4><span class="en">健保</span><p>每月幾百元保費；無健保的話，盲腸手術可能要 10 萬。</p></div>
+        <div class="card b"><h4>上學</h4><span class="en">教育補助</span><p>國立大學一學期約 2.6 萬；學貸利率 0.85%。</p></div>
+        <div class="card c"><h4>打工</h4><span class="en">勞健保</span><p>便利商店打工，雇主應加保勞保、健保、職災。</p></div>
+        <div class="card d"><h4>租屋</h4><span class="en">租金補貼</span><p>單身青年最高每月 5,000 元租金補貼。</p></div>
+        <div class="card a"><h4>騎車</h4><span class="en">強制險</span><p>機車強制險每年 800 元，撞到人最高賠 200 萬。</p></div>
+        <div class="card b"><h4>未來</h4><span class="en">失業／生育</span><p>畢業後失業最多領 6 個月；生育有育嬰留停津貼。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S06 LIFECYCLE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="一個台灣人的一生">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>一個台灣人的一生</h2>
+        <span class="h-en">LIFECYCLE OF WELFARE CONTACT IN TAIWAN</span>
+      </div>
+      <p class="lead">從出生到死亡，台灣人在哪些時刻接觸福利國家？</p>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-yr">0–6</div><div class="tl-t">生育與托育</div><div class="tl-b">產檢、生育津貼、育嬰留停、托育補助</div></div>
+        <div class="tl-item"><div class="tl-yr">6–18</div><div class="tl-t">義務教育</div><div class="tl-b">12 年國教、營養午餐、學產基金</div></div>
+        <div class="tl-item"><div class="tl-yr">18–25</div><div class="tl-t">高教與就業</div><div class="tl-b">學貸、青年就業獎勵、職訓</div></div>
+        <div class="tl-item"><div class="tl-yr">25–45</div><div class="tl-t">就業與成家</div><div class="tl-b">勞健保、職災、育嬰假、租金補貼</div></div>
+        <div class="tl-item"><div class="tl-yr">45–65</div><div class="tl-t">中年期</div><div class="tl-b">健保、勞退、第二專長訓練</div></div>
+        <div class="tl-item"><div class="tl-yr">65+</div><div class="tl-t">退休與老年</div><div class="tl-b">勞保年金、長照 2.0、敬老卡</div></div>
+      </div>
+      <div class="insight">沒有福利國家的世界，每個風險都得自己扛、家庭扛、市場買。</div>
+    </div>
+  </section>
+
+  <!-- ============ S07 WHAT IS WELFARE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="問題 1：什麼是「福利」？">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>問題 1：什麼是「福利」？</h2>
+        <span class="h-en">WHAT IS 'WELFARE'?</span>
+      </div>
+      <p class="lead">「福利」是領救濟金的人才需要的東西嗎？</p>
+      <div class="cards c3">
+        <div class="card a"><h4>作為福祉</h4><span class="en">WELLBEING</span><p>個人的幸福、生活品質、生存與發展條件。</p><p style="margin-top:8px;font-size:13.5px;color:var(--accent);">例：聯合國「人類發展指數」</p></div>
+        <div class="card b"><h4>作為服務</h4><span class="en">SERVICE</span><p>公共所提供的具體服務（教育、醫療、托育）。</p><p style="margin-top:8px;font-size:13.5px;color:var(--accent);">例：健保、公托、長照 2.0</p></div>
+        <div class="card c"><h4>作為給付</h4><span class="en">BENEFIT</span><p>對特定群體的金錢或實物給付。</p><p style="margin-top:8px;font-size:13.5px;color:var(--accent);">例：失業給付、生育津貼、營養午餐</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S08 NHI THREE SENSES ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="用「健保」看三層意義">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>用「健保」看三層意義</h2>
+        <span class="h-en">THREE SENSES OF WELFARE, NHI EXAMPLE</span>
+      </div>
+      <div class="story">
+        <span class="lab">案例 ・ 你發燒去看醫生</span>
+        <p>掛號 100 元，醫師看診後開藥。健保卡一刷，背後就有「福利」的三層意義。</p>
+      </div>
+      <div class="cards c3">
+        <div class="card a"><h4>作為福祉</h4><p>台灣 65 歲平均餘命 85.8 歲（女），世界前段班。</p></div>
+        <div class="card b"><h4>作為服務</h4><p>你拿到的是「醫師看診、檢驗、用藥」這個具體服務。</p></div>
+        <div class="card c"><h4>作為給付</h4><p>健保替你支付了真實費用，補貼 70–90% 的就醫成本。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S09 WELFARE PLURALISM ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="誰來提供福利？">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>誰來提供福利？</h2>
+        <span class="h-en">WELFARE PLURALISM</span>
+      </div>
+      <p class="lead">福利國家不等於國家壟斷，而是四個來源的「混合」。</p>
+      <div class="sectors">
+        <div class="sect s-state"><span class="glyph">國</span><h4>國家</h4><span class="en">STATE</span><p class="ex">強制、普及、再分配<br/>例：健保、勞保、長照、社會救助</p></div>
+        <div class="sect s-market"><span class="glyph">市</span><h4>市場</h4><span class="en">MARKET</span><p class="ex">依購買力分配<br/>例：商業保險、私立托嬰、私人安養</p></div>
+        <div class="sect s-info"><span class="glyph">家</span><h4>家庭</h4><span class="en">FAMILY</span><p class="ex">親情、義務、無償勞動<br/>例：媽媽帶小孩、媳婦顧公婆</p></div>
+        <div class="sect s-volun"><span class="glyph">會</span><h4>第三部門</h4><span class="en">NGO</span><p class="ex">志願、互助、慈善<br/>例：家扶、伊甸、慈濟、社區據點</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S10 WELFARE MIX TAIWAN ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="福利混合的台灣實例">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>福利混合的台灣實例</h2>
+        <span class="h-en">WELFARE MIX: A TAIWANESE STORY</span>
+      </div>
+      <div class="story">
+        <span class="lab">案例</span>
+        <p>80 歲阿嬤中風住院兩週，出院後失能需長期照顧。</p>
+      </div>
+      <div class="cards c4">
+        <div class="card a"><h4>國家</h4><p>住院由健保負擔；長照 2.0 提供居家服務、輔具、喘息。</p></div>
+        <div class="card b"><h4>市場</h4><p>單人病房自費；外籍看護月薪約 2.6 萬，由家庭聘僱。</p></div>
+        <div class="card d"><h4>家庭</h4><p>主要照顧者多為女性（約八成），常需離職或減工時。</p></div>
+        <div class="card c"><h4>NGO</h4><p>社區關懷據點提供共餐；長照協會提供諮詢與喘息。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S11 SECTION 2 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第二部分：拆解三個關鍵字">
+    <div class="slide-inner">
+      <span class="part">PART 02</span>
+      <h2>拆解三個關鍵字</h2>
+      <span class="sec-en">WELFARE / STATE / WELFARE STATE</span>
+      <p class="sec-q">福利、國家、福利國家</p>
+    </div>
+    <span class="big-num">02</span>
+  </section>
+
+  <!-- ============ S12 WEBER STATE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="問題 2：什麼是「國家」？">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>問題 2：什麼是「國家」？</h2>
+        <span class="h-en">WEBER'S CLASSIC DEFINITION</span>
+      </div>
+      <div class="story">
+        <span class="lab">QUOTE ・ Max Weber (1864–1920)</span>
+        <p style="font-style: italic;">「國家是一個強制性的政治組織，其行政人員成功地維持對特定領土範圍內合法使用物理暴力的壟斷。」</p>
+        <p style="margin-top: 8px; opacity: 0.7; font-size: 15px;">— Max Weber (1864–1920)</p>
+      </div>
+      <p class="lead" style="margin-top:16px;">三個關鍵詞</p>
+      <div class="cards c3">
+        <div class="card a"><div class="no">1</div><h4>強制<span class="term-en">(Compulsory)</span></h4><p>你出生就自動成為國民，不能選擇。</p></div>
+        <div class="card b"><div class="no">2</div><h4>合法<span class="term-en">(Legitimate)</span></h4><p>警察開單你會接受、黑道收費你不會。</p></div>
+        <div class="card c"><div class="no">3</div><h4>壟斷暴力</h4><p>只有國家能合法使用暴力（警察、軍隊）。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S13 EIGHT MECHANISMS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="現代國家的八個機制">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>現代國家的八個機制</h2>
+        <span class="h-en">EIGHT MECHANISMS OF THE MODERN STATE</span>
+      </div>
+      <p class="lead">整理自 Weber、Tilly、Skocpol 等政治社會學文獻。</p>
+      <div class="cards c4">
+        <div class="card a"><div class="no">01</div><h4>暴力的合法壟斷</h4><p>警察、軍隊、刑罰</p></div>
+        <div class="card b"><div class="no">02</div><h4>地域性</h4><p>邊界、主權範圍</p></div>
+        <div class="card c"><div class="no">03</div><h4>主權</h4><p>對內最高、對外獨立</p></div>
+        <div class="card d"><div class="no">04</div><h4>憲法</h4><p>權力來自並受限於憲法</p></div>
+        <div class="card a"><div class="no">05</div><h4>非個人化權力</h4><p>「對事不對人」、依法行政</p></div>
+        <div class="card b"><div class="no">06</div><h4>公共官僚體系</h4><p>常任文官、行政中立</p></div>
+        <div class="card c"><div class="no">07</div><h4>權威與合法性</h4><p>人民承認、選舉、稅收</p></div>
+        <div class="card d"><div class="no">08</div><h4>公民資格</h4><p>身分、權利、義務</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S14 COINING THE TERM ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="「福利國家」這個詞何時出現？">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>「福利國家」這個詞何時出現？</h2>
+        <span class="h-en">COINING THE TERM</span>
+      </div>
+      <p class="lead">一個詞的誕生，往往反映它要對抗的另一個詞。</p>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-yr">1880s</div><div class="tl-t">德國 Sozialstaat</div><div class="tl-b">「社會國」概念出現</div></div>
+        <div class="tl-item"><div class="tl-yr">1941</div><div class="tl-t">Temple</div><div class="tl-b">坎特伯里大主教首次使用 welfare state</div></div>
+        <div class="tl-item"><div class="tl-yr">1942</div><div class="tl-t">Beveridge</div><div class="tl-b">報告書出版，提出社會保險改革</div></div>
+        <div class="tl-item"><div class="tl-yr">1945–</div><div class="tl-t">戰後英國</div><div class="tl-b">NHS、國民保險、教育法相繼通過</div></div>
+      </div>
+      <div class="insight"><strong>關鍵洞見（welfare state vs. warfare state）：</strong>「福利國家」是為了對抗納粹的「戰爭國家」：強調國家的首要任務是保障人民福祉，而不是備戰。</div>
+    </div>
+  </section>
+
+  <!-- ============ S15 SECTION 3 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第三部分：歷史的兩個源頭">
+    <div class="slide-inner">
+      <span class="part">PART 03</span>
+      <h2>歷史的兩個源頭</h2>
+      <span class="sec-en">BISMARCK (GERMANY) &amp; BEVERIDGE (UK)</span>
+      <p class="sec-q">Bismarck 與 Beveridge</p>
+    </div>
+    <span class="big-num">03</span>
+  </section>
+
+  <!-- ============ S16 BISMARCK MODEL ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="起源 1：德國 Bismarck 模式">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>起源 1：德國 Bismarck 模式</h2>
+        <span class="h-en">BISMARCKIAN MODEL, 1880s</span>
+      </div>
+      <div class="story">
+        <span class="lab">PROFILE ・ Otto von Bismarck (1815–1898)</span>
+        <h3>德意志帝國首相「鐵血宰相」</h3>
+        <p>Bismarck 推社會保險不是出於同情，而是要壓制社會主義運動，鞏固國家對勞工的忠誠。</p>
+      </div>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-yr">1883</div><div class="tl-t">健康保險</div><div class="tl-b">世界第一個強制健保；勞資各半。</div></div>
+        <div class="tl-item"><div class="tl-yr">1884</div><div class="tl-t">工業意外保險</div><div class="tl-b">因應工業化職災；由雇主全額負擔。</div></div>
+        <div class="tl-item"><div class="tl-yr">1889</div><div class="tl-t">老年與失能保險</div><div class="tl-b">現代年金制度的原型。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S17 BISMARCK POLITICAL LOGIC ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Bismarck 為什麼這樣做？">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Bismarck 為什麼這樣做？</h2>
+        <span class="h-en">THE POLITICAL LOGIC</span>
+      </div>
+      <p class="lead">社會保險的誕生不是道德的勝利，而是政治計算的結果。</p>
+      <div class="story">
+        <span class="lab">背景 ・ 1871–</span>
+        <h3>1871 德意志帝國統一後，三股力量同時逼近</h3>
+        <p>工業化擴大無產階級、社會主義運動興起、國家急需整合新帝國。</p>
+      </div>
+      <div class="cards c4">
+        <div class="card a"><h4>對抗社會主義</h4><p>用社會保險爭取工人對國家的支持，而非革命。</p></div>
+        <div class="card b"><h4>整合新帝國</h4><p>跨邦的「德意志認同」，讓國家「看得見」。</p></div>
+        <div class="card c"><h4>穩定勞動市場</h4><p>強制保險穩定生產，雇主因此能接受。</p></div>
+        <div class="card d"><h4>職業別保險路徑</h4><p>保費與所得連動，影響至今的德、法、義。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S18 BEVERIDGE REPORT ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="起源 2：英國 Beveridge 報告書">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>起源 2：英國 Beveridge 報告書</h2>
+        <span class="h-en">BEVERIDGE REPORT, 1942</span>
+      </div>
+      <div class="story">
+        <span class="lab">REPORT ・ Sir William Beveridge, 1942 年 11 月</span>
+        <h3>Social Insurance and Allied Services</h3>
+        <p>一年內賣出 60 萬本，被士兵塞在軍包中，成為戰後英國重建的精神象徵。</p>
+      </div>
+      <div class="cards c3">
+        <div class="card a"><div class="no">1</div><h4>從零開始的革命</h4><p>應全面重新設計社會保障體系，而不是修修補補。</p></div>
+        <div class="card b"><div class="no">2</div><h4>攻擊五大巨人</h4><p>對付：匱乏、疾病、無知、髒亂、懶散。</p></div>
+        <div class="card c"><div class="no">3</div><h4>國家與個人合作</h4><p>國家保障最低；鼓勵自助與互助。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S19 FIVE GIANTS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Beveridge 的五大巨人">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Beveridge 的五大巨人</h2>
+        <span class="h-en">FIVE GIANTS</span>
+      </div>
+      <p class="lead">戰後英國重建必須擊敗的五個敵人，每個都對應一項社會立法。</p>
+      <div class="cards c5">
+        <div class="card a"><h4>匱乏<span class="term-en">(Want)</span></h4><p>貧窮</p><p style="margin-top:8px;font-size:13.5px;color:var(--accent);">→ 國民保險法 1946</p></div>
+        <div class="card b"><h4>疾病<span class="term-en">(Disease)</span></h4><p>醫療不足</p><p style="margin-top:8px;font-size:13.5px;color:var(--accent);">→ 國民健保 NHS 1948</p></div>
+        <div class="card c"><h4>無知<span class="term-en">(Ignorance)</span></h4><p>教育不足</p><p style="margin-top:8px;font-size:13.5px;color:var(--accent);">→ 教育法 1944</p></div>
+        <div class="card d"><h4>髒亂<span class="term-en">(Squalor)</span></h4><p>居住惡劣</p><p style="margin-top:8px;font-size:13.5px;color:var(--accent);">→ 住宅政策</p></div>
+        <div class="card a"><h4>懶散<span class="term-en">(Idleness)</span></h4><p>失業</p><p style="margin-top:8px;font-size:13.5px;color:var(--accent);">→ 充分就業政策</p></div>
+      </div>
+      <div class="insight">Beveridge 模式：普及、齊平、稅收為主，以「全民公民身分」為基礎。</div>
+    </div>
+  </section>
+
+  <!-- ============ S20 POSTWAR UK LEGISLATION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="戰後英國的社會立法浪潮">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>戰後英國的社會立法浪潮</h2>
+        <span class="h-en">POSTWAR UK LEGISLATION</span>
+      </div>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-yr">1945</div><div class="tl-t">家庭津貼法</div><div class="tl-b">第二胎以後的孩子有定額津貼</div></div>
+        <div class="tl-item"><div class="tl-yr">1946</div><div class="tl-t">國民保險法</div><div class="tl-b">全民強制納保：老年、失業、傷病</div></div>
+        <div class="tl-item"><div class="tl-yr">1946</div><div class="tl-t">工業意外保險法</div><div class="tl-b">職災由國家承擔風險</div></div>
+        <div class="tl-item"><div class="tl-yr">1946</div><div class="tl-t">國民健保法 NHS</div><div class="tl-b">看病免費</div></div>
+        <div class="tl-item"><div class="tl-yr">1948</div><div class="tl-t">國民救助法</div><div class="tl-b">廢除舊濟貧法，建立最後安全網</div></div>
+        <div class="tl-item"><div class="tl-yr">1949</div><div class="tl-t">租金管制法</div><div class="tl-b">保障租戶不被任意漲價驅離</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S21 BISMARCK VS BEVERIDGE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Bismarck vs Beveridge：兩種模式的比較">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Bismarck vs Beveridge：兩種模式的比較</h2>
+        <span class="h-en">TWO WELFARE LOGICS</span>
+      </div>
+      <table class="ctab">
+        <thead><tr><th>比較面向</th><th>Bismarck（德國）</th><th>Beveridge（英國）</th></tr></thead>
+        <tbody>
+          <tr><td>時間</td><td>1880 年代</td><td>1940 年代</td></tr>
+          <tr><td>適用對象</td><td>受雇勞工為主</td><td>全體公民</td></tr>
+          <tr><td>財源</td><td>勞資保險費</td><td>稅收 + 保險</td></tr>
+          <tr><td>給付水準</td><td>與所得連動</td><td>齊平定額</td></tr>
+          <tr><td>主要目標</td><td>穩定勞資、防共</td><td>戰後重建、消貧</td></tr>
+          <tr><td>精神</td><td>保守、職業別</td><td>普及、團結</td></tr>
+        </tbody>
+      </table>
+      <div class="tw-block">
+        <span class="lab">台灣案例</span>
+        <h4>勞保 ・ 健保 ・ 混合型</h4>
+        <p>台灣的勞保、健保，混合兩種傳統，這就是為什麼常被歸為「混合型」。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S22 SECTION 4 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第四部分：如何定義福利國家？">
+    <div class="slide-inner">
+      <span class="part">PART 04</span>
+      <h2>如何定義福利國家？</h2>
+      <span class="sec-en">THREE DEFINITIONS</span>
+      <p class="sec-q">Briggs、Spicker、Goodin</p>
+    </div>
+    <span class="big-num">04</span>
+  </section>
+
+  <!-- ============ S23 BRIGGS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Briggs (1961)：三個面向">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Briggs (1961)：三個面向</h2>
+        <span class="h-en">THREE DIMENSIONS</span>
+      </div>
+      <div class="story">
+        <span class="lab">QUOTE ・ Briggs, 1961</span>
+        <p style="font-style: italic;">「福利國家是國家透過組織化的力量，謹慎地用來限制市場力量。」</p>
+        <p style="margin-top: 8px; opacity: 0.7; font-size: 15px;">— Briggs, A. (1961). The Welfare State in Historical Perspective.</p>
+      </div>
+      <div class="cards c3">
+        <div class="card a"><div class="no">1</div><h4>保障最低所得</h4><p>保障個人和家庭的最低收入。</p><p style="margin-top:8px;font-size:13.5px;color:var(--accent);">台灣例：低收入戶生活補助</p></div>
+        <div class="card b"><div class="no">2</div><h4>縮減不安全</h4><p>幫助面對社會風險，避免家庭危機。</p><p style="margin-top:8px;font-size:13.5px;color:var(--accent);">台灣例：勞保失業給付、勞保年金</p></div>
+        <div class="card c"><div class="no">3</div><h4>提供普及服務</h4><p>不分階級，享有最佳社會服務。</p><p style="margin-top:8px;font-size:13.5px;color:var(--accent);">台灣例：全民健保、12 年國教</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S24 SPICKER & GOODIN ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Spicker (2000) 與 Goodin (1988)">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Spicker (2000) 與 Goodin (1988)</h2>
+        <span class="h-en">TWO MORE DEFINITIONS</span>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <div class="tag">Spicker：三項任務</div>
+          <p><strong>促進經濟成長</strong> — 教育、醫療、勞動參與是經濟成長基礎。</p>
+          <p><strong>保障公民權利</strong> — 社會權是公民身分核心（Marshall）。</p>
+          <p><strong>促進社會融合</strong> — 維持社會團結，避免分裂。</p>
+        </div>
+        <div class="pair-box b">
+          <div class="tag">Goodin：六個特徵</div>
+          <p><strong>政治產物</strong> — 歷史與政治妥協的結果。</p>
+          <p><strong>介入市場</strong> — 以滿足基本需求為目的。</p>
+          <p><strong>並非取代市場</strong> — 在市場脈絡中運作。</p>
+          <p><strong>限於基本需求</strong> — 保障「最低」而非「最高」。</p>
+          <p><strong>直接滿足需求</strong> — 以服務／給付提供。</p>
+          <p><strong>強制、集體</strong> — 由制度提供，非個人化慈善。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S25 THREE CORE ELEMENTS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="福利國家的三個核心要素">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>福利國家的三個核心要素</h2>
+        <span class="h-en">THREE CORE ELEMENTS</span>
+      </div>
+      <p class="lead">三位學者的共識：三個關鍵字。</p>
+      <div class="cards c3">
+        <div class="card a"><div class="no">1</div><h4>保障<span class="term-en">(Protection)</span></h4><p>對抗社會風險：失業、疾病、老年、貧窮。</p></div>
+        <div class="card b"><div class="no">2</div><h4>再分配<span class="term-en">(Redistribution)</span></h4><p>透過稅收與保險，把資源從強者移轉到弱者。</p></div>
+        <div class="card c"><div class="no">3</div><h4>公民身分<span class="term-en">(Citizenship)</span></h4><p>社會權作為公民資格的延伸（Marshall）。</p></div>
+      </div>
+      <div class="insight">不同國家用不同方式做到這三件事，這就是「類型學」要回答的問題。</div>
+    </div>
+  </section>
+
+  <!-- ============ S26 TAIWAN MAPPING ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="三個核心要素的台灣對照">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>三個核心要素的台灣對照</h2>
+        <span class="h-en">THREE ELEMENTS IN TAIWAN</span>
+      </div>
+      <div class="deep-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="deep-col">
+          <h5>保障</h5>
+          <ul>
+            <li>勞保（老年、失業）</li>
+            <li>國民年金</li>
+            <li>健保</li>
+            <li>長照 2.0</li>
+            <li>職災保險</li>
+          </ul>
+        </div>
+        <div class="deep-col">
+          <h5>再分配</h5>
+          <ul>
+            <li>所得稅累進制</li>
+            <li>健保補充保費</li>
+            <li>低收入戶補助</li>
+            <li>扶養親屬扣除額</li>
+            <li>遺產與贈與稅</li>
+          </ul>
+        </div>
+        <div class="deep-col">
+          <h5>公民身分</h5>
+          <ul>
+            <li>全民健保</li>
+            <li>12 年國民基本教育</li>
+            <li>選舉投票權</li>
+            <li>社會救助申請權</li>
+            <li>就業服務站普及</li>
+          </ul>
+        </div>
+      </div>
+      <div class="insight">台灣同時走 Bismarck（職業別保險）與 Beveridge（普及健保）兩條路。</div>
+    </div>
+  </section>
+
+  <!-- ============ S27 SECTION 5 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第五部分：三個世界">
+    <div class="slide-inner">
+      <span class="part">PART 05</span>
+      <h2>三個世界</h2>
+      <span class="sec-en">THREE WORLDS OF WELFARE CAPITALISM</span>
+      <p class="sec-q">Esping-Andersen 類型學</p>
+    </div>
+    <span class="big-num">05</span>
+  </section>
+
+  <!-- ============ S28 WHY CLASSIFY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="為什麼要分類？">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>為什麼要分類？</h2>
+        <span class="h-en">ESPING-ANDERSEN (1990)</span>
+      </div>
+      <div class="story">
+        <span class="lab">PROFILE ・ Gøsta Esping-Andersen</span>
+        <p>1990 年這本書徹底改變福利國家研究：不再只比較「支出多少」，而是比較「制度結構」。他用兩個關鍵概念把福利國家分成三類。</p>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <div class="tag">去商品化 De-commodification</div>
+          <p>公民在勞動市場之外，仍能維持可接受生活水準的程度。</p>
+          <p>白話：失業、生病、退休後，還能不能有尊嚴地活下去？</p>
+          <p>高：北歐有 80% 替代率給付。</p>
+          <p>低：美國失業靠存款或市場保險。</p>
+        </div>
+        <div class="pair-box b">
+          <div class="tag">社會階層化 Stratification</div>
+          <p>社會政策本身會塑造怎樣的社會階層結構。</p>
+          <p>白話：政策是強化階級差異，還是平等化關係？</p>
+          <p>高：德國公務員、勞工各有獨立年金。</p>
+          <p>低：瑞典所有人共用同一制度。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S29 DE-COMMODIFICATION DEEP DIVE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="去商品化：一個關鍵概念">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>去商品化：一個關鍵概念</h2>
+        <span class="h-en">DE-COMMODIFICATION: A DEEPER LOOK</span>
+      </div>
+      <p class="lead">為什麼這個概念重要？在資本主義中，人們生存依賴出售勞動力。福利國家透過給付與服務，讓人在「失去勞動力」時也能生存。</p>
+      <div class="cards c3">
+        <div class="card a"><h4>高去商品化</h4><span class="en">瑞典／丹麥</span><p>失業 80% 替代率、最長 300 天；醫療幾近免費；住宅補貼充足。</p></div>
+        <div class="card c"><h4>中去商品化</h4><span class="en">德國／法國</span><p>失業 60-67% 替代率；保費連動所得；保留階級差異。</p></div>
+        <div class="card b"><h4>低去商品化</h4><span class="en">美國／英國</span><p>失業給付替代率低（美國約 40%）；多靠私人保險或家人。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S30 THREE WORLDS CARDS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="三個福利資本主義的世界">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>三個福利資本主義的世界</h2>
+        <span class="h-en">THREE WORLDS</span>
+      </div>
+      <div class="nations">
+        <div class="nation b">
+          <div class="nm">自由主義</div>
+          <div class="nen">LIBERAL</div>
+          <h6>代表國家</h6>
+          <ul><li>美國、英國、加拿大</li></ul>
+          <h6>制度原則</h6>
+          <ul><li>市場優先</li><li>資產調查救助</li><li>低去商品化</li></ul>
+          <h6>階層化效果</h6>
+          <ul><li>高度階層化、社會雙元</li></ul>
+        </div>
+        <div class="nation c">
+          <div class="nm">保守主義</div>
+          <div class="nen">CONSERVATIVE</div>
+          <h6>代表國家</h6>
+          <ul><li>德國、法國、義大利、日本</li></ul>
+          <h6>制度原則</h6>
+          <ul><li>職業別保險</li><li>地位維持</li><li>中度去商品化</li></ul>
+          <h6>階層化效果</h6>
+          <ul><li>依職業階層、維護家庭</li></ul>
+        </div>
+        <div class="nation a">
+          <div class="nm">社會民主</div>
+          <div class="nen">SOCIAL DEMOCRATIC</div>
+          <h6>代表國家</h6>
+          <ul><li>瑞典、丹麥、挪威、芬蘭</li></ul>
+          <h6>制度原則</h6>
+          <ul><li>全民、普及</li><li>稅收支應</li><li>高度去商品化</li></ul>
+          <h6>階層化效果</h6>
+          <ul><li>平等化、弱化階級</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S31 THREE WORLDS TABLE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="三類型比較表">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>三類型比較表</h2>
+        <span class="h-en">COMPARING THE THREE WORLDS</span>
+      </div>
+      <table class="ctab">
+        <thead><tr><th>比較面向</th><th>自由主義</th><th>保守主義</th><th>社會民主</th></tr></thead>
+        <tbody>
+          <tr><td>主要工具</td><td>資產調查救助</td><td>社會保險</td><td>普及給付＋服務</td></tr>
+          <tr><td>覆蓋對象</td><td>貧窮者</td><td>受雇勞工</td><td>全體公民</td></tr>
+          <tr><td>財源</td><td>稅收</td><td>保費</td><td>稅收</td></tr>
+          <tr><td>性別預設</td><td>雙薪假設</td><td>男性養家</td><td>雙就業／雙照顧</td></tr>
+          <tr><td>去商品化</td><td>低</td><td>中</td><td>高</td></tr>
+          <tr><td>階層效果</td><td>雙元化</td><td>職業階層化</td><td>平等化</td></tr>
+        </tbody>
+      </table>
+      <p class="lead" style="font-size: 15px; opacity: 0.7; margin-top: 14px;">「家庭主義／去家庭化」是女性主義學者後來對 Esping-Andersen 的補充。</p>
+    </div>
+  </section>
+
+  <!-- ============ S32 USA CASE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例 1：美國（自由主義）">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例 1：美國（自由主義）</h2>
+        <span class="h-en">USA, LIBERAL WELFARE REGIME</span>
+      </div>
+      <div class="stats" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat"><div class="n">19%</div><div class="l">社會支出 GDP</div></div>
+        <div class="stat"><div class="n">0.40</div><div class="l">吉尼係數（約）</div></div>
+        <div class="stat"><div class="n">11.5%</div><div class="l">貧窮率（約）</div></div>
+      </div>
+      <div class="cards c2" style="margin-top:18px;">
+        <div class="card a"><h4>年金</h4><p>Social Security + 大量私人退休帳戶（401k）</p></div>
+        <div class="card b"><h4>醫療</h4><p>65 歲以下無公共健保；Medicare、Medicaid</p></div>
+        <div class="card c"><h4>貧窮救助</h4><p>TANF、SNAP，強烈資產調查、要求工作</p></div>
+        <div class="card d"><h4>育兒長照</h4><p>幾無公共支援，全靠市場購買</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S33 GERMANY CASE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例 2：德國（保守主義）">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例 2：德國（保守主義）</h2>
+        <span class="h-en">GERMANY, CONSERVATIVE WELFARE REGIME</span>
+      </div>
+      <div class="stats" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat"><div class="n">26.7%</div><div class="l">社會支出 GDP</div></div>
+        <div class="stat"><div class="n">0.30</div><div class="l">吉尼係數（約）</div></div>
+        <div class="stat"><div class="n">10.9%</div><div class="l">貧窮率（約）</div></div>
+      </div>
+      <div class="cards c2" style="margin-top:18px;">
+        <div class="card a"><h4>年金</h4><p>強制職業年金 GRV，給付與所得連動</p></div>
+        <div class="card b"><h4>醫療</h4><p>法定健保 GKV + 私人健保 PKV 雙軌制</p></div>
+        <div class="card c"><h4>失業</h4><p>2005 Hartz 改革大幅縮減</p></div>
+        <div class="card d"><h4>家庭</h4><p>家庭津貼充足；傳統預設男性養家</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S34 SWEDEN CASE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例 3：瑞典（社會民主）">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例 3：瑞典（社會民主）</h2>
+        <span class="h-en">SWEDEN, SOCIAL DEMOCRATIC REGIME</span>
+      </div>
+      <div class="stats" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat"><div class="n">26.1%</div><div class="l">社會支出 GDP</div></div>
+        <div class="stat"><div class="n">0.28</div><div class="l">吉尼係數（約）</div></div>
+        <div class="stat"><div class="n">9%</div><div class="l">貧窮率（約）</div></div>
+      </div>
+      <div class="cards c2" style="margin-top:18px;">
+        <div class="card a"><h4>年金</h4><p>1999 改為「名目確定提撥」NDC</p></div>
+        <div class="card b"><h4>醫療</h4><p>公共醫療為主、自付額有上限</p></div>
+        <div class="card c"><h4>育兒</h4><p>480 天育嬰假 + 普及公共托育</p></div>
+        <div class="card d"><h4>性別</h4><p>雙就業／雙照顧，女性勞參約 80%</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S35 SECTION 6 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第六部分：東亞與台灣">
+    <div class="slide-inner">
+      <span class="part">PART 06</span>
+      <h2>東亞與台灣</h2>
+      <span class="sec-en">EAST ASIA &amp; TAIWAN</span>
+      <p class="sec-q">日本、南韓、台灣</p>
+    </div>
+    <span class="big-num">06</span>
+  </section>
+
+  <!-- ============ S36 EAST ASIAN MODEL ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="東亞福利模式：第四種類型？">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>東亞福利模式：第四種類型？</h2>
+        <span class="h-en">EAST ASIAN WELFARE MODEL (HOLLIDAY, 2000)</span>
+      </div>
+      <p class="lead">生產主義 <span class="term-en">Productivist Welfare Regime</span>：社會政策從屬於經濟政策——能促進生產者就保障，其餘讓家庭吸收。</p>
+      <div class="cards c4">
+        <div class="card d"><h4>高度區隔</h4><p>公務員、軍人、勞工、農民等獨立保險體系。</p></div>
+        <div class="card d"><h4>家庭主義</h4><p>預設家庭（特別是女性）承擔大量照顧勞動。</p></div>
+        <div class="card d"><h4>發展優先</h4><p>社會支出偏低；台灣約 GDP 12%，OECD 約 21%。</p></div>
+        <div class="card d"><h4>逐步擴張</h4><p>民主化／高齡化後擴張，但保留生產主義特徵。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S37 JAPAN CASE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="日本：德式保險 + 家族主義">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>日本：德式保險 + 家族主義</h2>
+        <span class="h-en">JAPAN</span>
+      </div>
+      <div class="stats" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat"><div class="n">29%</div><div class="l">65+ 占比（全球最高）</div></div>
+        <div class="stat"><div class="n">24%</div><div class="l">社會支出 GDP</div></div>
+        <div class="stat"><div class="n">35%</div><div class="l">公托覆蓋（0–2 歲）</div></div>
+      </div>
+      <div class="cards c2" style="margin-top:18px;">
+        <div class="card a"><h4>年金</h4><p>國民年金 + 厚生年金，1986 整合</p></div>
+        <div class="card b"><h4>醫療</h4><p>全民健保 1961 達成</p></div>
+        <div class="card c"><h4>長照</h4><p>介護保險 2000，亞洲少見的制度化長照</p></div>
+        <div class="card d"><h4>家庭</h4><p>托育擴張中；企業戰士＋專業主婦影響深</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S38 KOREA CASE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="南韓：壓縮現代化下的福利擴張">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>南韓：壓縮現代化下的福利擴張</h2>
+        <span class="h-en">SOUTH KOREA</span>
+      </div>
+      <div class="stats" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat"><div class="n">0.72</div><div class="l">生育率（全球最低）</div></div>
+        <div class="stat"><div class="n">14.8%</div><div class="l">社會支出 GDP</div></div>
+        <div class="stat"><div class="n">約 40%</div><div class="l">老人貧窮率</div></div>
+      </div>
+      <div class="cards c2" style="margin-top:18px;">
+        <div class="card a"><h4>年金</h4><p>國民年金 1988 + 基礎年金 2014</p></div>
+        <div class="card b"><h4>醫療</h4><p>全民健保 1989；單一保險 2000</p></div>
+        <div class="card c"><h4>長照</h4><p>老人長照保險 2008，仿日本</p></div>
+        <div class="card d"><h4>家庭</h4><p>大量擴張育嬰假與托育，仍難遏止超低生育</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S39 JAPAN/KOREA/TAIWAN TABLE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="日、韓、台三國比較">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>日、韓、台三國比較</h2>
+        <span class="h-en">JAPAN, KOREA, TAIWAN</span>
+      </div>
+      <table class="ctab">
+        <thead><tr><th>比較面向</th><th>日本</th><th>南韓</th><th>台灣</th></tr></thead>
+        <tbody>
+          <tr><td>健保</td><td>1961 全民</td><td>1989 全民</td><td>1995 全民</td></tr>
+          <tr><td>長照</td><td>介護保險 2000</td><td>長照保險 2008</td><td>長照 2.0（稅）2017</td></tr>
+          <tr><td>生育率</td><td>1.26</td><td>0.72（全球最低）</td><td>0.87</td></tr>
+          <tr><td>65+ 人口</td><td>29%</td><td>18%（最快老化）</td><td>18.4%</td></tr>
+          <tr><td>社會支出 GDP%</td><td>24%</td><td>14.8%</td><td>12%</td></tr>
+          <tr><td>體制定位</td><td>保守＋生產主義</td><td>生產主義轉型</td><td>生產主義＋普及健保</td></tr>
+        </tbody>
+      </table>
+      <div class="tw-block">
+        <span class="lab">台灣案例</span>
+        <h4>制度年輕但覆蓋廣</h4>
+        <p>台灣：制度年輕但覆蓋廣，混合保險與普及兩種邏輯。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S40 TAIWAN DEVELOPMENT ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="台灣福利國家的發展">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>台灣福利國家的發展</h2>
+        <span class="h-en">TAIWAN'S WELFARE STATE</span>
+      </div>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-yr">1950–86</div><div class="tl-t">黨國體制下的選擇性保障</div><div class="tl-b">勞保、公保、軍保限定軍公教</div></div>
+        <div class="tl-item"><div class="tl-yr">1987–99</div><div class="tl-t">民主轉型與制度擴張</div><div class="tl-b">全民健保 1995、社會救助、農保</div></div>
+        <div class="tl-item"><div class="tl-yr">2000–07</div><div class="tl-t">政黨輪替與年金擴張</div><div class="tl-b">國民年金 2008、勞退新制</div></div>
+        <div class="tl-item"><div class="tl-yr">2008–16</div><div class="tl-t">馬政府續建</div><div class="tl-b">二代健保 2013、健保財務改革</div></div>
+        <div class="tl-item"><div class="tl-yr">2016–24</div><div class="tl-t">蔡政府改革</div><div class="tl-b">長照 2.0、年金改革、職災獨立法</div></div>
+        <div class="tl-item"><div class="tl-yr">2024–</div><div class="tl-t">新挑戰</div><div class="tl-b">勞保財務、少子高齡、零工經濟</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S41 TAIWAN NOW ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="台灣的「現在進行式」">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>台灣的「現在進行式」</h2>
+        <span class="h-en">KEY NUMBERS TODAY</span>
+      </div>
+      <p class="lead">用幾個數字感受我們此刻所在的位置。</p>
+      <div class="stats" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat"><div class="n">18.4%</div><div class="l">65+ 人口</div><div class="src">2024 年；2025 進入超高齡</div></div>
+        <div class="stat"><div class="n">0.87</div><div class="l">2023 生育率</div><div class="src">全球最低國家之一</div></div>
+        <div class="stat"><div class="n">1：3.4</div><div class="l">扶老比</div><div class="src">2050 將降到 1：1.3</div></div>
+        <div class="stat"><div class="n">~12%</div><div class="l">社會支出 GDP</div><div class="src">OECD 平均約 21%</div></div>
+        <div class="stat"><div class="n">97 萬</div><div class="l">失能人口</div><div class="src">長照需求快速攀升</div></div>
+        <div class="stat"><div class="n">2028</div><div class="l">勞保預估破產</div><div class="src">當前最大政治壓力</div></div>
+      </div>
+      <p class="lead" style="font-size: 13.5px; opacity: 0.55; margin-top: 14px;">資料來源：國發會、衛福部、勞動部、OECD (2023–2024)</p>
+    </div>
+  </section>
+
+  <!-- ============ S42 SECTION 7 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第七部分：當代挑戰">
+    <div class="slide-inner">
+      <span class="part">PART 07</span>
+      <h2>當代挑戰</h2>
+      <span class="sec-en">CONTEMPORARY CHALLENGES</span>
+      <p class="sec-q">高齡化、零工、氣候</p>
+    </div>
+    <span class="big-num">07</span>
+  </section>
+
+  <!-- ============ S43 NEW SOCIAL RISKS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="新社會風險">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>新社會風險</h2>
+        <span class="h-en">NEW SOCIAL RISKS</span>
+        <span class="h-tag">Taylor-Gooby (2004)</span>
+      </div>
+      <div class="pair">
+        <div class="pair-box a"><div class="tag">舊風險</div><p>失業、疾病、年老：戰後福利國家設計時的核心問題。</p></div>
+        <div class="pair-box b"><div class="tag">新風險</div><p>生命週期、勞動市場與家庭結構變遷下的新問題。</p></div>
+      </div>
+      <div class="cards c3" style="margin-top:16px;">
+        <div class="card a"><h4>家庭與工作衝突</h4><p>雙就業家庭兼顧育兒與職涯</p></div>
+        <div class="card b"><h4>單親與多元家庭</h4><p>但福利預設雙親</p></div>
+        <div class="card c"><h4>低技術勞工</h4><p>全球化、自動化使工作消失</p></div>
+        <div class="card d"><h4>照顧老化人口</h4><p>家中女性、看護或機構？</p></div>
+        <div class="card a"><h4>非典型就業</h4><p>派遣、零工、平台勞動者</p></div>
+        <div class="card b"><h4>技能折舊</h4><p>需終身學習與再訓練</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S44 DEMOGRAPHIC TSUNAMI ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="高齡化海嘯">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>高齡化海嘯</h2>
+        <span class="h-en">DEMOGRAPHIC TSUNAMI</span>
+      </div>
+      <div class="tw-block">
+        <span class="lab">台灣案例</span>
+        <h4>從高齡到超高齡只花 7 年</h4>
+        <p>法國 126 年、瑞典 85 年、日本 24 年。我們得在 7 年內完成別人花一輩子做的調整。</p>
+      </div>
+      <div class="cards c4" style="margin-top:16px;">
+        <div class="card a"><h4>年金財務</h4><p>勞保 2028 破產；軍公教年金壓力</p></div>
+        <div class="card b"><h4>長照供需</h4><p>失能 2030 破 120 萬；外籍看護 70 萬</p></div>
+        <div class="card c"><h4>世代衝突</h4><p>年輕繳保費、年長領給付；2050 扶老 1:1.3</p></div>
+        <div class="card d"><h4>醫療負擔</h4><p>健保 75% 給付集中於 30% 老人</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S45 GIG ECONOMY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="零工經濟與非典型就業">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>零工經濟與非典型就業</h2>
+        <span class="h-en">GIG ECONOMY</span>
+      </div>
+      <div class="story">
+        <span class="lab">案例 ・ 外送員的「身分謎題」</span>
+        <p>Foodpanda、Uber Eats 平台稱外送員是「承攬商」、不是員工。2023 年起強制納入職災保險，但與典型勞工保障仍有落差。</p>
+      </div>
+      <div class="cards c4">
+        <div class="card a"><h4>勞健保</h4><p>受雇者由雇主代繳；外送員自己加入工會</p></div>
+        <div class="card b"><h4>職災</h4><p>2023 後外送員強制納入職災保險</p></div>
+        <div class="card c"><h4>失業給付</h4><p>外送員原則上不適用</p></div>
+        <div class="card d"><h4>退休金</h4><p>受雇者雇主提繳 6%；外送員自負</p></div>
+      </div>
+      <div class="insight">戰後福利國家以「終身受雇」為預設；今天，這個預設正在崩解。</div>
+    </div>
+  </section>
+
+  <!-- ============ S46 LOW FERTILITY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="少子化與家庭照顧危機">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>少子化與家庭照顧危機</h2>
+        <span class="h-en">LOW FERTILITY &amp; THE CARE CRISIS</span>
+      </div>
+      <div class="cards c3">
+        <div class="card a"><h4>生不出來</h4><p>2023 生育率 0.87，全球倒數。年輕人不是不想要小孩，是制度與經濟讓他們不敢要。</p></div>
+        <div class="card b"><h4>養不起</h4><p>公托不足，雙薪家庭月托嬰費 2-3 萬。準公共化政策仍有缺口。</p></div>
+        <div class="card c"><h4>誰來顧</h4><p>主要照顧者多為女性（80%）；缺口由家庭與外籍看護承擔。</p></div>
+      </div>
+      <div class="insight">當代福利國家若不能解決「兒童」與「性別」問題，就無法回應人口變遷。</div>
+    </div>
+  </section>
+
+  <!-- ============ S47 DISCUSSION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="課堂討論">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>課堂討論</h2>
+        <span class="h-en">DISCUSSION</span>
+        <span class="h-tag">點選展開提示</span>
+      </div>
+      <div class="discuss">
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">Q1</div>
+          <div class="qt">「福利國家是養懶人嗎？」</div>
+          <div class="hint">從「去商品化」概念，回應這個常見批評。</div>
+        </div>
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">Q2</div>
+          <div class="qt">「台灣是哪一種福利國家？」</div>
+          <div class="hint">依 Esping-Andersen 三類型，台灣放哪裡？或是「第四種」？</div>
+        </div>
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">Q3</div>
+          <div class="qt">「你最在乎的社會風險是什麼？」</div>
+          <div class="hint">舊風險與新風險，你最擔心哪個？現有制度足夠嗎？</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S48 SUMMARY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="本講小結">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>本講小結</h2>
+        <span class="h-en">SUMMARY</span>
+      </div>
+      <div class="cards c2">
+        <div class="card a"><div class="no">1</div><p>福利國家是國家、市場、家庭、社群的福利混合。</p></div>
+        <div class="card b"><div class="no">2</div><p>誕生於 19 世紀末 Bismarck，制度化於 1940 年代 Beveridge。</p></div>
+        <div class="card c"><div class="no">3</div><p>三要素：保障、再分配、公民身分。</p></div>
+        <div class="card d"><div class="no">4</div><p>Esping-Andersen 三類型：自由、保守、社會民主。</p></div>
+        <div class="card a"><div class="no">5</div><p>東亞（日、韓、台）發展出「生產主義」第四種類型。</p></div>
+        <div class="card b"><div class="no">6</div><p>新社會風險迫使福利國家重新設計。</p></div>
+      </div>
+      <p class="lead" style="font-size: 15px; opacity: 0.65; margin-top: 16px; font-style: italic;">下一講：社會權與公民身分（T. H. Marshall 三層權利觀）</p>
+    </div>
+  </section>
+
+  <!-- ============ S49 FURTHER READING ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="延伸閱讀">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>延伸閱讀</h2>
+        <span class="h-en">FURTHER READING</span>
+      </div>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <h3>英文經典</h3>
+          <p>Briggs, A. (1961). <em>The Welfare State in Historical Perspective.</em></p>
+          <p>Esping-Andersen, G. (1990). <em>The Three Worlds of Welfare Capitalism.</em></p>
+          <p>Holliday, I. (2000). <em>Productivist Welfare Capitalism: Social Policy in East Asia.</em></p>
+          <p>Taylor-Gooby, P. (Ed.). (2004). <em>New Risks, New Welfare.</em></p>
+        </div>
+        <div class="ref-card">
+          <h3>中文文獻</h3>
+          <p>林萬億（2022）。《福利國家：歷史比較的分析》。五南。</p>
+          <p>古允文 等（2019）。《社會政策與社會工作學刊》東亞特刊。</p>
+          <p>陳琇惠（2018）。《社會政策與社會立法》。空大。</p>
+        </div>
+      </div>
+      <p class="lead" style="font-size: 15px; opacity: 0.65; margin-top: 16px;">下週請閱讀：Esping-Andersen (1990) 第 1 章；林萬億（2022）第 2 章。</p>
+    </div>
+  </section>
+
+</div>
+
+<nav class="navbar">
+  <button class="nav-btn" id="prevBtn" onclick="goPrev()">← 前頁</button>
+  <div class="nav-center">
+    <span><span id="curNum">1</span> / <span id="totNum">50</span></span>
+    <div class="dots" id="dots"></div>
+  </div>
+  <button class="nav-btn" id="nextBtn" onclick="goNext()">下一頁 →</button>
+</nav>
+
+<div class="keyboard-hint">
+  <kbd>←</kbd> <kbd>→</kbd> 切換頁面　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕
+</div>
+
+<div class="toc-overlay" id="tocOverlay" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" onclick="toggleToc()">×</button>
+    <h2 class="toc-title">目次 ・ Table of Contents</h2>
+    <p class="toc-sub">點選任一條目跳到該頁</p>
+    <ul class="toc-list" id="tocList"></ul>
+  </div>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let cur = 0;
+  document.getElementById('totNum').textContent = total;
+
+  // dots & toc
+  const dotsEl = document.getElementById('dots');
+  const tocEl = document.getElementById('tocList');
+  slides.forEach((s, i) => {
+    const d = document.createElement('span');
+    d.className = 'dot' + (s.dataset.kind === 'section' ? ' is-section' : '');
+    d.title = s.dataset.label || '';
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+    const li = document.createElement('li');
+    if (s.dataset.kind === 'section') li.classList.add('is-section');
+    li.innerHTML = `<span class="num">${String(i + 1).padStart(2, '0')}</span><span class="lab">${s.dataset.label || ''}</span><span class="kind">${s.dataset.kind}</span>`;
+    li.onclick = () => { goTo(i); toggleToc(); };
+    tocEl.appendChild(li);
+  });
+
+  function goTo(n) {
+    if (n < 0 || n >= total || n === cur) return;
+    const dir = n > cur ? 1 : -1;
+    slides[cur].classList.remove('is-active');
+    if (dir > 0) slides[cur].classList.add('is-prev');
+    cur = n;
+    slides[cur].classList.remove('is-prev');
+    slides[cur].classList.add('is-active');
+    setTimeout(() => slides.forEach((s, i) => { if (i !== cur) s.classList.remove('is-prev'); }), 500);
+    update();
+  }
+  function goPrev() { goTo(cur - 1); }
+  function goNext() { goTo(cur + 1); }
+  function update() {
+    document.getElementById('curNum').textContent = cur + 1;
+    document.getElementById('prevBtn').disabled = cur === 0;
+    document.getElementById('nextBtn').disabled = cur === total - 1;
+    document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('is-active', i === cur));
+  }
+
+  function toggleToc() {
+    document.getElementById('tocOverlay').classList.toggle('is-shown');
+  }
+
+  // Keyboard + touch
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('tocOverlay').classList.contains('is-shown')) {
+      if (e.key === 'Escape') toggleToc();
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goNext(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goPrev(); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+    else if (e.key === 'Escape') toggleToc();
+    else if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+  });
+
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) dx < 0 ? goNext() : goPrev();
+  });
+
+  update();
+</script>
+
+<script>
+  // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
+  // 偶爾因 sticky header + backdrop-filter 而整頁空白。
+  // 偵測到從快取還原時，強制觸發一次重繪。
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      document.body.style.display = 'none';
+      void document.body.offsetHeight;
+      document.body.style.display = '';
+    }
+  });
+</script>
+</body>
+</html>

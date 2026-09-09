@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>福利可以解決貧窮嗎？ ・ 福利社會學 第 12 週 ・ 葉崇揚</title>
+  <meta name="description" content="福利社會學第 12 週互動講義（給大一同學）：貧窮的定義、測量與成因，從伊莉莎白濟貧法到台灣的社會救助制度，分頁式互動簡報。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --chashitsu-bg: #e8dcc4;
+      --chashitsu-paper: #f5ecd6;
+      --chashitsu-tatami: #d8c8a8;
+      --moss: #3d5a3f;          /* 公部門 */
+      --water: #5a7a8a;         /* 商業部門 */
+      --earth: #8a6a4a;         /* 志願部門 */
+      --persimmon: #c47038;     /* 非正式部門 */
+      --accent: #c43838;        /* 朱印 */
+      --gold: #b8860b;
+      --ink: #1f1f1d;
+      --ink-soft: rgba(31,31,29,0.78);
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --line-faint: rgba(31,31,29,0.05);
+      --jp: 'Shippori Mincho', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+      --mono: 'JetBrains Mono', 'Menlo', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: var(--jp);
+      background: var(--chashitsu-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 21px;
+      line-height: 2;
+      position: relative;
+    }
+    .paper-grain {
+      position: fixed; inset: 0; pointer-events: none;
+      opacity: 0.32; mix-blend-mode: multiply; z-index: 1;
+    }
+
+    /* Top bar */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 56px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .top-left { display: flex; align-items: center; gap: 14px; }
+    .back { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .back:hover { opacity: 0.85; }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .top-title { font-family: var(--brush); font-size: 19px; letter-spacing: 0.06em; }
+    .top-title small { font-family: var(--sans); font-size: 12px; letter-spacing: 0.18em; opacity: 0.55; margin-left: 10px; }
+    .top-right { display: flex; align-items: center; gap: 18px; font-family: var(--sans); font-size: 12px; opacity: 0.6; letter-spacing: 0.15em; }
+    .toc-btn {
+      background: transparent; border: 1px solid var(--line);
+      font-family: inherit; font-size: 11.5px; letter-spacing: 0.2em;
+      padding: 5px 12px; cursor: pointer; color: var(--ink); opacity: 0.75;
+    }
+    .toc-btn:hover { background: var(--chashitsu-paper); opacity: 1; }
+
+    .progress {
+      position: fixed; top: 56px; left: 0;
+      height: 2px; background: var(--accent);
+      z-index: 49; transition: width 0.4s ease;
+    }
+
+    .deck {
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 64px;
+      overflow: hidden; z-index: 2;
+    }
+    .slide {
+      position: absolute; inset: 0;
+      padding: 36px 72px 28px;
+      overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.2,0.7,0.2,1);
+    }
+    .slide.is-prev { transform: translateX(-40px); }
+    .slide.is-active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide-inner { max-width: 1080px; margin: 0 auto; }
+
+    .navbar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 64px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .nav-btn {
+      background: transparent; border: 1px solid var(--ink);
+      font-family: var(--jp); font-size: 14px;
+      letter-spacing: 0.15em; color: var(--ink);
+      padding: 9px 22px; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover:not(:disabled) { background: var(--ink); color: var(--chashitsu-paper); }
+    .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; border-color: var(--line); }
+    .nav-center { display: flex; align-items: center; gap: 16px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.18em; opacity: 0.7; }
+    .dots { display: flex; gap: 5px; max-width: 480px; flex-wrap: wrap; justify-content: center; }
+    .dot { width: 7px; height: 7px; background: var(--line); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .dot:hover { background: var(--accent); transform: scale(1.3); }
+    .dot.is-active { background: var(--accent); }
+    .dot.is-section { width: 14px; }
+
+    /* TOC overlay */
+    .toc-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(31,31,29,0.85);
+      backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center;
+      padding: 40px;
+    }
+    .toc-overlay.is-shown { display: flex; animation: fade 0.3s; }
+    .toc-panel {
+      background: var(--chashitsu-paper);
+      max-width: 920px; width: 100%; max-height: 80vh;
+      overflow-y: auto;
+      padding: 36px 44px;
+      border: 1px solid var(--accent);
+      position: relative;
+    }
+    .toc-close {
+      position: absolute; top: 14px; right: 18px;
+      background: transparent; border: none;
+      font-size: 26px; cursor: pointer; opacity: 0.5;
+      font-family: var(--brush); color: var(--ink);
+    }
+    .toc-close:hover { opacity: 1; }
+    .toc-title { font-family: var(--brush); font-size: 26px; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .toc-sub { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 22px; }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; }
+    .toc-list li {
+      padding: 8px 0; border-bottom: 1px dashed var(--line-soft);
+      cursor: pointer; display: flex; align-items: baseline; gap: 14px;
+    }
+    .toc-list li:hover { color: var(--accent); }
+    .toc-list .num { font-family: var(--brush); font-size: 14px; color: var(--accent); min-width: 28px; }
+    .toc-list .lab { font-size: 15px; flex: 1; }
+    .toc-list .kind { font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; opacity: 0.45; }
+    .toc-list .is-section { color: var(--accent); font-weight: 600; }
+
+    /* Slide types */
+    .slide-title {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      padding: 36px 72px;
+    }
+    .slide-title .week-tag {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.4em; opacity: 0.6; margin-bottom: 24px;
+    }
+    .slide-title .seal {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      background: var(--accent); color: var(--chashitsu-paper);
+      font-family: var(--brush); font-size: 16px;
+      transform: rotate(-3deg);
+    }
+    .slide-title h1 {
+      font-family: var(--brush); font-size: 72px;
+      font-weight: 400; line-height: 1.1; letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+    .slide-title .subtitle {
+      font-family: var(--sans); font-size: 18px;
+      letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 28px;
+    }
+    .slide-title .author {
+      font-size: 18px; opacity: 0.85; line-height: 1.85;
+      max-width: 800px;
+    }
+    .meta-strip {
+      margin-top: 36px;
+      display: flex; flex-wrap: wrap; gap: 24px;
+      font-family: var(--sans); font-size: 13px; opacity: 0.6;
+      letter-spacing: 0.12em;
+    }
+
+    .slide-section {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      background: linear-gradient(135deg, rgba(196,56,56,0.06) 0%, rgba(216,200,168,0.4) 100%);
+      padding: 36px 72px;
+    }
+    .slide-section .big-num {
+      font-family: var(--brush); font-size: 240px;
+      color: var(--accent); opacity: 0.15;
+      position: absolute; bottom: 30px; right: 60px;
+      line-height: 1;
+    }
+    .slide-section .part {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.45em; opacity: 0.55; margin-bottom: 14px;
+    }
+    .slide-section h2 {
+      font-family: var(--brush); font-size: 56px;
+      font-weight: 400; letter-spacing: 0.04em;
+      line-height: 1.15; margin-bottom: 14px;
+    }
+    .slide-section .sec-en {
+      font-family: var(--sans); font-size: 16px;
+      letter-spacing: 0.3em; opacity: 0.55; font-style: italic;
+      margin-bottom: 22px;
+    }
+    .slide-section .sec-q {
+      font-size: 19px; opacity: 0.85;
+      max-width: 640px; line-height: 1.95;
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+    }
+
+    .slide-content { padding-top: 28px; }
+    .content-head {
+      margin-bottom: 22px;
+      display: flex; align-items: baseline; gap: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .content-head h2 { font-family: var(--brush); font-size: 44px; font-weight: 400; letter-spacing: 0.04em; }
+    .content-head .h-en { font-family: var(--sans); font-size: 15.5px; letter-spacing: 0.25em; opacity: 0.6; }
+    .content-head .h-tag { margin-left: auto; font-family: var(--sans); font-size: 14px; letter-spacing: 0.3em; opacity: 0.6; }
+
+    .lead {
+      font-size: 21px; line-height: 2.05; opacity: 0.9;
+      max-width: 920px; margin-bottom: 20px;
+    }
+    .lead p + p { margin-top: 16px; }
+    .lead strong { color: var(--accent); }
+    .term-en {
+      font-family: var(--sans); font-style: italic;
+      opacity: 0.7; font-size: 0.85em;
+      margin-left: 3px;
+    }
+
+    /* Scenario / story card */
+    .story {
+      background: var(--chashitsu-paper);
+      border-left: 4px solid var(--accent);
+      padding: 24px 30px;
+      margin: 18px 0;
+    }
+    .story .lab {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.3em; color: var(--accent); margin-bottom: 10px;
+    }
+    .story h3 {
+      font-family: var(--brush); font-size: 26px;
+      letter-spacing: 0.04em; margin-bottom: 14px;
+    }
+    .story p { font-size: 19px; line-height: 2; opacity: 0.9; }
+    .story p + p { margin-top: 12px; }
+
+    /* Two-column compare */
+    .pair {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+      margin-top: 12px;
+    }
+    .pair-box {
+      background: var(--chashitsu-paper);
+      border-top: 4px solid;
+      padding: 20px 22px;
+    }
+    .pair-box.a { border-top-color: var(--moss); }
+    .pair-box.b { border-top-color: var(--water); }
+    .pair-box.c { border-top-color: var(--earth); }
+    .pair-box.d { border-top-color: var(--persimmon); }
+    .pair-box .tag {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.25em; margin-bottom: 10px;
+    }
+    .pair-box.a .tag { color: var(--moss); }
+    .pair-box.b .tag { color: var(--water); }
+    .pair-box.c .tag { color: var(--earth); }
+    .pair-box.d .tag { color: var(--persimmon); }
+    .pair-box h3 {
+      font-family: var(--brush); font-size: 25px;
+      letter-spacing: 0.04em; margin-bottom: 12px;
+    }
+    .pair-box p { font-size: 18.5px; line-height: 1.95; opacity: 0.9; }
+
+    /* Sector card grid (4-col interactive) */
+    .sectors {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 14px; margin-top: 10px;
+    }
+    .sect {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 24px 18px 20px;
+      text-align: center;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .sect:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .sect .glyph {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 56px; height: 56px;
+      font-family: var(--brush); font-size: 28px;
+      color: var(--chashitsu-paper);
+      margin-bottom: 12px;
+    }
+    .sect.s-state .glyph { background: var(--moss); }
+    .sect.s-market .glyph { background: var(--water); }
+    .sect.s-volun .glyph { background: var(--earth); }
+    .sect.s-info .glyph { background: var(--persimmon); }
+    .sect h4 { font-family: var(--brush); font-size: 19px; letter-spacing: 0.04em; }
+    .sect .en { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.18em; opacity: 0.6; margin-top: 4px; margin-bottom: 10px; }
+    .sect .ex { font-size: 13px; opacity: 0.78; line-height: 1.7; }
+
+    /* Big single sector card (deep dive) */
+    .deep {
+      background: var(--chashitsu-paper);
+      border-top: 5px solid var(--accent);
+      padding: 28px 34px;
+      margin-top: 6px;
+    }
+    .deep.s-state { border-top-color: var(--moss); }
+    .deep.s-market { border-top-color: var(--water); }
+    .deep.s-volun { border-top-color: var(--earth); }
+    .deep.s-info { border-top-color: var(--persimmon); }
+    .deep-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; }
+    .deep-head .gl {
+      font-family: var(--brush); font-size: 28px;
+      width: 44px; height: 44px;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--chashitsu-paper);
+    }
+    .deep.s-state .deep-head .gl { background: var(--moss); }
+    .deep.s-market .deep-head .gl { background: var(--water); }
+    .deep.s-volun .deep-head .gl { background: var(--earth); }
+    .deep.s-info .deep-head .gl { background: var(--persimmon); }
+    .deep h3 { font-family: var(--brush); font-size: 28px; letter-spacing: 0.04em; }
+    .deep .sub-en { font-family: var(--sans); font-size: 13px; letter-spacing: 0.2em; opacity: 0.6; }
+    .deep .lead-line { font-size: 19.5px; line-height: 1.95; opacity: 0.9; margin: 12px 0 20px; }
+
+    .deep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 16px; }
+    .deep-col h5 {
+      font-family: var(--sans); font-size: 14px;
+      letter-spacing: 0.28em; opacity: 0.7; margin-bottom: 12px;
+    }
+    .deep-col ul { list-style: none; padding: 0; }
+    .deep-col li {
+      font-size: 18px; line-height: 1.95;
+      padding: 8px 0 8px 18px; position: relative;
+      border-bottom: 1px solid var(--line-faint);
+    }
+    .deep-col li:last-child { border-bottom: none; }
+    .deep-col li::before { content: "・"; position: absolute; left: 0; opacity: 0.5; }
+    .deep-col li strong { color: var(--accent); font-weight: 600; }
+
+    .tw-block {
+      background: rgba(196,56,56,0.05);
+      border-left: 3px solid var(--accent);
+      padding: 14px 20px;
+      margin-top: 16px;
+    }
+    .tw-block .lab {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.3em; color: var(--accent); margin-bottom: 8px;
+    }
+    .tw-block h4 {
+      font-family: var(--brush); font-size: 21px;
+      letter-spacing: 0.04em; margin-bottom: 8px;
+    }
+    .tw-block p { font-size: 18px; line-height: 1.95; opacity: 0.9; }
+
+    /* Stats */
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-top: 18px;
+    }
+    .stat {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 16px 14px;
+      text-align: center;
+    }
+    .stat .n { font-family: var(--brush); font-size: 34px; color: var(--accent); line-height: 1; }
+    .stat .l { font-size: 15.5px; opacity: 0.85; margin-top: 10px; line-height: 1.6; }
+    .stat .src { font-family: var(--sans); font-size: 12px; opacity: 0.55; letter-spacing: 0.1em; margin-top: 8px; }
+
+    /* Timeline */
+    .tl { margin-top: 8px; padding-left: 32px; position: relative; }
+    .tl::before { content: ""; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+    .tl-item { position: relative; padding: 14px 0 16px; border-bottom: 1px dashed var(--line-soft); }
+    .tl-item:last-child { border-bottom: none; }
+    .tl-item::before {
+      content: ""; position: absolute;
+      left: -32px; top: 22px; width: 14px; height: 14px;
+      background: var(--accent); border-radius: 50%;
+      border: 2px solid var(--chashitsu-bg);
+    }
+    .tl-yr {
+      font-family: var(--sans); font-size: 14.5px;
+      letter-spacing: 0.2em; opacity: 0.7; margin-bottom: 5px;
+    }
+    .tl-t { font-family: var(--brush); font-size: 22px; letter-spacing: 0.04em; margin-bottom: 10px; }
+    .tl-b { font-size: 18px; line-height: 1.95; opacity: 0.88; }
+    .tl-tag { display: inline-block; font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.18em; padding: 3px 10px; margin-left: 10px; background: rgba(196,56,56,0.10); color: var(--accent); vertical-align: middle; }
+
+    /* Comparison table */
+    .ctab {
+      width: 100%; border-collapse: collapse;
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      font-size: 17px;
+      margin-top: 10px;
+    }
+    .ctab th, .ctab td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line-soft);
+      text-align: left; vertical-align: top;
+    }
+    .ctab th {
+      font-family: var(--brush); font-size: 19px; font-weight: 500;
+      background: rgba(216,200,168,0.4);
+    }
+    .ctab th:nth-child(2), .ctab td:nth-child(2) { background: rgba(61,90,63,0.06); }
+    .ctab th:nth-child(3), .ctab td:nth-child(3) { background: rgba(90,122,138,0.06); }
+    .ctab th:nth-child(4), .ctab td:nth-child(4) { background: rgba(138,106,74,0.06); }
+    .ctab th:nth-child(5), .ctab td:nth-child(5) { background: rgba(196,112,56,0.06); }
+    .ctab td:first-child { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.18em; opacity: 0.65; width: 100px; vertical-align: middle; }
+
+    /* Country cards */
+    .nations {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin-top: 8px;
+    }
+    .nation {
+      background: var(--chashitsu-paper);
+      border-top: 3px solid var(--accent);
+      padding: 22px 24px;
+    }
+    .nation.b { border-top-color: var(--water); }
+    .nation.c { border-top-color: var(--earth); }
+    .nation .nm { font-family: var(--brush); font-size: 25px; letter-spacing: 0.06em; }
+    .nation .nen { font-family: var(--sans); font-size: 13.5px; letter-spacing: 0.2em; opacity: 0.65; margin: 5px 0 14px; }
+    .nation h6 { font-family: var(--sans); font-size: 13.5px; letter-spacing: 0.22em; opacity: 0.7; margin: 16px 0 8px; }
+    .nation ul { list-style: none; padding: 0; }
+    .nation li { font-size: 17px; line-height: 1.9; padding: 5px 0 5px 14px; position: relative; }
+    .nation li::before { content: "—"; position: absolute; left: 0; opacity: 0.4; }
+    .nation li strong { color: var(--accent); font-weight: 600; }
+
+    /* Flip cards (issues) */
+    .flips {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; margin-top: 8px;
+    }
+    .flip {
+      perspective: 1000px;
+      height: 290px; cursor: pointer;
+    }
+    .flip-inner {
+      position: relative; width: 100%; height: 100%;
+      transition: transform 0.6s; transform-style: preserve-3d;
+    }
+    .flip.is-flipped .flip-inner { transform: rotateY(180deg); }
+    .flip-face {
+      position: absolute; width: 100%; height: 100%;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      padding: 24px 26px;
+      display: flex; flex-direction: column;
+      justify-content: center;
+    }
+    .flip-front { background: var(--chashitsu-paper); border: 1px solid var(--line); text-align: center; }
+    .flip-front h4 { font-family: var(--brush); font-size: 24px; margin-bottom: 12px; letter-spacing: 0.04em; }
+    .flip-front p { font-size: 17px; opacity: 0.85; line-height: 1.75; }
+    .flip-front .hint { margin-top: auto; font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.25em; opacity: 0.55; }
+    .flip-back { background: var(--ink); color: var(--chashitsu-paper); transform: rotateY(180deg); justify-content: flex-start; }
+    .flip-back h4 { font-family: var(--brush); font-size: 21px; color: var(--chashitsu-paper); margin-bottom: 14px; letter-spacing: 0.04em; }
+    .flip-back ul { list-style: none; padding: 0; }
+    .flip-back li { font-size: 16.5px; line-height: 1.8; padding: 5px 0 5px 14px; position: relative; opacity: 0.92; }
+    .flip-back li::before { content: "・"; position: absolute; left: 0; opacity: 0.6; }
+
+    /* Insight banner */
+    .insight {
+      margin-top: 18px;
+      padding: 16px 22px;
+      background: rgba(196,56,56,0.06);
+      border-left: 3px solid var(--accent);
+      font-size: 17px; line-height: 1.9;
+    }
+    .insight strong { color: var(--accent); }
+
+    /* Scenario interactive */
+    .scen-block {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 24px 28px;
+      margin-top: 8px;
+    }
+    .scen-q { font-family: var(--brush); font-size: 25px; line-height: 1.55; margin-bottom: 12px; letter-spacing: 0.04em; }
+    .scen-detail { font-size: 18.5px; opacity: 0.85; line-height: 1.95; margin-bottom: 20px; }
+    .scen-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .scen-opt {
+      background: var(--chashitsu-bg);
+      border: 1px solid var(--line-soft);
+      padding: 18px 12px;
+      text-align: center;
+      cursor: pointer;
+      font-family: var(--jp); font-size: 17px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .scen-opt:hover { background: #fff8e8; border-color: var(--accent); }
+    .scen-opt.is-picked { background: var(--accent); color: var(--chashitsu-paper); border-color: var(--accent); font-weight: 500; }
+    .scen-opt.is-mismatch { opacity: 0.5; }
+    .scen-feedback {
+      margin-top: 18px;
+      padding: 18px 22px;
+      background: rgba(61,90,63,0.06);
+      border-left: 3px solid var(--moss);
+      font-size: 17.5px; line-height: 1.95;
+      display: none;
+    }
+    .scen-feedback.is-shown { display: block; animation: fade 0.3s; }
+    .scen-feedback strong { color: var(--moss); }
+
+    /* Quiz */
+    .quiz {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 24px 28px;
+    }
+    .quiz-num { font-family: var(--sans); font-size: 14px; letter-spacing: 0.3em; opacity: 0.65; }
+    .quiz-q { font-family: var(--brush); font-size: 25px; line-height: 1.6; margin: 10px 0 20px; letter-spacing: 0.03em; }
+    .quiz-opt {
+      display: block; width: 100%; text-align: left;
+      background: var(--chashitsu-bg);
+      border: 1px solid var(--line-soft);
+      padding: 16px 22px; margin-bottom: 12px;
+      font-family: inherit; font-size: 19px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .quiz-opt:hover:not(:disabled) { background: #fff8e8; border-color: var(--accent); }
+    .quiz-opt.is-correct { background: rgba(61,90,63,0.12); border-color: var(--moss); color: var(--moss); font-weight: 600; }
+    .quiz-opt.is-wrong { background: rgba(196,56,56,0.08); border-color: var(--accent); color: var(--accent); }
+    .quiz-opt:disabled { cursor: default; }
+    .quiz-explain {
+      display: none; margin-top: 16px;
+      padding: 16px 22px;
+      background: rgba(31,31,29,0.04);
+      border-left: 3px solid var(--accent);
+      font-size: 18px; line-height: 1.95;
+    }
+    .quiz-explain.is-shown { display: block; animation: fade 0.3s; }
+    .quiz-explain strong { color: var(--accent); }
+    .score-pill {
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 10px 20px;
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      margin-bottom: 18px;
+    }
+    .score-pill .sn { font-family: var(--brush); font-size: 28px; color: var(--accent); line-height: 1; }
+    .score-pill .st { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.25em; opacity: 0.6; }
+
+    /* Discussion */
+    .discuss { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .discuss-item {
+      background: var(--chashitsu-paper);
+      border-left: 3px solid var(--accent);
+      padding: 16px 22px; cursor: pointer;
+    }
+    .discuss-item .qn { font-family: var(--brush); font-size: 19px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 8px; }
+    .discuss-item .qt { font-size: 19.5px; line-height: 1.95; }
+    .discuss-item .hint {
+      max-height: 0; overflow: hidden; opacity: 0;
+      font-size: 17px; line-height: 1.95;
+      transition: max-height 0.4s, opacity 0.3s, margin 0.3s, padding 0.3s;
+      color: var(--ink-soft); font-style: italic;
+    }
+    .discuss-item.is-open .hint {
+      max-height: 250px; opacity: 1;
+      margin-top: 12px; padding-top: 12px;
+      border-top: 1px dashed var(--line-soft);
+    }
+
+    /* Reading */
+    .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+    .ref-card {
+      background: var(--chashitsu-paper);
+      border-top: 3px solid var(--accent);
+      padding: 20px 22px;
+    }
+    .ref-card h3 { font-family: var(--brush); font-size: 22px; margin-bottom: 14px; letter-spacing: 0.04em; }
+    .ref-card p { font-size: 17px; line-height: 1.9; padding: 9px 0; border-bottom: 1px solid var(--line-faint); }
+    .ref-card p:last-child { border-bottom: none; }
+    .ref-card em { color: var(--accent); font-style: italic; }
+    .ref-card a {
+      color: var(--ink); text-decoration: none;
+      border-bottom: 1px dotted rgba(31,31,29,0.4);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .ref-card a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .ref-card a:hover em { color: var(--accent); }
+
+    /* Click-to-reveal case (used inside concept slides) */
+    details.case {
+      background: rgba(196,56,56,0.04);
+      border-left: 3px solid var(--accent);
+      margin-top: 14px;
+      padding: 0;
+    }
+    details.case + details.case { margin-top: 8px; }
+    details.case summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 12px 20px;
+      font-family: var(--sans);
+      font-size: 14.5px;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      transition: background 0.2s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    details.case summary:hover { background: rgba(196,56,56,0.08); }
+    details.case summary::-webkit-details-marker { display: none; }
+    details.case summary::before {
+      content: "▸";
+      display: inline-block;
+      transition: transform 0.25s;
+      color: var(--accent);
+      font-size: 14px;
+    }
+    details.case[open] summary::before { transform: rotate(90deg); }
+    details.case .case-body {
+      padding: 4px 22px 18px 38px;
+      font-size: 16px;
+      line-height: 1.9;
+      animation: fade 0.3s;
+    }
+    details.case .case-body h5 {
+      font-family: var(--brush);
+      font-size: 19px;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+    details.case .case-body p { margin-bottom: 8px; opacity: 0.9; }
+    details.case .case-body p:last-child { margin-bottom: 0; }
+    details.case .case-body strong { color: var(--accent); }
+    details.case .case-body ul {
+      list-style: none; padding: 0; margin: 8px 0 4px;
+    }
+    details.case .case-body li {
+      padding: 4px 0 4px 16px; position: relative;
+      font-size: 15.5px;
+    }
+    details.case .case-body li::before {
+      content: "・"; position: absolute; left: 0; opacity: 0.5;
+    }
+
+    /* Animations */
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+    .keyboard-hint {
+      position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
+      font-family: var(--sans); font-size: 9.5px;
+      letter-spacing: 0.25em; opacity: 0.4;
+      pointer-events: none; z-index: 60;
+    }
+    .keyboard-hint kbd { font-family: var(--mono); font-size: 9.5px; background: rgba(31,31,29,0.08); padding: 1px 5px; margin: 0 2px; }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      body { font-size: 16.5px; }
+      .topbar { padding: 0 14px; }
+      .top-title { font-size: 15px; }
+      .top-title small { display: none; }
+      .top-right { display: none; }
+      .toc-btn { font-size: 10.5px; padding: 4px 9px; letter-spacing: 0.18em; }
+
+      .slide { padding: 26px 22px 20px; }
+      .slide-title { padding: 26px 22px; }
+      .slide-title h1 { font-size: 40px; }
+      .slide-title .subtitle { font-size: 14.5px; letter-spacing: 0.18em; }
+      .slide-title .author { font-size: 16px; }
+
+      .slide-section { padding: 26px 22px; }
+      .slide-section h2 { font-size: 36px; }
+      .slide-section .sec-en { font-size: 13px; }
+      .slide-section .sec-q { font-size: 16px; }
+      .slide-section .big-num { font-size: 130px; bottom: 20px; right: 20px; }
+
+      .content-head h2 { font-size: 24px; }
+      .content-head .h-en { font-size: 11.5px; }
+      .content-head .h-tag { display: none; }
+
+      .lead { font-size: 16px; }
+      .story h3 { font-size: 20px; }
+      .story p { font-size: 15.5px; }
+
+      .pair { grid-template-columns: 1fr; gap: 12px; }
+      .pair-box { padding: 18px 20px; }
+      .pair-box h3 { font-size: 19px; }
+      .pair-box p { font-size: 15px; }
+
+      .sectors { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .sect .glyph { width: 48px; height: 48px; font-size: 24px; }
+      .sect h4 { font-size: 17px; }
+
+      .deep { padding: 22px 22px; }
+      .deep h3 { font-size: 24px; }
+      .deep .lead-line { font-size: 15.5px; }
+      .deep-grid { grid-template-columns: 1fr; gap: 16px; }
+      .deep-col li { font-size: 14.5px; }
+
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat .n { font-size: 24px; }
+      .stat .l { font-size: 12.5px; }
+
+      .tl { padding-left: 28px; }
+      .tl::before { left: 4px; }
+      .tl-item::before { left: -28px; width: 12px; height: 12px; top: 20px; }
+      .tl-t { font-size: 17px; }
+      .tl-b { font-size: 14.5px; }
+      .tl-yr { font-size: 12px; }
+
+      .ctab { font-size: 13px; display: block; overflow-x: auto; }
+      .ctab th, .ctab td { padding: 8px 10px; }
+
+      .nations { grid-template-columns: 1fr; }
+
+      .flips { grid-template-columns: 1fr; }
+      .flip { height: 230px; }
+
+      .scen-options { grid-template-columns: repeat(2, 1fr); }
+      .scen-opt { font-size: 14px; padding: 13px 8px; }
+      .scen-q { font-size: 18px; }
+      .scen-detail { font-size: 14.5px; }
+      .scen-feedback { font-size: 14.5px; }
+
+      .quiz { padding: 22px 22px; }
+      .quiz-num { font-size: 12px; }
+      .quiz-q { font-size: 18px; }
+      .quiz-opt { font-size: 14.5px; padding: 12px 16px; }
+      .quiz-explain { font-size: 14px; }
+
+      .discuss-item .qt { font-size: 16px; }
+
+      .ref-grid { grid-template-columns: 1fr; }
+      .ref-card p { font-size: 13.5px; }
+
+      .navbar { padding: 0 14px; height: 58px; }
+      .nav-btn { padding: 7px 14px; font-size: 13px; letter-spacing: 0.1em; }
+      .dots { max-width: 200px; }
+      .nav-center { font-size: 12px; gap: 10px; }
+
+      .toc-panel { padding: 24px 22px; }
+      .toc-list { grid-template-columns: 1fr; gap: 0; }
+      .toc-list .lab { font-size: 13.5px; }
+
+      .keyboard-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<svg class="paper-grain" aria-hidden="true">
+  <defs>
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#paper-noise)" />
+</svg>
+
+<header class="topbar">
+  <div class="top-left">
+    <a href="../../teaching-zh.html" class="back">← 教學</a>
+    <span class="top-sep">·</span>
+    <span class="top-title">福利可以解決「貧窮」嗎？<small>福利社會學 第 12 週</small></span>
+  </div>
+  <div class="top-right">
+    <span>大一同學適用</span>
+    <button class="toc-btn" onclick="toggleToc()">目次 ・ TOC</button>
+  </div>
+</header>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ============ S0 TITLE ============ -->
+  <section class="slide slide-title is-active" data-kind="title" data-label="封面">
+    <div class="slide-inner">
+      <div class="week-tag">
+        <span class="seal">學</span>
+        <span>第 12 週 ・ 5/14 ・ WEEK 12</span>
+      </div>
+      <h1>福利可以解決「貧窮」嗎？</h1>
+      <p class="subtitle">POVERTY AND SOCIAL ASSISTANCE — 貧窮與社會救助</p>
+      <p class="author">
+        從「誰是窮人」談到「國家如何接住人」。
+      </p>
+      <div class="meta-strip">
+        <span>福利社會學 ・ 葉崇揚</span>
+        <span>東吳大學社會學系</span>
+        <span>2026 春學期</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S-SEC-01 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第一部分：看見貧窮">
+    <div class="slide-inner">
+      <div class="big-num">壹</div>
+      <p class="part">PART 01</p>
+      <h2>看見貧窮</h2>
+      <p class="sec-en">Seeing Poverty</p>
+      <p class="sec-q">
+        我們真的看見身邊的貧窮了嗎？<br/>
+        大一學生的生活，與貧窮其實沒那麼遠。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S1 XIAOQI CASE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例：大一新生小琪">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例 ・ 小琪的月光生活</h2>
+        <span class="h-en">A FRESHMAN'S MONTHLY LIFE</span>
+        <span class="h-tag">★ 開場案例</span>
+      </div>
+      <div class="story">
+        <span class="lab">小琪 ・ 大一新生・北部某私立大學・台南北上唸書・住外面套房</span>
+        <p>「我每個月家裡給我 1.5 萬，學貸先借著，週末打工 6 小時。房租 8,500，伙食 6,000，交通 1,500，剩下幾乎都用在報告印刷、社團、跟朋友吃飯。上週筆電壞掉花 4,000 修，這個月就沒錢回家了。」</p>
+      </div>
+      <div class="insight">
+        <strong>想想看：</strong>小琪算「窮」嗎？她的處境跟新聞上「低收入戶」的故事有什麼異同？你身邊有類似的同學嗎？如果有突發開銷，他們的安全網是什麼？
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S2 NUMBERS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="大學生的日常困境數字">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>幾個值得記住的數字</h2>
+        <span class="h-en">NUMBERS WORTH REMEMBERING</span>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="n">28,590</div>
+          <div class="l">元 / 月 ・ 基本工資（2025 年起）<br/>換算時薪 190 元</div>
+        </div>
+        <div class="stat">
+          <div class="n">8–13k</div>
+          <div class="l">元 / 月 ・ 雙北單人套房常見租金<br/>佔大一外宿生活費可超過 4 成</div>
+        </div>
+        <div class="stat">
+          <div class="n">180萬+</div>
+          <div class="l">人（累計）・ 教育部就學貸款歷年借款人次<br/>是青年常見的「負債起跑」</div>
+        </div>
+        <div class="stat">
+          <div class="n">10萬+</div>
+          <div class="l">人 / 月 ・ 依勞動部統計，外送平台從業者<br/>青年比例極高，多無充足勞健保</div>
+        </div>
+      </div>
+      <p class="lead" style="margin-top: 16px; font-size: 14px; opacity: 0.6;">資料來源：勞動部、教育部、衛福部相關公告整理；數字為近年參考值，實際請查最新公告。</p>
+    </div>
+  </section>
+
+  <!-- ============ S3 LISTER FIVE DIMENSIONS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="貧窮不只是沒錢：五個面向">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>貧窮不只是「沒錢」 ・ 五個面向</h2>
+        <span class="h-en">MORE THAN A LACK OF MONEY</span>
+      </div>
+      <p class="lead">Ruth Lister (2004)：貧窮既是物質狀態，也是社會關係。</p>
+      <div class="pair" style="grid-template-columns: repeat(5, 1fr);">
+        <div class="pair-box a"><span class="tag">1</span><h3 style="font-size: 18px;">經濟面向</h3><p style="font-size: 14px;">所得不足、資產匱乏、收支失衡</p></div>
+        <div class="pair-box b"><span class="tag">2</span><h3 style="font-size: 18px;">社會面向</h3><p style="font-size: 14px;">人際支持薄弱、社交活動被排除</p></div>
+        <div class="pair-box c"><span class="tag">3</span><h3 style="font-size: 18px;">心理面向</h3><p style="font-size: 14px;">羞辱感、無力感、自尊被侵蝕</p></div>
+        <div class="pair-box d"><span class="tag">4</span><h3 style="font-size: 18px;">政治面向</h3><p style="font-size: 14px;">缺乏發聲管道、難以參與公共決策</p></div>
+        <div class="pair-box a"><span class="tag">5</span><h3 style="font-size: 18px;">文化面向</h3><p style="font-size: 14px;">被汙名化、被刻板印象、被排除於主流敘事</p></div>
+      </div>
+      <p class="lead" style="margin-top: 14px; font-size: 14.5px; opacity: 0.6;">參考｜Lister, R. (2004). Poverty. Polity Press.</p>
+    </div>
+  </section>
+
+  <!-- ============ S-SEC-02 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第二部分：怎麼定義貧窮">
+    <div class="slide-inner">
+      <div class="big-num">貳</div>
+      <p class="part">PART 02</p>
+      <h2>怎麼定義貧窮</h2>
+      <p class="sec-en">Defining Poverty</p>
+      <p class="sec-q">
+        定義會決定「誰被看見、誰得到救助」。<br/>
+        四種主要的視角，回答的問題不同。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S4 FOUR PERSPECTIVES OVERVIEW ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="四種定義視角總覽">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>四種定義視角 ・ 先看一張全景圖</h2>
+        <span class="h-en">FOUR PERSPECTIVES AT A GLANCE</span>
+      </div>
+      <div class="sectors">
+        <div class="sect s-state">
+          <div class="glyph">絕</div>
+          <h4>絕對貧窮</h4>
+          <div class="en">ABSOLUTE POVERTY</div>
+          <p class="ex">「能不能活下去？」<br/>Rowntree (1901)</p>
+        </div>
+        <div class="sect s-market">
+          <div class="glyph">相</div>
+          <h4>相對貧窮</h4>
+          <div class="en">RELATIVE POVERTY</div>
+          <p class="ex">「能不能過得像同社會的人？」<br/>Townsend (1979)</p>
+        </div>
+        <div class="sect s-volun">
+          <div class="glyph">多</div>
+          <h4>多面向貧窮</h4>
+          <div class="en">MULTI-DIMENSIONAL</div>
+          <p class="ex">「能不能過想過的生活？」<br/>Sen (1999); UNDP MPI</p>
+        </div>
+        <div class="sect s-info">
+          <div class="glyph">主</div>
+          <h4>主觀貧窮</h4>
+          <div class="en">SUBJECTIVE POVERTY</div>
+          <p class="ex">「我自己覺得我窮嗎？」<br/>Veit-Wilson 等</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S5 ABSOLUTE POVERTY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="絕對貧窮：Rowntree">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>絕對貧窮</h2>
+        <span class="h-en">ROWNTREE'S YORK SURVEY</span>
+        <span class="h-tag">定義 1/4</span>
+      </div>
+      <p class="lead">貧窮等於連「最低生存所需」都買不起。</p>
+      <div class="deep-col">
+        <ul>
+          <li>Rowntree 在約克市 (York) 訪問 11,560 戶，計算維持身體運作的最低食物、衣物、住所成本</li>
+          <li>初級貧窮 <span class="term-en">primary poverty</span>：收入連「物理最低需求」都達不到</li>
+          <li>次級貧窮 <span class="term-en">secondary poverty</span>：收入夠，但花費方式（如酒、賭）使家庭仍陷入匱乏</li>
+          <li>今日對應：世界銀行國際貧窮線，每日 2.15／3.65／6.85 美元（依國家收入分組）</li>
+          <li>限制：「最低生存」會隨社會發展改變，例如手機與網路在今日已是基本需求</li>
+        </ul>
+      </div>
+      <p class="lead" style="margin-top: 14px; font-size: 14.5px; opacity: 0.6;">參考｜Rowntree, B. S. (1901). Poverty: A Study of Town Life.</p>
+    </div>
+  </section>
+
+  <!-- ============ S6 RELATIVE POVERTY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="相對貧窮：Townsend">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>相對貧窮</h2>
+        <span class="h-en">RELATIVE DEPRIVATION</span>
+        <span class="h-tag">定義 2/4</span>
+      </div>
+      <p class="lead">貧窮是「資源遠低於社會平均，以致無法過該社會被期待的生活」。</p>
+      <div class="deep-grid">
+        <div class="deep-col">
+          <h5>理論與測量</h5>
+          <ul>
+            <li>Townsend (1979)《Poverty in the United Kingdom》提出「相對剝奪 <span class="term-en">relative deprivation</span>」</li>
+            <li>重點不在「能不能活下去」，而在「能不能像同社會的人一樣生活」</li>
+            <li>今日對應：OECD 與 EU 採家戶可支配所得中位數 50% 或 60% 為貧窮線</li>
+          </ul>
+        </div>
+        <div class="deep-col">
+          <h5>貼近生活的三個例子（被排除於正常活動之外）</h5>
+          <ul>
+            <li>班上同學都帶筆電上課，沒有筆電的學生形同被排除學習活動</li>
+            <li>大學迎新晚會收 1,500 元，付不出來就只能缺席</li>
+            <li>國小戶外教學要繳 800 元，付不起的孩子被通知留校自習</li>
+          </ul>
+        </div>
+      </div>
+      <p class="lead" style="margin-top: 14px; font-size: 14.5px; opacity: 0.6;">參考｜Townsend, P. (1979). Poverty in the United Kingdom.</p>
+    </div>
+  </section>
+
+  <!-- ============ S7 MULTI-DIMENSIONAL POVERTY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="多面向貧窮：Sen">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>多面向貧窮</h2>
+        <span class="h-en">THE CAPABILITY APPROACH</span>
+        <span class="h-tag">定義 3/4</span>
+      </div>
+      <p class="lead">貧窮 = 實質自由 <span class="term-en">(substantive freedom)</span> 與「能力」<span class="term-en">(capability)</span> 的剝奪。</p>
+      <div class="deep-col">
+        <ul>
+          <li>Sen 主張：不要只看收入，要看人能不能「做」與「成為」想要的樣子</li>
+          <li>三個關鍵問題：能不能健康活到老？能不能受教育？能不能參與社會？</li>
+          <li>UNDP 多面向貧窮指數 MPI（2010 起）：健康、教育、生活水準三大面向</li>
+          <li>啟發：政策不能只發錢，還要看教育、醫療、住宅、社會參與是否到位</li>
+          <li>案例：學生雖有溫飽，但因經濟壓力長期失眠、不敢社交、不敢就醫，也是被剝奪</li>
+        </ul>
+      </div>
+      <p class="lead" style="margin-top: 14px; font-size: 14.5px; opacity: 0.6;">參考｜Sen, A. (1999). Development as Freedom；UNDP &amp; OPHI MPI.</p>
+    </div>
+  </section>
+
+  <!-- ============ S8 SUBJECTIVE POVERTY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="主觀貧窮">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>主觀貧窮</h2>
+        <span class="h-en">SUBJECTIVE POVERTY</span>
+        <span class="h-tag">定義 4/4</span>
+      </div>
+      <p class="lead">不是統計數字說了算，而是當事人自己的感受與比較。</p>
+      <div class="deep-col">
+        <ul>
+          <li>測量方式：問受訪者自評收入「夠不夠用」、與身邊的人相比過得如何</li>
+          <li>比較對象很重要：同學、鄰居，現在還包括社群媒體上的同齡人</li>
+          <li>案例：IG 滑到同學當交換生、小紅書上的高消費、抖音「炫富日常」</li>
+          <li>結果：客觀收入未必低，主觀貧窮感卻很強，伴隨焦慮、自卑、退縮</li>
+          <li>提醒：心理福祉 <span class="term-en">well-being</span> 也是貧窮研究的一部分，不能只看錢</li>
+        </ul>
+      </div>
+      <p class="lead" style="margin-top: 14px; font-size: 14.5px; opacity: 0.6;">延伸｜Veit-Wilson, J. (1987). Consensual approaches to poverty lines.</p>
+    </div>
+  </section>
+
+  <!-- ============ S9 DISCUSSION 1 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="課堂討論一：定義決定誰被看見">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>課堂討論一</h2>
+        <span class="h-en">CLASS DISCUSSION I</span>
+        <span class="h-tag">★ 課堂討論</span>
+      </div>
+      <p class="lead">定義決定「誰被看見」。</p>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">情境 A</span>
+          <p>一家四口住台北市，月可支配所得 5 萬元，兩個小孩讀國小，房租 2.5 萬。請問依「絕對貧窮」、「相對貧窮」、「多面向貧窮」三種定義，他們算窮嗎？哪一種定義最能描述他們的處境？</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">情境 B</span>
+          <p>一位大學生每月零用金 3 萬元，但他覺得跟同學相比自己「過得很拮据」，因為大家都常出國、買名牌。他算貧窮嗎？這個感受值得被認真對待嗎？</p>
+        </div>
+      </div>
+      <p class="lead" style="margin-top: 16px; font-size: 16.5px; opacity: 0.8;">討論方式：4-5 人一組，10 分鐘討論，每組分享 1 分鐘</p>
+    </div>
+  </section>
+
+  <!-- ============ S-SEC-03 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第三部分：怎麼測量誰是窮人">
+    <div class="slide-inner">
+      <div class="big-num">參</div>
+      <p class="part">PART 03</p>
+      <h2>怎麼測量誰是窮人</h2>
+      <p class="sec-en">Measuring the Poor</p>
+      <p class="sec-q">
+        從理論到實作：怎麼劃一條線、誰落在線下？<br/>
+        台灣怎麼算？跟世界比起來如何？
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S10 POVERTY LINE & INDICATORS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="貧窮線與測量指標">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>貧窮線與測量指標</h2>
+        <span class="h-en">POVERTY LINE &amp; INDICATORS</span>
+      </div>
+      <p class="lead">制度上要救助誰，就得先有一條「貧窮線」<span class="term-en">(poverty line)</span>。</p>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a"><span class="tag">STEP 1</span><h3>設定門檻</h3><p>用「基本消費籃」或「中位數比例」設一條線</p></div>
+        <div class="pair-box b"><span class="tag">STEP 2</span><h3>計算貧窮率</h3><p>落在線下的人口比例 <span class="term-en">(headcount ratio)</span></p></div>
+        <div class="pair-box c"><span class="tag">STEP 3</span><h3>估算嚴重度</h3><p>貧窮深度 <span class="term-en">(poverty gap)</span>、嚴重度 <span class="term-en">(squared gap)</span></p></div>
+      </div>
+      <p class="lead" style="margin-top: 18px;">不同國家的設定差異很大——所以「貧窮率」高低，不能只看單一數字。</p>
+      <p class="lead" style="margin-top: 8px; font-size: 15px; opacity: 0.65;">補充｜常見國際指標：World Bank 國際貧窮線、OECD/EU 60% 中位數、UNDP MPI 多面向指數。</p>
+    </div>
+  </section>
+
+  <!-- ============ S11 TAIWAN POVERTY LINE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="台灣的貧窮線">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>台灣的貧窮線</h2>
+        <span class="h-en">TAIWAN'S POVERTY LINE</span>
+        <span class="h-tag">★ 台灣節點</span>
+      </div>
+      <p class="lead">依《社會救助法》第 4 條：以最近一年「每人可支配所得中位數」的 60% 計（直轄市另算）。</p>
+      <table class="ctab">
+        <thead>
+          <tr>
+            <th>縣市區域</th>
+            <th>每人每月最低生活費（元）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>台北市</td><td>21,249</td></tr>
+          <tr><td>新北市・桃園市</td><td>17,076</td></tr>
+          <tr><td>台中市</td><td>16,946</td></tr>
+          <tr><td>台南市・高雄市・台灣省</td><td>15,515</td></tr>
+          <tr><td>金門縣・連江縣</td><td>13,500</td></tr>
+        </tbody>
+      </table>
+      <p class="lead" style="margin-top: 14px; font-size: 14.5px; opacity: 0.6;">數字以 2024 年度為例；每年由衛福部依物價變動公告調整，金額可能不同。</p>
+    </div>
+  </section>
+
+  <!-- ============ S12 LOW-INCOME THRESHOLDS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="低收入戶與中低收入戶門檻">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>低收入戶與中低收入戶</h2>
+        <span class="h-en">THRESHOLDS FOR LOW-INCOME HOUSEHOLDS</span>
+      </div>
+      <div class="deep-grid">
+        <div class="deep-col">
+          <h5>低收入戶</h5>
+          <ul>
+            <li>家庭每人平均收入 &lt; 最低生活費</li>
+            <li>且：家庭動產（存款、有價證券）低於限額</li>
+            <li>且：家庭不動產（房地）低於限額</li>
+            <li>可請領：生活扶助、健保費補助、子女學雜費減免、醫療補助等</li>
+          </ul>
+        </div>
+        <div class="deep-col">
+          <h5>中低收入戶</h5>
+          <ul>
+            <li>家庭每人平均收入 &lt; 最低生活費 × 1.5 倍</li>
+            <li>資產限額較寬，但仍有上限</li>
+            <li>給付項目較少，主要為部分補助</li>
+            <li>另有「中低收入老人生活津貼」、就學費用減免</li>
+          </ul>
+        </div>
+      </div>
+      <p class="lead" style="margin-top: 16px;">還會看：家庭應計算人口、扶養義務人、虛擬收入（後面詳述爭議）。</p>
+    </div>
+  </section>
+
+  <!-- ============ S13 MARGINAL POOR CASE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例：邊緣戶與隱形貧窮">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例 ・ 邊緣戶與隱形貧窮</h2>
+        <span class="h-en">THE MARGINAL POOR</span>
+        <span class="h-tag">★ 案例</span>
+      </div>
+      <div class="story">
+        <span class="lab">王女士的故事 ・ 新北市・單親媽媽・兩個國中小孩</span>
+        <p>「我在小吃店工作，月薪 28,000；房租 12,000，兩個孩子吃住用 12,000，幾乎沒剩。去申請低收入戶，因為平均每人收入剛好超過門檻一點，沒通過。社會局說我是『邊緣戶』，可以申請急難救助，但要等審核。」</p>
+      </div>
+      <div class="deep-col">
+        <h5>為什麼會被「漏接」？</h5>
+        <ul>
+          <li>收入剛好超過門檻一點點，反而拿不到任何補助 → 「不上不下」</li>
+          <li>資產審查嚴格：戶頭存款、繼承的祖厝可能讓申請失敗</li>
+          <li>申請程序繁瑣、文件多，許多人不想申請或不知道可以申請</li>
+          <li>流動人口、無戶籍者、新住民、街友常被制度看不見</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S-SEC-04 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第四部分：誰會貧窮、為什麼貧窮">
+    <div class="slide-inner">
+      <div class="big-num">肆</div>
+      <p class="part">PART 04</p>
+      <h2>誰會貧窮、為什麼貧窮</h2>
+      <p class="sec-en">Who Is Poor, and Why</p>
+      <p class="sec-q">
+        貧窮不是隨機的：誰特別容易掉進去？<br/>
+        是個人選擇，還是結構使然？
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S14 TWO APPROACHES ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="貧窮成因的兩大取向">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>貧窮的成因 ・ 兩大解釋取向</h2>
+        <span class="h-en">TWO EXPLANATORY APPROACHES</span>
+      </div>
+      <div class="deep-grid">
+        <div class="deep-col">
+          <h5>個人取向 Individual approach</h5>
+          <ul>
+            <li>強調個人能力、努力、價值觀、生活習慣</li>
+            <li>經典觀點：Murray (1984)「下層階級」、Lewis 的「貧窮文化」</li>
+            <li>政策推論：減少福利依賴、強化工作誘因、要求自助</li>
+            <li>批評：忽略結構限制、容易導向責怪受害者 <span class="term-en">(victim blaming)</span></li>
+          </ul>
+        </div>
+        <div class="deep-col">
+          <h5>結構取向 Structural approach</h5>
+          <ul>
+            <li>強調勞動市場、產業結構、家庭結構、制度設計</li>
+            <li>經典觀點：Townsend、Wilson、Lister 等批判取徑</li>
+            <li>政策推論：建立普及式服務、調整勞動條件、改善制度</li>
+            <li>批評：可能弱化個人能動性，忽略個別差異</li>
+          </ul>
+        </div>
+      </div>
+      <div class="insight">
+        <strong>社會學的多數立場：</strong>兩者並非互斥——結構制約個人選擇，個人也在結構中行動。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S15 WORKING POOR ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="工作貧窮">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>工作貧窮 ・「努力工作，仍然貧窮」</h2>
+        <span class="h-en">WORKING POOR</span>
+      </div>
+      <p class="lead"><span class="term-en">Working poor</span>：有就業，但所得仍接近或低於貧窮線。</p>
+      <div class="deep-grid">
+        <div class="deep-col">
+          <h5>台灣常見的工作貧窮類型</h5>
+          <ul>
+            <li>部分工時、派遣工、約聘人員</li>
+            <li>平台外送員、Uber 司機（「假承攬」爭議）</li>
+            <li>自營小販、夜市攤、底層服務業</li>
+            <li>工地師傅、清潔工、長照基層人員</li>
+          </ul>
+        </div>
+        <div class="deep-col">
+          <h5>為什麼會發生？</h5>
+          <ul>
+            <li>基本工資調升速度跟不上房租、物價</li>
+            <li>勞動彈性化、非典型就業比例提高</li>
+            <li>雙薪家庭模型崩解：單親、單身、隔代教養增加</li>
+          </ul>
+        </div>
+      </div>
+      <p class="lead" style="margin-top: 14px; font-size: 14.5px; opacity: 0.6;">延伸｜林立青《做工的人》(2017, 寶瓶文化)；公視戲劇《做工的人》(2020)。</p>
+    </div>
+  </section>
+
+  <!-- ============ S16 GROUPS AT RISK ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="易陷貧窮的族群">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>誰特別容易陷入貧窮？</h2>
+        <span class="h-en">GROUPS AT RISK OF POVERTY</span>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a"><span class="tag">兒少</span><p>依附家庭，家中經濟惡化即拖累；童年貧窮影響長期發展</p></div>
+        <div class="pair-box b"><span class="tag">單親家庭</span><p>尤其女性單親，工作與照顧雙重負擔</p></div>
+        <div class="pair-box c"><span class="tag">高齡者</span><p>退出勞動市場、儲蓄不足、健康支出大</p></div>
+        <div class="pair-box d"><span class="tag">身心障礙者</span><p>就業機會少、醫療負擔重、就業歧視仍存在</p></div>
+        <div class="pair-box a"><span class="tag">原住民族</span><p>歷史性結構不利，平均所得長期低於全國平均</p></div>
+        <div class="pair-box b"><span class="tag">新住民／移工</span><p>權利尚未平等、語言文化適應、社會網絡薄弱</p></div>
+      </div>
+      <div class="insight">
+        這些族群常出現「貧窮重疊」——例如：單親女性原住民、身障高齡者。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S17 FEMINIZATION OF POVERTY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="貧窮女性化">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>貧窮女性化</h2>
+        <span class="h-en">FEMINIZATION OF POVERTY</span>
+      </div>
+      <p class="lead">貧窮人口中，女性比例與處境惡化的速度，比男性更快、更深。概念由 Pearce (1978) 提出，描述美國女性家戶長家庭貧窮率持續上升的現象。</p>
+      <div class="deep-col">
+        <h5>為什麼女性更易貧窮？</h5>
+        <ul>
+          <li>家務與照顧勞動長期無償，限制職涯發展</li>
+          <li>職業隔離：女性集中於低薪部門（服務業、照顧業）</li>
+          <li>性別薪資差距：依行政院統計，台灣女性平均時薪約為男性的 84%</li>
+          <li>單親家庭中女性家長比例高（依衛福部統計約 6-7 成）</li>
+          <li>高齡女性：因平均壽命較長、退休年金較低，老年貧窮風險高</li>
+        </ul>
+      </div>
+      <div class="insight">
+        提醒：貧窮不是性別中性的議題，政策設計也應有性別敏感度
+      </div>
+      <p class="lead" style="margin-top: 14px; font-size: 14.5px; opacity: 0.6;">資料來源｜Pearce (1978); 行政院主計總處性別薪資差距統計；衛福部單親家庭統計。</p>
+    </div>
+  </section>
+
+  <!-- ============ S18 DISCUSSION 2 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="課堂討論二：青年貧窮的三種樣貌">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>課堂討論二 ・ 青年貧窮的三種樣貌</h2>
+        <span class="h-en">CLASS DISCUSSION II</span>
+        <span class="h-tag">★ 課堂討論</span>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a"><span class="tag">情境 A｜學生小陳</span><p>大三私立大學生，靠就學貸款讀書，每週打工 18 小時，月光族，沒有存款。</p></div>
+        <div class="pair-box b"><span class="tag">情境 B｜外送員小李</span><p>剛畢業，從事 foodpanda 平台外送，月入 3.5 萬，無雇主提繳勞健保。</p></div>
+        <div class="pair-box c"><span class="tag">情境 C｜服務業小張</span><p>30 歲服務業基層，月薪 3 萬，租屋雙北，從未存到「頭期款」。</p></div>
+      </div>
+      <p class="lead" style="margin-top: 16px; font-size: 16.5px; opacity: 0.8;">討論：他們算貧窮嗎？哪一種定義最能描述？什麼結構因素導致？社會該怎麼接住他們？</p>
+    </div>
+  </section>
+
+  <!-- ============ S-SEC-05 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第五部分：從濟貧到救助">
+    <div class="slide-inner">
+      <div class="big-num">伍</div>
+      <p class="part">PART 05</p>
+      <h2>從濟貧到救助</h2>
+      <p class="sec-en">From Poor Relief to Social Assistance</p>
+      <p class="sec-q">
+        今天的社會救助，是 400 年制度演化的結果。<br/>
+        回顧歷史，是為了看清現在的選擇。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S19 1601 POOR LAW ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="1601 伊莉莎白濟貧法">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>1601 ・ 伊莉莎白濟貧法</h2>
+        <span class="h-en">ELIZABETHAN POOR LAW OF 1601</span>
+        <span class="h-tag">43 Eliz I c. 2</span>
+      </div>
+      <p class="lead">背景：圈地運動使大量農民流離；舊有教會與封建救濟系統瓦解；流民與乞丐成為社會問題。</p>
+      <div class="deep-col">
+        <h5>主要內容</h5>
+        <ul>
+          <li>以地方教區 <span class="term-en">(parish)</span> 為單位管理救濟</li>
+          <li>由治安官（後改為濟貧監督員）徵收「濟貧稅 <span class="term-en">poor rate</span>」</li>
+          <li>將貧民分為三類：有勞動能力者送工作之家、無勞動能力者進救濟院、兒童送學徒制</li>
+          <li>原則：照顧無能力者 <span class="term-en">(impotent poor)</span>、強制有能力者 <span class="term-en">(able-bodied)</span> 工作</li>
+        </ul>
+      </div>
+      <div class="insight">
+        為何重要？國家首度以法律承擔救助責任，而非僅靠教會與慈善——「公共濟貧」的起點。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S20 1834 NEW POOR LAW ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="1834 新濟貧法">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>1834 ・ 新濟貧法</h2>
+        <span class="h-en">POOR LAW AMENDMENT ACT 1834</span>
+      </div>
+      <p class="lead">Poor Law Amendment Act 1834 ・ 三大原則</p>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a"><span class="tag">全國一致</span><h3 style="font-size: 20px;">National uniformity</h3><p>改革地方分歧，建立全國統一規則</p></div>
+        <div class="pair-box b"><span class="tag">院內救濟</span><h3 style="font-size: 20px;">Indoor relief in workhouse</h3><p>原則上不再給「院外現金」，要救濟就進工作之家</p></div>
+        <div class="pair-box c"><span class="tag">較低資格</span><h3 style="font-size: 20px;">Less eligibility</h3><p>救濟者的生活條件「必須低於」最低層的獨立勞工</p></div>
+      </div>
+      <div class="story" style="margin-top: 18px;">
+        <span class="lab">後果</span>
+        <p>工作之家條件嚴苛、家庭被拆散、受助者被烙印 <span class="term-en">(stigmatized)</span>；狄更斯《孤雛淚》描寫的時代。</p>
+      </div>
+      <div class="insight">
+        啟發：「給多少才不會養懶人？」這個爭議延續到今天的虛擬收入與工作福利討論。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S21 TAIWAN POOR-RELIEF HISTORY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="台灣的濟貧脈絡">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>台灣的濟貧脈絡</h2>
+        <span class="h-en">TAIWAN'S POOR-RELIEF HISTORY</span>
+        <span class="h-tag">★ 台灣節點</span>
+      </div>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-yr">清代</div>
+          <div class="tl-t">義倉、養濟院</div>
+          <div class="tl-b">官方＋宗族共同提供賑濟</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">日治</div>
+          <div class="tl-t">1929《救護法》</div>
+          <div class="tl-b">日本本土法律，部分施行於台灣；慈惠院</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">戰後</div>
+          <div class="tl-t">1943《社會救濟法》</div>
+          <div class="tl-b">中華民國法律框架，行政院救濟總署</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">1980</div>
+          <div class="tl-t">《社會救助法》制定</div>
+          <div class="tl-b">現行制度起點，建立低收入戶制度</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">近年</div>
+          <div class="tl-t">多次修法</div>
+          <div class="tl-b">1997、2000、2011、2015 等，逐步調整資格與項目</div>
+        </div>
+      </div>
+      <div class="insight">
+        關鍵思維轉變：從「賑濟、施捨」走向「公民權利」。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S-SEC-06 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第六部分：台灣的社會救助">
+    <div class="slide-inner">
+      <div class="big-num">陸</div>
+      <p class="part">PART 06</p>
+      <h2>台灣的社會救助</h2>
+      <p class="sec-en">Taiwan's Social Assistance System</p>
+      <p class="sec-q">
+        保險、救助、津貼，三條路各自負責什麼？<br/>
+        台灣的「最後安全網」長什麼樣？
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S22 INSURANCE VS ASSISTANCE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會保險 vs 社會救助">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>社會保險 vs 社會救助</h2>
+        <span class="h-en">SOCIAL INSURANCE VS. SOCIAL ASSISTANCE</span>
+      </div>
+      <div class="deep-grid">
+        <div class="deep-col">
+          <h5>社會保險 Social Insurance</h5>
+          <ul>
+            <li>事前繳費・權利取得</li>
+            <li>邏輯：「我有繳保費，我就有領取的權利」</li>
+            <li>資格：基於繳費紀錄，而非貧窮狀態</li>
+            <li>例：勞工保險、健保、國民年金、就業保險</li>
+            <li>覆蓋對象：全體就業人口（理論上）</li>
+          </ul>
+        </div>
+        <div class="deep-col">
+          <h5>社會救助 Social Assistance</h5>
+          <ul>
+            <li>事後審查・需求取得</li>
+            <li>邏輯：「我有需要，國家事後審查並補位」</li>
+            <li>資格：通過資產調查 <span class="term-en">(means-test)</span></li>
+            <li>例：低收入戶生活補助、急難救助、災害救助</li>
+            <li>覆蓋對象：經審查通過的貧窮家庭</li>
+          </ul>
+        </div>
+      </div>
+      <div class="insight">
+        <strong>第三條路｜社會津貼</strong> <span class="term-en">(universal allowance)</span>：依特定身份普及給付，如老農津貼、敬老津貼。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S23 FIVE SUBSYSTEMS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會救助法五大子制度">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>台灣《社會救助法》 ・ 五大子制度</h2>
+        <span class="h-en">FIVE SUBSYSTEMS OF THE ACT</span>
+      </div>
+      <p class="lead">主管機關：衛生福利部社會救助及社工司｜地方執行：縣市社會局處</p>
+      <div class="pair" style="grid-template-columns: repeat(5, 1fr);">
+        <div class="pair-box a"><span class="tag">1</span><h3 style="font-size: 18px;">生活扶助</h3><p style="font-size: 14px;">低收入戶、中低收入戶定期生活補助；兒少生活扶助</p></div>
+        <div class="pair-box b"><span class="tag">2</span><h3 style="font-size: 18px;">醫療補助</h3><p style="font-size: 14px;">低收醫療部分負擔減免、健保費補助、重大傷病協助</p></div>
+        <div class="pair-box c"><span class="tag">3</span><h3 style="font-size: 18px;">急難救助</h3><p style="font-size: 14px;">因失業、傷病、災害導致家庭陷困之臨時補助</p></div>
+        <div class="pair-box d"><span class="tag">4</span><h3 style="font-size: 18px;">災害救助</h3><p style="font-size: 14px;">地震、颱風、火災等天災人禍之賑助</p></div>
+        <div class="pair-box a"><span class="tag">5</span><h3 style="font-size: 18px;">以工代賑</h3><p style="font-size: 14px;">提供臨時工作機會，兼具救助與就業促進</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S24 LOW-INCOME ELIGIBILITY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="低收入戶資格給付與案例">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>低收入戶 ・ 資格、給付與案例</h2>
+        <span class="h-en">ELIGIBILITY &amp; BENEFITS</span>
+      </div>
+      <p class="lead">申請的三大門檻</p>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a"><span class="tag">門檻 1</span><h3>收入門檻</h3><p>戶內每人每月平均收入 &lt; 最低生活費</p></div>
+        <div class="pair-box b"><span class="tag">門檻 2</span><h3>動產門檻</h3><p>存款、有價證券總額 &lt; 縣市公告限額</p></div>
+        <div class="pair-box c"><span class="tag">門檻 3</span><h3>不動產門檻</h3><p>土地房屋公告現值 &lt; 縣市公告限額</p></div>
+      </div>
+      <div class="deep-col" style="margin-top: 16px;">
+        <h5>通過審查後可請領的項目</h5>
+        <ul>
+          <li>家庭生活扶助費（依縣市公告）、兒少生活扶助</li>
+          <li>全民健保保費全額補助、就醫部分負擔減免</li>
+          <li>子女托育、就學費用減免（國中小至大專各級）</li>
+          <li>租金補貼、社會住宅優先承租</li>
+          <li>其他：以工代賑、職訓津貼、安置照顧、生育補助等</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S25 CONTROVERSIES ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="制度爭議">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>制度爭議</h2>
+        <span class="h-en">CONTROVERSIES IN THE SYSTEM</span>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a">
+          <span class="tag">虛擬收入</span>
+          <h3 style="font-size: 21px;">虛擬收入</h3>
+          <p>依《社救法》第 5-1 條，被認定有工作能力但「未就業」者，以基本工資設算收入；即使實際失業仍計入，許多人被擋在門檻外。</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">家庭應計算人口</span>
+          <h3 style="font-size: 21px;">家庭應計算人口</h3>
+          <p>依血緣與戶籍計算扶養義務人；常見爭議：「我爸有錢但他不養我」、被拒絕的繼親、實質失聯仍被計入。</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">街友與隱形人口</span>
+          <h3 style="font-size: 21px;">街友與隱形人口</h3>
+          <p>依衛福部統計列冊街友約 3,000 餘人；公園清掃驅趕、寒士尾牙等議題定期出現於新聞——制度看不見的人何去何從？</p>
+        </div>
+      </div>
+      <p class="lead" style="margin-top: 14px; font-size: 14.5px; opacity: 0.6;">延伸閱讀｜黃克先《危殆生活》(2021, 台大出版中心)；芒草心慈善協會、人生百味、人安基金會的倡議。</p>
+    </div>
+  </section>
+
+  <!-- ============ S26 SUMMARY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="本講小結">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>本講小結</h2>
+        <span class="h-en">SUMMARY</span>
+      </div>
+      <div class="deep-col">
+        <ul>
+          <li>貧窮不只是錢的問題——它是經濟、社會、心理、政治、文化的多面向處境</li>
+          <li>定義決定誰被看見：絕對、相對、多面向、主觀，四種視角回答不同問題</li>
+          <li>結構與個人因素交織：工作貧窮、貧窮女性化等顯示制度的力量</li>
+          <li>從 1601 濟貧法到《社會救助法》：救助與懲罰的拉扯沒有結束</li>
+          <li>台灣社會救助：最後安全網，但虛擬收入、家庭計算、街友仍是漏接點</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S27 READING & ASSIGNMENT ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="延伸閱讀與課後作業">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>延伸閱讀與課後作業</h2>
+        <span class="h-en">FURTHER READING</span>
+      </div>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <h3>參考書目</h3>
+          <p>Lister, R. (2004). <em>Poverty</em>. Polity Press.</p>
+          <p>林立青 (2017)。《做工的人》。寶瓶文化。</p>
+          <p>黃克先 (2021)。《危殆生活：無家者的城市生存》。台大出版中心。</p>
+        </div>
+        <div class="ref-card">
+          <h3>紀錄片</h3>
+          <p>公視《我們的島》、《紀錄觀點》街友與工作貧窮系列</p>
+        </div>
+      </div>
+      <div class="insight">
+        <strong>作業</strong>｜挑一則本週新聞，用三種定義分析報導中的「貧窮」是哪一種
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<nav class="navbar">
+  <button class="nav-btn" id="prevBtn" onclick="goPrev()">← 前頁</button>
+  <div class="nav-center">
+    <span><span id="curNum">1</span> / <span id="totNum">1</span></span>
+    <div class="dots" id="dots"></div>
+  </div>
+  <button class="nav-btn" id="nextBtn" onclick="goNext()">下一頁 →</button>
+</nav>
+
+<div class="keyboard-hint">
+  <kbd>←</kbd> <kbd>→</kbd> 切換頁面　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕
+</div>
+
+<div class="toc-overlay" id="tocOverlay" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" onclick="toggleToc()">×</button>
+    <h2 class="toc-title">目次 ・ Table of Contents</h2>
+    <p class="toc-sub">點選任一條目跳到該頁</p>
+    <ul class="toc-list" id="tocList"></ul>
+  </div>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let cur = 0;
+  document.getElementById('totNum').textContent = total;
+
+  // dots & toc
+  const dotsEl = document.getElementById('dots');
+  const tocEl = document.getElementById('tocList');
+  slides.forEach((s, i) => {
+    const d = document.createElement('span');
+    d.className = 'dot' + (s.dataset.kind === 'section' ? ' is-section' : '');
+    d.title = s.dataset.label || '';
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+    const li = document.createElement('li');
+    if (s.dataset.kind === 'section') li.classList.add('is-section');
+    li.innerHTML = `<span class="num">${String(i + 1).padStart(2, '0')}</span><span class="lab">${s.dataset.label || ''}</span><span class="kind">${s.dataset.kind}</span>`;
+    li.onclick = () => { goTo(i); toggleToc(); };
+    tocEl.appendChild(li);
+  });
+
+  function goTo(n) {
+    if (n < 0 || n >= total || n === cur) return;
+    const dir = n > cur ? 1 : -1;
+    slides[cur].classList.remove('is-active');
+    if (dir > 0) slides[cur].classList.add('is-prev');
+    cur = n;
+    slides[cur].classList.remove('is-prev');
+    slides[cur].classList.add('is-active');
+    setTimeout(() => slides.forEach((s, i) => { if (i !== cur) s.classList.remove('is-prev'); }), 500);
+    update();
+  }
+  function goPrev() { goTo(cur - 1); }
+  function goNext() { goTo(cur + 1); }
+  function update() {
+    document.getElementById('curNum').textContent = cur + 1;
+    document.getElementById('prevBtn').disabled = cur === 0;
+    document.getElementById('nextBtn').disabled = cur === total - 1;
+    document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('is-active', i === cur));
+  }
+
+  function toggleToc() {
+    document.getElementById('tocOverlay').classList.toggle('is-shown');
+  }
+
+  // Keyboard + touch
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('tocOverlay').classList.contains('is-shown')) {
+      if (e.key === 'Escape') toggleToc();
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goNext(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goPrev(); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+    else if (e.key === 'Escape') toggleToc();
+    else if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+  });
+
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) dx < 0 ? goNext() : goPrev();
+  });
+
+  update();
+</script>
+
+<script>
+  // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
+  // 偶爾因 sticky header + backdrop-filter 而整頁空白。
+  // 偵測到從快取還原時，強制觸發一次重繪。
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      document.body.style.display = 'none';
+      void document.body.offsetHeight;
+      document.body.style.display = '';
+    }
+  });
+</script>
+</body>
+</html>

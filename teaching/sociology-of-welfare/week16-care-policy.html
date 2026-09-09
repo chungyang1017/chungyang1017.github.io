@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>兒童照顧與長期照顧 ・ 福利社會學 第 16 週 ・ 葉崇揚</title>
+  <meta name="description" content="福利社會學第 16 週互動講義（給大一同學）：照顧是什麼、為什麼照顧變得迫切、兒童照顧政策（現金／時間／服務）與台灣制度、長期照顧政策與台灣長照 2.0／3.0。分頁式互動簡報。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --chashitsu-bg: #e8dcc4;
+      --chashitsu-paper: #f5ecd6;
+      --chashitsu-tatami: #d8c8a8;
+      --moss: #3d5a3f;          /* 公部門 */
+      --water: #5a7a8a;         /* 商業部門 */
+      --earth: #8a6a4a;         /* 志願部門 */
+      --persimmon: #c47038;     /* 非正式部門 */
+      --accent: #c43838;        /* 朱印 */
+      --gold: #b8860b;
+      --ink: #1f1f1d;
+      --ink-soft: rgba(31,31,29,0.78);
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --line-faint: rgba(31,31,29,0.05);
+      --jp: 'Shippori Mincho', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+      --mono: 'JetBrains Mono', 'Menlo', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: var(--jp);
+      background: var(--chashitsu-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 21px;
+      line-height: 2;
+      position: relative;
+    }
+    .paper-grain {
+      position: fixed; inset: 0; pointer-events: none;
+      opacity: 0.32; mix-blend-mode: multiply; z-index: 1;
+    }
+
+    /* Top bar */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 56px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .top-left { display: flex; align-items: center; gap: 14px; }
+    .back { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .back:hover { opacity: 0.85; }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .top-title { font-family: var(--brush); font-size: 19px; letter-spacing: 0.06em; }
+    .top-title small { font-family: var(--sans); font-size: 12px; letter-spacing: 0.18em; opacity: 0.55; margin-left: 10px; }
+    .top-right { display: flex; align-items: center; gap: 18px; font-family: var(--sans); font-size: 12px; opacity: 0.6; letter-spacing: 0.15em; }
+    .toc-btn {
+      background: transparent; border: 1px solid var(--line);
+      font-family: inherit; font-size: 11.5px; letter-spacing: 0.2em;
+      padding: 5px 12px; cursor: pointer; color: var(--ink); opacity: 0.75;
+    }
+    .toc-btn:hover { background: var(--chashitsu-paper); opacity: 1; }
+
+    .progress {
+      position: fixed; top: 56px; left: 0;
+      height: 2px; background: var(--accent);
+      z-index: 49; transition: width 0.4s ease;
+    }
+
+    .deck {
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 64px;
+      overflow: hidden; z-index: 2;
+    }
+    .slide {
+      position: absolute; inset: 0;
+      padding: 36px 72px 28px;
+      overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.2,0.7,0.2,1);
+    }
+    .slide.is-prev { transform: translateX(-40px); }
+    .slide.is-active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide-inner { max-width: 1080px; margin: 0 auto; }
+
+    .navbar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 64px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .nav-btn {
+      background: transparent; border: 1px solid var(--ink);
+      font-family: var(--jp); font-size: 14px;
+      letter-spacing: 0.15em; color: var(--ink);
+      padding: 9px 22px; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover:not(:disabled) { background: var(--ink); color: var(--chashitsu-paper); }
+    .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; border-color: var(--line); }
+    .nav-center { display: flex; align-items: center; gap: 16px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.18em; opacity: 0.7; }
+    .dots { display: flex; gap: 5px; max-width: 480px; flex-wrap: wrap; justify-content: center; }
+    .dot { width: 7px; height: 7px; background: var(--line); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .dot:hover { background: var(--accent); transform: scale(1.3); }
+    .dot.is-active { background: var(--accent); }
+    .dot.is-section { width: 14px; }
+
+    /* TOC overlay */
+    .toc-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(31,31,29,0.85);
+      backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center;
+      padding: 40px;
+    }
+    .toc-overlay.is-shown { display: flex; animation: fade 0.3s; }
+    .toc-panel {
+      background: var(--chashitsu-paper);
+      max-width: 920px; width: 100%; max-height: 80vh;
+      overflow-y: auto;
+      padding: 36px 44px;
+      border: 1px solid var(--accent);
+      position: relative;
+    }
+    .toc-close {
+      position: absolute; top: 14px; right: 18px;
+      background: transparent; border: none;
+      font-size: 26px; cursor: pointer; opacity: 0.5;
+      font-family: var(--brush); color: var(--ink);
+    }
+    .toc-close:hover { opacity: 1; }
+    .toc-title { font-family: var(--brush); font-size: 26px; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .toc-sub { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 22px; }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; }
+    .toc-list li {
+      padding: 8px 0; border-bottom: 1px dashed var(--line-soft);
+      cursor: pointer; display: flex; align-items: baseline; gap: 14px;
+    }
+    .toc-list li:hover { color: var(--accent); }
+    .toc-list .num { font-family: var(--brush); font-size: 14px; color: var(--accent); min-width: 28px; }
+    .toc-list .lab { font-size: 15px; flex: 1; }
+    .toc-list .kind { font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; opacity: 0.45; }
+    .toc-list .is-section { color: var(--accent); font-weight: 600; }
+
+    /* Slide types */
+    .slide-title {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      padding: 36px 72px;
+    }
+    .slide-title .week-tag {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.4em; opacity: 0.6; margin-bottom: 24px;
+    }
+    .slide-title .seal {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      background: var(--accent); color: var(--chashitsu-paper);
+      font-family: var(--brush); font-size: 16px;
+      transform: rotate(-3deg);
+    }
+    .slide-title h1 {
+      font-family: var(--brush); font-size: 72px;
+      font-weight: 400; line-height: 1.1; letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+    .slide-title .subtitle {
+      font-family: var(--sans); font-size: 18px;
+      letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 28px;
+    }
+    .slide-title .author {
+      font-size: 18px; opacity: 0.85; line-height: 1.85;
+      max-width: 800px;
+    }
+    .meta-strip {
+      margin-top: 36px;
+      display: flex; flex-wrap: wrap; gap: 24px;
+      font-family: var(--sans); font-size: 13px; opacity: 0.6;
+      letter-spacing: 0.12em;
+    }
+
+    .slide-section {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      background: linear-gradient(135deg, rgba(196,56,56,0.06) 0%, rgba(216,200,168,0.4) 100%);
+      padding: 36px 72px;
+    }
+    .slide-section .big-num {
+      font-family: var(--brush); font-size: 240px;
+      color: var(--accent); opacity: 0.15;
+      position: absolute; bottom: 30px; right: 60px;
+      line-height: 1;
+    }
+    .slide-section .part {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.45em; opacity: 0.55; margin-bottom: 14px;
+    }
+    .slide-section h2 {
+      font-family: var(--brush); font-size: 56px;
+      font-weight: 400; letter-spacing: 0.04em;
+      line-height: 1.15; margin-bottom: 14px;
+    }
+    .slide-section .sec-en {
+      font-family: var(--sans); font-size: 16px;
+      letter-spacing: 0.3em; opacity: 0.55; font-style: italic;
+      margin-bottom: 22px;
+    }
+    .slide-section .sec-q {
+      font-size: 19px; opacity: 0.85;
+      max-width: 640px; line-height: 1.95;
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+    }
+
+    .slide-content { padding-top: 28px; }
+    .content-head {
+      margin-bottom: 22px;
+      display: flex; align-items: baseline; gap: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .content-head h2 { font-family: var(--brush); font-size: 44px; font-weight: 400; letter-spacing: 0.04em; }
+    .content-head .h-en { font-family: var(--sans); font-size: 15.5px; letter-spacing: 0.25em; opacity: 0.6; }
+    .content-head .h-tag { margin-left: auto; font-family: var(--sans); font-size: 14px; letter-spacing: 0.3em; opacity: 0.6; }
+
+    .lead {
+      font-size: 21px; line-height: 2.05; opacity: 0.9;
+      max-width: 920px; margin-bottom: 20px;
+    }
+    .lead p + p { margin-top: 16px; }
+    .lead strong { color: var(--accent); }
+    .term-en {
+      font-family: var(--sans); font-style: italic;
+      opacity: 0.7; font-size: 0.85em;
+      margin-left: 3px;
+    }
+
+    /* Scenario / story card */
+    .story {
+      background: var(--chashitsu-paper);
+      border-left: 4px solid var(--accent);
+      padding: 24px 30px;
+      margin: 18px 0;
+    }
+    .story .lab {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.3em; color: var(--accent); margin-bottom: 10px;
+    }
+    .story h3 {
+      font-family: var(--brush); font-size: 26px;
+      letter-spacing: 0.04em; margin-bottom: 14px;
+    }
+    .story p { font-size: 19px; line-height: 2; opacity: 0.9; }
+    .story p + p { margin-top: 12px; }
+
+    /* Two-column / multi-column compare */
+    .pair {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+      margin-top: 12px;
+    }
+    .pair-box {
+      background: var(--chashitsu-paper);
+      border-top: 4px solid;
+      padding: 20px 22px;
+    }
+    .pair-box.a { border-top-color: var(--moss); }
+    .pair-box.b { border-top-color: var(--water); }
+    .pair-box.c { border-top-color: var(--earth); }
+    .pair-box.d { border-top-color: var(--persimmon); }
+    .pair-box .tag {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.25em; margin-bottom: 10px;
+    }
+    .pair-box.a .tag { color: var(--moss); }
+    .pair-box.b .tag { color: var(--water); }
+    .pair-box.c .tag { color: var(--earth); }
+    .pair-box.d .tag { color: var(--persimmon); }
+    .pair-box h3 {
+      font-family: var(--brush); font-size: 25px;
+      letter-spacing: 0.04em; margin-bottom: 12px;
+    }
+    .pair-box p { font-size: 18.5px; line-height: 1.95; opacity: 0.9; }
+    .pair-box .sub { font-family: var(--sans); font-size: 13px; opacity: 0.6; letter-spacing: 0.06em; margin-bottom: 10px; }
+
+    /* Stats */
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-top: 18px;
+    }
+    .stat {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 16px 14px;
+      text-align: center;
+    }
+    .stat .n { font-family: var(--brush); font-size: 34px; color: var(--accent); line-height: 1; }
+    .stat .l { font-size: 15.5px; opacity: 0.85; margin-top: 10px; line-height: 1.6; }
+    .stat .src { font-family: var(--sans); font-size: 12px; opacity: 0.55; letter-spacing: 0.1em; margin-top: 8px; }
+
+    /* Timeline / numbered sequence */
+    .tl { margin-top: 8px; padding-left: 32px; position: relative; }
+    .tl::before { content: ""; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+    .tl-item { position: relative; padding: 14px 0 16px; border-bottom: 1px dashed var(--line-soft); }
+    .tl-item:last-child { border-bottom: none; }
+    .tl-item::before {
+      content: ""; position: absolute;
+      left: -32px; top: 22px; width: 14px; height: 14px;
+      background: var(--accent); border-radius: 50%;
+      border: 2px solid var(--chashitsu-bg);
+    }
+    .tl-yr {
+      font-family: var(--sans); font-size: 14.5px;
+      letter-spacing: 0.2em; opacity: 0.7; margin-bottom: 5px;
+    }
+    .tl-t { font-family: var(--brush); font-size: 22px; letter-spacing: 0.04em; margin-bottom: 10px; }
+    .tl-b { font-size: 18px; line-height: 1.95; opacity: 0.88; }
+
+    /* Country cards */
+    .nations {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin-top: 8px;
+    }
+    .nation {
+      background: var(--chashitsu-paper);
+      border-top: 3px solid var(--accent);
+      padding: 22px 24px;
+    }
+    .nation.b { border-top-color: var(--water); }
+    .nation.c { border-top-color: var(--earth); }
+    .nation .nm { font-family: var(--brush); font-size: 25px; letter-spacing: 0.06em; }
+    .nation .nen { font-family: var(--sans); font-size: 13.5px; letter-spacing: 0.2em; opacity: 0.65; margin: 5px 0 14px; }
+    .nation h6 { font-family: var(--sans); font-size: 13.5px; letter-spacing: 0.22em; opacity: 0.7; margin: 16px 0 8px; }
+    .nation ul { list-style: none; padding: 0; }
+    .nation li { font-size: 17px; line-height: 1.9; padding: 5px 0 5px 14px; position: relative; }
+    .nation li::before { content: "—"; position: absolute; left: 0; opacity: 0.4; }
+    .nation li strong { color: var(--accent); font-weight: 600; }
+    .nation p { font-size: 17px; line-height: 1.9; opacity: 0.9; }
+
+    /* Insight banner */
+    .insight {
+      margin-top: 18px;
+      padding: 16px 22px;
+      background: rgba(196,56,56,0.06);
+      border-left: 3px solid var(--accent);
+      font-size: 17px; line-height: 1.9;
+    }
+    .insight strong { color: var(--accent); }
+
+    /* Discussion */
+    .discuss { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .discuss-item {
+      background: var(--chashitsu-paper);
+      border-left: 3px solid var(--accent);
+      padding: 16px 22px;
+    }
+    .discuss-item .qn { font-family: var(--brush); font-size: 19px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 8px; }
+    .discuss-item .qt { font-size: 19.5px; line-height: 1.95; }
+
+    /* Animations */
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+    .keyboard-hint {
+      position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
+      font-family: var(--sans); font-size: 9.5px;
+      letter-spacing: 0.25em; opacity: 0.4;
+      pointer-events: none; z-index: 60;
+    }
+    .keyboard-hint kbd { font-family: var(--mono); font-size: 9.5px; background: rgba(31,31,29,0.08); padding: 1px 5px; margin: 0 2px; }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      body { font-size: 16.5px; }
+      .topbar { padding: 0 14px; }
+      .top-title { font-size: 15px; }
+      .top-title small { display: none; }
+      .top-right { display: none; }
+      .toc-btn { font-size: 10.5px; padding: 4px 9px; letter-spacing: 0.18em; }
+
+      .slide { padding: 26px 22px 20px; }
+      .slide-title { padding: 26px 22px; }
+      .slide-title h1 { font-size: 40px; }
+      .slide-title .subtitle { font-size: 14.5px; letter-spacing: 0.18em; }
+      .slide-title .author { font-size: 16px; }
+
+      .slide-section { padding: 26px 22px; }
+      .slide-section h2 { font-size: 36px; }
+      .slide-section .sec-en { font-size: 13px; }
+      .slide-section .sec-q { font-size: 16px; }
+      .slide-section .big-num { font-size: 130px; bottom: 20px; right: 20px; }
+
+      .content-head h2 { font-size: 24px; }
+      .content-head .h-en { font-size: 11.5px; }
+      .content-head .h-tag { display: none; }
+
+      .lead { font-size: 16px; }
+      .story h3 { font-size: 20px; }
+      .story p { font-size: 15.5px; }
+
+      .pair { grid-template-columns: 1fr; gap: 12px; }
+      .pair-box { padding: 18px 20px; }
+      .pair-box h3 { font-size: 19px; }
+      .pair-box p { font-size: 15px; }
+
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat .n { font-size: 24px; }
+      .stat .l { font-size: 12.5px; }
+
+      .tl { padding-left: 28px; }
+      .tl::before { left: 4px; }
+      .tl-item::before { left: -28px; width: 12px; height: 12px; top: 20px; }
+      .tl-t { font-size: 17px; }
+      .tl-b { font-size: 14.5px; }
+      .tl-yr { font-size: 12px; }
+
+      .nations { grid-template-columns: 1fr; }
+
+      .discuss-item .qt { font-size: 16px; }
+
+      .navbar { padding: 0 14px; height: 58px; }
+      .nav-btn { padding: 7px 14px; font-size: 13px; letter-spacing: 0.1em; }
+      .dots { max-width: 200px; }
+      .nav-center { font-size: 12px; gap: 10px; }
+
+      .toc-panel { padding: 24px 22px; }
+      .toc-list { grid-template-columns: 1fr; gap: 0; }
+      .toc-list .lab { font-size: 13.5px; }
+
+      .keyboard-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<svg class="paper-grain" aria-hidden="true">
+  <defs>
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#paper-noise)" />
+</svg>
+
+<header class="topbar">
+  <div class="top-left">
+    <a href="../../teaching-zh.html" class="back">← 教學</a>
+    <span class="top-sep">·</span>
+    <span class="top-title">兒童照顧與長期照顧<small>福利社會學 第 16 週</small></span>
+  </div>
+  <div class="top-right">
+    <span>大一同學適用</span>
+    <button class="toc-btn" onclick="toggleToc()">目次 ・ TOC</button>
+  </div>
+</header>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ============ S0 TITLE ============ -->
+  <section class="slide slide-title is-active" data-kind="title" data-label="封面">
+    <div class="slide-inner">
+      <div class="week-tag">
+        <span class="seal">學</span>
+        <span>第 16 週 ・ 6/11 ・ WEEK 16</span>
+      </div>
+      <h1>照顧，被低估的勞動</h1>
+      <p class="subtitle">CARE 2026 ・ 兒童照顧 × 長期照顧政策</p>
+      <p class="author">
+        清晨六點，有人替臥床的母親翻身、餵藥；七點半，有人趕著把孩子送到托嬰中心才奔去上班。<br/>
+        這些日復一日、不可或缺卻常被視為理所當然的事，就是「照顧」。這堂課，我們把「照顧」攤開來看。
+      </p>
+      <div class="meta-strip">
+        <span>福利社會學 ・ 葉崇揚</span>
+        <span>東吳大學社會學系</span>
+        <span>2026 春學期</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S1 OUTLINE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="本講綱要">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>這堂課，我們把「照顧」攤開來看</h2>
+        <span class="h-en">OUTLINE</span>
+        <span class="h-tag">・本講綱要</span>
+      </div>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-yr">01</div>
+          <div class="tl-t">照顧是什麼</div>
+          <div class="tl-b">從日常經驗出發，釐清照顧的概念、面向與特性。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">02</div>
+          <div class="tl-t">為什麼照顧變得迫切</div>
+          <div class="tl-b">少子化、超高齡、家庭變遷與新社會風險。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">03</div>
+          <div class="tl-t">兒童照顧政策</div>
+          <div class="tl-b">現金、時間、服務三工具與國際模式、台灣最新制度。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">04</div>
+          <div class="tl-t">長期照顧政策</div>
+          <div class="tl-b">失能風險、財源制度、台灣長照 2.0 與 3.0。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">05</div>
+          <div class="tl-t">課堂討論</div>
+          <div class="tl-b">照顧該由誰負責？國家、市場還是家庭。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S2 OBJECTIVES ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="學習目標">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>讀完這一講，你應該能夠……</h2>
+        <span class="h-en">OBJECTIVES</span>
+        <span class="h-tag">・學習目標</span>
+      </div>
+      <div class="pair" style="grid-template-columns: 1fr 1fr;">
+        <div class="pair-box a">
+          <h3>理解</h3>
+          <p>說清楚「照顧」的概念、四個面向與特性，並指出它為何長期被低估。</p>
+        </div>
+        <div class="pair-box b">
+          <h3>分析</h3>
+          <p>解釋照顧為何從家務事變成公共議題，以及台灣此刻的迫切性從何而來。</p>
+        </div>
+        <div class="pair-box c">
+          <h3>認識</h3>
+          <p>辨識兒童照顧政策的三種工具（現金、時間、服務）與四種國際模式。</p>
+        </div>
+        <div class="pair-box d">
+          <h3>掌握</h3>
+          <p>說明長期照顧的財源制度差異，並認識台灣長照 2.0 與最新的長照 3.0。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S3 SECTION 01 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第一部分：照顧是什麼">
+    <div class="slide-inner">
+      <div class="big-num">壹</div>
+      <p class="part">PART 01</p>
+      <h2>照顧是什麼</h2>
+      <p class="sec-en">WHAT IS CARE</p>
+    </div>
+  </section>
+
+  <!-- ============ S4 DEFINITION ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="照顧的定義">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>照顧，是滿足他人「無法自理」需求的活動</h2>
+        <span class="h-en">DEFINITION</span>
+        <span class="h-tag">・照顧的定義</span>
+      </div>
+      <div class="story">
+        <p>清晨六點，有人替臥床的母親翻身、餵藥；七點半，有人趕著把孩子送到托嬰中心才奔去上班。</p>
+        <p>這些日復一日、不可或缺卻常被視為理所當然的事，就是「照顧」。</p>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a">
+          <span class="tag">LABOUR</span>
+          <h3>勞動</h3>
+          <p>照顧是耗時費力的真實工作：餵食、清潔、陪伴、奔波。</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">RELATION</span>
+          <h3>關係</h3>
+          <p>照顧發生在人與人之間，帶著情感與責任，難以完全外包。</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">DISPOSITION</span>
+          <h3>心態</h3>
+          <p>照顧是一種「把他人福祉放在心上」的態度與牽掛。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S5 TRONTO ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="照顧的四個面向">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>照顧不只是動手做：Tronto 的四個面向</h2>
+        <span class="h-en">ETHIC OF CARE</span>
+        <span class="h-tag">・照顧的四個面向</span>
+      </div>
+      <p class="lead">學者 Tronto 提醒：完整的照顧是一個循環，缺一環就會出問題。</p>
+      <div class="pair" style="grid-template-columns: 1fr 1fr;">
+        <div class="pair-box a">
+          <span class="tag">ATTENTIVENESS</span>
+          <h3>關注</h3>
+          <p>察覺到「有人需要被照顧」，看見需求。</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">RESPONSIBILITY</span>
+          <h3>責任</h3>
+          <p>認為「我該回應這個需求」，主動承擔。</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">COMPETENCE</span>
+          <h3>能力</h3>
+          <p>有能力把照顧「做好」，不只是有心意。</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">RESPONSIVENESS</span>
+          <h3>回應</h3>
+          <p>被照顧者的感受被聽見、被回應。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S6 FEATURES ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="照顧的特性">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>為什麼照顧很難「像工廠一樣」管理？</h2>
+        <span class="h-en">FEATURES</span>
+        <span class="h-tag">・照顧的特性</span>
+      </div>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-yr">01</div>
+          <div class="tl-t">關係性</div>
+          <div class="tl-b">照顧長在人際關係裡，換了人、斷了關係，品質就會變。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">02</div>
+          <div class="tl-t">密集性</div>
+          <div class="tl-b">需要大量時間與精力，且往往無法同時照顧很多人。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">03</div>
+          <div class="tl-t">品質難測</div>
+          <div class="tl-b">好的照顧難以用數字衡量，溫度與尊嚴無法量化。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">04</div>
+          <div class="tl-t">需求不可預期</div>
+          <div class="tl-b">跌倒、生病、半夜哭鬧，需求隨時發生，無法事先排乾淨。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">05</div>
+          <div class="tl-t">難以外包</div>
+          <div class="tl-b">可以買到時間，卻買不到全部的情感與信任。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S7 PAID/UNPAID ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="有酬與無酬照顧">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>大量照顧是「無酬」的，而且常常隱形</h2>
+        <span class="h-en">PAID / UNPAID</span>
+        <span class="h-tag">・有酬與無酬照顧</span>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">UNPAID CARE</span>
+          <h3>無酬照顧</h3>
+          <p>
+            ・家庭內由親人提供，沒有薪水<br/>
+            ・多由女性承擔：母親、媳婦、女兒<br/>
+            ・被當成「愛的勞動」而視為理所當然<br/>
+            ・雖無價格，規模卻極龐大（隱形 GDP）
+          </p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">PAID CARE</span>
+          <h3>有酬照顧</h3>
+          <p>
+            ・托育人員、保母、幼教老師<br/>
+            ・居家照顧服務員、機構照服員<br/>
+            ・外籍看護工（台灣逾 20 萬人）<br/>
+            ・勞動條件常被低估、薪資偏低、流動率高
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S8 GENDER ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="照顧的性別化">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>照顧的重擔，為什麼總是落在女性身上？</h2>
+        <span class="h-en">GENDER</span>
+        <span class="h-tag">・照顧的性別化</span>
+      </div>
+      <div class="pair" style="grid-template-columns: 1fr 1fr;">
+        <div class="pair-box a">
+          <h3>性別分工</h3>
+          <p>源自「男主外、女主內」傳統，照顧被當成女性天職。</p>
+        </div>
+        <div class="pair-box b">
+          <h3>照顧的代價</h3>
+          <p>為照顧減少工時或離職，女性所得與退休金都受損。</p>
+        </div>
+        <div class="pair-box c">
+          <h3>照顧離職潮</h3>
+          <p>台灣每年上萬人因照顧家人離開職場，多為中年女性。</p>
+        </div>
+        <div class="pair-box d">
+          <h3>雙重束縛</h3>
+          <p>既被期待外出工作，又被要求在家照顧，兩頭燒。</p>
+        </div>
+      </div>
+      <div class="story">
+        <span class="lab">QUOTE</span>
+        <p style="font-style: italic;">「照顧不是不勞動，而是一種沒有被計價的勞動。」</p>
+        <p style="margin-top: 8px; opacity: 0.7; font-size: 15px;">— 女性主義照顧研究的核心提醒</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S9 PUBLIC ISSUE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="從私領域到公領域">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>照顧不只是「你家的事」，更是公共議題</h2>
+        <span class="h-en">PUBLIC ISSUE</span>
+        <span class="h-tag">・從私領域到公領域</span>
+      </div>
+      <p class="lead">當家庭再也撐不住照顧責任，照顧赤字（<span class="term-en">care deficit</span>）就會浮現，這時國家為什麼該介入？</p>
+      <div class="pair" style="grid-template-columns: 1fr 1fr;">
+        <div class="pair-box a">
+          <h3>外部性</h3>
+          <p>兒童是「公共財」：今天好好被照顧的孩子，是明天社會共同的人力資本。</p>
+        </div>
+        <div class="pair-box b">
+          <h3>人口風險</h3>
+          <p>照顧負擔過重會壓低生育意願，少子化與高齡化將動搖整個社會。</p>
+        </div>
+        <div class="pair-box c">
+          <h3>性別正義</h3>
+          <p>若照顧全推給女性，等於犧牲女性的就業權與平等。</p>
+        </div>
+        <div class="pair-box d">
+          <h3>經濟效益</h3>
+          <p>支持照顧讓更多人能安心就業，是投資而非單純支出。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S10 SECTION 02 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第二部分：為什麼照顧變得迫切">
+    <div class="slide-inner">
+      <div class="big-num">貳</div>
+      <p class="part">PART 02</p>
+      <h2>為什麼照顧變得迫切</h2>
+      <p class="sec-en">THE URGENCY</p>
+    </div>
+  </section>
+
+  <!-- ============ S11 NEW SOCIAL RISKS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="新舊社會風險">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>照顧，是「新社會風險」的核心</h2>
+        <span class="h-en">NEW SOCIAL RISKS</span>
+        <span class="h-tag">・新舊社會風險</span>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">工業社會 · 男性養家模式</span>
+          <h3>舊社會風險</h3>
+          <p>
+            ・失業<br/>
+            ・年老退休<br/>
+            ・疾病與傷殘<br/>
+            ・職業災害
+          </p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">後工業 · 雙薪 · 家庭變遷</span>
+          <h3>新社會風險</h3>
+          <p>
+            ・工作與照顧難以兼顧<br/>
+            ・單親家庭增加<br/>
+            ・技能不足、就業不穩<br/>
+            ・長期照顧需求上升
+          </p>
+        </div>
+      </div>
+      <div class="insight">舊風險靠保險（失業、年金）；新風險的答案，是照顧服務與家庭政策。</div>
+    </div>
+  </section>
+
+  <!-- ============ S12 LOW FERTILITY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="人口風險① 少子化">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>孩子，愈生愈少</h2>
+        <span class="h-en">LOW FERTILITY</span>
+        <span class="h-tag">・人口風險① 少子化</span>
+      </div>
+      <p class="lead">每位女性平均生不到 1 個孩子，長期是全球最低之一。</p>
+      <div class="stats">
+        <div class="stat"><div class="n">0.87</div><div class="l">總生育率（2023）</div></div>
+        <div class="stat"><div class="n">134,856</div><div class="l">2024 年出生數，當時的史上新低</div></div>
+        <div class="stat"><div class="n">107,812</div><div class="l">2025 年出生數，再創歷史新低</div></div>
+        <div class="stat"><div class="n">≈ 20%</div><div class="l">2025 出生數較前一年的下滑幅度</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S13 SUPER-AGED ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="人口風險② 超高齡社會">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>同時，我們快速變老</h2>
+        <span class="h-en">SUPER-AGED</span>
+        <span class="h-tag">・人口風險② 超高齡社會</span>
+      </div>
+      <p class="lead">台灣於 2025 年正式邁入「超高齡社會」，全國逾 467 萬名長者，每 5 人就有 1 位。</p>
+      <div class="stats" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat"><div class="n">20.06%</div><div class="l">65 歲以上人口占比（2025）</div></div>
+        <div class="stat"><div class="n">7 年</div><div class="l">老化速度全球最快之一：2018 高齡社會（14%）→ 2025 超高齡（20%），只花了 7 年</div></div>
+        <div class="stat"><div class="n">24.18%</div><div class="l">台北市占比，為全國最高</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S14 DOUBLE SQUEEZE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="雙重擠壓">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>需求暴增，人力卻銳減：照顧的死亡交叉</h2>
+        <span class="h-en">DOUBLE SQUEEZE</span>
+        <span class="h-tag">・雙重擠壓</span>
+      </div>
+      <p class="lead">少子化讓「能照顧的人」變少，高齡化讓「需要被照顧的人」變多，兩股力量同時擠壓。</p>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a">
+          <h3>被照顧需求 ↑</h3>
+          <p>失能、失智人口快速增加，照顧需求拉長且加重。</p>
+        </div>
+        <div class="pair-box b">
+          <h3>照顧人力 ↓</h3>
+          <p>工作年齡人口下降，無論家庭或專業照顧者都不足。</p>
+        </div>
+        <div class="pair-box c">
+          <h3>三明治世代</h3>
+          <p>中年人上要養老、下要顧小，蠟燭兩頭燒。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S15 CHANGING FAMILY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="家庭也變了">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>傳統「家裡有人顧」的前提，已經崩解</h2>
+        <span class="h-en">CHANGING FAMILY</span>
+        <span class="h-tag">・家庭也變了</span>
+      </div>
+      <div class="pair" style="grid-template-columns: 1fr 1fr;">
+        <div class="pair-box a">
+          <h3>雙薪成為常態</h3>
+          <p>夫妻都要上班，白天家中無人能全職照顧。</p>
+        </div>
+        <div class="pair-box b">
+          <h3>女性走入職場</h3>
+          <p>女性勞參率提高，不再被預設為照顧者。</p>
+        </div>
+        <div class="pair-box c">
+          <h3>家庭規模縮小</h3>
+          <p>少子、核心化，可分攤照顧的手足變少。</p>
+        </div>
+        <div class="pair-box d">
+          <h3>獨居長者增加</h3>
+          <p>「老老照顧」、獨居與孤獨死成為新挑戰。</p>
+        </div>
+      </div>
+      <div class="story">
+        <span class="lab">QUOTE ・ FOLBRE</span>
+        <p style="font-style: italic;">「補償親職勞動的承諾若長期欠缺，家庭無條件照顧的傳統終將被弱化。」</p>
+        <p style="margin-top: 8px; opacity: 0.7; font-size: 15px;">— Folbre 對家庭照顧危機的警告</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S16 TWO-SIDED RISK ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="照顧的雙重風險">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>政策要同時接住「兩端的人」</h2>
+        <span class="h-en">TWO-SIDED RISK</span>
+        <span class="h-tag">・照顧的雙重風險</span>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <h3>被照顧者的風險</h3>
+          <p>
+            ・失能、失智，失去自理能力<br/>
+            ・醫療與照顧費用沉重<br/>
+            ・尊嚴與生活品質受威脅
+          </p>
+        </div>
+        <div class="pair-box b">
+          <h3>照顧者的風險</h3>
+          <p>
+            ・為照顧離職、收入中斷<br/>
+            ・身心俱疲、憂鬱與健康惡化<br/>
+            ・長期孤立，甚至釀成照顧悲劇
+          </p>
+        </div>
+      </div>
+      <div class="insight">「長照悲歌」提醒我們：只看被照顧者並不夠，支持照顧者同樣是政策的責任。</div>
+    </div>
+  </section>
+
+  <!-- ============ S17 SECTION 03 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第三部分：兒童照顧政策">
+    <div class="slide-inner">
+      <div class="big-num">參</div>
+      <p class="part">PART 03</p>
+      <h2>兒童照顧政策</h2>
+      <p class="sec-en">CHILD CARE POLICY</p>
+    </div>
+  </section>
+
+  <!-- ============ S18 WHY INVEST ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="為什麼投資兒童">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>把兒童照顧當成「投資」，而不是花費</h2>
+        <span class="h-en">WHY INVEST</span>
+        <span class="h-tag">・為什麼投資兒童</span>
+      </div>
+      <p class="lead">社會投資（<span class="term-en">social investment</span>）觀點：今天投入兒童，就是培育明天的人力資本與納稅人。</p>
+      <div class="pair" style="grid-template-columns: 1fr 1fr;">
+        <div class="pair-box a">
+          <h3>促進女性就業</h3>
+          <p>讓母親能安心工作，不必在工作與孩子間二選一。</p>
+        </div>
+        <div class="pair-box b">
+          <h3>工作家庭平衡</h3>
+          <p>讓父母兼顧職涯與育兒，分擔而非犧牲。</p>
+        </div>
+        <div class="pair-box c">
+          <h3>提升生育率</h3>
+          <p>降低生養成本與阻力，讓「想生」變得「敢生」。</p>
+        </div>
+        <div class="pair-box d">
+          <h3>舒緩兒童貧窮</h3>
+          <p>及早投入，縮小孩子起跑點的差距。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S19 THREE TOOLS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="三種政策工具">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>兒童照顧政策的三件工具：現金、時間、服務</h2>
+        <span class="h-en">THREE TOOLS</span>
+        <span class="h-tag">・三種政策工具</span>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a">
+          <span class="tag">CASH</span>
+          <h3>現金</h3>
+          <p>育兒津貼、兒童津貼、生育給付，直接補貼家庭養育成本。</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">TIME</span>
+          <h3>時間</h3>
+          <p>親職假、育嬰留職停薪及津貼，讓父母「請得起假」回家照顧。</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">SERVICE</span>
+          <h3>服務</h3>
+          <p>公共與準公共托育、幼兒園，提供家庭以外可信賴的照顧。</p>
+        </div>
+      </div>
+      <div class="insight">三者搭配得宜，政策才完整；只給錢卻沒有托育，父母仍走不開。</div>
+    </div>
+  </section>
+
+  <!-- ============ S20 FOUR MODELS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="家庭政策的四種模式">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>不同國家，不同的照顧哲學</h2>
+        <span class="h-en">FOUR MODELS</span>
+        <span class="h-tag">・家庭政策的四種模式</span>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="pair-box a">
+          <span class="tag">鼓勵生育型</span>
+          <h3 style="font-size: 20px;">法國</h3>
+          <p style="font-size: 16px;">用現金、托育全力衝高生育率。</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">平等主義型</span>
+          <h3 style="font-size: 20px;">瑞典 · 北歐</h3>
+          <p style="font-size: 16px;">追求性別平等，雙薪雙照顧者。</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">傳統支持型</span>
+          <h3 style="font-size: 20px;">德國</h3>
+          <p style="font-size: 16px;">原偏向男性養家，近年積極改革。</p>
+        </div>
+        <div class="pair-box d">
+          <span class="tag">自由不干預型</span>
+          <h3 style="font-size: 20px;">英國 · 美國</h3>
+          <p style="font-size: 16px;">交給市場，政府只補弱勢家庭。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S21 CASE SWEDEN ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例：瑞典">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>瑞典：讓爸爸也回家帶小孩</h2>
+        <span class="h-en">CASE · SWEDEN</span>
+        <span class="h-tag">・案例：瑞典</span>
+      </div>
+      <div class="nations" style="grid-template-columns: 1fr; max-width: 720px;">
+        <div class="nation">
+          <div class="nm">瑞典</div>
+          <div class="nen">SWEDEN</div>
+          <h6>制度設計</h6>
+          <ul>
+            <li><strong>480 天親職假</strong>　夫妻共享、給付優渥，請假帶孩子不擔心收入。</li>
+            <li><strong>爸爸配額</strong>　保留專屬父親的月數，不用就作廢，逼出男性參與。</li>
+            <li><strong>普及公共托育</strong>　高品質、低自付，幾乎人人都用得起。</li>
+            <li><strong>雙薪雙照顧者</strong>　預設男女都工作、也都照顧，性別平等典範。</li>
+          </ul>
+          <h6>重點</h6>
+          <p>把照顧視為男女共同的責任，而非女性的義務。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S22 CASE FR/DE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例：法國與德國">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>法國衝生育、德國正轉型</h2>
+        <span class="h-en">CASE · FR / DE</span>
+        <span class="h-tag">・案例：法國與德國</span>
+      </div>
+      <div class="nations" style="grid-template-columns: 1fr 1fr;">
+        <div class="nation">
+          <div class="nm">法國</div>
+          <div class="nen">FRANCE</div>
+          <h6>政策特徵</h6>
+          <ul>
+            <li>明確以「鼓勵生育」為目標</li>
+            <li>3 歲起幾乎全面就讀公立幼兒學校（<span class="term-en">école maternelle</span>）</li>
+            <li>家庭津貼隨子女數增加，鼓勵多生</li>
+            <li>生育率長期居歐洲前段班</li>
+          </ul>
+        </div>
+        <div class="nation b">
+          <div class="nm">德國</div>
+          <div class="nen">GERMANY</div>
+          <h6>政策特徵</h6>
+          <ul>
+            <li>傳統上偏向「男性養家」模式</li>
+            <li>2007 年推出父母津貼（<span class="term-en">Elterngeld</span>）</li>
+            <li>大力擴建托育機構（<span class="term-en">Kita</span>）</li>
+            <li>從鼓勵媽媽在家，轉向支持雙薪育兒</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S23 TAIWAN CASH+TIME ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="台灣兒童照顧① 現金與時間">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>台灣現況：給錢，也給假</h2>
+        <span class="h-en">TAIWAN · CASH+TIME</span>
+        <span class="h-tag">・台灣兒童照顧① 現金與時間</span>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">現金 CASH</span>
+          <h3>育兒津貼</h3>
+          <p class="sub">父母自行照顧 · 0–未滿 5 歲</p>
+          <p>
+            <strong>第 1 胎</strong>　5,000 元 / 月<br/>
+            <strong>第 2 胎</strong>　6,000 元 / 月<br/>
+            <strong>第 3 胎起</strong>　7,000 元 / 月
+          </p>
+          <p style="margin-top: 10px;">已取消排富，多數家庭都領得到。</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">時間 TIME</span>
+          <h3>育嬰留職停薪津貼</h3>
+          <p class="sub">就業保險 · 子女滿 3 歲前</p>
+          <p><strong>8 成薪</strong>　（6 成 + 政府加發 2 成）</p>
+          <p style="margin-top: 10px;">
+            ・每位父／母各可請領 6 個月<br/>
+            ・2022 年起父母可同時請領<br/>
+            ・育嬰假最長可達 2 年
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S24 TAIWAN SERVICE ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="台灣兒童照顧② 托育服務">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>托育「三支箭」與準公共化</h2>
+        <span class="h-en">TAIWAN · SERVICE</span>
+        <span class="h-tag">・台灣兒童照顧② 托育服務</span>
+      </div>
+      <p class="lead">面對少子化，政府以三支箭擴大托育：擴大育兒津貼、托育公共化、準公共化。</p>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">準公共化</span>
+          <h3>私立保母／托嬰中心簽約</h3>
+          <p class="sub">政府與私立保母／托嬰中心簽約 · 未滿 3 歲</p>
+          <p>
+            <strong>第 1 胎</strong>　13,000 元 / 月<br/>
+            <strong>第 2 胎</strong>　14,000 元 / 月<br/>
+            <strong>第 3 胎起</strong>　15,000 元 / 月
+          </p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">公共化</span>
+          <h3>政府設置托育</h3>
+          <p class="sub">政府設置、平價可負擔</p>
+          <p>
+            ・公設民營托嬰中心<br/>
+            ・社區公共托育家園（類家庭式）<br/>
+            ・送公共托育補助 7,000 元 / 月起<br/>
+            ・目標：減輕家外送托的經濟負擔
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S25 SECTION 04 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第四部分：長期照顧政策">
+    <div class="slide-inner">
+      <div class="big-num">肆</div>
+      <p class="part">PART 04</p>
+      <h2>長期照顧政策</h2>
+      <p class="sec-en">LONG-TERM CARE</p>
+    </div>
+  </section>
+
+  <!-- ============ S26 WHAT IS LTC ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="長照是什麼">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>長期照顧，回應的是「失能」風險</h2>
+        <span class="h-en">WHAT IS LTC</span>
+        <span class="h-tag">・長照是什麼</span>
+      </div>
+      <p class="lead">當一個人因年老、疾病或意外而無法自理生活，就需要長時間、跨專業的照顧。</p>
+      <div class="pair" style="grid-template-columns: 1fr 1fr;">
+        <div class="pair-box a">
+          <span class="tag">ADLs</span>
+          <h3>基本日常活動</h3>
+          <p>吃飯、洗澡、上廁所、穿衣、移位，維持生命最基本的自理。</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">IADLs</span>
+          <h3>工具性日常活動</h3>
+          <p>購物、理財、備餐、交通、用藥管理，是獨立生活所需的能力。</p>
+        </div>
+      </div>
+      <div class="insight">1991 聯合國老人綱領五原則：獨立、參與、照顧、自我實現、尊嚴。</div>
+    </div>
+  </section>
+
+  <!-- ============ S27 HOW TO PAY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="長照怎麼付錢">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>兩條路：社會保險制 vs 稅收制</h2>
+        <span class="h-en">HOW TO PAY</span>
+        <span class="h-tag">・長照怎麼付錢</span>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">社會保險制</span>
+          <h3>繳保費、領服務</h3>
+          <p>
+            ・全民（或一定年齡）強制納保<br/>
+            ・給付權利明確、財源穩定<br/>
+            ・代表：日本介護保險、德國長照保險
+          </p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">稅收制</span>
+          <h3>用稅金支應 ← 台灣的選擇</h3>
+          <p>
+            ・由政府預算與指定稅收支應<br/>
+            ・台灣長照基金：菸稅、遺贈稅、房地合一稅等<br/>
+            ・代表：北歐、台灣（未採長照保險）
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S28 CASE JAPAN ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例：日本介護保險">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>日本介護保險（2000）：亞洲長照的典範</h2>
+        <span class="h-en">CASE · JAPAN</span>
+        <span class="h-tag">・案例：日本介護保險</span>
+      </div>
+      <div class="nations" style="grid-template-columns: 1fr; max-width: 720px;">
+        <div class="nation">
+          <div class="nm">日本</div>
+          <div class="nen">JAPAN ・ 介護保險 2000</div>
+          <h6>制度設計</h6>
+          <ul>
+            <li><strong>全民強制納保</strong>　40 歲以上一律繳保費，建立穩定財源。</li>
+            <li><strong>要介護認定</strong>　由專業評估失能等級，依級給予不同額度。</li>
+            <li><strong>使用者部分負擔</strong>　原則自付 1 成，高所得者提高到 2–3 成。</li>
+            <li><strong>地域包括照顧</strong>　在社區就近整合醫療、照護與生活支援。</li>
+          </ul>
+          <h6>重點</h6>
+          <p>2000 開辦之年。台灣長照曾以日本經驗為借鏡，但最終選擇稅收制。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S29 TAIWAN LTC 2.0 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="台灣長照 2.0">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>長照 2.0：四包錢，撐住失能家庭</h2>
+        <span class="h-en">TAIWAN · LTC 2.0</span>
+        <span class="h-tag">・台灣長照 2.0</span>
+      </div>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-yr">01</div>
+          <div class="tl-t">照顧及專業服務</div>
+          <div class="tl-b">居家服務、日間照顧、家庭托顧、專業服務；依失能等級給額度。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">02</div>
+          <div class="tl-t">交通接送</div>
+          <div class="tl-b">協助失能者往返就醫與服務，每月約 1,680–2,400 元。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">03</div>
+          <div class="tl-t">輔具及居家無障礙</div>
+          <div class="tl-b">輪椅、扶手、無障礙改造等，每 3 年最高 4 萬元。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">04</div>
+          <div class="tl-t">喘息服務</div>
+          <div class="tl-b">讓家庭照顧者能喘口氣，每年最高約 4.8 萬元。</div>
+        </div>
+      </div>
+      <div class="insight">補助比例依經濟狀況分級：低收入全額、一般戶部分負擔。</div>
+    </div>
+  </section>
+
+  <!-- ============ S30 ABC NETWORK ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="長照 2.0 服務輸送">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>把服務鋪到「巷弄裡」：社區整體照顧 ABC</h2>
+        <span class="h-en">ABC NETWORK</span>
+        <span class="h-tag">・長照 2.0 服務輸送</span>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a">
+          <span class="tag">A 級</span>
+          <h3>社區整合型服務中心</h3>
+          <p>在地的「長照旗艦店」，統籌資源、擬訂照顧計畫。</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">B 級</span>
+          <h3>複合型服務中心</h3>
+          <p>提供日間照顧、居家服務等多元在地服務。</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">C 級</span>
+          <h3>巷弄長照站</h3>
+          <p>走進社區巷弄，提供關懷訪視、共餐與預防活動。</p>
+        </div>
+      </div>
+      <div class="insight">目標：讓長照「找得到、看得到、用得到」。</div>
+    </div>
+  </section>
+
+  <!-- ============ S31 TAIWAN LTC 3.0 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="最新升級：長照 3.0">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>長照 3.0：2026 年分階段上路</h2>
+        <span class="h-en">TAIWAN · LTC 3.0</span>
+        <span class="h-tag">・最新升級：長照 3.0</span>
+      </div>
+      <p class="lead">行政院於 2025 年 12 月 31 日核定《長期照顧十年計畫 3.0》，自 2026 年起分三階段推動。</p>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-yr">2025.09</div>
+          <div class="tl-t">第一階段</div>
+          <div class="tl-b">放寬聘僱外籍看護工家庭使用社區式服務、調升營養照護。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">2026.01</div>
+          <div class="tl-t">第二階段</div>
+          <div class="tl-b">服務對象擴大：納入年輕型失智症者與急性後期照護（<span class="term-en">PAC</span>）。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">2026.07</div>
+          <div class="tl-t">第三階段</div>
+          <div class="tl-b">每 3 年 6 萬元，租賃智慧科技輔具。</div>
+        </div>
+      </div>
+      <div class="insight">願景：健康老化、在地安老、安寧善終；並更強調對「家庭照顧者」的支持。</div>
+    </div>
+  </section>
+
+  <!-- ============ S32 SECTION 05 ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第五部分：課堂討論">
+    <div class="slide-inner">
+      <div class="big-num">伍</div>
+      <p class="part">PART 05</p>
+      <h2>課堂討論</h2>
+      <p class="sec-en">DISCUSSION</p>
+    </div>
+  </section>
+
+  <!-- ============ S33 DISCUSS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="課堂討論">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>三個沒有標準答案的問題</h2>
+        <span class="h-en">DISCUSS</span>
+        <span class="h-tag">・課堂討論</span>
+      </div>
+      <div class="discuss">
+        <div class="discuss-item">
+          <div class="qn">Q1</div>
+          <div class="qt"><strong>照顧該由誰負責？</strong>家庭、市場，還是國家？三者的界線應該畫在哪裡？</div>
+        </div>
+        <div class="discuss-item">
+          <div class="qn">Q2</div>
+          <div class="qt"><strong>台灣為何不走長照保險？</strong>選擇稅收制而非社會保險制，你認為合理嗎？財源夠穩定嗎？</div>
+        </div>
+        <div class="discuss-item">
+          <div class="qn">Q3</div>
+          <div class="qt"><strong>兒童照顧的首要目標是什麼？</strong>該以「提升生育率」為主，還是以「性別平等」為主？</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S34 SUMMARY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="本講小結">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>帶走這五句話</h2>
+        <span class="h-en">SUMMARY</span>
+        <span class="h-tag">・本講小結</span>
+      </div>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-yr">01</div>
+          <div class="tl-b">照顧是一種真實卻常被低估、且高度性別化的勞動。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">02</div>
+          <div class="tl-b">少子化與超高齡讓照顧需求暴增、人力銳減，這正是新社會風險的核心。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">03</div>
+          <div class="tl-b">兒童照顧政策有三件工具：現金、時間、服務，國際上各有不同模式。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">04</div>
+          <div class="tl-b">台灣以育兒津貼、育嬰留停與托育準公共化支持育兒家庭。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-yr">05</div>
+          <div class="tl-b">長照採稅收制，從長照 2.0 的四包錢與 ABC，走向 2026 年的長照 3.0。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<nav class="navbar">
+  <button class="nav-btn" id="prevBtn" onclick="goPrev()">← 前頁</button>
+  <div class="nav-center">
+    <span><span id="curNum">1</span> / <span id="totNum">35</span></span>
+    <div class="dots" id="dots"></div>
+  </div>
+  <button class="nav-btn" id="nextBtn" onclick="goNext()">下一頁 →</button>
+</nav>
+
+<div class="keyboard-hint">
+  <kbd>←</kbd> <kbd>→</kbd> 切換頁面　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕
+</div>
+
+<div class="toc-overlay" id="tocOverlay" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" onclick="toggleToc()">×</button>
+    <h2 class="toc-title">目次 ・ Table of Contents</h2>
+    <p class="toc-sub">點選任一條目跳到該頁</p>
+    <ul class="toc-list" id="tocList"></ul>
+  </div>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let cur = 0;
+  document.getElementById('totNum').textContent = total;
+
+  // dots & toc
+  const dotsEl = document.getElementById('dots');
+  const tocEl = document.getElementById('tocList');
+  slides.forEach((s, i) => {
+    const d = document.createElement('span');
+    d.className = 'dot' + (s.dataset.kind === 'section' ? ' is-section' : '');
+    d.title = s.dataset.label || '';
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+    const li = document.createElement('li');
+    if (s.dataset.kind === 'section') li.classList.add('is-section');
+    li.innerHTML = `<span class="num">${String(i + 1).padStart(2, '0')}</span><span class="lab">${s.dataset.label || ''}</span><span class="kind">${s.dataset.kind}</span>`;
+    li.onclick = () => { goTo(i); toggleToc(); };
+    tocEl.appendChild(li);
+  });
+
+  function goTo(n) {
+    if (n < 0 || n >= total || n === cur) return;
+    const dir = n > cur ? 1 : -1;
+    slides[cur].classList.remove('is-active');
+    if (dir > 0) slides[cur].classList.add('is-prev');
+    cur = n;
+    slides[cur].classList.remove('is-prev');
+    slides[cur].classList.add('is-active');
+    setTimeout(() => slides.forEach((s, i) => { if (i !== cur) s.classList.remove('is-prev'); }), 500);
+    update();
+  }
+  function goPrev() { goTo(cur - 1); }
+  function goNext() { goTo(cur + 1); }
+  function update() {
+    document.getElementById('curNum').textContent = cur + 1;
+    document.getElementById('prevBtn').disabled = cur === 0;
+    document.getElementById('nextBtn').disabled = cur === total - 1;
+    document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('is-active', i === cur));
+  }
+
+  function toggleToc() {
+    document.getElementById('tocOverlay').classList.toggle('is-shown');
+  }
+
+  // Keyboard + touch
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('tocOverlay').classList.contains('is-shown')) {
+      if (e.key === 'Escape') toggleToc();
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goNext(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goPrev(); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+    else if (e.key === 'Escape') toggleToc();
+    else if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+  });
+
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) dx < 0 ? goNext() : goPrev();
+  });
+
+  update();
+</script>
+
+<script>
+  // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
+  // 偶爾因 sticky header + backdrop-filter 而整頁空白。
+  // 偵測到從快取還原時，強制觸發一次重繪。
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      document.body.style.display = 'none';
+      void document.body.offsetHeight;
+      document.body.style.display = '';
+    }
+  });
+</script>
+</body>
+</html>
