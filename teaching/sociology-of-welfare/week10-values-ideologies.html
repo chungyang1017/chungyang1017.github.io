@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>誰應該取得福利？ ・ 福利社會學 第 3 週 ・ 葉崇揚</title>
-  <meta name="description" content="福利社會學第 3 週互動講義（給大一同學）：誰應該取得福利？公民資格、需求與風險如何決定福利分配的判準，普及性與選擇性福利的取捨，分頁式互動簡報。" />
+  <title>福利的價值與意識形態 ・ 福利社會學 第 10 週 ・ 葉崇揚</title>
+  <meta name="description" content="福利社會學第 10 週互動講義（給大一同學）：福利的價值與意識形態——分配政治、意識型態、市場模型與城邦模型，以及正義、平等、自由三大規範性價值，以台灣個案為主的分頁式互動簡報。" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -282,6 +282,7 @@
     .pair-box .tag {
       font-family: var(--sans); font-size: 13.5px;
       letter-spacing: 0.25em; margin-bottom: 10px;
+      display: block;
     }
     .pair-box.a .tag { color: var(--moss); }
     .pair-box.b .tag { color: var(--water); }
@@ -665,22 +666,6 @@
       content: "・"; position: absolute; left: 0; opacity: 0.5;
     }
 
-    /* Need pyramid (Maslow) — supplementary diagram, same palette as template */
-    .pyramid { margin-top: 14px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
-    .pyr-row {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      padding: 14px 10px; text-align: center;
-      color: var(--chashitsu-paper);
-      font-family: var(--jp); font-size: 17px;
-      line-height: 1.4;
-    }
-    .pyr-row .pyr-en { display: block; font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.15em; opacity: 0.8; margin-top: 3px; }
-    .pyr-row.r1 { width: 100%; background: var(--moss); }
-    .pyr-row.r2 { width: 82%; background: var(--water); }
-    .pyr-row.r3 { width: 64%; background: var(--earth); }
-    .pyr-row.r4 { width: 46%; background: var(--persimmon); }
-    .pyr-row.r5 { width: 30%; background: var(--accent); }
-
     /* Animations */
     @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
     @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
@@ -773,9 +758,6 @@
       .ref-grid { grid-template-columns: 1fr; }
       .ref-card p { font-size: 13.5px; }
 
-      .pyr-row { font-size: 14px; padding: 11px 8px; }
-      .pyr-row.r1, .pyr-row.r2, .pyr-row.r3, .pyr-row.r4, .pyr-row.r5 { width: 96%; }
-
       .navbar { padding: 0 14px; height: 58px; }
       .nav-btn { padding: 7px 14px; font-size: 13px; letter-spacing: 0.1em; }
       .dots { max-width: 200px; }
@@ -805,7 +787,7 @@
   <div class="top-left">
     <a href="../../teaching-zh.html" class="back">← 教學</a>
     <span class="top-sep">·</span>
-    <span class="top-title">誰應該取得福利？<small>福利社會學 第 3 週</small></span>
+    <span class="top-title">福利的價值與意識形態<small>福利社會學 第 10 週</small></span>
   </div>
   <div class="top-right">
     <span>大一同學適用</span>
@@ -817,18 +799,18 @@
 
 <div class="deck" id="deck">
 
-  <!-- ============ S0 TITLE ============ -->
+  <!-- ============ S0 TITLE (pptx 1) ============ -->
   <section class="slide slide-title is-active" data-kind="title" data-label="封面">
     <div class="slide-inner">
       <div class="week-tag">
         <span class="seal">學</span>
-        <span>第 3 週 ・ 3/12 ・ WEEK 3</span>
+        <span>第 10 週 ・ 4/30 ・ WEEK 10</span>
       </div>
-      <h1>誰應該取得福利？</h1>
-      <p class="subtitle">CITIZENSHIP, NEED AND RISK — 公民資格、需求與風險</p>
+      <h1>福利的價值與意識形態</h1>
+      <p class="subtitle">VALUES AND IDEOLOGIES OF WELFARE</p>
       <p class="author">
-        社會政策具有道德性——它每天都在區分「值得（deserving）」與「不值得（undeserving）」領取救濟的個人或群體。<br/>
-        這堂課要問的是：這個判準究竟從何而來？
+        社會政策不只是技術，更是一連串的「選擇」。<br/>
+        健保保費要漲嗎？年金應該砍嗎？每一個政策問題的背後，都有一組「價值判斷」。
       </p>
       <div class="meta-strip">
         <span>福利社會學 ・ 葉崇揚</span>
@@ -838,796 +820,780 @@
     </div>
   </section>
 
-  <!-- ============ S1 ANALYTICAL FRAMEWORK ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="分析架構的面向">
+  <!-- ============ S1 LEARNING OBJECTIVES (pptx 2) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="本週學習目標">
     <div class="slide-inner">
       <div class="content-head">
-        <h2>分析架構的面向</h2>
-        <span class="h-en">DIMENSIONS OF ANALYSIS</span>
+        <h2>本週學習目標</h2>
+        <span class="h-en">LEARNING OBJECTIVES</span>
       </div>
-      <p class="lead">分析一項福利政策，可以從四個面向切入。這週我們聚焦第一個面向——<strong>WHO</strong>：誰能拿到福利。</p>
-      <div class="sectors">
-        <div class="sect s-state">
-          <div class="glyph">誰</div>
-          <h4>WHO</h4>
-          <div class="en">分配的基礎</div>
-          <p class="ex">從選擇性到普及性</p>
-        </div>
-        <div class="sect s-market">
-          <div class="glyph">何</div>
-          <h4>WHAT</h4>
-          <div class="en">供給的分配型態</div>
-          <p class="ex">從無形到具體</p>
-        </div>
-        <div class="sect s-volun">
-          <div class="glyph">如</div>
-          <h4>HOW</h4>
-          <div class="en">輸送策略</div>
-          <p class="ex">從公部門到私人機構</p>
-        </div>
-        <div class="sect s-info">
-          <div class="glyph">錢</div>
-          <h4>FINANCE</h4>
-          <div class="en">財務籌措</div>
-          <p class="ex">稅收 vs. 保費</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ S2 MORALITY OF SOCIAL POLICY ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="社會政策的道德性">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>社會政策的道德性</h2>
-        <span class="h-en">THE MORALITY OF SOCIAL POLICY</span>
-      </div>
-      <p class="lead">社會政策具有道德性——它不只是分配資源，也在分辨<strong>誰值得接受福利（救濟）</strong>。</p>
-      <div class="pair">
+      <div class="pair" style="grid-template-columns: repeat(4, 1fr);">
         <div class="pair-box a">
-          <span class="tag">DESERVING</span>
-          <h3>值得領取</h3>
-          <p>符合社會認可標準，被認為理應獲得福利救濟的個人或群體。</p>
+          <span class="tag">01</span>
+          <h3 style="font-size: 20px;">理解社會政策</h3>
+          <p style="font-size: 16px;">能說明社會政策本質上是「分配的政治結果」，而非單純的技術設計。</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">02</span>
+          <h3 style="font-size: 20px;">掌握意識型態</h3>
+          <p style="font-size: 16px;">能解釋意識型態如何形塑人們對福利的看法，並反映在政策設計上。</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">03</span>
+          <h3 style="font-size: 20px;">辨識三大價值</h3>
+          <p style="font-size: 16px;">能區辨「正義、平等、自由」三大規範性價值的不同主張與相互張力。</p>
         </div>
         <div class="pair-box d">
-          <span class="tag">UNDESERVING</span>
-          <h3>不值得領取</h3>
-          <p>被認為不符合條件，或本身應為自身困境負責的個人或群體。</p>
+          <span class="tag">04</span>
+          <h3 style="font-size: 20px;">應用於台灣個案</h3>
+          <p style="font-size: 16px;">能將上述概念應用於台灣健保、年金、長照等具體政策爭議。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ S3 DESERVINGNESS CRITERIA (FLIP) ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="Deservingness 判別標準">
+  <!-- ============ S2 WHY VALUES MATTER (pptx 3) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="為什麼大一就要談價值">
     <div class="slide-inner">
       <div class="content-head">
-        <h2>Deservingness ・ 判別標準</h2>
-        <span class="h-en">CRITERIA OF DESERVINGNESS</span>
-        <span class="h-tag">點選翻面</span>
-      </div>
-      <p class="lead">誰「值得」領取福利，由五個判準共同決定。點選卡片看每個判準的定義。</p>
-      <div class="flips" style="grid-template-columns: repeat(5, 1fr);">
-        <div class="flip" onclick="this.classList.toggle('is-flipped')">
-          <div class="flip-inner">
-            <div class="flip-face flip-front">
-              <h4>控制<br/><span class="term-en">(Control)</span></h4>
-              <p>判準 1/5</p>
-              <span class="hint">點選看定義</span>
-            </div>
-            <div class="flip-face flip-back">
-              <h4>Control</h4>
-              <ul><li>對自身需求狀況的控制程度：控制力越低，越值得救濟</li></ul>
-            </div>
-          </div>
-        </div>
-        <div class="flip" onclick="this.classList.toggle('is-flipped')">
-          <div class="flip-inner">
-            <div class="flip-face flip-front">
-              <h4>需求<br/><span class="term-en">(Need)</span></h4>
-              <p>判準 2/5</p>
-              <span class="hint">點選看定義</span>
-            </div>
-            <div class="flip-face flip-back">
-              <h4>Need</h4>
-              <ul><li>需求等級的高低：需求越迫切，越值得接受協助</li></ul>
-            </div>
-          </div>
-        </div>
-        <div class="flip" onclick="this.classList.toggle('is-flipped')">
-          <div class="flip-inner">
-            <div class="flip-face flip-front">
-              <h4>認同<br/><span class="term-en">(Identity)</span></h4>
-              <p>判準 3/5</p>
-              <span class="hint">點選看定義</span>
-            </div>
-            <div class="flip-face flip-back">
-              <h4>Identity</h4>
-              <ul><li>與福利供給者之間的連帶感：越像「我們」，越值得救濟</li></ul>
-            </div>
-          </div>
-        </div>
-        <div class="flip" onclick="this.classList.toggle('is-flipped')">
-          <div class="flip-inner">
-            <div class="flip-face flip-front">
-              <h4>態度<br/><span class="term-en">(Attitude)</span></h4>
-              <p>判準 4/5</p>
-              <span class="hint">點選看定義</span>
-            </div>
-            <div class="flip-face flip-back">
-              <h4>Attitude</h4>
-              <ul><li>對工作與服從規範的態度：態度越配合，越值得救濟</li></ul>
-            </div>
-          </div>
-        </div>
-        <div class="flip" onclick="this.classList.toggle('is-flipped')">
-          <div class="flip-inner">
-            <div class="flip-face flip-front">
-              <h4>互惠<br/><span class="term-en">(Reciprocity)</span></h4>
-              <p>判準 5/5</p>
-              <span class="hint">點選看定義</span>
-            </div>
-            <div class="flip-face flip-back">
-              <h4>Reciprocity</h4>
-              <ul><li>互惠程度：對社會貢獻越多，就越值得從社會獲得回報</li></ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ S4 SECTION: CITIZENSHIP ============ -->
-  <section class="slide slide-section" data-kind="section" data-label="第一部分：公民資格">
-    <div class="slide-inner">
-      <div class="big-num">壹</div>
-      <p class="part">PART 01</p>
-      <h2>公民資格</h2>
-      <p class="sec-en">Identity and Citizenship</p>
-      <p class="sec-q">
-        領取者與供給者之間的連帶關係——<br/>
-        越像「我們（us）」，就越值得救濟。誰是「我們」，是怎麼被決定的？
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ S5 IDENTITY ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="Identity：誰是我們">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>Identity（認同）・ 誰是我們</h2>
-        <span class="h-en">WHO COUNTS AS "US"</span>
+        <h2>為什麼大一就要談「價值」？</h2>
+        <span class="h-en">WHY VALUES MATTER FROM DAY ONE</span>
       </div>
       <p class="lead">
-        領取者與供給者之間的連帶關係——越像「我們（<span class="term-en">us</span>）」，就越值得救濟。
+        社會政策不只是技術，更是「選擇」。健保保費要漲嗎？年金應該砍嗎？低收入戶補助要不要排富？每一個政策問題的背後，都有一組「價值判斷」。
       </p>
       <div class="story">
-        <span class="lab">公民資格 ・ CITIZENSHIP</span>
-        <h3>公民資格作為「我們」的界線</h3>
-        <p>公民資格是界定「我們」的核心機制之一，決定誰有資格作為福利供給的對象，以及哪些群體被排除於社會保障體系之外。</p>
+        <span class="lab">本課的關鍵問題</span>
+        <p>為什麼有些人支持擴大福利？有些人卻強烈反對？為什麼同樣是「公平」，左派與右派的解讀完全不同？為什麼台灣的年金改革會如此激烈？</p>
       </div>
+      <p class="lead">學會分析價值，是成為一個「會思考的公民」的第一步。</p>
     </div>
   </section>
 
-  <!-- ============ S6 MARSHALL QUOTE ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="公民資格（Marshall）">
+  <!-- ============ S3 ROADMAP (pptx 4) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="今日課程地圖">
     <div class="slide-inner">
       <div class="content-head">
-        <h2>公民資格</h2>
-        <span class="h-en">T. H. MARSHALL</span>
-      </div>
-      <div class="story">
-        <span class="lab">QUOTE ・ T. H. Marshall</span>
-        <h3>公民資格的定義</h3>
-        <p style="font-style: italic;">「公民資格指的是一個共同體中所有成員都享有的資格，成員因其資格而被賦予相對的權利與義務。」</p>
-        <p style="margin-top: 8px; opacity: 0.7; font-size: 15px;">— T. H. Marshall</p>
-      </div>
-      <p class="lead">
-        從公民資格到人權：當代人權論述主張，社會成員的資格超越民族國家的邊界，以「人之所以為人」的身份為基礎，而非僅取決於公民身份。
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ S7 CIVIL RIGHTS HISTORY TABLE ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="公民權利的歷史發展">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>公民權利的歷史發展</h2>
-        <span class="h-en">THE HISTORICAL DEVELOPMENT OF CITIZENSHIP RIGHTS</span>
-      </div>
-      <table class="ctab">
-        <thead>
-          <tr>
-            <th>時期</th>
-            <th>公民權</th>
-            <th>政治權</th>
-            <th>社會權</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>十八世紀</td><td>個人自由、言論、財產、契約、司法</td><td>—</td><td>—</td></tr>
-          <tr><td>十九世紀</td><td>—</td><td>參與政治組織、投票、議會代表</td><td>—</td></tr>
-          <tr><td>二十世紀</td><td>—</td><td>—</td><td>經濟福利、社會安全、文明生活水準</td></tr>
-          <tr><td>相應制度</td><td>法院</td><td>議會／地方政府</td><td>教育體系／社會服務</td></tr>
-        </tbody>
-      </table>
-      <p class="lead" style="margin-top: 16px; font-size: 15px; opacity: 0.65;">資料來源：Marshall（1963）</p>
-    </div>
-  </section>
-
-  <!-- ============ S8 THREE CONCEPTS OF RIGHTS ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="公民資格的三種權利概念">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>公民資格的三種權利概念</h2>
-        <span class="h-en">THREE CONCEPTS OF CITIZENSHIP RIGHTS</span>
+        <h2>今日課程地圖</h2>
+        <span class="h-en">ROADMAP</span>
       </div>
       <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
         <div class="pair-box a">
-          <span class="tag">CIVIL RIGHTS</span>
-          <h3>公民權</h3>
-          <p>保障個人自由所需的權利，包括人身、言論、思想及信仰自由，以及私有財產、締結契約與受司法保護的權利。</p>
-          <p style="margin-top: 10px; font-size: 15px; opacity: 0.7;">相應制度：法院</p>
+          <span class="tag">PART 01</span>
+          <h3 style="font-size: 19px;">社會政策與分配政治</h3>
+          <p style="font-size: 15px;">Lasswell ・ 誰得到什麼？</p>
         </div>
         <div class="pair-box b">
-          <span class="tag">POLITICAL RIGHTS</span>
-          <h3>政治權</h3>
-          <p>參與政治力運作的權利，包括加入政治組織及投票選舉的資格。</p>
-          <p style="margin-top: 10px; font-size: 15px; opacity: 0.7;">相應制度：議會及地方政府</p>
+          <span class="tag">PART 02</span>
+          <h3 style="font-size: 19px;">意識型態的概念</h3>
+          <p style="font-size: 15px;">George &amp; Wilding</p>
         </div>
         <div class="pair-box c">
-          <span class="tag">SOCIAL RIGHTS</span>
-          <h3>社會權</h3>
-          <p>適度經濟福利與安全、完整參與社會遺業，以及享有社會普遍標準文明生活的權利。</p>
-          <p style="margin-top: 10px; font-size: 15px; opacity: 0.7;">相應制度：教育體系與社會服務</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ S9 SECTION: NEED ============ -->
-  <section class="slide slide-section" data-kind="section" data-label="第二部分：需求">
-    <div class="slide-inner">
-      <div class="big-num">貳</div>
-      <p class="part">PART 02</p>
-      <h2>需求</h2>
-      <p class="sec-en">Need</p>
-      <p class="sec-q">
-        需求的等級越高、越迫切，就越值得獲得社會救濟。<br/>
-        但「需求」本身要怎麼界定、怎麼分類？
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ S10 NEED VS DEMAND / WANT ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="Need：需求">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>Need（需求）</h2>
-        <span class="h-en">NEED, DEMAND, AND WANT</span>
-      </div>
-      <div class="pair">
-        <div class="pair-box a">
-          <span class="tag">NEED vs. DEMAND</span>
-          <h3>需求 vs. 需要</h3>
-          <p>Erskine（2002）認為「需要」（<span class="term-en">demand</span>）是市場分配資源的依據，「需求」（<span class="term-en">need</span>）則是社會政策分配資源的準則。</p>
-        </div>
-        <div class="pair-box b">
-          <span class="tag">NEED vs. WANT</span>
-          <h3>需求 vs. 欲求</h3>
-          <p>欲求的範圍較廣，人們可能想要某物，但那並非必需品；反之，人們可能對某物有需求，卻因不願接受而刻意迴避。</p>
-        </div>
-      </div>
-      <div class="insight">
-        <strong>需求等級：</strong>需求的等級越高、越迫切，就越值得獲得社會救濟，此為福利分配的重要依據。
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ S11 MASLOW ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="心理學觀點的需求：Maslow">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>心理學觀點的需求</h2>
-        <span class="h-en">MASLOW（1943）</span>
-      </div>
-      <p class="lead">生理或安全屬於生存的基本需求；愛、自尊與自我實現則是個人持續參與社會生活的重要趨力。</p>
-      <div class="pyramid">
-        <div class="pyr-row r1">生理需求<span class="pyr-en">PHYSIOLOGICAL</span></div>
-        <div class="pyr-row r2">安全需求<span class="pyr-en">SAFETY</span></div>
-        <div class="pyr-row r3">愛與歸屬<span class="pyr-en">LOVE / BELONGING</span></div>
-        <div class="pyr-row r4">自尊<span class="pyr-en">ESTEEM</span></div>
-        <div class="pyr-row r5">自我實現<span class="pyr-en">SELF-ACTUALIZATION</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ S12 BRADSHAW ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="Bradshaw的需求分類">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>Bradshaw 的需求分類</h2>
-        <span class="h-en">BRADSHAW'S TAXONOMY OF NEED</span>
-      </div>
-      <div class="pair" style="grid-template-columns: repeat(4, 1fr);">
-        <div class="pair-box a">
-          <span class="tag">01</span>
-          <h3 style="font-size: 21px;">規範性需求</h3>
-          <p style="font-size: 16px;">由專業人員、行政科層或科學家所界定，帶有父權主義的傾向。</p>
-        </div>
-        <div class="pair-box b">
-          <span class="tag">02</span>
-          <h3 style="font-size: 21px;">感覺性需求</h3>
-          <p style="font-size: 16px;">等同於欲求，受個人認知差異所影響，測量結果可能有所誇大。</p>
-        </div>
-        <div class="pair-box c">
-          <span class="tag">03</span>
-          <h3 style="font-size: 21px;">表達性需求</h3>
-          <p style="font-size: 16px;">等同於需要，亦即將感覺性需求付諸行動的實際展現。</p>
+          <span class="tag">PART 03</span>
+          <h3 style="font-size: 19px;">兩種社會模型</h3>
+          <p style="font-size: 15px;">Stone ・ 市場 vs. 城邦</p>
         </div>
         <div class="pair-box d">
-          <span class="tag">04</span>
-          <h3 style="font-size: 21px;">比較性需求</h3>
-          <p style="font-size: 16px;">透過分析接受服務對象之差異而加以界定，具有相對性。</p>
+          <span class="tag">PART 04</span>
+          <h3 style="font-size: 19px;">正義 Justice</h3>
+          <p style="font-size: 15px;">Arrow ／ Rawls ／ Sen ／ Nozick</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ S13 GOUGH BASIC NEEDS ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="Ian Gough的需求觀點：基本需求">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>Ian Gough 的需求觀點</h2>
-        <span class="h-en">BASIC NEEDS</span>
-      </div>
-      <p class="lead">「基本需求」（<span class="term-en">Basic Needs</span>）包含兩個部分：</p>
-      <div class="pair">
         <div class="pair-box a">
-          <span class="tag">PHYSICAL HEALTH</span>
-          <h3>身體健康</h3>
-          <p>需求的最基本條件是能夠滿足人們的生存，但 Gough 進一步主張應達到身體健康良好的狀態，而非僅以維持生命為準。</p>
+          <span class="tag">PART 05</span>
+          <h3 style="font-size: 19px;">平等 Equality</h3>
+          <p style="font-size: 15px;">機會平等 vs. 結果平等</p>
         </div>
         <div class="pair-box b">
-          <span class="tag">AUTONOMY</span>
-          <h3>自主性</h3>
-          <p>個人能選擇做什麼及如何去完成的能力。當個人失去心智健康、認知技能或社會參與的機會時，其自主性便處於缺陷狀態。</p>
+          <span class="tag">PART 06</span>
+          <h3 style="font-size: 19px;">自由 Liberty</h3>
+          <p style="font-size: 15px;">Berlin ・ 消極 vs. 積極</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ S14 INTERMEDIATE NEEDS ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="中介需求">
+  <!-- ============ S4 LASSWELL / DISTRIBUTION (pptx 5) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會政策的本質：分配">
     <div class="slide-inner">
       <div class="content-head">
-        <h2>「中介需求」</h2>
-        <span class="h-en">INTERMEDIATE NEEDS</span>
+        <h2>社會政策的本質：分配</h2>
+        <span class="h-en">SOCIAL POLICY AS DISTRIBUTION</span>
       </div>
-      <p class="lead">中介需求是實現基本需求（身體健康與自主性）的具體條件，橫跨生理、安全與社會等面向：</p>
-      <ul style="list-style: none; padding: 0; column-count: 2; column-gap: 32px; margin-top: 10px;">
-        <li style="font-size: 18px; line-height: 1.95; padding: 8px 0 8px 18px; position: relative; break-inside: avoid;"><span style="position:absolute; left:0; opacity:0.5;">・</span>適當營養的食物與水</li>
-        <li style="font-size: 18px; line-height: 1.95; padding: 8px 0 8px 18px; position: relative; break-inside: avoid;"><span style="position:absolute; left:0; opacity:0.5;">・</span>適當可提供保護的住宅</li>
-        <li style="font-size: 18px; line-height: 1.95; padding: 8px 0 8px 18px; position: relative; break-inside: avoid;"><span style="position:absolute; left:0; opacity:0.5;">・</span>免於危險的工作環境</li>
-        <li style="font-size: 18px; line-height: 1.95; padding: 8px 0 8px 18px; position: relative; break-inside: avoid;"><span style="position:absolute; left:0; opacity:0.5;">・</span>免於危險的生活環境</li>
-        <li style="font-size: 18px; line-height: 1.95; padding: 8px 0 8px 18px; position: relative; break-inside: avoid;"><span style="position:absolute; left:0; opacity:0.5;">・</span>適當的健康照顧</li>
-        <li style="font-size: 18px; line-height: 1.95; padding: 8px 0 8px 18px; position: relative; break-inside: avoid;"><span style="position:absolute; left:0; opacity:0.5;">・</span>兒童時期的安全</li>
-        <li style="font-size: 18px; line-height: 1.95; padding: 8px 0 8px 18px; position: relative; break-inside: avoid;"><span style="position:absolute; left:0; opacity:0.5;">・</span>身體安全</li>
-        <li style="font-size: 18px; line-height: 1.95; padding: 8px 0 8px 18px; position: relative; break-inside: avoid;"><span style="position:absolute; left:0; opacity:0.5;">・</span>經濟安全</li>
-        <li style="font-size: 18px; line-height: 1.95; padding: 8px 0 8px 18px; position: relative; break-inside: avoid;"><span style="position:absolute; left:0; opacity:0.5;">・</span>安全的生育控制與兒童養育</li>
-        <li style="font-size: 18px; line-height: 1.95; padding: 8px 0 8px 18px; position: relative; break-inside: avoid;"><span style="position:absolute; left:0; opacity:0.5;">・</span>基礎教育</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============ S15 RECIPROCITY & CONTROL ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="Reciprocity 與 Control">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>Reciprocity（互惠）與 Control（控制）</h2>
-        <span class="h-en">RECIPROCITY AND CONTROL</span>
+      <div class="story">
+        <span class="lab">QUOTE ・ Lasswell 1958</span>
+        <p style="font-style: italic;">「政治，就是『誰得到什麼？何時得到？如何得到？』」</p>
+        <p style="margin-top: 8px; opacity: 0.7; font-size: 15px;">— 資料來源：Harold Lasswell (1958), <i>Politics: Who Gets What, When, How</i></p>
       </div>
-      <div class="pair">
-        <div class="pair-box a">
-          <span class="tag">CONTROL ・ 控制</span>
-          <h3>對需求的可控程度越低，越值得救濟</h3>
-          <p>風險是否能被控制？若個人對自身的需求狀況缺乏控制能力（如疾病、意外），社會傾向於給予較高程度的救濟認可。</p>
-        </div>
-        <div class="pair-box b">
-          <span class="tag">RECIPROCITY ・ 互惠</span>
-          <h3>互惠程度越高，越值得救濟</h3>
-          <p>風險的可預測性與保險機制：若風險能夠預測，透過社會保險即可在風險發生時補償損失，形成一種集體互惠的機制。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ S16 SECTION 3: RISKS ============ -->
-  <section class="slide slide-section" data-kind="section" data-label="第三節：風險">
-    <div class="slide-inner">
-      <div class="big-num">參</div>
-      <p class="part">第三節</p>
-      <h2>風險</h2>
-      <p class="sec-en">Risks</p>
-      <p class="sec-q">
-        誰應該取得福利？：公民資格、需求與風險
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ S17 RISK DEFINITION ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="風險界定">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>風險界定</h2>
-        <span class="h-en">DEFINING RISK</span>
-      </div>
-      <p class="lead">
-        風險並非客觀中立的事實，而是透過社會建構過程、權力關係與論述框架所界定而產生的。
-      </p>
-      <div class="insight">
-        換言之，哪些事件被認定為「風險」，本身就是一個政治與社會的決策結果。
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ S18 PRECONDITION FOR INTERVENTION ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="社會政策介入的前提">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>社會政策介入的前提</h2>
-        <span class="h-en">PRECONDITIONS FOR POLICY INTERVENTION</span>
-      </div>
-      <p class="lead">
-        風險之所以需要社會政策來加以處理與回應，必須滿足特定的條件，而非所有風險皆能納入社會政策的回應範疇。
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ S19 RISK IS SOCIAL ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="風險是具有社會性的">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>風險是具有社會性的</h2>
-        <span class="h-en">RISK IS SOCIAL</span>
-      </div>
-      <p class="lead">
-        社會風險不能以純粹個人的視角加以理解；它是社會結構性條件所產生的結果，需透過集體機制加以回應。
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ S20 CORE FEATURES OF SOCIAL RISK ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="社會風險的核心特徵">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>社會風險的核心特徵</h2>
-        <span class="h-en">CORE FEATURES OF SOCIAL RISK</span>
-      </div>
-      <p class="lead">
-        社會風險並非「個人」風險，而必須具備可預期性，並帶有集體共同承擔的屬性。
-      </p>
-      <div class="insight">
-        唯有如此，才可能透過社會保險等集體機制加以因應。
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ S21 HOW SOCIAL RISK ARISES ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="社會風險是如何產生的">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>社會風險是如何產生的？</h2>
-        <span class="h-en">THE ORIGINS OF SOCIAL RISK</span>
-      </div>
-      <p class="lead">
-        社會風險並非自然現象，而是由社會結構所孕育而生的。不同的政治經濟體制與制度安排，決定了哪些人口群體暴露於何種風險之中。
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ S22 OLD SOCIAL RISKS ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="舊社會風險">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>工業化社會的舊社會風險</h2>
-        <span class="h-en">OLD SOCIAL RISKS</span>
-      </div>
-      <p class="lead">
-        社會風險來自於資本主義結構的雇用關係（勞動商品化）——缺乏這種雇用關係，就不太可能產生社會風險。使個人喪失賴以為生薪資的意外事件，即為舊社會風險（<span class="term-en">Old Social Risks</span>）：
-      </p>
-      <div class="pair" style="grid-template-columns: repeat(4, 1fr); margin-top: 16px;">
-        <div class="pair-box a"><h3 style="font-size: 20px; margin-bottom: 0;">生育</h3></div>
-        <div class="pair-box b"><h3 style="font-size: 20px; margin-bottom: 0;">老年</h3></div>
-        <div class="pair-box c"><h3 style="font-size: 20px; margin-bottom: 0;">疾病</h3></div>
-        <div class="pair-box d"><h3 style="font-size: 20px; margin-bottom: 0;">死亡</h3></div>
-        <div class="pair-box a"><h3 style="font-size: 20px; margin-bottom: 0;">職災</h3></div>
-        <div class="pair-box b"><h3 style="font-size: 20px; margin-bottom: 0;">殘障（障礙）</h3></div>
-        <div class="pair-box c"><h3 style="font-size: 20px; margin-bottom: 0;">失業</h3></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ S23 NEW SOCIAL RISKS ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="新社會風險">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>後工業化社會的新社會風險</h2>
-        <span class="h-en">NEW SOCIAL RISKS</span>
-      </div>
-      <div class="pair">
-        <div class="pair-box a">
-          <span class="tag">新經濟結構的出現</span>
-          <h3>服務業的擴張</h3>
-          <p>服務業的快速擴張，帶來勞動市場的雙元化與彈性化，形成高度不穩定的就業型態。</p>
-        </div>
-        <div class="pair-box b">
-          <span class="tag">人口高齡少子化</span>
-          <h3>人口結構轉型</h3>
-          <p>生育率下降與人口結構老化，使傳統以在職世代支撐退休世代的制度面臨嚴峻挑戰。</p>
-        </div>
-      </div>
-      <p class="lead" style="margin-top: 18px;">新社會風險（<span class="term-en">New Social Risks</span>）：</p>
-      <div class="pair" style="grid-template-columns: repeat(4, 1fr);">
-        <div class="pair-box a"><h3 style="font-size: 19px; margin-bottom: 0;">工作與家庭平衡</h3></div>
-        <div class="pair-box b"><h3 style="font-size: 19px; margin-bottom: 0;">低技術工作者</h3></div>
-        <div class="pair-box c"><h3 style="font-size: 19px; margin-bottom: 0;">人口高齡化</h3></div>
-        <div class="pair-box d"><h3 style="font-size: 19px; margin-bottom: 0;">單親家庭</h3></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ S24 SECTION: UNIVERSAL VS SELECTIVE ============ -->
-  <section class="slide slide-section" data-kind="section" data-label="第四部分：誰該受益">
-    <div class="slide-inner">
-      <div class="big-num">肆</div>
-      <p class="part">PART 04</p>
-      <h2>誰該受益？</h2>
-      <p class="sec-en">Universalism and Selectivism</p>
-      <p class="sec-q">
-        兩種路徑各有其福利政治邏輯，<br/>
-        其選擇涉及對社會連帶與目標效率的不同取捨。
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ S25 UNIVERSALISM VS SELECTIVISM ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="普及性與選擇性福利">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>誰應該受益？普及性與選擇性福利</h2>
-        <span class="h-en">UNIVERSALISM AND SELECTIVISM</span>
-      </div>
-      <div class="pair">
-        <div class="pair-box a">
-          <span class="tag">UNIVERSALISM</span>
-          <h3>普及主義</h3>
-          <p>所有人口基於人權或公民資格，皆可享有的福利，不以個人所得或特定條件作為門檻。</p>
-          <p style="margin-top: 10px; font-size: 15px; opacity: 0.7;">立基於公民資格或人權？</p>
-        </div>
-        <div class="pair-box b">
-          <span class="tag">SELECTIVISM</span>
-          <h3>選擇主義</h3>
-          <p>依據需求條件提供福利，通常以所得調查（<span class="term-en">means test</span>）結果作為資格認定依據。</p>
-          <p style="margin-top: 10px; font-size: 15px; opacity: 0.7;">如何界定選擇對象？</p>
-        </div>
+      <p class="lead">社會政策處理三件事：</p>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a"><span class="tag">WHO</span><h3>誰</h3><p>是給付對象</p></div>
+        <div class="pair-box b"><span class="tag">WHAT</span><h3>什麼</h3><p>樣的給付內容</p></div>
+        <div class="pair-box c"><span class="tag">HOW</span><h3>如何</h3><p>取得與支付</p></div>
       </div>
       <div class="insight">
-        兩種路徑各有其福利政治邏輯，其選擇涉及對社會連帶與目標效率的不同取捨。
+        <strong>政策＝政治的結果。</strong>資源是有限的，分配方式必然涉及價值判斷與權力較量。社會政策不是「中性的技術」，而是社會集體選擇的政治結果。
       </div>
     </div>
   </section>
 
-  <!-- ============ S26 SELECTIVE WELFARE ASSESSMENT ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="選擇性福利的認定方式">
+  <!-- ============ S5 CASE 1: NHI PREMIUM (pptx 6) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例一：健保保費調漲爭議">
     <div class="slide-inner">
       <div class="content-head">
-        <h2>選擇性福利的認定方式</h2>
-        <span class="h-en">ASSESSING SELECTIVE WELFARE</span>
+        <h2>案例一 ・ 健保保費調漲爭議</h2>
+        <span class="h-en">CASE 1: ADJUSTING NHI PREMIUMS</span>
+        <span class="h-tag">★ 案例</span>
+      </div>
+      <div class="story">
+        <span class="lab">情境</span>
+        <p>全民健保財務長期吃緊，政府考慮調漲保費。</p>
+      </div>
+      <div class="deep-grid">
+        <div class="deep-col">
+          <h5>「誰」要多繳？</h5>
+          <ul>
+            <li>只調高薪資族？</li>
+            <li>股利收入也要納入？</li>
+            <li>雇主負擔比例要提高？</li>
+            <li>年輕或年長者誰該多承擔？</li>
+          </ul>
+        </div>
+        <div class="deep-col">
+          <h5>背後的「價值」</h5>
+          <ul>
+            <li>量能負擔（垂直公平）</li>
+            <li>世代之間的責任分配</li>
+            <li>勞資之間的權力關係</li>
+            <li>個人選擇 vs. 集體連帶</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S6 WHAT IS VALUE (pptx 7) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="什麼是價值">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>什麼是「價值」（Value）？</h2>
+        <span class="h-en">THE CONCEPT OF VALUE</span>
+      </div>
+      <p class="lead">
+        價值，是人們對事物的判斷基礎。價值告訴我們：什麼是「應該」做的？什麼是「不應該」做的？
+      </p>
+      <p class="lead">
+        當我們說「同工應該同酬」、「不該歧視外籍移工」、「老人應該被照顧」，這些主張都不是事實判斷，而是「價值判斷」。
+      </p>
+      <p class="lead">
+        價值之間經常衝突。例如：自由 vs. 平等、效率 vs. 公平、個人責任 vs. 集體連帶。
+      </p>
+      <div class="insight">
+        <strong>社會政策的設計，必然要在這些彼此衝突的價值之間做出取捨。</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S7 IDEOLOGY CONCEPT (pptx 8) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="意識型態的概念">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>意識型態（Ideology）的概念</h2>
+        <span class="h-en">一組影響行動的價值與信仰</span>
+      </div>
+      <div class="story">
+        <span class="lab">意識型態的定義</span>
+        <p style="font-style: italic;">「個人、團體或社會所具有的一組價值與信仰，且會影響他們的行動。」</p>
+        <p style="margin-top: 8px; opacity: 0.7; font-size: 15px;">— 資料來源：George &amp; Wilding (1994), <i>Welfare and Ideology</i>, p. 5</p>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a"><span class="tag">價值</span><p>對「好壞、善惡、應然」的判斷</p></div>
+        <div class="pair-box b"><span class="tag">信仰</span><p>對社會如何運作的基本理解</p></div>
+        <div class="pair-box c"><span class="tag">行動</span><p>指引政策立場與政治選擇</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S8 FOUR FUNCTIONS OF IDEOLOGY (pptx 9) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="意識型態提供了什麼">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>意識型態提供了什麼？</h2>
+        <span class="h-en">四個關鍵功能</span>
       </div>
       <div class="pair" style="grid-template-columns: repeat(4, 1fr);">
-        <div class="pair-box a">
-          <span class="tag">01</span>
-          <h3 style="font-size: 19px;">歸因性需求</h3>
-          <p style="font-size: 15px; opacity: 0.7; margin-bottom: 6px;">Attributive Need</p>
-          <p style="font-size: 15.5px;">群體導向的分配，基於需求的規範性準則。如特殊疾病患者或特定弱勢群體。</p>
-        </div>
-        <div class="pair-box b">
-          <span class="tag">02</span>
-          <h3 style="font-size: 19px;">補償</h3>
-          <p style="font-size: 15px; opacity: 0.7; margin-bottom: 6px;">Compensation</p>
-          <p style="font-size: 15.5px;">群體導向的分配，基於公平補償的原則。如退伍軍人的服役補償。</p>
-        </div>
-        <div class="pair-box c">
-          <span class="tag">03</span>
-          <h3 style="font-size: 19px;">診斷差異</h3>
-          <p style="font-size: 15px; opacity: 0.7; margin-bottom: 6px;">Diagnostic Differentiation</p>
-          <p style="font-size: 15.5px;">個別化的分配，基於需求的規範性準則。如身心障礙或精神病患的個案評估。</p>
-        </div>
-        <div class="pair-box d">
-          <span class="tag">04</span>
-          <h3 style="font-size: 19px;">資產調查需求</h3>
-          <p style="font-size: 15px; opacity: 0.7; margin-bottom: 6px;">Means-Tested Need</p>
-          <p style="font-size: 15.5px;">個別化的分配，基於需求的經濟條件，通常透過所得調查加以確認。</p>
-        </div>
+        <div class="pair-box a"><span class="tag">01</span><h3 style="font-size: 20px;">世界觀</h3><p style="font-size: 16px;">對人類本質、對國家與社會關係的根本看法。</p></div>
+        <div class="pair-box b"><span class="tag">02</span><h3 style="font-size: 20px;">社會批判</h3><p style="font-size: 16px;">對現存社會經濟體系的不滿與診斷。</p></div>
+        <div class="pair-box c"><span class="tag">03</span><h3 style="font-size: 20px;">理想藍圖</h3><p style="font-size: 16px;">對「美好社會」應該長什麼樣子的願景。</p></div>
+        <div class="pair-box d"><span class="tag">04</span><h3 style="font-size: 20px;">行動指引</h3><p style="font-size: 16px;">從現實邁向理想的具體路徑與策略。</p></div>
       </div>
-    </div>
-  </section>
-
-  <!-- ============ S27 SECTION: QUIZ ============ -->
-  <section class="slide slide-section" data-kind="section" data-label="第五部分：自我測驗">
-    <div class="slide-inner">
-      <div class="big-num">伍</div>
-      <p class="part">PART 05</p>
-      <h2>自我測驗</h2>
-      <p class="sec-en">Self-Check ・ 5 題</p>
-      <p class="sec-q">
-        檢驗本週學習。每題作答後出現解析。<br/>
-        答錯沒關係，重點是看完解析能想清楚。
+      <p class="lead" style="margin-top: 18px; font-size: 15.5px; opacity: 0.65;">
+        資料來源：George &amp; Wilding (1994), <i>Welfare and Ideology</i>, p. 6
       </p>
     </div>
   </section>
 
-  <!-- ============ Q1 ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="測驗 Q1">
+  <!-- ============ S9 CASE 2: IDEOLOGY & POVERTY (pptx 10) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例二：意識型態如何看貧窮">
     <div class="slide-inner">
       <div class="content-head">
-        <h2>自我測驗 Q1</h2>
-        <span class="h-en">DESERVINGNESS</span>
-        <span class="h-tag">1/5</span>
+        <h2>案例二 ・ 意識型態如何看「貧窮」？</h2>
+        <span class="h-en">CASE 2: HOW DIFFERENT IDEOLOGIES SEE POVERTY</span>
+        <span class="h-tag">★ 案例</span>
       </div>
-      <div class="score-pill">
-        <span class="sn"><span id="scoreNum">0</span></span>
-        <span class="st">分 / 5</span>
-      </div>
-      <div class="quiz" data-correct="c">
-        <div class="quiz-num">Deservingness 判別標準</div>
-        <h3 class="quiz-q">「與福利供給者之間的連帶感——越像『我們』，就越值得救濟」，指的是五個判準中的哪一個？</h3>
-        <button class="quiz-opt" data-opt="a">A. Control（控制）</button>
-        <button class="quiz-opt" data-opt="b">B. Reciprocity（互惠）</button>
-        <button class="quiz-opt" data-opt="c">C. Identity（認同）</button>
-        <button class="quiz-opt" data-opt="d">D. Attitude（態度）</button>
-        <div class="quiz-explain">
-          <strong>正解：C。</strong>Identity（認同）指領取者與供給者之間的連帶感：越像「我們（us）」，就越值得救濟。公民資格正是界定「我們」的核心機制之一。
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">右派 ・ 自由市場觀點</span>
+          <p><strong>對人性的看法</strong>：個人應該為自己負責</p>
+          <p style="margin-top: 10px;"><strong>貧窮的成因</strong>：懶惰、缺乏努力、福利依賴</p>
+          <p style="margin-top: 10px;"><strong>政策方案</strong>：減稅、削減福利、強化工作誘因</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">左派 ・ 社會民主觀點</span>
+          <p><strong>對人性的看法</strong>：人是社會的一份子，彼此連帶</p>
+          <p style="margin-top: 10px;"><strong>貧窮的成因</strong>：結構性因素：低薪、失業、不平等</p>
+          <p style="margin-top: 10px;"><strong>政策方案</strong>：完善社會保障、最低工資、累進稅</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ Q2 ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="測驗 Q2">
+  <!-- ============ S10 POLICY NEVER VALUE-NEUTRAL (pptx 11) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會政策不可能價值中立">
     <div class="slide-inner">
       <div class="content-head">
-        <h2>自我測驗 Q2</h2>
-        <span class="h-en">CITIZENSHIP RIGHTS</span>
-        <span class="h-tag">2/5</span>
+        <h2>社會政策不可能「價值中立」</h2>
+        <span class="h-en">POLICY IS NEVER VALUE-NEUTRAL</span>
       </div>
-      <div class="quiz" data-correct="b">
-        <div class="quiz-num">公民資格的三種權利概念</div>
-        <h3 class="quiz-q">依 Marshall 的歷史分期，「參與政治組織、投票、議會代表」對應的是哪一種權利、興起於哪個世紀？</h3>
-        <button class="quiz-opt" data-opt="a">A. 公民權，十八世紀</button>
-        <button class="quiz-opt" data-opt="b">B. 政治權，十九世紀</button>
-        <button class="quiz-opt" data-opt="c">C. 社會權，二十世紀</button>
-        <button class="quiz-opt" data-opt="d">D. 政治權，二十世紀</button>
-        <div class="quiz-explain">
-          <strong>正解：B。</strong>依「公民權利的歷史發展」表，政治權（參與政治組織、投票、議會代表）興起於十九世紀，相應制度為議會及地方政府；公民權屬十八世紀（相應制度：法院），社會權屬二十世紀（相應制度：教育體系／社會服務）。
+      <p class="lead">
+        社會政策的型態反映了社會共同的價值與意識型態。一個國家的福利體系，反映著該社會的主流文化與政治特色。
+      </p>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a"><span class="tag">美國</span><p>醫療保險以市場為主，反映個人主義與自由競爭信念。</p></div>
+        <div class="pair-box b"><span class="tag">瑞典</span><p>稅率高、福利普及，反映社會連帶與平等主義。</p></div>
+        <div class="pair-box c"><span class="tag">台灣</span><p>健保普及，但年金多軌、長照不足，反映多元政治力量妥協。</p></div>
+      </div>
+      <div class="insight">
+        <strong>反思：</strong>當我們說某個政策「比較理性」、「比較專業」時，其實已經做了價值選擇。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S11 TWO VISIONS OF SOCIETY (pptx 12) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="兩種社會的圖像">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>兩種社會的圖像</h2>
+        <span class="h-en">TWO VISIONS OF SOCIETY</span>
+      </div>
+      <p class="lead">
+        美國公共政策學者 Deborah Stone 提出：當我們爭論政策時，其實我們在爭論「社會應該長什麼樣子」。她提出兩種理想型<span class="term-en">(ideal types)</span>：
+      </p>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">常被視為「右派」的社會圖像</span>
+          <h3>市場模型 <span class="term-en">(Market Model)</span></h3>
+          <p>個人是社會的基本單元；人們以「自我利益」為動機；社會是一個競爭的場域。</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">常被視為「左派」的社會圖像</span>
+          <h3>城邦模型 <span class="term-en">(Polis Model)</span></h3>
+          <p>社群是社會的基本單元；人們也追求「公共利益」；社會兼有合作與競爭。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ Q3 ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="測驗 Q3">
+  <!-- ============ S12 MARKET VS POLIS TABLE 1 (pptx 13) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="市場模型 vs 城邦模型（一）">
     <div class="slide-inner">
       <div class="content-head">
-        <h2>自我測驗 Q3</h2>
-        <span class="h-en">NEED vs. DEMAND</span>
-        <span class="h-tag">3/5</span>
+        <h2>市場模型 vs. 城邦模型（一）</h2>
+        <span class="h-en">基本假設與動機</span>
       </div>
-      <div class="quiz" data-correct="a">
-        <div class="quiz-num">Need（需求）</div>
-        <h3 class="quiz-q">依 Erskine（2002），「需要」（<span class="term-en">demand</span>）與「需求」（<span class="term-en">need</span>）的差別是？</h3>
-        <button class="quiz-opt" data-opt="a">A. 需要是市場分配資源的依據，需求是社會政策分配資源的準則</button>
-        <button class="quiz-opt" data-opt="b">B. 需要是社會政策分配資源的準則，需求是市場分配資源的依據</button>
-        <button class="quiz-opt" data-opt="c">C. 兩者完全相同，僅用詞不同</button>
-        <button class="quiz-opt" data-opt="d">D. 需要專指心理需求，需求專指生理需求</button>
-        <div class="quiz-explain">
-          <strong>正解：A。</strong>Erskine（2002）認為「需要」（demand）是市場分配資源的依據，「需求」（need）則是社會政策分配資源的準則。
+      <table class="ctab">
+        <thead>
+          <tr><th>面向</th><th>市場模型（右派）</th><th>城邦模型（左派）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>分析單元</td><td>個人</td><td>社群</td></tr>
+          <tr><td>動機</td><td>自我利益</td><td>公共利益（也含自我利益）</td></tr>
+          <tr><td>主要衝突</td><td>自我利益 vs. 自我利益</td><td>自我利益 vs. 公共利益</td></tr>
+          <tr><td>理念來源</td><td>個人本身產生</td><td>受外在影響（家庭、文化、社群）</td></tr>
+          <tr><td>集體活動</td><td>競爭</td><td>合作與競爭</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ S13 MARKET VS POLIS TABLE 2 (pptx 14) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="市場模型 vs 城邦模型（二）">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>市場模型 vs. 城邦模型（二）</h2>
+        <span class="h-en">資訊、運作與改變</span>
+      </div>
+      <table class="ctab">
+        <thead>
+          <tr><th>面向</th><th>市場模型（右派）</th><th>城邦模型（左派）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>資訊</td><td>準確、完整、公開</td><td>曖昧、需要詮釋、可能被操縱</td></tr>
+          <tr><td>運作原理</td><td>物質定律：資源有限，越用越少</td><td>熱情定律：人力可再生，越用越多</td></tr>
+          <tr><td>改變動力</td><td>物質交易</td><td>理念、勸說、聯盟</td></tr>
+          <tr><td>追求目標</td><td>個人最大福祉</td><td>公共利益、權力、個人福祉並存</td></tr>
+        </tbody>
+      </table>
+      <p class="lead" style="margin-top: 14px; font-size: 15.5px; opacity: 0.65;">資料來源：Stone, D. (2002). <i>Policy Paradox</i>.</p>
+    </div>
+  </section>
+
+  <!-- ============ S14 CASE 3: UNEMPLOYMENT (pptx 15) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例三：失業，兩種模型怎麼看">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例三 ・ 失業，兩種模型怎麼看？</h2>
+        <span class="h-en">CASE 3: READING UNEMPLOYMENT</span>
+        <span class="h-tag">★ 案例</span>
+      </div>
+      <div class="story">
+        <span class="lab">情境</span>
+        <p>一名 35 歲青壯人口連續失業六個月。</p>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">市場模型</span>
+          <p><strong>原因</strong>：個人技能不足、選工作太挑、福利依賴。</p>
+          <p style="margin-top: 10px;"><strong>解方</strong>：強化求職誘因、限縮給付期間、訓練與媒合。</p>
+          <p style="margin-top: 10px;"><strong>焦點</strong>：個人選擇與動機</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">城邦模型</span>
+          <p><strong>原因</strong>：產業外移、結構性失業、勞動市場二元化。</p>
+          <p style="margin-top: 10px;"><strong>解方</strong>：積極勞動市場政策、再訓練、產業政策、社會保障。</p>
+          <p style="margin-top: 10px;"><strong>焦點</strong>：結構與制度</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ Q4 ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="測驗 Q4">
+  <!-- ============ S15 GROUP DISCUSSION 1 (pptx 16) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="小組討論一">
     <div class="slide-inner">
       <div class="content-head">
-        <h2>自我測驗 Q4</h2>
-        <span class="h-en">BRADSHAW</span>
-        <span class="h-tag">4/5</span>
+        <h2>小組討論一</h2>
+        <span class="h-en">GROUP DISCUSSION 1</span>
+        <span class="h-tag">★ 小組討論</span>
       </div>
-      <div class="quiz" data-correct="d">
-        <div class="quiz-num">Bradshaw 的需求分類</div>
-        <h3 class="quiz-q">「由專業人員、行政科層或科學家所界定，因而帶有父權主義的傾向」，屬於 Bradshaw 分類中的哪一種需求？</h3>
-        <button class="quiz-opt" data-opt="a">A. 感覺性需求</button>
-        <button class="quiz-opt" data-opt="b">B. 表達性需求</button>
-        <button class="quiz-opt" data-opt="c">C. 比較性需求</button>
-        <button class="quiz-opt" data-opt="d">D. 規範性需求</button>
-        <div class="quiz-explain">
-          <strong>正解：D。</strong>規範性需求由專業人員、行政科層或科學家所界定，帶有父權主義的傾向。感覺性需求等同於欲求；表達性需求是感覺性需求付諸行動的展現；比較性需求則透過分析接受服務對象之差異而界定。
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ Q5 ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="測驗 Q5">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>自我測驗 Q5</h2>
-        <span class="h-en">UNIVERSALISM vs. SELECTIVISM</span>
-        <span class="h-tag">5/5</span>
-      </div>
-      <div class="quiz" data-correct="b">
-        <div class="quiz-num">普及性與選擇性福利</div>
-        <h3 class="quiz-q">通常以所得調查（<span class="term-en">means test</span>）結果來決定資格的，是哪一種福利分配邏輯？</h3>
-        <button class="quiz-opt" data-opt="a">A. 普及主義（universalism）</button>
-        <button class="quiz-opt" data-opt="b">B. 選擇主義（selectivism）</button>
-        <button class="quiz-opt" data-opt="c">C. 兩者皆是</button>
-        <button class="quiz-opt" data-opt="d">D. 兩者皆非，這是互惠原則</button>
-        <div class="quiz-explain">
-          <strong>正解：B。</strong>選擇主義依據需求條件提供福利，通常以所得調查（means test）結果作為資格認定依據；普及主義則是所有人口基於人權或公民資格皆可享有，不以所得或特定條件為門檻。
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ S33 DISCUSSION ============ -->
-  <section class="slide slide-content" data-kind="content" data-label="課堂討論">
-    <div class="slide-inner">
-      <div class="content-head">
-        <h2>課堂討論</h2>
-        <span class="h-en">CLASS DISCUSSION</span>
-        <span class="h-tag">點選展開提示</span>
-      </div>
-      <p class="lead">下次上課前，請帶著對下列問題的想法。沒有標準答案——重點是你的論證能不能說服別人。</p>
       <div class="discuss">
         <div class="discuss-item" onclick="this.classList.toggle('is-open')">
-          <div class="qn">問 1</div>
-          <div class="qt">想一個你直覺認為「值得」或「不值得」領取福利救濟的例子，逐一用 Control、Need、Identity、Attitude、Reciprocity 五個判準檢視你的直覺，這五個判準是不是都指向同一個結論？</div>
-          <div class="hint">提示：五個判準有時會互相衝突——例如需求很高，但互惠程度很低。當判準之間打架時，你的直覺最後聽了哪一個？</div>
-        </div>
-        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
-          <div class="qn">問 2</div>
-          <div class="qt">公民資格是界定「我們」的核心機制。如果社會成員資格的判準，從「公民」擴大到「人之所以為人」，福利體系的邊界會怎麼改變？</div>
-          <div class="hint">提示：想想「相應而生的制度」——法院、議會、教育體系與社會服務——這些制度原本是針對「公民」設計的，擴大到「人權」基礎之後，制度本身需要跟著改變嗎？</div>
-        </div>
-        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
-          <div class="qn">問 3</div>
-          <div class="qt">舊社會風險（生育、老年、疾病、死亡、職災、殘障、失業）建立在「穩定僱用關係」的假設上。想想你自己或身邊人的工作型態，這個假設還適用嗎？新社會風險（工作與家庭平衡、低技術工作者、人口高齡化、單親家庭）出現，代表了什麼樣的結構轉變？</div>
-          <div class="hint">提示：舊社會風險的共同前提，是「勞動商品化」——你把勞動賣給雇主、換取薪資。當就業型態變得彈性化、雙元化，這個交換關係本身也在鬆動。</div>
-        </div>
-        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
-          <div class="qn">問 4</div>
-          <div class="qt">普及主義與選擇主義兩種福利政治邏輯，你認為哪一種比較能達成社會連帶？哪一種比較有效率？拿你今天實際享有的某一項福利或社會保險為例，它比較接近哪一種邏輯？</div>
-          <div class="hint">提示：普及主義的代價通常是財政負擔較高；選擇主義的代價通常是所得調查的行政成本，以及被貼上「需要救濟」標籤的污名。</div>
+          <div class="qn">討論</div>
+          <div class="qt">你比較認同「市場模型」還是「城邦模型」？為什麼？</div>
+          <div class="hint">
+            思考提示：想想最近一次令你印象深刻的社會新聞（例：派遣工權益、青年低薪、長照悲歌）。<br/>
+            在那則新聞中，「市場模型」與「城邦模型」會分別給出什麼樣的解釋？<br/>
+            這兩種解釋，哪一種比較貼近你的直覺？背後是什麼樣的價值在影響你？
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ S34 CONCLUSION ============ -->
-  <section class="slide slide-title" data-kind="title" data-label="結語">
+  <!-- ============ S16 SECTION DIVIDER: PART II (pptx 17) ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="Part II：正義．平等．自由">
     <div class="slide-inner">
-      <p class="subtitle" style="margin-bottom: 20px;">CONCLUSION ・ 結 語</p>
-      <h1 style="font-size: 56px;">福利分配的判準<br/>不是天生的，是建構的</h1>
-      <p class="author" style="margin-top: 28px; max-width: 800px;">
-        這堂課看到：誰「值得」領取福利，由 Control、Need、Identity、Attitude、Reciprocity 五個判準共同決定；公民資格劃定了「我們」的邊界；需求本身有多種分類方式（Bradshaw、Gough）；而風險並非客觀中立的事實，是被社會建構、界定出來的。<br/><br/>
-        普及主義與選擇主義，是把這些判準落實成制度時，兩種不同的政治選擇。
+      <div class="big-num">貳</div>
+      <p class="part">PART II</p>
+      <h2>正義．平等．自由</h2>
+      <p class="sec-en">Justice ．Equality．Liberty</p>
+      <p class="sec-q">福利國家辯論的三大規範性座標。</p>
+    </div>
+  </section>
+
+  <!-- ============ S17 WHY JUSTICE MATTERS (pptx 18) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="從一句話開始">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>從一句話開始</h2>
+        <span class="h-en">WHY JUSTICE MATTERS</span>
+      </div>
+      <div class="story">
+        <p style="font-style: italic;">「在孩子們生活的小世界裡，沒有任何東西像『不義』那樣感受鮮明。」</p>
+        <p style="margin-top: 8px; opacity: 0.7; font-size: 15px;">— 查爾斯．狄更斯（Charles Dickens, 1812–1870）</p>
+      </div>
+      <p class="lead">對「不義」的敏銳感受，是人們追求正義的起點。</p>
+      <div class="insight">
+        <strong>社會政策的核心關懷，正是回應這種「我覺得不公平」的道德直覺。</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S18 FOUR VIEWS OF JUSTICE (pptx 19) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會正義的四個經典視角">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>社會正義的四個經典視角</h2>
+        <span class="h-en">FOUR CLASSIC VIEWS OF SOCIAL JUSTICE</span>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="pair-box a"><span class="tag">Arrow</span><h3 style="font-size: 20px;">社會選擇理論</h3><p style="font-size: 15.5px;">從經濟學出發，以效用極大化為基礎來比較分配方案的優劣。</p></div>
+        <div class="pair-box b"><span class="tag">Rawls</span><h3 style="font-size: 20px;">社會契約理論</h3><p style="font-size: 15.5px;">正義即公平。透過「無知之幕」想像，推導出最大平等自由與差異原則。</p></div>
+        <div class="pair-box c"><span class="tag">Sen</span><h3 style="font-size: 20px;">能力途徑</h3><p style="font-size: 15.5px;">正義不只是分配資源，更是要讓每個人有「能力」過自己選擇的生活。</p></div>
+        <div class="pair-box d"><span class="tag">Nozick</span><h3 style="font-size: 20px;">程序正義</h3><p style="font-size: 15.5px;">正義不在於結果分配，而在於取得方式是否符合「正當程序」。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S19 ARROW (pptx 20) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Arrow 的社會選擇理論">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Arrow 的社會選擇理論</h2>
+        <span class="h-en">SOCIAL CHOICE THEORY</span>
+      </div>
+      <p class="lead">Kenneth Arrow（1921–2017，1972 年諾貝爾經濟學獎得主）</p>
+      <div class="deep-col">
+        <ul>
+          <li><strong>基本立場</strong>：從經濟學出發，以「效用」<span class="term-en">(utility)</span> 作為社會福利的基礎。</li>
+          <li><strong>核心問題</strong>：在任意兩個資源分配方案之間，社會應該如何選擇？</li>
+          <li><strong>主張</strong>：透過個人偏好的加總，做出「何者較佳、何者較差」的排序。</li>
+        </ul>
+      </div>
+      <div class="insight">
+        <strong>提醒 ・ Arrow 不可能定理：</strong>當社會有 3 個以上方案，並要同時滿足所有合理條件時，無法從個人偏好建立出一致的「社會偏好」。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S20 RAWLS: THEORY OF JUSTICE (pptx 21) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Rawls：A Theory of Justice">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Rawls：A Theory of Justice (1971)</h2>
+        <span class="h-en">正義即公平 Justice as Fairness</span>
+      </div>
+      <p class="lead">
+        John Rawls（1921–2002）為 1970 年代的福利國家體系提出了一個道德性的辯護。其著作《正義論》（1971）是當代政治哲學最重要的作品之一。1980 年代以後，受到新自由主義陣營（如 Nozick）的強烈挑戰。
       </p>
-      <p class="author" style="margin-top: 22px; opacity: 0.55; font-style: italic; font-size: 16px;">
-        下週我們會轉向另一個問題——不只是「誰該拿」，還有「誰該給」：政府、市場、志願部門、家庭要怎麼分工？
+      <p class="lead" style="margin-bottom: 6px;"><strong>正義即公平：以「社會契約」為基礎</strong></p>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">① 原初立場 <span class="term-en">(the original position)</span></span>
+          <p>一個假想情境：人們在尚未進入社會之前，集體決定社會的基本規則。</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">② 無知之幕 <span class="term-en">(the veil of ignorance)</span></span>
+          <p>人們不知道自己在社會中的地位（性別、階級、能力），會選什麼樣的規則？</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S21 RAWLS'S TWO PRINCIPLES (pptx 22) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Rawls 的兩個正義原則">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Rawls 的兩個正義原則</h2>
+        <span class="h-en">TWO PRINCIPLES OF JUSTICE</span>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">第一原則</span>
+          <h3 style="font-size: 21px;">最大均等的自由原則</h3>
+          <p>每個人對於同等基本自由的充份合適體系，均擁有同樣不可剝奪的請求權利，且該體系與他人擁有的相同自由體系相容。</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">第二原則</span>
+          <h3 style="font-size: 21px;">關於社會與經濟不平等的兩個條件</h3>
+          <p>(1) <strong>公平的機會平等原則</strong>：各種職位與地位，應在公平機會平等條件下，向所有人開放。</p>
+          <p style="margin-top: 10px;">(2) <strong>差異原則 <span class="term-en">(Difference Principle)</span></strong>：不平等的安排，必須讓社會中「最劣勢的成員」獲得最大好處。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S22 CASE 4: DIFFERENCE PRINCIPLE (pptx 23) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例四：差異原則怎麼用">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例四 ・ 差異原則怎麼用？</h2>
+        <span class="h-en">CASE 4: APPLYING THE DIFFERENCE PRINCIPLE</span>
+        <span class="h-tag">★ 案例</span>
+      </div>
+      <p class="lead">Rawls 並不反對「不平等」。他問的是：這個不平等，能不能讓最弱勢的人也變得更好？</p>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a"><span class="tag">高所得者減稅</span><p>若減稅讓有錢人更富有，但對低收入者沒有溢出效果，依差異原則並不正當。</p></div>
+        <div class="pair-box b"><span class="tag">提高基本工資</span><p>若能讓最底層勞工生活改善，即使可能略微影響企業利潤，可被支持。</p></div>
+        <div class="pair-box c"><span class="tag">優秀醫師高薪</span><p>若高薪能吸引人才，並使偏鄉病人也能獲得照顧，則此不平等可被接受。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S23 SEN: CAPABILITY APPROACH (pptx 24) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Sen 能力途徑">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Sen：能力途徑 <span class="term-en">(Capability Approach)</span></h2>
+        <span class="h-en">從「擁有資源」到「能夠生活」</span>
+      </div>
+      <p class="lead">Amartya Sen（1933–，1998 年諾貝爾經濟學獎得主）</p>
+      <div class="story">
+        <span class="lab">對 Rawls 的補充與批判</span>
+        <p style="font-style: italic;">「給予足夠的資源，不代表受益者真的能夠運用資源。」</p>
+      </div>
+      <p class="lead">
+        <strong>核心主張：</strong>社會正義應促進人們的「能力平等」<span class="term-en">(capability equality)</span>，讓每個人能夠選擇自己認為有價值的生活方式。
       </p>
+      <div class="insight">
+        <strong>生活案例：</strong>發給低收入家庭一輛腳踏車，但若家附近沒有安全道路，這輛腳踏車並不能轉化成「移動的能力」。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S24 CASE 5: ANTI-POVERTY POLICY (pptx 25) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例五：脫貧政策的反思">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例五 ・ 脫貧政策的反思</h2>
+        <span class="h-en">CASE 5: RETHINKING ANTI-POVERTY POLICY</span>
+        <span class="h-tag">★ 案例</span>
+      </div>
+      <p class="lead">台灣的「家庭發展帳戶」政策，協助低收入戶儲蓄並由政府配對相對提撥。從 Sen 的觀點來看：</p>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a"><span class="tag">01</span><h3 style="font-size: 19px;">資源夠了嗎？</h3><p style="font-size: 16px;">單純給予儲蓄補助，是否足以脫貧？</p></div>
+        <div class="pair-box b"><span class="tag">02</span><h3 style="font-size: 19px;">能力培養了嗎？</h3><p style="font-size: 16px;">若缺少教育、健康、就業機會，儲蓄難以轉化為長期翻身的能力。</p></div>
+        <div class="pair-box c"><span class="tag">03</span><h3 style="font-size: 19px;">選擇真的有了嗎？</h3><p style="font-size: 16px;">弱勢者能否選擇自己認為有價值的生活，才是真正的正義。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S25 NOZICK (pptx 26) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Nozick 的程序正義">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Nozick 的程序正義</h2>
+        <span class="h-en">正義在於「過程」而不是「結果」</span>
+      </div>
+      <p class="lead">Robert Nozick（1938–2002）</p>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">對 Rawls 的反駁</span>
+          <p>只要取得財產的方式合乎正當程序（合法取得、自願交易、合法繼承），即便結果不平等，也不違反正義。</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">對福利國家的挑戰</span>
+          <p>透過稅收進行的重分配，被 Nozick 視為「強迫勞動」。這是新自由主義對福利國家最尖銳的批判之一。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S26 EQUALITY: FOUNDATION (pptx 27) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="平等：分配問題的基礎">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>平等：分配問題的基礎</h2>
+        <span class="h-en">EQUALITY: THE FOUNDATION OF DISTRIBUTION</span>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <h3>機會平等 <span class="term-en">(Equality of Opportunity)</span></h3>
+          <p>每個人都應該有相同「成功的機會」，無論其階級、性別或種族。決定能否成功的，應該是「天賦與努力」，而不是社會背景。</p>
+        </div>
+        <div class="pair-box b">
+          <h3>結果平等 <span class="term-en">(Equality of Outcome)</span></h3>
+          <p>不論起點與能力高低，最終人們應享有共同的資源；或至少依不同需求公正分配。透過立法與政治手段，縮小競爭性市場所導致的不平等。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S27 EQUALITY'S MULTIPLE DIMENSIONS (pptx 28) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="平等的多元面向">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>平等的多元面向</h2>
+        <span class="h-en">Stone：平等不是只有一種</span>
+      </div>
+      <table class="ctab">
+        <thead>
+          <tr><th>面向</th><th>議題</th><th>困境</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>接受者</td><td>社群的界限（誰算成員？）</td><td>不平等邀請 vs. 平等切片</td></tr>
+          <tr><td>接受者</td><td>以階層為基礎的分配</td><td>平等階層 / 平等切片 等多種組合</td></tr>
+          <tr><td>接受者</td><td>以團體為基礎的切割</td><td>平等集團 vs. 不平等切片</td></tr>
+          <tr><td>項目</td><td>項目的界限與價值</td><td>平等餐食 / 平等價值，但切片不一定相等</td></tr>
+          <tr><td>程序</td><td>競爭、抽籤、投票</td><td>機會平等的不同實現方式</td></tr>
+        </tbody>
+      </table>
+      <p class="lead" style="margin-top: 14px; font-size: 15.5px; opacity: 0.65;">資料來源：Stone, D. <i>Policy Paradox</i>（改寫自原書 Chapter 3）。</p>
+    </div>
+  </section>
+
+  <!-- ============ S28 CASE 6: UNIVERSITY ADMISSION (pptx 29) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例六：大學入學是哪一種平等">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例六 ・ 大學入學是哪一種平等？</h2>
+        <span class="h-en">CASE 6: EQUALITY IN UNIVERSITY ADMISSION</span>
+        <span class="h-tag">★ 案例</span>
+      </div>
+      <div class="story">
+        <span class="lab">情境</span>
+        <p>「繁星推薦」、「特殊選才」、「指考分發」，哪一種比較公平？</p>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a"><span class="tag">指考分發</span><p>看起來「分數面前人人平等」。但城鄉差距、補習資源差異，使「起跑點」不同。</p></div>
+        <div class="pair-box b"><span class="tag">繁星推薦</span><p>考量校際之間的差異，給偏鄉學生機會。是「公平的機會平等」嘗試。</p></div>
+        <div class="pair-box c"><span class="tag">特殊選才</span><p>看重多元能力，但也可能讓家境好、能參加課外活動的學生佔優勢。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S29 LIBERTY: BERLIN (pptx 30) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="自由：Berlin 的兩種概念">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>自由：Isaiah Berlin 的兩種概念</h2>
+        <span class="h-en">Two Concepts of Liberty (1958)</span>
+      </div>
+      <p class="lead">政治哲學家 Isaiah Berlin 把自由分成兩種，至今仍是討論福利政策的核心參考。</p>
+      <div class="pair">
+        <div class="pair-box a">
+          <h3>消極自由 <span class="term-en">Negative Liberty</span></h3>
+          <p>「免於……的自由」——對個人基本人權的保障：言論自由、免於恐懼、遷徙自由等。強調國家「不要干預」個人的私領域。</p>
+        </div>
+        <div class="pair-box b">
+          <h3>積極自由 <span class="term-en">Positive Liberty</span></h3>
+          <p>「能夠……的自由」——個人有意願、有能力做想做的事，亦即「自我實現」<span class="term-en">(self-realisation)</span>。強調國家「積極協助」人們發展能力。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S30 CASE 7: MANDATORY INSURANCE (pptx 31) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例七：強制納保是不自由嗎">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例七 ・ 強制納保是「不自由」嗎？</h2>
+        <span class="h-en">CASE 7: MANDATORY INSURANCE AND LIBERTY</span>
+        <span class="h-tag">★ 案例</span>
+      </div>
+      <div class="story">
+        <span class="lab">情境</span>
+        <p>全民健保強制每位國民加保並繳保費。這是否侵犯了個人自由？</p>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">消極自由觀點</span>
+          <p>我有權選擇不買保險。強制納保＝國家干預。是「不自由」的。</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">積極自由觀點</span>
+          <p>沒有健保，重病者就失去「能過正常生活」的能力。強制納保是讓所有人「有能力健康地生活」。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S31 TENSIONS AMONG THREE VALUES (pptx 32) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="三大價值的張力">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>三大價值的張力</h2>
+        <span class="h-en">TENSIONS AMONG THE THREE VALUES</span>
+      </div>
+      <p class="lead">正義、平等、自由不是「都要兼顧」就能解決，它們之間經常互相拉扯。</p>
+      <div class="pair" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="pair-box a"><span class="tag">自由 vs. 平等</span><p style="font-size: 16px;">若完全保障個人自由（包括財產），結果通常是不平等加劇。</p></div>
+        <div class="pair-box b"><span class="tag">平等 vs. 效率</span><p style="font-size: 16px;">高度重分配可能影響工作誘因與經濟效率。</p></div>
+        <div class="pair-box c"><span class="tag">正義 vs. 自由</span><p style="font-size: 16px;">透過稅收進行重分配，被新自由主義視為侵害自由。</p></div>
+        <div class="pair-box d"><span class="tag">機會平等 vs. 結果平等</span><p style="font-size: 16px;">即便起跑點公平，最終結果仍可能極度不平等。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S32 TAIWAN PENSION REFORM (pptx 33) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="綜合案例：台灣年金改革">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>綜合案例 ・ 台灣年金改革的價值衝突</h2>
+        <span class="h-en">PENSION REFORM IN TAIWAN</span>
+        <span class="h-tag">★ 案例</span>
+      </div>
+      <p class="lead">2018 年的台灣年金改革，幾乎觸及所有我們今天討論的價值衝突。</p>
+      <div class="pair" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="pair-box a"><span class="tag">正義</span><p style="font-size: 15.5px;">退休所得替代率調降，是否違反信賴保護？「砍年金」是不是不正義？</p></div>
+        <div class="pair-box b"><span class="tag">平等</span><p style="font-size: 15.5px;">軍公教與勞工年金的差距，是制度多軌的歷史遺緒，也是世代之間的不平等。</p></div>
+        <div class="pair-box c"><span class="tag">自由</span><p style="font-size: 15.5px;">是否強制提撥更多保費？是否開放個人退休帳戶（IRA）？涉及自由與保障的取捨。</p></div>
+        <div class="pair-box d"><span class="tag">世代正義</span><p style="font-size: 15.5px;">人口老化下，下一代要承擔更高的保費，是否符合 Rawls 的差異原則？</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S33 GROUP DISCUSSION 2 (pptx 34) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="小組討論二">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>小組討論二</h2>
+        <span class="h-en">GROUP DISCUSSION 2</span>
+        <span class="h-tag">★ 小組討論</span>
+      </div>
+      <div class="discuss">
+        <div class="discuss-item" onclick="this.classList.toggle('is-open')">
+          <div class="qn">討論</div>
+          <div class="qt">如果讓你重新設計台灣的福利制度，你會優先強調哪一個價值？</div>
+          <div class="hint">
+            請從以下面向出發：<br/>
+            你選擇的核心價值是「正義」、「平等」還是「自由」？<br/>
+            你會在「市場模型」與「城邦模型」之間如何取捨？<br/>
+            你的設計會帶來什麼樣的張力？又會有誰受益、誰受損？<br/>
+            舉一個你最在意的政策議題（健保、年金、長照、托育、住宅）來說明。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S34 WRAP-UP (pptx 35) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="本週重點回顧">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>本週重點回顧</h2>
+        <span class="h-en">WRAP-UP</span>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(1, 1fr); gap: 12px;">
+        <div class="pair-box a" style="display: flex; align-items: baseline; gap: 18px;"><span class="tag" style="margin-bottom:0;">01</span><p style="font-size: 18px;"><strong>社會政策＝政治</strong>——福利分配本質上是政治結果，無法價值中立。</p></div>
+        <div class="pair-box b" style="display: flex; align-items: baseline; gap: 18px;"><span class="tag" style="margin-bottom:0;">02</span><p style="font-size: 18px;"><strong>意識型態的力量</strong>——價值與意識型態形塑人們對「好政策」的想像。</p></div>
+        <div class="pair-box c" style="display: flex; align-items: baseline; gap: 18px;"><span class="tag" style="margin-bottom:0;">03</span><p style="font-size: 18px;"><strong>兩種社會模型</strong>——市場模型與城邦模型代表兩種根本不同的社會圖像。</p></div>
+        <div class="pair-box d" style="display: flex; align-items: baseline; gap: 18px;"><span class="tag" style="margin-bottom:0;">04</span><p style="font-size: 18px;"><strong>三大規範性價值</strong>——正義、平等、自由是當代福利辯論的三個座標。</p></div>
+        <div class="pair-box a" style="display: flex; align-items: baseline; gap: 18px;"><span class="tag" style="margin-bottom:0;">05</span><p style="font-size: 18px;"><strong>彼此存在張力</strong>——價值之間的取捨，沒有「標準答案」，只有「公共審議」。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S35 FURTHER READING & ASSIGNMENT (pptx 36) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="延伸閱讀與課後作業">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>延伸閱讀與課後作業</h2>
+        <span class="h-en">FURTHER READING &amp; ASSIGNMENT</span>
+      </div>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <h3>延伸閱讀</h3>
+          <p>George &amp; Wilding (1994). <em>Welfare and Ideology</em>.</p>
+          <p>Stone, D. (2002). <em>Policy Paradox</em>.</p>
+          <p>Rawls, J. (1971). <em>A Theory of Justice</em>.</p>
+          <p>Sen, A. (2009). <em>The Idea of Justice</em>.</p>
+        </div>
+        <div class="ref-card">
+          <h3>課後作業</h3>
+          <p>1. 找一則最近一個月的社會政策新聞（健保、年金、長照、住宅、托育皆可）。</p>
+          <p>2. 用本週介紹的概念（市場 vs. 城邦、正義、平等、自由）分析該政策背後的價值預設。</p>
+          <p>3. 字數 800 至 1200 字，下次上課前繳交。</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1636,7 +1602,7 @@
 <nav class="navbar">
   <button class="nav-btn" id="prevBtn" onclick="goPrev()">← 前頁</button>
   <div class="nav-center">
-    <span><span id="curNum">1</span> / <span id="totNum">35</span></span>
+    <span><span id="curNum">1</span> / <span id="totNum">36</span></span>
     <div class="dots" id="dots"></div>
   </div>
   <button class="nav-btn" id="nextBtn" onclick="goNext()">下一頁 →</button>
@@ -1701,31 +1667,6 @@
   function toggleToc() {
     document.getElementById('tocOverlay').classList.toggle('is-shown');
   }
-
-  // Quiz
-  let quizScore = 0;
-  document.querySelectorAll('.quiz').forEach(quiz => {
-    const correct = quiz.dataset.correct;
-    const opts = quiz.querySelectorAll('.quiz-opt');
-    opts.forEach(opt => {
-      opt.addEventListener('click', () => {
-        if (quiz.dataset.done) return;
-        quiz.dataset.done = '1';
-        const picked = opt.dataset.opt;
-        opts.forEach(o => {
-          o.disabled = true;
-          if (o.dataset.opt === correct) o.classList.add('is-correct');
-          else if (o.dataset.opt === picked) o.classList.add('is-wrong');
-        });
-        if (picked === correct) {
-          quizScore++;
-          const sn = document.getElementById('scoreNum');
-          if (sn) sn.textContent = quizScore;
-        }
-        quiz.querySelector('.quiz-explain').classList.add('is-shown');
-      });
-    });
-  });
 
   // Keyboard + touch
   document.addEventListener('keydown', e => {
