@@ -386,7 +386,7 @@ const courseData = [
       { n: '十三', date: '5/19', topic: '比較研究的邏輯與 QCA', href: 'teaching/social-research-methods/week13-comparison-qca.html', tag: '→ 互動講義' },
       { n: '十四', date: '5/26', topic: '時間與歷史：歷史制度主義' },
       { n: '十五', date: '6/2',  topic: '詮釋與論述（演講）' },
-      { n: '十六', date: '6/9',  topic: '混合方法與研究設計工作坊' },
+      { n: '十六', date: '6/9',  topic: '混合方法與研究設計工作坊', href: 'teaching/social-research-methods/week16-mixed-methods.html', tag: '→ 互動講義' },
       { n: '十七', date: '6/16', topic: '研究計劃書口頭報告' },
       { n: '十八', date: '6/23', topic: '彈性上課週', off: true }
     ],
@@ -406,7 +406,7 @@ const courseData = [
       { n: '13', date: '5/19', topic: 'The logic of comparison and QCA', href: 'teaching/social-research-methods/week13-comparison-qca.html', tag: '→ Interactive' },
       { n: '14', date: '5/26', topic: 'Time and history: historical institutionalism' },
       { n: '15', date: '6/2',  topic: 'Interpretation and discourse (guest lecture)' },
-      { n: '16', date: '6/9',  topic: 'Mixed methods and research-design workshop' },
+      { n: '16', date: '6/9',  topic: 'Mixed methods and research-design workshop', href: 'teaching/social-research-methods/week16-mixed-methods.html', tag: '→ Interactive' },
       { n: '17', date: '6/16', topic: 'Research proposal presentations' },
       { n: '18', date: '6/23', topic: 'Flexible week', off: true }
     ],
