@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>手機版導覽 — 四版方案比較</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Yuji+Syuku&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
+    --moss:#3d5a3f; --accent:#c43838; --water:#5a7a8a;
+    --ink:#1f1f1d; --ink-soft:rgba(31,31,29,.72); --ink-quiet:rgba(31,31,29,.5);
+    --rule:rgba(31,31,29,.12);
+    --display:"Yuji Syuku",serif;
+    --latin:"Inter",sans-serif;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:#d9d2c2;color:var(--ink);
+    font-family:var(--latin);font-weight:300;line-height:1.6;
+    padding:32px 20px 80px;
+  }
+  .page-head{max-width:920px;margin:0 auto 8px}
+  .page-head h1{font-family:var(--display);font-weight:400;font-size:26px;letter-spacing:.04em;margin:0 0 8px}
+  .page-head p{margin:0;color:var(--ink-soft);font-size:14px;max-width:60ch}
+  .page-head .diag{margin-top:12px;font-size:13px;color:var(--ink-soft);background:rgba(196,56,56,.07);border-left:2px solid var(--accent);padding:8px 12px;border-radius:0 4px 4px 0}
+
+  .grid{
+    max-width:920px;margin:28px auto 0;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:28px;
+  }
+  .card{display:flex;flex-direction:column;gap:12px}
+  .card > h2{font-family:var(--display);font-weight:400;font-size:19px;margin:0;letter-spacing:.03em}
+  .card > h2 .k{color:var(--accent);margin-right:8px}
+  .card .note{font-size:12.5px;color:var(--ink-soft);line-height:1.55;min-height:3em}
+  .card .note b{color:var(--ink);font-weight:500}
+  .rec{display:inline-block;font-size:11px;letter-spacing:.1em;color:var(--moss);border:1px solid var(--moss);border-radius:20px;padding:1px 9px;margin-left:8px;vertical-align:middle;font-family:var(--latin)}
+
+  /* ── 手機框 ── */
+  .phone{
+    width:375px;max-width:100%;margin:0 auto;
+    background:var(--paper);border:1px solid rgba(31,31,29,.18);
+    border-radius:16px;overflow:hidden;box-shadow:0 14px 40px rgba(31,31,29,.16);
+    position:relative;
+  }
+  .phone .statusbar{height:22px;background:var(--sand);border-bottom:1px solid var(--rule);
+    display:flex;align-items:center;justify-content:center;font-size:9px;letter-spacing:.2em;color:var(--ink-quiet)}
+  .phone .body{height:270px;background:
+     radial-gradient(120% 80% at 80% 0%, rgba(217,138,168,.10), transparent 60%),
+     var(--paper);
+     position:relative;overflow:hidden}
+  .phone .hero-demo{position:absolute;left:20px;bottom:22px;right:20px}
+  .phone .hero-demo .big{font-family:var(--display);font-size:60px;line-height:.92;color:var(--ink);opacity:.9}
+  .phone .hero-demo .sub{font-size:12px;color:var(--ink-soft);letter-spacing:.12em;margin-top:8px}
+
+  /* ── nav 共用 ── */
+  .nav{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:12px 18px;border-bottom:1px solid var(--rule);
+    background:color-mix(in srgb,var(--sand) 92%,transparent);
+    position:relative;z-index:5;
+  }
+  .brand{display:flex;gap:11px;align-items:center}
+  .seal{
+    width:36px;height:36px;flex:0 0 auto;background:var(--accent);color:var(--sand);
+    display:inline-flex;align-items:center;justify-content:center;
+    font-family:var(--display);font-size:18px;transform:rotate(-3deg);
+    box-shadow:2px 2px 0 rgba(196,56,56,.25);text-decoration:none;
+  }
+  .name{font-family:var(--display);font-size:15px;letter-spacing:.06em;line-height:1;text-decoration:none;color:var(--ink)}
+  .name small{display:block;font-family:var(--latin);font-size:7.5px;letter-spacing:.26em;color:var(--ink-quiet);margin-top:3px}
+  .lang{font-family:var(--latin);font-size:14px;letter-spacing:.16em;color:var(--ink-soft);text-decoration:none;white-space:nowrap}
+  nav a{color:var(--ink);text-decoration:none;font-family:var(--latin);font-weight:400}
+  nav a.is-active{color:var(--accent)}
+
+  /* ══════════ A：兩排置中換行 ══════════ */
+  .A .nav{flex-wrap:wrap;gap:10px}
+  .A .lang{border-left:1px solid var(--rule);padding-left:14px}
+  .A nav{
+    order:3;width:100%;display:flex;flex-wrap:wrap;justify-content:center;
+    gap:9px 20px;font-size:13px;letter-spacing:.13em;
+    padding-top:11px;margin-top:2px;border-top:1px solid var(--rule);
+  }
+  .A nav a{padding:3px 0;border-bottom:1px solid transparent}
+  .A nav a.is-active{border-bottom-color:var(--accent)}
+
+  /* ══════════ B：橫向可捲動籤條 ══════════ */
+  .B .nav{flex-wrap:wrap;gap:10px}
+  .B .lang{border-left:1px solid var(--rule);padding-left:14px}
+  .B .scrollwrap{order:3;width:100%;position:relative;margin-top:2px;padding-top:9px;border-top:1px solid var(--rule)}
+  .B .scrollwrap::after{content:"";position:absolute;right:0;top:9px;bottom:0;width:44px;
+    background:linear-gradient(to right,rgba(232,226,212,0),var(--sand-light));pointer-events:none}
+  .B nav{
+    display:flex;gap:24px;font-size:13px;letter-spacing:.13em;
+    overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;padding-bottom:2px;
+  }
+  .B nav::-webkit-scrollbar{display:none}
+  .B nav a{flex:0 0 auto;padding:3px 0;border-bottom:1px solid transparent}
+  .B nav a.is-active{border-bottom-color:var(--accent)}
+
+  /* ══════════ C：漢堡全螢幕選單 ══════════ */
+  .C .nav .right{display:flex;align-items:center;gap:14px}
+  .C .burger{
+    width:30px;height:20px;display:flex;flex-direction:column;justify-content:center;gap:5px;
+    background:none;border:0;cursor:pointer;padding:0;
+  }
+  .C .burger span{display:block;height:1.6px;width:100%;background:var(--ink);transition:transform .4s var(--ease),opacity .3s}
+  .C .menu{
+    position:absolute;inset:0;z-index:20;
+    background:color-mix(in srgb,var(--paper) 96%,transparent);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+    opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .4s var(--ease),transform .4s var(--ease);
+  }
+  .C .menu a{font-family:var(--display);font-size:24px;letter-spacing:.06em;color:var(--ink)}
+  .C .menu a.is-active{color:var(--accent)}
+  .C.open .menu{opacity:1;pointer-events:auto;transform:none}
+  .C.open .burger span:nth-child(1){transform:translateY(6.6px) rotate(45deg)}
+  .C.open .burger span:nth-child(2){opacity:0}
+  .C.open .burger span:nth-child(3){transform:translateY(-6.6px) rotate(-45deg)}
+
+  /* ══════════ D：精簡單行等分 ══════════ */
+  .D .nav{flex-wrap:wrap;gap:8px}
+  .D .lang{border-left:1px solid var(--rule);padding-left:12px}
+  .D nav{
+    order:3;width:100%;display:flex;justify-content:space-between;
+    font-size:10.5px;letter-spacing:.02em;white-space:nowrap;
+    padding-top:10px;margin-top:2px;border-top:1px solid var(--rule);
+  }
+  .D nav a{padding:3px 0;border-bottom:1px solid transparent}
+  .D nav a.is-active{border-bottom-color:var(--accent)}
+
+  .rulewidth{max-width:920px;margin:40px auto 0;font-size:12px;color:var(--ink-quiet);text-align:center;border-top:1px solid var(--rule);padding-top:16px}
+</style>
+</head>
+<body>
+
+<div class="page-head">
+  <h1>手機版英文導覽 — 四版方案</h1>
+  <p>每一版都是 <b>375px 真實手機框</b>、可點可捲，framebox 有 <code>overflow:hidden</code>（跟正式站一樣），所以若會裁字一定看得出來。中文版不動；這裡只解英文 nav 溢出問題。</p>
+  <div class="diag">問題現況：英文 6 連結（Home About Academic Photography Teaching Essays）在 375px 下 <code>nowrap</code> 總寬約 455px＞視窗，Teaching／Essays 被切掉、點不到。</div>
+</div>
+
+<div class="grid">
+
+  <!-- A -->
+  <div class="card">
+    <h2><span class="k">A</span>兩排置中換行<span class="rec">建議</span></h2>
+    <div class="A phone">
+      <div class="statusbar">A ── 兩排置中換行</div>
+      <header class="nav">
+        <div class="brand">
+          <a class="seal" href="#">葉</a>
+          <a class="name" href="#">葉崇揚<small>YEH CHUNG-YANG</small></a>
+        </div>
+        <a class="lang" href="#">中</a>
+        <nav>
+          <a href="#">Home</a><a href="#">About</a><a href="#">Academic</a>
+          <a href="#" class="is-active">Photography</a><a href="#">Teaching</a><a href="#">Essays</a>
+        </nav>
+      </header>
+      <div class="body"><div class="hero-demo"><div class="big">春</div><div class="sub">HARU ／ SPRING</div></div></div>
+    </div>
+    <div class="note"><b>最扁平、零 JS。</b>連結全部可見、點擊區大，換行成兩排，像刻意排版而非壞掉。最貼近「彆扭就改扁平」與水墨極簡調性。缺點：吃掉一點點垂直高度。</div>
+  </div>
+
+  <!-- B -->
+  <div class="card">
+    <h2><span class="k">B</span>橫向可捲動籤條</h2>
+    <div class="B phone">
+      <div class="statusbar">B ── 一行、可左右滑（試著在連結列上橫滑）</div>
+      <header class="nav">
+        <div class="brand">
+          <a class="seal" href="#">葉</a>
+          <a class="name" href="#">葉崇揚<small>YEH CHUNG-YANG</small></a>
+        </div>
+        <a class="lang" href="#">中</a>
+        <div class="scrollwrap">
+          <nav>
+            <a href="#">Home</a><a href="#">About</a><a href="#">Academic</a>
+            <a href="#" class="is-active">Photography</a><a href="#">Teaching</a><a href="#">Essays</a>
+          </nav>
+        </div>
+      </header>
+      <div class="body"><div class="hero-demo"><div class="big">街</div><div class="sub">MACHI ／ STREET</div></div></div>
+    </div>
+    <div class="note"><b>維持一行、像 App 的頁籤。</b>右緣有漸層暗示可滑。缺點：Teaching／Essays 初始藏在畫面外，<b>可發現性差</b>，使用者不一定知道要滑。</div>
+  </div>
+
+  <!-- C -->
+  <div class="card">
+    <h2><span class="k">C</span>漢堡全螢幕選單</h2>
+    <div class="C phone" id="phoneC">
+      <div class="statusbar">C ── 點右上 ☰ 開選單</div>
+      <header class="nav">
+        <div class="brand">
+          <a class="seal" href="#">葉</a>
+          <a class="name" href="#">葉崇揚<small>YEH CHUNG-YANG</small></a>
+        </div>
+        <div class="right">
+          <a class="lang" href="#">中</a>
+          <button class="burger" id="burgerC" aria-label="選單"><span></span><span></span><span></span></button>
+        </div>
+      </header>
+      <div class="body">
+        <div class="hero-demo"><div class="big">夏</div><div class="sub">NATSU ／ SUMMER</div></div>
+        <nav class="menu">
+          <a href="#">Home</a><a href="#">About</a><a href="#">Academic</a>
+          <a href="#" class="is-active">Photography</a><a href="#">Teaching</a><a href="#">Essays</a>
+        </nav>
+      </div>
+    </div>
+    <div class="note"><b>導覽列最乾淨，收合最徹底。</b>與現在的 index-en.html 一致。缺點：nav 藏在一次點擊後，六個短連結其實不必藏；全螢幕遮罩對「換季相簿間快速跳轉」稍重。</div>
+  </div>
+
+  <!-- D -->
+  <div class="card">
+    <h2><span class="k">D</span>精簡單行等分</h2>
+    <div class="D phone">
+      <div class="statusbar">D ── 縮字、單行不換行不捲動</div>
+      <header class="nav">
+        <div class="brand">
+          <a class="seal" href="#">葉</a>
+          <a class="name" href="#">葉崇揚<small>YEH CHUNG-YANG</small></a>
+        </div>
+        <a class="lang" href="#">中</a>
+        <nav>
+          <a href="#">Home</a><a href="#">About</a><a href="#">Academic</a>
+          <a href="#" class="is-active">Photography</a><a href="#">Teaching</a><a href="#">Essays</a>
+        </nav>
+      </header>
+      <div class="body"><div class="hero-demo"><div class="big">秋</div><div class="sub">AKI ／ AUTUMN</div></div></div>
+    </div>
+    <div class="note"><b>保留一行、不藏不捲。</b>靠縮到 10.5px＋幾乎無字距塞進 375px。全部可見，但<b>字偏小</b>、與桌機的疏朗字距落差大，質感稍打折。窄機（≤360px）風險較高。</div>
+  </div>
+
+</div>
+
+<div class="rulewidth">四版對應四種典型手機解法：換行 A ／ 捲動 B ／ 收合 C ／ 縮字 D。挑一個，我就統一套到全部英文頁（中文版不動）。</div>
+
+<script>
+  var pC = document.getElementById('phoneC');
+  document.getElementById('burgerC').addEventListener('click', function(){ pC.classList.toggle('open'); });
+  pC.querySelectorAll('.menu a').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); pC.classList.remove('open'); }); });
+</script>
+</body>
+</html>

@@ -346,14 +346,14 @@ const courseData = [
     ],
     books_zh: [
       { label: '指定教科書', items: [
-        'King, Keohane &amp; Verba（2012）《好研究如何設計？：用量化邏輯做質化研究》。台北：群學。（原著 1994, Princeton UP）',
+        'King, G., Keohane, R. O. &amp; Verba, S. 著，盛智明、韓佳譯（2012）《好研究如何設計：用量化邏輯做質化研究》。台北：群學。（原著 <i>Designing Social Inquiry</i>, 1994, Princeton UP）',
         'Brady, H. E. &amp; Collier, D. (eds.) (2010). <i>Rethinking Social Inquiry</i>, 2nd ed. Rowman &amp; Littlefield.',
         'Goertz, G. &amp; Mahoney, J. (2012). <i>A Tale of Two Cultures</i>. Princeton UP.',
-        'Gerring, J. &amp; Seawright, J. (2022). <i>Finding Your Social Science Project</i>. Cambridge UP.'
+        'Gerring, J. &amp; Seawright, J. (2022). <i>Finding Your Social Science Project: The Research Sandbox</i>. Cambridge UP.'
       ]},
       { label: '參考書', items: [
         'Alford, R. R. (1998). <i>The Craft of Inquiry</i>. Oxford UP.（王志弘譯, 2011, 群學）',
-        'Schutt, R. (2014). <i>Investigating the Social World</i>, 8th ed. Sage.',
+        'Schutt, R. K. (2015). <i>Investigating the Social World: The Process and Practice of Research</i>, 8th ed. Thousand Oaks, CA: Sage.',
         'Gerring, J. (2012). <i>Social Science Methodology</i>, 2nd ed. Cambridge UP.'
       ]}
     ],
@@ -362,11 +362,11 @@ const courseData = [
         'King, G., Keohane, R. O. &amp; Verba, S. (1994). <i>Designing Social Inquiry</i>. Princeton UP.',
         'Brady, H. E. &amp; Collier, D. (eds.) (2010). <i>Rethinking Social Inquiry</i>, 2nd ed. Rowman &amp; Littlefield.',
         'Goertz, G. &amp; Mahoney, J. (2012). <i>A Tale of Two Cultures</i>. Princeton UP.',
-        'Gerring, J. &amp; Seawright, J. (2022). <i>Finding Your Social Science Project</i>. Cambridge UP.'
+        'Gerring, J. &amp; Seawright, J. (2022). <i>Finding Your Social Science Project: The Research Sandbox</i>. Cambridge UP.'
       ]},
       { label: 'Further Reading', items: [
         'Alford, R. R. (1998). <i>The Craft of Inquiry</i>. Oxford UP.',
-        'Schutt, R. (2014). <i>Investigating the Social World</i>, 8th ed. Sage.',
+        'Schutt, R. K. (2015). <i>Investigating the Social World: The Process and Practice of Research</i>, 8th ed. Thousand Oaks, CA: Sage.',
         'Gerring, J. (2012). <i>Social Science Methodology</i>, 2nd ed. Cambridge UP.'
       ]}
     ],
@@ -411,7 +411,93 @@ const courseData = [
       { n: '16', date: '6/9',  topic: 'Mixed methods and research-design workshop' },
       { n: '17', date: '6/16', topic: 'Research proposal presentations' },
       { n: '18', date: '6/23', topic: 'Flexible week', off: true }
-    ]
+    ],
+    readings_zh: [
+      { n: '二', date: '3/3', title: '科學哲學的幽靈：從 Popper 到 Hempel', items: [
+          { c: true,  t: '陳瑞麟（2010）。《科學哲學：理論與歷史》第 3 章〈否證與假說的檢驗〉、第 4 章〈典範、常態科學與科學革命〉。臺北：群學。', u: '' },
+          { c: true,  t: 'Baert, P. 著，何昭群譯（2011）。《社會科學哲學：邁向實用主義》第 3 章。臺北：群學。（原著 <i>Philosophy of the Social Sciences: Towards Pragmatism</i>, Polity, 2005）', u: '' },
+          { c: false, t: 'Popper, K. R. (1959). A survey of some fundamental problems. In <i>The Logic of Scientific Discovery</i> (ch. 1). London: Hutchinson.', u: 'https://openlibrary.org/works/OL1984582W' },
+          { c: false, t: 'Hempel, C. G. (1942). The function of general laws in history. <i>The Journal of Philosophy</i>, 39(2), 35–48.（重印於 <i>Aspects of Scientific Explanation</i>, 1965, pp. 231–243, Free Press）', u: 'https://doi.org/10.2307/2017635' },
+          { c: false, t: 'Godfrey-Smith, P. (2003). Popper: Conjecture and refutation. In <i>Theory and Reality: An Introduction to the Philosophy of Science</i> (ch. 4). University of Chicago Press.', u: 'https://doi.org/10.7208/chicago/9780226300610.001.0001' },
+          { c: false, t: 'Rosenberg, A. (2015). The methodological divide: Naturalism versus interpretation. In <i>Philosophy of Social Science</i> (5th ed., ch. 2). Boulder, CO: Westview Press.', u: 'https://openlibrary.org/works/OL11319895W' }
+        ]},
+      { n: '三', date: '3/10', title: '知識論的戰場：實證主義 vs. 詮釋／批判', items: [
+          { c: true,  t: 'Polanyi, M. 著，許澤民譯（2004）。《個人知識：邁向後批判哲學》第 1 章〈客觀性〉、第 4 章〈技能〉。臺北：商周。（原著 <i>Personal Knowledge: Towards a Post-Critical Philosophy</i>, 1958）', u: '' },
+          { c: true,  t: 'Baert, P. 著，何昭群譯（2011）。《社會科學哲學：邁向實用主義》第 4–5 章。臺北：群學。', u: '' },
+          { c: false, t: 'Geertz, C. (1973). Thick description: Toward an interpretive theory of culture. In <i>The Interpretation of Cultures: Selected Essays</i> (pp. 3–30). New York: Basic Books.', u: 'https://openlibrary.org/works/OL926829W' },
+          { c: false, t: 'Flyvbjerg, B. (2001). Context counts. In <i>Making Social Science Matter: Why Social Inquiry Fails and How It Can Succeed Again</i> (ch. 4). Cambridge University Press.', u: 'https://doi.org/10.1017/cbo9780511810503' },
+          { c: false, t: 'Lincoln, Y. S., &amp; Guba, E. G. (2000). Paradigmatic controversies, contradictions, and emerging confluences. In N. K. Denzin &amp; Y. S. Lincoln (Eds.), <i>Handbook of Qualitative Research</i> (2nd ed., pp. 163–188). Thousand Oaks, CA: Sage.', u: 'https://openlibrary.org/works/OL17942163W' },
+          { c: false, t: 'Habermas, J. (1988). <i>On the Logic of the Social Sciences</i>（實證主義與詮釋學論戰部分）(S. W. Nicholsen &amp; J. A. Stark, Trans.). Cambridge, MA: MIT Press.（原著 1967／1970）', u: 'https://openlibrary.org/works/OL1414401W' }
+        ]},
+      { n: '四', date: '3/17', title: '研究設計的起點：研究問題與理論建構', items: [
+          { c: true,  t: 'Alford, R. R. (1998). <i>The Craft of Inquiry: Theories, Methods, Evidence</i>, ch. 2–3. Oxford University Press.（中譯：王志弘譯，2011，《好研究怎麼做》，群學）', u: 'https://openlibrary.org/works/OL2656882W' },
+          { c: true,  t: 'Gerring, J., &amp; Seawright, J. (2022). Current practices. In <i>Finding Your Social Science Project: The Research Sandbox</i> (ch. 2, pp. 19–37). Cambridge University Press.', u: 'https://doi.org/10.1017/9781009118620' },
+          { c: false, t: 'Merton, R. K. (1968). On sociological theories of the middle range. In <i>Social Theory and Social Structure</i> (enlarged ed., pp. 39–72). New York: Free Press.', u: 'https://openlibrary.org/works/OL269872W' },
+          { c: false, t: 'Swedberg, R. (2012). Theorizing in sociology and social science: Turning to the context of discovery. <i>Theory and Society</i>, 41(1), 1–40.', u: 'https://doi.org/10.1007/s11186-011-9161-5' }
+        ]},
+      { n: '五', date: '3/24', title: '兩種文化：變項語言 vs. 個案邏輯', items: [
+          { c: true,  t: 'Goertz, G., &amp; Mahoney, J. (2012). Introduction. In <i>A Tale of Two Cultures: Qualitative and Quantitative Research in the Social Sciences</i> (ch. 1). Princeton, NJ: Princeton University Press.', u: 'https://doi.org/10.1515/9781400845446' },
+          { c: false, t: 'Mahoney, J., &amp; Goertz, G. (2006). A tale of two cultures: Contrasting quantitative and qualitative research. <i>Political Analysis</i>, 14(3), 227–249.', u: 'https://doi.org/10.1093/pan/mpj017' },
+          { c: false, t: 'Becker, H. S. (1998). Concepts. In <i>Tricks of the Trade: How to Think about Your Research While You\'re Doing It</i> (ch. 4). University of Chicago Press.', u: 'https://doi.org/10.7208/chicago/9780226040998.001.0001' },
+          { c: false, t: 'Blumer, H. (1956). Sociological analysis and the "variable". <i>American Sociological Review</i>, 21(6), 683–690.', u: 'https://doi.org/10.2307/2088418' }
+        ]},
+      { n: '六', date: '3/31', title: '推論的邏輯：KKV 的宣戰', items: [
+          { c: true,  t: 'King, G., Keohane, R. O., &amp; Verba, S. (1994). <i>Designing Social Inquiry</i>, ch. 1–2. Princeton, NJ: Princeton University Press.', u: 'https://doi.org/10.1515/9781400821211' },
+          { c: true,  t: 'Brady, H. E., Collier, D., &amp; Seawright, J. (2010). Refocusing the discussion of methodology. In <i>Rethinking Social Inquiry</i> (2nd ed., ch. 1, pp. 15–32). Rowman &amp; Littlefield.', u: 'https://doi.org/10.5040/9798216385530.ch-001' },
+          { c: true,  t: 'Collier, D., Brady, H. E., &amp; Seawright, J. (2010). Critiques, responses, and trade-offs: Drawing together the debate. In <i>Rethinking Social Inquiry</i> (2nd ed., ch. 8, pp. 125–160). Rowman &amp; Littlefield.', u: 'https://doi.org/10.5040/9798216385530.ch-008' },
+          { c: false, t: 'McKeown, T. J. (1999). Case studies and the statistical worldview: Review of King, Keohane, and Verba\'s <i>Designing Social Inquiry</i>. <i>International Organization</i>, 53(1), 161–190.', u: 'https://doi.org/10.1162/002081899550841' }
+        ]},
+      { n: '八', date: '4/14', title: '因果關係：相關性 vs. 機制', items: [
+          { c: true,  t: 'King, G., Keohane, R. O., &amp; Verba, S. (1994). <i>Designing Social Inquiry</i>, ch. 3. Princeton, NJ: Princeton University Press.', u: 'https://doi.org/10.1515/9781400821211' },
+          { c: true,  t: 'Bennett, A. (2010). Process tracing and causal inference. In <i>Rethinking Social Inquiry</i> (2nd ed., ch. 10, pp. 207–220). Rowman &amp; Littlefield.', u: 'https://doi.org/10.5040/9798216385530.ch-010' },
+          { c: false, t: 'Freedman, D. A. (2010). On types of scientific inquiry: The role of qualitative reasoning. In <i>Rethinking Social Inquiry</i> (2nd ed., ch. 11, pp. 221–236). Rowman &amp; Littlefield.', u: 'https://doi.org/10.5040/9798216385530.ch-011' },
+          { c: false, t: 'Hedström, P., &amp; Ylikoski, P. (2010). Causal mechanisms in the social sciences. <i>Annual Review of Sociology</i>, 36, 49–67.', u: 'https://doi.org/10.1146/annurev.soc.012809.102632' },
+          { c: false, t: 'Falleti, T. G., &amp; Lynch, J. F. (2009). Context and causal mechanisms in political analysis. <i>Comparative Political Studies</i>, 42(9), 1143–1166.', u: 'https://doi.org/10.1177/0010414009331724' }
+        ]},
+      { n: '九', date: '4/21', title: '案例選擇：偏差 vs. 策略', items: [
+          { c: true,  t: 'King, G., Keohane, R. O., &amp; Verba, S. (1994). <i>Designing Social Inquiry</i>, ch. 4. Princeton, NJ: Princeton University Press.', u: 'https://doi.org/10.1515/9781400821211' },
+          { c: true,  t: 'Collier, D., Mahoney, J., &amp; Seawright, J. (2004). Claiming too much: Warnings about selection bias. In H. E. Brady &amp; D. Collier (Eds.), <i>Rethinking Social Inquiry</i> (1st ed., ch. 6). Rowman &amp; Littlefield.（第二版未收錄，改置於該書官網線上章節）', u: '' },
+          { c: false, t: 'Geddes, B. (1990). How the cases you choose affect the answers you get: Selection bias in comparative politics. <i>Political Analysis</i>, 2(1), 131–150.', u: 'https://doi.org/10.1093/pan/2.1.131' },
+          { c: false, t: 'Seawright, J., &amp; Gerring, J. (2008). Case selection techniques in case study research: A menu of qualitative and quantitative options. <i>Political Research Quarterly</i>, 61(2), 294–308.', u: 'https://doi.org/10.1177/1065912907313077' },
+          { c: false, t: 'George, A. L., &amp; Bennett, A. (2005). Phase one: Designing case study research. In <i>Case Studies and Theory Development in the Social Sciences</i> (ch. 4, pp. 73–88). Cambridge, MA: MIT Press.', u: 'https://openlibrary.org/works/OL20998763W' }
+        ]},
+      { n: '十', date: '4/28', title: '測量與資料：精確 vs. 深度', items: [
+          { c: true,  t: 'King, G., Keohane, R. O., &amp; Verba, S. (1994). <i>Designing Social Inquiry</i>, ch. 5. Princeton, NJ: Princeton University Press.', u: 'https://doi.org/10.1515/9781400821211' },
+          { c: true,  t: 'Adcock, R., &amp; Collier, D. (2001). Measurement validity: A shared standard for qualitative and quantitative research. <i>American Political Science Review</i>, 95(3), 529–546.', u: 'https://doi.org/10.1017/S0003055401003100' },
+          { c: false, t: 'Sartori, G. (1970). Concept misformation in comparative politics. <i>American Political Science Review</i>, 64(4), 1033–1053.', u: 'https://doi.org/10.2307/1958356' }
+        ]},
+      { n: '十一', date: '5/5', title: '小 N 的困境：增加 N vs. 過程追蹤', items: [
+          { c: true,  t: 'King, G., Keohane, R. O., &amp; Verba, S. (1994). <i>Designing Social Inquiry</i>, ch. 6. Princeton, NJ: Princeton University Press.', u: 'https://doi.org/10.1515/9781400821211' },
+          { c: true,  t: 'Brady, H. E. (2010). Data-set observations versus causal-process observations: The 2000 U.S. presidential election. In <i>Rethinking Social Inquiry</i> (2nd ed., ch. 12, pp. 237–246). Rowman &amp; Littlefield.', u: 'https://doi.org/10.5040/9798216385530.ch-012' },
+          { c: true,  t: 'Collier, D., Brady, H. E., &amp; Seawright, J. (2010). Sources of leverage in causal inference: Toward an alternative view of methodology. In <i>Rethinking Social Inquiry</i> (2nd ed., ch. 9, pp. 161–200). Rowman &amp; Littlefield.', u: 'https://doi.org/10.5040/9798216385530.ch-009' },
+          { c: false, t: 'Collier, D. (2011). Understanding process tracing. <i>PS: Political Science &amp; Politics</i>, 44(4), 823–830.', u: 'https://doi.org/10.1017/S1049096511001429' },
+          { c: false, t: 'Collier, D., &amp; Mahoney, J. (1996). Insights and pitfalls: Selection bias in qualitative research. <i>World Politics</i>, 49(1), 56–91.', u: 'https://doi.org/10.1353/wp.1996.0023' },
+          { c: false, t: 'Mahoney, J. (2000). Strategies of causal inference in small-N analysis. <i>Sociological Methods &amp; Research</i>, 28(4), 387–424.', u: 'https://doi.org/10.1177/0049124100028004001' }
+        ]},
+      { n: '十二', date: '5/12', title: '總結辯證：多元工具與共享標準', items: [
+          { c: true,  t: 'King, G., Keohane, R. O., &amp; Verba, S. (2010). The importance of research design. In <i>Rethinking Social Inquiry</i> (2nd ed., ch. 7, pp. 111–124). Rowman &amp; Littlefield.（KKV 團隊親自撰寫的回應篇章）', u: 'https://doi.org/10.5040/9798216385530.ch-007' },
+          { c: false, t: 'Brady, H. E., Collier, D., &amp; Seawright, J. (2006). Toward a pluralistic vision of methodology. <i>Political Analysis</i>, 14(3), 353–368.', u: 'https://doi.org/10.1093/pan/mpj021' },
+          { c: false, t: 'Beck, N. (2006). Is causal-process observation an oxymoron? <i>Political Analysis</i>, 14(3), 347–352.', u: 'https://doi.org/10.1093/pan/mpj015' }
+        ]},
+      { n: '十三', date: '5/19', title: '比較研究的邏輯與 QCA', items: [
+          { c: true,  t: 'Ragin, C. C. (1987). A Boolean approach to qualitative comparison: Basic concepts. In <i>The Comparative Method: Moving Beyond Qualitative and Quantitative Strategies</i> (ch. 6). Berkeley: University of California Press.', u: 'https://doi.org/10.1525/9780520957350' },
+          { c: false, t: 'Schneider, C. Q., &amp; Wagemann, C. (2010). Standards of good practice in qualitative comparative analysis (QCA) and fuzzy-sets. <i>Comparative Sociology</i>, 9(3), 397–418.', u: 'https://doi.org/10.1163/156913210X12493538729793' },
+          { c: false, t: 'Ragin, C. C. (2008). Set relations in social research: Basic concepts. In <i>Redesigning Social Inquiry: Fuzzy Sets and Beyond</i> (ch. 1). Chicago: University of Chicago Press.', u: 'https://doi.org/10.7208/chicago/9780226702797.001.0001' },
+          { c: false, t: 'Mahoney, J. (2004). Comparative-historical methodology. <i>Annual Review of Sociology</i>, 30, 81–101.', u: 'https://doi.org/10.1146/annurev.soc.30.012703.110507' }
+        ]},
+      { n: '十四', date: '5/26', title: '時間與歷史：歷史制度主義', items: [
+          { c: true,  t: 'Pierson, P. (2004). Positive feedback and path dependence. In <i>Politics in Time: History, Institutions, and Social Analysis</i> (ch. 1, pp. 17–53). Princeton, NJ: Princeton University Press.', u: 'https://doi.org/10.1515/9781400841080' },
+          { c: true,  t: 'Mahoney, J., &amp; Thelen, K. (2010). A theory of gradual institutional change. In J. Mahoney &amp; K. Thelen (Eds.), <i>Explaining Institutional Change: Ambiguity, Agency, and Power</i> (pp. 1–37). Cambridge University Press.', u: 'https://doi.org/10.1017/CBO9780511806414.003' },
+          { c: false, t: 'Thelen, K. (1999). Historical institutionalism in comparative politics. <i>Annual Review of Political Science</i>, 2, 369–404.', u: 'https://doi.org/10.1146/annurev.polisci.2.1.369' },
+          { c: false, t: 'Skocpol, T. (1984). Emerging agendas and recurrent strategies in historical sociology. In T. Skocpol (Ed.), <i>Vision and Method in Historical Sociology</i> (pp. 356–391). Cambridge University Press.', u: 'https://doi.org/10.1017/CBO9780511621567.012' }
+        ]},
+      { n: '十六', date: '6/9', title: '混合方法與研究設計工作坊', items: [
+          { c: true,  t: 'Creswell, J. W., &amp; Plano Clark, V. L. (2017). Core mixed methods designs. In <i>Designing and Conducting Mixed Methods Research</i> (3rd ed., ch. 3). Thousand Oaks, CA: Sage.', u: 'https://openlibrary.org/works/OL12089113W' },
+          { c: true,  t: 'Small, M. L. (2011). How to conduct a mixed methods study: Recent trends in a rapidly growing literature. <i>Annual Review of Sociology</i>, 37, 57–86.', u: 'https://doi.org/10.1146/annurev.soc.012809.102657' },
+          { c: false, t: 'Lieberman, E. S. (2005). Nested analysis as a mixed-method strategy for comparative research. <i>American Political Science Review</i>, 99(3), 435–452.', u: 'https://doi.org/10.1017/S0003055405051762' },
+          { c: false, t: 'Pearce, L. D. (2012). Mixed methods inquiry in sociology. <i>American Behavioral Scientist</i>, 56(6), 829–848.', u: 'https://doi.org/10.1177/0002764211433798' }
+        ]}
+    ],
   },
   {
     id: 'welfare',
