@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>福利是什麼？ ・ 福利社會學 第 2 週 ・ 葉崇揚</title>
+  <meta name="description" content="福利社會學第 2 週互動講義（給大一同學）：福利是什麼？為什麼福利跟我們息息相關？從社會學與社會政策的關係、社會問題的性質，到福利、社會契約、社會政策的定義與功能。分頁式互動簡報。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --chashitsu-bg: #e8dcc4;
+      --chashitsu-paper: #f5ecd6;
+      --chashitsu-tatami: #d8c8a8;
+      --moss: #3d5a3f;
+      --water: #5a7a8a;
+      --earth: #8a6a4a;
+      --persimmon: #c47038;
+      --accent: #c43838;
+      --gold: #b8860b;
+      --ink: #1f1f1d;
+      --ink-soft: rgba(31,31,29,0.78);
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --line-faint: rgba(31,31,29,0.05);
+      --jp: 'Shippori Mincho', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+      --mono: 'JetBrains Mono', 'Menlo', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: var(--jp);
+      background: var(--chashitsu-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 21px;
+      line-height: 2;
+      position: relative;
+    }
+    .paper-grain {
+      position: fixed; inset: 0; pointer-events: none;
+      opacity: 0.32; mix-blend-mode: multiply; z-index: 1;
+    }
+
+    /* Top bar */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 56px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .top-left { display: flex; align-items: center; gap: 14px; }
+    .back { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .back:hover { opacity: 0.85; }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .top-title { font-family: var(--brush); font-size: 19px; letter-spacing: 0.06em; }
+    .top-title small { font-family: var(--sans); font-size: 12px; letter-spacing: 0.18em; opacity: 0.55; margin-left: 10px; }
+    .top-right { display: flex; align-items: center; gap: 18px; font-family: var(--sans); font-size: 12px; opacity: 0.6; letter-spacing: 0.15em; }
+    .toc-btn {
+      background: transparent; border: 1px solid var(--line);
+      font-family: inherit; font-size: 11.5px; letter-spacing: 0.2em;
+      padding: 5px 12px; cursor: pointer; color: var(--ink); opacity: 0.75;
+    }
+    .toc-btn:hover { background: var(--chashitsu-paper); opacity: 1; }
+
+    .progress {
+      position: fixed; top: 56px; left: 0;
+      height: 2px; background: var(--accent);
+      z-index: 49; transition: width 0.4s ease;
+    }
+
+    .deck {
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 64px;
+      overflow: hidden; z-index: 2;
+    }
+    .slide {
+      position: absolute; inset: 0;
+      padding: 36px 72px 28px;
+      overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.2,0.7,0.2,1);
+    }
+    .slide.is-prev { transform: translateX(-40px); }
+    .slide.is-active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide-inner { max-width: 1080px; margin: 0 auto; }
+
+    .navbar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 64px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .nav-btn {
+      background: transparent; border: 1px solid var(--ink);
+      font-family: var(--jp); font-size: 14px;
+      letter-spacing: 0.15em; color: var(--ink);
+      padding: 9px 22px; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover:not(:disabled) { background: var(--ink); color: var(--chashitsu-paper); }
+    .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; border-color: var(--line); }
+    .nav-center { display: flex; align-items: center; gap: 16px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.18em; opacity: 0.7; }
+    .dots { display: flex; gap: 5px; max-width: 480px; flex-wrap: wrap; justify-content: center; }
+    .dot { width: 7px; height: 7px; background: var(--line); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .dot:hover { background: var(--accent); transform: scale(1.3); }
+    .dot.is-active { background: var(--accent); }
+    .dot.is-section { width: 14px; }
+
+    /* TOC overlay */
+    .toc-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(31,31,29,0.85);
+      backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center;
+      padding: 40px;
+    }
+    .toc-overlay.is-shown { display: flex; animation: fade 0.3s; }
+    .toc-panel {
+      background: var(--chashitsu-paper);
+      max-width: 920px; width: 100%; max-height: 80vh;
+      overflow-y: auto;
+      padding: 36px 44px;
+      border: 1px solid var(--accent);
+      position: relative;
+    }
+    .toc-close {
+      position: absolute; top: 14px; right: 18px;
+      background: transparent; border: none;
+      font-size: 26px; cursor: pointer; opacity: 0.5;
+      font-family: var(--brush); color: var(--ink);
+    }
+    .toc-close:hover { opacity: 1; }
+    .toc-title { font-family: var(--brush); font-size: 26px; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .toc-sub { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 22px; }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; }
+    .toc-list li {
+      padding: 8px 0; border-bottom: 1px dashed var(--line-soft);
+      cursor: pointer; display: flex; align-items: baseline; gap: 14px;
+    }
+    .toc-list li:hover { color: var(--accent); }
+    .toc-list .num { font-family: var(--brush); font-size: 14px; color: var(--accent); min-width: 28px; }
+    .toc-list .lab { font-size: 15px; flex: 1; }
+    .toc-list .kind { font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; opacity: 0.45; }
+    .toc-list .is-section { color: var(--accent); font-weight: 600; }
+
+    /* Slide types */
+    .slide-title {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      padding: 36px 72px;
+    }
+    .slide-title .week-tag {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.4em; opacity: 0.6; margin-bottom: 24px;
+    }
+    .slide-title .seal {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      background: var(--accent); color: var(--chashitsu-paper);
+      font-family: var(--brush); font-size: 16px;
+      transform: rotate(-3deg);
+    }
+    .slide-title h1 {
+      font-family: var(--brush); font-size: 72px;
+      font-weight: 400; line-height: 1.1; letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+    .slide-title .subtitle {
+      font-family: var(--sans); font-size: 18px;
+      letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 28px;
+    }
+    .slide-title .author {
+      font-size: 18px; opacity: 0.85; line-height: 1.85;
+      max-width: 800px;
+    }
+    .meta-strip {
+      margin-top: 36px;
+      display: flex; flex-wrap: wrap; gap: 24px;
+      font-family: var(--sans); font-size: 13px; opacity: 0.6;
+      letter-spacing: 0.12em;
+    }
+
+    .slide-section {
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      background: linear-gradient(135deg, rgba(196,56,56,0.06) 0%, rgba(216,200,168,0.4) 100%);
+      padding: 36px 72px;
+      position: relative;
+    }
+    .slide-section .big-num {
+      font-family: var(--brush); font-size: 240px;
+      color: var(--accent); opacity: 0.15;
+      position: absolute; bottom: 30px; right: 60px;
+      line-height: 1;
+    }
+    .slide-section .part {
+      font-family: var(--sans); font-size: 13px;
+      letter-spacing: 0.45em; opacity: 0.55; margin-bottom: 14px;
+    }
+    .slide-section h2 {
+      font-family: var(--brush); font-size: 56px;
+      font-weight: 400; letter-spacing: 0.04em;
+      line-height: 1.15; margin-bottom: 14px;
+    }
+    .slide-section .sec-en {
+      font-family: var(--sans); font-size: 16px;
+      letter-spacing: 0.3em; opacity: 0.55; font-style: italic;
+      margin-bottom: 22px;
+    }
+    .slide-section .sec-q {
+      font-size: 19px; opacity: 0.85;
+      max-width: 640px; line-height: 1.95;
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+    }
+
+    .slide-content { padding-top: 28px; }
+    .content-head {
+      margin-bottom: 22px;
+      display: flex; align-items: baseline; gap: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .content-head h2 { font-family: var(--brush); font-size: 44px; font-weight: 400; letter-spacing: 0.04em; }
+    .content-head .h-en { font-family: var(--sans); font-size: 15.5px; letter-spacing: 0.25em; opacity: 0.6; }
+    .content-head .h-tag { margin-left: auto; font-family: var(--sans); font-size: 14px; letter-spacing: 0.3em; opacity: 0.6; }
+
+    .lead {
+      font-size: 21px; line-height: 2.05; opacity: 0.9;
+      max-width: 920px; margin-bottom: 20px;
+    }
+    .lead p + p { margin-top: 16px; }
+    .lead strong { color: var(--accent); }
+    .term-en {
+      font-family: var(--sans); font-style: italic;
+      opacity: 0.7; font-size: 0.85em;
+      margin-left: 3px;
+    }
+
+    /* Scenario / story card */
+    .story {
+      background: var(--chashitsu-paper);
+      border-left: 4px solid var(--accent);
+      padding: 24px 30px;
+      margin: 18px 0;
+    }
+    .story .lab {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.3em; color: var(--accent); margin-bottom: 10px;
+    }
+    .story h3 {
+      font-family: var(--brush); font-size: 26px;
+      letter-spacing: 0.04em; margin-bottom: 14px;
+    }
+    .story p { font-size: 19px; line-height: 2; opacity: 0.9; }
+    .story p + p { margin-top: 12px; }
+
+    /* Two-column compare */
+    .pair {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+      margin-top: 12px;
+    }
+    .pair-box {
+      background: var(--chashitsu-paper);
+      border-top: 4px solid;
+      padding: 20px 22px;
+    }
+    .pair-box.a { border-top-color: var(--moss); }
+    .pair-box.b { border-top-color: var(--water); }
+    .pair-box.c { border-top-color: var(--earth); }
+    .pair-box.d { border-top-color: var(--persimmon); }
+    .pair-box .tag {
+      font-family: var(--sans); font-size: 13.5px;
+      letter-spacing: 0.25em; margin-bottom: 10px;
+    }
+    .pair-box.a .tag { color: var(--moss); }
+    .pair-box.b .tag { color: var(--water); }
+    .pair-box.c .tag { color: var(--earth); }
+    .pair-box.d .tag { color: var(--persimmon); }
+    .pair-box h3 {
+      font-family: var(--brush); font-size: 25px;
+      letter-spacing: 0.04em; margin-bottom: 12px;
+    }
+    .pair-box p { font-size: 18.5px; line-height: 1.95; opacity: 0.9; }
+
+    .deep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 16px; }
+    .deep-col h5 {
+      font-family: var(--sans); font-size: 14px;
+      letter-spacing: 0.28em; opacity: 0.7; margin-bottom: 12px;
+    }
+    .deep-col ul { list-style: none; padding: 0; }
+    .deep-col li {
+      font-size: 18px; line-height: 1.95;
+      padding: 8px 0 8px 18px; position: relative;
+      border-bottom: 1px solid var(--line-faint);
+    }
+    .deep-col li:last-child { border-bottom: none; }
+    .deep-col li::before { content: "・"; position: absolute; left: 0; opacity: 0.5; }
+    .deep-col li strong { color: var(--accent); font-weight: 600; }
+
+    /* Comparison table */
+    .ctab {
+      width: 100%; border-collapse: collapse;
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      font-size: 17px;
+      margin-top: 10px;
+    }
+    .ctab th, .ctab td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line-soft);
+      text-align: left; vertical-align: top;
+    }
+    .ctab th {
+      font-family: var(--brush); font-size: 19px; font-weight: 500;
+      background: rgba(216,200,168,0.4);
+    }
+    .ctab th:nth-child(2), .ctab td:nth-child(2) { background: rgba(61,90,63,0.06); }
+    .ctab th:nth-child(3), .ctab td:nth-child(3) { background: rgba(90,122,138,0.06); }
+    .ctab th:nth-child(4), .ctab td:nth-child(4) { background: rgba(138,106,74,0.06); }
+    .ctab th:nth-child(5), .ctab td:nth-child(5) { background: rgba(196,112,56,0.06); }
+    .ctab td:first-child { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.1em; opacity: 0.65; width: 90px; vertical-align: middle; }
+    .ctab.dense th, .ctab.dense td { padding: 10px 12px; font-size: 14.5px; }
+    .table-scroll { overflow-x: auto; margin-top: 10px; }
+
+    /* 引註卡片內的出處行（沿用 story 內既有 inline 樣式） */
+
+    /* 名詞鏈（Spicker 定義鏈，slide30） */
+    .chain { margin-top: 14px; max-width: 720px; }
+    .chain-item {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      padding: 14px 22px;
+      font-size: 18.5px; line-height: 1.7;
+    }
+    .chain-arrow { text-align: center; font-family: var(--sans); opacity: 0.4; font-size: 17px; padding: 2px 0; }
+
+    /* 功能小標籤（slide31） */
+    .func-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .func-chip {
+      background: var(--chashitsu-paper);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--accent);
+      padding: 10px 18px;
+      font-size: 17.5px;
+    }
+
+    /* Kaufmann 矩陣圖（slide32） */
+    .kmatrix { margin-top: 16px; }
+    .kmatrix .top-label {
+      text-align: center; font-family: var(--brush); font-size: 21px;
+      letter-spacing: 0.06em;
+      padding: 10px; background: var(--chashitsu-paper);
+      border: 1px solid var(--line); margin: 0 auto 10px;
+      max-width: 420px;
+    }
+    .kmatrix-row { display: grid; grid-template-columns: 190px repeat(4, 1fr); gap: 6px; margin-bottom: 6px; }
+    .kmatrix-row .rlabel {
+      display: flex; align-items: center;
+      font-family: var(--sans); font-size: 12px; letter-spacing: 0.06em;
+      opacity: 0.65; line-height: 1.5; padding: 6px 8px;
+    }
+    .kmatrix-cell {
+      background: var(--chashitsu-paper);
+      border-top: 3px solid var(--line);
+      padding: 10px 8px; text-align: center;
+      font-size: 14px; line-height: 1.55;
+    }
+    .kmatrix-cell.c1 { border-top-color: var(--moss); }
+    .kmatrix-cell.c2 { border-top-color: var(--water); }
+    .kmatrix-cell.c3 { border-top-color: var(--earth); }
+    .kmatrix-cell.c4 { border-top-color: var(--persimmon); }
+
+    /* Animations */
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+    .keyboard-hint {
+      position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
+      font-family: var(--sans); font-size: 9.5px;
+      letter-spacing: 0.25em; opacity: 0.4;
+      pointer-events: none; z-index: 60;
+    }
+    .keyboard-hint kbd { font-family: var(--mono); font-size: 9.5px; background: rgba(31,31,29,0.08); padding: 1px 5px; margin: 0 2px; }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      body { font-size: 16.5px; }
+      .topbar { padding: 0 14px; }
+      .top-title { font-size: 15px; }
+      .top-title small { display: none; }
+      .top-right { display: none; }
+      .toc-btn { font-size: 10.5px; padding: 4px 9px; letter-spacing: 0.18em; }
+
+      .slide { padding: 26px 22px 20px; }
+      .slide-title { padding: 26px 22px; }
+      .slide-title h1 { font-size: 36px; }
+      .slide-title .subtitle { font-size: 14.5px; letter-spacing: 0.18em; }
+      .slide-title .author { font-size: 16px; }
+
+      .slide-section { padding: 26px 22px; }
+      .slide-section h2 { font-size: 32px; }
+      .slide-section .sec-en { font-size: 13px; }
+      .slide-section .sec-q { font-size: 16px; }
+      .slide-section .big-num { font-size: 130px; bottom: 20px; right: 20px; }
+
+      .content-head h2 { font-size: 24px; }
+      .content-head .h-en { font-size: 11.5px; }
+      .content-head .h-tag { display: none; }
+
+      .lead { font-size: 16px; }
+      .story h3 { font-size: 20px; }
+      .story p { font-size: 15.5px; }
+
+      .pair { grid-template-columns: 1fr; gap: 12px; }
+      .pair-box { padding: 18px 20px; }
+      .pair-box h3 { font-size: 19px; }
+      .pair-box p { font-size: 15px; }
+
+      .deep-grid { grid-template-columns: 1fr; gap: 16px; }
+      .deep-col li { font-size: 14.5px; }
+
+      .ctab { font-size: 13px; display: block; overflow-x: auto; }
+      .ctab th, .ctab td { padding: 8px 10px; }
+      .ctab.dense th, .ctab.dense td { font-size: 12px; padding: 7px 8px; }
+
+      .chain-item { font-size: 15.5px; padding: 12px 16px; }
+      .func-chip { font-size: 14.5px; padding: 8px 14px; }
+
+      .kmatrix-row { grid-template-columns: 1fr; }
+      .kmatrix-row .rlabel { padding: 4px 0; }
+
+      .navbar { padding: 0 14px; height: 58px; }
+      .nav-btn { padding: 7px 14px; font-size: 13px; letter-spacing: 0.1em; }
+      .dots { max-width: 200px; }
+      .nav-center { font-size: 12px; gap: 10px; }
+
+      .toc-panel { padding: 24px 22px; }
+      .toc-list { grid-template-columns: 1fr; gap: 0; }
+      .toc-list .lab { font-size: 13.5px; }
+
+      .keyboard-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<svg class="paper-grain" aria-hidden="true">
+  <defs>
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#paper-noise)" />
+</svg>
+
+<header class="topbar">
+  <div class="top-left">
+    <a href="../../teaching-zh.html" class="back">← 教學</a>
+    <span class="top-sep">·</span>
+    <span class="top-title">福利是什麼？<small>福利社會學 第 2 週</small></span>
+  </div>
+  <div class="top-right">
+    <span>大一同學適用</span>
+    <button class="toc-btn" onclick="toggleToc()">目次 ・ TOC</button>
+  </div>
+</header>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ============ S0 TITLE ============ -->
+  <section class="slide slide-title is-active" data-kind="title" data-label="封面">
+    <div class="slide-inner">
+      <div class="week-tag">
+        <span class="seal">學</span>
+        <span>第 2 週 ・ 3/5 ・ WEEK 2</span>
+      </div>
+      <h1>福利是什麼？<br/>為什麼福利跟我們息息相關？</h1>
+      <p class="subtitle">“福利”＋“社會學”</p>
+      <p class="author">
+        葉崇揚<br/>
+        教授<br/>
+        東吳大學社會學系
+      </p>
+      <div class="meta-strip">
+        <span>福利社會學 ・ 葉崇揚</span>
+        <span>東吳大學社會學系</span>
+        <span>2026 春學期</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S1 QUOTE (Gouldner) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="開場引言">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Alvin Gouldner (1962: 205)</h2>
+      </div>
+      <div class="story">
+        <span class="lab">QUOTE ・ Gouldner 1962</span>
+        <p>『社會科學如果沒有付出，是不會完全被社會、或其一部分所接受，這意謂著對於當前人類的苦楚，它必須要展現出它的相干性與關懷心。</p>
+        <p style="margin-top: 8px; opacity: 0.7; font-size: 15px;">— Alvin Gouldner (1962: 205)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S2 SOCIOLOGY AND SOCIAL POLICY ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會學與社會政策">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Sociology and social policy</h2>
+      </div>
+      <p class="lead">A social policy is an action of a government that has a direct impact on the welfare of its citizens, but might also be about social control.</p>
+      <p class="lead">Most sociologists would agree that sociology should have an improving society. However, the extent to which governments base their policies on social research is not as simple as it might seem.</p>
+      <p class="lead">There are various factors that may influence policymaking and the extent to which sociology is a part of this process.</p>
+    </div>
+  </section>
+
+  <!-- ============ S3 FOUNDING FATHERS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會學的奠基者">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>The “founding fathers”</h2>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a">
+          <span class="tag">1798–1857</span>
+          <h3>August Comte</h3>
+          <p>Saw sociology as a practical subject, that shouldn’t remain in universities but should be applied to wider society. The purpose of sociology is ”to know, in order to predict and control society”.</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">1858–1917</span>
+          <h3>Emile Durkheim</h3>
+          <p>Saw sociology as proving ways of restoring order and strengthening the integration of society.</p>
+        </div>
+        <div class="pair-box c">
+          <span class="tag">1818–1883</span>
+          <h3>Karl Marx</h3>
+          <p>Hoped his work would inspire and direct working-class movements in capitalist societies.</p>
+        </div>
+      </div>
+      <p class="lead" style="margin-top: 20px; opacity: 0.6; font-size: 16px; font-style: italic;">
+        Notice how all of these sociologists, and by extension their ideas, are 100 years outdated.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S4 GIDDENS ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Giddens：社會學對社會政策的影響">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2 style="font-size: 34px;">Giddens: the influence of sociology on social policy</h2>
+      </div>
+      <div class="deep-col">
+        <ul>
+          <li>Sociology can inform policymakers of viewpoints other than their own.</li>
+          <li>Sociological research can also assess the results of policy initiatives, and provide feedback to agencies.</li>
+          <li>Sociology can also generate self-understanding.</li>
+          <li>This knowledge may lead to the questioning of government policies and the creation of protest groups with alternative non-government initiatives.</li>
+        </ul>
+      </div>
+      <div class="story">
+        <span class="lab">E.G. ・ AMNESTY INTERNATIONAL</span>
+        <p>Amnesty International aims to bring about reform of existing policy:</p>
+        <p>“To conduct research and generate action to prevent and end grave abuses of human rights and to demand justice for those whose rights have been violated”</p>
+        <p style="margin-top: 8px; opacity: 0.7; font-size: 15px;">— Amnesty International Mission Statement</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S5 FACTORS (slide 8) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="影響社會學能否影響政策的因素">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2 style="font-size: 26px;">There are many factors that may affect whether or not sociological research influences social policy.</h2>
+      </div>
+      <div class="deep-col">
+        <ul>
+          <li><strong>Electoral Popularity.</strong> Findings and recommendations might point to a policy that would be unpopular with voters.</li>
+          <li><strong>Ideologies and policy preferences of governments.</strong></li>
+          <li><strong>Interest groups; government lobbying.</strong></li>
+          <li><strong>Globalization.</strong> Social policy isn't just made by nation states independently.</li>
+          <li><strong>Critical Sociology.</strong> Sociologists who are critical of the state and powerful agencies, such as marxists, may be regarded as too extreme, hostile or impractical and therefore unlikely to influence policy.</li>
+        </ul>
+      </div>
+      <p class="lead" style="margin-top: 18px;">Sociological research can influence public opinion, which can affect the policies that governments produce. Also, those with power are able to define what is and what is not a social problem, thus can decide what (if anything) should be done about it.</p>
+    </div>
+  </section>
+
+  <!-- ============ S6 PROBLEM DEFINITIONS (slides 9-10) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會學問題／社會問題">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2 style="font-size: 32px;">社會學研究什麼？ ・ 社會問題是什麼？</h2>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <span class="tag">Sociological Problem?</span>
+          <h3>社會學研究什麼？</h3>
+          <p>Any pattern of relationships that calls for an explanation.</p>
+        </div>
+        <div class="pair-box b">
+          <span class="tag">Social Problem?</span>
+          <h3>社會問題是什麼？</h3>
+          <p>Social behavior that causes public friction or misery, calling for action to solve it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S7 NATURE OF SOCIAL PROBLEMS (slides 11-12) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會問題的性質">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>社會問題</h2>
+      </div>
+      <div class="deep-grid">
+        <div class="deep-col">
+          <ul>
+            <li>社會問題是來自於社會運作本身</li>
+            <li>社會問題不是壞人所引起的</li>
+            <li>問題是被社會大多數的人定義為會有負面影響的情況、同時需要改變</li>
+            <li>人們看待問題的方式是不一樣的</li>
+          </ul>
+        </div>
+        <div class="deep-col">
+          <ul>
+            <li>對於問題的定義會隨著時間不同</li>
+            <li>問題涉及到主觀的價值和客觀的事實</li>
+            <li>很多社會問題可以被解決，但是不是所有社會問題</li>
+            <li>不同的社會問題是互相有關關聯的</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S8 SECTION 01 (slide 13) ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="福利？福祉？">
+    <div class="slide-inner">
+      <div class="big-num">壹</div>
+      <p class="part">PART 01</p>
+      <h2>福利(welfare)？<br/>福祉(well-being)？</h2>
+    </div>
+  </section>
+
+  <!-- ============ S9 WELL-BEING (slide 14) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Well-being 的定義">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>“Well-being”</h2>
+      </div>
+      <div class="story">
+        <span class="lab">DEFINITION</span>
+        <p>“Well-being” is a positive physical, social and mental state; it is not just the absence of pain, discomfort and incapacity, it requires that basic needs are met, that individuals have a sense of purpose, that they feel able to achieve important personal goals and participate in society.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S10 DALY x3 (slides 15-17) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Welfare ・ Daly (2011)">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Welfare ・ Daly (2011)</h2>
+      </div>
+      <div class="story">
+        <span class="lab">QUOTE ・ Daly 2011</span>
+        <p>Welfare：不只涉及到我們如何生活於這個社會中，而且涉及到我們如何思考我們生活應該要變成甚麼樣子 (Daly, 2011)</p>
+        <p>因此，福利社會學可以讓我們了解福利相關的政策工具以及制度，是如何鑲嵌於國家的體系之中，特別是社會政策與方法，以及社會與個人福祉的資源與程度是如何在現實生活中所實現。(Daly, 2011)</p>
+        <p>因此，福利可以被理解為一套理念和實際的作為，而此貫穿與影響人類在家庭、社區、市場和國家的價值判斷與行為模式(Daly, 2011)。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S11 WELFARE (unattributed, slide 18) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Welfare 的定義">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Welfare</h2>
+      </div>
+      <div class="story">
+        <span class="lab">DEFINITION</span>
+        <p>Welfare: the highest possible access to economic resources, a high level of wellbeing, including the happiness of the citizens, a guaranteed minimum income to avoid living in poverty, and, finally, having the capabilities to ensure the individual a good life.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S12 SECTION 02 (slide 19) ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="為什麼需要社會政策？">
+    <div class="slide-inner">
+      <div class="big-num">貳</div>
+      <p class="part">PART 02</p>
+      <h2>為什麼需要社會政策？</h2>
+      <p class="sec-en">一種社會契約 (social contract)</p>
+    </div>
+  </section>
+
+  <!-- ============ S13 社會契約 (slide 20) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會契約">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>社會契約</h2>
+      </div>
+      <p class="lead">社會結構由政治和法律等制度、經濟、家庭和社區生活的組方式決定。</p>
+      <p class="lead">決定集體至如何運作的規範和規則，就是社會契約。</p>
+      <div class="deep-col">
+        <ul>
+          <li>期望</li>
+          <li>相互關係 <span class="term-en">(mutuality)</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S14 HOBBES/LOCKE/ROUSSEAU (slide 21) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="我們對彼此有何責任？（一）">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>我們對彼此有何責任？</h2>
+      </div>
+      <div class="pair" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pair-box a">
+          <h3>Thomas Hobbes</h3>
+          <p>自利但理性的個人應當服從一個絕對主權的權力，這是避免落入殘酷的自然狀態的唯一可靠方法。</p>
+        </div>
+        <div class="pair-box b">
+          <h3>John Locke</h3>
+          <p>社會契約的目的是保護公民的生命、自由和福祉；因此主權者未來保護這些權利，公民造反並建立新的政治社會就是正當的。</p>
+        </div>
+        <div class="pair-box c">
+          <h3>Jean Jacques Rousseau</h3>
+          <p>關注如何維護自由，但他認識到由於人類越來越互相依賴，為了在良好的社會裡共同生活，妥協是必要的。因此，必須要有政治制度的支持，以便公民制定他們願意服從的法律，從而賦予國家權力正當的基礎。</p>
+        </div>
+      </div>
+      <p class="lead" style="margin-top: 18px;">社會契約只是生活在一個免於剝削的社會的前提條件。</p>
+    </div>
+  </section>
+
+  <!-- ============ S15 SMITH/RAWLS (slide 22) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="我們對彼此有何責任？（二）">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>我們對彼此有何責任？</h2>
+      </div>
+      <p class="lead">社會契約的轉移到公民責任和我們對彼此的責任</p>
+      <div class="pair">
+        <div class="pair-box a">
+          <h3>Adam Smith</h3>
+          <p>同理心所促進的社會團結有道德、政治和經濟方面的理由。道德方面，在每一個社會中，個人都有一些基本需求，不滿足這些需求在道德上就是錯誤的。政治上，是為了讓民主制度有效運作。經濟上，安排大量公民共同分擔疾病、失業和養老等風險，比任由個人努力自保更有效率。</p>
+        </div>
+        <div class="pair-box b">
+          <h3>John Rawls</h3>
+          <p>無知之幕後面設計的社會契約。機會均等原則和差異原則。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S16 社會契約結論 (slide 23) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會契約（結論）">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>社會契約</h2>
+      </div>
+      <p class="lead">是指個人、企業、公民社會與國家共同合作，為一個攸關集體利益的體系做出貢獻。</p>
+      <p class="lead">而社會政策即是靠政治過程和隨後的國家行動居中協調，致力分攤風險和投資於社會利益的機制。</p>
+    </div>
+  </section>
+
+  <!-- ============ S17 BARKER (slide 24) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會福利的定義 ・ Barker">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>社會福利(Social Welfare)</h2>
+      </div>
+      <div class="story">
+        <span class="lab">DEFINITION ・ Barker 1999</span>
+        <p>「一種國家的方案、給付、服務體系，用來協助人民滿足其社會、經濟、教育與健康需求，此乃社會維持的基礎。」</p>
+        <p style="margin-top: 8px; opacity: 0.7; font-size: 15px;">(Barker 1999)。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S18 SECTION 03 (slide 25) ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="社會福利 or 社會政策">
+    <div class="slide-inner">
+      <div class="big-num">參</div>
+      <p class="part">PART 03</p>
+      <h2>社會福利 or 社會政策</h2>
+    </div>
+  </section>
+
+  <!-- ============ S19 社會政策指涉學術學科 (slide 26) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會政策指涉學術學科">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>社會政策指涉學術學科</h2>
+      </div>
+      <p class="lead">社會政策在於研究：</p>
+      <div class="deep-col">
+        <ul>
+          <li>社會政策是什麼？</li>
+          <li>社會政策如何被發展、管理與執行？</li>
+          <li>為何有(或是沒有)某一社會政策</li>
+        </ul>
+      </div>
+      <div class="story">
+        <span class="lab">QUOTE ・ Spicker</span>
+        <p>Spicker：社會政策是關心於社會服務及福利國家的研究領域</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S20 KAUFMANN 4 CHARACTERISTICS (slide 27) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Kaufmann：社會政策的特性">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Franz-Xaver Kaufmann (2012)</h2>
+      </div>
+      <p class="lead">社會政策具有幾點特性</p>
+      <div class="deep-col">
+        <ul>
+          <li>以提供服務或是(現金)給付</li>
+          <li>目標或是價值導向的目標人口群的類型化</li>
+          <li>政策所隱含規範性價值或是目標往往是具有高度爭議的</li>
+          <li>社會大眾的認知也會影響對於社會政策的定義</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S21 MARSHALL (slide 28) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會政策的定義 ・ Marshall">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>馬歇爾(Marshall 1965)</h2>
+      </div>
+      <div class="story">
+        <span class="lab">DEFINITION ・ Marshall 1965</span>
+        <p>「政府用以直接影響人民福利的政策，其行動是提供服務或所得與人民。其核心包括社會保險、公共救助、保健、福利服務、住宅政策等。」</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S22 社會政策 3 points (slide 29) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會政策">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>社會政策</h2>
+      </div>
+      <div class="deep-col">
+        <ul>
+          <li>是具有社會性的公共政策</li>
+          <li>是回應社會變遷之結構性社會問題的政策</li>
+          <li>政府促進人民福祉的干預活動</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S23 SPICKER CHAIN (slide 30) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會政策的定義 ・ Spicker (2000)">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Paul Spicker(2000)</h2>
+      </div>
+      <div class="chain">
+        <div class="chain-item">Social Policy (社會政策)是用來促進或是維持福祉</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">促進人類福祉(/福利)</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">道德行動</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">促進福祉的道德性義務</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">促進個人和社會福祉</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S24 FUNCTIONS (slide 31) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會政策的功能">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>社會政策的功能……多種目標</h2>
+      </div>
+      <div class="func-chips">
+        <span class="func-chip">貧窮舒緩</span>
+        <span class="func-chip">所得維持與替代</span>
+        <span class="func-chip">促進社會團結</span>
+        <span class="func-chip">重分配</span>
+        <span class="func-chip">補償</span>
+        <span class="func-chip">促進經濟效率</span>
+        <span class="func-chip">行為改變(社會控制)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S25 KAUFMANN MATRIX diagram + table (slides 32-33) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會政策的干預類型">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Social inclusion 社會融合</h2>
+      </div>
+      <div class="kmatrix">
+        <div class="top-label">Social inclusion 社會融合</div>
+        <div class="kmatrix-row">
+          <div class="rlabel">Dimension of social participation 社會參與的層面</div>
+          <div class="kmatrix-cell c1">Status 地位</div>
+          <div class="kmatrix-cell c2">Resources 資源</div>
+          <div class="kmatrix-cell c3">Opportunities 機會</div>
+          <div class="kmatrix-cell c4">Capabilities 能力</div>
+        </div>
+        <div class="kmatrix-row">
+          <div class="rlabel">Social policy benefits 社會政策給付</div>
+          <div class="kmatrix-cell c1">Legal rights 合法權利</div>
+          <div class="kmatrix-cell c2">Cash benefits 現金給付</div>
+          <div class="kmatrix-cell c3">Infrastructure facility 基礎設施</div>
+          <div class="kmatrix-cell c4">Service relating to individual 與個人相關的服務</div>
+        </div>
+        <div class="kmatrix-row">
+          <div class="rlabel">Type of interventions 干預的種類</div>
+          <div class="kmatrix-cell c1">Legal 法律</div>
+          <div class="kmatrix-cell c2">Economics 經濟</div>
+          <div class="kmatrix-cell c3">Ecological 生態</div>
+          <div class="kmatrix-cell c4">Person-related 與人相關的</div>
+        </div>
+      </div>
+
+      <div class="table-scroll">
+        <table class="ctab dense">
+          <thead>
+            <tr>
+              <th></th>
+              <th>法律干預</th>
+              <th>經濟干預</th>
+              <th>生態干預</th>
+              <th>個人相關的干預</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>I 影響的類型</td><td>透過對法律關係的調節和保護來影響社會關係中的法律地位</td><td>通過主要收入的個人間再分配，影響可支配家庭資源的結構。</td><td>透過空間功能的規劃和基礎設施的創建影響空間固定參與機會的分佈</td><td>影響著生物物理或社會文化能力向個人的轉移，將生物物理或社會文化能力轉移給個人；決定教育或治療過程的內容</td></tr>
+            <tr><td>II 普遍措施</td><td>建立監督和管轄機構；授予保護、參與、申請賠償和上訴權利，以及程序規則中的參與義務。</td><td>稅費和收費；轉移支付；免稅額</td><td>區域和城鎮規劃、社會規劃；公共住房建設；辦公室和工作人員的經費籌措</td><td>專業化；課程；提供教育、建議、資訊；康復、治療；支持自助活動。</td></tr>
+            <tr><td>III 主要的社會政策結果</td><td>加強社會弱勢群體和個人在融入機會方面的法律地位</td><td>增加私人收入不足的群體和個人的可支配收入</td><td>改善與個人和家庭生活狀況相關的獲取機會和環境品質</td><td>提高個人為尋求合法參與機會而採取行動的能力</td></tr>
+            <tr><td>IV 機構</td><td>國家的必要性和定義</td><td>國家或半自治的國家組織；部分集體自我管理</td><td>國家機構和中間機構的結合</td><td>國家、中介機構、集體自助</td></tr>
+            <tr><td>V 實現的主要問題</td><td>了解法律規範：遵守標準和規則</td><td>財源籌措</td><td>組織間協調；使用權</td><td>高效的人際溝通</td></tr>
+            <tr><td>VI 監管程度</td><td>高</td><td>高</td><td>低</td><td>低</td></tr>
+            <tr><td>VII 公共成本</td><td>低</td><td>高</td><td>高，依據分配</td><td>多變的</td></tr>
+            <tr><td>VIII 政府有效實施的可行性</td><td>中央政府－地方政府，難度適度的</td><td>中央，簡易</td><td>中央政府－地方政府，難度適度的</td><td>在地化，困難</td></tr>
+            <tr><td>IX 接受程度</td><td>依據利益和能力</td><td>普遍沒有問題，當為目標性時有選擇性</td><td>選擇性且多變的</td><td>無法控制且有爭議性</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S26 SCOPE (slide 34) ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="社會政策可能範圍">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>社會政策可能範圍</h2>
+      </div>
+      <div class="pair">
+        <div class="pair-box a">
+          <h3>傳統範圍</h3>
+          <ul style="list-style: none; padding: 0; margin-top: 8px;">
+            <li style="font-size: 18px; line-height: 1.95; padding: 6px 0 6px 18px; position: relative;"><span style="position:absolute; left:0; opacity:0.5;">・</span>Income transfers (年金、救助、社會保險等)</li>
+            <li style="font-size: 18px; line-height: 1.95; padding: 6px 0 6px 18px; position: relative;"><span style="position:absolute; left:0; opacity:0.5;">・</span>Health Policy(健康服務)</li>
+            <li style="font-size: 18px; line-height: 1.95; padding: 6px 0 6px 18px; position: relative;"><span style="position:absolute; left:0; opacity:0.5;">・</span>Social Care (老人、小孩等)</li>
+            <li style="font-size: 18px; line-height: 1.95; padding: 6px 0 6px 18px; position: relative;"><span style="position:absolute; left:0; opacity:0.5;">・</span>Family Policy</li>
+            <li style="font-size: 18px; line-height: 1.95; padding: 6px 0 6px 18px; position: relative;"><span style="position:absolute; left:0; opacity:0.5;">・</span>Work and Employment</li>
+          </ul>
+        </div>
+        <div class="pair-box b">
+          <h3>延伸範圍</h3>
+          <ul style="list-style: none; padding: 0; margin-top: 8px;">
+            <li style="font-size: 18px; line-height: 1.95; padding: 6px 0 6px 18px; position: relative;"><span style="position:absolute; left:0; opacity:0.5;">・</span>教育政策</li>
+            <li style="font-size: 18px; line-height: 1.95; padding: 6px 0 6px 18px; position: relative;"><span style="position:absolute; left:0; opacity:0.5;">・</span>環境</li>
+            <li style="font-size: 18px; line-height: 1.95; padding: 6px 0 6px 18px; position: relative;"><span style="position:absolute; left:0; opacity:0.5;">・</span>文化政策</li>
+            <li style="font-size: 18px; line-height: 1.95; padding: 6px 0 6px 18px; position: relative;"><span style="position:absolute; left:0; opacity:0.5;">・</span>土地政策</li>
+            <li style="font-size: 18px; line-height: 1.95; padding: 6px 0 6px 18px; position: relative;"><span style="position:absolute; left:0; opacity:0.5;">・</span>犯罪、正義與補償政策</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<nav class="navbar">
+  <button class="nav-btn" id="prevBtn" onclick="goPrev()">← 前頁</button>
+  <div class="nav-center">
+    <span><span id="curNum">1</span> / <span id="totNum">27</span></span>
+    <div class="dots" id="dots"></div>
+  </div>
+  <button class="nav-btn" id="nextBtn" onclick="goNext()">下一頁 →</button>
+</nav>
+
+<div class="keyboard-hint">
+  <kbd>←</kbd> <kbd>→</kbd> 切換頁面　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕
+</div>
+
+<div class="toc-overlay" id="tocOverlay" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" onclick="toggleToc()">×</button>
+    <h2 class="toc-title">目次 ・ Table of Contents</h2>
+    <p class="toc-sub">點選任一條目跳到該頁</p>
+    <ul class="toc-list" id="tocList"></ul>
+  </div>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let cur = 0;
+  document.getElementById('totNum').textContent = total;
+
+  // dots & toc
+  const dotsEl = document.getElementById('dots');
+  const tocEl = document.getElementById('tocList');
+  slides.forEach((s, i) => {
+    const d = document.createElement('span');
+    d.className = 'dot' + (s.dataset.kind === 'section' ? ' is-section' : '');
+    d.title = s.dataset.label || '';
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+    const li = document.createElement('li');
+    if (s.dataset.kind === 'section') li.classList.add('is-section');
+    li.innerHTML = `<span class="num">${String(i + 1).padStart(2, '0')}</span><span class="lab">${s.dataset.label || ''}</span><span class="kind">${s.dataset.kind}</span>`;
+    li.onclick = () => { goTo(i); toggleToc(); };
+    tocEl.appendChild(li);
+  });
+
+  function goTo(n) {
+    if (n < 0 || n >= total || n === cur) return;
+    const dir = n > cur ? 1 : -1;
+    slides[cur].classList.remove('is-active');
+    if (dir > 0) slides[cur].classList.add('is-prev');
+    cur = n;
+    slides[cur].classList.remove('is-prev');
+    slides[cur].classList.add('is-active');
+    setTimeout(() => slides.forEach((s, i) => { if (i !== cur) s.classList.remove('is-prev'); }), 500);
+    update();
+  }
+  function goPrev() { goTo(cur - 1); }
+  function goNext() { goTo(cur + 1); }
+  function update() {
+    document.getElementById('curNum').textContent = cur + 1;
+    document.getElementById('prevBtn').disabled = cur === 0;
+    document.getElementById('nextBtn').disabled = cur === total - 1;
+    document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('is-active', i === cur));
+  }
+
+  function toggleToc() {
+    document.getElementById('tocOverlay').classList.toggle('is-shown');
+  }
+
+  // Keyboard + touch
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('tocOverlay').classList.contains('is-shown')) {
+      if (e.key === 'Escape') toggleToc();
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goNext(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goPrev(); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+    else if (e.key === 'Escape') toggleToc();
+    else if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+  });
+
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) dx < 0 ? goNext() : goPrev();
+  });
+
+  update();
+</script>
+
+<script>
+  // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
+  // 偶爾因 sticky header + backdrop-filter 而整頁空白。
+  // 偵測到從快取還原時，強制觸發一次重繪。
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      document.body.style.display = 'none';
+      void document.body.offsetHeight;
+      document.body.style.display = '';
+    }
+  });
+</script>
+</body>
+</html>
