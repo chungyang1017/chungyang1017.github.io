@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>比較研究與 QCA ・ 社會研究法 第 13 週 ・ 葉崇揚</title>
+  <meta name="description" content="社會研究法第 13 週互動講義：比較研究的四個老問題（案例選擇、單位與層次、建構等值、因果性）與 Ragin 的質性比較分析（QCA）——集合、校準、真值表與因果配方。分頁式互動簡報。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --chashitsu-bg: #e8dcc4;
+      --chashitsu-paper: #f5ecd6;
+      --chashitsu-tatami: #d8c8a8;
+      --moss: #3d5a3f;
+      --water: #5a7a8a;
+      --earth: #8a6a4a;
+      --persimmon: #c47038;
+      --accent: #c43838;
+      --gold: #b8860b;
+      --ink: #1f1f1d;
+      --ink-soft: rgba(31,31,29,0.78);
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+      --line-faint: rgba(31,31,29,0.05);
+      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
+      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+      --mono: 'JetBrains Mono', 'Menlo', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: var(--jp);
+      background: var(--chashitsu-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 19px;
+      line-height: 1.95;
+      position: relative;
+    }
+    .paper-grain {
+      position: fixed; inset: 0; pointer-events: none;
+      opacity: 0.32; mix-blend-mode: multiply; z-index: 1;
+    }
+
+    /* Top bar */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 56px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .top-left { display: flex; align-items: center; gap: 14px; }
+    .back { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.55; text-decoration: none; color: var(--ink); }
+    .back:hover { opacity: 0.85; }
+    .top-sep { font-size: 11px; opacity: 0.3; }
+    .top-title { font-family: var(--brush); font-size: 19px; letter-spacing: 0.06em; }
+    .top-title small { font-family: var(--sans); font-size: 12px; letter-spacing: 0.18em; opacity: 0.55; margin-left: 10px; }
+    .top-right { display: flex; align-items: center; gap: 18px; font-family: var(--sans); font-size: 12px; opacity: 0.6; letter-spacing: 0.15em; }
+    .toc-btn {
+      background: transparent; border: 1px solid var(--line);
+      font-family: inherit; font-size: 11.5px; letter-spacing: 0.2em;
+      padding: 5px 12px; cursor: pointer; color: var(--ink); opacity: 0.75;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .toc-btn:hover { background: var(--chashitsu-paper); opacity: 1; }
+
+    /* Progress bar */
+    .progress { position: fixed; top: 56px; left: 0; height: 2px; background: var(--accent); z-index: 49; transition: width 0.4s ease; }
+
+    /* Slide deck */
+    .deck { position: fixed; top: 56px; left: 0; right: 0; bottom: 64px; overflow: hidden; z-index: 2; }
+    .slide {
+      position: absolute; inset: 0;
+      padding: 36px 72px 28px;
+      overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.2,0.7,0.2,1);
+    }
+    .slide.is-prev { transform: translateX(-40px); }
+    .slide.is-active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide-inner { max-width: 1080px; margin: 0 auto; }
+
+    /* Bottom nav */
+    .navbar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 64px; z-index: 50;
+      background: rgba(232,220,196,0.94);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+    }
+    .nav-btn {
+      background: transparent; border: 1px solid var(--ink);
+      font-family: var(--jp); font-size: 14px; letter-spacing: 0.15em; color: var(--ink);
+      padding: 9px 22px; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover:not(:disabled) { background: var(--ink); color: var(--chashitsu-paper); }
+    .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; border-color: var(--line); color: var(--ink); }
+    .nav-center { display: flex; align-items: center; gap: 16px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.18em; opacity: 0.7; }
+    .dots { display: flex; gap: 5px; max-width: 480px; overflow: hidden; flex-wrap: wrap; justify-content: center; }
+    .dot { width: 7px; height: 7px; background: var(--line); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .dot:hover { background: var(--accent); transform: scale(1.3); }
+    .dot.is-active { background: var(--accent); }
+    .dot.is-section { width: 14px; }
+
+    /* TOC overlay */
+    .toc-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(31,31,29,0.85);
+      backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center;
+      padding: 40px;
+    }
+    .toc-overlay.is-shown { display: flex; animation: fade 0.3s; }
+    .toc-panel {
+      background: var(--chashitsu-paper);
+      max-width: 920px; width: 100%; max-height: 80vh;
+      overflow-y: auto; padding: 36px 44px;
+      border: 1px solid var(--accent);
+      position: relative;
+    }
+    .toc-close {
+      position: absolute; top: 14px; right: 18px;
+      background: transparent; border: none;
+      font-size: 26px; cursor: pointer; opacity: 0.5;
+      font-family: var(--brush); color: var(--ink);
+    }
+    .toc-close:hover { opacity: 1; }
+    .toc-title { font-family: var(--brush); font-size: 26px; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .toc-sub { font-family: var(--sans); font-size: 12px; letter-spacing: 0.25em; opacity: 0.6; margin-bottom: 22px; }
+    .toc-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; }
+    .toc-list li { padding: 8px 0; border-bottom: 1px dashed var(--line-soft); cursor: pointer; display: flex; align-items: baseline; gap: 14px; transition: color 0.2s; }
+    .toc-list li:hover { color: var(--accent); }
+    .toc-list .num { font-family: var(--brush); font-size: 14px; color: var(--accent); min-width: 28px; }
+    .toc-list .lab { font-size: 15px; flex: 1; }
+    .toc-list .kind { font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; opacity: 0.45; }
+    .toc-list .is-section { color: var(--accent); font-weight: 600; }
+
+    /* TITLE slide */
+    .slide-title { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 36px 72px; }
+    .slide-title .week-tag { display: inline-flex; align-items: center; gap: 14px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.35em; opacity: 0.6; margin-bottom: 24px; }
+    .slide-title .seal {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; background: var(--accent); color: var(--chashitsu-paper);
+      font-family: var(--brush); font-size: 16px; transform: rotate(-3deg);
+    }
+    .slide-title h1 { font-family: var(--brush); font-size: 72px; font-weight: 400; line-height: 1.15; letter-spacing: 0.04em; margin-bottom: 18px; }
+    .slide-title .subtitle { font-family: var(--sans); font-size: 17px; letter-spacing: 0.2em; opacity: 0.6; margin-bottom: 26px; }
+    .slide-title .author { font-size: 16.5px; opacity: 0.85; line-height: 1.85; max-width: 760px; }
+    .slide-title .author cite { font-style: italic; color: var(--accent); }
+    .meta-strip { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 24px; font-family: var(--sans); font-size: 13px; opacity: 0.6; letter-spacing: 0.12em; }
+
+    /* SECTION DIVIDER slide */
+    .slide-section {
+      display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+      background: linear-gradient(135deg, rgba(196,56,56,0.06) 0%, rgba(216,200,168,0.4) 100%);
+      padding: 36px 72px;
+    }
+    .slide-section .big-num { font-family: var(--brush); font-size: 240px; color: var(--accent); opacity: 0.15; position: absolute; bottom: 30px; right: 60px; line-height: 1; }
+    .slide-section .part { font-family: var(--sans); font-size: 13px; letter-spacing: 0.45em; opacity: 0.55; margin-bottom: 14px; }
+    .slide-section h2 { font-family: var(--brush); font-size: 56px; font-weight: 400; letter-spacing: 0.04em; line-height: 1.15; margin-bottom: 14px; }
+    .slide-section .sec-en { font-family: var(--sans); font-size: 15px; letter-spacing: 0.28em; opacity: 0.55; font-style: italic; margin-bottom: 22px; }
+    .slide-section .sec-q { font-size: 18px; opacity: 0.85; max-width: 640px; line-height: 1.9; border-left: 3px solid var(--accent); padding-left: 20px; }
+
+    /* CONTENT slide */
+    .slide-content { padding-top: 28px; }
+    .content-head { margin-bottom: 22px; display: flex; align-items: baseline; gap: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+    .content-head h2 { font-family: var(--brush); font-size: 38px; font-weight: 400; letter-spacing: 0.04em; }
+    .content-head .h-en { font-family: var(--sans); font-size: 13px; letter-spacing: 0.22em; opacity: 0.55; }
+    .content-head .h-tag { margin-left: auto; font-family: var(--sans); font-size: 12px; letter-spacing: 0.28em; opacity: 0.55; }
+
+    .lead { font-size: 18.5px; line-height: 1.95; opacity: 0.88; max-width: 880px; margin-bottom: 18px; }
+    .lead strong { color: var(--accent); }
+
+    /* Card grid (generalised why-grid) */
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 10px; }
+    .card-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .card-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-card {
+      background: var(--chashitsu-paper); border: 1px solid var(--line); border-top: 4px solid var(--accent);
+      padding: 20px 20px; transition: transform 0.3s, border-color 0.3s;
+      animation: rise 0.5s ease backwards;
+    }
+    .grid-card:hover { transform: translateY(-3px); }
+    .grid-card h3 { font-family: var(--brush); font-size: 21px; letter-spacing: 0.04em; margin-bottom: 9px; }
+    .grid-card p { font-size: 15.5px; line-height: 1.85; opacity: 0.88; }
+    .grid-card.c-moss { border-top-color: var(--moss); }
+    .grid-card.c-water { border-top-color: var(--water); }
+    .grid-card.c-earth { border-top-color: var(--earth); }
+    .grid-card.c-persimmon { border-top-color: var(--persimmon); }
+
+    /* Generic data table */
+    .data-table { width: 100%; border-collapse: collapse; margin-top: 8px; background: var(--chashitsu-paper); border: 1px solid var(--line); font-size: 16px; }
+    .data-table th, .data-table td { padding: 12px 16px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: top; }
+    .data-table th { font-family: var(--brush); font-size: 17px; font-weight: 500; background: rgba(216,200,168,0.4); }
+    .data-table td:first-child { font-weight: 500; }
+
+    /* Truth table specifics */
+    .truth-table { text-align: center; }
+    .truth-table th, .truth-table td { text-align: center; }
+    .truth-table td:first-child, .truth-table th:first-child { font-family: var(--mono); font-weight: 600; }
+    .badge-pass, .badge-fail { display: inline-block; padding: 3px 12px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.1em; }
+    .badge-pass { background: rgba(61,90,63,0.15); color: var(--moss); }
+    .badge-fail { background: rgba(196,56,56,0.08); color: var(--accent); }
+
+    /* Compare two columns */
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+    .col { background: var(--chashitsu-paper); border-top: 4px solid; padding: 22px 24px 20px; }
+    .col.c-water { border-top-color: var(--water); }
+    .col.c-moss { border-top-color: var(--moss); }
+    .col-tag { display: inline-block; font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.28em; padding: 4px 12px; margin-bottom: 14px; }
+    .col.c-water .col-tag { background: rgba(90,122,138,0.14); color: var(--water); }
+    .col.c-moss .col-tag { background: rgba(61,90,63,0.14); color: var(--moss); }
+    .col h3 { font-family: var(--brush); font-size: 24px; font-weight: 400; letter-spacing: 0.04em; margin-bottom: 12px; }
+    .col p { font-size: 16.5px; line-height: 1.9; opacity: 0.9; }
+    .col p + p { margin-top: 10px; }
+
+    /* Reveal block */
+    .reveal { margin-top: 14px; border-top: 1px dashed var(--line-soft); padding-top: 12px; }
+    .reveal-trigger { cursor: pointer; font-family: var(--sans); font-size: 13.5px; letter-spacing: 0.16em; color: var(--accent); display: inline-flex; align-items: center; gap: 8px; transition: opacity 0.2s; }
+    .reveal-trigger:hover { opacity: 0.7; }
+    .reveal-trigger .arr { transition: transform 0.3s; display: inline-block; }
+    .reveal.is-open .reveal-trigger .arr { transform: rotate(90deg); }
+    .reveal-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s; opacity: 0; }
+    .reveal.is-open .reveal-body { max-height: 600px; opacity: 1; }
+    .reveal-body-inner { margin-top: 12px; padding: 14px 20px; background: rgba(31,31,29,0.04); font-size: 16px; line-height: 1.9; }
+    .reveal-body-inner strong { color: var(--accent); }
+
+    /* Insight banner */
+    .insight { margin-top: 18px; padding: 15px 22px; background: rgba(196,56,56,0.06); border-left: 3px solid var(--accent); font-size: 16.5px; line-height: 1.9; }
+    .insight strong { color: var(--accent); }
+
+    /* Numbered flow */
+    .flow { display: flex; align-items: stretch; gap: 14px; margin-top: 10px; flex-wrap: wrap; }
+    .flow-step { flex: 1; min-width: 190px; background: var(--chashitsu-paper); border: 1px solid var(--line); border-top: 4px solid var(--accent); padding: 20px 20px; }
+    .flow-step .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 50%;
+      background: var(--accent); color: var(--chashitsu-paper);
+      font-family: var(--sans); font-size: 14px; font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .flow-step h3 { font-family: var(--brush); font-size: 20px; margin-bottom: 8px; letter-spacing: 0.03em; }
+    .flow-step p { font-size: 15px; line-height: 1.8; opacity: 0.88; }
+    .flow-step:nth-child(1) { border-top-color: var(--water); } .flow-step:nth-child(1) .step-num { background: var(--water); }
+    .flow-step:nth-child(3) { border-top-color: var(--moss); } .flow-step:nth-child(3) .step-num { background: var(--moss); }
+    .flow-step:nth-child(5) { border-top-color: var(--earth); } .flow-step:nth-child(5) .step-num { background: var(--earth); }
+    .flow-step:nth-child(7) { border-top-color: var(--persimmon); } .flow-step:nth-child(7) .step-num { background: var(--persimmon); }
+    .flow-arrow { align-self: center; font-size: 22px; color: var(--accent); opacity: 0.55; }
+
+    /* Discussion */
+    .discuss-list { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+    .discuss-item { background: var(--chashitsu-paper); border-left: 3px solid var(--accent); padding: 16px 22px; cursor: pointer; }
+    .discuss-item .qn { font-family: var(--brush); font-size: 16px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 6px; }
+    .discuss-item .qt { font-size: 17.5px; line-height: 1.85; }
+
+    /* Takeaways / checklist */
+    .takeaways { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+    .take { display: flex; align-items: flex-start; gap: 18px; padding: 14px 20px; background: var(--chashitsu-paper); border: 1px solid var(--line); animation: rise 0.6s ease backwards; }
+    .take .num { font-family: var(--brush); font-size: 32px; color: var(--accent); line-height: 1; min-width: 44px; }
+    .take .txt { font-size: 17px; line-height: 1.85; }
+
+    /* Reference */
+    .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+    .ref-card { background: var(--chashitsu-paper); border-top: 3px solid var(--accent); padding: 18px 22px; }
+    .ref-card h3 { font-family: var(--brush); font-size: 18px; margin-bottom: 10px; letter-spacing: 0.04em; }
+    .ref-card p { font-size: 15px; line-height: 1.85; }
+    .ref-card em { color: var(--accent); font-style: italic; }
+
+    /* Calibration scale (custom SVG wrap) */
+    .cal-scale { background: var(--chashitsu-paper); border: 1px solid var(--line); padding: 22px 26px; margin-top: 10px; }
+    .cal-scale svg { width: 100%; height: auto; display: block; }
+    .cal-scale .cap { font-family: var(--sans); font-size: 12px; letter-spacing: 0.15em; opacity: 0.6; margin-top: 10px; text-align: center; }
+
+    /* Set relation diagram (custom SVG wrap) */
+    .set-diagram { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px; }
+    .set-diagram .sd-box { background: var(--chashitsu-paper); border: 1px solid var(--line); padding: 18px; text-align: center; }
+    .set-diagram svg { width: 100%; height: auto; max-width: 260px; margin: 0 auto; display: block; }
+    .set-diagram .sd-cap { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.1em; opacity: 0.65; margin-top: 10px; }
+
+    /* Animations */
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    .slide.is-active .grid-card:nth-child(1) { animation-delay: 0.05s; }
+    .slide.is-active .grid-card:nth-child(2) { animation-delay: 0.15s; }
+    .slide.is-active .grid-card:nth-child(3) { animation-delay: 0.25s; }
+    .slide.is-active .grid-card:nth-child(4) { animation-delay: 0.35s; }
+    .slide.is-active .take:nth-child(1) { animation-delay: 0.05s; }
+    .slide.is-active .take:nth-child(2) { animation-delay: 0.15s; }
+    .slide.is-active .take:nth-child(3) { animation-delay: 0.25s; }
+    .slide.is-active .take:nth-child(4) { animation-delay: 0.35s; }
+    .slide.is-active .take:nth-child(5) { animation-delay: 0.45s; }
+    .slide.is-active .take:nth-child(6) { animation-delay: 0.55s; }
+
+    .keyboard-hint {
+      position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
+      font-family: var(--sans); font-size: 9.5px; letter-spacing: 0.25em; opacity: 0.4;
+      pointer-events: none; z-index: 60;
+    }
+    .keyboard-hint kbd { font-family: var(--mono); font-size: 9.5px; background: rgba(31,31,29,0.08); padding: 1px 5px; margin: 0 2px; }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      .topbar { padding: 0 14px; }
+      .top-title { font-size: 15px; }
+      .top-title small { display: none; }
+      .top-right { display: none; }
+      .toc-btn { font-size: 10.5px; padding: 4px 9px; letter-spacing: 0.18em; }
+
+      .slide { padding: 26px 22px 20px; }
+      .slide-title { padding: 26px 22px; }
+      .slide-title h1 { font-size: 40px; }
+      .slide-title .subtitle { font-size: 13.5px; letter-spacing: 0.14em; }
+      .slide-title .author { font-size: 14.5px; }
+      .meta-strip { font-size: 11.5px; gap: 14px; }
+
+      .slide-section { padding: 26px 22px; }
+      .slide-section h2 { font-size: 34px; }
+      .slide-section .sec-en { font-size: 12px; }
+      .slide-section .sec-q { font-size: 15px; }
+      .slide-section .big-num { font-size: 120px; bottom: 16px; right: 16px; }
+
+      .content-head h2 { font-size: 24px; }
+      .content-head .h-en { font-size: 10.5px; }
+      .content-head .h-tag { display: none; }
+
+      .card-grid, .card-grid.cols-4, .card-grid.cols-2 { grid-template-columns: 1fr; gap: 12px; }
+      .grid-card { padding: 16px 18px; }
+
+      .data-table { font-size: 12.5px; display: block; overflow-x: auto; white-space: nowrap; }
+      .data-table th, .data-table td { padding: 8px 10px; }
+
+      .compare { grid-template-columns: 1fr; gap: 14px; }
+      .col { padding: 18px 20px; }
+      .col h3 { font-size: 20px; }
+
+      .flow { flex-direction: column; }
+      .flow-arrow { display: none; }
+
+      .set-diagram { grid-template-columns: 1fr; }
+      .ref-grid { grid-template-columns: 1fr; }
+
+      .navbar { padding: 0 14px; height: 58px; }
+      .nav-btn { padding: 7px 14px; font-size: 13px; letter-spacing: 0.1em; }
+      .dots { max-width: 200px; }
+      .nav-center { font-size: 12px; gap: 10px; }
+
+      .toc-panel { padding: 24px 22px; }
+      .toc-list { grid-template-columns: 1fr; gap: 0; }
+      .toc-list .lab { font-size: 13.5px; }
+
+      .keyboard-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<svg class="paper-grain" aria-hidden="true">
+  <defs>
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" />
+      <feColorMatrix values="0 0 0 0 0.4   0 0 0 0 0.35   0 0 0 0 0.25   0 0 0 0.08 0" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#paper-noise)" />
+</svg>
+
+<header class="topbar">
+  <div class="top-left">
+    <a href="../../teaching-zh.html" class="back">← 教學</a>
+    <span class="top-sep">·</span>
+    <span class="top-title">比較研究與 QCA<small>社研法 第 13 週</small></span>
+  </div>
+  <div class="top-right">
+    <span>Mills et al. (2006) ・ Ragin (1987/2014)</span>
+    <button class="toc-btn" onclick="toggleToc()">目次 ・ TOC</button>
+  </div>
+</header>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ============ S00 (slide 1) TITLE ============ -->
+  <section class="slide slide-title is-active" data-kind="title" data-label="封面">
+    <div class="slide-inner">
+      <div class="week-tag">
+        <span class="seal">研</span>
+        <span>碩士班方法課 ・ 第 13 週 ・ WEEK 13</span>
+      </div>
+      <h1>比較研究與 QCA</h1>
+      <p class="subtitle">從案例選擇、建構等值到因果配方</p>
+      <p class="author">
+        核心讀物：Mills, van de Bunt and de Bruijn 以及 Ragin<br/>
+        課程焦點：比較研究為何困難，以及 QCA 如何提供另一種因果語言<br/>
+        應用場域：社會政策、福利國家、年金、長照、失業給付與社會保障制度比較
+      </p>
+      <div class="meta-strip">
+        <span>社會研究法 ・ 葉崇揚</span>
+        <span>東吳大學社會學系</span>
+        <span>2026 春學期</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S01 (slide 2) 課程路線 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="課程路線">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>課程路線</h2>
+        <span class="h-en">COURSE ROADMAP</span>
+        <span class="h-tag">引言</span>
+      </div>
+      <p class="lead">本次課把比較研究當成研究設計問題來讀。</p>
+      <div class="flow">
+        <div class="flow-step">
+          <span class="step-num">1</span>
+          <h3>界定比較研究</h3>
+          <p>比較不是把國家並列，而是用相似與差異來推進解釋。</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <span class="step-num">2</span>
+          <h3>拆解四個老問題</h3>
+          <p>案例選擇、單位與層次、建構等值、因果推論。</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <span class="step-num">3</span>
+          <h3>進入 Ragin</h3>
+          <p>以集合、校準、真值表與因果配方重新組織證據。</p>
+        </div>
+      </div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          課堂目標：下課前每位同學都能把自己的研究題目改寫成一個可比較的案例集合。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S02 (slide 3) 為何比較 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="為何比較">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>為何比較</h2>
+        <span class="h-en">WHY COMPARE</span>
+      </div>
+      <p class="lead">比較研究的起點是解釋，不只是描述差異。</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>比較能做什麼</th><th>社會政策例子</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>找出跨案例的相似性，避免把單一制度當成普遍規律。</td><td>比較失業給付削減的政治支持，不只是問支持率高低。</td></tr>
+          <tr><td>找出有意義的變異，讓制度脈絡成為解釋的一部分。</td><td>比較健康照護制度變遷，要問制度規則如何讓同一改革產生不同後果。</td></tr>
+          <tr><td>用案例之間的差異回頭檢查概念定義是否太寬或太窄。</td><td>比較長照市場化，要把國家、地方政府、家庭與服務提供者放進同一分析視野。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ S03 (slide 4) 定義 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="定義">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>定義</h2>
+        <span class="h-en">DEFINITION</span>
+      </div>
+      <p class="lead">比較研究涵蓋量化與質性，但共同目標是處理社會實體之間的相似與變異。</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">・</div><div class="txt">比較單位可以是國家、地區、制度部門、社會群體、政策方案或改革事件。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">跨國比較只是其中一種形式，跨階級、跨族群、跨制度類型也都是比較。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">關鍵不是案例數量本身，而是案例之間能否承載研究問題的理論差異。</div></div>
+      </div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          例：研究社會保障時，臺灣、日本、韓國可以是國家案例；年金、醫療、長照也可以是政策領域案例。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S04 (slide 5) 兩種目的 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="兩種目的">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>兩種目的</h2>
+        <span class="h-en">TWO PURPOSES</span>
+      </div>
+      <p class="lead">比較研究同時追求一般型態與脈絡特殊性。</p>
+      <div class="compare">
+        <div class="col c-water">
+          <span class="col-tag">尋找相似性</span>
+          <h3>一般型態</h3>
+          <p>問：哪些機制在不同制度脈絡中反覆出現？</p>
+          <p>常見策略：以較一般的理論解釋多個案例。</p>
+          <p>風險：若概念太抽象，會把重要制度差異洗掉。</p>
+        </div>
+        <div class="col c-moss">
+          <span class="col-tag">理解變異性</span>
+          <h3>脈絡特殊性</h3>
+          <p>問：為何相似壓力在不同案例中產生不同結果？</p>
+          <p>常見策略：把歷史路徑、制度互補性與行動者策略納入分析。</p>
+          <p>風險：若只強調特殊性，研究很難提出可移植的洞見。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PART 01 DIVIDER ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第一部分：四個老問題">
+    <div class="slide-inner">
+      <div class="big-num">壹</div>
+      <p class="part">PART 01</p>
+      <h2>四個老問題</h2>
+      <p class="sec-en">Persistent Problems</p>
+      <p class="sec-q">
+        Mills 等人把比較研究的困難整理成四組方法論問題：<br/>
+        案例選擇・單位與層次・建構等值・因果性。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S05 (slide 6) 四個老問題 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="四個老問題">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>四個老問題</h2>
+        <span class="h-en">FOUR PERSISTENT PROBLEMS</span>
+      </div>
+      <p class="lead">Mills 等人把比較研究的困難整理成四組方法論問題。</p>
+      <div class="card-grid cols-4">
+        <div class="grid-card c-water">
+          <h3>案例選擇</h3>
+          <p>哪些案例屬於同一研究母體？負向案例如何成立？</p>
+        </div>
+        <div class="grid-card c-moss">
+          <h3>單位與層次</h3>
+          <p>國家、制度、組織與個人是否被混在一起解釋？</p>
+        </div>
+        <div class="grid-card c-earth">
+          <h3>建構等值</h3>
+          <p>同一概念在不同脈絡中是否真的指向同一件事？</p>
+        </div>
+        <div class="grid-card c-persimmon">
+          <h3>因果性</h3>
+          <p>研究是在估計平均淨效應，還是在辨認條件組合？</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S06 (slide 7) 案例選擇 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例選擇">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例選擇</h2>
+        <span class="h-en">CASE SELECTION</span>
+        <span class="h-tag">老問題 1/4</span>
+      </div>
+      <p class="lead">案例不是自然給定的，研究者必須說明比較集合如何成立。</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">・</div><div class="txt">大 N 跨國研究常把可取得資料的國家當成母體，但其中可能包含不相關案例。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">小 N 研究常以理論驅動選案，但也可能因研究者偏好而放大特定結果。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">Ragin 的提醒是：既有母體與建構母體都有風險，重點是理論上相關。</div></div>
+      </div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          例：研究年金私有化時，把所有 OECD 國家放入模型，可能納入根本沒有改革候選資格的案例。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S07 (slide 8) 案例（福利國家緊縮的三種寫法） ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="案例：福利國家緊縮">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>案例</h2>
+        <span class="h-en">A WORKED CASE</span>
+        <span class="h-tag">延續：案例選擇</span>
+      </div>
+      <p class="lead">福利國家緊縮不是一個簡單的支出變項。</p>
+      <div class="card-grid cols-3">
+        <div class="grid-card c-earth">
+          <h3>傳統寫法</h3>
+          <p>解釋各國福利支出下降的幅度。</p>
+        </div>
+        <div class="grid-card c-water">
+          <h3>比較研究寫法</h3>
+          <p>先界定何種政策變化構成「緊縮」這個質性結果。</p>
+        </div>
+        <div class="grid-card c-moss">
+          <h3>QCA 寫法</h3>
+          <p>把緊縮視為集合成員資格，再找出導致緊縮的條件組合。</p>
+        </div>
+      </div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          同樣是支出減少，可能來自人口結構、給付公式、資格門檻、行政延宕或移轉到家庭照顧。概念若不先釐清，比較會失真。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S08 (slide 9) 單位 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="單位">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>單位</h2>
+        <span class="h-en">UNIT, LEVEL &amp; SCALE</span>
+        <span class="h-tag">老問題 2/4</span>
+      </div>
+      <p class="lead">分析單位、層次與尺度若混淆，因果解釋會看似清楚但其實錯位。</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>三個判準</th><th>社會政策例子</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>單位：被比較的是國家、政策方案、機構、家庭，還是個人？</td><td>用個人調查資料解釋國家福利制度，必須說明個體偏好如何聚合成制度結果。</td></tr>
+          <tr><td>層次：解釋在宏觀制度、中介組織，還是微觀行動？</td><td>用國家失業率解釋個人福利態度，必須避免把宏觀關係直接套到個人。</td></tr>
+          <tr><td>尺度：案例數與條件數是否支撐研究者想做的推論？</td><td>用城市長照服務比較國家制度時，要說明地方執行差異是否就是研究對象。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ S09 (slide 10) 宏觀與微觀 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="宏觀與微觀">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>宏觀與微觀</h2>
+        <span class="h-en">MACRO &amp; MICRO</span>
+      </div>
+      <p class="lead">Coleman 式問題提醒我們：宏觀關係需要機制橋接。</p>
+      <div class="flow">
+        <div class="flow-step">
+          <span class="step-num">1</span>
+          <h3>宏觀條件</h3>
+          <p>制度壓力、人口老化、財政約束</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <span class="step-num">2</span>
+          <h3>微觀行動</h3>
+          <p>選民偏好、家庭照顧安排、服務使用選擇</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <span class="step-num">3</span>
+          <h3>聚合規則</h3>
+          <p>投票、行政決策、服務市場供需</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <span class="step-num">4</span>
+          <h3>宏觀結果</h3>
+          <p>改革通過、制度緊縮、服務擴張</p>
+        </div>
+      </div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          例：不能只說人口老化導致長照擴張；還要說明哪些家庭、政黨、官僚與服務提供者把壓力轉化為政策結果。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S10 (slide 11) 建構等值 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="建構等值">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>建構等值</h2>
+        <span class="h-en">CONSTRUCT EQUIVALENCE</span>
+        <span class="h-tag">老問題 3/4</span>
+      </div>
+      <p class="lead">跨國比較必須先問：同一概念在不同脈絡中是否等值。</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">・</div><div class="txt">建構等值是指測量工具在不同群體、國家或文化中測到相同潛在特質。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">沒有等值，跨案例差異可能只是翻譯、制度分類或行政定義造成的假差異。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">比較研究因此不是資料合併後才開始，而是在概念化與編碼時就開始。</div></div>
+      </div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          例：「非典型就業」在勞動市場雙元化國家與高度彈性化國家中，可能指向不同的制度位置。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S11 (slide 12) 等值案例 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="等值案例">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>等值案例</h2>
+        <span class="h-en">EQUIVALENCE IN PRACTICE</span>
+      </div>
+      <p class="lead">社會政策概念常有表面相同、實質不同的問題。</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">・</div><div class="txt">失業給付：替代率相同，不代表申請資格、制裁規則與給付期間相同。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">長照服務：同樣稱為居家服務，可能由公共部門、非營利或市場提供。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">家庭政策：育嬰假長度相同，不代表薪資替代、父親使用率與雇主責任相同。</div></div>
+      </div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          上課討論：若要比較東亞國家的社會保障，哪些指標最容易出現等值問題？
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S12 (slide 13) 兩種取向 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="兩種取向">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>兩種取向</h2>
+        <span class="h-en">VARIABLE- VS. CASE-ORIENTED</span>
+      </div>
+      <p class="lead">變項取向與案例取向不是高低之分，而是問法不同。</p>
+      <div class="compare">
+        <div class="col c-water">
+          <span class="col-tag">變項取向</span>
+          <h3>以變項解釋變異</h3>
+          <p>以少數變項解釋多個案例的變異。</p>
+          <p>強項是簡約、可處理較大資料、容易估計平均關係。</p>
+          <p>弱點是容易把案例拆成變項分數，忽略條件如何在個案內組合。</p>
+        </div>
+        <div class="col c-moss">
+          <span class="col-tag">案例取向</span>
+          <h3>以構型理解案例</h3>
+          <p>以多個條件理解少數或中等數量案例。</p>
+          <p>強項是保留脈絡、歷史過程與因果複雜性。</p>
+          <p>弱點是若沒有形式化工具，很難跨越少數案例提出系統比較。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S13 (slide 14) 取捨 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="取捨">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>取捨</h2>
+        <span class="h-en">TRADE-OFFS</span>
+      </div>
+      <p class="lead">案例數與條件數會共同決定研究設計的風險。</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>設計</th><th>優勢</th><th>主要風險</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>多案例少變項</td><td>可概括範圍較廣</td><td>結果可能表面化，制度脈絡被壓平</td></tr>
+          <tr><td>少案例多條件</td><td>可保留歷史與制度複雜性</td><td>變項太多、案例太少，模型難以檢驗</td></tr>
+          <tr><td>中等 N 構型比較</td><td>能在案例知識與系統比較之間折衷</td><td>需要清楚校準與處理矛盾列</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ S14 (slide 15) Ragin 的批判 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="Ragin 的批判">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>Ragin 的批判</h2>
+        <span class="h-en">RAGIN'S CRITIQUE</span>
+        <span class="h-tag">老問題 4/4 ・ 過渡</span>
+      </div>
+      <p class="lead">方法會形塑問題：研究者常把問題改寫成工具能處理的樣子。</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">・</div><div class="txt">Ragin 的出發點不是反統計，而是反對讓統計模板決定研究問題。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">若為了擴大樣本而把具體現象改寫成抽象變項，理論與證據的對話會變薄。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">比較研究需要保留案例完整性，同時又要能進行跨案例的系統分析。</div></div>
+      </div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          例：從「非洲軍事政變」改寫成「政權不穩定程度」可以增加案例，但也可能離原本的歷史與政治問題更遠。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PART 02 DIVIDER ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第二部分：QCA 的邏輯">
+    <div class="slide-inner">
+      <div class="big-num">貳</div>
+      <p class="part">PART 02</p>
+      <h2>QCA 的邏輯</h2>
+      <p class="sec-en">Moving Beyond Qualitative and Quantitative Strategies</p>
+      <p class="sec-q">
+        QCA 企圖把案例取向的邏輯形式化：<br/>
+        保留個案・建立集合・製作真值表・邏輯簡化。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S15 (slide 16) QCA 定位 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="QCA 定位">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>QCA 定位</h2>
+        <span class="h-en">POSITIONING QCA</span>
+      </div>
+      <p class="lead">QCA 企圖把案例取向的邏輯形式化。</p>
+      <div class="flow">
+        <div class="flow-step">
+          <span class="step-num">1</span>
+          <h3>保留個案</h3>
+          <p>每個案例被視為條件構型，而不是零散變項分數</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <span class="step-num">2</span>
+          <h3>建立集合</h3>
+          <p>以成員資格判準界定結果與條件</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <span class="step-num">3</span>
+          <h3>製作真值表</h3>
+          <p>把相同條件組合的案例放在同一列</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <span class="step-num">4</span>
+          <h3>邏輯簡化</h3>
+          <p>辨認足以產生結果的因果配方</p>
+        </div>
+      </div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          QCA 適合小 N 到中等 N，特別適合研究者對案例已有實質知識但又需要跨案例比較的題目。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S16 (slide 17) 因果複雜性 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="因果複雜性">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>因果複雜性</h2>
+        <span class="h-en">CAUSAL COMPLEXITY</span>
+      </div>
+      <p class="lead">QCA 的核心不是單一原因，而是多重結合性因果。</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">・</div><div class="txt">多數時候，結果是條件組合產生的，而不是單一條件獨立造成的。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">不同條件組合可能產生同一結果，這稱為殊途同歸。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">同一條件在不同脈絡中可能有不同效果，甚至方向相反。</div></div>
+      </div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          例：強工會在某些國家可能支撐慷慨失業保障，在另一些國家卻可能保護既有核心勞工而排除非典型工作者。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S17 (slide 18) 變項與集合 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="變項與集合">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>變項與集合</h2>
+        <span class="h-en">VARIABLES VS. SETS</span>
+      </div>
+      <p class="lead">集合不是把連續變項粗糙二分，而是以成員資格重新定義概念。</p>
+      <div class="compare">
+        <div class="col c-water">
+          <span class="col-tag">變項語言</span>
+          <h3>程度與排序</h3>
+          <p>問某國民主程度、福利支出或去商品化分數有多高。</p>
+          <p>分數通常相對於樣本分布來理解。</p>
+          <p>重點是案例之間在一個面向上的排序。</p>
+        </div>
+        <div class="col c-moss">
+          <span class="col-tag">集合語言</span>
+          <h3>成員資格</h3>
+          <p>問某國是否屬於民主國家、慷慨福利國家或緊縮改革案例的集合。</p>
+          <p>成員資格依外部判準與概念定義校準。</p>
+          <p>重點是案例是否符合某一類型，以及符合到什麼程度。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S18 (slide 19) 校準 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="校準">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>校準</h2>
+        <span class="h-en">CALIBRATION</span>
+      </div>
+      <p class="lead">模糊集把量化程度與質性判準放在同一個尺度上。</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">・</div><div class="txt">模糊集成員資格從 0 到 1，0 表示完全不屬於，1 表示完全屬於。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">0.5 是質性交叉點，表示案例開始比較屬於而不是比較不屬於某集合。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">校準不是技術後處理，而是理論、案例知識與外部標準共同決定的步驟。</div></div>
+      </div>
+      <div class="cal-scale">
+        <svg viewBox="0 0 640 90" xmlns="http://www.w3.org/2000/svg">
+          <line x1="40" y1="45" x2="600" y2="45" stroke="#1f1f1d" stroke-opacity="0.35" stroke-width="2"/>
+          <circle cx="40" cy="45" r="6" fill="#c43838"/>
+          <circle cx="320" cy="45" r="7" fill="#b8860b"/>
+          <circle cx="600" cy="45" r="6" fill="#3d5a3f"/>
+          <text x="40" y="24" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" fill="#1f1f1d">0</text>
+          <text x="320" y="24" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" fill="#b8860b">0.5</text>
+          <text x="600" y="24" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" fill="#1f1f1d">1</text>
+          <text x="40" y="70" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1f1f1d" opacity="0.75">完全不屬於</text>
+          <text x="320" y="70" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#b8860b" opacity="0.9">質性交叉點</text>
+          <text x="600" y="70" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1f1f1d" opacity="0.75">完全屬於</text>
+        </svg>
+        <p class="cap">模糊集成員資格尺度（0 → 0.5 → 1）</p>
+      </div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          例：校準「高照顧商品化」不能只看私人支出比例，也要看資格規則、服務可近性與家庭照顧責任是否被制度化轉移。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S19 (slide 20) 結果概念化 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="結果概念化">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>結果概念化</h2>
+        <span class="h-en">CONCEPTUALIZING THE OUTCOME</span>
+      </div>
+      <p class="lead">依變項解釋變異，質性結果要求先辨認事件或斷裂。</p>
+      <div class="compare">
+        <div class="col c-water">
+          <span class="col-tag">依變項</span>
+          <h3>連續變異</h3>
+          <p>例：福利支出占 GDP 比率的跨國差異。</p>
+          <p>分析焦點是變異有多少能被自變項解釋。</p>
+          <p>適合處理連續變化與平均關係。</p>
+        </div>
+        <div class="col c-moss">
+          <span class="col-tag">質性結果</span>
+          <h3>集合成員資格</h3>
+          <p>例：特定時期是否發生福利國家緊縮。</p>
+          <p>分析焦點是哪些案例真的屬於這個結果集合。</p>
+          <p>適合處理改革、崩解、擴張、制度轉型等事件。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S20 (slide 21) 母體建構 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="母體建構">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>母體建構</h2>
+        <span class="h-en">POPULATION CONSTRUCTION</span>
+      </div>
+      <p class="lead">研究質性結果時，負向案例也必須是有資格發生結果的案例。</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">・</div><div class="txt">QCA 常從正向案例開始，先理解結果如何被辨認。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">接著尋找候選負向案例，也就是理論上可能發生結果但沒有發生的案例。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">若納入大量不相關案例，模型可能看起來支持理論，但其實只是母體錯置。</div></div>
+      </div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          例：比較長照保險制度化，負向案例應是有老化壓力與政策討論但未制度化者，而不是完全不具改革條件的案例。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S21 (slide 22) 集合關係 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="集合關係">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>集合關係</h2>
+        <span class="h-en">SET RELATIONS</span>
+      </div>
+      <p class="lead">相關關係是對稱的，集合關係通常是不對稱的。</p>
+      <div class="compare">
+        <div class="col c-water">
+          <span class="col-tag">相關思維</span>
+          <h3>對稱關聯</h3>
+          <p>問 A 與 B 是否一起高或一起低。</p>
+          <p>A 與 B 的方向通常被當成對稱關係處理。</p>
+          <p>適合估計平均關聯，但不直接回答必要或充分。</p>
+        </div>
+        <div class="col c-moss">
+          <span class="col-tag">集合思維</span>
+          <h3>不對稱涵蘊</h3>
+          <p>問 A 是否為 B 的子集，或 B 是否包含 A。</p>
+          <p>充分性與必要性是不對稱判斷。</p>
+          <p>適合處理「有 A 通常有 B，但沒有 A 不一定沒有 B」的命題。</p>
+        </div>
+      </div>
+      <div class="set-diagram">
+        <div class="sd-box">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="80" cy="70" r="52" fill="#5a7a8a" fill-opacity="0.18" stroke="#5a7a8a" stroke-width="2"/>
+            <circle cx="140" cy="70" r="52" fill="#5a7a8a" fill-opacity="0.18" stroke="#5a7a8a" stroke-width="2"/>
+            <text x="55" y="74" text-anchor="middle" font-family="Shippori Mincho, serif" font-size="18" fill="#1f1f1d">A</text>
+            <text x="165" y="74" text-anchor="middle" font-family="Shippori Mincho, serif" font-size="18" fill="#1f1f1d">B</text>
+            <line x1="88" y1="30" x2="132" y2="30" stroke="#5a7a8a" stroke-width="1.5" marker-start="url(#arrLeft)" marker-end="url(#arrRight)"/>
+            <defs>
+              <marker id="arrLeft" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M8,0 L0,4 L8,8 Z" fill="#5a7a8a"/></marker>
+              <marker id="arrRight" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#5a7a8a"/></marker>
+            </defs>
+          </svg>
+          <p class="sd-cap">相關：A、B 對稱共變</p>
+        </div>
+        <div class="sd-box">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="110" cy="70" r="60" fill="#3d5a3f" fill-opacity="0.14" stroke="#3d5a3f" stroke-width="2"/>
+            <circle cx="90" cy="78" r="26" fill="#3d5a3f" fill-opacity="0.3" stroke="#3d5a3f" stroke-width="2"/>
+            <text x="90" y="82" text-anchor="middle" font-family="Shippori Mincho, serif" font-size="15" fill="#1f1f1d">A</text>
+            <text x="150" y="34" text-anchor="middle" font-family="Shippori Mincho, serif" font-size="18" fill="#1f1f1d">B</text>
+          </svg>
+          <p class="sd-cap">集合：A 是 B 的子集（不對稱）</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S22 (slide 23) 必要與充分 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="必要與充分">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>必要與充分</h2>
+        <span class="h-en">NECESSITY &amp; SUFFICIENCY</span>
+      </div>
+      <p class="lead">必要條件與充分條件問的是兩種不同的因果問題。</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">・</div><div class="txt">必要條件：結果出現時，某條件是否幾乎都存在？</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">充分條件：某條件或條件組合出現時，結果是否幾乎都出現？</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">社會科學中常見的是條件組合的充分性，而不是單一條件的充分性。</div></div>
+      </div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          例：財政壓力可能是年金改革的重要條件，但未必充分；它需要和政黨競爭、工會力量、制度成熟度等條件一起看。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S23 (slide 24) 真值表 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="真值表">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>真值表</h2>
+        <span class="h-en">TRUTH TABLE</span>
+      </div>
+      <p class="lead">真值表把案例轉成條件構型，讓比較單位變成案例類型。</p>
+      <table class="data-table truth-table">
+        <thead>
+          <tr><th>組合</th><th>財政壓力</th><th>否決點少</th><th>改革聯盟</th><th>結果</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A</td><td>1</td><td>1</td><td>1</td><td><span class="badge-pass">通過</span></td></tr>
+          <tr><td>B</td><td>1</td><td>1</td><td>0</td><td><span class="badge-fail">未通過</span></td></tr>
+          <tr><td>C</td><td>1</td><td>0</td><td>1</td><td><span class="badge-fail">未通過</span></td></tr>
+          <tr><td>D</td><td>0</td><td>1</td><td>1</td><td><span class="badge-pass">通過</span></td></tr>
+        </tbody>
+      </table>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          教學用假想例子：重點不是數字真假，而是看同一結果如何可能由不同條件組合產生。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S24 (slide 25) 矛盾列 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="矛盾列">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>矛盾列</h2>
+        <span class="h-en">CONTRADICTORY ROWS</span>
+      </div>
+      <p class="lead">矛盾不是失敗，而是促使研究者回到案例與理論。</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">・</div><div class="txt">若相同條件組合同時連到結果出現與不出現，就形成矛盾列。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">QCA 的做法不是立刻丟掉矛盾，而是檢查是否漏掉關鍵條件或校準錯誤。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">因此模型發展是迭代的：理論、案例知識、編碼與真值表來回修正。</div></div>
+      </div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          例：兩個國家都有財政壓力與改革聯盟，但一國改革成功、一國失敗，可能需要加入憲政否決點或公務員年金特權作為條件。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S25 (slide 26) 淨效應與配方 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="淨效應與配方">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>淨效應與配方</h2>
+        <span class="h-en">NET EFFECTS VS. RECIPES</span>
+      </div>
+      <p class="lead">QCA 把問題從「哪個變項最有力」改成「哪些條件組合足以產生結果」。</p>
+      <div class="compare">
+        <div class="col c-water">
+          <span class="col-tag">淨效應</span>
+          <h3>獨立貢獻</h3>
+          <p>每個變項都被問是否有獨立貢獻。</p>
+          <p>分析目標是分離各自變項的效果。</p>
+          <p>交互作用可加入，但複雜組合很快變得難以解釋。</p>
+        </div>
+        <div class="col c-moss">
+          <span class="col-tag">因果配方</span>
+          <h3>條件組合</h3>
+          <p>條件的意義取決於它和哪些條件一起出現。</p>
+          <p>分析目標是找出多條可能通往同一結果的路徑。</p>
+          <p>結果通常寫成一組或多組充分條件組合。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PART 03 DIVIDER ============ -->
+  <section class="slide slide-section" data-kind="section" data-label="第三部分：應用與研究設計">
+    <div class="slide-inner">
+      <div class="big-num">參</div>
+      <p class="part">PART 03</p>
+      <h2>應用與研究設計</h2>
+      <p class="sec-en">From Logic to Research Design</p>
+      <p class="sec-q">
+        把邏輯落回題目：長照、失業給付、年金、家庭政策與現金給付，<br/>
+        以及動手前該先問自己的六個問題。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ S26 (slide 27) 教學案例 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="教學案例：長照政策擴張">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>教學案例</h2>
+        <span class="h-en">TEACHING EXAMPLE</span>
+      </div>
+      <p class="lead">長照政策擴張可以被設計成一個 QCA 題目。</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">・</div><div class="txt">結果集合：是否出現明顯的公共長照服務擴張。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">條件集合：人口老化壓力、女性就業率提高、左派或社民政黨影響、既有社會保險能力、地方政府執行能力。</div></div>
+        <div class="take"><div class="num">・</div><div class="txt">研究焦點：不是哪個條件平均最重要，而是哪幾種組合構成擴張路徑。</div></div>
+      </div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          可能配方：高老化壓力加上既有保險行政能力；或高女性就業加上政黨承諾與地方執行能力。這是課堂示例，不是實證結論。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S27 (slide 28) 更多題目 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="更多題目">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>更多題目</h2>
+        <span class="h-en">MORE RESEARCH QUESTIONS</span>
+      </div>
+      <p class="lead">社會政策研究有許多適合構型比較的問題。</p>
+      <div class="card-grid cols-4">
+        <div class="grid-card c-water">
+          <h3>失業給付削減</h3>
+          <p>財政壓力、政黨位置、工會力量、受益者可見度如何組合？</p>
+        </div>
+        <div class="grid-card c-moss">
+          <h3>年金改革</h3>
+          <p>人口老化、制度成熟度、職業別分割、危機論述如何組合？</p>
+        </div>
+        <div class="grid-card c-earth">
+          <h3>家庭政策擴張</h3>
+          <p>女性就業、低生育率、政黨競爭、雇主利益如何組合？</p>
+        </div>
+        <div class="grid-card c-persimmon">
+          <h3>現金給付制度化</h3>
+          <p>貧窮問題建構、行政能力、目標群體形象、國際政策擴散如何組合？</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S28 (slide 29) 何時使用 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="何時使用">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>何時使用</h2>
+        <span class="h-en">WHEN TO USE QCA</span>
+      </div>
+      <p class="lead">QCA 適合有清楚案例知識、理論條件與質性結果的研究。</p>
+      <div class="compare">
+        <div class="col c-moss">
+          <span class="col-tag">適合</span>
+          <h3>建議使用</h3>
+          <p>中等數量案例、改革事件、制度類型、政策擴張或緊縮、路徑多元的結果。</p>
+        </div>
+        <div class="col c-water">
+          <span class="col-tag">不適合</span>
+          <h3>不建議使用</h3>
+          <p>只想估計平均邊際效果、案例知識不足、結果概念模糊、條件校準沒有外部判準。</p>
+        </div>
+      </div>
+      <div class="insight"><strong>提醒：</strong>最常見的弱點不是軟體操作，而是案例選擇、校準與結果概念化不夠嚴格。</div>
+      <div class="reveal" onclick="toggleReveal(this)">
+        <div class="reveal-trigger"><span class="arr">▶</span> 案例</div>
+        <div class="reveal-body"><div class="reveal-body-inner">
+          判準：如果你無法說明 0、0.5、1 各代表什麼，模糊集分數就不應該只是把原始變項重新縮放。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S29 (slide 30) 研究設計清單 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="研究設計清單">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>研究設計清單</h2>
+        <span class="h-en">DESIGN CHECKLIST</span>
+      </div>
+      <p class="lead">把比較研究題目改寫成 QCA 題目前，先回答六個問題。</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">一</div><div class="txt">結果是什麼？它是一個可辨認的質性結果，還只是連續變項？</div></div>
+        <div class="take"><div class="num">二</div><div class="txt">哪些案例有資格出現這個結果？負向案例的候選資格如何建立？</div></div>
+        <div class="take"><div class="num">三</div><div class="txt">每個條件的集合定義是什麼？校準判準是否可被同儕檢查？</div></div>
+        <div class="take"><div class="num">四</div><div class="txt">條件數是否過多？真值表是否會產生大量未觀察組合？</div></div>
+        <div class="take"><div class="num">五</div><div class="txt">矛盾列要用案例知識處理，還是只是調整門檻讓結果更漂亮？</div></div>
+        <div class="take"><div class="num">六</div><div class="txt">QCA 結果如何與個案內證據互相檢查？</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ S30 (slide 31) 收束 ============ -->
+  <section class="slide slide-content" data-kind="content" data-label="收束">
+    <div class="slide-inner">
+      <div class="content-head">
+        <h2>收束</h2>
+        <span class="h-en">CLOSING</span>
+      </div>
+      <p class="lead">比較研究的重點是讓理論、案例與證據保持同一個尺度。</p>
+      <div class="takeaways">
+        <div class="take"><div class="num">壹</div><div class="txt">比較研究不是方法清單，而是一套對案例、概念與因果關係的研究設計紀律。</div></div>
+        <div class="take"><div class="num">貳</div><div class="txt">Mills 等人提醒我們：案例、等值、層次與因果性是反覆出現的基本問題。</div></div>
+        <div class="take"><div class="num">參</div><div class="txt">Ragin 的貢獻在於把案例取向邏輯形式化，讓集合、構型與因果配方成為可操作語言。</div></div>
+      </div>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <h3>核心文獻</h3>
+          <p>Mills, van de Bunt and de Bruijn. 2006. <em>Comparative Research: Persistent Problems and Promising Solutions.</em></p>
+        </div>
+        <div class="ref-card">
+          <h3>核心文獻</h3>
+          <p>Ragin. 1987/2014. <em>The Comparative Method: Moving Beyond Qualitative and Quantitative Strategies.</em></p>
+        </div>
+      </div>
+      <div class="discuss-list">
+        <div class="discuss-item">
+          <div class="qn">課堂討論</div>
+          <div class="qt">你的研究題目中，案例集合、結果集合與條件集合分別是什麼？</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<nav class="navbar">
+  <button class="nav-btn" id="prevBtn" onclick="goPrev()">← 前頁</button>
+  <div class="nav-center">
+    <span><span id="curNum">1</span> / <span id="totNum">34</span></span>
+    <div class="dots" id="dots"></div>
+  </div>
+  <button class="nav-btn" id="nextBtn" onclick="goNext()">下一頁 →</button>
+</nav>
+
+<div class="keyboard-hint">
+  <kbd>←</kbd> <kbd>→</kbd> 切換頁面　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕
+</div>
+
+<!-- TOC overlay -->
+<div class="toc-overlay" id="tocOverlay" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" onclick="toggleToc()">×</button>
+    <h2 class="toc-title">目次 ・ Table of Contents</h2>
+    <p class="toc-sub">點選任一條目跳到該頁</p>
+    <ul class="toc-list" id="tocList"></ul>
+  </div>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let cur = 0;
+
+  document.getElementById('totNum').textContent = total;
+
+  const dotsEl = document.getElementById('dots');
+  const tocEl = document.getElementById('tocList');
+  slides.forEach((s, i) => {
+    const d = document.createElement('span');
+    d.className = 'dot' + (s.dataset.kind === 'section' ? ' is-section' : '');
+    d.title = s.dataset.label || '';
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+
+    const li = document.createElement('li');
+    if (s.dataset.kind === 'section') li.classList.add('is-section');
+    li.innerHTML = `<span class="num">${String(i + 1).padStart(2, '0')}</span><span class="lab">${s.dataset.label || ''}</span><span class="kind">${s.dataset.kind}</span>`;
+    li.onclick = () => { goTo(i); toggleToc(); };
+    tocEl.appendChild(li);
+  });
+
+  function goTo(n) {
+    if (n < 0 || n >= total || n === cur) return;
+    const dir = n > cur ? 1 : -1;
+    slides[cur].classList.remove('is-active');
+    if (dir > 0) slides[cur].classList.add('is-prev');
+    cur = n;
+    slides[cur].classList.remove('is-prev');
+    slides[cur].classList.add('is-active');
+    setTimeout(() => slides.forEach((s, i) => { if (i !== cur) s.classList.remove('is-prev'); }), 500);
+    update();
+  }
+  function goPrev() { goTo(cur - 1); }
+  function goNext() { goTo(cur + 1); }
+  function update() {
+    document.getElementById('curNum').textContent = cur + 1;
+    document.getElementById('prevBtn').disabled = cur === 0;
+    document.getElementById('nextBtn').disabled = cur === total - 1;
+    document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('is-active', i === cur));
+  }
+
+  function toggleToc() {
+    document.getElementById('tocOverlay').classList.toggle('is-shown');
+  }
+
+  function toggleReveal(el) {
+    el.classList.toggle('is-open');
+  }
+
+  document.querySelectorAll('.discuss-item').forEach(item => {
+    item.addEventListener('click', () => item.classList.toggle('is-open'));
+  });
+
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('tocOverlay').classList.contains('is-shown')) {
+      if (e.key === 'Escape') toggleToc();
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goNext(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goPrev(); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+    else if (e.key === 'Escape') toggleToc();
+    else if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+  });
+
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) dx < 0 ? goNext() : goPrev();
+  });
+
+  update();
+</script>
+<script>
+  // BFCache restore fix — iOS Safari 在「上一頁」回到此頁時，
+  // 偶爾因 sticky header + backdrop-filter 而整頁空白。
+  // 偵測到從快取還原時，強制觸發一次重繪。
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      document.body.style.display = 'none';
+      void document.body.offsetHeight;
+      document.body.style.display = '';
+    }
+  });
+</script>
+</body>
+</html>
