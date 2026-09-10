@@ -186,7 +186,7 @@ const photoData = [
     haiku_en: 'a white birch / standing within the crimson — / unmoving',
     haiku_zh: '白色樺樹／在紅葉之中／靜靜佇立' },
   { num: '080', src: 'images/photography/dscf4963_2.jpg', themes: ['sansui','xpan'], shape: 'xpan',
-    title_jp: '黄金の壁', title_en: 'Golden Wall', title_zh: '金壁',
+    title_jp: '黄金の壁', title_en: 'Golden Wall', title_zh: '瞬光',
     haiku_jp: '霧の中／山肌だけが／黄金なり',
     haiku_en: 'inside the mist — / only the mountain\'s face / is golden',
     haiku_zh: '霧之中／僅山的肌膚／是金色的' },
