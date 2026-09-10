@@ -701,7 +701,7 @@
     const dpr=Math.min(devicePixelRatio||1,2);
     canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
     canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
-    flakes=Array.from({length:Math.min(320,Math.max(95,Math.round(w*h/3000)))},()=>flake(true));
+    flakes=Array.from({length:Math.min(427,Math.max(127,Math.round(w*h/2250)))},()=>flake(true));
     draw(0);
   }
   function draw(dt){
