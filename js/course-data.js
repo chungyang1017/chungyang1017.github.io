@@ -508,11 +508,11 @@ const courseData = [
     term_zh: '2026 春', term_en: '2026 Spring',
     desc_zh: [
       '「我們要了解社會，我們更要服務社會。」楊懋春先生的這句話，是這門課的起點。本課程從社會學的角度，帶同學認識福利的基本概念——貧窮、不平等、重分配、世代與就業——並理解社會政策如何回應這些長期的社會問題。',
-      '我們會從生活裡的議題切入：誰付得起學費、誰拿得到健保、年金能不能領到、長照誰來扛？再回頭看制度設計背後的價值與政治選擇。社會政策本質上是一場分配——「Who gets What, When, How」（Lasswell, 1958）——這也是公共社會學想對社會說的話。期望這門課不只給你理論，更讓你看見未來的職業可能性。'
+      '我們會從生活裡的議題切入：誰付得起學費、誰拿得到健保、年金能不能領到、長照誰來扛？再回頭看制度設計背後的價值與政治選擇。社會政策本質上是一場分配——「Who gets What, When, How」（Lasswell, 1936）——這也是公共社會學想對社會說的話。期望這門課不只給你理論，更讓你看見未來的職業可能性。'
     ],
     desc_en: [
       '"We must understand society, and we must serve it." This line from Yang Mao-chun opens the course. From a sociological standpoint, it introduces the basic concepts of welfare — poverty, inequality, redistribution, generation, and employment — and how social policy answers these long-standing problems.',
-      'We start from everyday questions: who can afford tuition, who gets health insurance, whether pensions will still be there, who carries the burden of long-term care — then turn back to the values and political choices behind institutional design. Social policy is, at heart, a matter of distribution: "Who gets What, When, How" (Lasswell, 1958) — which is also what public sociology has to say to society. The hope is that the course gives you not only theory, but a glimpse of the careers ahead.'
+      'We start from everyday questions: who can afford tuition, who gets health insurance, whether pensions will still be there, who carries the burden of long-term care — then turn back to the values and political choices behind institutional design. Social policy is, at heart, a matter of distribution: "Who gets What, When, How" (Lasswell, 1936) — which is also what public sociology has to say to society. The hope is that the course gives you not only theory, but a glimpse of the careers ahead.'
     ],
     objectives_zh: [
       '從社會學的角度理解福利的基本理念與概念（貧窮、不平等、重分配、世代、就業）',
@@ -555,7 +555,7 @@ const courseData = [
     weeks_zh: [
       { n: '一',   date: '2/26', topic: '課程概述：為什麼要學社會福利？' },
       { n: '二',   date: '3/5',  topic: '福利是什麼？為什麼福利跟我們息息相關？', href: 'teaching/sociology-of-welfare/week02-what-is-welfare.html', tag: '→ 互動講義' },
-      { n: '三',   date: '3/12', topic: '誰應該取得福利？：公民資格、需求與平等', href: 'teaching/sociology-of-welfare/week03-who-gets-welfare.html', tag: '→ 互動講義' },
+      { n: '三',   date: '3/12', topic: '誰應該取得福利？：公民資格、需求與風險', href: 'teaching/sociology-of-welfare/week03-who-gets-welfare.html', tag: '→ 互動講義' },
       { n: '四',   date: '3/19', topic: '誰應該提供福利？：國家、市場或非營利組織', href: 'teaching/sociology-of-welfare/week04-who-provides.html', tag: '→ 互動講義' },
       { n: '五',   date: '3/26', topic: '提供什麼給付呢？', href: 'teaching/sociology-of-welfare/week05-what-benefits.html', tag: '→ 互動講義' },
       { n: '六',   date: '4/2',  topic: '學術交流週（停課）', off: true },
@@ -575,7 +575,7 @@ const courseData = [
     weeks_en: [
       { n: '1',  date: '2/26', topic: 'Overview: why study social welfare?' },
       { n: '2',  date: '3/5',  topic: 'What is welfare? Why does it matter to us?', href: 'teaching/sociology-of-welfare/week02-what-is-welfare.html', tag: '→ Interactive' },
-      { n: '3',  date: '3/12', topic: 'Who should receive welfare? Citizenship, need, equality', href: 'teaching/sociology-of-welfare/week03-who-gets-welfare.html', tag: '→ Interactive' },
+      { n: '3',  date: '3/12', topic: 'Who should receive welfare? Citizenship, need, risk', href: 'teaching/sociology-of-welfare/week03-who-gets-welfare.html', tag: '→ Interactive' },
       { n: '4',  date: '3/19', topic: 'Who should provide welfare? State, market, or nonprofit', href: 'teaching/sociology-of-welfare/week04-who-provides.html', tag: '→ Interactive' },
       { n: '5',  date: '3/26', topic: 'What benefits to provide?', href: 'teaching/sociology-of-welfare/week05-what-benefits.html', tag: '→ Interactive' },
       { n: '6',  date: '4/2',  topic: 'Academic exchange week (no class)', off: true },
