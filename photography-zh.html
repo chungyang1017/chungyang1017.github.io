@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>攝影 Photography · 葉崇揚</title>
-<meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 寫真九系列：春信、青嵐、紅葉、雪明、潮聲、山水、街、Xpan、銀鹽。">
+<meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 寫真十系列：春信、青嵐、紅葉、雪明、潮聲、山水、街、Xpan、銀鹽、Lisbon。">
 <link rel="alternate" hreflang="zh-Hant" href="photography-zh.html">
 <link rel="alternate" hreflang="en" href="photography.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -217,7 +217,7 @@
   <div class="right">
     <h1 class="reveal">攝影</h1>
     <div class="sub reveal">PHOTOGRAPHY · 9 SERIES · 171 FRAMES</div>
-    <div class="lede reveal">內與外的交界。近三十年來，與研究並行的另一種觀看——九個季節系列，把走過的光留在底片上。與其說是有計畫的專案，更像是被光與季節推著走的紀錄。</div>
+    <div class="lede reveal">內與外的交界。近三十年來，與研究並行的另一種觀看——十個系列，把走過的光留在底片上。與其說是有計畫的專案，更像是被光與季節推著走的紀錄。</div>
   </div>
 </section>
 
@@ -238,8 +238,8 @@
       <div class="num">弐の壱</div>
       <div class="big">系</div>
       <h2>系列</h2>
-      <div class="sub">SERIES · 9</div>
-      <p>九個季節系列，每個都有自己的場域與時間窗。整理在一起，像一份緩慢的年曆。點任一系列，翻閱其中每一張。</p>
+      <div class="sub">SERIES · 10</div>
+      <p>十個系列，每個都有自己的場域與時間窗。整理在一起，像一份緩慢的年曆。點任一系列，翻閱其中每一張。</p>
     </div>
     <div class="series-grid" id="series-grid"></div>
   </div>
@@ -251,7 +251,7 @@
       <div class="reveal" style="font-family:var(--display);font-size:36px;line-height:1.6;letter-spacing:.04em;text-wrap:pretty">寫真は、<br>記憶の<br>器である。</div>
       <div class="reveal" style="margin-top:32px;font-size:14px;line-height:2;color:var(--ink-soft);max-width:520px;text-wrap:pretty">
         <p style="margin:0 0 1em">於我而言，寫真是一種觀察與敘事的方法。將近三十年來，它與研究並行——一種以文字深入，一種以光影靠近。</p>
-        <p style="margin:0 0 1em">作品依九個系列分類：春信、青嵐、紅葉、雪明、潮聲、山水、街、Xpan、銀鹽。與其說是有計畫的專案，更像是被光與季節推著走的紀錄。</p>
+        <p style="margin:0 0 1em">作品依十個系列分類：春信、青嵐、紅葉、雪明、潮聲、山水、街、Xpan、銀鹽、Lisbon。與其說是有計畫的專案，更像是被光與季節推著走的紀錄。</p>
         <p style="margin:0">它們合起來，是一份緩慢的觀看——比文字更安靜，比資料更有溫度。</p>
       </div>
     </div>
@@ -260,7 +260,7 @@
       <div class="big">記</div>
       <h2>關於</h2>
       <div class="sub">ON PHOTOGRAPHY</div>
-      <p>為什麼拍、怎麼看、九個系列如何長出來——一段給自己的註腳。</p>
+      <p>為什麼拍、怎麼看、十個系列如何長出來——一段給自己的註腳。</p>
     </div>
   </div>
 </section>
@@ -295,8 +295,9 @@
     { id:'street',     jp:'街',   romaji:'Machi',     en:'Street',        place:'台北 ・ 京都',  desc:'台北與京都的街角。人、影、與一瞬的停格。' },
     { id:'xpan',       jp:'Xpan', romaji:'Panoramic', en:'Xpan · 65×24',  place:'寬幅',         desc:'65×24 的寬幅。橫向的凝視，被裁下的風景。' },
     { id:'ginen',      jp:'銀塩', romaji:'Ginen',     en:'Silver Halide', place:'正片掃描',     desc:'正片掃描。底片的顆粒與光，銀鹽的溫度。' },
+    { id:'lisbon',     jp:'Lisbon', romaji:'Lisboa',    en:'Lisbon',        place:'葡萄牙 ・ 里斯本', desc:'八月的里斯本。電車、石板坡，與河邊的人。' },
   ];
-  const KAN = ['壱','弐','参','肆','伍','陸','漆','捌','玖'];
+  const KAN = ['壱','弐','参','肆','伍','陸','漆','捌','玖','拾'];
 
   const seriesIndex = {};
   SERIES.forEach(sr => { seriesIndex[sr.id] = photoData.filter(p => p.themes && p.themes.includes(sr.id)); });
@@ -325,6 +326,7 @@
         if (sr.id === 'yukiakari') { location.href = 'photography-winter-zh.html'; return; }
         if (sr.id === 'sansui') { location.href = 'photography-sansui-zh.html'; return; }
         if (sr.id === 'street') { location.href = 'photography-street-zh.html'; return; }
+        if (sr.id === 'lisbon') { location.href = 'photography-lisbon-zh.html'; return; }
         if (sr.id === 'ginen') { location.href = 'photography-ginen-zh.html'; return; }
         if (sr.id === 'xpan') { location.href = 'photography-xpan-zh.html'; return; }
         if (sr.id === 'kaiyou') { location.href = 'photography-tideline-zh.html'; return; }

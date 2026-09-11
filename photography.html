@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Photography · Chung-Yang Yeh</title>
-<meta name="description" content="Chung-Yang Yeh ・ Nine photographic series: Spring, Summer, Autumn, Winter, Tideline, Landscape, Street, Xpan, Silver Halide.">
+<meta name="description" content="Chung-Yang Yeh ・ Ten photographic series: Spring, Summer, Autumn, Winter, Tideline, Landscape, Street, Xpan, Silver Halide, Lisbon.">
 <link rel="alternate" hreflang="zh-Hant" href="photography-zh.html">
 <link rel="alternate" hreflang="en" href="photography.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -221,7 +221,7 @@
   <div class="right">
     <h1 class="reveal">攝影</h1>
     <div class="sub reveal">PHOTOGRAPHY · 9 SERIES · 171 FRAMES</div>
-    <div class="lede reveal">The engawa — the seam between inside and out. For nearly thirty years, a way of looking that has run beside the research: nine seasonal series, keeping the light of every walk on film. Less a deliberate project than a slow record, pushed along by light and the seasons.</div>
+    <div class="lede reveal">The engawa — the seam between inside and out. For nearly thirty years, a way of looking that has run beside the research: ten series, keeping the light of every walk on film. Less a deliberate project than a slow record, pushed along by light and the seasons.</div>
   </div>
 </section>
 
@@ -242,8 +242,8 @@
       <div class="num">弐の壱</div>
       <div class="big">系</div>
       <h2>系列</h2>
-      <div class="sub">SERIES · 9</div>
-      <p>Nine seasonal series, each with its own place and window of time. Gathered together, they read like a slow almanac. Tap any series to leaf through every frame.</p>
+      <div class="sub">SERIES · 10</div>
+      <p>Ten series, each with its own place and window of time. Gathered together, they read like a slow almanac. Tap any series to leaf through every frame.</p>
     </div>
     <div class="series-grid" id="series-grid"></div>
   </div>
@@ -255,7 +255,7 @@
       <div class="reveal" style="font-family:var(--display);font-size:36px;line-height:1.6;letter-spacing:.04em;text-wrap:pretty">寫真は、<br>記憶の<br>器である。</div>
       <div class="reveal" style="margin-top:32px;font-size:14px;line-height:2;color:var(--ink-soft);max-width:520px;text-wrap:pretty">
         <p style="margin:0 0 1em">For me, photography is a way of looking and of telling. For nearly thirty years it has run beside the research — one reaching in through words, the other through light.</p>
-        <p style="margin:0 0 1em">The work falls into nine series: Spring, Summer, Autumn, Winter, Tideline, Landscape, Street, Xpan, and Silver Halide. Less a deliberate project than a record pushed along by light and the seasons.</p>
+        <p style="margin:0 0 1em">The work falls into ten series: Spring, Summer, Autumn, Winter, Tideline, Landscape, Street, Xpan, Silver Halide, and Lisbon. Less a deliberate project than a record pushed along by light and the seasons.</p>
         <p style="margin:0">Together they form a slow way of looking — quieter than words, warmer than data.</p>
       </div>
     </div>
@@ -264,7 +264,7 @@
       <div class="big">記</div>
       <h2>關於</h2>
       <div class="sub">ON PHOTOGRAPHY</div>
-      <p>Why I photograph, how I look, how the nine series grew — a footnote to myself.</p>
+      <p>Why I photograph, how I look, how the ten series grew — a footnote to myself.</p>
     </div>
   </div>
 </section>
@@ -299,8 +299,9 @@
     { id:'street',     jp:'街',   romaji:'Machi',     en:'Street',        place:'Taipei · Kyoto', desc:'Street corners of Taipei and Kyoto. People, shadows, a held instant.' },
     { id:'xpan',       jp:'Xpan', romaji:'Panoramic', en:'Xpan · 65×24',  place:'Panoramic',     desc:'The 65×24 panoramic frame — a sideways gaze, landscape cropped wide.' },
     { id:'ginen',      jp:'銀塩', romaji:'Ginen',     en:'Silver Halide', place:'Film Scan',     desc:'Positive-film scans. The grain and light of film, the warmth of silver halide.' },
+    { id:'lisbon',     jp:'Lisbon', romaji:'Lisboa',    en:'Lisbon',        place:'Lisbon · Portugal', desc:'Lisbon in August — trams, cobbled slopes, and people by the river.' },
   ];
-  const KAN = ['壱','弐','参','肆','伍','陸','漆','捌','玖'];
+  const KAN = ['壱','弐','参','肆','伍','陸','漆','捌','玖','拾'];
 
   const seriesIndex = {};
   SERIES.forEach(sr => { seriesIndex[sr.id] = photoData.filter(p => p.themes && p.themes.includes(sr.id)); });
@@ -329,6 +330,7 @@
         if (sr.id === 'yukiakari') { location.href = 'photography-winter.html'; return; }
         if (sr.id === 'sansui') { location.href = 'photography-sansui.html'; return; }
         if (sr.id === 'street') { location.href = 'photography-street.html'; return; }
+        if (sr.id === 'lisbon') { location.href = 'photography-lisbon.html'; return; }
         if (sr.id === 'ginen') { location.href = 'photography-ginen.html'; return; }
         if (sr.id === 'xpan') { location.href = 'photography-xpan.html'; return; }
         if (sr.id === 'kaiyou') { location.href = 'photography-tideline.html'; return; }
