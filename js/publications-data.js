@@ -34,7 +34,7 @@ const publicationsData = [
     authors_zh: 'Ku, I., Kim, D. and Yeh, C-Y.', authors_en: 'Ku, I., Kim, D. and Yeh, C-Y.',
     venue_zh: 'Journal of Poverty and Social Justice', venue_en: 'Journal of Poverty and Social Justice',
     vol: '',
-    link: null,
+    link: { type: 'doi', url: 'https://doi.org/10.1332/17598273Y2026D000000076' },
     badge: 'SSCI',
     metrics: { if: '1.1', rank: 'Q2 Social Sciences, Interdisciplinary', year: 2025 } },
 
