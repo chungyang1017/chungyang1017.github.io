@@ -39,25 +39,25 @@
       line-height: 1.95;
     }
 
-    .top {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(245,237,216,0.93);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--line-soft);
-      padding: 14px 48px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .top-left { display: flex; align-items: center; gap: 16px; }
-    .back { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; opacity: 0.55; text-decoration: none; color: var(--ink); }
-    .top-sep { font-size: 11px; opacity: 0.3; }
-    .name-block { display: inline-flex; align-items: baseline; gap: 8px; }
-    .name-jp { font-family: var(--brush); font-size: 22px; letter-spacing: 0.1em; }
-    .name-en { font-family: var(--sans); font-style: italic; font-size: 13px; letter-spacing: 0.06em; opacity: 0.7; }
-    .nav { display: flex; gap: 24px; font-size: 12px; letter-spacing: 0.25em; font-family: var(--sans); text-transform: uppercase; }
-    .nav a { color: var(--ink); text-decoration: none; opacity: 0.5; padding-bottom: 4px; }
-    .nav a.is-current { opacity: 1; border-bottom: 2px solid var(--accent); }
-    .nav .nav-jp { font-size: 9px; opacity: 0.55; letter-spacing: 0.18em; margin-left: 2px; font-family: var(--jp); text-transform: none; }
-    .nav .lang { border-left: 1px solid var(--line); padding-left: 24px; font-family: var(--sans); }
+    /* Header — 與全站其他頁面一致（取自 essays.html） */
+    .nav{ position:sticky;top:0;z-index:50;
+      background:color-mix(in srgb,#e8e2d4 94%,transparent);
+      backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+      display:flex;justify-content:space-between;align-items:center;
+      padding:16px 48px;border-bottom:1px solid rgba(31,31,29,.12); }
+    .nav .brand{display:flex;gap:16px;align-items:baseline}
+    .nav .seal{ display:inline-flex;align-items:center;justify-content:center;
+      width:42px;height:42px;background:#c43838;color:#e8e2d4;
+      font-family:var(--brush);font-size:20px;
+      transform:rotate(-3deg);box-shadow:2px 2px 0 rgba(196,56,56,.25);
+      text-decoration:none; }
+    .nav .name{font-family:var(--brush);font-size:18px;letter-spacing:.1em;line-height:1;text-decoration:none;color:#1f1f1d}
+    .nav .name small{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.3em;color:rgba(31,31,29,.5);margin-top:4px}
+    .nav nav{display:flex;gap:24px;font-size:16px;letter-spacing:.2em}
+    .nav nav a{color:#1f1f1d;text-decoration:none;padding:6px 0;border-bottom:1px solid transparent;transition:.2s;opacity:1}
+    .nav nav a:hover{border-bottom-color:#1f1f1d}
+    .nav nav a.is-active{color:#c43838;border-bottom-color:#c43838}
+    .nav .lang{border-left:1px solid rgba(31,31,29,.12);padding-left:24px;font-family:var(--sans);font-size:16px;letter-spacing:.2em;color:rgba(31,31,29,.72);text-decoration:none}
 
     .article-cover {
       max-width: 1100px; margin: 2.5rem auto 0;
@@ -277,14 +277,9 @@
     footer .links a:hover { opacity: 1; color: var(--accent); }
 
     @media (max-width: 760px) {
-      .top { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
-      .top-left { gap: 10px; }
-      .back { font-size: 10px; letter-spacing: 0.22em; }
-      .name-jp { font-size: 16px; }
-      .name-en { font-size: 8px; }
-      .nav { gap: 12px; font-size: 10px; letter-spacing: 0.16em; }
-      .nav a.nav-sub { display: none; }
-      .nav .lang { padding-left: 12px; }
+      .nav{padding:12px 20px;flex-wrap:wrap;gap:10px}
+      .nav nav{order:3;width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:9px 20px;font-size:13px;letter-spacing:.13em;padding-top:11px;margin-top:2px;border-top:1px solid rgba(31,31,29,.12)}
+      .nav .lang{padding-left:14px}
 
       .article-cover { padding: 0 1rem; margin-top: 1.4rem; }
       .article { padding: 2.4rem 1.4rem 3rem; }
@@ -299,26 +294,27 @@
 
       footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 10px; }
     }
-  </style>
+      @media (max-width: 480px) {
+      .nav nav{justify-content:center;column-gap:18px}
+    }
+</style>
 </head>
 <body>
 
-<header class="top">
-  <div class="top-left">
-    <a href="../index-en.html" class="back">← HOME</a>
-    <span class="top-sep">·</span>
-    <span class="name-block">
-      <span class="name-jp">葉崇揚</span>
-      <span class="name-en">（Chung-Yang Yeh）</span>
-    </span>
+<header class="nav">
+  <div class="brand">
+    <a class="seal" href="../index-en.html">葉</a>
+    <a class="name" href="../index-en.html">葉崇揚<small>YEH CHUNG-YANG</small></a>
   </div>
-  <nav class="nav" aria-label="Sections">
-    <a href="../index-en.html" class="nav-sub">Home</a>
-    <a href="../academic.html" class="nav-sub">Research</a>
-    <a href="../photography.html" class="nav-sub">Photography</a>
-    <a href="index-en.html" class="is-current">Zuihitsu</a>
-    <a href="2026-takaichi.html" class="lang">中</a>
+  <nav>
+    <a href="../index-en.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../academic.html">Research</a>
+    <a href="../photography.html">Photography</a>
+    <a href="../teaching.html">Teaching</a>
+    <a href="index-en.html" class="is-active">Essays</a>
   </nav>
+  <a class="lang" href="2026-takaichi.html">中</a>
 </header>
 
 <div class="article-cover">
