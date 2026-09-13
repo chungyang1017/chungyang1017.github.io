@@ -108,16 +108,13 @@
   }
   .hero .wrap{ position:relative; z-index:3; width:min(1180px,90vw); margin-inline:auto; }
 
-  /* 層疊墨山（SVG）— hero 底部：近景深墨、遠景淡墨，山間橫向霧帶／雲海 */
-  .ink-mountains{
-    position:absolute; z-index:2; pointer-events:none;
-    left:0; right:0; bottom:0;
-    width:100%; height:clamp(280px,50vh,520px);
-    opacity:.97; will-change:transform;
-  }
-  /* 霧帶／雲海：山間橫向緩慢飄移（半透明白帶、極慢；reduced-motion 由全域規則停用）*/
-  .mist{ animation:mistDrift var(--md,90s) ease-in-out var(--mdel,0s) infinite alternate; }
-  @keyframes mistDrift{ from{ transform:translateX(-48px); } to{ transform:translateX(48px); } }
+  .sansui-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% center;}
+  #cloud-sea{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;}
+  .hero::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,#12152380,transparent 75%);}
+  .hero .wrap{--sumi:#fff3df;--sumi-soft:#f5e6d5;--sumi-faint:#e3d6c9;--moss:#ebd2b0;text-shadow:0 2px 18px #12152380;}
+  .hero h1 .kanji{background:none!important;-webkit-text-fill-color:#fff3df!important;}
+  .hero .hero-mark{color:#f6e7ce;}
+  .hero h1 .romaji{color:#e4d7c4;}
 
   .eyebrow{
     font-family:var(--latin); font-weight:400;
@@ -321,7 +318,7 @@
 <body>
 
 <div class="paper-grain" aria-hidden="true"></div>
-<canvas id="kiri" aria-hidden="true"></canvas>
+
 
 <header class="nav">
   <div class="brand">
@@ -343,90 +340,8 @@
 
   <!-- ============ 水墨山巒 HERO ============ -->
   <header class="hero" id="hero">
-    <!-- 層疊墨山 — 遠景淡墨、近景深墨（4 層）＋山間橫向霧帶／雲海（極慢飄移）-->
-    <svg class="ink-mountains" id="mountains" viewBox="0 0 1440 560" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMax slice">
-      <defs>
-        <!-- 墨暈：山稜邊緣的滲墨感 -->
-        <filter id="mbleed" x="-20%" y="-20%" width="140%" height="140%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.028" numOctaves="4" seed="9" result="t"/>
-          <feDisplacementMap in="SourceGraphic" in2="t" scale="14" xChannelSelector="R" yChannelSelector="G" result="d"/>
-          <feGaussianBlur in="d" stdDeviation="1.6"/>
-        </filter>
-        <filter id="mbleedFar" x="-20%" y="-20%" width="140%" height="140%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.010 0.022" numOctaves="3" seed="4" result="t"/>
-          <feDisplacementMap in="SourceGraphic" in2="t" scale="10" xChannelSelector="R" yChannelSelector="G" result="d"/>
-          <feGaussianBlur in="d" stdDeviation="2.8"/>
-        </filter>
-        <!-- 霧帶柔邊 -->
-        <filter id="mistBlur" x="-30%" y="-120%" width="160%" height="340%">
-          <feGaussianBlur stdDeviation="11"/>
-        </filter>
-        <!-- 山色：遠→近，淡墨→深墨（灰藍墨）-->
-        <linearGradient id="mFar" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#a4b8c1"/><stop offset="1" stop-color="#c2d0d6"/>
-        </linearGradient>
-        <linearGradient id="mMid" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#7d97a6"/><stop offset="1" stop-color="#9db1bc"/>
-        </linearGradient>
-        <linearGradient id="mNear" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#4e6a7a"/><stop offset="1" stop-color="#6d8794"/>
-        </linearGradient>
-        <linearGradient id="mFore" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#3a4f5b"/><stop offset=".6" stop-color="#2b3d47"/><stop offset="1" stop-color="#22313a"/>
-        </linearGradient>
-        <!-- 霧帶：橫向白帶，兩端漸隱 -->
-        <linearGradient id="mistGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0"   stop-color="#fcfbf6" stop-opacity="0"/>
-          <stop offset=".16" stop-color="#fcfbf6" stop-opacity=".82"/>
-          <stop offset=".82" stop-color="#fcfbf6" stop-opacity=".82"/>
-          <stop offset="1"   stop-color="#fcfbf6" stop-opacity="0"/>
-        </linearGradient>
-      </defs>
-
-      <!-- 第一層：最遠的淡墨稜線（幾乎溶進天色）-->
-      <g filter="url(#mbleedFar)" opacity=".42">
-        <path fill="url(#mFar)" d="M-30 268 C 60 244, 130 208, 214 196 C 300 184, 356 226, 438 214 C 530 200, 586 150, 668 142 C 756 134, 812 188, 900 196 C 992 204, 1058 162, 1146 158 C 1240 154, 1310 200, 1470 190 L1470 580 L-30 580 Z"/>
-      </g>
-
-      <!-- 第二層：遠山（淡墨）-->
-      <g filter="url(#mbleedFar)" opacity=".6">
-        <path fill="url(#mMid)" d="M-30 340 C 80 318, 150 262, 246 252 C 344 242, 402 296, 494 288 C 596 279, 650 216, 742 210 C 840 204, 902 266, 998 274 C 1096 282, 1170 236, 1262 234 C 1352 232, 1400 268, 1470 262 L1470 580 L-30 580 Z"/>
-      </g>
-
-      <!-- 霧帶 A：遠山山腰的橫向薄霧（極慢左右飄移）-->
-      <g class="mist" style="--md:96s" filter="url(#mistBlur)" opacity=".6">
-        <rect x="-140" y="296" width="820" height="40" rx="20" fill="url(#mistGrad)"/>
-        <rect x="560"  y="318" width="700" height="34" rx="17" fill="url(#mistGrad)" opacity=".85"/>
-        <rect x="1040" y="288" width="560" height="36" rx="18" fill="url(#mistGrad)" opacity=".9"/>
-      </g>
-
-      <!-- 第三層：中景山（中墨）-->
-      <g filter="url(#mbleed)" opacity=".84">
-        <path fill="url(#mNear)" d="M-30 432 C 70 414, 128 352, 224 344 C 322 336, 388 392, 478 386 C 576 379, 640 314, 736 310 C 838 306, 894 368, 992 376 C 1088 384, 1156 336, 1252 334 C 1346 332, 1402 372, 1470 366 L1470 580 L-30 580 Z"/>
-      </g>
-
-      <!-- 霧帶 B：中景山腰的雲海主帶（更厚、更慢、反向飄移）-->
-      <g class="mist" style="--md:120s;--mdel:-40s;animation-direction:alternate-reverse" filter="url(#mistBlur)" opacity=".78">
-        <rect x="-160" y="420" width="980" height="56" rx="28" fill="url(#mistGrad)"/>
-        <rect x="620"  y="446" width="860" height="48" rx="24" fill="url(#mistGrad)"/>
-        <rect x="220"  y="452" width="640" height="42" rx="21" fill="url(#mistGrad)" opacity=".8"/>
-        <rect x="1000" y="416" width="620" height="44" rx="22" fill="url(#mistGrad)" opacity=".9"/>
-      </g>
-
-      <!-- 第四層：近景深墨山（主體）-->
-      <g filter="url(#mbleed)">
-        <path fill="url(#mFore)" opacity=".96" d="M-30 520 C 60 506, 130 452, 220 446 C 316 440, 372 486, 464 482 C 566 477, 634 420, 730 418 C 830 416, 886 470, 984 476 C 1082 482, 1150 440, 1244 440 C 1340 440, 1398 474, 1470 468 L1470 580 L-30 580 Z"/>
-        <!-- 稜線上一抹乾筆 -->
-        <path stroke="#1d2b33" stroke-opacity=".5" stroke-width="2.4" fill="none"
-          d="M-30 520 C 60 506, 130 452, 220 446 C 316 440, 372 486, 464 482 C 566 477, 634 420, 730 418 C 830 416, 886 470, 984 476 C 1082 482, 1150 440, 1244 440 C 1340 440, 1398 474, 1470 468"/>
-      </g>
-
-      <!-- 霧帶 C：近山腳的殘霧（最慢）-->
-      <g class="mist" style="--md:140s;--mdel:-70s" filter="url(#mistBlur)" opacity=".5">
-        <rect x="-120" y="512" width="760" height="40" rx="20" fill="url(#mistGrad)"/>
-        <rect x="760"  y="522" width="720" height="36" rx="18" fill="url(#mistGrad)" opacity=".85"/>
-      </g>
-    </svg>
+    <img class="sansui-photo" src="images/photography/dscf9370_xd2s_3.jpg" alt="" aria-hidden="true" fetchpriority="high">
+    <canvas id="cloud-sea" aria-hidden="true"></canvas>
 
     <span class="hero-mark" aria-hidden="true">山靄のころ</span>
 
@@ -745,134 +660,45 @@
   });
 </script>
 
-<!-- 墨點霧滴 canvas + 墨山視差（極少量粒子：霧滴橫漂、墨點緩沉）-->
+<!-- 固定山景上疊加雲海霧層，不對原照片做位移或形變 -->
 <script>
-(() => {
-  "use strict";
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const canvas = document.getElementById('kiri');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const TAU = Math.PI * 2;
-  let W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-  const motes = [];
-
-  function resize(){
-    W = window.innerWidth; H = window.innerHeight;
-    canvas.width = W * dpr; canvas.height = H * dpr;
-    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const target = Math.round(Math.min(16, Math.max(7, W / 110)));   // 極少量
-    while (motes.length < target) motes.push(makeMote(true));
-    while (motes.length > target) motes.pop();
-  }
-  function makeMote(spawnAnywhere){
-    const kind = Math.random() < 0.6 ? 'mist' : 'ink';   // 霧滴為主、墨點點綴
-    if (kind === 'mist'){
-      return {
-        kind,
-        x: spawnAnywhere ? Math.random() * W : -60 - Math.random() * 80,
-        y: Math.random() * H,
-        r: 18 + Math.random() * 26,
-        vx: 0.06 + Math.random() * 0.14,               // 橫向極慢漂移
-        phase: Math.random() * TAU,
-        bobSpeed: 0.004 + Math.random() * 0.007,
-        bobAmp: 4 + Math.random() * 8,
-        alpha: 0.05 + Math.random() * 0.07
-      };
-    }
-    return {
-      kind,
-      x: Math.random() * W,
-      y: spawnAnywhere ? Math.random() * H : -12 - Math.random() * 40,
-      r: 1.1 + Math.random() * 1.5,
-      vy: 0.06 + Math.random() * 0.12,                 // 縱向極慢下沉
-      phase: Math.random() * TAU,
-      swaySpeed: 0.006 + Math.random() * 0.009,
-      swayAmp: 0.5 + Math.random() * 1.1,
-      alpha: 0.12 + Math.random() * 0.16
-    };
-  }
-  function drawMist(p){       // 霧滴：柔白暈（呼吸明滅）
-    const breathe = 0.6 + 0.4 * Math.sin(p.phase * 1.3);
-    ctx.save();
-    ctx.globalAlpha = p.alpha * breathe;
-    const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
-    g.addColorStop(0, 'rgba(252,251,246,0.9)');
-    g.addColorStop(0.6, 'rgba(233,238,240,0.35)');
-    g.addColorStop(1, 'rgba(233,238,240,0)');
-    ctx.fillStyle = g;
-    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, TAU); ctx.fill();
-    ctx.restore();
-  }
-  function drawInk(p){        // 墨點：灰藍細點（軟邊）
-    ctx.save();
-    ctx.globalAlpha = p.alpha * (0.7 + 0.3 * Math.sin(p.phase * 1.7));
-    const rr = p.r * 2.4;
-    const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, rr);
-    g.addColorStop(0, 'rgba(58,79,91,0.9)');
-    g.addColorStop(0.55, 'rgba(58,79,91,0.3)');
-    g.addColorStop(1, 'rgba(58,79,91,0)');
-    ctx.fillStyle = g;
-    ctx.beginPath(); ctx.arc(p.x, p.y, rr, 0, TAU); ctx.fill();
-    ctx.restore();
-  }
-
-  let scrollBoost = 0, lastScrollY = window.scrollY;
-  window.addEventListener('scroll', () => {
-    const dy = Math.abs(window.scrollY - lastScrollY);
-    lastScrollY = window.scrollY;
-    scrollBoost = Math.min(2.0, scrollBoost + dy * 0.004);
-  }, { passive:true });
-
-  let raf;
-  function frame(){
-    ctx.clearRect(0, 0, W, H);
-    scrollBoost *= 0.94;
-    for (const p of motes){
-      p.phase += p.kind === 'mist' ? p.bobSpeed : p.swaySpeed;
-      if (p.kind === 'mist'){
-        p.x += p.vx * (1 + scrollBoost * 0.5);
-        const y = p.y + Math.sin(p.phase) * p.bobAmp;
-        if (p.x - p.r * 2 > W){ Object.assign(p, makeMote(false)); }
-        drawMist({ ...p, y });
-      } else {
-        p.y += p.vy * (1 + scrollBoost);
-        p.x += Math.sin(p.phase) * p.swayAmp * 0.06;
-        if (p.y - 20 > H){ Object.assign(p, makeMote(false)); }
-        drawInk(p);
-      }
-    }
-    raf = requestAnimationFrame(frame);
-  }
-  function start(){
-    resize();
-    if (!reduceMotion){ cancelAnimationFrame(raf); frame(); }
-    else { ctx.clearRect(0,0,W,H); for (const p of motes.slice(0, 6)){ p.kind === 'mist' ? drawMist(p) : drawInk(p); } }
-  }
-  let rt;
-  window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(start, 180); }, { passive:true });
-  if (document.fonts && document.fonts.ready){ document.fonts.ready.then(start); setTimeout(start, 700); }
-  else { window.addEventListener('load', start); }
-  start();
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) cancelAnimationFrame(raf);
-    else if (!reduceMotion) frame();
-  });
-
-  /* 墨山視差（遠山隨捲動緩緩下沉）*/
-  const mountains = document.getElementById('mountains');
-  let ticking = false;
-  const parallax = () => {
-    const y = window.scrollY;
-    if (mountains) mountains.style.transform = `translate3d(0, ${y * 0.07}px, 0)`;
-    ticking = false;
-  };
-  window.addEventListener('scroll', () => {
-    if (reduceMotion) return;
-    if (!ticking){ requestAnimationFrame(parallax); ticking = true; }
-  }, { passive:true });
+(()=>{
+const hero=document.getElementById('hero'),canvas=document.getElementById('cloud-sea'),ctx=canvas.getContext('2d');
+if(!ctx)return;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+let w=0,h=0,scale=1,ox=0,oy=0,last=0,time=0,raf=0,visible=true;
+// 座標以原照片 2000 × 858 為準，霧層限制在遠離山稜的雲海內。
+const zones=[{x:300,y:610,rx:330,ry:105,speed:10},{x:1120,y:416,rx:190,ry:38,speed:7},{x:1580,y:414,rx:340,ry:53,speed:8},{x:980,y:696,rx:125,ry:67,speed:13}];
+let seed=30;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
+const texture=document.createElement('canvas');texture.width=1024;texture.height=256;
+const g=texture.getContext('2d');
+for(let i=0;i<170;i++){
+ const x=random()*1024,y=random()*256,r=18+random()*68;
+ const grad=g.createRadialGradient(x,y,0,x,y,r);grad.addColorStop(0,'rgba(237,218,203,'+(.06+random()*.14)+')');grad.addColorStop(1,'rgba(220,210,206,0)');
+ g.fillStyle=grad;g.fillRect(x-r,y-r,r*2,r*2);
+}
+const layers=zones.map(z=>{
+ const layer=document.createElement('canvas');layer.width=Math.ceil(z.rx*2);layer.height=Math.ceil(z.ry*2);
+ const mask=document.createElement('canvas');mask.width=layer.width;mask.height=layer.height;
+ const m=mask.getContext('2d');m.scale(z.rx,z.ry);const fade=m.createRadialGradient(1,1,.12,1,1,1);fade.addColorStop(0,'#fff');fade.addColorStop(.55,'#fffc');fade.addColorStop(1,'#fff0');m.fillStyle=fade;m.fillRect(0,0,2,2);
+ return {...z,layer,mask,phase:random()*1024};
+});
+function draw(){
+ ctx.clearRect(0,0,w,h);ctx.save();ctx.translate(ox,oy);ctx.scale(scale,scale);
+ for(const z of layers){
+  const c=z.layer.getContext('2d'),lw=z.layer.width,lh=z.layer.height;
+  c.clearRect(0,0,lw,lh);c.globalCompositeOperation='source-over';
+  const offset=(time*z.speed+z.phase)%1024;
+  for(let x=offset-1024;x<lw;x+=1024)c.drawImage(texture,x,Math.sin(time*.17+z.phase)*5-10,1024,lh+20);
+  c.globalCompositeOperation='destination-in';c.drawImage(z.mask,0,0);
+  ctx.globalAlpha=.72;ctx.drawImage(z.layer,z.x-z.rx,z.y-z.ry);
+ }
+ ctx.restore();
+}
+function resize(){w=hero.clientWidth;h=hero.clientHeight;const dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);scale=Math.max(w/2000,h/858);ox=(w-2000*scale)*.58;oy=(h-858*scale)*.5;draw();}
+function frame(now){if(last)time+=Math.min((now-last)/1000,.05);last=now;draw();raf=requestAnimationFrame(frame);}
+function sync(){cancelAnimationFrame(raf);last=0;if(visible&&!document.hidden&&!reduced.matches)raf=requestAnimationFrame(frame);}
+new ResizeObserver(resize).observe(hero);new IntersectionObserver(([e])=>{visible=e.isIntersecting;sync();}).observe(hero);document.addEventListener('visibilitychange',sync);reduced.addEventListener('change',sync);resize();sync();
 })();
 </script>
 
