@@ -668,13 +668,13 @@ if(!ctx)return;
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 let w=0,h=0,scale=1,ox=0,oy=0,last=0,time=0,raf=0,visible=true;
 // 座標以原照片 2000 × 858 為準，霧層限制在遠離山稜的雲海內。
-const zones=[{x:300,y:610,rx:330,ry:105,speed:10},{x:1120,y:416,rx:190,ry:38,speed:7},{x:1580,y:414,rx:340,ry:53,speed:8},{x:980,y:696,rx:125,ry:67,speed:13}];
+const zones=[{x:300,y:610,rx:330,ry:105,speed:20},{x:1120,y:416,rx:190,ry:38,speed:15},{x:1580,y:414,rx:340,ry:53,speed:17},{x:980,y:696,rx:125,ry:67,speed:25},{x:690,y:590,rx:150,ry:65,speed:22},{x:1550,y:510,rx:150,ry:35,speed:18}];
 let seed=30;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
 const texture=document.createElement('canvas');texture.width=1024;texture.height=256;
 const g=texture.getContext('2d');
-for(let i=0;i<170;i++){
+for(let i=0;i<230;i++){
  const x=random()*1024,y=random()*256,r=18+random()*68;
- const grad=g.createRadialGradient(x,y,0,x,y,r);grad.addColorStop(0,'rgba(237,218,203,'+(.06+random()*.14)+')');grad.addColorStop(1,'rgba(220,210,206,0)');
+ const grad=g.createRadialGradient(x,y,0,x,y,r);grad.addColorStop(0,'rgba(237,218,203,'+(.09+random()*.18)+')');grad.addColorStop(1,'rgba(220,210,206,0)');
  g.fillStyle=grad;g.fillRect(x-r,y-r,r*2,r*2);
 }
 const layers=zones.map(z=>{
@@ -691,7 +691,7 @@ function draw(){
   const offset=(time*z.speed+z.phase)%1024;
   for(let x=offset-1024;x<lw;x+=1024)c.drawImage(texture,x,Math.sin(time*.17+z.phase)*5-10,1024,lh+20);
   c.globalCompositeOperation='destination-in';c.drawImage(z.mask,0,0);
-  ctx.globalAlpha=.72;ctx.drawImage(z.layer,z.x-z.rx,z.y-z.ry);
+  ctx.globalAlpha=.88;ctx.drawImage(z.layer,z.x-z.rx,z.y-z.ry);
  }
  ctx.restore();
 }
