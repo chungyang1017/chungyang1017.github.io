@@ -442,6 +442,16 @@ const photoData = [
     haiku_jp: '未明や／凍てつく街に／灯ひとつ',
     haiku_en: 'before dawn — / in the freezing town / a single lamp',
     haiku_zh: '未明／凜冽的街頭／一盞燈火' },
+  { num: '346', src: 'images/photography/dscf5876_1.jpg', themes: ['yukiakari'], shape: 'landscape',
+    title_jp: '冬枝', title_en: 'Winter Branches', title_zh: '冬枝',
+    haiku_jp: '枯枝や／雲は幾重の／横しま',
+    haiku_en: 'bare branches — / the clouds in layer / after layer',
+    haiku_zh: '枯枝／雲一層一層／橫著' },
+  { num: '347', src: 'images/photography/img_6875.jpg', themes: ['yukiakari'], shape: 'landscape',
+    title_jp: '氷の裂け目', title_en: 'Cracks in the Ice', title_zh: '冰的裂口',
+    haiku_jp: '凍る湖／黒き水路の／ひとすじ',
+    haiku_en: 'the frozen lake — / one dark channel / still running',
+    haiku_zh: '凍湖／一道黑色的水路／仍在流' },
 
   // ── 潮騒 TIDELINE ──
   { num: '011', src: 'images/photography/dscf4473_xd2s_9.jpg', year: 2026, themes: ['kaiyou'], shape: 'landscape',
