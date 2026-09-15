@@ -172,14 +172,35 @@ const courseData = [
         { t: 'OECD 社會政策資料庫（網路資源）', u: 'https://www.oecd.org/social/' }
       ]}
     ],
+    books_en: [
+      { label: 'Core Texts', items: [
+        { t: 'Mortimer, J. T., &amp; Shanahan, M. J. (Eds.) (2003). The Handbook of the Life Course. New York: Springer.', u: 'https://doi.org/10.1007/b100507' },
+        { t: 'Elder, G. H., Jr., &amp; Giele, J. Z. (Eds.) (2009). The Craft of Life Course Research. New York: Guilford Press.', u: 'https://openlibrary.org/works/OL18634489W' },
+        { t: 'Esping-Andersen, G., Gallie, D., Hemerijck, A., &amp; Myles, J. (2002). Why We Need a New Welfare State. Oxford: Oxford University Press.', u: 'https://doi.org/10.1093/0199256438.001.0001' }
+      ]},
+      { label: 'Further Reading', items: [
+        { t: 'Esping-Andersen, G. (1990). The Three Worlds of Welfare Capitalism. Princeton: Princeton University Press.', u: 'https://press.princeton.edu/books/paperback/9780691028576/the-three-worlds-of-welfare-capitalism' },
+        { t: 'Esping-Andersen, G. (2009). The Incomplete Revolution: Adapting to Women\'s New Roles. Cambridge: Polity.', u: 'https://www.wiley.com/en-us/Incomplete+Revolution:+Adapting+Welfare+States+to+Women%27s+New+Roles+-p-9780745643168' },
+        { t: 'Kohli, M., Rein, M., Guillemard, A.-M., &amp; van Gunsteren, H. (Eds.) (1991). Time for Retirement: Comparative Studies of Early Exit from the Labor Force. Cambridge: Cambridge University Press.', u: 'https://openlibrary.org/works/OL18270428W' },
+        { t: 'Leisering, L., &amp; Leibfried, S. (1999). Time and Poverty in Western Welfare States: United Germany in Perspective. Cambridge: Cambridge University Press.', u: 'https://openlibrary.org/works/OL19238738W' },
+        { t: 'Anxo, D., Bosch, G., &amp; Rubery, J. (Eds.) (2010). The Welfare State and Life Transitions: A European Perspective. Cheltenham: Edward Elgar.', u: 'https://doi.org/10.4337/9781849806381' },
+        { t: 'OECD (2007). Modernising Social Policy for the New Life Course. Paris: OECD.', u: 'https://doi.org/10.1787/9789264041271-en' },
+        { t: 'Chang, K.-S. (2010). South Korea under Compressed Modernity: Familial Political Economy in Transition. London: Routledge.', u: 'https://doi.org/10.4324/9780203854396' },
+        { t: 'Yang, Y., &amp; Land, K. C. (2013). Age-Period-Cohort Analysis: New Models, Methods, and Empirical Applications. Boca Raton: CRC Press.', u: 'https://doi.org/10.1201/b13902' },
+        { t: 'Wilmoth, J. M., &amp; London, A. S. (Eds.) (2021). Life-Course Implications of US Public Policies. New York: Routledge.', u: 'https://doi.org/10.4324/9781003020912' },
+        { t: 'Ku, I., &amp; Saunders, P. (Eds.) (2022). Poverty and Inequality in East Asia: Work, Family and Policy. Cheltenham: Edward Elgar.', u: 'https://doi.org/10.4337/9781800888982' },
+        { t: 'Hofäcker, D., &amp; Kuitto, K. (Eds.) (2023). Youth Employment Insecurity and Pension Adequacy. Cheltenham: Edward Elgar.', u: 'https://doi.org/10.4337/9781802208580' },
+        { t: 'OECD Social Policy Database (online resource)', u: 'https://www.oecd.org/social/' }
+      ]}
+    ],
     weeks_zh: [
       { n: '一', date: '9/15', topic: '課程導論：課程介紹、評分方式與生命歷程研究的問題意識' },
-      { n: '二', date: '9/22', topic: '生命歷程觀點的起源與發展：從生命史研究到生命歷程典範的核心原則' },
-      { n: '三', date: '9/29', topic: '核心概念：軌跡、轉折、轉捩點與時機；年齡、時期與世代效應' },
-      { n: '四', date: '10/6', topic: '生命歷程的制度化：標準生命歷程、三分結構與去標準化論辯' },
-      { n: '五', date: '10/13', topic: '福利國家作為生命歷程政策：福利體制、生命歷程體制與東亞經驗' },
+      { n: '二', date: '9/22', topic: '停課（教師開會）', off: true },
+      { n: '三', date: '9/29', topic: '生命歷程觀點的起源與發展：從生命史研究到生命歷程典範的核心原則' },
+      { n: '四', date: '10/6', topic: '核心概念：軌跡、轉折、轉捩點與時機；年齡、時期與世代效應' },
+      { n: '五', date: '10/13', topic: '生命歷程的制度化：標準生命歷程、三分結構與去標準化論辯' },
       { n: '六', date: '10/20', topic: '停課（教師出席研討會）', off: true },
-      { n: '七', date: '10/27', topic: '生命歷程研究方法：縱貫資料、世代分析與序列分析' },
+      { n: '七', date: '10/27', topic: '福利國家作為生命歷程政策：福利體制、生命歷程體制與東亞經驗' },
       { n: '八', date: '11/3', topic: '幼年期：早期兒童發展、兒童照顧與社會投資' },
       { n: '九', date: '11/10', topic: '教育與青年轉銜：教育擴張、機會不平等與從學校到職場' },
       { n: '十', date: '11/17', topic: '成年期：勞動市場二元化、非典型就業與新社會風險' },
@@ -192,8 +213,28 @@ const courseData = [
       { n: '十七', date: '1/5', topic: '跨國比較與課程總結、期末報告' },
       { n: '十八', date: '1/12', topic: '彈性週（不上課）', off: true }
     ],
+    weeks_en: [
+      { n: '1', date: '9/15', topic: 'Course introduction: the course, assessment, and the questions life course research asks' },
+      { n: '2', date: '9/22', topic: 'No class (faculty meeting)', off: true },
+      { n: '3', date: '9/29', topic: 'Origins and development of the life course perspective: from life history studies to the core principles of the paradigm' },
+      { n: '4', date: '10/6', topic: 'Core concepts: trajectories, transitions, turning points and timing; age, period and cohort effects' },
+      { n: '5', date: '10/13', topic: 'The institutionalisation of the life course: the standard life course, the tripartite structure, and the de-standardisation debate' },
+      { n: '6', date: '10/20', topic: 'No class (conference)', off: true },
+      { n: '7', date: '10/27', topic: 'The welfare state as life course policy: welfare regimes, life course regimes, and the East Asian experience' },
+      { n: '8', date: '11/3', topic: 'Early childhood: early child development, childcare and social investment' },
+      { n: '9', date: '11/10', topic: 'Education and the youth transition: educational expansion, unequal opportunity, and school to work' },
+      { n: '10', date: '11/17', topic: 'Adulthood: labour market dualisation, non-standard employment and new social risks' },
+      { n: '11', date: '11/24', topic: 'Partnership and childbearing: family formation, the gendered division of labour, and family policy' },
+      { n: '12', date: '12/1', topic: 'Midlife: the health life course, unemployment risk and social insurance' },
+      { n: '13', date: '12/8', topic: 'Later life (I): the retirement transition, pensions and old-age income security' },
+      { n: '14', date: '12/15', topic: 'Later life (II): ageing, long-term care and family care responsibilities' },
+      { n: '15', date: '12/22', topic: 'Cumulative inequality: cumulative advantage/disadvantage, poverty dynamics and the gendered life course' },
+      { n: '16', date: '12/29', topic: 'Generations and intergenerational justice: transfers between generations, the generational contract, and the life course under compressed modernity' },
+      { n: '17', date: '1/5', topic: 'Cross-national comparison and course conclusion; final presentations' },
+      { n: '18', date: '1/12', topic: 'Reading week (no class)', off: true }
+    ],
     readings_zh: [
-      { n: '二', date: '9/22', title: '生命歷程觀點的起源與發展：從生命史研究到生命歷程典範的核心原則', items: [
+      { n: '三', date: '9/29', title: '生命歷程觀點的起源與發展：從生命史研究到生命歷程典範的核心原則', items: [
           { c: true, t: 'Elder, G. H., Jr., Johnson, M. K., &amp; Crosnoe, R. (2003). The emergence and development of life course theory. In J. T. Mortimer &amp; M. J. Shanahan (Eds.), Handbook of the Life Course (pp. 3–19). Springer.', u: 'https://doi.org/10.1007/978-0-306-48247-2_1' },
           { c: true, t: 'Elder, G. H., Jr. (1994). Time, human agency, and social change: Perspectives on the life course. Social Psychology Quarterly, 57(1), 4–15.', u: 'https://doi.org/10.2307/2786971' },
           { c: false, t: 'Mayer, K. U. (2009). New directions in life course research. Annual Review of Sociology, 35, 413–433.', u: 'https://doi.org/10.1146/annurev.soc.34.040507.134619' },
@@ -201,14 +242,14 @@ const courseData = [
           { c: false, t: 'Kohli, M. (1986). The world we forgot: A historical review of the life course. In V. W. Marshall (Ed.), Later Life: The Social Psychology of Aging (pp. 271–303). Sage.', u: 'https://openlibrary.org/works/OL6570059W' },
           { c: false, t: 'Giele, J. Z., &amp; Elder, G. H., Jr. (1998). Life course research: Development of a field. In Methods of Life Course Research: Qualitative and Quantitative Approaches (pp. 5–27). Sage.', u: 'https://doi.org/10.4135/9781483348919.n1' }
         ]},
-      { n: '三', date: '9/29', title: '核心概念：軌跡、轉折、轉捩點與時機；年齡、時期與世代效應', items: [
+      { n: '四', date: '10/6', title: '核心概念：軌跡、轉折、轉捩點與時機；年齡、時期與世代效應', items: [
           { c: true, t: 'Ryder, N. B. (1965). The cohort as a concept in the study of social change. American Sociological Review, 30(6), 843–861.', u: 'https://doi.org/10.2307/2090964' },
           { c: true, t: 'George, L. K. (1993). Sociological perspectives on life transitions. Annual Review of Sociology, 19, 353–373.', u: 'https://doi.org/10.1146/annurev.so.19.080193.002033' },
           { c: false, t: 'Alwin, D. F., &amp; McCammon, R. J. (2003). Generations, cohorts, and social change. In J. T. Mortimer &amp; M. J. Shanahan (Eds.), Handbook of the Life Course (pp. 23–49). Springer.', u: 'https://doi.org/10.1007/978-0-306-48247-2_2' },
           { c: false, t: 'Bernardi, L., Huinink, J., &amp; Settersten, R. A., Jr. (2019). The life course cube: A tool for studying lives. Advances in Life Course Research, 41, 100258.', u: 'https://doi.org/10.1016/j.alcr.2018.11.004' },
           { c: false, t: 'Settersten, R. A., Jr., &amp; Mayer, K. U. (1997). The measurement of age, age structuring, and the life course. Annual Review of Sociology, 23, 233–261.', u: 'https://doi.org/10.1146/annurev.soc.23.1.233' }
         ]},
-      { n: '四', date: '10/6', title: '生命歷程的制度化：標準生命歷程、三分結構與去標準化論辯', items: [
+      { n: '五', date: '10/13', title: '生命歷程的制度化：標準生命歷程、三分結構與去標準化論辯', items: [
           { c: true, t: 'Kohli, M. (2007). The institutionalization of the life course: Looking back to look ahead. Research in Human Development, 4(3–4), 253–271.', u: 'https://doi.org/10.1080/15427600701663122' },
           { c: true, t: 'Brückner, H., &amp; Mayer, K. U. (2005). De-standardization of the life course: What it might mean? And if it means anything, whether it actually took place? Advances in Life Course Research, 9, 27–53.', u: 'https://doi.org/10.1016/S1040-2608(04)09002-1' },
           { c: false, t: 'Mayer, K. U., &amp; Schoepflin, U. (1989). The state and the life course. Annual Review of Sociology, 15, 187–209.', u: 'https://doi.org/10.1146/annurev.so.15.080189.001155' },
@@ -216,20 +257,13 @@ const courseData = [
           { c: false, t: 'McMunn, A., Lacey, R., Worts, D., McDonough, P., Stafford, M., Booker, C., Kumari, M., &amp; Sacker, A. (2015). De-standardization and gender convergence in work–family life courses in Great Britain: A multi-channel sequence analysis. Advances in Life Course Research, 26, 60–75.', u: 'https://doi.org/10.1016/j.alcr.2015.06.002' },
           { c: false, t: 'Van Winkle, Z., &amp; Fasang, A. (2017). Complexity in employment life courses in Europe in the twentieth century: Large cross-national differences but little change across birth cohorts. Social Forces, 96(1), 1–30.', u: 'https://doi.org/10.1093/sf/sox032' }
         ]},
-      { n: '五', date: '10/13', title: '福利國家作為生命歷程政策：福利體制、生命歷程體制與東亞經驗', items: [
+      { n: '七', date: '10/27', title: '福利國家作為生命歷程政策：福利體制、生命歷程體制與東亞經驗', items: [
           { c: true, t: 'Leisering, L. (2003). Government and the life course. In J. T. Mortimer &amp; M. J. Shanahan (Eds.), Handbook of the Life Course (pp. 205–225). Springer.', u: 'https://doi.org/10.1007/978-0-306-48247-2_10' },
           { c: true, t: 'Mayer, K. U. (2007). Life courses and life chances in a comparative perspective. In S. Svallfors (Ed.), Analyzing Inequality: Life Chances and Social Mobility in Comparative Perspective (pp. 17–55). Stanford University Press.（早期版本：Mayer, 1997, Comparative Social Research, 16, 203–226）', u: 'https://doi.org/10.1515/9780804767569-005' },
           { c: false, t: 'Esping-Andersen, G. (1990). The Three Worlds of Welfare Capitalism, ch. 1–3. Princeton University Press.', u: 'https://press.princeton.edu/books/paperback/9780691028576/the-three-worlds-of-welfare-capitalism' },
           { c: false, t: 'Möhring, K. (2016). Life course regimes in Europe: Individual employment histories in comparative and historical perspective. Journal of European Social Policy, 26(2), 124–139.', u: 'https://doi.org/10.1177/0958928716633046' },
           { c: false, t: 'Holliday, I. (2000). Productivist welfare capitalism: Social policy in East Asia. Political Studies, 48(4), 706–723.', u: 'https://doi.org/10.1111/1467-9248.00279' },
           { c: false, t: 'Kvist, J. (2015). A framework for social investment strategies: Integrating generational, life course and gender perspectives in the EU social investment strategy. Comparative European Politics, 13(1), 131–149.', u: 'https://doi.org/10.1057/cep.2014.45' }
-        ]},
-      { n: '七', date: '10/27', title: '生命歷程研究方法：縱貫資料、世代分析與序列分析', items: [
-          { c: true, t: 'Aisenbrey, S., &amp; Fasang, A. E. (2010). New life for old ideas: The "second wave" of sequence analysis bringing the "course" back into the life course. Sociological Methods &amp; Research, 38(3), 420–462.', u: 'https://doi.org/10.1177/0049124109357532' },
-          { c: true, t: 'Yang, Y., &amp; Land, K. C. (2013). Age-Period-Cohort Analysis: New Models, Methods, and Empirical Applications, ch. 1–2. CRC Press.', u: 'https://doi.org/10.1201/b13902' },
-          { c: false, t: 'Abbott, A. (1995). Sequence analysis: New methods for old ideas. Annual Review of Sociology, 21, 93–113.', u: 'https://doi.org/10.1146/annurev.so.21.080195.000521' },
-          { c: false, t: 'Elder, G. H., Jr., &amp; Giele, J. Z. (2009). The Craft of Life Course Research, ch. 1. Guilford Press.', u: 'https://openlibrary.org/works/OL18634489W' },
-          { c: false, t: 'Schaie, K. W. (2005). What can we learn from longitudinal studies of adult development? Research in Human Development, 2(3), 133–158.', u: 'https://doi.org/10.1207/s15427617rhd0203_4' }
         ]},
       { n: '八', date: '11/3', title: '幼年期：早期兒童發展、兒童照顧與社會投資', items: [
           { c: true, t: 'Esping-Andersen, G. (2002). A child-centred social investment strategy. In G. Esping-Andersen et al., Why We Need a New Welfare State (pp. 26–67). Oxford University Press.', u: 'https://doi.org/10.1093/0199256438.003.0002' },
@@ -307,7 +341,114 @@ const courseData = [
           { c: false, t: 'OECD (2007). Modernising Social Policy for the New Life Course, ch. 1. OECD.', u: 'https://doi.org/10.1787/9789264041271-en' }
         ]}
     ],
-    tba_en: 'Syllabus in preparation — description, objectives, readings and the weekly schedule will be posted before the term begins.'
+    readings_en: [
+      { n: '3', date: '9/29', title: 'Origins and development of the life course perspective: from life history studies to the core principles of the paradigm', items: [
+          { c: true, t: 'Elder, G. H., Jr., Johnson, M. K., &amp; Crosnoe, R. (2003). The emergence and development of life course theory. In J. T. Mortimer &amp; M. J. Shanahan (Eds.), Handbook of the Life Course (pp. 3–19). Springer.', u: 'https://doi.org/10.1007/978-0-306-48247-2_1' },
+          { c: true, t: 'Elder, G. H., Jr. (1994). Time, human agency, and social change: Perspectives on the life course. Social Psychology Quarterly, 57(1), 4–15.', u: 'https://doi.org/10.2307/2786971' },
+          { c: false, t: 'Mayer, K. U. (2009). New directions in life course research. Annual Review of Sociology, 35, 413–433.', u: 'https://doi.org/10.1146/annurev.soc.34.040507.134619' },
+          { c: false, t: 'Mayer, K. U. (2004). Whose lives? How history, societies, and institutions define and shape life courses. Research in Human Development, 1(3), 161–187.', u: 'https://doi.org/10.1207/s15427617rhd0103_3' },
+          { c: false, t: 'Kohli, M. (1986). The world we forgot: A historical review of the life course. In V. W. Marshall (Ed.), Later Life: The Social Psychology of Aging (pp. 271–303). Sage.', u: 'https://openlibrary.org/works/OL6570059W' },
+          { c: false, t: 'Giele, J. Z., &amp; Elder, G. H., Jr. (1998). Life course research: Development of a field. In Methods of Life Course Research: Qualitative and Quantitative Approaches (pp. 5–27). Sage.', u: 'https://doi.org/10.4135/9781483348919.n1' }
+        ]},
+      { n: '4', date: '10/6', title: 'Core concepts: trajectories, transitions, turning points and timing; age, period and cohort effects', items: [
+          { c: true, t: 'Ryder, N. B. (1965). The cohort as a concept in the study of social change. American Sociological Review, 30(6), 843–861.', u: 'https://doi.org/10.2307/2090964' },
+          { c: true, t: 'George, L. K. (1993). Sociological perspectives on life transitions. Annual Review of Sociology, 19, 353–373.', u: 'https://doi.org/10.1146/annurev.so.19.080193.002033' },
+          { c: false, t: 'Alwin, D. F., &amp; McCammon, R. J. (2003). Generations, cohorts, and social change. In J. T. Mortimer &amp; M. J. Shanahan (Eds.), Handbook of the Life Course (pp. 23–49). Springer.', u: 'https://doi.org/10.1007/978-0-306-48247-2_2' },
+          { c: false, t: 'Bernardi, L., Huinink, J., &amp; Settersten, R. A., Jr. (2019). The life course cube: A tool for studying lives. Advances in Life Course Research, 41, 100258.', u: 'https://doi.org/10.1016/j.alcr.2018.11.004' },
+          { c: false, t: 'Settersten, R. A., Jr., &amp; Mayer, K. U. (1997). The measurement of age, age structuring, and the life course. Annual Review of Sociology, 23, 233–261.', u: 'https://doi.org/10.1146/annurev.soc.23.1.233' }
+        ]},
+      { n: '5', date: '10/13', title: 'The institutionalisation of the life course: the standard life course, the tripartite structure, and the de-standardisation debate', items: [
+          { c: true, t: 'Kohli, M. (2007). The institutionalization of the life course: Looking back to look ahead. Research in Human Development, 4(3–4), 253–271.', u: 'https://doi.org/10.1080/15427600701663122' },
+          { c: true, t: 'Brückner, H., &amp; Mayer, K. U. (2005). De-standardization of the life course: What it might mean? And if it means anything, whether it actually took place? Advances in Life Course Research, 9, 27–53.', u: 'https://doi.org/10.1016/S1040-2608(04)09002-1' },
+          { c: false, t: 'Mayer, K. U., &amp; Schoepflin, U. (1989). The state and the life course. Annual Review of Sociology, 15, 187–209.', u: 'https://doi.org/10.1146/annurev.so.15.080189.001155' },
+          { c: false, t: 'Mayer, K. U., &amp; Müller, W. (1986). The state and the structure of the life course. In A. B. Sørensen, F. E. Weinert, &amp; L. R. Sherrod (Eds.), Human Development and the Life Course: Multidisciplinary Perspectives (pp. 217–245). Erlbaum.', u: 'https://openlibrary.org/books/OL8270319M' },
+          { c: false, t: 'McMunn, A., Lacey, R., Worts, D., McDonough, P., Stafford, M., Booker, C., Kumari, M., &amp; Sacker, A. (2015). De-standardization and gender convergence in work–family life courses in Great Britain: A multi-channel sequence analysis. Advances in Life Course Research, 26, 60–75.', u: 'https://doi.org/10.1016/j.alcr.2015.06.002' },
+          { c: false, t: 'Van Winkle, Z., &amp; Fasang, A. (2017). Complexity in employment life courses in Europe in the twentieth century: Large cross-national differences but little change across birth cohorts. Social Forces, 96(1), 1–30.', u: 'https://doi.org/10.1093/sf/sox032' }
+        ]},
+      { n: '7', date: '10/27', title: 'The welfare state as life course policy: welfare regimes, life course regimes, and the East Asian experience', items: [
+          { c: true, t: 'Leisering, L. (2003). Government and the life course. In J. T. Mortimer &amp; M. J. Shanahan (Eds.), Handbook of the Life Course (pp. 205–225). Springer.', u: 'https://doi.org/10.1007/978-0-306-48247-2_10' },
+          { c: true, t: 'Mayer, K. U. (2007). Life courses and life chances in a comparative perspective. In S. Svallfors (Ed.), Analyzing Inequality: Life Chances and Social Mobility in Comparative Perspective (pp. 17–55). Stanford University Press.(earlier version: Mayer, 1997, Comparative Social Research, 16, 203–226)', u: 'https://doi.org/10.1515/9780804767569-005' },
+          { c: false, t: 'Esping-Andersen, G. (1990). The Three Worlds of Welfare Capitalism, ch. 1–3. Princeton University Press.', u: 'https://press.princeton.edu/books/paperback/9780691028576/the-three-worlds-of-welfare-capitalism' },
+          { c: false, t: 'Möhring, K. (2016). Life course regimes in Europe: Individual employment histories in comparative and historical perspective. Journal of European Social Policy, 26(2), 124–139.', u: 'https://doi.org/10.1177/0958928716633046' },
+          { c: false, t: 'Holliday, I. (2000). Productivist welfare capitalism: Social policy in East Asia. Political Studies, 48(4), 706–723.', u: 'https://doi.org/10.1111/1467-9248.00279' },
+          { c: false, t: 'Kvist, J. (2015). A framework for social investment strategies: Integrating generational, life course and gender perspectives in the EU social investment strategy. Comparative European Politics, 13(1), 131–149.', u: 'https://doi.org/10.1057/cep.2014.45' }
+        ]},
+      { n: '8', date: '11/3', title: 'Early childhood: early child development, childcare and social investment', items: [
+          { c: true, t: 'Esping-Andersen, G. (2002). A child-centred social investment strategy. In G. Esping-Andersen et al., Why We Need a New Welfare State (pp. 26–67). Oxford University Press.', u: 'https://doi.org/10.1093/0199256438.003.0002' },
+          { c: true, t: 'Van Lancker, W., &amp; Ghysels, J. (2016). Explaining patterns of inequality in childcare service use across 31 developed economies: A welfare state perspective. International Journal of Comparative Sociology, 57(5), 310–337.', u: 'https://doi.org/10.1177/0020715216674252' },
+          { c: false, t: 'Heckman, J. J. (2006). Skill formation and the economics of investing in disadvantaged children. Science, 312(5782), 1900–1902.', u: 'https://doi.org/10.1126/science.1128898' },
+          { c: false, t: 'Peng, I. (2011). Social investment policies in Canada, Australia, Japan, and South Korea. International Journal of Child Care and Education Policy, 5(1), 41–53.', u: 'https://doi.org/10.1007/2288-6729-5-1-41' },
+          { c: false, t: 'Lan, P.-C. (2014). Compressed modernity and glocal entanglement: The contested transformation of parenting discourses in postwar Taiwan. Current Sociology, 62(4), 531–549.', u: 'https://doi.org/10.1177/0011392114524509' }
+        ]},
+      { n: '9', date: '11/10', title: 'Education and the youth transition: educational expansion, unequal opportunity, and school to work', items: [
+          { c: true, t: 'Shanahan, M. J. (2000). Pathways to adulthood in changing societies: Variability and mechanisms in life course perspective. Annual Review of Sociology, 26, 667–692.', u: 'https://doi.org/10.1146/annurev.soc.26.1.667' },
+          { c: true, t: 'Chevalier, T. (2016). Varieties of youth welfare citizenship: Towards a two-dimension typology. Journal of European Social Policy, 26(1), 3–19.', u: 'https://doi.org/10.1177/0958928715621710' },
+          { c: false, t: 'Walther, A. (2006). Regimes of youth transitions: Choice, flexibility and security in young people\'s experiences across different European contexts. Young, 14(2), 119–139.', u: 'https://doi.org/10.1177/1103308806062737' },
+          { c: false, t: 'Lesnard, L., Cousteaux, A.-S., Chanvril, F., &amp; Le Hay, V. (2016). Do transitions to adulthood converge in Europe? An optimal matching analysis of work–family trajectories of men and women from 20 European countries. European Sociological Review, 32(3), 355–369.', u: 'https://doi.org/10.1093/esr/jcw003' },
+          { c: false, t: 'Solga, H. (2014). Education, economic inequality and the promises of the social investment state. Socio-Economic Review, 12(2), 269–297.', u: 'https://doi.org/10.1093/ser/mwu014' }
+        ]},
+      { n: '10', date: '11/17', title: 'Adulthood: labour market dualisation, non-standard employment and new social risks', items: [
+          { c: true, t: 'Bonoli, G. (2005). The politics of the new social policies: Providing coverage against new social risks in mature welfare states. Policy &amp; Politics, 33(3), 431–449.', u: 'https://doi.org/10.1332/0305573054325765' },
+          { c: true, t: 'Emmenegger, P., Häusermann, S., Palier, B., &amp; Seeleib-Kaiser, M. (2012). How we grow unequal. In The Age of Dualization: The Changing Face of Inequality in Deindustrializing Societies (pp. 3–26). Oxford University Press.', u: 'https://doi.org/10.1093/acprof:oso/9780199797899.003.0001' },
+          { c: false, t: 'Taylor-Gooby, P. (2004). New risks and social change. In P. Taylor-Gooby (Ed.), New Risks, New Welfare: The Transformation of the European Welfare State (pp. 1–28). Oxford University Press.', u: 'https://doi.org/10.1093/019926726X.003.0001' },
+          { c: false, t: 'Peng, I. (2012). Economic dualization in Japan and South Korea. In P. Emmenegger et al. (Eds.), The Age of Dualization (pp. 226–249). Oxford University Press.', u: 'https://doi.org/10.1093/acprof:oso/9780199797899.003.0010' },
+          { c: false, t: 'DiPrete, T. A. (2002). Life course risks, mobility regimes, and mobility consequences: A comparison of Sweden, Germany, and the United States. American Journal of Sociology, 108(2), 267–309.', u: 'https://doi.org/10.1086/344811' },
+          { c: false, t: 'Kalleberg, A. L., &amp; Hewison, K. (2013). Precarious work and the challenge for Asia. American Behavioral Scientist, 57(3), 271–288.', u: 'https://doi.org/10.1177/0002764212466238' }
+        ]},
+      { n: '11', date: '11/24', title: 'Partnership and childbearing: family formation, the gendered division of labour, and family policy', items: [
+          { c: true, t: 'Esping-Andersen, G. (2009). The Incomplete Revolution: Adapting to Women\'s New Roles, ch. 1–2. Polity.', u: 'https://www.wiley.com/en-us/Incomplete+Revolution:+Adapting+Welfare+States+to+Women%27s+New+Roles+-p-9780745643168' },
+          { c: true, t: 'Esping-Andersen, G., &amp; Billari, F. C. (2015). Re-theorizing family demographics. Population and Development Review, 41(1), 1–31.', u: 'https://doi.org/10.1111/j.1728-4457.2015.00024.x' },
+          { c: false, t: 'McDonald, P. (2000). Gender equity in theories of fertility transition. Population and Development Review, 26(3), 427–439.', u: 'https://doi.org/10.1111/j.1728-4457.2000.00427.x' },
+          { c: false, t: 'Brinton, M. C., &amp; Oh, E. (2019). Babies, work, or both? Highly educated women\'s employment and fertility in East Asia. American Journal of Sociology, 125(1), 105–140.', u: 'https://doi.org/10.1086/704369' },
+          { c: false, t: 'Saraceno, C. (2016). Varieties of familialism: Comparing four Southern European and East Asian welfare regimes. Journal of European Social Policy, 26(4), 314–326.', u: 'https://doi.org/10.1177/0958928716657275' },
+          { c: false, t: 'Lin, W.-I., &amp; Yang, S.-Y. (2009). From successful family planning to the lowest of low fertility levels: Taiwan\'s dilemma. Asian Social Work and Policy Review, 3(2), 95–112.', u: 'https://doi.org/10.1111/j.1753-1411.2009.00027.x' }
+        ]},
+      { n: '12', date: '12/1', title: 'Midlife: the health life course, unemployment risk and social insurance', items: [
+          { c: true, t: 'Kuh, D., Ben-Shlomo, Y., Lynch, J., Hallqvist, J., &amp; Power, C. (2003). Life course epidemiology. Journal of Epidemiology and Community Health, 57(10), 778–783.', u: 'https://doi.org/10.1136/jech.57.10.778' },
+          { c: true, t: 'Abdul Karim, S., Eikemo, T. A., &amp; Bambra, C. (2010). Welfare state regimes and population health: Integrating the East Asian welfare states. Health Policy, 94(1), 45–53.', u: 'https://doi.org/10.1016/j.healthpol.2009.08.003' },
+          { c: false, t: 'Brand, J. E. (2015). The far-reaching impact of job loss and unemployment. Annual Review of Sociology, 41, 359–375.', u: 'https://doi.org/10.1146/annurev-soc-071913-043237' },
+          { c: false, t: 'Bellaby, P. (2006). Can they carry on working? Later retirement, health, and social inequality in an aging population. International Journal of Health Services, 36(1), 1–23.', u: 'https://doi.org/10.2190/EE2N-4A1Q-ARVD-XN05' },
+          { c: false, t: 'Carr, E., Murray, E. T., Zaninotto, P., Cadar, D., Head, J., Stansfeld, S., &amp; Stafford, M. (2016). The association between informal caregiving and exit from employment among older workers: Prospective findings from the UK Household Longitudinal Study. Journals of Gerontology: Series B (online first).', u: 'https://doi.org/10.1093/geronb/gbw156' }
+        ]},
+      { n: '13', date: '12/8', title: 'Later life (I): the retirement transition, pensions and old-age income security', items: [
+          { c: true, t: 'Kohli, M., &amp; Rein, M. (1991). The changing balance of work and retirement. In M. Kohli et al. (Eds.), Time for Retirement: Comparative Studies of Early Exit from the Labor Force (pp. 1–35). Cambridge University Press.', u: 'https://openlibrary.org/works/OL18270428W' },
+          { c: true, t: 'Yeh, C.-Y., Cheng, H., &amp; Shi, S.-J. (2020). Public–private pension mixes in East Asia: Institutional diversity and policy implications for old-age security. Ageing &amp; Society, 40(3), 604–625.', u: 'https://doi.org/10.1017/S0144686X18001137' },
+          { c: false, t: 'Kuitto, K., Kuivalainen, S., &amp; Möhring, K. (2021). Inequalities in pensions and retirement from a life course perspective: An introduction. Social Policy &amp; Administration, 55(3), 403–408.', u: 'https://doi.org/10.1111/spol.12663' },
+          { c: false, t: 'Myles, J. (2002). A new social contract for the elderly? In G. Esping-Andersen et al., Why We Need a New Welfare State (pp. 130–172). Oxford University Press.', u: 'https://doi.org/10.1093/0199256438.003.0005' },
+          { c: false, t: 'Ebbinghaus, B., &amp; Hofäcker, D. (2013). Reversing early retirement in advanced welfare economies: A paradigm shift to overcome push and pull factors. Comparative Population Studies, 38(4).', u: 'https://doi.org/10.12765/CPoS-2013-24' },
+          { c: false, t: 'De Vroom, B., &amp; Bannink, D. (2008). Changing life courses and new social risks: The case of old age pensions. Journal of Comparative Policy Analysis, 10(1), 75–92.', u: 'https://doi.org/10.1080/13876980701833623' }
+        ]},
+      { n: '14', date: '12/15', title: 'Later life (II): ageing, long-term care and family care responsibilities', items: [
+          { c: true, t: 'Peng, I. (2002). Social care in crisis: Gender, demography, and welfare state restructuring in Japan. Social Politics, 9(3), 411–443.', u: 'https://doi.org/10.1093/sp/9.3.411' },
+          { c: true, t: 'Chou, Y.-C., Kröger, T., &amp; Pu, C.-Y. (2015). Models of long-term care use among older people with disabilities in Taiwan: Institutional care, community care, live-in migrant care and family care. European Journal of Ageing, 12(2), 95–104.', u: 'https://doi.org/10.1007/s10433-014-0322-z' },
+          { c: false, t: 'Townsend, P. (1981). The structured dependency of the elderly: A creation of social policy in the twentieth century. Ageing &amp; Society, 1(1), 5–28.', u: 'https://doi.org/10.1017/S0144686X81000020' },
+          { c: false, t: 'Ochiai, E. (2009). Care diamonds and welfare regimes in East and South-East Asian societies: Bridging family and welfare sociology. International Journal of Japanese Sociology, 18(1), 60–78.', u: 'https://doi.org/10.1111/j.1475-6781.2009.01117.x' },
+          { c: false, t: 'Chen, C.-F., &amp; Fu, T.-H. (2020). Policies and transformation of long-term care system in Taiwan. Annals of Geriatric Medicine and Research, 24(3), 187–194.', u: 'https://doi.org/10.4235/agmr.20.0038' },
+          { c: false, t: 'Chou, Y.-C., Pfau-Effinger, B., Kröger, T., &amp; Ranci, C. (2017). Impact of care responsibilities on women\'s employment: A comparison between European and East Asian welfare states. European Societies, 19(2), 157–177.', u: 'https://doi.org/10.1080/14616696.2016.1268702' }
+        ]},
+      { n: '15', date: '12/22', title: 'Cumulative inequality: cumulative advantage/disadvantage, poverty dynamics and the gendered life course', items: [
+          { c: true, t: 'DiPrete, T. A., &amp; Eirich, G. M. (2006). Cumulative advantage as a mechanism for inequality: A review of theoretical and empirical developments. Annual Review of Sociology, 32, 271–297.', u: 'https://doi.org/10.1146/annurev.soc.32.061604.123127' },
+          { c: true, t: 'Dannefer, D. (2003). Cumulative advantage/disadvantage and the life course: Cross-fertilizing age and social science theory. Journals of Gerontology: Series B, 58(6), S327–S337.', u: 'https://doi.org/10.1093/geronb/58.6.S327' },
+          { c: false, t: 'O\'Rand, A. M. (1996). The precious and the precocious: Understanding cumulative disadvantage and cumulative advantage over the life course. The Gerontologist, 36(2), 230–238.', u: 'https://doi.org/10.1093/geront/36.2.230' },
+          { c: false, t: 'Vandecasteele, L. (2011). Life course risks or cumulative disadvantage? The structuring effect of social stratification determinants and life course events on poverty transitions in Europe. European Sociological Review, 27(2), 246–263.', u: 'https://doi.org/10.1093/esr/jcq005' },
+          { c: false, t: 'Peeters, H., &amp; De Tavernier, W. (2015). Lifecourses, pensions and poverty among elderly women in Belgium: Interactions between family history, work history and pension regulations. Ageing &amp; Society, 35(6), 1171–1199.', u: 'https://doi.org/10.1017/S0144686X14000129' },
+          { c: false, t: 'Fauser, S., &amp; Kim, Y. (2023). Family formation trends and patterns of women\'s work trajectories in South Korea: Determinants and cohort differences. Journal of Family Studies, 29(5), 2106–2132.', u: 'https://doi.org/10.1080/13229400.2022.2140690' }
+        ]},
+      { n: '16', date: '12/29', title: 'Generations and intergenerational justice: transfers between generations, the generational contract, and the life course under compressed modernity', items: [
+          { c: true, t: 'Kohli, M. (1999). Private and public transfers between generations: Linking the family and the state. European Societies, 1(1), 81–104.', u: 'https://doi.org/10.1080/14616696.1999.10749926' },
+          { c: true, t: 'Chang, K.-S. (2010). South Korea under Compressed Modernity: Familial Political Economy in Transition, ch. 1–2. Routledge.', u: 'https://doi.org/10.4324/9780203854396' },
+          { c: false, t: 'Kohli, M. (2015). Generations in aging societies: Inequalities, cleavages, conflicts. In C. Torp (Ed.), Challenges of Aging: Pensions, Retirement and Generational Justice (pp. 265–288). Palgrave Macmillan.', u: 'https://doi.org/10.1057/9781137283177_14' },
+          { c: false, t: 'Szydlik, M. (2008). Intergenerational solidarity and conflict. Journal of Comparative Family Studies, 39(1), 97–114.', u: 'https://doi.org/10.3138/jcfs.39.1.97' },
+          { c: false, t: 'Lin, J.-P., &amp; Yi, C.-C. (2019). Dilemmas of an aging society: Family and state responsibilities for intergenerational care in Taiwan. Journal of Family Issues, 40(14), 1912–1936.', u: 'https://doi.org/10.1177/0192513X19863204' },
+          { c: false, t: 'Ochiai, E. (2014). Leaving the West, rejoining the East? Gender and family in Japan\'s semi-compressed modernity. International Sociology, 29(3), 209–228.', u: 'https://doi.org/10.1177/0268580914530415' }
+        ]},
+      { n: '17', date: '1/5', title: 'Cross-national comparison and course conclusion (optional reading)', items: [
+          { c: false, t: 'Bovenberg, A. L. (2008). The life-course perspective and social policies: An overview of the issues. CESifo Economic Studies, 54(4), 593–641.', u: 'https://doi.org/10.1093/cesifo/ifn029' },
+          { c: false, t: 'Anxo, D., Bosch, G., &amp; Rubery, J. (2010). Introduction. In The Welfare State and Life Transitions: A European Perspective. Edward Elgar.', u: 'https://doi.org/10.4337/9781849806381' },
+          { c: false, t: 'Fernandes, D., &amp; Hemerijck, A. (2026). Welfare performance in a life-course perspective for the twenty-first century. In A. Hemerijck &amp; D. Bokhorst (Eds.), Governing the Welfare Commons: On Europe\'s Social Investment Turn. Oxford University Press.', u: 'https://doi.org/10.1093/9780198971481.003.0004' },
+          { c: false, t: 'OECD (2007). Modernising Social Policy for the New Life Course, ch. 1. OECD.', u: 'https://doi.org/10.1787/9789264041271-en' }
+        ]}
+    ],
   },
 
   // ── 114 學年度・第二學期（Spring 2026 · AY114-2）──
