@@ -155,7 +155,8 @@ const courseData = [
       { label: '主要教科書', items: [
         { t: 'Mortimer, J. T., &amp; Shanahan, M. J. (Eds.) (2003). The Handbook of the Life Course. New York: Springer.', u: 'https://doi.org/10.1007/b100507' },
         { t: 'Elder, G. H., Jr., &amp; Giele, J. Z. (Eds.) (2009). The Craft of Life Course Research. New York: Guilford Press.', u: 'https://openlibrary.org/works/OL18634489W' },
-        { t: 'Esping-Andersen, G., Gallie, D., Hemerijck, A., &amp; Myles, J. (2002). Why We Need a New Welfare State. Oxford: Oxford University Press.', u: 'https://doi.org/10.1093/0199256438.001.0001' }
+        { t: 'Esping-Andersen, G., Gallie, D., Hemerijck, A., &amp; Myles, J. (2002). Why We Need a New Welfare State. Oxford: Oxford University Press.', u: 'https://doi.org/10.1093/0199256438.001.0001' },
+        { t: 'Elder, G. H., Jr. (1974). Children of the Great Depression: Social Change in Life Experience. Chicago: University of Chicago Press.', u: 'https://openlibrary.org/books/OL17754767M/Children_of_the_Great_Depression' }
       ]},
       { label: '參考書目', items: [
         { t: 'Esping-Andersen, G. (1990). The Three Worlds of Welfare Capitalism. Princeton: Princeton University Press.', u: 'https://press.princeton.edu/books/paperback/9780691028576/the-three-worlds-of-welfare-capitalism' },
@@ -176,7 +177,8 @@ const courseData = [
       { label: 'Core Texts', items: [
         { t: 'Mortimer, J. T., &amp; Shanahan, M. J. (Eds.) (2003). The Handbook of the Life Course. New York: Springer.', u: 'https://doi.org/10.1007/b100507' },
         { t: 'Elder, G. H., Jr., &amp; Giele, J. Z. (Eds.) (2009). The Craft of Life Course Research. New York: Guilford Press.', u: 'https://openlibrary.org/works/OL18634489W' },
-        { t: 'Esping-Andersen, G., Gallie, D., Hemerijck, A., &amp; Myles, J. (2002). Why We Need a New Welfare State. Oxford: Oxford University Press.', u: 'https://doi.org/10.1093/0199256438.001.0001' }
+        { t: 'Esping-Andersen, G., Gallie, D., Hemerijck, A., &amp; Myles, J. (2002). Why We Need a New Welfare State. Oxford: Oxford University Press.', u: 'https://doi.org/10.1093/0199256438.001.0001' },
+        { t: 'Elder, G. H., Jr. (1974). Children of the Great Depression: Social Change in Life Experience. Chicago: University of Chicago Press.', u: 'https://openlibrary.org/books/OL17754767M/Children_of_the_Great_Depression' }
       ]},
       { label: 'Further Reading', items: [
         { t: 'Esping-Andersen, G. (1990). The Three Worlds of Welfare Capitalism. Princeton: Princeton University Press.', u: 'https://press.princeton.edu/books/paperback/9780691028576/the-three-worlds-of-welfare-capitalism' },
@@ -237,7 +239,7 @@ const courseData = [
       { n: '三', date: '9/29', title: '生命歷程觀點的起源與發展：從生命史研究到生命歷程典範的核心原則', items: [
           { c: true, t: 'Elder, G. H., Jr., Johnson, M. K., &amp; Crosnoe, R. (2003). The emergence and development of life course theory. In J. T. Mortimer &amp; M. J. Shanahan (Eds.), Handbook of the Life Course (pp. 3–19). Springer.', u: 'https://doi.org/10.1007/978-0-306-48247-2_1' },
           { c: true, t: 'Elder, G. H., Jr. (1994). Time, human agency, and social change: Perspectives on the life course. Social Psychology Quarterly, 57(1), 4–15.', u: 'https://doi.org/10.2307/2786971' },
-          { c: false, t: 'Mayer, K. U. (2009). New directions in life course research. Annual Review of Sociology, 35, 413–433.', u: 'https://doi.org/10.1146/annurev.soc.34.040507.134619' },
+          { c: true, t: 'Mayer, K. U. (2009). New directions in life course research. Annual Review of Sociology, 35, 413–433.', u: 'https://doi.org/10.1146/annurev.soc.34.040507.134619' },
           { c: false, t: 'Mayer, K. U. (2004). Whose lives? How history, societies, and institutions define and shape life courses. Research in Human Development, 1(3), 161–187.', u: 'https://doi.org/10.1207/s15427617rhd0103_3' },
           { c: false, t: 'Kohli, M. (1986). The world we forgot: A historical review of the life course. In V. W. Marshall (Ed.), Later Life: The Social Psychology of Aging (pp. 271–303). Sage.', u: 'https://openlibrary.org/works/OL6570059W' },
           { c: false, t: 'Giele, J. Z., &amp; Elder, G. H., Jr. (1998). Life course research: Development of a field. In Methods of Life Course Research: Qualitative and Quantitative Approaches (pp. 5–27). Sage.', u: 'https://doi.org/10.4135/9781483348919.n1' }
@@ -345,7 +347,7 @@ const courseData = [
       { n: '3', date: '9/29', title: 'Origins and development of the life course perspective: from life history studies to the core principles of the paradigm', items: [
           { c: true, t: 'Elder, G. H., Jr., Johnson, M. K., &amp; Crosnoe, R. (2003). The emergence and development of life course theory. In J. T. Mortimer &amp; M. J. Shanahan (Eds.), Handbook of the Life Course (pp. 3–19). Springer.', u: 'https://doi.org/10.1007/978-0-306-48247-2_1' },
           { c: true, t: 'Elder, G. H., Jr. (1994). Time, human agency, and social change: Perspectives on the life course. Social Psychology Quarterly, 57(1), 4–15.', u: 'https://doi.org/10.2307/2786971' },
-          { c: false, t: 'Mayer, K. U. (2009). New directions in life course research. Annual Review of Sociology, 35, 413–433.', u: 'https://doi.org/10.1146/annurev.soc.34.040507.134619' },
+          { c: true, t: 'Mayer, K. U. (2009). New directions in life course research. Annual Review of Sociology, 35, 413–433.', u: 'https://doi.org/10.1146/annurev.soc.34.040507.134619' },
           { c: false, t: 'Mayer, K. U. (2004). Whose lives? How history, societies, and institutions define and shape life courses. Research in Human Development, 1(3), 161–187.', u: 'https://doi.org/10.1207/s15427617rhd0103_3' },
           { c: false, t: 'Kohli, M. (1986). The world we forgot: A historical review of the life course. In V. W. Marshall (Ed.), Later Life: The Social Psychology of Aging (pp. 271–303). Sage.', u: 'https://openlibrary.org/works/OL6570059W' },
           { c: false, t: 'Giele, J. Z., &amp; Elder, G. H., Jr. (1998). Life course research: Development of a field. In Methods of Life Course Research: Qualitative and Quantitative Approaches (pp. 5–27). Sage.', u: 'https://doi.org/10.4135/9781483348919.n1' }
