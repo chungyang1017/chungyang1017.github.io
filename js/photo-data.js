@@ -448,10 +448,10 @@ const photoData = [
     haiku_en: 'bare branches — / behind them the frozen lake / lying in bands',
     haiku_zh: '枯枝／身後的凍湖／橫成一道道' },
   { num: '347', src: 'images/photography/img_6875.jpg', themes: ['yukiakari'], shape: 'landscape',
-    title_jp: '凍らぬ水', title_en: 'Water Not Yet Frozen', title_zh: '未凍的水',
-    haiku_jp: '凍る湖／凍らぬ水の／黒きまま',
-    haiku_en: 'the frozen lake — / where the water has not frozen / it stays black',
-    haiku_zh: '結冰的湖／沒有凍住的地方／還是黑的' },
+    title_jp: '形', title_en: 'Form', title_zh: '形',
+    haiku_jp: '氷と水／おのづから引く／ひとつの線',
+    haiku_en: 'between ice and water — / a curve that drew / itself',
+    haiku_zh: '冰與水之間／自己畫出來的／一道曲線' },
 
   // ── 潮騒 TIDELINE ──
   { num: '011', src: 'images/photography/dscf4473_xd2s_9.jpg', year: 2026, themes: ['kaiyou'], shape: 'landscape',
