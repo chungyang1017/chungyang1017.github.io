@@ -1296,6 +1296,8 @@ const CONFIG = {
            code:'entry.1960280121', detail:'entry.749946348' },
   WEEK:'W03', MIN_MINUTES:20
 };
+// 老師測試用：網址加 ?test=1 就跳過閱讀時間門檻（只影響這個分頁）
+if(new URLSearchParams(location.search).get('test')==='1') CONFIG.MIN_MINUTES=0;
 
 const KEY='sp115-w03';
 const store={get(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}},
