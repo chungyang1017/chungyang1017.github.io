@@ -285,6 +285,23 @@ tr:nth-child(even) td{background:#fbfcfd;}
 .code{font-size:15px;color:#A8C0D6;line-height:2;margin-top:18px;}
 .code b{display:block;font-size:26px;letter-spacing:.1em;color:#fff;font-weight:500;margin-top:4px;}
 
+/* ── 簽到輸入欄 ── */
+.idbox{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 16px;}
+.idbox label{display:block;font-size:14px;color:#A8C0D6;letter-spacing:.06em;margin-bottom:7px;}
+.idbox input{width:100%;font-family:var(--sans);font-size:18px;padding:12px 15px;
+  border:1px solid #3E5F7E;background:rgba(255,255,255,.07);color:#fff;border-radius:8px;
+  transition:.2s;}
+.idbox input::placeholder{color:#6E8AA5;}
+.idbox input:focus{outline:none;border-color:var(--brown);background:rgba(255,255,255,.12);}
+.idbox input.bad{border-color:#D98A7A;}
+.fbbox{margin:0 0 18px;}
+.fbbox label{display:block;font-size:14px;color:#A8C0D6;letter-spacing:.06em;margin-bottom:7px;}
+.fbbox textarea{width:100%;font-family:var(--sans);font-size:17px;padding:12px 15px;min-height:74px;
+  border:1px solid #3E5F7E;background:rgba(255,255,255,.07);color:#fff;border-radius:8px;
+  resize:vertical;line-height:1.7;}
+.fbbox textarea::placeholder{color:#6E8AA5;}
+.fbbox textarea:focus{outline:none;border-color:var(--brown);background:rgba(255,255,255,.12);}
+
 /* ── 底列 ── */
 .navbar{position:fixed;bottom:0;left:0;right:0;height:62px;background:rgba(255,255,255,.97);
   backdrop-filter:blur(8px);border-top:1px solid var(--line);display:flex;align-items:center;
@@ -1238,6 +1255,8 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <h2>完成紀錄</h2>
       <p class="sub">三節的小測驗全部作答完畢後，就可以送出簽到</p>
       <div class="stat"><div>答對題數<b id="st-score">0 / 9</b></div><div>已作答<b id="st-done">0 / 9</b></div><div>閱讀時間<b id="st-time">00:00</b></div><div>看過頁數<b id="st-seen">0 / 56</b></div></div>
+      <div class="idbox"><div><label>學號</label><input id="sid" maxlength="12" placeholder="例如 14115101" autocomplete="off"></div><div><label>姓名</label><input id="sname" maxlength="20" placeholder="你的姓名" autocomplete="off"></div></div>
+      <div class="fbbox"><label>這一週最有收穫、或最想問的一點（選填）</label><textarea id="sfbk" maxlength="300" placeholder="寫一兩句就好，老師上課會挑幾則回應"></textarea></div>
       <p class="dmsg" id="dmsg"></p>
       <button class="btn" id="submit" disabled>送出簽到</button>
       <p class="code" id="scode"></p>
@@ -1512,33 +1531,67 @@ function refresh(){
   const need=CONFIG.MIN_MINUTES*60, btn=document.getElementById('submit'), msg=document.getElementById('dmsg');
   if(S.sent){ btn.disabled=true; btn.textContent='已完成簽到';
     msg.textContent='簽到紀錄已送出（'+S.sent+'）。'; return; }
-  const okQ=(t.done===t.total), okT=(S.seconds>=need);
-  btn.disabled=!(okQ&&okT);
+  const sid=(document.getElementById('sid')?.value||'').trim();
+  const sname=(document.getElementById('sname')?.value||'').trim();
+  const okQ=(t.done===t.total), okT=(S.seconds>=need), okId=(sid.length>=4 && sname.length>=1);
+  btn.disabled=!(okQ&&okT&&okId);
   if(!okQ) msg.textContent='還有 '+(t.total-t.done)+' 題沒有作答。三節的小測驗全部作答完畢後，就可以送出簽到。';
   else if(!okT) msg.textContent='已全部作答。閱讀時間還差 '+Math.ceil((need-S.seconds)/60)+' 分鐘（門檻 '+CONFIG.MIN_MINUTES+' 分鐘）。';
+  else if(!okId) msg.textContent='條件已符合。請填上學號與姓名，才能送出簽到。';
   else msg.textContent='條件已符合，可以送出簽到。';
+}
+function scnScore(){
+  let done=0,right=0;
+  document.querySelectorAll('.scn').forEach((box,i)=>{
+    const p=S.scn&&S.scn['s'+i];
+    if(p){ done++; if(p===parseInt(box.dataset.a,10)) right++; }
+  });
+  return done+'/'+right;
 }
 document.getElementById('submit').addEventListener('click',()=>{
   const t=tally(), d=new Date(), pad=n=>String(n).padStart(2,'0');
-  const stamp=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes());
+  const stamp=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '
+             +pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
   const note=document.getElementById('scode');
+  const payload={
+    week:CONFIG.WEEK,
+    sid:(document.getElementById('sid').value||'').trim(),
+    name:(document.getElementById('sname').value||'').trim(),
+    correct:t.right, answered:t.done, total:t.total,
+    seconds:S.seconds, minutes:Math.floor(S.seconds/60),
+    pages:Object.keys(S.seen).length, totalPages:TOT,
+    poll1:S.poll.p1||'', poll2:S.poll.p2||'', poll3:S.poll.p3||'',
+    vote:(S.vote||[]).join('、'),
+    scn:scnScore(),
+    feedback:(document.getElementById('sfbk').value||'').trim(),
+    at:stamp
+  };
   if(!CONFIG.ENDPOINT){
-    note.innerHTML='簽到系統尚未啟用。請把這組代碼填進課堂的 Google 表單：<b>'
-      +CONFIG.WEEK+'-'+t.right+'-'+t.done+'-'+Math.floor(S.seconds/60)+'</b>';
+    note.innerHTML='簽到系統尚未啟用（老師還沒接上後台）。<br>'
+      +'請截圖這一頁交給老師，或抄下這組代碼：<b>'
+      +CONFIG.WEEK+'-'+payload.sid+'-'+t.right+'-'+t.done+'-'+payload.minutes+'</b>';
     S.sent=stamp; store.set(S); refresh(); return;
   }
-  note.textContent='傳送中…';
+  const btn=document.getElementById('submit');
+  btn.disabled=true; note.textContent='傳送中…';
   fetch(CONFIG.ENDPOINT,{method:'POST',mode:'no-cors',
     headers:{'Content-Type':'text/plain;charset=utf-8'},
-    body:JSON.stringify({week:CONFIG.WEEK,correct:t.right,answered:t.done,total:t.total,
-      seconds:S.seconds,pages:Object.keys(S.seen).length,poll:S.poll,at:stamp})})
-  .then(()=>{S.sent=stamp;store.set(S);note.textContent='已送出。';refresh();})
-  .catch(()=>{note.textContent='送出失敗，請重新整理後再試一次，或直接向老師回報。';});
+    body:JSON.stringify(payload)})
+  .then(()=>{S.sent=stamp;store.set(S);
+    note.innerHTML='已送出 ✓　'+payload.sid+'　'+payload.name;refresh();})
+  .catch(()=>{btn.disabled=false;
+    note.textContent='送出失敗，請確認網路後再按一次；若仍失敗請截圖這一頁給老師。';});
 });
 
 /* ── 起始 ── */
 slides[0].classList.remove('is-active');
 goTo(S.page||0);
+['sid','sname','sfbk'].forEach(id=>{
+  const el=document.getElementById(id);
+  if(!el) return;
+  if(S[id]) el.value=S[id];
+  el.addEventListener('input',()=>{ S[id]=el.value; store.set(S); refresh(); });
+});
 paintRecall();
 document.getElementById('clock').textContent=fmt(S.seconds);
 setTimeout(()=>{const k=document.getElementById('khint');if(k)k.style.opacity=0;},6000);
