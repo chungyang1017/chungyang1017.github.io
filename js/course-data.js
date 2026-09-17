@@ -78,7 +78,7 @@ const courseData = [
     weeks_zh: [
       { n: '一', date: '9/18', topic: '課程介紹、授課進度與上課規定說明' },
       { n: '二', date: '9/25', topic: '放假（中秋節）', off: true },
-      { n: '三', date: '10/2', topic: '為什麼需要社會政策？社會政策的定義、範疇與台灣的福利體系' },
+      { n: '三', date: '10/2', topic: '為什麼需要社會政策？社會政策的定義、範疇與台灣的福利體系', href: 'teaching/social-policy/week03-why-social-policy.html', tag: '→ 互動講義' },
       { n: '四', date: '10/9', topic: '放假（國慶日補假）', off: true },
       { n: '五', date: '10/16', topic: '意識形態（一）：馬克思主義、社會民主與費邊主義' },
       { n: '六', date: '10/23', topic: '意識形態（二）：自由主義、保守主義、新自由主義與第三條路' },
@@ -98,7 +98,7 @@ const courseData = [
     weeks_en: [
       { n: '1', date: '9/18', topic: 'Course introduction: syllabus, schedule and class requirements' },
       { n: '2', date: '9/25', topic: 'No class (Mid-Autumn Festival)', off: true },
-      { n: '3', date: '10/2', topic: 'Why do we need social policy? The definition and scope of social policy, and Taiwan\'s welfare system' },
+      { n: '3', date: '10/2', topic: 'Why do we need social policy? The definition and scope of social policy, and Taiwan\'s welfare system', href: 'teaching/social-policy/week03-why-social-policy.html', tag: '→ Interactive' },
       { n: '4', date: '10/9', topic: 'No class (National Day holiday)', off: true },
       { n: '5', date: '10/16', topic: 'Ideologies (I): Marxism, social democracy and Fabianism' },
       { n: '6', date: '10/23', topic: 'Ideologies (II): liberalism, conservatism, neoliberalism and the Third Way' },
