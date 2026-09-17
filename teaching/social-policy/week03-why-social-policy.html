@@ -1289,7 +1289,13 @@ tr:nth-child(even) td{background:#fbfcfd;}
    簽到設定：部署 Google Apps Script 後把網址填進 ENDPOINT。
    留空時，送出鍵會產生簽到碼供手動登記。
    ═══════════════════════════════════════════════ */
-const CONFIG = { ENDPOINT:'', WEEK:'W03', MIN_MINUTES:20 };
+const CONFIG = {
+  // Google 表單接收端點（不經過 OAuth，任何人都能提交）
+  ENDPOINT:'https://docs.google.com/forms/d/e/1FAIpQLSePcsBh-01YCetVhg6_DbwpGh3x7FOtU8Ldhr_OqmXay7qDug/formResponse',
+  FIELDS:{ sid:'entry.778218493', name:'entry.419586149',
+           code:'entry.1960280121', detail:'entry.749946348' },
+  WEEK:'W03', MIN_MINUTES:20
+};
 
 const KEY='sp115-w03';
 const store={get(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}},
@@ -1566,19 +1572,28 @@ document.getElementById('submit').addEventListener('click',()=>{
     feedback:(document.getElementById('sfbk').value||'').trim(),
     at:stamp
   };
+  const code=CONFIG.WEEK+'｜答對 '+t.right+'/'+t.done
+    +'｜'+payload.minutes+' 分｜'+payload.pages+'/'+TOT+' 頁';
+  const detail='開場三問 ①'+(payload.poll1||'—')+' ②'+(payload.poll2||'—')+' ③'+(payload.poll3||'—')
+    +'｜social question：'+(payload.vote||'未選')
+    +'｜情境題 '+payload.scn
+    +'｜回饋：'+(payload.feedback||'（未填）');
   if(!CONFIG.ENDPOINT){
-    note.innerHTML='簽到系統尚未啟用（老師還沒接上後台）。<br>'
-      +'請截圖這一頁交給老師，或抄下這組代碼：<b>'
-      +CONFIG.WEEK+'-'+payload.sid+'-'+t.right+'-'+t.done+'-'+payload.minutes+'</b>';
+    note.innerHTML='簽到系統尚未啟用。請截圖這一頁交給老師：<b>'+code+'</b>';
     S.sent=stamp; store.set(S); refresh(); return;
   }
   const btn=document.getElementById('submit');
   btn.disabled=true; note.textContent='傳送中…';
-  fetch(CONFIG.ENDPOINT,{method:'POST',mode:'no-cors',
-    headers:{'Content-Type':'text/plain;charset=utf-8'},
-    body:JSON.stringify(payload)})
+  const fd=new URLSearchParams();
+  fd.append(CONFIG.FIELDS.sid, payload.sid);
+  fd.append(CONFIG.FIELDS.name, payload.name);
+  fd.append(CONFIG.FIELDS.code, code);
+  fd.append(CONFIG.FIELDS.detail, detail);
+  fetch(CONFIG.ENDPOINT,{method:'POST',mode:'no-cors',body:fd})
   .then(()=>{S.sent=stamp;store.set(S);
-    note.innerHTML='已送出 ✓　'+payload.sid+'　'+payload.name;refresh();})
+    note.innerHTML='已送出 ✓　'+payload.sid+'　'+payload.name+'<br>'
+      +'<span style="font-size:14px;color:#8FA9C0;">'+code+'</span>';
+    refresh();})
   .catch(()=>{btn.disabled=false;
     note.textContent='送出失敗，請確認網路後再按一次；若仍失敗請截圖這一頁給老師。';});
 });
