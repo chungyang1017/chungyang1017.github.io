@@ -253,7 +253,7 @@
       var meta = '<b>' + c.level_en + '</b>' + lines.join('<br>');
       var body = c.tba_en
         ? '<p class="course-tba">' + c.tba_en + '</p>'
-        : '<div class="course-desc">' + c.desc_en.map(function(p){ return '<p>' + p + '</p>'; }).join('') + '</div>';
+        : (c.desc_en ? '<div class="course-desc">' + c.desc_en.map(function(p){ return '<p>' + p + '</p>'; }).join('') + '</div>' : '');
       html += '<a class="course course-card reveal" href="syllabus.html?course=' + c.id + '">'
         + '<div class="course-head"><div>'
         + '<div class="course-tag">' + c.tag_en + '</div>'
