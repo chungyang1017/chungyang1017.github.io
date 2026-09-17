@@ -4,1032 +4,1297 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>為什麼需要社會政策？ ・ 社會政策 第 3 週 ・ 葉崇揚</title>
-<meta name="description" content="社會政策第 3 週互動講義：社會問題與 social question 的區分、社會契約與市場失靈兩種論證、德英瑞法美五國對社會政策的不同理解，以及台灣從 1947 年憲法到 2004 年綱領六大範疇的制度軌跡。含分節小測驗與閱讀紀錄。">
+<meta name="description" content="社會政策第 3 週互動講義（分頁式）：社會問題與 social question 的區分、社會契約與市場失靈兩種論證、德英瑞法美五國對社會政策的不同理解，以及台灣從 1947 年憲法到 2004 年綱領六大範疇的制度軌跡。共 56 頁，含分節小測驗與閱讀紀錄。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#1B3A5C; --brown:#8A5A24; --grey:#5C6B79; --ink:#24313D;
-  --bg:#f8f9fa; --card:#ffffff; --line:#e3e7eb; --soft:#f1f4f7;
-  --ok:#2E7D5B; --no:#B3402F;
+  --navy:#1B3A5C; --navy-d:#12283F; --brown:#8A5A24; --brown-l:#A87438;
+  --grey:#5C6B79; --ink:#24313D; --bg:#f8f9fa; --card:#fff;
+  --line:#e3e7eb; --soft:#f1f4f7; --ok:#2E7D5B; --no:#B3402F;
   --sans:'Noto Sans TC','PingFang TC','Heiti TC',sans-serif;
   --serif:'Noto Serif TC','Songti TC',serif;
 }
 *{box-sizing:border-box;}
-html{scroll-behavior:smooth;scroll-padding-top:84px;}
-body{margin:0;font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.85;font-weight:400;}
-.wrap{max-width:860px;margin:0 auto;padding:0 20px;}
+html,body{height:100%;margin:0;overflow:hidden;}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.8;}
 
-/* ── 進度條與導覽 ── */
-#progress{position:fixed;top:0;left:0;height:3px;background:var(--brown);width:0;z-index:60;transition:width .1s linear;}
-nav{position:sticky;top:0;background:rgba(248,249,250,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50;}
-nav .wrap{display:flex;gap:4px;align-items:center;height:54px;overflow-x:auto;}
-nav a{font-size:14px;color:var(--grey);text-decoration:none;padding:6px 11px;border-radius:6px;white-space:nowrap;transition:.2s;}
-nav a:hover{background:var(--soft);color:var(--navy);}
-nav a.on{color:var(--navy);font-weight:500;background:var(--soft);}
-nav .sp{flex:1;}
-nav .clock{font-size:12px;color:var(--grey);white-space:nowrap;font-variant-numeric:tabular-nums;}
+/* ── 頂列 ── */
+.topbar{position:fixed;top:0;left:0;right:0;height:56px;background:var(--navy);
+  display:flex;align-items:center;padding:0 22px;gap:16px;z-index:10;color:#fff;}
+.topbar .course{font-size:13.5px;color:#A8C0D6;white-space:nowrap;}
+.topbar .wk{font-size:13.5px;font-weight:500;white-space:nowrap;}
+.topbar .sep{color:#4A6B8A;}
+.topbar .sp{flex:1;}
+.topbar .sect{font-size:12.5px;color:#C6D8E8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.topbar .clock{font-size:12px;color:#8FA9C0;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.topbar button{font-family:var(--sans);background:transparent;border:1px solid #3E5F7E;color:#C6D8E8;
+  font-size:12.5px;padding:5px 12px;border-radius:6px;cursor:pointer;transition:.2s;white-space:nowrap;}
+.topbar button:hover{background:#27486A;color:#fff;}
+#bar{position:fixed;top:56px;left:0;height:2px;background:var(--brown);width:0;z-index:11;transition:width .3s ease;}
 
-/* ── 頁首 ── */
-header{background:var(--navy);color:#fff;padding:64px 0 52px;}
-header .eyebrow{font-size:13px;letter-spacing:.22em;color:#A8C0D6;margin-bottom:18px;}
-header h1{font-family:var(--serif);font-size:42px;line-height:1.3;margin:0 0 12px;font-weight:700;}
-header .sub{font-size:17px;color:#C6D8E8;margin-bottom:28px;}
-header .meta{font-size:13.5px;color:#9FB6CA;border-top:1px solid rgba(255,255,255,.18);padding-top:18px;line-height:2;}
+/* ── 舞台 ── */
+.deck{position:fixed;top:58px;left:0;right:0;bottom:62px;overflow:hidden;z-index:2;}
+.slide{position:absolute;inset:0;padding:38px 56px 30px;overflow-y:auto;
+  opacity:0;pointer-events:none;transform:translateX(38px);
+  transition:opacity .4s ease,transform .45s cubic-bezier(.2,.7,.2,1);}
+.slide.is-active{opacity:1;pointer-events:auto;transform:none;}
+.slide.is-prev{transform:translateX(-38px);}
+.inner{max-width:1000px;margin:0 auto;}
 
-/* ── 區塊 ── */
-section{padding:52px 0 8px;}
-.sec-label{font-size:12px;letter-spacing:.2em;color:var(--brown);font-weight:500;margin-bottom:8px;}
-h2{font-family:var(--serif);font-size:30px;color:var(--navy);margin:0 0 6px;font-weight:700;line-height:1.4;}
-h2+.lead{color:var(--grey);font-size:15.5px;margin:0 0 30px;}
-h3{font-size:19px;color:var(--navy);margin:38px 0 12px;font-weight:500;border-left:3px solid var(--brown);padding-left:12px;}
-p{margin:0 0 16px;font-size:16px;}
-.dim{color:var(--grey);font-size:14.5px;}
-.src{font-size:13px;color:var(--grey);margin-top:-6px;margin-bottom:18px;}
-ul.plain{margin:0 0 18px;padding-left:22px;}
-ul.plain li{margin-bottom:9px;font-size:16px;}
-ul.plain li::marker{color:var(--brown);}
+/* ── 眉標與標題 ── */
+.eyebrow{font-size:11.5px;letter-spacing:.2em;color:var(--brown);font-weight:500;margin-bottom:10px;}
+.slide h2{font-family:var(--serif);font-size:32px;color:var(--navy);margin:0 0 6px;font-weight:700;line-height:1.4;}
+.slide .sub{font-size:15px;color:var(--grey);margin:0 0 26px;}
+.slide h2+ul,.slide h2+.body{margin-top:24px;}
+.rule{height:2px;background:var(--brown);width:54px;margin:0 0 22px;}
+
+/* ── 條列 ── */
+ul.pts{list-style:none;margin:0;padding:0;}
+ul.pts>li{position:relative;padding-left:24px;margin-bottom:16px;font-size:18px;line-height:1.85;}
+ul.pts>li::before{content:'';position:absolute;left:2px;top:14px;width:7px;height:7px;
+  border-radius:50%;background:var(--brown);}
+ul.pts>li.l2{padding-left:46px;font-size:16.5px;color:var(--grey);margin-bottom:12px;}
+ul.pts>li.l2::before{left:26px;top:13px;width:5px;height:5px;background:var(--grey);}
 strong{font-weight:500;color:var(--navy);}
 em{font-style:normal;color:var(--brown);font-weight:500;}
+.body{font-size:18px;}
+.body p{margin:0 0 16px;}
+.note{font-size:14.5px;color:var(--grey);margin-top:20px;padding-top:14px;border-top:1px dashed var(--line);}
 
-/* ── 卡片 ── */
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin-bottom:18px;}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
-.grid2 .card{margin-bottom:0;}
-.card h4{margin:0 0 12px;font-size:16px;color:var(--navy);font-weight:500;}
-.card h4 .tag{display:inline-block;font-size:11px;letter-spacing:.1em;color:#fff;background:var(--brown);border-radius:3px;padding:2px 7px;margin-right:8px;vertical-align:2px;}
-.card ul{margin:0;padding-left:20px;}
-.card ul li{margin-bottom:7px;font-size:15px;}
+/* ── 封面 ── */
+.slide-cover{background:var(--navy);}
+.slide-cover .inner{padding-top:5vh;}
+.slide-cover .eyebrow{color:#A8C0D6;}
+.slide-cover h1{font-family:var(--serif);font-size:52px;color:#fff;margin:0 0 16px;font-weight:700;line-height:1.28;}
+.slide-cover .tagline{font-size:19px;color:#C6D8E8;margin-bottom:38px;}
+.slide-cover .meta{font-size:14px;color:#9FB6CA;line-height:2.1;border-top:1px solid rgba(255,255,255,.2);padding-top:20px;}
+.slide-cover .hint{margin-top:30px;font-size:13.5px;color:#8FA9C0;}
 
-/* ── 可展開卡 ── */
-.flip{cursor:pointer;transition:all .25s ease;}
-.flip:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(27,58,92,.09);border-color:#c9d4de;}
-.flip .head{display:flex;align-items:baseline;gap:10px;}
-.flip .name{font-size:16.5px;color:var(--navy);font-weight:500;}
-.flip .hint{font-size:12.5px;color:var(--grey);margin-left:auto;white-space:nowrap;}
-.flip .detail{max-height:0;overflow:hidden;transition:max-height .35s ease,margin .35s ease;}
-.flip.open .detail{max-height:620px;margin-top:14px;}
-.flip .detail p{font-size:15px;margin:0 0 10px;}
-.flip .detail p:last-child{margin-bottom:0;}
+/* ── 節分隔 ── */
+.slide-sec{background:var(--navy-d);}
+.slide-sec .inner{padding-top:9vh;}
+.slide-sec .num{font-family:var(--serif);font-size:15px;letter-spacing:.3em;color:var(--brown-l);margin-bottom:20px;}
+.slide-sec h2{color:#fff;font-size:44px;margin-bottom:14px;}
+.slide-sec .sub{color:#A8C0D6;font-size:17px;}
 
 /* ── 引言 ── */
-blockquote{margin:30px 0;padding:26px 30px;background:var(--card);border-left:4px solid var(--brown);border-radius:0 10px 10px 0;}
-blockquote .q{font-family:var(--serif);font-size:20px;line-height:1.75;color:var(--navy);white-space:pre-line;}
-blockquote cite{display:block;margin-top:14px;font-style:normal;font-size:13.5px;color:var(--grey);}
+.slide-quote .inner{padding-top:7vh;}
+.slide-quote .q{font-family:var(--serif);font-size:30px;line-height:1.75;color:var(--navy);
+  white-space:pre-line;border-left:4px solid var(--brown);padding-left:28px;}
+.slide-quote cite{display:block;margin-top:24px;padding-left:32px;font-style:normal;font-size:14.5px;color:var(--grey);}
 
-/* ── 課堂提問 ── */
-.ask{background:#FBF7F1;border:1px solid #E8DBC8;border-radius:10px;padding:24px 26px;margin:28px 0;}
-.ask .t{font-size:18px;color:var(--brown);font-weight:500;margin-bottom:12px;}
-.ask p{font-size:15.5px;margin-bottom:8px;}
-.ask p:last-child{margin-bottom:0;}
+/* ── 提問 ── */
+.slide-ask{background:#FBF7F1;}
+.slide-ask .inner{padding-top:4vh;}
+.slide-ask h2{color:var(--brown);}
+.slide-ask .body{font-size:19px;white-space:pre-line;color:var(--ink);}
+
+/* ── 雙欄 ── */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.col{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px 26px;}
+.col h3{margin:0 0 16px;font-size:18px;color:var(--navy);font-weight:500;
+  padding-bottom:12px;border-bottom:2px solid var(--brown);}
+.col ul{list-style:none;margin:0;padding:0;}
+.col li{position:relative;padding-left:18px;margin-bottom:11px;font-size:16px;line-height:1.75;}
+.col li::before{content:'';position:absolute;left:2px;top:12px;width:5px;height:5px;border-radius:50%;background:var(--brown);}
+.col li.dim{color:var(--grey);font-size:14.5px;}
+.col li.dim::before{background:var(--grey);}
 
 /* ── 表格 ── */
-table{width:100%;border-collapse:collapse;margin:20px 0 24px;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:14.5px;}
-th{background:var(--navy);color:#fff;text-align:left;padding:11px 14px;font-weight:500;font-size:13.5px;}
-td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top;}
+table{width:100%;border-collapse:collapse;background:var(--card);
+  border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:16px;}
+th{background:var(--navy);color:#fff;text-align:left;padding:13px 16px;font-weight:500;font-size:14.5px;}
+td{padding:13px 16px;border-top:1px solid var(--line);vertical-align:top;line-height:1.7;}
 tr:nth-child(even) td{background:#fbfcfd;}
 
-/* ── 分頁 ── */
-.tabs{display:flex;gap:6px;margin-bottom:0;flex-wrap:wrap;}
-.tabs button{font-family:var(--sans);font-size:14.5px;padding:9px 18px;border:1px solid var(--line);border-bottom:none;background:var(--soft);color:var(--grey);border-radius:8px 8px 0 0;cursor:pointer;transition:.2s;}
-.tabs button:hover{color:var(--navy);}
-.tabs button.on{background:var(--card);color:var(--navy);font-weight:500;border-color:var(--line);position:relative;top:1px;}
-.pane{background:var(--card);border:1px solid var(--line);border-radius:0 10px 10px 10px;padding:24px 26px;margin-bottom:24px;}
-.pane[hidden]{display:none;}
-.pane .kw{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--brown);}
-
-/* ── 三問互動 ── */
-.poll{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin-bottom:14px;}
-.poll .qq{font-size:16px;color:var(--navy);margin-bottom:12px;font-weight:500;}
-.poll .opts{display:flex;gap:8px;flex-wrap:wrap;}
-.poll button{font-family:var(--sans);font-size:14px;padding:7px 18px;border:1px solid var(--line);background:var(--soft);color:var(--ink);border-radius:20px;cursor:pointer;transition:.2s;}
+/* ── 三問作答 ── */
+.poll{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin-bottom:14px;}
+.poll .qq{font-size:17px;color:var(--navy);margin-bottom:14px;font-weight:500;}
+.poll .opts{display:flex;gap:9px;flex-wrap:wrap;}
+.poll button{font-family:var(--sans);font-size:15px;padding:8px 22px;border:1px solid var(--line);
+  background:var(--soft);color:var(--ink);border-radius:22px;cursor:pointer;transition:.2s;}
 .poll button:hover{border-color:var(--brown);color:var(--brown);}
 .poll button.sel{background:var(--navy);color:#fff;border-color:var(--navy);}
-.recall{font-size:14px;color:var(--grey);background:var(--soft);border-radius:8px;padding:12px 16px;margin-top:10px;}
+.recall{font-size:15px;color:var(--grey);background:var(--soft);border-radius:8px;padding:11px 16px;margin-top:10px;}
 .recall b{color:var(--brown);font-weight:500;}
 
+/* 回顧頁：收緊間距，避免整頁溢出 */
+.slide[data-kind="recall"] .poll{padding:15px 22px;margin-bottom:10px;}
+.slide[data-kind="recall"] .poll .qq{margin-bottom:8px;font-size:16.5px;}
+.slide[data-kind="recall"] .recall{margin-top:8px;padding:9px 14px;}
+.slide[data-kind="recall"] h2{margin-bottom:4px;}
+.slide[data-kind="recall"] .sub{margin-bottom:18px;}
+
+/* 測驗頁較長，提示可捲動 */
+.slide-quiz{scrollbar-width:thin;}
+
 /* ── 測驗 ── */
-.quiz{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 28px;margin:34px 0 10px;}
-.quiz .qhead{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;}
-.quiz .qhead .n{font-size:12px;letter-spacing:.18em;color:var(--brown);}
-.quiz .qhead .score{margin-left:auto;font-size:13px;color:var(--grey);}
-.quiz h4{font-family:var(--serif);font-size:19px;color:var(--navy);margin:0 0 20px;font-weight:700;}
-.q{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--line);}
-.q:last-of-type{border-bottom:none;padding-bottom:4px;margin-bottom:4px;}
-.q .stem{font-size:16px;margin-bottom:12px;font-weight:500;color:var(--ink);}
-.q .opt{display:block;width:100%;text-align:left;font-family:var(--sans);font-size:15px;line-height:1.7;padding:11px 15px;margin-bottom:7px;border:1px solid var(--line);background:var(--card);border-radius:8px;cursor:pointer;transition:.18s;color:var(--ink);}
+.slide-quiz .inner{max-width:880px;}
+.q{margin-bottom:26px;}
+.q .stem{font-size:18px;margin-bottom:14px;font-weight:500;color:var(--navy);}
+.q .opt{display:block;width:100%;text-align:left;font-family:var(--sans);font-size:16px;line-height:1.7;
+  padding:12px 17px;margin-bottom:8px;border:1px solid var(--line);background:var(--card);
+  border-radius:8px;cursor:pointer;transition:.18s;color:var(--ink);}
 .q .opt:hover:not(:disabled){border-color:var(--brown);background:#FBF7F1;}
 .q .opt:disabled{cursor:default;}
 .q .opt.right{border-color:var(--ok);background:#EEF7F2;color:#1E5D42;font-weight:500;}
 .q .opt.wrong{border-color:var(--no);background:#FBF0EE;color:#8C2F21;}
-.q .fb{font-size:14.5px;color:var(--grey);background:var(--soft);border-radius:8px;padding:12px 15px;margin-top:10px;display:none;}
+.q .fb{font-size:15.5px;color:var(--grey);background:var(--soft);border-radius:8px;
+  padding:14px 17px;margin-top:11px;display:none;line-height:1.85;}
 .q .fb.show{display:block;}
+.qmeta{font-size:13.5px;color:var(--grey);margin-top:18px;}
 
-/* ── 結尾 ── */
-.finish{background:var(--navy);color:#fff;border-radius:12px;padding:34px 36px;margin:40px 0;}
-.finish h3{color:#fff;border-left-color:#A8C0D6;margin-top:0;}
-.finish .stat{display:flex;gap:30px;flex-wrap:wrap;margin:22px 0;}
-.finish .stat div{font-size:13px;color:#A8C0D6;}
-.finish .stat b{display:block;font-size:26px;color:#fff;font-weight:500;font-variant-numeric:tabular-nums;line-height:1.5;}
-.finish .note{font-size:13.5px;color:#9FB6CA;line-height:1.9;}
-.btn{display:inline-block;font-family:var(--sans);font-size:15px;padding:12px 30px;border:none;border-radius:8px;background:var(--brown);color:#fff;cursor:pointer;transition:.2s;margin-top:6px;}
-.btn:hover{background:#A06A2C;}
-.btn:disabled{background:#4A6274;opacity:.4;cursor:not-allowed;}
+/* ── 完成頁 ── */
+.slide-done{background:var(--navy);}
+.slide-done .inner{padding-top:4vh;max-width:820px;}
+.slide-done h2{color:#fff;}
+.slide-done .sub{color:#A8C0D6;}
+.stat{display:flex;gap:40px;flex-wrap:wrap;margin:30px 0;}
+.stat div{font-size:13px;color:#A8C0D6;}
+.stat b{display:block;font-size:32px;color:#fff;font-weight:500;font-variant-numeric:tabular-nums;line-height:1.6;}
+.dmsg{font-size:15px;color:#C6D8E8;line-height:1.95;margin-bottom:20px;}
+.btn{font-family:var(--sans);font-size:16px;padding:13px 34px;border:none;border-radius:8px;
+  background:var(--brown);color:#fff;cursor:pointer;transition:.2s;}
+.btn:hover:not(:disabled){background:var(--brown-l);}
+.btn:disabled{background:#3E5F7E;color:#7D97AE;cursor:not-allowed;}
+.code{font-size:15px;color:#A8C0D6;line-height:2;margin-top:18px;}
+.code b{display:block;font-size:26px;letter-spacing:.1em;color:#fff;font-weight:500;margin-top:4px;}
 
-footer{border-top:1px solid var(--line);margin-top:50px;padding:28px 0 60px;font-size:13px;color:var(--grey);line-height:2;}
-footer a{color:var(--brown);}
+/* ── 底列 ── */
+.navbar{position:fixed;bottom:0;left:0;right:0;height:62px;background:rgba(255,255,255,.97);
+  backdrop-filter:blur(8px);border-top:1px solid var(--line);display:flex;align-items:center;
+  justify-content:space-between;padding:0 22px;z-index:10;}
+.nav-btn{font-family:var(--sans);font-size:14.5px;padding:9px 20px;border:1px solid var(--line);
+  background:var(--card);color:var(--navy);border-radius:8px;cursor:pointer;transition:.2s;white-space:nowrap;}
+.nav-btn:hover:not(:disabled){border-color:var(--brown);color:var(--brown);}
+.nav-btn:disabled{opacity:.34;cursor:not-allowed;}
+.nav-mid{display:flex;align-items:center;gap:14px;min-width:0;}
+.pageno{font-size:14px;color:var(--grey);font-variant-numeric:tabular-nums;white-space:nowrap;}
+.dots{display:flex;gap:5px;flex-wrap:nowrap;overflow:hidden;max-width:46vw;}
+.dot{width:6px;height:6px;border-radius:50%;background:#cfd8e0;cursor:pointer;flex:none;transition:.2s;}
+.dot:hover{background:var(--brown);transform:scale(1.4);}
+.dot.on{background:var(--navy);width:18px;border-radius:3px;}
+.dot.s1{background:#c3cfda;} .dot.s2{background:#cdd6de;} .dot.s3{background:#d7dde3;}
+.dot.on.s1,.dot.on.s2,.dot.on.s3{background:var(--navy);}
 
-@media(max-width:720px){
-  header{padding:44px 0 36px;}
-  header h1{font-size:30px;}
-  .grid2{grid-template-columns:1fr;}
-  h2{font-size:25px;}
-  .quiz,.finish{padding:22px 20px;}
-  .pane{padding:20px;}
-  nav .clock{display:none;}
-}
-@media print{
-  nav,#progress,.quiz,.finish{display:none;}
-  .flip .detail{max-height:none!important;margin-top:14px;}
-  body{background:#fff;}
+/* ── 目次 ── */
+.toc{position:fixed;inset:0;background:rgba(18,40,63,.93);z-index:30;display:none;
+  align-items:center;justify-content:center;padding:36px 20px;}
+.toc.show{display:flex;}
+.toc-panel{background:var(--bg);border-radius:14px;max-width:760px;width:100%;
+  max-height:84vh;overflow-y:auto;padding:32px 36px;position:relative;}
+.toc-panel h3{font-family:var(--serif);font-size:24px;color:var(--navy);margin:0 0 6px;}
+.toc-panel .tsub{font-size:14px;color:var(--grey);margin-bottom:22px;}
+.toc-close{position:absolute;top:18px;right:20px;background:none;border:none;font-size:26px;
+  color:var(--grey);cursor:pointer;line-height:1;}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:t;}
+.toc li{counter-increment:t;}
+.toc li a{display:flex;gap:14px;padding:9px 12px;border-radius:7px;text-decoration:none;
+  color:var(--ink);font-size:15.5px;transition:.15s;align-items:baseline;}
+.toc li a:hover{background:var(--soft);color:var(--navy);}
+.toc li a .n{font-size:12.5px;color:var(--grey);min-width:26px;font-variant-numeric:tabular-nums;}
+.toc li a.cur{background:var(--navy);color:#fff;}
+.toc li a.cur .n{color:#A8C0D6;}
+.toc li.head a{font-weight:500;color:var(--brown);border-top:1px solid var(--line);margin-top:10px;padding-top:14px;}
+.toc li.head a.cur{color:#fff;}
+
+.khint{position:fixed;bottom:74px;left:50%;transform:translateX(-50%);font-size:12.5px;
+  color:var(--grey);background:rgba(255,255,255,.94);padding:7px 16px;border-radius:18px;
+  border:1px solid var(--line);z-index:9;transition:opacity .5s;white-space:nowrap;}
+.khint kbd{font-family:var(--sans);background:var(--soft);border:1px solid var(--line);
+  border-radius:4px;padding:1px 7px;font-size:12px;margin:0 1px;}
+
+@media(max-width:820px){
+  .slide{padding:26px 22px 22px;}
+  .slide h2{font-size:25px;}
+  .slide-cover h1{font-size:34px;}
+  .slide-sec h2{font-size:32px;}
+  .slide-quote .q{font-size:22px;padding-left:18px;}
+  ul.pts>li{font-size:16px;}
+  ul.pts>li.l2{font-size:15px;padding-left:38px;}
+  ul.pts>li.l2::before{left:20px;}
+  .two{grid-template-columns:1fr;gap:14px;}
+  .body,.slide-ask .body{font-size:16.5px;}
+  table{font-size:14px;} th,td{padding:10px 11px;}
+  .topbar .course,.topbar .sect,.topbar .clock{display:none;}
+  .dots{display:none;}
+  .khint{display:none;}
+  .stat{gap:24px;} .stat b{font-size:26px;}
 }
 </style>
 </head>
 <body>
-<div id="progress"></div>
 
-<nav>
-  <div class="wrap">
-    <a href="../../teaching-zh.html" style="color:var(--brown);">← 教學</a>
-    <a href="#s1">一、為什麼需要</a>
-    <a href="#s2">二、是什麼</a>
-    <a href="#s3">三、台灣</a>
-    <a href="#read">閱讀</a>
-    <a href="#done">完成</a>
-    <span class="sp"></span>
-    <span class="clock" id="clock">閱讀中 00:00</span>
-  </div>
-</nav>
+<div class="topbar">
+  <span class="course">社會政策 Social Policy</span>
+  <span class="sep">·</span>
+  <span class="wk">第 3 週　為什麼需要社會政策？</span>
+  <span class="sect" id="sect"></span>
+  <span class="sp"></span>
+  <span class="clock" id="clock">00:00</span>
+  <button onclick="toggleToc()">目次</button>
+  <button onclick="goFull()">全螢幕</button>
+  <button onclick="location.href='../../teaching-zh.html'">教學頁</button>
+</div>
+<div id="bar"></div>
 
-<header>
-  <div class="wrap">
-    <div class="eyebrow">WEEK 03　·　互動講義</div>
-    <h1>為什麼需要社會政策？</h1>
-    <div class="sub">社會政策的定義、範疇與台灣的福利體系</div>
-    <div class="meta">
-      葉崇揚　教授　·　東吳大學社會學系<br>
-      115 學年度第 1 學期　·　社會政策 Social Policy　·　BSO20801
+<div class="deck" id="deck">
+  <section class="slide slide-cover" data-kind="cover" data-label="封面" data-sect="">
+    <div class="inner">
+      <div class="eyebrow">第 3 週　·　10/2　·　互動講義</div>
+      <h1>為什麼需要社會政策？</h1>
+      <p class="tagline">社會政策的定義、範疇與台灣的福利體系</p>
+      <div class="meta">葉崇揚　教授　·　東吳大學社會學系<br>115 學年度第 1 學期　·　社會政策 Social Policy　·　BSO20801</div>
+      <p class="hint">用 <kbd>→</kbd> 鍵或下方按鈕翻頁　·　<kbd>Esc</kbd> 開目次　·　進度會自動保存在這台裝置</p>
     </div>
-  </div>
-</header>
+  </section>
 
-<div class="wrap">
+  <section class="slide " data-kind="pts" data-label="今天的三個小時" data-sect="">
+    <div class="inner">
+      <div class="eyebrow">ROADMAP</div>
+      <h2>今天的三個小時</h2>
+      <ul class="pts">
+        <li><strong>第一節</strong>｜為什麼需要社會政策？</li>
+        <li class="l2">社會問題怎麼形成、誰來定義；社會契約與市場失靈兩種回答</li>
+        <li><strong>第二節</strong>｜社會政策是什麼？</li>
+        <li class="l2">詞源與定義，以及德、英、瑞典、法、美五種不同的理解</li>
+        <li><strong>第三節</strong>｜台灣的社會政策與福利體系</li>
+        <li class="l2">從 1947 年憲法到現行六大範疇</li>
+      </ul>
+      <p class="note">本週閱讀見倒數第四頁。按 <kbd>→</kbd> 或點下一頁開始。</p>
+    </div>
+  </section>
 
-<section id="open">
-  <blockquote>
-    <div class="q">在孩子們生活的小世界裡，
+  <section class="slide slide-sec" data-kind="sec" data-label="第一節　為什麼需要社會政策？" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="num">第一節</div>
+      <h2>為什麼需要社會政策？</h2>
+      <p class="sub">社會問題、社會契約與市場失靈</p>
+    </div>
+  </section>
+
+  <section class="slide slide-quote" data-kind="quote" data-label="狄更斯" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="q">在孩子們生活的小世界裡，
 沒有任何東西像不義那樣感受鮮明。</div>
-    <cite>Charles Dickens，《遠大前程》</cite>
-  </blockquote>
-
-  <div class="ask">
-    <div class="t">上課前，先回答三個問題</div>
-    <p>先憑直覺選，不用想太久。三小時後我們會回到這三題，看看你的答案有沒有改變。</p>
-  </div>
-
-  <div class="poll" data-poll="p1">
-    <div class="qq">① 企業提供給員工的育嬰津貼與員工宿舍，算不算社會政策？</div>
-    <div class="opts"><button data-v="算">算</button><button data-v="不算">不算</button><button data-v="不確定">不確定</button></div>
-  </div>
-  <div class="poll" data-poll="p2">
-    <div class="qq">② 1950 年代的土地改革（三七五減租、耕者有其田），算不算社會政策？</div>
-    <div class="opts"><button data-v="算">算</button><button data-v="不算">不算</button><button data-v="不確定">不確定</button></div>
-  </div>
-  <div class="poll" data-poll="p3">
-    <div class="qq">③ 健保保費由雇主、政府與個人分攤，算不算社會政策？</div>
-    <div class="opts"><button data-v="算">算</button><button data-v="不算">不算</button><button data-v="不確定">不確定</button></div>
-  </div>
-</section>
-
-<section id="s1">
-  <div class="sec-label">第一節</div>
-  <h2>為什麼需要社會政策？</h2>
-  <p class="lead">社會問題、社會契約與市場失靈</p>
-
-  <h3>什麼叫「社會問題」？</h3>
-  <p>「人類行為或社會現象的普遍現象，而此一現象會被社會大眾視作對社會有負面影響，因此必須被解決。」</p>
-  <div class="grid2">
-    <div class="card">
-      <h4><span class="tag">客觀</span>社會條件</h4>
-      <ul><li>資源是有限的</li><li>而需求沒有被滿足</li></ul>
+      <cite>Charles Dickens，《遠大前程》</cite>
     </div>
-    <div class="card">
-      <h4><span class="tag">主觀</span>社會認知</h4>
-      <ul><li>被認為不公平、不公正</li><li>而且是一種社會共識</li></ul>
+  </section>
+
+  <section class="slide " data-kind="poll" data-label="開場：這三件事算不算？" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <h2>這三件事，算不算社會政策？</h2>
+      <p class="sub">先不要急著回答，憑直覺選就好。三小時後我們再回到這三個問題。</p>
+      <div class="poll" data-poll="p1">
+        <div class="qq">① 企業提供給員工的育嬰津貼與員工宿舍</div>
+        <div class="opts"><button data-v="算">算</button><button data-v="不算">不算</button><button data-v="不確定">不確定</button></div>
+      </div>
+      <div class="poll" data-poll="p2">
+        <div class="qq">② 1950 年代的土地改革（三七五減租、耕者有其田）</div>
+        <div class="opts"><button data-v="算">算</button><button data-v="不算">不算</button><button data-v="不確定">不確定</button></div>
+      </div>
+      <div class="poll" data-poll="p3">
+        <div class="qq">③ 健保保費由雇主、政府與個人分攤</div>
+        <div class="opts"><button data-v="算">算</button><button data-v="不算">不算</button><button data-v="不確定">不確定</button></div>
+      </div>
     </div>
-  </div>
-  <p>換句話說：一件事要成為「社會問題」，<em>光是存在還不夠</em>，還要被看見、被認為不該如此。</p>
+  </section>
 
-  <h3>關於社會問題的四個判斷</h3>
-  <ul class="plain">
-    <li>社會問題來自於<strong>社會運作本身</strong>，不是壞人引起的。</li>
-    <li>問題是被多數人定義為有負面影響、而且需要改變的情況——但人們看待問題的方式並不一樣。</li>
-    <li>對問題的定義<strong>會隨著時間改變</strong>；它涉及主觀的價值，也涉及客觀的事實。</li>
-    <li>很多社會問題可以被解決，但不是所有；而且不同的社會問題彼此關聯。</li>
-  </ul>
-
-  <h3>關鍵區分：Social Problem 與 Social Question</h3>
-  <p class="dim">這個區分決定了一個國家的社會政策長什麼樣子。</p>
-  <div class="grid2">
-    <div class="card">
-      <h4>Social Problem　社會問題</h4>
-      <ul>
-        <li>泛指一般的社會問題</li>
-        <li>貧窮、失業、犯罪、人口問題</li>
-        <li>需要透過國家的社會政策來解決</li>
-        <li>一個社會同時存在許多個</li>
+  <section class="slide " data-kind="pts" data-label="什麼叫社會問題" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="eyebrow">社會問題</div>
+      <h2>什麼叫「社會問題」？</h2>
+      <p class="sub">客觀條件與主觀認知，缺一不可</p>
+      <ul class="pts">
+        <li>「人類行為或社會現象的普遍現象，而此一現象會被社會大眾視作對社會有負面影響，因此必須被解決。」</li>
+        <li>社會問題有兩個面向</li>
+        <li class="l2"><strong>客觀的社會條件</strong>：資源是有限的，而需求沒有被滿足</li>
+        <li class="l2"><strong>主觀的社會認知</strong>：被認為不公平、不公正，而且是一種社會共識</li>
+        <li>換句話說：一件事要成為「社會問題」，<em>光是存在還不夠</em>，還要被看見、被認為不該如此。</li>
       </ul>
     </div>
-    <div class="card">
-      <h4>Social Question　社會議題</h4>
-      <ul>
-        <li>一個國家最主要、最核心的社會性問題</li>
-        <li>德國：勞動問題（Arbeiterfrage）</li>
-        <li>英國：貧窮問題</li>
-        <li>定義了那個國家社會政策的整體方向</li>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="社會問題的四個判斷" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="eyebrow">社會問題</div>
+      <h2>關於社會問題的四個判斷</h2>
+      <ul class="pts">
+        <li>社會問題來自於<strong>社會運作本身</strong>，不是壞人引起的</li>
+        <li>問題是被多數人定義為有負面影響、而且需要改變的情況</li>
+        <li class="l2">但人們看待問題的方式並不一樣</li>
+        <li>對問題的定義<strong>會隨著時間改變</strong></li>
+        <li class="l2">涉及主觀的價值，也涉及客觀的事實</li>
+        <li>很多社會問題可以被解決，但不是所有；而且不同的社會問題彼此關聯</li>
       </ul>
     </div>
-  </div>
-  <ul class="plain">
-    <li>每個國家都有一大堆社會問題，但<strong>不是每個問題都同等重要</strong>。</li>
-    <li>Social question 是那個「定義了時代」的問題——它決定了國家把資源、立法與制度設計投向哪裡。</li>
-    <li>十九世紀德國的 social question 是勞動問題，所以 Bismarck 的答案是<strong>社會保險</strong>。</li>
-    <li>同時期英國的 social question 是貧窮，所以答案是<strong>濟貧法與後來的 Beveridge 報告</strong>。</li>
-  </ul>
+  </section>
 
-  <div class="ask">
-    <div class="t">台灣的 social question 是什麼？</div>
-    <p>低薪？居住？少子女化？長期照顧？世代不公？</p>
-    <p>想一想：你選的那一個，會推導出什麼樣的社會政策？（第三節會再回來）</p>
-  </div>
-
-  <h3>定義（一）：解決社會問題的集體策略</h3>
-  <p>Jansson（1984: 6）：社會政策是「<strong>解決社會問題的集體策略</strong>」。</p>
-  <p>關鍵字是「集體」。問題可以個別處理，為什麼要集體處理？接下來用兩種方式回答：一種來自政治哲學——<em>社會契約</em>；一種來自經濟學——<em>市場失靈</em>。</p>
-
-  <h3>回答一：社會契約</h3>
-  <p>社會結構由政治、法律、經濟、家庭與社區生活的組成方式決定。決定集體如何運作的規範與規則，就是<strong>社會契約</strong>。它包含兩個要素：<em>期望</em>（expectations，我可以合理期待別人怎麼對我）與<em>相互關係</em>（mutuality，我們彼此之間有什麼責任）。</p>
-  <p class="dim">以下五位各給了一個答案。點開看看。</p>
-
-  <div class="card flip">
-    <div class="head"><span class="name">Thomas Hobbes</span><span class="hint">點擊展開</span></div>
-    <div class="detail"><p>自利但理性的個人應當服從一個絕對主權的權力，這是避免落入殘酷的自然狀態的唯一可靠方法。</p></div>
-  </div>
-  <div class="card flip">
-    <div class="head"><span class="name">John Locke</span><span class="hint">點擊展開</span></div>
-    <div class="detail"><p>社會契約的目的是保護公民的生命、自由與福祉；主權者若未能保護這些權利，公民造反並建立新的政治社會就是正當的。</p></div>
-  </div>
-  <div class="card flip">
-    <div class="head"><span class="name">Jean-Jacques Rousseau</span><span class="hint">點擊展開</span></div>
-    <div class="detail"><p>關注如何維護自由，但他認識到人類彼此的依賴日深，自由必須在集體的規則中實現。</p></div>
-  </div>
-  <div class="card flip">
-    <div class="head"><span class="name">Adam Smith</span><span class="hint">三個層面的理由</span></div>
-    <div class="detail">
-      <p>由同理心促成的社會團結，有三個層面的理由：</p>
-      <p><strong>道德上</strong>：每個社會中個人都有基本需求，不滿足這些需求在道德上就是錯的。</p>
-      <p><strong>政治上</strong>：這是讓民主制度有效運作的條件。</p>
-      <p><strong>經濟上</strong>：安排大量公民共同分擔疾病、失業與養老的風險，比任由個人自保更有效率。</p>
+  <section class="slide " data-kind="two" data-label="Social Problem / Social Question" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="eyebrow">關鍵區分</div>
+      <h2>Social Problem 與 Social Question</h2>
+      <p class="sub">這個區分決定了一個國家的社會政策長什麼樣子</p>
+    <div class="two">
+      <div class="col">
+        <h3>Social Problem　社會問題</h3>
+        <ul>
+          <li>泛指一般的社會問題</li>
+          <li>貧窮、失業、犯罪、人口問題</li>
+          <li>需要透過國家的社會政策來解決</li>
+          <li>一個社會同時存在許多個</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Social Question　社會議題</h3>
+        <ul>
+          <li>一個國家最主要、最核心的社會性問題</li>
+          <li>德國：勞動問題（Arbeiterfrage）</li>
+          <li>英國：貧窮問題</li>
+          <li>定義了那個國家社會政策的整體方向</li>
+        </ul>
+      </div>
     </div>
-  </div>
-  <div class="card flip">
-    <div class="head"><span class="name">John Rawls</span><span class="hint">無知之幕</span></div>
-    <div class="detail"><p>正義原則應在「無知之幕」後選擇——不知道自己會生在什麼位置時，你會選什麼樣的制度？</p></div>
-  </div>
+    </div>
+  </section>
 
-  <h3>現代版本的社會契約</h3>
-  <ul class="plain">
-    <li>社會契約是指<strong>個人、企業、公民社會與國家</strong>共同合作，為一個攸關集體利益的體系做出貢獻。</li>
-    <li>而社會政策，就是靠政治過程與隨後的國家行動居中協調，致力<strong>分攤風險、投資社會利益</strong>的機制。</li>
-    <li>福利可以被理解為一套理念與實際作為，貫穿並影響人類在家庭、社區、市場與國家中的價值判斷與行為模式（Daly, 2011）。</li>
-    <li>社會契約不是簽一次就固定了——<em>它會隨著社會結構改變而轉變</em>。</li>
-  </ul>
+  <section class="slide " data-kind="pts" data-label="為什麼這個區分重要" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="eyebrow">關鍵區分</div>
+      <h2>為什麼這個區分重要？</h2>
+      <ul class="pts">
+        <li>每個國家都有一大堆社會問題，但<strong>不是每個問題都同等重要</strong>。</li>
+        <li>Social question 是那個「定義了時代」的問題——它決定了國家把資源、立法與制度設計投向哪裡。</li>
+        <li>十九世紀德國的 social question 是<strong>勞動問題</strong>，所以 Bismarck 的答案是社會保險。</li>
+        <li>同時期英國的 social question 是<strong>貧窮</strong>，所以答案是濟貧法與後來的 Beveridge 報告。</li>
+        <li>不同國家對社會性問題的理解不同，因而對社會政策有不同的理解。</li>
+      </ul>
+    </div>
+  </section>
 
-  <div class="ask">
-    <div class="t">社會契約的目標應該是什麼？</div>
-    <p>要平等？要自由？要效率？要安全？</p>
-    <p>不同的答案，就是不同的意識形態——這是第 5、6 週的主題。</p>
-  </div>
+  <section class="slide slide-ask" data-kind="ask" data-label="提問：台灣的 social question" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <h2>台灣的 social question 是什麼？</h2>
+      <div class="rule"></div>
+      <div class="body">低薪？居住？少子女化？長期照顧？世代不公？
 
-  <h3>回答二：市場失靈</h3>
-  <ul class="plain">
-    <li>傳統經濟理論：政策目標是在<strong>偏好、技術與資源</strong>三個約束條件下，使社會福祉最大化。</li>
-    <li>在這個框架裡，結論通常是——國家盡可能不要干預，讓市場去配置資源。</li>
-    <li><strong>Pareto 效率</strong>：如果一種分配的改變讓某些人變好、而沒有任何人變差，這個改變就是有效率的。</li>
-    <li>問題是：這個結論成立，要靠一組<em>很強的假設</em>。</li>
-  </ul>
+想一想：你選的那一個，會推導出什麼樣的社會政策？
+（這個問題第三節會再回來）</div>
+    </div>
+  </section>
 
-  <h4 style="font-size:15px;color:var(--brown);margin:24px 0 10px;">有效市場的四個假設</h4>
-  <ul class="plain">
-    <li><strong>完全競爭</strong>：經濟行為者都是價格接受者，而且實力相當。</li>
-    <li><strong>完全市場</strong>：只要願意支付含生產成本的價格，所有商品與服務都會被提供。</li>
-    <li><strong>不存在市場失靈。</strong></li>
-    <li><strong>完全訊息</strong>：消費者能低廉、有效地取得並理解訊息，錯誤選擇的成本也低。</li>
-  </ul>
-  <p>這四個假設，在健康、教育、照顧、住宅這些領域，<em>幾乎沒有一個成立</em>。</p>
+  <section class="slide " data-kind="pts" data-label="定義一：集體策略" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="eyebrow">定義（一）</div>
+      <h2>社會政策是解決社會問題的集體策略</h2>
+      <ul class="pts">
+        <li>Jansson（1984: 6）：社會政策是「<strong>解決社會問題的集體策略</strong>」。</li>
+        <li>關鍵字是「集體」。問題可以個別處理，為什麼要集體處理？</li>
+        <li>接下來用兩種方式回答這個問題：</li>
+        <li class="l2">一種來自政治哲學——<em>社會契約</em></li>
+        <li class="l2">一種來自經濟學——<em>市場失靈</em></li>
+      </ul>
+    </div>
+  </section>
 
-  <h4 style="font-size:15px;color:var(--brown);margin:24px 0 10px;">市場在哪裡失靈？</h4>
-  <div class="card flip">
-    <div class="head"><span class="name">公共財</span><span class="hint">點擊展開</span></div>
-    <div class="detail"><p>消費具有非競爭性、非排他性與非拒絕性，因而產生搭便車效應。</p></div>
-  </div>
-  <div class="card flip">
-    <div class="head"><span class="name">外部性</span><span class="hint">點擊展開</span></div>
-    <div class="detail"><p>我的行為的成本或利益由別人承擔——疫苗、污染、教育都是例子。</p></div>
-  </div>
-  <div class="card flip">
-    <div class="head"><span class="name">遞增的規模報酬</span><span class="hint">點擊展開</span></div>
-    <div class="detail"><p>平均成本高於邊際成本，容易導致壟斷。</p></div>
-  </div>
-  <div class="card flip">
-    <div class="head"><span class="name">資訊不對稱</span><span class="hint">點擊展開</span></div>
-    <div class="detail"><p>病人無從判斷醫療的品質，保險公司無從判斷投保人的風險。</p></div>
-  </div>
-  <p>這四項，就是<strong>國家介入的經濟學理由</strong>。</p>
+  <section class="slide " data-kind="pts" data-label="社會契約是什麼" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="eyebrow">回答一：社會契約</div>
+      <h2>什麼是社會契約？</h2>
+      <p class="sub">social contract</p>
+      <ul class="pts">
+        <li>社會結構由政治、法律、經濟、家庭與社區生活的組成方式決定。</li>
+        <li>決定集體如何運作的規範與規則，就是<strong>社會契約</strong>。</li>
+        <li>它包含兩個要素</li>
+        <li class="l2"><strong>期望</strong>（expectations）：我可以合理期待別人怎麼對我</li>
+        <li class="l2"><strong>相互關係</strong>（mutuality）：我們彼此之間有什麼責任</li>
+      </ul>
+    </div>
+  </section>
 
-  <h3>兩本教科書怎麼說</h3>
-  <p class="src">Spicker, <i>An Introduction to Social Policy</i> (2025), ch. 1，頁 16–17。</p>
-  <div class="card">
-    <h4>支持福利的五種論證</h4>
-    <ul>
-      <li><strong>人道主義</strong>：對貧窮與需求的關切。</li>
-      <li><strong>宗教</strong>：主要宗教都把慈善當成義務；天主教講社會團結，猶太教、伊斯蘭與路德宗都要求對社群的集體責任。</li>
-      <li><strong>互助的自利</strong>：許多福利體系不是從國家開始，而是從互助組織開始，再逐步由政府強化。</li>
-      <li><strong>民主</strong>：社會保護與民主權利是一起發展的。</li>
-      <li><strong>實務</strong>：社會保護較完整的國家傾向更富裕、貧窮更少。</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h4>反對福利的論證與它的假設</h4>
-    <ul>
-      <li>主要反對來自「<strong>激進右派</strong>」：反對福利是原則問題——福利侵犯了人的自由，重分配是偷竊，課稅是強迫勞動。</li>
-      <li>但這個論證建立在一個可疑的假設上：<em>人對財產有絕對的權利</em>。</li>
-      <li>Spicker 的反駁：社會中的人彼此依賴，財產的生產依靠社會安排；財產權是約定俗成的，而納稅義務正是那套約定的一部分。</li>
-      <li>「世界上幾乎沒有一個政府不承認這些論證的力量、不做某種形式的集體社會提供。」</li>
-    </ul>
-  </div>
+  <section class="slide " data-kind="pts" data-label="我們對彼此有何責任（一）" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="eyebrow">回答一：社會契約</div>
+      <h2>我們對彼此有何責任？（一）</h2>
+      <p class="sub">古典社會契約論的三種答案</p>
+      <ul class="pts">
+        <li><strong>Thomas Hobbes</strong>：自利但理性的個人應當服從一個絕對主權的權力，這是避免落入殘酷的自然狀態的唯一可靠方法。</li>
+        <li><strong>John Locke</strong>：社會契約的目的是保護公民的生命、自由與福祉；主權者若未能保護這些權利，公民造反並建立新的政治社會就是正當的。</li>
+        <li><strong>Jean-Jacques Rousseau</strong>：關注如何維護自由，但他認識到人類彼此的依賴日深，自由必須在集體的規則中實現。</li>
+      </ul>
+    </div>
+  </section>
 
-  <blockquote>
-    <div class="q">真正的爭議不在於福利該不該存在，
+  <section class="slide " data-kind="pts" data-label="我們對彼此有何責任（二）" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="eyebrow">回答一：社會契約</div>
+      <h2>我們對彼此有何責任？（二）</h2>
+      <ul class="pts">
+        <li><strong>Adam Smith</strong>：由同理心促成的社會團結，有三個層面的理由</li>
+        <li class="l2"><strong>道德上</strong>：每個社會中個人都有基本需求，不滿足這些需求在道德上就是錯的</li>
+        <li class="l2"><strong>政治上</strong>：這是讓民主制度有效運作的條件</li>
+        <li class="l2"><strong>經濟上</strong>：安排大量公民共同分擔疾病、失業與養老的風險，比任由個人自保更有效率</li>
+        <li><strong>John Rawls</strong>：正義原則應在「無知之幕」後選擇——不知道自己會生在什麼位置時，你會選什麼樣的制度？</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="現代版本的社會契約" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="eyebrow">回答一：社會契約</div>
+      <h2>現代版本的社會契約</h2>
+      <ul class="pts">
+        <li>社會契約是指<strong>個人、企業、公民社會與國家</strong>共同合作，為一個攸關集體利益的體系做出貢獻。</li>
+        <li>而社會政策，就是靠政治過程與隨後的國家行動居中協調，致力<strong>分攤風險、投資社會利益</strong>的機制。</li>
+        <li>福利可以被理解為一套理念與實際作為，貫穿並影響人類在家庭、社區、市場與國家中的價值判斷與行為模式（Daly, 2011）。</li>
+        <li>社會契約不是簽一次就固定了——<em>它會隨著社會結構改變而轉變</em>。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide slide-ask" data-kind="ask" data-label="提問：社會契約的目標" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <h2>社會契約的目標應該是什麼？</h2>
+      <div class="rule"></div>
+      <div class="body">要平等？要自由？要效率？要安全？
+
+不同的答案，就是不同的意識形態——這是第 5、6 週的主題。</div>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="國家為什麼要提供福利" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="eyebrow">回答二：市場失靈</div>
+      <h2>國家為什麼要提供福利？</h2>
+      <p class="sub">從福利經濟學的角度看</p>
+      <ul class="pts">
+        <li>傳統經濟理論：政策目標是在<strong>偏好、技術與資源</strong>三個約束條件下，使社會福祉最大化。</li>
+        <li>在這個框架裡，結論通常是——國家盡可能不要干預，讓市場去配置資源。</li>
+        <li><strong>Pareto 效率</strong>：如果一種分配的改變讓某些人變好、而沒有任何人變差，這個改變就是有效率的。</li>
+        <li>問題是：這個結論成立，要靠一組<em>很強的假設</em>。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="有效市場的四個假設" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="eyebrow">回答二：市場失靈</div>
+      <h2>有效市場的四個假設</h2>
+      <ul class="pts">
+        <li><strong>完全競爭</strong>：經濟行為者都是價格接受者，而且實力相當</li>
+        <li><strong>完全市場</strong>：只要願意支付含生產成本的價格，所有商品與服務都會被提供</li>
+        <li><strong>不存在市場失靈</strong></li>
+        <li><strong>完全訊息</strong>：消費者能低廉、有效地取得並理解訊息，錯誤選擇的成本也低</li>
+        <li class="l2">這四個假設，在健康、教育、照顧、住宅這些領域，<em>幾乎沒有一個成立</em>。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="市場在哪裡失靈" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="eyebrow">回答二：市場失靈</div>
+      <h2>市場在哪裡失靈？</h2>
+      <ul class="pts">
+        <li><strong>公共財</strong>：消費具有非競爭性、非排他性與非拒絕性，因而產生搭便車效應</li>
+        <li><strong>外部性</strong>：我的行為的成本或利益由別人承擔（疫苗、污染、教育）</li>
+        <li><strong>遞增的規模報酬</strong>：平均成本高於邊際成本，容易導致壟斷</li>
+        <li><strong>資訊不對稱</strong>：病人無從判斷醫療的品質，保險公司無從判斷投保人的風險</li>
+        <li>這四項，就是<em>國家介入的經濟學理由</em>。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="Spicker：支持福利的五種論證" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="eyebrow">兩本教科書怎麼說</div>
+      <h2>Spicker：支持福利的五種論證</h2>
+      <p class="sub">An Introduction to Social Policy, ch. 1（頁 16–17）</p>
+      <ul class="pts">
+        <li><strong>人道主義</strong>（humanitarian）：對貧窮與需求的關切</li>
+        <li><strong>宗教</strong>（religious）：主要宗教都把慈善當成義務；天主教講社會團結，猶太教、伊斯蘭與路德宗都要求對社群的集體責任</li>
+        <li><strong>互助的自利</strong>（mutual self-interest）：許多福利體系不是從國家開始，而是從互助組織開始，再逐步由政府強化</li>
+        <li><strong>民主</strong>（democratic）：社會保護與民主權利是一起發展的</li>
+        <li><strong>實務</strong>（practical）：社會保護較完整的國家傾向更富裕、貧窮更少</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="Spicker：反對福利的論證" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="eyebrow">兩本教科書怎麼說</div>
+      <h2>Spicker：反對福利的論證與它的假設</h2>
+      <p class="sub">An Introduction to Social Policy, ch. 1（頁 17）</p>
+      <ul class="pts">
+        <li>主要反對來自「<strong>激進右派</strong>」：反對福利是原則問題——福利侵犯了人的自由，重分配是偷竊，課稅是強迫勞動。</li>
+        <li>但這個論證建立在一個可疑的假設上：<em>人對財產有絕對的權利</em>。</li>
+        <li>Spicker 的反駁：社會中的人彼此依賴，財產的生產依靠社會安排；財產權是約定俗成的，而納稅義務正是那套約定的一部分。</li>
+        <li>「世界上幾乎沒有一個政府不承認這些論證的力量、不做某種形式的集體社會提供。」</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide slide-quote" data-kind="quote" data-label="Spicker：真正的爭議" data-sect="第一節　為什麼需要社會政策？">
+    <div class="inner">
+      <div class="q">真正的爭議不在於福利該不該存在，
 而在於應該提供多少、以及該怎麼做。</div>
-    <cite>Paul Spicker, An Introduction to Social Policy (2025), p. 17</cite>
-  </blockquote>
-
-  <div class="quiz" data-quiz="q1">
-    <div class="qhead"><span class="n">CHECKPOINT 1</span><span class="score"></span></div>
-    <h4>第一節小測驗</h4>
-
-    <div class="q" data-a="2">
-      <div class="stem">1. 依本課的定義，一件事要成為「社會問題」，需要哪兩個面向同時成立？</div>
-      <button class="opt">法律的規定與政府的認定</button>
-      <button class="opt">客觀的社會條件與主觀的社會認知</button>
-      <button class="opt">媒體的報導與學界的研究</button>
-      <button class="opt">經濟的損失與人口的規模</button>
-      <div class="fb">客觀面是「資源有限、需求未被滿足」，主觀面是「被認為不公平、且形成社會共識」。光是客觀存在還不夠——它必須被看見、被認為不該如此。</div>
+      <cite>Paul Spicker, An Introduction to Social Policy (2025), p. 17</cite>
     </div>
+  </section>
 
-    <div class="q" data-a="3">
-      <div class="stem">2. 十九世紀德國的 social question 是什麼？它導向了什麼樣的政策答案？</div>
-      <button class="opt">貧窮問題 → 濟貧法</button>
-      <button class="opt">住宅問題 → 公共住宅</button>
-      <button class="opt">勞動問題 → 社會保險</button>
-      <button class="opt">人口問題 → 家庭津貼</button>
-      <div class="fb">工業化造就了一個沒有財產、只能出賣勞動力的階級，這就是 Arbeiterfrage。Bismarck 在 1880 年代的答案，是以受僱身分為基礎、由保費支撐的社會保險。「貧窮 → 濟貧法」則是同時期英國的組合。</div>
+  <section class="slide slide-quiz" data-kind="quiz" data-label="◆ 第一節小測驗" data-sect="第一節　為什麼需要社會政策？" data-quiz="q1">
+    <div class="inner">
+      <h2>第一節小測驗</h2>
+      <p class="sub">三題，作答後會立刻看到解說</p>
+      <div class="q" data-a="2">
+        <div class="stem">1. 一件事要成為「社會問題」，依本課的定義，需要哪兩個面向同時成立？</div>
+        <button class="opt">法律的規定與政府的認定</button>
+        <button class="opt">客觀的社會條件與主觀的社會認知</button>
+        <button class="opt">媒體的報導與學界的研究</button>
+        <button class="opt">經濟的損失與人口的規模</button>
+        <div class="fb">客觀面是「資源有限、需求未被滿足」，主觀面是「被認為不公平、且形成社會共識」。光是客觀存在還不夠——它必須被看見、被認為不該如此。</div>
+      </div>
+      <div class="q" data-a="3">
+        <div class="stem">2. 十九世紀德國的 social question 是什麼？它導向了什麼樣的政策答案？</div>
+        <button class="opt">貧窮問題 → 濟貧法</button>
+        <button class="opt">住宅問題 → 公共住宅</button>
+        <button class="opt">勞動問題 → 社會保險</button>
+        <button class="opt">人口問題 → 家庭津貼</button>
+        <div class="fb">工業化造就了一個沒有財產、只能出賣勞動力的階級，這就是 Arbeiterfrage。Bismarck 在 1880 年代的答案，是以受僱身分為基礎、由保費支撐的社會保險。「貧窮 → 濟貧法」則是同時期英國的組合。</div>
+      </div>
+      <div class="q" data-a="4">
+        <div class="stem">3. 下列哪一項<strong>不是</strong>市場失靈的類型？</div>
+        <button class="opt">公共財</button>
+        <button class="opt">資訊不對稱</button>
+        <button class="opt">外部性</button>
+        <button class="opt">完全競爭</button>
+        <div class="fb">完全競爭是「有效市場的四個假設」之一，不是失靈本身。四種失靈是：公共財、外部性、遞增的規模報酬、資訊不對稱。</div>
+      </div>
+      <p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p>
     </div>
+  </section>
 
-    <div class="q" data-a="4">
-      <div class="stem">3. 下列哪一項<strong>不是</strong>市場失靈的類型？</div>
-      <button class="opt">公共財</button>
-      <button class="opt">資訊不對稱</button>
-      <button class="opt">外部性</button>
-      <button class="opt">完全競爭</button>
-      <div class="fb">完全競爭是「有效市場的四個假設」之一，不是失靈本身。四種失靈是：公共財、外部性、遞增的規模報酬、資訊不對稱。</div>
+  <section class="slide slide-sec" data-kind="sec" data-label="第二節　社會政策是什麼？" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="num">第二節</div>
+      <h2>社會政策是什麼？</h2>
+      <p class="sub">詞源、定義，以及五個國家的不同理解</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="s2">
-  <div class="sec-label">第二節</div>
-  <h2>社會政策是什麼？</h2>
-  <p class="lead">詞源、定義，以及五個國家的不同理解</p>
-
-  <h3>這個詞從哪裡來？</h3>
-  <ul class="plain">
-    <li>「Social Policy」一詞起源於德語世界的 <em>Sozialpolitik</em>。</li>
-    <li>Julius Fröbel（1850）：《System der socialen Politik》（社會政治的體系）。</li>
-    <li>Lorenz von Stein：把社會問題視為<strong>國家必須回應的對象</strong>，而非私人慈善的事務。</li>
-    <li>值得注意：這個詞誕生於十九世紀中葉的德國，正是「勞動問題」成為那個國家核心 social question 的時候。</li>
-  </ul>
-
-  <div class="grid2">
-    <div class="card">
-      <h4>Social Politics　社會政治</h4>
-      <ul>
-        <li>圍繞措施與法律的政治鬥爭</li>
-        <li class="dim">the political struggle over measures and laws</li>
-        <li>重點在「誰在爭、爭什麼」</li>
-        <li>社會政策是政治過程的產物</li>
+  <section class="slide " data-kind="pts" data-label="詞源：Sozialpolitik" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="eyebrow">詞源</div>
+      <h2>這個詞從哪裡來？</h2>
+      <p class="sub">Sozialpolitik，十九世紀的德語世界</p>
+      <ul class="pts">
+        <li>「Social Policy」一詞起源於德語世界的 <em>Sozialpolitik</em>。</li>
+        <li><strong>Julius Fröbel（1850）</strong>：《System der socialen Politik》（社會政治的體系）</li>
+        <li><strong>Lorenz von Stein</strong>：把社會問題視為國家必須回應的對象，而非私人慈善的事務。</li>
+        <li>值得注意：這個詞誕生於十九世紀中葉的德國，正是「勞動問題」成為那個國家核心 social question 的時候。</li>
       </ul>
     </div>
-    <div class="card">
-      <h4>Social Policy　社會政策</h4>
-      <ul>
-        <li>國家發動的措施的執行</li>
-        <li class="dim">the implementation of state-initiated measures</li>
-        <li>重點在「做了什麼、怎麼做」</li>
-        <li>社會政策是一套制度與行政</li>
+  </section>
+
+  <section class="slide " data-kind="two" data-label="Sozialpolitik 的兩個意涵" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="eyebrow">詞源</div>
+      <h2>德文 Sozialpolitik 的兩個意涵</h2>
+      <p class="sub">Kaufmann (2013: 24)　·　中文的「社會政策」把兩個意思合在一起了</p>
+    <div class="two">
+      <div class="col">
+        <h3>Social Politics　社會政治</h3>
+        <ul>
+          <li>圍繞措施與法律的政治鬥爭</li>
+          <li class="dim">the political struggle over measures and laws</li>
+          <li>重點在「誰在爭、爭什麼」</li>
+          <li>社會政策是政治過程的產物</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Social Policy　社會政策</h3>
+        <ul>
+          <li>國家發動的措施的執行</li>
+          <li class="dim">the implementation of state-initiated measures</li>
+          <li>重點在「做了什麼、怎麼做」</li>
+          <li>社會政策是一套制度與行政</li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="Spicker：三種用法" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="eyebrow">定義（二）</div>
+      <h2>Spicker：「社會政策」這個詞的三種用法</h2>
+      <p class="sub">An Introduction to Social Policy, ch. 1（頁 14–15）</p>
+      <ul class="pts">
+        <li><strong>①</strong> 政府用於福利與社會保護的政策——特別是社會服務與福利國家</li>
+        <li><strong>②</strong> 更廣的意義：福利在一個社會中如何被促成，以及形塑福利發展的社會與經濟條件——這已經<em>遠遠超出政府的作為</em></li>
+        <li><strong>③</strong> 這個主題的學術研究本身</li>
+        <li>學術意義上，它處理三類問題：社會服務中的政策與行政實務、社會問題（犯罪、身心障礙、失業、心理健康、老年）、以及社會不利處境（種族、性別、貧窮）與對它們的集體回應。</li>
       </ul>
     </div>
-  </div>
-  <p class="src">Kaufmann (2013: 24)　·　中文的「社會政策」把這兩個意思合在一起了。</p>
+  </section>
 
-  <h3>定義（二）：Spicker 說的三種用法</h3>
-  <p class="src">An Introduction to Social Policy, ch. 1（頁 14–15）</p>
-  <ul class="plain">
-    <li><strong>①</strong> 政府用於福利與社會保護的政策——特別是社會服務與福利國家。</li>
-    <li><strong>②</strong> 更廣的意義：福利在一個社會中如何被促成，以及形塑福利發展的社會與經濟條件——這已經<em>遠遠超出政府的作為</em>。</li>
-    <li><strong>③</strong> 這個主題的學術研究本身。</li>
-  </ul>
-  <p>學術意義上，它處理三類問題：社會服務中的政策與行政實務、社會問題（犯罪、身心障礙、失業、心理健康、老年）、以及社會不利處境（種族、性別、貧窮）與對它們的集體回應。</p>
-
-  <blockquote>
-    <div class="q">社會政策是一個主題領域，不是一個學科。
+  <section class="slide slide-quote" data-kind="quote" data-label="Spicker：主題領域，不是學科" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="q">社會政策是一個主題領域，不是一個學科。
 它向社會學、社會工作、心理學、經濟學、
 政治學、管理學、歷史、哲學與法律借用工具。</div>
-    <cite>Paul Spicker, An Introduction to Social Policy (2025), p. 15</cite>
-  </blockquote>
+      <cite>Paul Spicker, An Introduction to Social Policy (2025), p. 15</cite>
+    </div>
+  </section>
 
-  <h3>Welfare 這個詞的三種意思</h3>
-  <p class="dim">同一個字，在不同國家指的不是同一件事。</p>
-  <ul class="plain">
-    <li><strong>① 福祉（well-being）</strong>：在福利經濟學裡，用「效用」來理解——人們的福祉就是他們選擇擁有的那些東西。</li>
-    <li><strong>② 一系列服務</strong>：為了在童年、疾病與老年等狀況下保護人們而提供的服務。「福利國家」就是這個意思，等同於歐盟用的「社會保護」。</li>
-    <li><strong>③ 在美國</strong>，welfare 特指給窮人的財務協助（例如 TANF）——這個用法在別的地方並不通行，但近年英國政客也開始這樣用。</li>
-  </ul>
-  <p>Spicker 的提醒：福利常和需求連在一起，但<em>它超出需求</em>——要達到福祉，人必須有選擇，有追求個人目標的空間。</p>
+  <section class="slide " data-kind="pts" data-label="Welfare 的三種意思" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="eyebrow">定義（二）</div>
+      <h2>Welfare 這個詞的三種意思</h2>
+      <p class="sub">同一個字，在不同國家指的不是同一件事</p>
+      <ul class="pts">
+        <li><strong>① 福祉</strong>（well-being）：在福利經濟學裡，用「效用」來理解——人們的福祉就是他們選擇擁有的那些東西</li>
+        <li><strong>② 一系列服務</strong>：為了在童年、疾病與老年等狀況下保護人們而提供的服務。「福利國家」就是這個意思，等同於歐盟用的「社會保護」</li>
+        <li><strong>③ 在美國</strong>，welfare 特指給窮人的財務協助（例如 TANF）——這個用法在別的地方並不通行，但近年英國政客也開始這樣用</li>
+        <li>Spicker 的提醒：福利常和需求連在一起，但<em>它超出需求</em>——要達到福祉，人必須有選擇，有追求個人目標的空間。</li>
+      </ul>
+    </div>
+  </section>
 
-  <h3>兩個經典定義</h3>
-  <ul class="plain">
-    <li><strong>Marshall（1965）</strong>：社會政策是「政府用以直接影響人民福利的政策，其行動是提供服務或所得給人民」。核心範圍包括社會保險、公共救助、保健、福利服務、住宅政策。</li>
-    <li><strong>Titmuss</strong> 的問法不同——他問的是社會政策的分配後果、利他作為社會組織動力的可能，以及社會服務如何被使用。</li>
-  </ul>
-  <p>兩種問法的差別：一個問「<em>政府做了什麼</em>」，一個問「<em>這些作為把資源和機會分配給了誰</em>」。</p>
+  <section class="slide " data-kind="pts" data-label="兩個經典定義" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="eyebrow">定義（二）</div>
+      <h2>兩個經典定義</h2>
+      <ul class="pts">
+        <li><strong>Marshall（1965）</strong>：社會政策是「政府用以直接影響人民福利的政策，其行動是提供服務或所得給人民」。</li>
+        <li class="l2">核心範圍包括社會保險、公共救助、保健、福利服務、住宅政策。</li>
+        <li><strong>Titmuss</strong> 的問法不同——他問的是社會政策的分配後果、利他作為社會組織動力的可能，以及社會服務如何被使用。</li>
+        <li>兩種問法的差別：一個問「<em>政府做了什麼</em>」，一個問「<em>這些作為把資源和機會分配給了誰</em>」。</li>
+      </ul>
+    </div>
+  </section>
 
-  <blockquote>
-    <div class="q">對社會政策的理解，
+  <section class="slide slide-quote" data-kind="quote" data-label="本節的核心命題" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="q">對社會政策的理解，
 會隨著國家的社會文化脈絡而有所不同。
 也就是說——取決於一個國家如何理解它的社會問題。</div>
-    <cite>本節的核心命題</cite>
-  </blockquote>
-
-  <h3>五個國家，五種理解</h3>
-  <div class="tabs" id="ctabs">
-    <button class="on" data-c="de">德國</button>
-    <button data-c="uk">英國</button>
-    <button data-c="se">瑞典</button>
-    <button data-c="fr">法國</button>
-    <button data-c="us">美國</button>
-  </div>
-
-  <div class="pane" data-c="de">
-    <h4 style="margin:0 0 14px;font-size:17px;color:var(--navy);">德國：社會國與勞動問題</h4>
-    <ul class="plain">
-      <li>Social question 是<strong>勞動問題</strong>：工業化造就了一個沒有財產、只能出賣勞動力的階級。</li>
-      <li>Bismarck 的答案（1880 年代）：以受僱身分為基礎、由保費支撐的社會保險——疾病、職災、老年。</li>
-      <li>這套設計的邏輯<em>不是消除不平等</em>，而是把工人整合進國家，維持既有的身分秩序。</li>
-      <li>戰後發展為「社會國」（Sozialstaat）與社會市場經濟，寫進基本法。</li>
-    </ul>
-    <div class="kw">關鍵字：身分保障　·　受僱者　·　保費　·　社會整合</div>
-  </div>
-
-  <div class="pane" data-c="uk" hidden>
-    <h4 style="margin:0 0 14px;font-size:17px;color:var(--navy);">英國：貧窮問題與社會行政的傳統</h4>
-    <ul class="plain">
-      <li>Social question 是<strong>貧窮</strong>。1601 年的濟貧法確立了國家對窮人的公共責任——但也確立了「值得幫助／不值得幫助」的區分。</li>
-      <li>費邊社（1884 年成立）：主張國家應在政策面介入，以<em>漸進改革</em>對抗整體的社會問題。</li>
-      <li>倫敦政經學院於 1912 年設立社會科學與行政學系；Richard Titmuss 於 1950–1973 年在此任教，奠定社會政策作為一門學科的基礎。</li>
-    </ul>
-    <div class="kw">關鍵字：貧窮　·　公共責任　·　漸進改革　·　社會行政</div>
-  </div>
-
-  <div class="pane" data-c="se" hidden>
-    <h4 style="margin:0 0 14px;font-size:17px;color:var(--navy);">瑞典：去商品化</h4>
-    <ul class="plain">
-      <li>對資本主義的診斷：它的本質是<strong>勞動的商品化</strong>（commodification of labour）——人必須把自己的勞動力賣出去才能生活。</li>
-      <li>因此社會政策要解決的，是勞工與其家庭對勞動市場的依賴。</li>
-      <li>社會政策於是被理解為：<em>去商品化</em>（de-commodification）——讓人在不進入市場的情況下，也能維持可接受的生活水準。</li>
-      <li>這個概念之後成為 Esping-Andersen 分類福利體制的核心指標（第 10 週）。</li>
-    </ul>
-    <div class="kw">關鍵字：商品化　·　依賴　·　普及主義　·　公民身分</div>
-  </div>
-
-  <div class="pane" data-c="fr" hidden>
-    <h4 style="margin:0 0 14px;font-size:17px;color:var(--navy);">法國：從勞工到受薪者</h4>
-    <ul class="plain">
-      <li>Robert Castel：現代社會政策的核心，是透過創造一個「<strong>受薪社會</strong>」（wage society）來改變勞動者的地位。</li>
-      <li>在那個社會裡，受僱身分本身帶來一整套保障——不只是工資，還有健康、退休、失業的集體保護。</li>
-      <li>所以法國關切的不是「貧窮」而是「<em>脫鉤</em>」（désaffiliation）——人從社會連帶中被切斷。</li>
-      <li>因此政策語言是「社會融入」（insertion）與「社會連帶」（solidarité），而不是救濟。</li>
-    </ul>
-    <div class="kw">關鍵字：受薪社會　·　社會連帶　·　脫鉤　·　融入</div>
-  </div>
-
-  <div class="pane" data-c="us" hidden>
-    <h4 style="margin:0 0 14px;font-size:17px;color:var(--navy);">美國：福利與市場不是對立的</h4>
-    <ul class="plain">
-      <li>Welfare 一詞在美國特指給窮人的財務協助（如 TANF）——它是<strong>殘補的、帶污名的</strong>。</li>
-      <li>但這不代表美國沒有福利：福利國家方案可以在<em>與市場力量的緊密關係中</em>出現，而不是站在市場的對立面。</li>
-      <li>雇主提供的健康保險、稅式優惠（tax expenditure）、退休金帳戶——這些都是社會政策，只是不長在「國家給付」的形式裡。</li>
-      <li>這正是為什麼「企業提供的福利算不算社會政策」是個真問題。</li>
-    </ul>
-    <div class="kw">關鍵字：殘補　·　污名　·　隱藏的福利國家　·　稅式優惠</div>
-  </div>
-
-  <table>
-    <tr><th>國家</th><th>Social question</th><th>社會政策被理解為</th><th>關鍵字</th></tr>
-    <tr><td>德國</td><td>勞動問題</td><td>把工人整合進國家</td><td>身分保障、保費</td></tr>
-    <tr><td>英國</td><td>貧窮</td><td>公共責任與漸進改革</td><td>濟貧、社會行政</td></tr>
-    <tr><td>瑞典</td><td>勞動商品化</td><td>去商品化</td><td>普及、公民身分</td></tr>
-    <tr><td>法國</td><td>社會脫鉤</td><td>建立受薪社會</td><td>連帶、融入</td></tr>
-    <tr><td>美國</td><td>（不被視為核心問題）</td><td>對窮人的殘補救助</td><td>污名、稅式優惠</td></tr>
-  </table>
-
-  <h3>當代：福利國家已經不是西方的專利</h3>
-  <p class="src">What Is the Welfare State For?, ch. 1（頁 1）</p>
-  <ul class="plain">
-    <li>「福利國家」長期被當成富裕西方經濟體的專屬品，討論它的時候，往往是在<em>攻擊或防衛某個既有的東西</em>。</li>
-    <li>但把焦點移到發展中國家，政府看待這些議題的方式完全不同。</li>
-    <li>過去二、三十年間，社會福利領域出現了興趣與行動的爆發，中等所得與新興經濟體尤其明顯。</li>
-    <li><strong>不提供社會保護的國家，現在已經是少數。</strong></li>
-  </ul>
-  <p>換句話說：今天要問「社會政策是什麼」，<em>不能只看歐美的經驗</em>。</p>
-
-  <h3>社會政策的可能範圍</h3>
-  <p class="dim">邊界在哪裡，本身就是一個爭論。</p>
-  <div class="grid2">
-    <div class="card">
-      <h4>傳統範圍</h4>
-      <ul><li>現金移轉（cash transfers）</li><li>健康政策</li><li>社會照顧</li><li>教育</li><li>住宅</li></ul>
+      <cite>本節的核心命題</cite>
     </div>
-    <div class="card">
-      <h4>延伸範圍</h4>
-      <ul><li>工作與就業</li><li>犯罪與正義</li><li>環境</li><li>文化政策</li><li>土地政策</li></ul>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="德國：社會國與勞動問題" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="eyebrow">五個國家（一）</div>
+      <h2>德國：社會國與勞動問題</h2>
+      <ul class="pts">
+        <li>Social question 是<strong>勞動問題</strong>：工業化造就了一個沒有財產、只能出賣勞動力的階級。</li>
+        <li>Bismarck 的答案（1880 年代）：以受僱身分為基礎、由保費支撐的社會保險——疾病、職災、老年。</li>
+        <li>這套設計的邏輯<em>不是消除不平等</em>，而是把工人整合進國家，維持既有的身分秩序。</li>
+        <li>戰後發展為「社會國」（Sozialstaat）與社會市場經濟，寫進基本法。</li>
+        <li class="l2">關鍵字：身分保障、受僱者、保費、社會整合。</li>
+      </ul>
     </div>
-  </div>
+  </section>
 
-  <div class="quiz" data-quiz="q2">
-    <div class="qhead"><span class="n">CHECKPOINT 2</span><span class="score"></span></div>
-    <h4>第二節小測驗</h4>
-
-    <div class="q" data-a="3">
-      <div class="stem">1. 依 Kaufmann（2013: 24），德文 Sozialpolitik 包含哪兩個意涵？</div>
-      <button class="opt">社會保險與社會救助</button>
-      <button class="opt">中央政策與地方執行</button>
-      <button class="opt">圍繞措施與法律的政治鬥爭，以及國家發動措施的執行</button>
-      <button class="opt">學術研究與實務工作</button>
-      <div class="fb">一個是 social politics（誰在爭、爭什麼），一個是 social policy（做了什麼、怎麼做）。中文的「社會政策」把這兩個意思合在一起了，所以讀德文脈絡的文獻時要特別分辨。</div>
+  <section class="slide " data-kind="pts" data-label="英國：貧窮與社會行政" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="eyebrow">五個國家（二）</div>
+      <h2>英國：貧窮問題與社會行政的傳統</h2>
+      <ul class="pts">
+        <li>Social question 是<strong>貧窮</strong>。1601 年的濟貧法確立了國家對窮人的公共責任——但也確立了「值得幫助／不值得幫助」的區分。</li>
+        <li>費邊社（1884 年成立）：主張國家應在政策面介入，以<em>漸進改革</em>對抗整體的社會問題。</li>
+        <li>倫敦政經學院於 1912 年設立社會科學與行政學系；Richard Titmuss 於 1950–1973 年在此任教，奠定社會政策作為一門學科的基礎。</li>
+        <li class="l2">關鍵字：貧窮、公共責任、漸進改革、社會行政。</li>
+      </ul>
     </div>
+  </section>
 
-    <div class="q" data-a="2">
-      <div class="stem">2. 瑞典把社會政策理解為什麼？</div>
-      <button class="opt">把勞工整合進國家，維持既有的身分秩序</button>
-      <button class="opt">去商品化——讓人不進入市場也能維持可接受的生活水準</button>
-      <button class="opt">對窮人的殘補式救助</button>
-      <button class="opt">透過受僱身分建立一個受薪社會</button>
-      <div class="fb">瑞典對資本主義的診斷是「勞動的商品化」，所以社會政策要處理的是人對勞動市場的依賴。這個概念後來成為 Esping-Andersen 分類福利體制的核心指標（第 10 週）。其他三個選項分別是德國、美國與法國的理解。</div>
+  <section class="slide " data-kind="pts" data-label="瑞典：去商品化" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="eyebrow">五個國家（三）</div>
+      <h2>瑞典：去商品化</h2>
+      <ul class="pts">
+        <li>對資本主義的診斷：它的本質是<strong>勞動的商品化</strong>（commodification of labour）——人必須把自己的勞動力賣出去才能生活。</li>
+        <li>因此社會政策要解決的，是勞工與其家庭對勞動市場的依賴。</li>
+        <li>社會政策於是被理解為：<em>去商品化</em>（de-commodification）——讓人在不進入市場的情況下，也能維持可接受的生活水準。</li>
+        <li>這個概念之後成為 Esping-Andersen 分類福利體制的核心指標（第 10 週）。</li>
+        <li class="l2">關鍵字：商品化、依賴、普及主義、公民身分。</li>
+      </ul>
     </div>
+  </section>
 
-    <div class="q" data-a="1">
-      <div class="stem">3. 關於美國，下列敘述何者正確？</div>
-      <button class="opt">welfare 特指給窮人的財務協助，但美國仍有大量以稅式優惠、雇主保險等形式存在的社會政策</button>
-      <button class="opt">因為 welfare 帶有污名，所以美國沒有社會政策</button>
-      <button class="opt">美國的福利國家與市場力量完全對立</button>
-      <button class="opt">美國的 social question 被界定為勞動問題</button>
-      <div class="fb">重點在於：福利國家方案可以在與市場力量的緊密關係中出現，而不是站在市場的對立面。雇主提供的健康保險、稅式優惠、退休金帳戶都是社會政策，只是不長在「國家給付」的形式裡——這也是開場第①題的線索。</div>
+  <section class="slide " data-kind="pts" data-label="法國：從勞工到受薪者" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="eyebrow">五個國家（四）</div>
+      <h2>法國：從勞工到受薪者</h2>
+      <ul class="pts">
+        <li><strong>Robert Castel</strong>：現代社會政策的核心，是透過創造一個「受薪社會」（wage society）來改變勞動者的地位。</li>
+        <li>在那個社會裡，受僱身分本身帶來一整套保障——不只是工資，還有健康、退休、失業的集體保護。</li>
+        <li>所以法國關切的不是「貧窮」而是「<em>脫鉤</em>」（désaffiliation）——人從社會連帶中被切斷。</li>
+        <li>因此政策語言是「社會融入」（insertion）與「社會連帶」（solidarité），而不是救濟。</li>
+        <li class="l2">關鍵字：受薪社會、社會連帶、脫鉤、融入。</li>
+      </ul>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="s3">
-  <div class="sec-label">第三節</div>
-  <h2>台灣的社會政策與福利體系</h2>
-  <p class="lead">從 1947 年的憲法到現行的六大範疇</p>
-
-  <table>
-    <tr><th>年份</th><th>文件</th><th>意義</th></tr>
-    <tr><td>1947</td><td>中華民國憲法「社會安全」專節</td><td>第 152–157 條，把社會安全寫進憲法</td></tr>
-    <tr><td>1965</td><td>民生主義現階段社會政策</td><td>七大項三十三目，確立福利行政的基本架構</td></tr>
-    <tr><td>1994</td><td>社會福利政策綱領</td><td>首次以「綱領」形式整合各部門業務</td></tr>
-    <tr><td>2004</td><td>社會福利政策綱領修正</td><td>重新界定範圍為六大範疇，沿用至今</td></tr>
-  </table>
-
-  <div class="card flip">
-    <div class="head"><span class="name">1947　憲法中的社會安全條款</span><span class="hint">點擊展開</span></div>
-    <div class="detail">
-      <p>中華民國憲法於 1947 年 1 月 1 日公布、同年 12 月 25 日施行。第 152 條至第 157 條為社會安全專節。</p>
-      <p><strong>涵蓋範圍</strong>：國民就業（第 153、154 條）　·　社會保險與社會救助（第 155 條）　·　婦女與兒童福利（第 156 條）　·　醫療保健（第 157 條）</p>
-      <p>值得注意的時間點：這部憲法的社會安全條款<em>早於英國 1948 年的福利國家成立</em>，也早於台灣真正有能力執行它的年代數十年。</p>
+  <section class="slide " data-kind="pts" data-label="美國：福利與市場不對立" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="eyebrow">五個國家（五）</div>
+      <h2>美國：福利與市場不是對立的</h2>
+      <ul class="pts">
+        <li>Welfare 一詞在美國特指給窮人的財務協助（如 TANF）——它是<strong>殘補的、帶污名的</strong>。</li>
+        <li>但這不代表美國沒有福利：福利國家方案可以在<em>與市場力量的緊密關係中</em>出現，而不是站在市場的對立面。</li>
+        <li>雇主提供的健康保險、稅式優惠（tax expenditure）、退休金帳戶——這些都是社會政策，只是不長在「國家給付」的形式裡。</li>
+        <li>這正是為什麼「企業提供的福利算不算社會政策」是個真問題。</li>
+        <li class="l2">關鍵字：殘補、污名、隱藏的福利國家、稅式優惠。</li>
+      </ul>
     </div>
-  </div>
+  </section>
 
-  <div class="card flip">
-    <div class="head"><span class="name">1965　民生主義現階段社會政策</span><span class="hint">點擊展開</span></div>
-    <div class="detail">
-      <p>背景：隨著台灣的工業化與都市化，人民對社會福利的需求日增。</p>
-      <p>中國國民黨於 1964 年 11 月九屆二中全會將此案標題改為「本黨民生主義現階段社會政策」（莫藜藜 2003），1965 年 4 月由行政院頒行。</p>
-      <p>內容分為<strong>七大項、三十三目</strong>：社會保險、國民就業、社會救助、國民住宅、福利服務、社會教育、社區發展。</p>
-      <p>請注意這個順序——<em>社會保險排第一，而且優先涵蓋軍公教</em>。這件事的後果，第 12 週會再談。</p>
+  <section class="slide " data-kind="table" data-label="五國對照表" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="eyebrow">整理</div>
+      <h2>五種理解，五種社會政策</h2>
+      <p class="sub">同一個詞，在五個國家指向五件不同的事</p>
+    <table>
+      <tr><th>國家</th><th>Social question</th><th>社會政策被理解為</th><th>關鍵字</th></tr>
+      <tr><td>德國</td><td>勞動問題</td><td>把工人整合進國家</td><td>身分保障、保費</td></tr>
+      <tr><td>英國</td><td>貧窮</td><td>公共責任與漸進改革</td><td>濟貧、社會行政</td></tr>
+      <tr><td>瑞典</td><td>勞動商品化</td><td>去商品化</td><td>普及、公民身分</td></tr>
+      <tr><td>法國</td><td>社會脫鉤</td><td>建立受薪社會</td><td>連帶、融入</td></tr>
+      <tr><td>美國</td><td>（不被視為核心問題）</td><td>對窮人的殘補救助</td><td>污名、稅式優惠</td></tr>
+    </table>
     </div>
-  </div>
+  </section>
 
-  <div class="card flip">
-    <div class="head"><span class="name">1994 / 2004　社會福利政策綱領與它的修正</span><span class="hint">點擊展開</span></div>
-    <div class="detail">
-      <p>1994 年綱領：由內政部社會司提出，行政院於同年 7 月核定。但它主要是<em>部門業務的綜合整理</em>，缺乏宏觀的政策思維。</p>
-      <p>2002 年，內政部決定召開第三次全國社會福利會議，一方面因應二十一世紀社會與經濟情勢的變化，另一方面檢視執行現況。</p>
-      <p>修正後的綱領於 2004 年 2 月由行政院核定，重新界定社會福利的範圍。</p>
+  <section class="slide " data-kind="pts" data-label="不再是西方的專利" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="eyebrow">當代</div>
+      <h2>Spicker：福利國家已經不是西方的專利</h2>
+      <p class="sub">What Is the Welfare State For?, ch. 1（頁 1）</p>
+      <ul class="pts">
+        <li>「福利國家」長期被當成富裕西方經濟體的專屬品，討論它的時候，往往是在<em>攻擊或防衛某個既有的東西</em>。</li>
+        <li>但把焦點移到發展中國家，政府看待這些議題的方式完全不同。</li>
+        <li>過去二、三十年間，社會福利領域出現了興趣與行動的爆發，中等所得與新興經濟體尤其明顯。</li>
+        <li><strong>不提供社會保護的國家，現在已經是少數。</strong></li>
+        <li>換句話說：今天要問「社會政策是什麼」，<em>不能只看歐美的經驗</em>。</li>
+      </ul>
     </div>
-  </div>
+  </section>
 
-  <h3>2004 年綱領界定的六大範疇</h3>
-  <ul class="plain">
-    <li>社會保險與津貼　·　社會救助　·　福利服務</li>
-    <li>就業安全　·　社會住宅與社區營造　·　健康與醫療照顧</li>
-  </ul>
-  <p>對照一下本學期的週次安排：第 11 週社會救助　·　第 12 週社會保險（健保、勞保、年金）　·　第 13 週家庭政策與照顧　·　第 14 週勞動政策。</p>
-  <p>沒有被排進去的是：<em>社會住宅與社區營造</em>。想一想，為什麼台灣的住宅政策這麼晚才被當成社會政策？</p>
-
-  <div class="ask">
-    <div class="t">回到那個問題：台灣的 social question 是什麼？</div>
-    <p>如果德國是勞動問題、英國是貧窮、法國是社會脫鉤——那麼從 1947 到今天，台灣的核心社會問題被認為是什麼？</p>
-    <p>它是否換過？從「反攻復國下的軍公教安置」到「低薪與居住」？</p>
-  </div>
-
-  <h3>社會政策想達成什麼？</h3>
-  <ul class="plain">
-    <li>貧窮舒緩　·　所得維持與替代　·　促進社會團結</li>
-    <li>重分配　·　補償　·　促進經濟效率　·　行為改變</li>
-  </ul>
-  <p>這七項<em>彼此不一定相容</em>——促進經濟效率與重分配就常常衝突。</p>
-  <p>Spicker 的提醒：正因為社會服務的目標不可避免地複雜，想用「體制」把福利國家分類歸格，是一件很成問題的事（第 10 週會回到這個爭論）。</p>
-
-  <h3>說到底，社會政策是關於分配的政治</h3>
-  <blockquote>
-    <div class="q">Who gets What, When, How？</div>
-    <cite>Harold Lasswell (1958)</cite>
-  </blockquote>
-  <ul class="plain">
-    <li>誰拿到、拿到什麼、什麼時候拿到、用什麼方式拿到。</li>
-    <li>每一個答案背後，都牽涉<strong>一組價值判斷</strong>。</li>
-    <li>所以社會政策是（分配的）政治結果——<em>不是技術問題，是政治問題</em>。</li>
-    <li>這也是為什麼接下來兩週要談意識形態：不同的價值，會給出不同的分配方案。</li>
-  </ul>
-
-  <div class="ask" id="recall-box">
-    <div class="t">回到開場的三個問題</div>
-    <p><strong>①</strong> 企業提供的育嬰津貼與員工宿舍——算不算社會政策？<span class="dim">（想想美國的隱藏福利國家、法國的受薪社會）</span></p>
-    <div class="recall" data-recall="p1">你剛才的答案：<b>—</b></div>
-    <p style="margin-top:18px;"><strong>②</strong> 土地改革——算不算社會政策？<span class="dim">（想想它重分配了什麼、改變了誰的生活機會）</span></p>
-    <div class="recall" data-recall="p2">你剛才的答案：<b>—</b></div>
-    <p style="margin-top:18px;"><strong>③</strong> 健保保費三方分攤——算不算？為什麼它「看起來」比較像？</p>
-    <div class="recall" data-recall="p3">你剛才的答案：<b>—</b></div>
-  </div>
-
-  <div class="quiz" data-quiz="q3">
-    <div class="qhead"><span class="n">CHECKPOINT 3</span><span class="score"></span></div>
-    <h4>第三節小測驗</h4>
-
-    <div class="q" data-a="2">
-      <div class="stem">1. 中華民國憲法的「社會安全」專節是哪幾條？</div>
-      <button class="opt">第 22–24 條</button>
-      <button class="opt">第 152–157 條</button>
-      <button class="opt">第 15–18 條</button>
-      <button class="opt">第 160–167 條</button>
-      <div class="fb">憲法 1947 年 1 月 1 日公布、同年 12 月 25 日施行，第 152–157 條涵蓋國民就業、社會保險與社會救助、婦女與兒童福利、醫療保健。時間點值得記住：它早於英國 1948 年的福利國家成立。</div>
+  <section class="slide " data-kind="two" data-label="社會政策的範圍" data-sect="第二節　社會政策是什麼？">
+    <div class="inner">
+      <div class="eyebrow">範圍</div>
+      <h2>社會政策的可能範圍</h2>
+      <p class="sub">邊界在哪裡，本身就是一個爭論</p>
+    <div class="two">
+      <div class="col">
+        <h3>傳統範圍</h3>
+        <ul>
+          <li>現金移轉（cash transfers）</li>
+          <li>健康政策</li>
+          <li>社會照顧</li>
+          <li>教育</li>
+          <li>住宅</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>延伸範圍</h3>
+        <ul>
+          <li>工作與就業</li>
+          <li>犯罪與正義</li>
+          <li>環境</li>
+          <li>文化政策</li>
+          <li>土地政策</li>
+        </ul>
+      </div>
     </div>
-
-    <div class="q" data-a="1">
-      <div class="stem">2. 1965 年「民生主義現階段社會政策」的內容架構是？</div>
-      <button class="opt">七大項、三十三目，社會保險排第一</button>
-      <button class="opt">六大範疇，社會救助排第一</button>
-      <button class="opt">四大支柱，國民住宅排第一</button>
-      <button class="opt">三大方向，社區發展排第一</button>
-      <div class="fb">七大項為：社會保險、國民就業、社會救助、國民住宅、福利服務、社會教育、社區發展。社會保險排第一，而且優先涵蓋軍公教——這件事的後果第 12 週會再談。「六大範疇」則是 2004 年綱領修正後的架構。</div>
     </div>
+  </section>
 
-    <div class="q" data-a="3">
-      <div class="stem">3. 2004 年綱領的六大範疇中，哪一項在本學期<strong>沒有</strong>被排入單獨的週次？</div>
-      <button class="opt">社會救助</button>
-      <button class="opt">社會保險與津貼</button>
-      <button class="opt">社會住宅與社區營造</button>
-      <button class="opt">就業安全</button>
-      <div class="fb">社會救助在第 11 週、社會保險在第 12 週、勞動政策（就業安全）在第 14 週。社會住宅與社區營造沒有單獨的一週——順著這一點可以想：為什麼台灣的住宅政策這麼晚才被當成社會政策？</div>
+  <section class="slide slide-quiz" data-kind="quiz" data-label="◆ 第二節小測驗" data-sect="第二節　社會政策是什麼？" data-quiz="q2">
+    <div class="inner">
+      <h2>第二節小測驗</h2>
+      <p class="sub">三題，作答後會立刻看到解說</p>
+      <div class="q" data-a="3">
+        <div class="stem">1. 依 Kaufmann（2013: 24），德文 Sozialpolitik 包含哪兩個意涵？</div>
+        <button class="opt">社會保險與社會救助</button>
+        <button class="opt">中央政策與地方執行</button>
+        <button class="opt">圍繞措施與法律的政治鬥爭，以及國家發動措施的執行</button>
+        <button class="opt">學術研究與實務工作</button>
+        <div class="fb">一個是 social politics（誰在爭、爭什麼），一個是 social policy（做了什麼、怎麼做）。中文的「社會政策」把這兩個意思合在一起了，所以讀德文脈絡的文獻時要特別分辨。</div>
+      </div>
+      <div class="q" data-a="2">
+        <div class="stem">2. 瑞典把社會政策理解為什麼？</div>
+        <button class="opt">把勞工整合進國家，維持既有的身分秩序</button>
+        <button class="opt">去商品化——讓人不進入市場也能維持可接受的生活水準</button>
+        <button class="opt">對窮人的殘補式救助</button>
+        <button class="opt">透過受僱身分建立一個受薪社會</button>
+        <div class="fb">瑞典對資本主義的診斷是「勞動的商品化」，所以社會政策要處理的是人對勞動市場的依賴。這個概念後來成為 Esping-Andersen 分類福利體制的核心指標（第 10 週）。其他三個選項分別是德國、美國與法國的理解。</div>
+      </div>
+      <div class="q" data-a="1">
+        <div class="stem">3. 關於美國，下列敘述何者正確？</div>
+        <button class="opt">welfare 特指給窮人的財務協助，但美國仍有大量以稅式優惠、雇主保險等形式存在的社會政策</button>
+        <button class="opt">因為 welfare 帶有污名，所以美國沒有社會政策</button>
+        <button class="opt">美國的福利國家與市場力量完全對立</button>
+        <button class="opt">美國的 social question 被界定為勞動問題</button>
+        <div class="fb">重點在於：福利國家方案可以在與市場力量的緊密關係中出現，而不是站在市場的對立面。雇主提供的健康保險、稅式優惠、退休金帳戶都是社會政策，只是不長在「國家給付」的形式裡——這也是開場第①題的線索。</div>
+      </div>
+      <p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="read">
-  <div class="sec-label">READING</div>
-  <h2>本週閱讀</h2>
-  <p class="lead">★ 為核心閱讀，其餘為延伸閱讀</p>
-
-  <div class="card">
-    <h4>核心閱讀</h4>
-    <ul>
-      <li>★ Alcock, P.（李易駿譯）。社會政策的主題。《解讀社會政策》第 I.1 章（頁 3–16）。</li>
-      <li>★ Spicker, P. (2000). <i>The Welfare State: A General Theory</i>, ch. 1.</li>
-      <li>★ Spicker, P. (2025). <i>An Introduction to Social Policy</i>, ch. 1–2（頁 14–39）.</li>
-      <li>★ Spicker, P. (2025). <i>What Is the Welfare State For?</i>, ch. 1（頁 1–21）.</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h4>延伸閱讀</h4>
-    <ul>
-      <li>Titmuss, R. M. (2001 [1974]). What is social policy? In <i>Welfare and Wellbeing</i> (pp. 209–214).</li>
-      <li>林萬億（2012）。社會福利政策。《臺灣的社會福利：歷史與制度的分析》第 1 章。</li>
-    </ul>
-  </div>
-
-  <h3>Social question 這個概念：從哪裡讀起</h3>
-  <div class="card">
-    <h4>歐陸的兩個源頭</h4>
-    <ul>
-      <li>Kaufmann, F.-X. (2013). <i>Thinking About Social Policy: The German Tradition</i>. Springer.<br>
-        <span class="dim">社會政策概念的德國源頭。本週「Sozialpolitik 的兩個意涵」即出自此書頁 24。</span></li>
-      <li>Castel, R. (2003). <i>From Manual Workers to Wage Laborers: Transformation of the Social Question</i>. Transaction.<br>
-        <span class="dim">法國視角：受薪社會的形成，以及它在當代的瓦解。</span></li>
-    </ul>
-  </div>
-  <div class="card">
-    <h4>新社會問題與全球視野</h4>
-    <ul>
-      <li>Rosanvallon, P. (2000). <i>The New Social Question: Rethinking the Welfare State</i>. Princeton University Press.<br>
-        <span class="dim">當舊的社會問題退場、新的登場，福利國家要怎麼重寫？</span></li>
-      <li>Breman, J., Harris, K., Lee, C. K., &amp; van der Linden, M. (eds.) (2019). <i>The Social Question in the Twenty-First Century: A Global View</i>. University of California Press.<br>
-        <span class="dim">把 social question 放到全球南方與二十一世紀重新問一次。</span></li>
-    </ul>
-  </div>
-
-  <h3>下週預告　第 5 週：意識形態（一）</h3>
-  <ul class="plain">
-    <li>今天我們說「社會契約的目標是什麼」沒有標準答案——接下來兩週就是在處理這件事。</li>
-    <li><strong>第 5 週</strong>：馬克思主義、社會民主與費邊主義</li>
-    <li><strong>第 6 週</strong>：自由主義、保守主義、新自由主義與第三條路</li>
-    <li>請先讀：《解讀社會政策》第 II.8、II.9 章；Spicker (2025) <i>An Introduction</i>, ch. 9（頁 128–133）。</li>
-    <li class="dim">（下週 10/9 國慶日補假，10/16 見。）</li>
-  </ul>
-</section>
-
-<section id="done">
-  <div class="finish">
-    <h3 style="font-family:var(--serif);font-size:24px;">完成紀錄</h3>
-    <div class="stat">
-      <div>答對題數<b id="st-score">0 / 9</b></div>
-      <div>已作答<b id="st-done">0 / 9</b></div>
-      <div>閱讀時間<b id="st-time">00:00</b></div>
+  <section class="slide slide-sec" data-kind="sec" data-label="第三節　台灣的社會政策與福利體系" data-sect="第三節　台灣的社會政策與福利體系">
+    <div class="inner">
+      <div class="num">第三節</div>
+      <h2>台灣的社會政策與福利體系</h2>
+      <p class="sub">從 1947 年的憲法到現行的六大範疇</p>
     </div>
-    <p class="note" id="done-msg">三節的小測驗全部作答完畢後，就可以送出簽到。</p>
-    <button class="btn" id="submit" disabled>送出簽到</button>
-    <p class="note" id="submit-note" style="margin-top:14px;"></p>
-  </div>
-</section>
+  </section>
 
+  <section class="slide " data-kind="table" data-label="四個關鍵文件" data-sect="第三節　台灣的社會政策與福利體系">
+    <div class="inner">
+      <div class="eyebrow">制度軌跡</div>
+      <h2>台灣社會政策的四個關鍵文件</h2>
+    <table>
+      <tr><th>年份</th><th>文件</th><th>意義</th></tr>
+      <tr><td>1947</td><td>中華民國憲法「社會安全」專節</td><td>第 152–157 條，把社會安全寫進憲法</td></tr>
+      <tr><td>1965</td><td>民生主義現階段社會政策</td><td>七大項三十三目，確立福利行政的基本架構</td></tr>
+      <tr><td>1994</td><td>社會福利政策綱領</td><td>首次以「綱領」形式整合各部門業務</td></tr>
+      <tr><td>2004</td><td>社會福利政策綱領修正</td><td>重新界定範圍為六大範疇，沿用至今</td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="1947 憲法社會安全條款" data-sect="第三節　台灣的社會政策與福利體系">
+    <div class="inner">
+      <div class="eyebrow">1947</div>
+      <h2>憲法中的社會安全條款</h2>
+      <ul class="pts">
+        <li>中華民國憲法於 1947 年 1 月 1 日公布、同年 12 月 25 日施行。第 152 條至第 157 條為社會安全專節。</li>
+        <li>涵蓋範圍</li>
+        <li class="l2">國民就業（第 153、154 條）　·　社會保險與社會救助（第 155 條）</li>
+        <li class="l2">婦女與兒童福利（第 156 條）　·　醫療保健（第 157 條）</li>
+        <li>值得注意的時間點：這部憲法的社會安全條款<em>早於英國 1948 年的福利國家成立</em>，也早於台灣真正有能力執行它的年代數十年。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="1965 民生主義現階段社會政策" data-sect="第三節　台灣的社會政策與福利體系">
+    <div class="inner">
+      <div class="eyebrow">1965</div>
+      <h2>民生主義現階段社會政策</h2>
+      <ul class="pts">
+        <li>背景：隨著台灣的工業化與都市化，人民對社會福利的需求日增。</li>
+        <li>中國國民黨於 1964 年 11 月九屆二中全會將此案標題改為「本黨民生主義現階段社會政策」（莫藜藜 2003），1965 年 4 月由行政院頒行。</li>
+        <li>內容分為<strong>七大項、三十三目</strong>：社會保險、國民就業、社會救助、國民住宅、福利服務、社會教育、社區發展。</li>
+        <li>請注意這個順序——<em>社會保險排第一，而且優先涵蓋軍公教</em>。這件事的後果，第 12 週會再談。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="1994 / 2004 政策綱領" data-sect="第三節　台灣的社會政策與福利體系">
+    <div class="inner">
+      <div class="eyebrow">1994 / 2004</div>
+      <h2>社會福利政策綱領與它的修正</h2>
+      <ul class="pts">
+        <li><strong>1994 年綱領</strong>：由內政部社會司提出，行政院於同年 7 月核定。但它主要是部門業務的綜合整理，<em>缺乏宏觀的政策思維</em>。</li>
+        <li>2002 年，內政部決定召開第三次全國社會福利會議，一方面因應二十一世紀社會與經濟情勢的變化，另一方面檢視執行現況。</li>
+        <li>修正後的綱領於 <strong>2004 年 2 月</strong>由行政院核定，重新界定社會福利的範圍。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="2004 六大範疇" data-sect="第三節　台灣的社會政策與福利體系">
+    <div class="inner">
+      <div class="eyebrow">現行架構</div>
+      <h2>2004 年綱領界定的六大範疇</h2>
+      <ul class="pts">
+        <li>社會保險與津貼　·　社會救助　·　福利服務</li>
+        <li>就業安全　·　社會住宅與社區營造　·　健康與醫療照顧</li>
+        <li>對照一下本學期的週次安排：</li>
+        <li class="l2">第 11 週 社會救助　·　第 12 週 社會保險（健保、勞保、年金）</li>
+        <li class="l2">第 13 週 家庭政策與照顧　·　第 14 週 勞動政策</li>
+        <li>沒有被排進去的是：<em>社會住宅與社區營造</em>。想一想，為什麼台灣的住宅政策這麼晚才被當成社會政策？</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide slide-ask" data-kind="ask" data-label="提問：回到台灣的 social question" data-sect="第三節　台灣的社會政策與福利體系">
+    <div class="inner">
+      <h2>回到那個問題：台灣的 social question 是什麼？</h2>
+      <div class="rule"></div>
+      <div class="body">如果德國是勞動問題、英國是貧窮、法國是社會脫鉤——
+那麼從 1947 到今天，台灣的核心社會問題被認為是什麼？
+
+它是否換過？從「反攻復國下的軍公教安置」到「低薪與居住」？</div>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="社會政策想達成什麼" data-sect="第三節　台灣的社會政策與福利體系">
+    <div class="inner">
+      <div class="eyebrow">目標</div>
+      <h2>社會政策想達成什麼？</h2>
+      <ul class="pts">
+        <li>貧窮舒緩　·　所得維持與替代　·　促進社會團結</li>
+        <li>重分配　·　補償　·　促進經濟效率　·　行為改變</li>
+        <li>這七項<em>彼此不一定相容</em>——促進經濟效率與重分配就常常衝突。</li>
+        <li>Spicker 的提醒：正因為社會服務的目標不可避免地複雜，想用「體制」把福利國家分類歸格，是一件很成問題的事（第 10 週會回到這個爭論）。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="分配的政治" data-sect="第三節　台灣的社會政策與福利體系">
+    <div class="inner">
+      <div class="eyebrow">收束</div>
+      <h2>說到底，社會政策是關於分配的政治</h2>
+      <ul class="pts">
+        <li>Lasswell（1958）的經典提問：<strong>Who gets What, When, How？</strong></li>
+        <li>誰拿到、拿到什麼、什麼時候拿到、用什麼方式拿到。</li>
+        <li>每一個答案背後，都牽涉<strong>一組價值判斷</strong>。</li>
+        <li>所以社會政策是（分配的）政治結果——<em>不是技術問題，是政治問題</em>。</li>
+        <li>這也是為什麼接下來兩週要談意識形態：不同的價值，會給出不同的分配方案。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="recall" data-label="回到開場的三個問題" data-sect="第三節　台灣的社會政策與福利體系">
+    <div class="inner">
+      <h2>回到開場的三個問題</h2>
+      <p class="sub">三小時前你選的答案在下面。現在再想一次，有沒有改變？</p>
+      <div class="poll">
+        <div class="qq">① 企業提供的育嬰津貼與員工宿舍——算不算社會政策？</div>
+        <p class="sub" style="margin:0 0 10px;">想想美國的隱藏福利國家、法國的受薪社會</p>
+        <div class="recall" data-recall="p1">你在開場時選的是：<b>—</b></div>
+      </div>
+      <div class="poll">
+        <div class="qq">② 土地改革——算不算社會政策？</div>
+        <p class="sub" style="margin:0 0 10px;">想想它重分配了什麼、改變了誰的生活機會</p>
+        <div class="recall" data-recall="p2">你在開場時選的是：<b>—</b></div>
+      </div>
+      <div class="poll">
+        <div class="qq">③ 健保保費三方分攤——算不算？</div>
+        <p class="sub" style="margin:0 0 10px;">為什麼它「看起來」比較像？</p>
+        <div class="recall" data-recall="p3">你在開場時選的是：<b>—</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide-quiz" data-kind="quiz" data-label="◆ 第三節小測驗" data-sect="第三節　台灣的社會政策與福利體系" data-quiz="q3">
+    <div class="inner">
+      <h2>第三節小測驗</h2>
+      <p class="sub">三題，作答後會立刻看到解說</p>
+      <div class="q" data-a="2">
+        <div class="stem">1. 中華民國憲法的「社會安全」專節是哪幾條？</div>
+        <button class="opt">第 22–24 條</button>
+        <button class="opt">第 152–157 條</button>
+        <button class="opt">第 15–18 條</button>
+        <button class="opt">第 160–167 條</button>
+        <div class="fb">憲法 1947 年 1 月 1 日公布、同年 12 月 25 日施行，第 152–157 條涵蓋國民就業、社會保險與社會救助、婦女與兒童福利、醫療保健。時間點值得記住：它早於英國 1948 年的福利國家成立。</div>
+      </div>
+      <div class="q" data-a="1">
+        <div class="stem">2. 1965 年「民生主義現階段社會政策」的內容架構是？</div>
+        <button class="opt">七大項、三十三目，社會保險排第一</button>
+        <button class="opt">六大範疇，社會救助排第一</button>
+        <button class="opt">四大支柱，國民住宅排第一</button>
+        <button class="opt">三大方向，社區發展排第一</button>
+        <div class="fb">七大項為：社會保險、國民就業、社會救助、國民住宅、福利服務、社會教育、社區發展。社會保險排第一，而且優先涵蓋軍公教——這件事的後果第 12 週會再談。「六大範疇」則是 2004 年綱領修正後的架構。</div>
+      </div>
+      <div class="q" data-a="3">
+        <div class="stem">3. 2004 年綱領的六大範疇中，哪一項在本學期<strong>沒有</strong>被排入單獨的週次？</div>
+        <button class="opt">社會救助</button>
+        <button class="opt">社會保險與津貼</button>
+        <button class="opt">社會住宅與社區營造</button>
+        <button class="opt">就業安全</button>
+        <div class="fb">社會救助在第 11 週、社會保險在第 12 週、勞動政策（就業安全）在第 14 週。社會住宅與社區營造沒有單獨的一週——順著這一點可以想：為什麼台灣的住宅政策這麼晚才被當成社會政策？</div>
+      </div>
+      <p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="本週閱讀" data-sect="第三節　台灣的社會政策與福利體系">
+    <div class="inner">
+      <div class="eyebrow">本週閱讀</div>
+      <h2>核心閱讀（★）與延伸閱讀</h2>
+      <p class="sub">★ 為核心閱讀，其餘為延伸閱讀</p>
+      <ul class="pts">
+        <li>★ Alcock, P.（李易駿譯）。社會政策的主題。《解讀社會政策》第 I.1 章（頁 3–16）。</li>
+        <li>★ Spicker, P. (2000). <i>The Welfare State: A General Theory</i>, ch. 1.</li>
+        <li>★ Spicker, P. (2025). <i>An Introduction to Social Policy</i>, ch. 1–2（頁 14–39）.</li>
+        <li>★ Spicker, P. (2025). <i>What Is the Welfare State For?</i>, ch. 1（頁 1–21）.</li>
+        <li class="l2">Titmuss, R. M. (2001 [1974]). What is social policy? In <i>Welfare and Wellbeing</i> (pp. 209–214).</li>
+        <li class="l2">林萬億（2012）。社會福利政策。《臺灣的社會福利：歷史與制度的分析》第 1 章。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="延伸閱讀：歐陸的兩個源頭" data-sect="第三節　台灣的社會政策與福利體系">
+    <div class="inner">
+      <div class="eyebrow">延伸閱讀</div>
+      <h2>Social question 這個概念：從哪裡讀起</h2>
+      <p class="sub">歐陸的兩個源頭</p>
+      <ul class="pts">
+        <li>Kaufmann, F.-X. (2013). <i>Thinking About Social Policy: The German Tradition</i>. Springer.</li>
+        <li class="l2">社會政策概念的德國源頭。本週「Sozialpolitik 的兩個意涵」即出自此書頁 24。</li>
+        <li>Castel, R. (2003). <i>From Manual Workers to Wage Laborers: Transformation of the Social Question</i>. Transaction.</li>
+        <li class="l2">法國視角：受薪社會的形成，以及它在當代的瓦解。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="延伸閱讀：當代與全球" data-sect="第三節　台灣的社會政策與福利體系">
+    <div class="inner">
+      <div class="eyebrow">延伸閱讀</div>
+      <h2>Social question 的當代與全球版本</h2>
+      <p class="sub">新社會問題與全球視野</p>
+      <ul class="pts">
+        <li>Rosanvallon, P. (2000). <i>The New Social Question: Rethinking the Welfare State</i>. Princeton University Press.</li>
+        <li class="l2">當舊的社會問題退場、新的登場，福利國家要怎麼重寫？</li>
+        <li>Breman, J., Harris, K., Lee, C. K., &amp; van der Linden, M. (eds.) (2019). <i>The Social Question in the Twenty-First Century: A Global View</i>. University of California Press.</li>
+        <li class="l2">把 social question 放到全球南方與二十一世紀重新問一次。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide " data-kind="pts" data-label="下週預告" data-sect="第三節　台灣的社會政策與福利體系">
+    <div class="inner">
+      <div class="eyebrow">下週預告</div>
+      <h2>第 5 週：意識形態（一）</h2>
+      <ul class="pts">
+        <li>今天我們說「社會契約的目標是什麼」沒有標準答案——接下來兩週就是在處理這件事。</li>
+        <li><strong>第 5 週</strong>：馬克思主義、社會民主與費邊主義</li>
+        <li><strong>第 6 週</strong>：自由主義、保守主義、新自由主義與第三條路</li>
+        <li>請先讀：《解讀社會政策》第 II.8、II.9 章；Spicker (2025) <i>An Introduction</i>, ch. 9（頁 128–133）。</li>
+        <li class="l2">（下週 10/9 國慶日補假，10/16 見。）</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide slide-done" data-kind="done" data-label="◆ 完成與簽到" data-sect="">
+    <div class="inner">
+      <h2>完成紀錄</h2>
+      <p class="sub">三節的小測驗全部作答完畢後，就可以送出簽到</p>
+      <div class="stat"><div>答對題數<b id="st-score">0 / 9</b></div><div>已作答<b id="st-done">0 / 9</b></div><div>閱讀時間<b id="st-time">00:00</b></div><div>看過頁數<b id="st-seen">0 / 56</b></div></div>
+      <p class="dmsg" id="dmsg"></p>
+      <button class="btn" id="submit" disabled>送出簽到</button>
+      <p class="code" id="scode"></p>
+    </div>
+  </section>
 </div>
 
-<footer>
-  <div class="wrap">
-    社會政策 Social Policy（BSO20801）　·　115 學年度第 1 學期　·　東吳大學社會學系<br>
-    授課教師：葉崇揚　·　<a href="https://chungyang1017.github.io/">chungyang1017.github.io</a><br>
-    本頁為課堂講義，內容依 W03 授課投影片編寫，僅供修課同學使用。
+<nav class="navbar">
+  <button class="nav-btn" id="prev" onclick="goPrev()">← 前頁</button>
+  <div class="nav-mid">
+    <span class="pageno"><span id="cur">1</span> / <span id="tot">56</span></span>
+    <div class="dots" id="dots"></div>
   </div>
-</footer>
+  <button class="nav-btn" id="next" onclick="goNext()">下一頁 →</button>
+</nav>
+
+<div class="khint" id="khint"><kbd>←</kbd> <kbd>→</kbd> 翻頁　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕</div>
+
+<div class="toc" id="toc" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" onclick="toggleToc()">×</button>
+    <h3>目次</h3>
+    <p class="tsub">點任一條目跳到該頁。◆ 為需要作答的頁。</p>
+    <ol id="toclist"></ol>
+  </div>
+</div>
 
 <script>
 /* ═══════════════════════════════════════════════
-   簽到設定：部署 Google Apps Script 後，把網址填進 ENDPOINT
-   留空時，送出鍵會顯示簽到碼供手動登記。
+   簽到設定：部署 Google Apps Script 後把網址填進 ENDPOINT。
+   留空時，送出鍵會產生簽到碼供手動登記。
    ═══════════════════════════════════════════════ */
-const CONFIG = {
-  ENDPOINT: '',            // 例：'https://script.google.com/macros/s/AKfy.../exec'
-  WEEK: 'W03',
-  MIN_MINUTES: 20          // 送出簽到所需的最短閱讀時間（分鐘）
-};
+const CONFIG = { ENDPOINT:'', WEEK:'W03', MIN_MINUTES:20 };
 
-const KEY = 'sp115-w03';
-const store = {
-  get(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } },
-  set(o){ try{ localStorage.setItem(KEY, JSON.stringify(o)); }catch(e){} }
-};
-let S = store.get();
-S.poll = S.poll || {};
-S.quiz = S.quiz || {};
-S.seconds = S.seconds || 0;
+const KEY='sp115-w03';
+const store={get(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}},
+             set(o){try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}}};
+let S=store.get();
+S.poll=S.poll||{}; S.quiz=S.quiz||{}; S.seconds=S.seconds||0; S.seen=S.seen||{}; S.page=S.page||0;
 
-/* ── 進度條 ── */
-const bar = document.getElementById('progress');
-function onScroll(){
-  const h = document.documentElement.scrollHeight - window.innerHeight;
-  bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
-  let cur = '';
-  document.querySelectorAll('section[id]').forEach(s=>{
-    if(s.getBoundingClientRect().top <= 120) cur = s.id;
-  });
-  document.querySelectorAll('nav a').forEach(a=>{
-    a.classList.toggle('on', a.getAttribute('href') === '#' + cur);
-  });
+const slides=[...document.querySelectorAll('.slide')];
+const TOT=slides.length;
+let cur=0;
+
+/* ── 目次與 dots ── */
+const toclist=document.getElementById('toclist'), dotsEl=document.getElementById('dots');
+let lastSect='';
+slides.forEach((s,i)=>{
+  const label=s.dataset.label, sect=s.dataset.sect||'';
+  const isHead=(s.dataset.kind==='sec'||s.dataset.kind==='cover');
+  const liEl=document.createElement('li');
+  if(isHead) liEl.className='head';
+  liEl.innerHTML='<a href="#" data-i="'+i+'"><span class="n">'+(i+1)+'</span><span>'+label+'</span></a>';
+  liEl.querySelector('a').addEventListener('click',e=>{e.preventDefault();goTo(i);toggleToc();});
+  toclist.appendChild(liEl);
+  const d=document.createElement('div');
+  d.className='dot'+(sect?(' s'+(sect.startsWith('第一')?1:sect.startsWith('第二')?2:3)):'');
+  d.title=(i+1)+'. '+label;
+  d.addEventListener('click',()=>goTo(i));
+  dotsEl.appendChild(d);
+  lastSect=sect;
+});
+const dots=[...dotsEl.children], tocLinks=[...toclist.querySelectorAll('a')];
+
+/* ── 翻頁 ── */
+function goTo(n){
+  n=Math.max(0,Math.min(TOT-1,n));
+  if(n===cur && slides[cur].classList.contains('is-active')) return;
+  slides[cur].classList.remove('is-active');
+  slides[cur].classList.toggle('is-prev', n>cur);
+  cur=n;
+  slides[cur].classList.remove('is-prev');
+  slides[cur].classList.add('is-active');
+  slides[cur].scrollTop=0;
+  S.page=cur; S.seen[cur]=1; store.set(S);
+  paint();
 }
-window.addEventListener('scroll', onScroll, {passive:true});
+function goNext(){ goTo(cur+1); }
+function goPrev(){ goTo(cur-1); }
+
+function paint(){
+  document.getElementById('cur').textContent=cur+1;
+  document.getElementById('bar').style.width=((cur)/(TOT-1)*100)+'%';
+  document.getElementById('prev').disabled=(cur===0);
+  document.getElementById('next').disabled=(cur===TOT-1);
+  document.getElementById('sect').textContent=slides[cur].dataset.sect||'';
+  dots.forEach((d,i)=>d.classList.toggle('on',i===cur));
+  tocLinks.forEach((a,i)=>a.classList.toggle('cur',i===cur));
+  const act=dots[cur];
+  if(act) act.scrollIntoView({block:'nearest',inline:'center'});
+  refresh();
+}
+
+/* ── 鍵盤與觸控 ── */
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('toc').classList.contains('show')){
+    if(e.key==='Escape') toggleToc();
+    return;
+  }
+  if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();goNext();}
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();goPrev();}
+  else if(e.key===' '&&e.target.tagName!=='BUTTON'){e.preventDefault();goNext();}
+  else if(e.key==='Escape'){toggleToc();}
+  else if(e.key==='f'||e.key==='F'){goFull();}
+  else if(e.key==='Home'){goTo(0);}
+  else if(e.key==='End'){goTo(TOT-1);}
+});
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX;ty=e.changedTouches[0].clientY;},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.6){ dx<0?goNext():goPrev(); }
+},{passive:true});
+
+function toggleToc(){ document.getElementById('toc').classList.toggle('show'); }
+function goFull(){ if(!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.(); }
 
 /* ── 計時 ── */
-function fmt(s){
-  const m = Math.floor(s/60), r = s % 60;
-  return String(m).padStart(2,'0') + ':' + String(r).padStart(2,'0');
-}
-let active = true;
-document.addEventListener('visibilitychange', ()=>{ active = !document.hidden; });
+function fmt(s){const m=Math.floor(s/60);return String(m).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+let active=true;
+document.addEventListener('visibilitychange',()=>{active=!document.hidden;});
 setInterval(()=>{
   if(!active) return;
   S.seconds++;
-  document.getElementById('clock').textContent = '閱讀中 ' + fmt(S.seconds);
-  document.getElementById('st-time').textContent = fmt(S.seconds);
-  if(S.seconds % 10 === 0) store.set(S);
+  document.getElementById('clock').textContent=fmt(S.seconds);
+  const st=document.getElementById('st-time'); if(st) st.textContent=fmt(S.seconds);
+  if(S.seconds%10===0) store.set(S);
   refresh();
-}, 1000);
+},1000);
 
-/* ── 開場三問 ── */
-document.querySelectorAll('.poll').forEach(box=>{
-  const id = box.dataset.poll;
+/* ── 三問 ── */
+document.querySelectorAll('.poll[data-poll]').forEach(box=>{
+  const id=box.dataset.poll;
   box.querySelectorAll('button').forEach(b=>{
-    if(S.poll[id] === b.dataset.v) b.classList.add('sel');
-    b.addEventListener('click', ()=>{
+    if(S.poll[id]===b.dataset.v) b.classList.add('sel');
+    b.addEventListener('click',()=>{
       box.querySelectorAll('button').forEach(x=>x.classList.remove('sel'));
-      b.classList.add('sel');
-      S.poll[id] = b.dataset.v;
-      store.set(S);
-      paintRecall();
+      b.classList.add('sel'); S.poll[id]=b.dataset.v; store.set(S); paintRecall();
     });
   });
 });
 function paintRecall(){
   document.querySelectorAll('[data-recall]').forEach(el=>{
-    const v = S.poll[el.dataset.recall];
-    el.querySelector('b').textContent = v ? v : '—';
-  });
-}
-
-/* ── 可展開卡 ── */
-document.querySelectorAll('.flip').forEach(c=>{
-  c.addEventListener('click', ()=>{
-    c.classList.toggle('open');
-    const h = c.querySelector('.hint');
-    if(h) h.textContent = c.classList.contains('open') ? '收合' : '點擊展開';
-  });
-});
-
-/* ── 五國分頁 ── */
-const tabs = document.getElementById('ctabs');
-if(tabs){
-  tabs.querySelectorAll('button').forEach(b=>{
-    b.addEventListener('click', ()=>{
-      tabs.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
-      b.classList.add('on');
-      document.querySelectorAll('.pane[data-c]').forEach(p=>{
-        p.hidden = (p.dataset.c !== b.dataset.c);
-      });
-    });
+    el.querySelector('b').textContent=S.poll[el.dataset.recall]||'—';
   });
 }
 
 /* ── 測驗 ── */
-document.querySelectorAll('.quiz').forEach(quiz=>{
-  const qid = quiz.dataset.quiz;
-  S.quiz[qid] = S.quiz[qid] || {};
-  quiz.querySelectorAll('.q').forEach((q, i)=>{
-    const ans = parseInt(q.dataset.a, 10);          // 1-based 正解
-    const opts = [...q.querySelectorAll('.opt')];
-    const fb = q.querySelector('.fb');
-    const lock = (picked)=>{
-      opts.forEach((o, k)=>{
-        o.disabled = true;
-        if(k + 1 === ans) o.classList.add('right');
-        else if(k + 1 === picked) o.classList.add('wrong');
-      });
+const ANS={};
+document.querySelectorAll('.quiz,[data-quiz]').forEach(q=>{});
+document.querySelectorAll('[data-quiz]').forEach(quiz=>{
+  const qid=quiz.dataset.quiz;
+  ANS[qid]=[...quiz.querySelectorAll('.q')].map(q=>parseInt(q.dataset.a,10));
+  S.quiz[qid]=S.quiz[qid]||{};
+  quiz.querySelectorAll('.q').forEach((q,i)=>{
+    const a=parseInt(q.dataset.a,10), opts=[...q.querySelectorAll('.opt')], fb=q.querySelector('.fb');
+    const lock=picked=>{
+      opts.forEach((o,k)=>{o.disabled=true;
+        if(k+1===a) o.classList.add('right');
+        else if(k+1===picked) o.classList.add('wrong');});
       fb.classList.add('show');
     };
-    const saved = S.quiz[qid][i];
-    if(saved) lock(saved);
-    opts.forEach((o, k)=>{
-      o.addEventListener('click', ()=>{
-        if(S.quiz[qid][i]) return;
-        S.quiz[qid][i] = k + 1;
-        store.set(S);
-        lock(k + 1);
-        refresh();
-      });
-    });
+    if(S.quiz[qid][i]) lock(S.quiz[qid][i]);
+    opts.forEach((o,k)=>o.addEventListener('click',()=>{
+      if(S.quiz[qid][i]) return;
+      S.quiz[qid][i]=k+1; store.set(S); lock(k+1); refresh();
+    }));
   });
 });
-
-const ANSWERS = {};
-document.querySelectorAll('.quiz').forEach(quiz=>{
-  ANSWERS[quiz.dataset.quiz] = [...quiz.querySelectorAll('.q')].map(q=>parseInt(q.dataset.a, 10));
-});
-
 function tally(){
-  let done = 0, right = 0, total = 0;
-  for(const qid in ANSWERS){
-    ANSWERS[qid].forEach((a, i)=>{
-      total++;
-      const p = S.quiz[qid] && S.quiz[qid][i];
-      if(p){ done++; if(p === a) right++; }
-    });
-  }
-  return {done, right, total};
+  let done=0,right=0,total=0;
+  for(const qid in ANS) ANS[qid].forEach((a,i)=>{
+    total++; const p=S.quiz[qid]&&S.quiz[qid][i];
+    if(p){done++; if(p===a) right++;}
+  });
+  return {done,right,total};
 }
 
+/* ── 完成頁 ── */
 function refresh(){
-  const t = tally();
-  document.getElementById('st-score').textContent = t.right + ' / ' + t.total;
-  document.getElementById('st-done').textContent  = t.done  + ' / ' + t.total;
-  document.querySelectorAll('.quiz').forEach(quiz=>{
-    const qid = quiz.dataset.quiz, a = ANSWERS[qid];
-    let d = 0, r = 0;
-    a.forEach((v, i)=>{ const p = S.quiz[qid] && S.quiz[qid][i]; if(p){ d++; if(p === v) r++; } });
-    quiz.querySelector('.score').textContent = d ? ('答對 ' + r + ' / ' + d) : '';
-  });
-
-  const need = CONFIG.MIN_MINUTES * 60;
-  const btn = document.getElementById('submit');
-  const msg = document.getElementById('done-msg');
-  if(S.sent){
-    btn.disabled = true;
-    btn.textContent = '已完成簽到';
-    msg.textContent = '簽到紀錄已送出（' + S.sent + '）。';
-    return;
-  }
-  const okQuiz = (t.done === t.total);
-  const okTime = (S.seconds >= need);
-  btn.disabled = !(okQuiz && okTime);
-  if(!okQuiz)      msg.textContent = '還有 ' + (t.total - t.done) + ' 題沒有作答。三節的小測驗全部作答完畢後，就可以送出簽到。';
-  else if(!okTime) msg.textContent = '已全部作答。閱讀時間還差 ' + Math.ceil((need - S.seconds)/60) + ' 分鐘（門檻 ' + CONFIG.MIN_MINUTES + ' 分鐘）。';
-  else             msg.textContent = '條件已符合，可以送出簽到。';
+  const t=tally(), sc=document.getElementById('st-score');
+  if(!sc) return;
+  sc.textContent=t.right+' / '+t.total;
+  document.getElementById('st-done').textContent=t.done+' / '+t.total;
+  document.getElementById('st-seen').textContent=Object.keys(S.seen).length+' / '+TOT;
+  const need=CONFIG.MIN_MINUTES*60, btn=document.getElementById('submit'), msg=document.getElementById('dmsg');
+  if(S.sent){ btn.disabled=true; btn.textContent='已完成簽到';
+    msg.textContent='簽到紀錄已送出（'+S.sent+'）。'; return; }
+  const okQ=(t.done===t.total), okT=(S.seconds>=need);
+  btn.disabled=!(okQ&&okT);
+  if(!okQ) msg.textContent='還有 '+(t.total-t.done)+' 題沒有作答。三節的小測驗全部作答完畢後，就可以送出簽到。';
+  else if(!okT) msg.textContent='已全部作答。閱讀時間還差 '+Math.ceil((need-S.seconds)/60)+' 分鐘（門檻 '+CONFIG.MIN_MINUTES+' 分鐘）。';
+  else msg.textContent='條件已符合，可以送出簽到。';
 }
-
-/* ── 送出簽到 ── */
-document.getElementById('submit').addEventListener('click', ()=>{
-  const t = tally();
-  const d = new Date();
-  const pad = n => String(n).padStart(2,'0');
-  const stamp = d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate())
-              + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
-  const note = document.getElementById('submit-note');
-  const payload = {
-    week: CONFIG.WEEK,
-    correct: t.right,
-    answered: t.done,
-    total: t.total,
-    seconds: S.seconds,
-    poll: S.poll,
-    at: stamp
-  };
+document.getElementById('submit').addEventListener('click',()=>{
+  const t=tally(), d=new Date(), pad=n=>String(n).padStart(2,'0');
+  const stamp=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes());
+  const note=document.getElementById('scode');
   if(!CONFIG.ENDPOINT){
-    const code = CONFIG.WEEK + '-' + t.right + '-' + t.done + '-' + Math.floor(S.seconds/60);
-    note.innerHTML = '簽到系統尚未啟用。請把這組代碼填進課堂的 Google 表單：<br>'
-      + '<b style="font-size:19px;letter-spacing:.08em;color:#fff;">' + code + '</b>';
-    S.sent = stamp;
-    store.set(S);
-    refresh();
-    return;
+    note.innerHTML='簽到系統尚未啟用。請把這組代碼填進課堂的 Google 表單：<b>'
+      +CONFIG.WEEK+'-'+t.right+'-'+t.done+'-'+Math.floor(S.seconds/60)+'</b>';
+    S.sent=stamp; store.set(S); refresh(); return;
   }
-  note.textContent = '傳送中…';
-  fetch(CONFIG.ENDPOINT, {
-    method:'POST',
-    mode:'no-cors',
+  note.textContent='傳送中…';
+  fetch(CONFIG.ENDPOINT,{method:'POST',mode:'no-cors',
     headers:{'Content-Type':'text/plain;charset=utf-8'},
-    body: JSON.stringify(payload)
-  }).then(()=>{
-    S.sent = stamp;
-    store.set(S);
-    note.textContent = '已送出。';
-    refresh();
-  }).catch(()=>{
-    note.textContent = '送出失敗，請重新整理後再試一次，或直接向老師回報。';
-  });
+    body:JSON.stringify({week:CONFIG.WEEK,correct:t.right,answered:t.done,total:t.total,
+      seconds:S.seconds,pages:Object.keys(S.seen).length,poll:S.poll,at:stamp})})
+  .then(()=>{S.sent=stamp;store.set(S);note.textContent='已送出。';refresh();})
+  .catch(()=>{note.textContent='送出失敗，請重新整理後再試一次，或直接向老師回報。';});
 });
 
+/* ── 起始 ── */
+slides[0].classList.remove('is-active');
+goTo(S.page||0);
 paintRecall();
-refresh();
-onScroll();
-document.getElementById('clock').textContent = '閱讀中 ' + fmt(S.seconds);
+document.getElementById('clock').textContent=fmt(S.seconds);
+setTimeout(()=>{const k=document.getElementById('khint');if(k)k.style.opacity=0;},6000);
 </script>
 </body>
 </html>
