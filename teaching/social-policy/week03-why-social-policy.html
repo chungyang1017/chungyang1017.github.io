@@ -1535,8 +1535,14 @@ function refresh(){
   document.getElementById('st-done').textContent=t.done+' / '+t.total;
   document.getElementById('st-seen').textContent=Object.keys(S.seen).length+' / '+TOT;
   const need=CONFIG.MIN_MINUTES*60, btn=document.getElementById('submit'), msg=document.getElementById('dmsg');
-  if(S.sent){ btn.disabled=true; btn.textContent='已完成簽到';
-    msg.textContent='簽到紀錄已送出（'+S.sent+'）。'; return; }
+  if(S.sent){ btn.disabled=true; btn.textContent='已送出';
+    msg.textContent='已於 '+S.sent+' 送出。';
+    const sc=document.getElementById('scode');
+    if(sc && S.sentCode) sc.innerHTML=(S.sentWho||'')+'<b>'+S.sentCode+'</b>'
+      +'<span style="display:block;font-size:14.5px;color:#8FA9C0;line-height:1.8;margin-top:8px;">'
+      +'瀏覽器收不到 Google 的回覆，這裡無法確認是否寫入成功。'
+      +'請記下上面這組代碼；若老師的紀錄裡沒有你，把代碼交給老師即可補登。</span>';
+    return; }
   const sid=(document.getElementById('sid')?.value||'').trim();
   const sname=(document.getElementById('sname')?.value||'').trim();
   const okQ=(t.done===t.total), okT=(S.seconds>=need), okId=(sid.length>=4 && sname.length>=1);
@@ -1579,8 +1585,8 @@ document.getElementById('submit').addEventListener('click',()=>{
     +'｜情境題 '+payload.scn
     +'｜回饋：'+(payload.feedback||'（未填）');
   if(!CONFIG.ENDPOINT){
-    note.innerHTML='簽到系統尚未啟用。請截圖這一頁交給老師：<b>'+code+'</b>';
-    S.sent=stamp; store.set(S); refresh(); return;
+    note.innerHTML='<b>尚未送出</b>——簽到後台還沒接上。請把這組代碼交給老師：<br><b>'+code+'</b>';
+    return;
   }
   const btn=document.getElementById('submit');
   btn.disabled=true; note.textContent='傳送中…';
@@ -1590,10 +1596,8 @@ document.getElementById('submit').addEventListener('click',()=>{
   fd.append(CONFIG.FIELDS.code, code);
   fd.append(CONFIG.FIELDS.detail, detail);
   fetch(CONFIG.ENDPOINT,{method:'POST',mode:'no-cors',body:fd})
-  .then(()=>{S.sent=stamp;store.set(S);
-    note.innerHTML='已送出 ✓　'+payload.sid+'　'+payload.name+'<br>'
-      +'<span style="font-size:14px;color:#8FA9C0;">'+code+'</span>';
-    refresh();})
+  .then(()=>{S.sent=stamp; S.sentCode=code; S.sentWho=payload.sid+'　'+payload.name;
+    store.set(S); refresh();})
   .catch(()=>{btn.disabled=false;
     note.textContent='送出失敗，請確認網路後再按一次；若仍失敗請截圖這一頁給老師。';});
 });
