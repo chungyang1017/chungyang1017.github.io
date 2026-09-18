@@ -160,10 +160,10 @@ const courseData = [
         ]},
       { n: '九', date: '11/13', title: '社會救助與貧窮', items: [
           { c: true, t: '《解讀社會政策》第 IV.7 章 所得保障暨社會安全（頁 545–556）。群學。', u: 'https://www.books.com.tw/products/0010351444' },
-          { c: true, t: 'Lister, R. (2004). Poverty, ch. 1. Polity.', u: 'https://openlibrary.org/works/OL13633860W' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 6: Poverty (pp. 87–98).', u: 'https://www.spicker.uk/social-policy/' },
           { c: true, t: 'Spicker, P. (2025). What Is the Welfare State For?, ch. 3: The aims of social welfare policies (pp. 31–59). Bristol University Press.', u: '' },
           { c: false, t: '呂朝賢、陳俊全、王德睦（2008）。臺灣的社會救助動態：趨勢、型態與成因。人文及社會科學集刊，20(4)，441–479。', u: 'https://doi.org/10.6350/JSSP.200812.0441' },
+          { c: false, t: 'Lister, R. (2004). Poverty, ch. 1. Polity.', u: 'https://openlibrary.org/works/OL13633860W' },
           { c: false, t: 'Skocpol, T. (2020 [1991]). Targeting within universalism: Politically viable policies to combat poverty in the United States. In Social Policy in the United States (pp. 250–274). Princeton University Press.', u: 'https://doi.org/10.1515/9780691214023-010' }
         ]},
       { n: '十', date: '11/20', title: '老年經濟安全與年金政策', items: [
@@ -243,10 +243,10 @@ const courseData = [
         ]},
       { n: '9', date: '11/13', title: 'Social assistance and poverty', items: [
           { c: true, t: '《解讀社會政策》第 IV.7 章 所得保障暨社會安全（頁 545–556）。群學。', u: 'https://www.books.com.tw/products/0010351444' },
-          { c: true, t: 'Lister, R. (2004). Poverty, ch. 1. Polity.', u: 'https://openlibrary.org/works/OL13633860W' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 6: Poverty (pp. 87–98).', u: 'https://www.spicker.uk/social-policy/' },
           { c: true, t: 'Spicker, P. (2025). What Is the Welfare State For?, ch. 3: The aims of social welfare policies (pp. 31–59). Bristol University Press.', u: '' },
           { c: false, t: '呂朝賢、陳俊全、王德睦（2008）。臺灣的社會救助動態：趨勢、型態與成因。人文及社會科學集刊，20(4)，441–479。', u: 'https://doi.org/10.6350/JSSP.200812.0441' },
+          { c: false, t: 'Lister, R. (2004). Poverty, ch. 1. Polity.', u: 'https://openlibrary.org/works/OL13633860W' },
           { c: false, t: 'Skocpol, T. (2020 [1991]). Targeting within universalism: Politically viable policies to combat poverty in the United States. In Social Policy in the United States (pp. 250–274). Princeton University Press.', u: 'https://doi.org/10.1515/9780691214023-010' }
         ]},
       { n: '10', date: '11/20', title: 'Old-age income security and pension policy', items: [
