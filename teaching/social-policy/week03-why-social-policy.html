@@ -685,11 +685,16 @@ ul.pts>li.l2::before{left:28px;top:13px;background:#c7c7cc;}
 .slide[data-kind="photo"] .inner{display:grid;grid-template-columns:1.12fr .88fr;
   gap:52px;align-items:center;}
 .slide[data-kind="photo"] .ptext{min-width:0;}
-.slide[data-kind="photo"] .photo{order:-1;margin:0;background:transparent;border-radius:0;min-width:0;}
+.slide[data-kind="photo"] .photo{order:-1;margin:0 auto;background:transparent;border-radius:0;
+  min-width:0;width:fit-content;max-width:100%;overflow:visible;}
 .slide[data-kind="photo"][data-flip="1"] .photo{order:1;}
-.slide[data-kind="photo"] .photo img{max-height:62vh;width:100%;object-fit:cover;
+/* 整張照片完整出現：等比縮放，絕不裁切 */
+.slide[data-kind="photo"] .photo img{display:block;width:auto;max-width:100%;height:auto;
+  max-height:62vh;object-fit:contain;margin:0 auto;
   border-radius:12px;box-shadow:var(--shadow);}
-.slide[data-kind="photo"] .photo .pcap{padding:14px 0 0;color:var(--ink-48);}
+/* 說明不參與容器寬度計算：容器寬＝照片寬，說明才不會比照片寬、錯開左右緣 */
+.slide[data-kind="photo"] .photo .pcap{padding:14px 0 0;color:var(--ink-48);
+  width:0;min-width:100%;box-sizing:border-box;}
 .slide[data-kind="photo"] .photo .ptitle{font-family:var(--sans);font-size:15px;
   font-weight:600;color:var(--ink);margin-bottom:4px;}
 .slide[data-kind="photo"] .photo .phaiku{font-size:15px;line-height:1.7;color:var(--ink-48);}
