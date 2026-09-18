@@ -596,7 +596,8 @@ body{font-size:20px;line-height:1.8;letter-spacing:-.2px;background:#fff;
   -webkit-font-smoothing:antialiased;}
 .deck{position:static;top:auto;left:auto;right:auto;bottom:auto;overflow:visible;z-index:auto;}
 .slide{position:static;inset:auto;opacity:1;transform:none;visibility:visible;
-  display:block;padding:var(--sec) 28px;overflow:visible;transition:none;}
+  display:block;padding:var(--sec) 28px;overflow:visible;transition:none;
+  pointer-events:auto;}
 .slide.is-active,.slide.is-prev{opacity:1;transform:none;visibility:visible;}
 .inner{max-width:1240px;margin:0 auto;}
 
@@ -740,6 +741,16 @@ td{font-size:18px;}
 .slide-done{background:var(--parch)!important;}
 .slide-done .inner{max-width:900px;padding-top:0;}
 .btn{background:var(--blue);border-radius:9999px;padding:13px 30px;}
+/* 完成頁改淺底後，原本給深底用的白字／淺藍字一律改黑 */
+.slide-done h2,.slide-done .sub,.slide-done .stat div,.slide-done .stat b,
+.slide-done .dmsg,.slide-done .code,.slide-done .code b,
+.slide-done .idbox label,.slide-done .fbbox label{color:var(--ink);}
+.slide-done .idbox input,.slide-done .fbbox textarea{
+  background:#fff;border-color:var(--line);color:var(--ink);}
+.slide-done .idbox input::placeholder,
+.slide-done .fbbox textarea::placeholder{color:var(--ink-48);}
+.slide-done .idbox input:focus,.slide-done .fbbox textarea:focus{
+  border-color:var(--blue);background:#fff;}
 
 /* ── 11. 底部導覽：改成捲動用 ── */
 .navbar{background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(20px);
