@@ -567,6 +567,213 @@ tr:nth-child(even) td{background:#fbfcfd;}
   .photo img{max-height:40vh;}
   .navsec .nq{gap:10px;}
 }
+
+/* ══════════════ v3：覆寫層 ══════════════ */
+
+/* ── 1. 調色盤：沿用原變數名，所有既有元件自動換色 ── */
+:root{
+  --navy:#1d1d1f; --navy-d:#000000;
+  --brown:#aa2d00; --brown-l:#d9a441;
+  --grey:#6e6e73; --ink:#1d1d1f; --bg:#ffffff; --card:#ffffff;
+  --line:#e0e0e0; --soft:#f5f5f7; --ok:#0a7281; --no:#aa2d00;
+  --blue:#0066cc; --coral:#aa2d00; --teal:#0a7281; --mustard:#d9a441;
+  --parch:#f5f5f7; --dark:#1d1d1f; --ink-80:#333333; --ink-48:#7a7a7a;
+  --shadow:rgba(0,0,0,.22) 3px 5px 30px 0;
+  --sans:system-ui,-apple-system,'Inter','Noto Sans TC','PingFang TC',sans-serif;
+  --serif:system-ui,-apple-system,'Inter','Noto Sans TC','PingFang TC',sans-serif;
+  --sec:64px;
+}
+/* 每節一個強調色（沿用原本的 data-s 機制） */
+.slide[data-s="1"]{--accent:#0066cc;}
+.slide[data-s="2"]{--accent:#aa2d00;}
+.slide[data-s="3"]{--accent:#0a7281;}
+.slide{--accent:#0066cc;}
+
+/* ── 2. 解除分頁：回到連續捲動 ── */
+html,body{height:auto;overflow:visible;}
+html{scroll-behavior:smooth;scroll-padding-top:104px;}
+body{font-size:20px;line-height:1.8;letter-spacing:-.2px;background:#fff;
+  -webkit-font-smoothing:antialiased;}
+.deck{position:static;top:auto;left:auto;right:auto;bottom:auto;overflow:visible;z-index:auto;}
+.slide{position:static;inset:auto;opacity:1;transform:none;visibility:visible;
+  display:block;padding:var(--sec) 28px;overflow:visible;transition:none;}
+.slide.is-active,.slide.is-prev{opacity:1;transform:none;visibility:visible;}
+.inner{max-width:1240px;margin:0 auto;}
+
+/* 交替底色：白 / #f5f5f7，不用彩色 */
+.slide:nth-of-type(even){background:var(--parch);}
+.slide:nth-of-type(odd){background:#fff;}
+
+/* ── 3. 頂欄：Apple 兩層 ── */
+.topbar{height:44px;background:#000;padding:0 max(28px,calc((100% - 1240px)/2 + 28px));gap:22px;}
+.topbar .course{font-size:13px;color:#fff;opacity:.85;}
+.topbar .wk{font-size:13px;color:#fff;font-weight:400;opacity:.85;}
+.topbar .sep{color:#555;}
+.topbar .sect{font-size:12px;color:#aaa;}
+.topbar .clock{font-size:12px;color:#aaa;}
+.topbar button{border:1px solid #3a3a3c;color:#ddd;font-size:12px;padding:5px 12px;border-radius:6px;}
+.topbar button:hover{background:#2a2a2c;color:#fff;}
+#bar{top:44px;height:2px;background:var(--blue);}
+
+/* ── 4. 標題階梯（body 20px 為基準） ── */
+.slide h2{font-family:var(--sans);font-size:40px;font-weight:700;line-height:1.16;
+  letter-spacing:-.8px;color:var(--ink);margin:0 0 12px;}
+.slide h2::after{display:none;}
+.slide .sub{font-size:26px;font-weight:400;line-height:1.45;letter-spacing:-.3px;
+  color:var(--ink-80);margin:0 0 34px;}
+.slide h2+ul,.slide h2+.body{margin-top:30px;}
+.rule{display:none;}
+
+/* eyebrow → 一條色線 + 小字 */
+.slide .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);
+  font-size:14px;font-weight:600;letter-spacing:.5px;color:var(--ink-48);margin-bottom:14px;}
+.slide .eyebrow::before{content:'';width:22px;height:3px;border-radius:2px;background:var(--accent);}
+.slide .badge{background:var(--soft);color:var(--ink-48);border:1px solid var(--line);}
+
+/* ── 5. 封面：兩欄，不佔滿一螢幕 ── */
+.slide-cover{background:#fff!important;padding-top:76px;border-bottom:1px solid var(--line);}
+.slide-cover .inner{padding-top:0;display:grid;grid-template-columns:1.35fr .65fr;
+  gap:56px;align-items:end;}
+.slide-cover .eyebrow{grid-column:1;color:var(--ink-48);}
+.slide-cover h1{grid-column:1;font-family:var(--sans);font-size:60px;font-weight:700;
+  line-height:1.1;letter-spacing:-1.4px;color:var(--ink);margin:0 0 16px;}
+.slide-cover .tagline{grid-column:1;font-size:26px;color:var(--ink-80);margin:0 0 26px;
+  letter-spacing:-.3px;line-height:1.45;}
+.slide-cover .meta{grid-column:2;grid-row:1/span 4;align-self:start;margin-top:8px;
+  border-top:0;border-left:2px solid var(--line);padding:0 0 0 26px;
+  font-size:15px;line-height:2;color:var(--ink-48);}
+.slide-cover .hint{grid-column:1;margin:0;font-size:14px;color:var(--ink-48);}
+
+/* ── 6. 章節：橫條，38px 高，不是整頁 ── */
+.slide-sec{background:var(--dark)!important;padding:38px 28px;}
+.slide-sec .inner{padding-top:0;display:grid;grid-template-columns:auto 1fr;
+  gap:34px;align-items:center;}
+.slide-sec .num{grid-column:1;grid-row:1/span 2;font-family:var(--sans);font-size:60px;
+  font-weight:300;line-height:1;letter-spacing:-2px;color:var(--mustard);margin:0;}
+.slide-sec h2{grid-column:2;color:#fff;font-size:34px;margin:0 0 4px;letter-spacing:-.6px;}
+.slide-sec .sub{grid-column:2;color:#c7c7cc;font-size:19px;margin:0;}
+
+/* ── 7. 引導句：左邊一條色線，沒有色塊 ── */
+.lead-q{background:transparent;border-left:3px solid var(--accent);border-radius:0;
+  padding:4px 0 4px 24px;margin:0 0 36px;max-width:900px;gap:14px;}
+.lead-q b{font-size:13px;letter-spacing:.5px;color:var(--accent);}
+.lead-q span{font-size:24px;font-weight:500;line-height:1.6;letter-spacing:-.3px;color:var(--ink);}
+
+/* ── 8. 重點：分區塊，數字用色；三塊以上排兩欄 ── */
+ul.pts{max-width:900px;}
+ul.pts>li{font-size:20px;line-height:1.85;margin-bottom:16px;padding-left:26px;}
+ul.pts>li::before{top:14px;width:7px;height:7px;background:var(--accent);}
+ul.pts>li.l2{font-size:19px;padding-left:48px;color:var(--ink-80);margin-bottom:14px;}
+ul.pts>li.l2::before{left:28px;top:13px;background:#c7c7cc;}
+
+.ptblocks{display:grid;grid-template-columns:1fr 1fr;gap:38px 56px;margin:0;}
+.ptblocks.one{grid-template-columns:1fr;max-width:900px;}
+.ptb{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;}
+.ptb .n{font-size:38px;font-weight:300;line-height:1;letter-spacing:-1px;margin-top:2px;
+  color:var(--accent);font-variant-numeric:tabular-nums;}
+.ptb .n.c2{color:var(--coral);} .ptb .n.c3{color:var(--teal);} .ptb .n.c4{color:var(--mustard);}
+.ptb h4{font-size:21px;font-weight:600;letter-spacing:-.3px;margin:0 0 6px;line-height:1.45;color:var(--ink);}
+.ptb h4 strong{font-weight:600;}
+.ptb p{margin:0 0 10px;font-size:19px;line-height:1.85;color:var(--ink-80);}
+.ptb p:last-child{margin-bottom:0;}
+.ptb b{color:var(--ink);font-weight:600;}
+
+.note{font-size:15px;line-height:1.85;color:var(--ink-48);margin-top:32px;
+  padding-top:16px;border-top:1px solid var(--line);max-width:900px;}
+
+/* ── 9. 照片：圖文並排，取代原本的上下堆疊 ── */
+.slide[data-kind="photo"] .inner{display:grid;grid-template-columns:1.12fr .88fr;
+  gap:52px;align-items:center;}
+.slide[data-kind="photo"] .ptext{min-width:0;}
+.slide[data-kind="photo"] .photo{order:-1;margin:0;background:transparent;border-radius:0;min-width:0;}
+.slide[data-kind="photo"][data-flip="1"] .photo{order:1;}
+.slide[data-kind="photo"] .photo img{max-height:62vh;width:100%;object-fit:cover;
+  border-radius:12px;box-shadow:var(--shadow);}
+.slide[data-kind="photo"] .photo .pcap{padding:14px 0 0;color:var(--ink-48);}
+.slide[data-kind="photo"] .photo .ptitle{font-family:var(--sans);font-size:15px;
+  font-weight:600;color:var(--ink);margin-bottom:4px;}
+.slide[data-kind="photo"] .photo .phaiku{font-size:15px;line-height:1.7;color:var(--ink-48);}
+.slide[data-kind="photo"] .photo .plink{border-top:0;padding-top:6px;font-size:13px;color:var(--ink-48);}
+.slide[data-kind="photo"] .photo .plink a{color:var(--blue);border-bottom:0;}
+.slide[data-kind="photo"] .photo .pwhy{background:transparent;padding:0;display:none;}
+/* pwhy 搬到文字欄由 render 處理 */
+.slide[data-kind="photo"] .ptext .pwhy-text{font-size:19px;line-height:1.85;
+  color:var(--ink-80);margin:0 0 12px;}
+.slide[data-kind="photo"] .ptext .pwhy-text b{color:var(--ink);font-weight:600;}
+.slide[data-kind="photo"] .ptext h2{font-size:27px;letter-spacing:-.4px;margin-bottom:12px;}
+.slide[data-kind="photo"] .ptext .sub{font-size:20px;margin-bottom:18px;}
+.slide[data-kind="photo"] .ptext .lead-q{margin-bottom:20px;}
+.slide[data-kind="photo"] .ptext .lead-q span{font-size:20px;}
+
+/* 深色照片頁：交替時吃深底 */
+.slide[data-kind="photo"].dk{background:var(--dark)!important;}
+.slide[data-kind="photo"].dk h2,.slide[data-kind="photo"].dk .ptitle{color:#fff;}
+.slide[data-kind="photo"].dk .sub,.slide[data-kind="photo"].dk .pwhy-text{color:#c7c7cc;}
+.slide[data-kind="photo"].dk .pwhy-text b{color:#fff;}
+.slide[data-kind="photo"].dk .phaiku,.slide[data-kind="photo"].dk .plink,
+.slide[data-kind="photo"].dk .pcap{color:#98989d;}
+.slide[data-kind="photo"].dk .eyebrow{color:#98989d;}
+.slide[data-kind="photo"].dk .lead-q span{color:#fff;}
+
+/* ── 10. 其餘元件：貼齊新語言 ── */
+.two{gap:24px;}
+.col{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px 28px;}
+.col h3{border-bottom:2px solid var(--accent);}
+.col li{font-size:19px;} .col li::before{background:var(--accent);}
+.fcard,.mitem,.poll,.scn,.q,.tcard{border-radius:12px;}
+table{border-radius:12px;overflow:hidden;}
+th{background:var(--dark);font-size:16px;}
+td{font-size:18px;}
+.misread{background:#fff;border:1px solid var(--line);border-left:3px solid var(--coral);
+  border-radius:12px;}
+.slide-quote{background:var(--dark)!important;padding:var(--sec) 28px;}
+.slide-quote .inner{padding-top:0;max-width:1000px;}
+.slide-quote .q{color:#fff;border-left:3px solid var(--mustard);font-family:var(--sans);
+  font-weight:300;letter-spacing:-.4px;}
+.slide-quote cite{color:#98989d;}
+.slide-quiz .inner{max-width:900px;}
+.slide-done{background:var(--parch)!important;}
+.slide-done .inner{max-width:900px;padding-top:0;}
+.btn{background:var(--blue);border-radius:9999px;padding:13px 30px;}
+
+/* ── 11. 底部導覽：改成捲動用 ── */
+.navbar{background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(20px);
+  border-top:1px solid var(--line);height:56px;}
+.nav-btn{border-radius:9999px;font-size:14px;padding:8px 18px;}
+.nav-btn:hover:not(:disabled){border-color:var(--blue);color:var(--blue);}
+.dot.on{background:var(--blue);}
+.dot:hover{background:var(--blue);}
+.dot.on.s1,.dot.on.s2,.dot.on.s3{background:var(--blue);}
+.khint{display:none;}
+.toc{background:rgba(0,0,0,.72);}
+.toc-panel{border-radius:18px;}
+.toc-panel h3{font-family:var(--sans);font-weight:700;letter-spacing:-.5px;}
+.toc li a.cur{background:var(--blue);}
+.toc li.head a{color:var(--coral);}
+
+/* ── 12. 窄螢幕 ── */
+@media(max-width:900px){
+  :root{--sec:48px;}
+  body{font-size:19px;}
+  .slide{padding:var(--sec) 20px;}
+  .slide h2{font-size:27px;letter-spacing:-.4px;}
+  .slide .sub{font-size:20px;}
+  .slide-cover{padding-top:56px;}
+  .slide-cover .inner{grid-template-columns:1fr;gap:24px;}
+  .slide-cover h1{font-size:36px;letter-spacing:-.6px;}
+  .slide-cover .tagline{font-size:20px;}
+  .slide-cover .meta{grid-column:1;grid-row:auto;border-left:0;
+    border-top:1px solid var(--line);padding:20px 0 0;}
+  .slide-sec .inner{grid-template-columns:1fr;gap:8px;}
+  .slide-sec .num{grid-row:auto;font-size:40px;}
+  .slide-sec h2{font-size:26px;}
+  .ptblocks{grid-template-columns:1fr;gap:28px;}
+  .slide[data-kind="photo"] .inner{grid-template-columns:1fr;gap:24px;}
+  .slide[data-kind="photo"] .photo{order:-1!important;}
+  .slide[data-kind="photo"] .photo img{max-height:46vh;}
+  .lead-q span{font-size:20px;}
+  .two{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
@@ -601,16 +808,24 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <div class="eyebrow">ROADMAP</div>
       <h2>這份講義怎麼用</h2>
       <p class="sub">這是預習與複習用的，不是上課投影片</p>
-      <ul class="pts">
-        <li><strong>上課前</strong>：從頭讀一遍。不必背，但要知道每一節在問什麼問題。</li>
-        <li><strong>上課後</strong>：回來把答錯的小測驗重看一次，對照閱讀那幾頁再讀一遍。</li>
-        <li><strong>怎麼讀</strong></li>
-        <li class="l2">每頁最上面有一句「<b>這頁回答</b>」，那就是這一頁的重點</li>
-        <li class="l2">標著<b>對照閱讀</b>的頁，會告訴你指定閱讀該看哪幾頁、讀完要能回答什麼</li>
-        <li class="l2">標著<b>常見誤解</b>的地方，是歷年學生最容易搞錯的</li>
-        <li class="l2">有按鈕、輸入框、可以拖的東西，都是要你動手的——做過才記得住</li>
-        <li><strong>進度會自己存</strong>：關掉再打開會回到上次那頁，小測驗的答案也留著。</li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4><strong>上課前</strong>：從頭讀一遍。不必背，但要知道每一節在問什麼問題。</h4>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4><strong>上課後</strong>：回來把答錯的小測驗重看一次，對照閱讀那幾頁再讀一遍。</h4>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4><strong>怎麼讀</strong></h4>
+          <p>每頁最上面有一句「<b>這頁回答</b>」，那就是這一頁的重點</p>
+          <p>標著<b>對照閱讀</b>的頁，會告訴你指定閱讀該看哪幾頁、讀完要能回答什麼</p>
+          <p>標著<b>常見誤解</b>的地方，是歷年學生最容易搞錯的</p>
+          <p>有按鈕、輸入框、可以拖的東西，都是要你動手的——做過才記得住</p>
+        </div></div>
+        <div class="ptb"><div class="n c4">4</div><div>
+          <h4><strong>進度會自己存</strong>：關掉再打開會回到上次那頁，小測驗的答案也留著。</h4>
+        </div></div>
+      </div>
       <p class="note">上課用的投影片比這份簡單很多。這份是給你自己讀的，所以寫得比較細。</p>
     </div>
   </section>
@@ -710,16 +925,24 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <h2>個人的困擾，什麼時候變成公共的議題？</h2>
       <p class="sub">這是社會學最基本、也最好用的一個區分</p>
       <div class="lead-q"><b>這頁回答</b><span>你失業，是你的問題還是社會的問題？答案取決於「有多少人跟你一樣」。</span></div>
-      <ul class="pts">
-        <li><strong>個人困擾（personal trouble）</strong></li>
-        <li class="l2">發生在個人與他身邊直接的關係裡。解決的辦法也在個人身上——換工作、再進修、搬家。</li>
-        <li><strong>公共議題（public issue）</strong></li>
-        <li class="l2">超出個人所能控制的範圍，根源在制度的安排上。個人再怎麼努力也只能改善自己的處境，改不了那個結構。</li>
-        <li><strong>怎麼分辨</strong></li>
-        <li class="l2">一個城市有一個人失業，那是他的困擾；一個國家有數百萬人失業，那就是公共議題——光看個人的能力與機會，解釋不了這個數字。</li>
-        <li><strong>為什麼這個區分要緊</strong></li>
-        <li class="l2">把公共議題當成個人困擾，政策就會變成「輔導你、訓練你、鼓勵你」；認清它是公共議題，政策才會去動那個結構。</li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4><strong>個人困擾（personal trouble）</strong></h4>
+          <p>發生在個人與他身邊直接的關係裡。解決的辦法也在個人身上——換工作、再進修、搬家。</p>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4><strong>公共議題（public issue）</strong></h4>
+          <p>超出個人所能控制的範圍，根源在制度的安排上。個人再怎麼努力也只能改善自己的處境，改不了那個結構。</p>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4><strong>怎麼分辨</strong></h4>
+          <p>一個城市有一個人失業，那是他的困擾；一個國家有數百萬人失業，那就是公共議題——光看個人的能力與機會，解釋不了這個數字。</p>
+        </div></div>
+        <div class="ptb"><div class="n c4">4</div><div>
+          <h4><strong>為什麼這個區分要緊</strong></h4>
+          <p>把公共議題當成個人困擾，政策就會變成「輔導你、訓練你、鼓勵你」；認清它是公共議題，政策才會去動那個結構。</p>
+        </div></div>
+      </div>
       <div class="misread"><div class="mh">常　見　誤　解</div>
         <div class="mrow"><span class="x">✕</span><span>「個人困擾」是指問題比較小</span><span class="o">○</span><span>大小不是判準。<b>問題的根源在哪裡</b>才是判準</span></div>
         <div class="mrow"><span class="x">✕</span><span>公共議題就是政府該負責</span><span class="o">○</span><span>認定它是公共議題，只表示它的根源在制度。誰來處理是下一個問題</span></div>
@@ -727,11 +950,14 @@ tr:nth-child(even) td{background:#fbfcfd;}
     </div>
   </section>
 
-  <section class="slide " data-kind="photo" data-label="◆ 照片：地下道" data-sect="第一節　為什麼需要社會政策？" data-s="1">
+  <section class="slide  dk" data-kind="photo" data-label="◆ 照片：地下道" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
+      <div class="ptext">
       <div class="eyebrow">一張照片</div>
       <h2>他的處境，是個人困擾還是公共議題？</h2>
       <div class="lead-q"><b>這頁回答</b><span>看完照片再回答：判斷的依據是什麼？</span></div>
+        <p class="pwhy-text">如果全台灣只有他一個人露宿街頭，那是個人困擾。但無家者的人數與住宅價格、租屋市場、精神衛生服務的涵蓋率同時變動，就表示根源在制度的安排上——它是<b>公共議題</b>。這一張照片，第三節談台灣的 social question 時我們會再回來看。</p>
+      </div>
       <div class="photo">
         <img src="https://chungyang1017.github.io/images/photography/l1001209.jpg" alt="地下道" loading="lazy">
         <div class="pcap">
@@ -739,7 +965,7 @@ tr:nth-child(even) td{background:#fbfcfd;}
           <div class="phaiku">捷運站內部，在無人投以目光的角落，有一個人的生活，仍在繼續。</div>
           <div class="plink"><span>攝影：葉崇揚</span><a href="https://chungyang1017.github.io/photography-street-zh.html" target="_blank" rel="noopener">看更多街拍 →</a></div>
         </div>
-        <div class="pwhy">如果全台灣只有他一個人露宿街頭，那是個人困擾。但無家者的人數與住宅價格、租屋市場、精神衛生服務的涵蓋率同時變動，就表示根源在制度的安排上——它是<b>公共議題</b>。這一張照片，第三節談台灣的 social question 時我們會再回來看。</div>
+        <div class="pwhy"></div>
       </div>
     </div>
   </section>
@@ -750,14 +976,22 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <h2>關於社會問題的四個判斷</h2>
       <p class="rvnote">這一頁的內容你們在<strong>福利社會學</strong>已經學過，這裡只是喚起記憶，課堂上會快速帶過。</p>
       <div class="lead-q"><b>這頁回答</b><span>同一件事，為什麼有人說是社會問題、有人說不是？</span></div>
-      <ul class="pts">
-        <li>社會問題來自於<strong>社會運作本身</strong>，不是壞人引起的</li>
-        <li>問題是被多數人定義為有負面影響、而且需要改變的情況</li>
-        <li class="l2">但人們看待問題的方式並不一樣</li>
-        <li>對問題的定義<strong>會隨著時間改變</strong></li>
-        <li class="l2">涉及主觀的價值，也涉及客觀的事實</li>
-        <li>很多社會問題可以被解決，但不是所有；而且不同的社會問題彼此關聯</li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4>社會問題來自於<strong>社會運作本身</strong>，不是壞人引起的</h4>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4>問題是被多數人定義為有負面影響、而且需要改變的情況</h4>
+          <p>但人們看待問題的方式並不一樣</p>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4>對問題的定義<strong>會隨著時間改變</strong></h4>
+          <p>涉及主觀的價值，也涉及客觀的事實</p>
+        </div></div>
+        <div class="ptb"><div class="n c4">4</div><div>
+          <h4>很多社會問題可以被解決，但不是所有；而且不同的社會問題彼此關聯</h4>
+        </div></div>
+      </div>
     </div>
   </section>
 
@@ -824,14 +1058,20 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <h2>「社會提問」這個詞從哪裡來？</h2>
       <p class="sub">十九世紀歐洲，一個新的問題出現了</p>
       <div class="lead-q"><b>這頁回答</b><span>為什麼十九世紀的歐洲人會覺得「社會」本身出了問題？</span></div>
-      <ul class="pts">
-        <li><strong>工業化製造出一個新的階級</strong></li>
-        <li class="l2">大量人口離開農村進入工廠，成為完全依賴工資維生的勞工。一旦生病、受傷、失業、老去，就沒有任何依靠——傳統上由家族、教會、行會承接的風險，突然沒人接了。</li>
-        <li><strong>當時的人把這件事叫做「社會提問」</strong></li>
-        <li class="l2">德文 <i>die soziale Frage</i>、法文 <i>la question sociale</i>、英文 the social question。注意它是<b>單數</b>：不是一堆零散的問題，而是「這個社會的整合出了問題」這一道提問。</li>
-        <li><strong>它問的是什麼</strong></li>
-        <li class="l2">一個靠市場運作的工業社會，要怎麼維持住它的凝聚？如果不處理，結果可能是革命。當時的保守派與改革派都看到了這一點——這也是為什麼德國最早的社會保險，是俾斯麥這位保守派首相推動的。</li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4><strong>工業化製造出一個新的階級</strong></h4>
+          <p>大量人口離開農村進入工廠，成為完全依賴工資維生的勞工。一旦生病、受傷、失業、老去，就沒有任何依靠——傳統上由家族、教會、行會承接的風險，突然沒人接了。</p>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4><strong>當時的人把這件事叫做「社會提問」</strong></h4>
+          <p>德文 <i>die soziale Frage</i>、法文 <i>la question sociale</i>、英文 the social question。注意它是<b>單數</b>：不是一堆零散的問題，而是「這個社會的整合出了問題」這一道提問。</p>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4><strong>它問的是什麼</strong></h4>
+          <p>一個靠市場運作的工業社會，要怎麼維持住它的凝聚？如果不處理，結果可能是革命。當時的保守派與改革派都看到了這一點——這也是為什麼德國最早的社會保險，是俾斯麥這位保守派首相推動的。</p>
+        </div></div>
+      </div>
       <p class="note">不過，這個詞一開始指的並不是工廠勞工——下一頁。</p>
     </div>
   </section>
@@ -842,15 +1082,21 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <h2>但它最初指的不是工廠勞工</h2>
       <p class="sub">同一個詞，所指在半個世紀裡整個移動過一次</p>
       <div class="lead-q"><b>這頁回答</b><span>為什麼說「每個時代有它自己的 social question」？</span></div>
-      <ul class="pts">
-        <li><strong>它先指的是失去土地的窮人</strong></li>
-        <li class="l2">這個詞先出現在法國，一八四〇年以後才進入德語，用來總括「工業化」這個詞遠遠說不清楚的那些劇變。Kaufmann 追溯它的觸發點：封建人身束縛被廢除，土地從「統治的基礎與人民的生計手段」變成可以買賣的商品，自給自足的可能性因此消失，出現一種當時被稱為<b>赤貧（Pauperismus）</b>的新貧窮。所以「社會提問」<b>起初指的不是工廠勞動者，而是前工業時代失去土地的無產窮人</b>。</li>
-        <li><strong>一八五〇年以後，它才分化成兩個問題</strong></li>
-        <li class="l2">「貧窮提問」和「工人提問」（<i>die Arbeiterfrage</i>，中文文獻多譯作「勞工問題」）這時才第一次被清楚分開。一八六三年拉薩爾（Ferdinand Lassalle）成立德意志勞工總協會之後，工廠勞工及其社會整合才成為公共討論的重心。而「社會政策」（<i>Sozialpolitik</i>）這個詞，正是在兩層問題交疊的這個脈絡裡第一次出現。</li>
-        <li><strong>所以 social question 帶著兩個特徵</strong></li>
-        <li class="l2">① 它是<b>時代性</b>的：每個時代有它自己的 social question——上面這段來歷就是例子，所指從無地的窮人移到了工廠的勞工。</li>
-        <li class="l2">② 它是<b>整體性</b>的：不是修補單一問題，而是重新安排社會成員之間的關係。</li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4><strong>它先指的是失去土地的窮人</strong></h4>
+          <p>這個詞先出現在法國，一八四〇年以後才進入德語，用來總括「工業化」這個詞遠遠說不清楚的那些劇變。Kaufmann 追溯它的觸發點：封建人身束縛被廢除，土地從「統治的基礎與人民的生計手段」變成可以買賣的商品，自給自足的可能性因此消失，出現一種當時被稱為<b>赤貧（Pauperismus）</b>的新貧窮。所以「社會提問」<b>起初指的不是工廠勞動者，而是前工業時代失去土地的無產窮人</b>。</p>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4><strong>一八五〇年以後，它才分化成兩個問題</strong></h4>
+          <p>「貧窮提問」和「工人提問」（<i>die Arbeiterfrage</i>，中文文獻多譯作「勞工問題」）這時才第一次被清楚分開。一八六三年拉薩爾（Ferdinand Lassalle）成立德意志勞工總協會之後，工廠勞工及其社會整合才成為公共討論的重心。而「社會政策」（<i>Sozialpolitik</i>）這個詞，正是在兩層問題交疊的這個脈絡裡第一次出現。</p>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4><strong>所以 social question 帶著兩個特徵</strong></h4>
+          <p>① 它是<b>時代性</b>的：每個時代有它自己的 social question——上面這段來歷就是例子，所指從無地的窮人移到了工廠的勞工。</p>
+          <p>② 它是<b>整體性</b>的：不是修補單一問題，而是重新安排社會成員之間的關係。</p>
+        </div></div>
+      </div>
       <p class="note">這一頁的概念史出自 Kaufmann, F.-X. (2013). <i>Variations of the Welfare State: Great Britain, Sweden, France and Germany Between Capitalism and Socialism</i>, §5.2.1 From the &ldquo;Social Question&rdquo; to the &ldquo;Workers&rsquo; Question&rdquo;, pp. 177–178. Springer.</p>
       <div class="misread"><div class="mh">常　見　誤　解</div>
         <div class="mrow"><span class="x">✕</span><span>social question 就是「社會問題」的英文</span><span class="o">○</span><span>social problem 是複數、零散、可逐項處理的；social question 是單數、整體、問的是社會整合的方式</span></div>
@@ -909,13 +1155,19 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <div class="eyebrow">定義（一）</div>
       <h2>社會政策是解決社會問題的集體策略</h2>
       <div class="lead-q"><b>這頁回答</b><span>社會政策的第一個定義：它是什麼樣的「行動」？</span></div>
-      <ul class="pts">
-        <li>Jansson（1984: 6）：社會政策是「<strong>解決社會問題的集體策略</strong>」。</li>
-        <li>關鍵字是「集體」。問題可以個別處理，為什麼要集體處理？</li>
-        <li>接下來用兩種方式回答這個問題：</li>
-        <li class="l2">一種來自政治哲學——<em>社會契約</em></li>
-        <li class="l2">一種來自經濟學——<em>市場失靈</em></li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4>Jansson（1984: 6）：社會政策是「<strong>解決社會問題的集體策略</strong>」。</h4>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4>關鍵字是「集體」。問題可以個別處理，為什麼要集體處理？</h4>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4>接下來用兩種方式回答這個問題：</h4>
+          <p>一種來自政治哲學——<em>社會契約</em></p>
+          <p>一種來自經濟學——<em>市場失靈</em></p>
+        </div></div>
+      </div>
       <div class="readbox">
         <div class="rhead"><span class="rtag">對照閱讀</span><span class="rcite">林萬億（2012）。《臺灣的社會福利：歷史與制度的分析》第 1 章，頁 2–4。五南。</span></div>
         <div class="rbody"><dl>
@@ -936,13 +1188,19 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <p class="sub">social contract</p>
       <p class="rvnote">這一頁的內容你們在<strong>福利社會學</strong>已經學過，這裡只是喚起記憶，課堂上會快速帶過。</p>
       <div class="lead-q"><b>這頁回答</b><span>如果社會政策是集體策略，那「集體」的基礎是什麼？</span></div>
-      <ul class="pts">
-        <li>社會結構由政治、法律、經濟、家庭與社區生活的組成方式決定。</li>
-        <li>決定集體如何運作的規範與規則，就是<strong>社會契約</strong>。</li>
-        <li>它包含兩個要素</li>
-        <li class="l2"><strong>期望</strong>（expectations）：我可以合理期待別人怎麼對我</li>
-        <li class="l2"><strong>相互關係</strong>（mutuality）：我們彼此之間有什麼責任</li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4>社會結構由政治、法律、經濟、家庭與社區生活的組成方式決定。</h4>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4>決定集體如何運作的規範與規則，就是<strong>社會契約</strong>。</h4>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4>它包含兩個要素</h4>
+          <p><strong>期望</strong>（expectations）：我可以合理期待別人怎麼對我</p>
+          <p><strong>相互關係</strong>（mutuality）：我們彼此之間有什麼責任</p>
+        </div></div>
+      </div>
     </div>
   </section>
 
@@ -991,11 +1249,14 @@ tr:nth-child(even) td{background:#fbfcfd;}
     </div>
   </section>
 
-  <section class="slide " data-kind="photo" data-label="◆ 照片：老姐妹" data-sect="第一節　為什麼需要社會政策？" data-s="1">
+  <section class="slide " data-kind="photo" data-label="◆ 照片：老姐妹" data-sect="第一節　為什麼需要社會政策？" data-flip="1" data-s="1">
     <div class="inner">
+      <div class="ptext">
       <div class="eyebrow">一張照片</div>
       <h2>「我們對彼此有責任」長什麼樣子？</h2>
       <div class="lead-q"><b>這頁回答</b><span>社會契約不是一紙文件，它是日常裡看得見的相互依賴。</span></div>
+        <p class="pwhy-text">社會契約最原始的形式，就是這種<b>互相照看</b>。但問題在於：這種非正式的相互責任，涵蓋得到誰？沒有這樣的網絡的人怎麼辦？Spicker 稱這些人為「被排除者」（excluded）——正式制度存在的理由之一，就是把不在網絡裡的人接住（<i>An Introduction to Social Policy</i>, ch. 1, pp. 19–20；ch. 2, p. 28）。</p>
+      </div>
       <div class="photo">
         <img src="https://chungyang1017.github.io/images/photography/l1000737.jpg" alt="老姐妹" loading="lazy">
         <div class="pcap">
@@ -1003,7 +1264,7 @@ tr:nth-child(even) td{background:#fbfcfd;}
           <div class="phaiku">午後 / 三個身影 / 同一陣風</div>
           <div class="plink"><span>攝影：葉崇揚</span><a href="https://chungyang1017.github.io/photography-street-zh.html" target="_blank" rel="noopener">看更多街拍 →</a></div>
         </div>
-        <div class="pwhy">社會契約最原始的形式，就是這種<b>互相照看</b>。但問題在於：這種非正式的相互責任，涵蓋得到誰？沒有這樣的網絡的人怎麼辦？Spicker 稱這些人為「被排除者」（excluded）——正式制度存在的理由之一，就是把不在網絡裡的人接住（<i>An Introduction to Social Policy</i>, ch. 1, pp. 19–20；ch. 2, p. 28）。</div>
+        <div class="pwhy"></div>
       </div>
     </div>
   </section>
@@ -1041,13 +1302,21 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <h2>有效市場的四個假設</h2>
       <p class="rvnote">這一頁的內容你們在<strong>福利社會學</strong>已經學過，這裡只是喚起記憶，課堂上會快速帶過。</p>
       <div class="lead-q"><b>這頁回答</b><span>經濟學說市場最有效率。但那是有條件的——這四個條件。</span></div>
-      <ul class="pts">
-        <li><strong>完全競爭</strong>：經濟行為者都是價格接受者，而且實力相當</li>
-        <li><strong>完全市場</strong>：只要願意支付含生產成本的價格，所有商品與服務都會被提供</li>
-        <li><strong>不存在市場失靈</strong></li>
-        <li><strong>完全訊息</strong>：消費者能低廉、有效地取得並理解訊息，錯誤選擇的成本也低</li>
-        <li class="l2">這四個假設，在健康、教育、照顧、住宅這些領域，<em>幾乎沒有一個成立</em>。</li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4><strong>完全競爭</strong>：經濟行為者都是價格接受者，而且實力相當</h4>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4><strong>完全市場</strong>：只要願意支付含生產成本的價格，所有商品與服務都會被提供</h4>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4><strong>不存在市場失靈</strong></h4>
+        </div></div>
+        <div class="ptb"><div class="n c4">4</div><div>
+          <h4><strong>完全訊息</strong>：消費者能低廉、有效地取得並理解訊息，錯誤選擇的成本也低</h4>
+          <p>這四個假設，在健康、教育、照顧、住宅這些領域，<em>幾乎沒有一個成立</em>。</p>
+        </div></div>
+      </div>
       <div class="misread"><div class="mh">常　見　誤　解</div>
         <div class="mrow"><span class="x">✕</span><span>市場失靈＝市場不好</span><span class="o">○</span><span>市場失靈是<b>技術性的判斷</b>：在這四個條件不成立的地方，市場配置資源的效率會下降</span></div>
         <div class="mrow"><span class="x">✕</span><span>政府介入一定比市場好</span><span class="o">○</span><span>市場會失靈，政府也會失靈。真正的問題是「在這個領域，哪一個失靈得比較少」</span></div>
@@ -1072,16 +1341,24 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <h2>四個假設破在台灣的哪裡？</h2>
       <p class="sub">抽象的市場失靈，配上你看得到的制度</p>
       <div class="lead-q"><b>這頁回答</b><span>把四個假設一個一個對到台灣的實際制度上。</span></div>
-      <ul class="pts">
-        <li><strong>① 資訊對稱 → 醫療</strong></li>
-        <li class="l2">你不會知道自己該做哪些檢查、該吃哪種藥——醫師知道，你不知道。完全交給市場，會出現過度醫療（賣你不需要的）或醫療不足（你不知道要買）。這是全民健保存在的一個理由。</li>
-        <li><strong>② 沒有外溢效果 → 傳染病防治</strong></li>
-        <li class="l2">你打疫苗，受益的不只你，還有你周圍所有人。這份好處你收不到錢，所以市場價格反映不了它的真實價值，個人會打得比社會最適的量更少。COVID-19 期間的公費疫苗就是這個邏輯。</li>
-        <li><strong>③ 可排除、可分割 → 公共衛生與國防</strong></li>
-        <li class="l2">空氣品質、防疫體系、路燈，沒辦法只賣給付錢的人。既然不付錢也能用，就沒有人願意付錢——市場根本不會生產它。</li>
-        <li><strong>④ 沒有壟斷力量 → 租屋市場</strong></li>
-        <li class="l2">土地不能移動、不能複製，房東對特定地段的房子有近乎獨占的地位。再加上租屋資訊不透明、租客資訊弱勢，議價能力是不對等的。</li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4><strong>① 資訊對稱 → 醫療</strong></h4>
+          <p>你不會知道自己該做哪些檢查、該吃哪種藥——醫師知道，你不知道。完全交給市場，會出現過度醫療（賣你不需要的）或醫療不足（你不知道要買）。這是全民健保存在的一個理由。</p>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4><strong>② 沒有外溢效果 → 傳染病防治</strong></h4>
+          <p>你打疫苗，受益的不只你，還有你周圍所有人。這份好處你收不到錢，所以市場價格反映不了它的真實價值，個人會打得比社會最適的量更少。COVID-19 期間的公費疫苗就是這個邏輯。</p>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4><strong>③ 可排除、可分割 → 公共衛生與國防</strong></h4>
+          <p>空氣品質、防疫體系、路燈，沒辦法只賣給付錢的人。既然不付錢也能用，就沒有人願意付錢——市場根本不會生產它。</p>
+        </div></div>
+        <div class="ptb"><div class="n c4">4</div><div>
+          <h4><strong>④ 沒有壟斷力量 → 租屋市場</strong></h4>
+          <p>土地不能移動、不能複製，房東對特定地段的房子有近乎獨占的地位。再加上租屋資訊不透明、租客資訊弱勢，議價能力是不對等的。</p>
+        </div></div>
+      </div>
       <div class="misread"><div class="mh">常　見　誤　解</div>
         <div class="mrow"><span class="x">✕</span><span>市場失靈就一定要政府直接經營</span><span class="o">○</span><span>不一定。政府可以管制、補貼、課稅、強制保險，或自己提供。健保是政府當保險人但醫療由民間提供，就是一個混合的例子</span></div>
       </div>
@@ -1108,9 +1385,12 @@ tr:nth-child(even) td{background:#fbfcfd;}
 
   <section class="slide " data-kind="photo" data-label="◆ 照片：想要飛翔" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
+      <div class="ptext">
       <div class="eyebrow">一張照片</div>
       <h2>廣告承諾的，市場給得起嗎？</h2>
       <div class="lead-q"><b>這頁回答</b><span>市場的承諾與市場的現實，在同一個畫面裡。</span></div>
+        <p class="pwhy-text">這不只是對比。市場確實能給一部分人自由——前提是你手上有可交換的資源。對沒有資源的人來說，市場不會失靈，它只是<b>不回應</b>：沒有購買力的需要，在市場裡不會被登記為需求。這正是 Spicker 說的，需求是一種<b>主張</b>，而不是價格。</p>
+      </div>
       <div class="photo">
         <img src="https://chungyang1017.github.io/images/photography/dscf8066.jpg" alt="想要飛翔" loading="lazy">
         <div class="pcap">
@@ -1118,7 +1398,7 @@ tr:nth-child(even) td{background:#fbfcfd;}
           <div class="phaiku">凌晨的街角，在銀行「想要飛翔」的廣告下方，一位拾荒老人坐下歇息。廣告所許諾的自由，與深夜行走街頭的現實，竟是這般遙遠。</div>
           <div class="plink"><span>攝影：葉崇揚</span><a href="https://chungyang1017.github.io/photography-street-zh.html" target="_blank" rel="noopener">看更多街拍 →</a></div>
         </div>
-        <div class="pwhy">這不只是對比。市場確實能給一部分人自由——前提是你手上有可交換的資源。對沒有資源的人來說，市場不會失靈，它只是<b>不回應</b>：沒有購買力的需要，在市場裡不會被登記為需求。這正是 Spicker 說的，需求是一種<b>主張</b>，而不是價格。</div>
+        <div class="pwhy"></div>
       </div>
     </div>
   </section>
@@ -1278,17 +1558,23 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <h2>這一節，我上課會問你們的</h2>
       <p class="sub">先想過，課堂上就不會卡住</p>
       <div class="lead-q"><b>這頁回答</b><span>預習的目的不是背完，是能回答這幾題。</span></div>
-      <ul class="pts">
-        <li><strong>一定會問的三題</strong></li>
-        <li class="l2">① 舉一個台灣的例子，說明「同一件事從個人困擾變成公共議題」的過程。</li>
-        <li class="l2">② social problem 和 social question 差在哪裡？為什麼這個區分會改變政策設計？</li>
-        <li class="l2">③ 市場失靈的四個假設裡，哪一個最能解釋台灣的租屋問題？</li>
-        <li><strong>可能追問的</strong></li>
-        <li class="l2">如果社會政策的理由是「我們對彼此有責任」，那責任的範圍到哪裡？包括外籍移工嗎？包括還沒出生的世代嗎？</li>
-        <li class="l2">Spicker 說支持福利的「務實論證」分不清因果方向（ch. 1, p. 17）。如果連這一點都不確定，這個論證還能用嗎？</li>
-        <li><strong>你可以先準備的</strong></li>
-        <li class="l2">想一個你自己或身邊的人遇過的困難，用今天的兩個判準判斷它是個人困擾還是公共議題。課堂上會請幾位同學說。</li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4><strong>一定會問的三題</strong></h4>
+          <p>① 舉一個台灣的例子，說明「同一件事從個人困擾變成公共議題」的過程。</p>
+          <p>② social problem 和 social question 差在哪裡？為什麼這個區分會改變政策設計？</p>
+          <p>③ 市場失靈的四個假設裡，哪一個最能解釋台灣的租屋問題？</p>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4><strong>可能追問的</strong></h4>
+          <p>如果社會政策的理由是「我們對彼此有責任」，那責任的範圍到哪裡？包括外籍移工嗎？包括還沒出生的世代嗎？</p>
+          <p>Spicker 說支持福利的「務實論證」分不清因果方向（ch. 1, p. 17）。如果連這一點都不確定，這個論證還能用嗎？</p>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4><strong>你可以先準備的</strong></h4>
+          <p>想一個你自己或身邊的人遇過的困難，用今天的兩個判準判斷它是個人困擾還是公共議題。課堂上會請幾位同學說。</p>
+        </div></div>
+      </div>
     </div>
   </section>
 
@@ -1530,11 +1816,14 @@ tr:nth-child(even) td{background:#fbfcfd;}
     </div>
   </section>
 
-  <section class="slide " data-kind="photo" data-label="◆ 照片：市場午後" data-sect="第二節　社會政策是什麼？" data-s="2">
+  <section class="slide  dk" data-kind="photo" data-label="◆ 照片：市場午後" data-sect="第二節　社會政策是什麼？" data-flip="1" data-s="2">
     <div class="inner">
+      <div class="ptext">
       <div class="eyebrow">一張照片</div>
       <h2>貧窮是怎麼被「看見」的？</h2>
       <div class="lead-q"><b>這頁回答</b><span>在 Booth 與 Rowntree 之前，窮人是道德問題；之後，貧窮成了可以測量的事實。</span></div>
+        <p class="pwhy-text">英國社會政策這個學門，是從<b>把貧窮變成可以調查、可以測量的東西</b>開始的。Booth 在倫敦、Rowntree 在約克，逐戶記錄收入與生活狀況，結果推翻了「窮人是因為懶惰」這個當時的常識。從此以後，社會政策的傳統之一就是：<b>先讓事實被看見，論證才站得住</b>。</p>
+      </div>
       <div class="photo">
         <img src="https://chungyang1017.github.io/images/photography/l1001068.jpg" alt="市場午後" loading="lazy">
         <div class="pcap">
@@ -1542,7 +1831,7 @@ tr:nth-child(even) td{background:#fbfcfd;}
           <div class="phaiku">市場一隅 / 片刻的歇息 / 藏在陰影裡</div>
           <div class="plink"><span>攝影：葉崇揚</span><a href="https://chungyang1017.github.io/photography-street-zh.html" target="_blank" rel="noopener">看更多街拍 →</a></div>
         </div>
-        <div class="pwhy">英國社會政策這個學門，是從<b>把貧窮變成可以調查、可以測量的東西</b>開始的。Booth 在倫敦、Rowntree 在約克，逐戶記錄收入與生活狀況，結果推翻了「窮人是因為懶惰」這個當時的常識。從此以後，社會政策的傳統之一就是：<b>先讓事實被看見，論證才站得住</b>。</div>
+        <div class="pwhy"></div>
       </div>
     </div>
   </section>
@@ -1552,13 +1841,19 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <div class="eyebrow">五個國家（三）</div>
       <h2>瑞典：去商品化</h2>
       <div class="lead-q"><b>這頁回答</b><span>瑞典問的是：一個人不賣勞動力，還能不能活得有尊嚴？</span></div>
-      <ul class="pts">
-        <li>對資本主義的診斷：本質是<strong>勞動的商品化</strong>——人必須把勞動力賣出去才能生活。</li>
-        <li>因此社會政策要解決的，是勞工與其家庭對勞動市場的依賴。</li>
-        <li>於是社會政策被理解為<em>去商品化</em>：不進入市場，也能維持可接受的生活水準。</li>
-        <li class="l2">這個概念後來成為 Esping-Andersen 分類福利體制的核心指標（第 8 週）。</li>
-        <li class="l2">關鍵字：商品化、依賴、普及主義、公民身分。</li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4>對資本主義的診斷：本質是<strong>勞動的商品化</strong>——人必須把勞動力賣出去才能生活。</h4>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4>因此社會政策要解決的，是勞工與其家庭對勞動市場的依賴。</h4>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4>於是社會政策被理解為<em>去商品化</em>：不進入市場，也能維持可接受的生活水準。</h4>
+          <p>這個概念後來成為 Esping-Andersen 分類福利體制的核心指標（第 8 週）。</p>
+          <p>關鍵字：商品化、依賴、普及主義、公民身分。</p>
+        </div></div>
+      </div>
       <div class="case"><h4>去商品化長什麼樣子</h4><p>失業給付替代率約八成、最長 300 天；醫療幾近免費；育兒假由父母共享。重點不是給得多，而是——<b>你不進勞動市場也活得下去</b>。</p><span class="tag">替代率 80%</span><span class="tag">普及主義</span></div>
     </div>
   </section>
@@ -1581,9 +1876,12 @@ tr:nth-child(even) td{background:#fbfcfd;}
 
   <section class="slide " data-kind="photo" data-label="◆ 照片：午歇" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
+      <div class="ptext">
       <div class="eyebrow">一張照片</div>
       <h2>受薪者，是一種身分</h2>
       <div class="lead-q"><b>這頁回答</b><span>法國把「受薪者」當成一種需要被保障的社會身分，為什麼？</span></div>
+        <p class="pwhy-text">法國的 <i>la question sociale</i> 問的不是「誰最窮」，而是<b>這個社會還連得起來嗎</b>。答案是把受薪者（salarié）本身變成一種受保障的身分——只要你在勞動，社會保險、家庭津貼、職業年金就跟著你走。這條路徑和英國「先找出窮人再救助」完全不同，也是為什麼法國的社會支出結構跟英國長得不一樣。</p>
+      </div>
       <div class="photo">
         <img src="https://chungyang1017.github.io/images/photography/dscf7924.jpg" alt="午歇" loading="lazy">
         <div class="pcap">
@@ -1591,7 +1889,7 @@ tr:nth-child(even) td{background:#fbfcfd;}
           <div class="phaiku">正午過後 / 靠著牆 / 抬起疲倦的腳</div>
           <div class="plink"><span>攝影：葉崇揚</span><a href="https://chungyang1017.github.io/photography-street-zh.html" target="_blank" rel="noopener">看更多街拍 →</a></div>
         </div>
-        <div class="pwhy">法國的 <i>la question sociale</i> 問的不是「誰最窮」，而是<b>這個社會還連得起來嗎</b>。答案是把受薪者（salarié）本身變成一種受保障的身分——只要你在勞動，社會保險、家庭津貼、職業年金就跟著你走。這條路徑和英國「先找出窮人再救助」完全不同，也是為什麼法國的社會支出結構跟英國長得不一樣。</div>
+        <div class="pwhy"></div>
       </div>
     </div>
   </section>
@@ -1623,20 +1921,32 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <h2>這五個國家，今天還在吵什麼？</h2>
       <p class="sub">歷史的起點不同，今天的爭論也不同</p>
       <div class="lead-q"><b>這頁回答</b><span>一個國家一百年前的 social question，會決定它今天在吵什麼。</span></div>
-      <ul class="pts">
-        <li><strong>德國</strong>｜社會保險撐得住人口老化嗎？</li>
-        <li class="l2">制度建立在「有穩定工作、長期繳費」的假設上。非典型就業與移工增加後，這個假設鬆動了。</li>
-        <li><strong>英國</strong>｜普及還是選擇？</li>
-        <li class="l2">NHS 這種普及式服務要不要維持，還是該把資源集中給最需要的人。這正是 Spicker 講的 universality vs selectivity（ch.1, pp. 22–23）。</li>
-        <li><strong>瑞典</strong>｜去商品化守得住嗎？</li>
-        <li class="l2">高稅收、高保障的模式，在全球資本流動與移民增加的壓力下怎麼維持。</li>
-        <li><strong>法國</strong>｜團結（solidarité）延伸到誰？</li>
-        <li class="l2">退休制度改革一再引發大規模罷工，爭的是「世代之間的團結」怎麼算才公平。</li>
-        <li><strong>美國</strong>｜welfare 這個詞本身</li>
-        <li class="l2">給窮人的方案長期被污名化，但同時，透過稅制與雇主提供的福利規模其實很大——只是不叫 welfare。</li>
-        <li><strong>那台灣呢？</strong></li>
-        <li class="l2">這正是第三節要處理的問題。先把這五國放在心裡，等一下拿來對照。</li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4><strong>德國</strong>｜社會保險撐得住人口老化嗎？</h4>
+          <p>制度建立在「有穩定工作、長期繳費」的假設上。非典型就業與移工增加後，這個假設鬆動了。</p>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4><strong>英國</strong>｜普及還是選擇？</h4>
+          <p>NHS 這種普及式服務要不要維持，還是該把資源集中給最需要的人。這正是 Spicker 講的 universality vs selectivity（ch.1, pp. 22–23）。</p>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4><strong>瑞典</strong>｜去商品化守得住嗎？</h4>
+          <p>高稅收、高保障的模式，在全球資本流動與移民增加的壓力下怎麼維持。</p>
+        </div></div>
+        <div class="ptb"><div class="n c4">4</div><div>
+          <h4><strong>法國</strong>｜團結（solidarité）延伸到誰？</h4>
+          <p>退休制度改革一再引發大規模罷工，爭的是「世代之間的團結」怎麼算才公平。</p>
+        </div></div>
+        <div class="ptb"><div class="n">5</div><div>
+          <h4><strong>美國</strong>｜welfare 這個詞本身</h4>
+          <p>給窮人的方案長期被污名化，但同時，透過稅制與雇主提供的福利規模其實很大——只是不叫 welfare。</p>
+        </div></div>
+        <div class="ptb"><div class="n c2">6</div><div>
+          <h4><strong>那台灣呢？</strong></h4>
+          <p>這正是第三節要處理的問題。先把這五國放在心裡，等一下拿來對照。</p>
+        </div></div>
+      </div>
     </div>
   </section>
 
@@ -1802,17 +2112,23 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <h2>這一節，我上課會問你們的</h2>
       <p class="sub">五個國家的差異，是接下來整學期的參照點</p>
       <div class="lead-q"><b>這頁回答</b><span>這一節的東西，第 5、6、8 週都會再用到。</span></div>
-      <ul class="pts">
-        <li><strong>一定會問的三題</strong></li>
-        <li class="l2">① 德國和英國，哪一個先有社會保險？為什麼是那個國家先？</li>
-        <li class="l2">② 「去商品化」是什麼意思？舉一個台灣的制度，說明它讓人多一點還是少一點去商品化。</li>
-        <li class="l2">③ 為什麼美國人講 welfare 時，指的是給窮人的錢？這個用法造成什麼後果？</li>
-        <li><strong>可能追問的</strong></li>
-        <li class="l2">Spicker 說福利國家是「一個移動的方向，不是一個終點」（<i>What Is the Welfare State For?</i>, p. 3）。如果沒有終點，我們要用什麼標準說一個國家做得夠不夠？</li>
-        <li class="l2">如果五個國家的 social question 都不同，那把它們放進同一套「福利體制」分類，還有意義嗎？（第 8 週的主戰場）</li>
-        <li><strong>你可以先準備的</strong></li>
-        <li class="l2">挑一個國家，查一下它<b>今天</b>正在吵的社會政策爭議，看看跟它一百年前的 social question 有沒有關係。</li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4><strong>一定會問的三題</strong></h4>
+          <p>① 德國和英國，哪一個先有社會保險？為什麼是那個國家先？</p>
+          <p>② 「去商品化」是什麼意思？舉一個台灣的制度，說明它讓人多一點還是少一點去商品化。</p>
+          <p>③ 為什麼美國人講 welfare 時，指的是給窮人的錢？這個用法造成什麼後果？</p>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4><strong>可能追問的</strong></h4>
+          <p>Spicker 說福利國家是「一個移動的方向，不是一個終點」（<i>What Is the Welfare State For?</i>, p. 3）。如果沒有終點，我們要用什麼標準說一個國家做得夠不夠？</p>
+          <p>如果五個國家的 social question 都不同，那把它們放進同一套「福利體制」分類，還有意義嗎？（第 8 週的主戰場）</p>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4><strong>你可以先準備的</strong></h4>
+          <p>挑一個國家，查一下它<b>今天</b>正在吵的社會政策爭議，看看跟它一百年前的 social question 有沒有關係。</p>
+        </div></div>
+      </div>
     </div>
   </section>
 
@@ -1909,16 +2225,24 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <h2>每一份文件，都是那個年代的回應</h2>
       <p class="sub">看條文看不出來的東西，要看它出現的時機</p>
       <div class="lead-q"><b>這頁回答</b><span>同樣一份文件，放回它出現的年代看，意思完全不同。</span></div>
-      <ul class="pts">
-        <li><strong>1947 憲法社會安全專節</strong>｜制憲的年代</li>
-        <li class="l2">第二次世界大戰剛結束，社會安全是當時的國際共識——1941 年大西洋憲章第 5 條、1942 年貝佛里奇報告、1948 年世界人權宣言，都把社會安全當成基本權（林萬億 2012，頁 4）。中華民國憲法寫進社會安全，是接上這股潮流，而不是台灣社會自己的需求。</li>
-        <li><strong>1965 民生主義現階段社會政策</strong>｜戒嚴體制下的正當性</li>
-        <li class="l2">這是台灣戰後第一份完整的社會政策文件。注意它的名稱——用的是<b>民生主義</b>，一個政治意識形態的語言。它同時要回應美援即將結束、以及政權正當性的需求。</li>
-        <li><strong>1994 社會福利政策綱領</strong>｜解嚴後的社會力</li>
-        <li class="l2">1987 解嚴、1990 年代社會運動蓬勃。這份綱領是在社福團體、勞工團體、婦女團體的壓力下出現的，語言也從「民生主義」換成「福利」與「權利」。</li>
-        <li><strong>2004 綱領修正</strong>｜政黨輪替與新的問題</li>
-        <li class="l2">第一次政黨輪替之後，面對的是人口老化、少子女化與全球化。六大範疇的界定，就是在這個時候定型的。</li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4><strong>1947 憲法社會安全專節</strong>｜制憲的年代</h4>
+          <p>第二次世界大戰剛結束，社會安全是當時的國際共識——1941 年大西洋憲章第 5 條、1942 年貝佛里奇報告、1948 年世界人權宣言，都把社會安全當成基本權（林萬億 2012，頁 4）。中華民國憲法寫進社會安全，是接上這股潮流，而不是台灣社會自己的需求。</p>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4><strong>1965 民生主義現階段社會政策</strong>｜戒嚴體制下的正當性</h4>
+          <p>這是台灣戰後第一份完整的社會政策文件。注意它的名稱——用的是<b>民生主義</b>，一個政治意識形態的語言。它同時要回應美援即將結束、以及政權正當性的需求。</p>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4><strong>1994 社會福利政策綱領</strong>｜解嚴後的社會力</h4>
+          <p>1987 解嚴、1990 年代社會運動蓬勃。這份綱領是在社福團體、勞工團體、婦女團體的壓力下出現的，語言也從「民生主義」換成「福利」與「權利」。</p>
+        </div></div>
+        <div class="ptb"><div class="n c4">4</div><div>
+          <h4><strong>2004 綱領修正</strong>｜政黨輪替與新的問題</h4>
+          <p>第一次政黨輪替之後，面對的是人口老化、少子女化與全球化。六大範疇的界定，就是在這個時候定型的。</p>
+        </div></div>
+      </div>
       <div class="misread"><div class="mh">常　見　誤　解</div>
         <div class="mrow"><span class="x">✕</span><span>憲法有寫，就表示當時做得到</span><span class="o">○</span><span>1947 年的台灣沒有能力執行這些條款。<b>寫進憲法</b>與<b>制度上路</b>之間差了幾十年——這正是社會政策研究要處理的落差</span></div>
       </div>
@@ -2030,27 +2354,38 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <h2>10.5% 是多還是少？</h2>
       <p class="sub">一個數字本身沒有意義，要有比較的對象</p>
       <div class="lead-q"><b>這頁回答</b><span>看到一個百分比，接下來該問什麼？</span></div>
-      <ul class="pts">
-        <li><strong>① 跟自己的過去比</strong></li>
-        <li class="l2">2000 年是 8.1%，2024 年是 10.5%。二十四年增加 2.4 個百分點——在人口老化這麼快的情況下，這個增幅算慢還是快？</li>
-        <li><strong>② 看錢花在誰身上</strong></li>
-        <li class="l2">高齡占 49.0%、疾病與健康占 32.5%，兩項就吃掉八成。「家庭與小孩」只占 7.6%。如果台灣的 social question 是少子女化，這個分布說明了什麼？</li>
-        <li><strong>③ 看錢從哪裡來</strong></li>
-        <li class="l2">社會保險的錢主要來自保費（雇主、受雇者、政府分攤），社會救助則來自稅收。誰負擔、誰受益，是完全不同的兩個問題。</li>
-        <li><strong>④ 小心「支出占比」的陷阱</strong></li>
-        <li class="l2">支出高不等於做得好。錢花下去有沒有把人拉出貧窮、有沒有降低不安全，要看的是<b>結果</b>，不是投入。這是第 8 週比較福利體制時的關鍵爭論。</li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4><strong>① 跟自己的過去比</strong></h4>
+          <p>2000 年是 8.1%，2024 年是 10.5%。二十四年增加 2.4 個百分點——在人口老化這麼快的情況下，這個增幅算慢還是快？</p>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4><strong>② 看錢花在誰身上</strong></h4>
+          <p>高齡占 49.0%、疾病與健康占 32.5%，兩項就吃掉八成。「家庭與小孩」只占 7.6%。如果台灣的 social question 是少子女化，這個分布說明了什麼？</p>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4><strong>③ 看錢從哪裡來</strong></h4>
+          <p>社會保險的錢主要來自保費（雇主、受雇者、政府分攤），社會救助則來自稅收。誰負擔、誰受益，是完全不同的兩個問題。</p>
+        </div></div>
+        <div class="ptb"><div class="n c4">4</div><div>
+          <h4><strong>④ 小心「支出占比」的陷阱</strong></h4>
+          <p>支出高不等於做得好。錢花下去有沒有把人拉出貧窮、有沒有降低不安全，要看的是<b>結果</b>，不是投入。這是第 8 週比較福利體制時的關鍵爭論。</p>
+        </div></div>
+      </div>
       <div class="misread"><div class="mh">常　見　誤　解</div>
         <div class="mrow"><span class="x">✕</span><span>社福支出占比越高，福利國家越成熟</span><span class="o">○</span><span>支出是投入指標，不是結果指標。Spicker 在 <i>What Is the Welfare State For?</i> p. 2 就說，把數字算一算（crunch numbers）並不能讓我們理解福利國家在做什麼</span></div>
       </div>
     </div>
   </section>
 
-  <section class="slide " data-kind="photo" data-label="◆ 照片：溜滑梯" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
+  <section class="slide " data-kind="photo" data-label="◆ 照片：溜滑梯" data-sect="第三節　台灣的社會政策與福利體系" data-flip="1" data-s="3">
     <div class="inner">
+      <div class="ptext">
       <div class="eyebrow">一張照片</div>
       <h2>兩個危機，同一個畫面</h2>
       <div class="lead-q"><b>這頁回答</b><span>如果只能用一張照片說明台灣的處境，這一張。</span></div>
+        <p class="pwhy-text">回到剛才的數字：高齡給付占社會保障支出的 <b>49.0%</b>，家庭與小孩只占 <b>7.6%</b>。這張照片裡空著的兒童遊具與坐著的長者，正好是那個分布的具體樣子。下一頁請你回答：台灣的 social question 是什麼？回答之前，先想想這個分布是<b>原因</b>還是<b>結果</b>。</p>
+      </div>
       <div class="photo">
         <img src="https://chungyang1017.github.io/images/photography/img_0843.jpg" alt="溜滑梯" loading="lazy">
         <div class="pcap">
@@ -2058,7 +2393,7 @@ tr:nth-child(even) td{background:#fbfcfd;}
           <div class="phaiku">在兒童遊具的環抱中，一位老婦人獨自坐在輪椅上。台灣的高齡化與少子化，在同一個畫面裡相遇。</div>
           <div class="plink"><span>攝影：葉崇揚</span><a href="https://chungyang1017.github.io/photography-street-zh.html" target="_blank" rel="noopener">看更多街拍 →</a></div>
         </div>
-        <div class="pwhy">回到剛才的數字：高齡給付占社會保障支出的 <b>49.0%</b>，家庭與小孩只占 <b>7.6%</b>。這張照片裡空著的兒童遊具與坐著的長者，正好是那個分布的具體樣子。下一頁請你回答：台灣的 social question 是什麼？回答之前，先想想這個分布是<b>原因</b>還是<b>結果</b>。</div>
+        <div class="pwhy"></div>
       </div>
     </div>
   </section>
@@ -2091,11 +2426,14 @@ tr:nth-child(even) td{background:#fbfcfd;}
     </div>
   </section>
 
-  <section class="slide " data-kind="photo" data-label="◆ 照片：世代" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
+  <section class="slide  dk" data-kind="photo" data-label="◆ 照片：世代" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
+      <div class="ptext">
       <div class="eyebrow">一張照片</div>
       <h2>世代之間的距離</h2>
       <div class="lead-q"><b>這頁回答</b><span>如果 social question 是「世代」，政策該往哪裡走？</span></div>
+        <p class="pwhy-text">把「世代」當成台灣的 social question，會推導出一整套政策方向：年金的世代負擔怎麼分（第 10 週）、照顧責任要不要從家庭移出來（第 12 週）、青年的就業與住房（第 13 週）。注意它符合 social question 的兩個特徵——<b>整體性</b>（不只是老人或青年的問題）與<b>時代性</b>（這是這個時代特有的裂縫）。</p>
+      </div>
       <div class="photo">
         <img src="https://chungyang1017.github.io/images/photography/img_3499.jpg" alt="世代" loading="lazy">
         <div class="pcap">
@@ -2103,7 +2441,7 @@ tr:nth-child(even) td{background:#fbfcfd;}
           <div class="phaiku">帶著舊時代氣息的老人，與生活在新時代的少女們。台灣的街角，就這樣映照出世代之間的距離。</div>
           <div class="plink"><span>攝影：葉崇揚</span><a href="https://chungyang1017.github.io/photography-street-zh.html" target="_blank" rel="noopener">看更多街拍 →</a></div>
         </div>
-        <div class="pwhy">把「世代」當成台灣的 social question，會推導出一整套政策方向：年金的世代負擔怎麼分（第 10 週）、照顧責任要不要從家庭移出來（第 12 週）、青年的就業與住房（第 13 週）。注意它符合 social question 的兩個特徵——<b>整體性</b>（不只是老人或青年的問題）與<b>時代性</b>（這是這個時代特有的裂縫）。</div>
+        <div class="pwhy"></div>
       </div>
     </div>
   </section>
@@ -2123,11 +2461,14 @@ tr:nth-child(even) td{background:#fbfcfd;}
     </div>
   </section>
 
-  <section class="slide " data-kind="photo" data-label="◆ 照片：老者獨行" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
+  <section class="slide " data-kind="photo" data-label="◆ 照片：老者獨行" data-sect="第三節　台灣的社會政策與福利體系" data-flip="1" data-s="3">
     <div class="inner">
+      <div class="ptext">
       <div class="eyebrow">一張照片</div>
       <h2>七個目標，落在同一個人身上</h2>
       <div class="lead-q"><b>這頁回答</b><span>政策目標寫在紙上是七項，落到一個人身上是什麼樣子？</span></div>
+        <p class="pwhy-text">對這位長者來說，上一頁那七個目標是同時發生的：年金是<b>所得維持</b>、健保是<b>風險分攤</b>、長照是<b>照顧責任的社會化</b>、老人津貼是<b>貧窮舒緩</b>。而這些制度分屬不同部會、不同財源、不同資格條件。社會政策研究常講的「制度的破碎」（fragmentation），對研究者是分析問題，對他是每天要跑幾個窗口的問題。</p>
+      </div>
       <div class="photo">
         <img src="https://chungyang1017.github.io/images/photography/l1005040_2.jpg" alt="老者獨行" loading="lazy">
         <div class="pcap">
@@ -2135,7 +2476,7 @@ tr:nth-child(even) td{background:#fbfcfd;}
           <div class="phaiku">黃昏小巷 / 老人的身影 / 回望</div>
           <div class="plink"><span>攝影：葉崇揚</span><a href="https://chungyang1017.github.io/photography-street-zh.html" target="_blank" rel="noopener">看更多街拍 →</a></div>
         </div>
-        <div class="pwhy">對這位長者來說，上一頁那七個目標是同時發生的：年金是<b>所得維持</b>、健保是<b>風險分攤</b>、長照是<b>照顧責任的社會化</b>、老人津貼是<b>貧窮舒緩</b>。而這些制度分屬不同部會、不同財源、不同資格條件。社會政策研究常講的「制度的破碎」（fragmentation），對研究者是分析問題，對他是每天要跑幾個窗口的問題。</div>
+        <div class="pwhy"></div>
       </div>
     </div>
   </section>
@@ -2158,9 +2499,12 @@ tr:nth-child(even) td{background:#fbfcfd;}
 
   <section class="slide " data-kind="photo" data-label="◆ 照片：財富之下" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
+      <div class="ptext">
       <div class="eyebrow">一張照片</div>
       <h2>分配，是看得見的</h2>
       <div class="lead-q"><b>這頁回答</b><span>「分配的政治」不是抽象的說法。</span></div>
+        <p class="pwhy-text">社會政策處理的，從來不是「要不要有人受苦」這種道德問題，而是<b>誰負擔、誰受益、由誰決定</b>。所以它永遠是政治的——Titmuss 在 1974 年就講得很明白：社會政策「如果被認為在價值上是中立的，就完全沒有意義」（<i>Welfare and Wellbeing</i>, p. 212）。</p>
+      </div>
       <div class="photo">
         <img src="https://chungyang1017.github.io/images/photography/dscf6955.jpg" alt="財富之下" loading="lazy">
         <div class="pcap">
@@ -2168,16 +2512,19 @@ tr:nth-child(even) td{background:#fbfcfd;}
           <div class="phaiku">看板的 / 豐饒之手下 / 一個人生</div>
           <div class="plink"><span>攝影：葉崇揚</span><a href="https://chungyang1017.github.io/photography-street-zh.html" target="_blank" rel="noopener">看更多街拍 →</a></div>
         </div>
-        <div class="pwhy">社會政策處理的，從來不是「要不要有人受苦」這種道德問題，而是<b>誰負擔、誰受益、由誰決定</b>。所以它永遠是政治的——Titmuss 在 1974 年就講得很明白：社會政策「如果被認為在價值上是中立的，就完全沒有意義」（<i>Welfare and Wellbeing</i>, p. 212）。</div>
+        <div class="pwhy"></div>
       </div>
     </div>
   </section>
 
-  <section class="slide " data-kind="photo" data-label="◆ 照片：廣告之下" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
+  <section class="slide  dk" data-kind="photo" data-label="◆ 照片：廣告之下" data-sect="第三節　台灣的社會政策與福利體系" data-flip="1" data-s="3">
     <div class="inner">
+      <div class="ptext">
       <div class="eyebrow">一張照片</div>
       <h2>承諾與現實</h2>
       <div class="lead-q"><b>這頁回答</b><span>最後一張照片。看完，回到開場的三個問題。</span></div>
+        <p class="pwhy-text">這門課接下來十幾週要處理的，就是這個落差：制度<b>承諾</b>了什麼，又<b>實際做到</b>了什麼。第 9 週談社會救助時你會看到，台灣低收入戶的官方貧窮率長期在 1.5% 上下，但這個數字反映的是<b>資格門檻</b>，不是<b>貧窮的實況</b>。學會分辨這兩者，是這門課最重要的一件事。</p>
+      </div>
       <div class="photo">
         <img src="https://chungyang1017.github.io/images/photography/img_9432.jpg" alt="廣告之下" loading="lazy">
         <div class="pcap">
@@ -2185,7 +2532,7 @@ tr:nth-child(even) td{background:#fbfcfd;}
           <div class="phaiku">在年輕貌美模特兒的廣告正下方，一位老人帶著家當坐著。廣告所承諾的未來，與城市承載的現實，始終是兩件不同的事。</div>
           <div class="plink"><span>攝影：葉崇揚</span><a href="https://chungyang1017.github.io/photography-street-zh.html" target="_blank" rel="noopener">看更多街拍 →</a></div>
         </div>
-        <div class="pwhy">這門課接下來十幾週要處理的，就是這個落差：制度<b>承諾</b>了什麼，又<b>實際做到</b>了什麼。第 9 週談社會救助時你會看到，台灣低收入戶的官方貧窮率長期在 1.5% 上下，但這個數字反映的是<b>資格門檻</b>，不是<b>貧窮的實況</b>。學會分辨這兩者，是這門課最重要的一件事。</div>
+        <div class="pwhy"></div>
       </div>
     </div>
   </section>
@@ -2252,17 +2599,23 @@ tr:nth-child(even) td{background:#fbfcfd;}
       <h2>這一節，我上課會問你們的</h2>
       <p class="sub">最後一節的問題沒有標準答案，但要能講出理由</p>
       <div class="lead-q"><b>這頁回答</b><span>這一節問的是判斷，不是記憶。</span></div>
-      <ul class="pts">
-        <li><strong>一定會問的三題</strong></li>
-        <li class="l2">① 1947 年的憲法就寫了社會安全，為什麼台灣的制度要等幾十年才長出來？</li>
-        <li class="l2">② 2004 年綱領的六大範疇裡，哪一項在台灣最弱？為什麼？</li>
-        <li class="l2">③ 你寫下的台灣 social question 是什麼？它能推導出什麼樣的政策方向？</li>
-        <li><strong>可能追問的</strong></li>
-        <li class="l2">社會保障支出占 GDP 10.5%，其中高齡占 49.0%、家庭與小孩只占 7.6%。如果你認為台灣的 social question 是少子女化，這個分布該怎麼改？改得動嗎？</li>
-        <li class="l2">為什麼住宅政策這麼晚才被當成社會政策？這件事本身告訴我們什麼——關於「誰有權力決定什麼算社會問題」？</li>
-        <li><strong>你可以先準備的</strong></li>
-        <li class="l2">把你在上一頁寫下的答案，準備成一分鐘可以說完的版本。課堂上我會挑幾位同學分享，然後我們一起檢查它符不符合 social question 的兩個特徵。</li>
-      </ul>
+      <div class="ptblocks">
+        <div class="ptb"><div class="n">1</div><div>
+          <h4><strong>一定會問的三題</strong></h4>
+          <p>① 1947 年的憲法就寫了社會安全，為什麼台灣的制度要等幾十年才長出來？</p>
+          <p>② 2004 年綱領的六大範疇裡，哪一項在台灣最弱？為什麼？</p>
+          <p>③ 你寫下的台灣 social question 是什麼？它能推導出什麼樣的政策方向？</p>
+        </div></div>
+        <div class="ptb"><div class="n c2">2</div><div>
+          <h4><strong>可能追問的</strong></h4>
+          <p>社會保障支出占 GDP 10.5%，其中高齡占 49.0%、家庭與小孩只占 7.6%。如果你認為台灣的 social question 是少子女化，這個分布該怎麼改？改得動嗎？</p>
+          <p>為什麼住宅政策這麼晚才被當成社會政策？這件事本身告訴我們什麼——關於「誰有權力決定什麼算社會問題」？</p>
+        </div></div>
+        <div class="ptb"><div class="n c3">3</div><div>
+          <h4><strong>你可以先準備的</strong></h4>
+          <p>把你在上一頁寫下的答案，準備成一分鐘可以說完的版本。課堂上我會挑幾位同學分享，然後我們一起檢查它符不符合 social question 的兩個特徵。</p>
+        </div></div>
+      </div>
     </div>
   </section>
 
@@ -2437,13 +2790,8 @@ const dots=[...dotsEl.children], tocLinks=[...toclist.querySelectorAll('a')];
 /* ── 翻頁 ── */
 function goTo(n){
   n=Math.max(0,Math.min(TOT-1,n));
-  if(n===cur && slides[cur].classList.contains('is-active')) return;
-  slides[cur].classList.remove('is-active');
-  slides[cur].classList.toggle('is-prev', n>cur);
   cur=n;
-  slides[cur].classList.remove('is-prev');
-  slides[cur].classList.add('is-active');
-  slides[cur].scrollTop=0;
+  slides[n].scrollIntoView({behavior:'smooth',block:'start'});
   S.page=cur; S.seen[cur]=1; store.set(S);
   paint();
 }
@@ -2452,7 +2800,8 @@ function goPrev(){ goTo(cur-1); }
 
 function paint(){
   document.getElementById('cur').textContent=cur+1;
-  document.getElementById('bar').style.width=((cur)/(TOT-1)*100)+'%';
+  const _m=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('bar').style.width=(_m>0?Math.min(100,window.scrollY/_m*100):0)+'%';
   document.getElementById('prev').disabled=(cur===0);
   document.getElementById('next').disabled=(cur===TOT-1);
   document.getElementById('sect').textContent=slides[cur].dataset.sect||'';
@@ -2472,18 +2821,11 @@ document.addEventListener('keydown',e=>{
   }
   if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();goNext();}
   else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();goPrev();}
-  else if(e.key===' '&&e.target.tagName!=='BUTTON'){e.preventDefault();goNext();}
   else if(e.key==='Escape'){toggleToc();}
   else if(e.key==='f'||e.key==='F'){goFull();}
   else if(e.key==='Home'){goTo(0);}
   else if(e.key==='End'){goTo(TOT-1);}
 });
-let tx=0,ty=0;
-document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX;ty=e.changedTouches[0].clientY;},{passive:true});
-document.addEventListener('touchend',e=>{
-  const dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
-  if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.6){ dx<0?goNext():goPrev(); }
-},{passive:true});
 
 function toggleToc(){ document.getElementById('toc').classList.toggle('show'); }
 function goFull(){ if(!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.(); }
@@ -2710,9 +3052,34 @@ document.getElementById('submit').addEventListener('click',()=>{
     note.textContent='送出失敗，請確認網路後再按一次；若仍失敗請截圖這一頁給老師。';});
 });
 
-/* ── 起始 ── */
-slides[0].classList.remove('is-active');
-goTo(S.page||0);
+/* ── 起始：捲動追蹤 ── */
+let _tick=false;
+window.addEventListener('scroll',()=>{
+  if(_tick) return; _tick=true;
+  requestAnimationFrame(()=>{
+    const _m=document.documentElement.scrollHeight-window.innerHeight;
+    document.getElementById('bar').style.width=(_m>0?Math.min(100,window.scrollY/_m*100):0)+'%';
+    _tick=false;
+  });
+},{passive:true});
+/* 目前看到哪一塊：用 IntersectionObserver，不用翻頁狀態 */
+const _io=new IntersectionObserver(es=>{
+  let best=null,bi=-1;
+  es.forEach(e=>{ if(e.isIntersecting){ const i=slides.indexOf(e.target);
+    if(i>=0 && (best===null||e.intersectionRatio>best)){ best=e.intersectionRatio; bi=i; } } });
+  if(bi>=0 && bi!==cur){
+    cur=bi; S.page=cur; S.seen[cur]=1; store.set(S);
+    document.getElementById('cur').textContent=cur+1;
+    document.getElementById('sect').textContent=slides[cur].dataset.sect||'';
+    dots.forEach((d,i)=>d.classList.toggle('on',i===cur));
+    tocLinks.forEach((a,i)=>a.classList.toggle('cur',i===cur));
+    const _a=dots[cur]; if(_a) _a.scrollIntoView({block:'nearest',inline:'center'});
+    if(typeof paintSectProg==='function') paintSectProg();
+  }
+},{rootMargin:'-40% 0px -40% 0px',threshold:[0,.25,.5,1]});
+slides.forEach(sl=>_io.observe(sl));
+slides.forEach((sl,i)=>{ if(sl.getBoundingClientRect().top<window.innerHeight) S.seen[i]=1; });
+paint();
 ['sid','sname','sfbk'].forEach(id=>{
   const el=document.getElementById(id);
   if(!el) return;
