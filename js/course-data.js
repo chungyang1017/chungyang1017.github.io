@@ -80,16 +80,16 @@ const courseData = [
       { n: '二', date: '9/25', topic: '放假（中秋節）', off: true },
       { n: '三', date: '10/2', topic: '為什麼需要社會政策？社會政策的定義、範疇與台灣的福利體系', href: 'teaching/social-policy/week03-why-social-policy.html', tag: '→ 互動講義' },
       { n: '四', date: '10/9', topic: '放假（國慶日補假）', off: true },
-      { n: '五', date: '10/16', topic: '意識形態（一）：馬克思主義、社會民主與費邊主義' },
-      { n: '六', date: '10/23', topic: '意識形態（二）：自由主義、保守主義、新自由主義與第三條路' },
-      { n: '七', date: '10/30', topic: '如何解釋社會政策（一）：結構論的工業主義邏輯、現代化理論與新馬克思主義' },
-      { n: '八', date: '11/6', topic: '如何解釋社會政策（二）：政治決定論的權力資源理論、國家中心與民主化' },
-      { n: '九', date: '11/13', topic: '電影欣賞', off: true },
-      { n: '十', date: '11/20', topic: '福利國家與其類型：三個福利世界與東亞福利體制' },
-      { n: '十一', date: '11/27', topic: '社會救助與貧窮' },
-      { n: '十二', date: '12/4', topic: '社會保險：健保、勞保與年金' },
-      { n: '十三', date: '12/11', topic: '家庭政策與照顧：兒童照顧與長期照顧' },
-      { n: '十四', date: '12/18', topic: '勞動政策與福利國家轉型：退卻與社會投資' },
+      { n: '五', date: '10/16', topic: '意識形態：馬克思主義、社會民主與費邊主義；自由主義、保守主義、新自由主義與第三條路' },
+      { n: '六', date: '10/23', topic: '如何解釋社會政策：結構論的工業主義邏輯、現代化理論與新馬克思主義；政治決定論的權力資源理論、國家中心與民主化' },
+      { n: '七', date: '10/30', topic: '電影欣賞', off: true },
+      { n: '八', date: '11/6', topic: '福利國家與其類型：三個福利世界與東亞福利體制' },
+      { n: '九', date: '11/13', topic: '社會救助與貧窮' },
+      { n: '十', date: '11/20', topic: '社會保險（一）：年金' },
+      { n: '十一', date: '11/27', topic: '社會保險（二）：健保' },
+      { n: '十二', date: '12/4', topic: '家庭政策與照顧：兒童照顧與長期照顧' },
+      { n: '十三', date: '12/11', topic: '勞動政策' },
+      { n: '十四', date: '12/18', topic: '福利國家轉型：福利退卻與社會投資' },
       { n: '十五', date: '12/25', topic: '放假（行憲紀念日）', off: true },
       { n: '十六', date: '1/1', topic: '放假（開國紀念日）', off: true },
       { n: '十七', date: '1/8', topic: '期末報告' },
@@ -100,20 +100,20 @@ const courseData = [
       { n: '2', date: '9/25', topic: 'No class (Mid-Autumn Festival)', off: true },
       { n: '3', date: '10/2', topic: 'Why do we need social policy? The definition and scope of social policy, and Taiwan\'s welfare system', href: 'teaching/social-policy/week03-why-social-policy.html', tag: '→ Interactive' },
       { n: '4', date: '10/9', topic: 'No class (National Day holiday)', off: true },
-      { n: '5', date: '10/16', topic: 'Ideologies (I): Marxism, social democracy and Fabianism' },
-      { n: '6', date: '10/23', topic: 'Ideologies (II): liberalism, conservatism, neoliberalism and the Third Way' },
-      { n: '7', date: '10/30', topic: 'Explaining social policy (I): structuralist accounts — the logic of industrialism, modernisation theory and neo-Marxism' },
-      { n: '8', date: '11/6', topic: 'Explaining social policy (II): political determinism — power resources theory, state-centred accounts and democratisation' },
-      { n: '9', date: '11/13', topic: 'Film screening', off: true },
-      { n: '10', date: '11/20', topic: 'Welfare states and their typologies: the three worlds of welfare and East Asian welfare regimes' },
-      { n: '11', date: '11/27', topic: 'Social assistance and poverty' },
-      { n: '12', date: '12/4', topic: 'Social insurance: national health insurance, labour insurance and pensions' },
-      { n: '13', date: '12/11', topic: 'Family policy and care: childcare and long-term care' },
-      { n: '14', date: '12/18', topic: 'Labour policy and welfare state transformation: retrenchment and social investment' },
+      { n: '5', date: '10/16', topic: 'Ideologies: Marxism, social democracy and Fabianism; liberalism, conservatism, neoliberalism and the Third Way' },
+      { n: '6', date: '10/23', topic: 'Explaining social policy: structuralist accounts and political determinism' },
+      { n: '7', date: '10/30', topic: 'Film screening', off: true },
+      { n: '8', date: '11/6', topic: 'Welfare states and their typologies: the three worlds of welfare and East Asian welfare regimes' },
+      { n: '9', date: '11/13', topic: 'Social assistance and poverty' },
+      { n: '10', date: '11/20', topic: 'Social insurance (I): pensions' },
+      { n: '11', date: '11/27', topic: 'Social insurance (II): national health insurance' },
+      { n: '12', date: '12/4', topic: 'Family policy and care: childcare and long-term care' },
+      { n: '13', date: '12/11', topic: 'Labour policy' },
+      { n: '14', date: '12/18', topic: 'Welfare state transformation: retrenchment and social investment' },
       { n: '15', date: '12/25', topic: 'No class (Constitution Day)', off: true },
-      { n: '16', date: '1/1', topic: 'No class (Founding Day of the Republic of China)', off: true },
+      { n: '16', date: '1/1', topic: 'No class (Founding Day of the ROC)', off: true },
       { n: '17', date: '1/8', topic: 'Final presentations' },
-      { n: '18', date: '1/15', topic: 'Reading week', off: true }
+      { n: '18', date: '1/15', topic: 'Flexible week', off: true }
     ],
     readings_zh: [
       { n: '三', date: '10/2', title: '為什麼需要社會政策？社會政策的定義、範疇與台灣的福利體系', items: [
@@ -124,15 +124,13 @@ const courseData = [
           { c: false, t: 'Titmuss, R. M. (2001 [1974]). What is social policy? In P. Alcock, H. Glennerster, A. Oakley, &amp; A. Sinfield (Eds.), Welfare and Wellbeing: Richard Titmuss\'s Contribution to Social Policy (pp. 209–214). Policy Press.', u: 'https://doi.org/10.46692/9781847425355.024' },
           { c: false, t: '林萬億（2012）。社會福利政策。收於《臺灣的社會福利：歷史與制度的分析》（二版）第 1 章。五南。', u: 'https://www.wunan.com.tw/bookdetail?NO=65' }
         ]},
-      { n: '五', date: '10/16', title: '意識形態（一）：馬克思主義、社會民主與費邊主義', items: [
+      { n: '五', date: '10/16', title: '意識形態：馬克思主義、社會民主與費邊主義；自由主義、保守主義、新自由主義與第三條路', items: [
           { c: true, t: '《解讀社會政策》第 II.8 章 社會民主觀點（頁 137–148）、第 II.9 章 社會主義的觀點（頁 149–164）。群學。', u: 'https://www.books.com.tw/products/0010351444' },
           { c: true, t: 'Goodin, R. E. (1988). Reasons for Welfare: The Political Theory of the Welfare State, ch. 1. Princeton University Press.', u: 'https://doi.org/10.1515/9780691221878' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 9: The politics of welfare—Marxism, socialism, social democracy (pp. 128–133).', u: 'https://www.spicker.uk/social-policy/' },
           { c: true, t: 'Spicker, P. (2025). What Is the Welfare State For?, ch. 4: The case for welfare (pp. 60–78) &amp; ch. 5: Universal and communitarian perspectives (pp. 79–90). Bristol University Press.', u: '' },
           { c: false, t: 'Marshall, T. H. (1950). Citizenship and social class. In Citizenship and Social Class and Other Essays. Cambridge University Press.', u: 'https://openlibrary.org/works/OL1268150W' },
-          { c: false, t: '呂建德（2008）。民主社會主義是東亞的選項嗎？以中國大陸與台灣的福利體系為例。思想，10，185–209。', u: '' }
-        ]},
-      { n: '六', date: '10/23', title: '意識形態（二）：自由主義、保守主義、新自由主義與第三條路', items: [
+          { c: false, t: '呂建德（2008）。民主社會主義是東亞的選項嗎？以中國大陸與台灣的福利體系為例。思想，10，185–209。', u: '' },
           { c: true, t: '《解讀社會政策》第 II.6 章 新自由主義觀點（頁 113–124）、第 II.7 章 社會福利的保守主義傳統（頁 125–136）、第 II.10 章 第三條路（頁 165–176）。群學。', u: 'https://www.books.com.tw/products/0010351444' },
           { c: true, t: 'Giddens, A. (1998). The Third Way: The Renewal of Social Democracy, ch. 1–2. Polity.', u: 'https://openlibrary.org/works/OL38099W' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 9: The politics of welfare—conservatism, liberal individualism, populism (pp. 133–136).', u: 'https://www.spicker.uk/social-policy/' },
@@ -140,20 +138,18 @@ const courseData = [
           { c: false, t: 'Barry, N. (1999). Welfare (2nd ed.). Open University Press.', u: 'https://openlibrary.org/works/OL1870347W' },
           { c: false, t: 'Pierson, P., &amp; Smith, M. (1993). Bourgeois revolutions? The policy consequences of resurgent conservatism. Comparative Political Studies, 25(4), 487–520.', u: 'https://doi.org/10.1177/0010414093025004003' }
         ]},
-      { n: '七', date: '10/30', title: '如何解釋社會政策（一）：結構論的工業主義邏輯、現代化理論與新馬克思主義', items: [
+      { n: '六', date: '10/23', title: '如何解釋社會政策：結構論的工業主義邏輯、現代化理論與新馬克思主義；政治決定論的權力資源理論、國家中心與民主化', items: [
           { c: true, t: '林萬億（1994）。福利國家發展的理論。收於《福利國家：歷史比較的分析》。巨流。', u: 'https://www.chuliu.com.tw/product/detail/I22071232303104' },
           { c: true, t: 'Flora, P., &amp; Alber, J. (1981). Modernization, democratization, and the development of welfare states in Western Europe. In P. Flora &amp; A. J. Heidenheimer (Eds.), The Development of Welfare States in Europe and America (pp. 37–80). Transaction Books.', u: 'https://doi.org/10.4324/9781351304924-5' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 9: The economics of the welfare state (pp. 137–141).', u: 'https://www.spicker.uk/social-policy/' },
           { c: false, t: 'Wilensky, H. L. (1975). The Welfare State and Equality: Structural and Ideological Roots of Public Expenditures, ch. 2. University of California Press.', u: 'https://openlibrary.org/works/OL4958322W' },
-          { c: false, t: 'Offe, C. (1984). Some contradictions of the modern welfare state. In Contradictions of the Welfare State (ch. 4). Hutchinson.', u: 'https://openlibrary.org/works/OL2088452W' }
-        ]},
-      { n: '八', date: '11/6', title: '如何解釋社會政策（二）：政治決定論的權力資源理論、國家中心與民主化', items: [
+          { c: false, t: 'Offe, C. (1984). Some contradictions of the modern welfare state. In Contradictions of the Welfare State (ch. 4). Hutchinson.', u: 'https://openlibrary.org/works/OL2088452W' },
           { c: true, t: '林萬億（2000）。社會抗爭、政治權力資源與社會福利政策的發展：一九八○年代以來的台灣經驗。收於蕭新煌、林國明編，台灣的社會福利運動（頁 71–134）。巨流。', u: '' },
           { c: true, t: 'Korpi, W. (1989). Power, politics, and state autonomy in the development of social citizenship: Social rights during sickness in eighteen OECD countries since 1930. American Sociological Review, 54(3), 309–328.', u: 'https://doi.org/10.2307/2095608' },
           { c: false, t: '施世駿、葉羽曼（2011）。政治民主化與社會政策：探索政治制度對台灣年金制度建構的影響。臺大社會工作學刊，23，47–92。', u: '' },
           { c: false, t: 'Skocpol, T., &amp; Amenta, E. (1986). States and social policies. Annual Review of Sociology, 12, 131–157.', u: 'https://doi.org/10.1146/annurev.so.12.080186.001023' }
         ]},
-      { n: '十', date: '11/20', title: '福利國家與其類型：三個福利世界與東亞福利體制', items: [
+      { n: '八', date: '11/6', title: '福利國家與其類型：三個福利世界與東亞福利體制', items: [
           { c: true, t: '葉崇揚（2018）。東亞福利體制的過去、現在與未來。收於《轉型中的東亞福利體制》第 2 章。香港城市大學出版社。', u: 'https://www.cityu.edu.hk/upress/east-asian-welfare-regime-in-transition-in-chinese' },
           { c: true, t: 'Esping-Andersen, G. (1990). The Three Worlds of Welfare Capitalism, ch. 1. Princeton University Press.（古允文譯本第 1 章可替代）', u: 'https://press.princeton.edu/books/paperback/9780691028576/the-three-worlds-of-welfare-capitalism' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 8: Comparing welfare states (pp. 109–125).', u: 'https://www.spicker.uk/social-policy/' },
@@ -162,7 +158,7 @@ const courseData = [
           { c: false, t: 'Holliday, I. (2000). Productivist welfare capitalism: Social policy in East Asia. Political Studies, 48(4), 706–723.', u: 'https://doi.org/10.1111/1467-9248.00279' },
           { c: false, t: 'Gough, I. (2004). Welfare regimes in development contexts: A global and regional analysis. In I. Gough &amp; G. Wood (Eds.), Insecurity and Welfare Regimes in Asia, Africa and Latin America (pp. 15–48). Cambridge University Press.', u: 'https://doi.org/10.1017/CBO9780511720239.003' }
         ]},
-      { n: '十一', date: '11/27', title: '社會救助與貧窮', items: [
+      { n: '九', date: '11/13', title: '社會救助與貧窮', items: [
           { c: true, t: '《解讀社會政策》第 IV.7 章 所得保障暨社會安全（頁 545–556）。群學。', u: 'https://www.books.com.tw/products/0010351444' },
           { c: true, t: 'Lister, R. (2004). Poverty, ch. 1. Polity.', u: 'https://openlibrary.org/works/OL13633860W' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 6: Poverty (pp. 87–98).', u: 'https://www.spicker.uk/social-policy/' },
@@ -170,7 +166,7 @@ const courseData = [
           { c: false, t: '呂朝賢、陳俊全、王德睦（2008）。臺灣的社會救助動態：趨勢、型態與成因。人文及社會科學集刊，20(4)，441–479。', u: 'https://doi.org/10.6350/JSSP.200812.0441' },
           { c: false, t: 'Skocpol, T. (2020 [1991]). Targeting within universalism: Politically viable policies to combat poverty in the United States. In Social Policy in the United States (pp. 250–274). Princeton University Press.', u: 'https://doi.org/10.1515/9780691214023-010' }
         ]},
-      { n: '十二', date: '12/4', title: '社會保險：健保、勞保與年金', items: [
+      { n: '十', date: '11/20', title: '社會保險（一）：年金', items: [
           { c: true, t: '林國明（2003）。到國家主義之路：路徑依賴與全民健保組織體制的形成。台灣社會學，5，1–71。', u: 'https://doi.org/10.6676/TS.2003.5.1' },
           { c: true, t: 'Yeh, C.-Y., Cheng, H., &amp; Shi, S.-J. (2020). Public–private pension mixes in East Asia: Institutional diversity and policy implications for old-age security. Ageing &amp; Society, 40(3), 604–625.', u: 'https://doi.org/10.1017/S0144686X18001137' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 11: Social security (pp. 168–180) &amp; ch. 12: Health care (pp. 181–186).', u: 'https://www.spicker.uk/social-policy/' },
@@ -178,7 +174,7 @@ const courseData = [
           { c: false, t: 'Hill, M.（劉升華譯）（2003）。理解社會政策：健康政策章。商務印書館。', u: '' },
           { c: false, t: 'Myles, J. (2002). A new social contract for the elderly? In G. Esping-Andersen et al., Why We Need a New Welfare State (pp. 130–172). Oxford University Press.', u: 'https://doi.org/10.1093/0199256438.003.0005' }
         ]},
-      { n: '十三', date: '12/11', title: '家庭政策與照顧：兒童照顧與長期照顧', items: [
+      { n: '十二', date: '12/4', title: '家庭政策與照顧：兒童照顧與長期照顧', items: [
           { c: true, t: '傅立葉、王兆慶（2011）。照顧公共化的改革與挑戰：以保母托育體系的改革為例。女學學誌：婦女與性別研究，29，79–120。', u: 'https://www.airitilibrary.com/Article/Detail/16834852-201112-201204050017-201204050017-81-109+112-124' },
           { c: true, t: 'Leitner, S. (2003). Varieties of familialism: The caring function of the family in comparative perspective. European Societies, 5(4), 353–375.', u: 'https://doi.org/10.1080/1461669032000127642' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 4: Family policy (pp. 59–62) &amp; ch. 13: The personal social services (pp. 187–190).', u: 'https://www.spicker.uk/social-policy/' },
@@ -186,7 +182,7 @@ const courseData = [
           { c: false, t: 'Hill, M.（劉升華譯）（2003）。理解社會政策：社會照顧章。商務印書館。', u: '' },
           { c: false, t: 'Peng, I. (2011). Social investment policies in Canada, Australia, Japan, and South Korea. International Journal of Child Care and Education Policy, 5(1), 41–53.', u: 'https://doi.org/10.1007/2288-6729-5-1-41' }
         ]},
-      { n: '十四', date: '12/18', title: '勞動政策與福利國家轉型：退卻與社會投資', items: [
+      { n: '十三', date: '12/11', title: '勞動政策', items: [
           { c: true, t: '葉崇揚、古允文（2017）。從生產性福利體制到社會投資福利國家：臺灣與韓國的比較。社會政策與社會工作學刊，21(1)，97–147。', u: 'https://www.airitilibrary.com/Publication/alDetailedMesh?DocID=10287337-201706-201707280006-201707280006-97-147' },
           { c: true, t: 'Pierson, P. (1996). The new politics of the welfare state. World Politics, 48(2), 143–179.', u: 'https://doi.org/10.1353/wp.1996.0004' },
           { c: true, t: 'Hemerijck, A. (2018). Social investment as a policy paradigm. Journal of European Public Policy, 25(6), 810–827.', u: 'https://doi.org/10.1080/13501763.2017.1401111' },
@@ -205,15 +201,13 @@ const courseData = [
           { c: false, t: 'Titmuss, R. M. (2001 [1974]). What is social policy? In P. Alcock, H. Glennerster, A. Oakley, &amp; A. Sinfield (Eds.), Welfare and Wellbeing: Richard Titmuss\'s Contribution to Social Policy (pp. 209–214). Policy Press.', u: 'https://doi.org/10.46692/9781847425355.024' },
           { c: false, t: '林萬億（2012）。社會福利政策。收於《臺灣的社會福利：歷史與制度的分析》（二版）第 1 章。五南。', u: 'https://www.wunan.com.tw/bookdetail?NO=65' }
         ]},
-      { n: '5', date: '10/16', title: 'Ideologies (I): Marxism, social democracy and Fabianism', items: [
+      { n: '5', date: '10/16', title: 'Ideologies: Marxism, social democracy and Fabianism; liberalism, conservatism, neoliberalism and the Third Way', items: [
           { c: true, t: '《解讀社會政策》第 II.8 章 社會民主觀點（頁 137–148）、第 II.9 章 社會主義的觀點（頁 149–164）。群學。', u: 'https://www.books.com.tw/products/0010351444' },
           { c: true, t: 'Goodin, R. E. (1988). Reasons for Welfare: The Political Theory of the Welfare State, ch. 1. Princeton University Press.', u: 'https://doi.org/10.1515/9780691221878' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 9: The politics of welfare—Marxism, socialism, social democracy (pp. 128–133).', u: 'https://www.spicker.uk/social-policy/' },
           { c: true, t: 'Spicker, P. (2025). What Is the Welfare State For?, ch. 4: The case for welfare (pp. 60–78) &amp; ch. 5: Universal and communitarian perspectives (pp. 79–90). Bristol University Press.', u: '' },
           { c: false, t: 'Marshall, T. H. (1950). Citizenship and social class. In Citizenship and Social Class and Other Essays. Cambridge University Press.', u: 'https://openlibrary.org/works/OL1268150W' },
-          { c: false, t: '呂建德（2008）。民主社會主義是東亞的選項嗎？以中國大陸與台灣的福利體系為例。思想，10，185–209。', u: '' }
-        ]},
-      { n: '6', date: '10/23', title: 'Ideologies (II): liberalism, conservatism, neoliberalism and the Third Way', items: [
+          { c: false, t: '呂建德（2008）。民主社會主義是東亞的選項嗎？以中國大陸與台灣的福利體系為例。思想，10，185–209。', u: '' },
           { c: true, t: '《解讀社會政策》第 II.6 章 新自由主義觀點（頁 113–124）、第 II.7 章 社會福利的保守主義傳統（頁 125–136）、第 II.10 章 第三條路（頁 165–176）。群學。', u: 'https://www.books.com.tw/products/0010351444' },
           { c: true, t: 'Giddens, A. (1998). The Third Way: The Renewal of Social Democracy, ch. 1–2. Polity.', u: 'https://openlibrary.org/works/OL38099W' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 9: The politics of welfare—conservatism, liberal individualism, populism (pp. 133–136).', u: 'https://www.spicker.uk/social-policy/' },
@@ -221,20 +215,18 @@ const courseData = [
           { c: false, t: 'Barry, N. (1999). Welfare (2nd ed.). Open University Press.', u: 'https://openlibrary.org/works/OL1870347W' },
           { c: false, t: 'Pierson, P., &amp; Smith, M. (1993). Bourgeois revolutions? The policy consequences of resurgent conservatism. Comparative Political Studies, 25(4), 487–520.', u: 'https://doi.org/10.1177/0010414093025004003' }
         ]},
-      { n: '7', date: '10/30', title: 'Explaining social policy (I): structuralist accounts — the logic of industrialism, modernisation theory and neo-Marxism', items: [
+      { n: '6', date: '10/23', title: 'Explaining social policy: structuralist accounts and political determinism', items: [
           { c: true, t: '林萬億（1994）。福利國家發展的理論。收於《福利國家：歷史比較的分析》。巨流。', u: 'https://www.chuliu.com.tw/product/detail/I22071232303104' },
           { c: true, t: 'Flora, P., &amp; Alber, J. (1981). Modernization, democratization, and the development of welfare states in Western Europe. In P. Flora &amp; A. J. Heidenheimer (Eds.), The Development of Welfare States in Europe and America (pp. 37–80). Transaction Books.', u: 'https://doi.org/10.4324/9781351304924-5' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 9: The economics of the welfare state (pp. 137–141).', u: 'https://www.spicker.uk/social-policy/' },
           { c: false, t: 'Wilensky, H. L. (1975). The Welfare State and Equality: Structural and Ideological Roots of Public Expenditures, ch. 2. University of California Press.', u: 'https://openlibrary.org/works/OL4958322W' },
-          { c: false, t: 'Offe, C. (1984). Some contradictions of the modern welfare state. In Contradictions of the Welfare State (ch. 4). Hutchinson.', u: 'https://openlibrary.org/works/OL2088452W' }
-        ]},
-      { n: '8', date: '11/6', title: 'Explaining social policy (II): political determinism — power resources theory, state-centred accounts and democratisation', items: [
+          { c: false, t: 'Offe, C. (1984). Some contradictions of the modern welfare state. In Contradictions of the Welfare State (ch. 4). Hutchinson.', u: 'https://openlibrary.org/works/OL2088452W' },
           { c: true, t: '林萬億（2000）。社會抗爭、政治權力資源與社會福利政策的發展：一九八○年代以來的台灣經驗。收於蕭新煌、林國明編，台灣的社會福利運動（頁 71–134）。巨流。', u: '' },
           { c: true, t: 'Korpi, W. (1989). Power, politics, and state autonomy in the development of social citizenship: Social rights during sickness in eighteen OECD countries since 1930. American Sociological Review, 54(3), 309–328.', u: 'https://doi.org/10.2307/2095608' },
           { c: false, t: '施世駿、葉羽曼（2011）。政治民主化與社會政策：探索政治制度對台灣年金制度建構的影響。臺大社會工作學刊，23，47–92。', u: '' },
           { c: false, t: 'Skocpol, T., &amp; Amenta, E. (1986). States and social policies. Annual Review of Sociology, 12, 131–157.', u: 'https://doi.org/10.1146/annurev.so.12.080186.001023' }
         ]},
-      { n: '10', date: '11/20', title: 'Welfare states and their typologies: the three worlds of welfare and East Asian welfare regimes', items: [
+      { n: '8', date: '11/6', title: 'Welfare states and their typologies: the three worlds of welfare and East Asian welfare regimes', items: [
           { c: true, t: '葉崇揚（2018）。東亞福利體制的過去、現在與未來。收於《轉型中的東亞福利體制》第 2 章。香港城市大學出版社。', u: 'https://www.cityu.edu.hk/upress/east-asian-welfare-regime-in-transition-in-chinese' },
           { c: true, t: 'Esping-Andersen, G. (1990). The Three Worlds of Welfare Capitalism, ch. 1. Princeton University Press.（古允文譯本第 1 章可替代）', u: 'https://press.princeton.edu/books/paperback/9780691028576/the-three-worlds-of-welfare-capitalism' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 8: Comparing welfare states (pp. 109–125).', u: 'https://www.spicker.uk/social-policy/' },
@@ -243,7 +235,7 @@ const courseData = [
           { c: false, t: 'Holliday, I. (2000). Productivist welfare capitalism: Social policy in East Asia. Political Studies, 48(4), 706–723.', u: 'https://doi.org/10.1111/1467-9248.00279' },
           { c: false, t: 'Gough, I. (2004). Welfare regimes in development contexts: A global and regional analysis. In I. Gough &amp; G. Wood (Eds.), Insecurity and Welfare Regimes in Asia, Africa and Latin America (pp. 15–48). Cambridge University Press.', u: 'https://doi.org/10.1017/CBO9780511720239.003' }
         ]},
-      { n: '11', date: '11/27', title: 'Social assistance and poverty', items: [
+      { n: '9', date: '11/13', title: 'Social assistance and poverty', items: [
           { c: true, t: '《解讀社會政策》第 IV.7 章 所得保障暨社會安全（頁 545–556）。群學。', u: 'https://www.books.com.tw/products/0010351444' },
           { c: true, t: 'Lister, R. (2004). Poverty, ch. 1. Polity.', u: 'https://openlibrary.org/works/OL13633860W' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 6: Poverty (pp. 87–98).', u: 'https://www.spicker.uk/social-policy/' },
@@ -251,7 +243,7 @@ const courseData = [
           { c: false, t: '呂朝賢、陳俊全、王德睦（2008）。臺灣的社會救助動態：趨勢、型態與成因。人文及社會科學集刊，20(4)，441–479。', u: 'https://doi.org/10.6350/JSSP.200812.0441' },
           { c: false, t: 'Skocpol, T. (2020 [1991]). Targeting within universalism: Politically viable policies to combat poverty in the United States. In Social Policy in the United States (pp. 250–274). Princeton University Press.', u: 'https://doi.org/10.1515/9780691214023-010' }
         ]},
-      { n: '12', date: '12/4', title: 'Social insurance: national health insurance, labour insurance and pensions', items: [
+      { n: '10', date: '11/20', title: 'Social insurance (I): pensions', items: [
           { c: true, t: '林國明（2003）。到國家主義之路：路徑依賴與全民健保組織體制的形成。台灣社會學，5，1–71。', u: 'https://doi.org/10.6676/TS.2003.5.1' },
           { c: true, t: 'Yeh, C.-Y., Cheng, H., &amp; Shi, S.-J. (2020). Public–private pension mixes in East Asia: Institutional diversity and policy implications for old-age security. Ageing &amp; Society, 40(3), 604–625.', u: 'https://doi.org/10.1017/S0144686X18001137' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 11: Social security (pp. 168–180) &amp; ch. 12: Health care (pp. 181–186).', u: 'https://www.spicker.uk/social-policy/' },
@@ -259,7 +251,7 @@ const courseData = [
           { c: false, t: 'Hill, M.（劉升華譯）（2003）。理解社會政策：健康政策章。商務印書館。', u: '' },
           { c: false, t: 'Myles, J. (2002). A new social contract for the elderly? In G. Esping-Andersen et al., Why We Need a New Welfare State (pp. 130–172). Oxford University Press.', u: 'https://doi.org/10.1093/0199256438.003.0005' }
         ]},
-      { n: '13', date: '12/11', title: 'Family policy and care: childcare and long-term care', items: [
+      { n: '12', date: '12/4', title: 'Family policy and care: childcare and long-term care', items: [
           { c: true, t: '傅立葉、王兆慶（2011）。照顧公共化的改革與挑戰：以保母托育體系的改革為例。女學學誌：婦女與性別研究，29，79–120。', u: 'https://www.airitilibrary.com/Article/Detail/16834852-201112-201204050017-201204050017-81-109+112-124' },
           { c: true, t: 'Leitner, S. (2003). Varieties of familialism: The caring function of the family in comparative perspective. European Societies, 5(4), 353–375.', u: 'https://doi.org/10.1080/1461669032000127642' },
           { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 4: Family policy (pp. 59–62) &amp; ch. 13: The personal social services (pp. 187–190).', u: 'https://www.spicker.uk/social-policy/' },
@@ -267,7 +259,7 @@ const courseData = [
           { c: false, t: 'Hill, M.（劉升華譯）（2003）。理解社會政策：社會照顧章。商務印書館。', u: '' },
           { c: false, t: 'Peng, I. (2011). Social investment policies in Canada, Australia, Japan, and South Korea. International Journal of Child Care and Education Policy, 5(1), 41–53.', u: 'https://doi.org/10.1007/2288-6729-5-1-41' }
         ]},
-      { n: '14', date: '12/18', title: 'Labour policy and welfare state transformation: retrenchment and social investment', items: [
+      { n: '13', date: '12/11', title: 'Labour policy', items: [
           { c: true, t: '葉崇揚、古允文（2017）。從生產性福利體制到社會投資福利國家：臺灣與韓國的比較。社會政策與社會工作學刊，21(1)，97–147。', u: 'https://www.airitilibrary.com/Publication/alDetailedMesh?DocID=10287337-201706-201707280006-201707280006-97-147' },
           { c: true, t: 'Pierson, P. (1996). The new politics of the welfare state. World Politics, 48(2), 143–179.', u: 'https://doi.org/10.1353/wp.1996.0004' },
           { c: true, t: 'Hemerijck, A. (2018). Social investment as a policy paradigm. Journal of European Public Policy, 25(6), 810–827.', u: 'https://doi.org/10.1080/13501763.2017.1401111' },
