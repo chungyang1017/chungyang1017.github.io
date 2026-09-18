@@ -85,8 +85,8 @@ const courseData = [
       { n: '七', date: '10/30', topic: '電影欣賞', off: true },
       { n: '八', date: '11/6', topic: '福利國家與其類型：三個福利世界與東亞福利體制' },
       { n: '九', date: '11/13', topic: '社會救助與貧窮' },
-      { n: '十', date: '11/20', topic: '社會保險（一）：年金' },
-      { n: '十一', date: '11/27', topic: '社會保險（二）：健保' },
+      { n: '十', date: '11/20', topic: '老年經濟安全與年金政策' },
+      { n: '十一', date: '11/27', topic: '健康照護政策' },
       { n: '十二', date: '12/4', topic: '家庭政策與照顧：兒童照顧與長期照顧' },
       { n: '十三', date: '12/11', topic: '勞動政策' },
       { n: '十四', date: '12/18', topic: '福利國家轉型：福利退卻與社會投資' },
@@ -105,8 +105,8 @@ const courseData = [
       { n: '7', date: '10/30', topic: 'Film screening', off: true },
       { n: '8', date: '11/6', topic: 'Welfare states and their typologies: the three worlds of welfare and East Asian welfare regimes' },
       { n: '9', date: '11/13', topic: 'Social assistance and poverty' },
-      { n: '10', date: '11/20', topic: 'Social insurance (I): pensions' },
-      { n: '11', date: '11/27', topic: 'Social insurance (II): national health insurance' },
+      { n: '10', date: '11/20', topic: 'Old-age income security and pension policy' },
+      { n: '11', date: '11/27', topic: 'Health care policy' },
       { n: '12', date: '12/4', topic: 'Family policy and care: childcare and long-term care' },
       { n: '13', date: '12/11', topic: 'Labour policy' },
       { n: '14', date: '12/18', topic: 'Welfare state transformation: retrenchment and social investment' },
@@ -166,13 +166,17 @@ const courseData = [
           { c: false, t: '呂朝賢、陳俊全、王德睦（2008）。臺灣的社會救助動態：趨勢、型態與成因。人文及社會科學集刊，20(4)，441–479。', u: 'https://doi.org/10.6350/JSSP.200812.0441' },
           { c: false, t: 'Skocpol, T. (2020 [1991]). Targeting within universalism: Politically viable policies to combat poverty in the United States. In Social Policy in the United States (pp. 250–274). Princeton University Press.', u: 'https://doi.org/10.1515/9780691214023-010' }
         ]},
-      { n: '十', date: '11/20', title: '社會保險（一）：年金', items: [
-          { c: true, t: '林國明（2003）。到國家主義之路：路徑依賴與全民健保組織體制的形成。台灣社會學，5，1–71。', u: 'https://doi.org/10.6676/TS.2003.5.1' },
+      { n: '十', date: '11/20', title: '老年經濟安全與年金政策', items: [
           { c: true, t: 'Yeh, C.-Y., Cheng, H., &amp; Shi, S.-J. (2020). Public–private pension mixes in East Asia: Institutional diversity and policy implications for old-age security. Ageing &amp; Society, 40(3), 604–625.', u: 'https://doi.org/10.1017/S0144686X18001137' },
-          { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 11: Social security (pp. 168–180) &amp; ch. 12: Health care (pp. 181–186).', u: 'https://www.spicker.uk/social-policy/' },
-          { c: false, t: '《解讀社會政策》第 IV.9 章 健康照顧（頁 569–580）。群學。', u: 'https://www.books.com.tw/products/0010351444' },
-          { c: false, t: 'Hill, M.（劉升華譯）（2003）。理解社會政策：健康政策章。商務印書館。', u: '' },
+          { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 11: Social security (pp. 168–180).', u: 'https://www.spicker.uk/social-policy/' },
+          { c: true, t: '林宏陽（2020）。年金自動調整機制之理論意涵：德國與瑞典年金保險體系體現當代社會契約之精神。人文社會科學研究，14(4)，51–75。', u: 'https://doi.org/10.6284/NPUSTHSSR.202012_14(4).3' },
           { c: false, t: 'Myles, J. (2002). A new social contract for the elderly? In G. Esping-Andersen et al., Why We Need a New Welfare State (pp. 130–172). Oxford University Press.', u: 'https://doi.org/10.1093/0199256438.003.0005' }
+        ]},
+      { n: '十一', date: '11/27', title: '健康照護政策', items: [
+          { c: true, t: '林國明（2003）。到國家主義之路：路徑依賴與全民健保組織體制的形成。台灣社會學，5，1–71。', u: 'https://doi.org/10.6676/TS.2003.5.1' },
+          { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 12: Health care (pp. 181–186).', u: 'https://www.spicker.uk/social-policy/' },
+          { c: false, t: '《解讀社會政策》第 IV.9 章 健康照顧（頁 569–580）。群學。', u: 'https://www.books.com.tw/products/0010351444' },
+          { c: false, t: 'Hill, M.（劉升華譯）（2003）。理解社會政策：健康政策章。商務印書館。', u: '' }
         ]},
       { n: '十二', date: '12/4', title: '家庭政策與照顧：兒童照顧與長期照顧', items: [
           { c: true, t: '傅立葉、王兆慶（2011）。照顧公共化的改革與挑戰：以保母托育體系的改革為例。女學學誌：婦女與性別研究，29，79–120。', u: 'https://www.airitilibrary.com/Article/Detail/16834852-201112-201204050017-201204050017-81-109+112-124' },
@@ -183,13 +187,15 @@ const courseData = [
           { c: false, t: 'Peng, I. (2011). Social investment policies in Canada, Australia, Japan, and South Korea. International Journal of Child Care and Education Policy, 5(1), 41–53.', u: 'https://doi.org/10.1007/2288-6729-5-1-41' }
         ]},
       { n: '十三', date: '12/11', title: '勞動政策', items: [
+          { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 4: Work (pp. 63–65) &amp; ch. 11: Unemployment and employment services (pp. 179–180).', u: 'https://www.spicker.uk/social-policy/' },
+          { c: false, t: 'Bonoli, G. (2013). The Origins of Active Social Policy: Labour Market and Childcare Policies in a Comparative Perspective, ch. 1. Oxford University Press.', u: 'https://doi.org/10.1093/acprof:oso/9780199669769.001.0001' },
+          { c: false, t: '《解讀社會政策》第 IV.8 章 就業（頁 557–568）。群學。', u: 'https://www.books.com.tw/products/0010351444' }
+        ]},
+      { n: '十四', date: '12/18', title: '福利國家轉型：福利退卻與社會投資', items: [
           { c: true, t: '葉崇揚、古允文（2017）。從生產性福利體制到社會投資福利國家：臺灣與韓國的比較。社會政策與社會工作學刊，21(1)，97–147。', u: 'https://www.airitilibrary.com/Publication/alDetailedMesh?DocID=10287337-201706-201707280006-201707280006-97-147' },
           { c: true, t: 'Pierson, P. (1996). The new politics of the welfare state. World Politics, 48(2), 143–179.', u: 'https://doi.org/10.1353/wp.1996.0004' },
           { c: true, t: 'Hemerijck, A. (2018). Social investment as a policy paradigm. Journal of European Public Policy, 25(6), 810–827.', u: 'https://doi.org/10.1080/13501763.2017.1401111' },
-          { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 4: Work (pp. 63–65) &amp; ch. 11: Unemployment and employment services (pp. 179–180).', u: 'https://www.spicker.uk/social-policy/' },
-          { c: true, t: 'Spicker, P. (2025). What Is the Welfare State For?, ch. 7: Some challenges for the welfare states (pp. 106–118). Bristol University Press.', u: '' },
-          { c: false, t: 'Bonoli, G. (2013). The Origins of Active Social Policy: Labour Market and Childcare Policies in a Comparative Perspective, ch. 1. Oxford University Press.', u: 'https://doi.org/10.1093/acprof:oso/9780199669769.001.0001' },
-          { c: false, t: '《解讀社會政策》第 IV.8 章 就業（頁 557–568）。群學。', u: 'https://www.books.com.tw/products/0010351444' }
+          { c: true, t: 'Spicker, P. (2025). What Is the Welfare State For?, ch. 7: Some challenges for the welfare states (pp. 106–118). Bristol University Press.', u: '' }
         ]}
     ],
     readings_en: [
@@ -243,13 +249,17 @@ const courseData = [
           { c: false, t: '呂朝賢、陳俊全、王德睦（2008）。臺灣的社會救助動態：趨勢、型態與成因。人文及社會科學集刊，20(4)，441–479。', u: 'https://doi.org/10.6350/JSSP.200812.0441' },
           { c: false, t: 'Skocpol, T. (2020 [1991]). Targeting within universalism: Politically viable policies to combat poverty in the United States. In Social Policy in the United States (pp. 250–274). Princeton University Press.', u: 'https://doi.org/10.1515/9780691214023-010' }
         ]},
-      { n: '10', date: '11/20', title: 'Social insurance (I): pensions', items: [
-          { c: true, t: '林國明（2003）。到國家主義之路：路徑依賴與全民健保組織體制的形成。台灣社會學，5，1–71。', u: 'https://doi.org/10.6676/TS.2003.5.1' },
+      { n: '10', date: '11/20', title: 'Old-age income security and pension policy', items: [
           { c: true, t: 'Yeh, C.-Y., Cheng, H., &amp; Shi, S.-J. (2020). Public–private pension mixes in East Asia: Institutional diversity and policy implications for old-age security. Ageing &amp; Society, 40(3), 604–625.', u: 'https://doi.org/10.1017/S0144686X18001137' },
-          { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 11: Social security (pp. 168–180) &amp; ch. 12: Health care (pp. 181–186).', u: 'https://www.spicker.uk/social-policy/' },
-          { c: false, t: '《解讀社會政策》第 IV.9 章 健康照顧（頁 569–580）。群學。', u: 'https://www.books.com.tw/products/0010351444' },
-          { c: false, t: 'Hill, M.（劉升華譯）（2003）。理解社會政策：健康政策章。商務印書館。', u: '' },
+          { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 11: Social security (pp. 168–180).', u: 'https://www.spicker.uk/social-policy/' },
+          { c: true, t: '林宏陽（2020）。年金自動調整機制之理論意涵：德國與瑞典年金保險體系體現當代社會契約之精神。人文社會科學研究，14(4)，51–75。', u: 'https://doi.org/10.6284/NPUSTHSSR.202012_14(4).3' },
           { c: false, t: 'Myles, J. (2002). A new social contract for the elderly? In G. Esping-Andersen et al., Why We Need a New Welfare State (pp. 130–172). Oxford University Press.', u: 'https://doi.org/10.1093/0199256438.003.0005' }
+        ]},
+      { n: '11', date: '11/27', title: 'Health care policy', items: [
+          { c: true, t: '林國明（2003）。到國家主義之路：路徑依賴與全民健保組織體制的形成。台灣社會學，5，1–71。', u: 'https://doi.org/10.6676/TS.2003.5.1' },
+          { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 12: Health care (pp. 181–186).', u: 'https://www.spicker.uk/social-policy/' },
+          { c: false, t: '《解讀社會政策》第 IV.9 章 健康照顧（頁 569–580）。群學。', u: 'https://www.books.com.tw/products/0010351444' },
+          { c: false, t: 'Hill, M.（劉升華譯）（2003）。理解社會政策：健康政策章。商務印書館。', u: '' }
         ]},
       { n: '12', date: '12/4', title: 'Family policy and care: childcare and long-term care', items: [
           { c: true, t: '傅立葉、王兆慶（2011）。照顧公共化的改革與挑戰：以保母托育體系的改革為例。女學學誌：婦女與性別研究，29，79–120。', u: 'https://www.airitilibrary.com/Article/Detail/16834852-201112-201204050017-201204050017-81-109+112-124' },
@@ -260,13 +270,15 @@ const courseData = [
           { c: false, t: 'Peng, I. (2011). Social investment policies in Canada, Australia, Japan, and South Korea. International Journal of Child Care and Education Policy, 5(1), 41–53.', u: 'https://doi.org/10.1007/2288-6729-5-1-41' }
         ]},
       { n: '13', date: '12/11', title: 'Labour policy', items: [
+          { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 4: Work (pp. 63–65) &amp; ch. 11: Unemployment and employment services (pp. 179–180).', u: 'https://www.spicker.uk/social-policy/' },
+          { c: false, t: 'Bonoli, G. (2013). The Origins of Active Social Policy: Labour Market and Childcare Policies in a Comparative Perspective, ch. 1. Oxford University Press.', u: 'https://doi.org/10.1093/acprof:oso/9780199669769.001.0001' },
+          { c: false, t: '《解讀社會政策》第 IV.8 章 就業（頁 557–568）。群學。', u: 'https://www.books.com.tw/products/0010351444' }
+        ]},
+      { n: '14', date: '12/18', title: 'Welfare state transformation: retrenchment and social investment', items: [
           { c: true, t: '葉崇揚、古允文（2017）。從生產性福利體制到社會投資福利國家：臺灣與韓國的比較。社會政策與社會工作學刊，21(1)，97–147。', u: 'https://www.airitilibrary.com/Publication/alDetailedMesh?DocID=10287337-201706-201707280006-201707280006-97-147' },
           { c: true, t: 'Pierson, P. (1996). The new politics of the welfare state. World Politics, 48(2), 143–179.', u: 'https://doi.org/10.1353/wp.1996.0004' },
           { c: true, t: 'Hemerijck, A. (2018). Social investment as a policy paradigm. Journal of European Public Policy, 25(6), 810–827.', u: 'https://doi.org/10.1080/13501763.2017.1401111' },
-          { c: true, t: 'Spicker, P. (2025). An Introduction to Social Policy, ch. 4: Work (pp. 63–65) &amp; ch. 11: Unemployment and employment services (pp. 179–180).', u: 'https://www.spicker.uk/social-policy/' },
-          { c: true, t: 'Spicker, P. (2025). What Is the Welfare State For?, ch. 7: Some challenges for the welfare states (pp. 106–118). Bristol University Press.', u: '' },
-          { c: false, t: 'Bonoli, G. (2013). The Origins of Active Social Policy: Labour Market and Childcare Policies in a Comparative Perspective, ch. 1. Oxford University Press.', u: 'https://doi.org/10.1093/acprof:oso/9780199669769.001.0001' },
-          { c: false, t: '《解讀社會政策》第 IV.8 章 就業（頁 557–568）。群學。', u: 'https://www.books.com.tw/products/0010351444' }
+          { c: true, t: 'Spicker, P. (2025). What Is the Welfare State For?, ch. 7: Some challenges for the welfare states (pp. 106–118). Bristol University Press.', u: '' }
         ]}
     ]
   },
