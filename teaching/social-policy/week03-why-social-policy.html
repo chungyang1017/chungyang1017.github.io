@@ -493,7 +493,8 @@ tr:nth-child(even) td{background:#fbfcfd;}
 /* ── 照片 ── */
 .photo{margin:18px 0 0;border-radius:13px;overflow:hidden;background:#0E1A24;
   box-shadow:0 8px 26px rgba(14,26,36,.16);}
-.photo img{display:block;width:100%;height:auto;max-height:52vh;object-fit:cover;}
+/* 不裁切也不變形：讓 img 自己就是照片的尺寸，高度上限 58vh，直幅照片置中 */
+.photo img{display:block;max-width:100%;width:auto;height:auto;max-height:58vh;margin:0 auto;}
 .photo .pcap{padding:14px 21px 16px;color:#D8E2EA;}
 .photo .ptitle{font-family:var(--serif);font-size:19px;color:#fff;margin-bottom:5px;}
 .photo .phaiku{font-size:16px;line-height:1.8;color:#B9C8D5;}
@@ -735,7 +736,7 @@ tr:nth-child(even) td{background:#fbfcfd;}
         <img src="https://chungyang1017.github.io/images/photography/l1001209.jpg" alt="地下道" loading="lazy">
         <div class="pcap">
           <div class="ptitle">地下道</div>
-          <div class="phaiku">車站內部，在無人投以目光的角落，有一個人的生活，仍在繼續。</div>
+          <div class="phaiku">捷運站內部，在無人投以目光的角落，有一個人的生活，仍在繼續。</div>
           <div class="plink"><span>攝影：葉崇揚</span><a href="https://chungyang1017.github.io/photography-street-zh.html" target="_blank" rel="noopener">看更多街拍 →</a></div>
         </div>
         <div class="pwhy">如果全台灣只有他一個人露宿街頭，那是個人困擾。但無家者的人數與住宅價格、租屋市場、精神衛生服務的涵蓋率同時變動，就表示根源在制度的安排上——它是<b>公共議題</b>。這一張照片，第三節談台灣的 social question 時我們會再回來看。</div>
