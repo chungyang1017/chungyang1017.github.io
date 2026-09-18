@@ -774,6 +774,59 @@ td{font-size:18px;}
   .lead-q span{font-size:20px;}
   .two{grid-template-columns:1fr;}
 }
+
+/* ══════════ v3b：一次一節 ＋ 小節摺疊 ══════════ */
+
+/* 固定頂欄與底欄的讓位 */
+body{padding-top:44px;padding-bottom:56px;}
+html{scroll-padding-top:110px;}
+#bar{top:44px;z-index:52;}
+
+/* ── 節切換列 ── */
+.panenav{position:sticky;top:44px;z-index:50;height:54px;display:flex;align-items:center;gap:6px;
+  background:rgba(245,245,247,.88);backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;
+  padding:0 max(28px,calc((100% - 1240px)/2 + 28px));}
+.panenav::-webkit-scrollbar{display:none;}
+.panenav button{font-family:var(--sans);font-size:15px;font-weight:500;letter-spacing:-.2px;
+  color:var(--ink-48);background:transparent;border:0;border-radius:9999px;
+  padding:8px 18px;cursor:pointer;white-space:nowrap;transition:.18s;}
+.panenav button:hover{color:var(--ink);background:rgba(0,0,0,.05);}
+.panenav button.on{background:var(--ink);color:#fff;}
+
+/* ── 節面板：一次只顯示一個 ── */
+.pane{display:none;}
+.pane.on{display:block;}
+
+/* ── 小節摺疊 ── */
+.chap{border-bottom:1px solid var(--line);background:#fff;}
+.chap-h{display:flex;align-items:center;gap:20px;width:100%;
+  font-family:var(--sans);text-align:left;background:transparent;border:0;cursor:pointer;
+  padding:26px max(28px,calc((100% - 1240px)/2 + 28px));transition:background .18s;}
+.chap-h:hover{background:var(--parch);}
+.chap-h .cn{font-size:15px;font-weight:600;color:var(--accent,#0066cc);
+  font-variant-numeric:tabular-nums;min-width:26px;}
+.chap-h .ct{flex:1;font-size:24px;font-weight:600;letter-spacing:-.4px;color:var(--ink);}
+.chap-h .cc{font-size:14px;color:var(--ink-48);white-space:nowrap;}
+.chap-h .cv{width:12px;height:12px;border-right:2px solid var(--ink-48);
+  border-bottom:2px solid var(--ink-48);transform:rotate(45deg);margin:-4px 0 0 4px;
+  transition:transform .22s;flex:none;}
+.chap.open .chap-h{background:var(--parch);}
+.chap.open .chap-h .cv{transform:rotate(-135deg);margin-top:4px;}
+.chap-b{display:none;}
+.chap.open .chap-b{display:block;}
+/* 小節裡的頁面底色交替，由小節自己重新起算 */
+.chap-b .slide:nth-of-type(even){background:var(--parch);}
+.chap-b .slide:nth-of-type(odd){background:#fff;}
+
+@media(max-width:900px){
+  .panenav{height:48px;padding:0 16px;}
+  .panenav button{font-size:14px;padding:7px 14px;}
+  .chap-h{padding:20px 16px;gap:14px;}
+  .chap-h .ct{font-size:19px;}
+  html{scroll-padding-top:98px;}
+}
+
 </style>
 </head>
 <body>
@@ -792,7 +845,16 @@ td{font-size:18px;}
 </div>
 <div id="bar"></div>
 
+<div class="panenav" id="panenav">
+  <button data-pane="0" class="on">封面</button>
+  <button data-pane="1">第一節</button>
+  <button data-pane="2">第二節</button>
+  <button data-pane="3">第三節</button>
+  <button data-pane="4">完成</button>
+</div>
+
 <div class="deck" id="deck">
+<div class="pane on" data-pane="0">
   <section class="slide slide-cover" data-kind="cover" data-label="封面" data-sect="" data-s="0">
     <div class="inner">
       <div class="eyebrow">第 3 週　·　10/2　·　互動講義</div>
@@ -802,7 +864,6 @@ td{font-size:18px;}
       <p class="hint">用 <kbd>→</kbd> 鍵或下方按鈕翻頁　·　<kbd>Esc</kbd> 開目次　·　進度會自動保存在這台裝置</p>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="這份講義怎麼用" data-sect="" data-s="0">
     <div class="inner">
       <div class="eyebrow">ROADMAP</div>
@@ -829,7 +890,9 @@ td{font-size:18px;}
       <p class="note">上課用的投影片比這份簡單很多。這份是給你自己讀的，所以寫得比較細。</p>
     </div>
   </section>
+</div>
 
+<div class="pane" data-pane="1">
   <section class="slide slide-sec" data-kind="sec" data-label="第一節　為什麼需要社會政策？" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="num">第一節</div>
@@ -837,7 +900,9 @@ td{font-size:18px;}
       <p class="sub">社會問題、社會契約與市場失靈</p>
     </div>
   </section>
-
+  <div class="chap open">
+    <button class="chap-h" type="button"><span class="cn">01</span><span class="ct">本節路線圖</span><span class="cc">1 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="navsec" data-label="本節路線圖" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">本節路線圖</div>
@@ -857,7 +922,11 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">02</span><span class="ct">社會問題</span><span class="cc">8 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide slide-quote" data-kind="quote" data-label="狄更斯" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="q">在孩子們生活的小世界裡，
@@ -865,7 +934,6 @@ td{font-size:18px;}
       <cite>Charles Dickens，《遠大前程》</cite>
     </div>
   </section>
-
   <section class="slide " data-kind="poll" data-label="開場：這三件事算不算？" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <h2>這三件事，算不算社會政策？</h2>
@@ -885,7 +953,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="scn" data-label="◆ 動手：這算不算社會問題？" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">動手做</div>
@@ -897,7 +964,6 @@ td{font-size:18px;}
       <div class="scn" data-a="2"><div class="stxt">1960 年代的台灣，已婚女性離開職場照顧小孩被視為理所當然。</div><div class="sopts"><button>當時是社會問題</button><button>當時不是，但現在是</button></div><div class="sfb">這題的重點是「定義會隨時間改變」。同一個客觀狀態，在不同年代有不同的主觀認定——當年是常識，今天叫做照顧責任的性別不平等。</div></div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="什麼叫社會問題" data-sect="第一節　為什麼需要社會政策？" data-review="1" data-s="1">
     <div class="inner">
       <div class="eyebrow">社會問題<span class="badge">複習</span></div>
@@ -918,7 +984,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="個人困擾與公共議題" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">為什麼要分</div>
@@ -949,7 +1014,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide  dk" data-kind="photo" data-label="◆ 照片：地下道" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="ptext">
@@ -969,7 +1033,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="社會問題的四個判斷" data-sect="第一節　為什麼需要社會政策？" data-review="1" data-s="1">
     <div class="inner">
       <div class="eyebrow">社會問題<span class="badge">複習</span></div>
@@ -994,7 +1057,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="定義會隨時代改變" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">誰在認定</div>
@@ -1022,7 +1084,11 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">03</span><span class="ct">關鍵區分</span><span class="cc">6 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="two" data-label="Social Problem / Social Question" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">關鍵區分</div>
@@ -1051,7 +1117,6 @@ td{font-size:18px;}
     </div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="social question 的來歷" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">概念史</div>
@@ -1075,7 +1140,6 @@ td{font-size:18px;}
       <p class="note">不過，這個詞一開始指的並不是工廠勞工——下一頁。</p>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="social question 所指的移動" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">概念史</div>
@@ -1103,7 +1167,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="為什麼這個區分重要" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">關鍵區分</div>
@@ -1118,7 +1181,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide " data-kind="terms" data-label="第一節關鍵詞" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">讀英文教科書用得上</div>
@@ -1137,7 +1199,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide slide-ask" data-kind="ask" data-label="提問：台灣的 social question" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <h2>台灣的 social question 是什麼？</h2>
@@ -1149,7 +1210,11 @@ td{font-size:18px;}
 （這個問題第三節會再回來）</div>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">04</span><span class="ct">回答一：社會契約</span><span class="cc">7 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="pts" data-label="定義一：集體策略" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">定義（一）</div>
@@ -1180,7 +1245,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="社會契約是什麼" data-sect="第一節　為什麼需要社會政策？" data-review="1" data-s="1">
     <div class="inner">
       <div class="eyebrow">回答一：社會契約<span class="badge">複習</span></div>
@@ -1203,7 +1267,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="flips" data-label="◆ 動手：五位思想家" data-sect="第一節　為什麼需要社會政策？" data-review="1" data-s="1">
     <div class="inner">
       <div class="eyebrow">回答一：社會契約<span class="badge">複習</span></div>
@@ -1214,7 +1277,6 @@ td{font-size:18px;}
     <div class="flips"><div class="fcard"><div class="fname">Thomas Hobbes</div><div class="fsub">絕對主權</div><div class="fback">自利但理性的個人應當服從一個絕對主權的權力，這是避免落入殘酷的自然狀態的唯一可靠方法。</div></div><div class="fcard"><div class="fname">John Locke</div><div class="fsub">保護與造反權</div><div class="fback">社會契約的目的是保護公民的生命、自由與福祉；主權者若未能保護這些權利，公民造反並建立新的政治社會就是正當的。</div></div><div class="fcard"><div class="fname">Jean-Jacques Rousseau</div><div class="fsub">集體中的自由</div><div class="fback">關注如何維護自由，但他認識到人類彼此的依賴日深，自由必須在集體的規則中實現。</div></div><div class="fcard"><div class="fname">Adam Smith</div><div class="fsub">同理心的三個理由</div><div class="fback"><b>道德上</b>：人有基本需求，不滿足在道德上就是錯的。<b>政治上</b>：這是民主有效運作的條件。<b>經濟上</b>：大量公民共同分擔疾病、失業與養老的風險，比個人自保更有效率。</div></div><div class="fcard"><div class="fname">John Rawls</div><div class="fsub">無知之幕</div><div class="fback">正義原則應在「無知之幕」後選擇——如果你不知道自己會生在什麼位置、什麼家庭、什麼健康狀態，你會選什麼樣的制度？</div></div></div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="現代版本的社會契約" data-sect="第一節　為什麼需要社會政策？" data-review="1" data-s="1">
     <div class="inner">
       <div class="eyebrow">回答一：社會契約<span class="badge">複習</span></div>
@@ -1229,7 +1291,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide " data-kind="read" data-label="對照閱讀：Spicker 2000 三命題" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">對照閱讀</div>
@@ -1248,7 +1309,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="photo" data-label="◆ 照片：老姐妹" data-sect="第一節　為什麼需要社會政策？" data-flip="1" data-s="1">
     <div class="inner">
       <div class="ptext">
@@ -1268,7 +1328,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide slide-ask" data-kind="ask" data-label="提問：社會契約的目標" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <h2>社會契約的目標應該是什麼？</h2>
@@ -1279,7 +1338,11 @@ td{font-size:18px;}
 不同的答案，就是不同的意識形態——這是第 5 週的主題。</div>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">05</span><span class="ct">回答二：市場失靈</span><span class="cc">8 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="pts" data-label="國家為什麼要提供福利" data-sect="第一節　為什麼需要社會政策？" data-review="1" data-s="1">
     <div class="inner">
       <div class="eyebrow">回答二：市場失靈<span class="badge">複習</span></div>
@@ -1295,7 +1358,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="有效市場的四個假設" data-sect="第一節　為什麼需要社會政策？" data-review="1" data-s="1">
     <div class="inner">
       <div class="eyebrow">回答二：市場失靈<span class="badge">複習</span></div>
@@ -1323,7 +1385,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="flips" data-label="◆ 動手：市場在哪裡失靈" data-sect="第一節　為什麼需要社會政策？" data-review="1" data-s="1">
     <div class="inner">
       <div class="eyebrow">回答二：市場失靈<span class="badge">複習</span></div>
@@ -1334,7 +1395,6 @@ td{font-size:18px;}
     <div class="flips"><div class="fcard"><div class="fname">公共財</div><div class="fsub">非競爭、非排他</div><div class="fback">消費具有非競爭性、非排他性與非拒絕性，因而產生搭便車效應。<br><br><b>例</b>：空氣品質改善、疾病管制署的防疫體系——你沒繳錢也享受得到，市場沒有誘因去生產。</div></div><div class="fcard"><div class="fname">外部性</div><div class="fsub">成本或利益外溢</div><div class="fback">我的行為的成本或利益由別人承擔。<br><br><b>例</b>：打疫苗保護的不只是自己，還有周圍的人（正外部性），所以政府補助；工廠排放的成本由下游居民承擔（負外部性），所以要管制。</div></div><div class="fcard"><div class="fname">遞增的規模報酬</div><div class="fsub">容易變成壟斷</div><div class="fback">平均成本高於邊際成本，容易導致壟斷。<br><br><b>例</b>：自來水、電力、鐵路。蓋第二套管線的成本高到不合理，結果是一家獨大——所以這些事業幾乎都由國家經營或高度管制。</div></div><div class="fcard"><div class="fname">資訊不對稱</div><div class="fsub">買方無從判斷</div><div class="fback">病人無從判斷醫療的品質，保險公司無從判斷投保人的風險。<br><br><b>例</b>：你替家人挑長照機構時，看得懂評鑑報告嗎？這正是政府要辦評鑑、要訂人力配置標準的理由。</div></div></div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="四個假設，四個台灣例子" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">著地</div>
@@ -1364,7 +1424,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="check" data-label="◆ 動手：診斷失靈" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">動手做</div>
@@ -1382,7 +1441,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="photo" data-label="◆ 照片：想要飛翔" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="ptext">
@@ -1402,7 +1460,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="台灣的四個部門" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">延伸</div>
@@ -1419,7 +1476,6 @@ td{font-size:18px;}
       <div class="reveal"><div class="rq">那為什麼還需要國家？既然四個部門都在提供福利。</div><div class="ra">因為只有國家能做三件事：<b>強制</b>（人人納保，避免只有高風險者投保）、<b>重分配</b>（用稅制把資源從高所得移向低所得）、<b>保障權利</b>（把福利變成可請求的法定權利，而不是恩惠）。市場講效率、非營利講彈性、家庭講情感——這三件事它們都做不到。</div><div class="rhint">點一下看答案</div></div>
     </div>
   </section>
-
   <section class="slide " data-kind="read" data-label="對照閱讀：Spicker ch.1" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">對照閱讀</div>
@@ -1448,7 +1504,11 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">06</span><span class="ct">兩本教科書怎麼說</span><span class="cc">4 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="pts" data-label="Spicker：支持福利的五種論證" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">兩本教科書怎麼說</div>
@@ -1464,7 +1524,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide " data-kind="two" data-label="五種論證各自的弱點" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">想深一層</div>
@@ -1495,7 +1554,6 @@ td{font-size:18px;}
     </div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="Spicker：反對福利的論證" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">兩本教科書怎麼說</div>
@@ -1510,7 +1568,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide slide-quote" data-kind="quote" data-label="Spicker：真正的爭議" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="q">真正的爭議不在於福利該不該存在，
@@ -1518,7 +1575,11 @@ td{font-size:18px;}
       <cite>Paul Spicker, An Introduction to Social Policy (2025), p. 17</cite>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">07</span><span class="ct">第一節小測驗</span><span class="cc">2 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide slide-quiz" data-kind="quiz" data-label="◆ 第一節小測驗" data-sect="第一節　為什麼需要社會政策？" data-quiz="q1" data-s="1">
     <div class="inner">
       <h2>第一節小測驗</h2>
@@ -1551,7 +1612,6 @@ td{font-size:18px;}
       <p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="第一節：上課會問什麼" data-sect="第一節　為什麼需要社會政策？" data-s="1">
     <div class="inner">
       <div class="eyebrow">上課預告</div>
@@ -1577,7 +1637,11 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
+    </div>
+  </div>
+</div>
 
+<div class="pane" data-pane="2">
   <section class="slide slide-sec" data-kind="sec" data-label="第二節　社會政策是什麼？" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="num">第二節</div>
@@ -1585,7 +1649,9 @@ td{font-size:18px;}
       <p class="sub">詞源、定義，以及五個國家的不同理解</p>
     </div>
   </section>
-
+  <div class="chap open">
+    <button class="chap-h" type="button"><span class="cn">01</span><span class="ct">本節路線圖</span><span class="cc">1 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="navsec" data-label="本節路線圖" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">本節路線圖</div>
@@ -1605,7 +1671,11 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">02</span><span class="ct">詞源</span><span class="cc">2 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="pts" data-label="詞源：Sozialpolitik" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">詞源</div>
@@ -1620,7 +1690,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide " data-kind="two" data-label="Sozialpolitik 的兩個意涵" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">詞源</div>
@@ -1649,7 +1718,11 @@ td{font-size:18px;}
     </div>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">03</span><span class="ct">定義（二）</span><span class="cc">8 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="pts" data-label="Spicker：三種用法" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">定義（二）</div>
@@ -1668,7 +1741,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="terms" data-label="第二節關鍵詞" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">讀英文教科書用得上</div>
@@ -1687,7 +1759,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide slide-quote" data-kind="quote" data-label="Spicker：主題領域，不是學科" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="q">社會政策是一個主題領域，不是一個學科。
@@ -1696,7 +1767,6 @@ td{font-size:18px;}
       <cite>Paul Spicker, An Introduction to Social Policy (2025), p. 15</cite>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="Welfare 的三種意思" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">定義（二）</div>
@@ -1711,7 +1781,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide " data-kind="read" data-label="對照閱讀：Spicker ch.2" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">對照閱讀</div>
@@ -1738,7 +1807,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="scn" data-label="◆ 動手：這裡的 welfare 是哪一種？" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">動手做</div>
@@ -1750,7 +1818,6 @@ td{font-size:18px;}
       <div class="scn" data-a="3"><div class="stxt">"Welfare recipients must meet work requirements to remain eligible for TANF." （領 welfare 的人必須符合工作要求，才能繼續具備 TANF 的資格。）</div><div class="sopts"><button>① 福祉 well-being</button><button>② 保障人民的服務體系</button><button>③ 給窮人的財務協助</button></div><div class="sfb">這是第三義，也是<b>美國特有的用法</b>：welfare 專指給窮人的財務協助（例如 TANF）。Spicker 說這個用法在其他地方並不通行，但近年英國政治人物也開始這樣用（ch. 1, p. 16）。這正是美國 welfare 一詞被污名化的語言根源。</div></div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="兩個經典定義" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">定義（二）</div>
@@ -1764,7 +1831,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide slide-quote" data-kind="quote" data-label="本節的核心命題" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="q">對社會政策的理解，
@@ -1773,7 +1839,11 @@ td{font-size:18px;}
       <cite>本節的核心命題</cite>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">04</span><span class="ct">五個國家</span><span class="cc">11 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="pts" data-label="德國：社會國與勞動問題" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">五個國家（一）</div>
@@ -1790,7 +1860,6 @@ td{font-size:18px;}
       <div class="case"><h4>它的台灣親戚</h4><p>勞保、公保、軍保——同樣以職業身分劃分、同樣是保費制。1950 年代先涵蓋軍公教，這條路徑一直影響到今天。</p><span class="tag">勞保 1950</span><span class="tag">公保 1958</span><span class="tag">身分分立</span></div></div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="英國：貧窮與社會行政" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">五個國家（二）</div>
@@ -1815,7 +1884,6 @@ td{font-size:18px;}
       <div class="case"><h4>從濟貧法到 Beveridge</h4><p>1601 濟貧法確立公共責任，也確立了「值得／不值得幫助」的區分；1942 年 Beveridge 報告點名五大巨人——貧窮、疾病、無知、骯髒、懶散，戰後化為 1946 國民保險法與 NHS。</p><span class="tag">1601</span><span class="tag">1942</span><span class="tag">全民稅收制</span></div>
     </div>
   </section>
-
   <section class="slide  dk" data-kind="photo" data-label="◆ 照片：市場午後" data-sect="第二節　社會政策是什麼？" data-flip="1" data-s="2">
     <div class="inner">
       <div class="ptext">
@@ -1835,7 +1903,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="瑞典：去商品化" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">五個國家（三）</div>
@@ -1857,7 +1924,6 @@ td{font-size:18px;}
       <div class="case"><h4>去商品化長什麼樣子</h4><p>失業給付替代率約八成、最長 300 天；醫療幾近免費；育兒假由父母共享。重點不是給得多，而是——<b>你不進勞動市場也活得下去</b>。</p><span class="tag">替代率 80%</span><span class="tag">普及主義</span></div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="法國：從勞工到受薪者" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">五個國家（四）</div>
@@ -1873,7 +1939,6 @@ td{font-size:18px;}
       <div class="case"><h4>脫鉤（désaffiliation）</h4><p>Castel 關切的不是「窮」，而是「斷線」——失去穩定僱用的人，同時失去健康、退休、失業的整套保障，也失去社會位置。所以法國的政策語言是 insertion（融入），不是救濟。</p><span class="tag">受薪社會</span><span class="tag">社會連帶</span></div>
     </div>
   </section>
-
   <section class="slide " data-kind="photo" data-label="◆ 照片：午歇" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="ptext">
@@ -1893,7 +1958,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="美國：福利與市場不對立" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">五個國家（五）</div>
@@ -1914,7 +1978,6 @@ td{font-size:18px;}
       <div class="case"><h4>看不見的福利</h4><p>雇主提供的健康保險、401(k) 退休金帳戶、房貸利息扣抵——這些同樣是國家在分配資源，只是走<b>稅式優惠</b>，不長在「政府給付」的形式裡。</p><span class="tag">401(k)</span><span class="tag">稅式優惠</span><span class="tag">隱藏的福利國家</span></div></div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="五國今天還在吵什麼" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">延伸到今天</div>
@@ -1949,7 +2012,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="match" data-label="◆ 動手：五國配對" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">動手做</div>
@@ -1959,7 +2021,6 @@ td{font-size:18px;}
     <div class="match" data-match="1"><div class="mcol"><h4>國家</h4><div class="mitem" data-k="0">德國</div><div class="mitem" data-k="1">英國</div><div class="mitem" data-k="2">瑞典</div><div class="mitem" data-k="3">法國</div><div class="mitem" data-k="4">美國</div></div><div class="mcol"><h4>他們把社會政策理解為</h4><div class="mitem" data-k="0">把工人整合進國家，維持身分秩序</div><div class="mitem" data-k="3">建立受薪社會，避免社會脫鉤</div><div class="mitem" data-k="2">去商品化：不進市場也能活</div><div class="mitem" data-k="1">國家對貧窮的公共責任與漸進改革</div><div class="mitem" data-k="4">對窮人的殘補救助＋稅式優惠</div></div></div><p class="mstat">已配對 <b>0</b> / 5　·　點左邊一項，再點右邊對應的一項</p>
     </div>
   </section>
-
   <section class="slide " data-kind="table" data-label="五國對照表" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">整理</div>
@@ -1976,7 +2037,6 @@ td{font-size:18px;}
     </table>
     </div>
   </section>
-
   <section class="slide " data-kind="check" data-label="◆ 動手：這算不算社會政策？" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">動手做</div>
@@ -1996,7 +2056,11 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">05</span><span class="ct">當代</span><span class="cc">3 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="pts" data-label="不再是西方的專利" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">當代</div>
@@ -2012,7 +2076,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide " data-kind="read" data-label="對照閱讀：What Is ch.1" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">對照閱讀</div>
@@ -2040,7 +2103,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="two" data-label="社會政策的範圍" data-sect="第二節　社會政策是什麼？" data-review="1" data-s="2">
     <div class="inner">
       <div class="eyebrow">範圍<span class="badge">複習</span></div>
@@ -2072,7 +2134,11 @@ td{font-size:18px;}
     </div>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">06</span><span class="ct">第二節小測驗</span><span class="cc">2 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide slide-quiz" data-kind="quiz" data-label="◆ 第二節小測驗" data-sect="第二節　社會政策是什麼？" data-quiz="q2" data-s="2">
     <div class="inner">
       <h2>第二節小測驗</h2>
@@ -2105,7 +2171,6 @@ td{font-size:18px;}
       <p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="第二節：上課會問什麼" data-sect="第二節　社會政策是什麼？" data-s="2">
     <div class="inner">
       <div class="eyebrow">上課預告</div>
@@ -2131,7 +2196,11 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
+    </div>
+  </div>
+</div>
 
+<div class="pane" data-pane="3">
   <section class="slide slide-sec" data-kind="sec" data-label="第三節　台灣的社會政策與福利體系" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="num">第三節</div>
@@ -2139,7 +2208,9 @@ td{font-size:18px;}
       <p class="sub">從 1947 年的憲法到現行的六大範疇</p>
     </div>
   </section>
-
+  <div class="chap open">
+    <button class="chap-h" type="button"><span class="cn">01</span><span class="ct">本節路線圖</span><span class="cc">1 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="navsec" data-label="本節路線圖" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">本節路線圖</div>
@@ -2159,7 +2230,11 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">02</span><span class="ct">制度軌跡</span><span class="cc">7 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="tl" data-label="◆ 動手：四個關鍵文件" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">制度軌跡</div>
@@ -2169,7 +2244,6 @@ td{font-size:18px;}
     <div class="tl"><div class="tlitem"><div class="tlhead"><span class="tlyear">1947</span><span class="tltitle">憲法「社會安全」專節</span></div><div class="tlbody">第 152–157 條：國民就業、社會保險與社會救助、婦女與兒童福利、醫療保健。它<b>早於英國 1948 年的福利國家</b>，也早於台灣真正有能力執行它的年代數十年。</div></div><div class="tlitem"><div class="tlhead"><span class="tlyear">1965</span><span class="tltitle">民生主義現階段社會政策</span></div><div class="tlbody">七大項三十三目：社會保險、國民就業、社會救助、國民住宅、福利服務、社會教育、社區發展。注意順序——社會保險排第一，而且優先涵蓋軍公教。</div></div><div class="tlitem"><div class="tlhead"><span class="tlyear">1994</span><span class="tltitle">社會福利政策綱領</span></div><div class="tlbody">內政部社會司提出，行政院 7 月核定。主要是把各部門既有業務整理在一起，缺乏宏觀的政策思維。</div></div><div class="tlitem"><div class="tlhead"><span class="tlyear">2004</span><span class="tltitle">綱領修正</span></div><div class="tlbody">2002 年第三次全國社會福利會議之後，2004 年 2 月核定。重新界定社會福利的範圍為六大範疇，沿用至今。</div></div></div>
     </div>
   </section>
-
   <section class="slide " data-kind="read" data-label="對照閱讀：林萬億 ch.1 第一節" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">對照閱讀</div>
@@ -2188,7 +2262,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="1947 憲法社會安全條款" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">1947</div>
@@ -2203,7 +2276,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="1965 民生主義現階段社會政策" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">1965</div>
@@ -2218,7 +2290,6 @@ td{font-size:18px;}
       <div class="reveal"><div class="rq">為什麼社會保險排第一，而且先給軍公教？</div><div class="ra">因為當時的國家要處理的不是「貧窮」，而是<b>政權的穩固</b>——隨政府來台的軍公教是統治基礎，優先納保是政治的選擇，不是需求的排序。<br><br>這條路徑一直延續：勞保 1950、公保 1958、農保 1985、全民健保才到 1995。台灣的社會保險是<b>先職業身分、後全民</b>，跟德國同一種邏輯。第 10、11 週會看這件事留下的制度後果。</div><div class="rhint">點一下看答案</div></div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="四份文件的時代背景" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">放回歷史裡</div>
@@ -2248,7 +2319,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="1994 / 2004 政策綱領" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">1994 / 2004</div>
@@ -2261,7 +2331,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide " data-kind="terms" data-label="第三節關鍵詞" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">台灣制度的詞彙</div>
@@ -2278,7 +2347,11 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">03</span><span class="ct">現行架構</span><span class="cc">5 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="pts" data-label="2004 六大範疇" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">現行架構</div>
@@ -2295,7 +2368,6 @@ td{font-size:18px;}
       <div class="case"><h4>六大範疇的台灣實例</h4><p><b>社會保險</b>健保 1995、勞保年金 2009、國民年金 2008　·　<b>社會救助</b>低收與中低收入戶　·　<b>福利服務</b>兒少、身障、老人服務　·　<b>就業安全</b>就業保險、職業訓練　·　<b>社會住宅</b>包租代管、只租不賣　·　<b>健康照顧</b>健保、長照 2.0。</p><span class="tag">六大範疇</span><span class="tag">對照本學期週次</span></div>
     </div>
   </section>
-
   <section class="slide " data-kind="drag" data-label="◆ 動手：歸到六大範疇" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">動手做</div>
@@ -2329,7 +2401,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="slider" data-label="◆ 動手：猜猜社福支出" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">動手做</div>
@@ -2347,7 +2418,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="這個數字怎麼讀" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">讀數字</div>
@@ -2377,7 +2447,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="photo" data-label="◆ 照片：溜滑梯" data-sect="第三節　台灣的社會政策與福利體系" data-flip="1" data-s="3">
     <div class="inner">
       <div class="ptext">
@@ -2397,7 +2466,11 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">04</span><span class="ct">台灣的 social question</span><span class="cc">3 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="vote" data-label="◆ 動手：台灣的 social question" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">動手做</div>
@@ -2409,7 +2482,6 @@ td{font-size:18px;}
       <div class="reveal"><div class="rq">選完之後，想一想：你選的那一個，會推導出什麼樣的政策？</div><div class="ra">如果你認為核心是<b>居住</b>，政策重心會是社會住宅、租金補貼、囤房稅——但台灣 2004 年綱領雖然把「社會住宅」列進六大範疇，本學期卻沒有單獨一週在講它。<br><br>如果你認為核心是<b>長期照顧</b>，那會走向稅收制的長照 2.0，還是保險制的長照保險？這正是 2017 年以來一直沒有結論的爭論。<br><br>再想一個更難的：台灣的 social question <b>換過嗎</b>？從 1950 年代「反攻復國下的軍公教安置」，到今天的低薪與居住——如果換了，是什麼時候換的？</div><div class="rhint">點一下看答案</div></div>
     </div>
   </section>
-
   <section class="slide " data-kind="inbox" data-label="◆ 動手：寫下你的答案" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">動手做</div>
@@ -2425,7 +2497,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide  dk" data-kind="photo" data-label="◆ 照片：世代" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="ptext">
@@ -2445,7 +2516,11 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">05</span><span class="ct">目標</span><span class="cc">6 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="pts" data-label="社會政策想達成什麼" data-sect="第三節　台灣的社會政策與福利體系" data-review="1" data-s="3">
     <div class="inner">
       <div class="eyebrow">目標<span class="badge">複習</span></div>
@@ -2460,7 +2535,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide " data-kind="photo" data-label="◆ 照片：老者獨行" data-sect="第三節　台灣的社會政策與福利體系" data-flip="1" data-s="3">
     <div class="inner">
       <div class="ptext">
@@ -2480,7 +2554,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="分配的政治" data-sect="第三節　台灣的社會政策與福利體系" data-review="1" data-s="3">
     <div class="inner">
       <div class="eyebrow">收束<span class="badge">複習</span></div>
@@ -2496,7 +2569,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide " data-kind="photo" data-label="◆ 照片：財富之下" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="ptext">
@@ -2516,7 +2588,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide  dk" data-kind="photo" data-label="◆ 照片：廣告之下" data-sect="第三節　台灣的社會政策與福利體系" data-flip="1" data-s="3">
     <div class="inner">
       <div class="ptext">
@@ -2536,7 +2607,6 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
   <section class="slide " data-kind="recall" data-label="回到開場的三個問題" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <h2>回到開場的三個問題</h2>
@@ -2559,7 +2629,11 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">06</span><span class="ct">第三節小測驗</span><span class="cc">2 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide slide-quiz" data-kind="quiz" data-label="◆ 第三節小測驗" data-sect="第三節　台灣的社會政策與福利體系" data-quiz="q3" data-s="3">
     <div class="inner">
       <h2>第三節小測驗</h2>
@@ -2592,7 +2666,6 @@ td{font-size:18px;}
       <p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="第三節：上課會問什麼" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">上課預告</div>
@@ -2618,7 +2691,11 @@ td{font-size:18px;}
       </div>
     </div>
   </section>
-
+    </div>
+  </div>
+  <div class="chap">
+    <button class="chap-h" type="button"><span class="cn">07</span><span class="ct">本週閱讀</span><span class="cc">5 頁</span><span class="cv"></span></button>
+    <div class="chap-b">
   <section class="slide " data-kind="pts" data-label="本週閱讀" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">本週閱讀</div>
@@ -2635,7 +2712,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide " data-kind="readprog" data-label="◆ 追進度：核心閱讀" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">追進度</div>
@@ -2654,7 +2730,6 @@ td{font-size:18px;}
       <p class="note"><strong>建議順序</strong>：先讀 Spicker <i>What Is the Welfare State For?</i> ch. 1（最短、最好進入），再讀 <i>An Introduction</i> ch. 1–2（建立詞彙），接著《解讀社會政策》I.1（英國傳統），最後林萬億 ch. 1（台灣）。Spicker 2000 ch. 1 是理論性最強的一篇，可以最後讀，讀不完也沒關係——它的三個基本命題在第 8 週會再出現。</p>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="延伸閱讀：歐陸的兩個源頭" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">延伸閱讀</div>
@@ -2668,7 +2743,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="延伸閱讀：當代與全球" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">延伸閱讀</div>
@@ -2682,7 +2756,6 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
-
   <section class="slide " data-kind="pts" data-label="下週預告" data-sect="第三節　台灣的社會政策與福利體系" data-s="3">
     <div class="inner">
       <div class="eyebrow">下週預告</div>
@@ -2697,7 +2770,11 @@ td{font-size:18px;}
       </ul>
     </div>
   </section>
+    </div>
+  </div>
+</div>
 
+<div class="pane" data-pane="4">
   <section class="slide slide-done" data-kind="done" data-label="◆ 完成與簽到" data-sect="" data-s="0">
     <div class="inner">
       <h2>完成紀錄</h2>
@@ -2711,6 +2788,7 @@ td{font-size:18px;}
       <p class="code" id="scode"></p>
     </div>
   </section>
+</div>
 </div>
 
 <nav class="navbar">
@@ -3052,6 +3130,40 @@ document.getElementById('submit').addEventListener('click',()=>{
     note.textContent='送出失敗，請確認網路後再按一次；若仍失敗請截圖這一頁給老師。';});
 });
 
+/* ── 一次只顯示一節 ── */
+const panes=[...document.querySelectorAll('.pane')];
+const paneBtns=[...document.querySelectorAll('#panenav button')];
+function showPane(id,scroll){
+  panes.forEach(p=>p.classList.toggle('on',p.dataset.pane===id));
+  paneBtns.forEach(b=>b.classList.toggle('on',b.dataset.pane===id));
+  S.pane=id; store.set(S);
+  if(scroll!==false) window.scrollTo({top:0,behavior:'instant'});
+}
+paneBtns.forEach(b=>b.addEventListener('click',()=>showPane(b.dataset.pane)));
+
+/* ── 小節摺疊 ── */
+document.querySelectorAll('.chap-h').forEach(h=>{
+  h.addEventListener('click',()=>{
+    const c=h.parentElement, was=c.classList.contains('open');
+    c.classList.toggle('open');
+    if(!was) c.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+/* ── goTo：先切到該節、展開該小節，再捲過去 ── */
+goTo=function(n){
+  n=Math.max(0,Math.min(TOT-1,n));
+  const sl=slides[n];
+  const pane=sl.closest('.pane');
+  if(pane && !pane.classList.contains('on')) showPane(pane.dataset.pane,false);
+  const chap=sl.closest('.chap');
+  if(chap) chap.classList.add('open');
+  cur=n;
+  requestAnimationFrame(()=>sl.scrollIntoView({behavior:'smooth',block:'start'}));
+  S.page=cur; S.seen[cur]=1; store.set(S);
+  paint();
+};
+
 /* ── 起始：捲動追蹤 ── */
 let _tick=false;
 window.addEventListener('scroll',()=>{
@@ -3078,7 +3190,9 @@ const _io=new IntersectionObserver(es=>{
   }
 },{rootMargin:'-40% 0px -40% 0px',threshold:[0,.25,.5,1]});
 slides.forEach(sl=>_io.observe(sl));
-slides.forEach((sl,i)=>{ if(sl.getBoundingClientRect().top<window.innerHeight) S.seen[i]=1; });
+slides.forEach((sl,i)=>{ if(sl.offsetParent!==null &&
+  sl.getBoundingClientRect().top<window.innerHeight) S.seen[i]=1; });
+showPane(S.pane||'0',false);
 paint();
 ['sid','sname','sfbk'].forEach(id=>{
   const el=document.getElementById(id);
