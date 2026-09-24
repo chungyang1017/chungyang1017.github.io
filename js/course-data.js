@@ -338,7 +338,7 @@ const courseData = [
     weeks_zh: [
       { n: '一', date: '9/15', topic: '課程導論：課程介紹、評分方式與生命歷程研究的問題意識' },
       { n: '二', date: '9/22', topic: '停課（教師開會），另找時間補課', off: true },
-      { n: '三', date: '9/29', topic: '生命歷程觀點的起源與發展：從生命史研究到生命歷程典範的核心原則' },
+      { n: '三', date: '9/29', topic: '生命歷程觀點的起源與發展：從生命史研究到生命歷程典範的核心原則', href: 'teaching/life-course/week03-life-course-origins.html', tag: '→ 互動講義' },
       { n: '四', date: '10/6', topic: '核心概念：軌跡、轉折、轉捩點與時機；年齡、時期與世代效應' },
       { n: '五', date: '10/13', topic: '生命歷程的制度化：標準生命歷程、三分結構與去標準化論辯' },
       { n: '六', date: '10/20', topic: '停課（教師出席研討會），另找時間補課', off: true },
@@ -358,7 +358,7 @@ const courseData = [
     weeks_en: [
       { n: '1', date: '9/15', topic: 'Course introduction: the course, assessment, and the questions life course research asks' },
       { n: '2', date: '9/22', topic: 'No class (faculty meeting) — make-up class to be scheduled', off: true },
-      { n: '3', date: '9/29', topic: 'Origins and development of the life course perspective: from life history studies to the core principles of the paradigm' },
+      { n: '3', date: '9/29', topic: 'Origins and development of the life course perspective: from life history studies to the core principles of the paradigm', href: 'teaching/life-course/week03-life-course-origins.html', tag: '→ Interactive' },
       { n: '4', date: '10/6', topic: 'Core concepts: trajectories, transitions, turning points and timing; age, period and cohort effects' },
       { n: '5', date: '10/13', topic: 'The institutionalisation of the life course: the standard life course, the tripartite structure, and the de-standardisation debate' },
       { n: '6', date: '10/20', topic: 'No class (conference) — make-up class to be scheduled', off: true },
