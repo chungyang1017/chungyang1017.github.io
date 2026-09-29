@@ -339,7 +339,7 @@ const courseData = [
       { n: '一', date: '9/15', topic: '課程導論：課程介紹、評分方式與生命歷程研究的問題意識' },
       { n: '二', date: '9/22', topic: '停課（教師開會），另找時間補課', off: true },
       { n: '三', date: '9/29', topic: '生命歷程觀點的起源與發展：從生命史研究到生命歷程典範的核心原則', href: 'teaching/life-course/week03-life-course-origins.html', tag: '→ 互動講義' },
-      { n: '四', date: '10/6', topic: '核心概念：軌跡、轉折、轉捩點與時機；年齡、時期與世代效應' },
+      { n: '四', date: '10/6', topic: '核心概念：軌跡、轉銜、轉捩點與時機；年齡、時期與出生世代效果', href: 'teaching/life-course/week04-core-concepts.html', tag: '→ 互動講義' },
       { n: '五', date: '10/13', topic: '生命歷程的制度化：標準生命歷程、三分結構與去標準化論辯' },
       { n: '六', date: '10/20', topic: '停課（教師出席研討會），另找時間補課', off: true },
       { n: '七', date: '10/27', topic: '福利國家作為生命歷程政策：福利體制、生命歷程體制與東亞經驗' },
@@ -359,7 +359,7 @@ const courseData = [
       { n: '1', date: '9/15', topic: 'Course introduction: the course, assessment, and the questions life course research asks' },
       { n: '2', date: '9/22', topic: 'No class (faculty meeting) — make-up class to be scheduled', off: true },
       { n: '3', date: '9/29', topic: 'Origins and development of the life course perspective: from life history studies to the core principles of the paradigm', href: 'teaching/life-course/week03-life-course-origins.html', tag: '→ Interactive' },
-      { n: '4', date: '10/6', topic: 'Core concepts: trajectories, transitions, turning points and timing; age, period and cohort effects' },
+      { n: '4', date: '10/6', topic: 'Core concepts: trajectories, transitions, turning points and timing; age, period and cohort effects', href: 'teaching/life-course/week04-core-concepts.html', tag: '→ Interactive' },
       { n: '5', date: '10/13', topic: 'The institutionalisation of the life course: the standard life course, the tripartite structure, and the de-standardisation debate' },
       { n: '6', date: '10/20', topic: 'No class (conference) — make-up class to be scheduled', off: true },
       { n: '7', date: '10/27', topic: 'The welfare state as life course policy: welfare regimes, life course regimes, and the East Asian experience' },
@@ -384,7 +384,7 @@ const courseData = [
           { c: false, t: 'Kohli, M. (1986). The world we forgot: A historical review of the life course. In V. W. Marshall (Ed.), Later Life: The Social Psychology of Aging (pp. 271–303). Sage.', u: 'https://openlibrary.org/works/OL6570059W' },
           { c: false, t: 'Giele, J. Z., &amp; Elder, G. H., Jr. (1998). Life course research: Development of a field. In Methods of Life Course Research: Qualitative and Quantitative Approaches (pp. 5–27). Sage.', u: 'https://doi.org/10.4135/9781483348919.n1' }
         ]},
-      { n: '四', date: '10/6', title: '核心概念：軌跡、轉折、轉捩點與時機；年齡、時期與世代效應', items: [
+      { n: '四', date: '10/6', title: '核心概念：軌跡、轉銜、轉捩點與時機；年齡、時期與出生世代效果', items: [
           { c: true, t: 'Ryder, N. B. (1965). The cohort as a concept in the study of social change. American Sociological Review, 30(6), 843–861.', u: 'https://doi.org/10.2307/2090964' },
           { c: true, t: 'George, L. K. (1993). Sociological perspectives on life transitions. Annual Review of Sociology, 19, 353–373.', u: 'https://doi.org/10.1146/annurev.so.19.080193.002033' },
           { c: false, t: 'Alwin, D. F., &amp; McCammon, R. J. (2003). Generations, cohorts, and social change. In J. T. Mortimer &amp; M. J. Shanahan (Eds.), Handbook of the Life Course (pp. 23–49). Springer.', u: 'https://doi.org/10.1007/978-0-306-48247-2_2' },
