@@ -29,11 +29,11 @@ const publicationsData = [
     badge: 'SSCI',
     metrics: { if: '1.8', rank: 'Q3 Gerontology', year: 2025 } },
 
-  { year: 2026, lang: 'en', forthcoming: true,
-    title_zh: '老年貧窮的三個面向：所得、消費與財富', title_en: 'Older Adults\' Poverty in Three Dimensions: Income, Consumption, and Wealth',
+  { year: 2026, lang: 'en',
+    title_zh: '老年貧窮的三個面向：所得、消費與財富', title_en: 'Older Adults\' Poverty in Three Dimensions: Income, Consumption and Wealth',
     authors_zh: 'Ku, I., Kim, D. and Yeh, C-Y.', authors_en: 'Ku, I., Kim, D. and Yeh, C-Y.',
     venue_zh: 'Journal of Poverty and Social Justice', venue_en: 'Journal of Poverty and Social Justice',
-    vol: '',
+    vol: '1–24',
     link: { type: 'doi', url: 'https://doi.org/10.1332/17598273Y2026D000000076' },
     badge: 'SSCI',
     metrics: { if: '1.1', rank: 'Q2 Social Sciences, Interdisciplinary', year: 2025 } },
@@ -66,7 +66,7 @@ const publicationsData = [
     badge: 'TSSCI' },
 
   { year: 2024, lang: 'en',
-    title_zh: '新興工業化福利國家社會投資轉型的政治兩難：台灣經驗的啟示', title_en: 'The Political Dilemma of the Social Investment Transformation in Newly Industrialized Welfare States: Lessons from the Taiwanese Welfare State',
+    title_zh: '台灣社會投資轉型的政治兩難：對新興工業化福利國家的啟示', title_en: 'The Political Dilemma of the Social Investment Transformation in Taiwan: Lessons for Newly Industrialized Welfare States',
     authors_zh: 'Yeh, C-Y.* and Lue, J-D.', authors_en: 'Yeh, C-Y.* and Lue, J-D.',
     venue_zh: 'Journal of Asian Public Policy', venue_en: 'Journal of Asian Public Policy',
     vol: '17(3): 402–418',
@@ -99,7 +99,7 @@ const publicationsData = [
     metrics: { if: '2.0', rank: 'Q2 Social Work', year: 2022 } },
 
   { year: 2022, lang: 'en',
-    title_zh: '不平等大流行期間及之後的社會政策回應與社會發展：我們可以彼此學習什麼？', title_en: 'Social Policy Responses and Social Development during and after the Unequal Pandemic: What We can Learn from Each Other?',
+    title_zh: '不平等大流行期間及之後的社會政策回應與社會發展', title_en: 'Social Policy Responses and Social Development during and after the Unequal Pandemic',
     authors_zh: 'Ku, Y-W. and Yeh, C-Y.*', authors_en: 'Ku, Y-W. and Yeh, C-Y.*',
     venue_zh: 'Asia Pacific J. of Social Work and Development', venue_en: 'Asia Pacific J. of Social Work and Development',
     vol: '32(3): 161–169',
@@ -115,7 +115,7 @@ const publicationsData = [
     link: { type: 'doi', url: 'https://doi.org/10.6164/JNDS.202112_21(1).0002' } },
 
   { year: 2021, lang: 'en',
-    title_zh: '新興民主發展型福利國家的福利態度與經濟發展主義：台灣案例的檢視', title_en: 'Welfare Attitudes and Economic Developmentalism in New Democratic Developmental Welfare States: An Examination of the Taiwanese Case',
+    title_zh: '新興民主發展型福利國家的福利態度與經濟發展主義：台灣案例的檢視', title_en: 'Welfare Attitude and Economic Developmentalism in New Democratic Developmental Welfare State: An Examination of the Taiwanese Case',
     authors_zh: 'Yeh, C-Y.* and Ku, Y-W.', authors_en: 'Yeh, C-Y.* and Ku, Y-W.',
     venue_zh: 'Journal of Asian Public Policy', venue_en: 'Journal of Asian Public Policy',
     vol: '14(1): 13–29',
