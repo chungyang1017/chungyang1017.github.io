@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>福利國家與其類型 ・ 社會政策 第 8 週 ・ 葉崇揚</title>
+<meta name="description" content="社會政策第 8 週互動講義（分頁式）：Esping-Andersen 的三個福利世界，Holliday 的生產主義、李易駿與古允文的發展型、Gough 的福利體制與葉崇揚的三條轉型路徑，以及 Spicker 的歷史解釋。共 66 頁，含分節小測驗、先猜、分類、配對、旅行手冊與數字互動，以及閱讀紀錄。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* 第 8 週互動講義：Mastercard 年報雜誌風（依 awesome-design-md/mastercard/DESIGN.md）
+   米灰底、墨黑字、訊號橘點綴；圓、膠囊、軌道弧線。字型用 Sofia Sans（DESIGN.md 指定的開源替代）＋ Noto Sans TC。 */
+:root{
+  --canvas:#F3F0EE; --lift:#FCFBFA; --white:#FFFFFF; --bone:#F4F4F4;
+  --ink:#141413; --charcoal:#262627; --slate:#696969; --granite:#555555; --dust:#D1CDC7; --line:#E4DFDA;
+  --orange:#CF4500; --orange-l:#F37338; --clay:#9A3A0A; --link:#3860BE;
+  --orange-soft:#FBE3D6; --ok:#2E7D4F; --ok-soft:#DDEFE3; --ng:#B3261E; --ng-soft:#F6DAD7;
+  --sans:"Sofia Sans","Noto Sans TC",system-ui,-apple-system,sans-serif;
+  --top:58px; --tabs:52px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--canvas);-webkit-text-size-adjust:100%}
+body{background:var(--canvas);color:var(--charcoal);font-family:var(--sans);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;
+  padding-top:calc(var(--top) + var(--tabs));padding-bottom:84px}
+button{font:inherit;color:inherit}
+b,strong{font-weight:700;color:var(--ink)}
+kbd{font-family:inherit;font-size:12px;border:1px solid var(--dust);border-bottom-width:2px;border-radius:6px;padding:1px 6px;background:var(--white);color:var(--charcoal)}
+
+/* ── 頂列 ── */
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--top);z-index:40;background:rgba(243,240,238,.96);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:0 16px;font-size:14px}
+.logo{width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--white);display:grid;place-items:center;font-size:12px;font-weight:800;flex:none}
+.topbar .course{font-weight:700;color:var(--ink);white-space:nowrap}
+.topbar .wk{color:var(--slate);white-space:nowrap}
+.topbar .sect{color:var(--slate);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.topbar .sprog{color:var(--slate);white-space:nowrap;font-variant-numeric:tabular-nums}
+.topbar .sp{flex:1}
+.clock{font-variant-numeric:tabular-nums;background:var(--white);border-radius:999px;padding:4px 12px;font-weight:600;color:var(--ink)}
+.tb{height:36px;border:1px solid var(--dust);background:var(--white);color:var(--ink);border-radius:999px;padding:0 16px;cursor:pointer;font-size:14px;font-weight:600;white-space:nowrap}
+.tb:hover{border-color:var(--ink)}
+.tb.pri{background:var(--ink);border-color:var(--ink);color:var(--white)}
+#bar{position:fixed;top:var(--top);left:0;height:3px;width:0;background:var(--orange);z-index:41;transition:width .2s}
+@media(max-width:900px){.topbar .course,.topbar .wk,.topbar .hide-m{display:none}}
+@media(max-width:520px){.topbar{gap:8px;padding:0 12px}.topbar .sprog{display:none}}
+
+/* ── 分節頁籤 ── */
+.panenav{position:fixed;top:var(--top);left:0;right:0;height:var(--tabs);z-index:39;background:rgba(243,240,238,.96);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 16px;overflow-x:auto;scrollbar-width:none}
+.panenav::-webkit-scrollbar{display:none}
+.panenav button{flex:none;display:flex;align-items:center;gap:8px;border:0;background:transparent;color:var(--slate);border-radius:999px;padding:5px 14px 5px 5px;font-size:14px;font-weight:600;cursor:pointer}
+.panenav .pn{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--dust);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--ink);background:var(--white)}
+.panenav button.on{background:var(--white);color:var(--ink)}
+.panenav button.on .pn{background:var(--orange);border-color:var(--orange);color:var(--white)}
+@media(min-width:1000px){.panenav{justify-content:center}}
+
+/* ── 版面 ── */
+.deck{max-width:1040px;margin:0 auto;padding:8px 16px 40px;overflow-x:clip}
+.pane{display:none}
+.pane.on{display:block}
+.slide{position:relative;background:var(--lift);border-radius:32px;padding:40px 44px;margin:20px 0;scroll-margin-top:calc(var(--top) + var(--tabs) + 12px)}
+@media(max-width:700px){.slide{padding:26px 18px;border-radius:24px;margin:14px 0}}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--slate)}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--orange);flex:none}
+.slide h2{font-size:34px;font-weight:600;letter-spacing:-.02em;line-height:1.25;color:var(--ink);margin:8px 0 14px}
+@media(max-width:700px){.slide h2{font-size:26px}}
+.src{font-size:14.5px;color:var(--slate);margin:-6px 0 20px}
+.lead{font-size:18px;color:var(--ink);margin:0 0 22px;max-width:52em}
+.instr{font-size:14.5px;color:var(--charcoal);background:var(--white);border-radius:999px;padding:8px 18px;margin-bottom:16px;display:inline-block}
+@media(max-width:700px){.instr{border-radius:16px}}
+.call{margin-top:24px;background:var(--white);border-radius:24px;padding:16px 22px;font-size:16px;color:var(--charcoal);border-left:4px solid var(--orange)}
+.call p+p{margin-top:6px}
+.call.side b{display:block;font-size:13px;letter-spacing:.06em;color:var(--orange);margin-bottom:4px}
+.source{font-size:13.5px;color:var(--slate);margin-top:12px}
+.cite{font-size:13px;color:var(--slate);margin-top:8px}
+p.note{font-size:15px;color:var(--slate);margin-top:16px}
+.k{display:block;font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--orange);margin:10px 0 4px}
+ul.bl{list-style:none;display:grid;gap:8px}
+ul.bl li{position:relative;padding-left:20px}
+ul.bl li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;border:2px solid var(--orange)}
+
+/* 格線（手機上一律單欄可縮） */
+.split,.grid2,.grid3,.grid4,.notes,.road{display:grid;gap:18px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:820px){.split{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:start}
+  .split.q{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+  .split.pc{grid-template-columns:minmax(0,1fr) minmax(0,1.7fr)}
+  .grid2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .grid4{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .grid2.withmid{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:stretch}
+  .notes.n2{grid-template-columns:repeat(2,minmax(0,1fr))}.notes.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .notes.n4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(min-width:560px) and (max-width:819px){.grid4,.notes.n4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mid{align-self:center;justify-self:center;width:52px;height:52px;border-radius:50%;background:var(--ink);color:var(--white);display:grid;place-items:center;font-weight:700;font-size:16px}
+
+/* 卡片 */
+.card{background:var(--white);border-radius:28px;padding:22px 24px}
+.card h4{font-size:19px;font-weight:700;color:var(--ink);line-height:1.35;margin-bottom:6px}
+.card .cs{font-size:13.5px;font-weight:700;color:var(--orange);margin:-2px 0 8px}
+.card p+p{margin-top:6px}
+.nt{display:flex;gap:14px;align-items:flex-start;background:var(--white);border-radius:28px;padding:20px 22px}
+.nt h4{font-size:17.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:4px}
+.nt p{font-size:15.5px}
+.no{flex:none;display:inline-grid;place-items:center;min-width:34px;height:34px;padding:0 8px;border-radius:999px;background:var(--ink);color:var(--white);font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+.tile{display:flex;gap:16px;align-items:flex-start;background:var(--white);border-radius:28px;padding:20px 24px}
+.tile h4{font-size:19px;font-weight:700;color:var(--ink)}
+.tile p{font-size:15px;color:var(--slate);margin-top:2px}
+.sidecard{position:relative;background:var(--ink);color:var(--white);border-radius:28px;padding:24px 26px;overflow:hidden}
+.sidecard h4{font-size:20px;font-weight:700;color:var(--white);margin-bottom:10px}
+.sidecard .k{color:var(--orange-l);margin-top:0}
+.sidecard ul.bl li::before{border-color:var(--orange-l)}
+.sidecard::after{content:"";position:absolute;right:-70px;bottom:-70px;width:180px;height:180px;border:2px solid var(--orange-l);border-radius:50%;opacity:.6}
+ol.numl{list-style:none;display:grid;gap:10px;margin-top:6px}
+ol.numl li{display:flex;gap:12px;align-items:flex-start}
+ol.numl .no{min-width:30px;height:30px;font-size:12.5px;background:var(--orange)}
+
+/* 封面 */
+.k-cover{background:transparent;padding:48px 8px 28px;overflow:hidden}
+.hero{position:relative;isolation:isolate;max-width:940px}
+.hero::after{content:"";position:absolute;right:-140px;top:-80px;width:520px;height:520px;border:2px solid var(--orange-l);border-radius:50%;opacity:.45;z-index:-1;pointer-events:none}
+.kick2{font-size:13px;font-weight:700;letter-spacing:.18em;color:var(--slate)}
+.hero h1{font-size:clamp(42px,7.5vw,76px);font-weight:600;letter-spacing:-.025em;line-height:1.12;color:var(--ink);margin:12px 0 12px}
+.sub{font-size:21px;color:var(--charcoal)}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.meta span{font-size:13px;font-weight:700;color:var(--ink);background:var(--white);border-radius:999px;padding:5px 14px}
+.meta .pill{background:var(--orange);color:var(--white)}
+.who{font-size:14px;color:var(--slate);margin-top:18px;line-height:1.8}
+.hint{font-size:13.5px;color:var(--slate);margin-top:22px}
+.stampbig{position:absolute;right:8px;top:24px;width:136px;height:136px;border-radius:50%;border:3px solid var(--orange);color:var(--orange);
+  display:grid;place-content:center;text-align:center;transform:rotate(-12deg);line-height:1.15}
+.stampbig span{font-size:11px;font-weight:800;letter-spacing:.14em}
+.stampbig b{font-size:30px;letter-spacing:.06em;color:var(--orange)}
+.stampbig.end{position:static;margin:26px 0 0 auto}
+@media(max-width:760px){.hero .stampbig{position:static;width:108px;height:108px;margin-bottom:14px}.stampbig b{font-size:24px}}
+
+/* 分節頁 */
+.k-divider{background:var(--ink);color:var(--white);overflow:hidden}
+.k-divider::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border:2px solid var(--orange-l);border-radius:50%;opacity:.55;pointer-events:none}
+.divwrap{position:relative;display:grid;gap:22px;align-items:center;grid-template-columns:minmax(0,1fr)}
+@media(min-width:720px){.divwrap{grid-template-columns:220px minmax(0,1fr)}}
+.bigno{width:200px;height:200px;border-radius:50%;background:var(--orange);display:grid;place-content:center;text-align:center}
+@media(max-width:719px){.bigno{width:140px;height:140px}}
+.bigno b{font-size:96px;line-height:1;color:var(--white);font-weight:600}
+@media(max-width:719px){.bigno b{font-size:64px}}
+.bigno span{font-size:13px;font-weight:800;letter-spacing:.16em;color:var(--white)}
+.k-divider .eyebrow{color:var(--dust)}
+.k-divider h2{color:var(--white);font-size:44px;margin:6px 0 8px}
+@media(max-width:700px){.k-divider h2{font-size:32px}}
+.subt{font-size:18px;color:var(--dust)}
+.stampsm{display:inline-block;margin-top:18px;border:2px solid var(--orange-l);color:var(--orange-l);border-radius:999px;padding:4px 16px;font-size:12px;font-weight:800;letter-spacing:.14em;transform:rotate(-4deg)}
+
+/* 明信片引文（第 4 張） */
+.postcard{position:relative;background:var(--white);border-radius:28px;padding:26px 26px 22px;overflow:hidden}
+.postcard::before{content:"";position:absolute;right:16px;top:16px;width:58px;height:70px;border:2px dashed var(--orange-l);border-radius:8px}
+.postcard blockquote{font-size:20px;font-weight:600;line-height:1.5;color:var(--ink);margin:10px 70px 12px 0}
+.postcard .by{font-size:14px;color:var(--slate)}
+
+/* 引文頁 */
+.qblock{position:relative;background:var(--ink);color:var(--white);border-radius:32px;padding:34px 34px 30px;overflow:hidden}
+.qblock::after{content:"";position:absolute;right:-90px;bottom:-90px;width:260px;height:260px;border:2px solid var(--orange-l);border-radius:50%;opacity:.55}
+.qblock .stampsm{margin:0 0 16px}
+.qblock blockquote{position:relative;font-size:clamp(22px,3.2vw,30px);font-weight:600;line-height:1.5;color:var(--white)}
+.qblock .qen{position:relative;font-size:16px;font-style:italic;color:var(--dust);margin-top:16px;line-height:1.6}
+.qblock cite{position:relative;display:block;font-style:normal;font-size:14px;font-weight:700;color:var(--orange-l);margin-top:14px}
+.exnotes ul.bl{margin-top:8px}
+
+/* 路線上的站（第 11、38、44 張） */
+.itin{list-style:none;display:grid;gap:16px;grid-template-columns:minmax(0,1fr);position:relative}
+@media(min-width:820px){.itin{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .itin::before{content:"";position:absolute;left:12px;right:12px;top:15px;border-top:2px dashed var(--orange-l)}}
+.itin li{position:relative;padding-top:42px}
+.itin .pin{position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;background:var(--orange);border:5px solid var(--lift);box-shadow:0 0 0 2px var(--orange)}
+.itin h4{font-size:17.5px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.itin p{font-size:15.5px}
+@media(max-width:819px){.itin li{padding:0 0 0 46px}.itin .pin{top:2px}}
+
+/* 旅行手冊（第 12–14 張） */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 16px}
+.tabs button{border:1px solid var(--dust);background:var(--white);color:var(--ink);border-radius:999px;padding:7px 18px;font-size:15px;font-weight:700;cursor:pointer;text-align:left;line-height:1.35}
+.tabs button small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.12em;color:var(--slate)}
+.tabs button.on{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.tabs button.on small{color:var(--dust)}
+.page{display:none;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);background:var(--white);border-radius:32px;overflow:hidden}
+.page.on{display:grid}
+@media(max-width:720px){.page.on{grid-template-columns:minmax(0,1fr)}}
+.dest{position:relative;padding:28px 26px;background:var(--ink);color:var(--white);overflow:hidden}
+.p2 .dest{background:var(--clay)} .p3 .dest{background:var(--orange)}
+.dest::after{content:"";position:absolute;right:-70px;bottom:-70px;width:220px;height:220px;border:2px solid rgba(243,115,56,.75);border-radius:50%;pointer-events:none}
+.p3 .dest::after{border-color:rgba(255,255,255,.55)}
+.dest .k{color:var(--orange-l);margin:0}
+.p3 .dest .k{color:var(--white)}
+.dest h3{font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.2;margin:8px 0;color:var(--white)}
+.dest .tag{font-size:16px;font-weight:600}
+.dest .ck{font-size:11px;font-weight:800;letter-spacing:.16em;opacity:.75;margin-top:22px}
+.dest .cs{font-size:16px;font-weight:700}
+.stampbtn{position:relative;z-index:1;margin-top:26px;width:124px;height:124px;border-radius:50%;border:2.5px dashed currentColor;background:transparent;color:inherit;cursor:pointer;
+  display:grid;place-content:center;text-align:center;font-size:13px;font-weight:800;letter-spacing:.08em;line-height:1.25;transition:transform .2s}
+.stampbtn i{display:block;font-style:normal;font-size:11px;font-weight:600;letter-spacing:.04em;opacity:.8;margin-top:4px}
+.stampbtn.stamped{border-style:double;border-width:6px;transform:rotate(-14deg) scale(1.04);background:rgba(255,255,255,.14)}
+.stampbtn.stamped i{display:none}
+.facts{padding:12px 26px}
+.fact{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.fact:last-child{border-bottom:0}
+.fact b{font-size:15.5px;color:var(--ink)}
+.fact p{font-size:15.5px}
+@media(max-width:560px){.fact{grid-template-columns:minmax(0,1fr);gap:2px}}
+.bookfoot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;font-size:14px;color:var(--slate)}
+.bookfoot b{color:var(--ink);font-size:18px}
+
+/* 18 國排一排（第 16 張） */
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:4px 0 14px}
+.ctrl .lab{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--slate)}
+.ctrl button{border:1px solid var(--dust);background:var(--white);color:var(--ink);border-radius:999px;padding:6px 15px;font-size:14px;font-weight:700;cursor:pointer;line-height:1.4}
+.ctrl button.on{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.ctrl .sep{width:1px;height:22px;background:var(--dust);margin:0 6px}
+.chart{background:var(--white);border-radius:28px;padding:26px 20px 16px}
+.plot{position:relative}
+.bars{display:flex;align-items:flex-end;gap:6px;height:290px}
+.b{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;cursor:pointer;transition:opacity .2s}
+.b .v{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;font-variant-numeric:tabular-nums}
+.b .f{width:100%;height:calc(var(--v) * var(--u));background:var(--orange-l);border-radius:999px 999px 0 0}
+.b[data-g="低"] .f{background:var(--dust)} .b[data-g="高"] .f{background:var(--orange)}
+.b .l{height:20px;line-height:20px;margin-top:6px;font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap}
+.b.hot .f{outline:3px solid var(--ink);outline-offset:2px}
+.chart:not([data-g="全部"]) .b:not(.in),.chart.focus .b:not(.hot){opacity:.2}
+.mean{position:absolute;left:0;right:0;bottom:calc(26px + var(--mv) * var(--u));border-top:2px dashed var(--ink);opacity:.6;pointer-events:none}
+.mean span{position:absolute;left:0;top:-24px;font-size:12px;font-weight:700;color:var(--ink);background:var(--white);padding:0 6px}
+.grpbar{display:flex;gap:6px;margin-top:10px}
+.gb{text-align:center;font-size:12.5px;font-weight:700;border-radius:999px;padding:2px 0;background:var(--canvas);color:var(--ink)}
+.notesbox{margin-top:16px;font-size:15.5px}
+.notesbox p+p,.notesbox ul+p,.notesbox p+ul{margin-top:8px}
+@media(max-width:700px){
+  .bars{display:grid;height:auto;gap:6px}
+  .b{display:grid;grid-template-columns:3.2em minmax(0,1fr) 3em;align-items:center}
+  .b .l{order:-1;margin:0;text-align:left}
+  .b .f{height:16px;width:calc(var(--v) / 40 * 100%);border-radius:0 999px 999px 0}
+  .b .v{order:3;margin:0 0 0 8px}
+  .mean,.grpbar{display:none}}
+
+/* 分數怎麼算（第 17 張） */
+ol.vars{list-style:none;display:grid;gap:10px;margin-top:6px}
+ol.vars li{display:grid;grid-template-columns:34px minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:start}
+ol.vars b{font-size:15.5px}
+ol.vars span:not(.no){font-size:15px;color:var(--slate)}
+@media(max-width:560px){ol.vars li{grid-template-columns:34px minmax(0,1fr)}ol.vars span:not(.no){grid-column:2}}
+
+/* 群聚（第 18 張） */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chipc{background:var(--canvas);border-radius:999px;padding:3px 12px;font-size:14.5px;font-weight:700;color:var(--ink)}
+
+/* 表格 */
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;background:var(--white);border-radius:24px;padding:6px 10px}
+table.tbl{width:100%;border-collapse:collapse;font-size:15.5px;min-width:560px}
+.tbl th{font-weight:700;color:var(--ink);text-align:left;padding:12px 14px;border-bottom:2px solid var(--ink);vertical-align:bottom}
+.tbl td{padding:12px 14px;border-bottom:1px solid var(--line);color:var(--charcoal);vertical-align:top}
+.tbl tbody th.rh{border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tbody tr:last-child td,.tbl tbody tr:last-child th{border-bottom:0}
+table.tbl.small{font-size:14.5px;margin-top:4px}
+table.tbl.num td{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+table.tbl.num thead th:not(:first-child){text-align:right}
+@media(max-width:700px){.tbl th,.tbl td{padding:9px 10px}}
+.k-compare .tblwrap,.k-indicators .tblwrap{margin-top:22px}
+
+/* 四個世界並排比（第 25、32 張） */
+.cgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.ccard{background:var(--white);border-radius:28px;padding:20px 22px;border:2px solid transparent}
+.ccard:nth-child(1){border-color:var(--ink)} .ccard:nth-child(2){border-color:var(--clay)} .ccard:nth-child(3){border-color:var(--orange-l)} .ccard:nth-child(4){border-color:var(--orange)}
+.ccard h4{font-size:16px;font-weight:700;color:var(--slate);margin-bottom:8px}
+.cv{font-size:19px;font-weight:700;color:var(--ink);line-height:1.4;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cv[hidden]{display:none}
+.meter{display:inline-flex;gap:4px}
+.meter i{width:12px;height:12px;border-radius:50%;border:2px solid var(--orange);display:block}
+.meter[data-l="1"] i:nth-child(-n+1),.meter[data-l="2"] i:nth-child(-n+2),.meter[data-l="3"] i{background:var(--orange)}
+
+/* 六國六項指標（第 31 張） */
+.ctrl.wrap button{text-align:left}
+.ibars{background:var(--white);border-radius:28px;padding:20px 22px;display:grid;gap:10px}
+.ib{display:grid;grid-template-columns:3.5em minmax(0,1fr) 4.2em;gap:10px;align-items:center}
+.ib .il{font-weight:700;color:var(--ink)}
+.ib .it{position:relative;height:22px}
+.ib .it::before{content:"";position:absolute;top:-4px;bottom:-4px;left:var(--z);border-left:2px solid var(--dust)}
+.ib .ifill{position:absolute;top:0;bottom:0;border-radius:999px;background:var(--orange-l);transition:left .4s,width .4s}
+.ib.neg .ifill{background:var(--dust)}
+.ib.hi .ifill{background:var(--orange)}
+.ib .iv{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
+.ibars .icap{font-size:13px;color:var(--slate)}
+
+/* 三條轉型路徑（第 39 張） */
+.routes{display:grid;gap:16px}
+.route{background:var(--white);border-radius:28px;padding:18px 22px;display:grid;gap:14px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:820px){.route{grid-template-columns:220px minmax(0,1fr);align-items:center}}
+.rhead h4{font-size:19px;font-weight:700;color:var(--ink)}
+.rhead .rw{font-weight:700;color:var(--orange)}
+.rhead .cite{margin:0 0 8px}
+.rstops{list-style:none;display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:820px){.rstops{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.rstops li{display:flex;gap:10px;align-items:flex-start;background:var(--canvas);border-radius:20px;padding:12px 14px;font-size:15.5px;color:var(--ink);transition:opacity .3s}
+.rstops li:not(.on){opacity:.12;filter:blur(2px)}
+.rstops li .no{min-width:28px;height:28px;font-size:12.5px;background:var(--orange)}
+.route.done .js-step{display:none}
+
+/* 七個共同主題（第 41 張） */
+ol.themes{list-style:none;display:grid;gap:10px}
+ol.themes li{display:grid;grid-template-columns:34px 10em minmax(0,1fr);gap:14px;align-items:center;background:var(--white);border-radius:999px;padding:10px 18px 10px 10px}
+ol.themes b{font-size:16px}
+ol.themes span:not(.no){font-size:15.5px}
+@media(max-width:620px){ol.themes li{grid-template-columns:34px minmax(0,1fr);border-radius:22px}ol.themes span:not(.no){grid-column:2}}
+
+/* 明信片翻面（第 27、42 張） */
+.flips{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.fcard{position:relative;display:flex;flex-direction:column;gap:8px;min-height:150px;text-align:left;border:0;background:var(--white);border-radius:28px;padding:20px 22px;cursor:pointer;transition:transform .15s}
+.fcard::after{content:"";position:absolute;right:16px;top:16px;width:40px;height:48px;border:2px dashed var(--orange-l);border-radius:6px}
+.fcard:hover{transform:translateY(-2px)}
+.fcard .fname{font-size:22px;font-weight:700;color:var(--ink);padding-right:52px}
+.fcard .fsub{font-size:14px;font-weight:700;color:var(--orange)}
+.fcard .fback{display:none;font-size:15.5px;color:var(--charcoal);border-top:1px dashed var(--dust);padding-top:10px}
+.fcard .fhint{margin-top:auto;font-size:12.5px;font-weight:700;color:var(--slate)}
+.fcard.open{background:var(--ink)}
+.fcard.open .fname,.fcard.open .fback{color:var(--white)}
+.fcard.open .fsub{color:var(--orange-l)}
+.fcard.open .fback{display:block;border-top-color:rgba(255,255,255,.3)}
+.fcard.open .fhint{display:none}
+.fcard.open::after{border-color:var(--orange-l);background:var(--orange-l)}
+
+/* 台灣放哪裡（第 47 張） */
+.discbox{margin-top:30px}
+details.disc{background:var(--white);border-radius:24px;margin-top:10px;overflow:hidden}
+details.disc summary{display:flex;gap:12px;align-items:flex-start;padding:14px 18px;cursor:pointer;list-style:none;font-weight:700;color:var(--ink)}
+details.disc summary::-webkit-details-marker{display:none}
+details.disc summary::after{content:"+";margin-left:auto;font-size:22px;line-height:1;color:var(--orange)}
+details.disc[open] summary::after{content:"−"}
+details.disc .inbox{padding:0 18px 16px;margin:0}
+
+/* 下週預告 */
+.ticket{border:2px dashed var(--dust)}
+.ticket .date{font-size:15px;font-weight:700;color:var(--orange)}
+.ticket h4{font-size:22px}
+
+/* ── 互動共用 ── */
+.pbtn{height:42px;border:0;background:var(--ink);color:var(--white);border-radius:999px;padding:0 22px;font-size:14.5px;font-weight:700;cursor:pointer;transition:background .15s}
+.pbtn:hover{background:var(--charcoal)}
+.pbtn:disabled{background:var(--dust);color:var(--white);cursor:default}
+.pbtn.sec{background:var(--white);color:var(--ink);border:1px solid var(--dust)}
+.pbtn.sec:hover{border-color:var(--ink)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
+.cnt{font-size:14px;color:var(--slate)}
+.fbk{display:none;margin-top:16px;background:var(--white);border-left:4px solid var(--orange);border-radius:20px;padding:14px 18px;font-size:15.5px;color:var(--charcoal)}
+.fbk.show{display:block}
+.fbk.ok{border-left-color:var(--ok)} .fbk.ng{border-left-color:var(--ng)}
+.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* 表態、先猜 */
+.pollbox{margin-top:28px}
+.ask{font-size:17px;font-weight:700;color:var(--ink)}
+.opts{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.opts button{border:1px solid var(--dust);background:var(--white);border-radius:999px;padding:10px 22px;font-size:16px;font-weight:700;color:var(--ink);cursor:pointer;transition:all .15s}
+.opts button:hover{border-color:var(--ink)}
+.opts button.sel{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.opts button.ok{background:var(--ok);border-color:var(--ok);color:var(--white)}
+.opts button.ng{background:var(--ng-soft);border-color:var(--ng);color:var(--ng)}
+.opts button:disabled{cursor:default}
+.reveal-box{display:none;margin-top:16px}
+.reveal-box.show{display:block}
+.pq1{margin-top:18px}
+.pqq{font-size:17.5px;font-weight:700;color:var(--ink)}
+.verdict{display:none;margin-top:8px;font-weight:800}
+.verdict.show{display:block}
+.verdict.ok{color:var(--ok)} .verdict.ng{color:var(--ng)}
+.recall{font-size:17px}
+.recall b{background:var(--white);border-radius:999px;padding:2px 14px}
+
+/* 選三個 */
+.k-pick .chips{gap:10px}
+.chip{border:1px solid var(--dust);background:var(--white);color:var(--ink);border-radius:999px;padding:9px 20px;font-size:16px;font-weight:700;cursor:pointer}
+.chip.on{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.chip.ok{background:var(--ok);border-color:var(--ok);color:var(--white)}
+.chip.ng{background:var(--ng-soft);border-color:var(--ng);color:var(--ng);text-decoration:line-through}
+.chip.miss{border:2px dashed var(--ok);color:var(--ok)}
+.chip:disabled{cursor:default}
+
+/* 分類 */
+.tray{display:flex;flex-wrap:wrap;gap:10px;min-height:72px;padding:14px;border:2px dashed var(--dust);border-radius:28px;background:var(--canvas);margin-bottom:16px}
+.tray:empty::after{content:"卡片都放好了，按下面的按鈕";align-self:center;color:var(--slate);font-size:14px;padding-left:8px}
+.sc{position:relative;flex:0 1 auto;max-width:100%;text-align:left;background:var(--white);border:1px solid var(--dust);border-radius:20px;padding:9px 16px;font-size:15px;font-weight:700;color:var(--ink);
+  line-height:1.5;cursor:grab;user-select:none;-webkit-user-select:none;transition:box-shadow .12s,transform .12s}
+.sc:hover{border-color:var(--ink)}
+.sc.sel{background:var(--ink);border-color:var(--ink);color:var(--white);transform:translateY(-2px)}
+.sc .t{display:none;font-size:12px;font-weight:700;color:var(--slate);margin-top:2px}
+.sc.ok{background:var(--ok-soft);border-color:var(--ok)} .sc.ng{background:var(--ng-soft);border-color:var(--ng)}
+.sc.ok .t,.sc.ng .t{display:block}
+.sc.ok::after,.sc.ng::after{position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff}
+.sc.ok::after{content:"✓";background:var(--ok)} .sc.ng::after{content:"✕";background:var(--ng)}
+.scols{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:760px){.scols.n2{grid-template-columns:repeat(2,minmax(0,1fr))}.scols.n3{grid-template-columns:repeat(3,minmax(0,1fr))}.scols.n4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.scol{background:var(--white);border-radius:28px;min-height:140px;cursor:pointer;overflow:hidden}
+.scol.hot{box-shadow:0 0 0 3px var(--orange)}
+.scol h4{font-size:15.5px;font-weight:700;color:var(--white);padding:12px 18px;background:var(--ink)}
+.scol:nth-child(2) h4{background:var(--clay)} .scol:nth-child(3) h4{background:var(--orange-l)} .scol:nth-child(4) h4{background:var(--orange)}
+.scol .drop{display:flex;flex-wrap:wrap;gap:8px;padding:12px;min-height:90px;align-content:flex-start}
+.score{font-size:30px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* 配對 */
+.match{display:grid;gap:12px;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+.mcol{display:grid;gap:10px;align-content:start}
+.mcol h4{font-size:12.5px;font-weight:800;letter-spacing:.06em;color:var(--slate)}
+.mitem{background:var(--white);border:1px solid var(--dust);border-radius:20px;padding:12px 16px;cursor:pointer;font-size:15.5px;color:var(--charcoal);transition:all .15s}
+.mcol:first-child .mitem{font-weight:700;color:var(--ink)}
+.mitem:hover{border-color:var(--ink)}
+.mitem.sel{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.mitem.done{background:var(--ok-soft);border-color:var(--ok);color:var(--ink);cursor:default}
+.mitem.done::before{content:"✓ ";color:var(--ok);font-weight:700}
+.mstat{margin-top:14px;font-size:14.5px;color:var(--slate)}
+.mstat b{color:var(--ink)}
+@media(max-width:560px){.mitem{font-size:14px;padding:10px 12px}}
+
+/* 輸入框 */
+.inbox{margin-top:12px}
+.inbox label{display:block;font-size:15px;font-weight:700;color:var(--ink)}
+.inbox textarea,.fbbox textarea{width:100%;min-height:92px;border:1px solid var(--dust);border-radius:20px;padding:12px 16px;font:inherit;font-size:16px;color:var(--ink);background:var(--white);resize:vertical;margin-top:8px}
+.inbox textarea:focus,.fbbox textarea:focus,.idbox input:focus{outline:2px solid var(--orange);outline-offset:1px;border-color:var(--ink)}
+.imine{display:none;margin-top:10px;font-size:14.5px;color:var(--slate)}
+.imine.show{display:block}
+.imine b{color:var(--ink)}
+
+/* 閱讀勾選 */
+.readlist{display:grid;gap:10px;margin-top:8px}
+.rp{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start;background:var(--white);border-radius:20px;padding:12px 16px;cursor:pointer;font-size:15px;color:var(--charcoal)}
+.rp input{width:18px;height:18px;margin-top:3px;accent-color:var(--orange)}
+.rp.done{background:var(--ok-soft)}
+.rpstat{margin-top:12px;font-size:14.5px;color:var(--slate)}
+.k-readings h4{font-size:17px;font-weight:700;color:var(--ink)}
+
+/* 講義怎麼用 */
+.steps{list-style:none;display:grid;gap:14px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;font-size:16.5px}
+.steps li::before{counter-increment:s;content:counter(s);width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--white);display:grid;place-items:center;font-size:14px;font-weight:700}
+.steps li:nth-child(2)::before{background:var(--clay)} .steps li:nth-child(3)::before{background:var(--orange)} .steps li:nth-child(4)::before{background:var(--orange-l)} .steps li:nth-child(5)::before{background:var(--slate)}
+.steps p{font-size:15.5px;color:var(--slate);margin-top:4px}
+
+/* 小測驗 */
+.k-quiz{border:2px solid var(--ink)}
+.qz{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.qz:first-of-type{border-top:0;padding-top:0}
+.qz .stem{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px}
+.qz .opt{display:block;width:100%;text-align:left;border:1px solid var(--dust);background:var(--white);border-radius:20px;padding:12px 18px;margin:8px 0;font-size:16px;cursor:pointer}
+.qz .opt:hover{border-color:var(--ink)}
+.qz .opt.right{background:var(--ok-soft);border-color:var(--ok);font-weight:700}
+.qz .opt.wrong{background:var(--ng-soft);border-color:var(--ng)}
+.qz .opt:disabled{cursor:default}
+.qz .fb{display:none;margin-top:10px;background:var(--canvas);border-radius:20px;padding:12px 18px;font-size:15.5px;color:var(--charcoal)}
+.qz .fb.show{display:block}
+.qmeta{margin-top:16px;font-size:14px;color:var(--slate)}
+
+/* 完成 */
+.k-done{border:2px solid var(--ink)}
+.stat{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));margin:18px 0}
+.stat div{background:var(--white);border-radius:24px;padding:14px 18px;font-size:13.5px;color:var(--slate)}
+.stat b{display:block;font-size:28px;font-weight:600;line-height:1.25;color:var(--ink);font-variant-numeric:tabular-nums}
+.idbox{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.idbox label,.fbbox label{display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.idbox input{width:100%;height:46px;border:1px solid var(--dust);border-radius:999px;padding:10px 18px;font:inherit;font-size:16px;color:var(--ink);background:var(--white)}
+.fbbox{margin-top:16px}
+.dmsg{margin:18px 0 12px;font-size:15px;color:var(--charcoal)}
+#submit{height:48px;padding:0 32px;font-size:16px}
+.code{margin-top:16px;font-size:15px;color:var(--charcoal);line-height:1.8}
+.code b{font-size:18px}
+.codenote{display:block;font-size:14px;color:var(--slate);margin-top:8px}
+
+/* ── 章節（可摺疊） ── */
+.chap{margin:22px 0}
+.chap-h{width:100%;display:flex;align-items:center;gap:12px;background:var(--white);border:0;border-radius:999px;padding:10px 18px 10px 10px;cursor:pointer;text-align:left}
+.chap-h:hover{box-shadow:0 0 0 1px var(--ink)}
+.chap-h .cn{width:34px;height:34px;flex:none;display:grid;place-items:center;border-radius:50%;background:var(--canvas);font-size:12.5px;font-weight:800;color:var(--ink)}
+.chap.open .chap-h .cn{background:var(--orange);color:var(--white)}
+.chap-h .ct{flex:1;font-size:17px;font-weight:700;color:var(--ink);line-height:1.4}
+.chap-h .cc{font-size:12.5px;color:var(--slate);background:var(--canvas);border-radius:999px;padding:2px 12px;white-space:nowrap}
+.chap-h .cv{width:9px;height:9px;flex:none;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg);margin:0 6px 4px;transition:transform .2s}
+.chap.open .chap-h .cv{transform:rotate(-135deg);margin-bottom:-4px}
+.chap-b{display:none}
+.chap.open .chap-b{display:block}
+
+/* ── 底列 ── */
+.navbar{position:fixed;bottom:0;left:0;right:0;height:68px;z-index:40;background:rgba(243,240,238,.97);backdrop-filter:blur(8px);border-top:1px solid var(--line);
+  display:flex;align-items:center;gap:12px;padding:0 16px}
+.nav-btn{height:42px;border:0;background:var(--ink);color:var(--white);border-radius:999px;padding:0 20px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap}
+.nav-btn:disabled{background:var(--dust);cursor:default}
+.nav-btn.prev{background:var(--white);color:var(--ink);border:1px solid var(--dust)}
+.nav-btn.prev:disabled{color:var(--dust)}
+.nav-mid{flex:1;min-width:0;display:flex;align-items:center;gap:12px}
+.pageno{font-size:14px;font-weight:700;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.nav-mid .dots{flex:1;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:6px 2px}
+.nav-mid .dots::-webkit-scrollbar{display:none}
+.dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--dust);cursor:pointer}
+.dot.s1{background:#9A9590} .dot.s2{background:var(--orange-l)} .dot.s3{background:var(--clay)}
+.dot.on{background:var(--ink);transform:scale(1.4)}
+@media(max-width:560px){.nav-mid .dots{display:none}.nav-mid{justify-content:center}}
+
+/* 鍵盤提示、續讀 */
+.khint{position:fixed;right:16px;bottom:80px;z-index:30;background:var(--ink);color:var(--white);font-size:13px;border-radius:999px;padding:6px 14px;transition:opacity .6s}
+.khint kbd{background:transparent;color:var(--white);border-color:rgba(255,255,255,.5)}
+@media(max-width:700px){.khint{display:none}}
+.resume{position:fixed;left:50%;bottom:82px;transform:translateX(-50%);z-index:45;background:var(--white);border-radius:999px;box-shadow:0 10px 30px rgba(20,20,19,.18);
+  display:flex;align-items:center;gap:10px;padding:8px 8px 8px 18px;font-size:14px;white-space:nowrap}
+.resume button{height:34px;border:0;background:var(--ink);color:var(--white);border-radius:999px;padding:0 14px;font-size:13px;font-weight:700;cursor:pointer}
+.resume button.x{background:var(--canvas);color:var(--ink)}
+
+/* ── 目次 ── */
+.toc{position:fixed;inset:0;z-index:60;background:rgba(20,20,19,.3);display:none}
+.toc.show{display:block}
+.toc-panel{position:absolute;top:0;right:0;bottom:0;width:min(420px,92vw);background:var(--lift);padding:22px 18px;overflow-y:auto;border-radius:28px 0 0 28px}
+.toc-panel h3{font-size:24px;font-weight:600;color:var(--ink)}
+.tsub{font-size:14px;color:var(--slate);margin:4px 0 14px}
+.toc-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:0;background:var(--white);font-size:20px;cursor:pointer}
+.tfilter{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tfilter button{border:1px solid var(--dust);background:var(--white);color:var(--charcoal);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700;cursor:pointer}
+.tfilter button.on{background:var(--ink);border-color:var(--ink);color:var(--white)}
+#toclist{list-style:none}
+#toclist li.hide{display:none}
+#toclist li.head{margin-top:12px}
+#toclist li.head a{font-weight:700;color:var(--ink)}
+#toclist a{display:flex;gap:10px;align-items:baseline;padding:6px 10px;border-radius:999px;color:var(--charcoal);text-decoration:none;font-size:14.5px;line-height:1.5}
+#toclist a:hover{background:var(--white)}
+#toclist a.cur{background:var(--orange-soft)}
+#toclist .n{width:26px;flex:none;text-align:right;color:var(--slate);font-variant-numeric:tabular-nums;font-size:13px}
+
+/* 分類：選了卡片之後的欄位按鈕列 */
+.sbar{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);z-index:50;display:none;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;
+  width:max-content;max-width:min(94vw,720px);background:var(--ink);color:var(--white);border-radius:28px;padding:10px 14px;box-shadow:0 10px 30px rgba(20,20,19,.25)}
+.sbar.show{display:flex}
+.sbar .sbt{flex-basis:100%;text-align:center;font-size:13px;color:var(--dust);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbar button{height:34px;border:0;background:var(--white);color:var(--ink);border-radius:999px;padding:0 14px;font-size:14px;font-weight:700;cursor:pointer}
+.sbar button.x{background:transparent;color:var(--dust);border:1px solid rgba(255,255,255,.3)}
+
+</style>
+<!-- og:start -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
+<meta property="og:title" content="福利國家與其類型 ・ 社會政策 第 8 週 ・ 葉崇揚" />
+<meta property="og:description" content="社會政策第 8 週互動講義（分頁式）：Esping-Andersen 的三個福利世界，Holliday 的生產主義、李易駿與古允文的發展型、Gough 的福利體制與葉崇揚的三條轉型路徑，以及 Spicker 的歷史解釋。共 66 頁，含分節小測驗、先猜、分類、配對、旅行手冊與數字互動，以及閱讀紀錄。" />
+<meta property="og:url" content="https://chungyang1017.github.io/teaching/social-policy/week08-welfare-regimes.html" />
+<meta property="og:image" content="https://chungyang1017.github.io/photo.jpg" />
+<meta property="og:locale" content="zh_TW" />
+<meta name="twitter:card" content="summary" />
+<!-- og:end -->
+</head>
+<body>
+<header class="topbar">
+  <span class="logo">W08</span>
+  <span class="course">社會政策 Social Policy</span>
+  <span class="wk">第 8 週　福利國家與其類型</span>
+  <span class="sect" id="sect"></span>
+  <span class="sprog" id="sprog"></span>
+  <span class="sp"></span>
+  <span class="clock" id="clock">00:00</span>
+  <button class="tb pri" type="button" onclick="toggleToc()">目次</button>
+  <button class="tb hide-m" type="button" onclick="goFull()">全螢幕</button>
+  <button class="tb hide-m" type="button" onclick="location.href='../../teaching-zh.html'">教學頁</button>
+</header>
+<div id="bar"></div>
+<nav class="panenav" id="panenav"><button type="button" data-pane="0" class="on"><span class="pn">0</span>開場</button><button type="button" data-pane="1"><span class="pn">1</span>第一節</button><button type="button" data-pane="2"><span class="pn">2</span>第二節</button><button type="button" data-pane="3"><span class="pn">3</span>第三節</button><button type="button" data-pane="4"><span class="pn">✓</span>完成</button></nav>
+<main class="deck" id="deck">
+<div class="pane on" data-pane="0">
+<section class="slide k-cover" data-kind="cover" data-label="封面" data-sect=""><div class="hero"><div class="stampbig"><span>VISIT THE</span><b>FOUR</b><span>WORLDS</span></div><p class="kick2">SOCIAL POLICY · WEEK 8</p><h1>福利國家與其類型</h1><p class="sub">三個福利世界與東亞福利體制</p><div class="meta"><span>第 8 週 · 11/6</span><span class="pill">互動講義</span><span>DEPART 11/6</span></div><p class="who">葉崇揚　教授　·　東吳大學社會學系<br>115 學年度第 1 學期　·　社會政策 Social Policy　·　BSO20801</p><p class="hint">用 <kbd>→</kbd> 鍵或下方按鈕翻頁　·　<kbd>Esc</kbd> 開目次　·　進度會自動保存在這台裝置</p></div></section>
+<section class="slide k-howto" data-kind="howto" data-label="這份講義怎麼用" data-sect=""><span class="eyebrow">使用說明</span><h2>這份講義怎麼用</h2><p class="src">這是預習與複習用的，不是上課投影片</p><ol class="steps"><li><div><b>上課前</b>：從頭讀一遍。不必背，但要知道每一節在問什麼問題。</div></li><li><div><b>上課後</b>：回來把答錯的小測驗重看一次，再對照本週閱讀。</div></li><li><div><b>怎麼讀</b><p>標著 ◆ 的頁，都要你動手：表態、先猜、分類、配對、翻明信片、蓋章、排序、點選比較。做過才記得住。</p></div></li><li><div><b>進度會自己存</b>：關掉再打開，會回到上次那頁。小測驗的答案也留著。</div></li><li><div><b>簽到</b>：三節的小測驗都作答、閱讀滿 20 分鐘之後，到「完成」頁填學號姓名送出。</div></li></ol><p class="note">這份講義的內容和上課投影片相同，另外加上要動手的練習。</p></section>
+<section class="slide k-roadmap" data-kind="roadmap" data-label="今天的三個小時" data-sect=""><span class="eyebrow">ITINERARY · 開場</span><h2>今天的三個小時</h2><div class="split"><div class="road"><div class="tile"><span class="no">1</span><div><h4>第一節　三個福利世界</h4><p>Esping-Andersen：去商品化、階層化，與國家—市場—家庭</p></div></div><div class="tile"><span class="no">2</span><div><h4>第二節　東亞：第四個世界？</h4><p>Holliday 的生產主義、李易駿與古允文的發展型、Gough 的福利體制、葉崇揚的轉型路徑</p></div></div><div class="tile"><span class="no">3</span><div><h4>第三節　福利國家怎麼長出來</h4><p>Spicker：歷史解釋的共同主題，與另一種敘事</p></div></div></div><div class="sidecard"><span class="k">NOTE</span><h4>每一種類型學，都問四件事</h4><ul class="bl"><li>比什麼？（判準）</li><li>怎麼量？（指標）</li><li>分成幾類？（結果）</li><li>台灣放哪裡？</li></ul></div></div></section>
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">01</span><span class="ct">開場問題</span><span class="cc">4 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-twocolnum" data-kind="twocolnum" data-label="◆ 「福利國家」要怎麼比？" data-sect="" data-act="1"><span class="eyebrow">DEPARTURE · 開場問題</span><h2>「福利國家」要怎麼比？</h2><p class="lead">Spicker：「福利國家」至少有三種用法。比較之前，先弄清楚在比什麼（2025a: 109）。</p><div class="grid2"><div class="card"><h4>三種意思</h4><ol class="numl"><li><span class="no">01</span><span>一種理想模型：國家為全體公民負起全面而普及的福利責任。</span></li><li><span class="no">02</span><span>國家福利：「由國家提供的福利」，美國的主要用法。</span></li><li><span class="no">03</span><span>一套社會保障體系：獨立機構、志願部門與政府服務共同構成。</span></li></ol><p class="cite">Spicker（2025a: 109）</p></div><div class="card"><h4>五種比較途徑（Mitchell）</h4><ol class="numl"><li><span class="no">01</span><span>政策：比較行動的明文條件。</span></li><li><span class="no">02</span><span>投入：投入的資源，如 Wilensky。</span></li><li><span class="no">03</span><span>生產：規則與結構，如 Esping-Andersen。</span></li><li><span class="no">04</span><span>運作：給付實際怎麼運作、誰付錢、誰經營。</span></li><li><span class="no">05</span><span>結果：人民有沒有受益，如 LIS。</span></li></ol><p class="cite">Spicker（2025a: 110–111）</p></div></div><div class="call"><p>今天的主角是「生產」途徑：看制度怎麼設計、保障了誰，而不只看花了多少錢。</p></div><div class="pollbox"><p class="ask">比較福利國家，你第一個想看的是哪一種？讀完三節，最後會再問你一次。</p><div class="poll" data-poll="cmp" data-act-key="poll-cmp"><div class="opts"><button type="button" data-v="政策">政策</button><button type="button" data-v="投入">投入</button><button type="button" data-v="生產">生產</button><button type="button" data-v="運作">運作</button><button type="button" data-v="結果">結果</button></div></div></div></section>
+<section class="slide k-pick" data-kind="pick" data-label="◆ 動手：先猜：Esping-Andersen 說，比較福利國家要看哪三件事？" data-sect="" data-act="1"><span class="eyebrow">◆ 先猜</span><h2>先猜：Esping-Andersen 說，比較福利國家要看哪三件事？</h2><p class="src">選三個，送出後對答案。下一頁是答案</p><div data-pick="p4" data-need="3" data-fb=" 三件事是：去商品化、階層化、國家、市場、家庭。支出只是表象（p. 19）。" data-act-key="pick-4"><div class="chips"><button class="chip" type="button" data-ok="1">去商品化</button><button class="chip" type="button" data-ok="0">社會支出的多寡</button><button class="chip" type="button" data-ok="1">階層化</button><button class="chip" type="button" data-ok="0">工業化的程度</button><button class="chip" type="button" data-ok="0">老年人口的比例</button><button class="chip" type="button" data-ok="1">國家、市場、家庭</button></div><div class="row"><button class="pbtn js-go" type="button" disabled>送出</button><span class="cnt">已選 0 / 3</span></div><div class="fbk"></div></div></section>
+<section class="slide k-postcard" data-kind="postcard" data-label="支出只是表象" data-sect=""><span class="eyebrow">ITINERARY · 第一節</span><h2>支出只是表象</h2><p class="lead">福利國家該怎麼比？Esping-Andersen 說：不是比花多少錢，而是看三件事。</p><div class="split pc"><div><div class="postcard"><span class="k">POSTCARD</span><blockquote>“Expenditures are epiphenomenal to the theoretical substance of welfare states.”（p. 19）</blockquote><p class="by">— Esping-Andersen（1990）</p></div></div><div class="grid2"><div class="nt"><span class="no">01</span><div><h4>去商品化</h4><p>服務成為一種權利；人不靠市場也能維持生活（pp. 21–22）。</p></div></div><div class="nt"><span class="no">02</span><div><h4>階層化</h4><p>福利國家不只矯正不平等，它本身就是一套階層化體系（p. 23）。</p></div></div><div class="nt"><span class="no">03</span><div><h4>國家、市場、家庭</h4><p>看三者在福利供給上怎麼分工（p. 21）。</p></div></div><div class="nt"><span class="no">04</span><div><h4>支出看不出這些</h4><p>奧地利的支出大量給特權公務員；英國支出成長是因為高失業（pp. 19–20）。</p></div></div></div></div></section>
+<section class="slide k-cards4" data-kind="cards4" data-label="四個世界" data-sect=""><span class="eyebrow">DESTINATIONS · 總覽</span><h2>四個世界</h2><p class="lead">前三個來自 Esping-Andersen（1990），第四個是 Holliday（2000）加上去的。</p><div class="grid4"><div class="card"><h4>自由主義</h4><p class="cs">美、加、澳</p><p>資產調查、低額給付，國家把人推回市場。</p><p class="cite">Esping-Andersen（1990: 26–27）</p></div><div class="card"><h4>保守組合主義</h4><p class="cs">奧、法、德、義</p><p>維持地位差異，權利附著於職業；家庭優先。</p><p class="cite">Esping-Andersen（1990: 27）</p></div><div class="card"><h4>社會民主</h4><p class="cs">北歐</p><p>普及與去商品化擴及中產階級，福利和就業綁在一起。</p><p class="cite">Esping-Andersen（1990: 27–28）</p></div><div class="card"><h4>生產主義</h4><p class="cs">日、港、星、韓、台</p><p>社會政策從屬於經濟成長。</p><p class="cite">Holliday（2000: 708–709）</p></div></div></section></div></div>
+</div>
+<div class="pane" data-pane="1">
+<section class="slide k-divider" data-kind="divider" data-label="第一節　三個福利世界" data-sect="第一節　三個福利世界"><div class="divwrap"><div class="bigno"><b>1</b><span>STOP 1</span></div><div><span class="eyebrow">第一節</span><h2>三個福利世界</h2><p class="subt">Esping-Andersen（1990）：去商品化、階層化，與國家—市場—家庭</p><span class="stampsm">THREE WORLDS</span></div></div></section>
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">01</span><span class="ct">三種政治經濟學</span><span class="cc">3 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-match" data-kind="match" data-label="◆ 動手：先猜：三派政治經濟學，各怎麼看市場與國家？" data-sect="第一節　三個福利世界" data-act="1"><span class="eyebrow">◆ 動手做</span><h2>先猜：三派政治經濟學，各怎麼看市場與國家？</h2><p class="src">點左邊一派，再點右邊對應的看法。答案在下一頁</p><div class="match" data-match="m7" data-act-key="match-7"><div class="mcol"><h4>學派</h4><div class="mitem" data-k="0">自由主義</div><div class="mitem" data-k="1">保守主義</div><div class="mitem" data-k="2">馬克思主義</div></div><div class="mcol"><h4>看法</h4><div class="mitem" data-k="0">市場是消滅階級的機制；國家反而維持特權與階級。</div><div class="mitem" data-k="1">List、Wagner、Schmoller：由君主建立福利國家，維持秩序與位階。</div><div class="mitem" data-k="2">市場不保證平等。社會權是埋進資本主義的特洛伊木馬。</div></div></div><p class="mstat"></p></section>
+<section class="slide k-cards3" data-kind="cards3" data-label="市場會消滅階級，還是製造階級？" data-sect="第一節　三個福利世界"><span class="eyebrow">PRE-DEPARTURE · 三種政治經濟學</span><h2>市場會消滅階級，還是製造階級？</h2><p class="lead">Esping-Andersen 先回到古典政治經濟學。三派對「市場與國家」的看法，正是三個福利世界的思想源頭（pp. 9–11）。</p><div class="grid3"><div class="card"><h4>自由主義</h4><p class="cs">Adam Smith</p><p>市場是消滅階級的機制；國家反而維持特權與階級。</p><p class="cite">（pp. 9–10）</p></div><div class="card"><h4>保守主義</h4><p class="cs">德國歷史學派</p><p>List、Wagner、Schmoller：由君主建立福利國家，維持秩序與位階。</p><p class="cite">（p. 10）</p></div><div class="card"><h4>馬克思主義</h4><p class="cs">Heimann（1929）</p><p>市場不保證平等。社會權是埋進資本主義的特洛伊木馬。</p><p class="cite">（pp. 10–11）</p></div></div><div class="call"><p>核心問題：資本主義造成的階級分化與不平等，能不能被議會民主化解？（p. 11）</p></div></section>
+<section class="slide k-notes" data-kind="notes" data-label="什麼才算福利國家？" data-sect="第一節　三個福利世界"><span class="eyebrow">CHECK-IN · 界定</span><h2>什麼才算福利國家？</h2><p class="lead">第一代比較研究假定「支出愈多，承諾愈深」。Esping-Andersen 列出三種替代做法，再提出自己的（pp. 19–21）。</p><div class="notes n2"><div class="nt"><span class="no">01</span><div><h4>Therborn：看國家在做什麼</h4><p>真正的福利國家，日常活動多數用在家戶的福利需要。照這標準，1970 年代前沒有一國算數（p. 20）。</p></div></div><div class="nt"><span class="no">02</span><div><h4>Titmuss：殘補 vs 制度</h4><p>殘補模型只在家庭與市場失靈時介入；制度模型面向全體人口。研究從支出的黑盒子轉向內容（p. 20）。</p></div></div><div class="nt"><span class="no">03</span><div><h4>理論選定判準</h4><p>拿實際的福利國家對照抽象模型打分數。缺點：非歷史，看不到行動者真正爭取什麼（p. 21）。</p></div></div><div class="nt"><span class="no">04</span><div><h4>Esping-Andersen 的選擇</h4><p>從 Marshall 的社會公民身分出發：社會權若像財產權般不可侵犯、依公民身分而非表現給予，就是去商品化（p. 21）。</p></div></div></div></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">02</span><span class="ct">去商品化</span><span class="cc">3 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quote" data-kind="quote" data-label="引文：Esping-Andersen" data-sect="第一節　三個福利世界"><div class="qblock"><span class="stampsm">DE-COMMODI- FICATION</span><blockquote>去商品化，發生在服務成為一種權利，而且人不必依賴市場也能維持生活的時候。</blockquote><p class="qen">“De-commodification occurs when a service is rendered as a matter of right, and when a person can maintain a livelihood without reliance on the market.”</p><cite>Esping-Andersen<br>1990: 21–22</cite></div></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 動手：先猜：三種方案，問題各在哪裡？" data-sect="第一節　三個福利世界" data-act="1"><span class="eyebrow">◆ 動手做</span><h2>先猜：三種方案，問題各在哪裡？</h2><p class="src">點左邊一種方案，再點右邊對應的描述。答案在下一頁</p><div class="match" data-match="m10" data-act-key="match-10"><div class="mcol"><h4>方案</h4><div class="mitem" data-k="0">救助式</div><div class="mitem" data-k="1">社會保險</div><div class="mitem" data-k="2">Beveridge 均一給付</div></div><div class="mcol"><h4>問題</h4><div class="mitem" data-k="0">資產調查、給付低、帶汙名。結果反而強化市場：沒失敗的人都去買私人福利。</div><div class="mitem" data-k="1">資格強，但給付幾乎全靠繳費，也就是靠工作。整個世紀下來沒有多少去商品化。</div><div class="mitem" data-k="2">乍看最去商品化，也較團結。但給付很少高到讓人真的可以不工作。</div></div></div><p class="mstat"></p></section>
+<section class="slide k-cards3" data-kind="cards3" data-label="有社會方案，不等於去商品化" data-sect="第一節　三個福利世界"><span class="eyebrow">STOP 1 · 去商品化</span><h2>有社會方案，不等於去商品化</h2><p class="lead">方案的規則與前提，才決定它給不給人「不靠市場」的真實選項（p. 22）。</p><div class="grid3"><div class="card"><h4>救助式</h4><p class="cs">英語系國家為主</p><p>資產調查、給付低、帶汙名。結果反而強化市場：沒失敗的人都去買私人福利。</p><p class="cite">（p. 22）</p></div><div class="card"><h4>社會保險</h4><p class="cs">德國先驅</p><p>資格強，但給付幾乎全靠繳費，也就是靠工作。整個世紀下來沒有多少去商品化。</p><p class="cite">（p. 22）</p></div><div class="card"><h4>Beveridge 均一給付</h4><p class="cs">公民給付</p><p>乍看最去商品化，也較團結。但給付很少高到讓人真的可以不工作。</p><p class="cite">（pp. 22–23）</p></div></div><div class="call"><p>最低定義：公民可以自由退出工作，不會失去工作、所得或一般福利。生病時給付等於正常所得、幾乎不用證明、想請多久就請多久。這些條件，學者與公務員早就享有（p. 23）。</p></div></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">03</span><span class="ct">階層化</span><span class="cc">1 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-stops" data-kind="stops" data-label="福利國家本身就是一套階層化體系" data-sect="第一節　三個福利世界"><span class="eyebrow">STOP 2 · 階層化</span><h2>福利國家本身就是一套階層化體系</h2><p class="lead">它不只介入不平等，也主動排列社會關係（p. 23）。歷史上每一種模型，都排出不同的階層。</p><ol class="itin"><li><span class="pin"></span><h4>濟貧與資產調查</h4><p>懲罰、汙名化受助者，製造社會二元。勞工運動攻擊的首要對象（p. 24）。</p></li><li><span class="pin"></span><h4>俾斯麥式社會保險</h4><p>不同階級、不同方案，鞏固受薪者間的區分；忠誠綁到君主與國家。公務員享特權（p. 24）。</p></li><li><span class="pin"></span><h4>勞工自組互助會</h4><p>工人不信任敵對的國家，自辦互助。但會員限於最強的階層，成了「階級貧民區」（pp. 24–25）。</p></li><li><span class="pin"></span><h4>普及均一給付</h4><p>社會主義政黨改採「人民的福利」。中產階級興起後給付太薄，較富者轉向私人保險（p. 25）。</p></li></ol><div class="call side"><b>TWO WAYS OUT · 兩條出路（p. 26）</b><p>英語系國家：保留低度普及，讓市場服務要求更高的階層，中產階級不再支持公部門。瑞典、挪威：在均一給付上疊第二層所得相關保險，重新引進差距，卻擋掉市場。</p></div></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">04</span><span class="ct">三個目的地</span><span class="cc">2 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-book" data-kind="book" data-label="◆ 三個目的地：自由主義世界、保守組合主義世界、社會民主世界" data-sect="第一節　三個福利世界" data-act="1"><span class="eyebrow">DESTINATIONS 1–3 · 旅行手冊</span><h2>三個目的地</h2><p class="instr">一頁一個世界。讀完那一頁，就在左下角蓋一個章；三個章都蓋好，這一站就完成了。</p><div class="book" data-book="b12" data-act-key="book-12"><div class="tabs"><button type="button"><small>DESTINATION 1/3</small>自由主義世界</button><button type="button"><small>DESTINATION 2/3</small>保守組合主義世界</button><button type="button"><small>DESTINATION 3/3</small>社會民主世界</button></div><article class="page p1"><div class="dest"><p class="k">DESTINATION 1/3</p><h3>自由主義世界</h3><p class="tag">市場優先，國家只保最低</p><p class="ck">DESTINATIONS</p><p class="cs">美國 · 加拿大 · 澳洲</p><button class="stampbtn" type="button">LIBERAL<i>點一下蓋章</i></button></div><div class="facts"><div class="fact"><b>主要方案</b><p>資產調查救助、低額的普及移轉或低額社會保險；對象多為低所得的工人階級（p. 26）。</p></div><div class="fact"><b>規則</b><p>受自由主義工作倫理約束：福利的上限，就是人們寧願領福利不工作的那一點。資格嚴、帶汙名、給付少（p. 26）。</p></div><div class="fact"><b>國家與市場</b><p>國家鼓勵市場：消極地只保最低，或積極地補貼私人方案（pp. 26–27）。</p></div><div class="fact"><b>階層化結果</b><p>受助者之間的相對平等、多數人依市場分化，兩者之間是階級政治的二元（p. 27）。</p></div></div></article><article class="page p2"><div class="dest"><p class="k">DESTINATION 2/3</p><h3>保守組合主義世界</h3><p class="tag">維持地位差異，家庭優先</p><p class="ck">DESTINATIONS</p><p class="cs">奧地利 · 法國 · 德國 · 義大利</p><button class="stampbtn" type="button">CORPORATIST<i>點一下蓋章</i></button></div><div class="facts"><div class="fact"><b>歷史遺緒</b><p>組合主義與國家主義的遺產，升級來服務「後工業」的階級結構（p. 27）。</p></div><div class="fact"><b>規則</b><p>市場效率從來不是執念，社會權也不是爭點。重點是保存地位差異：權利附著於階級與地位（p. 27）。</p></div><div class="fact"><b>國家與市場</b><p>國家隨時準備取代市場；私人保險與職業附加福利只是邊緣。但重分配效果微乎其微（p. 27）。</p></div><div class="fact"><b>教會與家庭</b><p>社會保險排除不工作的妻子，家庭給付鼓勵母職，托育低度發展。輔助原則：家庭能力耗盡，國家才介入（p. 27）。</p></div></div></article><article class="page p3"><div class="dest"><p class="k">DESTINATION 3/3</p><h3>社會民主世界</h3><p class="tag">最高標準的平等，不是最低需要的平等</p><p class="ck">DESTINATIONS</p><p class="cs">北歐國家</p><button class="stampbtn" type="button">SOCIAL DEMOCRATIC<i>點一下蓋章</i></button></div><div class="facts"><div class="fact"><b>規則</b><p>普及與去商品化擴及新中產階級。一套普及保險涵蓋所有階層，給付依慣常所得分級（pp. 27–28）。</p></div><div class="fact"><b>國家與市場</b><p>排擠市場，建立支持福利國家的普遍團結：全民受益、全民依賴，也都願意付費（p. 28）。</p></div><div class="fact"><b>家庭</b><p>不等家庭能力耗盡，先發地把家庭成本社會化。直接照顧兒童、老人與無助者，讓女性可以選擇工作（p. 28）。</p></div><div class="fact"><b>福利與工作的融合</b><p>真心承諾充分就業，也完全依賴充分就業：成本太高，必須讓最多人工作、最少人靠移轉過活（p. 28）。</p></div></div></article><div class="bookfoot"><span>已蓋 <b>0</b> / 3 個章</span><button class="pbtn next" type="button">下一站 →</button></div></div></section>
+<section class="slide k-notes" data-kind="notes" data-label="沒有純粹的案例" data-sect="第一節　三個福利世界"><span class="eyebrow">FINE PRINT · 但是</span><h2>沒有純粹的案例</h2><div class="notes n3"><div class="nt"><span class="no">01</span><div><h4>北歐</h4><p>以社會民主為主，但不乏關鍵的自由主義元素（p. 28）。</p></div></div><div class="nt"><span class="no">02</span><div><h4>美國</h4><p>社會安全制度是重分配、強制、遠非精算的。新政早期，和當時的北歐社會民主一樣社會民主（p. 28）。</p></div></div><div class="nt"><span class="no">03</span><div><h4>歐陸</h4><p>保守體制吸收了自由主義與社會民主的衝動。幾十年來愈來愈不組合主義、不威權（p. 29）。</p></div></div></div><div class="call"><p>即使不純，只要判準是社會權的品質、階層化，以及國家、市場、家庭的關係，世界顯然由不同的體制群組成。用「多或少、好或壞」來比，會嚴重誤導（p. 29）。</p></div></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">05</span><span class="ct">18 國的去商品化分數</span><span class="cc">3 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-predict" data-kind="predict" data-label="◆ 動手：先猜：18 國的去商品化分數" data-sect="第一節　三個福利世界" data-act="1"><span class="eyebrow">◆ 先猜</span><h2>先猜：18 國的去商品化分數</h2><p class="src">年金、疾病、失業三種現金給付的合併分數。分數愈高，平均勞工愈容易不靠市場過活。答案在下一頁</p><div class="pq1"><p class="pqq">分數最高的是……</p><div class="poll" data-poll="top" data-answer="瑞典" data-act-key="predict-top"><div class="opts"><button type="button" data-v="美國">美國</button><button type="button" data-v="德國">德國</button><button type="button" data-v="瑞典">瑞典</button><button type="button" data-v="日本">日本</button></div></div><p class="verdict" data-verdict-for="top"></p></div><div class="pq1"><p class="pqq">日本落在哪一群？</p><div class="poll" data-poll="jp" data-answer="中" data-act-key="predict-jp"><div class="opts"><button type="button" data-v="低">低</button><button type="button" data-v="中">中</button><button type="button" data-v="高">高</button></div></div><p class="verdict" data-verdict-for="jp"></p></div><div class="fbk ok reveal-box" data-reveal-all="top,jp">瑞典 39.1 最高；日本 27.1，落在中間那一群（Esping-Andersen, 1990: 52）。下一頁可以自己排排看。</div></section>
+<section class="slide k-chart" data-kind="chart" data-label="◆ 18 國排一排" data-sect="第一節　三個福利世界" data-act="1"><span class="eyebrow">ALTITUDE · 去商品化分數，1980</span><h2>18 國排一排</h2><p class="instr">排序、分群，或點一國只看它。</p><div class="ctrl"><span class="lab">排序</span><button type="button" class="on" data-ord="asc">由低到高</button><button type="button" data-ord="desc">由高到低</button><span class="sep"></span><span class="lab">分群</span><button type="button" class="on" data-grp="全部">全部</button><button type="button" data-grp="低">低</button><button type="button" data-grp="中">中</button><button type="button" data-grp="高">高</button></div><div class="chart" data-chart="c16" data-act-key="chart-16" data-g="全部" style="--u:calc(230px / 39.1)"><div class="plot"><div class="bars"><div class="b" data-i="0" data-v="13" data-g="低" style="--v:13" title="澳 13"><span class="v">13</span><span class="f"></span><span class="l">澳</span></div><div class="b" data-i="1" data-v="13.8" data-g="低" style="--v:13.8" title="美 13.8"><span class="v">13.8</span><span class="f"></span><span class="l">美</span></div><div class="b" data-i="2" data-v="17.1" data-g="低" style="--v:17.1" title="紐 17.1"><span class="v">17.1</span><span class="f"></span><span class="l">紐</span></div><div class="b" data-i="3" data-v="22" data-g="低" style="--v:22" title="加 22"><span class="v">22</span><span class="f"></span><span class="l">加</span></div><div class="b" data-i="4" data-v="23.3" data-g="低" style="--v:23.3" title="愛 23.3"><span class="v">23.3</span><span class="f"></span><span class="l">愛</span></div><div class="b" data-i="5" data-v="23.4" data-g="低" style="--v:23.4" title="英 23.4"><span class="v">23.4</span><span class="f"></span><span class="l">英</span></div><div class="b" data-i="6" data-v="24.1" data-g="中" style="--v:24.1" title="義 24.1"><span class="v">24.1</span><span class="f"></span><span class="l">義</span></div><div class="b" data-i="7" data-v="27.1" data-g="中" style="--v:27.1" title="日 27.1"><span class="v">27.1</span><span class="f"></span><span class="l">日</span></div><div class="b" data-i="8" data-v="27.5" data-g="中" style="--v:27.5" title="法 27.5"><span class="v">27.5</span><span class="f"></span><span class="l">法</span></div><div class="b" data-i="9" data-v="27.7" data-g="中" style="--v:27.7" title="德 27.7"><span class="v">27.7</span><span class="f"></span><span class="l">德</span></div><div class="b" data-i="10" data-v="29.2" data-g="中" style="--v:29.2" title="芬 29.2"><span class="v">29.2</span><span class="f"></span><span class="l">芬</span></div><div class="b" data-i="11" data-v="29.8" data-g="中" style="--v:29.8" title="瑞士 29.8"><span class="v">29.8</span><span class="f"></span><span class="l">瑞士</span></div><div class="b" data-i="12" data-v="31.1" data-g="中" style="--v:31.1" title="奧 31.1"><span class="v">31.1</span><span class="f"></span><span class="l">奧</span></div><div class="b" data-i="13" data-v="32.4" data-g="中" style="--v:32.4" title="比 32.4"><span class="v">32.4</span><span class="f"></span><span class="l">比</span></div><div class="b" data-i="14" data-v="32.4" data-g="中" style="--v:32.4" title="荷 32.4"><span class="v">32.4</span><span class="f"></span><span class="l">荷</span></div><div class="b" data-i="15" data-v="38.1" data-g="高" style="--v:38.1" title="丹 38.1"><span class="v">38.1</span><span class="f"></span><span class="l">丹</span></div><div class="b" data-i="16" data-v="38.3" data-g="高" style="--v:38.3" title="挪 38.3"><span class="v">38.3</span><span class="f"></span><span class="l">挪</span></div><div class="b" data-i="17" data-v="39.1" data-g="高" style="--v:39.1" title="瑞典 39.1"><span class="v">39.1</span><span class="f"></span><span class="l">瑞典</span></div></div><div class="mean" style="--mv:27.2"><span>平均 27.2</span></div></div><div class="grpbar"><span class="gb" style="flex:6">低</span><span class="gb" style="flex:9">中</span><span class="gb" style="flex:3">高</span></div></div><div class="notesbox"><p>年金、疾病、失業三種現金給付的合併分數。分數愈高，平均勞工愈容易不靠市場過活。</p><ul class="bl"><li>依平均值分三群：英語系「新」國家墊底，北歐在頂端，歐陸居中；比、荷接近北歐（p. 51）。</li><li>澳、紐的疾病與失業給付只有資產調查制，得分極低；德國繳費期長、個人負擔重、給付中等，分數不高（p. 51）。</li></ul><p>資料來源：Esping-Andersen（1990: 52），Table 2.2</p></div></section>
+<section class="slide k-scored" data-kind="scored" data-label="量的是「離開市場有多容易」" data-sect="第一節　三個福利世界"><span class="eyebrow">HOW IT IS SCORED · 分數怎麼算</span><h2>量的是「離開市場有多容易」</h2><div class="split"><div class="card"><span class="k">DATA</span><p>三個方案：老年年金、疾病給付、失業保險的現金給付（p. 49）。</p><p>18 個工業民主國家，1980 年（p. 49）。</p><span class="k">VARIABLES</span><ol class="vars"><li><span class="no">1</span><b>資格條件的嚴苛程度</b><span>工作年資、繳費、資產調查</span></li><li><span class="no">2</span><b>內建的抑制</b><span>等待日數、最長給付期間</span></li><li><span class="no">3</span><b>給付接近正常所得的程度</b><span>替代率，計分加倍</span></li><li><span class="no">4</span><b>再依涵蓋率加權</b><span>方案再優渥，只給少數人也沒用</span></li></ol><p class="cite">三組變項與加權（p. 49）；給付加倍計分（p. 50）</p></div><div class="sidecard"><h4>分數怎麼解釋？</h4><ul class="bl"><li>經濟發展水準與去商品化負相關，沒有解釋力（p. 52）。</li><li>左派力量有相當強的正向影響，解釋約 40% 的變異（p. 52）。</li><li>剩下的要看政治權力與歷史遺緒的互動：歐陸的高分，也來自長期的保守與天主教改革主義（p. 52）。</li></ul></div></div></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">06</span><span class="ct">三組群聚，體制從哪裡來</span><span class="cc">4 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：這些國家，各在哪一群？" data-sect="第一節　三個福利世界" data-act="1"><span class="eyebrow">◆ 動手做</span><h2>先猜：這些國家，各在哪一群？</h2><p class="src">Esping-Andersen 依階層化的三組指標，把 18 國歸群。讀下一頁之前，先自己分分看</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s18" data-act-key="sort-18" data-done="下一頁是三組群聚與指標。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="奧地利" data-ans="保守主義強" data-dim="">奧地利<span class="t">保守主義強</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="比利時" data-ans="保守主義強" data-dim="">比利時<span class="t">保守主義強</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="法國" data-ans="保守主義強" data-dim="">法國<span class="t">保守主義強</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k0" data-txt="德國" data-ans="保守主義強" data-dim="">德國<span class="t">保守主義強</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k0" data-txt="義大利" data-ans="保守主義強" data-dim="">義大利<span class="t">保守主義強</span></button><button class="sc" type="button" draggable="true" data-i="5" data-k="k1" data-txt="澳洲" data-ans="自由主義強" data-dim="">澳洲<span class="t">自由主義強</span></button><button class="sc" type="button" draggable="true" data-i="6" data-k="k1" data-txt="加拿大" data-ans="自由主義強" data-dim="">加拿大<span class="t">自由主義強</span></button><button class="sc" type="button" draggable="true" data-i="7" data-k="k1" data-txt="日本" data-ans="自由主義強" data-dim="">日本<span class="t">自由主義強</span></button><button class="sc" type="button" draggable="true" data-i="8" data-k="k1" data-txt="瑞士" data-ans="自由主義強" data-dim="">瑞士<span class="t">自由主義強</span></button><button class="sc" type="button" draggable="true" data-i="9" data-k="k1" data-txt="美國" data-ans="自由主義強" data-dim="">美國<span class="t">自由主義強</span></button><button class="sc" type="button" draggable="true" data-i="10" data-k="k2" data-txt="丹麥" data-ans="社會主義強" data-dim="">丹麥<span class="t">社會主義強</span></button><button class="sc" type="button" draggable="true" data-i="11" data-k="k2" data-txt="芬蘭" data-ans="社會主義強" data-dim="">芬蘭<span class="t">社會主義強</span></button><button class="sc" type="button" draggable="true" data-i="12" data-k="k2" data-txt="荷蘭" data-ans="社會主義強" data-dim="">荷蘭<span class="t">社會主義強</span></button><button class="sc" type="button" draggable="true" data-i="13" data-k="k2" data-txt="挪威" data-ans="社會主義強" data-dim="">挪威<span class="t">社會主義強</span></button><button class="sc" type="button" draggable="true" data-i="14" data-k="k2" data-txt="瑞典" data-ans="社會主義強" data-dim="">瑞典<span class="t">社會主義強</span></button></div><div class="scols n3"><div class="scol" data-k="k0"><h4>保守主義強</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>自由主義強</h4><div class="drop"></div></div><div class="scol" data-k="k2"><h4>社會主義強</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-clusters" data-kind="clusters" data-label="三個體制，三組群聚" data-sect="第一節　三個福利世界"><span class="eyebrow">STOP 3 · 階層化的三組指標</span><h2>三個體制，三組群聚</h2><p class="lead">Esping-Andersen 用 1980 年的方案屬性，替三種原則各找指標，再把 18 國歸群（pp. 69–74）。</p><div class="grid3"><div class="card"><h4>保守主義強</h4><span class="k">INDICATORS</span><ul class="bl"><li>職業別年金方案數；公務員年金支出占 GDP</li></ul><span class="k">COUNTRIES</span><div class="chips"><span class="chipc">奧地利</span><span class="chipc">比利時</span><span class="chipc">法國</span><span class="chipc">德國</span><span class="chipc">義大利</span></div></div><div class="card"><h4>自由主義強</h4><span class="k">INDICATORS</span><ul class="bl"><li>資產調查救助比重；私人年金與私人醫療比重</li></ul><span class="k">COUNTRIES</span><div class="chips"><span class="chipc">澳洲</span><span class="chipc">加拿大</span><span class="chipc">日本</span><span class="chipc">瑞士</span><span class="chipc">美國</span></div></div><div class="card"><h4>社會主義強</h4><span class="k">INDICATORS</span><ul class="bl"><li>普及程度；給付平等（基本／最高給付）</li></ul><span class="k">COUNTRIES</span><div class="chips"><span class="chipc">丹麥</span><span class="chipc">芬蘭</span><span class="chipc">荷蘭</span><span class="chipc">挪威</span><span class="chipc">瑞典</span></div></div></div><div class="call"><p>指標見 Table 3.1（p. 70）；群聚見 Table 3.3（p. 74）。注意日本：去商品化居中（27.1），階層化卻在自由主義強的那一群（pp. 52, 74）。</p></div></section>
+<section class="slide k-cards3" data-kind="cards3" data-label="三個體制從哪裡來？" data-sect="第一節　三個福利世界"><span class="eyebrow">ORIGINS · 體制從哪裡來</span><h2>三個體制從哪裡來？</h2><p class="lead">單一因素說不通：三群國家裡都有強大的工人運動。要找的是互動效果（p. 29）。</p><div class="grid3"><div class="card"><h4>階級動員的本質</h4><p class="cs">工會與政黨</p><p>工會可以是局部或普遍的、教派或世俗的。這決定政治要求、階級凝聚與勞工政黨的空間。</p><p class="cite">（p. 29）</p></div><div class="card"><h4>階級政治聯盟</h4><p class="cs">農民先，中產階級後</p><p>工人階級幾乎從未是選舉多數。福利國家靠聯盟建成；聯盟結構比單一階級的權力資源更關鍵。</p><p class="cite">（p. 30）</p></div><div class="card"><h4>制度化的歷史遺緒</h4><p class="cs">過去的改革</p><p>歐陸的分立保險綁住中產階級忠誠；自由主義體制把中產階級綁在市場；北歐則製造效忠社民的中產階級。</p><p class="cite">（pp. 31–32）</p></div></div><div class="call"><p>北歐的紅綠聯盟換來充分就業的福利國家；美國新政被勞力密集的南方擋下；歐陸農民被保守勢力收編（p. 30）。戰後的鞏固，看新中產階級站哪邊（p. 31）。</p></div></section>
+<section class="slide k-quote2" data-kind="quote2" data-label="引文：Esping-Andersen（1990: 33）" data-sect="第一節　三個福利世界"><div class="split q"><div class="qblock"><span class="stampsm">PARADOX</span><blockquote>反福利國家的情緒，在福利支出最重的地方反而最弱。</blockquote><p class="qen">“Anti-welfare-state sentiments over the past decade have generally been weakest where welfare spending has been heaviest, and vice versa.”</p><cite>Esping-Andersen（1990: 33）</cite></div><div class="card exnotes"><span class="k">NOTES</span><ul class="bl"><li>反挫的風險不在支出，而在福利國家的階級性格（p. 33）。</li><li>中產階級福利國家，不論是北歐的社會民主或德國的組合主義，都鍛造了中產階級的忠誠（p. 33）。</li><li>美、加與愈來愈像的英國，自由主義殘補福利國家只靠人數少、政治上邊緣的階層支持（p. 33）。</li></ul></div></div></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">07</span><span class="ct">第一節小結</span><span class="cc">2 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-sort" data-kind="sort" data-label="◆ 動手：三個世界：這一格是誰的？" data-sect="第一節　三個福利世界" data-act="1"><span class="eyebrow">◆ 動手做</span><h2>三個世界：這一格是誰的？</h2><p class="src">先自己排，下一頁是整理表</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s21" data-act-key="sort-21" data-done="整理表在下一頁。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="市場效率、工作倫理" data-ans="自由主義" data-dim="核心原則">市場效率、工作倫理<span class="t">核心原則</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k1" data-txt="地位差異、輔助原則" data-ans="保守組合主義" data-dim="核心原則">地位差異、輔助原則<span class="t">核心原則</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k2" data-txt="最高標準的平等" data-ans="社會民主" data-dim="核心原則">最高標準的平等<span class="t">核心原則</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k0" data-txt="最低" data-ans="自由主義" data-dim="去商品化">最低<span class="t">去商品化</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k1" data-txt="中等；權利附著於職業" data-ans="保守組合主義" data-dim="去商品化">中等；權利附著於職業<span class="t">去商品化</span></button><button class="sc" type="button" draggable="true" data-i="5" data-k="k2" data-txt="最高" data-ans="社會民主" data-dim="去商品化">最高<span class="t">去商品化</span></button><button class="sc" type="button" draggable="true" data-i="6" data-k="k0" data-txt="受助者 vs 市場的二元" data-ans="自由主義" data-dim="階層化">受助者 vs 市場的二元<span class="t">階層化</span></button><button class="sc" type="button" draggable="true" data-i="7" data-k="k1" data-txt="職業與身分的分立" data-ans="保守組合主義" data-dim="階層化">職業與身分的分立<span class="t">階層化</span></button><button class="sc" type="button" draggable="true" data-i="8" data-k="k2" data-txt="普及，給付依所得分級" data-ans="社會民主" data-dim="階層化">普及，給付依所得分級<span class="t">階層化</span></button><button class="sc" type="button" draggable="true" data-i="9" data-k="k0" data-txt="國家鼓勵市場" data-ans="自由主義" data-dim="國家、市場、家庭">國家鼓勵市場<span class="t">國家、市場、家庭</span></button><button class="sc" type="button" draggable="true" data-i="10" data-k="k1" data-txt="國家取代市場；家庭優先" data-ans="保守組合主義" data-dim="國家、市場、家庭">國家取代市場；家庭優先<span class="t">國家、市場、家庭</span></button><button class="sc" type="button" draggable="true" data-i="11" data-k="k2" data-txt="國家排擠市場；家庭成本社會化" data-ans="社會民主" data-dim="國家、市場、家庭">國家排擠市場；家庭成本社會化<span class="t">國家、市場、家庭</span></button><button class="sc" type="button" draggable="true" data-i="12" data-k="k0" data-txt="美、加、澳" data-ans="自由主義" data-dim="典型國家">美、加、澳<span class="t">典型國家</span></button><button class="sc" type="button" draggable="true" data-i="13" data-k="k1" data-txt="奧、法、德、義" data-ans="保守組合主義" data-dim="典型國家">奧、法、德、義<span class="t">典型國家</span></button><button class="sc" type="button" draggable="true" data-i="14" data-k="k2" data-txt="北歐" data-ans="社會民主" data-dim="典型國家">北歐<span class="t">典型國家</span></button></div><div class="scols n3"><div class="scol" data-k="k0"><h4>自由主義</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>保守組合主義</h4><div class="drop"></div></div><div class="scol" data-k="k2"><h4>社會民主</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-table" data-kind="table" data-label="三個判準，三個世界" data-sect="第一節　三個福利世界"><span class="eyebrow">RECAP · 第一節小結</span><h2>三個判準，三個世界</h2><div class="tblwrap"><table class="tbl "><thead><tr><th></th><th>自由主義</th><th>保守組合主義</th><th>社會民主</th></tr></thead><tbody><tr><th class="rh">核心原則</th><td>市場效率、工作倫理</td><td>地位差異、輔助原則</td><td>最高標準的平等</td></tr><tr><th class="rh">去商品化</th><td>最低</td><td>中等；權利附著於職業</td><td>最高</td></tr><tr><th class="rh">階層化</th><td>受助者 vs 市場的二元</td><td>職業與身分的分立</td><td>普及，給付依所得分級</td></tr><tr><th class="rh">國家、市場、家庭</th><td>國家鼓勵市場</td><td>國家取代市場；家庭優先</td><td>國家排擠市場；家庭成本社會化</td></tr><tr><th class="rh">典型國家</th><td>美、加、澳</td><td>奧、法、德、義</td><td>北歐</td></tr></tbody></table></div><p class="source">Esping-Andersen（1990: 26–28）</p><div class="call"><p>下一站：這三個世界，裝得下東亞嗎？</p></div></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">08</span><span class="ct">第一節小測驗</span><span class="cc">1 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quiz" data-kind="quiz" data-label="◆ 第一節小測驗" data-sect="第一節　三個福利世界" data-act="1"><span class="eyebrow">小測驗</span><h2>第一節小測驗</h2><p class="src">三題，作答後會立刻看到解說</p><div data-quiz="q1"><div class="qz" data-a="3"><div class="stem">1. Esping-Andersen 說，去商品化發生在什麼時候？</div><button class="opt" type="button">政府支出占 GDP 很高的時候</button><button class="opt" type="button">每個人都有工作的時候</button><button class="opt" type="button">服務成為一種權利，而且人不必依賴市場也能維持生活的時候</button><button class="opt" type="button">家庭負起照顧責任的時候</button><div class="fb">去商品化發生在服務成為一種權利，而且人不必依賴市場也能維持生活的時候（1990: 21–22；第 12 頁〈〉）。</div></div><div class="qz" data-a="2"><div class="stem">2. Esping-Andersen 為什麼說支出只是表象？</div><button class="opt" type="button">支出的資料不可靠</button><button class="opt" type="button">支出看不出錢給了誰、為什麼增加；奧地利的支出大量給特權公務員，英國支出成長是因為高失業</button><button class="opt" type="button">支出和福利國家完全無關</button><button class="opt" type="button">各國的支出都差不多</button><div class="fb">奧地利的支出大量給特權公務員；英國支出成長是因為高失業（pp. 19–20；第 6 頁〈支出只是表象〉）。所以要看去商品化、階層化，以及國家、市場、家庭。</div></div><div class="qz" data-a="4"><div class="stem">3. 保守組合主義世界的特徵是什麼？</div><button class="opt" type="button">普及與去商品化擴及中產階級</button><button class="opt" type="button">資產調查、低額給付，國家把人推回市場</button><button class="opt" type="button">社會政策從屬於經濟成長</button><button class="opt" type="button">維持地位差異，權利附著於職業；家庭優先</button><div class="fb">保守組合主義：維持地位差異，權利附著於職業；家庭優先（Esping-Andersen, 1990: 27；第 7 頁〈四個世界〉、第 16 頁〈保守組合主義世界〉）。</div></div></div><p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p></section></div></div>
+</div>
+<div class="pane" data-pane="2">
+<section class="slide k-divider" data-kind="divider" data-label="第二節　東亞：第四個世界？" data-sect="第二節　東亞：第四個世界？"><div class="divwrap"><div class="bigno"><b>2</b><span>STOP 2</span></div><div><span class="eyebrow">第二節</span><h2>東亞：第四個世界？</h2><p class="subt">生產主義、發展型福利體制，與三條轉型路徑</p><span class="stampsm">EAST ASIA ARRIVED</span></div></div></section>
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">01</span><span class="ct">東亞特別在哪</span><span class="cc">2 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：這一句屬於文化論，還是國家中心論？" data-sect="第二節　東亞：第四個世界？" data-act="1"><span class="eyebrow">◆ 動手做</span><h2>先猜：這一句屬於文化論，還是國家中心論？</h2><p class="src">1990 年代對「東亞特別在哪」的兩種解釋。讀下一頁之前，先自己分分看</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s23" data-act-key="sort-23" data-done="下一頁是兩種解釋的對照。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="Jones 的儒家福利國家：孝道與家庭是福利供給的核心；很快被批評為「無助於」解釋演變（Holliday, 2000: 706）。" data-ans="文化論" data-dim="">Jones 的儒家福利國家：孝道與家庭是福利供給的核心；很快被批評為「無助於」解釋演變（Holliday, 2000: 706）。<span class="t">文化論</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k1" data-txt="Deyo：東亞社會政策由經濟發展政策的要求與結果驅動（Holliday, 2000: 707）。" data-ans="國家中心論" data-dim="">Deyo：東亞社會政策由經濟發展政策的要求與結果驅動（Holliday, 2000: 707）。<span class="t">國家中心論</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k1" data-txt="Ramesh：韓國與新加坡的社會保障，由國家目標與其國際、社會限制塑造（p. 707）。" data-ans="國家中心論" data-dim="">Ramesh：韓國與新加坡的社會保障，由國家目標與其國際、社會限制塑造（p. 707）。<span class="t">國家中心論</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k0" data-txt="名句：「保守組合主義卻無勞工參與，輔助原則卻無教會，凝聚卻無平等，自由放任卻無自由主義」（葉崇揚，2018：13）。" data-ans="文化論" data-dim="">名句：「保守組合主義卻無勞工參與，輔助原則卻無教會，凝聚卻無平等，自由放任卻無自由主義」（葉崇揚，2018：13）。<span class="t">文化論</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k1" data-txt="這是目前文獻裡最主流的解釋（p. 707）。" data-ans="國家中心論" data-dim="">這是目前文獻裡最主流的解釋（p. 707）。<span class="t">國家中心論</span></button></div><div class="scols n2"><div class="scol" data-k="k0"><h4>文化論</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>國家中心論</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-twocol" data-kind="twocol" data-label="東亞到底特別在哪？" data-sect="第二節　東亞：第四個世界？"><span class="eyebrow">ARRIVAL · 1990 年代的辯論</span><h2>東亞到底特別在哪？</h2><p class="lead">1990 年代形成共識：東亞經驗獨特。但特別在哪、為什麼，沒有共識（Holliday, 2000: 706）。</p><div class="grid2 withmid"><div class="card"><h4>文化論</h4><ul class="bl"><li>Jones 的儒家福利國家：孝道與家庭是福利供給的核心；很快被批評為「無助於」解釋演變（Holliday, 2000: 706）。</li><li>名句：「保守組合主義卻無勞工參與，輔助原則卻無教會，凝聚卻無平等，自由放任卻無自由主義」（葉崇揚，2018：13）。</li></ul></div><span class="mid">vs</span><div class="card"><h4>國家中心論</h4><ul class="bl"><li>Deyo：東亞社會政策由經濟發展政策的要求與結果驅動（Holliday, 2000: 707）。</li><li>Ramesh：韓國與新加坡的社會保障，由國家目標與其國際、社會限制塑造（p. 707）。</li><li>這是目前文獻裡最主流的解釋（p. 707）。</li></ul></div></div><div class="call"><p>葉崇揚（2018：14）：政治經濟學先問「為什麼東亞福利水準低」：社會政策從屬於經濟目標。</p></div></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">02</span><span class="ct">Holliday：生產主義</span><span class="cc">7 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-notes" data-kind="notes" data-label="加上第四個判準" data-sect="第二節　東亞：第四個世界？"><span class="eyebrow">STOP 4 · Holliday（2000）</span><h2>加上第四個判準</h2><p class="lead">Esping-Andersen 只收「被社會政策深刻影響到足以稱為福利國家」的資本主義國家。Holliday 說這個限制是武斷的（p. 708）。</p><div class="notes n4"><div class="nt"><span class="no">01</span><div><h4>第四個判準</h4><p>社會政策是否從屬於其他政策目標。被排除的國家，正是靠這一點被區分出來（p. 708）。</p></div></div><div class="nt"><span class="no">02</span><div><h4>三個世界的位置</h4><p>三個世界裡社會政策都不從屬；自由與保守世界裡它不特別重要，社會民主世界裡它有特權地位（p. 708）。</p></div></div><div class="nt"><span class="no">03</span><div><h4>生產主義世界</h4><p>相反：社會政策嚴格從屬於壓倒一切的目標，也就是經濟成長（p. 708）。</p></div></div><div class="nt"><span class="no">04</span><div><h4>由此而來</h4><p>最低社會權，擴張與生產活動連結；強化生產性要素的地位；國家、市場、家庭的關係導向成長（p. 708）。</p></div></div></div></section>
+<section class="slide k-compare" data-kind="compare" data-label="◆ 四個世界，四個重心" data-sect="第二節　東亞：第四個世界？" data-act="1"><span class="eyebrow">TABLE 1 · 四個世界</span><h2>四個世界，四個重心</h2><div class="cmp" data-cmp="c25" data-act-key="cmp-25"><p class="instr">點一個維度，四個世界並排比；下面是完整的表。</p><div class="ctrl"><button type="button" data-d="0" class="on">社會政策</button><button type="button" data-d="1">社會權</button><button type="button" data-d="2">階層化效果</button><button type="button" data-d="3">國家、市場、家庭</button></div><div class="cgrid"><div class="ccard"><h4>自由主義（市場）</h4><div class="cv" data-d="0"><span>既不特權也不從屬</span></div><div class="cv" data-d="1" hidden><span>最低</span></div><div class="cv" data-d="2" hidden><span>少數人的貧窮平等；多數人靠市場分化</span></div><div class="cv" data-d="3" hidden><span>鼓勵市場供給</span></div></div><div class="ccard"><h4>保守主義（地位）</h4><div class="cv" data-d="0"><span>既不特權也不從屬</span></div><div class="cv" data-d="1" hidden><span>相當廣泛</span></div><div class="cv" data-d="2" hidden><span>既有的地位差異被保存</span></div><div class="cv" data-d="3" hidden><span>保護家庭</span></div></div><div class="ccard"><h4>社會民主（福利）</h4><div class="cv" data-d="0"><span>特權地位</span></div><div class="cv" data-d="1" hidden><span>廣泛</span></div><div class="cv" data-d="2" hidden><span>普及給付，依慣常所得分級</span></div><div class="cv" data-d="3" hidden><span>排擠市場；家庭成本社會化</span></div></div><div class="ccard"><h4>生產主義（成長）</h4><div class="cv" data-d="0"><span>從屬於經濟政策</span></div><div class="cv" data-d="1" hidden><span>最低；擴張與生產活動連結</span></div><div class="cv" data-d="2" hidden><span>強化生產性要素</span></div><div class="cv" data-d="3" hidden><span>以成長這個壓倒性目標為前提</span></div></div></div></div><div class="tblwrap"><table class="tbl small"><thead><tr><th></th><th>社會政策</th><th>社會權</th><th>階層化效果</th><th>國家、市場、家庭</th></tr></thead><tbody><tr><th class="rh">自由主義（市場）</th><td>既不特權也不從屬</td><td>最低</td><td>少數人的貧窮平等；多數人靠市場分化</td><td>鼓勵市場供給</td></tr><tr><th class="rh">保守主義（地位）</th><td>既不特權也不從屬</td><td>相當廣泛</td><td>既有的地位差異被保存</td><td>保護家庭</td></tr><tr><th class="rh">社會民主（福利）</th><td>特權地位</td><td>廣泛</td><td>普及給付，依慣常所得分級</td><td>排擠市場；家庭成本社會化</td></tr><tr><th class="rh">生產主義（成長）</th><td>從屬於經濟政策</td><td>最低；擴張與生產活動連結</td><td>強化生產性要素</td><td>以成長這個壓倒性目標為前提</td></tr></tbody></table></div><p class="source">Holliday（2000: 709），Table 1。每一個都是理想型，沒有真實案例完全符合。</p></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：五地各屬生產主義的哪一個次型？" data-sect="第二節　東亞：第四個世界？" data-act="1"><span class="eyebrow">◆ 動手做</span><h2>先猜：五地各屬生產主義的哪一個次型？</h2><p class="src">Holliday 把生產主義世界再分成三個次型。讀下一頁之前，先自己分分看</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s26" data-act-key="sort-26" data-done="下一頁是三個次型。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="香港" data-ans="促進型" data-dim="">香港<span class="t">促進型</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k1" data-txt="日本" data-ans="發展普及型" data-dim="">日本<span class="t">發展普及型</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k1" data-txt="南韓" data-ans="發展普及型" data-dim="">南韓<span class="t">發展普及型</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k1" data-txt="台灣" data-ans="發展普及型" data-dim="">台灣<span class="t">發展普及型</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k2" data-txt="新加坡" data-ans="發展特殊型" data-dim="">新加坡<span class="t">發展特殊型</span></button></div><div class="scols n3"><div class="scol" data-k="k0"><h4>促進型</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>發展普及型</h4><div class="drop"></div></div><div class="scol" data-k="k2"><h4>發展特殊型</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-cards3" data-kind="cards3" data-label="一個世界，三個次型" data-sect="第二節　東亞：第四個世界？"><span class="eyebrow">TABLE 2 · 生產主義世界的內部</span><h2>一個世界，三個次型</h2><p class="lead">三者都把社會政策從屬於經濟目標，差別在用什麼方式追求成長（pp. 709–710）。</p><div class="grid3"><div class="card"><h4>促進型</h4><p class="cs">香港</p><p>像自由主義，但多了對成長的壓倒性承諾。社會權最低、階層化效果有限、市場優先。</p><p class="cite">（p. 710）</p></div><div class="card"><h4>發展普及型</h4><p class="cs">日本、南韓、台灣</p><p>把部分社會權擴及生產性人口，造出一種「勞工貴族」。國家用部分普及方案撐住市場與家庭。</p><p class="cite">（p. 710）</p></div><div class="card"><h4>發展特殊型</h4><p class="cs">新加坡</p><p>幾乎沒有社會權。改在生產性要素之間推動「令人滿意的個人福利供給」。國家指揮社會政策。</p><p class="cite">（p. 710）</p></div></div><div class="call"><p>一個提醒：東亞社會對家庭的強烈觀念，在五地都影響福利供給。但 Holliday 說這是「偶然的特徵」，不必然見於其他生產主義國家（p. 711）。</p></div></section>
+<section class="slide k-ledger" data-kind="ledger" data-label="◆ 五張明信片" data-sect="第二節　東亞：第四個世界？" data-act="1"><span class="eyebrow">POSTCARDS · 五地速寫</span><h2>五張明信片</h2><p class="instr">五張明信片，點一張翻到背面，或按「全部翻開」。</p><div class="flips f5" data-flips="f27" data-act-key="flip-27"><button class="fcard pc" type="button"><span class="fname">日本</span><span class="fsub">發展普及型</span><span class="fback">憲法保障最低限度的健康文明生活，但 1955–75 年社福支出只占 GNP 約 2%；1973「福利元年」被石油危機打斷（p. 711）。</span><span class="fhint">翻到背面</span></button><button class="fcard pc" type="button"><span class="fname">香港</span><span class="fsub">促進型</span><span class="fback">近半人口住公屋；醫療與教育基本但普及。缺的是移轉給付：沒有公共年金、失業給付與兒童津貼（p. 712）。</span><span class="fhint">翻到背面</span></button><button class="fcard pc" type="button"><span class="fname">新加坡</span><span class="fsub">發展特殊型</span><span class="fback">中央公積金 1955 年實施，勞資各提 20%。只能領回自己繳的加利息，不重分配。公屋逾 86%，九成以上自有（pp. 712–713）。</span><span class="fhint">翻到背面</span></button><button class="fcard pc" type="button"><span class="fname">南韓</span><span class="fsub">較純的發展普及型</span><span class="fback">朴正熙起社會政策幾乎全為經濟目標；1988 年國民年金也為了動員資本。1995 年公、私社會保障支出各占 GDP 10% 與 1%（p. 713）。</span><span class="fhint">翻到背面</span></button><button class="fcard pc" type="button"><span class="fname">台灣</span><span class="fsub">發展普及型，偏向軍方</span><span class="fback">1953 年軍人保險定調；1991 年軍公教（9% 人口）拿到中央社福支出 75%，弱勢者 3%；1995 年全民健保（pp. 713–714）。</span><span class="fhint">翻到背面</span></button></div><div class="row"><button class="pbtn sec" type="button" data-flipall="f27">全部翻開</button></div></section>
+<section class="slide k-twocol" data-kind="twocol" data-label="沒有單一模式，但有共同的核心" data-sect="第二節　東亞：第四個世界？"><span class="eyebrow">CUSTOMS · 同與異</span><h2>沒有單一模式，但有共同的核心</h2><div class="grid2"><div class="card"><h4>差異很明顯</h4><ul class="bl"><li>基本取向：日、韓、台靠社會保險；新加坡靠強制個人儲蓄；香港是一種殘補的普及（p. 714）。</li><li>公屋：港、星都大，但香港是租、新加坡是買（p. 714）。</li><li>香港與當時的台灣沒有公共年金，日、星、韓有（p. 714）。</li></ul></div><div class="card"><h4>Wilding 的九個共同特徵</h4><ul class="bl"><li>社福公共支出低；以成長為核心的生產主義社會政策；敵視「福利國家」的觀念。</li><li>強烈的殘補元素；家庭的核心角色；國家扮演管制與促成的角色。</li><li>零碎、務實、因事制宜的福利發展；用福利建立正當性與穩定；對「福利是公民權利」承諾有限（p. 715）。</li></ul></div></div><div class="call"><p>Holliday 的結論：東亞沒有單一的「福利模式」，這麼說的人沒錯。但五地都可以放進生產主義世界，再分成次型（p. 716）。</p></div></section>
+<section class="slide k-twocol" data-kind="twocol" data-label="為什麼是生產主義？" data-sect="第二節　東亞：第四個世界？"><span class="eyebrow">WHY · 兩個層次的解釋</span><h2>為什麼是生產主義？</h2><p class="lead">別找單一原因，找互動效果；而且要同時看國內與國際（Holliday, 2000: 716）。</p><div class="grid2"><div class="card"><h4>單位層次：國內</h4><ul class="bl"><li>既有文獻只看儒家與發展型國家。還要看人口：長期幾乎沒有失業，所以沒有失業給付（p. 717）。</li><li>少了一塊：官僚政治。通產省、大藏省這類經濟官僚，才是社會政策的主角（p. 717）。</li></ul></div><div class="card"><h4>體系層次：國際</h4><ul class="bl"><li>經濟：五地都極度依賴世界市場與國際企業（p. 718）。</li><li>政治：每一地都有威脅性的鄰居；冷戰與美國把日、台、韓建成「反共堡壘」（p. 718）。</li><li>脆弱性是關鍵：菁英與大眾都同意「不要搖晃這條船」（pp. 718–719）。</li></ul></div></div><div class="call"><p>修正 Katzenstein：小型開放經濟容易長出福利國家，只在感知到的脆弱性是「中等」時成立。再高，就走東亞的路（p. 720）。</p></div></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">03</span><span class="ct">李易駿、古允文：發展型</span><span class="cc">5 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-notes" data-kind="notes" data-label="另一個福利世界？" data-sect="第二節　東亞：第四個世界？"><span class="eyebrow">STOP 5 · 李易駿、古允文（2003）</span><h2>另一個福利世界？</h2><p class="lead">問題很直接：東亞能不能歸入三種體制？他們以日本、韓國、台灣為對象，從「發展型國家」找東亞福利體制的核心要素（pp. 190, 199–200）。</p><div class="notes n4"><div class="nt"><span class="no">01</span><div><h4>硬塞進三個世界，塞不進去</h4><p>1990 年代初的研究把台灣歸為保守主義、韓國看似保守卻不是。把東亞「鑲嵌」到三體制而不可得（pp. 198–199）。</p></div></div><div class="nt"><span class="no">02</span><div><h4>Esping-Andersen 自己也鬆口</h4><p>中文版序言：東亞的獨特性除了朝保守與自由的混合型思考，也可以朝第四種體制的方向思考（p. 198 註 3）。</p></div></div><div class="nt"><span class="no">03</span><div><h4>發展，不只是國家的策略</h4><p>從「發展型國家」到「累積的社會結構」與「發展型體制」：發展成為集體意識，民眾也願意累積（pp. 202–203）。</p></div></div><div class="nt"><span class="no">04</span><div><h4>台灣的例子：純勞動</h4><p>謝國雄的「純勞動」：惡劣條件、按件計酬、自願服從，等著「黑手變頭家」。用自我剝削換累積與發展（pp. 204–205）。</p></div></div></div></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 動手：先猜：六個國家裡，年金未涵蓋率最高的是？" data-sect="第二節　東亞：第四個世界？" data-act="1"><span class="eyebrow">◆ 先猜</span><h2>先猜：六個國家裡，年金未涵蓋率最高的是？</h2><p class="src">李易駿、古允文（2003）比較了德、瑞、美、日、韓、台六國。答案在下一頁</p><div class="pq1"><p class="pqq">年金未涵蓋率（1996）最高的是……</p><div class="poll" data-poll="cover" data-answer="韓國" data-act-key="predict-cover"><div class="opts"><button type="button" data-v="德國">德國</button><button type="button" data-v="美國">美國</button><button type="button" data-v="日本">日本</button><button type="button" data-v="韓國">韓國</button></div></div><p class="verdict" data-verdict-for="cover"></p></div><div class="fbk ok reveal-box" data-reveal-all="cover">韓國 94.6%，台灣 85.3%（李易駿、古允文，2003: 216–217）。下一頁可以點選每一項指標來比。</div></section>
+<section class="slide k-indicators" data-kind="indicators" data-label="◆ 數字怎麼說" data-sect="第二節　東亞：第四個世界？" data-act="1"><span class="eyebrow">DATA · 六個國家，六項指標</span><h2>數字怎麼說</h2><div class="ind" data-ind="i31" data-act-key="ind-31" data-c="[&quot;德國&quot;, &quot;瑞典&quot;, &quot;美國&quot;, &quot;日本&quot;, &quot;韓國&quot;, &quot;台灣&quot;]" data-v="[[&quot;27&quot;, &quot;34&quot;, &quot;16&quot;, &quot;14&quot;, &quot;4&quot;, &quot;8.9&quot;], [&quot;−34.77&quot;, &quot;−36.22&quot;, &quot;−21.79&quot;, &quot;−27.43&quot;, &quot;33.37&quot;, &quot;45.58&quot;], [&quot;15.3&quot;, &quot;0&quot;, &quot;25&quot;, &quot;40&quot;, &quot;94.6&quot;, &quot;85.3&quot;], [&quot;30&quot;, &quot;30&quot;, &quot;60&quot;, &quot;32&quot;, &quot;80&quot;, &quot;89&quot;], [&quot;12&quot;, &quot;3&quot;, &quot;14.8&quot;, &quot;65&quot;, &quot;74&quot;, &quot;67.2&quot;], [&quot;24.5&quot;, &quot;16.8&quot;, &quot;25.0&quot;, &quot;40.5&quot;, &quot;40.9&quot;, &quot;37.7&quot;]]"><p class="instr">點一項指標，六國畫成長條圖。</p><div class="ctrl wrap"><button type="button" data-r="0" class="on">社會安全支出占 GDP（1998）</button><button type="button" data-r="1">社會投資：經建＋教育－社會安全（1998）</button><button type="button" data-r="2">年金未涵蓋率（1996）</button><button type="button" data-r="3">個人福利承擔：年金未替代率（1994）</button><button type="button" data-r="4">老人與子女同住（1996）</button><button type="button" data-r="5">性別薪資差距（1997）</button></div><div class="ibars"></div></div><div class="tblwrap"><table class="tbl num"><thead><tr><th></th><th>德國</th><th>瑞典</th><th>美國</th><th>日本</th><th>韓國</th><th>台灣</th></tr></thead><tbody><tr><th class="rh">社會安全支出占 GDP（1998）</th><td>27</td><td>34</td><td>16</td><td>14</td><td>4</td><td>8.9</td></tr><tr><th class="rh">社會投資：經建＋教育－社會安全（1998）</th><td>−34.77</td><td>−36.22</td><td>−21.79</td><td>−27.43</td><td>33.37</td><td>45.58</td></tr><tr><th class="rh">年金未涵蓋率（1996）</th><td>15.3</td><td>0</td><td>25</td><td>40</td><td>94.6</td><td>85.3</td></tr><tr><th class="rh">個人福利承擔：年金未替代率（1994）</th><td>30</td><td>30</td><td>60</td><td>32</td><td>80</td><td>89</td></tr><tr><th class="rh">老人與子女同住（1996）</th><td>12</td><td>3</td><td>14.8</td><td>65</td><td>74</td><td>67.2</td></tr><tr><th class="rh">性別薪資差距（1997）</th><td>24.5</td><td>16.8</td><td>25.0</td><td>40.5</td><td>40.9</td><td>37.7</td></tr></tbody></table></div><p class="source">李易駿、古允文（2003: 216–217），表一至表三；指標定義見 pp. 213–215。單位皆為 %。</p><div class="call"><p>台灣與韓國在七項指標上相似，而且異於三種體制。日本是混合型：性別與家庭像東亞，支出像美國，階層化像德國（p. 218）。</p></div></section>
+<section class="slide k-compare" data-kind="compare" data-label="◆ 社會福利服膺經濟發展" data-sect="第二節　東亞：第四個世界？" data-act="1"><span class="eyebrow">VERDICT · 發展型福利體制</span><h2>社會福利服膺經濟發展</h2><p class="lead">三個理論核心：社會投資、差別待遇、自我責任。總合起來，就是「社會福利服膺經濟發展」（p. 219）。</p><div class="cmp" data-cmp="c32" data-act-key="cmp-32"><p class="instr">點一個維度，四個世界並排比；下面是完整的表。</p><div class="ctrl"><button type="button" data-d="0" class="on">去商品化</button><button type="button" data-d="1">階層化</button><button type="button" data-d="2">市場</button><button type="button" data-d="3">社會福利服膺經濟發展</button></div><div class="cgrid"><div class="ccard"><h4>自由主義的</h4><div class="cv" data-d="0"><span class="meter" data-l="1"><i></i><i></i><i></i></span><span>低</span></div><div class="cv" data-d="1" hidden><span class="meter" data-l="2"><i></i><i></i><i></i></span><span>中</span></div><div class="cv" data-d="2" hidden><span class="meter" data-l="3"><i></i><i></i><i></i></span><span>高</span></div><div class="cv" data-d="3" hidden><span class="meter" data-l="3"><i></i><i></i><i></i></span><span>高</span></div></div><div class="ccard"><h4>保守的</h4><div class="cv" data-d="0"><span class="meter" data-l="2"><i></i><i></i><i></i></span><span>中</span></div><div class="cv" data-d="1" hidden><span class="meter" data-l="3"><i></i><i></i><i></i></span><span>高</span></div><div class="cv" data-d="2" hidden><span class="meter" data-l="2"><i></i><i></i><i></i></span><span>中</span></div><div class="cv" data-d="3" hidden><span class="meter" data-l="2"><i></i><i></i><i></i></span><span>中</span></div></div><div class="ccard"><h4>社會民主的</h4><div class="cv" data-d="0"><span class="meter" data-l="3"><i></i><i></i><i></i></span><span>高</span></div><div class="cv" data-d="1" hidden><span class="meter" data-l="1"><i></i><i></i><i></i></span><span>低</span></div><div class="cv" data-d="2" hidden><span class="meter" data-l="1"><i></i><i></i><i></i></span><span>低</span></div><div class="cv" data-d="3" hidden><span class="meter" data-l="1"><i></i><i></i><i></i></span><span>低</span></div></div><div class="ccard"><h4>發展的</h4><div class="cv" data-d="0"><span class="meter" data-l="1"><i></i><i></i><i></i></span><span>低</span></div><div class="cv" data-d="1" hidden><span class="meter" data-l="3"><i></i><i></i><i></i></span><span>高</span></div><div class="cv" data-d="2" hidden><span class="meter" data-l="2"><i></i><i></i><i></i></span><span>中</span></div><div class="cv" data-d="3" hidden><span class="meter" data-l="3"><i></i><i></i><i></i></span><span>高</span></div></div></div></div><div class="tblwrap"><table class="tbl small"><thead><tr><th></th><th>去商品化</th><th>階層化</th><th>市場</th><th>社會福利服膺經濟發展</th></tr></thead><tbody><tr><th class="rh">自由主義的</th><td>低</td><td>中</td><td>高</td><td>高</td></tr><tr><th class="rh">保守的</th><td>中</td><td>高</td><td>中</td><td>中</td></tr><tr><th class="rh">社會民主的</th><td>高</td><td>低</td><td>低</td><td>低</td></tr><tr><th class="rh">發展的</th><td>低</td><td>高</td><td>中</td><td>高</td></tr></tbody></table></div><p class="source">李易駿、古允文（2003: 220），表五</p><div class="call"><p>和保守主義差在哪？歐陸的分立來自基爾特傳統，而且分立之外還要整合、給付優厚。發展型只有分立沒有整合，差別待遇來自經濟發展的需要、由政府主導（p. 222）。和自由主義差在哪？政府支出小，干預卻大，不留空間給市場（p. 223）。</p></div></section>
+<section class="slide k-twocol" data-kind="twocol" data-label="低度發展？還是發展中？" data-sect="第二節　東亞：第四個世界？"><span class="eyebrow">REFLECTION · 兩個常見的質疑</span><h2>低度發展？還是發展中？</h2><div class="grid2 withmid"><div class="card"><h4>「低度發展」vs「支持發展」</h4><ul class="bl"><li>評論者看支出低、靠家庭，就說東亞「低度發展」（p. 224）。</li><li>但「發展／低度發展」預設某種福利國家是目標。三種體制本來就不同，未必能排序。達到美國的水準就算「已發展」嗎？（p. 225）</li><li>不適合用投入資源多寡來判斷。東亞的「便宜」，是家庭與個人承擔成本的結果。或許該從「支持發展」來看（p. 226）。</li></ul></div><span class="mid">vs</span><div class="card"><h4>「發展中」vs「面對挑戰」</h4><ul class="bl"><li>「發展中」指尚未成熟；「回應挑戰」指在穩定狀態下調整。談西方用後者，談東亞卻用前者，這是預設立場（pp. 226–227）。</li><li>Hort 的歷史研究：以工業化程度看，東亞的福利方案出現得比西方更早（p. 227）。</li><li>「未成熟」的體制說，可能帶著西方中心主義的迷思（p. 227）。從 1980 到 1990 年代，東亞的體制特性一直都在（p. 228）。</li></ul></div></div><div class="call"><p>所以該問的不是「東亞是不是發展中的體制」，而是「發展型體制怎麼面對挑戰」（p. 228）。</p></div></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">04</span><span class="ct">Gough：福利體制</span><span class="cc">3 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-twocol" data-kind="twocol" data-label="從福利國家體制，到福利體制" data-sect="第二節　東亞：第四個世界？"><span class="eyebrow">STOP 6 · Gough（2004）</span><h2>從福利國家體制，到福利體制</h2><p class="lead">福利國家體制＝國家、市場、家庭的制度矩陣，它產生福利結果（去商品化）與階層化結果（p. 23）。這個典範引來大量批評（pp. 24–25）。</p><div class="grid2 withmid"><div class="card"><h4>七點批評</h4><ul class="bl"><li>只有三種？澳、紐不是自由主義；南歐不同；日本裝不進「西方」架構。</li><li>只看所得維持與勞動市場，漏掉健康、教育、住宅。「自由主義」的英國仍有全民健保。</li><li>去商品化忽略其他福祉；只看階級，忽略宗教、族群與性別；忽略家庭。</li><li>處理不了體制的動態變遷；忽略全球政治經濟與超國家機構（pp. 24–25）。</li></ul></div><span class="mid">→</span><div class="card"><h4>為什麼改叫「福利體制」？</h4><ul class="bl"><li>Esping-Andersen 1990 年寫 welfare state regime，1999 年悄悄改成 welfare regime（p. 26）。</li><li>前者偏重國家，指 OECD 福利國家那個「家族」。後者是通稱：國家只是多個行動者之一，而且未必最重要（p. 26）。</li><li>在南方，福利有正面含意、追求福利可能是零和、經濟與社會政策的區分失去意義。Gough 仍保留這個詞（p. 27）。</li></ul></div></div></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 動手：先猜：三種後設體制，各是什麼樣子？" data-sect="第二節　東亞：第四個世界？" data-act="1"><span class="eyebrow">◆ 動手做</span><h2>先猜：三種後設體制，各是什麼樣子？</h2><p class="src">Gough（2004）。點左邊一種體制，再點右邊對應的描述。答案在下一頁</p><div class="match" data-match="m35" data-act-key="match-35"><div class="mcol"><h4>後設體制</h4><div class="mitem" data-k="0">福利國家體制</div><div class="mitem" data-k="1">非正式安全體制</div><div class="mitem" data-k="2">不安全體制</div></div><div class="mcol"><h4>樣子</h4><div class="mitem" data-k="0">靠勞動市場、金融市場與福利國家滿足安全需要。前提是資本主義、正式勞動市場、自主的國家與民主。</div><div class="mitem" data-k="1">高度依賴社區與家庭，關係階層而不對稱。「不利的納入」：用長期依賴換短期安全；恩庇侍從難改。</div><div class="mitem" data-k="2">外部強權與內部弱勢行動者互動，製造衝突與不穩，連非正式機制都長不出來。</div></div></div><p class="mstat"></p></section>
+<section class="slide k-cards3" data-kind="cards3" data-label="福利國家體制只是其中一族" data-sect="第二節　東亞：第四個世界？"><span class="eyebrow">FIGURE 1.3 · 三種後設體制</span><h2>福利國家體制只是其中一族</h2><p class="lead">三個高度抽象的理想型，像生物分類的「科」。科之下才有屬與種（p. 34）。</p><div class="grid3"><div class="card"><h4>福利國家體制</h4><p class="cs">Welfare state</p><p>靠勞動市場、金融市場與福利國家滿足安全需要。前提是資本主義、正式勞動市場、自主的國家與民主。</p><p class="cite">（p. 33）</p></div><div class="card"><h4>非正式安全體制</h4><p class="cs">Informal security</p><p>高度依賴社區與家庭，關係階層而不對稱。「不利的納入」：用長期依賴換短期安全；恩庇侍從難改。</p><p class="cite">（pp. 33–34）</p></div><div class="card"><h4>不安全體制</h4><p class="cs">Insecurity</p><p>外部強權與內部弱勢行動者互動，製造衝突與不穩，連非正式機制都長不出來。</p><p class="cite">（p. 34）</p></div></div><div class="call"><p>東亞放哪裡？Gough：東北亞可能是兩個家族之間的過渡形態，非正式安全體制與福利國家體制的混合（p. 35）。</p></div></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">05</span><span class="ct">葉崇揚：三條轉型路徑</span><span class="cc">5 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-notes" data-kind="notes" data-label="建構「東亞福利體制」的三個問題" data-sect="第二節　東亞：第四個世界？"><span class="eyebrow">REVIEW · 葉崇揚（2018）</span><h2>建構「東亞福利體制」的三個問題</h2><p class="lead">東亞福利體制研究的貢獻，是找出東亞之間的相似性。但建構的過程有三個問題（pp. 14–15）。</p><div class="notes n3"><div class="nt"><span class="no">01</span><div><h4>忽略東亞內部的差異</h4><p>Holliday 與 Kim 都在生產主義體制內再分三個次型。Yeh 與 Shi（2016）看年金：港、星的個人主義、日、韓的雙元主義、台與中國大陸的國家主義（pp. 14–15）。</p></div></div><div class="nt"><span class="no">02</span><div><h4>沒分析資本主義的結構</h4><p>政治經濟學觀點說東亞建立在發展型資本主義上，卻只用「發展型國家」一筆帶過，忽略各地資本主義結構的差異（p. 15）。</p></div></div><div class="nt"><span class="no">03</span><div><h4>「體制」與「發展中」互相矛盾</h4><p>體制指成熟穩定的制度，所以 Esping-Andersen 只分析 OECD。東亞研究卻說要從後進發展、壓縮現代性來理解。兩者矛盾（p. 15）。</p></div></div></div><div class="call"><p>1980 年代後的改革：韓、台引進就業保險與國民年金，日、韓引進長期照護保險，香港引進強積金，各地開始發展家庭政策。東亞福利體制還在發展階段（pp. 15–16）。</p></div></section>
+<section class="slide k-cards3" data-kind="cards3" data-label="三種說法" data-sect="第二節　東亞：第四個世界？"><span class="eyebrow">CHANGE · 東亞為什麼變？</span><h2>三種說法</h2><p class="lead">1980 年代中期後，東亞同時面對民主化、經濟自由化、後工業化與高齡少子化（p. 16）。</p><div class="grid3"><div class="card"><h4>民主化觀點</h4><p class="cs">政黨競爭</p><p>政黨競爭回應被壓抑的需求。Wong：民主化後韓、台引進全民健保，社會政策不再從屬經濟。</p><p class="cite">（pp. 16–17）</p></div><div class="card"><h4>補償觀點</h4><p class="cs">全球化</p><p>小國依賴全球市場、更脆弱，所以補償受衝擊者。Ramesh：1997 年後韓、台推積極勞動市場政策與失業保障。</p><p class="cite">（p. 17）</p></div><div class="card"><h4>兩個理論挑戰</h4><p class="cs">葉崇揚的提醒</p><p>一、忽略後工業化與新社會風險。二、轉型是多面向的：擴張與削減並存，日本與韓國都是。</p><p class="cite">（p. 18）</p></div></div><div class="call"><p>轉型是擴張、削減與重構並存（p. 111）；「女性就是福利體制的未來」（pp. 111, 115）。</p></div></section>
+<section class="slide k-stops" data-kind="stops" data-label="過去如何影響現在" data-sect="第二節　東亞：第四個世界？"><span class="eyebrow">PAST → PRESENT · 歷史制度主義</span><h2>過去如何影響現在</h2><p class="lead">馬克思：人們創造自己的歷史，但是在從過去承繼下來的條件下（引自葉崇揚，2018：19）。</p><ol class="itin"><li><span class="pin"></span><h4>制度遺緒</h4><p>既有制度與政治結果受過去遺緒影響，不只是行動者互動的結果（p. 20）。</p></li><li><span class="pin"></span><h4>自我增強與路徑依賴</h4><p>既得利益者從制度取得權力，傾向維持現狀；正向回饋再製既有路徑（p. 20）。</p></li><li><span class="pin"></span><h4>不同遺緒，不同調適</h4><p>Lynch：義大利卡在所得保障，荷蘭能轉向；Thelen：去管制、彈性安全、雙元化（p. 20）。</p></li><li><span class="pin"></span><h4>關鍵轉折點</h4><p>1997 年金融危機讓金大中轉向「生產性福利」；台灣沒受到同樣衝擊（p. 21）。</p></li></ol><div class="call side"><b>SO · 所以</b><p>東亞各地雖常被歸為同一體制，但受制於不同的制度遺緒與偶發事件，過去二、三十年走出不同的調適路徑（pp. 21–22）。</p></div></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：五地各走哪一條轉型路徑？" data-sect="第二節　東亞：第四個世界？" data-act="1"><span class="eyebrow">◆ 動手做</span><h2>先猜：五地各走哪一條轉型路徑？</h2><p class="src">葉崇揚（2018）：同一個起點，三條路線。讀下一頁之前，先自己分分看</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s39" data-act-key="sort-39" data-done="下一頁是三條路線，可以一站一站往下看。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="日本" data-ans="保守路徑" data-dim="">日本<span class="t">保守路徑</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="台灣" data-ans="保守路徑" data-dim="">台灣<span class="t">保守路徑</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k1" data-txt="南韓" data-ans="社會投資路徑" data-dim="">南韓<span class="t">社會投資路徑</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k2" data-txt="香港" data-ans="新自由主義路徑" data-dim="">香港<span class="t">新自由主義路徑</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k2" data-txt="新加坡" data-ans="新自由主義路徑" data-dim="">新加坡<span class="t">新自由主義路徑</span></button></div><div class="scols n3"><div class="scol" data-k="k0"><h4>保守路徑</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>社會投資路徑</h4><div class="drop"></div></div><div class="scol" data-k="k2"><h4>新自由主義路徑</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-routes" data-kind="routes" data-label="◆ 同一個起點，三條路線" data-sect="第二節　東亞：第四個世界？" data-act="1"><span class="eyebrow">THREE ROUTES · 三條轉型路徑</span><h2>同一個起點，三條路線</h2><p class="lead">起點都是追趕經濟的生產主義；受過去制度遺緒的限制，分出三條路（pp. 7–8, 22）。</p><p class="instr">三條路線，一站一站往下看。每按一次「下一站」，就往前一站。</p><div class="routes" data-routes="r39" data-act-key="routes-39"><div class="route" data-i="0"><div class="rhead"><h4>保守路徑</h4><p class="rw">日本、台灣</p><p class="cite">pp. 7–8, 114–116</p><button class="pbtn sec js-step" type="button">下一站 →</button></div><ol class="rstops"><li data-k="0"><span class="no">1</span>成熟的所得保障體系吃掉財政與改革能量</li><li data-k="1"><span class="no">2</span>積極性社會政策擴不動</li><li data-k="2"><span class="no">3</span>日：削減、擴張並存；台：擴張再擴張</li></ol></div><div class="route" data-i="1"><div class="rhead"><h4>社會投資路徑</h4><p class="rw">南韓</p><p class="cite">pp. 8, 116–118</p><button class="pbtn sec js-step" type="button">下一站 →</button></div><ol class="rstops"><li data-k="0"><span class="no">1</span>企業主義的所得保障尚未成熟</li><li data-k="1"><span class="no">2</span>1997 年危機：削減給付、擴大涵蓋</li><li data-k="2"><span class="no">3</span>引進社會投資：「保障—生產」並重</li></ol></div><div class="route" data-i="2"><div class="rhead"><h4>新自由主義路徑</h4><p class="rw">香港、新加坡</p><p class="cite">pp. 8, 118</p><button class="pbtn sec js-step" type="button">下一站 →</button></div><ol class="rstops"><li data-k="0"><span class="no">1</span>殖民遺緒：殘補主義</li><li data-k="1"><span class="no">2</span>香港：強積金、工作福利、照顧市場化</li><li data-k="2"><span class="no">3</span>新加坡：國家引導，順應市場卻維持生產主義</li></ol></div><div class="row"><button class="pbtn sec js-all" type="button">全部展開</button></div></div></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">06</span><span class="ct">第二節小測驗</span><span class="cc">1 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quiz" data-kind="quiz" data-label="◆ 第二節小測驗" data-sect="第二節　東亞：第四個世界？" data-act="1"><span class="eyebrow">小測驗</span><h2>第二節小測驗</h2><p class="src">三題，作答後會立刻看到解說</p><div data-quiz="q2"><div class="qz" data-a="1"><div class="stem">1. Holliday 加上的第四個判準是什麼？</div><button class="opt" type="button">社會政策是否從屬於其他政策目標</button><button class="opt" type="button">女性勞動參與率</button><button class="opt" type="button">宗教的影響</button><button class="opt" type="button">人口老化</button><div class="fb">第四個判準：社會政策是否從屬於其他政策目標。生產主義世界裡，社會政策嚴格從屬於經濟成長（p. 708；第 31 頁〈加上第四個判準〉）。</div></div><div class="qz" data-a="2"><div class="stem">2. 李易駿、古允文說，發展型福利體制的三個理論核心是什麼？</div><button class="opt" type="button">去商品化、階層化、國家市場家庭</button><button class="opt" type="button">社會投資、差別待遇、自我責任</button><button class="opt" type="button">儒家、家庭、孝道</button><button class="opt" type="button">民主化、全球化、後工業化</button><div class="fb">三個理論核心：社會投資、差別待遇、自我責任。總合起來，就是「社會福利服膺經濟發展」（p. 219；第 41 頁〈社會福利服膺經濟發展〉）。</div></div><div class="qz" data-a="3"><div class="stem">3. 葉崇揚（2018）的三條轉型路徑裡，台灣走的是哪一條？</div><button class="opt" type="button">社會投資路徑</button><button class="opt" type="button">新自由主義路徑</button><button class="opt" type="button">保守路徑</button><button class="opt" type="button">還留在起點</button><div class="fb">日本、台灣走保守路徑：成熟的所得保障體系吃掉財政與改革能量，積極性社會政策擴不動（第 50 頁〈同一個起點，三條路線〉）。</div></div></div><p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p></section></div></div>
+</div>
+<div class="pane" data-pane="3">
+<section class="slide k-divider" data-kind="divider" data-label="第三節　福利國家怎麼長出來" data-sect="第三節　福利國家怎麼長出來"><div class="divwrap"><div class="bigno"><b>3</b><span>STOP 3</span></div><div><span class="eyebrow">第三節</span><h2>福利國家怎麼長出來</h2><p class="subt">Spicker（2025）：歷史解釋的共同主題，與另一種敘事</p><span class="stampsm">HISTORY</span></div></div></section>
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">01</span><span class="ct">歷史解釋與另一種敘事</span><span class="cc">5 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-themes" data-kind="themes" data-label="歷史解釋的七個共同主題" data-sect="第三節　福利國家怎麼長出來"><span class="eyebrow">COMMON THEMES · Spicker（2025a）</span><h2>歷史解釋的七個共同主題</h2><p class="lead">許多著作想從幾個國家的經驗歸納通則。歷史文獻裡反覆出現的主題有七個（pp. 111–113）。</p><ol class="themes"><li><span class="no">1</span><b>福利多元</b><span>慈善、宗教組織、志願組織與互助會的角色。</span></li><li><span class="no">2</span><b>發展與工業化</b><span>工業革命、都市化與資本主義的成長。</span></li><li><span class="no">3</span><b>民主化</b><span>公民權利與選舉權擴張帶來的政治變化。</span></li><li><span class="no">4</span><b>工人階級運動</b><span>馬克思主義者看工會、雇主與社會運動。</span></li><li><span class="no">5</span><b>政策移轉與模仿</b><span>濟貧法影響美、澳；俾斯麥保險與 Beveridge 報告被廣泛模仿。</span></li><li><span class="no">6</span><b>制度變遷</b><span>沒有人從白紙開始；政策漸進，可能陷入路徑依賴。</span></li><li><span class="no">7</span><b>意識形態</b><span>濟貧法的懲罰、放任自由主義、天主教的團結、結構調整。</span></li></ol><div class="call"><p>這些可以同時成立。但通則都要小心：儘管大量文獻把福利國家分成體制或「家族」，每個國家的歷史與經驗都不同（p. 113）。</p></div></section>
+<section class="slide k-postcards" data-kind="postcards" data-label="◆ 細看，每一國都不一樣" data-sect="第三節　福利國家怎麼長出來" data-act="1"><span class="eyebrow">POSTCARDS · 六個福利國家</span><h2>細看，每一國都不一樣</h2><p class="instr">六張明信片，點一張翻到背面，或按「全部翻開」。</p><div class="flips f6" data-flips="f42" data-act-key="flip-42"><button class="fcard pc" type="button"><span class="fname">英國</span><span class="fsub">pp. 113–114</span><span class="fback">Briggs 三要素：最低標準、不安全時的保障、最佳水準的服務。實際上涵蓋廣、給付低、服務嚴格配給；被歸為自由主義。</span><span class="fhint">翻到背面</span></button><button class="fcard pc" type="button"><span class="fname">德國</span><span class="fsub">pp. 114–115</span><span class="fback">社會國：經濟發展是達成福利的最佳途徑。給付隨所得、組合主義的基金、輔助原則；高所得者自行安排。</span><span class="fhint">翻到背面</span></button><button class="fcard pc" type="button"><span class="fname">法國</span><span class="fsub">pp. 115–116</span><span class="fback">團結寫在社會安全法典第一條。總體制逐步擴大；1988 年 RMI 納入被排除者。近年轉向強調個人責任的「積極團結」。</span><span class="fhint">翻到背面</span></button><button class="fcard pc" type="button"><span class="fname">瑞典</span><span class="fsub">pp. 118–119</span><span class="fback">制度再分配模型的理想型；OECD 社會保障支出最高。細看也「依職業經驗選擇」（Ringen）；平等靠團結工資政策。</span><span class="fhint">翻到背面</span></button><button class="fcard pc" type="button"><span class="fname">美國</span><span class="fsub">pp. 119–120</span><span class="fback">常被說是自由主義，但聯邦制下沒有統一體系。其實是多元：「去中心化的社會利他」，而且特別貴。</span><span class="fhint">翻到背面</span></button><button class="fcard pc" type="button"><span class="fname">中國</span><span class="fsub">pp. 120–121</span><span class="fback">不完整體系的混合：低保、部分保險、服務，各地不一。Ringen 與 Ngok：「不是一個福利國家，而是許多個」。</span><span class="fhint">翻到背面</span></button></div><div class="row"><button class="pbtn sec" type="button" data-flipall="f42">全部翻開</button></div></section>
+<section class="slide k-twocol" data-kind="twocol" data-label="三種敘事從哪裡來，問題在哪裡" data-sect="第三節　福利國家怎麼長出來"><span class="eyebrow">NARRATIVES · Spicker（2025b）</span><h2>三種敘事從哪裡來，問題在哪裡</h2><div class="grid2 withmid"><div class="card"><h4>主流敘事：德國與英國</h4><ul class="bl"><li>德國：俾斯麥保險→社會國，福利被收編為經濟發展服務。它同時成為「福利支撐資本主義」與「勞資衝突」兩種說法的範本。德國也證明兩者並存沒什麼困難（pp. 119–120）。</li><li>英國：濟貧法→1948 年福利國家。Wilensky 與 Lebeaux 稱之為從殘補到制度（pp. 120–121）。</li><li>三種敘事＝Titmuss 的三個模型，再被 Esping-Andersen 改寫成自由、組合、社會民主（p. 121）。</li></ul></div><span class="mid">?</span><div class="card"><h4>體制分析的問題</h4><ul class="bl"><li>證據必然是選擇性的：要找得到資料、又能對上模型（p. 122）。</li><li>錯誤歸類、黑天鵝、被略過的細節。核心原則沒被考慮：英國的均一涵蓋、德國的輔助原則、瑞典「人民之家」的社群主義（pp. 122–123）。</li><li>Leisering 的跨國研究：細看歷史，通則就瓦解。頂多是「家族相似」。該跳脫過去三十年的體制分析慣例了（p. 123）。</li></ul></div></div></section>
+<section class="slide k-stops" data-kind="stops" data-label="沒有起點，也沒有終點" data-sect="第三節　福利國家怎麼長出來"><span class="eyebrow">ALTERNATIVE · 另一種敘事</span><h2>沒有起點，也沒有終點</h2><p class="lead">另一種敘事沒有起點：各種社會都早有處理窮人與問題的安排（p. 124）。</p><ol class="itin"><li><span class="pin"></span><h4>局部供給</h4><p>慈善、互助會，甚至犯罪組織的「法外福利」；政府起初只補洞，零碎而恩庇侍從（pp. 124–125）。</p></li><li><span class="pin"></span><h4>間斷均衡</h4><p>擴張是漸增的，但不是漸進的：看似什麼都沒變，然後突然一陣措施（pp. 125–126）。</p></li><li><span class="pin"></span><h4>團結的擴張</h4><p>社會保險是主要工具，但從不完整：Beveridge 說從搖籃到墳墓，國民救助卻成主角（p. 126）。</p></li><li><span class="pin"></span><h4>普及的主張</h4><p>人人有社會安全的權利。但社群主義總留下「誰被排除」的問題（p. 127）。</p></li></ol><div class="call side"><b>FIGURE 1（p. 128）</b><p>傳統圖像：慈善 → 殘補／自由 → 制度／社會民主。現在的樣子：局部供給 → 團結 → 福利國家；恩庇侍從 → 互助 → 普及。這只是拼布，不是設計圖。</p></div></section>
+<section class="slide k-notes" data-kind="notes" data-label="往哪裡去？" data-sect="第三節　福利國家怎麼長出來"><span class="eyebrow">TRENDS · 三個趨勢</span><h2>往哪裡去？</h2><div class="notes n3"><div class="nt"><span class="no">01</span><div><h4>民主規範的成長</h4><p>選舉正當性被接受、媒體的影響、國家計畫裡的夥伴關係。連威權政府也用社會給付與公職交換支持（pp. 128–129）。</p></div></div><div class="nt"><span class="no">02</span><div><h4>社會政策的爆炸</h4><p>各國紛紛建立健康、教育與社會保障方案。兒童死亡率自 1990 年以來減半：每千人 93 降到 2021 年的 38（p. 130）。</p></div></div><div class="nt"><span class="no">03</span><div><h4>反向：緊縮</h4><p>「撙節」被挪用為縮小國家。但緊縮常把成本轉給私人，整體反而更貴。Ortiz 與 Cummins：172 國裡 120 國在「鎖定」給付。可是沒有國家真的退出福利（pp. 130–132）。</p></div></div></div><div class="call"><p>結論：圖像是混亂的，沒有單一的理解。四組衝突會一直在：個人與集體、新自由主義與社會民主、普世與社群、以及誰被納入、誰被排除（pp. 132–134）。</p></div></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">02</span><span class="ct">總結與討論</span><span class="cc">4 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-match" data-kind="match" data-label="◆ 動手：先猜：六種類型學，各分成幾類？" data-sect="第三節　福利國家怎麼長出來" data-act="1"><span class="eyebrow">◆ 動手做</span><h2>先猜：六種類型學，各分成幾類？</h2><p class="src">點左邊一位作者，再點右邊對應的分類。下一頁是總表</p><div class="match" data-match="m46" data-act-key="match-46"><div class="mcol"><h4>類型學</h4><div class="mitem" data-k="0">Esping-Andersen（1990）</div><div class="mitem" data-k="1">Holliday（2000）</div><div class="mitem" data-k="2">李易駿、古允文（2003）</div><div class="mitem" data-k="3">Gough（2004）</div><div class="mitem" data-k="4">葉崇揚（2018）</div><div class="mitem" data-k="5">Spicker（2025）</div></div><div class="mcol"><h4>分成幾類</h4><div class="mitem" data-k="0">自由、保守組合、社會民主</div><div class="mitem" data-k="1">第四個世界：生產主義，三個次型</div><div class="mitem" data-k="2">發展型福利體制</div><div class="mitem" data-k="3">三種後設體制</div><div class="mitem" data-k="4">三條轉型路徑</div><div class="mitem" data-k="5">頂多「家族相似」</div></div></div><p class="mstat"></p></section>
+<section class="slide k-table" data-kind="table" data-label="今天的六種類型學" data-sect="第三節　福利國家怎麼長出來"><span class="eyebrow">SUMMARY · 總結</span><h2>今天的六種類型學</h2><div class="tblwrap"><table class="tbl "><thead><tr><th></th><th>比什麼</th><th>分成幾類</th></tr></thead><tbody><tr><th class="rh">Esping-Andersen（1990）</th><td>去商品化、階層化、國家市場家庭</td><td>自由、保守組合、社會民主</td></tr><tr><th class="rh">Holliday（2000）</th><td>再加：社會政策是否從屬</td><td>第四個世界：生產主義，三個次型</td></tr><tr><th class="rh">李易駿、古允文（2003）</th><td>社會投資、差別待遇、自我責任</td><td>發展型福利體制</td></tr><tr><th class="rh">Gough（2004）</th><td>福利組合＋福利結果＋階層化</td><td>三種後設體制</td></tr><tr><th class="rh">葉崇揚（2018）</th><td>制度遺緒與關鍵轉折點</td><td>三條轉型路徑</td></tr><tr><th class="rh">Spicker（2025）</th><td>歷史敘事與核心原則</td><td>頂多「家族相似」</td></tr></tbody></table></div></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：日、港、星、韓、台，各該放進哪一個世界？" data-sect="第三節　福利國家怎麼長出來" data-act="1"><span class="eyebrow">◆ 動手做</span><h2>先猜：日、港、星、韓、台，各該放進哪一個世界？</h2><p class="src">沒有標準答案，憑你的直覺放。放好之後，看 Holliday 怎麼放；你放的位置會跟著簽到送出</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s47" data-act-key="place-47" data-done="" data-opinion="生產主義：日、港、星、韓、台。社會政策從屬於經濟成長。（Holliday（2000: 708–709））"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k3" data-txt="日本" data-ans="生產主義" data-dim="">日本<span class="t">生產主義</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k3" data-txt="香港" data-ans="生產主義" data-dim="">香港<span class="t">生產主義</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k3" data-txt="新加坡" data-ans="生產主義" data-dim="">新加坡<span class="t">生產主義</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k3" data-txt="南韓" data-ans="生產主義" data-dim="">南韓<span class="t">生產主義</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k3" data-txt="台灣" data-ans="生產主義" data-dim="">台灣<span class="t">生產主義</span></button></div><div class="scols n4"><div class="scol" data-k="k0"><h4>自由主義</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>保守組合主義</h4><div class="drop"></div></div><div class="scol" data-k="k2"><h4>社會民主</h4><div class="drop"></div></div><div class="scol" data-k="k3"><h4>生產主義</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">看 Holliday 怎麼放</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-where" data-kind="where" data-label="◆ 台灣放哪裡？" data-sect="第三節　福利國家怎麼長出來" data-act="1"><span class="eyebrow">WHERE ARE WE · 台灣放哪裡？</span><h2>台灣放哪裡？</h2><div class="grid4"><div class="card"><h4>Holliday</h4><p>發展普及型，偏向軍方：1953 年軍人保險定調；1991 年軍公教拿走中央社福支出 75%。</p><p class="cite">（2000: 713–714）</p></div><div class="card"><h4>李易駿、古允文</h4><p>發展型：與韓國相似，社會投資高、年金未涵蓋率高、個人與家庭承擔高。</p><p class="cite">（2003: 218）</p></div><div class="card"><h4>Gough</h4><p>東北亞是兩個家族之間的過渡形態。</p><p class="cite">（2004: 35）</p></div><div class="card"><h4>葉崇揚</h4><p>保守路徑：民主化後所得保障擴張再擴張，積極性社會政策擴不動。年金是國家主義模式。</p><p class="cite">（2018: 7, 15, 116）</p></div></div><div class="pollbox"><p class="ask">這四種說法，你最同意哪一個？</p><div class="poll" data-poll="tw" data-act-key="poll-tw"><div class="opts"><button type="button" data-v="Holliday">Holliday</button><button type="button" data-v="李易駿、古允文">李易駿、古允文</button><button type="button" data-v="Gough">Gough</button><button type="button" data-v="葉崇揚">葉崇揚</button></div></div></div><div class="discbox"><span class="k">DISCUSS</span><p class="instr">點開一題，寫下你的想法。寫好的會跟著簽到一起送出，老師上課會挑幾則出來討論。</p><details class="disc"><summary><span class="no">1</span><span>1995 年健保、2008 年國民年金、2017 年年金改革之後，台灣還是「生產主義」嗎？</span></summary><div class="inbox" data-inbox="d1" data-act-key="inbox-d1"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details><details class="disc"><summary><span class="no">2</span><span>如果要替東亞加一個判準，你會加什麼？它和 Holliday 的「從屬」有何不同？</span></summary><div class="inbox" data-inbox="d2" data-act-key="inbox-d2"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details><details class="disc"><summary><span class="no">3</span><span>Spicker 說體制分析該退場了。你同意嗎？沒有類型學，比較研究還能怎麼做？</span></summary><div class="inbox" data-inbox="d3" data-act-key="inbox-d3"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details></div></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">03</span><span class="ct">回到開場</span><span class="cc">1 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-recall" data-kind="recall" data-label="◆ 回到開場" data-sect="第三節　福利國家怎麼長出來" data-act="1"><span class="eyebrow">回到開場</span><h2>「福利國家」要怎麼比？</h2><p class="src">讀完三節，再回答一次開場的問題</p><p class="recall">你在開場選的是：<b data-recall="cmp">—</b></p><p class="note">讀完三節，現在你會先看哪一個？</p><div class="poll" data-poll="cmp2" data-act-key="poll-cmp2"><div class="opts"><button type="button" data-v="政策">政策</button><button type="button" data-v="投入">投入</button><button type="button" data-v="生產">生產</button><button type="button" data-v="運作">運作</button><button type="button" data-v="結果">結果</button></div></div></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">04</span><span class="ct">第三節小測驗</span><span class="cc">1 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quiz" data-kind="quiz" data-label="◆ 第三節小測驗" data-sect="第三節　福利國家怎麼長出來" data-act="1"><span class="eyebrow">小測驗</span><h2>第三節小測驗</h2><p class="src">三題，作答後會立刻看到解說。三節都作答完，才能送出簽到</p><div data-quiz="q3"><div class="qz" data-a="2"><div class="stem">1. Spicker 說的七個共同主題裡，哪一個是「沒有人從白紙開始；政策漸進，可能陷入路徑依賴」？</div><button class="opt" type="button">福利多元</button><button class="opt" type="button">制度變遷</button><button class="opt" type="button">意識形態</button><button class="opt" type="button">政策移轉與模仿</button><div class="fb">這是「制度變遷」（Spicker, 2025a: 111–113；第 53 頁〈歷史解釋的七個共同主題〉）。</div></div><div class="qz" data-a="4"><div class="stem">2. Spicker 的「另一種敘事」，怎麼看福利國家的擴張？</div><button class="opt" type="button">從慈善到制度，有清楚的起點與終點</button><button class="opt" type="button">各國最後都朝社會民主收斂</button><button class="opt" type="button">由經濟成長自動帶來</button><button class="opt" type="button">擴張是漸增的，但不是漸進的：看似什麼都沒變，然後突然一陣措施</button><div class="fb">這叫間斷均衡（pp. 125–126；第 56 頁〈沒有起點，也沒有終點〉）。另一種敘事沒有起點，也沒有終點。</div></div><div class="qz" data-a="2"><div class="stem">3. Spicker 怎麼看體制分析？</div><button class="opt" type="button">體制分析可以完整解釋每一國</button><button class="opt" type="button">細看歷史，通則就瓦解，頂多是「家族相似」</button><button class="opt" type="button">世界上只有三種體制</button><button class="opt" type="button">東亞已經確定是第四種體制</button><div class="fb">Leisering 的跨國研究：細看歷史，通則就瓦解。頂多是「家族相似」（p. 123；第 55 頁〈三種敘事從哪裡來，問題在哪裡〉）。</div></div></div><p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">05</span><span class="ct">本週閱讀與下週預告</span><span class="cc">2 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-readings" data-kind="readings" data-label="◆ 本週閱讀" data-sect="第三節　福利國家怎麼長出來" data-act="1"><span class="eyebrow">READINGS · 本週閱讀</span><h2>本週閱讀</h2><p class="instr">讀完一篇就勾起來，自己看進度。勾選只存在這台裝置，不會送出。</p><div class="grid2"><div><h4>★ 核心閱讀</h4><div class="readlist"><label class="rp"><input type="checkbox" data-r="0"><span>葉崇揚（2018）。東亞福利體制的過去、現在與未來。《轉型中的東亞福利體制》第 2 章。香港城市大學出版社。</span></label><label class="rp"><input type="checkbox" data-r="1"><span>Esping-Andersen, G. (1990). The Three Worlds of Welfare Capitalism, ch. 1. Princeton University Press.</span></label><label class="rp"><input type="checkbox" data-r="2"><span>Spicker, P. (2025). An Introduction to Social Policy, ch. 8 (pp. 109–125).</span></label><label class="rp"><input type="checkbox" data-r="3"><span>Spicker, P. (2025). What Is the Welfare State For?, ch. 8 (pp. 119–134).</span></label></div></div><div><h4>延伸閱讀</h4><div class="readlist"><label class="rp"><input type="checkbox" data-r="4"><span>李易駿、古允文（2003）。另一個福利世界？東亞發展型福利體制初探。臺灣社會學刊，31，189–241。</span></label><label class="rp"><input type="checkbox" data-r="5"><span>Holliday, I. (2000). Productivist welfare capitalism: Social policy in East Asia. Political Studies, 48(4), 706–723.</span></label><label class="rp"><input type="checkbox" data-r="6"><span>Gough, I. (2004). Welfare regimes in development contexts. In I. Gough &amp; G. Wood (Eds.), Insecurity and Welfare Regimes in Asia, Africa and Latin America (pp. 15–48). Cambridge University Press.</span></label></div></div></div><p class="rpstat">已讀 <b>0</b> / 7</p></section>
+<section class="slide k-next" data-kind="next" data-label="下一站" data-sect="第三節　福利國家怎麼長出來"><span class="eyebrow">NEXT STOP · 下週預告</span><h2>下一站</h2><div class="grid2"><div class="card ticket"><span class="k">NEXT STOP</span><p class="date">11/13　第 9 週</p><h4>社會救助與貧窮</h4></div><div class="card ticket"><span class="k">THEN</span><p class="date">11/20　第 10 週</p><h4>老年經濟安全與年金政策</h4></div></div><div class="call"><p>第 9 週會再用到今天的「去商品化」：資產調查的救助，為什麼會把人推回市場？</p></div><div class="stampbig end"><span>SEE YOU</span><b>NEXT</b><span>WEEK</span></div></section></div></div>
+</div>
+<div class="pane" data-pane="4">
+<section class="slide k-done" data-kind="done" data-label="◆ 完成與簽到" data-sect=""><span class="eyebrow">完成</span><h2>完成紀錄</h2><p class="src">三節的小測驗全部作答、閱讀滿 20 分鐘，就可以送出簽到</p><div class="stat"><div>答對題數<b id="st-score">—</b></div><div>已作答<b id="st-done">—</b></div><div>閱讀時間<b id="st-time">00:00</b></div><div>看過頁數<b id="st-seen">—</b></div><div>動手做<b id="st-act">—</b></div></div><div class="idbox"><div><label for="sid">學號</label><input id="sid" maxlength="12" placeholder="例如 14115101" autocomplete="off"></div><div><label for="sname">姓名</label><input id="sname" maxlength="20" placeholder="你的姓名" autocomplete="off"></div></div><div class="fbbox"><label for="sfbk">這一週最有收穫、或最想問的一點（選填）</label><textarea id="sfbk" maxlength="300" placeholder="寫一兩句就好，老師上課會挑幾則回應"></textarea></div><p class="dmsg" id="dmsg"></p><button class="pbtn" id="submit" type="button" disabled>送出簽到</button><p class="code" id="scode"></p></section>
+</div>
+</main>
+<nav class="navbar">
+  <button class="nav-btn prev" id="prev" type="button" onclick="goPrev()">← 前頁</button>
+  <div class="nav-mid"><span class="pageno"><span id="cur">1</span> / <span id="tot">66</span></span><div class="dots" id="dots"></div></div>
+  <button class="nav-btn" id="next" type="button" onclick="goNext()">下一頁 →</button>
+</nav>
+<div class="khint" id="khint"><kbd>←</kbd> <kbd>→</kbd> 翻頁　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕</div>
+<div class="toc" id="toc" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" type="button" onclick="toggleToc()" aria-label="關閉">×</button>
+    <h3>目次</h3>
+    <p class="tsub">點任一條目跳到該頁。</p>
+    <div class="tfilter" id="tfilter">
+      <button type="button" class="on" data-f="all">全部</button>
+      <button type="button" data-f="act">要動手的</button>
+      <button type="button" data-f="sum">表格與圖</button>
+      <button type="button" data-f="quote">引文與討論</button>
+      <button type="button" data-f="read">本週閱讀</button>
+    </div>
+    <ol id="toclist"></ol>
+  </div>
+</div>
+<script>
+/* ═══════════════════════════════════════════════
+   簽到設定：Google 表單的 formResponse 網址與四個欄位代號。
+   ENDPOINT 留空時，送出鍵會產生一組代碼，請學生交給老師手動登記。
+   ═══════════════════════════════════════════════ */
+const CONFIG = {
+  ENDPOINT:'https://docs.google.com/forms/d/e/1FAIpQLSfRXt18HRc7etPz0kEMoxX4I-cAKYU2uKalXewzfviG1GpvIQ/formResponse',
+  FIELDS:{ sid:'entry.778218493', name:'entry.419586149', code:'entry.1960280121', detail:'entry.749946348' },
+  WEEK:'W08', MIN_MINUTES:20
+};
+// 老師測試用：網址加 ?test=1 就跳過閱讀時間門檻（只影響這個分頁）
+if(new URLSearchParams(location.search).get('test')==='1') CONFIG.MIN_MINUTES=0;
+
+const KEY='sp115-w08';
+const store={get(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}},
+             set(o){try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}}};
+let S=store.get();
+['poll','quiz','seen','sort','match','flip','inbox','readp','acts','pick','book','route'].forEach(k=>{ S[k]=S[k]||{}; });
+S.seconds=S.seconds||0; S.page=S.page||0;
+const save=()=>store.set(S);
+const $=id=>document.getElementById(id);
+const esc=v=>String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.random()*(i+1)|0; [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function shake(el){ el.classList.add('shake'); setTimeout(()=>el.classList.remove('shake'),420); }
+
+const slides=[...document.querySelectorAll('.slide')];
+const TOT=slides.length;
+$('tot').textContent=TOT;
+let cur=0;
+
+/* ── 動手紀錄 ── */
+const ACTS=[...new Set([...document.querySelectorAll('[data-act-key]')].map(e=>e.dataset.actKey))];
+function actDone(k){ if(k && !S.acts[k]){ S.acts[k]=1; save(); refresh(); } }
+const actCount=()=>ACTS.filter(k=>S.acts[k]).length;
+
+/* ── 目次與 dots ── */
+const toclist=$('toclist'), dotsEl=$('dots');
+const secNo=s=>s.startsWith('第一')?1:s.startsWith('第二')?2:s.startsWith('第三')?3:0;
+slides.forEach((s,i)=>{
+  const label=s.dataset.label, sect=s.dataset.sect||'';
+  const li=document.createElement('li');
+  if(s.dataset.kind==='divider'||s.dataset.kind==='cover') li.className='head';
+  li.innerHTML='<a href="#" data-i="'+i+'"><span class="n">'+(i+1)+'</span><span>'+label+'</span></a>';
+  li.querySelector('a').addEventListener('click',e=>{ e.preventDefault(); goTo(i); toggleToc(); });
+  toclist.appendChild(li);
+  const d=document.createElement('div');
+  const n=secNo(sect);
+  d.className='dot'+(n?' s'+n:'');
+  d.title=(i+1)+'. '+label;
+  d.addEventListener('click',()=>goTo(i));
+  dotsEl.appendChild(d);
+});
+const dots=[...dotsEl.children], tocLinks=[...toclist.querySelectorAll('a')];
+
+/* ── 分節與小節 ── */
+const panes=[...document.querySelectorAll('.pane')];
+const paneBtns=[...document.querySelectorAll('#panenav button')];
+function showPane(id,scroll){
+  panes.forEach(p=>p.classList.toggle('on',p.dataset.pane===id));
+  paneBtns.forEach(b=>b.classList.toggle('on',b.dataset.pane===id));
+  S.pane=id; save();
+  document.querySelectorAll('.sbar.show').forEach(b=>b.classList.remove('show'));
+  if(scroll!==false) window.scrollTo({top:0,behavior:'instant'});
+}
+paneBtns.forEach(b=>b.addEventListener('click',()=>showPane(b.dataset.pane)));
+document.querySelectorAll('.chap-h').forEach(h=>{
+  h.addEventListener('click',()=>{
+    const c=h.parentElement, was=c.classList.contains('open');
+    c.classList.toggle('open');
+    if(!was) c.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+/* ── 翻頁 ── */
+function goTo(n){
+  n=Math.max(0,Math.min(TOT-1,n));
+  const sl=slides[n];
+  const pane=sl.closest('.pane');
+  if(pane && !pane.classList.contains('on')) showPane(pane.dataset.pane,false);
+  const chap=sl.closest('.chap');
+  if(chap) chap.classList.add('open');
+  cur=n;
+  requestAnimationFrame(()=>sl.scrollIntoView({behavior:'smooth',block:'start'}));
+  S.page=cur; S.seen[cur]=1; save();
+  paint();
+}
+function goNext(){ goTo(cur+1); }
+function goPrev(){ goTo(cur-1); }
+function paintBar(){
+  const m=document.documentElement.scrollHeight-window.innerHeight;
+  $('bar').style.width=(m>0?Math.min(100,window.scrollY/m*100):0)+'%';
+}
+function paintPos(){
+  $('cur').textContent=cur+1;
+  $('sect').textContent=slides[cur].dataset.sect||'';
+  dots.forEach((d,i)=>d.classList.toggle('on',i===cur));
+  tocLinks.forEach((a,i)=>a.classList.toggle('cur',i===cur));
+  const act=dots[cur]; if(act) act.scrollIntoView({block:'nearest',inline:'center'});
+  $('prev').disabled=(cur===0);
+  $('next').disabled=(cur===TOT-1);
+  paintSectProg();
+}
+function paint(){
+  paintBar(); paintPos();
+  refresh();
+}
+let SECTIDX=null;
+function paintSectProg(){
+  const el=$('sprog'); if(!el) return;
+  if(!SECTIDX){ SECTIDX={}; slides.forEach((s,i)=>{ const k=s.dataset.sect||''; (SECTIDX[k]=SECTIDX[k]||[]).push(i); }); }
+  const k=slides[cur].dataset.sect||'', arr=SECTIDX[k]||[];
+  el.textContent=(k && arr.length>1)?((arr.indexOf(cur)+1)+' / '+arr.length):'';
+}
+
+/* ── 鍵盤 ── */
+document.addEventListener('keydown',e=>{
+  const tg=e.target.tagName;
+  if(tg==='INPUT'||tg==='TEXTAREA') return;
+  if($('toc').classList.contains('show')){ if(e.key==='Escape') toggleToc(); return; }
+  if(e.key==='ArrowRight'||e.key==='PageDown'){ e.preventDefault(); goNext(); }
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); goPrev(); }
+  else if(e.key==='Escape'){ toggleToc(); }
+  else if(e.key==='f'||e.key==='F'){ goFull(); }
+  else if(e.key==='Home'){ goTo(0); }
+  else if(e.key==='End'){ goTo(TOT-1); }
+});
+function toggleToc(){ $('toc').classList.toggle('show'); }
+function goFull(){ if(!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.(); }
+
+/* ── 計時 ── */
+function fmt(s){ const m=Math.floor(s/60); return String(m).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+let active=!document.hidden;
+document.addEventListener('visibilitychange',()=>{ active=!document.hidden; });
+setInterval(()=>{
+  if(!active) return;
+  S.seconds++;
+  $('clock').textContent=fmt(S.seconds);
+  const st=$('st-time'); if(st) st.textContent=fmt(S.seconds);
+  if(S.seconds%10===0) save();
+  refresh();
+},1000);
+
+/* ── 表態與先猜 ── */
+function paintRevealAll(){
+  document.querySelectorAll('[data-reveal-all]').forEach(el=>{
+    el.classList.toggle('show',el.dataset.revealAll.split(',').every(k=>S.poll[k]));
+  });
+}
+document.querySelectorAll('[data-poll]').forEach(box=>{
+  const id=box.dataset.poll, ans=box.dataset.answer||'';
+  const bs=[...box.querySelectorAll('.opts button')];
+  const rv=[...document.querySelectorAll('[data-reveal-for="'+id+'"]')];
+  const verdict=document.querySelector('[data-verdict-for="'+id+'"]');
+  const paintP=()=>{
+    const v=S.poll[id];
+    bs.forEach(b=>{
+      b.classList.remove('sel','ok','ng');
+      if(!v) return;
+      if(ans){ b.disabled=true; if(b.dataset.v===ans) b.classList.add('ok'); else if(b.dataset.v===v) b.classList.add('ng'); }
+      else if(b.dataset.v===v) b.classList.add('sel');
+    });
+    if(v){ rv.forEach(r=>r.classList.add('show'));
+      if(verdict){ verdict.textContent = !ans ? '' : (v===ans ? '你猜對了。' : '答案是「'+ans+'」。'); verdict.className='verdict show '+(v===ans?'ok':'ng'); } }
+  };
+  bs.forEach(b=>b.addEventListener('click',()=>{
+    if(ans && S.poll[id]) return;
+    S.poll[id]=b.dataset.v; save(); paintP(); paintRecall(); paintRevealAll(); actDone(box.dataset.actKey);
+  }));
+  paintP();
+});
+function paintRecall(){
+  document.querySelectorAll('[data-recall]').forEach(el=>{ el.textContent=S.poll[el.dataset.recall]||'（沒有作答）'; });
+}
+
+/* ── 翻牌 ── */
+document.querySelectorAll('[data-flips]').forEach(fl=>{
+  const id=fl.dataset.flips, cards=[...fl.querySelectorAll('.fcard')];
+  S.flip[id]=S.flip[id]||[];
+  const chk=()=>{ if(cards.every(c=>c.classList.contains('open'))) actDone(fl.dataset.actKey); };
+  const rec=()=>{ S.flip[id]=cards.map((c,i)=>c.classList.contains('open')?i:-1).filter(i=>i>=0); save(); chk(); };
+  cards.forEach((c,i)=>{
+    if(S.flip[id].includes(i)) c.classList.add('open');
+    c.addEventListener('click',()=>{ c.classList.toggle('open'); rec(); });
+  });
+  const all=document.querySelector('[data-flipall="'+id+'"]');
+  if(all) all.addEventListener('click',()=>{ cards.forEach(c=>c.classList.add('open')); rec(); });
+});
+
+/* ── 分類（點選或拖曳） ── */
+document.querySelectorAll('[data-sort]').forEach(box=>{
+  const id=box.dataset.sort;
+  const tray=box.querySelector('.tray'), cols=[...box.querySelectorAll('.scol')];
+  const cards=[...box.querySelectorAll('.sc')], N=cards.length;
+  const fb=box.querySelector('.fbk'), score=box.querySelector('.score');
+  const st=S.sort[id]=S.sort[id]||{p:{}};
+  let sel=null;
+  const bar=document.createElement('div');
+  bar.className='sbar';
+  bar.innerHTML='<span class="sbt"></span>'+cols.map(c=>'<button type="button" data-k="'+c.dataset.k+'">'+esc(c.dataset.short||c.querySelector('h4').textContent)+'</button>').join('')
+    +'<button type="button" class="x" aria-label="取消">取消</button>';
+  document.body.appendChild(bar);
+  const select=el=>{
+    cards.forEach(c=>c.classList.remove('sel')); sel=el;
+    document.querySelectorAll('.sbar.show').forEach(b=>{ if(b!==bar) b.classList.remove('show'); });
+    if(el){ el.classList.add('sel'); bar.querySelector('.sbt').textContent='把「'+el.dataset.txt+'」放到：'; bar.classList.add('show'); }
+    else bar.classList.remove('show');
+  };
+  const clear=()=>{ cards.forEach(c=>c.classList.remove('ok','ng')); fb.className='fbk'; score.textContent=''; };
+  const put=(el,col)=>{
+    (col?col.querySelector('.drop'):tray).appendChild(el);
+    if(col) st.p[el.dataset.i]=col.dataset.k; else delete st.p[el.dataset.i];
+    save();
+  };
+  const byI=i=>cards.find(c=>c.dataset.i===i);
+  shuffle(cards).forEach(c=>tray.appendChild(c));
+  cards.forEach(c=>{ const k=st.p[c.dataset.i]; const col=k&&cols.find(x=>x.dataset.k===k); if(col) col.querySelector('.drop').appendChild(c); });
+  cards.forEach(c=>{
+    c.addEventListener('click',e=>{
+      e.stopPropagation(); clear();
+      if(c.parentElement!==tray){ put(c,null); select(c); return; }
+      select(sel===c?null:c);
+    });
+    c.addEventListener('dragstart',e=>{ e.dataTransfer.setData('text/plain',c.dataset.i); e.dataTransfer.effectAllowed='move'; select(c); });
+  });
+  cols.forEach(col=>{
+    col.addEventListener('click',()=>{ if(!sel) return; clear(); put(sel,col); select(null); });
+    col.addEventListener('dragover',e=>{ e.preventDefault(); col.classList.add('hot'); });
+    col.addEventListener('dragleave',()=>col.classList.remove('hot'));
+    col.addEventListener('drop',e=>{ e.preventDefault(); col.classList.remove('hot');
+      const el=byI(e.dataTransfer.getData('text/plain')); if(!el) return; clear(); put(el,col); select(null); });
+  });
+  bar.querySelectorAll('button[data-k]').forEach(b=>b.addEventListener('click',()=>{
+    if(!sel) return; clear(); put(sel,cols.find(c=>c.dataset.k===b.dataset.k)); select(null);
+  }));
+  bar.querySelector('.x').addEventListener('click',()=>select(null));
+  tray.addEventListener('dragover',e=>e.preventDefault());
+  tray.addEventListener('drop',e=>{ e.preventDefault(); const el=byI(e.dataTransfer.getData('text/plain')); if(el){ clear(); put(el,null); select(null); } });
+  box.querySelector('.js-check').addEventListener('click',()=>{
+    let n=0, placed=0; const wrong=[], op=box.dataset.opinion;   // op：沒有標準答案，放好之後只揭曉作者的放法
+    cols.forEach(col=>col.querySelectorAll('.sc').forEach(el=>{
+      placed++; if(op) return;
+      const ok=el.dataset.k===col.dataset.k; n+=ok; el.classList.add(ok?'ok':'ng'); if(!ok) wrong.push(el);
+    }));
+    if(placed<N){ cards.forEach(c=>c.classList.remove('ok','ng')); fb.className='fbk show'; fb.innerHTML='還有 <b>'+(N-placed)+'</b> 張沒放。'; return; }
+    if(op){ fb.className='fbk show'; fb.innerHTML='<b>Holliday 的放法：</b>'+esc(op); st.done=1; save(); actDone(box.dataset.actKey); return; }
+    score.textContent=n+' / '+N; st.score=n; save(); actDone(box.dataset.actKey);
+    fb.className='fbk show '+(n===N?'ok':'ng');
+    fb.innerHTML = n===N ? '<b>全對。</b>'+(box.dataset.done||'')
+      : '<b>放錯的：</b><br>'+wrong.map(el=>'「'+esc(el.dataset.txt)+'」屬於「'+esc(el.dataset.ans)+'」'+(el.dataset.dim?'（'+esc(el.dataset.dim)+'）':'')).join('<br>');
+  });
+  box.querySelector('.js-reset').addEventListener('click',()=>{ clear(); st.p={}; delete st.score; save(); select(null); shuffle(cards).forEach(c=>tray.appendChild(c)); });
+});
+
+/* ── 配對 ── */
+document.querySelectorAll('[data-match]').forEach(box=>{
+  const id=box.dataset.match, [L,R]=box.querySelectorAll('.mcol');
+  const stat=box.parentElement.querySelector('.mstat');
+  const total=L.querySelectorAll('.mitem').length;
+  S.match[id]=S.match[id]||[];
+  let sel=null;
+  shuffle([...R.querySelectorAll('.mitem')]).forEach(it=>R.appendChild(it));
+  const paintM=()=>{
+    const done=S.match[id];
+    box.querySelectorAll('.mitem').forEach(it=>it.classList.toggle('done',done.includes(it.dataset.k)));
+    stat.innerHTML = done.length===total ? '全部配對完成 ✓' : '已配對 <b>'+done.length+'</b> / '+total+'　·　點左邊一項，再點右邊對應的一項';
+    if(done.length===total) actDone(box.dataset.actKey);
+  };
+  box.querySelectorAll('.mitem').forEach(it=>it.addEventListener('click',()=>{
+    if(it.classList.contains('done')) return;
+    if(it.parentElement===L){ L.querySelectorAll('.mitem').forEach(x=>x.classList.remove('sel')); it.classList.add('sel'); sel=it; return; }
+    if(!sel){ shake(it); return; }
+    if(sel.dataset.k===it.dataset.k){ sel.classList.remove('sel'); S.match[id].push(it.dataset.k); save(); sel=null; paintM(); }
+    else shake(it);
+  }));
+  paintM();
+});
+
+/* ── 選出 N 項 ── */
+document.querySelectorAll('[data-pick]').forEach(box=>{
+  const id=box.dataset.pick, need=+box.dataset.need;
+  const chips=[...box.querySelectorAll('.chip')], go=box.querySelector('.js-go'), cnt=box.querySelector('.cnt'), fb=box.querySelector('.fbk');
+  const picked=new Set();
+  const lock=arr=>{
+    let n=0;
+    chips.forEach((c,i)=>{ c.disabled=true; c.classList.remove('on'); const ok=c.dataset.ok==='1';
+      if(arr.includes(i)){ c.classList.add(ok?'ok':'ng'); n+=ok; } else if(ok) c.classList.add('miss'); });
+    go.disabled=true; cnt.textContent='';
+    fb.className='fbk show '+(n===need?'ok':'ng');
+    fb.innerHTML='<b>'+n+' / '+need+' 答對。</b>'+esc(box.dataset.fb);
+    actDone(box.dataset.actKey);
+  };
+  chips.forEach((c,i)=>c.addEventListener('click',()=>{
+    if(S.pick[id]) return;
+    if(picked.has(i)) picked.delete(i); else if(picked.size<need) picked.add(i);
+    c.classList.toggle('on',picked.has(i));
+    cnt.textContent='已選 '+picked.size+' / '+need; go.disabled=picked.size!==need;
+  }));
+  go.addEventListener('click',()=>{ S.pick[id]=[...picked]; save(); lock(S.pick[id]); });
+  if(S.pick[id]) lock(S.pick[id]);
+});
+
+/* ── 旅行手冊：翻頁、蓋章 ── */
+document.querySelectorAll('[data-book]').forEach(book=>{
+  const id=book.dataset.book, tabs=[...book.querySelectorAll('.tabs button')], pages=[...book.querySelectorAll('.page')];
+  const stamps=[...book.querySelectorAll('.stampbtn')], cnt=book.querySelector('.bookfoot b'), next=book.querySelector('.next');
+  S.book[id]=S.book[id]||[];
+  let at=0;
+  const show=i=>{ at=i; tabs.forEach((t,k)=>t.classList.toggle('on',k===i)); pages.forEach((p,k)=>p.classList.toggle('on',k===i));
+    next.textContent = i===pages.length-1 ? '回到第一站' : '下一站 →'; };
+  const paintB=()=>{ stamps.forEach((b,k)=>b.classList.toggle('stamped',S.book[id].includes(k))); cnt.textContent=S.book[id].length;
+    if(S.book[id].length===stamps.length) actDone(book.dataset.actKey); };
+  tabs.forEach((t,i)=>t.addEventListener('click',()=>show(i)));
+  next.addEventListener('click',()=>show(at===pages.length-1?0:at+1));
+  stamps.forEach((b,k)=>b.addEventListener('click',()=>{
+    const a=S.book[id], j=a.indexOf(k); if(j<0) a.push(k); else a.splice(j,1); save(); paintB(); }));
+  show(0); paintB();
+});
+
+/* ── 18 國排一排：排序、分群、點亮一國 ── */
+document.querySelectorAll('[data-chart]').forEach(ch=>{
+  const box=ch.querySelector('.bars'), bars=[...box.children], band=ch.querySelector('.grpbar'), sec=ch.closest('section');
+  const touch=()=>actDone(ch.dataset.actKey);
+  sec.querySelectorAll('[data-ord]').forEach(b=>b.addEventListener('click',()=>{
+    sec.querySelectorAll('[data-ord]').forEach(x=>x.classList.toggle('on',x===b));
+    const d=b.dataset.ord==='desc'?-1:1;
+    bars.slice().sort((p,q)=>d*(p.dataset.v-q.dataset.v)||d*(p.dataset.i-q.dataset.i)).forEach(x=>box.appendChild(x));
+    band.style.flexDirection=d<0?'row-reverse':'row'; touch();
+  }));
+  sec.querySelectorAll('[data-grp]').forEach(b=>b.addEventListener('click',()=>{
+    sec.querySelectorAll('[data-grp]').forEach(x=>x.classList.toggle('on',x===b));
+    ch.dataset.g=b.dataset.grp; bars.forEach(x=>x.classList.toggle('in',x.dataset.g===b.dataset.grp));
+    ch.classList.remove('focus'); bars.forEach(x=>x.classList.remove('hot')); touch();
+  }));
+  bars.forEach(x=>x.addEventListener('click',()=>{
+    const was=x.classList.contains('hot'); bars.forEach(y=>y.classList.remove('hot'));
+    if(!was) x.classList.add('hot'); ch.classList.toggle('focus',!was); touch();
+  }));
+});
+
+/* ── 四個世界並排比：點一個維度 ── */
+document.querySelectorAll('[data-cmp]').forEach(box=>{
+  const btns=[...box.querySelectorAll('.ctrl button')], vals=[...box.querySelectorAll('.cv')];
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    btns.forEach(x=>x.classList.toggle('on',x===b));
+    vals.forEach(v=>{ v.hidden = v.dataset.d!==b.dataset.d; });
+    actDone(box.dataset.actKey);
+  }));
+});
+
+/* ── 六國六項指標：點一項，畫成長條圖（有負值時，零點放中間） ── */
+document.querySelectorAll('[data-ind]').forEach(box=>{
+  const names=JSON.parse(box.dataset.c), data=JSON.parse(box.dataset.v), out=box.querySelector('.ibars');
+  const btns=[...box.querySelectorAll('.ctrl button')];
+  const num=t=>parseFloat(String(t).replace('−','-'));
+  const draw=r=>{
+    const vs=data[r].map(num), mx=Math.max(...vs.map(Math.abs))||1, neg=vs.some(v=>v<0), top=Math.max(...vs);
+    const z=neg?50:0, span=neg?50:100;
+    out.innerHTML=vs.map((v,i)=>{
+      const w=Math.abs(v)/mx*span, left=v<0?z-w:z;
+      return '<div class="ib'+(v<0?' neg':'')+(v===top?' hi':'')+'" style="--z:'+z+'%"><span class="il">'+esc(names[i])+'</span>'
+        +'<span class="it"><span class="ifill" style="left:'+left+'%;width:'+w+'%"></span></span><span class="iv">'+esc(data[r][i])+'</span></div>';
+    }).join('');
+  };
+  btns.forEach(b=>b.addEventListener('click',()=>{ btns.forEach(x=>x.classList.toggle('on',x===b)); draw(+b.dataset.r); actDone(box.dataset.actKey); }));
+  draw(0);
+});
+
+/* ── 三條轉型路徑：一站一站往下看 ── */
+document.querySelectorAll('[data-routes]').forEach(box=>{
+  const id=box.dataset.routes, routes=[...box.querySelectorAll('.route')];
+  S.route[id]=S.route[id]||routes.map(()=>0);
+  const paintR=()=>{
+    let all=true;
+    routes.forEach((r,i)=>{ const lis=[...r.querySelectorAll('.rstops li')], n=S.route[id][i]||0;
+      lis.forEach((li,k)=>li.classList.toggle('on',k<n)); r.classList.toggle('done',n>=lis.length); if(n<lis.length) all=false; });
+    if(all) actDone(box.dataset.actKey);
+  };
+  routes.forEach((r,i)=>r.querySelector('.js-step').addEventListener('click',()=>{
+    const max=r.querySelectorAll('.rstops li').length; S.route[id][i]=Math.min(max,(S.route[id][i]||0)+1); save(); paintR(); }));
+  box.querySelector('.js-all').addEventListener('click',()=>{ routes.forEach((r,i)=>{ S.route[id][i]=r.querySelectorAll('.rstops li').length; }); save(); paintR(); });
+  paintR();
+});
+
+/* ── 寫一句 ── */
+document.querySelectorAll('[data-inbox]').forEach(box=>{
+  const id=box.dataset.inbox, ta=box.querySelector('textarea'), btn=box.querySelector('.js-save'), mine=box.querySelector('.imine');
+  const show=v=>{ mine.innerHTML='你寫的是：<b>'+esc(v)+'</b><br>這一句會跟著簽到一起送出，老師上課會挑幾則出來討論。'; mine.classList.add('show'); };
+  if(S.inbox[id]){ ta.value=S.inbox[id]; show(S.inbox[id]); btn.textContent='已存起來（還能改）'; }
+  btn.disabled=ta.value.trim().length<4;
+  ta.addEventListener('input',()=>{ btn.disabled=ta.value.trim().length<4; });
+  btn.addEventListener('click',()=>{ const v=ta.value.trim(); if(v.length<4) return;
+    S.inbox[id]=v; save(); show(v); btn.textContent='已存起來（還能改）'; actDone(box.dataset.actKey); });
+});
+
+/* ── 閱讀進度 ── */
+const rps=[...document.querySelectorAll('.rp')];
+function paintRead(){
+  let n=0;
+  rps.forEach(r=>{ const cb=r.querySelector('input'); r.classList.toggle('done',cb.checked); if(cb.checked) n++; });
+  document.querySelectorAll('.rpstat b').forEach(b=>b.textContent=n);
+}
+rps.forEach(r=>{
+  const cb=r.querySelector('input'), k='r'+cb.dataset.r;
+  if(S.readp[k]) cb.checked=true;
+  cb.addEventListener('change',()=>{ S.readp[k]=cb.checked?1:0; save(); paintRead(); });
+});
+paintRead();
+
+/* ── 小測驗 ── */
+const ANS={};
+document.querySelectorAll('[data-quiz]').forEach(quiz=>{
+  const qid=quiz.dataset.quiz;
+  ANS[qid]=[...quiz.querySelectorAll('.qz')].map(q=>parseInt(q.dataset.a,10));
+  S.quiz[qid]=S.quiz[qid]||{};
+  quiz.querySelectorAll('.qz').forEach((q,i)=>{
+    const a=parseInt(q.dataset.a,10), opts=[...q.querySelectorAll('.opt')], fb=q.querySelector('.fb');
+    const lock=picked=>{
+      opts.forEach((o,k)=>{ o.disabled=true;
+        if(k+1===a) o.classList.add('right'); else if(k+1===picked) o.classList.add('wrong'); });
+      fb.classList.add('show');
+    };
+    if(S.quiz[qid][i]) lock(S.quiz[qid][i]);
+    opts.forEach((o,k)=>o.addEventListener('click',()=>{
+      if(S.quiz[qid][i]) return;
+      S.quiz[qid][i]=k+1; save(); lock(k+1); refresh();
+    }));
+  });
+});
+function tally(){
+  let done=0,right=0,total=0;
+  for(const qid in ANS) ANS[qid].forEach((a,i)=>{
+    total++; const p=S.quiz[qid]&&S.quiz[qid][i];
+    if(p){ done++; if(p===a) right++; }
+  });
+  return {done,right,total};
+}
+
+/* ── 完成頁 ── */
+function refresh(){
+  const sc=$('st-score'); if(!sc) return;
+  const t=tally();
+  sc.textContent=t.right+' / '+t.total;
+  $('st-done').textContent=t.done+' / '+t.total;
+  $('st-seen').textContent=Object.keys(S.seen).length+' / '+TOT;
+  $('st-act').textContent=actCount()+' / '+ACTS.length;
+  $('st-time').textContent=fmt(S.seconds);
+  const need=CONFIG.MIN_MINUTES*60, btn=$('submit'), msg=$('dmsg');
+  if(S.sent){
+    btn.disabled=true; btn.textContent='已送出';
+    msg.textContent='已於 '+S.sent+' 送出。';
+    const box=$('scode');
+    if(box && S.sentCode) box.innerHTML=esc(S.sentWho||'')+'<br><b>'+esc(S.sentCode)+'</b>'
+      +'<span class="codenote">'
+      +'瀏覽器收不到 Google 的回覆，這裡無法確認是否寫入成功。'
+      +'請記下上面這組代碼；若老師的紀錄裡沒有你，把代碼交給老師即可補登。</span>';
+    return;
+  }
+  const sid=($('sid').value||'').trim(), sname=($('sname').value||'').trim();
+  const okQ=(t.done===t.total), okT=(S.seconds>=need), okId=(sid.length>=4 && sname.length>=1);
+  btn.disabled=!(okQ&&okT&&okId);
+  if(!okQ) msg.textContent='還有 '+(t.total-t.done)+' 題沒有作答。三節的小測驗全部作答完畢後，就可以送出簽到。';
+  else if(!okT) msg.textContent='已全部作答。閱讀時間還差 '+Math.ceil((need-S.seconds)/60)+' 分鐘（門檻 '+CONFIG.MIN_MINUTES+' 分鐘）。';
+  else if(!okId) msg.textContent='條件已符合。請填上學號與姓名，才能送出簽到。';
+  else msg.textContent='條件已符合，可以送出簽到。';
+}
+$('submit').addEventListener('click',()=>{
+  const t=tally(), d=new Date(), pad=n=>String(n).padStart(2,'0');
+  const stamp=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
+  const note=$('scode');
+  const sid=($('sid').value||'').trim(), name=($('sname').value||'').trim();
+  const minutes=Math.floor(S.seconds/60), pages=Object.keys(S.seen).length;
+  const feedback=($('sfbk').value||'').trim();
+  const code=CONFIG.WEEK+'｜答對 '+t.right+'/'+t.done+'｜'+minutes+' 分｜'+pages+'/'+TOT+' 頁';
+  const place=(()=>{ const bx=document.querySelector('[data-sort="s47"]'); if(!bx) return '—';
+    const st=S.sort.s47||{p:{}}, names={}; bx.querySelectorAll('.scol').forEach(c=>{ names[c.dataset.k]=c.querySelector('h4').textContent; });
+    return [...bx.querySelectorAll('.sc')].sort((a,b)=>a.dataset.i-b.dataset.i).map(c=>c.dataset.txt+'→'+(names[st.p[c.dataset.i]]||'未放')).join('、'); })();
+  const detail='開場想先看：'+(S.poll.cmp||'—')+' → 讀完：'+(S.poll.cmp2||'—')
+    +'｜五地放哪個世界：'+place
+    +'｜台灣放哪裡最同意：'+(S.poll.tw||'—')
+    +'｜討論1：'+(((S.inbox.d1||'').trim())||'（未填）')
+    +'｜討論2：'+(((S.inbox.d2||'').trim())||'（未填）')
+    +'｜討論3：'+(((S.inbox.d3||'').trim())||'（未填）')
+    +'｜動手 '+actCount()+'/'+ACTS.length
+    +'｜回饋：'+(feedback||'（未填）');
+  if(!CONFIG.ENDPOINT){
+    note.innerHTML='<b>尚未送出</b>：簽到後台還沒接上。請把這組代碼交給老師：<br><b>'+esc(code)+'</b>';
+    return;
+  }
+  const btn=$('submit');
+  btn.disabled=true; note.textContent='傳送中…';
+  const fd=new URLSearchParams();
+  fd.append(CONFIG.FIELDS.sid,sid);
+  fd.append(CONFIG.FIELDS.name,name);
+  fd.append(CONFIG.FIELDS.code,code);
+  fd.append(CONFIG.FIELDS.detail,detail);
+  fetch(CONFIG.ENDPOINT,{method:'POST',mode:'no-cors',body:fd})
+  .then(()=>{ S.sent=stamp; S.sentCode=code; S.sentWho=sid+'　'+name; save(); refresh(); })
+  .catch(()=>{ btn.disabled=false; note.textContent='送出失敗，請確認網路後再按一次；若仍失敗請截圖這一頁給老師。'; });
+});
+
+/* ── 目次篩選 ── */
+const SUM_KINDS=['table','compare','indicators','chart','clusters','scored','book'];
+const QUOTE_KINDS=['quote','quote2','where','recall'];
+$('tfilter').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  $('tfilter').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  const f=b.dataset.f;
+  [...toclist.children].forEach((li,i)=>{
+    const s=slides[i], k=s.dataset.kind;
+    let show=true;
+    if(f==='act') show=s.hasAttribute('data-act');
+    else if(f==='sum') show=SUM_KINDS.includes(k);
+    else if(f==='quote') show=QUOTE_KINDS.includes(k);
+    else if(f==='read') show=(k==='readings');
+    li.classList.toggle('hide',!show);
+  });
+});
+
+/* ── 捲動追蹤：目前看到哪一頁 ── */
+let tick=false;
+window.addEventListener('scroll',()=>{ if(tick) return; tick=true; requestAnimationFrame(()=>{ paintBar(); tick=false; }); },{passive:true});
+const io=new IntersectionObserver(es=>{
+  let best=null, bi=-1;
+  es.forEach(e=>{ if(e.isIntersecting){ const i=slides.indexOf(e.target);
+    if(i>=0 && (best===null||e.intersectionRatio>best)){ best=e.intersectionRatio; bi=i; } } });
+  if(bi>=0 && bi!==cur){ cur=bi; S.page=cur; S.seen[cur]=1; save(); paintPos(); }
+},{rootMargin:'-40% 0px -40% 0px',threshold:[0,.25,.5,1]});
+slides.forEach(sl=>io.observe(sl));
+
+/* ── 起始 ── */
+showPane(S.pane||'0',false);
+slides.forEach((sl,i)=>{ if(sl.offsetParent!==null && sl.getBoundingClientRect().top<window.innerHeight) S.seen[i]=1; });
+['sid','sname','sfbk'].forEach(id=>{
+  const el=$(id); if(!el) return;
+  if(S[id]) el.value=S[id];
+  el.addEventListener('input',()=>{ S[id]=el.value; save(); refresh(); });
+});
+paintRecall(); paintRevealAll();
+$('clock').textContent=fmt(S.seconds);
+paint();
+setTimeout(()=>{ const k=$('khint'); if(k) k.style.opacity=0; },6000);
+
+/* ── 續讀提示 ── */
+(function(){
+  const start=S.page||0;
+  if(start<2) return;
+  const box=document.createElement('div');
+  box.className='resume';
+  box.innerHTML='<span>上次讀到第 '+(start+1)+' 頁</span><button type="button" id="rs-go">繼續讀</button><button type="button" class="x" id="rs-top">從頭開始</button>';
+  document.body.appendChild(box);
+  const kill=()=>box.remove();
+  $('rs-go').addEventListener('click',()=>{ goTo(start); kill(); });
+  $('rs-top').addEventListener('click',()=>{ goTo(0); kill(); });
+  setTimeout(kill,12000);
+})();
+
+</script>
+</body>
+</html>
