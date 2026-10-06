@@ -14,7 +14,7 @@
   /* ================================================================
      横長 · Xpan 總覽（水墨橫幅）
      骨幹＝攝影頁設計語言（:root / 字體 / nav / lightbox / samon）
-     頂部＝65×24 橫幅 hero（宣紙質地 + 墨色稜線 SVG letterbox + 底片粒子 canvas）
+     頂部＝No. 031〈遙遠〉完整寬幅照片
      ================================================================ */
   :root{
     --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
@@ -102,32 +102,17 @@
   .nav .lang{border-left:1px solid var(--rule);padding-left:24px;font-family:var(--latin);font-size:16px;letter-spacing:.2em;color:var(--ink-soft);text-decoration:none}
 
   /* ================= 65×24 橫幅 HERO ================= */
-  .hero{
-    position:relative; min-height:100svh;
-    display:grid; grid-template-columns:1fr; align-items:center;
-    padding:clamp(80px,14vh,140px) 0 clamp(56px,10vh,88px);
-    overflow:hidden;
+  .hero{ position:relative; padding:44px 0 40px; }
+  .hero .wrap{
+    position:relative; width:min(1180px,90vw); margin-inline:auto;
+    display:grid; grid-template-columns:1fr 1fr; align-items:end; gap:48px;
   }
-  .hero .wrap{ position:relative; z-index:3; width:min(1180px,90vw); margin-inline:auto; }
-
-  /* 橫幅（SVG）— hero 背景：letterbox 框緣＋墨色稜線＋水面光帶＋霧 */
-  .ink-pan{
-    position:absolute; z-index:1; pointer-events:none;
-    left:-3%; top:-3%; width:106%; height:106%;
-    will-change:transform;
+  .hero-photo{ margin:32px 0 0; }
+  .hero-photo img{ display:block; width:100%; height:auto; }
+  .hero-photo figcaption{
+    width:min(1180px,90vw); margin:14px auto 0;
+    font-size:12px; letter-spacing:.16em; color:var(--ink-quiet);
   }
-  /* 底片粒子 canvas（銀鹽微粒・橫移光痕・塵點，只在 hero 內）
-     注意：canvas 是 replaced element，inset:0 不會自動撐滿，必須明確給 width/height */
-  #grain{ position:absolute; inset:0; width:100%; height:100%; z-index:2; pointer-events:none; }
-  /* 霧線：沿稜線緩緩橫漂（reduced-motion 由全域規則停用）*/
-  .mist-line{ animation:mistDrift var(--d,26s) linear infinite; }
-  @keyframes mistDrift{ to{ stroke-dashoffset:var(--off,-640); } }
-  /* 稜線群：極慢的橫向搖移（panorama 的「掃視」）*/
-  .pan{ animation:panSway var(--pd,26s) ease-in-out var(--pdel,0s) infinite alternate; will-change:transform; }
-  @keyframes panSway{ from{ transform:translateX(0) } to{ transform:translateX(var(--px,-14px)) } }
-  /* 波光：水面明滅 */
-  .glint{ opacity:.12; animation:glintPulse var(--gd,4.5s) ease-in-out var(--gdel,0s) infinite; }
-  @keyframes glintPulse{ 0%,100%{ opacity:.08 } 50%{ opacity:.6 } }
 
   .eyebrow{
     font-family:var(--latin); font-weight:400;
@@ -140,7 +125,7 @@
 
   .hero h1{
     font-family:var(--serif); font-weight:600;
-    font-size:clamp(66px,15vw,176px); line-height:.92;
+    font-size:clamp(66px,8vw,108px); line-height:.92;
     letter-spacing:.06em; color:var(--sumi);
     margin:0 0 clamp(12px,2vh,22px);
     position:relative;
@@ -169,7 +154,7 @@
     font-family:var(--serif); font-weight:400;
     font-size:clamp(16px,2.1vw,24px); line-height:1.95;
     color:var(--sumi-soft); max-width:34ch;
-    margin-top:clamp(26px,4.4vh,46px);
+    margin:0 0 16px;
     position:relative; padding-left:clamp(16px,2.4vw,26px);
   }
   .hero-poem::before{
@@ -181,27 +166,6 @@
     font-size:clamp(13px,1.5vw,16px); letter-spacing:.01em;
     color:var(--sumi-faint); line-height:1.7; margin-top:.7em;
   }
-
-  /* hero 縦書きの落款（右）*/
-  .hero-mark{
-    position:absolute; z-index:3; pointer-events:none;
-    top:clamp(96px,17vh,180px); right:clamp(16px,3.4vw,46px);
-    writing-mode:vertical-rl; text-orientation:mixed;
-    font-family:var(--display); color:var(--sumi-faint);
-    letter-spacing:.42em; opacity:.55;
-    font-size:clamp(11px,1.35vw,14px);
-  }
-
-  .scroll-cue{
-    position:absolute; z-index:3; left:50%; transform:translateX(-50%);
-    bottom:clamp(22px,4vh,40px);
-    display:flex; flex-direction:column; align-items:center; gap:10px;
-    font-family:var(--latin); font-size:10px; letter-spacing:.42em;
-    text-transform:uppercase; color:var(--sumi-faint);
-    animation:floatCue 3.4s var(--ease) infinite;
-  }
-  .scroll-cue .line{ width:1px; height:clamp(30px,6vh,52px); background:linear-gradient(var(--sumi-faint),transparent); }
-  @keyframes floatCue{ 0%,100%{ transform:translate(-50%,0); opacity:.8 } 50%{ transform:translate(-50%,7px); opacity:.4 } }
 
   /* ================= 照片牆前導 ================= */
   .wall-head{
@@ -298,13 +262,12 @@
     .nav{padding:12px 20px;flex-wrap:wrap;gap:10px}
     .nav nav{order:3;width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:9px 20px;font-size:13px;letter-spacing:.13em;padding-top:11px;margin-top:2px;border-top:1px solid var(--rule)}
     .nav .lang{padding-left:14px}
-    .hero{ min-height:auto; padding:clamp(20px,4vh,40px) 0 clamp(150px,26vh,210px); align-items:start; }
-    .hero h1{ font-size:clamp(76px,30vw,140px); }
+    .hero{ padding:28px 0 30px; }
+    .hero .wrap{ grid-template-columns:1fr; gap:20px; }
+    .hero h1{ font-size:clamp(64px,20vw,100px); }
+    .hero-photo{ margin-top:24px; }
     .hero h1 .romaji{ font-size:clamp(13px,4.4vw,20px); letter-spacing:.26em; }
     .hero-poem{ font-size:clamp(16px,4.4vw,21px); max-width:26ch; }
-    .ink-pan{ opacity:.9; }
-    .hero-mark{ display:none; }
-    .scroll-cue{ display:none; }
     .wall-head{ grid-template-columns:1fr; gap:18px; padding-top:clamp(48px,8vh,72px); }
     .wall-head .wh-kanji{ font-size:clamp(56px,18vw,96px); }
     .wall{ grid-template-columns:1fr 1fr; }
@@ -333,7 +296,7 @@
 <meta property="og:title" content="Xpan · 65×24 — 葉崇揚" />
 <meta property="og:description" content="Xpan · 65×24 的寬幅影格——橫向的凝視，被裁下的風景。葉崇揚寬幅攝影作品總覽，水墨電影寬幅風格。" />
 <meta property="og:url" content="https://chungyang1017.github.io/photography-xpan-zh.html" />
-<meta property="og:image" content="https://chungyang1017.github.io/images/photography/dscf3093.jpg" />
+<meta property="og:image" content="https://chungyang1017.github.io/images/photography/dscf9616_3.jpg" />
 <meta property="og:locale" content="zh_TW" />
 <meta name="twitter:card" content="summary_large_image" />
 <!-- og:end -->
@@ -362,144 +325,23 @@
 
   <!-- ============ 65×24 橫幅 HERO ============ -->
   <header class="hero" id="hero">
-    <!-- 橫幅 — letterbox 框緣＋墨色稜線（遠中近三層）＋水面光帶＋霧線＋波光 -->
-    <svg class="ink-pan" id="pan" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <filter id="inkbleed" x="-30%" y="-30%" width="160%" height="160%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="4" seed="7" result="t"/>
-          <feDisplacementMap in="SourceGraphic" in2="t" scale="16" xChannelSelector="R" yChannelSelector="G" result="d"/>
-          <feGaussianBlur in="d" stdDeviation="2.6"/>
-        </filter>
-        <filter id="ridgebleed" x="-30%" y="-30%" width="160%" height="160%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="3" seed="11" result="t"/>
-          <feDisplacementMap in="SourceGraphic" in2="t" scale="9"/>
-          <feGaussianBlur stdDeviation="0.6"/>
-        </filter>
-        <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0"   stop-color="#9aa2b4"/>
-          <stop offset=".6"  stop-color="#c3bfb0"/>
-          <stop offset="1"   stop-color="#ddd2ae"/>
-        </linearGradient>
-        <linearGradient id="farG" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0"   stop-color="#8b93a5"/>
-          <stop offset="1"   stop-color="#a8aeb9"/>
-        </linearGradient>
-        <linearGradient id="midG" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0"   stop-color="#4a5568"/>
-          <stop offset="1"   stop-color="#5d6779"/>
-        </linearGradient>
-        <linearGradient id="nearG" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0"   stop-color="#323a4a"/>
-          <stop offset="1"   stop-color="#262d3a"/>
-        </linearGradient>
-        <linearGradient id="waterG" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0"   stop-color="#6b7488"/>
-          <stop offset="1"   stop-color="#4d5568"/>
-        </linearGradient>
-        <radialGradient id="sunG" cx="50%" cy="50%" r="50%">
-          <stop offset="0"   stop-color="#e8d3a2" stop-opacity=".8"/>
-          <stop offset=".55" stop-color="#d9bc85" stop-opacity=".32"/>
-          <stop offset="1"   stop-color="#d9bc85" stop-opacity="0"/>
-        </radialGradient>
-        <linearGradient id="rebateG" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#2a2723" stop-opacity=".16"/>
-          <stop offset="1" stop-color="#2a2723" stop-opacity=".04"/>
-        </linearGradient>
-        <linearGradient id="rebateG2" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#2a2723" stop-opacity=".16"/>
-          <stop offset="1" stop-color="#2a2723" stop-opacity=".04"/>
-          <animate attributeName="x1" dur="1" values="0;0" fill="freeze"/>
-        </linearGradient>
-      </defs>
-
-      <!-- 框外（letterbox 上下框緣：宣紙上輕壓一層炭色，像底片框緣）-->
-      <rect x="-40" y="-40" width="1520" height="298" fill="url(#rebateG)"/>
-      <rect x="-40" y="642" width="1520" height="298" fill="url(#rebateG)" transform="translate(0 1284) scale(1 -1)"/>
-
-      <!-- 框緣記號（片緣文字・格號・crop marks）-->
-      <g font-family="Inter, sans-serif" fill="#2a2723" opacity=".38">
-        <text x="84"   y="238" font-size="13" letter-spacing="5">XPAN · 65×24</text>
-        <text x="1216" y="238" font-size="13" letter-spacing="4">No. 019 ▸</text>
-        <text x="84"   y="688" font-size="13" letter-spacing="5">PANORAMIC</text>
-        <text x="1262" y="688" font-size="13" letter-spacing="4">▸ 19A</text>
-      </g>
-      <g stroke="#2a2723" stroke-width="2" opacity=".3">
-        <path d="M64 258 h26 M64 258 v26"/>
-        <path d="M1376 258 h-26 M1376 258 v26"/>
-        <path d="M64 642 h26 M64 642 v-26"/>
-        <path d="M1376 642 h-26 M1376 642 v-26"/>
-      </g>
-      <!-- 框線（65×24 的一格：上下兩條細線）-->
-      <path d="M-60 258 H1500" stroke="#2a2723" stroke-width="1.6" opacity=".4"/>
-      <path d="M-60 642 H1500" stroke="#2a2723" stroke-width="1.6" opacity=".4"/>
-
-      <!-- 框內：天空 wash＋淡日 -->
-      <g filter="url(#inkbleed)">
-        <rect x="-40" y="258" width="1520" height="384" fill="url(#skyG)" opacity=".26"/>
-        <ellipse cx="1040" cy="352" rx="150" ry="72" fill="url(#sunG)" opacity=".55"/>
-        <path d="M120 316 C 340 300, 560 314, 760 304 C 920 296, 1060 306, 1180 300" stroke="#8b93a5" stroke-width="26" stroke-linecap="round" opacity=".13"/>
-      </g>
-
-      <!-- 遠稜（極慢右移）-->
-      <g class="pan" style="--pd:34s;--px:-10px" filter="url(#ridgebleed)">
-        <path d="M-60 470 L 90 420 L 200 452 L 330 388 L 470 446 L 600 402 L 760 456 L 900 410 L 1050 452 L 1190 404 L 1330 446 L 1500 416 L 1500 642 L -60 642 Z" fill="url(#farG)" opacity=".30"/>
-      </g>
-      <!-- 中稜（藍墨，慢左移）-->
-      <g class="pan" style="--pd:28s;--px:14px" filter="url(#ridgebleed)">
-        <path d="M-60 520 L 120 462 L 260 508 L 420 430 L 560 502 L 720 448 L 880 512 L 1020 458 L 1180 508 L 1340 462 L 1500 502 L 1500 642 L -60 642 Z" fill="url(#midG)" opacity=".34"/>
-        <!-- 富士遠影 -->
-        <path d="M 830 642 L 960 468 L 1000 468 L 1130 642 Z" fill="#4a5568" opacity=".28"/>
-        <path d="M 952 480 L 980 480 L 968 496 L 960 490 Z" fill="#e8e2d4" opacity=".5"/>
-      </g>
-      <!-- 近稜（深藍墨）-->
-      <g filter="url(#ridgebleed)">
-        <path d="M-60 588 L 60 552 L 180 584 L 300 540 L 430 588 L 560 556 L 700 592 L 830 560 L 980 594 L 1120 562 L 1260 592 L 1390 566 L 1500 588 L 1500 642 L -60 642 Z" fill="url(#nearG)" opacity=".42"/>
-      </g>
-
-      <!-- 水面帶（框內最下緣：橫向水光）-->
-      <g filter="url(#inkbleed)">
-        <rect x="-40" y="600" width="1520" height="42" fill="url(#waterG)" opacity=".25"/>
-        <path d="M-60 618 C 300 610, 700 624, 1500 614" stroke="#6b7488" stroke-width="14" stroke-linecap="round" opacity=".16"/>
-      </g>
-
-      <!-- 霧線（沿稜谷橫漂的長霧）-->
-      <g stroke-linecap="round" fill="none">
-        <path class="mist-line" style="--d:30s;--off:-700" d="M-60 500 C 200 492, 460 506, 720 496 C 940 488, 1180 502, 1500 492" stroke="#e8e2d4" stroke-width="10" opacity=".34" stroke-dasharray="120 240 60 300"/>
-        <path class="mist-line" style="--d:24s;--off:-660" d="M-60 552 C 240 544, 520 560, 800 550 C 1040 542, 1260 556, 1500 546" stroke="#e8e2d4" stroke-width="8" opacity=".3" stroke-dasharray="90 260 120 240"/>
-        <path class="mist-line" style="--d:36s;--off:-720" d="M-60 448 C 260 442, 540 452, 820 444 C 1060 438, 1280 448, 1500 440" stroke="#f4ecdc" stroke-width="7" opacity=".26" stroke-dasharray="70 300 100 280"/>
-      </g>
-
-      <!-- 波光（水面帶上的明滅）-->
-      <g fill="#e8d9b4">
-        <ellipse class="glint" style="--gd:4.2s;--gdel:.3s"  cx="320"  cy="616" rx="10" ry="2"/>
-        <ellipse class="glint" style="--gd:5.4s;--gdel:1.5s" cx="540"  cy="624" rx="9"  ry="1.8"/>
-        <ellipse class="glint" style="--gd:4.7s;--gdel:2.4s" cx="820"  cy="614" rx="11" ry="2.1"/>
-        <ellipse class="glint" style="--gd:5.9s;--gdel:.8s"  cx="1060" cy="622" rx="9"  ry="1.8"/>
-        <ellipse class="glint" style="--gd:4.4s;--gdel:1.9s" cx="1280" cy="616" rx="10" ry="2"/>
-      </g>
-    </svg>
-
-    <!-- 底片粒子 canvas（銀鹽微粒・橫移光痕・塵點）-->
-    <canvas id="grain" aria-hidden="true"></canvas>
-
-    <span class="hero-mark" aria-hidden="true">横長の視線</span>
-
     <div class="wrap">
-      <p class="eyebrow reveal">Panoramic · 65×24</p>
-      <h1 class="reveal d1">
-        <span class="kanji">横長</span>
-        <span class="romaji">横長 · Yokonaga · Xpan</span>
-      </h1>
+      <div>
+        <p class="eyebrow reveal">Panoramic · 65×24</p>
+        <h1 class="reveal d1">
+          <span class="kanji">横長</span>
+          <span class="romaji">横長 · Yokonaga · Xpan</span>
+        </h1>
+      </div>
       <p class="hero-poem reveal d2">
         65×24 的寬幅。橫向的凝視，被裁下的風景。
         <span class="en">The 65×24 frame — a sideways gaze, landscape cropped wide.</span>
       </p>
     </div>
-
-    <div class="scroll-cue" aria-hidden="true">
-      <span>Scroll</span>
-      <span class="line"></span>
-    </div>
+    <figure class="hero-photo">
+      <img src="images/photography/dscf9616_3.jpg" width="2000" height="721" alt="No. 031〈遙遠〉：湖邊的釣魚者與逆光中的層疊山巒，黑白寬幅照片" fetchpriority="high" decoding="async">
+      <figcaption>No. 031 · 遙遠</figcaption>
+    </figure>
   </header>
 
   <!-- ============ 照片牆前導 ============ -->
@@ -799,157 +641,7 @@
   });
 </script>
 
-<!-- 底片粒子 canvas + 橫幅視差（銀鹽微粒明滅・光痕橫掃・塵點慢漂）-->
-<script>
-(() => {
-  "use strict";
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const canvas = document.getElementById('grain');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const TAU = Math.PI * 2;
-  let W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-  const drift = [];
-
-  function resize(){
-    // 量測父層 hero（不能讀 canvas 自身，避免 buffer→clientWidth 回饋放大）
-    const rect = canvas.parentElement.getBoundingClientRect();
-    W = Math.round(rect.width); H = Math.round(rect.height);
-    canvas.width = Math.max(1, W * dpr); canvas.height = Math.max(1, H * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const target = Math.round(Math.min(30, Math.max(14, W / 48)));
-    while (drift.length < target) drift.push(makeDrifter(true));
-    while (drift.length > target) drift.pop();
-  }
-  function makeDrifter(spawnAnywhere){
-    const r = Math.random();
-    const type = r < 0.14 ? 'streak' : (r < 0.72 ? 'mote' : 'dust');
-    const p = {
-      type,
-      x: spawnAnywhere ? Math.random() * W : -30 - Math.random() * 60,
-      yBase: H * (0.30 + Math.random() * 0.42),      // 框內帶：hero 中段（letterbox 之間）
-      seed: Math.random() * TAU,
-      phase: Math.random() * TAU,
-      bobSpeed: 0.008 + Math.random() * 0.016,       // 浮沉
-      bobAmp: 1.2 + Math.random() * 3,
-      vx: 0.22 + Math.random() * 0.42                // 橫向慢漂（向右，panorama 的掃視）
-    };
-    if (type === 'mote'){                             // 銀鹽微粒：軟點明滅
-      p.size = 1.4 + Math.random() * 2.2;
-      p.alpha = 0.26 + Math.random() * 0.28;
-      p.vx *= 1.2;
-    } else if (type === 'streak'){                    // 光痕：細長橫線快掃
-      p.len = 26 + Math.random() * 60;
-      p.size = 0.7 + Math.random() * 0.9;
-      p.alpha = 0.22 + Math.random() * 0.2;
-      p.vx = 1.1 + Math.random() * 1.3;
-    } else {                                          // 塵點：深色細塵慢漂
-      p.size = 0.8 + Math.random() * 1.2;
-      p.alpha = 0.18 + Math.random() * 0.16;
-      p.vx *= 0.6;
-    }
-    return p;
-  }
-  function pathY(p){ // 沿框內帶起伏 + 輕微浮沉
-    return p.yBase + Math.sin(p.x * 0.003 + p.seed) * 8 + Math.sin(p.phase) * p.bobAmp;
-  }
-
-  function drawMote(p, y){          // 銀鹽微粒（軟點，明滅呼吸）
-    ctx.save();
-    ctx.globalAlpha = p.alpha * (0.6 + 0.4 * Math.sin(p.phase * 1.7 + p.seed));
-    const rr = p.size * 2.2;
-    const g = ctx.createRadialGradient(p.x, y, 0, p.x, y, rr);
-    g.addColorStop(0, 'rgba(250,247,238,0.92)');
-    g.addColorStop(0.55, 'rgba(139,147,165,0.28)');
-    g.addColorStop(1, 'rgba(139,147,165,0)');
-    ctx.fillStyle = g;
-    ctx.beginPath(); ctx.arc(p.x, y, rr, 0, TAU); ctx.fill();
-    ctx.restore();
-  }
-  function drawStreak(p, y){        // 光痕（細長橫線，像掃視時的流光）
-    const tw = 0.35 + 0.65 * Math.abs(Math.sin(p.phase * 1.2 + p.seed));
-    ctx.save();
-    ctx.globalAlpha = p.alpha * tw;
-    const g = ctx.createLinearGradient(p.x - p.len, y, p.x, y);
-    g.addColorStop(0, 'rgba(201,168,106,0)');
-    g.addColorStop(0.7, 'rgba(201,168,106,0.55)');
-    g.addColorStop(1, 'rgba(250,247,238,0.85)');
-    ctx.strokeStyle = g;
-    ctx.lineWidth = p.size;
-    ctx.lineCap = 'round';
-    ctx.beginPath(); ctx.moveTo(p.x - p.len, y); ctx.lineTo(p.x, y); ctx.stroke();
-    ctx.restore();
-  }
-  function drawDust(p, y){          // 塵點（深墨細塵，底片上的微塵）
-    ctx.save();
-    ctx.globalAlpha = p.alpha * (0.55 + 0.45 * Math.sin(p.phase * 1.4 + p.seed));
-    ctx.fillStyle = 'rgba(50,58,74,0.85)';
-    ctx.beginPath(); ctx.arc(p.x, y, p.size, 0, TAU); ctx.fill();
-    ctx.restore();
-  }
-
-  let scrollBoost = 0, lastScrollY = window.scrollY;
-  window.addEventListener('scroll', () => {
-    const dy = Math.abs(window.scrollY - lastScrollY);
-    lastScrollY = window.scrollY;
-    scrollBoost = Math.min(2.4, scrollBoost + dy * 0.005);
-  }, { passive:true });
-
-  let windPhase = 0, raf;
-  function frame(){
-    ctx.clearRect(0, 0, W, H);
-    windPhase += 0.0014;
-    const wind = Math.sin(windPhase) * 0.10 + Math.sin(windPhase * 2.1) * 0.04; // 谷風微變
-    scrollBoost *= 0.94;
-    for (const p of drift){
-      p.phase += p.bobSpeed;
-      p.x += (p.vx + wind) * (1 + scrollBoost * 0.5);      // 向右橫漂，捲動時漂速微升
-      if (p.x - 90 > W) Object.assign(p, makeDrifter(false));
-      const y = pathY(p);
-      if (p.type === 'mote') drawMote(p, y);
-      else if (p.type === 'streak') drawStreak(p, y);
-      else drawDust(p, y);
-    }
-    raf = requestAnimationFrame(frame);
-  }
-  function start(){
-    resize();
-    if (!reduceMotion){ cancelAnimationFrame(raf); frame(); }
-    else {
-      ctx.clearRect(0, 0, W, H);
-      for (const p of drift.slice(0, 10)){
-        const y = pathY(p);
-        if (p.type === 'mote') drawMote(p, y);
-        else if (p.type === 'streak') drawStreak(p, y);
-        else drawDust(p, y);
-      }
-    }
-  }
-  let rt;
-  window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(start, 180); }, { passive:true });
-  if (document.fonts && document.fonts.ready){ document.fonts.ready.then(start); setTimeout(start, 700); }
-  else { window.addEventListener('load', start); }
-  start();
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) cancelAnimationFrame(raf);
-    else if (!reduceMotion) frame();
-  });
-
-  /* 橫幅視差（稜線隨捲動緩緩橫移——panorama 的掃視）*/
-  const pan = document.getElementById('pan');
-  let ticking = false;
-  const parallax = () => {
-    const y = window.scrollY;
-    if (pan) pan.style.transform = `translate3d(${y * 0.04}px, ${y * -0.015}px, 0)`;
-    ticking = false;
-  };
-  window.addEventListener('scroll', () => {
-    if (reduceMotion) return;
-    if (!ticking){ requestAnimationFrame(parallax); ticking = true; }
-  }, { passive:true });
-})();
-</script>
 
 <!-- reveal 揭示（漸進增強：IO + scroll/計時器備援）-->
 <script>
