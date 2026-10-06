@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生命歷程的制度化：標準生命歷程、三分結構與去標準化論辯 ・ 生命歷程與社會政策 第 5 週 ・ 葉崇揚</title>
+<meta name="description" content="生命歷程與社會政策第 5 週講義：生命歷程的制度化，標準生命歷程、三分結構與去標準化論辯。共 87 頁投影片，每頁附講解。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Iansui&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+
+*{box-sizing:border-box}
+html{scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{margin:0;font-size:17px;line-height:1.85;-webkit-font-smoothing:antialiased}
+a{text-underline-offset:3px}
+img{display:block}
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ── 頂列 ── */
+.topnav{position:sticky;top:0;z-index:40;height:60px;display:flex;align-items:center;gap:14px;padding:0 max(20px,calc((100vw - 1300px) / 2 + 24px))}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;white-space:nowrap}
+.brand svg{width:28px;height:28px;flex:none}
+.wk{white-space:nowrap}
+.sp{flex:1}
+.navbtn{height:36px;padding:0 14px;display:inline-flex;align-items:center;text-decoration:none;cursor:pointer;white-space:nowrap}
+.tocbtn{display:none}
+.progress{position:fixed;top:59px;left:0;right:0;height:3px;z-index:41;pointer-events:none}
+.progress i{display:block;height:100%;width:0;border-radius:0 3px 3px 0}
+
+/* ── 首屏 ── */
+.hero{max-width:1300px;margin:0 auto;padding:72px 24px 56px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center}
+.hero-l{position:relative;min-width:0}
+.kicker{margin:0;letter-spacing:.03em;line-height:1.6}
+.badges{display:flex;align-items:center;gap:14px;margin:22px 0 10px;flex-wrap:wrap}
+h1{word-break:keep-all;margin:10px 0 16px;line-height:1.15}
+.en{margin:0 0 18px;line-height:1.5}
+.sub{margin:0;line-height:1.7}
+.meta{margin:26px 0 0;font-size:15px;line-height:1.8}
+.hero-r{position:relative;min-width:0}
+
+/* ── 版面 ── */
+.layout{max-width:1300px;margin:0 auto;padding:8px 24px 40px;display:grid;grid-template-columns:236px minmax(0,1fr);gap:56px}
+main{min-width:0;max-width:960px}
+.intro{margin:0 0 76px}
+.intro .note{max-width:none}
+
+/* ── 目錄 ── */
+.toc{position:sticky;top:84px;align-self:start;max-height:calc(100vh - 104px);overflow:auto;padding:4px 6px 24px 0;font-size:14px;line-height:1.45;scrollbar-width:thin}
+.toc-h{margin:0 0 10px 10px;font-size:12px;font-weight:600;letter-spacing:.16em}
+.grp{margin:0 0 2px}
+.gh{display:flex;gap:10px;align-items:baseline;padding:7px 10px;border-radius:8px;text-decoration:none}
+.gh .gn{min-width:1.4em;flex:none}
+.grp ol{list-style:none;margin:0 0 8px;padding:0 0 0 8px;display:none}
+.grp.open ol{display:block}
+.grp ol a{display:grid;grid-template-columns:2em minmax(0,1fr);gap:4px;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:13.5px}
+.grp ol a .n{font-variant-numeric:tabular-nums}
+
+/* ── 一頁投影片＋講解 ── */
+.unit{margin:0 0 84px}
+.frame{position:relative;margin:0;aspect-ratio:16/9;cursor:zoom-in;outline:none}
+.frame img{width:100%;height:100%;object-fit:cover}
+.note{margin:26px 2px 0;max-width:800px}
+.note-h{display:flex;align-items:center;gap:10px;margin:0 0 8px}
+.note-h .mk{flex:none}
+.note p{margin:0 0 .85em}
+.note a[target],.band-note a[target]{overflow-wrap:anywhere}
+
+/* ── 章節帶 ── */
+.band{position:relative;margin:4px 0 84px;padding:60px 52px 40px}
+.band-num{position:absolute;pointer-events:none}
+.band-k{margin:0;position:relative}
+.band h2{position:relative;margin:12px 0 10px;line-height:1.3}
+.band-en{position:relative;margin:0 0 20px}
+.band-d{position:relative;margin:0 0 8px;font-size:16px;line-height:1.75}
+.band-p{position:relative;display:flex;gap:8px;margin:26px 0 0}
+.band-p i{width:52px;height:5px;border-radius:3px}
+.band-note{position:relative;margin-top:28px;padding-top:22px;font-size:16px;line-height:1.85;max-width:800px}
+.band-note p{margin:0 0 .8em}
+
+/* ── 結尾 ── */
+.closing-in{max-width:1300px;margin:0 auto;padding:88px 24px 64px;position:relative}
+.quote{margin:16px 0 14px;line-height:1.3}
+.quote-en{margin:0 0 40px;line-height:1.6}
+.contact{display:flex;flex-direction:column;gap:4px;font-size:16px}
+.back{margin:36px 0 0}
+.back a{text-decoration:none;font-weight:500}
+
+/* ── 放大檢視 ── */
+.lb{position:fixed;inset:0;z-index:100;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.lb.open{display:flex}
+.lb-frame{position:relative;overflow:hidden;border-radius:8px;box-shadow:0 30px 80px -30px rgba(0,0,0,.7)}
+.lb-frame img{width:100%;height:100%}
+.lb-bar{display:flex;align-items:center;gap:10px;font-size:14px}
+.lb-bar button{width:40px;height:40px;border-radius:999px;font:20px/1 sans-serif;cursor:pointer}
+.lb-n{min-width:5.5em;text-align:center;font-variant-numeric:tabular-nums}
+.lb-x{margin-left:10px}
+
+/* ── 窄螢幕 ── */
+@media (max-width:1100px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:0}
+  .toc{display:none}
+  .tocbtn{display:inline-flex}
+  body.toc-open{overflow:hidden}
+  body.toc-open .toc{display:block;position:fixed;top:60px;left:0;right:0;bottom:0;max-height:none;z-index:45;padding:20px 20px 48px;overflow:auto;margin:0;transform:none}
+  body.toc-open .toc .grp ol{display:block}
+  main{max-width:none}
+}
+@media (max-width:860px){
+  .hero{grid-template-columns:minmax(0,1fr);gap:40px;padding:44px 24px 36px}
+  .band{padding:44px 26px 30px}
+  .unit{margin-bottom:64px}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .topnav{gap:10px;padding:0 14px}
+  .wk,.topnav a.navbtn{display:none}
+  .hero{padding:32px 16px 28px}
+  .layout{padding:8px 16px 32px}
+  .closing-in{padding:64px 16px 48px}
+}
+
+
+:root{
+  --board:#243b2f;--board2:#1d3127;--wood:#5d3c24;--wood2:#3a2313;
+  --chalk:#f1efe6;--text:#e3e6dc;--muted:#b7c3b3;--dim:#8fa095;
+  --Y:#f5d76e;--P:#f4a3b8;--B:#9fd3ec;--G:#b5db94;
+  --hand:"Iansui","Noto Sans TC","PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;
+  --sans:"Noto Sans TC","PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;
+  color-scheme:dark;
+}
+body{background:var(--board) url(week05-slides/chalkboard-tile.webp);color:var(--text);font-family:var(--sans)}
+a{color:var(--B)}
+::selection{background:rgba(245,215,110,.32);color:#fff}
+
+.topnav{background:linear-gradient(180deg,#6b462a 0%,#5a3a22 55%,#472d1a 100%);box-shadow:inset 0 -2px 0 rgba(0,0,0,.35),0 8px 18px -10px rgba(0,0,0,.7)}
+.brand{color:var(--chalk);font:18px/1 var(--hand)}
+.brand .b-line{stroke:var(--Y)}.brand .b-a{fill:var(--Y)}.brand .b-b{fill:var(--chalk)}
+.wk{color:#ecdcc4;font:16px/1 var(--hand)}
+.navbtn{font:15px/1 var(--hand);color:var(--chalk);background:rgba(0,0,0,.14);border:1.5px solid rgba(241,239,230,.5);border-radius:11px 9px 12px 10px}
+.navbtn:hover{background:rgba(255,255,255,.08)}
+.progress i{background:var(--Y);box-shadow:0 0 8px rgba(245,215,110,.55)}
+
+.kicker{color:var(--Y);font:16px/1.6 var(--hand)}
+.badge{font:19px/1.3 var(--hand);color:var(--Y);border:2px solid var(--Y);border-radius:16px 11px 15px 12px;padding:4px 16px}
+.date{font:21px/1.3 var(--hand);color:var(--chalk)}
+h1{font-family:var(--hand);font-weight:400;font-size:clamp(42px,5.6vw,70px);color:var(--chalk);letter-spacing:.03em;text-shadow:0 0 1px rgba(241,239,230,.6),0 0 18px rgba(241,239,230,.07);padding-bottom:20px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 70 3, 130 12, 200 7 S 320 3, 390 8 S 480 11, 517 6' fill='none' stroke='%23f5d76e' stroke-width='3.2' stroke-linecap='round' opacity='.9'/%3E%3Cpath d='M8 11 C 90 6, 160 13, 240 9 S 380 6, 470 10' fill='none' stroke='%23f5d76e' stroke-width='1.4' stroke-linecap='round' opacity='.45'/%3E%3C/svg%3E") left bottom/min(100%,500px) 14px no-repeat}
+.en{font:clamp(16px,1.55vw,19px)/1.55 var(--hand);color:var(--B)}
+.sub{font:clamp(19px,1.9vw,23px)/1.6 var(--hand);color:var(--text)}
+.meta{color:var(--muted)}.meta b{color:var(--chalk);font-weight:500}
+
+.frame{border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,.35),0 24px 46px -24px rgba(0,0,0,.9);transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+.frame img{border-radius:6px}
+.frame:focus-visible{box-shadow:0 0 0 3px var(--Y)}
+
+.intro .note{border:2px solid rgba(241,239,230,.34);border-radius:20px 12px 18px 10px;padding:24px 30px 10px;background:rgba(0,0,0,.12)}
+.note-h{font:19px/1.2 var(--hand);color:var(--Y);letter-spacing:.06em}
+.note-h .mk{width:30px;height:3px;border-radius:3px;background:var(--Y);opacity:.9}
+.note p{color:var(--text)}
+.disc .note{border-left:3px solid rgba(244,163,184,.6);padding-left:20px}
+.disc .note-h{color:var(--P)}.disc .note-h .mk{background:var(--P)}
+
+.toc{scrollbar-color:rgba(241,239,230,.25) transparent}
+.toc-h{color:var(--dim)}
+.gh{color:var(--chalk);font:16.5px/1.4 var(--hand)}
+.gh .gn{color:var(--Y)}
+.gh:hover,.grp ol a:hover{background:rgba(255,255,255,.07)}
+.grp ol a{color:var(--muted)}
+.grp ol a .n{color:var(--dim)}
+.grp ol a:hover{color:var(--chalk)}
+.grp ol a.on{background:rgba(245,215,110,.13);color:var(--chalk)}
+.grp ol a.on .n{color:var(--Y)}
+
+.band{margin:20px 12px 100px;border-radius:4px;background:var(--board2) url(week05-slides/chalkboard-tile.webp);box-shadow:0 0 0 11px var(--wood),0 0 0 13px var(--wood2),0 34px 60px -26px rgba(0,0,0,.9)}
+.band-num{right:40px;top:34px;width:150px;height:150px;display:grid;place-items:center;font:82px/1 var(--hand);color:var(--Y)}
+.band-num::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150'%3E%3Cpath d='M78 9 C 120 8, 145 42, 141 80 C 137 121, 101 145, 68 141 C 30 137, 7 106, 10 69 C 13 33, 43 9, 86 13' fill='none' stroke='%23f5d76e' stroke-width='3.6' stroke-linecap='round'/%3E%3Cpath d='M72 13 C 112 11, 139 44, 136 79 C 133 117, 99 139, 70 137' fill='none' stroke='%23f5d76e' stroke-width='1.6' stroke-linecap='round' opacity='.5'/%3E%3C/svg%3E") center/contain no-repeat}
+.band-num span{position:relative;top:4px}
+.band-k{color:var(--P);font:18px/1.4 var(--hand);letter-spacing:.08em}
+.band h2{font:clamp(28px,3.3vw,42px)/1.28 var(--hand);color:var(--chalk);max-width:13em;text-shadow:0 0 1px rgba(241,239,230,.5)}
+.band-en{color:var(--B);font:17px/1.5 var(--hand);max-width:30em}
+.band-d{color:var(--text)}
+.band-d b{color:var(--Y);font:17px/1.6 var(--hand);font-weight:400;letter-spacing:.06em}
+.band-q{max-width:36em}
+.band-p i{background:rgba(241,239,230,.16)}.band-p i.on{background:var(--Y)}
+.band-note{border-top:2px dashed rgba(241,239,230,.22);color:var(--text)}
+
+.closing{padding:24px 36px 56px}
+.closing-in{max-width:1220px;border-radius:4px;background:var(--board2) url(week05-slides/chalkboard-tile.webp);box-shadow:0 0 0 11px var(--wood),0 0 0 13px var(--wood2),0 34px 60px -26px rgba(0,0,0,.9);padding:76px 60px 56px}
+.closing .band-k{color:var(--P)}
+.quote{font:clamp(28px,4vw,46px)/1.4 var(--hand);color:var(--chalk);max-width:22em;text-shadow:0 0 1px rgba(241,239,230,.55)}
+.quote-en{font:clamp(16px,1.6vw,19px)/1.65 var(--hand);color:var(--B);max-width:46em}
+.contact{color:var(--muted)}.contact b{color:var(--chalk);font:21px/1.4 var(--hand);font-weight:400}
+.closing .band-note{border-top:2px dashed rgba(241,239,230,.22);color:var(--text);margin-top:34px}
+.back a{color:var(--Y);font-family:var(--hand);font-size:18px}
+
+.lb{background:rgba(12,20,16,.95)}
+.lb-bar{color:var(--muted)}
+.lb-bar button{border:1.5px solid rgba(241,239,230,.4);background:rgba(255,255,255,.05);color:var(--chalk)}
+
+@media (max-width:1100px){body.toc-open .toc{background:var(--board) url(week05-slides/chalkboard-tile.webp)}}
+@media (max-width:860px){
+  .band{margin:18px 10px 76px}
+  .band-num{width:92px;height:92px;font-size:48px;right:18px;top:18px}
+  .band h2{margin-right:70px}
+  .closing{padding:16px 22px 40px}
+  .closing-in{padding:56px 30px 44px}
+}
+@media (max-width:560px){
+  .band{margin:14px 9px 64px;box-shadow:0 0 0 8px var(--wood),0 0 0 10px var(--wood2),0 24px 44px -22px rgba(0,0,0,.9)}
+  .closing{padding:12px 19px 32px}
+  .closing-in{padding:48px 22px 38px;box-shadow:0 0 0 8px var(--wood),0 0 0 10px var(--wood2)}
+}
+
+/* ── 進場動畫：像板擦擦過，投影片由左而右現出 ── */
+.js .frame{clip-path:inset(0 100% 0 0);transition:clip-path 1.1s cubic-bezier(.65,.05,.25,1),transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+.js .frame.in{clip-path:inset(-60px -60px -80px -60px)}
+.js .frame.in:hover{transform:translateY(-3px)}
+.js .band .band-num{opacity:0;transform:translateY(16px) rotate(-8deg);transition:opacity .9s ease,transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.js .band.in .band-num{opacity:1;transform:none}
+.js .band .band-p i.on{transform:scaleX(0);transform-origin:left;transition:transform .9s .3s cubic-bezier(.2,.7,.2,1)}
+.js .band.in .band-p i.on{transform:none}
+.js .hero-l>*{opacity:0;transform:translateY(14px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+.js .hero-l>:nth-child(2){animation-delay:.07s}.js .hero-l>:nth-child(3){animation-delay:.14s}.js .hero-l>:nth-child(4){animation-delay:.21s}.js .hero-l>:nth-child(5){animation-delay:.28s}.js .hero-l>:nth-child(6){animation-delay:.35s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .js .frame,.js .band .band-num,.js .band .band-p i.on,.js .hero-l>*{clip-path:none!important;opacity:1!important;transform:none!important;transition:none!important;animation:none!important}
+}
+
+</style>
+<!-- og:start -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
+<meta property="og:title" content="生命歷程的制度化：標準生命歷程、三分結構與去標準化論辯 ・ 生命歷程與社會政策 第 5 週 ・ 葉崇揚" />
+<meta property="og:description" content="生命歷程與社會政策第 5 週講義：生命歷程的制度化，標準生命歷程、三分結構與去標準化論辯。共 87 頁投影片，每頁附講解。" />
+<meta property="og:url" content="https://chungyang1017.github.io/teaching/life-course/week05-institutionalization.html" />
+<meta property="og:image" content="https://chungyang1017.github.io/photo.jpg" />
+<meta property="og:locale" content="zh_TW" />
+<meta name="twitter:card" content="summary" />
+<!-- og:end -->
+</head>
+<body class="t-chalk">
+<nav class="topnav">
+  <a class="brand" href="../../syllabus-zh.html?course=life-course"><svg viewBox="0 0 28 28" aria-hidden="true"><path class="b-line" d="M4 21 C 9 21, 10 9, 15 10 S 21 8, 24 6" fill="none" stroke-width="2.2" stroke-linecap="round"/><circle class="b-a" cx="4" cy="21" r="2.6"/><circle class="b-b" cx="15" cy="10" r="2.6"/><circle class="b-a" cx="24" cy="6" r="2.6"/></svg><span>生命歷程與社會政策</span></a>
+  <span class="wk">第 5 週 · 10/13</span>
+  <span class="sp"></span>
+  <button class="navbtn tocbtn" type="button" aria-expanded="false" aria-controls="toc">目錄</button>
+  <a class="navbtn" href="../../syllabus-zh.html?course=life-course">課程大綱</a>
+</nav>
+<div class="progress" aria-hidden="true"><i></i></div>
+<header class="hero" id="s1" data-n="1">
+  <div class="hero-l">
+    <p class="kicker">東吳大學社會學系　115 學年度第 1 學期｜生命歷程與社會政策</p>
+    <div class="badges"><span class="badge">第 5 週</span><span class="date">10/13（二）</span></div>
+    <h1>生命歷程的制度化</h1>
+    <p class="en">The institutionalization of the life course: the standard life course, tripartition and the de-standardization debate</p>
+    <p class="sub">標準生命歷程、三分結構與去標準化論辯</p>
+    <p class="meta"><b>授課教師｜葉崇揚　教授</b><br>星期二 第 7、8、9 節　｜　教室 D0815</p>
+  </div>
+  <div class="hero-r"><figure class="frame cover" tabindex="0" role="button" aria-label="放大第 1 頁：封面"><img src="week05-slides/01-1280.webp" srcset="week05-slides/01-1280.webp 1280w, week05-slides/01-1920.webp 1920w" sizes="(max-width: 860px) 100vw, 560px" width="1280" height="720" fetchpriority="high" decoding="async" data-base="week05-slides/01" alt="第 1 頁投影片：封面"><figcaption class="sr">生命歷程與社會政策｜Life Course and Social Policy　10/13（二）　第 5 週　生命歷程的制度化　標準生命歷程、三分結構與去標準化論辯　The institutionalization of the life course: the standard life course, tripartition and the de-standardization debate　教育與訓練　工作　退休　出生　進入勞動市場　退出勞動市場　授課教師：葉崇揚｜東吳大學社會學系｜115 學年度第 1 學期　碩士班</figcaption></figure></div>
+</header>
+<div class="layout">
+  <aside class="toc" id="toc" aria-label="目錄"><p class="toc-h">目錄</p><div class="grp" data-g="0"><a class="gh" href="#s2" data-to="2"><span class="gn">·</span><span>開場</span></a><ol><li><a href="#s2" data-to="2"><span class="n">2</span><span>本講綱要</span></a></li><li><a href="#s3" data-to="3"><span class="n">3</span><span>學習目標</span></a></li><li><a href="#s4" data-to="4"><span class="n">4</span><span>本週閱讀地圖</span></a></li><li><a href="#s5" data-to="5"><span class="n">5</span><span>從前兩週接過來</span></a></li><li><a href="#s6" data-to="6"><span class="n">6</span><span>開場提問：25 到 29 歲時，有多少人已經結婚？</span></a></li></ol></div><div class="grp" data-g="1"><a class="gh" href="#s7" data-to="7"><span class="gn">01</span><span>制度化命題二十年後</span></a><ol><li><a href="#s7" data-to="7"><span class="n">7</span><span>制度化命題二十年後</span></a></li><li><a href="#s8" data-to="8"><span class="n">8</span><span>Kohli (2007)：作者回頭審自己</span></a></li><li><a href="#s9" data-to="9"><span class="n">9</span><span>生命歷程是一個制度，有自己的總攬邏輯</span></a></li><li><a href="#s10" data-to="10"><span class="n">10</span><span>二十年後：站得住的、要改寫的、新增的</span></a></li><li><a href="#s11" data-to="11"><span class="n">11</span><span>制度的不穩定，有一部分來自內部</span></a></li><li><a href="#s12" data-to="12"><span class="n">12</span><span>1985 年的終點，其實是 1960 年代</span></a></li><li><a href="#s13" data-to="13"><span class="n">13</span><span>三種解釋，Kohli 選了最不戲劇化的那一個</span></a></li><li><a href="#s14" data-to="14"><span class="n">14</span><span>性別：不是偏誤，而是制度的構成部分</span></a></li><li><a href="#s15" data-to="15"><span class="n">15</span><span>去標準化的窄定義：事件與年齡的耦合</span></a></li><li><a href="#s16" data-to="16"><span class="n">16</span><span>家庭面：去標準化的證據被誇大了</span></a></li><li><a href="#s17" data-to="17"><span class="n">17</span><span>工作面：84% → 67%，兩種讀法</span></a></li><li><a href="#s18" data-to="18"><span class="n">18</span><span>年齡界線與年齡規範，都沒有鬆開</span></a></li><li><a href="#s19" data-to="19"><span class="n">19</span><span>Kohli 的總判決</span></a></li><li><a href="#s20" data-to="20"><span class="n">20</span><span>新增的一塊：生命歷程政治</span></a></li></ol></div><div class="grp" data-g="2"><a class="gh" href="#s21" data-to="21"><span class="gn">02</span><span>勞動市場，還是國家？</span></a><ol><li><a href="#s21" data-to="21"><span class="n">21</span><span>勞動市場，還是國家？</span></a></li><li><a href="#s22" data-to="22"><span class="n">22</span><span>一場被 Kohli 判為「虛假」的爭論</span></a></li><li><a href="#s23" data-to="23"><span class="n">23</span><span>無國家的社會結構：為什麼兩邊接不起來</span></a></li><li><a href="#s24" data-to="24"><span class="n">24</span><span>國家在哪裡？在段落之間的接縫</span></a></li><li><a href="#s25" data-to="25"><span class="n">25</span><span>國家結構了生命歷程，卻從未打算這麼做</span></a></li><li><a href="#s26" data-to="26"><span class="n">26</span><span>形式一：年齡規範，重要性可能被高估</span></a></li><li><a href="#s27" data-to="27"><span class="n">27</span><span>形式二：請求權，把連續的生命切成全有全無</span></a></li><li><a href="#s28" data-to="28"><span class="n">28</span><span>形式三：科層分格</span></a></li><li><a href="#s29" data-to="29"><span class="n">29</span><span>直接效果：公部門、兵役與戰爭</span></a></li><li><a href="#s30" data-to="30"><span class="n">30</span><span>功能理性：當下處境的邏輯</span></a></li><li><a href="#s31" data-to="31"><span class="n">31</span><span>國家同時整合、又分格生命歷程</span></a></li><li><a href="#s32" data-to="32"><span class="n">32</span><span>課堂討論 ①　一項台灣的政策，用了哪一種形式？</span></a></li></ol></div><div class="grp" data-g="3"><a class="gh" href="#s33" data-to="33"><span class="gn">03</span><span>去標準化是什麼意思？</span></a><ol><li><a href="#s33" data-to="33"><span class="n">33</span><span>去標準化是什麼意思？</span></a></li><li><a href="#s34" data-to="34"><span class="n">34</span><span>一個被普遍接受的看法</span></a></li><li><a href="#s35" data-to="35"><span class="n">35</span><span>同一個現象，三十年三種解讀</span></a></li><li><a href="#s36" data-to="36"><span class="n">36</span><span>五個概念，不要混用</span></a></li><li><a href="#s37" data-to="37"><span class="n">37</span><span>去標準化的兩個分支：普及率，或離散度</span></a></li><li><a href="#s38" data-to="38"><span class="n">38</span><span>各過程不必同向</span></a></li><li><a href="#s39" data-to="39"><span class="n">39</span><span>五個面向，八項推論</span></a></li><li><a href="#s40" data-to="40"><span class="n">40</span><span>作者自己的保留：每個指標都可能另有原因</span></a></li><li><a href="#s41" data-to="41"><span class="n">41</span><span>Kohli 與 B&amp;M 的定義不一樣</span></a></li><li><a href="#s42" data-to="42"><span class="n">42</span><span>序列分析的直覺：把整段生命當一個單位</span></a></li><li><a href="#s43" data-to="43"><span class="n">43</span><span>人與人之間的多樣，一個人之內的複雜</span></a></li><li><a href="#s44" data-to="44"><span class="n">44</span><span>怎麼測：三組量數</span></a></li><li><a href="#s45" data-to="45"><span class="n">45</span><span>課堂討論 ②　要證明台灣的「晚婚」是去標準化，你需要什麼證據？</span></a></li></ol></div><div class="grp" data-g="4"><a class="gh" href="#s46" data-to="46"><span class="gn">04</span><span>它真的發生了嗎？</span></a><ol><li><a href="#s46" data-to="46"><span class="n">46</span><span>它真的發生了嗎？</span></a></li><li><a href="#s47" data-to="47"><span class="n">47</span><span>三份證據一覽</span></a></li><li><a href="#s48" data-to="48"><span class="n">48</span><span>B&amp;M 的資料：德國生命歷程研究</span></a></li><li><a href="#s49" data-to="49"><span class="n">49</span><span>學校到工作：全面延後</span></a></li><li><a href="#s50" data-to="50"><span class="n">50</span><span>完成訓練：1955 世代的「等候大廳」</span></a></li><li><a href="#s51" data-to="51"><span class="n">51</span><span>工作流動：27 歲前很穩定，除了 1971 世代</span></a></li><li><a href="#s52" data-to="52"><span class="n">52</span><span>家庭：27 歲時已婚的比例</span></a></li><li><a href="#s53" data-to="53"><span class="n">53</span><span>婚姻時機：從尖峰到平台</span></a></li><li><a href="#s54" data-to="54"><span class="n">54</span><span>第一胎與離家</span></a></li><li><a href="#s55" data-to="55"><span class="n">55</span><span>B&amp;M 的判決</span></a></li><li><a href="#s56" data-to="56"><span class="n">56</span><span>McMunn 等：英國三個出生世代，工作與家庭一起看</span></a></li><li><a href="#s57" data-to="57"><span class="n">57</span><span>多樣性：一個世代比一個世代高</span></a></li><li><a href="#s58" data-to="58"><span class="n">58</span><span>複雜度：伴侶變複雜，親職變簡單</span></a></li><li><a href="#s59" data-to="59"><span class="n">59</span><span>男女趨同，但幾乎是女性單方面</span></a></li><li><a href="#s60" data-to="60"><span class="n">60</span><span>Van Winkle &amp; Fasang：拿國家當尺</span></a></li><li><a href="#s61" data-to="61"><span class="n">61</span><span>國家之間的差異，遠大於世代之間</span></a></li><li><a href="#s62" data-to="62"><span class="n">62</span><span>三份證據放在一起</span></a></li><li><a href="#s63" data-to="63"><span class="n">63</span><span>課堂討論 ③　「去標準化有沒有發生」這個問題，問對了嗎？</span></a></li></ol></div><div class="grp" data-g="5"><a class="gh" href="#s64" data-to="64"><span class="gn">05</span><span>台灣</span></a><ol><li><a href="#s64" data-to="64"><span class="n">64</span><span>台灣：去制度化，還是從未完成制度化？</span></a></li><li><a href="#s65" data-to="65"><span class="n">65</span><span>台灣的資料，能做到哪裡</span></a></li><li><a href="#s66" data-to="66"><span class="n">66</span><span>25–29 歲時曾婚的比例，按出生世代</span></a></li><li><a href="#s67" data-to="67"><span class="n">67</span><span>女性：可以往前推到 1945–49 年出生</span></a></li><li><a href="#s68" data-to="68"><span class="n">68</span><span>年齡也變分散了嗎？只能看年份</span></a></li><li><a href="#s69" data-to="69"><span class="n">69</span><span>台灣的研究：家庭的時機與普及率在變</span></a></li><li><a href="#s70" data-to="70"><span class="n">70</span><span>婚育仍綁在一起</span></a></li><li><a href="#s71" data-to="71"><span class="n">71</span><span>女性的工作：從退出，到中斷後重返</span></a></li><li><a href="#s72" data-to="72"><span class="n">72</span><span>用五個面向看台灣</span></a></li><li><a href="#s73" data-to="73"><span class="n">73</span><span>回答第 3 週的問題：前半段早，後半段晚</span></a></li><li><a href="#s74" data-to="74"><span class="n">74</span><span>台灣的答案（暫定）：兩件事同時成立</span></a></li></ol></div><div class="grp" data-g="6"><a class="gh" href="#s75" data-to="75"><span class="gn">06</span><span>政策意涵</span></a><ol><li><a href="#s75" data-to="75"><span class="n">75</span><span>政策意涵</span></a></li><li><a href="#s76" data-to="76"><span class="n">76</span><span>法定年齡要有配套，才會生效</span></a></li><li><a href="#s77" data-to="77"><span class="n">77</span><span>退休年齡界線：五個悖論，四個錨</span></a></li><li><a href="#s78" data-to="78"><span class="n">78</span><span>去制度化，會讓世代衝突更尖銳</span></a></li><li><a href="#s79" data-to="79"><span class="n">79</span><span>家庭面的去標準化：同步性下降</span></a></li></ol></div><div class="grp" data-g="7"><a class="gh" href="#s80" data-to="80"><span class="gn">·</span><span>小結・預告・文獻</span></a><ol><li><a href="#s80" data-to="80"><span class="n">80</span><span>本講小結：六個重點</span></a></li><li><a href="#s81" data-to="81"><span class="n">81</span><span>下週預告</span></a></li><li><a href="#s82" data-to="82"><span class="n">82</span><span>本週文獻（一）</span></a></li><li><a href="#s83" data-to="83"><span class="n">83</span><span>本週文獻（二）</span></a></li><li><a href="#s84" data-to="84"><span class="n">84</span><span>補充文獻（一）</span></a></li><li><a href="#s85" data-to="85"><span class="n">85</span><span>補充文獻（二）與資料來源</span></a></li><li><a href="#s86" data-to="86"><span class="n">86</span><span>轉引文獻對照（一）</span></a></li><li><a href="#s87" data-to="87"><span class="n">87</span><span>轉引文獻對照（二）</span></a></li></ol></div></aside>
+  <main>
+<section class="intro" id="intro"><div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>第 5 週，2026 年 10 月 13 日。主題依課綱：生命歷程的制度化：標準生命歷程、三分結構與去標準化論辯。本週必讀兩篇：Kohli (2007) 與 Brückner &amp; Mayer (2005)。</p><p>封面下方的時間軸是三分結構。Mayer &amp; Schoepflin (1989: 196) 轉述 Kohli 的說法：教育與訓練、積極僱用、退休後的年歲。Kohli (1986) 原文寫的是準備、活動、退休（第 3 週講義第 61 頁）。</p><p>本週要問兩件事：這條線還在不在？要用什麼證據判斷？</p></div></section>
+<article class="unit" id="s2" data-n="2">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 2 頁：本講綱要"><img src="week05-slides/02-1280.webp" srcset="week05-slides/02-1280.webp 1280w, week05-slides/02-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" decoding="async" data-base="week05-slides/02" alt="第 2 頁投影片：本講綱要"><figcaption class="sr">本講綱要　六節加收尾，★ 為本週必讀　制度化命題二十年後　★ Kohli (2007)　勞動市場，還是國家？　Mayer &amp; Schoepflin (1989) 與其前身　去標準化是什麼意思？　★ Brückner &amp; Mayer (2005)　它真的發生了嗎？　B&amp;M (2005) 與兩篇延伸的實證研究　台灣　官方統計與台灣的研究　政策意涵　Mayer &amp; Schoepflin (1989)；Kohli (2007)　小結、下週預告與文獻　第 6 週停課，第 7 週談福利國家</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>本講分六節加收尾。第 01、02 節是理論：Kohli 回頭檢討自己的制度化命題，以及「勞動市場還是國家」之爭。第 03 節拆解去標準化的概念。第 04 節讀三份實證研究。第 05 節回到台灣。第 06 節談政策。</p><p>三個課堂討論分散在第 02、03、04 節的最後。</p></div>
+</article>
+<article class="unit" id="s3" data-n="3">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 3 頁：學習目標"><img src="week05-slides/03-1280.webp" srcset="week05-slides/03-1280.webp 1280w, week05-slides/03-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" decoding="async" data-base="week05-slides/03" alt="第 3 頁投影片：學習目標"><figcaption class="sr">學習目標　上完這一講，你應該能夠　說明 Kohli (2007) 怎麼檢討自己 1985 年的制度化命題：哪些站得住，哪裡要改寫，新增了什麼。　比較「勞動市場」與「國家」兩種說法，並用 Mayer &amp; Schoepflin (1989) 的三種形式分析一項政策。　區分制度化、標準化、分化、多元化與個人化，說出去標準化的兩個分支。　讀懂三份實證研究的設計，說明它們為什麼得到不同的結論。　用台灣的官方統計與研究，評估台灣是去制度化，還是從未完成制度化。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>五個目標依序對應本講的節次。目標 1 對應第 01 節，目標 2 對應第 02 節，目標 3 對應第 03 節，目標 4 對應第 04 節，目標 5 對應第 05 節。</p><p>目標 5 是第 3 週留下的問題（第 3 週講義第 88 頁），本週在第 05 節回答。</p><p>讀完本週，可以回到這一頁，自評哪一個目標還不清楚。</p></div>
+</article>
+<article class="unit" id="s4" data-n="4">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 4 頁：本週閱讀地圖"><img src="week05-slides/04-1280.webp" srcset="week05-slides/04-1280.webp 1280w, week05-slides/04-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/04" alt="第 4 頁投影片：本週閱讀地圖"><figcaption class="sr">本週閱讀地圖　★ 依網站的課程資料為本週必讀，其餘為延伸閱讀　文獻　類別　段落　回答的問題　★ Kohli (2007)　必讀　01、06　制度化命題二十年後還剩下什麼？　★ Brückner &amp; Mayer (2005)　必讀　03、04　去標準化是什麼意思？它發生了嗎？　Mayer &amp; Schoepflin (1989)　延伸　02、06　國家怎麼結構生命歷程？　Mayer &amp; Müller (1986)　轉引　同上，是 1989 年綜述的前身　McMunn 等 (2015)　延伸　英國三個出生世代的工作與家庭　Van Winkle &amp; Fasang (2017)　延伸　歐洲 14 國的就業軌跡複雜度</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>Mayer &amp; Müller (1986) 本講義未取得全文，只透過 Mayer &amp; Schoepflin (1989) 與 Kohli (2007) 轉引，表上標為「轉引」。</p><p>★ 的標示依網站的課程資料：本週必讀是 Kohli (2007) 與 Brückner &amp; Mayer (2005)。其餘四篇是延伸閱讀。</p><p>閱讀建議：Kohli (2007) 可以先讀 pp. 257–259 與 263–268。Brückner &amp; Mayer (2005) 先讀 pp. 31–35 的概念，再看表 1 與表 3。Mayer &amp; Schoepflin (1989) 先讀 pp. 197–200 與 203。</p><p>Van Winkle &amp; Fasang (2017) 的頁碼依課程資料夾的 PDF（線上優先版，頁 1–29）。課綱列的正式版是 Social Forces 96(1): 1–30，兩者頁碼可能略有不同。</p></div>
+</article>
+<article class="unit" id="s5" data-n="5">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 5 頁：從前兩週接過來"><img src="week05-slides/05-1280.webp" srcset="week05-slides/05-1280.webp 1280w, week05-slides/05-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/05" alt="第 5 頁投影片：從前兩週接過來"><figcaption class="sr">從前兩週接過來　第 3 週講義第 68、88 頁；第 4 週講義第 44 頁　第 3 週：Kohli (1986) 的悖論　生命歷程的成功制度化，正是當前個人化地離開它的基礎。　第 4 週：三分結構與三種位置　教育與訓練、工作、退休。福利國家裡的非受益非繳費者、繳費者、受益者。　第 3 週留下的問題　台灣「後半段」的年齡界線何時才具全民基礎？今天的問題是去制度化，還是從未完成制度化？　本週先談理論（01–03），再看證據（04），最後回到台灣（05）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>Kohli (1986) 的五項命題與悖論，第 3 週已經講過（第 60–68 頁）。本週只在這一頁回顧，不再重講。</p><p>第 4 週第 44 頁介紹過三分結構與福利國家中的三種位置（Settersten &amp; Mayer 1997: 248–249 引 Mayer &amp; Schoepflin 1989）。本週第 02 節會回到 Mayer &amp; Schoepflin 的原文。</p><p>右邊這張卡片是第 3 週最後留下的問題，本週第 05 節回答。</p></div>
+</article>
+<article class="unit" id="s6" data-n="6">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 6 頁：開場提問：25 到 29 歲時，有多少人已經結婚？"><img src="week05-slides/06-1280.webp" srcset="week05-slides/06-1280.webp 1280w, week05-slides/06-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/06" alt="第 6 頁投影片：開場提問：25 到 29 歲時，有多少人已經結婚？"><figcaption class="sr">開場提問：25 到 29 歲時，有多少人已經結婚？　內政部戶籍統計，年底現住人口，曾婚＝有偶＋離婚＋喪偶　59.5% → 18.8%　女性　1967–71 年出生 → 1996–2000 年出生　35.3% → 11.7%　男性　1967–71 年出生 → 1996–2000 年出生　你們父母那一代，和你們這一代。這是去標準化嗎？還是大家一起延後？</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>數字是 25–29 歲時的曾婚比例。1967–71 年出生者取 1996 年底，1996–2000 年出生者取 2025 年底，這兩年底他們都正好 25–29 歲。</p><p>資料：內政部統計處內政統計查詢網 c0110301「15歲以上婚姻狀況」，與戶政司「人口數按年齡及婚姻狀況」逐格相同。曾婚＝有偶＋離婚／終止結婚＋喪偶，也就是 1 減未婚比例。</p><p>官方只公布五歲年齡組，沒有單一年齡的婚姻狀況表，所以用 25–29 歲（中點 27 歲）近似 Brückner &amp; Mayer 的「27 歲時已婚比例」。第 05 節會再談。</p><p>先猜猜看，再看答案。接著想一想：如果大家只是一起晚婚，算不算去標準化？這個問題第 03 節回答。</p><p>網址：<a href="https://statis.moi.gov.tw/micst/webMain.aspx?sys=100&amp;funid=defjsp" target="_blank" rel="noopener">https://statis.moi.gov.tw/micst/webMain.aspx?sys=100&amp;funid=defjsp</a> ；<a href="https://www.ris.gov.tw/app/portal/346" target="_blank" rel="noopener">https://www.ris.gov.tw/app/portal/346</a></p></div>
+</article>
+<section class="band" id="s7" data-n="7">
+  <div class="band-num" aria-hidden="true"><span>01</span></div>
+  <p class="band-k">第一節</p>
+  <h2>制度化命題二十年後</h2>
+  <p class="band-en">The institutionalization thesis, twenty years on</p>
+  <p class="band-d band-q"><b>這一節要回答</b>　1985 年的制度化命題，哪些站得住？哪裡要改寫？又新增了什麼？</p>
+  <p class="band-d"><b>本節文獻</b>　★ Kohli (2007)</p>
+  <div class="band-p" aria-hidden="true"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="band-note"><p>第 01 節讀 Kohli (2007)。這是作者回頭檢討自己二十年前理論的文章。</p><p>本節的順序：先看他怎麼界定問題，再看三個判斷：站得住的、要改寫的、新增的。最後看他對去標準化爭論的經驗判決。</p></div>
+</section>
+<article class="unit" id="s8" data-n="8">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 8 頁：Kohli (2007)：作者回頭審自己"><img src="week05-slides/08-1280.webp" srcset="week05-slides/08-1280.webp 1280w, week05-slides/08-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/08" alt="第 8 頁投影片：Kohli (2007)：作者回頭審自己"><figcaption class="sr">Kohli (2007)：作者回頭審自己　Kohli (2007: 253–255)　讀這篇要記得　它不是制度化模型的經驗檢證。作者明說不以二十年來的歷史研究重審原模型（p. 254）。　比較基準是自己 1985 年的德文原論，與 1986 年的英文版（第 3 週讀過）。　三個問題：這個綜合命題經歷得如何？我們現在站在哪裡？生命歷程會往哪裡去？（p. 254）　靶心：多數研究把「整體制度樣式」當成給定，有被鎖在近因裡的風險（p. 254）。　作者設限：不是取代中層與微觀研究，而是把它們錨定在宏觀結構裡（p. 254）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>Kohli (2007) 的文類很特別：作者回頭審自己二十年前的理論。比較基準是 Kohli (1985) 的德文原論與 Kohli (1986) 的英文版。</p><p>p. 254 的三個問題：How has this synthesis fared, where do we stand now, and where will the life course go from here?</p><p>p. 254 的方法論診斷最值得引用：許多研究把生命歷程的整體制度樣式視為理所當然，因而有被鎖在近因裡、錯置發現之脈絡效度的風險。但他立刻限定：不是要取代中層與微觀研究，而是要把它們錨定在宏觀結構裡。引用時這句限定要跟著。</p><p>右邊的提醒：作者在 p. 254 明說，不在二十年來的歷史研究之光下重審原模型。所以這篇不能當成模型的經驗支持。</p></div>
+</article>
+<article class="unit" id="s9" data-n="9">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 9 頁：生命歷程是一個制度，有自己的總攬邏輯"><img src="week05-slides/09-1280.webp" srcset="week05-slides/09-1280.webp 1280w, week05-slides/09-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/09" alt="第 9 頁投影片：生命歷程是一個制度，有自己的總攬邏輯"><figcaption class="sr">生命歷程是一個制度，有自己的總攬邏輯　Kohli (2007: 254, 257)　“　它不只是家庭、教育、勞動市場或退休這些領域制度的加總，而是一個有自身總攬邏輯、關節相連的制度複合體。　Kohli (2007: 254)；講者譯　制度是「為長期重複的活動序列所設的穩定設計」（Jepperson 1991: 145，Kohli 2007: 257 引用）。它透過例行的自我啟動過程再生產自己。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>這是本文的本體論主張，也是後面所有判斷的前提。原文在 p. 254。</p><p>下方的制度定義是 Kohli 借自 Jepperson (1991: 145) 的：stable designs for chronically repeated activity sequences。Kohli 只借了兩點：規則體系，以及自我啟動的再生產。</p><p>對照第 3 週：Kohli (1986) 已說生命歷程是「一套排序生命關鍵維度的規則樣式」（第 3 週講義第 60 頁）。2007 年版把它接上組織研究的新制度論。</p><p>p. 259 他自己說，「統一整體還是領域加總」的爭議現在似乎已被正面解決，但要用實質的詞把整體樣式講出來仍然困難。</p></div>
+</article>
+<article class="unit" id="s10" data-n="10">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 10 頁：二十年後：站得住的、要改寫的、新增的"><img src="week05-slides/10-1280.webp" srcset="week05-slides/10-1280.webp 1280w, week05-slides/10-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/10" alt="第 10 頁投影片：二十年後：站得住的、要改寫的、新增的"><figcaption class="sr">二十年後：站得住的、要改寫的、新增的　Kohli (2007: 253–268)；講者整理　站得住　生命歷程仍是當代社會的主要制度之一（p. 253）。三分結構與年齡界線「意外持續」（p. 265）。　要改寫　1985 年描繪的制度化終點，其實是 1960 年代的福特主義模型（p. 257）。　新增　生命歷程政治：年齡與世代成為新的社會分歧（p. 267）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>這三欄是講者的整理，不是 Kohli 自己列的表。</p><p>站得住：摘要 (a) 重述生命歷程已成當代社會主要制度之一（p. 253）。p. 265 說制度化生命歷程的「意外持續」（unexpected persistence）。</p><p>要改寫：p. 257，With hindsight it is easy to see。他當年辨識為現代化暫時終點的制度化生命歷程，對應的是 1960 年代。</p><p>新增：p. 267 的最後一節。1985 年的原論完全沒有這一塊。本節最後兩頁會談。</p></div>
+</article>
+<article class="unit" id="s11" data-n="11">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 11 頁：制度的不穩定，有一部分來自內部"><img src="week05-slides/11-1280.webp" srcset="week05-slides/11-1280.webp 1280w, week05-slides/11-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/11" alt="第 11 頁投影片：制度的不穩定，有一部分來自內部"><figcaption class="sr">制度的不穩定，有一部分來自內部　Kohli (2007: 257)　和 1986 年版的關係　1986 年版把個人化當成制度化的一部分（第 3 週講義第 61 頁）。2007 年版指出：這個部分本身會產生把整體拆開的壓力。　制度變成第二天性後，會顯得理所當然（Berger &amp; Luckmann 1966）。但它不只傾向穩定。　張力：標準化的生命歷程方案，對上個體化與傳記化的訴求。　後者正被制度化為正當、甚至規範上被要求的生活方式。　註 4：今天「有更多個人選擇，但也有更多順從」（Dannefer &amp; Uhlenberg 1998: 317）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 257：制度化生命歷程的動態，不只來自外部變化，部分是內生的（endogenous）。</p><p>不穩定的來源：標準化的生命歷程方案，與個體化及傳記化（biographization）訴求之間的張力。後者正日益被制度化為正當、甚至規範上被要求的生活方式。</p><p>註 4 把這個張力界定為規範層次：一邊是規制特定年齡選擇與適當行為的年齡規範（Settersten &amp; Hagestad 1996a, 1996b），一邊是強調個人發展與自主的生命歷程規範。</p><p>這一點讓 Kohli 可以同時主張「制度仍頑強」與「侵蝕的壓力是真的」，而不自相矛盾。</p></div>
+</article>
+<article class="unit" id="s12" data-n="12">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 12 頁：1985 年的終點，其實是 1960 年代"><img src="week05-slides/12-1280.webp" srcset="week05-slides/12-1280.webp 1280w, week05-slides/12-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/12" alt="第 12 頁投影片：1985 年的終點，其實是 1960 年代"><figcaption class="sr">1985 年的終點，其實是 1960 年代　Kohli (2007: 257–258)；註 5 引 Maddison (2001: 129)　黃金年代 1950–1973　之後：成長減半 （1973–1998）　正常工作傳記　男性多數連續全時就業、長期任職。多數女性環繞男性養家者，以有限形式參與有酬工作，或完全不參與。　正常家庭傳記　由早婚、幾近普及的結婚與生育所啟動。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>這是 Kohli 對 1985 年原論最重要的自我修正。p. 257：當年辨識為現代化暫時終點的制度化生命歷程，對應的是一個相當特定的歷史時期，1960 年代。許多特徵當時匯聚成如今常被稱為「福特主義」的社會結構與生命歷程模型。</p><p>宏觀基礎：快速而看似穩定的經濟成長、低失業、福利國家擴張（p. 258）。</p><p>註 5 引 Maddison (2001: 129)：1950–1973 年的「黃金年代」是迄今經濟成長最成功的階段。先進資本主義經濟體的人均 GDP 年成長率，是其後 1973–1998 年的兩倍。圖上「成長減半」就是這個意思。</p><p>Brückner &amp; Mayer (2005: 31) 獨立得到相同的判斷：那個樣式侷限在一個短而例外的黃金年代。第 03 節會看到。</p></div>
+</article>
+<article class="unit" id="s13" data-n="13">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 13 頁：三種解釋，Kohli 選了最不戲劇化的那一個"><img src="week05-slides/13-1280.webp" srcset="week05-slides/13-1280.webp 1280w, week05-slides/13-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/13" alt="第 13 頁投影片：三種解釋，Kohli 選了最不戲劇化的那一個"><figcaption class="sr">三種解釋，Kohli 選了最不戲劇化的那一個　Kohli (2007: 258–259)　新的歷史斷裂　後福特主義、反身現代性：基本特徵已讓位給截然相反的制度樣式。　1960 年代是例外　晚婚、少生是回到 19 世紀末的水準。家庭社會學特別支持這一說。　不可逆的現代化　Kohli 的選擇。表層變化之下，基本特徵仍然有效。預測：整體制度連續，加上某些去標準化。　反駁第二說：相似的數字，來自完全不同的決策模式。從受限的適應，變成多重選項間的傳記選擇（pp. 258–259）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 258–259 列出三個互相競爭的解釋方案。</p><p>第一說：新的歷史斷裂。「後福特主義」常被用來設定福特模型已讓位給截然相反的制度樣式。註 7 提到 Beck 的反身現代性。</p><p>第二說：1960 年代是歷史異例，此後回到長期常態。結婚率、生育率下降，初婚、初育年齡上升，可被看成回到 19 世紀末與 20 世紀初的水準。</p><p>Kohli 對第二說的反駁最漂亮：相似的量化水準，是由高度不相似的家庭決策模式產生的。過去是對物質與社會壓力的受限適應，有時還有法律編碼，例如對經濟上無法獨立者的結婚禁令。現在是在多重選項間的傳記選擇。在決策模式的層次上，並沒有回到原狀。</p><p>第三說是他的選擇（p. 259）：制度化的模式可能已從外部的位置序列，轉移到個人的經營。這預測整體的制度連續，加上某些去標準化，而這對應經驗紀錄。</p></div>
+</article>
+<article class="unit" id="s14" data-n="14">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 14 頁：性別：不是偏誤，而是制度的構成部分"><img src="week05-slides/14-1280.webp" srcset="week05-slides/14-1280.webp 1280w, week05-slides/14-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/14" alt="第 14 頁投影片：性別：不是偏誤，而是制度的構成部分"><figcaption class="sr">性別：不是偏誤，而是制度的構成部分　Kohli (2007: 261–262)　第一步：駁回批評　批評：強調工作體系，偏向男性一側。　回應：他描述的是福特體制下男性養家模型的邏輯，不打算解釋它的演化。　女性的軌跡已更靠近三段式結構（引 Brückner &amp; Mayer 2005）。　第二步：把性別寫進理論　女性生命歷程不只一種：全時、部分工時、家庭工作，在各國的分布不同。　連結的生命不對稱：女性更常把自己的選項調整到伴侶身上。　性別分歧是制度化生命歷程的整體部分，也是關鍵的動態因素。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 261：主要的爭論一直圍繞性別。強調生命歷程透過工作體系而結構化，一直被批評偏向男性一側。</p><p>第一步是駁回：這項批評是錯的，因為他的論證描述的是福特體制下男性養家模型的邏輯，不打算解釋它的演化或轉型。對照第 3 週第 67 頁：Kohli (1986) 註 5 已承認論證聚焦正式工作、侷限於男性一側。</p><p>第二步是實質接受（p. 262）：性別要求一種視角，看僱用如何在整個生命歷程中與無酬的家庭工作相連。連結的生命方面，女性比男性更常把自己的選項調整到伴侶的選項上。</p><p>節末的升格句：性別分歧證明是制度化生命歷程的整體部分，也是它的關鍵動態因素之一。兩步之間有張力，值得討論：1986 年是「沒處理」，2007 年變成「關鍵因素」。</p></div>
+</article>
+<article class="unit" id="s15" data-n="15">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 15 頁：去標準化的窄定義：事件與年齡的耦合"><img src="week05-slides/15-1280.webp" srcset="week05-slides/15-1280.webp 1280w, week05-slides/15-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/15" alt="第 15 頁投影片：去標準化的窄定義：事件與年齡的耦合"><figcaption class="sr">去標準化的窄定義：事件與年齡的耦合　Kohli (2007: 263)　“　生命歷程事件與轉銜，以及它們的相互關係，在行為或規範層次上，與時序年齡的耦合較緊或較不緊。　Kohli (2007: 263)；講者譯　這只是 Brückner &amp; Mayer (2005) 定義的一個分支（第 03 節）。分清楚這一點，才讀得懂兩篇的結論為什麼不同。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 263：時序上的（去）標準化不是制度化生命歷程模型的唯一維度，但可能是最受注目的一個。</p><p>定義的原文：life-course events and transitions, and their interrelations, are more (or less) tightly coupled to chronological age, on a behavioral and/or normative level。</p><p>兩個重點：一、它是耦合強度的問題，不是「什麼都變了」。二、它區分行為層次與規範層次。後者就是年齡規範，本節後面會看到。</p><p>第 03 節會比較：Brückner &amp; Mayer (2005: 32–33) 的定義有兩個分支，普及率與離散度。Kohli 這個定義只對應離散度那一支。</p></div>
+</article>
+<article class="unit" id="s16" data-n="16">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 16 頁：家庭面：去標準化的證據被誇大了"><img src="week05-slides/16-1280.webp" srcset="week05-slides/16-1280.webp 1280w, week05-slides/16-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/16" alt="第 16 頁投影片：家庭面：去標準化的證據被誇大了"><figcaption class="sr">家庭面：去標準化的證據被誇大了　Kohli (2007: 263)　1960 年代以前的標準化已確立。此後的去標準化，最明顯在家庭。但仔細看，有些可疑：　Klein 等 (2002)：伴侶承諾的程度驚人地恆定。變的是由婚姻轉向同居，不是退出共同生活。　Wagner &amp; Franzmann (2000)：西德 1972 與 1996 年相比，家庭生活沒有顯著多元化。　Brüderl &amp; Klein (2003)：德國三組出生世代，異質性略增，但遠低於「什麼都行」。　Bianchi 等 (2006)：美國親子共處時間，自 1960 年代中期以來變化不大。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 263：現代生命歷程在 1960 年代以前時序標準化增加，已確立無疑。此後某種程度的去標準化似乎也是。最明顯的領域是家庭。但仔細檢視之下，這些主張有些可疑（there is some doubt about these claims）。</p><p>四項反證都是 Kohli 轉引的：Klein、Lengerer &amp; Uzelac (2002) 用 1990 年代初中期的 Fertility and Family Survey。Wagner &amp; Franzmann (2000) 是西德 1972 與 1996 年的橫斷比較。Brüderl &amp; Klein (2003) 比較 1954–57、1958–67、1968–82 年出生的三組世代。Bianchi、Robinson &amp; Milkie (2006) 是美國的時間運用研究。</p><p>注意：Kohli 在這裡用的是他自己的窄定義（年齡耦合）。用 Brückner &amp; Mayer 的寬定義，家庭面的普及率下降本身就算去標準化。第 03 節會再比較。</p></div>
+</article>
+<article class="unit" id="s17" data-n="17">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 17 頁：工作面：84% → 67%，兩種讀法"><img src="week05-slides/17-1280.webp" srcset="week05-slides/17-1280.webp 1280w, week05-slides/17-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/17" alt="第 17 頁投影片：工作面：84% → 67%，兩種讀法"><figcaption class="sr">工作面：84% → 67%，兩種讀法　Kohli (2007: 263–264)　84%　1970 年　西德受僱者中，無限期全時僱用的比例　67%　1996 年　同上　Kohli 的兩種替代讀法　部分工時與微量工作的增加，大多來自女性勞動參與的擴張。對男性，全時工作仍是常態。　形式重構不等於實質多元化。有代表性的發現，多半把變化「去戲劇化」。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 263：西德的「正常工作契約」，也就是無限期的全時僱用，在 1970 到 1996 年間由所有受僱者的 84% 降到 67%。這個數字已成為德國個體化辯論的標誌，被當成內部勞動市場「終生」僱用終結的指標。</p><p>Kohli 提出兩種替代讀法（pp. 263–264）。第一，部分工時與微量工作的增加大多源於女性勞動參與擴張。對男性，全額工作量雖然變短，但是集體地變短，仍然是常態。</p><p>第二，如同家庭領域，形式重構與實質多元化不同。多數有代表性的發現傾向把變化去戲劇化（Kohli 2000b）。他自己承認這是反直覺的結果，或許是有代表性的調查在捕捉變化時有慣性。</p><p>想一想：台灣常被引用的哪個數字，也可以有這兩種讀法？</p></div>
+</article>
+<article class="unit" id="s18" data-n="18">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 18 頁：年齡界線與年齡規範，都沒有鬆開"><img src="week05-slides/18-1280.webp" srcset="week05-slides/18-1280.webp 1280w, week05-slides/18-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/18" alt="第 18 頁投影片：年齡界線與年齡規範，都沒有鬆開"><figcaption class="sr">年齡界線與年齡規範，都沒有鬆開　Kohli (2007: 264–265)　退休年齡：Scherger (2007)　西德 1910–1939 年生，首次領年金的年齡。　男性的四分位距幾乎沒變，女性先縮後擴。　對男性沒有明顯鬆弛，對女性只有一點。　年齡規範：1965–1996 年　範圍沒有擴大，而是位移。　退休的偏好年齡維持在 60 到 65 歲。　規範仍在，但較不被共享、較不具約束力。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>左欄：Kohli 稱 Scherger (2007) 是對去標準化程度的一份出色綜合評估（p. 264）。Scherger 用西德 1910 到 1939 年出生的世代，報告首次領取年金年齡的中位數，以及 25% 與 75% 完成轉銜的年齡。</p><p>p. 265 的結論句：沒有跡象顯示退休這條年齡界線對男性有強烈的鬆弛，更談不上解消，對女性則只有一點。</p><p>工作面另有兩項證據（p. 264）：多數 OECD 國家 1980–1995 年的任職年資沒有下降。到 2004 年，10 年以上長期僱用的比例在多數國家沒有顯著下降，唯一例外是盎格魯－撒克遜群集。</p><p>右欄（p. 265）：年齡規範是關於某些轉銜應該或不應該在哪些年齡發生的共同信念。它浮現的圖像較曖昧。範圍寬窄沒變、位置位移了、共識與約束力下降了。這是三個可以分開測量的成分。</p></div>
+</article>
+<article class="unit" id="s19" data-n="19">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 19 頁：Kohli 的總判決"><img src="week05-slides/19-1280.webp" srcset="week05-slides/19-1280.webp 1280w, week05-slides/19-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/19" alt="第 19 頁投影片：Kohli 的總判決"><figcaption class="sr">Kohli 的總判決　Kohli (2007: 265)　“　家庭與工作樣式的變化，遠比宣告「我們所知的生命歷程終結」的人所期待（或所盼望）的更不顯著。　Kohli (2007: 265)；講者譯　長期生涯軌跡與三段式結構，對男性仍穩固在位。女性的生命歷程也在某種程度上朝這個結構匯聚。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 265 的判決全文：家庭與工作樣式的變化，到目前為止都遠比宣告「我們所知的生命歷程終結」的人所期待的更不顯著。某些轉銜確實有去標準化與多元化的傾向，尤其在家庭領域，但遠比常被宣稱的有限。</p><p>他也承認最終的證據尚未齊備。但就目前而言，長期生涯軌跡與整體三段式結構對男性仍然穩固，女性也在某種程度上朝這個結構匯聚。這些發現與許多理論假定、以及公共論述中的多數假定相矛盾。</p><p>p. 265–266 另有一個可操作的判準：多元化若在社會階級與生活風格之間產生差異，應假定它是受社會形塑的樣式。若階級與生活風格內部的異質性增加，才是選項真正多元化。第 04 節讀 McMunn 等 (2015) 時會用到。</p></div>
+</article>
+<article class="unit" id="s20" data-n="20">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 20 頁：新增的一塊：生命歷程政治"><img src="week05-slides/20-1280.webp" srcset="week05-slides/20-1280.webp 1280w, week05-slides/20-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/20" alt="第 20 頁投影片：新增的一塊：生命歷程政治"><figcaption class="sr">新增的一塊：生命歷程政治　Kohli (2007: 267–268)　全文最後一句（p. 268）　去制度化及其年齡界線的解消，不會讓年齡與世代衝突消失，反而使它們更尖銳、更難處理。　生命歷程成為公共爭議的競技場。　制度化本身，把年齡與世代變成社會不平等的主要維度。　階級衝突被世代衝突取代了嗎？要檢驗。重點是兩種分歧怎麼相連。　社會老化深化世代內的分歧：死亡、疾病、工作能力都高度階層化。　世代公平論述誇大了衝突。世代契約在各年齡層仍有高度正當性。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 267：生命歷程取徑擴張的第二個理由是外部的：生命歷程成了政治規制與衝突的場域。年齡與世代成為潛在強大的新社會分歧結構的基礎（引 Kohli 1988、2006）。</p><p>論證鏈（pp. 267–268）：福利國家起源時要處理的是工業勞工的整合，也就是階級衝突的綏靖，方法是保證某種穩定的生命歷程，包括把退休變成正常的生命階段。今天常聽到階級衝突已被世代衝突取代。Kohli 說要評估世代分歧的程度，以及它在多大程度上遮蔽了階級分歧。與其把兩者當成互斥的對手，不如看它們怎麼連結。</p><p>p. 268：關於年輕人與老年人福祉與態度差異的研究一致顯示，世代間的分配衝突遠比世代公平論者所說的更不顯著。調查資料表明，公共世代契約在各年齡與人口區段仍享有高度正當性。</p><p>右邊是全文最後一句。理由：年齡分級的方案透過為衝突提供集體解決方案，解除了衝突的引信。第 06 節會回到這一點。</p></div>
+</article>
+<section class="band" id="s21" data-n="21">
+  <div class="band-num" aria-hidden="true"><span>02</span></div>
+  <p class="band-k">第二節</p>
+  <h2>勞動市場，還是國家？</h2>
+  <p class="band-en">Labour market or the state?</p>
+  <p class="band-d band-q"><b>這一節要回答</b>　是什麼結構了生命歷程？國家又是怎麼做到的？</p>
+  <p class="band-d"><b>本節文獻</b>　Mayer &amp; Schoepflin (1989)；Mayer &amp; Müller (1986)，本講轉引</p>
+  <div class="band-p" aria-hidden="true"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="band-note"><p>第 02 節讀 Mayer &amp; Schoepflin (1989)。它是「國家如何結構生命歷程」這條研究線的原始綜述，理論基礎是 Mayer &amp; Müller (1986)。</p><p>Mayer &amp; Müller (1986) 本講義未取得全文。凡是引到它的地方，都是透過 Mayer &amp; Schoepflin (1989) 或 Kohli (2007) 的轉引，並標明轉引。</p><p>第 3 週第 65 頁看過 Kohli (1986) 對這一派的回應：「如果福利國家生產了現代生命歷程，那麼是什麼生產了福利國家？」本節看另一方怎麼說。</p></div>
+</section>
+<article class="unit" id="s22" data-n="22">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 22 頁：一場被 Kohli 判為「虛假」的爭論"><img src="week05-slides/22-1280.webp" srcset="week05-slides/22-1280.webp 1280w, week05-slides/22-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/22" alt="第 22 頁投影片：一場被 Kohli 判為「虛假」的爭論"><figcaption class="sr">一場被 Kohli 判為「虛假」的爭論　Kohli (2007: 259–260)；Mayer &amp; Schoepflin (1989: 196, 202–203)　Kohli：勞動市場　生命歷程繞著工作與僱用的組織旋轉，最終由生產體系決定（Kohli 2007: 259–260）。 Mayer &amp; Schoepflin 的轉述：勞動的社會組織是首要決定因素（1989: 196）。　Mayer &amp; Müller：國家　國家界定了大多數的進出港口（Mayer &amp; Schoepflin 1989: 203）。 國家的影響最普遍，因為它對全體人口適用（1989: 202）。　Kohli (2007)：這場爭論已證明是虛假的　政治經濟學把兩造併入同一套解釋。但規制面對的動態，大體是經濟的。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>Kohli (2007: 259–260)：我自己的答案曾是生命歷程繞著工作與僱用的組織旋轉，由勞動市場、最終由生產體系所決定。其他人把答案集中在國家上（例如 Mayer &amp; Müller 1986）。今天，這場爭論已證明是虛假的（spurious）。</p><p>判為虛假的理由是文獻的：比較福利國家與資本主義多樣性的文獻，已把兩造併入同一套解釋。但他從中讀出的重心偏向經濟：僱用體系的結構性權力仍未被打破，規制所面對的動態大體是經濟的（p. 260）。</p><p>Mayer &amp; Schoepflin (1989) 的立場更強。p. 202：除了現代企業對大公司員工的效果，國家的衝擊肯定是最強有力的一個，也大概是最普遍的，因為它對全體人口適用。p. 203：國家界定了大多數的進出港口。</p><p>想一想：如果爭論「已解決」，是雙方在同一水平上會合，還是一方的框架吸收了另一方？</p></div>
+</article>
+<article class="unit" id="s23" data-n="23">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 23 頁：無國家的社會結構：為什麼兩邊接不起來"><img src="week05-slides/23-1280.webp" srcset="week05-slides/23-1280.webp 1280w, week05-slides/23-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/23" alt="第 23 頁投影片：無國家的社會結構：為什麼兩邊接不起來"><figcaption class="sr">無國家的社會結構：為什麼兩邊接不起來　Mayer &amp; Schoepflin (1989: 189–191)　個人的生命被描繪得好像發生在一個無國家的社會結構之中（Mayer &amp; Müller 1986: 218–220，轉引）。　「國家」在歐美傳統中意思不同：美國想成政府或行政，歐洲的國家支配公民社會（pp. 189–190）。　兩種研究的層次不同：國家研究的單位是民族國家，產物是政策。生命歷程研究的單位是個人（p. 190）。　測量上沒有國家的維度。除了兵役，國家很少出現在界定事件的狀態裡（pp. 190–191）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 189 的招牌診斷：雖然國家在社會層次上占據顯著位置，個人生命卻被描繪得好像發生在無國家的（state-less）社會結構之中。這句引自 Mayer &amp; Müller (1986: 218–220)。</p><p>三個理由。第一（pp. 189–190）：國家概念在歐美差異極大。註 1 說，歐洲之所以沒有「國家與生命歷程」的理論，正因為國家對個人生命的衝擊太明顯，以致在概念上被忽略，或下放給德國的 Sozialpolitik、英國的 social administration。</p><p>第二（p. 190）：國家研究的分析單位是民族國家，國家活動的產物是政策，不是人。生命歷程研究的單位是個人。因此兩邊之間幾乎沒有直接的經驗連結。</p><p>第三（pp. 190–191）：在我們測量生命歷程的主要維度中，沒有國家維度。國家的衝擊無法被直接觀察或量化分析。這一點今天大體仍然成立。</p></div>
+</article>
+<article class="unit" id="s24" data-n="24">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 24 頁：國家在哪裡？在段落之間的接縫"><img src="week05-slides/24-1280.webp" srcset="week05-slides/24-1280.webp 1280w, week05-slides/24-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/24" alt="第 24 頁投影片：國家在哪裡？在段落之間的接縫"><figcaption class="sr">國家在哪裡？在段落之間的接縫　Mayer &amp; Schoepflin (1989: 195–197)　最有說服力的例子：義務教育（p. 197）　美國：引入教育主要取決於勞動需求與控制閒散青年。德國：動機是國家的利益，而且遠早於工業化。　制度分化被「投影」到生命歷程依時序排列的段落上（Luckmann 1975，p. 195）。　三角化：生命在學校、家庭與工作之間（Smelser &amp; Halpern 1978）。　不要找生命時間的「政治段落」。要找國家對領域之間轉銜的規制，以及對序列角色的整合（pp. 196–197）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 195：傳統家戶曾是生產、消費、再生產、社會化與政治權威的首要場所。家戶與企業的法律分離、家庭與學校的功能分工，直接轉譯為個人的分格角色。Luckmann (1975) 的公式：把社會宏觀層次的制度分化，投影（mapping）到生命歷程依時序排列的段落上。</p><p>p. 196 也轉述 Kohli (1985, 1986) 的三分化，並指出 Albers (1973) 遠更早提出這個概念。</p><p>本節最重要的分析動作在 pp. 196–197：在個人生命史的層次上，不應去找「政治角色」或「政治段落」，而應去找國家對領域之間轉銜的規制，以及對序列社會角色的整合。國家不出現在段落裡，出現在段落之間的接縫上。</p><p>右邊（p. 197）：義務教育是國家建構生命歷程最具說服力的實例。美國的社會史研究顯示，引入教育高度取決於勞動需求與控制閒散青年的問題，不是主要被當成工作準備期。德國的動機是國家利益，而且遠早於工業化。</p></div>
+</article>
+<article class="unit" id="s25" data-n="25">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 25 頁：國家結構了生命歷程，卻從未打算這麼做"><img src="week05-slides/25-1280.webp" srcset="week05-slides/25-1280.webp 1280w, week05-slides/25-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/25" alt="第 25 頁投影片：國家結構了生命歷程，卻從未打算這麼做"><figcaption class="sr">國家結構了生命歷程，卻從未打算這麼做　Mayer &amp; Schoepflin (1989: 197–200)　國家為幼兒提供托育、設學校、訂母性保護、立退休規則、照顧老人。但幾乎沒有政策把人的生命當成整體（pp. 197–198）。　年齡規範　法定年齡常「表象多於真實」。要有足夠的年金或服務，才會生效。　請求權　資格規則把生命切成「全有全無」的處境。每個時點都對應一個福利身分。　科層分格　照護被分給不同機關與專業。年齡界線在行政上最容易界定。　國家對生命歷程的塑造，來自它的形式屬性，而不是政策目標。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>pp. 197–198 是全文最該獨立引用的觀察：現代國家對生命各階段的特殊性關切得不得了。但我們幾乎找不到明白涉及人的生命作為整體、甚至意識到自身政策有後續生命效果的政策。</p><p>所以作者轉問（p. 198）：當基本需求與安全由國家而非初級群體提供時，生命歷程結構怎麼改變？限制國家行動庫、並在處理問題時產生特定選擇性的形式屬性是什麼？這些屬性來自國家可用的行動工具、正當使用的規則，以及組織機器。</p><p>三種形式接下來各用一頁說明。注意作者的評價：第一種（年齡規範）的重要性可能被高估，第二種（請求權）才是真正有力的機制。</p></div>
+</article>
+<article class="unit" id="s26" data-n="26">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 26 頁：形式一：年齡規範，重要性可能被高估"><img src="week05-slides/26-1280.webp" srcset="week05-slides/26-1280.webp 1280w, week05-slides/26-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/26" alt="第 26 頁投影片：形式一：年齡規範，重要性可能被高估"><figcaption class="sr">形式一：年齡規範，重要性可能被高估　Mayer &amp; Schoepflin (1989: 198–199)　表象多於真實　德國的義務教育年齡，花了將近 200 年才真正被全體遵行。　法定退休年齡跟隨、而非形塑社會實作，很少與實際退休年齡吻合。　生效條件：要與足夠高的年金或服務提供結合（Mayer &amp; Müller 1986: 229，轉引）。　但也有反例　成年年齡由 21 歲降到 18 歲後，女性結婚年齡顯著下降，雖然法定婚齡沒變（Papastefanou 1988）。　入學與離校的準法定年齡結構，幾乎沒受二次大戰結束的影響（Blossfeld 1987, 1988）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 198：立法中的年齡規則，例如入學年齡、童工禁令、法定婚齡、法定退休年齡，曾有也仍有相當衝擊。但證據顯示它們的重要性可能被大幅高估。與年齡相關的法律規定經常是表象多於真實（more apparent than real），引 Mayer &amp; Müller (1986: 226–230)。</p><p>三項證據：德國的義務教育年齡花了將近 200 年才真正被全體遵行。法定退休年齡跟隨而非形塑社會實作，在美國即使有反向立法，退休年齡仍傾向下降。生效條件：法定年齡只有與其他手段結合時才有效，例如足夠高的年金，或像學校那樣的服務提供（Mayer &amp; Müller 1986: 229）。</p><p>右欄兩個反例（pp. 198–199）。Papastefanou：原文記為 1972 年把成年年齡由 21 歲降到 18 歲，女性結婚年齡顯著下降，雖然女性的法定婚齡仍是 16 歲。Blossfeld：年齡規範存續下來，儘管國家秩序實際上已經崩解。這證明年齡規範強大，也證明那種強大不來自國家的即時強制力。</p><p>銜接第 4 週第 82 頁台灣的年齡界線，與第 06 節的政策討論。</p></div>
+</article>
+<article class="unit" id="s27" data-n="27">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 27 頁：形式二：請求權，把連續的生命切成全有全無"><img src="week05-slides/27-1280.webp" srcset="week05-slides/27-1280.webp 1280w, week05-slides/27-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/27" alt="第 27 頁投影片：形式二：請求權，把連續的生命切成全有全無"><figcaption class="sr">形式二：請求權，把連續的生命切成全有全無　Mayer &amp; Schoepflin (1989: 199)；下圖為講者示意　前福利社會：轉銜非常漸進　兒童到工作、工作到退休、生病到健康，都沒有尖銳的界線　福利國家：每個時點都有一個福利身分　兒童　求學　受僱　病假　受僱　失業　退休　繳費者　領受者　既不繳費也不領受　付款人或領受人：福利身分界定了相對於各個制度的義務與權利。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 199 是全文最漂亮的一段。起點是普遍主義：法律規則界定普遍、而非逐案的適用性與請求權。現代國家的行動必須依一般法律或行政命令，一致適用於所有符合判準的公民。</p><p>機制：形式的資格規則要求對「生命處境」做僵硬的定義。社會保險涵蓋的風險以全有全無的方式處理：一個人要嘛在僱用中、要嘛在勞動力之外，要嘛健康、要嘛在病假中。</p><p>對照前福利社會：兒童與工作之間、工作與退休之間、生病與健康之間的轉銜非常漸進。直到中世紀晚期，結婚與未婚之間也常未被清楚標記（Schroter 1984）。</p><p>結論句：在福利國家中，連續的生命之流被轉換成一系列處境，每一個都有清楚的形式定義。在任一時點，一個人都有一個福利身分，界定他相對於各個制度的義務與權利，最顯著的是作為付款人或領受人。</p><p>下方的色塊是講者示意，不是資料。第 4 週第 44 頁的三種位置（非受益非繳費者、繳費者、受益者）就是這個概念。</p></div>
+</article>
+<article class="unit" id="s28" data-n="28">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 28 頁：形式三：科層分格"><img src="week05-slides/28-1280.webp" srcset="week05-slides/28-1280.webp 1280w, week05-slides/28-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/28" alt="第 28 頁投影片：形式三：科層分格"><figcaption class="sr">形式三：科層分格　Mayer &amp; Schoepflin (1989: 199–200)　Heyns (1987, 1988) 的發現　專業者的聲望與年齡階層平行：老年醫學與小兒科醫師的聲望低於外科醫師。聲望較低的群體，女性比例較高。　照護若由國家提供，就必須分格給各自有職權的組織。　結果：機關分格，專業者與服務對象也分格。　年齡群體是切分社會問題的偏好方式，因為界線在行政上容易界定。　對年齡差異的強烈信念強化了這種構型，「或反之亦然」。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>pp. 199–200：福利國家把社會從「個人與家庭以特殊主義且漸進的方式回應需求」，轉變為「由一般規則治理的請求權體系」。另一面是福利國家的組織與日常實施。</p><p>如任何大規模組織，分工與明確的職權是國家的基本特徵。照護若由國家提供，就必須分格給各自有職權的組織。於是造就了職權機關的分格，以及專業者與服務對象群的分格（引 Mayer &amp; Müller 1986: 234–235）。</p><p>p. 200 的核心句：年齡群體是切分社會問題的偏好方式，因為它們的界線在行政上容易界定。</p><p>節末的括號值得注意：這種構型被「年齡群體之間存在重要差異」的信念所強化，或反之亦然（or vice versa）。也可能是先有行政分格，才有那些關於年齡差異的信念。</p><p>可以連到台灣：兒少、身障、老人分屬不同法規與服務體系。這是講者的例子，不是原文。</p></div>
+</article>
+<article class="unit" id="s29" data-n="29">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 29 頁：直接效果：公部門、兵役與戰爭"><img src="week05-slides/29-1280.webp" srcset="week05-slides/29-1280.webp 1280w, week05-slides/29-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/29" alt="第 29 頁投影片：直接效果：公部門、兵役與戰爭"><figcaption class="sr">直接效果：公部門、兵役與戰爭　Mayer &amp; Schoepflin (1989: 200–201)　公部門僱用：公私部門的差異可能在縮小，但生涯與所得軌跡仍有差異。　戰爭：國家徵召出生世代的大比例人口，打斷生命歷程。　美、德、日的研究：斷裂效果較少取決於服役多久，較多取決於是否落在教育與職業生涯的關鍵時點。　這些研究多半應用 Elder (1974) 關於早期剝奪的模型（第 3 週）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 200：前面三種形式是國家活動的潛在與非意圖後果。也有相當直接的效果。第一是公部門僱用的迅速增加。公私部門的差異大概正在縮小（Mayer &amp; Müller 1986: 238–242），但晚近研究顯示生涯與所得軌跡仍有差異。</p><p>pp. 200–201：國家在宣戰時對公民的生命做出最劇烈的介入。</p><p>本節最可移植的是時機原理（p. 201）：Mayer (1988a)、Elder &amp; Bailey (1986)、Elder &amp; Meguro (1987) 在美、德、日的樣本中顯示，兵役與戰時進入學校或勞動市場的斷裂效果，較少取決於服役的長度，較多取決於剝奪是否發生在教育與職業生涯的關鍵時點。</p><p>連到第 3 週的 Elder：同一場戰爭，對不同年齡的出生世代有不同的後果。</p></div>
+</article>
+<article class="unit" id="s30" data-n="30">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 30 頁：功能理性：當下處境的邏輯"><img src="week05-slides/30-1280.webp" srcset="week05-slides/30-1280.webp 1280w, week05-slides/30-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/30" alt="第 30 頁投影片：功能理性：當下處境的邏輯"><figcaption class="sr">功能理性：當下處境的邏輯　Mayer &amp; Schoepflin (1989: 201–202)　Schultheis (1987) 的個案　方案資助未婚懷孕女性 4 年，條件是在家帶孩子、不得與伴侶同居。結果：被動、長期規劃減少、教育投資減少。　預期一：保險延長生命跨度、迴避風險，應促進長期規劃與延遲滿足。　預期二：各制度領域各有邏輯，個人難以形成並貫徹長期的生命設計。　福利供給的法條與貨幣性質，促進功能理性而非實質理性（Mannheim 1940）。　利用制度給的機會是理性的，但可能和實際需求或原本的生命設計衝突。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 201 的問題：國家對「動機的詞彙」有什麼衝擊？</p><p>第一個預期是正向的：福利國家保險帶來的生命跨度延長與風險迴避，應促進穩定的預期、長期的可計算性與延遲滿足。</p><p>第二個預期相反（引 Mayer &amp; Müller 1986: 235–238, 242）：制度界定的行動邏輯相對獨立而異質，個人不太可能形成綜合而長期的生命設計並貫徹到底。結構上支持的是「當下處境的邏輯」，而非「持續的個人生命設計的邏輯」。</p><p>p. 202：福利供給的法條主義與貨幣性質，促進功能理性而非實質理性（Mannheim 1940）。凡國家建立規則、提供服務或金錢誘因之處，利用這些機會就是功能上理性的。但這可能導致與實際需求或初始生命設計相扞格的決定。</p><p>右邊的個案是唯一具體的例子，結論是對這些女性後來的生命機會造成災難性的後果。可以連到第 06 節：給付的資格若綁定某種生活安排，期滿後可能留下更差的生命機會。</p></div>
+</article>
+<article class="unit" id="s31" data-n="31">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 31 頁：國家同時整合、又分格生命歷程"><img src="week05-slides/31-1280.webp" srcset="week05-slides/31-1280.webp 1280w, week05-slides/31-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/31" alt="第 31 頁投影片：國家同時整合、又分格生命歷程"><figcaption class="sr">國家同時整合、又分格生命歷程　Mayer &amp; Schoepflin (1989: 203)　“　隨著人們走過一生，國家界定了大多數的進出港口：進出僱用、婚姻、病假與失能假、教育與職業訓練。　Mayer &amp; Schoepflin (1989: 203)；講者譯　但國家也銳化了轉銜事件、年齡區間與生命段落。福利國家是製造分格，還是提供整合？作者自承沒有清楚的答案。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 203 是本文的總結論，結構是一對相反的清單加上一句自承未決。</p><p>整合的一側：國家界定大多數的進出港口，把這些轉銜變成公共的生命事件，並在人們流經分化的領域時把它們相互扣連。國家有助於連續而連貫的生命，不只在生物上，也在社會上。</p><p>分格的一側：同一個過程中，國家銳化了轉銜事件、年齡區間與生命段落，並提供外部的而非個人創造的秩序。</p><p>還有兩組效果：增加個人安全、減輕對他人的依賴，使社會連帶弱化，個人可以承擔換工作、離婚或遷移的風險。健康、失業與老年保險則防止突然的所得損失，在生命中提供連續性。</p><p>最後一句自承未決：福利國家是在生命歷程內部產生分格，還是提供整合與連續性，並沒有清楚的答案。第 7 週讀 Leisering (2003) 時會看到後續的發展。</p></div>
+</article>
+<article class="unit disc" id="s32" data-n="32">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 32 頁：課堂討論 ①　一項台灣的政策，用了哪一種形式？"><img src="week05-slides/32-1280.webp" srcset="week05-slides/32-1280.webp 1280w, week05-slides/32-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/32" alt="第 32 頁投影片：課堂討論 ①　一項台灣的政策，用了哪一種形式？"><figcaption class="sr">?　課堂討論 ①　一項台灣的政策，用了哪一種形式？　選一項台灣的政策（例如育嬰留職停薪、勞保老年年金、國民年金）。它用年齡規範、請求權，還是科層分格結構生命歷程？　它把哪一段連續的生活，切成「全有全無」的身分？誰落在兩個身分之間？　這項政策有意塑造人的生命歷程嗎？Mayer &amp; Schoepflin 說多數沒有。你的例子呢？　連到：Mayer &amp; Schoepflin (1989: 197–203)；第 4 週講義第 82–84 頁</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>討論提示</div><p>兩到三人一組，每組選一項政策。</p><p>第 1 題對應 pp. 198–200 的三種形式。一項政策可能同時用到兩種以上。</p><p>第 2 題對應 p. 199 的福利身分：付款人或領受人。提示：資格門檻（例如年資、年齡、投保身分）正是把連續的生活切成身分的地方。</p><p>第 3 題對應 pp. 197–198 的觀察：國家結構了生命歷程，卻從未打算這麼做。</p><p>第 4 週第 82–84 頁有台灣的年齡界線與政策時間軸，可以當作素材。</p></div>
+</article>
+<section class="band" id="s33" data-n="33">
+  <div class="band-num" aria-hidden="true"><span>03</span></div>
+  <p class="band-k">第三節</p>
+  <h2>去標準化是什麼意思？</h2>
+  <p class="band-en">What might de-standardization mean?</p>
+  <p class="band-d band-q"><b>這一節要回答</b>　去標準化是什麼意思？要什麼證據才算數？</p>
+  <p class="band-d"><b>本節文獻</b>　★ Brückner &amp; Mayer (2005: 27–36)</p>
+  <div class="band-p" aria-hidden="true"><i class=""></i><i class=""></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="band-note"><p>第 03 節讀 Brückner &amp; Mayer (2005) 的前半：概念與假設。後半的實證放在第 04 節。</p><p>這篇的順序很特別：先造概念、再造假設、再造證據。引用時最該引的其實是 pp. 31–35 的概念與假設，不是結論。</p><p>本節最後用三頁說明序列分析的直覺，幫助讀懂第 04 節的兩篇研究。</p></div>
+</section>
+<article class="unit" id="s34" data-n="34">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 34 頁：一個被普遍接受的看法"><img src="week05-slides/34-1280.webp" srcset="week05-slides/34-1280.webp 1280w, week05-slides/34-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/34" alt="第 34 頁投影片：一個被普遍接受的看法"><figcaption class="sr">一個被普遍接受的看法　Brückner &amp; Mayer (2005: 28)　生命已變得較不可預測、較不由集體決定、較不穩定、較不有序、較彈性、較個人化。　B&amp;M 的態度　去標準化是後福特主義與後工業主義理論的根本信條。作者把這些論斷當成待檢證的對象。　私生活與家庭形式多元化，工作生命更不穩定（Beck 1986；Heinz 2003）。　教育、工作、退休的傳統序列，讓位給去標準化的生命歷程（Riley 等 1994）。　Beck (1999)：超過半數的德國勞動力受非標準勞動契約約束。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 28 的第一句就把靶立好：生命已變得較不可預測、較不由集體決定、較不穩定、較不有序、較彈性、較個人化，這是關於先進社會最普遍被接受的看法之一（引 Held 1986；Buchmann 1989；Myles 1993）。</p><p>接著列出這個看法的幾個版本，每一個都附上出處。Beck (1999) 的數字是作者的轉述，不是本文的估計。</p><p>收束句：去標準化的生命歷程，既是後福特主義、也是後工業主義理論的根本信條。</p><p>作者在 p. 31 稱這些論斷是「隨意的觀察」與「一概而論」：概念上缺乏精確，也缺乏系統資料。全文的任務就是補這兩樣。</p></div>
+</article>
+<article class="unit" id="s35" data-n="35">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 35 頁：同一個現象，三十年三種解讀"><img src="week05-slides/35-1280.webp" srcset="week05-slides/35-1280.webp 1280w, week05-slides/35-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/35" alt="第 35 頁投影片：同一個現象，三十年三種解讀"><figcaption class="sr">同一個現象，三十年三種解讀　Brückner &amp; Mayer (2005: 28–31)　1970 年代：現代化　現代生命歷程被制度化，變得更可預測。福利國家讓貧窮循環消失。　1980 年代：價值變遷與擴張　延後結婚生育，教育成為「等候大廳」。但這發生在福利給付增加、所得上升的脈絡中。　1990 年代起：全球化　原本被視為新選項的變化，被重新詮釋為對外部約束的困難適應。　回頭看：穩定就業、早婚與穩定家庭的樣式，侷限在一個短而例外的「黃金年代」（p. 31）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>pp. 28–31 把去標準化論旨的來源拆成三個時期。拆開之後看到：同一個現象在不同十年被賦予相反的意義。</p><p>1970 年代：問題是什麼區分了「現代」與「傳統」生命歷程。答案包括制度化（Kohli 1985），以及福利國家保障使貧窮循環消失（Mayer &amp; Müller 1986；Mayer &amp; Schoepflin 1989）。</p><p>1980 年代：價值變遷、教育擴張、婦女運動、石油危機。作者特別限定：這一切發生在福利給付增加、實質所得上升的脈絡中（p. 30）。</p><p>1990 年代：1970、1980 年代被視為新選項的變化，在 1990 年代被重新詮釋為對外部約束的困難適應（p. 30）。</p><p>p. 31 的收束：那個樣式似乎被侷限在一個相當短而例外的歷史時期，一個「黃金年代」，其前後都是更動盪的時代。這與 Kohli (2007: 257–258) 的判斷一致，兩篇是各自獨立達到的。</p></div>
+</article>
+<article class="unit" id="s36" data-n="36">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 36 頁：五個概念，不要混用"><img src="week05-slides/36-1280.webp" srcset="week05-slides/36-1280.webp 1280w, week05-slides/36-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/36" alt="第 36 頁投影片：五個概念，不要混用"><figcaption class="sr">五個概念，不要混用　Brückner &amp; Mayer (2005: 31–33)　概念　定義　例子　制度化　規則界定生命的社會與時間組織　婚姻、教育、退休，年金請求年齡　去制度化　原本分化的狀態與轉銜，被重新整合　教育與工作同步，同居不再綁定婚姻　標準化　狀態或事件更普遍，或時機更一致　所有工人都在 65 歲退休　分化　生命中的狀態或階段數目增加（貫時）　教育分段，一份訓練拆成數份　多元化　同一時點的生活形式數目增加（共時）　家庭形式，兼多份工作</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>第六個概念「個人化」，作者視為詮釋性的概念，不列入可測量的維度（p. 33）。</p><p>pp. 31–33 是本文最該被引用的一節。作者點名五個常被交替使用的概念，主張它們觸及的是可以彼此獨立變動的維度。</p><p>制度化（p. 32）：規範、法律或組織規則界定人類生命的社會與時間組織。作者接著用福利國家操作化：既不繳費也不領受的期間（童年）、繳費但不領受（就業）、不繳費但領受（老年、疾病、失業）。這和第 02 節 Mayer &amp; Schoepflin 的福利身分是同一個東西。</p><p>去制度化（p. 32）的例子帶一個弔詭：先同居再結婚，使婚姻部分去制度化，但也把一段插曲變成兩段，增加了分化。</p><p>標準化的例子是原文的：若所有工人都退休，而且都在 65 歲退休（p. 32）。</p><p>分化與多元化的差別在時間軸的方向（p. 33）：分化是貫時的，多元化是共時的。去分化的例子很難想到，暗示底層趨勢不可逆。</p><p>個人化（p. 33）：較具詮釋性的概念。正面的意思近年已與「非自願的個人化」混合：被判定去走不是集體踩出來的路。</p></div>
+</article>
+<article class="unit" id="s37" data-n="37">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 37 頁：去標準化的兩個分支：普及率，或離散度"><img src="week05-slides/37-1280.webp" srcset="week05-slides/37-1280.webp 1280w, week05-slides/37-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/37" alt="第 37 頁投影片：去標準化的兩個分支：普及率，或離散度"><figcaption class="sr">去標準化的兩個分支：普及率，或離散度　Brückner &amp; Mayer (2005: 32–33)；圖為講者示意　分支一：普及率下降　較早世代　較晚世代　經歷某個狀態或事件的人，變成越來越小的一部分人口。　分支二：離散度上升　較早世代　較晚世代　轉銜發生在更分散的年齡，或持續期間更分散。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>pp. 32–33 的定義：去標準化意謂生命狀態、事件及其序列，可能變成只有越來越小一部分人口會經歷的經驗，或發生在更分散的年齡與更分散的持續期間。</p><p>這是雙分支的定義：普及率，或離散度。圖是講者的示意。每個點是一個人，橫軸是年齡，右側空心點是沒有經歷該事件的人。</p><p>原文的例子：婚姻與為人父母先到 1970 年代為止更標準化，然後更去標準化（Espenshade 1985）。美國生涯起點的權宜工作（stop gap jobs）。德國退休年齡的日益模糊（Ebbinghaus 2002）。</p><p>回到開場提問：25–29 歲曾婚比例下降，屬於哪一支？如果只是大家一起延後，兩支都不一定成立。</p></div>
+</article>
+<article class="unit" id="s38" data-n="38">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 38 頁：各過程不必同向"><img src="week05-slides/38-1280.webp" srcset="week05-slides/38-1280.webp 1280w, week05-slides/38-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/38" alt="第 38 頁投影片：各過程不必同向"><figcaption class="sr">各過程不必同向　Brückner &amp; Mayer (2005: 32, 34)　方法上的要求（p. 34）　不能靠軼事與示例。要找爭論雙方都會接受的系統資料，做耐心而費力的測量。　制度化可能與去標準化同時發生：提早退休政策（Ebbinghaus 2002）。　多元化可能與標準化並行：非婚同居幾乎普遍地先於婚姻。　同一個現象可以同時是去制度化與分化：先同居再結婚，把一段插曲變成兩段（p. 32）。　因此不能假定一個涵蓋一切的單向過程。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 34 的兩項推論是全文方法論立場的濃縮。</p><p>第一，各過程不必同向。制度化有可能與去標準化耦合，如提早退休政策。多元化可能與標準化攜手，如非婚同居幾乎普遍地先於婚姻。所以不能假定一個涵蓋一切的單向過程，做宏大概括時要謹慎。甚至可以質疑：援引一個整體趨勢，是否製造的混亂多於清晰。</p><p>這一點是 B&amp;M 與 Kohli (2007) 最深的分歧之一：Kohli 把制度化與去標準化放在同一根軸的兩端，B&amp;M 認為它們是兩根軸。</p><p>第二，軼事不算證據。要找支持者與反對者都會接受為相關證據的系統資料。對經驗發展做耐心而費力的測量，變成關鍵。</p></div>
+</article>
+<article class="unit" id="s39" data-n="39">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 39 頁：五個面向，八項推論"><img src="week05-slides/39-1280.webp" srcset="week05-slides/39-1280.webp 1280w, week05-slides/39-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/39" alt="第 39 頁投影片：五個面向，八項推論"><figcaption class="sr">五個面向，八項推論　Brückner &amp; Mayer (2005: 35)　面向　意思　若去標準化，應看到　普及率　特定轉銜或狀態發生的程度　普及率下降　年齡變異　轉銜發生在特定年齡的程度　年齡變異增加　持續期間變異　停留在某狀態或階段的程度　持續期間的變異增加　事件間依存　一個事件與另一個事件相關聯的程度　依存下降　序列一致性　事件與狀態的順序一致分布的程度　序列的可預測性下降　彈性化另加三項：換工作增加、企業任職年資下降、職業穩定性下降。判準：所有或至少大多數指標都要改變，而且應看到突然的不連續（p. 35）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 35 是全文最該當清單使用的一段。五個面向逐字對應：prevalence、age variance、duration variance、inter-event dependency、sequence uniformity。</p><p>八項推論：前五項對應五個面向。後三項針對彈性化論旨：(f) 工作間的轉換增加，(g) 企業任職年資下降，(h) 職業穩定性下降。</p><p>兩項判準才是最終判決的依據。一、根據多數情境，應預期的不只是漸進趨勢，而是相當突然的不連續或趨勢反轉。二、去標準化的證據要求所有或至少大多數指標都改變。</p><p>第二條決定了結論：因為只有家庭那組指標改變，所以判決是「沒有一般過程」。第 04 節會看到。</p><p>討論②會用這張表。</p></div>
+</article>
+<article class="unit" id="s40" data-n="40">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 40 頁：作者自己的保留：每個指標都可能另有原因"><img src="week05-slides/40-1280.webp" srcset="week05-slides/40-1280.webp 1280w, week05-slides/40-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/40" alt="第 40 頁投影片：作者自己的保留：每個指標都可能另有原因"><figcaption class="sr">作者自己的保留：每個指標都可能另有原因　Brückner &amp; Mayer (2005: 35)　每個指標單獨看，都可能指向與去標準化無關的社會變遷。　家庭形成延後，可能只是教育參與改變了。　工作穩定性下降，可能發生在景氣上行或下行時，不代表朝去標準化的趨勢。　本文只檢證去標準化，不系統檢證制度化、個人化與多元化。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 35：這些指標中的每一個單獨來看，都可能指示多重的社會變遷過程，而這些過程原則上可能與生命歷程的去標準化毫無關係。</p><p>作者自己給了兩個例子：家庭形成的延後可能僅因教育參與變化而預期。工作穩定性下降可能發生在經濟上行或下行期間。</p><p>這段等於作者給出了反駁自己結論的路徑。</p><p>同頁的自我限制也要跟著引用：我們聚焦於可能導致去標準化的過程，不試圖系統地產生與制度化、個人化、多元化有關的證據。所以不能把本文引為「個人化命題的反證」。</p></div>
+</article>
+<article class="unit" id="s41" data-n="41">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 41 頁：Kohli 與 B&amp;M 的定義不一樣"><img src="week05-slides/41-1280.webp" srcset="week05-slides/41-1280.webp 1280w, week05-slides/41-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/41" alt="第 41 頁投影片：Kohli 與 B&amp;M 的定義不一樣"><figcaption class="sr">Kohli 與 B&amp;M 的定義不一樣　Kohli (2007: 263)；Brückner &amp; Mayer (2005: 32–35)；講者整理　Brückner &amp; Mayer：寬　普及率下降，或年齡與持續期間更分散。　判準嚴格：大多數指標都要變。　已婚比例下降，屬於普及率這一支。　Kohli：窄　只看事件與時序年齡的耦合鬆緊。　用這個定義，家庭面的證據顯得被誇大。　工作面的結論，看起來比 B&amp;M 原文更強。　引用時要說清楚：用的是哪一個定義，判準有多嚴。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>這一頁是講者的整理，不是任何一篇原文的表。</p><p>B&amp;M 的定義是雙分支的（pp. 32–33），判準是連乘的（p. 35）：大多數指標都要變。Kohli (2007: 263) 只取了離散度那一支。</p><p>後果是雙向的。一方面，Kohli 的窄定義使家庭面的發現更難成立，因為已婚比例下降屬於普及率分支，而非年齡耦合分支。另一方面，Kohli 的窄定義使工作面的結論看起來比原文更強。B&amp;M 只說年齡變異的增加不存在或相當小，同時也報告了序列模糊化、多段訓練增加與 1971 世代換工作率翻倍。</p><p>所以「Brückner &amp; Mayer 證明沒有去標準化」是誤讀。正確的說法：去標準化在家庭面成立、在工作面不成立，而「不成立」是相對於一套嚴格判準。</p></div>
+</article>
+<article class="unit" id="s42" data-n="42">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 42 頁：序列分析的直覺：把整段生命當一個單位"><img src="week05-slides/42-1280.webp" srcset="week05-slides/42-1280.webp 1280w, week05-slides/42-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/42" alt="第 42 頁投影片：序列分析的直覺：把整段生命當一個單位"><figcaption class="sr">序列分析的直覺：把整段生命當一個單位　Van Winkle &amp; Fasang (2017: 11)，圖 3　軌跡 1　EDU　EDU　J1　J1　J2　J2　J3　J3　J3　J3　C = 0.405　軌跡 2　EDU　EDU　J1　J1　UE　UE　J2　J2　J3　J3　C = 0.513　軌跡 3　EDU　J1　UE　J2　J3　J3　J3　J3　J3　J3　C = 0.448　每格是一段時間裡的狀態：EDU 教育、J1 到 J3 第幾份工作、UE 失業。軌跡 2 與 3 的轉換次數相同，但軌跡 3 在第三份工作停留很久，所以較不複雜。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>B&amp;M 用的是單一轉銜的年齡。序列分析換一個單位：把一個人整段的狀態序列當成一筆資料。</p><p>這三條是 Van Winkle &amp; Fasang (2017: 11) 圖 3 的假想軌跡。軌跡 1 有兩段教育、三份工作，複雜度 0.405。軌跡 2 多了一段失業，複雜度 0.513。軌跡 3 的轉換次數和軌跡 2 一樣，但在第三份工作停留很久，複雜度 0.448。</p><p>複雜度由兩個成分組成（p. 11）：轉換的次數，以及序列的熵（狀態分布得多平均、多難預測）。Gabadinho 等 (2011) 的指數是兩者正規化後的幾何平均。原文以 0 到 100 呈現，圖中是 0 到 1。</p><p>Kohli (2007: 259) 說微觀研究多停在單一轉銜，缺少把轉銜聚合成完整生命歷程樣式的設計，並指向最適配對分析。序列分析就是在回應這個缺口。</p></div>
+</article>
+<article class="unit" id="s43" data-n="43">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 43 頁：人與人之間的多樣，一個人之內的複雜"><img src="week05-slides/43-1280.webp" srcset="week05-slides/43-1280.webp 1280w, week05-slides/43-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/43" alt="第 43 頁投影片：人與人之間的多樣，一個人之內的複雜"><figcaption class="sr">人與人之間的多樣，一個人之內的複雜　McMunn 等 (2015: 61, 64–65)；圖為講者示意　多樣：去標準化　甲　乙　丙　丁　每個人的軌跡簡單，但人與人之間不一樣。量數：Shannon 熵、Simpson 指數。　複雜：分化　甲　乙　丙　丁　每個人在狀態之間來回移動。量數：Elzinga 或 Gabadinho 的複雜度指數。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>McMunn 等 (2015: 61) 依 Aisenbrey &amp; Fasang (2010) 區分兩件事。人與人之間的多樣（diversity），他們稱為去標準化。一個人之內在狀態之間的移動（complexity），他們稱為分化。</p><p>這對應 B&amp;M 的概念：多樣性接近 B&amp;M 的去標準化，複雜度接近 B&amp;M 的分化（p. 33）。Van Winkle &amp; Fasang (2017: 3) 也明說複雜度呼應 B&amp;M 的分化概念。</p><p>圖是講者示意。左邊四個人各自簡單，但彼此不同。右邊四個人都在來回移動，彼此反而相似。兩種變化可以各自發生。</p><p>下一頁列出量數。</p></div>
+</article>
+<article class="unit" id="s44" data-n="44">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 44 頁：怎麼測：三組量數"><img src="week05-slides/44-1280.webp" srcset="week05-slides/44-1280.webp 1280w, week05-slides/44-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/44" alt="第 44 頁投影片：怎麼測：三組量數"><figcaption class="sr">怎麼測：三組量數　McMunn 等 (2015: 64–65)；Van Winkle &amp; Fasang (2017: 11)　量數　測什麼　範圍　Shannon 熵　人們在各類型之間分布得多平均　0 到 ln(類型數)，12 型時約 2.5　Simpson 多樣性指數　隨機抽兩人，屬於不同類型的機率　0 到 1　Elzinga 複雜度　一個人的狀態數目、子序列與持續期間　越高越複雜　Gabadinho 複雜度　轉換次數與序列熵的幾何平均　0 到 100　前兩個是「人與人之間」，後兩個是「一個人之內」。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>McMunn 等 (2015: 65)：Shannon 熵捕捉某個性別與世代組合中，工作與家庭類型的分布有多集中或分散。值的範圍是 0 到 2.5，也就是 12 個類型數的自然對數。Simpson 指數是隨機抽兩個人屬於不同類型的機率，範圍 0 到 1。</p><p>Elzinga 複雜度（McMunn 等 2015: 64–65）：考慮狀態的持續期間，以及不同子序列的數目。每個人各算一個值。</p><p>Gabadinho 複雜度（Van Winkle &amp; Fasang 2017: 11）：轉換次數與縱貫熵，各除以最大值後取幾何平均。單一狀態的序列最小，所有狀態等長而且轉換次數最多的序列最大。Van Winkle &amp; Fasang (2017: 3) 說它對「沒有某些狀態」也敏感，所以能納入長期不在勞動力的人。</p><p>不需要記公式，記得每個量數在問哪一個問題就好。</p></div>
+</article>
+<article class="unit disc" id="s45" data-n="45">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 45 頁：課堂討論 ②　要證明台灣的「晚婚」是去標準化，你需要什麼證據？"><img src="week05-slides/45-1280.webp" srcset="week05-slides/45-1280.webp 1280w, week05-slides/45-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/45" alt="第 45 頁投影片：課堂討論 ②　要證明台灣的「晚婚」是去標準化，你需要什麼證據？"><figcaption class="sr">?　課堂討論 ②　要證明台灣的「晚婚」是去標準化，你需要什麼證據？　用 B&amp;M 的五個面向，列出你需要的資料。哪些台灣有，哪些沒有？　平均初婚年齡上升，屬於哪一個分支？還是兩個都不是？　如果大家一起延後，同齡人仍在差不多的時間結婚，這算去標準化嗎？　連到：Brückner &amp; Mayer (2005: 32–35, 43)；Kohli (2007: 263)</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>討論提示</div><p>第 1 題用 p. 35 的五個面向。提示：普及率要按出生世代算到某個年齡，年齡變異要有分位數，持續期間要有追蹤資料，事件間依存與序列要有個人的事件史。第 05 節會說明台灣的官方資料能做到哪裡。</p><p>第 2 題：平均數上升本身不屬於任何一支。要看普及率（某個年齡前已婚的比例）或離散度（四分位距）。</p><p>第 3 題對應 B&amp;M p. 43 的限定：婚姻年齡的延後不必然意味家庭形成樣式的去標準化。人們可能較晚結婚，但仍與同齡人在差不多的時間經歷此事件。用 Kohli (2007: 263) 的窄定義，這不算去標準化。用 B&amp;M 的普及率分支，若到某個年齡已婚的比例下降，就算。</p></div>
+</article>
+<section class="band" id="s46" data-n="46">
+  <div class="band-num" aria-hidden="true"><span>04</span></div>
+  <p class="band-k">第四節</p>
+  <h2>它真的發生了嗎？</h2>
+  <p class="band-en">Did it actually take place?</p>
+  <p class="band-d band-q"><b>這一節要回答</b>　三份研究的結論為什麼不同？看它們測什麼、測誰、和誰比。</p>
+  <p class="band-d"><b>本節文獻</b>　★ Brückner &amp; Mayer (2005: 35–49)；McMunn 等 (2015)；Van Winkle &amp; Fasang (2017)</p>
+  <div class="band-p" aria-hidden="true"><i class=""></i><i class=""></i><i class=""></i><i class="on"></i><i class=""></i><i class=""></i></div>
+  <div class="band-note"><p>第 04 節讀三份證據。先讀 Brückner &amp; Mayer (2005) 的後半，再讀兩篇延伸閱讀。</p><p>讀的時候帶著第 03 節的五個面向：每篇研究測了哪幾個面向？沒測哪幾個？</p><p>最後的課堂討論③問：這個問題本身問對了嗎？</p></div>
+</section>
+<article class="unit" id="s47" data-n="47">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 47 頁：三份證據一覽"><img src="week05-slides/47-1280.webp" srcset="week05-slides/47-1280.webp 1280w, week05-slides/47-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/47" alt="第 47 頁投影片：三份證據一覽"><figcaption class="sr">三份證據一覽　講者整理，頁碼見講解　B&amp;M (2005)：西德　McMunn 等 (2015)：英國　Van Winkle &amp; Fasang：歐洲 14 國　資料　德國生命歷程研究　三個出生世代追蹤研究　SHARELIFE 回溯工作史　世代　1919–1971 年生，八組　1946、1958、1970 年生　1918–1963 年生，13 組　年齡　比較到 27 歲　16 到 42 歲　15 到 45 歲　測什麼　轉銜年齡、四分位距、比例　工作、伴侶、子女的序列　就業軌跡的複雜度　和誰比　世代之間　世代之間、男女之間　世代之間，對照國家</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>出處：B&amp;M (2005: 35–36, 40)；McMunn 等 (2015: 60, 62–64)；Van Winkle &amp; Fasang (2017: 9–10, 20)。</p><p>三篇的差別，正好對應「結論取決於測什麼、測誰、和誰比」。</p><p>B&amp;M 測單一轉銜，而且因為最年輕世代受訪時 27 歲，完整的比較只到 27 歲。McMunn 等把工作與家庭合在一起看，到 42 歲。Van Winkle &amp; Fasang 只看就業，但用國家之間的差異當基準。</p><p>Van Winkle &amp; Fasang 的 13 組世代，是三年一組，最早與最晚兩組較寬（p. 8–9）。</p></div>
+</article>
+<article class="unit" id="s48" data-n="48">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 48 頁：B&amp;M 的資料：德國生命歷程研究"><img src="week05-slides/48-1280.webp" srcset="week05-slides/48-1280.webp 1280w, week05-slides/48-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/48" alt="第 48 頁投影片：B&amp;M 的資料：德國生命歷程研究"><figcaption class="sr">B&amp;M 的資料：德國生命歷程研究　Brückner &amp; Mayer (2005: 35–37, 40)　只做描述　沒有迴歸、沒有控制變項。分析排除外籍人士，以保持跨波可比（p. 36）。　四波回溯式生命史調查，1981 到 1999 年收集，涵蓋 1919 到 1971 年出生的西德人。　八個世代標籤：前六個是三年出生組的中點，例如「1920」指 1919–1921 年出生。1964 與 1971 是單一出生年。　量數：Kaplan–Meier 中位數年齡、四分位距（75% 與 25% 經歷事件的年齡差）、按年齡的比例。　最年輕世代受訪時 27 歲，所以完整的跨世代比較只到 27 歲。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>資料是德國生命歷程研究（German Life History Study）的西德部分，由 Karl Ulrich Mayer 主持（pp. 35–36）。四波：1981–83 年（1929–31、1939–41、1949–51 世代，2,171 份）、1985–87 年（1919–21 世代，1,412 份）、1989 年（1954–56、1959–61 世代，2,008 份）、1998–99 年（1964、1971 世代，2,909 份）。</p><p>世代標籤最容易引錯：表上的「1920」不是 1920 年出生者，而是 1919–1921 年出生者（p. 36）。</p><p>四分位距的定義（pp. 36–37）：75% 的出生世代已經歷該事件的年齡，減去 25% 已經歷的年齡，作為世代內變異的量數。</p><p>最後一波首次納入外籍人士，但本文的分析排除他們，以確保與較早系列完全可比（p. 36）。所以本文說不了移民的生命歷程。</p></div>
+</article>
+<article class="unit" id="s49" data-n="49">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 49 頁：學校到工作：全面延後"><img src="week05-slides/49-1280.webp" srcset="week05-slides/49-1280.webp 1280w, week05-slides/49-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/49" alt="第 49 頁投影片：學校到工作：全面延後"><figcaption class="sr">學校到工作：全面延後　Brückner &amp; Mayer (2005: 37)，表 1；中位數年齡　但沒有分散　離校年齡的四分位距：男性 1.5 年（1920）→ 3.3 年（1960）→ 3.0 年（1971）。　初次就業：多在狹窄的年齡範圍內。　最年輕三個世代，男女的就業年齡差已消失。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>表 1（p. 37）的中位數年齡。離校：男性 14.3 歲（1920）到 17.2 歲（1971），女性 14.4 到 17.6。初次就業：男性 18.1 到 20.3，女性 16.9 到 20.4。</p><p>延後很清楚。但去標準化要看離散度。p. 38：離校年齡的世代內變異只溫和增加，男性由 1920 世代的 1.5 年，增至 1960 年前後出生男性的 3.3 年，1971 年出生男性的 3.0 年。女性的增幅更漸進但驚人地相似。</p><p>p. 40：世代成員在相對狹窄的年齡範圍內進入勞動市場，1920 世代除外，因為他們在二戰期間與之後進入。該世代男性到 24 歲才達第 75 百分位，1930 與 1940 世代是 19 歲。較晚世代的四分位比跨世代穩定。</p><p>p. 40 另一個觀察：男性初次就業的中位數年齡總是、而且日益早於完成訓練的年齡。從工作回到教育的轉銜日益常見。這是本文承認的工作面去標準化證據之一。</p></div>
+</article>
+<article class="unit" id="s50" data-n="50">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 50 頁：完成訓練：1955 世代的「等候大廳」"><img src="week05-slides/50-1280.webp" srcset="week05-slides/50-1280.webp 1280w, week05-slides/50-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/50" alt="第 50 頁投影片：完成訓練：1955 世代的「等候大廳」"><figcaption class="sr">完成訓練：1955 世代的「等候大廳」　Brückner &amp; Mayer (2005: 38–40)　時期效果，不是趨勢　變化集中在特定世代，然後回落。這不符合線性的去標準化。　男性完成訓練的中位數年齡：1950 世代 20.3 歲，1955 世代 24.8 歲，增加 4½ 年。之後回落到 22.3（1964）、23.5（1971）。　1955 世代的第 75 百分位是 29.5 歲（1950 世代 26.8，1960 世代 27.7）。　1970 與 1980 年代中期勞動市場困難，教育體系成了「等候大廳」。這些世代被稱為「延後的世代」。　女性完成訓練年齡的四分位距：3.4（1920）、3.5（1950），1955 世代達 6.8。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>表 1 與 p. 38：男性完成訓練的中位數年齡由 1920 世代的 19.3 升到 1955 世代的 24.8。大部分變化發生在 1950 與 1955 世代之間，增加 4½ 年。其後回落到 1964 世代的 22.3 與 1971 世代的 23.5。</p><p>p. 38：自 1950 世代起，完成教育年齡的變異對女性強烈增加，對男性則下降。女性的四分位距在 1920 世代為 3.4，1950 世代 3.5，1955 世代達 6.8 的高峰。</p><p>p. 39：1955 世代的第 75 百分位是 29.5，相較於 1950 世代 26.8 與 1960 世代 27.7。1970 年代中期與 1980 年代中期的困難勞動市場，可能助長了在教育體系多待的傾向。教育體系充當了前景稀少的年輕人的「等候大廳」。這些世代因此被稱為「延後的世代」（Mayer 1994）。</p><p>這就是 B&amp;M 說的時期效果：變化集中在某些世代，之後回落。</p></div>
+</article>
+<article class="unit" id="s51" data-n="51">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 51 頁：工作流動：27 歲前很穩定，除了 1971 世代"><img src="week05-slides/51-1280.webp" srcset="week05-slides/51-1280.webp 1280w, week05-slides/51-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/51" alt="第 51 頁投影片：工作流動：27 歲前很穩定，除了 1971 世代"><figcaption class="sr">工作流動：27 歲前很穩定，除了 1971 世代　Brückner &amp; Mayer (2005: 41)，表 3；27 歲前每年的換工作數　怎麼讀　27 歲前的工作數很穩定：男性約 2.3，女性約 2.0。　1971 世代男性的換工作率增加超過一倍：0.7 → 1.8。　註 2：不是剛進職場的搜尋造成的。　其他研究的證據相反，作者不裁決。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>表 3（p. 41）：27 歲前所持的工作數跨世代顯著穩定，男性約 2.3，女性約 2.0。只有男女的 1971 世代與女性的 1920 世代較高，約三份工作。</p><p>但分母變了：較晚世代較晚進入勞動市場，同樣數目的工作被分配在較短的時間上。圖上是每年的換工作數。1971 年出生男性的換工作率增加超過一倍（1964 世代 0.7，1971 世代 1.8）。</p><p>註 2（pp. 49–50）排除求職行為的解釋：1950 年後出生世代到 27 歲的勞動參與期間非常相似。若是剛進職場的搜尋造成的，1960 與 1964 世代也應有同樣的換工作數。</p><p>pp. 41–42 並列兩項相反的證據：Mertens &amp; Mayer (2004) 顯示 1960 前後與 1971 世代的非自願轉換與向下流動風險強烈增加。Hillmert (2002) 發現 1960 到 1971 年出生世代的職業穩定性沒有下降。</p><p>這是全文唯一符合「突然的不連續」判準的發現，但作者選擇不把它當成趨勢（p. 49）。</p></div>
+</article>
+<article class="unit" id="s52" data-n="52">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 52 頁：家庭：27 歲時已婚的比例"><img src="week05-slides/52-1280.webp" srcset="week05-slides/52-1280.webp 1280w, week05-slides/52-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/52" alt="第 52 頁投影片：家庭：27 歲時已婚的比例"><figcaption class="sr">家庭：27 歲時已婚的比例　Brückner &amp; Mayer (2005: 41)，表 3　怎麼讀　1940 世代：男性 64%，女性 85%。　1971 世代：男性 17%，女性 39%。　較晚結婚不一定是去標準化。同齡人可能仍在差不多的時間結婚（p. 43）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>表 3（p. 41）的「已婚比例」：受訪時或 27 歲時已婚的比例（表上以 0.41、0.64 等比例呈現，這裡換成百分比）。這是本文被引用最多的一組數字。</p><p>p. 43：1971 世代男性受訪時只有 17% 已婚。1940 世代男性在此年齡已婚的可能性幾乎是其四倍（64%），1960 年出生者也有兩倍（36%）。女性在 1920 與 1940 世代之間由 67% 增至 85%，然後回落。1971 年出生女性在 27 歲前已婚的可能性，是 1950 年前後出生女性的一半。</p><p>作者立刻加上限定（p. 43）：婚姻年齡的延後不必然意味家庭形成樣式的去標準化。人們可能較晚結婚，但仍與同齡人在大致相同的時間經歷此事件，只是比父母與兄姊晚。</p><p>1971 世代的中位結婚年齡觀察不到，因為受訪時還不到一半已婚，所以作者改用按年齡的比例（p. 37）。</p><p>回到開場：台灣 25–29 歲的曾婚比例，是同一種指標的近似。</p></div>
+</article>
+<article class="unit" id="s53" data-n="53">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 53 頁：婚姻時機：從尖峰到平台"><img src="week05-slides/53-1280.webp" srcset="week05-slides/53-1280.webp 1280w, week05-slides/53-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/53" alt="第 53 頁投影片：婚姻時機：從尖峰到平台"><figcaption class="sr">婚姻時機：從尖峰到平台　Brückner &amp; Mayer (2005: 44–45)；曲線為講者示意　結婚年齡　尖峰：標準化　平台：去標準化　判準：若有標準化的結婚年齡，曲線應陡峭、尾巴短。標準降格時，曲線變平、尾巴變長。　女性：1940 與 1950 世代傾向在相同年齡結婚。1960 世代更像平台，兩端都有寬尾。　男性：婚姻的位置沒那麼整齊。1950 世代有數個高峰，與教育參與有關。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>圖 4（女性）與圖 5（男性）是按年齡的結婚比例分布。作者先立下形狀判準，再讀圖（p. 44）：若真有標準化的結婚年齡，應看到陡峭而尾巴短的曲線，高峰容納大多數世代成員。年齡標準降格時，曲線變平、高峰較不明顯、尾巴變長。</p><p>女性（pp. 44–45）：1940 與 1950 年前後出生女性確實傾向在相同年齡結婚。自 1955 世代開始曲線變平。1960 世代在十幾歲後段到二十多歲後段更像一個平台，兩個方向都有寬尾。</p><p>男性（p. 45）：男性婚姻在生命歷程中的位置遠沒有那麼整齊。1950 年前後出生男性有數個高峰，在二十出頭、二十五歲上下與三十出頭，與「婚姻行為由教育參與所結構化」一致（Huinink &amp; Mayer 1995）。</p><p>左邊的兩條曲線是講者依這個判準畫的示意，不是原圖的資料。</p></div>
+</article>
+<article class="unit" id="s54" data-n="54">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 54 頁：第一胎與離家"><img src="week05-slides/54-1280.webp" srcset="week05-slides/54-1280.webp 1280w, week05-slides/54-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/54" alt="第 54 頁投影片：第一胎與離家"><figcaption class="sr">第一胎與離家　Brückner &amp; Mayer (2005: 42–46)，表 1、表 3　27 歲前已有子女　男性：43%（1940）→ 30%（1950）→ 11%（1971）。　女性：68%（1940）→ 27%（1971）。　1955 世代女性有相當一部分在三十多歲才生第一胎。　離家：不升反降　自組家戶的中位數年齡，男性 29.7（1920）→ 23.3（1960）→ 24.2（1971）。　女性 28.3（1920）→ 20.8（1955）→ 21.8（1971）。　延後求學，沒有阻止年輕人搬出去自組家戶。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>左欄（pp. 45–46，表 3）：到 27 歲，1940 年前後出生男性有 43% 已有第一胎，1950 年前後出生者只有 30%，1971 年出生男性降到 11%。女性在 1940 世代達到 68% 的高峰，然後穩定下降到 1971 年出生者的 27%。</p><p>作者承認第一胎是全文唯一難以概括的轉銜（p. 46）。圖 7 顯示第一胎對女性比對男性更受年齡結構化，1955 與 1960 世代的曲線攤開。</p><p>右欄（p. 42，表 1）：這是對「延後論」最反直覺的發現。學校、訓練與工作的延後，並未阻止世代成員搬出去自組家戶。家戶形成的中位數年齡由二十多歲後段略降至二十出頭。</p><p>四分位距方面，1920 年前後出生者的變異很大，之後陡降到 1950 世代，較年輕男性世代溫和增加（p. 42）。</p></div>
+</article>
+<article class="unit" id="s55" data-n="55">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 55 頁：B&amp;M 的判決"><img src="week05-slides/55-1280.webp" srcset="week05-slides/55-1280.webp 1280w, week05-slides/55-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/55" alt="第 55 頁投影片：B&amp;M 的判決"><figcaption class="sr">B&amp;M 的判決　Brückner &amp; Mayer (2005: 47–49)　“　在私人生活領域，有相當的證據支持去標準化論旨。在教育、訓練與工作領域，支持很少。　Brückner &amp; Mayer (2005: 48–49)；講者譯　看到的不是趨勢，而是某些世代的例外經驗：戰爭世代、勞動市場緊縮的 1955 世代，以及 1971 世代的工作流動增加。男女在教育與勞動參與上反而趨同。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>工作面（p. 47）：轉銜越來越晚。男女在學校、訓練與工作上變得更相似。訓練與工作的序列變得更模糊（fuzzier），1955 與 1960 世代尤其如此。否則，去標準化假設所預期的年齡變異增加，結果是不存在或相當小。</p><p>家庭面（p. 48）：1920 到 1940 世代的年齡鞏固，其後是更大的變異性，對女性更明顯。學校、訓練、工作與家庭形成之間的去耦合日增，例如組成獨立家戶不再與婚姻或穩定工作耦合。</p><p>同頁另一句常被漏掉：以本文的標準衡量，實際上存在一種生命歷程的同質化，因為男女在教育與勞動參與上趨同。</p><p>觸發家庭變化的三個長期發展（pp. 48–49）：教育擴張、1970 年代初開始的價值變遷、婦女運動。</p><p>三項保留（p. 49）：只看了生命早期的指標，西德可能是特例，不外推未來。所以凡以本文論退休或中年者，都是越界引用。</p></div>
+</article>
+<article class="unit" id="s56" data-n="56">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 56 頁：McMunn 等：英國三個出生世代，工作與家庭一起看"><img src="week05-slides/56-1280.webp" srcset="week05-slides/56-1280.webp 1280w, week05-slides/56-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/56" alt="第 56 頁投影片：McMunn 等：英國三個出生世代，工作與家庭一起看"><figcaption class="sr">McMunn 等：英國三個出生世代，工作與家庭一起看　McMunn 等 (2015: 62–65)　三個問題　去標準化與分化有沒有增加？男女有沒有趨同？教育與工作家庭類型的關聯有沒有改變？　三個出生世代：1946 年（n = 3,012）、1958 年（n = 9,616）、1970 年（n = 8,158）。　16 到 42 歲，每年記錄三個領域：工作（全時、部分工時、全職照顧子女、其他）、伴侶（已婚、同居、無）、子女（無、最小子女 0–4 歲、5–16 歲）。　組合成 36 種狀態，用多軌道序列分析，把每個人歸到 12 種理論上的理想型。　量數：多樣性（Shannon 熵、Simpson 指數）與複雜度（Elzinga 指數）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>資料（pp. 62–63）：MRC National Survey of Health and Development（1946）、National Child Development Study（1958）、British Cohort Study（1970）。每個世代都是某一週出生的嬰兒。分析人數在多重插補之後（p. 64）。</p><p>測量（p. 63）：每年的工作、伴侶、子女狀態，組成 4 × 3 × 3＝36 種聯合狀態，26 個年齡，每人一條序列。到 42 歲為止，因為那是 1970 世代目前可得的最高年齡。</p><p>方法（p. 64）：前兩位作者各自依理論設計理想型，比對後同意 12 種參照序列（表 1），例如「工作，無家庭」「工作，早成家」「部分工時，早成家」。每個人被歸到最接近的理想型。用的是 Dynamic Hamming 距離。</p><p>量數見第 03 節最後一頁。多樣性問人與人之間，複雜度問一個人之內。</p></div>
+</article>
+<article class="unit" id="s57" data-n="57">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 57 頁：多樣性：一個世代比一個世代高"><img src="week05-slides/57-1280.webp" srcset="week05-slides/57-1280.webp 1280w, week05-slides/57-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/57" alt="第 57 頁投影片：多樣性：一個世代比一個世代高"><figcaption class="sr">多樣性：一個世代比一個世代高　McMunn 等 (2015: 66)，表 3；Shannon 熵　怎麼讀　男女都一個世代比一個世代分散（p. 65）。　女性始終比男性多樣，但差距縮小。　Simpson 指數同方向：男性 0.686 → 0.796，女性 0.858 → 0.888。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>表 3（p. 66）。Shannon 熵：男性 1.45、1.66、1.77，女性 2.09、2.25、2.31。最大值約 2.5，也就是 12 個類型的自然對數。</p><p>Simpson 多樣性指數：男性 0.686、0.760、0.796，女性 0.858、0.882、0.888。</p><p>p. 65 的文字：兩個量數都顯示，男女在 12 種工作家庭類型上的分散，隨每個後續世代顯著增加。女性在所有世代都比男性多樣得多，但性別差異跨世代縮小。</p><p>依第 03 節的定義，這是人與人之間的多樣性上升，也就是 McMunn 等所說的去標準化。</p></div>
+</article>
+<article class="unit" id="s58" data-n="58">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 58 頁：複雜度：伴侶變複雜，親職變簡單"><img src="week05-slides/58-1280.webp" srcset="week05-slides/58-1280.webp 1280w, week05-slides/58-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/58" alt="第 58 頁投影片：複雜度：伴侶變複雜，親職變簡單"><figcaption class="sr">複雜度：伴侶變複雜，親職變簡單　McMunn 等 (2015: 65)，表 2；Elzinga 複雜度指數　出生世代　工作 男　工作 女　伴侶 男　伴侶 女　子女 男　子女 女　3.06　6.28　4.08　3.52　5.81　6.19　2.74　6.00　5.24　4.84　5.55　5.82　3.41　5.96　5.46　5.39　4.67　5.31　伴侶史更複雜：更多人婚前同居，或分手再組。親職變簡單：生得更少，或不生。女性的工作變簡單：更多人持續全時就業。男性的工作 1958 世代最低、1970 世代最高（pp. 65, 68）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>表 2（p. 65）是三個領域各自的複雜度，括號內的信賴區間這裡省略。</p><p>伴侶：男女都一個世代比一個世代複雜。親職：跨世代變簡單。作者另外分析（未呈現）：1958 世代的父母生的孩子比 1946 世代少，1970 世代有更多人到 42 歲還沒有孩子（p. 65）。</p><p>工作：男女不同。女性跨世代變簡單。男性 1958 世代最低、1970 世代最高。所有世代中，男性的工作史都遠比女性簡單。</p><p>討論（p. 68）：女性工作變簡單，與美國（Worts 等 2013）和德國（Brückner &amp; Mayer 2005）的發現一致，因為更多人維持連續或接近連續的全時就業。男性 1970 世代的複雜度最高，可能反映這個世代在工作生命中更容易遭遇失業（Jenkins 2010）。</p></div>
+</article>
+<article class="unit" id="s59" data-n="59">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 59 頁：男女趨同，但幾乎是女性單方面"><img src="week05-slides/59-1280.webp" srcset="week05-slides/59-1280.webp 1280w, week05-slides/59-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/59" alt="第 59 頁投影片：男女趨同，但幾乎是女性單方面"><figcaption class="sr">男女趨同，但幾乎是女性單方面　McMunn 等 (2015: 66–69)，表 4；%　怎麼讀　趨同幾乎全來自女性的持續全時就業（p. 68）。　看不到男性為親職減少工時。　1970 世代最常見的女性類型：「工作，無家庭」（18.7%）。　部分工時與中斷型，仍排第二、第三。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 66：多項式模型中性別與世代的交互作用顯著（Wald 檢定 p = 0.02），表示工作家庭類型的性別差異跨世代顯著縮小。</p><p>女性落在六種「持續全時」類型的比例，原文寫 31%、47%、60%（p. 66）。圖上是講者依表 4 加總的 30.8、46.7、60.1。</p><p>男性的「工作，早成家」由 46.8% 降到 14.5%。「工作，無家庭」男性由 11.1% 升到 25.7%，女性由 4.8% 升到 18.7%（表 4，p. 67）。</p><p>p. 68：這個趨同幾乎完全來自更多女性採取傳統「男性」的就業型態，而不是男性減少工時或為親職暫停工作。</p><p>p. 69：1970 世代中，長期部分工時與三十多歲的中斷，仍是女性第二與第三常見的軌跡。社會變遷仍未完成（引 Esping-Andersen 2009）。最顯眼的變化是到 40 歲出頭仍幾乎沒有家庭連結、但與勞動市場連結很強的類型。婚姻作為制度的弱化，只在最近的世代看得到。</p><p>教育（pp. 66–67, 69–70）：高教育者最可能結合持續就業與不生或晚生，無學歷者最可能工作與家庭的連結都弱。教育與世代的交互作用不顯著，關聯跨世代穩定。用 Kohli (2007: 265–266) 的判準，沿著教育產生的差異，比較像受社會形塑的樣式。</p></div>
+</article>
+<article class="unit" id="s60" data-n="60">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 60 頁：Van Winkle &amp; Fasang：拿國家當尺"><img src="week05-slides/60-1280.webp" srcset="week05-slides/60-1280.webp 1280w, week05-slides/60-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/60" alt="第 60 頁投影片：Van Winkle &amp; Fasang：拿國家當尺"><figcaption class="sr">Van Winkle &amp; Fasang：拿國家當尺　Van Winkle &amp; Fasang (2017: 9–13)　設計的巧思　用國家之間的差異當基準，判斷世代之間的變化算大還是小。　SHARELIFE：14 個歐洲國家，21,054 人，1918 到 1963 年出生。　15 到 45 歲的就業軌跡，共 30 年。狀態：教育、全時、部分工時、非就業、退休，並區分第幾份工作。　量數：Gabadinho 複雜度，0 到 100。　交叉分類多層次模型：把複雜度的變異，分給國家與出生世代。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>資料（pp. 9–10）：SHARE Job Episodes Panel，由 SHARELIFE 的回溯工作史建成。樣本 21,054 人，1918 到 1963 年出生，14 個歐洲國家。</p><p>狀態（p. 10）：教育、全時就業、部分工時就業、非就業、退休。就業狀態另以第幾份工作區分，所以能看到工作之間的流動。部分工時由受訪者主觀界定。</p><p>量數（p. 11）：Gabadinho 等 (2011) 的複雜度指數，見第 03 節。</p><p>模型（pp. 12–13）：每個人同時屬於一個國家與一個出生世代。交叉分類的隨機效果模型，可以同時估計複雜度的變異有多少歸於國家、多少歸於世代。作者提醒（p. 13）：這個做法沒有解決年齡、時期、出生世代的識別問題（第 4 週），它聚焦於世代效果。</p><p>研究問題（p. 9）：就業軌跡的複雜度，在國家之間的差異大，還是在世代之間的差異大？</p></div>
+</article>
+<article class="unit" id="s61" data-n="61">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 61 頁：國家之間的差異，遠大於世代之間"><img src="week05-slides/61-1280.webp" srcset="week05-slides/61-1280.webp 1280w, week05-slides/61-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/61" alt="第 61 頁投影片：國家之間的差異，遠大於世代之間"><figcaption class="sr">國家之間的差異，遠大於世代之間　Van Winkle &amp; Fasang (2017: 16, 20)，表 3；複雜度變異歸於各層次的比例（%）　怎麼讀　平均複雜度 16（0 到 100）。　最不複雜：希臘、西班牙。最複雜：瑞典、瑞士、丹麥。　世代間確有上升，但不是線性：1930 與 1950 年代出生者上升。　就業保護降低複雜度，失業給付提高複雜度（表 4）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>表 3（p. 20）的組內相關：全體樣本中，複雜度變異有 15.02% 歸於國家，2.07% 歸於出生世代。男性 14.62% 與 1.38%，女性 15.97% 與 2.54%。p. 16 的文字是 15% 與 2%。</p><p>p. 16：平均複雜度 16（0 到 100）。p. 19：希臘與西班牙最不複雜，瑞典、瑞士與丹麥最複雜，比利時與西德居中。</p><p>p. 19：世代間確有朝更複雜的趨勢，支持假設 1，但不是線性。1930 年代出生者可能遭遇二戰時學校到工作的制度崩解，1950 年代出生者在 1970 年代石油危機時進入勞動市場（pp. 19–20）。</p><p>表 4（p. 22）：就業保護立法（EPL）的係數為 −0.954（模型 2），失業給付替代率（WRR）為 0.049（模型 3），都顯著。納入個人特徵與兩項制度後，國家層次的變異減少 40%，世代層次減少 30%（p. 21）。</p><p>限制（p. 24）：沒有英國與愛爾蘭這種自由市場經濟的代表。1963 年以後出生者還看不到完整軌跡。國家與世代的群數少，變異成分可能被低估，所以這是一個保守的檢驗（pp. 24–25）。</p></div>
+</article>
+<article class="unit" id="s62" data-n="62">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 62 頁：三份證據放在一起"><img src="week05-slides/62-1280.webp" srcset="week05-slides/62-1280.webp 1280w, week05-slides/62-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/62" alt="第 62 頁投影片：三份證據放在一起"><figcaption class="sr">三份證據放在一起　講者整理　工作面　家庭面　教訓　Brückner &amp; Mayer (2005)　延後與模糊，但沒有分散。1971 世代例外　普及率下降、時機分散　大多數指標都要變，判準嚴格　McMunn 等 (2015)　女性變簡單，男性 1970 世代變複雜　多樣性上升，伴侶史更複雜　工作與家庭要合在一起看　Van Winkle &amp; Fasang (2017)　世代間變化很小　未測　用國家當尺，世代的變化就顯得小　結論取決於測什麼（單一轉銜或整段序列）、測誰（男性、女性、哪些世代），以及和誰比（上一個世代，或另一個國家）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>這張表是講者的整理。三篇的結論方向其實相容：工作面變化小，家庭面變化大，女性的工作朝持續就業匯聚。</p><p>不同的是測量的單位與比較的基準。B&amp;M 測單一轉銜的年齡與比例。McMunn 等測整段序列，而且把工作與家庭合在一起。Van Winkle &amp; Fasang 只測就業，但拿國家之間的差異當尺。</p><p>Kohli (2007: 263–265) 的判決與這三篇一致：家庭面有去標準化，但比宣稱的有限。工作面的三段式結構對男性仍穩固，女性朝它匯聚。</p><p>下一頁的討論問：這個問題本身問對了嗎？</p></div>
+</article>
+<article class="unit disc" id="s63" data-n="63">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 63 頁：課堂討論 ③　「去標準化有沒有發生」這個問題，問對了嗎？"><img src="week05-slides/63-1280.webp" srcset="week05-slides/63-1280.webp 1280w, week05-slides/63-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/63" alt="第 63 頁投影片：課堂討論 ③　「去標準化有沒有發生」這個問題，問對了嗎？"><figcaption class="sr">?　課堂討論 ③　「去標準化有沒有發生」這個問題，問對了嗎？　三份研究都說工作面變化小。Kohli 提醒：形式重構不等於實質多元化。你會用哪個指標，判斷台灣的工作有沒有去標準化？　Van Winkle &amp; Fasang 拿國家之間的差異當基準。把台灣放進去，你預期它落在哪裡？為什麼？　McMunn 等發現教育梯度沒有改變。這比較像受社會形塑的樣式，還是選項真正多元化？　連到：Kohli (2007: 263–266)；本講第 04 節的三份證據</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>討論提示</div><p>第 1 題對應 Kohli (2007: 263–264)：84% 到 67% 的兩種讀法。台灣可以想到的指標：非典型就業比例、勞保投保年資的中斷、初次就業年齡的分布。想的時候，同時顧及「形式」與「實質」。</p><p>第 2 題對應 Van Winkle &amp; Fasang (2017: 5–8) 的資本主義多樣性架構。提示：台灣的中小企業比重、就業保護與失業給付的水準。沒有標準答案，重點是說出理由。</p><p>第 3 題對應 Kohli (2007: 265–266) 的判準：差異若沿著階級或教育產生，是受社會形塑的樣式。差異若出現在同一群體內部，才是選項真正多元化。</p></div>
+</article>
+<section class="band" id="s64" data-n="64">
+  <div class="band-num" aria-hidden="true"><span>05</span></div>
+  <p class="band-k">第五節</p>
+  <h2>台灣：去制度化，還是從未完成制度化？</h2>
+  <p class="band-en">Taiwan: de-institutionalized, or never fully institutionalized?</p>
+  <p class="band-d band-q"><b>這一節要回答</b>　第 3 週第 88 頁的問題：台灣的生命歷程是去制度化，還是從未完成制度化？</p>
+  <p class="band-d"><b>本節文獻</b>　內政部戶籍統計；翁康容、謝雨生 (2018)；李大正、楊靜利 (2004)；簡文吟 (2004)；Raymo 等 (2015)</p>
+  <div class="band-p" aria-hidden="true"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="on"></i><i class=""></i></div>
+  <div class="band-note"><p>第 05 節回到台灣。用兩種材料：官方統計自己算，以及台灣的實證研究。</p><p>順序：先說明資料能做到哪裡，再看普及率與離散度兩張圖，然後看研究文獻，最後用 B&amp;M 的五個面向整理，並回答第 3 週的問題。</p><p>本節的網路來源都列在講解與最後的補充文獻頁。</p></div>
+</section>
+<article class="unit" id="s65" data-n="65">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 65 頁：台灣的資料，能做到哪裡"><img src="week05-slides/65-1280.webp" srcset="week05-slides/65-1280.webp 1280w, week05-slides/65-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/65" alt="第 65 頁投影片：台灣的資料，能做到哪裡"><figcaption class="sr">台灣的資料，能做到哪裡　內政部戶政司；內政統計查詢網；行政院主計總處；講者整理　換算規則　t 年底 25–29 歲＝ t−29 到 t−25 年出生。每一點是五個出生年的合併世代。　戶籍年底現住人口，按性別、五歲年齡組、婚姻狀況分：1996 年起連續可得。　沒有公開的單一年齡婚姻狀況表。只能用 25–29 歲（中點 27 歲）近似 B&amp;M 的「27 歲時」。　女性「有偶率」可以推到 1974 年，但只算目前有配偶的人。　初婚年齡的四分位數只有 2021–2025 年。生第一胎的年齡，可以從單一年齡的出生數計算。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>查過的來源：戶政司「人口統計資料快速下載」的各張婚姻狀況表、內政部開放資料 API、《人口統計年刊》、內政統計查詢網、2000 年普查的婚姻狀況表。有婚姻狀況的表全部是五歲年齡組。有單一年齡的表（例如年刊的年底人口按單一年齡分）沒有婚姻狀況。</p><p>要拿到確切的 27 歲，可行的做法是主計總處人力資源調查的個體資料（中研院學術調查研究資料庫 SRDA），需要申請。本講義沒有使用。</p><p>戶籍資料的定義：現住人口是有戶籍的國民，年底、實足年齡。未設籍的外籍配偶不在分母內。</p><p>網址：戶政司 <a href="https://www.ris.gov.tw/app/portal/346" target="_blank" rel="noopener">https://www.ris.gov.tw/app/portal/346</a> ；內政統計查詢網 <a href="https://statis.moi.gov.tw/micst/webMain.aspx?sys=100&amp;funid=defjsp" target="_blank" rel="noopener">https://statis.moi.gov.tw/micst/webMain.aspx?sys=100&amp;funid=defjsp</a></p></div>
+</article>
+<article class="unit" id="s66" data-n="66">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 66 頁：25–29 歲時曾婚的比例，按出生世代"><img src="week05-slides/66-1280.webp" srcset="week05-slides/66-1280.webp 1280w, week05-slides/66-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/66" alt="第 66 頁投影片：25–29 歲時曾婚的比例，按出生世代"><figcaption class="sr">25–29 歲時曾婚的比例，按出生世代　內政部戶籍統計，年底現住人口；橫軸為出生年（19xx 或 20xx）　怎麼讀　女性：59.5% → 18.8%。　男性：35.3% → 11.7%。　30–34 歲也一樣：女性 83.6%（1962–66 年出生）→ 49.2%（1987–91 年出生）。　下降在 1970 年代出生的世代最快，之後趨緩。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>曾婚＝有偶＋離婚／終止結婚＋喪偶，也就是 1 減未婚比例。每一點取該世代全體正好 25–29 歲的那一年年底，例如 1967–71 年出生取 1996 年底，1996–2000 年出生取 2025 年底。最後一點與前一點重疊一年（1996 年出生）。</p><p>數值：男性 35.3、28.7、20.1、15.2、13.4、12.8、11.7。女性 59.5、49.3、36.6、30.0、24.1、20.8、18.8。</p><p>30–34 歲（中點 32 歲）可以往前推到 1962–66 年出生：女性 83.6、77.8、69.2、61.9、57.5、49.2，男性 68.3、63.5、54.2、44.9、40.6、35.0。</p><p>這是 B&amp;M 第一個面向，普及率。跟西德的 27 歲已婚比例（第 04 節）方向相同。</p><p>資料：內政統計查詢網 c0110301「15歲以上婚姻狀況─按區域別、年齡別分」（1996–2025），與戶政司「人口數按年齡及婚姻狀況」（2007–2025）重疊年份逐格相同。<a href="https://statis.moi.gov.tw/micst/webMain.aspx?sys=100&amp;funid=defjsp" target="_blank" rel="noopener">https://statis.moi.gov.tw/micst/webMain.aspx?sys=100&amp;funid=defjsp</a></p></div>
+</article>
+<article class="unit" id="s67" data-n="67">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 67 頁：女性：可以往前推到 1945–49 年出生"><img src="week05-slides/67-1280.webp" srcset="week05-slides/67-1280.webp 1280w, week05-slides/67-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/67" alt="第 67 頁投影片：女性：可以往前推到 1945–49 年出生"><figcaption class="sr">女性：可以往前推到 1945–49 年出生　內政部戶政司「婦女有偶率」；講者依年底年齡換算出生世代；橫軸為出生年（19xx）　怎麼讀　有偶率不含離婚、喪偶。　25–29 歲：83.6%（1945–49）→ 17.2%（1995–99）。　下降最快：1960–64 到 1975–79 年出生，68.1% → 36.6%。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>戶政司的「婦女有偶率」從 1974 年起逐年可得，所以女性可以往前推到 1945–49 年出生的世代。1974 年底 25–29 歲的女性，就是 1945–49 年出生。</p><p>它是目前有配偶的比例，不是曾婚比例。兩者的差大致是離婚與喪偶者。1970–74 年出生的女性在 25–29 歲時，有偶率 50.8%，曾婚比例 54.4%。</p><p>數值（25–29 歲）：83.6、79.3、75.7、68.1、59.5、50.8、36.6、27.6、22.8、19.3、17.2。30–34 歲：90.6、87.4、84.1、79.8、74.4、65.4、56.1、52.0、46.7、40.3。</p><p>2015 年原表的值與同年五歲組人數重算的值相差約 0.2 個百分點，這裡保留原表值。男性沒有同樣長的線上資料。</p><p>資料：戶政司人口統計資料快速下載「婦女有偶率」<a href="https://www.ris.gov.tw/app/portal/346" target="_blank" rel="noopener">https://www.ris.gov.tw/app/portal/346</a></p></div>
+</article>
+<article class="unit" id="s68" data-n="68">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 68 頁：年齡也變分散了嗎？只能看年份"><img src="week05-slides/68-1280.webp" srcset="week05-slides/68-1280.webp 1280w, week05-slides/68-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/68" alt="第 68 頁投影片：年齡也變分散了嗎？只能看年份"><figcaption class="sr">年齡也變分散了嗎？只能看年份　內政部出生統計與《人口統計年刊》表 45；講者計算　生第一胎 Q1–Q3（歲）　23–29　26–32　27–34　28–35　生第一胎 標準差（歲）　4.71　4.72　5.28　5.34　初婚 Q1–Q3，女（歲）　未公布　未公布　26.5–33.7　27.0–34.5　初婚 Q1–Q3，男（歲）　未公布　未公布　27.8–35.7　28.5–37.2　這是按年份的分布，混合了不同出生世代，不是 B&amp;M 的世代四分位距。第一胎的四分位數與標準差為講者依單一年齡出生數計算，四分位數未做組內內插。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>這一頁對應 B&amp;M 的第二個面向，年齡變異。但台灣的官方資料只有按年份（期間）的分布。</p><p>生第一胎：內政統計查詢網 c0120106「出生人數生母年齡概況─按生育胎次分」，1996–2025 年有生母單一年齡。講者依此計算四分位數與標準差。四分位數是累計比例首次達到該分位的實足年齡。以此算出的平均年齡與官方值相差在 0.02 歲以內。</p><p>初婚：《人口統計年刊》表 45，婚前婚姻狀況為未婚者。官方四分位數只在 2021–2025 年的年刊附件中取得。</p><p>讀法：第一胎的四分位距由 6 歲變成 7 歲，標準差由 4.71 升到 5.34。有離散，但幅度有限。初婚的四分位距在 2021 到 2025 年間略為擴大，男性由 7.9 歲變成 8.7 歲。</p><p>年刊頁面：<a href="https://www.ris.gov.tw/documents/html/5/2/popudata-quart-pub.html" target="_blank" rel="noopener">https://www.ris.gov.tw/documents/html/5/2/popudata-quart-pub.html</a></p></div>
+</article>
+<article class="unit" id="s69" data-n="69">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 69 頁：台灣的研究：家庭的時機與普及率在變"><img src="week05-slides/69-1280.webp" srcset="week05-slides/69-1280.webp 1280w, week05-slides/69-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/69" alt="第 69 頁投影片：台灣的研究：家庭的時機與普及率在變"><figcaption class="sr">台灣的研究：家庭的時機與普及率在變　翁康容、謝雨生 (2018)；Chen &amp; Chen (2014)；Raymo 等 (2015)；Cheng &amp; Cohen (2025)　對照 Kohli 的判準　差異沿著性別、家庭社經地位與教育產生。比較像「受社會形塑的樣式」，不是全面的去標準化。　1935–1984 年出生世代：轉至成人的歷程拉長，事件順序更彈性，初婚的定錨作用減弱（翁康容、謝雨生 2018）。　50 歲未婚：1980 到 2010 年，男性 5.0% → 10.1%，女性 0.9% → 8.4%（Raymo 等 2015）。　低教育男性最可能不婚：1968–72 年出生、小學程度的男性，2012 年有 42% 從未結婚（Chen &amp; Chen 2014）。　初婚年齡的變異擴大，只見於未完成高中的女性。高教育女性穩定（Cheng &amp; Cohen 2025）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>翁康容、謝雨生 (2018)：1996 年台灣社會變遷基本調查與 2005 年東亞社會階層與社會流動研究，N＝7,248，1935–1984 年出生，多軌道序列分析。摘要的發現：持續期增長、生命事件順序彈性增加、起步時間由早變晚、第一個事件由完成學業轉為更多人先開始工作。初婚的定錨作用減弱。性別與家庭社會階層持續影響。本講義只讀到摘要。</p><p>Raymo 等 (2015) 的數字在 Non-marriage and childlessness 一節（作者稿，無期刊頁碼）。</p><p>Chen &amp; Chen (2014) 與 Cheng &amp; Cohen (2025) 只讀到摘要。前者用 1991、1996、2001、2006 年社會變遷調查。後者用婦女婚育與就業調查，教育差異在 1960 年後出生的女性更明顯。</p><p>右欄是講者的整理，依據 Kohli (2007: 265–266) 的判準。</p><p>網址：翁康容、謝雨生 <a href="https://doi.org/10.6676/TS.201812_(36).04" target="_blank" rel="noopener">https://doi.org/10.6676/TS.201812_(36).04</a> ；Raymo 等 <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6070151/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC6070151/</a> ；Chen &amp; Chen <a href="https://doi.org/10.1177/0192513X14538026" target="_blank" rel="noopener">https://doi.org/10.1177/0192513X14538026</a> ；Cheng &amp; Cohen <a href="https://doi.org/10.1080/17441730.2024.2352672" target="_blank" rel="noopener">https://doi.org/10.1080/17441730.2024.2352672</a></p></div>
+</article>
+<article class="unit" id="s70" data-n="70">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 70 頁：婚育仍綁在一起"><img src="week05-slides/70-1280.webp" srcset="week05-slides/70-1280.webp 1280w, week05-slides/70-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/70" alt="第 70 頁投影片：婚育仍綁在一起"><figcaption class="sr">婚育仍綁在一起　Raymo 等 (2015)；翁康容、謝雨生 (2018)　與 B&amp;M 的對照　時機延後、普及率下降。但婚與育之間的依存仍緊密。去標準化只發生在部分面向。　不久之前，東亞的婚姻幾乎普及，而且集中在一段狹窄的「適當」年齡，女性尤其如此。　婚姻與生育的連結很強，婚後很快生育。台灣與韓國，平均初婚與初育年齡的差距長期變化不大。　非婚生育：台灣約 4.0%，日本 2%，韓國 1.5%。OECD 平均 36.3%。　但轉至成人的事件順序變得較彈性：更多人先開始工作，再完成學業（翁康容、謝雨生 2018）。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>前三點都出自 Raymo、Park、Xie &amp; Yeung (2015)。第一點在 Later marriage 一節：Not long ago, marriage was nearly universal and concentrated in a narrow band of “appropriate” ages, especially for women。</p><p>第二點：作者把「婚姻與生育的強力連結（包括婚後很快生育）」列為東亞婚姻制度相對穩定的特徵。韓國與台灣的平均初婚與初育年齡差，長期變化不大（引其表 1）。</p><p>第三點在 Nonmarital childbearing 一節，資料來源為內政部統計處 2014 與 OECD 2013。</p><p>第四點是翁康容、謝雨生 (2018) 摘要的發現：第一個生命事件由完成學業，轉為更多人先開始工作。</p><p>對照 B&amp;M 的面向：普及率與年齡在變，事件間依存（婚與育）仍強。序列方面，學業與工作的先後變彈性。</p></div>
+</article>
+<article class="unit" id="s71" data-n="71">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 71 頁：女性的工作：從退出，到中斷後重返"><img src="week05-slides/71-1280.webp" srcset="week05-slides/71-1280.webp 1280w, week05-slides/71-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/71" alt="第 71 頁投影片：女性的工作：從退出，到中斷後重返"><figcaption class="sr">女性的工作：從退出，到中斷後重返　李大正、楊靜利 (2004: 121–122)；簡文吟 (2004: 2, 21–22)；主計總處 (2016)，講者計算　40–49 歲婦女的參與類型　一直沒工作：38.5%（1980 年調查）→ 7.9%（2000 年）。　中斷後重返：2.7% → 19.7%。　持續型：42.3% → 34.9%，因婚後才就業的人變少。　二度就業與婚育離職　二度就業：13.7%（1993）→ 18.3%（2000）。　平均離職期間：年長世代 116.7 個月，40 歲以下 70.6 個月。　結婚離職率（2016）：60–64 歲 40.7%，25–29 歲 20.9%。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>左欄：李大正、楊靜利 (2004) 表 3（p. 122），主計處婦女婚育與就業調查 1980、1990、2000 年的 40–49 歲樣本，約當 1931–40、1941–50、1951–60 年出生。婚前至今一直未工作 38.5、21.8、7.9。中斷型 2.7、8.2、19.7。持續型 42.3、44.1、34.9，其中婚前無、婚後一直有工作 11.5、9.3、5.4（p. 122）。作者指出傳統型加中斷型二十年來都占一半左右（p. 122），約一半的已婚婦女仍受婚育影響。</p><p>右欄：簡文吟 (2004) 用 1993 與 2000 年的同一調查。二度就業 13.7% 升到 18.3%（摘要，p. 2）。2000 年資料中，二度就業者的平均離職月數：年長 116.7、中年 97.0、40 歲以下 70.6（表 9，pp. 21–22）。</p><p>結婚離職率：主計總處《105 年婦女婚育與就業調查》，講者依原表千人數按五歲年齡組計算。用調查時年齡近似出生世代，有存活與選擇偏誤。</p><p>對照 McMunn 等 (2015)：英國女性朝持續全時就業匯聚。台灣的研究看到的是中斷後重返增加，中斷期縮短。</p><p>網址：李大正、楊靜利 <a href="https://psc.ntu.edu.tw/jps/pub/28/assets/4.pdf" target="_blank" rel="noopener">https://psc.ntu.edu.tw/jps/pub/28/assets/4.pdf</a> ；簡文吟 <a href="https://psc.ntu.edu.tw/jps/pub/28/assets/1.pdf" target="_blank" rel="noopener">https://psc.ntu.edu.tw/jps/pub/28/assets/1.pdf</a> ；主計總處報告 <a href="https://ws.dgbas.gov.tw/public/data/771217174890v10w9i.pdf" target="_blank" rel="noopener">https://ws.dgbas.gov.tw/public/data/771217174890v10w9i.pdf</a></p></div>
+</article>
+<article class="unit" id="s72" data-n="72">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 72 頁：用五個面向看台灣"><img src="week05-slides/72-1280.webp" srcset="week05-slides/72-1280.webp 1280w, week05-slides/72-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/72" alt="第 72 頁投影片：用五個面向看台灣"><figcaption class="sr">用五個面向看台灣　講者整理，依據見前五頁　面向　台灣的證據　判斷　普及率　25–29 歲曾婚比例大降，50 歲未婚上升　去標準化　年齡變異　第一胎標準差略增，初婚變異只在低教育女性擴大　有限　持續期間變異　轉至成人的歷程拉長，女性離職期間縮短　方向不一　事件間依存　婚育仍緊密綁定，但初婚的定錨作用減弱　婚育穩固　序列一致性　更多人先工作再完成學業　部分鬆動　和 B&amp;M 的西德結論相近：家庭的時機與普及率在變，婚與育的綁定仍在。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>這張表是講者的整理，每一格的依據在前五頁。</p><p>普及率：本節的兩張官方統計圖，加上 Raymo 等 (2015)。年齡變異：本節的年份分布表，加上 Cheng &amp; Cohen (2025)。持續期間：翁康容、謝雨生 (2018) 與簡文吟 (2004)。事件間依存：Raymo 等 (2015) 與翁康容、謝雨生 (2018)。序列：翁康容、謝雨生 (2018)。</p><p>依 B&amp;M (2005: 35) 的嚴格判準，大多數指標都要改變才算一般的去標準化。台灣的圖像和西德相近：家庭面部分成立，而且沿著社會群體分化。</p><p>限制：官方資料沒有單一年齡、也沒有按世代的離散度。台灣還沒有用 B&amp;M 的量數系統測量各項轉銜的研究。</p></div>
+</article>
+<article class="unit" id="s73" data-n="73">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 73 頁：回答第 3 週的問題：前半段早，後半段晚"><img src="week05-slides/73-1280.webp" srcset="week05-slides/73-1280.webp 1280w, week05-slides/73-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/73" alt="第 73 頁投影片：回答第 3 週的問題：前半段早，後半段晚"><figcaption class="sr">回答第 3 週的問題：前半段早，後半段晚　第 3 週講義第 88 頁；第 4 週講義第 83–84 頁；日期與出處見講解　前半段：教育與成年　1968 九年國民教育　2014 十二年國教　2023 成年年齡 18 歲　後半段：年金與退休　1950 勞工保險開辦　2008、2009 國民年金、勞保年金　2018 起 請領年齡逐步提高　前半段的界線早而全民適用。後半段晚到、分立，而且仍在移動。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>第 3 週第 88 頁的問題：依 Kohli 的判準，台灣「後半段」的年齡界線何時才具全民基礎？今天的問題是「去制度化」，還是「從未完成制度化」？</p><p>日期與出處沿用第 3、4 週講義：1950 勞工保險開辦，給付已含老年給付。1968 九年國民教育（57 學年度實施）。2008 年 10 月 1 日國民年金開辦，納入未參加其他社會保險者。2009 年 1 月 1 日勞保年金施行。2008 年勞基法強制退休年齡由 60 歲提高為 65 歲（第 4 週講義只確認了 4 月 25 日三讀）。2018 年起勞保老年年金請領年齡每兩年提高一歲，2026 年起 65 歲（勞工保險條例第 58 條）。2023 年 1 月 1 日民法成年年齡 18 歲。2014 年十二年國民基本教育。</p><p>讀法：前半段的界線由學校體系早早造出，而且全民適用。後半段的界線晚到，而且依職業身分分立（勞保、公保、農保、國保），到 2008 年國民年金才把其他人補進來。</p><p>下一頁給本講的暫定答案。</p></div>
+</article>
+<article class="unit" id="s74" data-n="74">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 74 頁：台灣的答案（暫定）：兩件事同時成立"><img src="week05-slides/74-1280.webp" srcset="week05-slides/74-1280.webp 1280w, week05-slides/74-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/74" alt="第 74 頁投影片：台灣的答案（暫定）：兩件事同時成立"><figcaption class="sr">台灣的答案（暫定）：兩件事同時成立　講者整理，依據見本節與第 3 週講義第 67、88 頁　後半段：從未完成制度化　老年給付依職業身分分立：勞保、公保、農保、國保。　其他人到 2008 年國民年金才補上。　退休與請領年齡各自規定，仍在移動。　家庭：部分去標準化　結婚延後，普及率下降。　婚育綁定仍緊密，非婚生育很少。　女性的工作從退出，變成中斷後重返。　兩者的政策含意不同：前者要補制度，後者要讓制度跟上家庭的變化。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>這是講者的暫定答案，供課堂討論，不是任何一篇文獻的結論。</p><p>左欄回應 Kohli 的三分結構：台灣的「準備」段落由學校體系很早制度化，但「退休」段落沒有一條全民共享的界線，制度依職業身分分立（第 3 週第 67 頁的提問）。所以台灣的問題不只是「去制度化」，也是「從未完成制度化」。</p><p>右欄回應 B&amp;M：家庭面在普及率與時機上去標準化，但婚與育的依存仍強。和西德的形狀相近。</p><p>可以連到 Kohli (2007: 268)：如果後半段本來就沒有一條共享的年齡界線，年金改革的衝突就比較難靠一個集體方案化解。這是講者的推論，第 06 節再談。</p></div>
+</article>
+<section class="band" id="s75" data-n="75">
+  <div class="band-num" aria-hidden="true"><span>06</span></div>
+  <p class="band-k">第六節</p>
+  <h2>政策意涵</h2>
+  <p class="band-en">Implications for social policy</p>
+  <p class="band-d band-q"><b>這一節要回答</b>　年齡界線該保留、鬆綁，還是重畫？</p>
+  <p class="band-d"><b>本節文獻</b>　Mayer &amp; Schoepflin (1989: 198–203)；Kohli (2007: 265–268)；Brückner &amp; Mayer (2005: 48)</p>
+  <div class="band-p" aria-hidden="true"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="on"></i></div>
+  <div class="band-note"><p>第 06 節把前面的理論與證據，轉成三個政策問題。</p><p>一、法定年齡要有配套才會生效（Mayer &amp; Schoepflin 1989: 198）。二、退休年齡界線為什麼該改、又為什麼改不動（Kohli 2007: 265–267）。三、去制度化會讓世代衝突更尖銳（Kohli 2007: 268）。最後補一個家庭面的問題（B&amp;M 2005: 48）。</p></div>
+</section>
+<article class="unit" id="s76" data-n="76">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 76 頁：法定年齡要有配套，才會生效"><img src="week05-slides/76-1280.webp" srcset="week05-slides/76-1280.webp 1280w, week05-slides/76-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/76" alt="第 76 頁投影片：法定年齡要有配套，才會生效"><figcaption class="sr">法定年齡要有配套，才會生效　Mayer &amp; Schoepflin (1989: 198)；Mayer &amp; Müller (1986: 229)，轉引　第 4 週的例子　勞保老年年金請領年齡：1957 年以前出生 60 歲，1962 年以後出生 65 歲（第 4 週講義第 83 頁）。配套是什麼？　法定年齡只有和其他手段結合，才有效：足夠高的年金，或像學校那樣的服務提供。　法定退休年齡跟隨、而非形塑實際的退休。　反過來說：只改年齡、不改配套，行為不一定跟著改。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>前兩點是 Mayer &amp; Schoepflin (1989: 198) 的原意。第一點引 Mayer &amp; Müller (1986: 229) 在德國老年年金脈絡中的論證。</p><p>第三點是講者的推論：如果年齡規範的效力來自給付與服務，那麼只移動年齡、不調整給付與服務，行為不一定跟著移動。</p><p>右邊是第 4 週第 83 頁的例子。想一想：延後請領年齡的同時，有沒有讓人做得下去、找得到工作的配套？這一題本講義沒有查證，可以自己找資料。</p><p>也可以連到第 02 節的反例：Blossfeld 發現準法定的入學與離校年齡，在國家秩序崩解時仍然存續。年齡規範一旦扎根，也可能自己撐住。</p></div>
+</article>
+<article class="unit" id="s77" data-n="77">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 77 頁：退休年齡界線：五個悖論，四個錨"><img src="week05-slides/77-1280.webp" srcset="week05-slides/77-1280.webp 1280w, week05-slides/77-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/77" alt="第 77 頁投影片：退休年齡界線：五個悖論，四個錨"><figcaption class="sr">退休年齡界線：五個悖論，四個錨　Kohli (2007: 265–267)　為什麼該改：五個悖論　違反普遍主義：近似年齡歧視。　違反個體化：限制個人選擇。　浪費仍能工作者的人力資本。　績效與年齡弱相關，妨礙最適配置。　不隨人口調整，加深財政問題。　為什麼改不動：年金的四項功能　規制勞動市場：有序退出僱用。　雇主的管理工具：裁減或替換勞工。　幫助傳記規劃：序列可以預測。　正當的請求權：道德經濟中的一份 stake。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>改革走不遠，正好讓這些結構錨變得可見（p. 266）。</p><p>左欄（pp. 265–266）：退休的固定年齡界線，與當代的價值與系統要求不相容。價值兩項：普遍主義（可被視為年齡歧視，美國等國已在憲政上廢除）與個體化（限制選擇自由）。系統三項：浪費人力資本、干擾勞工的最適配置、加深社會安全的財政問題。</p><p>改革方向（p. 266）：讓年齡界線更彈性，或完全廢除。廢除意味撤退公共世代契約，轉向純粹市場基礎的終生工作模型。但到目前為止，改革在創造所欲的變化上並未走得很遠。即使在美國這類已廢除強制退休的國家，年齡界線在形塑雇主與勞工的行為上仍相當有效。</p><p>右欄（pp. 266–267）：年金做的遠多於提供所得保障。這四項功能就是結構錨。在這些功能之光下，制度化生命歷程的持續應該不那麼令人驚訝。</p><p>第四項接回 Kohli (1987) 的道德經濟論。想一想：台灣的年金改革，觸動了四項中的哪幾項？</p></div>
+</article>
+<article class="unit" id="s78" data-n="78">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 78 頁：去制度化，會讓世代衝突更尖銳"><img src="week05-slides/78-1280.webp" srcset="week05-slides/78-1280.webp 1280w, week05-slides/78-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/78" alt="第 78 頁投影片：去制度化，會讓世代衝突更尖銳"><figcaption class="sr">去制度化，會讓世代衝突更尖銳　Kohli (2007: 267–268)　台灣的提問　年金改革的爭議，是世代之間的衝突，還是職業別之間的衝突？Kohli 會說：看兩種分歧怎麼相連。　年齡分級的方案，為衝突提供集體的解決方案，因而解除衝突的引信。　去制度化、年齡界線解消，衝突不會消失，反而更尖銳、更難處理。　世代公平論述誇大了衝突。公共世代契約在各年齡層仍有高度正當性。　年輕人支持的理由：相信自己日後也領得到。年金也免除了他們扶養父母的義務。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 268：我們也需要檢視中介世代衝突的制度，例如政黨或工會。只要年齡分級的生命歷程方案仍穩固在位，這類年齡整合的中介者對橋接分歧就是必要的。然而，年齡分級的方案本身也透過為衝突提供集體解決方案而解除衝突的引信。因此，去制度化及其年齡界線的解消，很可能不會讓年齡與世代衝突消失，反而使它們更尖銳、更難處理。</p><p>這與一般論述的方向相反。一般把彈性化當成緩解世代緊張的方案，Kohli 則指出年齡界線本身就是衝突的集體解方。</p><p>p. 268 年輕人支持公共世代契約的兩個理由：一部分取決於他們是否信任契約能持續，使自己日後也領得到。另一個理由是年金免除了扶養父母的義務，需要時也能依靠較年長的世代。</p><p>右邊的提問連到第 05 節：台灣的老年給付依職業身分分立，年改的衝突線可能同時是世代與職業別。</p></div>
+</article>
+<article class="unit" id="s79" data-n="79">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 79 頁：家庭面的去標準化：同步性下降"><img src="week05-slides/79-1280.webp" srcset="week05-slides/79-1280.webp 1280w, week05-slides/79-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/79" alt="第 79 頁投影片：家庭面的去標準化：同步性下降"><figcaption class="sr">家庭面的去標準化：同步性下降　Brückner &amp; Mayer (2005: 48)　政策含意（講者推論）　非正式支持依賴同齡人的同步。同步性下降時，托育與長照不能再假定家裡剛好有人。　想像 1960 年代中期的一間幼稚園：家長的年齡分布，比 1980、1990 年代中期的更一致。　較年輕世代的子女，會在自己生命的不同階段照顧年邁的父母。　祖父母能不能協助育兒，變異更大。　同齡朋友的重要轉銜不再同步，影響親屬以外的支持網絡。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>p. 48 是 B&amp;M 文中最不像實證論文的一段思想實驗。作者先問：轉銜時機的變異增加，真的能叫去標準化嗎？</p><p>然後想像 1960 年代中期的一間幼稚園，為簡單起見假設只有頭胎子女就讀。家長的年齡分布，肯定比 1980 或 1990 年代中期類似幼稚園的更一致。較年輕世代所生的子女，會在自己生命歷程的不同階段照顧年邁的父母。這些子女組成家庭時，祖父母能協助育兒的可得性，大概會有更大的變異。1950 年代中期年輕成人結成的友誼，其重要轉銜的經驗比較年輕世代的更同步。這對親屬以外的支持網絡有意涵。</p><p>右欄是講者的推論：這段把「年齡變異增加」翻譯成「非正式支持網絡的同步性下降」。托育、長照與家庭照顧的政策，常預設家裡有一位時間剛好的照顧者。</p><p>第 8 週（幼年期）與第 14 週（長期照顧）會再用到。</p></div>
+</article>
+<article class="unit" id="s80" data-n="80">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 80 頁：本講小結：六個重點"><img src="week05-slides/80-1280.webp" srcset="week05-slides/80-1280.webp 1280w, week05-slides/80-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/80" alt="第 80 頁投影片：本講小結：六個重點"><figcaption class="sr">本講小結：六個重點　制度化命題二十年後　三分結構與年齡界線意外持續。1985 年的終點其實是 1960 年代。 Kohli (2007)　勞動市場或國家　國家用年齡規範、請求權、科層分格結構生命歷程，卻從未打算這麼做。 Mayer &amp; Schoepflin (1989)　去標準化的意思　普及率下降，或年齡與持續期間更分散。大多數指標都要變。 Brückner &amp; Mayer (2005: 32–35)　三份證據　家庭面有變化，工作面變化小。結論取決於測什麼、測誰、和誰比。 第 04 節的三份實證研究　台灣　家庭的時機與普及率在變，婚育綁定仍在。後半段的界線晚到而分立。 官方統計與台灣的研究　政策　年齡界線要有配套才生效。拆掉它，世代衝突可能更尖銳。 Kohli (2007: 268) 等</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>六點依序對應本講六節。可以試著各用一句話說明，再回到<a href="#s3">第 3 頁</a>的學習目標自評。</p><p>第 3 週問題的簡答：台灣的前半段（教育）很早就制度化，後半段（老年）晚到而且依職業分立，所以有「從未完成制度化」的一面。家庭面則有部分去標準化：時機與普及率在變，婚育的綁定仍在。這是講者的暫定答案。</p></div>
+</article>
+<article class="unit" id="s81" data-n="81">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 81 頁：下週預告"><img src="week05-slides/81-1280.webp" srcset="week05-slides/81-1280.webp 1280w, week05-slides/81-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/81" alt="第 81 頁投影片：下週預告"><figcaption class="sr">下週預告　第 6 週（10/20）停課　第 7 週：福利國家作為生命歷程政策　2026 年 10 月 27 日（二） 福利體制、生命歷程體制與東亞經驗 ★ Leisering (2003)；★ Mayer (2007) 延伸：Esping-Andersen (1990)；Möhring (2016)；Holliday (2000)；Kvist (2015)　帶著本週的問題去讀　Kohli 說下一步是辨識生命歷程體制。四型之外，東亞是不是自成一型？　Mayer &amp; Schoepflin 的國家，到 Leisering (2003) 變成什麼樣子？　台灣後半段的年齡界線晚到而分立。這對「生命歷程體制」意味著什麼？</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>依課綱：第 6 週（10 月 20 日）停課，教師出席研討會。第 7 週（10 月 27 日）主題是「福利國家作為生命歷程政策：福利體制、生命歷程體制與東亞經驗」。</p><p>必讀：Leisering, L. (2003). Government and the life course. In Handbook of the Life Course (pp. 205–225)。Mayer, K. U. (2007). Life courses and life chances in a comparative perspective. In Analyzing Inequality (pp. 17–55)。</p><p>延伸：Esping-Andersen (1990) 第 1–3 章、Möhring (2016)、Holliday (2000)、Kvist (2015)。</p><p>銜接：Kohli (2007: 260–261) 的生命歷程體制四型（Mayer 2001），以及「認真對待女性的生命歷程，可能要求把類型畫得不同」的限定，下週會展開。右欄的問題是讀書的提示。</p></div>
+</article>
+<article class="unit" id="s82" data-n="82">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 82 頁：本週文獻（一）"><img src="week05-slides/82-1280.webp" srcset="week05-slides/82-1280.webp 1280w, week05-slides/82-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/82" alt="第 82 頁投影片：本週文獻（一）"><figcaption class="sr">本週文獻（一）　★ 必讀；APA 第 7 版　★ Kohli, M. (2007). The institutionalization of the life course: Looking back to look ahead. Research in Human Development, 4(3–4), 253–271. https://doi.org/10.1080/15427600701663122 ★ Brückner, H., &amp; Mayer, K. U. (2005). De-standardization of the life course: What it might mean? And if it means anything, whether it actually took place? Advances in Life Course Research, 9, 27–53. https://doi.org/10.1016/S1040-2608(04)09002-1 Mayer, K. U., &amp; Schoepflin, U. (1989). The state and the life course. Annual Review of Sociology, 15, 187–209. https://doi.org/10.1146/annurev.so.15.080189.001155</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>書目與 DOI 依網站的課程資料。本頁是兩篇必讀與 Mayer &amp; Schoepflin (1989)。</p></div>
+</article>
+<article class="unit" id="s83" data-n="83">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 83 頁：本週文獻（二）"><img src="week05-slides/83-1280.webp" srcset="week05-slides/83-1280.webp 1280w, week05-slides/83-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/83" alt="第 83 頁投影片：本週文獻（二）"><figcaption class="sr">本週文獻（二）　延伸閱讀；APA 第 7 版　Mayer, K. U., &amp; Müller, W. (1986). The state and the structure of the life course. In A. B. Sørensen, F. E. Weinert, &amp; L. R. Sherrod (Eds.), Human development and the life course (pp. 217–245). Erlbaum. McMunn, A., Lacey, R., Worts, D., McDonough, P., Stafford, M., Booker, C., Kumari, M., &amp; Sacker, A. (2015). De-standardization and gender convergence in work–family life courses in Great Britain. Advances in Life Course Research, 26, 60–75. https://doi.org/10.1016/j.alcr.2015.06.002 Van Winkle, Z., &amp; Fasang, A. (2017). Complexity in employment life courses in Europe in the twentieth century. Social Forces, 96(1), 1–30. https://doi.org/10.1093/sf/sox032</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>書目與 DOI 依網站的課程資料。兩處簡化：McMunn 等與 Van Winkle &amp; Fasang 的副標題在投影片上省略，完整篇名見課綱。</p><p>Mayer &amp; Müller (1986) 的完整書名是 Human Development and the Life Course: Multidisciplinary Perspectives。本講義未取得全文，引用處都標明轉引。</p><p>Van Winkle &amp; Fasang (2017) 的頁碼依課程資料夾的線上優先版 PDF（頁 1–29）。</p></div>
+</article>
+<article class="unit" id="s84" data-n="84">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 84 頁：補充文獻（一）"><img src="week05-slides/84-1280.webp" srcset="week05-slides/84-1280.webp 1280w, week05-slides/84-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/84" alt="第 84 頁投影片：補充文獻（一）"><figcaption class="sr">補充文獻（一）　台灣的研究；網址見講解　Chen, Y.-H., &amp; Chen, H. (2014). Continuity and changes in the timing and formation of first marriage among postwar birth cohorts in Taiwan. Journal of Family Issues, 35(12), 1584–1604. Cheng, H.-C., &amp; Cohen, P. N. (2025). The variability of age at first marriage across birth cohort and education level: The case of Taiwan. Asian Population Studies, 21(1), 108–129. Raymo, J. M., Park, H., Xie, Y., &amp; Yeung, W. J. (2015). Marriage and family in East Asia: Continuity and change. Annual Review of Sociology, 41, 471–492.</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>網址與閱讀狀態見下一頁的講解。</p></div>
+</article>
+<article class="unit" id="s85" data-n="85">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 85 頁：補充文獻（二）與資料來源"><img src="week05-slides/85-1280.webp" srcset="week05-slides/85-1280.webp 1280w, week05-slides/85-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/85" alt="第 85 頁投影片：補充文獻（二）與資料來源"><figcaption class="sr">補充文獻（二）與資料來源　台灣的研究與官方統計；網址見講解　李大正、楊靜利（2004）。台灣婦女勞動參與類型與歷程之變遷。人口學刊，28，109–134。 翁康容、謝雨生（2018）。台灣民眾轉至成人發展歷程之類型與變遷。臺灣社會學，36，111–166。 簡文吟（2004）。台灣已婚婦女勞動再參與行為的變遷。人口學刊，28，1–47。 資料：內政部戶政司人口統計資料；內政部統計處內政統計查詢網；行政院主計總處《105 年婦女婚育與就業調查報告》。</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>網址：</p><p>Chen &amp; Chen (2014) <a href="https://doi.org/10.1177/0192513X14538026" target="_blank" rel="noopener">https://doi.org/10.1177/0192513X14538026</a> （只讀到摘要）</p><p>Cheng &amp; Cohen (2025) <a href="https://doi.org/10.1080/17441730.2024.2352672" target="_blank" rel="noopener">https://doi.org/10.1080/17441730.2024.2352672</a> （只讀到摘要）</p><p>Raymo 等 (2015) <a href="https://doi.org/10.1146/annurev-soc-073014-112428" target="_blank" rel="noopener">https://doi.org/10.1146/annurev-soc-073014-112428</a> ；作者稿 <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6070151/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC6070151/</a></p><p>李大正、楊靜利 (2004) <a href="https://psc.ntu.edu.tw/jps/pub/28/assets/4.pdf" target="_blank" rel="noopener">https://psc.ntu.edu.tw/jps/pub/28/assets/4.pdf</a></p><p>翁康容、謝雨生 (2018) <a href="https://doi.org/10.6676/TS.201812_(36).04" target="_blank" rel="noopener">https://doi.org/10.6676/TS.201812_(36).04</a> （只讀到摘要）</p><p>簡文吟 (2004) <a href="https://psc.ntu.edu.tw/jps/pub/28/assets/1.pdf" target="_blank" rel="noopener">https://psc.ntu.edu.tw/jps/pub/28/assets/1.pdf</a></p><p>戶政司人口統計資料 <a href="https://www.ris.gov.tw/app/portal/346" target="_blank" rel="noopener">https://www.ris.gov.tw/app/portal/346</a> ；內政統計查詢網 <a href="https://statis.moi.gov.tw/micst/webMain.aspx?sys=100&amp;funid=defjsp" target="_blank" rel="noopener">https://statis.moi.gov.tw/micst/webMain.aspx?sys=100&amp;funid=defjsp</a> ；人口統計年刊 <a href="https://www.ris.gov.tw/documents/html/5/2/popudata-quart-pub.html" target="_blank" rel="noopener">https://www.ris.gov.tw/documents/html/5/2/popudata-quart-pub.html</a></p><p>主計總處《105 年婦女婚育與就業調查報告》<a href="https://ws.dgbas.gov.tw/public/data/771217174890v10w9i.pdf" target="_blank" rel="noopener">https://ws.dgbas.gov.tw/public/data/771217174890v10w9i.pdf</a></p><p>Kohli (2007) 與 Brückner &amp; Mayer (2005) 轉引的研究（Maddison 2001、Scherger 2007、Settersten &amp; Hagestad 1996 等），完整書目見兩篇原文的參考文獻。</p></div>
+</article>
+<article class="unit" id="s86" data-n="86">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 86 頁：轉引文獻對照（一）"><img src="week05-slides/86-1280.webp" srcset="week05-slides/86-1280.webp 1280w, week05-slides/86-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/86" alt="第 86 頁投影片：轉引文獻對照（一）"><figcaption class="sr">轉引文獻對照（一）　原文　本講義轉引的研究　Kohli (2007)　Berger &amp; Luckmann (1966)；Bianchi 等 (2006)；Brüderl &amp; Klein (2003)；Dannefer &amp; Uhlenberg (1998)；Esping-Andersen (1990)；Jepperson (1991)；Klein 等 (2002)；Kohli (1987, 1988, 2000b)；Maddison (2001)；Mayer (2001)；OECD (2006)；Scherger (2007)；Settersten &amp; Hagestad (1996)；Wagner &amp; Franzmann (2000)　Mayer &amp; Schoepflin (1989)　Albers (1973)；Blossfeld (1987, 1988)；Elder (1974)；Elder &amp; Bailey (1986)；Elder &amp; Meguro (1987)；Heyns (1987, 1988)；Luckmann (1975)；Mannheim (1940)；Mayer (1988a)；Mayer &amp; Müller (1986)；Papastefanou (1988)；Schroter (1984)；Schultheis (1987)；Smelser &amp; Halpern (1978)</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>本講義轉引的研究，完整書目見各篇原文的參考文獻。</p><p>本頁與下一頁列出講義中轉引的研究，以及它們出自哪一篇閱讀。轉引的意思是：本講義沒有讀這些原文，內容依閱讀的作者轉述。</p><p>完整的書目資料，見 Kohli (2007: 268–271) 與 Mayer &amp; Schoepflin (1989: 204–209) 的參考文獻。</p></div>
+</article>
+<article class="unit" id="s87" data-n="87">
+  <figure class="frame" tabindex="0" role="button" aria-label="放大第 87 頁：轉引文獻對照（二）"><img src="week05-slides/87-1280.webp" srcset="week05-slides/87-1280.webp 1280w, week05-slides/87-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 960px" width="1280" height="720" loading="lazy" decoding="async" data-base="week05-slides/87" alt="第 87 頁投影片：轉引文獻對照（二）"><figcaption class="sr">轉引文獻對照（二）　原文　本講義轉引的研究　Brückner &amp; Mayer (2005)　Beck (1986, 1999)；Buchmann (1989)；Ebbinghaus (2002)；Espenshade (1985)；Heinz (2003)；Held (1986)；Hillmert (2002)；Huinink &amp; Mayer (1995)；Mayer (1994)；Mertens &amp; Mayer (2004)；Myles (1993)；Riley 等 (1994)　McMunn 等 (2015)　Aisenbrey &amp; Fasang (2010)；Esping-Andersen (2009)；Jenkins (2010)；Worts 等 (2013)　Van Winkle &amp; Fasang (2017)　Gabadinho 等 (2011)</figcaption></figure>
+  <div class="note"><div class="note-h"><span class="mk" aria-hidden="true"></span>講解</div><p>完整的書目資料，見 Brückner &amp; Mayer (2005: 50–53)、McMunn 等 (2015: 70–75) 與 Van Winkle &amp; Fasang (2017) 的參考文獻。</p><p>Kohli (1985, 1986) 與 Settersten &amp; Mayer (1997) 是第 3、4 週的閱讀，書目見前兩週講義與課綱。第 7 週的閱讀書目見課綱。</p></div>
+</article>
+  </main>
+</div>
+<footer class="closing" id="end">
+  <div class="closing-in">
+    <p class="band-k">本週結束</p>
+    <p class="quote">去制度化及其年齡界線的解消，不會讓年齡與世代衝突消失，反而使它們更尖銳、更難處理。</p>
+    <p class="quote-en">“[A] deinstitutionalization of the life course and dissolution of its age boundaries … would not make age and generational conflicts go away but would rather make them sharper and more intractable.”　Kohli (2007: 268)</p>
+    <div class="contact"><b>葉崇揚　東吳大學社會學系</b><span>D0821（分機 6317）　chungyang.yeh@gmail.com</span><span>課業輔導：星期二 下午 3–6 時　｜　TronClass：tronclass.scu.edu.tw</span></div>
+    <div class="band-note"><p>這是 Kohli (2007) 全文的最後一句。理由：年齡分級的方案透過為衝突提供集體解決方案，解除了衝突的引信。<a href="#s20">第 20 頁</a>與<a href="#s78">第 78 頁</a>都從這裡出發。</p></div>
+    <p class="back"><a href="../../syllabus-zh.html?course=life-course">← 回到課程大綱</a></p>
+  </div>
+</footer>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="投影片放大檢視">
+  <div class="lb-frame"><img alt=""></div>
+  <div class="lb-bar"><button class="lb-prev" type="button" aria-label="上一頁">‹</button><span class="lb-n"></span><button class="lb-next" type="button" aria-label="下一頁">›</button><button class="lb-x" type="button" aria-label="關閉">✕</button></div>
+</div>
+<script>
+
+(function () {
+  var root = document.documentElement;
+  var main = document.querySelector('main');
+
+  // 進場動畫
+  var reveal = document.querySelectorAll('.frame, .band');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    reveal.forEach(function (el) { io.observe(el); });
+  } else reveal.forEach(function (el) { el.classList.add('in'); });
+
+  // 目錄：標示目前位置
+  var toc = document.getElementById('toc');
+  var links = {};
+  toc.querySelectorAll('a[data-to]').forEach(function (a) {
+    var k = a.getAttribute('data-to');
+    (links[k] = links[k] || []).push(a);
+  });
+  var grps = toc.querySelectorAll('.grp');
+  var cur = null;
+  function setCur(n) {
+    if (cur === n) return;
+    cur = n;
+    toc.querySelectorAll('a.on').forEach(function (a) { a.classList.remove('on'); });
+    var g = null;
+    (links[n] || []).forEach(function (a) {
+      g = a.closest('.grp');
+      if (a.parentNode.tagName === 'LI') a.classList.add('on');
+    });
+    grps.forEach(function (x) { x.classList.toggle('open', x === g); });
+    var on = toc.querySelector('ol a.on');
+    if (on && !document.body.classList.contains('toc-open')) {
+      var t = on.offsetTop, h = toc.clientHeight;
+      if (t < toc.scrollTop + 40 || t > toc.scrollTop + h - 60) toc.scrollTop = t - h / 3;
+    }
+  }
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) setCur(e.target.getAttribute('data-n')); });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    main.querySelectorAll('[data-n]').forEach(function (u) { spy.observe(u); });
+  }
+
+  // 閱讀進度
+  var bar = document.querySelector('.progress i'), tick = false;
+  function prog() {
+    tick = false;
+    var h = root.scrollHeight - innerHeight;
+    bar.style.width = (h > 0 ? Math.min(100, scrollY / h * 100) : 0) + '%';
+  }
+  addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(prog); } }, { passive: true });
+  prog();
+
+  // 窄螢幕的目錄按鈕
+  var tb = document.querySelector('.tocbtn');
+  tb.addEventListener('click', function () {
+    var o = document.body.classList.toggle('toc-open');
+    tb.setAttribute('aria-expanded', o ? 'true' : 'false');
+  });
+  toc.addEventListener('click', function (e) {
+    if (e.target.closest('a')) { document.body.classList.remove('toc-open'); tb.setAttribute('aria-expanded', 'false'); }
+  });
+
+  // 點投影片放大；← → 換頁，Esc 關閉
+  var lb = document.getElementById('lb'), lf = lb.querySelector('.lb-frame'), li = lf.querySelector('img'), ln = lb.querySelector('.lb-n');
+  var figs = Array.prototype.slice.call(document.querySelectorAll('.frame')), idx = -1, opener = null;
+  function size() {
+    var w = Math.min(innerWidth - 24, (innerHeight - 90) * 16 / 9);
+    lf.style.width = w + 'px';
+    lf.style.height = (w * 9 / 16) + 'px';
+    li.sizes = Math.round(w) + 'px';
+  }
+  function show(i) {
+    idx = i;
+    var im = figs[i].querySelector('img'), b = im.getAttribute('data-base');
+    li.removeAttribute('srcset');
+    li.src = im.currentSrc || im.src;
+    li.alt = im.alt;
+    li.srcset = b + '-1920.webp 1920w, ' + b + '-2560.webp 2560w';
+    ln.textContent = figs[i].closest('[data-n]').getAttribute('data-n') + ' / 87';
+  }
+  function open(i) {
+    opener = figs[i];
+    size(); show(i);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lb.querySelector('.lb-x').focus();
+  }
+  function close() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    var f = figs[idx];
+    if (f !== opener) f.scrollIntoView({ block: 'center' });
+    f.focus({ preventScroll: true });
+  }
+  function step(s) { var j = idx + s; if (j >= 0 && j < figs.length) show(j); }
+  figs.forEach(function (f, i) {
+    f.addEventListener('click', function () { open(i); });
+    f.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); } });
+  });
+  lb.querySelector('.lb-prev').addEventListener('click', function () { step(-1); });
+  lb.querySelector('.lb-next').addEventListener('click', function () { step(1); });
+  lb.querySelector('.lb-x').addEventListener('click', close);
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+  addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); step(1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); step(-1); }
+  });
+  addEventListener('resize', function () { if (lb.classList.contains('open')) size(); });
+  var x0 = null;
+  lf.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  lf.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    x0 = null;
+    if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+  });
+})();
+
+</script>
+</body>
+</html>
