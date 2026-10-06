@@ -109,27 +109,37 @@
   .nav nav a.is-active{color:var(--accent);border-bottom-color:var(--accent)}
   .nav .lang{border-left:1px solid var(--rule);padding-left:24px;font-family:var(--latin);font-size:16px;letter-spacing:.2em;color:var(--ink-soft);text-decoration:none}
 
-  /* ================= 夜街 HERO ================= */
+  /* ================= 街拍照片交疊 HERO ================= */
   .hero{
-    position:relative; min-height:100svh;
-    display:grid; grid-template-columns:1fr; align-items:center;
-    padding:clamp(80px,14vh,140px) 0 clamp(56px,10vh,88px);
-    overflow:hidden;
+    position:relative; min-height:calc(100svh - 75px);
+    display:grid; align-items:center;
+    padding:44px 0 76px; overflow:hidden;
   }
-  .hero .wrap{ position:relative; z-index:3; width:min(1180px,90vw); margin-inline:auto; }
-
-  /* 夜街地平線（SVG）— hero 底部：樓影・霓虹暈・雨後路面的垂直反光細光帶 */
-  .street-horizon{
-    position:absolute; z-index:2; pointer-events:none;
-    left:0; right:0; bottom:0;
-    width:100%; height:clamp(240px,42vh,420px);
-    opacity:.96; will-change:transform;
+  .hero .wrap{
+    position:relative; z-index:3; width:min(1280px,92vw); margin-inline:auto;
+    display:grid; grid-template-columns:minmax(250px,.8fr) minmax(0,1.2fr);
+    align-items:center; gap:clamp(24px,3vw,48px);
   }
-  /* 反光細光帶的明滅（霓虹呼吸；reduced-motion 由全域規則停用）*/
-  .street-horizon .shim{ animation:neonShim 5.5s ease-in-out infinite; }
-  .street-horizon .shim.s2{ animation-duration:7.2s; animation-delay:-2.4s; }
-  .street-horizon .shim.s3{ animation-duration:8.8s; animation-delay:-4.6s; }
-  @keyframes neonShim{ 0%,100%{opacity:.55} 50%{opacity:1} }
+  .hero-copy{ position:relative; z-index:6; min-width:0; }
+  .hero-collage{
+    position:relative; width:100%; aspect-ratio:6/5; isolation:isolate;
+  }
+  .hero-print{
+    position:absolute; margin:0; padding:clamp(3px,.4vw,6px);
+    background:#e8e2d4; line-height:0;
+    box-shadow:0 18px 44px rgba(0,0,0,.45),0 3px 10px rgba(0,0,0,.3);
+  }
+  .hero-print img{ display:block; width:100%; height:auto; }
+  .hero-print--skyline{ left:3%; top:1%; width:22%; z-index:1; transform:rotate(-8deg); }
+  .hero-print--awning{ left:24%; top:5%; width:35%; z-index:2; transform:rotate(5deg); }
+  .hero-print--tram{ left:58%; top:0; width:22%; z-index:3; transform:rotate(-5deg); }
+  .hero-print--redwall{ left:79%; top:15%; width:19%; z-index:4; transform:rotate(8deg); }
+  .hero-print--chair{ left:0; top:33%; width:22%; z-index:6; transform:rotate(-6deg); }
+  .hero-print--lisbon{ left:24%; top:28%; width:50%; z-index:7; transform:rotate(-4deg); }
+  .hero-print--door{ left:75%; top:47%; width:23%; z-index:8; transform:rotate(6deg); }
+  .hero-print--machiya{ left:1%; top:64%; width:30%; z-index:5; transform:rotate(5deg); }
+  .hero-print--singapore{ left:41%; top:70%; width:42%; z-index:9; transform:rotate(5deg); }
+  .hero-print--street{ left:13%; top:87%; width:48%; z-index:10; transform:rotate(-7deg); }
 
   .eyebrow{
     font-family:var(--latin); font-weight:400;
@@ -301,11 +311,15 @@
     .nav{padding:12px 20px;flex-wrap:wrap;gap:10px}
     .nav nav{gap:14px;font-size:12px;letter-spacing:.14em;order:3;width:100%;justify-content:space-between}
     .nav .lang{padding-left:14px}
-    .hero{ min-height:auto; align-items:start; padding:clamp(20px,4vh,40px) 0 clamp(140px,26vh,200px); }
-    .hero h1{ font-size:clamp(76px,30vw,140px); }
+    .hero{ min-height:auto; align-items:start; padding:36px 0 56px; }
+    .hero .wrap{ grid-template-columns:1fr; gap:28px; }
+    .hero-collage{ width:min(100%,580px); margin-inline:auto; }
+    .hero .eyebrow{ margin-bottom:20px; font-size:10px; letter-spacing:.3em; }
+    .hero .hero-poem{ margin-top:24px; max-width:32ch; }
+    .hero .hero-poem .en{ font-size:12px; }
+    .hero h1{ font-size:clamp(68px,20vw,112px); }
     .hero h1 .romaji{ font-size:clamp(13px,4.4vw,20px); letter-spacing:.26em; }
     .hero-poem{ font-size:clamp(16px,4.4vw,21px); max-width:26ch; }
-    .street-horizon{ height:clamp(130px,24vh,190px); opacity:.92; }
     .hero-mark{ display:none; }
     .scroll-cue{ display:none; }
     .wall-head{ grid-template-columns:1fr; gap:18px; padding-top:clamp(48px,8vh,72px); }
@@ -367,152 +381,50 @@
   <!-- ============ 夜街 HERO ============ -->
   <header class="hero" id="hero">
     <!-- 夜街地平線 — 樓影剪影、霓虹紅暈、雨後路面的垂直反光細光帶 -->
-    <svg class="street-horizon" id="streetscape" viewBox="0 0 1440 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMax slice">
-      <defs>
-        <radialGradient id="glowNeon" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"  stop-color="#e05545" stop-opacity="0.30"/>
-          <stop offset="55%" stop-color="#c43838" stop-opacity="0.12"/>
-          <stop offset="100%" stop-color="#c43838" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="glowLamp" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"  stop-color="#e8c98a" stop-opacity="0.26"/>
-          <stop offset="55%" stop-color="#d9b878" stop-opacity="0.10"/>
-          <stop offset="100%" stop-color="#d9b878" stop-opacity="0"/>
-        </radialGradient>
-        <linearGradient id="roadFar" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"  stop-color="#2b241d"/>
-          <stop offset="24%" stop-color="#231d17"/>
-          <stop offset="100%" stop-color="#181310"/>
-        </linearGradient>
-        <linearGradient id="roadNear" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"  stop-color="#1e1813"/>
-          <stop offset="100%" stop-color="#110e0b"/>
-        </linearGradient>
-        <!-- 垂直反光細光帶：由上而下淡出（雨後路面拉長的燈影）-->
-        <linearGradient id="streakW" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"  stop-color="#efe8d8" stop-opacity="0.70"/>
-          <stop offset="55%" stop-color="#efe8d8" stop-opacity="0.24"/>
-          <stop offset="100%" stop-color="#efe8d8" stop-opacity="0"/>
-        </linearGradient>
-        <linearGradient id="streakR" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"  stop-color="#e05545" stop-opacity="0.80"/>
-          <stop offset="55%" stop-color="#e05545" stop-opacity="0.28"/>
-          <stop offset="100%" stop-color="#e05545" stop-opacity="0"/>
-        </linearGradient>
-        <linearGradient id="streakA" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"  stop-color="#e8c98a" stop-opacity="0.72"/>
-          <stop offset="55%" stop-color="#e8c98a" stop-opacity="0.26"/>
-          <stop offset="100%" stop-color="#e8c98a" stop-opacity="0"/>
-        </linearGradient>
-        <filter id="wet" x="-60%" y="-30%" width="220%" height="160%"><feGaussianBlur stdDeviation="1.1"/></filter>
-        <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.2"/></filter>
-        <filter id="bldgSoft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="0.5"/></filter>
-      </defs>
-
-      <!-- 遠景樓影（偏暖近黑的剪影，錯落的天際線）-->
-      <g fill="#0c0a08" filter="url(#bldgSoft)">
-        <rect x="-20"  y="196" width="150" height="94"/>
-        <rect x="118"  y="222" width="86"  height="68"/>
-        <rect x="196"  y="176" width="110" height="114"/>
-        <rect x="298"  y="230" width="70"  height="60"/>
-        <rect x="360"  y="204" width="118" height="86"/>
-        <rect x="470"  y="238" width="64"  height="52"/>
-        <rect x="528"  y="188" width="96"  height="102"/>
-        <rect x="616"  y="226" width="78"  height="64"/>
-        <rect x="688"  y="206" width="104" height="84"/>
-        <rect x="786"  y="234" width="66"  height="56"/>
-        <rect x="846"  y="182" width="92"  height="108"/>
-        <rect x="932"  y="220" width="82"  height="70"/>
-        <rect x="1008" y="168" width="120" height="122"/>
-        <rect x="1122" y="214" width="84"  height="76"/>
-        <rect x="1200" y="192" width="104" height="98"/>
-        <rect x="1298" y="228" width="72"  height="62"/>
-        <rect x="1362" y="200" width="100" height="90"/>
-      </g>
-      <!-- 零星亮著的窗與招牌（暖黃・朱紅的小方點）-->
-      <g>
-        <g fill="#e8c98a" opacity="0.6">
-          <rect x="222" y="196" width="5" height="7"/><rect x="250" y="214" width="5" height="7"/>
-          <rect x="404" y="222" width="5" height="7"/><rect x="551" y="206" width="5" height="7"/>
-          <rect x="586" y="228" width="5" height="7"/><rect x="714" y="224" width="5" height="7"/>
-          <rect x="879" y="204" width="5" height="7"/><rect x="1042" y="188" width="5" height="7"/>
-          <rect x="1076" y="212" width="5" height="7"/><rect x="1234" y="212" width="5" height="7"/>
-          <rect x="1398" y="220" width="5" height="7"/>
-        </g>
-        <g fill="#e05545" opacity="0.72" class="shim s2">
-          <rect x="1030" y="232" width="26" height="9" rx="1.5"/>
-          <rect x="322"  y="248" width="20" height="8" rx="1.5"/>
-          <rect x="866"  y="238" width="7"  height="20" rx="1.5"/>
-        </g>
-      </g>
-
-      <!-- 地平線上的光暈（霓虹紅・街燈暖黃・遠處白）-->
-      <ellipse cx="1043" cy="266" rx="200" ry="72" fill="url(#glowNeon)"/>
-      <ellipse cx="332"  cy="272" rx="170" ry="64" fill="url(#glowLamp)"/>
-      <ellipse cx="720"  cy="276" rx="130" ry="50" fill="url(#glowLamp)" opacity="0.6"/>
-
-      <!-- 遠景路面（雨後微亮的瀝青）-->
-      <path d="M0 290 L1440 288 L1440 420 L0 420 Z" fill="url(#roadFar)"/>
-      <path d="M0 290 L1440 288" stroke="#e8c98a" stroke-opacity="0.30" stroke-width="1.8" filter="url(#softGlow)"/>
-
-      <!-- 路上行人（傘の人——一瞬的停格）＋腳下倒影 -->
-      <g transform="translate(886 288)">
-        <g fill="#090705">
-          <path d="M-17 -37 Q 0 -52 17 -37 Q 8.5 -41.5 0 -40.5 Q -8.5 -41.5 -17 -37 Z"/>
-          <line x1="0" y1="-40" x2="1" y2="-25" stroke="#090705" stroke-width="1.4" stroke-linecap="round"/>
-          <circle cx="0" cy="-29.5" r="4.4"/>
-          <path d="M-5 -25.5 C -6.2 -14, -4.4 -5, -3.2 0 L 3.4 0 C 5.2 -8, 6 -17.5, 4.6 -24.8 C 1.8 -27, -2.4 -27.2, -5 -25.5 Z"/>
-          <path d="M-3 0 L -4.6 10.5 M2.6 0 L 4.4 10.5" stroke="#090705" stroke-width="2.6" stroke-linecap="round" fill="none"/>
-        </g>
-        <rect x="-4.5" y="11" width="9" height="30" fill="#090705" opacity="0.30" filter="url(#wet)"/>
-      </g>
-
-      <!-- 雨後路面的垂直反光細光帶（燈影拉直成線）-->
-      <g filter="url(#wet)">
-        <g class="shim">
-          <rect x="1038" y="288" width="6"   height="126" fill="url(#streakR)"/>
-          <rect x="1052" y="288" width="2.5" height="88"  fill="url(#streakR)" opacity="0.7"/>
-          <rect x="1024" y="288" width="2"   height="72"  fill="url(#streakR)" opacity="0.55"/>
-          <rect x="871"  y="288" width="3"   height="96"  fill="url(#streakR)" opacity="0.6"/>
-        </g>
-        <g class="shim s2">
-          <rect x="326"  y="288" width="5"   height="108" fill="url(#streakA)"/>
-          <rect x="340"  y="288" width="2"   height="70"  fill="url(#streakA)" opacity="0.65"/>
-          <rect x="150"  y="288" width="3"   height="84"  fill="url(#streakA)" opacity="0.7"/>
-          <rect x="588"  y="288" width="2.5" height="76"  fill="url(#streakA)" opacity="0.6"/>
-          <rect x="1240" y="288" width="3.5" height="92"  fill="url(#streakA)" opacity="0.7"/>
-        </g>
-        <g class="shim s3">
-          <rect x="718"  y="288" width="3"   height="118" fill="url(#streakW)"/>
-          <rect x="702"  y="288" width="1.8" height="66"  fill="url(#streakW)" opacity="0.6"/>
-          <rect x="452"  y="288" width="2.2" height="80"  fill="url(#streakW)" opacity="0.65"/>
-          <rect x="960"  y="288" width="2.5" height="88"  fill="url(#streakW)" opacity="0.6"/>
-          <rect x="1130" y="288" width="2"   height="72"  fill="url(#streakW)" opacity="0.55"/>
-          <rect x="1382" y="288" width="2.5" height="96"  fill="url(#streakW)" opacity="0.6"/>
-          <rect x="64"   y="288" width="2"   height="68"  fill="url(#streakW)" opacity="0.5"/>
-        </g>
-      </g>
-
-      <!-- 近景路面（更暗一層，壓住底部）＋水漥微光 -->
-      <path d="M0 356 C 320 350, 560 360, 900 354 C 1160 350, 1320 358, 1440 354 L1440 420 L0 420 Z" fill="url(#roadNear)"/>
-      <path d="M0 356 C 320 350, 560 360, 900 354 C 1160 350, 1320 358, 1440 354"
-            stroke="#e8c98a" stroke-opacity="0.14" stroke-width="1.4" filter="url(#softGlow)"/>
-      <ellipse cx="1046" cy="384" rx="64" ry="7" fill="#e05545" opacity="0.10" filter="url(#wet)"/>
-      <ellipse cx="330"  cy="390" rx="52" ry="6" fill="#e8c98a" opacity="0.10" filter="url(#wet)"/>
-    </svg>
-
-    <span class="hero-mark" aria-hidden="true">街の灯</span>
-
     <div class="wrap">
-      <p class="eyebrow reveal">街 · Street at night</p>
-      <h1 class="reveal d1">
-        <span class="kanji">街</span>
-        <span class="romaji">街 · Machi · Street</span>
-      </h1>
-      <p class="hero-poem reveal d2">
-        台北與京都的街角。人、影、與一瞬的停格。
-        <span class="en">Street corners of Taipei and Kyoto — people, shadows, a moment held still.</span>
-      </p>
+      <div class="hero-copy">
+        <p class="eyebrow reveal">街 · Street photography</p>
+        <h1 class="reveal d1">
+          <span class="kanji">街</span>
+          <span class="romaji">街 · Machi · Street</span>
+        </h1>
+        <p class="hero-poem reveal d2">
+          台北、京都、里斯本與新加坡。人、影、與一瞬的停格。
+          <span class="en">Taipei, Kyoto, Lisbon and Singapore. People, shadows, a moment held still.</span>
+        </p>
+      </div>
+      <div class="hero-collage" role="group" aria-label="街拍照片交疊：里斯本、新加坡與街角片刻">
+        <figure class="hero-print hero-print--awning">
+          <img src="images/photography/dscf6712_4.jpg" width="2000" height="1125" alt="里斯本，紅色遮篷下的街角行人" decoding="async">
+        </figure>
+        <figure class="hero-print hero-print--redwall">
+          <img src="images/photography/dsc_9826_1.jpg" width="1333" height="2000" alt="新加坡，朱紅色牆前坐著的人" decoding="async">
+        </figure>
+        <figure class="hero-print hero-print--chair">
+          <img src="images/photography/dsc_9621_dp3_1.jpg" width="1333" height="2000" alt="新加坡，後巷裡坐在椅子上的人" decoding="async">
+        </figure>
+        <figure class="hero-print hero-print--door">
+          <img src="images/photography/dscf7229.jpg" width="1500" height="2000" alt="里斯本，綠色門前等候的人" decoding="async">
+        </figure>
+        <figure class="hero-print hero-print--machiya">
+          <img src="images/photography/l1005020_2.jpg" width="1600" height="1062" alt="町家屋簷下的行人，黑白街拍" decoding="async">
+        </figure>
+        <figure class="hero-print hero-print--skyline">
+          <img src="images/photography/dsc_9878_xd2s.jpg" width="1333" height="2000" alt="新加坡，藍調時刻的巷弄與高樓" decoding="async">
+        </figure>
+        <figure class="hero-print hero-print--tram">
+          <img src="images/photography/dscf8886.jpg" width="1500" height="2000" alt="里斯本，暮色中的 28 號電車" decoding="async">
+        </figure>
+        <figure class="hero-print hero-print--lisbon">
+          <img src="images/photography/dscf8060_dxo.jpg" width="2000" height="1500" alt="里斯本，走過黃色牆面的行人" fetchpriority="high" decoding="async">
+        </figure>
+        <figure class="hero-print hero-print--street">
+          <img src="images/photography/img_8239.jpg" width="2000" height="718" alt="街邊咖啡座裡的人們，黑白寬幅街拍" decoding="async">
+        </figure>
+        <figure class="hero-print hero-print--singapore">
+          <img src="images/photography/dsc_0087_1.jpg" width="2000" height="1333" alt="新加坡，走過彩色窗牆的行人" decoding="async">
+        </figure>
+      </div>
     </div>
 
     <div class="scroll-cue" aria-hidden="true">
@@ -818,7 +730,7 @@
   });
 </script>
 
-<!-- bokeh 光斑 canvas + 夜街視差（沿用花瓣物理骨架，改為都市夜的失焦光斑：
+<!-- bokeh 光斑 canvas（沿用花瓣物理骨架，改為都市夜的失焦光斑：
      暖白／街燈暖黃／朱紅圓斑，模糊柔邊、大小景深、極慢浮動＋呼吸明滅）-->
 <script>
 (() => {
@@ -924,18 +836,6 @@
     else if (!reduceMotion) frame();
   });
 
-  /* 夜街地平線視差（幅度極小，避免露出邊緣）*/
-  const streetscape = document.getElementById('streetscape');
-  let ticking = false;
-  const parallax = () => {
-    const y = window.scrollY;
-    if (streetscape) streetscape.style.transform = `translate3d(0, ${y * 0.05}px, 0)`;
-    ticking = false;
-  };
-  window.addEventListener('scroll', () => {
-    if (reduceMotion) return;
-    if (!ticking){ requestAnimationFrame(parallax); ticking = true; }
-  }, { passive:true });
 })();
 </script>
 
