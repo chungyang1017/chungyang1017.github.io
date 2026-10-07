@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-//  PUBLICATIONS DATA · 期刊論文資料（33 篇）
+//  PUBLICATIONS DATA · 期刊論文資料（34 篇）
 //  Single source of truth for journal articles.
 //  Used by: academic-zh.html, academic.html (top 10),
 //           publications/publications-zh.html, publications/publications.html (full list — TODO: refactor).
@@ -20,6 +20,15 @@
 // ─────────────────────────────────────────────
 
 const publicationsData = [
+  { year: 2026, lang: 'en', forthcoming: true,
+    title_zh: 'Cumulating Precarity in a Hybrid Platform Economy: Gender, Class, and the Social Exclusion of Single Mothers in Taiwan', title_en: 'Cumulating Precarity in a Hybrid Platform Economy: Gender, Class, and the Social Exclusion of Single Mothers in Taiwan',
+    authors_zh: 'Hung, H-F., Lee, S-F., Huang, F-Y. and Yeh, C-Y.', authors_en: 'Hung, H-F., Lee, S-F., Huang, F-Y. and Yeh, C-Y.',
+    venue_zh: 'Journal of Asian Public Policy', venue_en: 'Journal of Asian Public Policy',
+    vol: '',
+    link: null,
+    badge: 'SSCI',
+    metrics: { if: '2.9', rank: 'Q1 Area Studies', year: 2025 } },
+
   { year: 2026, lang: 'en', forthcoming: true,
     title_zh: '形塑與管理年金緊縮的政治：台灣的政黨與認同分歧', title_en: 'Shaping and Managing the Politics of Pension Retrenchment: Partisan and Identity Cleavages in Taiwan',
     authors_zh: 'Yeh, C-Y., Liou, Y-S. and Lue, J-D.', authors_en: 'Yeh, C-Y., Liou, Y-S. and Lue, J-D.',
