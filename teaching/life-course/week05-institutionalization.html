@@ -791,12 +791,17 @@ html[data-bg="white"] .lb-bar button,html[data-bg="sepia"] .lb-bar button,html[d
   var main = document.querySelector('main');
 
   // 進場動畫
+  // 黑板版的 .frame 進場前被 clip-path 全遮，Chrome 算交集時會扣掉 clip-path，比例一直是 0。
+  // 所以投影片改觀察沒有裁切的外層（.unit、.hero-r），進場時再把 in 加到 .frame 上。
   var reveal = document.querySelectorAll('.frame, .band');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-    reveal.forEach(function (el) { io.observe(el); });
+      es.forEach(function (e) { if (e.isIntersecting) { e.target._rv.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
+    reveal.forEach(function (el) {
+      var t = el.classList.contains('frame') ? el.parentNode : el;
+      t._rv = el; io.observe(t);
+    });
   } else reveal.forEach(function (el) { el.classList.add('in'); });
 
   // 目錄：標示目前位置
