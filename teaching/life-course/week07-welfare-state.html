@@ -249,6 +249,119 @@ h1{font:700 clamp(36px,4.7vw,58px)/1.2 var(--serif);color:var(--ink);letter-spac
 }
 
 </style>
+<!-- theme:start -->
+<style>
+.bgbtn{gap:7px}
+.bgbtn .bgi{width:14px;height:14px;border-radius:50%;border:1.5px solid currentColor;background:linear-gradient(90deg,currentColor 50%,transparent 50%);flex:none}
+.bgpop{position:fixed;z-index:60;width:252px;padding:14px 12px 10px;border-radius:14px;background:#fff;color:#1f1e1c;box-shadow:0 0 0 1px rgba(0,0,0,.1),0 18px 40px -12px rgba(0,0,0,.35);font:14px/1.4 "Noto Sans TC","PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif}
+.bgpop[hidden]{display:none}
+.bgpop-h{margin:0 0 8px 4px;font-size:12.5px;font-weight:600;letter-spacing:.12em;opacity:.7}
+.bgpop-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.bgopt{display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 2px 7px;border:0;border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:13.5px;cursor:pointer}
+.bgopt:hover{background:rgba(0,0,0,.05)}
+.bgopt i{width:30px;height:30px;border-radius:50%;background:var(--sw);box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+.bgopt[aria-pressed="true"]{font-weight:600}
+.bgopt[aria-pressed="true"] i{box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 0 0 2px #fff,0 0 0 4px #1f1e1c}
+.bgopt:focus-visible{outline:2px solid #1f1e1c;outline-offset:1px}
+html.bgdk .bgpop{background:#2a2825;color:#f1ede6;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 18px 40px -12px rgba(0,0,0,.6)}
+html.bgdk .bgopt:hover{background:rgba(255,255,255,.07)}
+html.bgdk .bgopt i{box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+html.bgdk .bgopt[aria-pressed="true"] i{box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 0 0 2px #2a2825,0 0 0 4px #f1ede6}
+html.bgdk .bgopt:focus-visible{outline-color:#f1ede6}
+@media (max-width:560px){.bgbtn .bgt{display:none}.bgbtn{padding:0 11px}}
+html[data-bg="white"] body{background:#ffffff}
+html[data-bg="sepia"] body{background:#f4ecd8}
+html[data-bg="green"] body{background:#e1edd9}
+html[data-bg="gray"] body{background:#e8e8e6}
+html[data-bg="dark"]{color-scheme:dark;--paper:#2b2825;--ink:#f1ece4;--text:#e0d9ce;--muted:#b8afa3;--dim:#a59b8f;--red:#f07a70;--cardline:#8a4a4a;--pen:#1f2a44;--link:#8fb8f2;--Y:#d8bf4f;--Yp:#3a3523;--P:#d48a9e;--G:#97bd70;--B:#86aed6;--dymo:#111111;--sh-paper:0 2px 3px rgba(0,0,0,.5),0 10px 20px -8px rgba(0,0,0,.75);--sh-note:0 4px 6px rgba(0,0,0,.4),0 14px 22px -10px rgba(0,0,0,.7)}
+html[data-bg="dark"] body{background-color:#4a3a2c;background-blend-mode:multiply}
+html[data-bg="dark"] ::selection{background:rgba(216,191,79,.45);color:#fff}
+html[data-bg="dark"] .topnav{background:linear-gradient(180deg,#3b3f44 0%,#2f3337 62%,#26292d 100%);border-bottom-color:#15171a}
+html[data-bg="dark"] .wk{color:#b9c0c7}
+html[data-bg="dark"] .navbtn{background:#2a2d31;border-color:#5b6168}
+html[data-bg="dark"] .navbtn:hover{background:#34383d}
+html[data-bg="dark"] .brand .b-b{fill:#6aa7ef}
+html[data-bg="dark"] .date{color:#a9c1ea}
+html[data-bg="dark"] .disc .note-h{color:#e6d27a;border-bottom-color:rgba(230,210,122,.3)}
+html[data-bg="dark"] .disc .note-h .mk{background:#e6d27a}
+html[data-bg="dark"] .gh:hover,html[data-bg="dark"] .grp ol a:hover{background:#3a3632}
+html[data-bg="dark"] .toc{scrollbar-color:#5f574c transparent}
+html[data-bg="dark"] .band-p i{background:#4a443c}
+html[data-bg="dark"] .band-note{border-top-color:#5f574c}
+html[data-bg="dark"] .hero-r .frame{background:#cfc8bc}
+</style>
+<script>
+(function () {
+  var KEY = 'handout-bg', MODES = [["orig", "原色", "#b4865a"], ["white", "純白", "#ffffff"], ["sepia", "米黃", "#f4ecd8"], ["green", "淺綠", "#e1edd9"], ["gray", "淺灰", "#e8e8e6"], ["dark", "深色", "#2c2219"]], DARK_ORIG = false;
+  var root = document.documentElement, cur = 'orig';
+  function load() { try { return localStorage.getItem(KEY) || 'orig'; } catch (e) { return 'orig'; } }
+  function save() { try { localStorage.setItem(KEY, cur); } catch (e) {} }
+  function apply(m) {
+    cur = MODES.some(function (x) { return x[0] === m; }) ? m : 'orig';
+    if (cur === 'orig') root.removeAttribute('data-bg'); else root.setAttribute('data-bg', cur);
+    root.classList.toggle('bgdk', cur === 'dark' || (DARK_ORIG && cur === 'orig'));
+  }
+  apply(load());
+
+  function ui() {
+    var nav = document.querySelector('.topnav');
+    if (!nav || nav.querySelector('.bgbtn')) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'navbtn bgbtn';
+    btn.setAttribute('aria-label', '底色');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', 'bgpop');
+    btn.innerHTML = '<span class="bgi" aria-hidden="true"></span><span class="bgt">底色</span>';
+    nav.insertBefore(btn, nav.querySelector('.tocbtn'));
+    var pop = document.createElement('div');
+    pop.id = 'bgpop';
+    pop.className = 'bgpop';
+    pop.hidden = true;
+    pop.setAttribute('role', 'group');
+    pop.setAttribute('aria-label', '選擇底色');
+    pop.innerHTML = '<p class="bgpop-h">底色</p><div class="bgpop-g">' + MODES.map(function (x) {
+      return '<button type="button" class="bgopt" data-bg="' + x[0] + '"><i style="--sw:' + x[2] + '"></i>' + x[1] + '</button>';
+    }).join('') + '</div>';
+    document.body.appendChild(pop);
+
+    function place() {
+      var r = btn.getBoundingClientRect();
+      pop.style.top = Math.round(r.bottom + 8) + 'px';
+      pop.style.right = Math.max(8, Math.round(innerWidth - r.right)) + 'px';
+    }
+    function mark() {
+      pop.querySelectorAll('.bgopt').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-bg') === cur ? 'true' : 'false');
+      });
+    }
+    function open() {
+      place(); mark();
+      pop.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
+      pop.querySelector('[aria-pressed="true"]').focus();
+    }
+    function close(back) {
+      if (pop.hidden) return;
+      pop.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      if (back) btn.focus();
+    }
+    btn.addEventListener('click', function () { if (pop.hidden) open(); else close(); });
+    pop.addEventListener('click', function (e) {
+      var b = e.target.closest('.bgopt');
+      if (b) { apply(b.getAttribute('data-bg')); save(); mark(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (!pop.hidden && !pop.contains(e.target) && !btn.contains(e.target)) close();
+    });
+    addEventListener('keydown', function (e) { if (e.key === 'Escape') close(true); });
+    addEventListener('resize', function () { if (!pop.hidden) place(); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ui); else ui();
+})();
+</script>
+<!-- theme:end -->
 <!-- og:start -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />

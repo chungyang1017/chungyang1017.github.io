@@ -352,6 +352,166 @@ main{min-width:0;max-width:960px}
 @media (prefers-reduced-motion:reduce){.chip.shake{animation:none}}
 
 </style>
+<!-- theme:start -->
+<style>
+.bgbtn{gap:7px}
+.bgbtn .bgi{width:14px;height:14px;border-radius:50%;border:1.5px solid currentColor;background:linear-gradient(90deg,currentColor 50%,transparent 50%);flex:none}
+.bgpop{position:fixed;z-index:60;width:252px;padding:14px 12px 10px;border-radius:14px;background:#fff;color:#1f1e1c;box-shadow:0 0 0 1px rgba(0,0,0,.1),0 18px 40px -12px rgba(0,0,0,.35);font:14px/1.4 "Noto Sans TC","PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif}
+.bgpop[hidden]{display:none}
+.bgpop-h{margin:0 0 8px 4px;font-size:12.5px;font-weight:600;letter-spacing:.12em;opacity:.7}
+.bgpop-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.bgopt{display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 2px 7px;border:0;border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:13.5px;cursor:pointer}
+.bgopt:hover{background:rgba(0,0,0,.05)}
+.bgopt i{width:30px;height:30px;border-radius:50%;background:var(--sw);box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+.bgopt[aria-pressed="true"]{font-weight:600}
+.bgopt[aria-pressed="true"] i{box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 0 0 2px #fff,0 0 0 4px #1f1e1c}
+.bgopt:focus-visible{outline:2px solid #1f1e1c;outline-offset:1px}
+html.bgdk .bgpop{background:#2a2825;color:#f1ede6;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 18px 40px -12px rgba(0,0,0,.6)}
+html.bgdk .bgopt:hover{background:rgba(255,255,255,.07)}
+html.bgdk .bgopt i{box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+html.bgdk .bgopt[aria-pressed="true"] i{box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 0 0 2px #2a2825,0 0 0 4px #f1ede6}
+html.bgdk .bgopt:focus-visible{outline-color:#f1ede6}
+@media (max-width:560px){.bgbtn .bgt{display:none}.bgbtn{padding:0 11px}}
+html[data-bg="white"]{--canvas:#ffffff;--paper:#ffffff;--muted:#6b6963;--muted2:#6c6961;--coral:#a35338;--coral-d:#a25238}
+html[data-bg="white"] .topnav{background:rgba(255,255,255,0.92)}
+html[data-bg="sepia"]{--canvas:#f4ecd8;--paper:#fffdf4;--soft:#f6f0e2;--card:#f0e9d8;--cream:#e9e1cc;--hair:#e8e0cb;--hair2:#dbd0b4;--muted:#6b6963;--muted2:#6c6961;--coral:#a35338;--coral-d:#a25238}
+html[data-bg="sepia"] .topnav{background:rgba(244,236,216,0.92)}
+html[data-bg="green"]{--canvas:#e1edd9;--paper:#fafff7;--soft:#ebf4e7;--card:#e3eedd;--cream:#d9e6d2;--hair:#d8e5d1;--hair2:#c5d7bc;--muted:#6b6963;--muted2:#6c6961;--coral:#a15136;--coral-d:#a25238}
+html[data-bg="green"] .topnav{background:rgba(225,237,217,0.92)}
+html[data-bg="gray"]{--canvas:#e8e8e6;--paper:#fdfdfd;--soft:#f1f1f1;--card:#eaeaea;--cream:#e1e1e1;--hair:#e0e0e0;--hair2:#d0d0d0;--muted:#696761;--muted2:#6b685f;--coral:#a15136;--coral-d:#a25238}
+html[data-bg="gray"] .topnav{background:rgba(232,232,230,0.92)}
+html[data-bg="white"] [style*="background:#faf9f5" i]{background-color:#ffffff!important}
+html[data-bg="white"] [style*="background:#fffdf9" i]{background-color:#ffffff!important}
+html[data-bg="white"] [style*="background:#ffffff" i]{background-color:#ffffff!important}
+html[data-bg="white"] [style*="solid #fffdf9" i]{border-color:#ffffff!important}
+html[data-bg="white"] [stroke="#fffdf9" i]{stroke:#ffffff}
+html[data-bg="sepia"] [style*="--bc:#d9cfc0" i]{--bc:#dbd0b4!important}
+html[data-bg="sepia"] [style*="background:#efe9de" i]{background-color:#f0e9d8!important}
+html[data-bg="sepia"] [style*="background:#f5f0e8" i]{background-color:#f6f0e2!important}
+html[data-bg="sepia"] [style*="background:#faf9f5" i]{background-color:#fdf9ee!important}
+html[data-bg="sepia"] [style*="background:#fffdf9" i]{background-color:#fffdf4!important}
+html[data-bg="sepia"] [style*="background:#ffffff" i]{background-color:#fffdf4!important}
+html[data-bg="sepia"] [style*="solid #d9cfc0" i]{border-color:#dbd0b4!important}
+html[data-bg="sepia"] [style*="solid #fffdf9" i]{border-color:#fffdf4!important}
+html[data-bg="sepia"] [fill="#d2cdc3" i]{fill:#d8cdb0}
+html[data-bg="sepia"] [fill="#efe9de" i]{fill:#f0e9d8}
+html[data-bg="sepia"] [fill="#f5f1ea" i]{fill:#f7f1e4}
+html[data-bg="sepia"] [stroke="#d9cfc0" i]{stroke:#dbd0b4}
+html[data-bg="sepia"] [stroke="#e6dfd8" i]{stroke:#e8e0cb}
+html[data-bg="sepia"] [stroke="#f5f0e8" i]{stroke:#f6f0e2}
+html[data-bg="sepia"] [stroke="#fffdf9" i]{stroke:#fffdf4}
+html[data-bg="green"] [style*="--bc:#d9cfc0" i]{--bc:#c5d7bc!important}
+html[data-bg="green"] [style*="background:#efe9de" i]{background-color:#e3eedd!important}
+html[data-bg="green"] [style*="background:#f5f0e8" i]{background-color:#ebf4e7!important}
+html[data-bg="green"] [style*="background:#faf9f5" i]{background-color:#f5fbf2!important}
+html[data-bg="green"] [style*="background:#fffdf9" i]{background-color:#fafff7!important}
+html[data-bg="green"] [style*="background:#ffffff" i]{background-color:#fafff7!important}
+html[data-bg="green"] [style*="solid #d9cfc0" i]{border-color:#c5d7bc!important}
+html[data-bg="green"] [style*="solid #fffdf9" i]{border-color:#fafff7!important}
+html[data-bg="green"] [fill="#d2cdc3" i]{fill:#c2d5b8}
+html[data-bg="green"] [fill="#efe9de" i]{fill:#e3eedd}
+html[data-bg="green"] [fill="#f5f1ea" i]{fill:#ecf5e8}
+html[data-bg="green"] [stroke="#d9cfc0" i]{stroke:#c5d7bc}
+html[data-bg="green"] [stroke="#e6dfd8" i]{stroke:#d8e5d1}
+html[data-bg="green"] [stroke="#f5f0e8" i]{stroke:#ebf4e7}
+html[data-bg="green"] [stroke="#fffdf9" i]{stroke:#fafff7}
+html[data-bg="gray"] [style*="--bc:#d9cfc0" i]{--bc:#d0d0d0!important}
+html[data-bg="gray"] [style*="background:#efe9de" i]{background-color:#eaeaea!important}
+html[data-bg="gray"] [style*="background:#f5f0e8" i]{background-color:#f1f1f1!important}
+html[data-bg="gray"] [style*="background:#faf9f5" i]{background-color:#f9f9f9!important}
+html[data-bg="gray"] [style*="background:#fffdf9" i]{background-color:#fdfdfd!important}
+html[data-bg="gray"] [style*="background:#ffffff" i]{background-color:#fdfdfd!important}
+html[data-bg="gray"] [style*="solid #d9cfc0" i]{border-color:#d0d0d0!important}
+html[data-bg="gray"] [style*="solid #fffdf9" i]{border-color:#fdfdfd!important}
+html[data-bg="gray"] [fill="#d2cdc3" i]{fill:#cdcdcd}
+html[data-bg="gray"] [fill="#efe9de" i]{fill:#eaeaea}
+html[data-bg="gray"] [fill="#f5f1ea" i]{fill:#f1f1f1}
+html[data-bg="gray"] [stroke="#d9cfc0" i]{stroke:#d0d0d0}
+html[data-bg="gray"] [stroke="#e6dfd8" i]{stroke:#e0e0e0}
+html[data-bg="gray"] [stroke="#f5f0e8" i]{stroke:#f1f1f1}
+html[data-bg="gray"] [stroke="#fffdf9" i]{stroke:#fdfdfd}
+html[data-bg="dark"]{color-scheme:dark;--canvas:#1b1a18;--paper:#24221f;--soft:#2b2925;--card:#322f2a;--cream:#3a3731;--ink:#f3efe7;--body:#d8d3c9;--muted:#aaa397;--muted2:#a39c90;--hair:#36332e;--hair2:#46423b;--dark:#100f0e;--dark2:#1f1d1a;--dark3:#2b2925;--on-dark:#f3efe7;--on-dark2:#b3aea5;--coral:#e08a6c;--coral-d:#eaa58b;--coral-t:#47302a}
+html[data-bg="dark"] .topnav{background:rgba(27,26,24,0.92)}
+html[data-bg="dark"] .stage,html[data-bg="dark"] .hero-fig .mini{filter:invert(.9) hue-rotate(180deg)}
+html[data-bg="dark"] .stage[style*="background:#181715" i]{filter:none}
+html[data-bg="dark"] .lx svg,html[data-bg="dark"] .tg-fig svg{background:#f5f0e8;filter:invert(.9) hue-rotate(180deg)}
+html[data-bg="dark"] .brand [fill="#141413" i]{fill:var(--ink)}
+html[data-bg="dark"] .badge,html[data-bg="dark"] .act-k,html[data-bg="dark"] .nb-q span{color:#1b1a18}
+html[data-bg="dark"] .qz-o button.no{color:#f3c3b0}
+html[data-bg="dark"] .chip.sel{background:var(--paper)}
+</style>
+<script>
+(function () {
+  var KEY = 'handout-bg', MODES = [["orig", "原色", "#faf9f5"], ["white", "純白", "#ffffff"], ["sepia", "米黃", "#f4ecd8"], ["green", "淺綠", "#e1edd9"], ["gray", "淺灰", "#e8e8e6"], ["dark", "深色", "#1b1a18"]], DARK_ORIG = false;
+  var root = document.documentElement, cur = 'orig';
+  function load() { try { return localStorage.getItem(KEY) || 'orig'; } catch (e) { return 'orig'; } }
+  function save() { try { localStorage.setItem(KEY, cur); } catch (e) {} }
+  function apply(m) {
+    cur = MODES.some(function (x) { return x[0] === m; }) ? m : 'orig';
+    if (cur === 'orig') root.removeAttribute('data-bg'); else root.setAttribute('data-bg', cur);
+    root.classList.toggle('bgdk', cur === 'dark' || (DARK_ORIG && cur === 'orig'));
+  }
+  apply(load());
+
+  function ui() {
+    var nav = document.querySelector('.topnav');
+    if (!nav || nav.querySelector('.bgbtn')) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'navbtn bgbtn';
+    btn.setAttribute('aria-label', '底色');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', 'bgpop');
+    btn.innerHTML = '<span class="bgi" aria-hidden="true"></span><span class="bgt">底色</span>';
+    nav.insertBefore(btn, nav.querySelector('.tocbtn'));
+    var pop = document.createElement('div');
+    pop.id = 'bgpop';
+    pop.className = 'bgpop';
+    pop.hidden = true;
+    pop.setAttribute('role', 'group');
+    pop.setAttribute('aria-label', '選擇底色');
+    pop.innerHTML = '<p class="bgpop-h">底色</p><div class="bgpop-g">' + MODES.map(function (x) {
+      return '<button type="button" class="bgopt" data-bg="' + x[0] + '"><i style="--sw:' + x[2] + '"></i>' + x[1] + '</button>';
+    }).join('') + '</div>';
+    document.body.appendChild(pop);
+
+    function place() {
+      var r = btn.getBoundingClientRect();
+      pop.style.top = Math.round(r.bottom + 8) + 'px';
+      pop.style.right = Math.max(8, Math.round(innerWidth - r.right)) + 'px';
+    }
+    function mark() {
+      pop.querySelectorAll('.bgopt').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-bg') === cur ? 'true' : 'false');
+      });
+    }
+    function open() {
+      place(); mark();
+      pop.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
+      pop.querySelector('[aria-pressed="true"]').focus();
+    }
+    function close(back) {
+      if (pop.hidden) return;
+      pop.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      if (back) btn.focus();
+    }
+    btn.addEventListener('click', function () { if (pop.hidden) open(); else close(); });
+    pop.addEventListener('click', function (e) {
+      var b = e.target.closest('.bgopt');
+      if (b) { apply(b.getAttribute('data-bg')); save(); mark(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (!pop.hidden && !pop.contains(e.target) && !btn.contains(e.target)) close();
+    });
+    addEventListener('keydown', function (e) { if (e.key === 'Escape') close(true); });
+    addEventListener('resize', function () { if (!pop.hidden) place(); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ui); else ui();
+})();
+</script>
+<!-- theme:end -->
 <!-- og:start -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
