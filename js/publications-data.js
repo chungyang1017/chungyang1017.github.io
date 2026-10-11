@@ -22,7 +22,7 @@
 const publicationsData = [
   { year: 2026, lang: 'en', forthcoming: true,
     title_zh: 'Cumulating Precarity in a Hybrid Platform Economy: Gender, Class, and the Social Exclusion of Single Mothers in Taiwan', title_en: 'Cumulating Precarity in a Hybrid Platform Economy: Gender, Class, and the Social Exclusion of Single Mothers in Taiwan',
-    authors_zh: 'Hung, H-F., Lee, S-F., Huang, F-Y. and Yeh, C-Y.', authors_en: 'Hung, H-F., Lee, S-F., Huang, F-Y. and Yeh, C-Y.',
+    authors_zh: 'Hung, H-F., Huang, F-Y., Yeh, C-Y. and Lee, S-F.', authors_en: 'Hung, H-F., Huang, F-Y., Yeh, C-Y. and Lee, S-F.',
     venue_zh: 'Journal of Asian Public Policy', venue_en: 'Journal of Asian Public Policy',
     vol: '',
     link: null,
