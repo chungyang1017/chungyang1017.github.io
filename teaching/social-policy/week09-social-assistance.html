@@ -701,7 +701,7 @@ details.disc .no{font-family:var(--mono);background:var(--orange)}
 const CONFIG = {
   ENDPOINT:'',
   // 簽到後台（Apps Script）網址。填了就先送這裡，寫入試算表並讀回確認後顯示「已登記」；失敗才改走上面的表單
-  GAS:'',
+  GAS:'https://script.google.com/macros/s/AKfycbzcnicb8RA5S8x9RP1aaMEPOSQ0DxAE4idT5hHRBb6DCY52KsKAhPmmXq8I4xS80N62/exec',
   FIELDS:{ sid:'entry.778218493', name:'entry.419586149', code:'entry.1960280121', detail:'entry.749946348' },
   WEEK:'W09', MIN_MINUTES:20
 };
@@ -1149,10 +1149,8 @@ $('submit').addEventListener('click',()=>{
     +'｜討論4：'+(((S.inbox.d4||'').trim())||'（未填）')
     +'｜動手 '+actCount()+'/'+ACTS.length
     +'｜回饋：'+(feedback||'（未填）');
-  if(!CONFIG.ENDPOINT){
-    note.innerHTML='<b>尚未送出</b>：簽到後台還沒接上。請把這組代碼交給老師：<br><b>'+esc(code)+'</b>';
-    return;
-  }
+  const manual=why=>{ note.innerHTML='<b>尚未送出</b>：'+why+'請把這組代碼交給老師：<br><b>'+esc(code)+'</b>'; };
+  if(!CONFIG.ENDPOINT && !CONFIG.GAS){ manual('簽到後台還沒接上。'); return; }
   const btn=$('submit');
   btn.disabled=true; note.textContent='傳送中…';
   const fd=new URLSearchParams();
@@ -1160,7 +1158,7 @@ $('submit').addEventListener('click',()=>{
   fd.append(CONFIG.FIELDS.name,name);
   fd.append(CONFIG.FIELDS.code,code);
   fd.append(CONFIG.FIELDS.detail,detail);
-  const viaForm=()=>fetch(CONFIG.ENDPOINT,{method:'POST',mode:'no-cors',body:fd})
+  const viaForm=()=>!CONFIG.ENDPOINT ? (btn.disabled=false, manual('簽到後台沒有回應。')) : fetch(CONFIG.ENDPOINT,{method:'POST',mode:'no-cors',body:fd})
   .then(()=>{ S.sent=stamp; S.sentCode=code; S.sentWho=sid+'　'+name; save(); refresh(); })
   .catch(()=>{ btn.disabled=false; note.textContent='送出失敗，請確認網路後再按一次；若仍失敗請截圖這一頁給老師。'; });
   if(!CONFIG.GAS){ viaForm(); return; }
