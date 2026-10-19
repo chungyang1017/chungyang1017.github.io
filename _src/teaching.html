@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+⟦zh⟧<html lang="zh-Hant">⟦en⟧<html lang="en">⟦/⟧
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>⟦zh⟧教學 Teaching · 葉崇揚⟦en⟧Teaching · Chung-Yang Yeh⟦/⟧</title>
+⟦zh⟧<meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 東吳大學社會學系 ・ 本學期課程：社會研究法（碩士班）、福利社會學（大學部）。">⟦en⟧<meta name="description" content="Chung-Yang Yeh ・ Department of Sociology, Soochow University ・ This term: Social Research Methods (graduate), Sociology of Welfare (undergraduate).">⟦/⟧
+<link rel="alternate" hreflang="zh-Hant" href="teaching-zh.html">
+<link rel="alternate" hreflang="en" href="teaching.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600&family=Yuji+Syuku&family=Klee+One:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+⟦zh⟧  /* 包 B · 方案 2 卷軸 — 共用樣式（pack-scroll _shared.css） */
+⟦en⟧⟦/⟧  :root{
+    --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
+    --moss:#3d5a3f; --accent:#c43838; --water:#5a7a8a;
+    --ink:#1f1f1d; --ink-soft:rgba(31,31,29,.72); --ink-quiet:rgba(31,31,29,.5);
+    --rule:rgba(31,31,29,.12);
+    --serif:"Shippori Mincho","Noto Serif TC","Noto Serif JP",serif;
+    --display:"Yuji Syuku",serif;
+    --latin:"Inter",sans-serif;
+    --kana:"Klee One",serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{ background:var(--sand); color:var(--ink); font-family:var(--serif); font-feature-settings:"palt"; -webkit-font-smoothing:antialiased; }
+  a{color:inherit}
+
+⟦zh⟧  /* 卷軸感頂部 */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--sand) 94%,transparent);
+    backdrop-filter:blur(8px);
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 48px;border-bottom:1px solid var(--rule);
+  }
+⟦en⟧  .nav{ position:sticky;top:0;z-index:50; background:color-mix(in srgb,var(--sand) 94%,transparent); backdrop-filter:blur(8px); display:flex;justify-content:space-between;align-items:center; padding:16px 48px;border-bottom:1px solid var(--rule); }
+⟦/⟧  .nav .brand{display:flex;gap:16px;align-items:baseline}
+⟦zh⟧  .nav .seal{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:42px;height:42px;background:var(--accent);color:var(--sand);
+    font-family:var(--display);font-size:20px;
+    transform:rotate(-3deg);box-shadow:2px 2px 0 rgba(196,56,56,.25);
+    text-decoration:none;
+  }
+⟦en⟧  .nav .seal{ display:inline-flex;align-items:center;justify-content:center; width:42px;height:42px;background:var(--accent);color:var(--sand); font-family:var(--display);font-size:20px; transform:rotate(-3deg);box-shadow:2px 2px 0 rgba(196,56,56,.25); text-decoration:none; }
+⟦/⟧  .nav .name{font-family:var(--display);font-size:18px;letter-spacing:.1em;line-height:1;text-decoration:none}
+  .nav .name small{display:block;font-family:var(--latin);font-size:9px;letter-spacing:.3em;color:var(--ink-quiet);margin-top:4px}
+  .nav nav{display:flex;gap:24px;font-size:16px;letter-spacing:.2em}
+  .nav nav a{color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:1px solid transparent;transition:.2s}
+  .nav nav a:hover{border-bottom-color:var(--ink)}
+  .nav nav a.is-active{color:var(--accent);border-bottom-color:var(--accent)}
+  .nav .lang{border-left:1px solid var(--rule);padding-left:24px;font-family:var(--latin);font-size:16px;letter-spacing:.2em;color:var(--ink-soft);text-decoration:none}
+
+⟦zh⟧  /* 砂紋 */
+⟦en⟧⟦/⟧  .samon{position:relative}
+⟦zh⟧  .samon::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.08;
+    background-image:url("data:image/svg+xml;utf8,⟦en⟧  .samon::before{ content:"";position:absolute;inset:0;pointer-events:none;opacity:.08; background-image:url("data:image/svg+xml;utf8,⟦/⟧<svg xmlns='http://www.w3.org/2000/svg' width='200' height='60'><g fill='none' stroke='%233d5a3f' stroke-width='.6'><path d='M 0 30 Q 50 22 100 30 T 200 30'/><path d='M 0 36 Q 50 28 100 36 T 200 36'/><path d='M 0 42 Q 50 34 100 42 T 200 42'/><path d='M 0 48 Q 50 40 100 48 T 200 48'/></g></svg>⟦zh⟧");
+  }
+
+  /* 卷軸開頭 */
+  .scroll-head{
+    display:grid;grid-template-columns:380px 1fr;gap:60px;
+    padding:120px 60px;max-width:1280px;margin:0 auto;
+    position:relative;border-top:1px solid var(--rule);
+    background:var(--sand-light);
+  }
+⟦en⟧"); }
+
+  .scroll-head{ display:grid;grid-template-columns:380px 1fr;gap:60px; padding:120px 60px;max-width:1280px;margin:0 auto; position:relative;border-top:1px solid var(--rule); background:var(--sand-light); }
+⟦/⟧  .scroll-head .index{font-family:var(--display);font-size:24px;color:var(--ink-quiet);margin-bottom:8px}
+  .scroll-head .kanji{font-family:var(--display);font-size:160px;line-height:.9;letter-spacing:0}
+  .scroll-head h1{margin:24px 0 8px;font-family:var(--display);font-size:36px;font-weight:400;letter-spacing:.1em}
+  .scroll-head .sub{font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);margin-bottom:20px;font-family:var(--latin);text-transform:uppercase}
+⟦zh⟧  .scroll-head .lede{font-size:15px;line-height:2;color:var(--ink-soft);max-width:460px;text-wrap:pretty}
+⟦en⟧  .scroll-head .lede{font-size:15px;line-height:2;color:var(--ink-soft);max-width:470px;text-wrap:pretty}
+⟦/⟧  .scroll-head .right{padding-top:56px;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start}
+
+⟦zh⟧  /* 段落分節 */
+⟦en⟧⟦/⟧  .scroll-section{ padding:96px 60px;max-width:1280px;margin:0 auto; border-top:1px solid var(--rule);position:relative; }
+  .scroll-section.alt{background:var(--sand-light)}
+  .scroll-section .row{ display:grid;grid-template-columns:320px 1fr;gap:60px;align-items:start; }
+  .scroll-section .meta-col .num{font-family:var(--display);font-size:22px;opacity:.4;margin-bottom:8px}
+  .scroll-section .meta-col .big{font-family:var(--display);font-size:96px;line-height:.95;letter-spacing:0}
+  .scroll-section .meta-col h2{margin:20px 0 8px;font-family:var(--display);font-size:30px;font-weight:400;letter-spacing:.1em}
+  .scroll-section .meta-col .sub{font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);margin-bottom:20px;font-family:var(--latin);text-transform:uppercase}
+  .scroll-section .meta-col p{font-size:14px;line-height:1.95;color:var(--ink-soft);max-width:280px;margin:0;text-wrap:pretty}
+
+⟦zh⟧  /* footer */
+⟦en⟧⟦/⟧  .foot{ border-top:1px solid var(--rule); padding:48px 60px; display:flex;justify-content:space-between; font-size:11px;letter-spacing:.2em;color:var(--ink-quiet); }
+
+⟦zh⟧  /* ── 教學頁專屬 ── */
+⟦en⟧⟦/⟧  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:8px}
+  .stats > div{background:var(--sand);padding:28px 24px}
+  .stats .n{font-family:var(--display);font-size:46px;line-height:1}
+⟦zh⟧  .stats .l{font-family:var(--display);font-size:15px;letter-spacing:.1em;margin-top:10px}
+  .stats .le{font-size:10px;letter-spacing:.24em;color:var(--ink-quiet);margin-top:4px;font-family:var(--latin);text-transform:uppercase}
+⟦en⟧  .stats .le{font-size:11px;letter-spacing:.2em;color:var(--ink-quiet);margin-top:12px;font-family:var(--latin);text-transform:uppercase;line-height:1.4}
+⟦/⟧
+  .course-wrap{display:flex;flex-direction:column;gap:24px}
+  .course{background:var(--paper);border:1px solid var(--rule);padding:40px 44px}
+  .course-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding-bottom:22px;margin-bottom:24px}
+  .course-tag{font-family:var(--latin);font-size:10px;letter-spacing:.24em;color:var(--accent);text-transform:uppercase}
+  .course-title{font-family:var(--display);font-size:30px;font-weight:400;margin:10px 0 2px;letter-spacing:.05em}
+  .course-en{font-family:var(--latin);font-size:11.5px;letter-spacing:.16em;color:var(--ink-quiet);text-transform:uppercase}
+  .course-meta{text-align:right;font-size:12px;color:var(--ink-soft);line-height:1.85;font-family:var(--latin);letter-spacing:.06em}
+  .course-meta b{font-family:var(--display);font-size:15px;color:var(--ink);display:block;margin-bottom:3px}
+  .course-desc{font-size:14px;line-height:1.95;color:var(--ink-soft);text-wrap:pretty}
+  .course-desc p{margin:0 0 1em}
+  .blk{margin-top:26px}
+  .blk .lab{font-family:var(--latin);font-size:11px;letter-spacing:.24em;color:var(--ink-quiet);text-transform:uppercase;margin-bottom:14px}
+  .obj-list{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+  .obj-list li{font-size:13px;line-height:1.7;color:var(--ink-soft);padding-left:22px;position:relative;text-wrap:pretty}
+  .obj-list li::before{content:"—";position:absolute;left:0;color:var(--accent)}
+  .books-2{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+  .bk ul{margin:0;padding:0;list-style:none}
+  .bk li{font-size:12.5px;line-height:1.65;color:var(--ink-soft);margin-bottom:11px;text-wrap:pretty}
+  .syllabus-cta{display:inline-block;font-family:var(--latin);font-size:11px;letter-spacing:.18em;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:11px 20px;text-transform:uppercase;transition:.2s}
+  .syllabus-cta:hover{background:var(--accent);color:var(--sand)}
+  .week-table{display:grid;grid-template-columns:1fr 1fr;gap:0 44px}
+  .wk{display:grid;grid-template-columns:34px 46px 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--rule);font-size:12.5px;align-items:baseline}
+  .wk .wn{font-family:var(--display);color:var(--ink-quiet);font-size:13px}
+  .wk .wd{font-family:var(--latin);font-size:10px;color:var(--ink-quiet);letter-spacing:.04em}
+  .wk .wt{color:var(--ink-soft);line-height:1.5;text-wrap:pretty}
+  .wk.off .wt{color:var(--ink-quiet);font-style:italic}
+  .wk .wt a{color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)}
+  .wk .wt .tag{font-family:var(--latin);font-size:9px;letter-spacing:.14em;color:var(--accent);margin-left:6px;white-space:nowrap}
+
+⟦zh⟧  /* reveal */
+⟦en⟧⟦/⟧  .term-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px}
+  .term-tab{font-family:var(--display);font-size:15px;letter-spacing:.05em;padding:12px 22px;border:1px solid var(--rule);background:var(--paper);color:var(--ink-soft);cursor:pointer;transition:.2s}
+  .term-tab:hover{border-color:var(--ink)}
+  .term-tab.is-on{background:var(--ink);color:var(--sand);border-color:var(--ink)}
+  .term-panel{display:none}
+  .term-panel.is-on{display:block}
+  .course-tba{font-size:13.5px;line-height:1.9;color:var(--ink-quiet);font-style:italic;margin-top:4px}
+
+⟦zh⟧  /* 課程卡（列表頁）：整卡可點 → 課程大綱頁 syllabus-zh.html?course=⟦en⟧  /* Course card (list page): whole card links to syllabus.html?course=⟦/⟧<id> */
+  .course-card{display:block;text-decoration:none;color:inherit;cursor:pointer;
+    transition:transform .3s cubic-bezier(.19,1,.22,1),box-shadow .3s,border-color .3s}
+  .course-card:hover{transform:translateY(-3px);border-color:rgba(196,56,56,.45);box-shadow:0 14px 34px rgba(31,31,29,.09)}
+  .card-cta{display:inline-block;margin-top:22px;font-family:var(--latin);font-size:11px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase}
+  .card-cta .ar{display:inline-block;transition:transform .3s cubic-bezier(.19,1,.22,1)}
+  .course-card:hover .card-cta .ar{transform:translateX(5px)}
+
+  /* 季節頂圖 */
+  .season-banner{position:relative;height:clamp(260px,42vh,440px);overflow:hidden;border-bottom:1px solid var(--rule)}
+  .season-banner img{width:100%;height:100%;object-fit:cover;display:block}
+  .season-banner .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(31,31,29,.12) 0%,rgba(31,31,29,0) 34%,rgba(31,31,29,.36) 100%)}
+  .season-banner .mark{position:absolute;left:clamp(22px,4vw,60px);bottom:clamp(22px,3.4vw,38px);color:var(--sand);display:flex;align-items:baseline;gap:16px}
+  .season-banner .mark .k{font-family:var(--display);font-size:clamp(38px,5vw,56px);line-height:1;text-shadow:0 2px 20px rgba(0,0,0,.55)}
+  .season-banner .mark .e{font-family:var(--latin);font-size:12px;letter-spacing:.3em;text-transform:uppercase;opacity:.92;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+
+  .reveal{opacity:1}
+  .js-anim .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.19,1,.22,1),transform .8s cubic-bezier(.19,1,.22,1)}
+  .js-anim .reveal.in{opacity:1;transform:none}
+
+⟦zh⟧  /* Mobile */
+⟦en⟧⟦/⟧  @media (max-width:820px){
+    .nav{padding:12px 20px;flex-wrap:wrap;gap:10px}
+⟦zh⟧    .nav nav{gap:14px;font-size:12px;letter-spacing:.14em;order:3;width:100%;justify-content:space-between}
+⟦en⟧    .nav nav{order:3;width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:9px 20px;font-size:13px;letter-spacing:.13em;padding-top:11px;margin-top:2px;border-top:1px solid var(--rule)}
+⟦/⟧    .nav .lang{padding-left:14px}
+    .scroll-head{grid-template-columns:1fr;gap:24px;padding:64px 22px}
+    .scroll-head .kanji{font-size:110px}
+    .scroll-head .right{padding-top:0}
+    .scroll-section{padding:56px 22px}
+    .scroll-section .row{grid-template-columns:1fr;gap:28px}
+    .scroll-section .meta-col .big{font-size:72px}
+    .stats{grid-template-columns:1fr 1fr}
+    .stats .n{font-size:38px}
+    .course{padding:28px 22px}
+    .course-head{gap:12px}
+    .course-meta{text-align:left}
+    .books-2{grid-template-columns:1fr;gap:24px}
+    .week-table{grid-template-columns:1fr;gap:0}
+    .foot{padding:32px 22px;flex-direction:column;gap:8px}
+  }
+⟦zh⟧⟦en⟧  /* ≤480px：英文 nav 六連結一行放不下，換行後 space-between 會把第二行拉到兩端，改置中 */
+  @media (max-width:480px){
+    .nav nav{justify-content:center;column-gap:18px}
+  }
+⟦/⟧  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1!important;transform:none!important;transition:none} }
+
+⟦zh⟧  /* ── 正文放大：稍微放大閱讀字級（2026-07）。要整體再調，改這一區塊即可 ── */
+⟦en⟧  /* ── Body copy scale-up: slightly larger reading sizes (2026-07). Adjust here to re-tune ── */
+⟦/⟧  .scroll-head .lede{font-size:16.5px}
+  .scroll-section .meta-col p{font-size:15.5px}
+  .course-title{font-size:32px}
+  .course-desc{font-size:15.5px}
+  .course-meta{font-size:13.5px}
+  .course-meta b{font-size:16.5px}
+  .obj-list li{font-size:14.5px}
+  .bk li{font-size:14px}
+  .wk{font-size:14px}
+  .wk .wn{font-size:14.5px}
+  .course-tba{font-size:15px}
+</style>
+<!-- og:start -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
+⟦zh⟧<meta property="og:title" content="教學 Teaching · 葉崇揚" />
+<meta property="og:description" content="葉崇揚（Chung-Yang Yeh） ・ 東吳大學社會學系 ・ 本學期課程：社會研究法（碩士班）、福利社會學（大學部）。" />
+<meta property="og:url" content="https://chungyang1017.github.io/teaching-zh.html" />⟦en⟧<meta property="og:title" content="Teaching · Chung-Yang Yeh" />
+<meta property="og:description" content="Chung-Yang Yeh ・ Department of Sociology, Soochow University ・ This term: Social Research Methods (graduate), Sociology of Welfare (undergraduate)." />
+<meta property="og:url" content="https://chungyang1017.github.io/teaching.html" />⟦/⟧
+<meta property="og:image" content="https://chungyang1017.github.io/photo.jpg" />
+⟦zh⟧<meta property="og:locale" content="zh_TW" />⟦en⟧<meta property="og:locale" content="en_US" />⟦/⟧
+<meta name="twitter:card" content="summary" />
+<!-- og:end -->
+</head>
+<body>
+
+<header class="nav">
+  <div class="brand">
+    ⟦zh⟧<a class="seal" href="index.html">⟦en⟧<a class="seal" href="index-en.html">⟦/⟧葉</a>
+    ⟦zh⟧<a class="name" href="index.html">⟦en⟧<a class="name" href="index-en.html">⟦/⟧葉崇揚<small>YEH CHUNG-YANG</small></a>
+  </div>
+  <nav>
+    ⟦zh⟧<a href="index.html">首頁⟦en⟧<a href="index-en.html">Home⟦/⟧</a>
+    ⟦zh⟧<a href="about-zh.html">簡介⟦en⟧<a href="about.html">About⟦/⟧</a>
+    ⟦zh⟧<a href="academic-zh.html">學術⟦en⟧<a href="academic.html">Research⟦/⟧</a>
+    ⟦zh⟧<a href="photography-zh.html">攝影⟦en⟧<a href="photography.html">Photography⟦/⟧</a>
+    ⟦zh⟧<a href="teaching-zh.html" class="is-active">教學⟦en⟧<a href="teaching.html" class="is-active">Teaching⟦/⟧</a>
+    ⟦zh⟧<a href="essays-zh.html">隨筆⟦en⟧<a href="essays.html">Essays⟦/⟧</a>
+  </nav>
+  ⟦zh⟧<a class="lang" href="teaching.html">EN⟦en⟧<a class="lang" href="teaching-zh.html">中⟦/⟧</a>
+</header>
+
+<section class="season-banner">
+  ⟦zh⟧<img src="images/photography/dscf3783_3.jpg" alt="秋 · 森之歌 Forest Song" loading="eager">⟦en⟧<img src="images/photography/dscf3783_3.jpg" alt="Autumn · Forest Song" loading="eager">⟦/⟧
+  <div class="veil"></div>
+  <div class="mark"><span class="k">秋</span><span class="e">Aki · Autumn</span></div>
+</section>
+
+<section class="scroll-head samon">
+  <div>
+    <div class="index reveal">参</div>
+    <div class="kanji reveal">教</div>
+  </div>
+  <div class="right">
+    <h1 class="reveal">⟦zh⟧教學⟦en⟧Teaching⟦/⟧</h1>
+    <div class="sub reveal">⟦zh⟧Teaching · 一期一会⟦en⟧Teaching · Ichi-go Ichi-e⟦/⟧</div>
+    <div class="lede reveal">⟦zh⟧一席對座、一期一会。教室是我與學生共同沏一壺問題的所在——從福利國家的形構，到一份社會研究計畫的初稿。每一堂，都是僅此一次的相遇。⟦en⟧One seat, one meeting — <i>ichi-go ichi-e</i>. The classroom is where my students and I brew a question together: from the shaping of the welfare state to the first draft of a research design. Each class happens only once.⟦/⟧</div>
+  </div>
+</section>
+
+<section class="scroll-section samon">
+  <div class="stats reveal">
+    <div><div class="n">8</div>⟦zh⟧<div class="l">學期・東吳</div>⟦en⟧⟦/⟧<div class="le">Semesters⟦zh⟧⟦en⟧<br>@ SCU⟦/⟧</div></div>
+    <div><div class="n">4</div>⟦zh⟧<div class="l">開設課程</div>⟦en⟧⟦/⟧<div class="le">Courses⟦zh⟧⟦en⟧<br>Taught⟦/⟧</div></div>
+    <div><div class="n">2</div>⟦zh⟧<div class="l">本學期</div>⟦en⟧⟦/⟧<div class="le">⟦zh⟧This Term⟦en⟧This<br>Term⟦/⟧</div></div>
+    <div><div class="n">3</div>⟦zh⟧<div class="l">減授獎勵</div>⟦en⟧⟦/⟧<div class="le">⟦zh⟧⟦en⟧Research<br>⟦/⟧Waivers</div></div>
+  </div>
+
+  <div class="row" style="margin-top:56px">
+    <div class="meta-col reveal">
+      <div class="num">参の壱</div>
+      <div class="big">授</div>
+      <h2>⟦zh⟧課程⟦en⟧Courses⟦/⟧</h2>
+      <div class="sub">Courses · By Semester</div>
+      <p>⟦zh⟧東吳大學社會學系。依學期整理——點選學期，看該學期開設的課。⟦en⟧Department of Sociology, Soochow University. Organized by semester — select a term to see its courses.⟦/⟧</p>
+    </div>
+
+    <div class="term-body">
+      <div class="term-tabs reveal">
+      <button class="term-tab is-on" data-term="term-1151">⟦zh⟧115 學年度・第一學期⟦en⟧Fall 2026 · AY115-1⟦/⟧</button>
+      <button class="term-tab" data-term="term-1142">⟦zh⟧114 學年度・第二學期⟦en⟧Spring 2026 · AY114-2⟦/⟧</button>
+    </div>
+
+    ⟦zh⟧<!-- 115 學年度第一學期（課程卡由 js/course-data.js 渲染） -->⟦en⟧<!-- AY115-1 (Fall 2026) — cards rendered from js/course-data.js -->⟦/⟧
+    <div class="term-panel is-on" id="term-1151">
+      <div class="course-wrap" data-term="1151"></div>
+    </div>
+
+    ⟦zh⟧<!-- 114 學年度第二學期（課程卡由 js/course-data.js 渲染） -->⟦en⟧<!-- AY114-2 (Spring 2026) — cards rendered from js/course-data.js -->⟦/⟧
+    <div class="term-panel" id="term-1142">
+      <div class="course-wrap" data-term="1142"></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <span>葉崇揚 · YEH CHUNG-YANG</span>
+  <span>⟦zh⟧教學 · Teaching⟦en⟧Teaching⟦/⟧</span>
+</footer>
+
+⟦zh⟧<!-- 課程卡渲染（單一資料來源：js/course-data.js；點卡 → syllabus-zh.html?course=<id>） -->
+⟦en⟧<!-- Course cards rendered from the single data source: js/course-data.js -->
+⟦/⟧<script src="js/course-data.js"></script>
+<script>
+(function(){
+  if (typeof courseData === 'undefined') return;
+  document.querySelectorAll('.course-wrap[data-term]').forEach(function(wrap){
+    var term = wrap.getAttribute('data-term');
+    var html = '';
+    courseData.filter(function(c){ return c.term === term; }).forEach(function(c){
+      var lines = [];
+⟦zh⟧      if (c.credits) lines.push(c.credits + ' 學分');
+      if (c.time_zh) lines.push(c.time_zh);
+      if (c.term_zh) lines.push(c.term_zh);
+⟦en⟧      if (c.credits) lines.push(c.credits + ' credits');
+      if (c.time_en) lines.push(c.time_en);
+      if (c.term_en) lines.push(c.term_en);
+⟦/⟧      var meta = '<b>⟦zh⟧' + c.level_zh + '⟦en⟧' + c.level_en + '⟦/⟧</b>' + lines.join('<br>');
+⟦zh⟧      var body = c.tba_zh
+⟦en⟧      var body = c.tba_en
+⟦/⟧        ? '<p class="course-tba">⟦zh⟧' + c.tba_zh + '⟦en⟧' + c.tba_en + '⟦/⟧</p>'
+⟦zh⟧        : (c.desc_zh ? '⟦en⟧        : (c.desc_en ? '⟦/⟧<div class="course-desc">⟦zh⟧' + c.desc_zh.map(function(p){ return '⟦en⟧' + c.desc_en.map(function(p){ return '⟦/⟧<p>' + p + '</p>'; }).join('') + '</div>' : '');
+      html += '⟦zh⟧<a class="course course-card reveal" href="syllabus-zh.html?course=' + c.id + '">⟦en⟧<a class="course course-card reveal" href="syllabus.html?course=' + c.id + '">⟦/⟧'
+        + '<div class="course-head"><div>'
+        + '<div class="course-tag">⟦zh⟧' + c.tag_zh + '⟦en⟧' + c.tag_en + '⟦/⟧</div>'
+        + '<h3 class="course-title">⟦zh⟧' + c.title_zh + '⟦en⟧' + c.title_en + '⟦/⟧</h3>'
+        + '<div class="course-en">⟦zh⟧' + c.title_en + '⟦en⟧' + c.title_zh + '⟦/⟧</div>'
+        + '</div><div class="course-meta">' + meta + '</div></div>'
+        + body
+        + '<span class="card-cta">⟦zh⟧查看大綱 ⟦en⟧View Syllabus ⟦/⟧<span class="ar">→</span></span>'
+        + '</a>';
+    });
+    wrap.innerHTML = html;
+  });
+})();
+</script>
+⟦zh⟧
+<!-- 學期切換 -->⟦en⟧⟦/⟧
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.term-tab');
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      var id=t.getAttribute('data-term');
+      tabs.forEach(function(x){ x.classList.toggle('is-on', x===t); });
+      document.querySelectorAll('.term-panel').forEach(function(p){
+        var on=(p.id===id);
+        p.classList.toggle('is-on', on);
+        if(on) p.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
+      });
+    });
+  });
+})();
+</script>
+⟦zh⟧
+<!-- reveal 揭示（漸進增強：IO 為主，scroll／計時器備援） -->⟦en⟧⟦/⟧
+<script>
+(function () {
+  "use strict";
+  document.documentElement.classList.add('js-anim');
+  var revealables = document.querySelectorAll('.reveal');
+  var markIn = function (el) { el.classList.add('in'); };
+  var revealVisibleNow = function () {
+    var vh = window.innerHeight;
+    revealables.forEach(function (el) {
+      if (el.classList.contains('in')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.98 && r.bottom > 0) markIn(el);
+    });
+  };
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) if (entries[i].isIntersecting) markIn(entries[i].target);
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+    revealables.forEach(function (el) { io.observe(el); });
+  } else { revealables.forEach(markIn); }
+  window.addEventListener('scroll', revealVisibleNow, { passive: true });
+  window.addEventListener('pageshow', revealVisibleNow);
+  setTimeout(revealVisibleNow, 400); setTimeout(revealVisibleNow, 1600);
+  revealVisibleNow();
+})();
+</script>
+
+⟦zh⟧<!-- BFCache 還原修復 -->
+⟦en⟧⟦/⟧<script>
+  window.addEventListener('pageshow', function(e){
+    if (e.persisted) { document.body.style.display='none'; void document.body.offsetHeight; document.body.style.display=''; }
+  });
+</script>
+</body>
+</html>

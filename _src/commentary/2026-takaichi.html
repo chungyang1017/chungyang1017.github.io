@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+⟦zh⟧<html lang="zh-Hant">⟦en⟧<html lang="en">⟦/⟧
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⟦zh⟧另一個從漫畫走出來的人物：解讀高市早苗 ・ 隨筆 ・ 葉崇揚⟦en⟧From a Manga Frame: Reading Sanae Takaichi ・ Zuihitsu ・ Chung-Yang Yeh⟦/⟧</title>
+  ⟦zh⟧<meta name="description" content="從《政治最前線》與《島耕作》兩部漫畫的視角，解讀高市早苗所代表的日本政治轉折。" />⟦en⟧<meta name="description" content="A reading of Sanae Takaichi through Hirokane Kenshi's manga The Politics and Kosaku Shima — the method, the anxiety, and the absolute realism of contemporary Japanese politics." />
+  <link rel="alternate" hreflang="en" href="2026-takaichi-en.html" />⟦/⟧
+  <link rel="alternate" hreflang="zh-Hant" href="2026-takaichi.html" />⟦zh⟧
+  <link rel="alternate" hreflang="en" href="2026-takaichi-en.html" />⟦en⟧⟦/⟧
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  ⟦zh⟧<link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">⟦en⟧<link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">⟦/⟧
+  <style>
+⟦zh⟧    /* ── Spring 學術 palette (matches site) ───────── */
+⟦en⟧    /* ── Spring 學術 palette ───────── */
+⟦/⟧    :root {
+      --shoin-bg: #f5edd8;
+      --shoin-paper: #fcf6e6;
+      --moss: #5a7a4a;
+      --accent: #d98aa8;
+      --water: #7a9aa8;
+      --ink: #2a2a28;
+      --ink-mid: #5a534d;
+      --ink-mute: #8a8378;
+      --ink-deep: #2a2624;
+      --line: rgba(31,31,29,0.18);
+      --line-soft: rgba(31,31,29,0.10);
+⟦zh⟧      --jp: 'Shippori Mincho', 'Noto Serif JP', 'Noto Serif TC', serif;
+⟦en⟧      --jp: 'Shippori Mincho', 'Noto Serif JP', serif;
+⟦/⟧      --brush: 'Yuji Syuku', 'Shippori Mincho', serif;
+⟦zh⟧⟦en⟧      --display: 'Cormorant Garamond', serif;
+⟦/⟧      --sans: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+⟦zh⟧      font-family: var(--jp);
+⟦en⟧      font-family: var(--display);
+⟦/⟧      background: var(--shoin-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+⟦zh⟧      line-height: 2.0;
+    }
+
+    /* Header — 與全站其他頁面一致（取自 essays-zh.html） */
+⟦en⟧      line-height: 1.95;
+    }
+
+    /* Header — 與全站其他頁面一致（取自 essays.html） */
+⟦/⟧    .nav{ position:sticky;top:0;z-index:50;
+      background:color-mix(in srgb,#e8e2d4 94%,transparent);
+      backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+      display:flex;justify-content:space-between;align-items:center;
+      padding:16px 48px;border-bottom:1px solid rgba(31,31,29,.12); }
+    .nav .brand{display:flex;gap:16px;align-items:baseline}
+    .nav .seal{ display:inline-flex;align-items:center;justify-content:center;
+      width:42px;height:42px;background:#c43838;color:#e8e2d4;
+      font-family:var(--brush);font-size:20px;
+      transform:rotate(-3deg);box-shadow:2px 2px 0 rgba(196,56,56,.25);
+      text-decoration:none; }
+    .nav .name{font-family:var(--brush);font-size:18px;letter-spacing:.1em;line-height:1;text-decoration:none;color:#1f1f1d}
+    .nav .name small{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.3em;color:rgba(31,31,29,.5);margin-top:4px}
+    .nav nav{display:flex;gap:24px;font-size:16px;letter-spacing:.2em}
+    .nav nav a{color:#1f1f1d;text-decoration:none;padding:6px 0;border-bottom:1px solid transparent;transition:.2s;opacity:1}
+    .nav nav a:hover{border-bottom-color:#1f1f1d}
+    .nav nav a.is-active{color:#c43838;border-bottom-color:#c43838}
+    .nav .lang{border-left:1px solid rgba(31,31,29,.12);padding-left:24px;font-family:var(--sans);font-size:16px;letter-spacing:.2em;color:rgba(31,31,29,.72);text-decoration:none}
+
+⟦zh⟧    /* Cover photo */
+⟦en⟧⟦/⟧    .article-cover {
+      max-width: 1100px; margin: 2.5rem auto 0;
+      padding: 0 2rem;
+    }
+    .article-cover figure {
+      position: relative; overflow: hidden;
+      box-shadow: 0 24px 50px -28px rgba(31,31,29,0.4);
+    }
+    .article-cover img { display: block; width: 100%; height: auto; aspect-ratio: 65/24; object-fit: cover; }
+    .article-cover figcaption {
+      position: absolute; right: 1.4rem; bottom: 1rem;
+      color: rgba(252,246,230,0.92);
+      text-align: right; font-family: var(--sans);
+      font-size: 0.7rem; letter-spacing: 0.18em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      display: flex; flex-direction: column; gap: 0.2rem;
+    }
+    .article-cover .cap-num { color: var(--accent); }
+⟦zh⟧    .article-cover .cap-title { font-family: var(--jp); font-style: normal; font-size: 0.78rem; letter-spacing: 0.12em; }
+⟦en⟧    .article-cover .cap-title { font-family: var(--display); font-style: italic; font-size: 0.78rem; letter-spacing: 0.06em; }
+⟦/⟧    .article-cover .cap-year { opacity: 0.7; font-size: 0.65rem; }
+
+⟦zh⟧    /* Article body */
+⟦en⟧⟦/⟧    .article {
+      max-width: 880px; margin: 0 auto;
+      padding: 3.5rem 2.5rem 4rem;
+    }
+    .article-eyebrow {
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+    .article-eyebrow a { color: inherit; text-decoration: none; transition: opacity 0.2s; }
+    .article-eyebrow a:hover { opacity: 0.7; }
+
+    .article-title {
+⟦zh⟧      font-family: var(--jp); font-weight: 500;
+⟦en⟧      font-family: var(--display); font-style: italic;
+      font-weight: 500;
+⟦/⟧      font-size: clamp(1.7rem, 3.4vw, 2.55rem);
+⟦zh⟧      line-height: 1.4; letter-spacing: 0.02em;
+⟦en⟧      line-height: 1.35; letter-spacing: 0.01em;
+⟦/⟧      margin-bottom: 1.1rem;
+      color: var(--ink-deep);
+    }
+    .article-subtitle {
+⟦zh⟧      font-family: var(--sans); font-style: italic;
+      font-size: 1.05rem; line-height: 1.55;
+⟦en⟧      font-family: var(--jp);
+      font-size: 1.05rem; line-height: 1.6;
+⟦/⟧      color: var(--ink-mid);
+      margin-bottom: 2rem;
+⟦zh⟧      letter-spacing: 0.02em;
+⟦en⟧      letter-spacing: 0.04em;
+⟦/⟧    }
+    .article-byline {
+      display: flex; flex-wrap: wrap; gap: 0.85rem 1.4rem;
+      padding-bottom: 2rem; margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--line-soft);
+      font-family: var(--sans); font-size: 0.78rem;
+      letter-spacing: 0.16em; color: var(--ink-mid);
+⟦zh⟧⟦en⟧      text-transform: uppercase;
+⟦/⟧    }
+    .byline-author { color: var(--accent); }
+    .byline-tag {
+      padding: 0.18rem 0.55rem;
+      border: 1px solid rgba(217,138,168,0.45);
+      color: var(--accent); font-size: 0.7rem;
+      letter-spacing: 0.22em;
+    }
+
+    .article-body p.lead {
+⟦zh⟧      font-family: var(--brush);
+      font-size: 1.25rem; line-height: 2.0;
+      letter-spacing: 0.04em;
+⟦en⟧      font-family: var(--display); font-style: italic;
+      font-size: 1.25rem; line-height: 1.85;
+      letter-spacing: 0.01em;
+⟦/⟧      color: var(--ink-deep);
+      margin-bottom: 2rem;
+      padding-left: 1.4rem;
+      border-left: 2px solid var(--accent);
+    }
+    .article-body p {
+⟦zh⟧      font-size: 1.04rem; line-height: 2.0;
+⟦en⟧      font-size: 1.06rem; line-height: 1.9;
+⟦/⟧      margin-bottom: 1.4rem;
+⟦zh⟧      letter-spacing: 0.01em;
+⟦en⟧      letter-spacing: 0.005em;
+⟦/⟧      color: var(--ink);
+    }
+⟦zh⟧    .article-body p em { color: var(--accent); font-style: italic; }
+⟦en⟧    .article-body p em { font-style: italic; }
+⟦/⟧    .article-body strong { font-weight: 600; color: var(--ink-deep); }
+
+    .article-body h2 {
+      font-family: var(--brush); font-weight: 400;
+      font-size: 1.65rem;
+      margin: 3rem 0 1.4rem;
+      letter-spacing: 0.04em;
+      color: var(--ink-deep);
+      display: flex; align-items: baseline; gap: 0.85rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .article-body h2 .num {
+⟦zh⟧      font-family: var(--brush);
+⟦en⟧      font-family: var(--display); font-style: italic;
+⟦/⟧      font-size: 1rem;
+      color: var(--accent);
+      padding: 0.2rem 0.55rem;
+      border: 1px solid rgba(217,138,168,0.5);
+      flex-shrink: 0;
+    }
+
+    .article-body ul {
+      margin: 0 0 1.6rem 1.6rem;
+      padding: 0;
+    }
+    .article-body ul li {
+⟦zh⟧      font-size: 1.02rem; line-height: 1.95;
+⟦en⟧      font-size: 1.04rem; line-height: 1.85;
+⟦/⟧      margin-bottom: 0.85rem;
+      color: var(--ink);
+    }
+    .article-body ul li::marker { color: var(--accent); }
+
+    .article-body blockquote {
+      margin: 2rem 0;
+      padding: 1.6rem 1.8rem;
+      background: var(--shoin-paper);
+      border-left: 3px solid var(--moss);
+    }
+    .article-body blockquote .label {
+      display: inline-block;
+      font-family: var(--sans); font-size: 0.7rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--moss); margin-bottom: 0.7rem;
+    }
+    .article-body blockquote p {
+      margin: 0;
+⟦zh⟧      font-size: 1rem; line-height: 1.95;
+⟦en⟧      font-size: 1rem; line-height: 1.85;
+⟦/⟧      color: var(--ink-mid);
+⟦zh⟧      font-family: var(--jp);
+⟦en⟧      font-family: var(--display);
+⟦/⟧    }
+
+    .article-body hr {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 3rem auto;
+      width: 60%;
+      position: relative;
+    }
+    .article-body hr::after {
+      content: '◇';
+      position: absolute;
+      left: 50%; top: -0.7em;
+      transform: translateX(-50%);
+      background: var(--shoin-bg);
+      padding: 0 0.6rem;
+      color: var(--accent); font-size: 0.85rem;
+    }
+
+⟦zh⟧    /* Inline photos */
+⟦en⟧⟦/⟧    .inline-photo {
+      margin: 2.5rem -1rem;
+    }
+    .inline-photo figure {
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 40px -22px rgba(31,31,29,0.35);
+    }
+    .inline-photo img { display: block; width: 100%; height: auto; }
+⟦zh⟧    .inline-photo + figcaption {
+      margin-top: 0.6rem;
+      font-family: var(--sans); font-size: 0.7rem;
+      letter-spacing: 0.18em; color: var(--ink-mute);
+      text-align: right;
+    }
+⟦en⟧⟦/⟧    .inline-photo figcaption {
+      position: absolute; right: 0.9rem; bottom: 0.7rem;
+      color: rgba(252,246,230,0.92);
+      text-align: right; font-family: var(--sans);
+      font-size: 0.65rem; letter-spacing: 0.18em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      display: flex; flex-direction: column; gap: 0.15rem;
+    }
+    .inline-photo .cap-num { color: var(--accent); }
+⟦zh⟧    .inline-photo .cap-title { font-family: var(--jp); font-size: 0.72rem; letter-spacing: 0.1em; }
+⟦en⟧    .inline-photo .cap-title { font-family: var(--display); font-style: italic; font-size: 0.72rem; letter-spacing: 0.06em; }
+⟦/⟧    .inline-photo .cap-year { opacity: 0.7; font-size: 0.6rem; }
+
+⟦zh⟧    /* Colophon */
+⟦en⟧⟦/⟧    .colophon {
+      margin: 2.5rem 0 2rem;
+      padding: 1.8rem 2rem;
+      background: var(--shoin-paper);
+      border: 1px solid var(--line-soft);
+    }
+    .colophon-label {
+      font-family: var(--sans); font-size: 0.72rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.85rem;
+    }
+    .colophon p {
+⟦zh⟧      font-size: 0.95rem; line-height: 1.85;
+⟦en⟧      font-size: 0.97rem; line-height: 1.8;
+⟦/⟧      color: var(--ink-mid);
+      margin-bottom: 0.85rem;
+⟦zh⟧      font-family: var(--jp);
+⟦en⟧      font-family: var(--display);
+⟦/⟧    }
+    .colophon p:last-child { margin-bottom: 0; }
+
+⟦zh⟧    /* Article foot */
+⟦en⟧⟦/⟧    .article-foot {
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 0.85rem;
+      margin-top: 2.5rem; padding-top: 1.6rem;
+      border-top: 1px solid var(--line-soft);
+      font-family: var(--sans); font-size: 0.76rem;
+      letter-spacing: 0.16em; color: var(--ink-mute);
+⟦zh⟧⟦en⟧      text-transform: uppercase;
+⟦/⟧    }
+    .article-foot .back {
+      color: var(--accent); text-decoration: none;
+      letter-spacing: 0.2em;
+    }
+    .article-foot .back:hover { opacity: 0.75; }
+
+    footer {
+      border-top: 1px solid var(--line-soft);
+      padding: 30px 60px;
+      max-width: 1280px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      font-size: 11px; opacity: 0.55; letter-spacing: 0.2em;
+⟦zh⟧      font-family: var(--sans);
+⟦en⟧      font-family: var(--sans); text-transform: uppercase;
+⟦/⟧    }
+    footer .links { display: flex; gap: 18px; }
+    footer .links a { color: var(--ink); text-decoration: none; opacity: 0.85; transition: opacity 0.2s; }
+    footer .links a:hover { opacity: 1; color: var(--accent); }
+
+    @media (max-width: 760px) {
+      .nav{padding:12px 20px;flex-wrap:wrap;gap:10px}
+⟦zh⟧      .nav nav{gap:14px;font-size:12px;letter-spacing:.14em;order:3;width:100%;justify-content:space-between}
+⟦en⟧      .nav nav{order:3;width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:9px 20px;font-size:13px;letter-spacing:.13em;padding-top:11px;margin-top:2px;border-top:1px solid rgba(31,31,29,.12)}
+⟦/⟧      .nav .lang{padding-left:14px}
+
+      .article-cover { padding: 0 1rem; margin-top: 1.4rem; }
+      .article { padding: 2.4rem 1.4rem 3rem; }
+      .article-title { font-size: 1.55rem; }
+      .article-subtitle { font-size: 0.95rem; }
+      .article-body p.lead { font-size: 1.1rem; padding-left: 1rem; }
+      .article-body p { font-size: 1rem; }
+⟦zh⟧      .article-body h2 { font-size: 1.35rem; flex-direction: row; }
+⟦en⟧      .article-body h2 { font-size: 1.35rem; }
+⟦/⟧      .article-body h2 .num { font-size: 0.85rem; }
+      .article-body blockquote { padding: 1.2rem 1.4rem; }
+      .inline-photo { margin: 2rem 0; }
+
+      footer { padding: 22px; flex-direction: column; gap: 8px; font-size: 10px; }
+    }
+⟦zh⟧  ⟦en⟧      @media (max-width: 480px) {
+      .nav nav{justify-content:center;column-gap:18px}
+    }
+⟦/⟧</style>
+<!-- og:start -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
+⟦zh⟧<meta property="og:title" content="另一個從漫畫走出來的人物：解讀高市早苗 ・ 隨筆 ・ 葉崇揚" />
+<meta property="og:description" content="從《政治最前線》與《島耕作》兩部漫畫的視角，解讀高市早苗所代表的日本政治轉折。" />
+<meta property="og:url" content="https://chungyang1017.github.io/commentary/2026-takaichi.html" />⟦en⟧<meta property="og:title" content="From a Manga Frame: Reading Sanae Takaichi ・ Zuihitsu ・ Chung-Yang Yeh" />
+<meta property="og:description" content="A reading of Sanae Takaichi through Hirokane Kenshi's manga The Politics and Kosaku Shima — the method, the anxiety, and the absolute realism of contemporary Japanese politics." />
+<meta property="og:url" content="https://chungyang1017.github.io/commentary/2026-takaichi-en.html" />⟦/⟧
+<meta property="og:image" content="https://chungyang1017.github.io/photo.jpg" />
+⟦zh⟧<meta property="og:locale" content="zh_TW" />⟦en⟧<meta property="og:locale" content="en_US" />⟦/⟧
+<meta name="twitter:card" content="summary" />
+<!-- og:end -->
+</head>
+<body>
+
+<header class="nav">
+  <div class="brand">
+    ⟦zh⟧<a class="seal" href="../index.html">⟦en⟧<a class="seal" href="../index-en.html">⟦/⟧葉</a>
+    ⟦zh⟧<a class="name" href="../index.html">⟦en⟧<a class="name" href="../index-en.html">⟦/⟧葉崇揚<small>YEH CHUNG-YANG</small></a>
+  </div>
+  <nav>
+    ⟦zh⟧<a href="../index.html">首頁⟦en⟧<a href="../index-en.html">Home⟦/⟧</a>
+    ⟦zh⟧<a href="../about-zh.html">簡介⟦en⟧<a href="../about.html">About⟦/⟧</a>
+    ⟦zh⟧<a href="../academic-zh.html">學術⟦en⟧<a href="../academic.html">Research⟦/⟧</a>
+    ⟦zh⟧<a href="../photography-zh.html">攝影⟦en⟧<a href="../photography.html">Photography⟦/⟧</a>
+    ⟦zh⟧<a href="../teaching-zh.html">教學⟦en⟧<a href="../teaching.html">Teaching⟦/⟧</a>
+    ⟦zh⟧<a href="index.html" class="is-active">隨筆⟦en⟧<a href="index-en.html" class="is-active">Essays⟦/⟧</a>
+  </nav>
+  ⟦zh⟧<a class="lang" href="2026-takaichi-en.html">EN⟦en⟧<a class="lang" href="2026-takaichi.html">中⟦/⟧</a>
+</header>
+
+<div class="article-cover">
+  <figure>
+    ⟦zh⟧<img src="../images/photography/dscf3373_3.jpg" alt="富士暮" />⟦en⟧<img src="../images/photography/dscf3373_3.jpg" alt="Mt Fuji at dusk" />⟦/⟧
+    <figcaption>
+      <span class="cap-num">No. 〇五七</span>
+      <span class="cap-title">⟦zh⟧富士暮 ・ Xpan 65×24⟦en⟧Fuji Dusk ・ Xpan 65×24⟦/⟧</span>
+      <span class="cap-year">⟦zh⟧攝・葉崇揚⟦en⟧photo · Chung-Yang Yeh⟦/⟧</span>
+    </figcaption>
+  </figure>
+</div>
+
+<article class="article">
+
+  <p class="article-eyebrow">
+    ⟦zh⟧<a href="index.html">← 隨筆 ・ 東亞觀察最前線 No. 〇〇一⟦en⟧<a href="index-en.html">← Zuihitsu ・ East Asia Frontline No. 〇〇一⟦/⟧</a>
+  </p>
+
+  <h1 class="article-title">⟦zh⟧
+    另一個從漫畫走出來的人物：以《政治最前線》與《島耕作》解讀高市早苗
+  </h1>
+
+  <p class="article-subtitle">⟦en⟧⟦/⟧
+    From a Manga Frame: Reading Sanae Takaichi through <em>The Politics</em> and <em>Kosaku Shima</em>
+  ⟦zh⟧⟦en⟧</h1>
+
+  <p class="article-subtitle">
+    另一個從漫畫走出來的人物：以《政治最前線》與《島耕作》解讀高市早苗
+  ⟦/⟧</p>
+
+  <div class="article-byline">
+    <span class="byline-author">⟦zh⟧葉崇揚 × Claude⟦en⟧Chung-Yang Yeh × Claude⟦/⟧</span>
+    <span class="byline-date">⟦zh⟧2026 年 2 月 7 日⟦en⟧7 February 2026⟦/⟧</span>
+    <span class="byline-tag">⟦zh⟧日本 ・ Japan⟦en⟧Japan⟦/⟧</span>
+  </div>
+
+  <div class="article-body">
+
+    <p class="lead">
+⟦zh⟧      當大谷翔平在洛杉磯的球場上創下漫畫《棒球大聯盟》也未曾預演過的「超現實」二刀流紀錄，日本社會看到的，是一個能向外延伸的夢——純粹、無懈可擊、被世界仰望。但在大谷向上飛升的同時，東京永田町裡，另一個從漫畫走出來的人物正穩定地接近權力的最高點：高市早苗。
+⟦en⟧      While Shohei Ohtani is rewriting baseball history in Los Angeles — outpacing even the two-way feats imagined in <em>Major League</em>, Mitsuru Adachi's classic baseball manga — Japan watches his ascent as something it might dream of becoming: pure, beyond reproach, admired by the world. But as Ohtani rises in the air, another figure shaped by manga is steadily approaching the summit of Japanese power: Sanae Takaichi.
+⟦/⟧    </p>
+
+    <p>
+⟦zh⟧      如果說大谷代表日本「想成為的樣子」，那麼高市則是日本「不得不面對的樣子」。要理解這位即將成為自民黨總裁、可能成為首位女性首相的政治人物，我們未必需要從西方政治學的「右翼回潮」標籤入手。一個更貼近日本社會精神底層的閱讀方式，是回到漫畫家弘兼憲史筆下的兩部長壽作品：《政治最前線》（《加治隆介の議》）與《島耕作》系列。前者提供了「方法」，後者解釋了「焦慮」——兩者交織出來的，正是高市早苗所代表的「絕對現實主義」。
+⟦en⟧      If Ohtani embodies what Japan would like to be, Takaichi represents what Japan must come to terms with. To understand this LDP president-in-waiting — who may become the country's first female prime minister — we don't necessarily need the Western political-science label of "right-wing resurgence." A reading closer to the spiritual ground of contemporary Japan returns us to two long-running series by manga artist Kenshi Hirokane: <em>Kaji Ryūsuke no Gi</em> (rendered here as <em>The Politics</em>) and the <em>Shima Kōsaku</em> arc. The former offers a method; the latter explains an anxiety. Together, they help us see what Takaichi's "absolute realism" actually is.
+⟦/⟧    </p>
+
+    <h2><span class="num">⟦zh⟧壹⟦en⟧I.⟦/⟧</span>⟦zh⟧加治隆介的手段：九〇年代的改革基因⟦en⟧Kaji Ryūsuke's Method — The 1990s Reform Gene⟦/⟧</h2>
+
+    <p>
+⟦zh⟧      《政治最前線》連載於 1991 至 1998 年，那是日本戰後最劇烈的精神轉折期。冷戰結束、泡沫破滅、阪神大震災、地下鐵沙林事件——「經濟一流、政治三流」的自嘲在這個時期變得苦澀而不再幽默。漫畫主角加治隆介，是弘兼憲史投射出的理性改革者：他放下家業繼承議員，從零做起，主張的核心始終是「國家正常化」——日本應擁有獨立的國防、外交與決策權，不應永遠被綁在《和平憲法》與美日安保的框架裡。
+⟦en⟧      <em>Kaji Ryūsuke no Gi</em> ran from 1991 to 1998, the most dramatic spiritual turning point in Japan's postwar history. The Cold War had ended; the bubble had burst; the Great Hanshin earthquake and the Aum subway attack had punctured any remaining innocence. The familiar self-deprecating phrase — "first-class economy, third-class politics" — had turned bitter, no longer a joke.
+⟦/⟧    </p>
+
+    <p>
+⟦zh⟧      加治的政治風格，最大特徵是「去脈絡化的直言」。他說的不是日本政治圈習慣的「永田町文學」（用模糊、留白、間接的修辭包裹真實意圖），而是一種「理科生式」的直接：飛彈射程是多少公里、攔截機率是多少百分比、國際法上某條款的明確含義為何。
+⟦en⟧      Hirokane's protagonist, Kaji Ryūsuke, is the rational reformer the era seemed to call for: he steps into a Diet seat, starts from nothing, and consistently argues for "national normalization" — Japan should possess independent defense, foreign-policy authority, and decision-making power, no longer indefinitely tied to the Peace Constitution and the U.S.–Japan Security Treaty.
+⟦/⟧    </p>
+
+    <p>
+⟦zh⟧      高市早苗繼承的，正是這一筆「加治式」的語法。當她在記者會上以極快的語速、冰冷的數據談「台灣有事即日本有事」、談反擊能力（counterstrike capability）、談經濟安保時，她明確跳出了岸田文雄那種「綜合考量、繼續檢討」的曖昧句式。對於厭倦了「平成以後三十年、什麼都沒解決」的日本選民——尤其是中年以下的男性、與一部分被《男女共同参画》論述邊緣化的女性——這種「不再裝模作樣」的直白，是一種久違的心理快感。
+⟦en⟧      Kaji's political register is built on what we might call "context-stripped directness." He doesn't speak in <em>Nagatachō</em> literature — the language of indirection, of strategically placed silence and modulated implication — but in something closer to a "science-faculty-graduate's" tone: how many kilometers a missile can travel; what the interception probability is; what international law actually says about a particular clause.
+    </p>
+
+    <p>
+      What Sanae Takaichi inherits is precisely this Kaji-style grammar. When she stands at a press conference and runs through "a Taiwan emergency is a Japan emergency," counter-strike capability, and economic security at high speed and in cold data, she is decisively stepping outside Fumio Kishida's "comprehensive consideration, continued review" formula. To Japanese voters fatigued by "thirty years since Heisei in which nothing has been resolved" — particularly to younger and middle-aged men, and to a portion of women whose lives have been displaced by the <em>Danjo Kyōdō Sankaku</em> (gender equality) framework — this refusal to perform vagueness registers as a long-overdue psychological release.
+⟦/⟧    </p>
+
+    <h2><span class="num">⟦zh⟧貳⟦en⟧II.⟦/⟧</span>⟦zh⟧島耕作的焦慮：從「征服市場」到「經濟安保」⟦en⟧Kosaku Shima's Anxiety — From "Conquering the Market" to "Economic Security"⟦/⟧</h2>
+
+    <p>
+⟦zh⟧      如果加治隆介解釋了「方法」，那麼《島耕作》系列就解釋了「為何此刻」。
+⟦en⟧      If Kaji explains the <em>method</em>, the <em>Shima Kōsaku</em> series explains <em>why now</em>.
+⟦/⟧    </p>
+
+    <p>
+⟦zh⟧      弘兼憲史筆下的島耕作，從 1983 年的《課長島耕作》一路畫到 2020 年代的《社外取締役島耕作》，跨越了將近四十年的日本企業史。1980 至 1990 年代的島耕作，是「Japan as No.1」餘暉中的企業戰士：相信全球化、相信技術立國、相信只要產品夠好，世界就是日本的市場。他要解決的問題是「如何贏」。
+⟦en⟧      Hirokane's Shima Kōsaku has been drawn from <em>Section Chief Shima</em> in 1983 all the way to <em>Outside Director Shima</em> in the 2020s — a span of nearly forty years across Japanese corporate history. The Shima of the 1980s and 1990s was the corporate warrior of the "Japan as No. 1" sunset: he believed in globalization, in technology-led growth, in the proposition that if your product was good enough, the world was your market. His problem was <em>how to win</em>.
+⟦/⟧    </p>
+
+    <p>
+⟦zh⟧      但到了令和時代，島耕作的世界已經變了。日本 GDP 被中國超越十年有餘，人均 GDP 被韓國反超，半導體技術被台灣與韓國全面取代，能源與糧食則高度依賴海外。最新一部《社外取締役島耕作》中，已經很少再看到「擴大市佔率」的狂熱，取而代之的是供應鏈安全、技術外流、糧食自給率、地緣政治風險。島耕作從一個「逐利的商人」，變成一個「憂國的長者」——他要解決的問題已經改變：不是「如何贏」，而是「⟦en⟧      By the Reiwa era, Shima's world has changed. Japan's GDP has been overtaken by China for more than a decade; per-capita GDP has been overtaken by South Korea; semiconductor manufacturing has migrated to Taiwan and Korea; energy and food are heavily dependent on imports. In the latest ⟦/⟧<em>⟦zh⟧如何不輸、如何活下去⟦en⟧Outside Director Shima⟦/⟧</em>⟦zh⟧」。
+    </p>
+
+    <p>
+      高市早苗推動的《經濟安全保障推進法》，幾乎可以視為「顧問島耕作」對國會的一張政策清單：把供應鏈韌性提升至國防層級、對關鍵基礎設施實施國安審查、防止尖端技術外流、補貼半導體與電池等戰略產業。她並不是憑空提出一套右翼經濟學，她是精準地把日本企業界（特別是製造業與重工業）的集體恐懼，翻譯成可以投票的政治語言。她是「焦慮的島耕作」在政治上的代理人。
+⟦en⟧, the obsession with "expanding market share" has nearly disappeared, replaced by talk of supply-chain security, technology leakage, food self-sufficiency, geopolitical risk. Shima Kōsaku has shifted from "profit-seeking businessman" to "anxious elder statesman." His problem is no longer <em>how to win</em>, but <em>how not to lose, how to survive</em>.
+⟦/⟧    </p>
+
+    <div class="inline-photo">
+      <figure>
+        ⟦zh⟧<img src="../images/photography/img_8239.jpg" alt="橫渡・日本街頭" />⟦en⟧<img src="../images/photography/img_8239.jpg" alt="Crossing — Japan street panorama" />⟦/⟧
+        <figcaption>
+          <span class="cap-num">No. 〇三八</span>
+          <span class="cap-title">⟦zh⟧橫渡 ・ Xpan 65×24⟦en⟧Crossing ・ Xpan 65×24⟦/⟧</span>
+          <span class="cap-year">⟦zh⟧攝・葉崇揚⟦en⟧photo · Chung-Yang Yeh</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <p>
+      The Economic Security Promotion Act that Takaichi has championed reads almost like a policy checklist that "Adviser Shima" might write up for the Diet: elevate supply-chain resilience to a national-security concern, conduct security review of critical infrastructure, prevent leakage of advanced technologies, subsidize strategic industries such as semiconductors and batteries. She is not inventing a right-wing economics from thin air. She is precisely translating the collective fear of the Japanese business establishment — particularly manufacturing and heavy industry — into a political language that can be voted on. She is, politically, the agent of the <em>anxious Shima Kōsaku</em>.
+    </p>
+
+    <h2><span class="num">III.</span>A Traditional Anchor — Ontological Security</h2>
+
+    <p>
+      Takaichi's political profile contains a surface paradox: she has inherited Kaji Ryūsuke's "break the old framework" reform gene, yet on issues such as separate marital surnames, Yasukuni Shrine visits, and imperial succession, she takes a strongly traditionalist position. How can these be reconciled?
+    </p>
+
+    <p>
+      The answer lies in a difference of era. Japan's anxiety in the 1990s was that it was "too closed and needed to be opened up." Japan's anxiety in the 2020s is that it is "vanishing" — population decline, geopolitical threat, economic stagnation, cultural identity diluted by globalization. In a "structural twilight" of this kind, voters do not need yet another reformer who promises to break tradition. They need a protector who promises to <em>keep the core intact</em>.
+    </p>
+
+    <blockquote>
+      <span class="label">Theoretical borrowing</span>
+      <p>
+        To borrow from sociologist Anthony Giddens's concept of <em>ontological security</em>: when the external world becomes intensely volatile, individuals anchor themselves in things that symbolize continuity — institutions, rituals, traditions.
+      </p>
+    </blockquote>
+
+    <p>
+      Takaichi's traditionalism, in this light, is less an ideology than a contract with her voters: "What makes Japan Japan, I will hold for you." This "cultural driftwood" sits perfectly comfortably alongside the "economic-security steel" she swings with the other hand. They are not contradictions; they are two coordinates of the same political map.
+    </p>
+
+    <div class="inline-photo">
+      <figure>
+        <img src="../images/photography/dscf3861_4.jpg" alt="Mt Fuji and the bridge at evening" />
+        <figcaption>
+          <span class="cap-num">No. 〇六四</span>
+          <span class="cap-title">Fuji and Bridge ・ Xpan 65×24</span>
+          <span class="cap-year">photo · Chung-Yang Yeh⟦/⟧</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <h2><span class="num">⟦zh⟧參⟦en⟧IV.⟦/⟧</span>⟦zh⟧傳統的浮木：本體論安全感⟦en⟧強く・豊かに — An Adult's Fairy Tale⟦/⟧</h2>
+
+    <p>
+⟦zh⟧      高市早苗的政治圖像中，存在一個表面的矛盾：她繼承了加治隆介那種「打破舊框架」的改革基因，卻又在許多議題——夫婦別姓、靖國神社參拜、皇室繼承——上展現出強烈的傳統主義立場。這兩者如何相容？
+⟦en⟧      Takaichi's most repeated political slogan is <em>Nihon o, tsuyoku yutaka ni</em> — "Make Japan Strong and Prosperous." Unpacked, it is precisely the confluence of the Kaji Ryūsuke and Shima Kōsaku streams:
+    </p>
+
+    <ul>
+      <li><strong>Tsuyoku (Strong)</strong>: inherits the Kaji line. Through constitutional revision, defense self-sufficiency, and counter-strike capability, Japan should be able to stand straight when facing China and North Korea — the strength of physical and diplomatic posture.</li>
+      <li><strong>Yutaka ni (Prosperous)</strong>: answers Shima's expectations. Through aggressive fiscal policy (which markets have already nicknamed "Sanaenomics"), strategic industrial investment, and protection of core technologies, Japan should escape the deflationary shadow of the Lost Three Decades and return to growth.</li>
+    </ul>
+
+    <p>
+      What is striking about this vision is its absence of youthful romance. Unlike Shinzō Abe's early "Beautiful Japan," which appealed to the romance of national narrative, or Shigeru Ishiba's intricate institutional dialectics, Takaichi's program reads like a prescription written by a <em>clear-headed, calculating, illusion-free middle-aged</em> operator: in the gap between U.S.–China rivalry, secure your own survival first; talk about prosperity later.
+⟦/⟧    </p>
+
+    <p>
+⟦zh⟧      答案在於時代的不同。九〇年代日本的焦慮，是「太封閉、需要被打開」；二〇二〇年代日本的焦慮，是「正在消失」——人口減少、地緣威脅、經濟停滯、文化認同被全球化稀釋。在這樣一個「結構性的傍晚」，選民需要的不是又一個「打破傳統」的改革者，而是一個「守住核心」的保護者。
+    </p>
+
+    <blockquote>
+      <span class="label">理論借用</span>
+      <p>
+        借用社會學者 Anthony Giddens 的「本體論安全感」（ontological security）概念來說：當外部世界劇烈動盪時，個體會把心理錨點放在那些象徵連續性的事物上——制度、儀式、傳統。
+      </p>
+    </blockquote>
+
+    <p>
+      高市的傳統主義，與其說是意識形態，不如說是她與選民之間的契約：「日本之所以為日本的核心，我會替你守住。」這一張「文化浮木」，與她另一手揮出的「經濟安保鋼鐵」並不衝突，反而是同一張政治地圖的兩個座標。
+⟦en⟧      If Shohei Ohtani is the <em>outward-extending</em> dream of Japanese society — a tale of youth, possibility, and being recognized by the world — then Sanae Takaichi is the <em>inward-consolidating</em> dream: a tale of adulthood, of self-protection, of holding what is certain in the midst of uncertainty. It carries no ornate phrasing. But for a country that is learning to accept that it is <em>no longer young</em>, it may be the political language most aligned with its actual psychology.
+⟦/⟧    </p>
+
+    <div class="inline-photo">
+      <figure>
+        ⟦zh⟧<img src="../images/photography/dscf3861_4.jpg" alt="富士與橋" />
+        <figcaption>
+          <span class="cap-num">No. 〇六四</span>
+          <span class="cap-title">富士與橋 ・ Xpan 65×24</span>
+          <span class="cap-year">攝・葉崇揚</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <h2><span class="num">肆</span>強く、豊かに：成年人的童話</h2>
+
+    <p>
+      高市早苗最常掛在口邊的政治標語是「日本を、強く豊かに」（讓日本更強大、更富足）。這句話拆開看，正是加治隆介與島耕作兩條線的合流：
+    </p>
+
+    <ul>
+      <li><strong>強く（強大）</strong>：繼承加治隆介路線。透過修憲、國防自主、擁有反擊能力，讓日本在面對中國與北韓威脅時挺直腰桿——這是物理與外交層面的力量。</li>
+      <li><strong>豊かに（豐足）</strong>：回應島耕作的期待。透過積極財政（市場已經給它取了個外號「早苗經濟學」Sanaenomics）、戰略性產業投資、保護核心技術，讓日本擺脫「失落三十年」的通縮陰影，重回成長。</li>
+    </ul>
+
+    <p>
+      值得注意的是，這套願景並沒有少年熱血的色彩。它不像安倍晉三早期的「美麗的日本」那樣訴諸民族敘事的浪漫，也不像石破茂那樣執著於制度細節的辯證。它更像是一個<em>清醒、計算、不抱幻想的中年人</em>為國家寫下的處方：在美中對抗的夾縫中，先確保自己生存下來，再談繁榮。
+    </p>
+
+    <p>
+      如果說大谷翔平是日本社會「向外延伸」的夢——一個關於青春、關於可能性、關於被世界肯定的童話；那麼高市早苗就是日本社會「向內鞏固」的夢——一個關於成年、關於自保、關於在不確定中守住確定的童話。它沒有華麗的辭藻，但對一個正在學會接受自己「不再年輕」的國家來說，這或許是最貼近選民心理的政治語言。
+    </p>
+
+    <div class="inline-photo">
+      <figure>
+        <img src="../images/photography/img_9078.jpg" alt="春日家族・櫻花樹下三代人" />⟦en⟧<img src="../images/photography/img_9078.jpg" alt="Three generations beneath the cherry tree" />⟦/⟧
+        <figcaption>
+          <span class="cap-num">No. 一三六</span>
+          <span class="cap-title">⟦zh⟧春日家族 ・ 三世代の春の朝⟦en⟧Spring Family ・ three generations, one spring morning⟦/⟧</span>
+          <span class="cap-year">⟦zh⟧攝・葉崇揚⟦en⟧photo · Chung-Yang Yeh⟦/⟧</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <hr />
+
+    <div class="colophon">
+      <p class="colophon-label">⟦zh⟧作者按 ・ Note from the Author⟦en⟧Note from the Author⟦/⟧</p>
+      <p>
+⟦zh⟧        本文成於日本國會大選前夕。無論最終選舉結果如何，「高市現象」所折射出的日本社會集體心理變遷，已經值得作為東亞政治社會學的一個案例長期觀察。在後續的「東亞觀察最前線」專欄中，我會繼續從相鄰的角度——韓國尹錫悅以後、台灣的二〇二八、北京的「新常態」——觀察這個正在重新定義自己的東亞。
+⟦en⟧        This essay was written on the eve of the Japanese Diet election. Whatever the final result, the "Takaichi phenomenon" reflects a deep shift in the collective psychology of Japanese society — a case worth long-term observation in East Asian political sociology. In future installments of this <em>East Asia Frontline</em> column, I will continue from adjacent angles — Korea after Yoon Seok-yeol, Taiwan toward 2028, Beijing's "new normal" — to follow an East Asia that is, again, redefining itself.
+⟦/⟧      </p>
+      <p>
+⟦zh⟧        本文由葉崇揚與 Claude（Anthropic）共同討論、共筆完成；分析框架、案例選取與最終文責，由作者承擔。
+⟦en⟧        Co-written with Claude (Anthropic) through extended discussion. The analytic frame, case selection, and final responsibility for the argument rest with the author.
+⟦/⟧      </p>
+    </div>
+
+    <div class="article-foot">
+      <span>⟦zh⟧No. 〇〇一 ・ 隨筆 ・ 東亞觀察最前線 ・ 2026.02.07⟦en⟧No. 〇〇一 ・ Zuihitsu ・ East Asia Frontline ・ 2026.02.07⟦/⟧</span>
+      ⟦zh⟧<a href="index.html" class="back">← 回到專欄目錄⟦en⟧<a href="index-en.html" class="back">← Back to Column⟦/⟧</a>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <span>⟦zh⟧YEH CHUNG-YANG · 隨筆⟦en⟧YEH CHUNG-YANG · ZUIHITSU⟦/⟧</span>
+  <div class="links">
+    ⟦zh⟧<a href="../index.html">首頁⟦en⟧<a href="../index-en.html">Home⟦/⟧</a>
+    ⟦zh⟧<a href="../academic-zh.html">學術⟦en⟧<a href="../academic.html">Research⟦/⟧</a>
+    ⟦zh⟧<a href="../photography-zh.html">攝影⟦en⟧<a href="../photography.html">Photography⟦/⟧</a>
+  </div>
+  <span>⟦zh⟧2026 ・ 春⟦en⟧Reiwa 8 ・ Spring⟦/⟧</span>
+</footer>
+
+</body>
+</html>

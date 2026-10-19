@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+⟦zh⟧<html lang="zh-Hant">⟦en⟧<html lang="en">⟦/⟧
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>⟦zh⟧隨筆 Essays · 葉崇揚⟦en⟧Essays · Chung-Yang Yeh⟦/⟧</title>
+⟦zh⟧<meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 隨筆．從漫畫、流行文化、社會數據，觀察日本、韓國、台灣、中國的精神底層變遷。">⟦en⟧<meta name="description" content="Chung-Yang Yeh ・ Essays — reading the underlying mood of Japan, Korea, Taiwan and China through manga, popular culture, and social data.">⟦/⟧
+<link rel="alternate" hreflang="zh-Hant" href="essays-zh.html">
+<link rel="alternate" hreflang="en" href="essays.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600&family=Yuji+Syuku&family=Klee+One:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
+    --moss:#3d5a3f; --accent:#c43838; --water:#5a7a8a;
+    --ink:#1f1f1d; --ink-soft:rgba(31,31,29,.72); --ink-quiet:rgba(31,31,29,.5);
+    --rule:rgba(31,31,29,.12);
+    --serif:"Shippori Mincho","Noto Serif TC","Noto Serif JP",serif;
+    --display:"Yuji Syuku",serif;
+    --latin:"Inter",sans-serif;
+    --kana:"Klee One",serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{ background:var(--sand); color:var(--ink); font-family:var(--serif); font-feature-settings:"palt"; -webkit-font-smoothing:antialiased; }
+  a{color:inherit}
+
+  .nav{ position:sticky;top:0;z-index:50; background:color-mix(in srgb,var(--sand) 94%,transparent); backdrop-filter:blur(8px); display:flex;justify-content:space-between;align-items:center; padding:16px 48px;border-bottom:1px solid var(--rule); }
+  .nav .brand{display:flex;gap:16px;align-items:baseline}
+  .nav .seal{ display:inline-flex;align-items:center;justify-content:center; width:42px;height:42px;background:var(--accent);color:var(--sand); font-family:var(--display);font-size:20px; transform:rotate(-3deg);box-shadow:2px 2px 0 rgba(196,56,56,.25); text-decoration:none; }
+  .nav .name{font-family:var(--display);font-size:18px;letter-spacing:.1em;line-height:1;text-decoration:none}
+  .nav .name small{display:block;font-family:var(--latin);font-size:9px;letter-spacing:.3em;color:var(--ink-quiet);margin-top:4px}
+  .nav nav{display:flex;gap:24px;font-size:16px;letter-spacing:.2em}
+  .nav nav a{color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:1px solid transparent;transition:.2s}
+  .nav nav a:hover{border-bottom-color:var(--ink)}
+  .nav nav a.is-active{color:var(--accent);border-bottom-color:var(--accent)}
+  .nav .lang{border-left:1px solid var(--rule);padding-left:24px;font-family:var(--latin);font-size:16px;letter-spacing:.2em;color:var(--ink-soft);text-decoration:none}
+
+  .samon{position:relative}
+  .samon::before{ content:"";position:absolute;inset:0;pointer-events:none;opacity:.08; background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='60'><g fill='none' stroke='%233d5a3f' stroke-width='.6'><path d='M 0 30 Q 50 22 100 30 T 200 30'/><path d='M 0 36 Q 50 28 100 36 T 200 36'/><path d='M 0 42 Q 50 34 100 42 T 200 42'/><path d='M 0 48 Q 50 40 100 48 T 200 48'/></g></svg>"); }
+
+  .scroll-head{ display:grid;grid-template-columns:380px 1fr;gap:60px; padding:120px 60px;max-width:1280px;margin:0 auto; position:relative;border-top:1px solid var(--rule); background:var(--sand-light); }
+  .scroll-head .index{font-family:var(--display);font-size:24px;color:var(--ink-quiet);margin-bottom:8px}
+  .scroll-head .kanji{font-family:var(--display);font-size:160px;line-height:.9;letter-spacing:0}
+  .scroll-head h1{margin:24px 0 8px;font-family:var(--display);font-size:36px;font-weight:400;letter-spacing:.1em}
+  .scroll-head .sub{font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);margin-bottom:20px;font-family:var(--latin);text-transform:uppercase}
+⟦zh⟧  .scroll-head .lede{font-size:15px;line-height:2;color:var(--ink-soft);max-width:460px;text-wrap:pretty}
+⟦en⟧  .scroll-head .lede{font-size:15px;line-height:2;color:var(--ink-soft);max-width:470px;text-wrap:pretty}
+⟦/⟧  .scroll-head .lede a{color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)}
+  .scroll-head .right{padding-top:56px;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start}
+
+  .scroll-section{ padding:96px 60px;max-width:1280px;margin:0 auto; border-top:1px solid var(--rule);position:relative; }
+  .scroll-section.alt{background:var(--sand-light)}
+  .scroll-section .row{ display:grid;grid-template-columns:320px 1fr;gap:60px;align-items:start; }
+  .scroll-section .meta-col .num{font-family:var(--display);font-size:22px;opacity:.4;margin-bottom:8px}
+  .scroll-section .meta-col .big{font-family:var(--display);font-size:96px;line-height:.95;letter-spacing:0}
+  .scroll-section .meta-col h2{margin:20px 0 8px;font-family:var(--display);font-size:30px;font-weight:400;letter-spacing:.1em}
+  .scroll-section .meta-col .sub{font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);margin-bottom:20px;font-family:var(--latin);text-transform:uppercase}
+  .scroll-section .meta-col p{font-size:14px;line-height:1.95;color:var(--ink-soft);max-width:280px;margin:0;text-wrap:pretty}
+
+  .foot{ border-top:1px solid var(--rule); padding:48px 60px; display:flex;justify-content:space-between; font-size:11px;letter-spacing:.2em;color:var(--ink-quiet); }
+
+⟦zh⟧  /* ── 隨筆頁專屬 ── */
+⟦en⟧⟦/⟧  .feature{ display:grid;grid-template-columns:1fr 1.5fr;gap:0; border-top:1px solid var(--rule);border-bottom:1px solid var(--rule); background:var(--paper); }
+  .feature .meta-side{padding:64px 48px;background:var(--sand-light);position:relative}
+  .feature .meta-side .e{font-size:11px;letter-spacing:.3em;color:var(--accent);font-family:var(--latin);text-transform:uppercase}
+  .feature .meta-side .cats{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+  .feature .meta-side .cats span{font-family:var(--latin);font-size:10px;letter-spacing:.16em;border:1px solid var(--rule);padding:5px 11px;color:var(--ink-soft)}
+  .feature .meta-side .info{margin-top:28px;font-size:12px;line-height:2;color:var(--ink-soft)}
+  .feature .meta-side .info b{color:var(--ink);font-family:var(--display);font-size:15px;display:block;margin-bottom:4px;letter-spacing:.04em}
+  .feature .body{padding:64px 60px}
+⟦zh⟧  .feature .body .fen{font-family:var(--latin);font-size:11px;letter-spacing:.16em;color:var(--ink-quiet);text-transform:uppercase;margin-bottom:14px}
+  .feature .body h2{margin:0 0 24px;font-family:var(--display);font-size:30px;line-height:1.5;letter-spacing:.03em;font-weight:400;text-wrap:pretty}
+⟦en⟧  .feature .body .fen{font-family:var(--serif);font-size:13px;letter-spacing:.06em;color:var(--ink-quiet);margin-bottom:14px}
+  .feature .body h2{margin:0 0 24px;font-family:var(--display);font-size:28px;line-height:1.5;letter-spacing:.03em;font-weight:400;text-wrap:pretty}
+⟦/⟧  .feature .body p{font-size:14.5px;line-height:2.05;color:var(--ink-soft);text-wrap:pretty;margin:0 0 1.2em}
+  .feature .body p:first-of-type::first-letter{font-family:var(--display);font-size:56px;float:left;line-height:.9;margin:6px 14px 0 0;color:var(--ink)}
+⟦zh⟧  .feat-link{display:inline-block;margin-top:12px;font-family:var(--kana);font-size:14px;letter-spacing:.1em;color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)}
+⟦en⟧  .feat-link{display:inline-block;margin-top:12px;font-family:var(--latin);font-size:12px;letter-spacing:.14em;color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent);text-transform:uppercase}
+⟦/⟧
+  .cat-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+  .cat-bar span{font-family:var(--latin);font-size:11px;letter-spacing:.18em;padding:7px 14px;border:1px solid var(--rule);color:var(--ink-soft)}
+  .cat-bar span.on{background:var(--ink);color:var(--sand);border-color:var(--ink)}
+
+  .essay-list{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  .ec{background:var(--paper);padding:32px 30px;text-decoration:none;color:inherit;display:flex;flex-direction:column;min-height:230px;transition:.2s}
+  .ec:hover{background:var(--sand-light)}
+  .ec .top{font-size:11px;letter-spacing:.2em;color:var(--ink-quiet);font-family:var(--latin);display:flex;justify-content:space-between}
+  .ec .top .cat{color:var(--accent)}
+⟦zh⟧  .ec h3{margin:16px 0 12px;font-family:var(--display);font-size:21px;font-weight:400;line-height:1.5;letter-spacing:.03em;text-wrap:pretty}
+⟦en⟧  .ec h3{margin:16px 0 12px;font-family:var(--display);font-size:20px;font-weight:400;line-height:1.5;letter-spacing:.03em;text-wrap:pretty}
+⟦/⟧  .ec p{font-size:13px;line-height:1.85;color:var(--ink-soft);margin:0;flex:1;text-wrap:pretty}
+  .ec .read{margin-top:18px;font-family:var(--latin);font-size:11px;letter-spacing:.22em;color:var(--accent)}
+  .ec.more{align-items:center;justify-content:center;text-align:center;color:var(--ink-quiet);font-size:13px;line-height:1.9;background:transparent}
+
+  .credo{text-align:center;padding:110px 40px}
+⟦zh⟧  .credo .q{font-family:var(--display);font-size:clamp(24px,4vw,40px);line-height:1.7;letter-spacing:.06em;max-width:20ch;margin:0 auto;text-wrap:balance}
+⟦en⟧  .credo .q{font-family:var(--display);font-size:clamp(24px,4vw,40px);line-height:1.7;letter-spacing:.04em;max-width:24ch;margin:0 auto;text-wrap:balance}
+⟦/⟧  .credo .qe{margin-top:24px;font-family:var(--latin);font-size:12px;letter-spacing:.18em;color:var(--ink-quiet);text-transform:uppercase}
+
+  /* 季節頂圖 */
+  .season-banner{position:relative;height:clamp(260px,42vh,440px);overflow:hidden;border-bottom:1px solid var(--rule)}
+  .season-banner img{width:100%;height:100%;object-fit:cover;display:block}
+  .season-banner .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(31,31,29,.12) 0%,rgba(31,31,29,0) 34%,rgba(31,31,29,.36) 100%)}
+  .season-banner .mark{position:absolute;left:clamp(22px,4vw,60px);bottom:clamp(22px,3.4vw,38px);color:var(--sand);display:flex;align-items:baseline;gap:16px}
+  .season-banner .mark .k{font-family:var(--display);font-size:clamp(38px,5vw,56px);line-height:1;text-shadow:0 2px 20px rgba(0,0,0,.55)}
+  .season-banner .mark .e{font-family:var(--latin);font-size:12px;letter-spacing:.3em;text-transform:uppercase;opacity:.92;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+
+  .reveal{opacity:1}
+  .js-anim .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.19,1,.22,1),transform .8s cubic-bezier(.19,1,.22,1)}
+  .js-anim .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:820px){
+    .nav{padding:12px 20px;flex-wrap:wrap;gap:10px}
+⟦zh⟧    .nav nav{gap:14px;font-size:12px;letter-spacing:.14em;order:3;width:100%;justify-content:space-between}
+⟦en⟧    .nav nav{order:3;width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:9px 20px;font-size:13px;letter-spacing:.13em;padding-top:11px;margin-top:2px;border-top:1px solid var(--rule)}
+⟦/⟧    .nav .lang{padding-left:14px}
+    .scroll-head{grid-template-columns:1fr;gap:24px;padding:64px 22px}
+    .scroll-head .kanji{font-size:110px}
+    .scroll-head .right{padding-top:0}
+    .scroll-section{padding:56px 22px}
+    .scroll-section .row{grid-template-columns:1fr;gap:28px}
+    .scroll-section .meta-col .big{font-size:72px}
+    .feature{grid-template-columns:1fr}
+    .feature .meta-side{padding:40px 24px}
+    .feature .body{padding:40px 24px}
+    .essay-list{grid-template-columns:1fr}
+    .credo{padding:72px 22px}
+    .foot{padding:32px 22px;flex-direction:column;gap:8px}
+  }
+⟦zh⟧⟦en⟧  /* ≤480px：英文 nav 六連結一行放不下，換行後 space-between 會把第二行拉到兩端，改置中 */
+  @media (max-width:480px){
+    .nav nav{justify-content:center;column-gap:18px}
+  }
+⟦/⟧  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1!important;transform:none!important;transition:none} }
+
+⟦zh⟧  /* ── 正文放大：稍微放大閱讀字級（2026-07）。要整體再調，改這一區塊即可 ── */
+⟦en⟧  /* ── Body copy scale-up: slightly larger reading sizes (2026-07). Adjust here to re-tune ── */
+⟦/⟧  .scroll-head .lede{font-size:16.5px}
+  .scroll-section .meta-col p{font-size:15.5px}
+  .feature .body p{font-size:16px}
+  .feature .meta-side .info{font-size:13.5px}
+  .ec h3{font-size:22.5px}
+  .ec p{font-size:14.5px}
+  .ec.more{font-size:14.5px}
+</style>
+<!-- og:start -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
+⟦zh⟧<meta property="og:title" content="隨筆 Essays · 葉崇揚" />
+<meta property="og:description" content="葉崇揚（Chung-Yang Yeh） ・ 隨筆．從漫畫、流行文化、社會數據，觀察日本、韓國、台灣、中國的精神底層變遷。" />
+<meta property="og:url" content="https://chungyang1017.github.io/essays-zh.html" />⟦en⟧<meta property="og:title" content="Essays · Chung-Yang Yeh" />
+<meta property="og:description" content="Chung-Yang Yeh ・ Essays — reading the underlying mood of Japan, Korea, Taiwan and China through manga, popular culture, and social data." />
+<meta property="og:url" content="https://chungyang1017.github.io/essays.html" />⟦/⟧
+<meta property="og:image" content="https://chungyang1017.github.io/photo.jpg" />
+⟦zh⟧<meta property="og:locale" content="zh_TW" />⟦en⟧<meta property="og:locale" content="en_US" />⟦/⟧
+<meta name="twitter:card" content="summary" />
+<!-- og:end -->
+</head>
+<body>
+
+<header class="nav">
+  <div class="brand">
+    ⟦zh⟧<a class="seal" href="index.html">⟦en⟧<a class="seal" href="index-en.html">⟦/⟧葉</a>
+    ⟦zh⟧<a class="name" href="index.html">⟦en⟧<a class="name" href="index-en.html">⟦/⟧葉崇揚<small>YEH CHUNG-YANG</small></a>
+  </div>
+  <nav>
+    ⟦zh⟧<a href="index.html">首頁⟦en⟧<a href="index-en.html">Home⟦/⟧</a>
+    ⟦zh⟧<a href="about-zh.html">簡介⟦en⟧<a href="about.html">About⟦/⟧</a>
+    ⟦zh⟧<a href="academic-zh.html">學術⟦en⟧<a href="academic.html">Research⟦/⟧</a>
+    ⟦zh⟧<a href="photography-zh.html">攝影⟦en⟧<a href="photography.html">Photography⟦/⟧</a>
+    ⟦zh⟧<a href="teaching-zh.html">教學⟦en⟧<a href="teaching.html">Teaching⟦/⟧</a>
+    ⟦zh⟧<a href="essays-zh.html" class="is-active">隨筆⟦en⟧<a href="essays.html" class="is-active">Essays⟦/⟧</a>
+  </nav>
+  ⟦zh⟧<a class="lang" href="essays.html">EN⟦en⟧<a class="lang" href="essays-zh.html">中⟦/⟧</a>
+</header>
+
+<section class="season-banner">
+  ⟦zh⟧<img src="images/photography/dscf4933_6.jpg" alt="冬 · 寂靜 Stillness" loading="eager">⟦en⟧<img src="images/photography/dscf4933_6.jpg" alt="Winter · Stillness" loading="eager">⟦/⟧
+  <div class="veil"></div>
+  <div class="mark"><span class="k">冬</span><span class="e">Fuyu · Winter</span></div>
+</section>
+
+<section class="scroll-head samon">
+  <div>
+    <div class="index reveal">肆</div>
+    <div class="kanji reveal">隨</div>
+  </div>
+  <div class="right">
+    <h1 class="reveal">⟦zh⟧隨筆⟦en⟧Essays⟦/⟧</h1>
+    <div class="sub reveal">⟦zh⟧Essays · 思索の余白⟦en⟧Essays · Marginalia⟦/⟧</div>
+    <div class="lede reveal">⟦zh⟧論文寫不下的，留在這裡。東亞觀察、社會政策的旁觀札記、讀書心得，與一些不打算被引用的話。嚴謹的學術書寫留在 <a href="academic-zh.html">學術⟦en⟧What won't fit in a paper stays here. Observations of East Asia, sideline notes on social policy, reading notes — and a few things not meant to be cited. The rigorous academic writing lives in <a href="academic.html">Research⟦/⟧</a>⟦zh⟧，這裡相對輕快、但仍然認真。⟦en⟧; this is lighter, but no less in earnest.⟦/⟧</div>
+  </div>
+</section>
+
+⟦zh⟧<!-- 精選 -->⟦en⟧<!-- Featured -->⟦/⟧
+<section class="feature reveal">
+  <div class="meta-side samon">
+    <div class="e">⟦zh⟧最新 · Featured · 2026.07.10⟦en⟧Featured · 2026.07.10⟦/⟧</div>
+    <div class="cats"><span>⟦zh⟧日本⟦en⟧Japan⟦/⟧</span><span>⟦zh⟧足球⟦en⟧Football⟦/⟧</span><span>⟦zh⟧棒球⟦en⟧Baseball⟦/⟧</span><span>⟦zh⟧漫畫⟦en⟧Manga⟦/⟧</span></div>
+    <div class="info">
+      <b>⟦zh⟧閱讀⟦en⟧Reading⟦/⟧</b>⟦zh⟧約 15 分鐘
+      <b>語言⟦en⟧about 15 min
+      <b>Language⟦/⟧</b>⟦zh⟧中文 · English
+      <b>連結</b>
+⟦en⟧English · Chinese original
+⟦/⟧    </div>
+    ⟦zh⟧<a class="feat-link" href="commentary/2026-japan-dream.html">閱讀全文 →⟦en⟧<a class="feat-link" href="commentary/2026-japan-dream-en.html">Read on →⟦/⟧</a>
+  </div>
+  <div class="body">
+    <div class="fen">⟦zh⟧When the Manga Comes True: Japan's Power to Dream — from Shohei Ohtani to the World Cup dream of <i>Captain Tsubasa</i> and <i>Blue Lock</i>⟦en⟧當漫畫成真：日本的「夢想力」——從大谷翔平，到《足球小將》與《藍色監獄》的世界盃之夢⟦/⟧</div>
+    <h2>⟦zh⟧當漫畫成真：日本的「夢想力」⟦en⟧When the Manga Comes True: Japan's Power to Dream⟦/⟧</h2>
+    <p>⟦zh⟧棒球才是日本的國球，而大谷翔平就是「夢想力」最好的例子。從《足球小將》點燃的世界盃之夢、《藍色監獄》的非贏不可，到二〇二六世界盃追平荷蘭、四比零血洗突尼西亞、又在淘汰賽倒在巴西——一個社會，如何把漫畫裡的分鏡，一格一格、一棒一腳，踢成、也打成現實。⟦en⟧Baseball is Japan's true national sport, and Shohei Ohtani is the finest example of its "power to dream." From the World Cup dream lit by <i>Captain Tsubasa</i>, to the win-at-all-costs of <i>Blue Lock</i>, to a 2026 side that held the Netherlands, thrashed Tunisia 4-0, and then fell to Brazil in the knockouts — how a society turns the panels of a comic, frame by frame, into reality.⟦/⟧</p>
+    ⟦zh⟧<a class="feat-link" href="commentary/2026-japan-dream.html">閱讀全文 →⟦en⟧<a class="feat-link" href="commentary/2026-japan-dream-en.html">Read on →⟦/⟧</a>
+  </div>
+</section>
+
+⟦zh⟧<!-- 目錄 -->⟦en⟧<!-- Index -->⟦/⟧
+<section class="scroll-section samon">
+  <div class="row">
+    <div class="meta-col reveal">
+      <div class="num">肆の壱</div>
+      <div class="big">記</div>
+      <h2>⟦zh⟧目錄⟦en⟧Index⟦/⟧</h2>
+      <div class="sub">Index · 1</div>
+      <p>⟦zh⟧東亞觀察，從一篇開始。日本、韓國、台灣、中國——精神底層的變遷。之後陸續刊出。⟦en⟧Watching East Asia, one essay at a time — Japan, Korea, Taiwan, China, and the shifts beneath the surface. More to come.⟦/⟧</p>
+    </div>
+    <div>
+      <div class="cat-bar reveal">
+        <span class="on">⟦zh⟧全⟦en⟧All⟦/⟧</span><span>⟦zh⟧日本⟦en⟧Japan⟦/⟧</span><span>⟦zh⟧韓國⟦en⟧Korea⟦/⟧</span><span>⟦zh⟧台灣⟦en⟧Taiwan⟦/⟧</span><span>⟦zh⟧中國⟦en⟧China⟦/⟧</span><span>⟦zh⟧社政⟦en⟧Policy⟦/⟧</span><span>⟦zh⟧讀書⟦en⟧Books⟦/⟧</span>
+      </div>
+      <div class="essay-list reveal">
+        ⟦zh⟧<a class="ec" href="commentary/2026-japan-dream.html">⟦en⟧<a class="ec" href="commentary/2026-japan-dream-en.html">⟦/⟧
+          <div class="top"><span>2026.07.10</span><span class="cat">⟦zh⟧日本⟦en⟧Japan⟦/⟧</span></div>
+          <h3>⟦zh⟧當漫畫成真：日本的「夢想力」⟦en⟧When the Manga Comes True: Japan's Power to Dream⟦/⟧</h3>
+          <p>⟦zh⟧從大谷翔平到《足球小將》《藍色監獄》——一個社會如何把漫畫裡的夢，一格一格踢成、也打成現實。⟦en⟧From Shohei Ohtani to <i>Captain Tsubasa</i> and <i>Blue Lock</i> — how a society turns the panels of a comic, frame by frame, into reality.⟦/⟧</p>
+          <div class="read">READ → 15 MIN</div>
+        </a>
+        ⟦zh⟧<a class="ec" href="commentary/2026-takaichi.html">⟦en⟧<a class="ec" href="commentary/2026-takaichi-en.html">⟦/⟧
+          <div class="top"><span>2026.02.07</span><span class="cat">⟦zh⟧日本⟦en⟧Japan⟦/⟧</span></div>
+          <h3>⟦zh⟧另一個從漫畫走出來的人物：解讀高市早苗⟦en⟧From a Manga Frame: Reading Sanae Takaichi⟦/⟧</h3>
+          <p>⟦zh⟧借《政治最前線》的「方法」與《島耕作》的「焦慮」，解讀高市早苗所代表的日本「絕對現實主義」。⟦en⟧Through the "method" of <i>The Politics</i> and the "anxiety" of <i>Kosaku Shima</i>, an interpretation of the "absolute realism" that Sanae Takaichi represents.⟦/⟧</p>
+          <div class="read">READ → 12 MIN</div>
+        </a>
+        <div class="ec more">⟦zh⟧後續文章⟦en⟧More essays⟦/⟧<br>⟦zh⟧陸續刊出⟦en⟧coming⟦/⟧</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+⟦zh⟧<!-- 理念 -->⟦en⟧<!-- Credo -->⟦/⟧
+<section class="credo scroll-section alt samon">
+  <div class="q reveal">⟦zh⟧東亞，不是一個地理名詞，⟦en⟧East Asia is not a place on the map,⟦/⟧<br>⟦zh⟧而是一個還在成形的故事。⟦en⟧but a story still taking shape.⟦/⟧</div>
+  <div class="qe reveal">⟦zh⟧East Asia · a story still taking shape⟦en⟧東亞，一個還在成形的故事⟦/⟧</div>
+</section>
+
+<footer class="foot">
+  <span>葉崇揚 · YEH CHUNG-YANG</span>
+  <span>⟦zh⟧隨筆 · Essays⟦en⟧Essays⟦/⟧</span>
+</footer>
+⟦zh⟧
+<!-- reveal 揭示（漸進增強：IO 為主，scroll／計時器備援） -->⟦en⟧⟦/⟧
+<script>
+(function () {
+  "use strict";
+  document.documentElement.classList.add('js-anim');
+  var revealables = document.querySelectorAll('.reveal');
+  var markIn = function (el) { el.classList.add('in'); };
+  var revealVisibleNow = function () {
+    var vh = window.innerHeight;
+    revealables.forEach(function (el) {
+      if (el.classList.contains('in')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.98 && r.bottom > 0) markIn(el);
+    });
+  };
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) if (entries[i].isIntersecting) markIn(entries[i].target);
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+    revealables.forEach(function (el) { io.observe(el); });
+  } else { revealables.forEach(markIn); }
+  window.addEventListener('scroll', revealVisibleNow, { passive: true });
+  window.addEventListener('pageshow', revealVisibleNow);
+  setTimeout(revealVisibleNow, 400); setTimeout(revealVisibleNow, 1600);
+  revealVisibleNow();
+})();
+</script>
+
+⟦zh⟧<!-- BFCache 還原修復 -->
+⟦en⟧⟦/⟧<script>
+  window.addEventListener('pageshow', function(e){
+    if (e.persisted) { document.body.style.display='none'; void document.body.offsetHeight; document.body.style.display=''; }
+  });
+</script>
+</body>
+</html>

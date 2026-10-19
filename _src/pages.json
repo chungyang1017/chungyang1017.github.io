@@ -1,0 +1,122 @@
+[
+  {
+    "src": "about.html",
+    "zh": "about-zh.html",
+    "en": "about.html"
+  },
+  {
+    "src": "academic.html",
+    "zh": "academic-zh.html",
+    "en": "academic.html"
+  },
+  {
+    "src": "books/east-asian-welfare-2018.html",
+    "zh": "books/east-asian-welfare-2018.html",
+    "en": "books/east-asian-welfare-2018-en.html"
+  },
+  {
+    "src": "books/pension-reform-2026.html",
+    "zh": "books/pension-reform-2026.html",
+    "en": "books/pension-reform-2026-en.html"
+  },
+  {
+    "src": "commentary/2026-japan-dream.html",
+    "zh": "commentary/2026-japan-dream.html",
+    "en": "commentary/2026-japan-dream-en.html"
+  },
+  {
+    "src": "commentary/2026-takaichi.html",
+    "zh": "commentary/2026-takaichi.html",
+    "en": "commentary/2026-takaichi-en.html"
+  },
+  {
+    "src": "essays.html",
+    "zh": "essays-zh.html",
+    "en": "essays.html"
+  },
+  {
+    "src": "index.html",
+    "zh": "index.html",
+    "en": "index-en.html"
+  },
+  {
+    "src": "photography-autumn.html",
+    "zh": "photography-autumn-zh.html",
+    "en": "photography-autumn.html"
+  },
+  {
+    "src": "photography-ginen.html",
+    "zh": "photography-ginen-zh.html",
+    "en": "photography-ginen.html"
+  },
+  {
+    "src": "photography-lisbon.html",
+    "zh": "photography-lisbon-zh.html",
+    "en": "photography-lisbon.html"
+  },
+  {
+    "src": "photography-sansui.html",
+    "zh": "photography-sansui-zh.html",
+    "en": "photography-sansui.html"
+  },
+  {
+    "src": "photography-singapore.html",
+    "zh": "photography-singapore-zh.html",
+    "en": "photography-singapore.html"
+  },
+  {
+    "src": "photography-spring.html",
+    "zh": "photography-spring-zh.html",
+    "en": "photography-spring.html"
+  },
+  {
+    "src": "photography-street.html",
+    "zh": "photography-street-zh.html",
+    "en": "photography-street.html"
+  },
+  {
+    "src": "photography-summer.html",
+    "zh": "photography-summer-zh.html",
+    "en": "photography-summer.html"
+  },
+  {
+    "src": "photography-tideline.html",
+    "zh": "photography-tideline-zh.html",
+    "en": "photography-tideline.html"
+  },
+  {
+    "src": "photography-winter.html",
+    "zh": "photography-winter-zh.html",
+    "en": "photography-winter.html"
+  },
+  {
+    "src": "photography-xpan.html",
+    "zh": "photography-xpan-zh.html",
+    "en": "photography-xpan.html"
+  },
+  {
+    "src": "photography.html",
+    "zh": "photography-zh.html",
+    "en": "photography.html"
+  },
+  {
+    "src": "projects/pension-preferences.html",
+    "zh": "projects/pension-preferences.html",
+    "en": "projects/pension-preferences-en.html"
+  },
+  {
+    "src": "publications/publications.html",
+    "zh": "publications/publications-zh.html",
+    "en": "publications/publications.html"
+  },
+  {
+    "src": "syllabus.html",
+    "zh": "syllabus-zh.html",
+    "en": "syllabus.html"
+  },
+  {
+    "src": "teaching.html",
+    "zh": "teaching-zh.html",
+    "en": "teaching.html"
+  }
+]

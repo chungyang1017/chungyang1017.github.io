@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+⟦zh⟧<html lang="zh-Hant">⟦en⟧<html lang="en">⟦/⟧
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>⟦zh⟧葉崇揚 ・ 首頁 ・ Chung-Yang Yeh⟦en⟧Chung-Yang Yeh ・ Home ・ 葉崇揚⟦/⟧</title>
+⟦zh⟧<meta name="description" content="葉崇揚（Chung-Yang Yeh）—— 東吳大學社會學系，福利國家與社會政策研究者，攝影者。夏の水面，觸水成漣漪。" />
+<link rel="alternate" hreflang="zh-Hant" href="index.html" />⟦en⟧<meta name="description" content="Chung-Yang Yeh — Department of Sociology, Soochow University, Taipei. A researcher of the welfare state and social policy, and a photographer. Summer waters, a touch away from ripples." />
+<link rel="alternate" hreflang="en" href="index.html" />⟦/⟧
+<link rel="alternate" hreflang="en" href="index-en.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="images/photography/img_3506-water.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="images/koi-natural-atlas.webp">
+<link rel="preload" as="image" href="images/koi-gold-silver-atlas.webp">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Yuji+Syuku&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   夏の水面（互動水波版）
+   —— 葉崇揚 個人學術網站首頁
+   水波以純 Canvas 2D 生成（Hugo Elias 高度場 + 折射位移），
+   fixed 全屏背景、pointer-events:none 不擋捲動與點擊；
+   內容（首頁 + 四章敘事）浮於水面之上，可捲、可點。
+   底圖 images/photography/img_3506.jpg（綠楓錦鯉水面）。
+   ============================================================ */
+
+:root{
+  --sand:      #eef1ea;   /* 主淺色（清涼紙白） */
+  --sand-soft: #dfe4da;
+  --moss:      #4a7a52;   /* 夏綠 */
+  --moss-soft: #7d9782;
+  --accent:    #6fa89e;   /* 水青 · 若竹（夏天取代櫻粉） */
+  --accent-pale:#a9c9c0;
+  --water:     #5a8a8c;
+  --ink:       #1c2420;
+  --ink-deep:  #0e1512;   /* 深水墨 · 打底 */
+  --ink-soft:  #33413a;
+  --ink-faint: #96a89f;   /* 深底上的淡字 */
+  --hair-d:    rgba(232,238,228,.12);
+  --jp:    'Shippori Mincho','Noto Serif JP','Noto Serif TC',serif;
+  --brush: 'Yuji Syuku','Shippori Mincho',serif;
+  --sans:  'Inter','Helvetica Neue',sans-serif;
+  --ease:  cubic-bezier(.22,.61,.36,1);
+  --ease-ink: cubic-bezier(.19,1,.22,1);
+}
+
+*,*::before,*::after{ margin:0; padding:0; box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+
+body{
+  background:var(--ink-deep);
+  color:var(--sand);
+  font-family:var(--jp);
+  font-weight:400;
+  line-height:1.8;
+  overflow-x:hidden;          /* 只擋橫向；垂直必須能捲 */
+  position:relative;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* ══ 水波背景（fixed 全屏，不擋點擊/捲動） ══════════ */
+#water{
+  position:fixed; inset:0; z-index:0;
+  width:100%; height:100%; display:block;
+  pointer-events:none;        /* 關鍵：捲動與點擊穿透，互動改由 window 監聽 */
+}
+/* 遮罩：讓白字在水面上可讀（fixed，隨視窗） */
+.veil{
+  position:fixed; inset:0; z-index:1; pointer-events:none;
+  background:
+    radial-gradient(ellipse 76% 66% at 38% 42%, rgba(14,20,17,.42) 0%, rgba(14,20,17,0) 60%),
+    linear-gradient(180deg, rgba(14,20,17,.58) 0%, rgba(14,20,17,.05) 18%, rgba(14,20,17,.05) 58%, rgba(14,20,17,.42) 100%);
+}
+/* 載入提示 */
+#msg{
+  position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); z-index:2;
+  font-family:var(--sans); font-size:13px; letter-spacing:.3em; color:rgba(238,241,234,.7);
+  transition:opacity .8s ease; pointer-events:none;
+}
+
+/* 朱印（角印） */
+.seal{
+  position:fixed; z-index:9; pointer-events:none;
+  bottom:clamp(20px,5vh,48px); right:clamp(16px,4vw,44px);
+  width:clamp(38px,5vw,52px); height:clamp(38px,5vw,52px);
+  display:grid; place-items:center;
+  border:2px solid var(--moss); border-radius:5px;
+  color:var(--accent); opacity:.7;
+  font-family:var(--brush); font-size:clamp(14px,1.8vw,19px);
+  line-height:.98; text-align:center; letter-spacing:-.04em;
+  box-shadow:inset 0 0 0 1px rgba(74,122,82,.25);
+  transform:rotate(-2deg);
+  background:rgba(14,21,18,.18);
+}
+.seal span{ display:block; }
+
+/* ══ 導覽（固定，捲動後玻璃化） ══════════════════ */
+nav{
+  position:fixed; top:0; left:0; right:0; z-index:20;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:clamp(14px,2.2vh,22px) clamp(18px,4vw,48px);
+  transition:background .5s var(--ease), backdrop-filter .5s var(--ease), border-color .5s var(--ease);
+  border-bottom:1px solid transparent;
+}
+nav.docked{
+  background:rgba(14,21,18,.78);
+  backdrop-filter:blur(10px) saturate(1.05);
+  -webkit-backdrop-filter:blur(10px) saturate(1.05);
+  border-bottom-color:var(--hair-d);
+}
+.brand{
+  font-family:var(--brush); font-weight:400;
+  font-size:clamp(20px,2.4vw,27px); letter-spacing:.1em;
+  color:var(--sand); display:inline-flex; align-items:baseline; gap:.5em;
+  text-decoration:none; text-shadow:0 1px 12px rgba(0,0,0,.5);
+}
+.brand .en{ font-family:var(--sans); font-weight:400; font-style:italic; font-size:.52em; letter-spacing:.05em; color:var(--ink-faint); }
+.navlinks{ display:flex; align-items:baseline; gap:clamp(16px,2vw,30px); list-style:none; }
+.navlinks a{
+  text-decoration:none; color:var(--sand);
+  font-family:var(--jp); font-size:clamp(15px,1.6vw,17.5px);
+  letter-spacing:.1em; opacity:.66; position:relative; padding-bottom:3px;
+  transition:opacity .35s var(--ease), color .35s var(--ease);
+  text-shadow:0 1px 10px rgba(0,0,0,.55);
+}
+.navlinks a::after{
+  content:""; position:absolute; left:0; bottom:-1px; height:1px; width:0;
+  background:var(--accent); transition:width .4s var(--ease);
+}
+.navlinks a:hover{ opacity:.98; }
+.navlinks a:hover::after{ width:100%; }
+.navlinks a.is-current{ opacity:.95; }
+.navlinks a.is-current::after{ width:100%; background:var(--accent); opacity:.7; }
+.navlinks .lang{
+  border-left:1px solid var(--hair-d);
+  padding-left:clamp(16px,2vw,26px);
+  font-family:var(--sans); letter-spacing:.24em; font-size:.9em;
+}
+.nav-toggle{ display:none; }
+
+/* ══ 內容層（浮於水面，可捲） ══════════════════ */
+main{ position:relative; z-index:3; }
+
+/* HERO：全透，水波最鮮明 */
+.hero{
+  position:relative; min-height:100svh;
+  display:grid; align-items:center;
+}
+.hero-inner{
+  position:relative; z-index:3;
+  width:min(1180px,90vw); margin-inline:auto;
+  padding:clamp(96px,16vh,150px) 0 clamp(60px,10vh,90px);
+  text-shadow:0 2px 26px rgba(10,16,13,.6), 0 1px 3px rgba(10,16,13,.5);
+  will-change:transform;
+}
+.hero-eyebrow{
+  font-family:var(--sans); font-weight:400;
+  font-size:clamp(11px,1.2vw,13px); letter-spacing:.5em;
+  text-transform:uppercase; color:var(--accent-pale);
+  margin-bottom:clamp(20px,3.2vh,32px);
+  display:flex; align-items:center; gap:1em;
+}
+.hero-eyebrow::before{ content:""; width:clamp(26px,4vw,52px); height:1px; background:var(--accent-pale); opacity:.55; }
+.hero-eyebrow .jp{ font-family:var(--jp); letter-spacing:.36em; }
+.hero h1{
+  font-family:var(--brush); font-weight:400;
+  font-size:clamp(46px,6vw,68px); line-height:1;
+  letter-spacing:.04em; color:var(--sand);
+  margin-bottom:clamp(12px,2vh,22px);
+}
+.hero h1 .romaji{
+  display:block;
+  font-family:var(--sans); font-weight:300;
+  font-size:clamp(14px,3vw,28px); letter-spacing:.56em;
+  text-transform:uppercase; color:var(--accent);
+  margin-top:clamp(10px,1.6vh,18px); text-indent:.56em;
+  text-shadow:0 1px 12px rgba(10,16,13,.55);
+}
+.hero-sub{
+  font-family:var(--jp); font-weight:400;
+  font-size:clamp(18px,2.4vw,26px); line-height:1.9;
+  color:var(--sand); max-width:34ch;
+  margin-top:clamp(26px,4.2vh,44px);
+  position:relative; padding-left:clamp(15px,2.2vw,24px);
+  opacity:.95;
+}
+.hero-sub::before{
+  content:""; position:absolute; left:0; top:.32em; bottom:.32em; width:2px;
+  background:linear-gradient(var(--accent),var(--accent-pale)); opacity:.7;
+}
+.hero-sub .jp{
+  display:block; font-family:var(--jp); font-weight:300;
+  font-size:clamp(13px,1.6vw,17px); letter-spacing:.12em;
+  color:var(--accent-pale); opacity:.85; line-height:1.7; margin-top:.7em;
+}
+.hero-hint{
+  margin-top:clamp(24px,3.4vh,36px);
+  font-family:var(--sans); font-size:clamp(10px,1.05vw,12px);
+  letter-spacing:.3em; text-transform:uppercase; color:var(--accent-pale); opacity:.72;
+}
+.scroll-cue{
+  position:absolute; z-index:3; left:50%; transform:translateX(-50%);
+  bottom:clamp(22px,4vh,40px);
+  display:flex; flex-direction:column; align-items:center; gap:9px;
+  font-family:var(--sans); font-size:10px; letter-spacing:.42em;
+  text-transform:uppercase; color:var(--accent-pale); opacity:.85;
+  animation:floatCue 3.4s var(--ease) infinite; pointer-events:none;
+}
+.scroll-cue .line{ width:1px; height:clamp(28px,6vh,50px); background:linear-gradient(var(--accent-pale),transparent); }
+@keyframes floatCue{ 0%,100%{ transform:translate(-50%,0); opacity:.85 } 50%{ transform:translate(-50%,7px); opacity:.4 } }
+
+/* ══ 敘事紙面（半透明，水波隱約透出、長文可讀） ══ */
+.scroll-body{
+  position:relative;
+  background:linear-gradient(180deg,
+    rgba(14,20,17,0)   0%,
+    rgba(14,20,17,.56) 5%,
+    rgba(14,20,17,.66) 26%,
+    rgba(14,20,17,.72) 100%);
+}
+.wrap{ width:min(1180px,90vw); margin-inline:auto; }
+
+section.chapter{
+  position:relative;
+  padding:clamp(80px,15vh,170px) 0;
+  border-top:1px solid var(--hair-d);
+}
+section.chapter:first-child{ border-top:0; }
+
+.split{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(34px,5.5vw,84px); align-items:center; }
+.split.rev .col-photo{ order:2; }
+
+.col-photo{ position:relative; }
+.photo-frame{
+  position:relative; width:100%;
+  aspect-ratio:4/3; overflow:hidden;
+  border-radius:3px;
+  box-shadow:0 30px 60px -24px rgba(0,0,0,.7), 0 2px 0 rgba(232,238,228,.05);
+}
+.photo-frame img{
+  position:absolute; inset:0;
+  width:100%; height:112%;
+  object-fit:cover; object-position:center;
+  will-change:transform;
+  transform:scale(1.02);
+  transition:transform 1.6s var(--ease-ink);
+}
+.split.in .photo-frame img{ transform:scale(1); }
+.photo-veil{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(10,16,13,.06) 0%, rgba(10,16,13,0) 30%, rgba(10,16,13,.5) 100%),
+    linear-gradient(90deg, rgba(10,16,13,.22) 0%, rgba(10,16,13,0) 40%);
+}
+.photo-cap{
+  position:absolute; z-index:2; left:clamp(14px,2vw,22px); bottom:clamp(12px,1.8vw,20px);
+  color:#f4efe4; text-shadow:0 1px 8px rgba(0,0,0,.6);
+}
+.photo-cap .t{ font-family:var(--brush); font-size:clamp(15px,1.7vw,20px); letter-spacing:.14em; display:block; }
+.photo-cap .en{ font-family:var(--sans); font-weight:300; font-style:italic; font-size:clamp(10px,1.05vw,12px); letter-spacing:.08em; opacity:.82; margin-top:2px; display:block; }
+.photo-mark{
+  position:absolute; z-index:2; top:clamp(12px,1.6vw,18px); right:clamp(12px,1.6vw,18px);
+  font-family:var(--brush); font-size:clamp(13px,1.5vw,17px);
+  color:#f4efe4; opacity:.9;
+  writing-mode:vertical-rl; text-orientation:mixed; letter-spacing:.24em;
+  text-shadow:0 1px 8px rgba(0,0,0,.55);
+}
+
+.sec-index{
+  font-family:var(--sans); font-weight:400;
+  font-size:clamp(11px,1.1vw,13px); letter-spacing:.42em;
+  text-transform:uppercase; color:var(--moss-soft);
+  margin-bottom:clamp(14px,2.2vh,24px);
+  display:flex; align-items:center; gap:.9em;
+}
+.sec-index .no{ font-family:var(--brush); font-size:1.5em; color:var(--accent); letter-spacing:0; }
+.sec-title{
+  font-family:var(--brush); font-weight:400;
+  font-size:clamp(40px,6.5vw,84px); line-height:1.02; letter-spacing:.05em;
+  color:var(--sand); margin-bottom:clamp(6px,1vh,12px);
+  text-shadow:0 2px 18px rgba(10,16,13,.5);
+}
+.sec-title .sub{
+  display:block; font-family:var(--jp); font-weight:400;
+  font-size:clamp(14px,1.5vw,18px); letter-spacing:.24em;
+  color:var(--accent-pale); opacity:.85; margin-top:.5em;
+}
+.sec-title .en{
+  display:block; font-family:var(--sans); font-weight:300;
+  font-size:clamp(12px,1.35vw,15px); letter-spacing:.36em; text-transform:uppercase;
+  color:var(--ink-faint); margin-top:.7em;
+}
+.sec-body{
+  font-family:var(--jp); font-weight:300;
+  font-size:clamp(15px,1.5vw,18px); line-height:2.05; color:var(--sand);
+  max-width:46ch; opacity:.92; margin-top:clamp(18px,2.6vh,28px);
+  text-shadow:0 1px 12px rgba(10,16,13,.45);
+}
+.sec-body + .sec-body{ margin-top:1.3em; }
+.sec-body .jp{
+  display:block; font-family:var(--jp); font-weight:300;
+  font-size:.84em; line-height:1.85; color:var(--accent-pale);
+  opacity:.72; margin-top:.8em; letter-spacing:.08em;
+}
+.enter{
+  display:inline-flex; align-items:center; gap:.6em;
+  margin-top:clamp(22px,3.2vh,34px);
+  font-family:var(--jp); font-size:clamp(14px,1.5vw,16px); letter-spacing:.16em;
+  color:var(--accent); text-decoration:none;
+  border-bottom:1px solid rgba(111,168,158,.4);
+  padding-bottom:3px; transition:color .35s var(--ease), border-color .35s var(--ease), gap .35s var(--ease);
+}
+.enter .arw{ font-family:var(--sans); transition:transform .35s var(--ease); }
+.enter:hover{ color:var(--accent-pale); border-color:var(--accent-pale); gap:.9em; }
+.enter:hover .arw{ transform:translateX(3px); }
+
+/* 中段引句 · 四季流轉 */
+.pull{
+  text-align:center; padding:clamp(64px,13vh,140px) 0;
+  border-top:1px solid var(--hair-d);
+  position:relative;
+}
+.pull .ma{
+  font-family:var(--brush); display:block;
+  font-size:clamp(30px,5vw,64px); color:var(--accent-pale); opacity:.5; margin-bottom:.35em;
+}
+.pull p{
+  font-family:var(--brush); font-weight:400;
+  font-size:clamp(24px,4.4vw,52px); line-height:1.6; letter-spacing:.05em;
+  color:var(--sand); max-width:22ch; margin-inline:auto;
+  text-shadow:0 2px 20px rgba(10,16,13,.5);
+}
+.pull .en{
+  display:block; font-family:var(--sans); font-weight:300; font-style:italic;
+  font-size:clamp(13px,1.5vw,17px); letter-spacing:.04em; color:var(--accent);
+  margin-top:1.3em; max-width:44ch; margin-inline:auto; line-height:1.7; opacity:.88;
+}
+.seasons{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(12px,2vw,24px); margin-top:clamp(40px,6vh,64px); max-width:840px; margin-inline:auto; }
+.season{ position:relative; padding:clamp(16px,2.2vw,26px) clamp(10px,1.4vw,18px); border-top:1px solid var(--hair-d); }
+.season .kanji{ font-family:var(--brush); font-size:clamp(28px,4vw,48px); color:var(--sand); line-height:1; opacity:.92; }
+.season .en{ display:block; font-family:var(--sans); font-size:clamp(9px,1vw,11px); letter-spacing:.3em; text-transform:uppercase; color:var(--accent); margin-top:.8em; opacity:.85; }
+.season::before{ content:""; position:absolute; top:-1px; left:0; width:0; height:2px; background:var(--accent); transition:width .8s var(--ease); }
+.season.lit::before{ width:40%; }
+
+/* Footer */
+footer{
+  border-top:1px solid var(--hair-d);
+  padding:clamp(30px,5vh,48px) 0 clamp(40px,6vh,60px);
+  display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between; align-items:center;
+  font-family:var(--sans); font-weight:300; font-size:clamp(11px,1.1vw,13px);
+  letter-spacing:.18em; text-transform:uppercase; color:var(--ink-faint);
+}
+footer .sig{ font-family:var(--brush); letter-spacing:.14em; text-transform:none; color:var(--sand); font-size:1.15em; opacity:.9; }
+footer .links a{ color:var(--sand); text-decoration:none; opacity:.8; transition:opacity .25s, color .25s; }
+footer .links a:hover{ opacity:1; color:var(--accent); }
+footer .sep{ opacity:.4; margin:0 .55em; }
+
+/* reveal（漸進增強：預設可見；JS 就緒才隱藏待揭示，IO 失效也不會讓照片永久隱形） */
+.reveal{ opacity:1; }
+.js-anim .reveal{ opacity:0; transform:translateY(30px); transition:opacity 1.05s var(--ease-ink), transform 1.05s var(--ease-ink); will-change:opacity,transform; }
+.js-anim .reveal.in{ opacity:1; transform:none; }
+.reveal.d1{ transition-delay:.1s } .reveal.d2{ transition-delay:.22s } .reveal.d3{ transition-delay:.34s } .reveal.d4{ transition-delay:.46s }
+
+/* ══ 手機 RWD：章節直向堆疊 ══ */
+@media (max-width:820px){
+  body{ line-height:1.78; }
+  nav{ padding:12px 20px; }
+  .brand{ font-size:clamp(20px,7vw,24px); }
+  .navlinks{
+    position:fixed; inset:0; z-index:15;
+    flex-direction:column; align-items:center; justify-content:center; gap:clamp(20px,4vh,32px);
+    background:rgba(14,21,18,.97);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    transform:translateY(-102%); transition:transform .55s var(--ease);
+  }
+  .navlinks.open{ transform:none; }
+  .navlinks a{ font-size:clamp(19px,6vw,25px); opacity:.85; }
+  .navlinks .lang{ border-left:0; padding-left:0; }
+  .nav-toggle{
+    display:flex; flex-direction:column; gap:5px; z-index:16;
+    width:34px; height:24px; justify-content:center; cursor:pointer;
+    background:none; border:0;
+  }
+  .nav-toggle span{ display:block; height:1.6px; width:100%; background:var(--sand); transition:transform .45s var(--ease), opacity .3s; }
+  .nav-toggle.open span:nth-child(1){ transform:translateY(6.6px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2){ opacity:0; }
+  .nav-toggle.open span:nth-child(3){ transform:translateY(-6.6px) rotate(-45deg); }
+
+  .hero{ align-items:end; }
+  .hero-inner{ padding-top:clamp(100px,18vh,140px); }
+  .hero h1{ font-size:clamp(40px,9vw,58px); }
+  .hero h1 .romaji{ font-size:clamp(13px,4.4vw,20px); letter-spacing:.44em; }
+  .hero-sub{ font-size:clamp(16px,4.6vw,23px); max-width:26ch; }
+
+  .split{ grid-template-columns:1fr; gap:clamp(24px,6vw,36px); }
+  .split.rev .col-photo{ order:0; }
+  .photo-frame{ aspect-ratio:3/2; }
+  .sec-title{ font-size:clamp(44px,13vw,66px); }
+  .sec-body{ max-width:100%; }
+
+  .seasons{ grid-template-columns:repeat(4,1fr); gap:clamp(8px,2.4vw,16px); }
+  .season{ padding:clamp(12px,3.2vw,18px) clamp(6px,1.6vw,12px); }
+  .season .kanji{ font-size:clamp(26px,9vw,40px); }
+  .pull p{ font-size:clamp(26px,8vw,40px); max-width:15ch; }
+
+  footer{ flex-direction:column; align-items:flex-start; gap:12px; }
+}
+
+@media (max-width:400px){
+  .wrap, .hero-inner{ width:88vw; }
+  .hero h1{ font-size:clamp(34px,12vw,46px); }
+  .season .kanji{ font-size:clamp(24px,11vw,34px); }
+  .season .en{ letter-spacing:.18em; }
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion:reduce){
+  *{ animation:none !important; }
+  html{ scroll-behavior:auto; }
+  .reveal{ opacity:1; transform:none; transition:none; }
+  .hero-inner{ transform:none !important; }
+  .photo-frame img{ transform:scale(1) !important; transition:none; }
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+⟦zh⟧  "name": "葉崇揚",
+  "alternateName": "Chung-Yang Yeh",
+⟦en⟧  "name": "Chung-Yang Yeh",
+  "alternateName": "葉崇揚",
+⟦/⟧  "url": "https://chungyang1017.github.io/",
+  "image": "https://chungyang1017.github.io/photo.jpg",
+⟦zh⟧  "jobTitle": "教授",
+⟦en⟧  "jobTitle": "Professor",
+⟦/⟧  "worksFor": {
+    "@type": "Organization",
+⟦zh⟧    "name": "東吳大學社會學系"
+  },
+  "knowsAbout": ["比較東亞福利國家", "年金政策", "社會投資", "福利態度"],
+⟦en⟧    "name": "Department of Sociology, Soochow University"
+  },
+  "knowsAbout": ["Comparative welfare states", "Pension policy", "Social investment", "Welfare attitudes"],
+⟦/⟧  "sameAs": [
+    "https://scholar.google.com/citations?user=mLY3afoAAAAJ",
+    "https://orcid.org/0000-0003-4284-137X",
+    "https://www.instagram.com/chungyang.yeh/"
+  ]
+}
+</script>
+<!-- og:start -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
+⟦zh⟧<meta property="og:title" content="葉崇揚 ・ 首頁 ・ Chung-Yang Yeh" />
+<meta property="og:description" content="葉崇揚（Chung-Yang Yeh）—— 東吳大學社會學系，福利國家與社會政策研究者，攝影者。夏の水面，觸水成漣漪。" />
+<meta property="og:url" content="https://chungyang1017.github.io/" />⟦en⟧<meta property="og:title" content="Chung-Yang Yeh ・ Home ・ 葉崇揚" />
+<meta property="og:description" content="Chung-Yang Yeh — Department of Sociology, Soochow University, Taipei. A researcher of the welfare state and social policy, and a photographer. Summer waters, a touch away from ripples." />
+<meta property="og:url" content="https://chungyang1017.github.io/index-en.html" />⟦/⟧
+<meta property="og:image" content="https://chungyang1017.github.io/photo.jpg" />
+⟦zh⟧<meta property="og:locale" content="zh_TW" />⟦en⟧<meta property="og:locale" content="en_US" />⟦/⟧
+<meta name="twitter:card" content="summary" />
+<!-- og:end -->
+</head>
+<body>
+
+<!-- ══ 水波背景 ══ -->
+<canvas id="water" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+<div id="msg">水面をととのえています…</div>
+<div class="seal" aria-hidden="true"><span>崇</span><span>揚</span></div>
+
+<!-- ══ 導覽 ══ -->
+<nav id="nav">
+  ⟦zh⟧<a class="brand" href="index.html">葉崇揚<span class="en">Chung-Yang Yeh⟦en⟧<a class="brand" href="index-en.html">Chung-Yang Yeh<span class="en">葉崇揚⟦/⟧</span></a>
+  ⟦zh⟧<button class="nav-toggle" id="navToggle" aria-label="選單" aria-expanded="false">⟦en⟧<button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">⟦/⟧
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="navlinks" id="navlinks">
+    <li>⟦zh⟧<a href="index.html" class="is-current">首頁⟦en⟧<a href="index-en.html" class="is-current">Home⟦/⟧</a></li>
+    <li>⟦zh⟧<a href="about-zh.html">簡介⟦en⟧<a href="about.html">About⟦/⟧</a></li>
+    <li>⟦zh⟧<a href="academic-zh.html">學術⟦en⟧<a href="academic.html">Research⟦/⟧</a></li>
+    <li>⟦zh⟧<a href="photography-zh.html">攝影⟦en⟧<a href="photography.html">Photography⟦/⟧</a></li>
+    <li>⟦zh⟧<a href="teaching-zh.html">教學⟦en⟧<a href="teaching.html">Teaching⟦/⟧</a></li>
+    <li>⟦zh⟧<a href="essays-zh.html">隨筆⟦en⟧<a href="essays.html">Essays⟦/⟧</a></li>
+    <li>⟦zh⟧<a href="index-en.html" class="lang">EN⟦en⟧<a href="index.html" class="lang">中⟦/⟧</a></li>
+  </ul>
+</nav>
+
+<main id="top">
+
+  <!-- ══════════ HERO：夏の水面 ══════════ -->
+  <header class="hero" id="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow"><span class="jp">夏の水面</span> · Summer Waters</p>
+      <h1>葉崇揚<span class="romaji">Yeh Chung-Yang</span></h1>
+      <p class="hero-sub">
+⟦zh⟧        綠楓垂水，錦鯉不驚。⟦en⟧        Green maples over water, koi undisturbed.⟦/⟧<br>⟦zh⟧一位研究者的書桌，一位攝影者的四季——觸水成漣漪，請進。
+⟦en⟧A scholar's desk, a photographer's four seasons — touch the water, and enter.
+⟦/⟧        <span class="jp">水にふれてください。夏の、しずかな一波。</span>
+      </p>
+      <p class="hero-hint">⟦zh⟧點一下小鯉魚，看牠輕快游開 · 拖曳水面，泛起漣漪⟦en⟧Tap a koi to watch it swim away · Drag the water to make ripples⟦/⟧</p>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">
+      <span>Scroll</span>
+      <span class="line"></span>
+    </div>
+  </header>
+
+  <!-- ══ 敘事紙面（半透明，水波隱約透出） ══ -->
+  <div class="scroll-body">
+
+  <!-- ══════════ 一 · 學術 ══════════ -->
+  <section class="chapter" id="academic">
+    <div class="wrap">
+      <div class="split reveal">
+        <div class="col-photo">
+          <div class="photo-frame">
+            ⟦zh⟧<img src="images/photography/dscf7154_1.jpg" alt="白樺立於紅葉之中" loading="lazy" fetchpriority="low" />⟦en⟧<img src="images/photography/dscf7154_1.jpg" alt="A white birch standing amid crimson autumn leaves" loading="lazy" fetchpriority="low" />⟦/⟧
+            <div class="photo-veil"></div>
+            <span class="photo-mark">紅葉 · 秋</span>
+            <span class="photo-cap"><span class="t">⟦zh⟧白與紅⟦en⟧White and Crimson⟦/⟧</span><span class="en">⟦zh⟧White and Crimson⟦en⟧白與紅⟦/⟧</span></span>
+          </div>
+        </div>
+        <div class="col-text">
+          <p class="sec-index"><span class="no">一</span> Chapter · One</p>
+          <h2 class="sec-title">⟦zh⟧學術<span class="en">Research⟦en⟧Research<span class="en">學術⟦/⟧</span></h2>
+          <p class="sec-body">
+⟦zh⟧            東吳大學社會學系。福利國家與社會政策的研究者——在制度、階級與世代之間，尋找那些被數字遮蔽的生命。
+⟦en⟧            The Department of Sociology at Soochow University, Taipei. A researcher of the welfare state and social policy — searching, between institutions, class, and generations, for the lives the numbers leave in shadow.
+⟦/⟧            <span class="jp">東呉大学社会学部。福祉国家と社会政策の研究。</span>
+          </p>
+          <p class="sec-body">
+⟦zh⟧            論文在此呼吸。一篇一篇，像冬日湖面倒映的枯木，安靜地把時代的輪廓留下。
+⟦en⟧            The papers breathe here, one by one — like bare trees mirrored on a winter lake, quietly holding the outline of an age.
+⟦/⟧          </p>
+          ⟦zh⟧<a class="enter" href="academic-zh.html">進入 ⟦en⟧<a class="enter" href="academic.html">Enter ⟦/⟧<span class="arw">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 二 · 攝影 ══════════ -->
+  <section class="chapter" id="photography">
+    <div class="wrap">
+      <div class="split rev reveal">
+        <div class="col-photo">
+          <div class="photo-frame">
+            ⟦zh⟧<img src="images/photography/dscf4989_xd3_1.jpg" alt="合歡山雲海，層巒沒入晨霧，天際一抹朱紅" loading="lazy" fetchpriority="low" />⟦en⟧<img src="images/photography/dscf4989_xd3_1.jpg" alt="Sea of clouds over Hehuanshan, layered ridges fading into dawn mist, a band of vermilion at the horizon" loading="lazy" fetchpriority="low" />⟦/⟧
+            <div class="photo-veil"></div>
+            <span class="photo-mark">山水 · 晨</span>
+            <span class="photo-cap"><span class="t">⟦zh⟧雲海⟦en⟧Sea of Clouds⟦/⟧</span><span class="en">⟦zh⟧Sea of Clouds⟦en⟧雲海⟦/⟧</span></span>
+          </div>
+        </div>
+        <div class="col-text">
+          <p class="sec-index"><span class="no">二</span> Chapter · Two</p>
+          <h2 class="sec-title">⟦zh⟧攝影<span class="en">Photography⟦en⟧Photography<span class="en">攝影⟦/⟧</span></h2>
+          <p class="sec-body">
+⟦zh⟧            近三十年，與研究並行的另一種觀看。九個季節系列——春信、青嵐、紅葉、雪明、潮騒、山水、街、銀塩、Xpan——把走過的光留在底片上。
+⟦en⟧            For nearly thirty years, another way of seeing has run alongside the research. Nine seasonal series — Harugasumi, Aoarashi, Kōyō, Yukiakari, Shiosai, Sansui, Machi, Ginen, and Xpan — keeping the light of every walk on film.
+⟦/⟧            <span class="jp">研究と並走してきた、もう一つの眼差し。九つの季節。</span>
+          </p>
+          <p class="sec-body">
+⟦zh⟧            庭園化作一冊書，一頁一頁地翻。四季在其中流轉，光與影都被留了下來。
+⟦en⟧            The garden becomes a book, turned one page at a time — the seasons revolving within it, its light and shadow kept.
+⟦/⟧          </p>
+          ⟦zh⟧<a class="enter" href="photography-zh.html">進入 ⟦en⟧<a class="enter" href="photography.html">Enter ⟦/⟧<span class="arw">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 中段引句 · 四季流轉 ══════════ -->
+  <div class="pull wrap">
+    <span class="ma" aria-hidden="true">間</span>
+    <p>
+⟦zh⟧      同一條花徑，走過已是第幾回。
+⟦en⟧      The same path of blossoms — how many times now.
+⟦/⟧      <span class="en">⟦zh⟧The same path of blossoms — how many times now.⟦en⟧同一條花徑，走過已是第幾回。⟦/⟧</span>
+    </p>
+    <div class="seasons">
+      <div class="season reveal d1"><span class="kanji">春</span><span class="en">Haru · Spring</span></div>
+      <div class="season reveal d2"><span class="kanji">夏</span><span class="en">Natsu · Summer</span></div>
+      <div class="season reveal d3"><span class="kanji">秋</span><span class="en">Aki · Autumn</span></div>
+      <div class="season reveal d4"><span class="kanji">冬</span><span class="en">Fuyu · Winter</span></div>
+    </div>
+  </div>
+
+  <!-- ══════════ 三 · 教學 ══════════ -->
+  <section class="chapter" id="teaching">
+    <div class="wrap">
+      <div class="split reveal">
+        <div class="col-photo">
+          <div class="photo-frame">
+            ⟦zh⟧<img src="images/photography/dscf4933_6.jpg" alt="冬日窗邊，微光靜積" loading="lazy" fetchpriority="low" />⟦en⟧<img src="images/photography/dscf4933_6.jpg" alt="A thin light on the winter window" loading="lazy" fetchpriority="low" />⟦/⟧
+            <div class="photo-veil"></div>
+            <span class="photo-mark">雪明 · 冬</span>
+            <span class="photo-cap"><span class="t">⟦zh⟧寂靜⟦en⟧Stillness⟦/⟧</span><span class="en">⟦zh⟧Stillness⟦en⟧寂靜⟦/⟧</span></span>
+          </div>
+        </div>
+        <div class="col-text">
+          <p class="sec-index"><span class="no">三</span> Chapter · Three</p>
+          <h2 class="sec-title">⟦zh⟧教學<span class="en">Teaching⟦en⟧Teaching<span class="en">教學⟦/⟧</span></h2>
+          <p class="sec-body">
+⟦zh⟧            小小的入口，大大的對話。課堂就是一期一会——每一次相遇都只有這一次，於是格外鄭重。
+⟦en⟧            A small entrance, a large conversation. The classroom is ichi-go ichi-e — each meeting comes only once, and so is met with particular care.
+⟦/⟧            <span class="jp">小さな入口、大きな対話。一期一会の教室。</span>
+          </p>
+          <p class="sec-body">
+⟦zh⟧            社會政策、比較福利、研究方法。把抽象的理論，講成聽得懂、用得上的東西。
+⟦en⟧            Social policy, comparative welfare, research methods — abstract theory turned into something you can actually understand and use.
+⟦/⟧          </p>
+          ⟦zh⟧<a class="enter" href="teaching-zh.html">進入 ⟦en⟧<a class="enter" href="teaching.html">Enter ⟦/⟧<span class="arw">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 四 · 隨筆 ══════════ -->
+  <section class="chapter" id="essays">
+    <div class="wrap">
+      <div class="split rev reveal">
+        <div class="col-photo">
+          <div class="photo-frame">
+            ⟦zh⟧<img src="images/photography/img20260329_18390699.jpg" alt="湖上黎明，船舟聚於木造棧橋" loading="lazy" fetchpriority="low" />⟦en⟧<img src="images/photography/img20260329_18390699.jpg" alt="Dawn over the lake, boats gathered at a wooden pier" loading="lazy" fetchpriority="low" />⟦/⟧
+            <div class="photo-veil"></div>
+            <span class="photo-mark">湖 · 曉</span>
+            <span class="photo-cap"><span class="t">⟦zh⟧黎明棧橋⟦en⟧Dawn Pier⟦/⟧</span><span class="en">⟦zh⟧Dawn Pier⟦en⟧黎明棧橋⟦/⟧</span></span>
+          </div>
+        </div>
+        <div class="col-text">
+          <p class="sec-index"><span class="no">四</span> Chapter · Four</p>
+          <h2 class="sec-title">⟦zh⟧隨筆<span class="en">Essays⟦en⟧Essays<span class="en">隨筆⟦/⟧</span></h2>
+          <p class="sec-body">
+⟦zh⟧            研究之外的隨筆與評論。關於社會、關於街角的一盞燈、關於那些不在論文裡、卻始終放不下的事。
+⟦en⟧            Essays and commentary from outside the research — on society, on a single lamp at a street corner, on the things that never made it into a paper yet were never quite set down.
+⟦/⟧            <span class="jp">研究の外側の、随筆と評論。街角の灯のこと。</span>
+          </p>
+          <p class="sec-body">
+⟦zh⟧            天將亮的湖面，船舟靜靠棧橋——一天尚未開始，思緒已先醒來。文字，是替它留下的一點光。
+⟦en⟧            The lake just before daybreak, boats resting at the pier — the day not yet begun, the mind already awake. Writing is the little light kept for it.
+⟦/⟧          </p>
+          ⟦zh⟧<a class="enter" href="essays-zh.html">進入 ⟦en⟧<a class="enter" href="essays.html">Enter ⟦/⟧<span class="arw">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ Footer ══════════ -->
+  <section class="chapter" style="padding-bottom:0;">
+    <div class="wrap">
+      <footer>
+        <span class="sig">⟦zh⟧葉崇揚 · Yeh Chung-Yang⟦en⟧Yeh Chung-Yang⟦/⟧</span>
+        <span class="links">
+          <a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener">Instagram</a>
+          <span class="sep">·</span>
+          <a href="https://www.flickr.com/photos/young1017/" target="_blank" rel="noopener">Flickr</a>
+        </span>
+        <span>⟦zh⟧2026 ・ 夏⟦en⟧2026 · Summer⟦/⟧</span>
+      </footer>
+    </div>
+  </section>
+
+  </div><!-- /.scroll-body -->
+</main>
+
+<!-- ══ 水波：純 Canvas 2D（Hugo Elias 高度場 + 折射位移） ══ -->
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var canvas = document.getElementById("water");
+  var ctx = canvas.getContext("2d");
+  var msgEl = document.getElementById("msg");
+
+  /* 自然感四要素：
+     ① 觸點注入＝高斯壓痕（柔和鐘形、先下陷再回彈），不是平頂圓盤尖刺
+     ② 阻尼 0.985＝漣漪約 2–4 秒自然消散；固定 60Hz 模擬步長，高更新率螢幕衰減一致
+     ③ 拖曳＝沿移動路徑連續注入小擾動、強度隨速度（像手指劃過水面）
+     ④ 渲染＝次像素雙線性折射＋斜向光影、亮度夾限防過曝，波紋圓潤無鋸齒 */
+  var CONFIG = {
+    SIM_MAX: (window.innerWidth < 760 ? 260 : 380),
+    DAMPING: 0.985,                  // 波紋壽命（原 0.96 一秒即死）
+    REFRACT: 2.0,                    // 折射位移倍率（次像素取樣）
+    SHADE:   0.018,                  // 波面明暗強度
+    LUM_MIN: 0.80, LUM_MAX: 1.30,    // 亮度夾限：高光不過曝
+    STEP_MS: 1000/60,                // 固定模擬步長
+    CLICK_AMP: -12, CLICK_SIG: 2.6,  // 點觸：較深較寬的壓痕
+    DRAG_AMP: -2.2, DRAG_VEL: -1.4, DRAG_MAX: -7, DRAG_SIG: 1.7, // 拖曳（隨速度加深）
+    RAIN_AMP: -5,  RAIN_SIG: 2.0,    // 偶落雨滴（環境生命感，幅度小不搶戲）
+    RAIN_MIN: 3,   RAIN_MAX: 8,      // 3–8 秒一滴
+    QUIET_MS: 2500                   // 互動後隔這麼久才恢復落雨
+  };
+
+  var W=0,H=0, sw=0,sh=0, cur=null,prev=null;
+  var src=null, out=null, buf=null, bufCtx=null;
+  var img = new Image();
+  var ready=false, started=false, raf=0;
+  var lastActivity=0, nextIdle=0;
+
+  function now(){ return (window.performance&&performance.now)?performance.now():Date.now(); }
+
+  function resize(){
+    W = window.innerWidth; H = window.innerHeight;
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    canvas.width = Math.round(W*dpr); canvas.height = Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.imageSmoothingEnabled = true;
+    try{ ctx.imageSmoothingQuality = "high"; }catch(e){}
+    var ratio = Math.min(1, CONFIG.SIM_MAX / Math.max(W,H));
+    sw = Math.max(2, Math.round(W*ratio));
+    sh = Math.max(2, Math.round(H*ratio));
+    cur = new Float32Array(sw*sh);
+    prev = new Float32Array(sw*sh);
+    buf = document.createElement("canvas");
+    buf.width = sw; buf.height = sh;
+    bufCtx = buf.getContext("2d");
+    drawCover(bufCtx, img, sw, sh);
+    src = bufCtx.getImageData(0,0,sw,sh);
+    out = bufCtx.createImageData(sw,sh);
+  }
+  function drawCover(c, image, w, h){
+    var iw=image.naturalWidth||image.width, ih=image.naturalHeight||image.height;
+    if(!iw||!ih){ return; }
+    var s=Math.max(w/iw, h/ih), dw=iw*s, dh=ih*s;
+    c.clearRect(0,0,w,h);
+    c.drawImage(image, (w-dw)/2, (h-dh)/2, dw, dh);
+  }
+
+  /* 高斯壓痕：柔和鐘形注入（sigma 單位＝模擬格；amp 負值＝水面先下陷） */
+  function splashSim(sx, sy, amp, sigma){
+    var r = Math.max(2, Math.ceil(sigma*2.5));
+    var inv = 1/(2*sigma*sigma);
+    for(var y=-r;y<=r;y++){
+      var yy=sy+y; if(yy<1||yy>=sh-1) continue;
+      var row=yy*sw;
+      for(var x=-r;x<=r;x++){
+        var xx=sx+x; if(xx<1||xx>=sw-1) continue;
+        var g = Math.exp(-(x*x+y*y)*inv);
+        if(g<0.02) continue;
+        prev[row+xx] += amp*g;
+      }
+    }
+  }
+  function splash(dispX, dispY, amp, sigma){
+    if(!ready) return;
+    splashSim(Math.round(dispX/W*sw), Math.round(dispY/H*sh), amp, sigma);
+    lastActivity=now();
+  }
+
+  function step(){
+    var C=cur, P=prev, d=CONFIG.DAMPING, w=sw;
+    for(var y=1;y<sh-1;y++){
+      var row=y*w;
+      for(var x=1;x<sw-1;x++){
+        var i=row+x;
+        var v=((P[i-1]+P[i+1]+P[i-w]+P[i+w])*0.5 - C[i])*d;
+        C[i]=v;
+      }
+    }
+    var t=cur; cur=prev; prev=t;
+  }
+
+  /* 渲染：中央差分梯度 → 次像素雙線性折射 ＋ 斜向光影（防鋸齒、防過曝） */
+  function render(){
+    var P=prev, s=src.data, o=out.data, w=sw, h=sh;
+    var k=CONFIG.REFRACT, shd=CONFIG.SHADE, lmin=CONFIG.LUM_MIN, lmax=CONFIG.LUM_MAX;
+    var wm=w-1.001, hm=h-1.001, w4=w<<2;
+    for(var y=0;y<h;y++){
+      var ymw=(y>0?y-1:y)*w, ypw=(y<h-1?y+1:y)*w;
+      for(var x=0;x<w;x++){
+        var i=y*w+x;
+        var gx=(x>0?P[i-1]:P[i]) - (x<w-1?P[i+1]:P[i]);
+        var gy=P[ymw+x] - P[ypw+x];
+        var fx=x+gx*k, fy=y+gy*k;
+        if(fx<0)fx=0; else if(fx>wm)fx=wm;
+        if(fy<0)fy=0; else if(fy>hm)fy=hm;
+        var x0=fx|0, y0=fy|0, tx=fx-x0, ty=fy-y0;
+        var i00=(y0*w+x0)<<2, i01=i00+w4;
+        var w00=(1-tx)*(1-ty), w10=tx*(1-ty), w01=(1-tx)*ty, w11=tx*ty;
+        var lum=1+(gx+gy)*shd;
+        if(lum<lmin)lum=lmin; else if(lum>lmax)lum=lmax;
+        var oi=i<<2;
+        var r=(s[i00]*w00+s[i00+4]*w10+s[i01]*w01+s[i01+4]*w11)*lum;
+        var g=(s[i00+1]*w00+s[i00+5]*w10+s[i01+1]*w01+s[i01+5]*w11)*lum;
+        var b=(s[i00+2]*w00+s[i00+6]*w10+s[i01+2]*w01+s[i01+6]*w11)*lum;
+        o[oi]  = r>255?255:r;
+        o[oi+1]= g>255?255:g;
+        o[oi+2]= b>255?255:b;
+        o[oi+3]= 255;
+      }
+    }
+    bufCtx.putImageData(out,0,0);
+    ctx.drawImage(buf, 0,0,sw,sh, 0,0,W,H);
+  }
+
+  /* 主迴圈：固定步長模擬（60/120Hz 螢幕衰減一致；無步進的幀不重繪省電） */
+  var lastT=0, acc=0;
+  function loop(ts){
+    raf = requestAnimationFrame(loop);
+    if(!lastT) lastT=ts;
+    var dt=ts-lastT; lastT=ts;
+    if(dt>100) dt=100;
+    acc+=dt;
+    var t=now();
+    if(!reduce && t>=nextIdle){
+      if(t-lastActivity>CONFIG.QUIET_MS){
+        splashSim(((sw*(0.08+Math.random()*0.84))|0), ((sh*(0.08+Math.random()*0.84))|0), CONFIG.RAIN_AMP, CONFIG.RAIN_SIG);
+      }
+      nextIdle = t + (CONFIG.RAIN_MIN + Math.random()*(CONFIG.RAIN_MAX-CONFIG.RAIN_MIN))*1000;
+    }
+    if(koiOn && ready) updateKoi((dt>50?50:dt)/1000);
+    var n=0;
+    while(acc>=CONFIG.STEP_MS && n<3){ step(); acc-=CONFIG.STEP_MS; n++; }
+    if(acc>CONFIG.STEP_MS) acc=CONFIG.STEP_MS;
+    if(n>0 || !started || koiOn) render();
+    if(koiOn && ready) for(var ki=0;ki<koi.length;ki++) drawKoi(koi[ki]);
+    if(!started){ started=true; msgEl.style.opacity="0"; }
+  }
+  function seedOpening(){
+    for(var n=0;n<4;n++){
+      splashSim(((sw*(0.15+Math.random()*0.7))|0), ((sh*(0.15+Math.random()*0.7))|0), CONFIG.RAIN_AMP*1.3, CONFIG.RAIN_SIG+0.5);
+    }
+  }
+  function start(){
+    resize(); ready=true; seedOpening(); initKoi();
+    lastActivity=now()-CONFIG.QUIET_MS; nextIdle=now()+1200; lastT=0; acc=0;
+    cancelAnimationFrame(raf);
+    if(reduce){ for(var k=0;k<3;k++) step(); render(); koi.forEach(drawKoi); msgEl.style.opacity="0"; }
+    else { raf=requestAnimationFrame(loop); }
+  }
+
+  /* ---- 互動：在 window 監聽（不捕捉指標，才不擋捲動與導覽點擊） ---- */
+  var dragging=false, lastX=0, lastY=0, lastMoveT=0, touchTap=null;
+  window.addEventListener("pointerdown", function(e){
+    if(e.target.closest("a,button,input,select,textarea")) return;
+    if(e.pointerType==="touch"){
+      /* 觸控：先不濺水。手指可能是要捲頁；放開時確認是輕點（幾乎沒移動）才濺 */
+      touchTap={x:e.clientX, y:e.clientY, t:now()};
+      return;
+    }
+    dragging=true; lastX=e.clientX; lastY=e.clientY; lastMoveT=now();
+    splash(e.clientX, e.clientY, CONFIG.CLICK_AMP, CONFIG.CLICK_SIG);
+    startleKoi(e.clientX,e.clientY,false);
+  }, {passive:true});
+  /* 拖曳＝手指劃過水面：沿路徑內插連續注入，快劃痕深、慢劃痕淺 */
+  window.addEventListener("pointermove", function(e){
+    if(!dragging || !ready) return;
+    var x=e.clientX, y=e.clientY, dx=x-lastX, dy=y-lastY;
+    var dist=Math.sqrt(dx*dx+dy*dy);
+    if(dist<3) return;
+    var t=now(), dt=t-lastMoveT; if(dt<1)dt=1;
+    var amp=CONFIG.DRAG_AMP + (dist/dt)*CONFIG.DRAG_VEL;
+    if(amp<CONFIG.DRAG_MAX) amp=CONFIG.DRAG_MAX;
+    var stepPx=Math.max(3, (W/sw)*1.6);
+    var nPts=Math.min(20, Math.max(1, Math.round(dist/stepPx)));
+    for(var j=1;j<=nPts;j++){
+      var f=j/nPts;
+      splash(lastX+dx*f, lastY+dy*f, amp, CONFIG.DRAG_SIG);
+    }
+    startleKoi(x,y,true);
+    lastX=x; lastY=y; lastMoveT=t;
+  }, {passive:true});
+  function endDrag(e){
+    dragging=false;
+    if(touchTap && e && e.type==="pointerup" && e.pointerType==="touch"){
+      var tdx=e.clientX-touchTap.x, tdy=e.clientY-touchTap.y;
+      if(tdx*tdx+tdy*tdy<100 && now()-touchTap.t<500){
+        splash(e.clientX, e.clientY, CONFIG.CLICK_AMP, CONFIG.CLICK_SIG);
+        startleKoi(e.clientX,e.clientY,false);
+      }
+    }
+    touchTap=null;
+  }
+  window.addEventListener("pointerup", endDrag, {passive:true});
+  window.addEventListener("pointercancel", endDrag, {passive:true});
+  // 右鍵：擋掉選單、盪一波
+  window.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+    splash(e.clientX, e.clientY, CONFIG.CLICK_AMP, CONFIG.CLICK_SIG);
+  });
+  // 捲動：水面隨之輕盪（幅度小，只是被風拂過）
+  var lastSY = window.scrollY||0, accum=0;
+  window.addEventListener("scroll", function(){
+    var y = window.scrollY||0, dy=Math.abs(y-lastSY); lastSY=y;
+    accum += dy;
+    if(accum > 90){
+      accum = 0;
+      if(ready && !reduce) splash(Math.random()*W, H*(0.28+Math.random()*0.5), CONFIG.DRAG_MAX*0.4, CONFIG.DRAG_SIG);
+    }
+  }, {passive:true});
+
+  /* 手機捲動時網址列收合只改視窗高度：不重置水面（否則每次捲動都清空、重丟開場水滴而閃一下），只調畫布尺寸 */
+  function softResize(){
+    W = window.innerWidth; H = window.innerHeight;
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    canvas.width = Math.round(W*dpr); canvas.height = Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.imageSmoothingEnabled = true;
+    try{ ctx.imageSmoothingQuality = "high"; }catch(e){}
+    if(reduce) render();
+  }
+  var rt;
+  window.addEventListener("resize", function(){
+    clearTimeout(rt);
+    rt=setTimeout(function(){
+      if(ready && window.innerWidth===W && Math.abs(window.innerHeight-H) < H*0.35) softResize();
+      else start();
+    },160);
+  }, {passive:true});
+  document.addEventListener("visibilitychange", function(){
+    if(document.hidden){ cancelAnimationFrame(raf); }
+    else if(ready && !reduce){ if(!W||!H){ start(); return; } /* 背景分頁 0 尺寸載入的保險 */
+      lastActivity=now(); nextIdle=now()+1500; lastT=0; acc=0; cancelAnimationFrame(raf); raf=requestAnimationFrame(loop); }
+  });
+
+  /* 除錯掛鉤（僅供自動化驗證：讀取場能量與峰值，不影響行為） */
+  window.__water = {
+    energy:function(){ if(!prev) return 0; var e=0; for(var i=0;i<prev.length;i++) e+=prev[i]*prev[i]; return e; },
+    peak:function(){ if(!prev) return 0; var m=0; for(var i=0;i<prev.length;i++){ var a=prev[i]<0?-prev[i]:prev[i]; if(a>m)m=a; } return m; },
+    koiDbg:function(){ return koi.map(function(k){ return {x:k.x,y:k.y,speed:k.spd,cruise:k.cruise,startle:k.startle,length:k.len,heading:k.dir,beat:k.beat,color:['red-white','red-black-white','pale-gold','silver-black'][k.variant],tail:k.us[k.us.length-1],loaded:!!k.spr}; }); }
+  };
+
+  /* Asset provenance: built-in image_gen, 2026-09-08.
+Use case: photorealistic-natural. Asset type: transparent PNG texture atlas for two animated small koi in a realistic Japanese pond website, not a website mockup. Create exactly TWO different real-looking juvenile Japanese koi fish photographed directly overhead in a strict orthographic dorsal view, isolated on a genuinely transparent alpha background. Landscape 1536x1024 canvas. Two separate horizontal rows: first fish centered at y=256, second at y=768. Each fish perfectly straight along the horizontal x axis, rounded nose pointing LEFT at x=140, tail tips ending RIGHT at x=1396. Leave generous transparent margins and no overlap between rows. Top fish: Kohaku koi, warm porcelain ivory with irregular deep vermilion red patches, realistic fine overlapping scale structure and wet natural skin. Bottom fish: Sanke koi, ivory with a few asymmetric red patches and small charcoal black patches, different pattern from first fish. Normal short-finned pond koi, compact rounded head, wide shoulders, gently tapered muscular body, narrow caudal peduncle, delicate translucent bifurcated tail fin, paired natural thin translucent pectoral fins lying slightly swept back close to body. Body length about 80 percent of total, tail remaining 20 percent. Eyes are small dark lateral eyes near the sides of the head, not large cartoon eyes. Subtle gill plates. Fins photoreal with fine fin rays and near-transparent membranes. No drawn black contours. Soft diffuse outdoor skylight, gentle volume shading, restrained highlights, moderately muted saturation suited to being underwater. Real wildlife macro photography, not illustration, not vector, not painted, not CGI toy. No pond background, no water ripples, no shadow cast onto background, no bubbles, no rocks, no text, no checkerboard painted into image. Maintain genuine transparent alpha around both fish and in fin edges. Image must be usable as a sprite atlas. */
+  /* Additional gold and silver atlas: built-in image_gen, 2026-09-08.
+     Use case: photorealistic-natural. Asset type: transparent PNG texture atlas for two animated small koi in a realistic Japanese pond website, not a website mockup. Create exactly TWO different real-looking juvenile Japanese koi fish photographed directly overhead in a strict orthographic dorsal view, isolated on a genuinely transparent alpha background. Landscape 1536x1024 canvas. Two separate horizontal rows: first fish centered at y=300, second at y=760. Each fish perfectly straight along the horizontal x axis, rounded nose pointing LEFT at x=110, tail tips ending RIGHT at x=1450. Leave generous transparent margins and no overlap between rows. Top fish: natural pale champagne-gold koi, gently metallic straw-gold with detailed fine overlapping golden scales and wet natural skin, softly honey-colored back, translucent ivory fins. Muted elegant pale gold, NOT neon yellow or orange. Bottom fish: porcelain silver-white koi with a few asymmetrical charcoal-black patches, NO RED, more than half the body white with subtle pearlescent scales. Normal short-finned pond koi, compact rounded head, wide shoulders, gently tapered muscular body, narrow caudal peduncle, delicate translucent bifurcated tail fin, paired natural thin translucent pectoral fins lying slightly swept back close to body. Body length about 80 percent of total, tail remaining 20 percent. Eyes are small dark lateral eyes near the sides of the head, not large cartoon eyes. Subtle gill plates. Fins photoreal with fine fin rays and near-transparent membranes. No drawn black contours. Soft diffuse outdoor skylight, gentle volume shading, restrained highlights, moderately muted saturation suited to being underwater. Real wildlife macro photography, not illustration, not vector, not painted, not CGI toy. No pond background, no water ripples, no shadow cast onto background, no bubbles, no rocks, no text, no checkerboard painted into image. Maintain genuine transparent alpha around both fish and in fin edges. Image must be usable as a sprite atlas. TRANSPARENT BACKGROUND. */
+  /* Four photographic-style koi. The atlases are AI-generated, with real alpha.
+     A continuous mesh carries the texture; steering and tail strokes use seconds. */
+  var koiOn = !reduce, koi = [];
+  var koiAtlas = new Image(), koiAccentAtlas = new Image();
+  var KOI = { SEG: 36, MARGIN: 0.12 };
+  function rand(a,b){ return a + Math.random()*(b-a); }
+  function angNorm(a){ return Math.atan2(Math.sin(a),Math.cos(a)); }
+  function mix(a,b,t){ return a+(b-a)*t; }
+  function smooth(a,b,x){ x=Math.max(0,Math.min(1,(x-a)/(b-a))); return x*x*(3-2*x); }
+  function koiSplash(x,y,amp,sig){ if(ready && !reduce) splashSim(Math.round(x/W*sw),Math.round(y/H*sh),amp,sig); }
+
+  function makeKoi(x,y,dir,scale,variant){
+    var len=Math.max(92,Math.min(176,Math.min(W,H)*0.20))*scale;
+    var k={x:x,y:y,dir:dir,len:len,seg:len/KOI.SEG,cruise:len*[0.19,0.21,0.18,0.20][variant],
+      spd:len*0.18,tgt:dir,turn:0,phase:variant*2.7,cycle:variant*2.3,
+      effort:0.65,beat:0.7,startle:0,escapeAge:10,escapeStrength:0,escapeSide:1,
+      threatX:0,threatY:0,wanderT:2.8,wakeT:0,spine:[],us:[],variant:variant};
+    for(var i=0;i<=KOI.SEG;i++) k.spine.push({x:x-Math.cos(dir)*k.seg*i,y:y-Math.sin(dir)*k.seg*i});
+    k.spr=buildKoiSprite(variant); k.us=undulate(k);
+    k.layer=document.createElement('canvas');
+    k.layer.width=k.layer.height=Math.ceil(len*2.6);
+    k.gl=k.layer.getContext('2d');
+    return k;
+  }
+  function buildKoiSprite(variant){
+    var extra=variant>=2, atlas=extra?koiAccentAtlas:koiAtlas, row=variant%2;
+    if(!atlas.naturalWidth) return null;
+    var spr=document.createElement('canvas');
+    spr.width=extra?706:678; spr.height=extra?226:220;
+    var g=spr.getContext('2d');
+    g.filter='saturate(0.80) brightness(0.94)';
+    g.drawImage(atlas,extra?78:104,row?(extra?534:535):(extra?74:90),
+      extra?1412:1356,extra?452:440,0,0,spr.width,spr.height);
+    return spr;
+  }
+  function initKoi(){
+    koi.length=0;
+    if(!koiAtlas.naturalWidth || !koiAccentAtlas.naturalWidth) return;
+    koi.push(makeKoi(W*0.73,H*0.48,2.65,1,0));
+    koi.push(makeKoi(W*0.84,H*0.76,-2.45,0.84,1));
+    koi.push(makeKoi(W*0.47,H*0.72,-0.45,0.91,2));
+    koi.push(makeKoi(W*0.58,H*0.26,0.55,0.80,3));
+  }
+
+  /* Hit-test the visible body and tail, rather than a large circle at the nose. */
+  function fishDistance(k,x,y){
+    var best=Infinity;
+    for(var i=1;i<k.us.length;i++){
+      var a=k.us[i-1],b=k.us[i],dx=b.x-a.x,dy=b.y-a.y;
+      var t=Math.max(0,Math.min(1,((x-a.x)*dx+(y-a.y)*dy)/(dx*dx+dy*dy||1)));
+      best=Math.min(best,Math.hypot(x-a.x-t*dx,y-a.y-t*dy));
+    }
+    return best;
+  }
+  function startleKoi(x,y,drag){
+    if(!koiOn || !ready) return;
+    koi.forEach(function(k){
+      var distance=fishDistance(k,x,y),hit=distance<Math.max(14,k.len*0.105);
+      if(!hit && distance>k.len*0.40) return;
+      if(drag && k.startle>0.3) return;
+      k.escapeStrength=hit?1:0.42;
+      k.startle=hit?2.1:1.15; k.escapeAge=0;
+      k.threatX=x; k.threatY=y;
+      var centerX=k.x-Math.cos(k.dir)*k.len*0.35;
+      var centerY=k.y-Math.sin(k.dir)*k.len*0.35;
+      var away=Math.atan2(centerY-y,centerX-x);
+      var delta=angNorm(away-k.dir);
+      k.escapeSide=(delta<0?-1:1);
+      // Begin a decisive bend, then accelerate into the escape direction.
+      k.tgt=k.dir+k.escapeSide*Math.max(0.7,Math.min(1.9,Math.abs(delta)));
+      k.wanderT=k.startle+2;
+      koiSplash(k.x,k.y,-1.6*k.escapeStrength,1.6);
+    });
+  }
+
+  function undulate(k){
+    var us=[],N=KOI.SEG;
+    var bend=Math.sin(Math.min(1,k.escapeAge/0.22)*Math.PI)*k.escapeStrength;
+    for(var i=0;i<=N;i++){
+      var u=i/N,a=k.spine[Math.max(0,i-1)],b=k.spine[Math.min(N,i+1)];
+      var dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1;
+      // Head and shoulders stay quiet; the travelling wave grows toward the tail.
+      var envelope=0.0015+0.055*Math.pow(smooth(0.22,1,u),1.65);
+      var off=k.len*envelope*(0.18+k.effort*0.82)*Math.sin(k.phase-u*5.1);
+      off+=k.escapeSide*k.len*0.09*bend*smooth(0.20,0.95,u);
+      us.push({x:k.spine[i].x-dy/d*off,y:k.spine[i].y+dx/d*off});
+    }
+    for(var j=0;j<=N;j++){
+      var p=us[Math.max(0,j-1)],q=us[Math.min(N,j+1)],l=Math.hypot(q.x-p.x,q.y-p.y)||1;
+      us[j].nx=-(q.y-p.y)/l; us[j].ny=(q.x-p.x)/l;
+    }
+    return us;
+  }
+
+  /* Map a texture triangle to shared mesh vertices. No stretched overlapping strips. */
+  function textureTriangle(g,im,s0,s1,s2,p0,p1,p2){
+    var den=s0.x*(s1.y-s2.y)+s1.x*(s2.y-s0.y)+s2.x*(s0.y-s1.y);
+    var a=(p0.x*(s1.y-s2.y)+p1.x*(s2.y-s0.y)+p2.x*(s0.y-s1.y))/den;
+    var b=(p0.y*(s1.y-s2.y)+p1.y*(s2.y-s0.y)+p2.y*(s0.y-s1.y))/den;
+    var c=(p0.x*(s2.x-s1.x)+p1.x*(s0.x-s2.x)+p2.x*(s1.x-s0.x))/den;
+    var d=(p0.y*(s2.x-s1.x)+p1.y*(s0.x-s2.x)+p2.y*(s1.x-s0.x))/den;
+    var e=p0.x-a*s0.x-c*s0.y,f=p0.y-b*s0.x-d*s0.y;
+    g.save();g.beginPath();
+    // Subpixel overlap closes antialias seams; source coordinates remain continuous.
+    var cx=(p0.x+p1.x+p2.x)/3,cy=(p0.y+p1.y+p2.y)/3;
+    [p0,p1,p2].forEach(function(p,i){
+      var dx=p.x-cx,dy=p.y-cy,l=Math.hypot(dx,dy)||1;
+      if(i)g.lineTo(p.x+dx/l*0.32,p.y+dy/l*0.32);else g.moveTo(p.x+dx/l*0.32,p.y+dy/l*0.32);
+    });
+    g.closePath();g.clip();g.transform(a,b,c,d,e,f);g.drawImage(im,0,0);g.restore();
+  }
+  function drawKoi(k){
+    if(!k.spr || !k.us.length) return;
+    var g=k.gl,L=k.layer,ratio=2,cx=k.x,cy=k.y;
+    var ox=cx-L.width/ratio/2,oy=cy-L.height/ratio/2;
+    // Anchor the layer halfway down the fish to keep turns inside its fixed bounds.
+    ox-=Math.cos(k.dir)*k.len*0.42;oy-=Math.sin(k.dir)*k.len*0.42;
+    g.setTransform(1,0,0,1,0,0);g.clearRect(0,0,L.width,L.height);
+    g.setTransform(ratio,0,0,ratio,-ox*ratio,-oy*ratio);
+    g.globalCompositeOperation='destination-over';
+    var columns=[],N=KOI.SEG,half=k.len*k.spr.height/k.spr.width/2;
+    for(var i=0;i<=N;i++){
+      var u=i/N,p=k.us[i],gx=0,gy=0;
+      var ix=Math.max(1,Math.min(sw-2,Math.round(p.x/W*sw)));
+      var iy=Math.max(1,Math.min(sh-2,Math.round(p.y/H*sh))),idx=iy*sw+ix;
+      if(prev){gx=Math.tanh((prev[idx-1]-prev[idx+1])*0.4)*0.85;gy=Math.tanh((prev[idx-sw]-prev[idx+sw])*0.4)*0.85;}
+      var fin=smooth(0.12,0.23,u)*(1-smooth(0.32,0.43,u));
+      var left=1-fin*(0.10+0.07*Math.sin(k.phase*0.54));
+      var right=1-fin*(0.10+0.07*Math.sin(k.phase*0.54+1.1));
+      columns.push([{x:p.x-p.nx*half*left+gx,y:p.y-p.ny*half*left+gy},
+                    {x:p.x+p.nx*half*right+gx,y:p.y+p.ny*half*right+gy}]);
+    }
+    for(var j=0;j<N;j++){
+      var x0=j/N*k.spr.width,x1=(j+1)/N*k.spr.width,h=k.spr.height;
+      var a=columns[j],b=columns[j+1];
+      textureTriangle(g,k.spr,{x:x0,y:0},{x:x1,y:0},{x:x1,y:h},a[0],b[0],b[1]);
+      textureTriangle(g,k.spr,{x:x0,y:0},{x:x1,y:h},{x:x0,y:h},a[0],b[1],a[1]);
+    }
+    // Reflections belong above the fish. Sample the same pond image through its alpha.
+    g.globalCompositeOperation='source-atop';g.globalAlpha=0.15;
+    var scale=Math.max(W/img.naturalWidth,H/img.naturalHeight);
+    g.drawImage(img,(W-img.naturalWidth*scale)/2,(H-img.naturalHeight*scale)/2,img.naturalWidth*scale,img.naturalHeight*scale);
+    g.globalAlpha=1;g.globalCompositeOperation='source-over';
+    ctx.save();ctx.globalAlpha=0.88;
+    ctx.drawImage(L,ox,oy,L.width/ratio,L.height/ratio);ctx.restore();
+  }
+  function updateKoi(dt){
+    for(var n=0;n<koi.length;n++){
+      var k=koi[n];k.wanderT-=dt;k.cycle+=dt;k.escapeAge+=dt;
+      k.startle=Math.max(0,k.startle-dt);
+      if(k.startle<=0 && k.wanderT<=0){k.tgt=k.dir+rand(-0.7,0.7);k.wanderT=rand(3.5,6.5);}
+      // Look ahead and ease into a turn well before the viewport boundary.
+      var look=k.len*0.7+k.spd*0.6,px=k.x+Math.cos(k.dir)*look,py=k.y+Math.sin(k.dir)*look;
+      var margin=Math.max(48,Math.min(W,H)*KOI.MARGIN);
+      var sx=Math.cos(k.tgt),sy=Math.sin(k.tgt),edge=false;
+      if(px<margin){sx+=(margin-px)/margin*3;edge=true;}
+      if(px>W-margin){sx-=(px-W+margin)/margin*3;edge=true;}
+      if(py<margin){sy+=(margin-py)/margin*3;edge=true;}
+      if(py>H-margin){sy-=(py-H+margin)/margin*3;edge=true;}
+      for(var m=0;m<koi.length;m++){
+        if(m===n)continue;
+        var other=koi[m],dx=k.x-other.x,dy=k.y-other.y,dist=Math.hypot(dx,dy),space=k.len*0.8;
+        if(dist<space && dist>1){sx+=dx/dist*(1-dist/space)*1.8;sy+=dy/dist*(1-dist/space)*1.8;}
+      }
+      var target=Math.atan2(sy,sx),delta=angNorm(target-k.dir);
+      var burst=k.escapeStrength*Math.exp(-Math.max(0,k.escapeAge-0.16)*1.35)*smooth(0.04,0.20,k.escapeAge);
+      var turnMax=k.startle>0?2.8:(edge?1.15:0.46);
+      var wantTurn=Math.max(-turnMax,Math.min(turnMax,delta*(k.startle>0?5:1.3)));
+      k.turn=mix(k.turn,wantTurn,1-Math.exp(-dt*(k.startle>0?12:2.6)));
+      k.dir+=k.turn*dt;
+      if(edge && k.startle<=0){k.tgt=target;k.wanderT=Math.max(1.2,k.wanderT);}
+      // Short propulsive strokes followed by a gentle coast, with individual rhythms.
+      var stroke=smooth(-0.4,0.55,Math.sin(k.cycle*[1.04,1.24,0.96,1.14][n]));
+      var wantEffort=Math.max(0.12+stroke*0.55,burst);
+      k.effort=mix(k.effort,wantEffort,1-Math.exp(-dt*4));
+      var want=k.cruise*(0.64+stroke*0.45+6.2*burst);
+      if(!k.startle)want*=1-Math.min(0.20,Math.abs(k.turn)*0.3);
+      k.spd=mix(k.spd,want,1-Math.exp(-dt*(burst>0.3?9:0.75)));
+      k.beat=0.48+k.effort*0.52+burst*1.65;k.phase+=k.beat*Math.PI*2*dt;
+      // Cap forward travel smoothly when the remaining turning space is short.
+      // This avoids clipping or teleporting back into view after repeated edge clicks.
+      var vx=Math.cos(k.dir),vy=Math.sin(k.dir),spaceX=Infinity,spaceY=Infinity;
+      if(Math.abs(vx)>0.001)spaceX=(vx>0?W-22-k.x:k.x-22)/Math.abs(vx);
+      if(Math.abs(vy)>0.001)spaceY=(vy>0?H-22-k.y:k.y-22)/Math.abs(vy);
+      k.spd=Math.min(k.spd,Math.max(0,Math.min(spaceX,spaceY)*1.5));
+      k.x+=vx*k.spd*dt;k.y+=vy*k.spd*dt;
+      k.spine[0].x=k.x;k.spine[0].y=k.y;
+      var angle=k.dir+Math.PI;
+      for(var i=1;i<=KOI.SEG;i++){
+        var p=k.spine[i-1],q=k.spine[i];
+        var da=angNorm(Math.atan2(q.y-p.y,q.x-p.x)-angle);
+        var limit=i<8?0.006:(k.startle>0?0.10:0.055);
+        angle+=Math.max(-limit,Math.min(limit,da));
+        q.x=p.x+Math.cos(angle)*k.seg;q.y=p.y+Math.sin(angle)*k.seg;
+      }
+      k.us=undulate(k);k.wakeT+=dt;
+      // A submerged fish leaves a faint, intermittent wake, not a constant splash.
+      if(k.wakeT>0.16){
+        k.wakeT=0;
+        var tail=k.us[KOI.SEG];
+        koiSplash(tail.x,tail.y,-(0.12+burst*0.7),1.1);
+      }
+    }
+  }
+  koiAtlas.onload=koiAccentAtlas.onload=function(){if(ready){initKoi();if(reduce){render();koi.forEach(drawKoi);}}};
+⟦zh⟧  koiAtlas.onerror=koiAccentAtlas.onerror=function(){if(msgEl){msgEl.textContent='魚形素材載入失敗，請重新整理';msgEl.style.opacity='1';}};
+⟦en⟧  koiAtlas.onerror=koiAccentAtlas.onerror=function(){if(msgEl){msgEl.textContent='Unable to load the koi. Please refresh.';msgEl.style.opacity='1';}};
+⟦/⟧  koiAtlas.src='images/koi-natural-atlas.webp';
+  koiAccentAtlas.src='images/koi-gold-silver-atlas.webp';
+
+  img.onload = start;
+⟦zh⟧  img.onerror = function(){ if(msgEl) msgEl.textContent = "底圖載入失敗"; };
+⟦en⟧  img.onerror = function(){ if(msgEl) msgEl.textContent = "Unable to load the pond image."; };
+⟦/⟧  img.src = "images/photography/img_3506-water.jpg";  /* 水面模擬只有 380px，用 1024px 版本（167KB）取代 2000px 原圖（466KB）加快啟動 */
+})();
+</script>
+
+<!-- ══ 內容：導覽 · reveal 揭示 · 章節照片視差 ══ -->
+<script>
+(function () {
+  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 導覽：docked & 手機 toggle */
+  var nav = document.getElementById('nav');
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navlinks');
+  var onScrollNav = function () { nav.classList.toggle('docked', window.scrollY > 36); };
+  onScrollNav();
+  toggle.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      links.classList.remove('open'); toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* reveal 揭示：IO 為主，scroll／計時器為備援（IO 萬一未觸發也保證顯示照片） */
+  document.documentElement.classList.add('js-anim');
+  var revealables = document.querySelectorAll('.reveal, .season');
+  var markIn = function (el) {
+    el.classList.add('in');
+    if (el.classList.contains('season')) el.classList.add('lit');
+  };
+  var revealVisibleNow = function () {
+    var vh = window.innerHeight;
+    revealables.forEach(function (el) {
+      if (el.classList.contains('in')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.98 && r.bottom > 0) markIn(el);
+    });
+  };
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) markIn(entries[i].target);
+      }
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    revealables.forEach(function (el) { io.observe(el); });
+  } else {
+    revealables.forEach(markIn);
+  }
+  // 多重備援：捲動 / 分頁還原 / 計時器都補顯示進入視窗者
+  window.addEventListener('scroll', revealVisibleNow, { passive: true });
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) revealVisibleNow(); });
+  window.addEventListener('pageshow', revealVisibleNow);
+  setTimeout(revealVisibleNow, 400);
+  setTimeout(revealVisibleNow, 1600);
+  revealVisibleNow();
+
+  /* 視差：hero 文字輕飄 + 章節照片輕微上浮 */
+  var heroInner = document.querySelector('.hero-inner');
+  var photoImgs = Array.prototype.slice.call(document.querySelectorAll('.photo-frame img'));
+  var ticking = false;
+  function parallax() {
+    var y = window.scrollY, vh = window.innerHeight;
+    if (heroInner && y < vh) heroInner.style.transform = 'translateY(' + (y * -0.05) + 'px)';
+    for (var i = 0; i < photoImgs.length; i++) {
+      var img = photoImgs[i];
+      var rect = img.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < vh) {
+        var prog = (rect.top - vh) / (vh + rect.height);
+        img.style.transform = 'translateY(' + (prog * 22) + 'px)';
+      }
+    }
+    ticking = false;
+  }
+  if (!reduceMotion) {
+    window.addEventListener('scroll', function () {
+      onScrollNav();
+      if (!ticking) { requestAnimationFrame(parallax); ticking = true; }
+    }, { passive: true });
+  } else {
+    window.addEventListener('scroll', onScrollNav, { passive: true });
+  }
+
+  /* BFCache 還原重繪（iOS Safari 對策） */
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+      document.body.style.display = 'none';
+      void document.body.offsetHeight;
+      document.body.style.display = '';
+    }
+  });
+})();
+</script>
+</body>
+</html>
