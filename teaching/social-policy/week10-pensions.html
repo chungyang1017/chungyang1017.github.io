@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>老年經濟安全與年金政策 ・ 社會政策 第 10 週 ・ 葉崇揚</title>
+<meta name="description" content="社會政策第 10 週互動講義（分頁式）：老年為什麼是社會風險、年金怎麼設計、東亞的三種年金世界、台灣的年金體系、年金為什麼一定要改、自動調整機制，以及新的不平等與國家角色。共 73 頁，含分節小測驗、暖身排序、先猜、分類、配對、表態與課堂討論。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+/* 第 10 週互動講義：北歐慢生活（樣本 1：Kinfolk、Cereal）＋互動與動態
+   燕麥色底、留白、細明體標題、字距拉開的英文小標；重點色用陶土、鼠尾草綠、芥末黃、霧藍，讓頁面活潑一點。
+   不用深色或黑色底。中文字型只用 Noto Serif TC、Noto Sans TC；英文小標與數字用 Jost。
+   字級：內文 18–19px，最小的標籤不低於 15px。 */
+:root{
+  --bg:#F2EEE7; --paper:#F8F5EF; --card:#FFFDF9; --oat:#EAE3D8;
+  --ink:#2E2C28; --soft:#4F4A42; --muted:#7C7469; --line:#DCD4C7; --taupe:#B7AA96;
+  --terra:#B3613F; --terra-l:#F4DED3; --sage:#5F8270; --sage-l:#DDE8E0; --mustard:#C08A2C; --mustard-l:#F4E6C8; --sky:#5F7F99; --sky-l:#DCE6EE;
+  --ok:#5F8270; --ok-soft:#DDE8E0; --ng:#B3613F; --ng-soft:#F4DED3;
+  --serif:"Noto Serif TC",serif;
+  --sans:"Noto Sans TC",system-ui,-apple-system,sans-serif;
+  --latin:Jost,"Noto Sans TC",sans-serif;
+  --top:60px; --tabs:54px;
+  --ease:cubic-bezier(.22,.8,.26,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:18px;line-height:1.9;-webkit-font-smoothing:antialiased;
+  padding-top:calc(var(--top) + var(--tabs));padding-bottom:88px}
+button{font:inherit;color:inherit}
+b,strong{font-weight:500;color:var(--ink)}
+kbd{font-family:var(--latin);font-size:15px;border:1px solid var(--taupe);border-bottom-width:2px;border-radius:4px;padding:0 6px;background:var(--card)}
+:focus-visible{outline:2px solid var(--terra);outline-offset:2px}
+
+/* ── 頂列 ── */
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--top);z-index:40;background:rgba(242,238,231,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;font-size:15px}
+.logo{flex:none;font:500 15px/1 var(--latin);letter-spacing:.18em;color:var(--terra);border:1px solid var(--terra);border-radius:999px;padding:8px 12px}
+.topbar .course{font-weight:500;white-space:nowrap}
+.topbar .wk{color:var(--muted);white-space:nowrap}
+.topbar .sect{color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.topbar .sprog{color:var(--muted);white-space:nowrap;font-family:var(--latin)}
+.topbar .sp{flex:1}
+.clock{font:400 15px/1 var(--latin);letter-spacing:.06em;color:var(--soft);border:1px solid var(--line);border-radius:999px;padding:8px 14px;background:var(--card)}
+.tb{height:38px;border:1px solid var(--taupe);background:transparent;border-radius:999px;padding:0 16px;cursor:pointer;font-size:15px;white-space:nowrap;transition:all .2s}
+.tb:hover{border-color:var(--ink)}
+.tb.pri{background:var(--terra);border-color:var(--terra);color:#fff}
+.tb.pri:hover{background:#9D5234}
+#bar{position:fixed;top:var(--top);left:0;height:3px;width:0;z-index:41;transition:width .2s;
+  background:linear-gradient(90deg,var(--sage),var(--mustard),var(--terra))}
+@media(max-width:900px){.topbar .course,.topbar .wk,.topbar .hide-m{display:none}}
+@media(max-width:520px){.topbar{gap:8px;padding:0 12px}.topbar .sprog{display:none}}
+
+/* ── 分節頁籤 ── */
+.panenav{position:fixed;top:var(--top);left:0;right:0;height:var(--tabs);z-index:39;background:rgba(242,238,231,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 16px;overflow-x:auto;scrollbar-width:none}
+.panenav::-webkit-scrollbar{display:none}
+.panenav button{flex:none;display:flex;align-items:center;gap:8px;border:0;background:transparent;color:var(--muted);border-radius:999px;padding:5px 14px 5px 5px;font-size:15px;cursor:pointer;transition:all .2s}
+.panenav button:hover{color:var(--ink)}
+.panenav .pn{width:28px;height:28px;border-radius:50%;border:1px solid var(--taupe);display:grid;place-items:center;font:400 15px/1 var(--latin)}
+.panenav button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.panenav button.on .pn{background:var(--terra);border-color:var(--terra);color:#fff}
+@media(min-width:1000px){.panenav{justify-content:center}}
+
+/* ── 版面 ── */
+.deck{max-width:1000px;margin:0 auto;padding:12px 18px 40px;overflow-x:clip}
+.pane{display:none}
+.pane.on{display:block}
+.slide{position:relative;background:var(--paper);padding:64px 64px 40px;margin:26px 0;scroll-margin-top:calc(var(--top) + var(--tabs) + 14px)}
+@media(max-width:700px){.slide{padding:36px 20px 26px;margin:16px 0}}
+/* 進場：浮起來（只有 JS 開著、使用者沒有要求減少動態時） */
+.anim .slide{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.anim .slide.in{opacity:1;transform:none}
+.lab{font:400 15px/1.6 var(--latin);letter-spacing:.22em;color:var(--muted);display:flex;align-items:center;gap:10px}
+.lab::before{content:"";width:22px;height:1px;background:var(--terra);flex:none}
+.slide h2{font-family:var(--serif);font-weight:300;font-size:36px;line-height:1.4;letter-spacing:.03em;color:var(--ink);margin:16px 0 30px}
+@media(max-width:700px){.slide h2{font-size:28px}}
+.src{font-size:16px;color:var(--muted);margin:-16px 0 26px}
+.lead{font-family:var(--serif);font-size:20px;color:var(--soft);margin:-8px 0 28px;max-width:40em}
+.instr{display:inline-flex;align-items:center;gap:10px;font-size:16px;color:var(--soft);background:var(--card);border:1px dashed var(--taupe);border-radius:999px;padding:8px 18px;margin-bottom:20px}
+.instr::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mustard);flex:none;animation:pulse 2.2s ease-in-out infinite}
+@media(max-width:700px){.instr{border-radius:14px}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.5}}
+.call{margin-top:30px;background:var(--card);border-left:3px solid var(--terra);padding:16px 22px;font-family:var(--serif);font-size:18px;color:var(--soft)}
+.call p+p{margin-top:6px}
+p.note{font-size:16px;color:var(--muted);margin-top:18px}
+ul.bl{list-style:none;display:grid;gap:10px}
+ul.bl li{position:relative;padding-left:22px}
+ul.bl li::before{content:"";position:absolute;left:2px;top:.85em;width:9px;height:1px;background:var(--terra)}
+.slide>ul.bl{max-width:44em}
+
+/* 頁尾：出處與投影片頁碼 */
+.sfoot{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:44px;padding-top:12px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+.sfoot .pgno{font-family:var(--latin);letter-spacing:.08em;white-space:nowrap}
+
+/* 格線 */
+.grid2,.grid3,.grid4,.grid5{display:grid;gap:18px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:820px){.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.grid5{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .grid2.withmid{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:stretch}}
+.mid{align-self:center;justify-self:center;width:54px;height:54px;border-radius:50%;border:1px solid var(--terra);color:var(--terra);display:grid;place-items:center;font:400 15px var(--latin);letter-spacing:.1em;background:var(--card)}
+
+/* 卡片 */
+.card{position:relative;background:var(--card);padding:26px 26px 24px;border-top:3px solid var(--sage);transition:transform .3s var(--ease),box-shadow .3s}
+.lift .card:hover,.card.col:hover{transform:translateY(-4px);box-shadow:0 14px 30px -18px rgba(46,44,40,.35)}
+.lift .card:nth-child(4n+2){border-top-color:var(--mustard)} .lift .card:nth-child(4n+3){border-top-color:var(--terra)} .lift .card:nth-child(4n+4){border-top-color:var(--sky)}
+.card h4{font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.5;color:var(--ink);margin-bottom:8px}
+.card p+p{margin-top:6px}
+.tagc{display:inline-block;font:400 30px/1 var(--latin);color:var(--taupe);margin-bottom:10px}
+.k-cards .grid3 .tagc{font:500 15px/1.6 var(--sans);letter-spacing:.12em;color:var(--sage)}
+.card.col{border-top-color:var(--terra)}
+.grid2 .card.col:last-child{border-top-color:var(--sky)}
+.ctag{display:block;font:400 15px/1.6 var(--latin);letter-spacing:.2em;color:var(--terra);margin-bottom:6px}
+.grid2 .card.col:last-child .ctag{color:var(--sky)}
+
+/* 表格 */
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.tbl{width:100%;border-collapse:collapse;font-size:17px;min-width:600px}
+.tbl thead th{font-weight:400;font-size:15px;letter-spacing:.16em;color:var(--muted);text-align:left;padding:12px 14px;border-bottom:1px solid var(--ink)}
+.tbl td,.tbl tbody th{text-align:left;font-weight:400;padding:16px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tbody th.rh{color:var(--muted);white-space:nowrap}
+.tbl tbody tr{transition:background .2s}
+.tbl tbody tr:hover{background:var(--card)}
+
+/* ── 封面 ── */
+.k-cover{padding-top:84px;padding-bottom:56px}
+.cover{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:56px;align-items:end}
+@media(max-width:760px){.cover{grid-template-columns:1fr;gap:30px}}
+.cover h1{font-family:var(--serif);font-weight:300;font-size:clamp(38px,6vw,64px);line-height:1.35;letter-spacing:.04em;margin:28px 0 26px}
+.ln{white-space:nowrap}
+.cover .sub{font-size:19px;color:var(--soft);max-width:24em}
+.rule{width:44px;height:1px;background:var(--ink);margin:40px 0 26px}
+.fields div{display:flex;gap:22px;font-size:17px;line-height:2.2}
+.fields dt{color:var(--muted);min-width:3.2em}
+.cv-wk{text-align:right;border-left:1px solid var(--line);padding-left:28px}
+@media(max-width:760px){.cv-wk{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:20px;text-align:left}}
+.cv-wk .lab{justify-content:flex-end}
+@media(max-width:760px){.cv-wk .lab{justify-content:flex-start}}
+.wknum{display:block;font:300 clamp(120px,18vw,180px)/1 var(--latin);color:var(--taupe);margin:6px 0 18px;animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{color:var(--taupe)}50%{color:var(--terra)}}
+.wkside{font-family:var(--serif);font-size:19px;line-height:1.9}
+.hint{font-size:15px;color:var(--muted);margin-top:44px}
+.pill{display:inline-block;background:var(--terra);color:#fff;font-size:15px;border-radius:999px;padding:1px 12px;margin-right:10px}
+
+/* ── 今天的路線 ── */
+.route{list-style:none;counter-reset:none}
+.route li{display:grid;grid-template-columns:60px minmax(0,1fr) minmax(0,1.4fr);gap:18px;align-items:baseline;padding:16px 4px;border-bottom:1px solid var(--line);transition:padding .3s var(--ease),background .3s}
+.route li:hover{padding-left:14px;background:var(--card)}
+.route .no{font:300 28px/1 var(--latin);color:var(--terra)}
+.route b{font-family:var(--serif);font-weight:500;font-size:20px}
+.route .q{color:var(--soft)}
+@media(max-width:640px){.route li{grid-template-columns:44px minmax(0,1fr)}.route .q{grid-column:2}}
+
+/* ── 節首 ── */
+.k-divider{padding-top:80px;padding-bottom:50px;background:linear-gradient(180deg,var(--paper),var(--card))}
+.divwrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:40px;align-items:start}
+@media(max-width:700px){.divwrap{grid-template-columns:1fr;gap:10px}}
+.secno{font:300 clamp(110px,16vw,170px)/.9 var(--latin);color:var(--taupe)}
+.in .secno{animation:rise 1.1s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.k-divider h2{font-size:clamp(32px,5vw,46px);margin:14px 0 14px}
+.subt{font-family:var(--serif);font-size:21px;color:var(--terra)}
+.reading{margin-top:34px;font-size:16px;color:var(--soft);border-left:1px solid var(--taupe);padding-left:16px;white-space:pre-line}
+
+/* ── 引文 ── */
+.memo{position:relative;background:var(--card);padding:34px 40px 28px 92px;margin-bottom:26px}
+@media(max-width:700px){.memo{padding:28px 20px 22px 58px}}
+.qmark{position:absolute;left:26px;top:4px;font:300 96px/1 var(--serif);color:var(--terra)}
+@media(max-width:700px){.qmark{left:14px;font-size:70px}}
+.memo blockquote p{font-family:var(--serif);font-weight:300;font-size:25px;line-height:1.7;color:var(--ink)}
+.memo cite{display:block;font-style:normal;font-size:16px;color:var(--muted);margin:10px 0 18px}
+.memo cite:last-child{margin-bottom:0}
+
+/* ── 長條 ── */
+.hbars{list-style:none;display:grid;gap:24px;margin-top:8px}
+.hbars li{display:grid;grid-template-columns:150px minmax(0,1fr) 92px;gap:20px;align-items:center}
+@media(max-width:600px){.hbars li{grid-template-columns:96px minmax(0,1fr) 72px;gap:10px}}
+.bl2{font-size:17px}
+.bt{height:10px;background:var(--oat);border-radius:999px;overflow:hidden}
+.bt i{display:block;height:100%;width:var(--w);border-radius:999px;background:var(--taupe);transition:width 1.2s var(--ease)}
+.hbars li:first-child .bt i{background:var(--terra)}
+.hbars li:nth-child(2) .bt i{background:var(--mustard)}
+.anim .slide:not(.in) .bt i{width:0}
+.hbars li:nth-child(2) .bt i{transition-delay:.08s}.hbars li:nth-child(3) .bt i{transition-delay:.16s}.hbars li:nth-child(4) .bt i{transition-delay:.24s}
+.hbars li:nth-child(5) .bt i{transition-delay:.32s}.hbars li:nth-child(6) .bt i{transition-delay:.4s}
+.bv{font:300 24px/1 var(--latin);text-align:right;font-variant-numeric:tabular-nums}
+
+/* ── 數字 ── */
+.stats3{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:30px}
+.statc{background:var(--card);padding:24px 22px;border-bottom:3px solid var(--sage)}
+.statc:nth-child(2){border-bottom-color:var(--mustard)}.statc:nth-child(3){border-bottom-color:var(--terra)}
+.statc b{display:block;font:300 46px/1.15 var(--latin);color:var(--ink);font-variant-numeric:tabular-nums;margin-bottom:8px}
+.statc>span{font-size:16px;color:var(--soft)}
+
+/* ── 算式（第 13 張） ── */
+.formula{background:var(--card);padding:34px 10px;text-align:center;margin-bottom:22px}
+.fx{font:300 clamp(20px,6vw,46px)/1.3 var(--latin);letter-spacing:.04em;color:var(--ink);white-space:nowrap}
+.fs{display:inline-block;border-radius:8px;padding:0 6px;transition:background .3s,color .3s,transform .3s var(--ease)}
+.fs.on{background:var(--mustard-l);color:var(--terra);transform:translateY(-4px)}
+.terms{display:grid;gap:8px}
+.term{display:grid;grid-template-columns:90px 120px minmax(0,1fr);gap:14px;align-items:baseline;text-align:left;border:1px solid transparent;background:var(--card);padding:14px 18px;cursor:pointer;transition:all .25s}
+@media(max-width:600px){.term{grid-template-columns:64px minmax(0,1fr)}.term span:last-child{grid-column:2}}
+.term:hover{border-color:var(--taupe)}
+.term.on{border-color:var(--terra);background:var(--terra-l)}
+.term .sym{font:400 22px/1 var(--latin);color:var(--terra)}
+.term b{font-family:var(--serif);font-weight:500}
+
+/* ── 四層樓（第 24 張） ── */
+.tiergrid{display:grid;gap:30px;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);align-items:start}
+@media(max-width:760px){.tiergrid{grid-template-columns:1fr}}
+.building{list-style:none;display:grid;gap:8px}
+.building li{display:grid;grid-template-columns:62px minmax(0,1fr);gap:16px;align-items:center;background:var(--card);padding:18px 20px;border-left:4px solid var(--sage);transition:transform .3s var(--ease)}
+.building li:hover{transform:translateX(6px)}
+.building li:nth-child(1){border-left-color:var(--mustard)}.building li:nth-child(2){border-left-color:var(--sky)}.building li:nth-child(3){border-left-color:var(--sage)}.building li:nth-child(4){border-left-color:var(--terra);background:var(--terra-l)}
+.building .fl{font:300 28px/1 var(--latin);color:var(--muted)}
+.building b{font-family:var(--serif);font-weight:500}
+.building span{color:var(--soft)}
+.anim .k-tiers .building li{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.anim .k-tiers.in .building li{opacity:1;transform:none}
+.anim .k-tiers.in .building li:nth-child(4){transition-delay:.05s}.anim .k-tiers.in .building li:nth-child(3){transition-delay:.2s}
+.anim .k-tiers.in .building li:nth-child(2){transition-delay:.35s}.anim .k-tiers.in .building li:nth-child(1){transition-delay:.5s}
+
+/* ── 年表（第 32 張） ── */
+.tl{list-style:none;position:relative;padding-left:4px}
+.tl::before{content:"";position:absolute;left:96px;top:10px;bottom:10px;width:1px;background:var(--taupe)}
+.tl li{position:relative;display:grid;grid-template-columns:80px minmax(0,1fr) auto;gap:34px;align-items:baseline;padding:12px 0}
+.tl li::before{content:"";position:absolute;left:87px;top:22px;width:11px;height:11px;border-radius:50%;background:var(--paper);border:2px solid var(--terra)}
+.tl .yr{font:300 26px/1 var(--latin);color:var(--ink)}
+.tl .ts{font:400 15px var(--latin);letter-spacing:.06em;color:var(--sky);border:1px solid var(--sky-l);border-radius:999px;padding:0 10px;white-space:nowrap}
+@media(max-width:600px){.tl::before{left:66px}.tl li{grid-template-columns:52px minmax(0,1fr);gap:34px}.tl li::before{left:61px;top:18px}.tl .yr{font-size:20px}.tl .ts{grid-column:2;justify-self:start}}
+.anim .k-timeline .tl li{opacity:0;transform:translateX(-14px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.anim .k-timeline.in .tl li{opacity:1;transform:none}
+.k-timeline.in .tl li:nth-child(2){transition-delay:.12s}.k-timeline.in .tl li:nth-child(3){transition-delay:.24s}.k-timeline.in .tl li:nth-child(4){transition-delay:.36s}
+.k-timeline.in .tl li:nth-child(5){transition-delay:.48s}.k-timeline.in .tl li:nth-child(6){transition-delay:.6s}
+
+/* ── 四步（第 30 張） ── */
+.flow{list-style:none;display:grid;gap:14px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:820px){.flow{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.flow li{position:relative;background:var(--card);padding:22px 20px;border-top:3px solid var(--sage)}
+.flow li:nth-child(2){border-top-color:var(--mustard)}.flow li:nth-child(3){border-top-color:var(--sky)}.flow li:nth-child(4){border-top-color:var(--terra)}
+@media(min-width:820px){.flow li:not(:last-child)::after{content:"→";position:absolute;right:-14px;top:40%;font:300 22px var(--latin);color:var(--terra);z-index:1}}
+.flow .sn{display:block;font:300 34px/1 var(--latin);color:var(--taupe);margin-bottom:10px}
+.flow b{display:block;font-family:var(--serif);font-weight:500;font-size:20px;margin-bottom:8px}
+
+/* ── 互動共用 ── */
+.pbtn{height:46px;border:0;background:var(--terra);color:#fff;border-radius:999px;padding:0 24px;font-size:16px;cursor:pointer;transition:transform .15s,background .2s}
+.pbtn:hover{background:#9D5234}
+.pbtn:active{transform:scale(.97)}
+.pbtn:disabled{background:var(--taupe);cursor:default}
+.pbtn.sec{background:transparent;color:var(--ink);border:1px solid var(--taupe)}
+.pbtn.sec:hover{border-color:var(--ink)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px}
+.cnt{font-size:15px;color:var(--muted)}
+.fbk{display:none;margin-top:18px;background:var(--card);border-left:3px solid var(--terra);padding:14px 20px;font-size:17px;color:var(--soft)}
+.fbk.show{display:block;animation:fadein .5s var(--ease)}
+.fbk.ok{border-left-color:var(--ok)} .fbk.ng{border-left-color:var(--ng)}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* 先猜、表態 */
+.k-predict,.k-poll,.k-sort,.k-match,.k-order{background:var(--card);border:1px solid var(--line)}
+.k-predict .lab::before,.k-poll .lab::before,.k-sort .lab::before,.k-match .lab::before,.k-order .lab::before{background:var(--mustard);height:8px;width:8px;border-radius:50%}
+.pollbox{margin-top:10px}
+.opts{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.opts button{border:1px solid var(--taupe);background:var(--paper);border-radius:999px;padding:10px 22px;font-size:17px;cursor:pointer;transition:all .2s var(--ease)}
+.opts button:hover{border-color:var(--ink);transform:translateY(-2px)}
+.opts button.sel{background:var(--sage);border-color:var(--sage);color:#fff}
+.opts button.ok{background:var(--ok);border-color:var(--ok);color:#fff;animation:pop .5s var(--ease)}
+.opts button.ng{background:var(--ng-soft);border-color:var(--ng);color:var(--ng)}
+.opts button:disabled{cursor:default;transform:none}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
+.reveal-box{display:none}
+.reveal-box.show{display:block}
+.pq1{margin-top:10px}
+.pqq{font-family:var(--serif);font-size:21px;font-weight:500}
+.verdict{display:none;margin-top:10px;font-weight:500}
+.verdict.show{display:block;animation:fadein .4s var(--ease)}
+.verdict.ok{color:var(--ok)} .verdict.ng{color:var(--ng)}
+.pollthanks{display:none;margin-top:16px;color:var(--sage)}
+.pollthanks.show{display:block;animation:fadein .4s var(--ease)}
+
+/* 分類 */
+.tray{display:flex;flex-wrap:wrap;gap:10px;min-height:76px;padding:16px;border:1px dashed var(--taupe);background:var(--paper);margin-bottom:16px}
+.tray:empty::after{content:"卡片都放好了，按下面的「對答案」";align-self:center;color:var(--muted);font-size:15px;padding-left:8px}
+.sc{position:relative;flex:0 1 auto;max-width:100%;text-align:left;background:var(--card);border:1px solid var(--taupe);border-radius:4px;padding:9px 16px;font-size:16px;line-height:1.6;color:var(--ink);
+  cursor:grab;user-select:none;-webkit-user-select:none;transition:transform .15s var(--ease),box-shadow .15s,border-color .15s}
+.sc:hover{border-color:var(--ink);transform:translateY(-2px) rotate(-.6deg);box-shadow:0 8px 18px -12px rgba(46,44,40,.5)}
+.sc.sel{background:var(--mustard-l);border-color:var(--mustard);transform:translateY(-3px)}
+.sc .t{display:none;font-size:15px;color:var(--muted);margin-top:2px}
+.sc.ok{background:var(--ok-soft);border-color:var(--ok)} .sc.ng{background:var(--ng-soft);border-color:var(--ng)}
+.sc.ok .t,.sc.ng .t{display:block}
+.sc.ok::after,.sc.ng::after{position:absolute;top:-9px;right:-9px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:13px;color:#fff;animation:pop .4s var(--ease)}
+.sc.ok::after{content:"✓";background:var(--ok)} .sc.ng::after{content:"✕";background:var(--ng)}
+.scols{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:760px){.scols.n2{grid-template-columns:repeat(2,minmax(0,1fr))}.scols.n3{grid-template-columns:repeat(3,minmax(0,1fr))}.scols.n4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.scol{background:var(--paper);min-height:150px;cursor:pointer;border-top:3px solid var(--sage);transition:box-shadow .2s}
+.scol:nth-child(2){border-top-color:var(--mustard)}.scol:nth-child(3){border-top-color:var(--sky)}.scol:nth-child(4){border-top-color:var(--terra)}
+.scol.hot{box-shadow:0 0 0 2px var(--terra)}
+.scol h4{font-family:var(--serif);font-weight:500;font-size:17px;padding:12px 16px 4px}
+.scol .drop{display:flex;flex-wrap:wrap;gap:8px;padding:10px 12px 14px;min-height:96px;align-content:flex-start}
+.score{font:300 30px var(--latin)}
+
+/* 配對 */
+.match{display:grid;gap:12px;grid-template-columns:minmax(0,.8fr) minmax(0,1.3fr)}
+.mcol{display:grid;gap:10px;align-content:start}
+.mcol h4{font:400 15px/1.6 var(--latin);letter-spacing:.2em;color:var(--muted)}
+.mitem{background:var(--paper);border:1px solid var(--taupe);border-radius:4px;padding:12px 16px;cursor:pointer;font-size:16px;transition:all .2s var(--ease)}
+.mcol:first-child .mitem{font-family:var(--serif);font-weight:500;font-size:18px}
+.mitem:hover{border-color:var(--ink);transform:translateY(-2px)}
+.mitem.sel{background:var(--mustard-l);border-color:var(--mustard)}
+.mitem.done{background:var(--ok-soft);border-color:var(--ok);cursor:default;transform:none;animation:pop .45s var(--ease)}
+.mitem.done::before{content:"✓ ";color:var(--ok)}
+.mstat{margin-top:16px;font-size:15px;color:var(--muted)}
+@media(max-width:560px){.mitem{font-size:15px;padding:10px 12px}.mcol:first-child .mitem{font-size:16px}}
+
+/* 依序點選（第 30 張之前） */
+.otray{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.oi{border:1px solid var(--taupe);background:var(--paper);border-radius:4px;padding:12px 20px;font-family:var(--serif);font-size:18px;cursor:pointer;transition:all .2s var(--ease)}
+.oi:hover{border-color:var(--ink);transform:translateY(-2px)}
+.oi.used{visibility:hidden}
+.tline{list-style:none;display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:760px){.tline{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.tline li{display:flex;gap:12px;align-items:center;min-height:72px;background:var(--paper);border:1px dashed var(--taupe);padding:12px 16px;color:var(--muted)}
+.tline li.filled{background:var(--sage-l);border:1px solid var(--sage);color:var(--ink);animation:pop .45s var(--ease)}
+.tline .no{font:300 26px/1 var(--latin);color:var(--terra)}
+
+/* 暖身排序（第 3 張） */
+.rks{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.rk{display:flex;align-items:center;gap:16px;text-align:left;border:1px solid var(--line);background:var(--card);padding:18px 18px;cursor:pointer;font-family:var(--serif);font-size:19px;transition:transform .2s var(--ease),border-color .2s}
+.rk:hover{transform:translateY(-3px);border-color:var(--taupe)}
+.rk .rn{flex:none;width:44px;height:44px;border-radius:50%;border:1px dashed var(--taupe);display:grid;place-items:center;font:300 22px var(--latin);color:var(--terra)}
+.rk.on{border-color:var(--terra);cursor:default}
+.rk.on .rn{border:1px solid var(--terra);background:var(--terra);color:#fff;animation:pop .4s var(--ease)}
+
+/* 揭曉（第 25 張） */
+.floors{list-style:none;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.floors li{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;gap:4px 14px;align-items:center;background:var(--card);padding:16px 18px;border:1px solid var(--line);transition:all .3s}
+.floors .fl{grid-row:1 / 3;font:300 30px/1 var(--latin);color:var(--sky);min-width:46px}
+.floors b{font-family:var(--serif);font-weight:500;font-size:18px}
+.floors .mine{font-size:15px;color:var(--muted)}
+.floors li.top{border-color:var(--terra);background:var(--terra-l)}
+.floors li.top .mine{color:var(--terra);font-weight:500}
+.rcmsg{margin-top:18px;font-family:var(--serif);font-size:20px}
+
+/* 輸入框 */
+.inbox{margin-top:12px}
+.inbox textarea,.fbbox textarea{width:100%;min-height:96px;border:1px solid var(--taupe);padding:12px 16px;font:inherit;font-size:17px;color:var(--ink);background:var(--card);resize:vertical;margin-top:8px}
+.inbox textarea:focus,.fbbox textarea:focus,.idbox input:focus{outline:2px solid var(--terra);outline-offset:1px}
+.imine{display:none;margin-top:10px;font-size:16px;color:var(--soft)}
+.imine.show{display:block}
+
+/* 討論（第 49 張） */
+.discbox{display:grid;gap:12px}
+details.disc{background:var(--card);padding:16px 20px;border-left:3px solid var(--sage);transition:border-color .2s}
+details.disc[open]{border-left-color:var(--terra)}
+details.disc summary{display:flex;gap:16px;align-items:baseline;cursor:pointer;list-style:none;font-family:var(--serif);font-size:19px}
+details.disc summary::-webkit-details-marker{display:none}
+details.disc .no{font:300 26px/1 var(--latin);color:var(--terra);flex:none}
+
+/* 讀本（第 50 張） */
+.readlist{display:grid;gap:10px;margin-top:6px}
+.rh4{font:400 15px/1.6 var(--latin);letter-spacing:.2em;color:var(--terra);margin-top:10px}
+.rp{display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;align-items:start;background:var(--card);padding:14px 18px;cursor:pointer;font-size:16px;transition:background .2s}
+.rp input{width:18px;height:18px;margin-top:5px;accent-color:var(--sage)}
+.rp.done{background:var(--sage-l)}
+.rpstat{margin-top:12px;font-size:15px;color:var(--muted)}
+.ticket{margin-top:22px;border:1px dashed var(--taupe);border-top:1px dashed var(--taupe)}
+.ticket h4{font-size:21px;margin:0}
+
+/* 講義怎麼用 */
+.steps{list-style:none;display:grid;gap:16px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:start;font-size:17px}
+.steps li::before{counter-increment:s;content:counter(s);width:40px;height:40px;border-radius:50%;border:1px solid var(--terra);color:var(--terra);display:grid;place-items:center;font:300 20px var(--latin)}
+.steps p{font-size:16px;color:var(--soft);margin-top:4px}
+
+/* 小測驗 */
+.k-quiz{background:var(--card);border-top:4px solid var(--mustard)}
+.qz{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.qz:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.qz .stem{font-family:var(--serif);font-weight:500;font-size:20px;margin-bottom:10px}
+.qz .opt{display:block;width:100%;text-align:left;border:1px solid var(--taupe);background:var(--paper);padding:12px 18px;margin:8px 0;font-size:17px;cursor:pointer;transition:all .2s var(--ease)}
+.qz .opt:hover{border-color:var(--ink);transform:translateX(4px)}
+.qz .opt.right{background:var(--ok-soft);border-color:var(--ok)}
+.qz .opt.wrong{background:var(--ng-soft);border-color:var(--ng)}
+.qz .opt:disabled{cursor:default;transform:none}
+.qz .opt.pop{animation:pop .5s var(--ease)}
+.qz .fb{display:none;margin-top:10px;background:var(--paper);border-left:3px solid var(--sage);padding:12px 18px;font-size:16px;color:var(--soft)}
+.qz .fb.show{display:block;animation:fadein .45s var(--ease)}
+.qmeta{margin-top:18px;font-size:15px;color:var(--muted)}
+
+/* 完成 */
+.k-done{background:var(--card);border-top:4px solid var(--terra)}
+.stat{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin:6px 0 24px}
+.stat div{background:var(--paper);padding:14px 18px;font-size:15px;color:var(--muted)}
+.stat b{display:block;font:300 30px/1.3 var(--latin);color:var(--ink)}
+.idbox{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.idbox label,.fbbox label{display:block;font-size:15px;color:var(--soft);margin-bottom:6px}
+.idbox input{width:100%;height:48px;border:1px solid var(--taupe);padding:10px 16px;font:inherit;font-size:17px;background:var(--card)}
+.fbbox{margin-top:16px}
+.dmsg{margin:20px 0 12px;font-size:16px;color:var(--soft)}
+#submit{height:50px;padding:0 34px}
+.code{margin-top:16px;font-size:16px;color:var(--soft);line-height:1.8}
+.code b{font-size:18px;color:var(--ink)}
+.codenote{display:block;font-size:15px;color:var(--muted);margin-top:8px}
+
+/* ── 章節（可摺疊） ── */
+.chap{margin:26px 0}
+.chap-h{width:100%;display:flex;align-items:center;gap:14px;background:transparent;border:0;border-bottom:1px solid var(--taupe);padding:12px 4px;cursor:pointer;text-align:left;transition:padding .3s var(--ease)}
+.chap-h:hover{padding-left:10px}
+.chap-h .cn{font:300 26px/1 var(--latin);color:var(--taupe);min-width:40px;transition:color .3s}
+.chap.open .chap-h .cn{color:var(--terra)}
+.chap-h .ct{flex:1;font-family:var(--serif);font-size:21px;line-height:1.4}
+.chap-h .cc{font-size:15px;color:var(--muted);white-space:nowrap}
+.chap-h .cv{width:10px;height:10px;flex:none;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);transform:rotate(45deg);margin:0 6px 4px;transition:transform .3s}
+.chap.open .chap-h .cv{transform:rotate(-135deg);margin-bottom:-4px}
+.chap-b{display:none}
+.chap.open .chap-b{display:block}
+
+/* ── 底列 ── */
+.navbar{position:fixed;bottom:0;left:0;right:0;height:70px;z-index:40;background:rgba(242,238,231,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-top:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:0 16px}
+.nav-btn{height:44px;border:0;background:var(--terra);color:#fff;border-radius:999px;padding:0 22px;font-size:15px;cursor:pointer;white-space:nowrap;transition:background .2s,transform .15s}
+.nav-btn:hover{background:#9D5234}
+.nav-btn:active{transform:scale(.97)}
+.nav-btn:disabled{background:var(--taupe);cursor:default}
+.nav-btn.prev{background:transparent;color:var(--ink);border:1px solid var(--taupe)}
+.nav-btn.prev:disabled{color:var(--taupe)}
+.nav-mid{flex:1;min-width:0;display:flex;align-items:center;gap:12px}
+.pageno{font:400 15px var(--latin);letter-spacing:.06em;white-space:nowrap}
+.nav-mid .dots{flex:1;display:flex;gap:5px;overflow-x:auto;scrollbar-width:none;padding:6px 2px}
+.nav-mid .dots::-webkit-scrollbar{display:none}
+.dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--line);cursor:pointer;transition:transform .2s}
+.dot.s1,.dot.s2{background:#BFD0C5} .dot.s3,.dot.s4{background:#E6CF9E} .dot.s5,.dot.s6,.dot.s7{background:#E3B7A3}
+.dot.on{background:var(--terra);transform:scale(1.5)}
+@media(max-width:560px){.nav-mid .dots{display:none}.nav-mid{justify-content:center}}
+
+/* 鍵盤提示、續讀 */
+.khint{position:fixed;right:16px;bottom:84px;z-index:30;background:var(--card);border:1px solid var(--line);color:var(--soft);font-size:15px;border-radius:999px;padding:6px 14px;transition:opacity .6s}
+@media(max-width:700px){.khint{display:none}}
+.resume{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);z-index:45;background:var(--card);border:1px solid var(--line);border-radius:999px;box-shadow:0 10px 30px rgba(46,44,40,.15);
+  display:flex;align-items:center;gap:10px;padding:8px 8px 8px 18px;font-size:15px;white-space:nowrap}
+.resume button{height:36px;border:0;background:var(--terra);color:#fff;border-radius:999px;padding:0 14px;font-size:15px;cursor:pointer}
+.resume button.x{background:var(--oat);color:var(--ink)}
+
+/* ── 目次 ── */
+.toc{position:fixed;inset:0;z-index:60;background:rgba(46,44,40,.18);display:none}
+.toc.show{display:block}
+.toc-panel{position:absolute;top:0;right:0;bottom:0;width:min(440px,92vw);background:var(--paper);padding:24px 20px;overflow-y:auto;animation:slidein .35s var(--ease)}
+@keyframes slidein{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+.toc-panel h3{font-family:var(--serif);font-weight:300;font-size:28px}
+.tsub{font-size:15px;color:var(--muted);margin:4px 0 14px}
+.toc-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:20px;cursor:pointer}
+.tfilter{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tfilter button{border:1px solid var(--taupe);background:transparent;border-radius:999px;padding:4px 14px;font-size:15px;cursor:pointer}
+.tfilter button.on{background:var(--terra);border-color:var(--terra);color:#fff}
+#toclist{list-style:none}
+#toclist li.hide{display:none}
+#toclist li.head{margin-top:12px}
+#toclist li.head a{font-weight:500}
+#toclist a{display:flex;gap:10px;align-items:baseline;padding:6px 10px;color:var(--soft);text-decoration:none;font-size:15px;line-height:1.6;border-radius:4px}
+#toclist a:hover{background:var(--card)}
+#toclist a.cur{background:var(--terra-l);color:var(--ink)}
+#toclist .n{width:28px;flex:none;text-align:right;color:var(--muted);font-family:var(--latin)}
+
+/* 分類：選了卡片之後的欄位按鈕列 */
+.sbar{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);z-index:50;display:none;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;
+  width:max-content;max-width:min(94vw,720px);background:var(--card);border:1px solid var(--taupe);border-radius:18px;padding:12px 14px;box-shadow:0 14px 34px rgba(46,44,40,.2)}
+.sbar.show{display:flex;animation:fadein .3s var(--ease)}
+.sbar .sbt{flex-basis:100%;text-align:center;font-size:15px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbar button{height:38px;border:0;background:var(--sage);color:#fff;border-radius:999px;padding:0 16px;font-size:15px;cursor:pointer}
+.sbar button.x{background:transparent;color:var(--muted);border:1px solid var(--line)}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+</style>
+<!-- og:start -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
+<meta property="og:title" content="老年經濟安全與年金政策 ・ 社會政策 第 10 週 ・ 葉崇揚" />
+<meta property="og:description" content="社會政策第 10 週互動講義（分頁式）：老年為什麼是社會風險、年金怎麼設計、東亞的三種年金世界、台灣的年金體系、年金為什麼一定要改、自動調整機制，以及新的不平等與國家角色。共 73 頁，含分節小測驗、暖身排序、先猜、分類、配對、表態與課堂討論。" />
+<meta property="og:url" content="https://chungyang1017.github.io/teaching/social-policy/week10-pensions.html" />
+<meta property="og:image" content="https://chungyang1017.github.io/photo.jpg" />
+<meta property="og:locale" content="zh_TW" />
+<meta name="twitter:card" content="summary" />
+<!-- og:end -->
+</head>
+<body>
+<header class="topbar">
+  <span class="logo">W10</span>
+  <span class="course">社會政策 Social Policy</span>
+  <span class="wk">第 10 週　老年經濟安全與年金政策</span>
+  <span class="sect" id="sect"></span>
+  <span class="sprog" id="sprog"></span>
+  <span class="sp"></span>
+  <span class="clock" id="clock">00:00</span>
+  <button class="tb pri" type="button" onclick="toggleToc()">目次</button>
+  <button class="tb hide-m" type="button" onclick="goFull()">全螢幕</button>
+  <button class="tb hide-m" type="button" onclick="location.href='../../teaching-zh.html'">教學頁</button>
+</header>
+<div id="bar"></div>
+<nav class="panenav" id="panenav"><button type="button" data-pane="0" class="on"><span class="pn">0</span>開場</button><button type="button" data-pane="1"><span class="pn">1</span>第一、二節</button><button type="button" data-pane="2"><span class="pn">2</span>第三、四節</button><button type="button" data-pane="3"><span class="pn">3</span>第五至七節</button><button type="button" data-pane="4"><span class="pn">4</span>總結</button><button type="button" data-pane="5"><span class="pn">✓</span>完成</button></nav>
+<main class="deck" id="deck">
+<div class="pane on" data-pane="0">
+<section class="slide k-cover" data-kind="cover" data-label="封面" data-sect=""><div class="cover"><div class="cv-main"><p class="lab">社會政策 Social Policy · 第 10 週</p><h1><span class="ln">老年經濟安全與</span><br><span class="ln">年金政策</span></h1><p class="sub">退休是怎麼來的？年金為什麼一定要改？改成什麼樣子？</p><div class="rule"></div><dl class="fields"><div><dt>日期</dt><dd>2026 年 11 月 20 日</dd></div><div><dt>教師</dt><dd>葉崇揚</dd></div><div><dt>主讀本</dt><dd>《葬送的福利年（金）》第 1 章</dd></div></dl></div><div class="cv-wk"><p class="lab">WEEK</p><b class="wknum">10</b><p class="wkside">老年經濟安全<br>年金政策</p></div></div><p class="hint"><span class="pill">互動講義</span>用 <kbd>→</kbd> 鍵或下方按鈕翻頁　·　<kbd>Esc</kbd> 開目次　·　進度會自動保存在這台裝置</p></section>
+<section class="slide k-howto" data-kind="howto" data-label="這份講義怎麼用" data-sect="開場"><p class="lab">使用說明</p><h2>這份講義怎麼用</h2><p class="src">這是預習與複習用的，不是上課投影片</p><ol class="steps"><li><div><b>上課前</b>：從頭讀一遍。不必背，但要知道每一節在問什麼問題。</div></li><li><div><b>上課後</b>：回來把答錯的小測驗重看一次，再對照本週讀本。</div></li><li><div><b>怎麼讀</b><p>標著 ◆ 的頁，都要你動手：排序、先猜、分類、配對、表態、寫討論。做過才記得住。</p></div></li><li><div><b>進度會自己存</b>：關掉再打開，會回到上次那頁。小測驗的答案也留著。</div></li><li><div><b>簽到</b>：三份小測驗都作答、閱讀滿 20 分鐘之後，到「完成」頁填學號姓名送出。</div></li></ol><p class="note">這份講義的內容和上課投影片相同，另外加上要動手的練習。頁尾的「第 10 週　00」是投影片的頁碼。</p></section>
+<section class="slide k-roadmap" data-kind="roadmap" data-label="今天的路線" data-sect="開場"><p class="lab">開場</p><h2>今天的路線</h2><ol class="route"><li><span class="no">01</span><b>老年為什麼是社會風險</b><span class="q">退休是現代才有的東西。為什麼？</span></li><li><span class="no">02</span><b>年金怎麼設計</b><span class="q">錢從哪裡來？給誰？給多少？</span></li><li><span class="no">03</span><b>東亞的三種年金世界</b><span class="q">東亞福利國家都一樣嗎？</span></li><li><span class="no">04</span><b>台灣的年金體系</b><span class="q">一棟四層樓，每種職業一間房</span></li><li><span class="no">05</span><b>年金為什麼一定要改</b><span class="q">壓力是決定的，路徑是開放的</span></li><li><span class="no">06</span><b>改革的工具</b><span class="q">給付要跟著什麼走？</span></li><li><span class="no">07</span><b>新的不平等與國家角色</b><span class="q">年金體系把誰留在後面？</span></li></ol><footer class="sfoot"><span class="cite"></span><span class="pgno">第 10 週　02</span></footer></section>
+<section class="slide k-warmup" data-kind="warmup" data-label="◆ 暖身：你老了以後，靠什麼過活？" data-sect="開場" data-act="1"><p class="lab">開場</p><h2>暖身：你老了以後，靠什麼過活？</h2><p class="lead">把下面六種收入來源排出 1 到 6，1 是你最依賴的。先寫下來，第四節對照。</p><p class="instr">從你最依賴的開始，依序點下去。點錯了，按「重排」。</p><div class="rank" data-rank="r3" data-act-key="rank-3" data-n="6"><div class="rks"><button class="rk" type="button" data-i="0"><span class="rn"></span><span class="rt">勞保年金</span></button><button class="rk" type="button" data-i="1"><span class="rn"></span><span class="rt">國民年金</span></button><button class="rk" type="button" data-i="2"><span class="rn"></span><span class="rt">勞退新制個人帳戶</span></button><button class="rk" type="button" data-i="3"><span class="rn"></span><span class="rt">自己的儲蓄、投資與商業保險</span></button><button class="rk" type="button" data-i="4"><span class="rn"></span><span class="rt">家人互助</span></button><button class="rk" type="button" data-i="5"><span class="rn"></span><span class="rt">中低收入老人生活津貼</span></button></div><div class="row"><button class="pbtn sec js-reset" type="button">重排</button><span class="cnt"></span></div><div class="fbk"></div></div><footer class="sfoot"><span class="cite">選項取自台灣年金體系的各層制度；葉崇揚等（2026: 8）</span><span class="pgno">第 10 週　03</span></footer></section>
+</div>
+<div class="pane" data-pane="1">
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">01</span><span class="ct">老年為什麼是社會風險</span><span class="cc">7 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第一節　老年為什麼是社會風險" data-sect="第一節　老年為什麼是社會風險"><div class="divwrap"><b class="secno">01</b><div><p class="lab">第一節</p><h2>老年為什麼是社會風險</h2><p class="subt">退休是現代才有的東西。為什麼？</p><div class="reading">讀本：Spicker（2025）ch. 11 Social security，頁 168–180<br>Myles（2002）A new social contract for the elderly?，頁 130–134</div></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第 10 週　04</span></footer></section>
+<section class="slide k-memo" data-kind="memo" data-label="退休的民主化" data-sect="第一節　老年為什麼是社會風險"><p class="lab">第一節　老年為什麼是社會風險</p><h2>退休的民主化</h2><div class="memo"><span class="qmark">“</span><blockquote><p>退休的民主化，必定是二十世紀富裕民主國家最偉大的成就之一。</p></blockquote><cite>— Myles（2002: 130）</cite></div><ul class="bl"><li>遲至 1960 年代，「老年」在許多工業民主國家幾乎等於貧窮</li><li>今天的老人大多是退休者，生活水準和工作年齡家戶相差不多</li><li>兩個原因：戰後長期繁榮；以及戰後強制、普及的公共年金改革</li></ul><footer class="sfoot"><span class="cite">Myles（2002: 130–131）</span><span class="pgno">第 10 週　05</span></footer></section>
+<section class="slide k-stats" data-kind="stats" data-label="以前的人為什麼「退休」？" data-sect="第一節　老年為什麼是社會風險"><p class="lab">第一節　老年為什麼是社會風險</p><h2>以前的人為什麼「退休」？</h2><p class="lead">美國社會安全局調查新退休者的退休原因。</p><div class="stats3"><div class="statc"><b><span class="cu" data-final="90%">90%</span></b><span>1950 年代：被裁員或健康不佳</span></div><div class="statc"><b><span class="cu" data-final="&lt; 5%">&lt; 5%</span></b><span>1950 年代：自願退休</span></div><div class="statc"><b><span class="cu" data-final="35%">35%</span></b><span>1980 年代：非自願退休</span></div></div><ul class="bl"><li>過去一般老年勞工「退休」，多半是被裁員或失能</li><li>不是因為工作在經濟上已經沒有必要</li><li>到了 1980 年代，多數退休者說自己是自願離開工作</li><li>現代的退休：累積了足夠的退休「財富」，所以可以不工作</li></ul><footer class="sfoot"><span class="cite">Myles（2002: 130，註 113）</span><span class="pgno">第 10 週　06</span></footer></section>
+<section class="slide k-cards" data-kind="cards" data-label="社會安全為什麼要給錢？" data-sect="第一節　老年為什麼是社會風險"><p class="lab">第一節　老年為什麼是社會風險</p><h2>社會安全為什麼要給錢？</h2><p class="lead">社會安全泛指各種形式的個人財務協助，也稱為「所得維持」。</p><div class="grid4 lift"><div class="card"><span class="tagc">1</span><h4>紓解貧窮</h4><p>讓所得不足的人不至於陷入貧窮</p></div><div class="card"><span class="tagc">2</span><h4>社會保障</h4><p>生病或失業時，不必因此變賣家當、委屈自己</p></div><div class="card"><span class="tagc">3</span><h4>重分配</h4><p>從所得高者到所得不足者是累進的；兒童津貼是水平重分配</p></div><div class="card"><span class="tagc">4</span><h4>團結</h4><p>不只是慈善，而是一種互助合作</p></div></div><footer class="sfoot"><span class="cite">Spicker（2025: 168–169）</span><span class="pgno">第 10 週　07</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：這些說法，是社會保險的優點還是缺點？" data-sect="第一節　老年為什麼是社會風險" data-act="1"><p class="lab">◆ 動手做</p><h2>先猜：這些說法，是社會保險的優點還是缺點？</h2><p class="src">Spicker 整理了社會保險的優缺點。讀下一頁之前，先自己分分看</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s8" data-act-key="sort-8" data-done="下一頁是兩欄的對照。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="人們會覺得自己有權領取給付" data-ans="優點" data-dim="">人們會覺得自己有權領取給付<span class="t">優點</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="繳費是籌措給付財源的方法" data-ans="優點" data-dim="">繳費是籌措給付財源的方法<span class="t">優點</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="因為是自己繳的，照理很難被取消。但紐西蘭把保險式年金改成資產調查式，證明這不成立" data-ans="優點" data-dim="">因為是自己繳的，照理很難被取消。但紐西蘭把保險式年金改成資產調查式，證明這不成立<span class="t">優點</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k1" data-txt="必須工作才有資格：失業的畢業生、照顧小孩的女性、長期病人與身障者被排除在外" data-ans="缺點" data-dim="">必須工作才有資格：失業的畢業生、照顧小孩的女性、長期病人與身障者被排除在外<span class="t">缺點</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k1" data-txt="可能區分「值得幫」與「不值得幫」的窮人" data-ans="缺點" data-dim="">可能區分「值得幫」與「不值得幫」的窮人<span class="t">缺點</span></button><button class="sc" type="button" draggable="true" data-i="5" data-k="k1" data-txt="保費太高繳不起，給付就可能被壓低" data-ans="缺點" data-dim="">保費太高繳不起，給付就可能被壓低<span class="t">缺點</span></button></div><div class="scols n2"><div class="scol" data-k="k0"><h4>優點</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>缺點</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-cols" data-kind="cols" data-label="社會保險：優點與缺點" data-sect="第一節　老年為什麼是社會風險"><p class="lab">第一節　老年為什麼是社會風險</p><h2>社會保險：優點與缺點</h2><div class="grid2"><div class="card col"><span class="ctag">＋</span><h4>優點</h4><ul class="bl"><li>人們會覺得自己有權領取給付</li><li>繳費是籌措給付財源的方法</li><li>因為是自己繳的，照理很難被取消。但紐西蘭把保險式年金改成資產調查式，證明這不成立</li></ul></div><div class="card col"><span class="ctag">－</span><h4>缺點</h4><ul class="bl"><li>必須工作才有資格：失業的畢業生、照顧小孩的女性、長期病人與身障者被排除在外</li><li>可能區分「值得幫」與「不值得幫」的窮人</li><li>保費太高繳不起，給付就可能被壓低</li></ul></div></div><footer class="sfoot"><span class="cite">Spicker（2025: 170）</span><span class="pgno">第 10 週　08</span></footer></section>
+<section class="slide k-cols" data-kind="cols" data-label="社會保險：「社會」加上「保險」" data-sect="第一節　老年為什麼是社會風險"><p class="lab">第一節　老年為什麼是社會風險</p><h2>社會保險：「社會」加上「保險」</h2><div class="grid2"><div class="card col"><span class="ctag">社會</span><h4>社會性</h4><ul class="bl"><li>強制參加</li><li>風險普遍</li><li>具有社會連帶（social solidarity）</li></ul></div><div class="card col"><span class="ctag">保險</span><h4>保險性</h4><ul class="bl"><li>風險分擔</li><li>建立在精算機制的基礎上</li></ul></div></div><div class="call"><p>1883 年德國首相 Bismarck 開創社會保險後，保險被賦予了社會性的意義。</p></div><footer class="sfoot"><span class="cite">本課 112.1 講義〈社會保險：年金、健康〉</span><span class="pgno">第 10 週　09</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">02</span><span class="ct">年金怎麼設計</span><span class="cc">11 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第二節　年金怎麼設計" data-sect="第二節　年金怎麼設計"><div class="divwrap"><b class="secno">02</b><div><p class="lab">第二節</p><h2>年金怎麼設計</h2><p class="subt">錢從哪裡來？給誰？給多少？</p><div class="reading">讀本：Spicker（2025）頁 176–177；劉侑學（2026）第十章<br>林宏陽（2020）頁 60–65</div></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第 10 週　10</span></footer></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 動手：先猜：三種年金制度，各怎麼運作？" data-sect="第二節　年金怎麼設計" data-act="1"><p class="lab">◆ 動手做</p><h2>先猜：三種年金制度，各怎麼運作？</h2><p class="src">點左邊一種制度，再點右邊對應的運作方式。答案在下一頁</p><div class="match" data-match="m11" data-act-key="match-11"><div class="mcol"><h4>制度</h4><div class="mitem" data-k="0">非繳費式（稅收）</div><div class="mitem" data-k="1">確定給付（DB）</div><div class="mitem" data-k="2">確定提撥（DC）</div></div><div class="mcol"><h4>怎麼運作</h4><div class="mitem" data-k="0">一般稅收支應；普及或資產調查；給付通常較低。例：老農津貼</div><div class="mitem" data-k="1">依薪資與年資承諾給付；多為社會保險，採隨收隨付。例：勞工保險</div><div class="mitem" data-k="2">依提撥與投資收益決定給付；個人帳戶，完全提存。例：勞退新制</div></div></div><p class="mstat"></p></section>
+<section class="slide k-table" data-kind="table" data-label="三種年金制度" data-sect="第二節　年金怎麼設計"><p class="lab">第二節　年金怎麼設計</p><h2>三種年金制度</h2><div class="tblwrap"><table class="tbl"><thead><tr><th>制度</th><th>目標</th><th>怎麼運作</th></tr></thead><tbody><tr><th class="rh">非繳費式（稅收）</th><td>舒緩貧窮</td><td>一般稅收支應；普及或資產調查；給付通常較低。例：老農津貼</td></tr><tr><th class="rh">確定給付（DB）</th><td>所得維持</td><td>依薪資與年資承諾給付；多為社會保險，採隨收隨付。例：勞工保險</td></tr><tr><th class="rh">確定提撥（DC）</th><td>所得維持</td><td>依提撥與投資收益決定給付；個人帳戶，完全提存。例：勞退新制</td></tr></tbody></table></div><footer class="sfoot"><span class="cite">本課 112.1 講義；葉崇揚等（2026: 7–9）</span><span class="pgno">第 10 週　11</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：這些特徵，屬於隨收隨付還是提存準備？" data-sect="第二節　年金怎麼設計" data-act="1"><p class="lab">◆ 動手做</p><h2>先猜：這些特徵，屬於隨收隨付還是提存準備？</h2><p class="src">年金的錢放哪裡，有兩種做法。讀下一頁之前，先自己分分看</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s12" data-act-key="sort-12" data-done="下一頁是兩欄的對照。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="現在的保費，支付現在的年金" data-ans="隨收隨付" data-dim="">現在的保費，支付現在的年金<span class="t">隨收隨付</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="未來的退休者，由未來的繳費者支付" data-ans="隨收隨付" data-dim="">未來的退休者，由未來的繳費者支付<span class="t">隨收隨付</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="也稱為「團結式」年金" data-ans="隨收隨付" data-dim="">也稱為「團結式」年金<span class="t">隨收隨付</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k1" data-txt="把保費投資到帳戶裡" data-ans="提存準備" data-dim="">把保費投資到帳戶裡<span class="t">提存準備</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k1" data-txt="很難對抗通貨膨脹" data-ans="提存準備" data-dim="">很難對抗通貨膨脹<span class="t">提存準備</span></button><button class="sc" type="button" draggable="true" data-i="5" data-k="k1" data-txt="繳費不一定支付繳費者自己的年金" data-ans="提存準備" data-dim="">繳費不一定支付繳費者自己的年金<span class="t">提存準備</span></button></div><div class="scols n2"><div class="scol" data-k="k0"><h4>隨收隨付</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>提存準備</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-cols" data-kind="cols" data-label="錢放哪裡？隨收隨付與提存準備" data-sect="第二節　年金怎麼設計"><p class="lab">第二節　年金怎麼設計</p><h2>錢放哪裡？隨收隨付與提存準備</h2><div class="grid2 withmid"><div class="card col"><span class="ctag">PAYG</span><h4>隨收隨付</h4><ul class="bl"><li>現在的保費，支付現在的年金</li><li>未來的退休者，由未來的繳費者支付</li><li>也稱為「團結式」年金</li></ul></div><span class="mid">VS</span><div class="card col"><span class="ctag">FUNDED</span><h4>提存準備</h4><ul class="bl"><li>把保費投資到帳戶裡</li><li>很難對抗通貨膨脹</li><li>繳費不一定支付繳費者自己的年金</li></ul></div></div><div class="call"><p>依賴繳費，就一定有人不夠格：繳得不夠、或不在本國居住工作。所以保險旁邊一定要有安全網。</p></div><footer class="sfoot"><span class="cite">Spicker（2025: 176）</span><span class="pgno">第 10 週　12</span></footer></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 動手：先猜：算式裡的四個符號，各代表什麼？" data-sect="第二節　年金怎麼設計" data-act="1"><p class="lab">◆ 動手做</p><h2>先猜：算式裡的四個符號，各代表什麼？</h2><p class="src">點左邊一個符號，再點右邊對應的意思。答案在下一頁</p><div class="match" data-match="m13" data-act-key="match-13"><div class="mcol"><h4>符號</h4><div class="mitem" data-k="0">c</div><div class="mitem" data-k="1">B/L</div><div class="mitem" data-k="2">p/w</div><div class="mitem" data-k="3">S</div></div><div class="mcol"><h4>意思</h4><div class="mitem" data-k="0">費率：每個工作者要繳薪資的多少比例</div><div class="mitem" data-k="1">依賴比：領年金的人數 ÷ 工作人口數</div><div class="mitem" data-k="2">給付水準：平均年金 ÷ 平均薪資</div><div class="mitem" data-k="3">國家補貼：由稅收支應的比例</div></div></div><p class="mstat"></p></section>
+<section class="slide k-formula" data-kind="formula" data-label="◆ 隨收隨付的基本算式" data-sect="第二節　年金怎麼設計" data-act="1"><p class="lab">第二節　年金怎麼設計</p><h2>隨收隨付的基本算式</h2><div class="formula" data-formula="1"><p class="fx"><span class="fs" data-s="c">c</span> = <span class="fs" data-s="B/L">B/L</span> × <span class="fs" data-s="p/w">p/w</span> × (1 − <span class="fs" data-s="S">S</span>)</p></div><p class="instr">點一列，看它是算式裡的哪一項。</p><div class="terms"><button class="term" type="button" data-s="c"><span class="sym">c</span><b>費率</b><span>每個工作者要繳薪資的多少比例</span></button><button class="term" type="button" data-s="B/L"><span class="sym">B/L</span><b>依賴比</b><span>領年金的人數 ÷ 工作人口數</span></button><button class="term" type="button" data-s="p/w"><span class="sym">p/w</span><b>給付水準</b><span>平均年金 ÷ 平均薪資</span></button><button class="term" type="button" data-s="S"><span class="sym">S</span><b>國家補貼</b><span>由稅收支應的比例</span></button></div><div class="call"><p>老化讓 B/L 上升。想守住 c，只能壓低 p/w、提高 S，或延後退休讓 B/L 下降。</p></div><footer class="sfoot"><span class="cite">林宏陽（2020: 64，註 8）；S 為本課補充</span><span class="pgno">第 10 週　13</span></footer></section>
+<section class="slide k-cards" data-kind="cards" data-label="沒有一種年金完全由政府提供" data-sect="第二節　年金怎麼設計"><p class="lab">第二節　年金怎麼設計</p><h2>沒有一種年金完全由政府提供</h2><p class="lead">退休年金在許多國家是從互助保險發展出來的，政府後來才介入。</p><div class="grid3 lift"><div class="card"><span class="tagc">1</span><h4>私人或職業年金</h4><p>通常與工作紀錄、薪資相關</p></div><div class="card"><span class="tagc">2</span><h4>政府支持的年金</h4><p>提供基本保障</p></div><div class="card"><span class="tagc">3</span><h4>安全網</h4><p>給繳費不夠、沒有資格的人</p></div></div><div class="call"><p>三個部分以不同方式組合，就成了各國不同的年金體系。</p></div><footer class="sfoot"><span class="cite">Spicker（2025: 176–177）</span><span class="pgno">第 10 週　14</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：這些特徵，屬於哪一個年金世界？" data-sect="第二節　年金怎麼設計" data-act="1"><p class="lab">◆ 動手做</p><h2>先猜：這些特徵，屬於哪一個年金世界？</h2><p class="src">劉侑學比較兩種年金體系。讀下一頁之前，先自己分分看</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s15" data-act-key="sort-15" data-done="下一頁是兩個世界的對照表。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="Bismarck 模式：德國 1889 年" data-ans="社會保險年金體系" data-dim="">Bismarck 模式：德國 1889 年<span class="t">社會保險年金體系</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k1" data-txt="Beveridge 模式：丹麥 1891 年" data-ans="多層年金體系" data-dim="">Beveridge 模式：丹麥 1891 年<span class="t">多層年金體系</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="所得維持" data-ans="社會保險年金體系" data-dim="">所得維持<span class="t">社會保險年金體系</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k1" data-txt="防止貧窮" data-ans="多層年金體系" data-dim="">防止貧窮<span class="t">多層年金體系</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k0" data-txt="工資相關" data-ans="社會保險年金體系" data-dim="">工資相關<span class="t">社會保險年金體系</span></button><button class="sc" type="button" draggable="true" data-i="5" data-k="k1" data-txt="均一給付" data-ans="多層年金體系" data-dim="">均一給付<span class="t">多層年金體系</span></button><button class="sc" type="button" draggable="true" data-i="6" data-k="k0" data-txt="繳費紀錄" data-ans="社會保險年金體系" data-dim="">繳費紀錄<span class="t">社會保險年金體系</span></button><button class="sc" type="button" draggable="true" data-i="7" data-k="k1" data-txt="居住期間或需求" data-ans="多層年金體系" data-dim="">居住期間或需求<span class="t">多層年金體系</span></button><button class="sc" type="button" draggable="true" data-i="8" data-k="k0" data-txt="受僱勞工" data-ans="社會保險年金體系" data-dim="">受僱勞工<span class="t">社會保險年金體系</span></button><button class="sc" type="button" draggable="true" data-i="9" data-k="k1" data-txt="全體人口" data-ans="多層年金體系" data-dim="">全體人口<span class="t">多層年金體系</span></button><button class="sc" type="button" draggable="true" data-i="10" data-k="k0" data-txt="保險費" data-ans="社會保險年金體系" data-dim="">保險費<span class="t">社會保險年金體系</span></button><button class="sc" type="button" draggable="true" data-i="11" data-k="k1" data-txt="稅收" data-ans="多層年金體系" data-dim="">稅收<span class="t">多層年金體系</span></button></div><div class="scols n2"><div class="scol" data-k="k0"><h4>社會保險年金體系</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>多層年金體系</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-table" data-kind="table" data-label="年金體系的兩個世界" data-sect="第二節　年金怎麼設計"><p class="lab">第二節　年金怎麼設計</p><h2>年金體系的兩個世界</h2><div class="tblwrap"><table class="tbl"><thead><tr><th></th><th>社會保險年金體系</th><th>多層年金體系</th></tr></thead><tbody><tr><th class="rh">原型</th><td>Bismarck 模式：德國 1889 年</td><td>Beveridge 模式：丹麥 1891 年</td></tr><tr><th class="rh">目標</th><td>所得維持</td><td>防止貧窮</td></tr><tr><th class="rh">給付</th><td>工資相關</td><td>均一給付</td></tr><tr><th class="rh">資格</th><td>繳費紀錄</td><td>居住期間或需求</td></tr><tr><th class="rh">覆蓋</th><td>受僱勞工</td><td>全體人口</td></tr><tr><th class="rh">財源</th><td>保險費</td><td>稅收</td></tr></tbody></table></div><footer class="sfoot"><span class="cite">劉侑學（2026: 304–306）；表 10.2 修改自 Bonoli（1997）</span><span class="pgno">第 10 週　15</span></footer></section>
+<section class="slide k-cols" data-kind="cols" data-label="兩個世界怎麼來的？" data-sect="第二節　年金怎麼設計"><p class="lab">第二節　年金怎麼設計</p><h2>兩個世界怎麼來的？</h2><div class="grid2"><div class="card col"><span class="ctag">1889</span><h4>德國：社會保險</h4><ul class="bl"><li>Bismarck 想綏靖工人運動，用社會保險換取忠誠</li><li>只涵蓋威脅社會穩定的產業工人</li><li>給付隨所得變化：鞏固而非節制市場的階層分化</li></ul></div><div class="card col"><span class="ctag">1891</span><h4>丹麥：從濟貧法而來</h4><ul class="bl"><li>農民施壓，老年年金被推上議程</li><li>由稅收支應、經資產調查的年金</li><li>理由之一：失業或生病的人沒有能力繳保費</li></ul></div></div><footer class="sfoot"><span class="cite">劉侑學（2026: 304–305）</span><span class="pgno">第 10 週　16</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">03</span><span class="ct">第一、二節小測驗</span><span class="cc">1 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quiz" data-kind="quiz" data-label="◆ 第一、二節小測驗" data-sect="第二節　年金怎麼設計" data-act="1"><p class="lab">小測驗</p><h2>第一、二節小測驗</h2><p class="src">三題，作答後會立刻看到解說</p><div data-quiz="q1"><div class="qz" data-a="2"><div class="stem">1. Myles 說，什麼是二十世紀富裕民主國家最偉大的成就之一？</div><button class="opt" type="button">全民健保</button><button class="opt" type="button">退休的民主化</button><button class="opt" type="button">義務教育</button><button class="opt" type="button">充分就業</button><div class="fb">退休的民主化，必定是二十世紀富裕民主國家最偉大的成就之一（Myles, 2002: 130；第 6 頁〈退休的民主化〉）。</div></div><div class="qz" data-a="2"><div class="stem">2. 隨收隨付（PAYG）是什麼意思？</div><button class="opt" type="button">把保費投資到個人帳戶</button><button class="opt" type="button">現在的保費，支付現在的年金</button><button class="opt" type="button">全部由稅收支付</button><button class="opt" type="button">退休時一次領回本金</button><div class="fb">現在的保費，支付現在的年金；未來的退休者，由未來的繳費者支付（Spicker, 2025: 176；第 16 頁〈錢放哪裡？隨收隨付與提存準備〉）。</div></div><div class="qz" data-a="2"><div class="stem">3. 在 c = B/L × p/w × (1 − S) 裡，人口老化會讓哪一項上升？</div><button class="opt" type="button">c　費率</button><button class="opt" type="button">B/L　依賴比</button><button class="opt" type="button">p/w　給付水準</button><button class="opt" type="button">S　國家補貼</button><div class="fb">老化讓 B/L 上升。想守住 c，只能壓低 p/w、提高 S，或延後退休讓 B/L 下降（林宏陽, 2020: 64；第 18 頁〈隨收隨付的基本算式〉）。</div></div></div><p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p></section></div></div>
+</div>
+<div class="pane" data-pane="2">
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">01</span><span class="ct">東亞：一個區域，三種年金世界</span><span class="cc">10 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第三節　東亞：一個區域，三種年金世界" data-sect="第三節　東亞：一個區域，三種年金世界"><div class="divwrap"><b class="secno">03</b><div><p class="lab">第三節</p><h2>東亞：一個區域，三種年金世界</h2><p class="subt">東亞福利國家都一樣嗎？</p><div class="reading">讀本：Yeh, Cheng &amp; Shi（2020）Ageing &amp; Society 40(3)，頁 604–625</div></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第 10 週　17</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：東亞六個社會，各屬於哪一種年金混合？" data-sect="第三節　東亞：一個區域，三種年金世界" data-act="1"><p class="lab">◆ 動手做</p><h2>先猜：東亞六個社會，各屬於哪一種年金混合？</h2><p class="src">Yeh、Cheng 與 Shi（2020）把東亞分成三種。讀下一頁之前，先自己分分看</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s18" data-act-key="sort-18" data-done="下一頁是三種公私年金混合。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="台灣" data-ans="國家主義" data-dim="">台灣<span class="t">國家主義</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="中國" data-ans="國家主義" data-dim="">中國<span class="t">國家主義</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k1" data-txt="日本" data-ans="雙元" data-dim="">日本<span class="t">雙元</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k1" data-txt="韓國" data-ans="雙元" data-dim="">韓國<span class="t">雙元</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k2" data-txt="香港" data-ans="個人主義" data-dim="">香港<span class="t">個人主義</span></button><button class="sc" type="button" draggable="true" data-i="5" data-k="k2" data-txt="新加坡" data-ans="個人主義" data-dim="">新加坡<span class="t">個人主義</span></button></div><div class="scols n3"><div class="scol" data-k="k0"><h4>國家主義</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>雙元</h4><div class="drop"></div></div><div class="scol" data-k="k2"><h4>個人主義</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-cards" data-kind="cards" data-label="三種公私年金混合" data-sect="第三節　東亞：一個區域，三種年金世界"><p class="lab">第三節　東亞：一個區域，三種年金世界</p><h2>三種公私年金混合</h2><div class="grid3 lift"><div class="card"><span class="tagc">國家主義</span><h4>台灣、中國</h4><p>主要靠公共年金保障老年，私人年金角色很小</p></div><div class="card"><span class="tagc">雙元</span><h4>日本、韓國</h4><p>公共年金與職業年金並行；正式與非正式部門之間有明顯的保障落差</p></div><div class="card"><span class="tagc">個人主義</span><h4>香港、新加坡</h4><p>真正完全提存的個人帳戶，強調公民自己的責任</p></div></div><footer class="sfoot"><span class="cite">Yeh 等（2020: 604, 608）</span><span class="pgno">第 10 週　18</span></footer></section>
+<section class="slide k-table" data-kind="table" data-label="三種模式的特徵" data-sect="第三節　東亞：一個區域，三種年金世界"><p class="lab">第三節　東亞：一個區域，三種年金世界</p><h2>三種模式的特徵</h2><div class="tblwrap"><table class="tbl"><thead><tr><th></th><th>個人主義</th><th>國家主義</th><th>雙元</th></tr></thead><tbody><tr><th class="rh">代表</th><td>香港、新加坡</td><td>台灣、中國</td><td>日本、韓國</td></tr><tr><th class="rh">政策目標</th><td>強制儲蓄</td><td>所得維持</td><td>所得維持</td></tr><tr><th class="rh">承擔退休風險</th><td>個人</td><td>國家</td><td>國家與企業</td></tr><tr><th class="rh">公共年金</th><td>資產調查；稅收</td><td>社會保險；隨收隨付</td><td>社會保險加基礎年金</td></tr><tr><th class="rh">公共年金替代率</th><td>低</td><td>高</td><td>中</td></tr><tr><th class="rh">私人年金</th><td>DC（公積金）</td><td>DC</td><td>DB 與 DC</td></tr></tbody></table></div><footer class="sfoot"><span class="cite">Yeh 等（2020: 619），表 6</span><span class="pgno">第 10 週　19</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 動手：先猜：誰的公共年金替代率最高？" data-sect="第三節　東亞：一個區域，三種年金世界" data-act="1"><p class="lab">◆ 先猜</p><h2>先猜：誰的公共年金替代率最高？</h2><p class="src">平均所得男性的淨所得替代率，2013。答案在下一頁</p><div class="pq1"><p class="pqq">東亞六個社會裡，淨所得替代率最高的是……</p><div class="poll" data-poll="rr" data-answer="中國" data-act-key="predict-rr"><div class="opts"><button type="button" data-v="台灣（2009）">台灣（2009）</button><button type="button" data-v="新加坡">新加坡</button><button type="button" data-v="日本">日本</button><button type="button" data-v="中國">中國</button></div></div><p class="verdict" data-verdict-for="rr"></p></div><div class="fbk ok reveal-box" data-reveal-all="rr">中國：84.7%，其次是台灣（2009）：73.2%（Yeh 等，2020: 614–615）。下一頁是六個社會的長條圖。</div></section>
+<section class="slide k-bars" data-kind="bars" data-label="淨所得替代率：平均所得男性，2013" data-sect="第三節　東亞：一個區域，三種年金世界"><p class="lab">第三節　東亞：一個區域，三種年金世界</p><h2>淨所得替代率：平均所得男性，2013</h2><ol class="hbars"><li><span class="bl2">中國</span><span class="bt"><i style="--w:100.0%"></i></span><span class="bv"><span class="cu" data-final="84.7%">84.7%</span></span></li><li><span class="bl2">台灣（2009）</span><span class="bt"><i style="--w:86.4%"></i></span><span class="bv"><span class="cu" data-final="73.2%">73.2%</span></span></li><li><span class="bl2">韓國</span><span class="bt"><i style="--w:53.4%"></i></span><span class="bv"><span class="cu" data-final="45.2%">45.2%</span></span></li><li><span class="bl2">新加坡</span><span class="bt"><i style="--w:49.7%"></i></span><span class="bv"><span class="cu" data-final="42.1%">42.1%</span></span></li><li><span class="bl2">日本</span><span class="bt"><i style="--w:48.2%"></i></span><span class="bv"><span class="cu" data-final="40.8%">40.8%</span></span></li><li><span class="bl2">香港</span><span class="bt"><i style="--w:43.4%"></i></span><span class="bv"><span class="cu" data-final="36.8%">36.8%</span></span></li></ol><div class="call"><p>國家主義的公共年金給付看似慷慨，但掩蓋了不同群體之間的不平等。</p></div><footer class="sfoot"><span class="cite">Yeh 等（2020: 614–615），表 2</span><span class="pgno">第 10 週　20</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 動手：先猜：誰的老年貧窮率最高？" data-sect="第三節　東亞：一個區域，三種年金世界" data-act="1"><p class="lab">◆ 先猜</p><h2>先猜：誰的老年貧窮率最高？</h2><p class="src">上一頁是替代率。替代率高，貧窮就低嗎？答案在下一頁</p><div class="pq1"><p class="pqq">下面四個社會裡，老年貧窮率最高的是……</p><div class="poll" data-poll="pov" data-answer="韓國（2014）" data-act-key="predict-pov"><div class="opts"><button type="button" data-v="台灣（2013）">台灣（2013）</button><button type="button" data-v="韓國（2014）">韓國（2014）</button><button type="button" data-v="中國（2011）">中國（2011）</button><button type="button" data-v="日本（2012）">日本（2012）</button></div></div><p class="verdict" data-verdict-for="pov"></p></div><div class="fbk ok reveal-box" data-reveal-all="pov">韓國（2014）：45.7%；台灣（2013）：26.2%（Yeh 等，2020: 615–616）。下一頁是完整的長條圖。</div></section>
+<section class="slide k-bars" data-kind="bars" data-label="老年貧窮率：替代率高，不等於貧窮低" data-sect="第三節　東亞：一個區域，三種年金世界"><p class="lab">第三節　東亞：一個區域，三種年金世界</p><h2>老年貧窮率：替代率高，不等於貧窮低</h2><ol class="hbars"><li><span class="bl2">韓國（2014）</span><span class="bt"><i style="--w:100.0%"></i></span><span class="bv"><span class="cu" data-final="45.7%">45.7%</span></span></li><li><span class="bl2">中國（2011）</span><span class="bt"><i style="--w:85.3%"></i></span><span class="bv"><span class="cu" data-final="39.0%">39.0%</span></span></li><li><span class="bl2">香港（2016）</span><span class="bt"><i style="--w:69.1%"></i></span><span class="bv"><span class="cu" data-final="31.6%">31.6%</span></span></li><li><span class="bl2">台灣（2013）</span><span class="bt"><i style="--w:57.3%"></i></span><span class="bv"><span class="cu" data-final="26.2%">26.2%</span></span></li><li><span class="bl2">日本（2012）</span><span class="bt"><i style="--w:41.6%"></i></span><span class="bv"><span class="cu" data-final="19.0%">19.0%</span></span></li></ol><div class="call"><p>東亞年金體系還不成熟，擴張的效果要晚一點才顯現。韓國國民年金 1988 年才開辦。</p></div><footer class="sfoot"><span class="cite">Yeh 等（2020: 615–616），表 2</span><span class="pgno">第 10 週　21</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 動手：先猜：勞退個人帳戶能替代多少所得？" data-sect="第三節　東亞：一個區域，三種年金世界" data-act="1"><p class="lab">◆ 先猜</p><h2>先猜：勞退個人帳戶能替代多少所得？</h2><p class="src">2005 年勞退改為 DC 個人帳戶。答案在下一頁</p><div class="pq1"><p class="pqq">勞退個人帳戶的所得替代率，大約是……</p><div class="poll" data-poll="dc" data-answer="&lt; 10%" data-act-key="predict-dc"><div class="opts"><button type="button" data-v="約 60%">約 60%</button><button type="button" data-v="約 25%">約 25%</button><button type="button" data-v="約 40%">約 40%</button><button type="button" data-v="&lt; 10%">&lt; 10%</button></div></div><p class="verdict" data-verdict-for="dc"></p></div><div class="fbk ok reveal-box" data-reveal-all="dc">勞退個人帳戶的所得替代率：&lt; 10%（Yeh 等，2020: 610, 617–618）。下一頁說明為什麼這麼低。</div></section>
+<section class="slide k-stats" data-kind="stats" data-label="台灣的職業年金是「板凳球員」" data-sect="第三節　東亞：一個區域，三種年金世界"><p class="lab">第三節　東亞：一個區域，三種年金世界</p><h2>台灣的職業年金是「板凳球員」</h2><div class="stats3"><div class="statc"><b><span class="cu" data-final="53.46%">53.46%</span></b><span>私人年金覆蓋率（2015）</span></div><div class="statc"><b><span class="cu" data-final="12.06%">12.06%</span></b><span>私人年金資產占 GDP（2015）</span></div><div class="statc"><b><span class="cu" data-final="&lt; 10%">&lt; 10%</span></b><span>勞退個人帳戶的所得替代率</span></div></div><ul class="bl"><li>公共年金占主導，非國家的年金從未扮演重要角色</li><li>1984 年勞基法退休金：不到 5% 的退休勞工領得到</li><li>2005 年改為 DC 個人帳戶，覆蓋率上升</li><li>但提撥率只有薪資的 2% 到 6%，替代率很低</li></ul><footer class="sfoot"><span class="cite">Yeh 等（2020: 610, 617–618），表 5</span><span class="pgno">第 10 週　22</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">02</span><span class="ct">台灣的年金體系</span><span class="cc">8 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第四節　台灣的年金體系" data-sect="第四節　台灣的年金體系"><div class="divwrap"><b class="secno">04</b><div><p class="lab">第四節</p><h2>台灣的年金體系</h2><p class="subt">一棟四層樓，每種職業一間房。</p><div class="reading">讀本：葉崇揚等（2026）第一章〈台灣年金改革的危機與轉機〉，頁 3–30</div></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第 10 週　23</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：這些制度，各在年金體系的哪一層？" data-sect="第四節　台灣的年金體系" data-act="1"><p class="lab">◆ 動手做</p><h2>先猜：這些制度，各在年金體系的哪一層？</h2><p class="src">台灣的年金體系像一棟四層樓。讀下一頁之前，先自己分分看</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s24" data-act-key="sort-24" data-done="下一頁是四層結構的全貌。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="私人商業保險" data-ans="3F　個人保障" data-dim="">私人商業保險<span class="t">3F　個人保障</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="個人儲蓄" data-ans="3F　個人保障" data-dim="">個人儲蓄<span class="t">3F　個人保障</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="家庭互助" data-ans="3F　個人保障" data-dim="">家庭互助<span class="t">3F　個人保障</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k1" data-txt="軍公教退撫" data-ans="2F　職業退休金" data-dim="">軍公教退撫<span class="t">2F　職業退休金</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k1" data-txt="私校退撫" data-ans="2F　職業退休金" data-dim="">私校退撫<span class="t">2F　職業退休金</span></button><button class="sc" type="button" draggable="true" data-i="5" data-k="k1" data-txt="勞退新舊制" data-ans="2F　職業退休金" data-dim="">勞退新舊制<span class="t">2F　職業退休金</span></button><button class="sc" type="button" draggable="true" data-i="6" data-k="k1" data-txt="農民退休儲金" data-ans="2F　職業退休金" data-dim="">農民退休儲金<span class="t">2F　職業退休金</span></button><button class="sc" type="button" draggable="true" data-i="7" data-k="k2" data-txt="軍保" data-ans="1F　社會保險（DB）" data-dim="">軍保<span class="t">1F　社會保險（DB）</span></button><button class="sc" type="button" draggable="true" data-i="8" data-k="k2" data-txt="公教保" data-ans="1F　社會保險（DB）" data-dim="">公教保<span class="t">1F　社會保險（DB）</span></button><button class="sc" type="button" draggable="true" data-i="9" data-k="k2" data-txt="勞保" data-ans="1F　社會保險（DB）" data-dim="">勞保<span class="t">1F　社會保險（DB）</span></button><button class="sc" type="button" draggable="true" data-i="10" data-k="k2" data-txt="國保" data-ans="1F　社會保險（DB）" data-dim="">國保<span class="t">1F　社會保險（DB）</span></button><button class="sc" type="button" draggable="true" data-i="11" data-k="k3" data-txt="中低收入老人生活津貼" data-ans="B1　福利津貼" data-dim="">中低收入老人生活津貼<span class="t">B1　福利津貼</span></button><button class="sc" type="button" draggable="true" data-i="12" data-k="k3" data-txt="老年農民福利津貼" data-ans="B1　福利津貼" data-dim="">老年農民福利津貼<span class="t">B1　福利津貼</span></button></div><div class="scols n4"><div class="scol" data-k="k0"><h4>3F　個人保障</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>2F　職業退休金</h4><div class="drop"></div></div><div class="scol" data-k="k2"><h4>1F　社會保險（DB）</h4><div class="drop"></div></div><div class="scol" data-k="k3"><h4>B1　福利津貼</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-tiers" data-kind="tiers" data-label="台灣年金體系的四層結構" data-sect="第四節　台灣的年金體系"><p class="lab">第四節　台灣的年金體系</p><h2>台灣年金體系的四層結構</h2><div class="tiergrid"><div class="side"><ul class="bl"><li>職業分立：各職業都有自己的繳費式年金保險</li><li>第一層所得替代率偏低，所以要加第二層職業年金補充</li><li>國民年金的被保險人，沒有任何附加年金</li></ul></div><ol class="building"><li><span class="fl">3F</span><div><b>個人保障</b>　<span>私人商業保險、個人儲蓄、家庭互助</span></div></li><li><span class="fl">2F</span><div><b>職業退休金</b>　<span>軍公教退撫、私校退撫、勞退新舊制、農民退休儲金</span></div></li><li><span class="fl">1F</span><div><b>社會保險（DB）</b>　<span>軍保、公教保、勞保、國保</span></div></li><li><span class="fl">B1</span><div><b>福利津貼</b>　<span>中低收入老人生活津貼、老年農民福利津貼</span></div></li></ol></div><footer class="sfoot"><span class="cite">葉崇揚等（2026: 6–10），圖 1.1</span><span class="pgno">第 10 週　24</span></footer></section>
+<section class="slide k-reveal" data-kind="reveal" data-label="◆ 對照：你的排序，落在哪一層？" data-sect="第四節　台灣的年金體系" data-act="1"><p class="lab">第四節　台灣的年金體系</p><h2>對照：你的排序，落在哪一層？</h2><p class="lead">回到開場的排序。你最依賴的，是哪一層？</p><div class="rankcmp" data-rankcmp="r3"><ol class="floors"><li data-floor="1F"><span class="fl">1F</span><b>勞保年金</b><span class="mine" data-mine="0">—</span></li><li data-floor="1F"><span class="fl">1F</span><b>國民年金</b><span class="mine" data-mine="1">—</span></li><li data-floor="2F"><span class="fl">2F</span><b>勞退新制個人帳戶</b><span class="mine" data-mine="2">—</span></li><li data-floor="3F"><span class="fl">3F</span><b>自己的儲蓄、投資與商業保險</b><span class="mine" data-mine="3">—</span></li><li data-floor="3F"><span class="fl">3F</span><b>家人互助</b><span class="mine" data-mine="4">—</span></li><li data-floor="B1"><span class="fl">B1</span><b>中低收入老人生活津貼</b><span class="mine" data-mine="5">—</span></li></ol><p class="rcmsg"></p></div><div class="call"><p>依賴第三層的人愈多，老年經濟安全愈取決於個人與家庭的資源。</p></div><footer class="sfoot"><span class="cite">葉崇揚等（2026: 8），圖 1.1</span><span class="pgno">第 10 週　25</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 動手：先猜：政府替一般勞工分擔多少保費？" data-sect="第四節　台灣的年金體系" data-act="1"><p class="lab">◆ 先猜</p><h2>先猜：政府替一般勞工分擔多少保費？</h2><p class="src">同樣繳保費，政府補的比例不一樣。答案在下一頁</p><div class="pq1"><p class="pqq">一般勞工的保費，政府分擔……</p><div class="poll" data-poll="sub" data-answer="10%" data-act-key="predict-sub"><div class="opts"><button type="button" data-v="35%">35%</button><button type="button" data-v="65%">65%</button><button type="button" data-v="10%">10%</button><button type="button" data-v="100%">100%</button></div></div><p class="verdict" data-verdict-for="sub"></p></div><div class="fbk ok reveal-box" data-reveal-all="sub">一般勞工：10%（葉崇揚等，2026: 7）。下一頁是三種被保險人的對照。</div></section>
+<section class="slide k-stats" data-kind="stats" data-label="同樣繳保費，政府補多少？" data-sect="第四節　台灣的年金體系"><p class="lab">第四節　台灣的年金體系</p><h2>同樣繳保費，政府補多少？</h2><div class="stats3"><div class="statc"><b><span class="cu" data-final="100%">100%</span></b><span>以低收入戶為對象</span></div><div class="statc"><b><span class="cu" data-final="65%">65%</span></b><span>公務人員、公校教師、軍人</span></div><div class="statc"><b><span class="cu" data-final="10%">10%</span></b><span>一般勞工</span></div></div><ul class="bl"><li>各項年金保險的費率不同</li><li>政府對不同制度的被保險人，分擔的保費也不同</li><li>勞保依職業歸類、國保依身分與所得，補助比例都不同</li><li>軍公教的 65%：政府同時是雇主</li></ul><footer class="sfoot"><span class="cite">葉崇揚等（2026: 7）</span><span class="pgno">第 10 週　26</span></footer></section>
+<section class="slide k-cols" data-kind="cols" data-label="「輕度 Bismarck」與職業分立的雙層體系" data-sect="第四節　台灣的年金體系"><p class="lab">第四節　台灣的年金體系</p><h2>「輕度 Bismarck」與職業分立的雙層體系</h2><div class="grid2"><div class="card col"><span class="ctag">Bismarck Lite</span><h4>第一層：替代率偏低</h4><ul class="bl"><li>台灣可歸為社會保險年金體系</li><li>但繳費式 DB 年金的所得替代率相對較低</li><li>所以必須建立附加職業年金來補充</li></ul></div><div class="card col"><span class="ctag">雙層</span><h4>第二層：各職業各一套</h4><ul class="bl"><li>勞退新制（DC）、舊制（DB）</li><li>軍人退撫（DB）；公教退撫 2023 年起新進改 DC</li><li>在職業年金之上，個人再從市場買私人年金</li></ul></div></div><footer class="sfoot"><span class="cite">葉崇揚等（2026: 7–10）</span><span class="pgno">第 10 週　27</span></footer></section>
+<section class="slide k-memo" data-kind="memo" data-label="為什麼是「高給付、低保費」？" data-sect="第四節　台灣的年金體系"><p class="lab">第四節　台灣的年金體系</p><h2>為什麼是「高給付、低保費」？</h2><div class="memo"><span class="qmark">“</span><blockquote><p>威權政府要鞏固核心支持者，民主化後的政府要爭取選民，使得社會保險年金呈現高給付、低保費的設計。</p></blockquote><cite>— 葉崇揚等（2026: 13–14）</cite></div><ul class="bl"><li>軍公教退撫替代率較高：政治遺緒，2018 年改革降低</li><li>勞保 2008 年年金化：給付率 1.55%，保費卻只逐年增加到 12%</li></ul><footer class="sfoot"><span class="cite">葉崇揚等（2026: 13–14）</span><span class="pgno">第 10 週　28</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">03</span><span class="ct">第三、四節小測驗</span><span class="cc">1 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quiz" data-kind="quiz" data-label="◆ 第三、四節小測驗" data-sect="第四節　台灣的年金體系" data-act="1"><p class="lab">小測驗</p><h2>第三、四節小測驗</h2><p class="src">三題，作答後會立刻看到解說</p><div data-quiz="q2"><div class="qz" data-a="2"><div class="stem">1. 台灣和中國屬於哪一種公私年金混合？</div><button class="opt" type="button">個人主義</button><button class="opt" type="button">國家主義</button><button class="opt" type="button">雙元</button><button class="opt" type="button">自由主義</button><div class="fb">國家主義：主要靠公共年金保障老年，私人年金角色很小（Yeh 等, 2020: 604, 608；第 26 頁〈三種公私年金混合〉）。</div></div><div class="qz" data-a="2"><div class="stem">2. 公共年金替代率高，老年貧窮率就一定低嗎？</div><button class="opt" type="button">一定</button><button class="opt" type="button">不一定</button><button class="opt" type="button">替代率和貧窮無關</button><button class="opt" type="button">只有香港例外</button><div class="fb">替代率高，不等於貧窮低。國家主義的公共年金給付看似慷慨，但掩蓋了不同群體之間的不平等（Yeh 等, 2020: 614–616；第 29 頁〈淨所得替代率：平均所得男性，2013〉、第 31 頁〈老年貧窮率：替代率高，不等於貧窮低〉）。</div></div><div class="qz" data-a="2"><div class="stem">3. 政府替哪一群被保險人分擔 65% 的保費？</div><button class="opt" type="button">低收入戶</button><button class="opt" type="button">公務人員、公校教師、軍人</button><button class="opt" type="button">一般勞工</button><button class="opt" type="button">自僱者</button><div class="fb">軍公教的 65%：政府同時是雇主（葉崇揚等, 2026: 7；第 39 頁〈同樣繳保費，政府補多少？〉）。</div></div></div><p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p></section></div></div>
+</div>
+<div class="pane" data-pane="3">
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">01</span><span class="ct">年金為什麼一定要改</span><span class="cc">8 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第五節　年金為什麼一定要改" data-sect="第五節　年金為什麼一定要改"><div class="divwrap"><b class="secno">05</b><div><p class="lab">第五節</p><h2>年金為什麼一定要改</h2><p class="subt">壓力是決定的，路徑是開放的。</p><div class="reading">讀本：葉崇揚等（2026）頁 10–17；王靜怡（2026）第二章</div></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第 10 週　29</span></footer></section>
+<section class="slide k-order" data-kind="order" data-label="◆ 動手：先猜：年金為什麼一定要改？四步的順序" data-sect="第五節　年金為什麼一定要改" data-act="1"><p class="lab">◆ 動手做</p><h2>先猜：年金為什麼一定要改？四步的順序</h2><p class="src">開放功能論把改革的壓力分成四步。答案在下一頁</p><p class="instr">從第一步開始，依序點下面四張卡片；點對了就排進去。</p><div class="cycle" data-order="o30" data-act-key="order-30"><div class="otray"><button class="oi" type="button" data-o="0">結構壓力</button><button class="oi" type="button" data-o="1">制度落差</button><button class="oi" type="button" data-o="2">四個問題</button><button class="oi" type="button" data-o="3">開放的解答</button></div><ol class="tline"><li class="empty" data-t="結構壓力"><span class="no">1</span><span>？</span></li><li class="empty" data-t="制度落差"><span class="no">2</span><span>？</span></li><li class="empty" data-t="四個問題"><span class="no">3</span><span>？</span></li><li class="empty" data-t="開放的解答"><span class="no">4</span><span>？</span></li></ol><div class="row"><button class="pbtn sec js-show" type="button">直接看答案</button></div><div class="fbk"></div></div></section>
+<section class="slide k-steps" data-kind="steps" data-label="開放功能論：壓力是決定的，路徑是開放的" data-sect="第五節　年金為什麼一定要改"><p class="lab">第五節　年金為什麼一定要改</p><h2>開放功能論：壓力是決定的，路徑是開放的</h2><ol class="flow"><li><span class="sn">01</span><b>結構壓力</b><p>人口高齡少子女化</p><p>女性大量就業</p><p>非典型就業</p></li><li><span class="sn">02</span><b>制度落差</b><p>工業社會的隨收隨付 DB 年金，解決不了新問題</p></li><li><span class="sn">03</span><b>四個問題</b><p>財務</p><p>世代正義</p><p>性別不均</p><p>不穩定就業</p></li><li><span class="sn">04</span><b>開放的解答</b><p>走哪條路，由制度遺緒與行動者互動形塑</p></li></ol><footer class="sfoot"><span class="cite">葉崇揚等（2026: 11–13），圖 1.2</span><span class="pgno">第 10 週　30</span></footer></section>
+<section class="slide k-cols" data-kind="cols" data-label="被侵蝕的世代契約" data-sect="第五節　年金為什麼一定要改"><p class="lab">第五節　年金為什麼一定要改</p><h2>被侵蝕的世代契約</h2><div class="grid2"><div class="card col"><h4>隨收隨付的前提</h4><ul class="bl"><li>建立在世代人口結構均衡的假設上</li><li>工作人口繳保費，支付退休人口的年金</li><li>高齡少子女化讓世代人口失衡</li></ul></div><div class="card col"><h4>台灣的速度</h4><ul class="bl"><li>約 2025 年後，老年人口比例急遽上升</li><li>2050 年前，台灣與韓國將超越義大利</li><li>2060 年前，甚至超越日本</li></ul></div></div><div class="call"><p>越來越少的工作人口，要繳越來越高的保費。工作人口承受不了，改革就成了不得不的選項。</p></div><footer class="sfoot"><span class="cite">葉崇揚等（2026: 14，註 5）</span><span class="pgno">第 10 週　31</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 動手：先猜：勞保基金哪一年用罄？" data-sect="第五節　年金為什麼一定要改" data-act="1"><p class="lab">◆ 先猜</p><h2>先猜：勞保基金哪一年用罄？</h2><p class="src">勞保基金的時間表一直在變。答案在下一頁</p><div class="pq1"><p class="pqq">依 2024 精算，勞保基金在哪一年用罄？</p><div class="poll" data-poll="fund" data-answer="2031" data-act-key="predict-fund"><div class="opts"><button type="button" data-v="2026">2026</button><button type="button" data-v="2017">2017</button><button type="button" data-v="2028">2028</button><button type="button" data-v="2031">2031</button></div></div><p class="verdict" data-verdict-for="fund"></p></div><div class="fbk ok reveal-box" data-reveal-all="fund">2031：基金用罄（2024 精算）。下一頁是完整的時間表。</div></section>
+<section class="slide k-timeline" data-kind="timeline" data-label="勞保基金：時間表一直在變" data-sect="第五節　年金為什麼一定要改"><p class="lab">第五節　年金為什麼一定要改</p><h2>勞保基金：時間表一直在變</h2><ol class="tl"><li><span class="yr">2008</span><span class="ev">勞保老年給付年金化</span></li><li><span class="yr">2017</span><span class="ev">當年度保費收入不足以支應當年給付</span></li><li><span class="yr">2026</span><span class="ev">基金餘額轉為負數</span><span class="ts">2018 精算</span></li><li><span class="yr">2028</span><span class="ev">基金耗盡，轉為隨收隨付制</span><span class="ts">2021 精算</span></li><li><span class="yr">2031</span><span class="ev">基金用罄</span><span class="ts">2024 精算</span></li><li><span class="yr">2067</span><span class="ev">負債 51 兆元，約 2021 年 GDP 的 2.45 倍</span><span class="ts">2018 精算</span></li></ol><div class="call"><p>耗盡的年份隨投資績效變動，但方向沒有變。2031 年出自陳芬苓、張森林（2026: 293）。</p></div><footer class="sfoot"><span class="cite">葉崇揚等（2026: 15–16）；王靜怡（2026: 68）</span><span class="pgno">第 10 週　32</span></footer></section>
+<section class="slide k-memo" data-kind="memo" data-label="年金改革是「第三電軌」" data-sect="第五節　年金為什麼一定要改"><p class="lab">第五節　年金為什麼一定要改</p><h2>年金改革是「第三電軌」</h2><div class="memo"><span class="qmark">“</span><blockquote><p>Touch it and you die.（一觸即身亡）</p></blockquote><cite>— Lynch &amp; Myrskylä（2009），引自葉崇揚等（2026: 10）</cite></div><ul class="bl"><li>電氣鐵路的第三條軌負責供電，一碰就會重傷或死亡</li><li>Pierson（1994）：制度愈成熟，領取者愈多，愈反對改革</li><li>決策者的邏輯從「爭功」變成「避免責難」（blame-avoidance）</li></ul><footer class="sfoot"><span class="cite">葉崇揚等（2026: 10，註 3）</span><span class="pgno">第 10 週　33</span></footer></section>
+<section class="slide k-stats" data-kind="stats" data-label="轉軌的雙重負擔" data-sect="第五節　年金為什麼一定要改"><p class="lab">第五節　年金為什麼一定要改</p><h2>轉軌的雙重負擔</h2><p class="lead">制度成熟後要轉軌，新舊制度並存，工作世代要繳兩次錢。</p><div class="stats3"><div class="statc"><b><span class="cu" data-final="2023">2023</span></b><span>新進公教人員退撫改為 DC</span></div><div class="statc"><b><span class="cu" data-final="2.96 兆">2.96 兆</span></b><span>舊制 DB 的財務缺口</span></div></div><ul class="bl"><li>舊制不再有新進人員繳費</li><li>未來的退休金只能靠國家補貼</li><li>工作世代既要提繳自己的 DC，稅也要拿去支應舊制</li><li>潛藏債務變成政府實際要負擔的債務</li></ul><footer class="sfoot"><span class="cite">葉崇揚等（2026: 10–11）</span><span class="pgno">第 10 週　34</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">02</span><span class="ct">改革的工具：自動調整</span><span class="cc">8 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第六節　改革的工具：自動調整" data-sect="第六節　改革的工具：自動調整"><div class="divwrap"><b class="secno">06</b><div><p class="lab">第六節</p><h2>改革的工具：自動調整</h2><p class="subt">人口老化的成本，誰來承擔？</p><div class="reading">讀本：林宏陽（2020）〈年金自動調整機制之理論意涵〉，頁 51–75<br>Myles（2002）頁 140–143；王靜怡（2026）第二章</div></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第 10 週　35</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：這些特徵，屬於固定替代率還是固定費率？" data-sect="第六節　改革的工具：自動調整" data-act="1"><p class="lab">◆ 動手做</p><h2>先猜：這些特徵，屬於固定替代率還是固定費率？</h2><p class="src">Myles 比較兩種隨收隨付的設計。讀下一頁之前，先自己分分看</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s36" data-act-key="sort-36" data-done="下一頁是兩欄的對照。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="給付決定稅：費率是依變項" data-ans="固定替代率：量出為入" data-dim="">給付決定稅：費率是依變項<span class="t">固定替代率：量出為入</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="退休者對工作者的比例變了，工作者就要調整費率" data-ans="固定替代率：量出為入" data-dim="">退休者對工作者的比例變了，工作者就要調整費率<span class="t">固定替代率：量出為入</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="人口變遷的成本，全部落在繳費者身上" data-ans="固定替代率：量出為入" data-dim="">人口變遷的成本，全部落在繳費者身上<span class="t">固定替代率：量出為入</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k1" data-txt="稅決定給付：給付是依變項" data-ans="固定費率：量入為出" data-dim="">稅決定給付：給付是依變項<span class="t">固定費率：量入為出</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k1" data-txt="退休者對工作者的比例上升，給付就要下降" data-ans="固定費率：量入為出" data-dim="">退休者對工作者的比例上升，給付就要下降<span class="t">固定費率：量入為出</span></button><button class="sc" type="button" draggable="true" data-i="5" data-k="k1" data-txt="人口變遷的成本，全部落在退休者身上" data-ans="固定費率：量入為出" data-dim="">人口變遷的成本，全部落在退休者身上<span class="t">固定費率：量入為出</span></button></div><div class="scols n2"><div class="scol" data-k="k0"><h4>固定替代率：量出為入</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>固定費率：量入為出</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-cols" data-kind="cols" data-label="兩種隨收隨付的設計，兩種不公平" data-sect="第六節　改革的工具：自動調整"><p class="lab">第六節　改革的工具：自動調整</p><h2>兩種隨收隨付的設計，兩種不公平</h2><div class="grid2 withmid"><div class="card col"><span class="ctag">FRR</span><h4>固定替代率：量出為入</h4><ul class="bl"><li>給付決定稅：費率是依變項</li><li>退休者對工作者的比例變了，工作者就要調整費率</li><li>人口變遷的成本，全部落在繳費者身上</li></ul></div><span class="mid">VS</span><div class="card col"><span class="ctag">FCR</span><h4>固定費率：量入為出</h4><ul class="bl"><li>稅決定給付：給付是依變項</li><li>退休者對工作者的比例上升，給付就要下降</li><li>人口變遷的成本，全部落在退休者身上</li></ul></div></div><footer class="sfoot"><span class="cite">Myles（2002: 140–141）</span><span class="pgno">第 10 週　36</span></footer></section>
+<section class="slide k-cards" data-kind="cards" data-label="Musgrave 的解法：固定相對位置" data-sect="第六節　改革的工具：自動調整"><p class="lab">第六節　改革的工具：自動調整</p><h2>Musgrave 的解法：固定相對位置</h2><p class="lead">固定「工作者每人淨所得」與「退休者每人淨給付」的比例。</p><div class="grid3 lift"><div class="card"><span class="tagc">1</span><h4>比例式分攤</h4><p>人口老化時，費率上升，給付也下降。雙方以同樣速度「輸」</p></div><div class="card"><span class="tagc">2</span><h4>不必預測未來</h4><p>比例固定後，定期依人口與生產力調整稅率</p></div><div class="card"><span class="tagc">3</span><h4>最接近的例子</h4><p>法國的第二層年金（AGIRC、ARRCO）</p></div></div><div class="call"><p>在固定替代率之下，年輕繳費者懷疑這套制度「等我老了就不在了」。</p></div><footer class="sfoot"><span class="cite">Myles（2002: 141–143）</span><span class="pgno">第 10 週　37</span></footer></section>
+<section class="slide k-cols" data-kind="cols" data-label="德國與瑞典的自動調整機制" data-sect="第六節　改革的工具：自動調整"><p class="lab">第六節　改革的工具：自動調整</p><h2>德國與瑞典的自動調整機制</h2><div class="grid2"><div class="card col"><span class="ctag">德國 2001</span><h4>年金點數與年金係數</h4><ul class="bl"><li>每月年金 ＝ 個人年金點數 × 申請要素 × 年金係數 × 種類要素</li><li>養育子女：每生一名，補助父母一方三年的年金點數</li><li>2001 年改革確立量入為出，公共年金不再是唯一支柱</li></ul></div><div class="card col"><span class="ctag">瑞典 1994</span><h4>NDC 與財務平衡比率</h4><ul class="bl"><li>概念式確定提撥（NDC），仍是隨收隨付</li><li>平衡比率小於 1：自動降低年金請求權的累積</li><li>明訂薪資的 16% 進入年金保險體系</li></ul></div></div><footer class="sfoot"><span class="cite">林宏陽（2020: 60–64）</span><span class="pgno">第 10 週　38</span></footer></section>
+<section class="slide k-stats" data-kind="stats" data-label="日本：總體經濟調整公式" data-sect="第六節　改革的工具：自動調整"><p class="lab">第六節　改革的工具：自動調整</p><h2>日本：總體經濟調整公式</h2><p class="lead">2004 年導入，讓年金給付在保費收入的範圍內調整。</p><div class="stats3"><div class="statc"><b><span class="cu" data-final="2004">2004</span></b><span>導入調整公式</span></div><div class="statc"><b><span class="cu" data-final="0.3%">0.3%</span></b><span>平均餘命年增率（至 2025）</span></div><div class="statc"><b><span class="cu" data-final="2015">2015</span></b><span>第一次減額調整</span></div></div><ul class="bl"><li>調整率 ＝ 工作世代人數減少 ＋ 退休世代平均餘命增加</li><li>暫停條件一：典型年金的替代率將低於 50%</li><li>暫停條件二：通貨緊縮時，名目給付不逐年降低</li><li>日本連年通縮，原訂 2012 年的調整延到 2015 年</li></ul><footer class="sfoot"><span class="cite">王靜怡（2026: 49–50）</span><span class="pgno">第 10 週　39</span></footer></section>
+<section class="slide k-poll" data-kind="poll" data-label="◆ 動手：你怎麼看：勞保要先改哪一項？" data-sect="第六節　改革的工具：自動調整" data-act="1"><p class="lab">◆ 表態</p><h2>你怎麼看：勞保要先改哪一項？</h2><p class="src">先表態，再讀下一頁王靜怡的四個建議。沒有標準答案</p><div class="pollbox"><div class="poll" data-poll="p40" data-act-key="poll-p40"><div class="opts"><button type="button" data-v="改制">改制</button><button type="button" data-v="調整因子">調整因子</button><button type="button" data-v="擴大費基">擴大費基</button><button type="button" data-v="政府責任">政府責任</button></div></div><p class="pollthanks" data-reveal-for="p40">記下來了。下一頁看看作者怎麼說。</p></div></section>
+<section class="slide k-cards" data-kind="cards" data-label="勞保要怎麼改？" data-sect="第六節　改革的工具：自動調整"><p class="lab">第六節　改革的工具：自動調整</p><h2>勞保要怎麼改？</h2><p class="lead">王靜怡試算導入日本式調整：有幫助，但效果相當有限。</p><div class="grid4 lift"><div class="card"><span class="tagc">1</span><h4>改制</h4><p>朝向保有安全準備金的隨收隨付制</p></div><div class="card"><span class="tagc">2</span><h4>調整因子</h4><p>增訂年金給付調整因子，並配套保證年金</p></div><div class="card"><span class="tagc">3</span><h4>擴大費基</h4><p>評估自僱者與未滿五人企業的受僱者強制納保</p></div><div class="card"><span class="tagc">4</span><h4>政府責任</h4><p>從補助保費，改為定額補助支出面</p></div></div><footer class="sfoot"><span class="cite">王靜怡（2026: 68–69）</span><span class="pgno">第 10 週　40</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">03</span><span class="ct">新的不平等，新的國家角色</span><span class="cc">8 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第七節　新的不平等，新的國家角色" data-sect="第七節　新的不平等，新的國家角色"><div class="divwrap"><b class="secno">07</b><div><p class="lab">第七節</p><h2>新的不平等，新的國家角色</h2><p class="subt">年金體系把誰留在後面？</p><div class="reading">讀本：葉崇揚等（2026）頁 17–24<br>黃芳誼（2026）第四章；葉崇揚、施世駿（2026）第六章</div></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第 10 週　41</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 動手：先猜：育兒會讓女性的年金少多少？" data-sect="第七節　新的不平等，新的國家角色" data-act="1"><p class="lab">◆ 先猜</p><h2>先猜：育兒會讓女性的年金少多少？</h2><p class="src">2023 年勞保月退制度下的模擬。答案在下一頁</p><div class="pq1"><p class="pqq">育兩名子女，女性的所得替代率少幾個百分點？</p><div class="poll" data-poll="kid" data-answer="4.7" data-act-key="predict-kid"><div class="opts"><button type="button" data-v="4.7">4.7</button><button type="button" data-v="1.2">1.2</button><button type="button" data-v="2.4">2.4</button><button type="button" data-v="9.4">9.4</button></div></div><p class="verdict" data-verdict-for="kid"></p></div><div class="fbk ok reveal-box" data-reveal-all="kid">育一名子女：女性替代率少的百分點（2023）：2.4；育兩名子女：女性替代率少的百分點（2023）：4.7（黃芳誼，2026: 133）。下一頁說明差距怎麼來的。</div></section>
+<section class="slide k-stats" data-kind="stats" data-label="退休後的性別不平等" data-sect="第七節　新的不平等，新的國家角色"><p class="lab">第七節　新的不平等，新的國家角色</p><h2>退休後的性別不平等</h2><p class="lead">退休後的經濟狀況，總結了一個人過去的生命歷程。</p><div class="stats3"><div class="statc"><b><span class="cu" data-final="2.4">2.4</span></b><span>育一名子女：女性替代率少的百分點（2023）</span></div><div class="statc"><b><span class="cu" data-final="4.7">4.7</span></b><span>育兩名子女：女性替代率少的百分點（2023）</span></div></div><ul class="bl"><li>生育、養育、照顧：中斷職涯，無法持續繳費</li><li>重返職場多是低薪、部分工時的服務業</li><li>給付與所得相關，差距一路帶進老年</li><li>制度外觀性別中立，實質上沒有回應女性的處境</li></ul><footer class="sfoot"><span class="cite">葉崇揚等（2026: 17–19）；黃芳誼（2026: 133）</span><span class="pgno">第 10 週　42</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 動手：先猜：哪個行業的性別替代率差距最大？" data-sect="第七節　新的不平等，新的國家角色" data-act="1"><p class="lab">◆ 先猜</p><h2>先猜：哪個行業的性別替代率差距最大？</h2><p class="src">男性減女性的所得替代率（百分點）。答案在下一頁</p><div class="pq1"><p class="pqq">性別替代率差距最大的行業是……</p><div class="poll" data-poll="ind" data-answer="醫療保健" data-act-key="predict-ind"><div class="opts"><button type="button" data-v="藝術娛樂">藝術娛樂</button><button type="button" data-v="製造業">製造業</button><button type="button" data-v="醫療保健">醫療保健</button><button type="button" data-v="教育">教育</button></div></div><p class="verdict" data-verdict-for="ind"></p></div><div class="fbk ok reveal-box" data-reveal-all="ind">醫療保健：38.96，其次是藝術娛樂 31.67、製造業 28.22（黃芳誼，2026: 132）。</div></section>
+<section class="slide k-bars" data-kind="bars" data-label="性別替代率差距：哪些行業最大？" data-sect="第七節　新的不平等，新的國家角色"><p class="lab">第七節　新的不平等，新的國家角色</p><h2>性別替代率差距：哪些行業最大？</h2><p class="lead">2023 年勞保月退制度下的模擬，男性減女性的所得替代率（百分點）。</p><ol class="hbars"><li><span class="bl2">醫療保健</span><span class="bt"><i style="--w:100.0%"></i></span><span class="bv"><span class="cu" data-final="38.96">38.96</span></span></li><li><span class="bl2">藝術娛樂</span><span class="bt"><i style="--w:81.3%"></i></span><span class="bv"><span class="cu" data-final="31.67">31.67</span></span></li><li><span class="bl2">製造業</span><span class="bt"><i style="--w:72.4%"></i></span><span class="bv"><span class="cu" data-final="28.22">28.22</span></span></li></ol><div class="call"><p>不動產與教育業：女性替代率追平，甚至超越男性。</p><p>教育程度愈高，差距愈大：研究所達 18.47，和德國的發現相反。</p></div><footer class="sfoot"><span class="cite">黃芳誼（2026: 132）</span><span class="pgno">第 10 週　43</span></footer></section>
+<section class="slide k-cols" data-kind="cols" data-label="勞動市場變了，「貢獻」也要重新定義" data-sect="第七節　新的不平等，新的國家角色"><p class="lab">第七節　新的不平等，新的國家角色</p><h2>勞動市場變了，「貢獻」也要重新定義</h2><div class="grid2"><div class="card col"><h4>勞動市場彈性化</h4><ul class="bl"><li>社會保險建立在典型、穩定的就業軌跡上</li><li>部分工時、契約勞動：年資累積不足</li><li>平台經濟的零工與自由工作者，沒有僱用關係</li></ul></div><div class="card col"><h4>從勞動貢獻到社會貢獻</h4><ul class="bl"><li>生育、養育小孩、承擔照顧，應等同繳納保費</li><li>德國 1986 年給照顧子女的父母一年年資，1992 年延長為三年</li><li>肯認不同的貢獻，才有更大的社會團結</li></ul></div></div><footer class="sfoot"><span class="cite">葉崇揚等（2026: 19–21）；黃芳誼（2026: 133）</span><span class="pgno">第 10 週　44</span></footer></section>
+<section class="slide k-cols" data-kind="cols" data-label="去管制化的弔詭：國家的責任同時減少也同時增加" data-sect="第七節　新的不平等，新的國家角色"><p class="lab">第七節　新的不平等，新的國家角色</p><h2>去管制化的弔詭：國家的責任同時減少也同時增加</h2><div class="grid2"><div class="card col"><span class="ctag">↓</span><h4>退居提供者之外</h4><ul class="bl"><li>高齡少子女化下，DC 制職業年金興起</li><li>老年經濟安全外部化給市場與個人</li><li>年金市場化與金融化</li></ul></div><div class="card col"><span class="ctag">↑</span><h4>轉為年金市場的管制者</h4><ul class="bl"><li>金融風險直接影響老年經濟安全</li><li>2022 年英國年金基金差點崩盤</li><li>2022 年台灣勞動基金虧損五千多億</li></ul></div></div><div class="call"><p>Polanyi 的雙向運動：市場不斷擴張，也需要社會保障措施。管制型福利國家因此興起。</p></div><footer class="sfoot"><span class="cite">葉崇揚等（2026: 22–24）</span><span class="pgno">第 10 週　45</span></footer></section>
+<section class="slide k-cards" data-kind="cards" data-label="台灣的管制型福利國家：仍在初生階段" data-sect="第七節　新的不平等，新的國家角色"><p class="lab">第七節　新的不平等，新的國家角色</p><h2>台灣的管制型福利國家：仍在初生階段</h2><div class="grid4 lift"><div class="card"><span class="tagc">1</span><h4>自選平台</h4><p>私校退撫有保守、穩健、積極、人生週期四種投資組合</p></div><div class="card"><span class="tagc">2</span><h4>預設選項</h4><p>人生週期型是預設，這本身就是一種推力（nudge）</p></div><div class="card"><span class="tagc">3</span><h4>金融教育</h4><p>幾乎沒有教育干預，弱化金融公民資格</p></div><div class="card"><span class="tagc">4</span><h4>政策建議</h4><p>勞退新制適度開放自選，但限定在特定範圍</p></div></div><footer class="sfoot"><span class="cite">葉崇揚、施世駿（2026: 193–195）</span><span class="pgno">第 10 週　46</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">04</span><span class="ct">第五至七節小測驗</span><span class="cc">1 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quiz" data-kind="quiz" data-label="◆ 第五至七節小測驗" data-sect="第七節　新的不平等，新的國家角色" data-act="1"><p class="lab">小測驗</p><h2>第五至七節小測驗</h2><p class="src">三題，作答後會立刻看到解說。三份小測驗都作答完，才能送出簽到</p><div data-quiz="q3"><div class="qz" data-a="2"><div class="stem">1. 為什麼年金改革被稱為「第三電軌」？</div><button class="opt" type="button">因為和鐵路政策有關</button><button class="opt" type="button">一觸即身亡：制度愈成熟，領取者愈多，愈反對改革</button><button class="opt" type="button">因為有三個改革方案</button><button class="opt" type="button">因為要三個政黨同意</button><div class="fb">Touch it and you die。Pierson（1994）：制度愈成熟，領取者愈多，愈反對改革（葉崇揚等, 2026: 10；第 49 頁〈年金改革是「第三電軌」〉）。</div></div><div class="qz" data-a="2"><div class="stem">2. 固定費率（FCR）之下，人口變遷的成本落在誰身上？</div><button class="opt" type="button">繳費者</button><button class="opt" type="button">退休者</button><button class="opt" type="button">國家</button><button class="opt" type="button">雇主</button><div class="fb">稅決定給付：退休者對工作者的比例上升，給付就要下降，成本全部落在退休者身上（Myles, 2002: 140–141；第 53 頁〈兩種隨收隨付的設計，兩種不公平〉）。</div></div><div class="qz" data-a="1"><div class="stem">3. 日本的總體經濟調整公式，什麼時候會暫停？</div><button class="opt" type="button">典型年金的替代率將低於 50%</button><button class="opt" type="button">基金餘額轉為負數</button><button class="opt" type="button">失業率超過 5%</button><button class="opt" type="button">平均餘命下降</button><div class="fb">暫停條件一：典型年金的替代率將低於 50%；條件二：通貨緊縮時，名目給付不逐年降低（王靜怡, 2026: 49–50；第 56 頁〈日本：總體經濟調整公式〉）。</div></div></div><p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p></section></div></div>
+</div>
+<div class="pane" data-pane="4">
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">01</span><span class="ct">總結</span><span class="cc">5 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-cards" data-kind="cards" data-label="本書提出的五個改革方向" data-sect="總結"><p class="lab">總結</p><h2>本書提出的五個改革方向</h2><div class="grid5 lift"><div class="card"><span class="tagc">1</span><h4>建立基礎年金</h4><p>以公民資格為核心，有助性別平等與社會團結</p></div><div class="card"><span class="tagc">2</span><h4>改革國民年金</h4><p>提高給付、擴大參保，長遠整合為全民基礎年金</p></div><div class="card"><span class="tagc">3</span><h4>納入動態調整</h4><p>從量出為入轉向量入為出，並保護弱勢</p></div><div class="card"><span class="tagc">4</span><h4>納入社會貢獻</h4><p>生育、養育與照顧，視同繳納保費的年資</p></div><div class="card"><span class="tagc">5</span><h4>強化第二層治理</h4><p>勞退新制建立自選平台，強化政府干預</p></div></div><footer class="sfoot"><span class="cite">葉崇揚等（2026: 27–29）</span><span class="pgno">第 10 週　47</span></footer></section>
+<section class="slide k-poll" data-kind="poll" data-label="◆ 動手：你怎麼看：五個改革方向，你最支持哪一個？" data-sect="總結" data-act="1"><p class="lab">◆ 表態</p><h2>你怎麼看：五個改革方向，你最支持哪一個？</h2><p class="src">表態完，下一頁是 Myles 和本書的結語。沒有標準答案</p><div class="pollbox"><div class="poll" data-poll="p47" data-act-key="poll-p47"><div class="opts"><button type="button" data-v="建立基礎年金">建立基礎年金</button><button type="button" data-v="改革國民年金">改革國民年金</button><button type="button" data-v="納入動態調整">納入動態調整</button><button type="button" data-v="納入社會貢獻">納入社會貢獻</button><button type="button" data-v="強化第二層治理">強化第二層治理</button></div></div><p class="pollthanks" data-reveal-for="p47">記下來了。下一頁看看作者怎麼說。</p></div></section>
+<section class="slide k-memo" data-kind="memo" data-label="年金改革不只是財務問題" data-sect="總結"><p class="lab">總結</p><h2>年金改革不只是財務問題</h2><div class="memo"><span class="qmark">“</span><blockquote><p>人口老化帶來的主要政策挑戰，既不是人口的，也不是經濟的，而是分配的。</p></blockquote><cite>— Myles（2002: 134）</cite><blockquote><p>年金改革的正當性，建立於政策決策者如何提出台灣福利國家的願景。</p></blockquote><cite>— 葉崇揚等（2026: 29）</cite></div><footer class="sfoot"><span class="cite">Myles（2002: 134）；葉崇揚等（2026: 29）</span><span class="pgno">第 10 週　48</span></footer></section>
+<section class="slide k-discuss" data-kind="discuss" data-label="◆ 討論" data-sect="總結" data-act="1"><p class="lab">總結</p><h2>討論</h2><p class="instr">點開一題，寫下你的想法。寫好的會跟著簽到一起送出，老師上課會挑幾則出來討論。</p><div class="discbox"><details class="disc"><summary><span class="no">01</span><span>你的排序最依賴哪一層？如果那一層出了問題，你的老年靠什麼？</span></summary><div class="inbox" data-inbox="d1" data-act-key="inbox-d1"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details><details class="disc"><summary><span class="no">02</span><span>勞保改革時，成本該由工作世代、退休世代，還是國家承擔？用 c ＝ B/L × p/w × (1 − S) 說明你的選擇。</span></summary><div class="inbox" data-inbox="d2" data-act-key="inbox-d2"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details><details class="disc"><summary><span class="no">03</span><span>台灣該從社會保險年金體系，走向以基礎年金為底的多層年金體系嗎？要付出什麼代價？</span></summary><div class="inbox" data-inbox="d3" data-act-key="inbox-d3"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details><details class="disc"><summary><span class="no">04</span><span>育兒與照顧算不算「貢獻」？該不該換成年金的年資？</span></summary><div class="inbox" data-inbox="d4" data-act-key="inbox-d4"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第 10 週　49</span></footer></section>
+<section class="slide k-readings" data-kind="readings" data-label="◆ 本週讀本" data-sect="總結" data-act="1"><p class="lab">總結</p><h2>本週讀本</h2><p class="instr">讀完一篇就勾起來，自己看進度。勾選只存在這台裝置，不會送出。</p><div class="readlist"><h4 class="rh4">必讀</h4><label class="rp"><input type="checkbox" data-r="0"><span>葉崇揚、陳芬苓、施世駿、古允文（2026）。〈台灣年金改革的危機與轉機〉。《葬送的福利年（金）》，頁 3–37。</span></label><label class="rp"><input type="checkbox" data-r="1"><span>Yeh, C.-Y., Cheng, H., &amp; Shi, S.-J. (2020). Public–private pension mixes in East Asia. Ageing &amp; Society, 40(3), 604–625.</span></label><label class="rp"><input type="checkbox" data-r="2"><span>Spicker, P. (2025). An Introduction to Social Policy, ch. 11 (pp. 168–180).</span></label><label class="rp"><input type="checkbox" data-r="3"><span>林宏陽（2020）。〈年金自動調整機制之理論意涵〉。《人文社會科學研究》，14(4)，51–75。</span></label><h4 class="rh4">延伸</h4><label class="rp"><input type="checkbox" data-r="4"><span>Myles, J. (2002). A new social contract for the elderly? (pp. 130–172).</span></label><label class="rp"><input type="checkbox" data-r="5"><span>《葬送的福利年（金）》第二章（王靜怡）、第四章（黃芳誼）、第六章（葉崇揚、施世駿）、第十章（劉侑學）。</span></label></div><p class="rpstat">已讀 <b>0</b> / <span class="rptot"></span></p><div class="card ticket"><h4>下週　第 11 週：健康照護政策（11/27）</h4></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第 10 週　50</span></footer></section></div></div>
+</div>
+<div class="pane" data-pane="5">
+<section class="slide k-done" data-kind="done" data-label="◆ 完成與簽到" data-sect=""><p class="lab">完成</p><h2>完成紀錄</h2><p class="src">三份小測驗全部作答、閱讀滿 20 分鐘，就可以送出簽到</p><div class="stat"><div>答對題數<b id="st-score">—</b></div><div>已作答<b id="st-done">—</b></div><div>閱讀時間<b id="st-time">00:00</b></div><div>看過頁數<b id="st-seen">—</b></div><div>動手做<b id="st-act">—</b></div></div><div class="idbox"><div><label for="sid">學號</label><input id="sid" maxlength="12" placeholder="例如 14115101" autocomplete="off"></div><div><label for="sname">姓名</label><input id="sname" maxlength="20" placeholder="你的姓名" autocomplete="off"></div></div><div class="fbbox"><label for="sfbk">這一週最有收穫、或最想問的一點（選填）</label><textarea id="sfbk" maxlength="300" placeholder="寫一兩句就好，老師上課會挑幾則回應"></textarea></div><p class="dmsg" id="dmsg"></p><button class="pbtn" id="submit" type="button" disabled>送出簽到</button><p class="code" id="scode"></p></section>
+</div>
+</main>
+<nav class="navbar">
+  <button class="nav-btn prev" id="prev" type="button" onclick="goPrev()">← 前頁</button>
+  <div class="nav-mid"><span class="pageno"><span id="cur">1</span> / <span id="tot">73</span></span><div class="dots" id="dots"></div></div>
+  <button class="nav-btn" id="next" type="button" onclick="goNext()">下一頁 →</button>
+</nav>
+<div class="khint" id="khint"><kbd>←</kbd> <kbd>→</kbd> 翻頁　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕</div>
+<div class="toc" id="toc" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" type="button" onclick="toggleToc()" aria-label="關閉">×</button>
+    <h3>目次</h3>
+    <p class="tsub">點任一條目跳到該頁。</p>
+    <div class="tfilter" id="tfilter">
+      <button type="button" class="on" data-f="all">全部</button>
+      <button type="button" data-f="act">要動手的</button>
+      <button type="button" data-f="sum">表格與數字</button>
+      <button type="button" data-f="quote">引文與討論</button>
+      <button type="button" data-f="read">讀本</button>
+    </div>
+    <ol id="toclist"></ol>
+  </div>
+</div>
+<script>
+/* ═══════════════════════════════════════════════
+   簽到設定：GAS 是 W10 簽到試算表的 Apps Script 網址（build.py 的 GAS 填入）。
+   留空時，送出鍵會產生一組代碼，請學生交給老師手動登記。
+   ═══════════════════════════════════════════════ */
+const CONFIG = {
+  ENDPOINT:'',
+  GAS:'https://script.google.com/macros/s/AKfycbxFRwbWj8J7yLhxmEcKhBhKh2uu3x4hsDhaVUwAKVKOdiI8I_WzfUZNdpW63xQnyjvDiA/exec',
+  FIELDS:{ sid:'', name:'', code:'', detail:'' },
+  WEEK:'W10', MIN_MINUTES:20
+};
+// 老師測試用：網址加 ?test=1 就跳過閱讀時間門檻（只影響這個分頁）
+if(new URLSearchParams(location.search).get('test')==='1') CONFIG.MIN_MINUTES=0;
+
+const KEY='sp115-w10';
+const store={get(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}},
+             set(o){try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}}};
+let S=store.get();
+['poll','quiz','seen','sort','match','flip','inbox','readp','acts','rank','order','checks'].forEach(k=>{ S[k]=S[k]||{}; });
+S.seconds=S.seconds||0; S.page=S.page||0;
+const save=()=>store.set(S);
+const $=id=>document.getElementById(id);
+const esc=v=>String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.random()*(i+1)|0; [a[i],a[j]]=[a[j],a[i]]; } return a; }
+// 打亂後若剛好和原來一樣，就再打亂一次（只有三、四項時常會遇到）
+function mix(a){ let b=a; for(let t=0;t<6 && a.length>1;t++){ b=shuffle(a); if(b.some((x,i)=>x!==a[i])) break; } return b; }
+function shake(el){ el.classList.add('shake'); setTimeout(()=>el.classList.remove('shake'),420); }
+
+const slides=[...document.querySelectorAll('.slide')];
+const TOT=slides.length;
+$('tot').textContent=TOT;
+let cur=0;
+
+/* ── 動手紀錄 ── */
+const ACTS=[...new Set([...document.querySelectorAll('[data-act-key]')].map(e=>e.dataset.actKey))];
+function actDone(k){ if(k && !S.acts[k]){ S.acts[k]=1; save(); refresh(); } }
+const actCount=()=>ACTS.filter(k=>S.acts[k]).length;
+
+/* ── 目次與 dots ── */
+const toclist=$('toclist'), dotsEl=$('dots');
+const SECN=['第一','第二','第三','第四','第五','第六','第七'];
+const secNo=s=>SECN.findIndex(k=>s.startsWith(k))+1;
+slides.forEach((s,i)=>{
+  const label=s.dataset.label, sect=s.dataset.sect||'';
+  const li=document.createElement('li');
+  if(s.dataset.kind==='divider'||s.dataset.kind==='cover') li.className='head';
+  li.innerHTML='<a href="#" data-i="'+i+'"><span class="n">'+(i+1)+'</span><span>'+label+'</span></a>';
+  li.querySelector('a').addEventListener('click',e=>{ e.preventDefault(); goTo(i); toggleToc(); });
+  toclist.appendChild(li);
+  const d=document.createElement('div');
+  const n=secNo(sect);
+  d.className='dot'+(n?' s'+n:'');
+  d.title=(i+1)+'. '+label;
+  d.addEventListener('click',()=>goTo(i));
+  dotsEl.appendChild(d);
+});
+const dots=[...dotsEl.children], tocLinks=[...toclist.querySelectorAll('a')];
+
+/* ── 分節與小節 ── */
+const panes=[...document.querySelectorAll('.pane')];
+const paneBtns=[...document.querySelectorAll('#panenav button')];
+function showPane(id,scroll){
+  panes.forEach(p=>p.classList.toggle('on',p.dataset.pane===id));
+  paneBtns.forEach(b=>b.classList.toggle('on',b.dataset.pane===id));
+  S.pane=id; save();
+  document.querySelectorAll('.sbar.show').forEach(b=>b.classList.remove('show'));
+  if(scroll!==false) window.scrollTo({top:0,behavior:'instant'});
+}
+paneBtns.forEach(b=>b.addEventListener('click',()=>showPane(b.dataset.pane)));
+document.querySelectorAll('.chap-h').forEach(h=>{
+  h.addEventListener('click',()=>{
+    const c=h.parentElement, was=c.classList.contains('open');
+    c.classList.toggle('open');
+    if(!was) c.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+/* ── 翻頁 ── */
+function goTo(n){
+  n=Math.max(0,Math.min(TOT-1,n));
+  const sl=slides[n];
+  const pane=sl.closest('.pane');
+  if(pane && !pane.classList.contains('on')) showPane(pane.dataset.pane,false);
+  const chap=sl.closest('.chap');
+  if(chap) chap.classList.add('open');
+  cur=n;
+  requestAnimationFrame(()=>sl.scrollIntoView({behavior:'smooth',block:'start'}));
+  S.page=cur; S.seen[cur]=1; save();
+  paint();
+}
+function goNext(){ goTo(cur+1); }
+function goPrev(){ goTo(cur-1); }
+function paintBar(){
+  const m=document.documentElement.scrollHeight-window.innerHeight;
+  $('bar').style.width=(m>0?Math.min(100,window.scrollY/m*100):0)+'%';
+}
+function paintPos(){
+  $('cur').textContent=cur+1;
+  $('sect').textContent=slides[cur].dataset.sect||'';
+  dots.forEach((d,i)=>d.classList.toggle('on',i===cur));
+  tocLinks.forEach((a,i)=>a.classList.toggle('cur',i===cur));
+  const act=dots[cur]; if(act) act.scrollIntoView({block:'nearest',inline:'center'});
+  $('prev').disabled=(cur===0);
+  $('next').disabled=(cur===TOT-1);
+  paintSectProg();
+}
+function paint(){
+  paintBar(); paintPos();
+  refresh();
+}
+let SECTIDX=null;
+function paintSectProg(){
+  const el=$('sprog'); if(!el) return;
+  if(!SECTIDX){ SECTIDX={}; slides.forEach((s,i)=>{ const k=s.dataset.sect||''; (SECTIDX[k]=SECTIDX[k]||[]).push(i); }); }
+  const k=slides[cur].dataset.sect||'', arr=SECTIDX[k]||[];
+  el.textContent=(k && arr.length>1)?((arr.indexOf(cur)+1)+' / '+arr.length):'';
+}
+
+/* ── 鍵盤 ── */
+document.addEventListener('keydown',e=>{
+  const tg=e.target.tagName;
+  if(tg==='INPUT'||tg==='TEXTAREA') return;
+  if($('toc').classList.contains('show')){ if(e.key==='Escape') toggleToc(); return; }
+  if(e.key==='ArrowRight'||e.key==='PageDown'){ e.preventDefault(); goNext(); }
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); goPrev(); }
+  else if(e.key==='Escape'){ toggleToc(); }
+  else if(e.key==='f'||e.key==='F'){ goFull(); }
+  else if(e.key==='Home'){ goTo(0); }
+  else if(e.key==='End'){ goTo(TOT-1); }
+});
+function toggleToc(){ $('toc').classList.toggle('show'); }
+function goFull(){ if(!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.(); }
+
+/* ── 計時 ── */
+function fmt(s){ const m=Math.floor(s/60); return String(m).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+let active=!document.hidden;
+document.addEventListener('visibilitychange',()=>{ active=!document.hidden; });
+setInterval(()=>{
+  if(!active) return;
+  S.seconds++;
+  $('clock').textContent=fmt(S.seconds);
+  const st=$('st-time'); if(st) st.textContent=fmt(S.seconds);
+  if(S.seconds%10===0) save();
+  refresh();
+},1000);
+
+/* ── 表態與先猜 ── */
+function paintRevealAll(){
+  document.querySelectorAll('[data-reveal-all]').forEach(el=>{
+    el.classList.toggle('show',el.dataset.revealAll.split(',').every(k=>S.poll[k]));
+  });
+}
+document.querySelectorAll('[data-poll]').forEach(box=>{
+  const id=box.dataset.poll, ans=box.dataset.answer||'';
+  const bs=[...box.querySelectorAll('.opts button')];
+  const rv=[...document.querySelectorAll('[data-reveal-for="'+id+'"]')];
+  const verdict=document.querySelector('[data-verdict-for="'+id+'"]');
+  const paintP=()=>{
+    const v=S.poll[id];
+    bs.forEach(b=>{
+      b.classList.remove('sel','ok','ng');
+      if(!v) return;
+      if(ans){ b.disabled=true; if(b.dataset.v===ans) b.classList.add('ok'); else if(b.dataset.v===v) b.classList.add('ng'); }
+      else if(b.dataset.v===v) b.classList.add('sel');
+    });
+    if(v){ rv.forEach(r=>r.classList.add('show'));
+      if(verdict){ verdict.textContent = !ans ? '' : (v===ans ? '你猜對了。' : '答案是「'+ans+'」。'); verdict.className='verdict show '+(v===ans?'ok':'ng'); } }
+  };
+  bs.forEach(b=>b.addEventListener('click',()=>{
+    if(ans && S.poll[id]) return;
+    S.poll[id]=b.dataset.v; save(); paintP(); paintRecall(); paintRevealAll(); actDone(box.dataset.actKey);
+  }));
+  paintP();
+});
+function paintRecall(){
+  document.querySelectorAll('[data-recall]').forEach(el=>{ el.textContent=S.poll[el.dataset.recall]||'（沒有作答）'; });
+}
+
+/* ── 翻牌 ── */
+document.querySelectorAll('[data-flips]').forEach(fl=>{
+  const id=fl.dataset.flips, cards=[...fl.querySelectorAll('.fcard')];
+  S.flip[id]=S.flip[id]||[];
+  const chk=()=>{ if(cards.every(c=>c.classList.contains('open'))) actDone(fl.dataset.actKey); };
+  const rec=()=>{ S.flip[id]=cards.map((c,i)=>c.classList.contains('open')?i:-1).filter(i=>i>=0); save(); chk(); };
+  cards.forEach((c,i)=>{
+    if(S.flip[id].includes(i)) c.classList.add('open');
+    c.addEventListener('click',()=>{ c.classList.toggle('open'); rec(); });
+  });
+  const all=document.querySelector('[data-flipall="'+id+'"]');
+  if(all) all.addEventListener('click',()=>{ cards.forEach(c=>c.classList.add('open')); rec(); });
+});
+
+/* ── 分類（點選或拖曳） ── */
+document.querySelectorAll('[data-sort]').forEach(box=>{
+  const id=box.dataset.sort;
+  const tray=box.querySelector('.tray'), cols=[...box.querySelectorAll('.scol')];
+  const cards=[...box.querySelectorAll('.sc')], N=cards.length;
+  const fb=box.querySelector('.fbk'), score=box.querySelector('.score');
+  const st=S.sort[id]=S.sort[id]||{p:{}};
+  let sel=null;
+  const bar=document.createElement('div');
+  bar.className='sbar';
+  bar.innerHTML='<span class="sbt"></span>'+cols.map(c=>'<button type="button" data-k="'+c.dataset.k+'">'+esc(c.dataset.short||c.querySelector('h4').textContent)+'</button>').join('')
+    +'<button type="button" class="x" aria-label="取消">取消</button>';
+  document.body.appendChild(bar);
+  const select=el=>{
+    cards.forEach(c=>c.classList.remove('sel')); sel=el;
+    document.querySelectorAll('.sbar.show').forEach(b=>{ if(b!==bar) b.classList.remove('show'); });
+    if(el){ el.classList.add('sel'); bar.querySelector('.sbt').textContent='把「'+el.dataset.txt+'」放到：'; bar.classList.add('show'); }
+    else bar.classList.remove('show');
+  };
+  const clear=()=>{ cards.forEach(c=>c.classList.remove('ok','ng')); fb.className='fbk'; score.textContent=''; };
+  const put=(el,col)=>{
+    (col?col.querySelector('.drop'):tray).appendChild(el);
+    if(col) st.p[el.dataset.i]=col.dataset.k; else delete st.p[el.dataset.i];
+    save();
+  };
+  const byI=i=>cards.find(c=>c.dataset.i===i);
+  mix(cards).forEach(c=>tray.appendChild(c));
+  cards.forEach(c=>{ const k=st.p[c.dataset.i]; const col=k&&cols.find(x=>x.dataset.k===k); if(col) col.querySelector('.drop').appendChild(c); });
+  cards.forEach(c=>{
+    c.addEventListener('click',e=>{
+      e.stopPropagation(); clear();
+      if(c.parentElement!==tray){ put(c,null); select(c); return; }
+      select(sel===c?null:c);
+    });
+    c.addEventListener('dragstart',e=>{ e.dataTransfer.setData('text/plain',c.dataset.i); e.dataTransfer.effectAllowed='move'; select(c); });
+  });
+  cols.forEach(col=>{
+    col.addEventListener('click',()=>{ if(!sel) return; clear(); put(sel,col); select(null); });
+    col.addEventListener('dragover',e=>{ e.preventDefault(); col.classList.add('hot'); });
+    col.addEventListener('dragleave',()=>col.classList.remove('hot'));
+    col.addEventListener('drop',e=>{ e.preventDefault(); col.classList.remove('hot');
+      const el=byI(e.dataTransfer.getData('text/plain')); if(!el) return; clear(); put(el,col); select(null); });
+  });
+  bar.querySelectorAll('button[data-k]').forEach(b=>b.addEventListener('click',()=>{
+    if(!sel) return; clear(); put(sel,cols.find(c=>c.dataset.k===b.dataset.k)); select(null);
+  }));
+  bar.querySelector('.x').addEventListener('click',()=>select(null));
+  tray.addEventListener('dragover',e=>e.preventDefault());
+  tray.addEventListener('drop',e=>{ e.preventDefault(); const el=byI(e.dataTransfer.getData('text/plain')); if(el){ clear(); put(el,null); select(null); } });
+  box.querySelector('.js-check').addEventListener('click',()=>{
+    let n=0, placed=0; const wrong=[], op=box.dataset.opinion;   // op：沒有標準答案，放好之後只揭曉作者的放法
+    cols.forEach(col=>col.querySelectorAll('.sc').forEach(el=>{
+      placed++; if(op) return;
+      const ok=el.dataset.k===col.dataset.k; n+=ok; el.classList.add(ok?'ok':'ng'); if(!ok) wrong.push(el);
+    }));
+    if(placed<N){ cards.forEach(c=>c.classList.remove('ok','ng')); fb.className='fbk show'; fb.innerHTML='還有 <b>'+(N-placed)+'</b> 張沒放。'; return; }
+    if(op){ fb.className='fbk show'; fb.innerHTML='<b>Holliday 的放法：</b>'+esc(op); st.done=1; save(); actDone(box.dataset.actKey); return; }
+    score.textContent=n+' / '+N; st.score=n; save(); actDone(box.dataset.actKey);
+    fb.className='fbk show '+(n===N?'ok':'ng');
+    fb.innerHTML = n===N ? '<b>全對。</b>'+(box.dataset.done||'')
+      : '<b>放錯的：</b><br>'+wrong.map(el=>'「'+esc(el.dataset.txt)+'」屬於「'+esc(el.dataset.ans)+'」'+(el.dataset.dim?'（'+esc(el.dataset.dim)+'）':'')).join('<br>');
+  });
+  box.querySelector('.js-reset').addEventListener('click',()=>{ clear(); st.p={}; delete st.score; save(); select(null); shuffle(cards).forEach(c=>tray.appendChild(c)); });
+});
+
+/* ── 配對 ── */
+document.querySelectorAll('[data-match]').forEach(box=>{
+  const id=box.dataset.match, [L,R]=box.querySelectorAll('.mcol');
+  const stat=box.parentElement.querySelector('.mstat');
+  const total=L.querySelectorAll('.mitem').length;
+  S.match[id]=S.match[id]||[];
+  let sel=null;
+  mix([...R.querySelectorAll('.mitem')]).forEach(it=>R.appendChild(it));
+  const paintM=()=>{
+    const done=S.match[id];
+    box.querySelectorAll('.mitem').forEach(it=>it.classList.toggle('done',done.includes(it.dataset.k)));
+    stat.innerHTML = done.length===total ? '全部配對完成 ✓' : '已配對 <b>'+done.length+'</b> / '+total+'　·　點左邊一項，再點右邊對應的一項';
+    if(done.length===total) actDone(box.dataset.actKey);
+  };
+  box.querySelectorAll('.mitem').forEach(it=>it.addEventListener('click',()=>{
+    if(it.classList.contains('done')) return;
+    if(it.parentElement===L){ L.querySelectorAll('.mitem').forEach(x=>x.classList.remove('sel')); it.classList.add('sel'); sel=it; return; }
+    if(!sel){ shake(it); return; }
+    if(sel.dataset.k===it.dataset.k){ sel.classList.remove('sel'); S.match[id].push(it.dataset.k); save(); sel=null; paintM(); }
+    else shake(it);
+  }));
+  paintM();
+});
+
+/* ── 暖身排序：點的順序就是名次 ── */
+document.querySelectorAll('[data-rank]').forEach(box=>{
+  const id=box.dataset.rank, n=+box.dataset.n, btns=[...box.querySelectorAll('.rk')];
+  const cnt=box.querySelector('.cnt'), fb=box.querySelector('.fbk');
+  S.rank[id]=S.rank[id]||[];
+  const paintR=()=>{
+    const a=S.rank[id];
+    btns.forEach(b=>{ const k=a.indexOf(+b.dataset.i); b.classList.toggle('on',k>=0); b.querySelector('.rn').textContent=k>=0?k+1:''; });
+    cnt.textContent='已排 '+a.length+' / '+n;
+    if(a.length===n){ fb.className='fbk show ok'; fb.innerHTML='<b>排好了。</b>第四節會對照台灣年金體系的四層樓，看看你最依賴的落在哪一層。'; actDone(box.dataset.actKey); }
+    else fb.className='fbk';
+    paintRankCmp();
+  };
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    const a=S.rank[id], i=+b.dataset.i;
+    if(a.includes(i)||a.length>=n) return;
+    a.push(i); save(); paintR();
+  }));
+  box.querySelector('.js-reset').addEventListener('click',()=>{ S.rank[id]=[]; save(); paintR(); });
+  paintR();
+});
+function paintRankCmp(){
+  document.querySelectorAll('[data-rankcmp]').forEach(box=>{
+    const a=S.rank[box.dataset.rankcmp]||[], msg=box.querySelector('.rcmsg'), lis=[...box.querySelectorAll('[data-mine]')];
+    lis.forEach(el=>{
+      const k=a.indexOf(+el.dataset.mine);
+      el.textContent=k>=0?'你排第 '+(k+1):'—';
+      el.closest('li').classList.toggle('top',k===0);
+    });
+    if(a.length<lis.length){ msg.textContent='你還沒在開場排完。回到開場的暖身頁排一次，這裡就會出現你的名次。'; return; }
+    const first=lis.find(el=>a.indexOf(+el.dataset.mine)===0), li=first.closest('li');
+    msg.innerHTML='你最依賴的是「<b>'+esc(li.querySelector('b').textContent)+'</b>」，在 <b>'+esc(li.dataset.floor)+'</b>。';
+  });
+}
+
+/* ── 依序點選（惡性循環） ── */
+document.querySelectorAll('[data-order]').forEach(box=>{
+  const id=box.dataset.order, tray=box.querySelector('.otray');
+  const items=[...tray.querySelectorAll('.oi')], slots=[...box.querySelectorAll('.tline li')];
+  const fb=box.querySelector('.fbk');
+  S.order[id]=S.order[id]||0;
+  const fill=n=>{
+    slots.forEach((li,i)=>{ if(i<n && !li.classList.contains('filled')){
+      li.classList.remove('empty'); li.classList.add('filled');
+      li.lastElementChild.textContent=li.dataset.t; } });
+    items.forEach(it=>it.classList.toggle('used',+it.dataset.o<n));
+    if(n===slots.length){ fb.className='fbk show ok'; fb.innerHTML='<b>排好了。</b>第四步之後，又回到第一步。'; actDone(box.dataset.actKey); }
+  };
+  mix(items).forEach(it=>tray.appendChild(it));
+  items.forEach(it=>it.addEventListener('click',()=>{
+    if(+it.dataset.o===S.order[id]){ S.order[id]++; save(); fill(S.order[id]); }
+    else shake(it);
+  }));
+  box.querySelector('.js-show').addEventListener('click',()=>{ S.order[id]=slots.length; save(); fill(slots.length); });
+  fill(S.order[id]);
+});
+
+/* ── 審查單：逐項勾選 ── */
+document.querySelectorAll('[data-checks]').forEach(box=>{
+  const id=box.dataset.checks, cbs=[...box.querySelectorAll('input')], stat=box.parentElement.querySelector('.ckstat b');
+  S.checks[id]=S.checks[id]||[];
+  const paintC=()=>{
+    cbs.forEach((c,i)=>{ c.checked=S.checks[id].includes(i); c.parentElement.classList.toggle('done',c.checked); });
+    stat.textContent=S.checks[id].length;
+    if(S.checks[id].length===cbs.length) actDone(box.dataset.actKey);
+  };
+  cbs.forEach((c,i)=>c.addEventListener('change',()=>{
+    S.checks[id]=cbs.map((x,k)=>x.checked?k:-1).filter(k=>k>=0); save(); paintC(); }));
+  paintC();
+});
+
+/* ── 寫一句 ── */
+document.querySelectorAll('[data-inbox]').forEach(box=>{
+  const id=box.dataset.inbox, ta=box.querySelector('textarea'), btn=box.querySelector('.js-save'), mine=box.querySelector('.imine');
+  const show=v=>{ mine.innerHTML='你寫的是：<b>'+esc(v)+'</b><br>這一句會跟著簽到一起送出，老師上課會挑幾則出來討論。'; mine.classList.add('show'); };
+  if(S.inbox[id]){ ta.value=S.inbox[id]; show(S.inbox[id]); btn.textContent='已存起來（還能改）'; }
+  btn.disabled=ta.value.trim().length<4;
+  ta.addEventListener('input',()=>{ btn.disabled=ta.value.trim().length<4; });
+  btn.addEventListener('click',()=>{ const v=ta.value.trim(); if(v.length<4) return;
+    S.inbox[id]=v; save(); show(v); btn.textContent='已存起來（還能改）'; actDone(box.dataset.actKey); });
+});
+
+/* ── 閱讀進度 ── */
+const rps=[...document.querySelectorAll('.rp')];
+function paintRead(){
+  let n=0;
+  rps.forEach(r=>{ const cb=r.querySelector('input'); r.classList.toggle('done',cb.checked); if(cb.checked) n++; });
+  document.querySelectorAll('.rpstat b').forEach(b=>b.textContent=n);
+  document.querySelectorAll('.rptot').forEach(b=>b.textContent=rps.length);
+}
+rps.forEach(r=>{
+  const cb=r.querySelector('input'), k='r'+cb.dataset.r;
+  if(S.readp[k]) cb.checked=true;
+  cb.addEventListener('change',()=>{ S.readp[k]=cb.checked?1:0; save(); paintRead(); });
+});
+paintRead();
+
+/* ── 小測驗 ── */
+const ANS={};
+document.querySelectorAll('[data-quiz]').forEach(quiz=>{
+  const qid=quiz.dataset.quiz;
+  ANS[qid]=[...quiz.querySelectorAll('.qz')].map(q=>parseInt(q.dataset.a,10));
+  S.quiz[qid]=S.quiz[qid]||{};
+  quiz.querySelectorAll('.qz').forEach((q,i)=>{
+    const a=parseInt(q.dataset.a,10), opts=[...q.querySelectorAll('.opt')], fb=q.querySelector('.fb');
+    const lock=picked=>{
+      opts.forEach((o,k)=>{ o.disabled=true;
+        if(k+1===a) o.classList.add('right'); else if(k+1===picked) o.classList.add('wrong'); });
+      fb.classList.add('show');
+    };
+    if(S.quiz[qid][i]) lock(S.quiz[qid][i]);
+    opts.forEach((o,k)=>o.addEventListener('click',()=>{
+      if(S.quiz[qid][i]) return;
+      S.quiz[qid][i]=k+1; save(); lock(k+1); refresh();
+    }));
+  });
+});
+function tally(){
+  let done=0,right=0,total=0;
+  for(const qid in ANS) ANS[qid].forEach((a,i)=>{
+    total++; const p=S.quiz[qid]&&S.quiz[qid][i];
+    if(p){ done++; if(p===a) right++; }
+  });
+  return {done,right,total};
+}
+
+/* ── 完成頁 ── */
+function refresh(){
+  const sc=$('st-score'); if(!sc) return;
+  const t=tally();
+  sc.textContent=t.right+' / '+t.total;
+  $('st-done').textContent=t.done+' / '+t.total;
+  $('st-seen').textContent=Object.keys(S.seen).length+' / '+TOT;
+  $('st-act').textContent=actCount()+' / '+ACTS.length;
+  $('st-time').textContent=fmt(S.seconds);
+  const need=CONFIG.MIN_MINUTES*60, btn=$('submit'), msg=$('dmsg');
+  if(S.sent){
+    btn.disabled=true; btn.textContent=S.sentRow?'已登記':'已送出';
+    msg.textContent='已於 '+S.sent+(S.sentRow?' 完成登記。':' 送出。');
+    const box=$('scode');
+    if(box && S.sentCode) box.innerHTML=esc(S.sentWho||'')+'<br><b>'+esc(S.sentCode)+'</b>'
+      +'<span class="codenote">'
+      +(S.sentRow ? '已確認寫入老師的簽到表（第 '+Number(S.sentRow)+' 列），簽到完成。'
+        : '瀏覽器收不到 Google 的回覆，這裡無法確認是否寫入成功。'
+        +'請記下上面這組代碼；若老師的紀錄裡沒有你，把代碼交給老師即可補登。')+'</span>';
+    return;
+  }
+  const sid=($('sid').value||'').trim(), sname=($('sname').value||'').trim();
+  const okQ=(t.done===t.total), okT=(S.seconds>=need), okId=(sid.length>=4 && sname.length>=1);
+  btn.disabled=!(okQ&&okT&&okId);
+  if(!okQ) msg.textContent='還有 '+(t.total-t.done)+' 題沒有作答。三份小測驗全部作答完畢後，就可以送出簽到。';
+  else if(!okT) msg.textContent='已全部作答。閱讀時間還差 '+Math.ceil((need-S.seconds)/60)+' 分鐘（門檻 '+CONFIG.MIN_MINUTES+' 分鐘）。';
+  else if(!okId) msg.textContent='條件已符合。請填上學號與姓名，才能送出簽到。';
+  else msg.textContent='條件已符合，可以送出簽到。';
+}
+$('submit').addEventListener('click',()=>{
+  const t=tally(), d=new Date(), pad=n=>String(n).padStart(2,'0');
+  const stamp=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
+  const note=$('scode');
+  const sid=($('sid').value||'').trim(), name=($('sname').value||'').trim();
+  const minutes=Math.floor(S.seconds/60), pages=Object.keys(S.seen).length;
+  const feedback=($('sfbk').value||'').trim();
+  const code=CONFIG.WEEK+'｜答對 '+t.right+'/'+t.done+'｜'+minutes+' 分｜'+pages+'/'+TOT+' 頁';
+  const groups=[...document.querySelectorAll('[data-rank="r3"] .rk .rt')].map(e=>e.textContent);
+  const rank=(S.rank.r3||[]).map(k=>groups[k]).join('>')||'（未排）';
+  const detail='暖身排序：'+rank
+    +'｜勞保先改哪一項：'+(S.poll.p40||'—')
+    +'｜最支持的改革方向：'+(S.poll.p47||'—')
+    +'｜討論1：'+(((S.inbox.d1||'').trim())||'（未填）')
+    +'｜討論2：'+(((S.inbox.d2||'').trim())||'（未填）')
+    +'｜討論3：'+(((S.inbox.d3||'').trim())||'（未填）')
+    +'｜討論4：'+(((S.inbox.d4||'').trim())||'（未填）')
+    +'｜動手 '+actCount()+'/'+ACTS.length
+    +'｜回饋：'+(feedback||'（未填）');
+  const manual=why=>{ note.innerHTML='<b>尚未送出</b>：'+why+'請把這組代碼交給老師：<br><b>'+esc(code)+'</b>'; };
+  if(!CONFIG.ENDPOINT && !CONFIG.GAS){ manual('簽到後台還沒接上。'); return; }
+  const btn=$('submit');
+  btn.disabled=true; note.textContent='傳送中…';
+  const fd=new URLSearchParams();
+  fd.append(CONFIG.FIELDS.sid,sid);
+  fd.append(CONFIG.FIELDS.name,name);
+  fd.append(CONFIG.FIELDS.code,code);
+  fd.append(CONFIG.FIELDS.detail,detail);
+  const viaForm=()=>!CONFIG.ENDPOINT ? (btn.disabled=false, manual('簽到後台沒有回應。')) : fetch(CONFIG.ENDPOINT,{method:'POST',mode:'no-cors',body:fd})
+  .then(()=>{ S.sent=stamp; S.sentCode=code; S.sentWho=sid+'　'+name; save(); refresh(); })
+  .catch(()=>{ btn.disabled=false; note.textContent='送出失敗，請確認網路後再按一次；若仍失敗請截圖這一頁給老師。'; });
+  if(!CONFIG.GAS){ viaForm(); return; }
+  // 先送簽到後台：寫進試算表並讀回確認，回傳列號。後台沒回應或出錯，就改走表單
+  const ac=new AbortController(), timer=setTimeout(()=>ac.abort(),20000);
+  fetch(CONFIG.GAS,{method:'POST',body:new URLSearchParams({week:CONFIG.WEEK,sid:sid,name:name,code,detail}),signal:ac.signal})
+  .then(r=>r.json())
+  .then(j=>{ clearTimeout(timer); if(!j||!j.ok||!j.row) throw new Error('not ok');
+    S.sent=stamp; S.sentCode=code; S.sentWho=sid+'　'+name; S.sentRow=j.row; save(); refresh(); })
+  .catch(()=>{ clearTimeout(timer); viaForm(); });
+});
+
+/* ── 目次篩選 ── */
+const SUM_KINDS=['table','bars','stats','formula','tiers','timeline','steps'];
+const QUOTE_KINDS=['memo','discuss','reveal'];
+$('tfilter').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  $('tfilter').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  const f=b.dataset.f;
+  [...toclist.children].forEach((li,i)=>{
+    const s=slides[i], k=s.dataset.kind;
+    let show=true;
+    if(f==='act') show=s.hasAttribute('data-act');
+    else if(f==='sum') show=SUM_KINDS.includes(k);
+    else if(f==='quote') show=QUOTE_KINDS.includes(k);
+    else if(f==='read') show=(k==='readings');
+    li.classList.toggle('hide',!show);
+  });
+});
+
+/* ── 捲動追蹤：目前看到哪一頁 ── */
+let tick=false;
+window.addEventListener('scroll',()=>{ if(tick) return; tick=true; requestAnimationFrame(()=>{ paintBar(); tick=false; }); },{passive:true});
+const io=new IntersectionObserver(es=>{
+  let best=null, bi=-1;
+  es.forEach(e=>{ if(e.isIntersecting){ const i=slides.indexOf(e.target);
+    if(i>=0 && (best===null||e.intersectionRatio>best)){ best=e.intersectionRatio; bi=i; } } });
+  if(bi>=0 && bi!==cur){ cur=bi; S.page=cur; S.seen[cur]=1; save(); paintPos(); }
+},{rootMargin:'-40% 0px -40% 0px',threshold:[0,.25,.5,1]});
+slides.forEach(sl=>io.observe(sl));
+/* 看過頁數：一頁露出一半，或占滿半個畫面，就算看過。
+   不用上面的中段帶判定：節首的短頁捲不進中段帶，相鄰的長頁也會在同一批回報裡被略過。 */
+const seenIO=new IntersectionObserver(es=>{
+  let add=false;
+  es.forEach(e=>{ if(!e.isIntersecting) return;
+    const i=slides.indexOf(e.target);
+    if(i>=0 && !S.seen[i] && (e.intersectionRatio>=.5 || e.intersectionRect.height>=window.innerHeight*.5)){
+      S.seen[i]=1; add=true; } });
+  if(add){ save(); refresh(); }
+},{threshold:[0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1]});
+slides.forEach(sl=>seenIO.observe(sl));
+
+/* ── 起始 ── */
+showPane(S.pane||'0',false);
+slides.forEach((sl,i)=>{ if(sl.offsetParent!==null && sl.getBoundingClientRect().top<window.innerHeight) S.seen[i]=1; });
+['sid','sname','sfbk'].forEach(id=>{
+  const el=$(id); if(!el) return;
+  if(S[id]) el.value=S[id];
+  el.addEventListener('input',()=>{ S[id]=el.value; save(); refresh(); });
+});
+paintRecall(); paintRevealAll(); paintRankCmp();
+$('clock').textContent=fmt(S.seconds);
+paint();
+setTimeout(()=>{ const k=$('khint'); if(k) k.style.opacity=0; },6000);
+
+/* ── 續讀提示 ── */
+(function(){
+  const start=S.page||0;
+  if(start<2) return;
+  const box=document.createElement('div');
+  box.className='resume';
+  box.innerHTML='<span>上次讀到第 '+(start+1)+' 頁</span><button type="button" id="rs-go">繼續讀</button><button type="button" class="x" id="rs-top">從頭開始</button>';
+  document.body.appendChild(box);
+  const kill=()=>box.remove();
+  $('rs-go').addEventListener('click',()=>{ goTo(start); kill(); });
+  $('rs-top').addEventListener('click',()=>{ goTo(0); kill(); });
+  setTimeout(kill,12000);
+})();
+
+
+/* ═══════ 第 10 週：讓頁面活起來 ═══════ */
+const RM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// 數字從 0 跳到投影片上的值，最後換回原文
+function countUp(el){
+  const fin=el.dataset.final, m=fin.match(/-?\d[\d,]*(\.\d+)?/);
+  if(!m||RM){ el.textContent=fin; return; }
+  const num=parseFloat(m[0].replace(/,/g,'')), dec=(m[1]||'').length-(m[1]?1:0), pre=fin.slice(0,m.index), post=fin.slice(m.index+m[0].length);
+  const t0=performance.now(), dur=1100;
+  const step=t=>{ const p=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-p,3);
+    el.textContent=p<1? pre+(num*e).toFixed(dec)+post : fin;
+    if(p<1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}
+// 頁面捲進畫面：浮現、長條長出來、數字往上跳
+const liveIO=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting) return;
+  const sl=e.target; if(sl.classList.contains('in')) return;
+  sl.classList.add('in'); liveIO.unobserve(sl);
+  sl.querySelectorAll('.cu').forEach(countUp);
+}),{threshold:.12});
+if(RM) slides.forEach(sl=>sl.classList.add('in')); else { document.documentElement.classList.add('anim'); slides.forEach(sl=>liveIO.observe(sl)); }
+// 剛切換分頁、或展開章節時，畫面裡的頁面要馬上顯示
+function wakeVisible(){ slides.forEach(sl=>{ if(sl.offsetParent!==null){ const r=sl.getBoundingClientRect();
+  if(r.top<innerHeight && r.bottom>0 && !sl.classList.contains('in')){ sl.classList.add('in'); liveIO.unobserve(sl); sl.querySelectorAll('.cu').forEach(countUp); } } }); }
+document.addEventListener('click',()=>setTimeout(wakeVisible,60));
+setTimeout(wakeVisible,200);
+// 算式：點一列，對應的符號亮起來
+document.querySelectorAll('.k-formula').forEach(sl=>{
+  const terms=[...sl.querySelectorAll('.term')], fs=[...sl.querySelectorAll('.fs')];
+  terms.forEach(t=>t.addEventListener('click',()=>{
+    const on=!t.classList.contains('on');
+    terms.forEach(x=>x.classList.remove('on')); fs.forEach(x=>x.classList.remove('on'));
+    if(on){ t.classList.add('on'); fs.filter(x=>x.dataset.s===t.dataset.s).forEach(x=>x.classList.add('on')); }
+  }));
+});
+// 小測驗答對：選項跳一下
+document.querySelectorAll('.qz .opt').forEach(o=>o.addEventListener('click',()=>setTimeout(()=>{
+  const r=o.closest('.qz').querySelector('.opt.right'); if(r){ r.classList.add('pop'); setTimeout(()=>r.classList.remove('pop'),600); } },10)));
+
+</script>
+</body>
+</html>
