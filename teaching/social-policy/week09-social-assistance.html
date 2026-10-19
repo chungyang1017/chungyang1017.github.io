@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>社會救助與貧窮 ・ 社會政策 第 9 週 ・ 葉崇揚</title>
+<meta name="description" content="社會政策第 9 週互動講義（分頁式）：貧窮的定義與測量、社會安全與社會救助、福利國家的目標、福利應得性（CARIN）、救助的政治，以及台灣的社會救助。共 69 頁，含分節小測驗、暖身排序、先猜、分類、配對、翻檔案與課堂討論。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* 第 9 週互動講義：個案檔案夾風（依上課投影片「個案檔案」版型）
+   深綠桌面、牛皮紙檔案夾、米白公文紙、印泥紅章。字型：Noto Sans TC，編號與條號用 Courier Prime。
+   互動元件沿用第 8 週，只換顏色與形狀。 */
+:root{
+  --desk:#3F4A43; --desk2:#334039; --cream:#F1E7D0; --cream2:#CFC4AA;
+  --canvas:#EFE0BC; --lift:#E2C88E; --white:#FDFBF5; --bone:#F6EEDC;
+  --ink:#24221F; --charcoal:#2F2B26; --slate:#57524A; --granite:#4A4338; --dust:#BFA672; --line:#D9C59A;
+  --orange:#9E2A20; --orange-l:#B8483A; --clay:#2E5E5A; --link:#2F4E7A;
+  --orange-soft:#F2DCD3; --ok:#2E5E5A; --ok-soft:#DCEAE5; --ng:#9E2A20; --ng-soft:#F2DCD3;
+  --sans:"Noto Sans TC",system-ui,-apple-system,sans-serif;
+  --mono:"Courier Prime","Noto Sans TC",ui-monospace,monospace;
+  --top:58px; --tabs:52px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--canvas);-webkit-text-size-adjust:100%}
+body{background:var(--canvas);color:var(--charcoal);font-family:var(--sans);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;
+  padding-top:calc(var(--top) + var(--tabs));padding-bottom:84px}
+button{font:inherit;color:inherit}
+b,strong{font-weight:700;color:var(--ink)}
+kbd{font-family:inherit;font-size:12px;border:1px solid var(--dust);border-bottom-width:2px;border-radius:6px;padding:1px 6px;background:var(--white);color:var(--charcoal)}
+
+/* ── 頂列 ── */
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--top);z-index:40;background:rgba(51,64,57,.97);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:0 16px;font-size:14px}
+.logo{width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--white);display:grid;place-items:center;font-size:12px;font-weight:800;flex:none}
+.topbar .course{font-weight:700;color:var(--ink);white-space:nowrap}
+.topbar .wk{color:var(--slate);white-space:nowrap}
+.topbar .sect{color:var(--slate);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.topbar .sprog{color:var(--slate);white-space:nowrap;font-variant-numeric:tabular-nums}
+.topbar .sp{flex:1}
+.clock{font-variant-numeric:tabular-nums;background:var(--white);border-radius:999px;padding:4px 12px;font-weight:600;color:var(--ink)}
+.tb{height:36px;border:1px solid var(--dust);background:var(--white);color:var(--ink);border-radius:999px;padding:0 16px;cursor:pointer;font-size:14px;font-weight:600;white-space:nowrap}
+.tb:hover{border-color:var(--ink)}
+.tb.pri{background:var(--ink);border-color:var(--ink);color:var(--white)}
+#bar{position:fixed;top:var(--top);left:0;height:3px;width:0;background:var(--orange);z-index:41;transition:width .2s}
+@media(max-width:900px){.topbar .course,.topbar .wk,.topbar .hide-m{display:none}}
+@media(max-width:520px){.topbar{gap:8px;padding:0 12px}.topbar .sprog{display:none}}
+
+/* ── 分節頁籤 ── */
+.panenav{position:fixed;top:var(--top);left:0;right:0;height:var(--tabs);z-index:39;background:rgba(51,64,57,.97);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 16px;overflow-x:auto;scrollbar-width:none}
+.panenav::-webkit-scrollbar{display:none}
+.panenav button{flex:none;display:flex;align-items:center;gap:8px;border:0;background:transparent;color:var(--slate);border-radius:999px;padding:5px 14px 5px 5px;font-size:14px;font-weight:600;cursor:pointer}
+.panenav .pn{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--dust);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--ink);background:var(--white)}
+.panenav button.on{background:var(--white);color:var(--ink)}
+.panenav button.on .pn{background:var(--orange);border-color:var(--orange);color:var(--white)}
+@media(min-width:1000px){.panenav{justify-content:center}}
+
+/* ── 版面 ── */
+.deck{max-width:1040px;margin:0 auto;padding:8px 16px 40px;overflow-x:clip}
+.pane{display:none}
+.pane.on{display:block}
+.slide{position:relative;background:var(--lift);border-radius:32px;padding:40px 44px;margin:20px 0;scroll-margin-top:calc(var(--top) + var(--tabs) + 12px)}
+@media(max-width:700px){.slide{padding:26px 18px;border-radius:24px;margin:14px 0}}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--slate)}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--orange);flex:none}
+.slide h2{font-size:34px;font-weight:600;letter-spacing:-.02em;line-height:1.25;color:var(--ink);margin:8px 0 14px}
+@media(max-width:700px){.slide h2{font-size:26px}}
+.src{font-size:14.5px;color:var(--slate);margin:-6px 0 20px}
+.lead{font-size:18px;color:var(--ink);margin:0 0 22px;max-width:52em}
+.instr{font-size:14.5px;color:var(--charcoal);background:var(--white);border-radius:999px;padding:8px 18px;margin-bottom:16px;display:inline-block}
+@media(max-width:700px){.instr{border-radius:16px}}
+.call{margin-top:24px;background:var(--white);border-radius:24px;padding:16px 22px;font-size:16px;color:var(--charcoal);border-left:4px solid var(--orange)}
+.call p+p{margin-top:6px}
+.call.side b{display:block;font-size:13px;letter-spacing:.06em;color:var(--orange);margin-bottom:4px}
+.source{font-size:13.5px;color:var(--slate);margin-top:12px}
+.cite{font-size:13px;color:var(--slate);margin-top:8px}
+p.note{font-size:15px;color:var(--slate);margin-top:16px}
+.k{display:block;font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--orange);margin:10px 0 4px}
+ul.bl{list-style:none;display:grid;gap:8px}
+ul.bl li{position:relative;padding-left:20px}
+ul.bl li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;border:2px solid var(--orange)}
+
+/* 格線（手機上一律單欄可縮） */
+.split,.grid2,.grid3,.grid4,.grid5,.notes,.road{display:grid;gap:18px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:820px){.split{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:start}
+  .split.q{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+  .split.pc{grid-template-columns:minmax(0,1fr) minmax(0,1.7fr)}
+  .grid2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .grid4{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .grid2.withmid{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:stretch}
+  .notes.n2{grid-template-columns:repeat(2,minmax(0,1fr))}.notes.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .notes.n4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(min-width:560px) and (max-width:819px){.grid4,.notes.n4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mid{align-self:center;justify-self:center;width:52px;height:52px;border-radius:50%;background:var(--ink);color:var(--white);display:grid;place-items:center;font-weight:700;font-size:16px}
+
+/* 卡片 */
+.card{background:var(--white);border-radius:28px;padding:22px 24px}
+.card h4{font-size:19px;font-weight:700;color:var(--ink);line-height:1.35;margin-bottom:6px}
+.card .cs{font-size:13.5px;font-weight:700;color:var(--orange);margin:-2px 0 8px}
+.card p+p{margin-top:6px}
+.nt{display:flex;gap:14px;align-items:flex-start;background:var(--white);border-radius:28px;padding:20px 22px}
+.nt h4{font-size:17.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:4px}
+.nt p{font-size:15.5px}
+.no{flex:none;display:inline-grid;place-items:center;min-width:34px;height:34px;padding:0 8px;border-radius:999px;background:var(--ink);color:var(--white);font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+.tile{display:flex;gap:16px;align-items:flex-start;background:var(--white);border-radius:28px;padding:20px 24px}
+.tile h4{font-size:19px;font-weight:700;color:var(--ink)}
+.tile p{font-size:15px;color:var(--slate);margin-top:2px}
+.sidecard{position:relative;background:var(--ink);color:var(--white);border-radius:28px;padding:24px 26px;overflow:hidden}
+.sidecard h4{font-size:20px;font-weight:700;color:var(--white);margin-bottom:10px}
+.sidecard .k{color:var(--orange-l);margin-top:0}
+.sidecard ul.bl li::before{border-color:var(--orange-l)}
+.sidecard::after{content:"";position:absolute;right:-70px;bottom:-70px;width:180px;height:180px;border:2px solid var(--orange-l);border-radius:50%;opacity:.6}
+ol.numl{list-style:none;display:grid;gap:10px;margin-top:6px}
+ol.numl li{display:flex;gap:12px;align-items:flex-start}
+ol.numl .no{min-width:30px;height:30px;font-size:12.5px;background:var(--orange)}
+
+/* 表格 */
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;background:var(--white);border-radius:24px;padding:6px 10px}
+table.tbl{width:100%;border-collapse:collapse;font-size:15.5px;min-width:560px}
+.tbl th{font-weight:700;color:var(--ink);text-align:left;padding:12px 14px;border-bottom:2px solid var(--ink);vertical-align:bottom}
+.tbl td{padding:12px 14px;border-bottom:1px solid var(--line);color:var(--charcoal);vertical-align:top}
+.tbl tbody th.rh{border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tbody tr:last-child td,.tbl tbody tr:last-child th{border-bottom:0}
+table.tbl.small{font-size:14.5px;margin-top:4px}
+table.tbl.num td{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+table.tbl.num thead th:not(:first-child){text-align:right}
+@media(max-width:700px){.tbl th,.tbl td{padding:9px 10px}}
+.k-compare .tblwrap,.k-indicators .tblwrap{margin-top:22px}
+/* 明信片翻面（第 27、42 張） */
+.flips{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.fcard{position:relative;display:flex;flex-direction:column;gap:8px;min-height:150px;text-align:left;border:0;background:var(--white);border-radius:28px;padding:20px 22px;cursor:pointer;transition:transform .15s}
+.fcard::after{content:"";position:absolute;right:16px;top:16px;width:40px;height:48px;border:2px dashed var(--orange-l);border-radius:6px}
+.fcard:hover{transform:translateY(-2px)}
+.fcard .fname{font-size:22px;font-weight:700;color:var(--ink);padding-right:52px}
+.fcard .fsub{font-size:14px;font-weight:700;color:var(--orange)}
+.fcard .fback{display:none;font-size:15.5px;color:var(--charcoal);border-top:1px dashed var(--dust);padding-top:10px}
+.fcard .fhint{margin-top:auto;font-size:12.5px;font-weight:700;color:var(--slate)}
+.fcard.open{background:var(--ink)}
+.fcard.open .fname,.fcard.open .fback{color:var(--white)}
+.fcard.open .fsub{color:var(--orange-l)}
+.fcard.open .fback{display:block;border-top-color:rgba(255,255,255,.3)}
+.fcard.open .fhint{display:none}
+.fcard.open::after{border-color:var(--orange-l);background:var(--orange-l)}
+
+/* 下週預告 */
+.ticket{border:2px dashed var(--dust)}
+.ticket .date{font-size:15px;font-weight:700;color:var(--orange)}
+.ticket h4{font-size:22px}
+
+/* ── 互動共用 ── */
+.pbtn{height:42px;border:0;background:var(--ink);color:var(--white);border-radius:999px;padding:0 22px;font-size:14.5px;font-weight:700;cursor:pointer;transition:background .15s}
+.pbtn:hover{background:var(--charcoal)}
+.pbtn:disabled{background:var(--dust);color:var(--white);cursor:default}
+.pbtn.sec{background:var(--white);color:var(--ink);border:1px solid var(--dust)}
+.pbtn.sec:hover{border-color:var(--ink)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
+.cnt{font-size:14px;color:var(--slate)}
+.fbk{display:none;margin-top:16px;background:var(--white);border-left:4px solid var(--orange);border-radius:20px;padding:14px 18px;font-size:15.5px;color:var(--charcoal)}
+.fbk.show{display:block}
+.fbk.ok{border-left-color:var(--ok)} .fbk.ng{border-left-color:var(--ng)}
+.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* 表態、先猜 */
+.pollbox{margin-top:28px}
+.ask{font-size:17px;font-weight:700;color:var(--ink)}
+.opts{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.opts button{border:1px solid var(--dust);background:var(--white);border-radius:999px;padding:10px 22px;font-size:16px;font-weight:700;color:var(--ink);cursor:pointer;transition:all .15s}
+.opts button:hover{border-color:var(--ink)}
+.opts button.sel{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.opts button.ok{background:var(--ok);border-color:var(--ok);color:var(--white)}
+.opts button.ng{background:var(--ng-soft);border-color:var(--ng);color:var(--ng)}
+.opts button:disabled{cursor:default}
+.reveal-box{display:none;margin-top:16px}
+.reveal-box.show{display:block}
+.pq1{margin-top:18px}
+.pqq{font-size:17.5px;font-weight:700;color:var(--ink)}
+.verdict{display:none;margin-top:8px;font-weight:800}
+.verdict.show{display:block}
+.verdict.ok{color:var(--ok)} .verdict.ng{color:var(--ng)}
+.recall{font-size:17px}
+.recall b{background:var(--white);border-radius:999px;padding:2px 14px}
+
+/* 選三個 */
+.k-pick .chips{gap:10px}
+.chip{border:1px solid var(--dust);background:var(--white);color:var(--ink);border-radius:999px;padding:9px 20px;font-size:16px;font-weight:700;cursor:pointer}
+.chip.on{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.chip.ok{background:var(--ok);border-color:var(--ok);color:var(--white)}
+.chip.ng{background:var(--ng-soft);border-color:var(--ng);color:var(--ng);text-decoration:line-through}
+.chip.miss{border:2px dashed var(--ok);color:var(--ok)}
+.chip:disabled{cursor:default}
+
+/* 分類 */
+.tray{display:flex;flex-wrap:wrap;gap:10px;min-height:72px;padding:14px;border:2px dashed var(--dust);border-radius:28px;background:var(--canvas);margin-bottom:16px}
+.tray:empty::after{content:"卡片都放好了，按下面的按鈕";align-self:center;color:var(--slate);font-size:14px;padding-left:8px}
+.sc{position:relative;flex:0 1 auto;max-width:100%;text-align:left;background:var(--white);border:1px solid var(--dust);border-radius:20px;padding:9px 16px;font-size:15px;font-weight:700;color:var(--ink);
+  line-height:1.5;cursor:grab;user-select:none;-webkit-user-select:none;transition:box-shadow .12s,transform .12s}
+.sc:hover{border-color:var(--ink)}
+.sc.sel{background:var(--ink);border-color:var(--ink);color:var(--white);transform:translateY(-2px)}
+.sc .t{display:none;font-size:12px;font-weight:700;color:var(--slate);margin-top:2px}
+.sc.ok{background:var(--ok-soft);border-color:var(--ok)} .sc.ng{background:var(--ng-soft);border-color:var(--ng)}
+.sc.ok .t,.sc.ng .t{display:block}
+.sc.ok::after,.sc.ng::after{position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff}
+.sc.ok::after{content:"✓";background:var(--ok)} .sc.ng::after{content:"✕";background:var(--ng)}
+.scols{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:760px){.scols.n2{grid-template-columns:repeat(2,minmax(0,1fr))}.scols.n3{grid-template-columns:repeat(3,minmax(0,1fr))}.scols.n4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.scol{background:var(--white);border-radius:28px;min-height:140px;cursor:pointer;overflow:hidden}
+.scol.hot{box-shadow:0 0 0 3px var(--orange)}
+.scol h4{font-size:15.5px;font-weight:700;color:var(--white);padding:12px 18px;background:var(--ink)}
+.scol:nth-child(2) h4{background:var(--clay)} .scol:nth-child(3) h4{background:var(--orange-l)} .scol:nth-child(4) h4{background:var(--orange)}
+.scol .drop{display:flex;flex-wrap:wrap;gap:8px;padding:12px;min-height:90px;align-content:flex-start}
+.score{font-size:30px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* 配對 */
+.match{display:grid;gap:12px;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+.mcol{display:grid;gap:10px;align-content:start}
+.mcol h4{font-size:12.5px;font-weight:800;letter-spacing:.06em;color:var(--slate)}
+.mitem{background:var(--white);border:1px solid var(--dust);border-radius:20px;padding:12px 16px;cursor:pointer;font-size:15.5px;color:var(--charcoal);transition:all .15s}
+.mcol:first-child .mitem{font-weight:700;color:var(--ink)}
+.mitem:hover{border-color:var(--ink)}
+.mitem.sel{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.mitem.done{background:var(--ok-soft);border-color:var(--ok);color:var(--ink);cursor:default}
+.mitem.done::before{content:"✓ ";color:var(--ok);font-weight:700}
+.mstat{margin-top:14px;font-size:14.5px;color:var(--slate)}
+.mstat b{color:var(--ink)}
+@media(max-width:560px){.mitem{font-size:14px;padding:10px 12px}}
+
+/* 輸入框 */
+.inbox{margin-top:12px}
+.inbox label{display:block;font-size:15px;font-weight:700;color:var(--ink)}
+.inbox textarea,.fbbox textarea{width:100%;min-height:92px;border:1px solid var(--dust);border-radius:20px;padding:12px 16px;font:inherit;font-size:16px;color:var(--ink);background:var(--white);resize:vertical;margin-top:8px}
+.inbox textarea:focus,.fbbox textarea:focus,.idbox input:focus{outline:2px solid var(--orange);outline-offset:1px;border-color:var(--ink)}
+.imine{display:none;margin-top:10px;font-size:14.5px;color:var(--slate)}
+.imine.show{display:block}
+.imine b{color:var(--ink)}
+
+/* 閱讀勾選 */
+.readlist{display:grid;gap:10px;margin-top:8px}
+.rp{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start;background:var(--white);border-radius:20px;padding:12px 16px;cursor:pointer;font-size:15px;color:var(--charcoal)}
+.rp input{width:18px;height:18px;margin-top:3px;accent-color:var(--orange)}
+.rp.done{background:var(--ok-soft)}
+.rpstat{margin-top:12px;font-size:14.5px;color:var(--slate)}
+.k-readings h4{font-size:17px;font-weight:700;color:var(--ink)}
+
+/* 講義怎麼用 */
+.steps{list-style:none;display:grid;gap:14px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;font-size:16.5px}
+.steps li::before{counter-increment:s;content:counter(s);width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--white);display:grid;place-items:center;font-size:14px;font-weight:700}
+.steps li:nth-child(2)::before{background:var(--clay)} .steps li:nth-child(3)::before{background:var(--orange)} .steps li:nth-child(4)::before{background:var(--orange-l)} .steps li:nth-child(5)::before{background:var(--slate)}
+.steps p{font-size:15.5px;color:var(--slate);margin-top:4px}
+
+/* 小測驗 */
+.k-quiz{border:2px solid var(--ink)}
+.qz{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.qz:first-of-type{border-top:0;padding-top:0}
+.qz .stem{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px}
+.qz .opt{display:block;width:100%;text-align:left;border:1px solid var(--dust);background:var(--white);border-radius:20px;padding:12px 18px;margin:8px 0;font-size:16px;cursor:pointer}
+.qz .opt:hover{border-color:var(--ink)}
+.qz .opt.right{background:var(--ok-soft);border-color:var(--ok);font-weight:700}
+.qz .opt.wrong{background:var(--ng-soft);border-color:var(--ng)}
+.qz .opt:disabled{cursor:default}
+.qz .fb{display:none;margin-top:10px;background:var(--canvas);border-radius:20px;padding:12px 18px;font-size:15.5px;color:var(--charcoal)}
+.qz .fb.show{display:block}
+.qmeta{margin-top:16px;font-size:14px;color:var(--slate)}
+
+/* 完成 */
+.k-done{border:2px solid var(--ink)}
+.stat{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));margin:18px 0}
+.stat div{background:var(--white);border-radius:24px;padding:14px 18px;font-size:13.5px;color:var(--slate)}
+.stat b{display:block;font-size:28px;font-weight:600;line-height:1.25;color:var(--ink);font-variant-numeric:tabular-nums}
+.idbox{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.idbox label,.fbbox label{display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.idbox input{width:100%;height:46px;border:1px solid var(--dust);border-radius:999px;padding:10px 18px;font:inherit;font-size:16px;color:var(--ink);background:var(--white)}
+.fbbox{margin-top:16px}
+.dmsg{margin:18px 0 12px;font-size:15px;color:var(--charcoal)}
+#submit{height:48px;padding:0 32px;font-size:16px}
+.code{margin-top:16px;font-size:15px;color:var(--charcoal);line-height:1.8}
+.code b{font-size:18px}
+.codenote{display:block;font-size:14px;color:var(--slate);margin-top:8px}
+
+/* ── 章節（可摺疊） ── */
+.chap{margin:22px 0}
+.chap-h{width:100%;display:flex;align-items:center;gap:12px;background:var(--white);border:0;border-radius:999px;padding:10px 18px 10px 10px;cursor:pointer;text-align:left}
+.chap-h:hover{box-shadow:0 0 0 1px var(--ink)}
+.chap-h .cn{width:34px;height:34px;flex:none;display:grid;place-items:center;border-radius:50%;background:var(--canvas);font-size:12.5px;font-weight:800;color:var(--ink)}
+.chap.open .chap-h .cn{background:var(--orange);color:var(--white)}
+.chap-h .ct{flex:1;font-size:17px;font-weight:700;color:var(--ink);line-height:1.4}
+.chap-h .cc{font-size:12.5px;color:var(--slate);background:var(--canvas);border-radius:999px;padding:2px 12px;white-space:nowrap}
+.chap-h .cv{width:9px;height:9px;flex:none;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg);margin:0 6px 4px;transition:transform .2s}
+.chap.open .chap-h .cv{transform:rotate(-135deg);margin-bottom:-4px}
+.chap-b{display:none}
+.chap.open .chap-b{display:block}
+
+/* ── 底列 ── */
+.navbar{position:fixed;bottom:0;left:0;right:0;height:68px;z-index:40;background:rgba(51,64,57,.97);backdrop-filter:blur(8px);border-top:1px solid var(--line);
+  display:flex;align-items:center;gap:12px;padding:0 16px}
+.nav-btn{height:42px;border:0;background:var(--ink);color:var(--white);border-radius:999px;padding:0 20px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap}
+.nav-btn:disabled{background:var(--dust);cursor:default}
+.nav-btn.prev{background:var(--white);color:var(--ink);border:1px solid var(--dust)}
+.nav-btn.prev:disabled{color:var(--dust)}
+.nav-mid{flex:1;min-width:0;display:flex;align-items:center;gap:12px}
+.pageno{font-size:14px;font-weight:700;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.nav-mid .dots{flex:1;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:6px 2px}
+.nav-mid .dots::-webkit-scrollbar{display:none}
+.dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--dust);cursor:pointer}
+.dot.s1,.dot.s2{background:#C9B48A} .dot.s3,.dot.s4{background:#8FB3AC} .dot.s5,.dot.s6,.dot.s7{background:#D79A8F}
+.dot.on{background:var(--ink);transform:scale(1.4)}
+@media(max-width:560px){.nav-mid .dots{display:none}.nav-mid{justify-content:center}}
+
+/* 鍵盤提示、續讀 */
+.khint{position:fixed;right:16px;bottom:80px;z-index:30;background:var(--ink);color:var(--white);font-size:13px;border-radius:999px;padding:6px 14px;transition:opacity .6s}
+.khint kbd{background:transparent;color:var(--white);border-color:rgba(255,255,255,.5)}
+@media(max-width:700px){.khint{display:none}}
+.resume{position:fixed;left:50%;bottom:82px;transform:translateX(-50%);z-index:45;background:var(--white);border-radius:999px;box-shadow:0 10px 30px rgba(20,20,19,.18);
+  display:flex;align-items:center;gap:10px;padding:8px 8px 8px 18px;font-size:14px;white-space:nowrap}
+.resume button{height:34px;border:0;background:var(--ink);color:var(--white);border-radius:999px;padding:0 14px;font-size:13px;font-weight:700;cursor:pointer}
+.resume button.x{background:var(--canvas);color:var(--ink)}
+
+/* ── 目次 ── */
+.toc{position:fixed;inset:0;z-index:60;background:rgba(20,20,19,.3);display:none}
+.toc.show{display:block}
+.toc-panel{position:absolute;top:0;right:0;bottom:0;width:min(420px,92vw);background:var(--lift);padding:22px 18px;overflow-y:auto;border-radius:28px 0 0 28px}
+.toc-panel h3{font-size:24px;font-weight:600;color:var(--ink)}
+.tsub{font-size:14px;color:var(--slate);margin:4px 0 14px}
+.toc-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:0;background:var(--white);font-size:20px;cursor:pointer}
+.tfilter{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tfilter button{border:1px solid var(--dust);background:var(--white);color:var(--charcoal);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700;cursor:pointer}
+.tfilter button.on{background:var(--ink);border-color:var(--ink);color:var(--white)}
+#toclist{list-style:none}
+#toclist li.hide{display:none}
+#toclist li.head{margin-top:12px}
+#toclist li.head a{font-weight:700;color:var(--ink)}
+#toclist a{display:flex;gap:10px;align-items:baseline;padding:6px 10px;border-radius:999px;color:var(--charcoal);text-decoration:none;font-size:14.5px;line-height:1.5}
+#toclist a:hover{background:var(--white)}
+#toclist a.cur{background:var(--orange-soft)}
+#toclist .n{width:26px;flex:none;text-align:right;color:var(--slate);font-variant-numeric:tabular-nums;font-size:13px}
+
+/* 分類：選了卡片之後的欄位按鈕列 */
+.sbar{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);z-index:50;display:none;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;
+  width:max-content;max-width:min(94vw,720px);background:var(--ink);color:var(--white);border-radius:28px;padding:10px 14px;box-shadow:0 10px 30px rgba(20,20,19,.25)}
+.sbar.show{display:flex}
+.sbar .sbt{flex-basis:100%;text-align:center;font-size:13px;color:var(--dust);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbar button{height:34px;border:0;background:var(--white);color:var(--ink);border-radius:999px;padding:0 14px;font-size:14px;font-weight:700;cursor:pointer}
+.sbar button.x{background:transparent;color:var(--dust);border:1px solid rgba(255,255,255,.3)}
+/* ════════ 第 9 週：個案檔案夾 ════════ */
+html,body{background:var(--desk)}
+
+/* 頂列、分節頁籤、底列：深綠桌面 */
+.topbar,.panenav,.navbar{border-color:rgba(241,231,208,.14)}
+.logo{border-radius:6px;background:var(--lift);color:var(--ink);font-family:var(--mono);font-weight:700}
+.topbar .course{color:var(--cream)}
+.topbar .wk,.topbar .sect,.topbar .sprog{color:var(--cream2)}
+.clock{background:rgba(241,231,208,.12);color:var(--cream);font-family:var(--mono)}
+.tb{background:transparent;border-color:rgba(241,231,208,.4);color:var(--cream)}
+.tb:hover{border-color:var(--cream)}
+.tb.pri{background:var(--lift);border-color:var(--lift);color:var(--ink)}
+#bar{background:var(--lift)}
+.panenav button{color:var(--cream2)}
+.panenav .pn{background:transparent;border-color:rgba(241,231,208,.45);color:var(--cream);font-family:var(--mono)}
+.panenav button.on{background:var(--lift);color:var(--ink)}
+.panenav button.on .pn{background:var(--orange);border-color:var(--orange);color:#fff}
+.nav-btn{background:var(--lift);color:var(--ink)}
+.nav-btn:disabled{background:rgba(241,231,208,.14);color:rgba(241,231,208,.4)}
+.nav-btn.prev{background:transparent;color:var(--cream);border-color:rgba(241,231,208,.4)}
+.nav-btn.prev:disabled{color:rgba(241,231,208,.35)}
+.pageno{color:var(--cream);font-family:var(--mono)}
+.dot{background:rgba(241,231,208,.25)}
+.dot.on{background:var(--cream)}
+
+/* 章節：牛皮紙分隔頁 */
+.chap-h{background:var(--lift);border-radius:10px}
+.chap-h:hover{box-shadow:0 0 0 2px var(--cream)}
+.chap-h .cn{font-family:var(--mono);border-radius:6px}
+.chap-h .cc,.chap-h .cn{background:var(--canvas)}
+
+/* 每一頁：檔案夾，左上角一個頁籤 */
+.slide{border-radius:14px;margin:52px 0 22px;box-shadow:0 10px 0 -4px rgba(0,0,0,.18);scroll-margin-top:calc(var(--top) + var(--tabs) + 46px)}
+.chap-b>.slide:first-child{margin-top:46px}
+@media(max-width:700px){.slide{border-radius:12px;margin:46px 0 16px}}
+.hd{display:flex;align-items:flex-start;gap:12px;min-height:6px}
+.ftab{position:absolute;top:-31px;left:26px;max-width:calc(100% - 52px);background:var(--lift);border-radius:12px 12px 0 0;padding:5px 18px 4px;
+  font-size:14px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:700px){.ftab{left:16px;font-size:13px;padding:5px 14px 4px}}
+.fcode{margin-left:auto;font-family:var(--mono);font-size:14px;color:var(--slate);border:1.5px solid var(--slate);border-radius:4px;padding:1px 10px;white-space:nowrap}
+.slide h2{font-weight:900;letter-spacing:0;margin-top:2px}
+.src{color:var(--slate)}
+.lead{font-weight:500}
+.instr{background:var(--white);border-radius:6px;border-left:4px solid var(--orange)}
+.call{background:var(--white);border-radius:6px;border-left-color:var(--orange)}
+.call.side{border-left-color:var(--ink)}
+ul.bl li::before{width:9px;height:9px;border-radius:2px;border:2px solid var(--orange);top:.6em}
+.sfoot{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-top:26px;padding-top:10px;border-top:1.5px dashed var(--dust);
+  font-size:13.5px;color:var(--slate)}
+.sfoot .cite{margin:0;font-size:13.5px}
+.sfoot .pg{font-family:var(--mono);white-space:nowrap}
+
+/* 卡片：公文紙 */
+.card,.nt,.tile{border-radius:6px;box-shadow:3px 4px 0 rgba(36,34,31,.13)}
+.grid5{grid-template-columns:minmax(0,1fr)}
+@media(min-width:560px){.grid5{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:900px){.grid5{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.tagc{display:inline-block;font-family:var(--mono);font-size:30px;font-weight:700;line-height:1;color:var(--orange);margin-bottom:6px}
+.card .cs{font-family:var(--mono);color:var(--orange);font-size:14px}
+.card.col{border-top:6px solid var(--ink)}
+.withmid .card.col:last-child{border-top-color:var(--orange)}
+.ctag{display:block;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--orange);margin-bottom:4px}
+.mid{font-family:var(--mono);background:var(--orange)}
+.tblwrap{border-radius:6px;box-shadow:3px 4px 0 rgba(36,34,31,.13)}
+.flips.f3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.fcard{border-radius:6px;box-shadow:3px 4px 0 rgba(36,34,31,.13)}
+.fcard::after{border:0;width:16px;height:36px;border:3px solid #8C8C8C;border-bottom:0;border-radius:8px 8px 0 0;top:-10px;right:22px}
+.fcard .fsub{font-family:var(--mono)}
+
+/* 印章 */
+.stamp{flex:none;width:150px;height:150px;border-radius:50%;border:5px solid var(--orange);outline:1.5px solid var(--orange);outline-offset:-12px;
+  color:var(--orange);display:grid;place-content:center;text-align:center;transform:rotate(-14deg);line-height:1.2;margin:6px auto}
+.stamp span{font-size:15px;font-weight:700}
+.stamp b{display:block;font-size:26px;font-weight:900;color:var(--orange)}
+.stamp.big{width:190px;height:190px}
+.stamp.big b{font-size:34px}
+
+/* 封面 */
+.k-cover{padding-top:44px}
+.folder .ftab.big{font-size:16px;padding:6px 22px 5px}
+.caseno{font-family:var(--mono);font-size:17px;color:var(--ink)}
+.folder h1{font-size:clamp(40px,7vw,74px);font-weight:900;line-height:1.15;color:var(--ink);margin:10px 0 8px}
+.folder .sub{font-size:21px;font-weight:700;color:var(--granite)}
+.cover-row{display:flex;flex-wrap:wrap;align-items:center;gap:22px;margin-top:26px}
+.fields{list-style:none;flex:1 1 320px;background:var(--white);border-radius:4px;padding:16px 22px;box-shadow:4px 5px 0 rgba(36,34,31,.16)}
+.fields li{font-size:16.5px;font-weight:700;color:var(--ink);line-height:2}
+.fields li span{color:var(--slate);margin-right:14px}
+.hint{font-size:13.5px;color:var(--slate);margin-top:22px}
+.pill{display:inline-block;background:var(--orange);color:#fff;font-size:12.5px;font-weight:700;border-radius:4px;padding:2px 10px;margin-right:10px}
+
+/* 分節頁 */
+.divwrap{display:grid;gap:22px;align-items:center;grid-template-columns:minmax(0,1fr)}
+@media(min-width:760px){.divwrap{grid-template-columns:150px minmax(0,1fr) 170px}}
+.bigno{width:130px;height:130px;border-radius:10px;background:var(--ink);display:grid;place-content:center}
+.bigno b{font-family:var(--mono);font-size:64px;line-height:1;color:var(--lift);font-weight:700}
+.k-divider .ftab{position:static;display:inline-block;border-radius:4px;background:var(--canvas)}
+.k-divider h2{font-size:40px;margin:10px 0 8px}
+@media(max-width:700px){.k-divider h2{font-size:30px}}
+.subt{font-size:18px;font-weight:700;color:var(--granite)}
+.reading{margin-top:14px;background:var(--white);border-radius:4px;padding:10px 16px;font-size:15px;color:var(--charcoal);box-shadow:3px 4px 0 rgba(36,34,31,.12)}
+.k-divider .hd{display:none}
+
+/* 審查流程（第 2 張）、揭曉排序（第 33 張） */
+.docket{list-style:none;display:grid;gap:10px}
+.docket li{display:grid;grid-template-columns:52px minmax(0,1fr) minmax(0,1.3fr);gap:14px;align-items:center;background:var(--white);border-radius:4px;padding:12px 16px;
+  box-shadow:3px 4px 0 rgba(36,34,31,.12)}
+.docket .no{background:transparent;color:var(--orange);font-family:var(--mono);font-size:22px;padding:0;justify-content:start}
+.docket b{font-size:17.5px}
+.docket li>span:last-child{color:var(--slate)}
+@media(max-width:600px){.docket li{grid-template-columns:40px minmax(0,1fr)}.docket li>span:last-child{grid-column:2}}
+.rch{display:grid;grid-template-columns:52px minmax(0,1fr) minmax(0,1.3fr);gap:14px;padding:0 16px 6px;font-size:13px;font-weight:700;color:var(--slate)}
+.rch span:first-child{grid-column:1 / 3}
+.rk2 .mine{font-family:var(--mono);font-weight:700;color:var(--slate)}
+.rk2 .mine.same{color:var(--ok)}
+.rk2 .mine.same::before{content:"✓ "}
+.rcmsg{margin-top:12px;font-weight:700;color:var(--ink)}
+
+/* 暖身排序（第 3 張） */
+.rks{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.rk{display:flex;align-items:center;gap:14px;text-align:left;border:0;background:var(--white);border-radius:6px;padding:14px 16px;cursor:pointer;font-size:17px;font-weight:700;color:var(--ink);
+  box-shadow:3px 4px 0 rgba(36,34,31,.13);transition:transform .12s}
+.rk:hover{transform:translateY(-2px)}
+.rk .rn{flex:none;width:40px;height:40px;border-radius:50%;border:2px dashed var(--dust);display:grid;place-items:center;font-family:var(--mono);font-size:20px;color:var(--orange)}
+.rk.on .rn{border:3px solid var(--orange);font-weight:700}
+.rk.on{cursor:default}
+
+/* 條文（第 11、43、46 張） */
+.laws{list-style:none;display:grid;gap:10px}
+.laws li{display:flex;align-items:flex-start;gap:14px;background:var(--white);border-radius:4px;padding:12px 16px;box-shadow:3px 4px 0 rgba(36,34,31,.12)}
+.laws .tagc{font-size:26px;margin:0;min-width:24px}
+.art{flex:none;min-width:70px;font-family:var(--mono);font-weight:700;color:var(--orange);border:1.5px solid var(--orange);border-radius:4px;padding:0 8px;text-align:center}
+.lt{font-size:16.5px;color:var(--ink)}
+
+/* 審查單：勾選 */
+.formgrid{display:grid;gap:20px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:820px){.formgrid{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);align-items:start}}
+.sheet{background:var(--white);border-radius:4px;padding:16px 20px;box-shadow:4px 5px 0 rgba(36,34,31,.15)}
+.checks{display:grid;gap:4px}
+.ck{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start;padding:9px 4px;border-bottom:1px solid var(--line);cursor:pointer;font-size:16.5px;color:var(--ink)}
+.ck:last-child{border-bottom:0}
+.ck input{width:20px;height:20px;margin-top:4px;accent-color:var(--orange)}
+.ck.done span{color:var(--slate)}
+.ckstat{margin-top:10px;font-size:13.5px;color:var(--slate)}
+.ckstat b{color:var(--orange)}
+.formside{display:grid;gap:14px;justify-items:center}
+.memo-side{width:100%;background:var(--canvas);border-radius:4px;padding:12px 16px;font-size:15.5px;color:var(--charcoal)}
+
+/* 引文便箋（第 25、32 張） */
+.memo{position:relative;background:var(--white);border-radius:4px;padding:24px 28px 20px 74px;box-shadow:4px 5px 0 rgba(36,34,31,.15);margin-bottom:18px}
+.qmark{position:absolute;left:20px;top:6px;font-family:var(--mono);font-size:72px;line-height:1;color:var(--orange)}
+.memo blockquote p{font-size:20px;font-weight:700;color:var(--ink);line-height:1.6}
+.memo cite{display:block;margin-top:8px;font-style:normal;color:var(--slate)}
+.qlist{list-style:none;display:grid;gap:12px}
+.qlist li{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding-bottom:10px}
+.qlist li:last-child{border-bottom:0}
+.qlist b{font-size:20px}
+.qlist .tagc{font-family:var(--sans);font-size:15px;font-weight:700;color:#fff;background:var(--orange);border-radius:4px;padding:3px 12px;margin:0}
+
+/* 長條（第 31 張） */
+.hbars{list-style:none;display:grid;gap:12px;background:var(--white);border-radius:4px;padding:18px 20px;box-shadow:4px 5px 0 rgba(36,34,31,.15)}
+.hbars li{display:grid;grid-template-columns:84px minmax(0,1fr) 54px;gap:12px;align-items:center}
+.hbars .bl2{font-weight:700;color:var(--ink)}
+.hbars .bt{height:24px;background:var(--canvas);border-radius:3px;overflow:hidden}
+.hbars .bt i{display:block;height:100%;width:var(--w);background:var(--orange)}
+.hbars li:nth-child(n+2) .bt i{background:var(--granite)}
+.hbars .bv{font-family:var(--mono);font-weight:700;text-align:right;color:var(--ink)}
+
+/* 惡性循環（第 35 張） */
+.otray{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.oi{border:1px solid var(--dust);background:var(--white);border-radius:6px;padding:10px 16px;font-size:15.5px;font-weight:700;color:var(--ink);cursor:pointer}
+.oi:hover{border-color:var(--ink)}
+.oi.used{visibility:hidden}
+.tline{list-style:none;display:grid;gap:10px;grid-template-columns:minmax(0,1fr);counter-reset:none}
+@media(min-width:760px){.tline{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.tline li{display:flex;gap:10px;align-items:flex-start;min-height:74px;background:var(--canvas);border:2px dashed var(--dust);border-radius:6px;padding:12px 14px;font-weight:700;color:var(--slate)}
+.tline li.filled{background:var(--white);border:2px solid var(--orange);color:var(--ink)}
+.tline li span:last-child{white-space:pre-line}
+.tline .no{min-width:30px;height:30px;font-size:13px;background:var(--orange);font-family:var(--mono)}
+.k-steps .call.side{margin-top:18px}
+
+/* 貧窮動態（第 44 張） */
+.stats3{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-bottom:18px}
+.statc{background:var(--white);border-radius:4px;padding:16px 18px;box-shadow:3px 4px 0 rgba(36,34,31,.13)}
+.statc b{display:block;font-family:var(--mono);font-size:34px;line-height:1.2;color:var(--orange)}
+.statc span{font-size:14.5px;color:var(--slate)}
+
+/* 課堂討論（第 48 張） */
+.discbox{display:grid;gap:10px}
+details.disc{background:var(--white);border-radius:4px;padding:12px 16px;box-shadow:3px 4px 0 rgba(36,34,31,.12)}
+details.disc summary{display:flex;gap:12px;align-items:flex-start;cursor:pointer;font-weight:700;color:var(--ink);list-style:none}
+details.disc summary::-webkit-details-marker{display:none}
+details.disc .no{font-family:var(--mono);background:var(--orange)}
+
+/* 讀本（第 49、50 張） */
+.rh4{font-size:14px;font-weight:700;letter-spacing:.06em;color:var(--orange);margin-top:8px}
+.rp{border-radius:4px}
+.ticket{border:2px dashed var(--dust);margin-top:18px}
+.ticket h4{font-size:19px}
+
+/* 形狀：表單感，圓角收小 */
+.pbtn,.opts button,.chip,.sc,.mitem,.qz .opt,.idbox input,.inbox textarea,.fbbox textarea,.fbk,.qz .fb,.stat div,.scol,.tray,.rp,.sbar,.resume{border-radius:6px}
+.scol h4{background:var(--ink)}
+.scol:nth-child(2) h4{background:var(--orange)} .scol:nth-child(3) h4{background:var(--clay)} .scol:nth-child(4) h4{background:var(--link)}
+.tray{background:var(--canvas)}
+.qz .fb{background:var(--canvas)}
+.k-quiz,.k-done{border:0;box-shadow:0 0 0 2px var(--ink),0 10px 0 -4px rgba(0,0,0,.18)}
+.stat b{font-family:var(--mono)}
+
+/* 說明框：給學生複習的文字（依讀本，附頁碼） */
+.expl{margin-top:22px;background:var(--white);border-radius:4px;border-top:4px solid var(--ink);padding:16px 22px 14px;box-shadow:3px 4px 0 rgba(36,34,31,.12)}
+.expl .k{display:inline-block;margin:0 0 6px;font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--orange)}
+.expl p{font-size:16px;line-height:1.85;color:var(--charcoal)}
+.expl p+p{margin-top:8px}
+
+</style>
+<!-- og:start -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
+<meta property="og:title" content="社會救助與貧窮 ・ 社會政策 第 9 週 ・ 葉崇揚" />
+<meta property="og:description" content="社會政策第 9 週互動講義（分頁式）：貧窮的定義與測量、社會安全與社會救助、福利國家的目標、福利應得性（CARIN）、救助的政治，以及台灣的社會救助。共 69 頁，含分節小測驗、暖身排序、先猜、分類、配對、翻檔案與課堂討論。" />
+<meta property="og:url" content="https://chungyang1017.github.io/teaching/social-policy/week09-social-assistance.html" />
+<meta property="og:image" content="https://chungyang1017.github.io/photo.jpg" />
+<meta property="og:locale" content="zh_TW" />
+<meta name="twitter:card" content="summary" />
+<!-- og:end -->
+</head>
+<body>
+<header class="topbar">
+  <span class="logo">W09</span>
+  <span class="course">社會政策 Social Policy</span>
+  <span class="wk">第 9 週　社會救助與貧窮</span>
+  <span class="sect" id="sect"></span>
+  <span class="sprog" id="sprog"></span>
+  <span class="sp"></span>
+  <span class="clock" id="clock">00:00</span>
+  <button class="tb pri" type="button" onclick="toggleToc()">目次</button>
+  <button class="tb hide-m" type="button" onclick="goFull()">全螢幕</button>
+  <button class="tb hide-m" type="button" onclick="location.href='../../teaching-zh.html'">教學頁</button>
+</header>
+<div id="bar"></div>
+<nav class="panenav" id="panenav"><button type="button" data-pane="0" class="on"><span class="pn">0</span>開場</button><button type="button" data-pane="1"><span class="pn">1</span>第一、二節</button><button type="button" data-pane="2"><span class="pn">2</span>第三、四節</button><button type="button" data-pane="3"><span class="pn">3</span>第五至七節</button><button type="button" data-pane="4"><span class="pn">4</span>總結</button><button type="button" data-pane="5"><span class="pn">✓</span>完成</button></nav>
+<main class="deck" id="deck">
+<div class="pane on" data-pane="0">
+<section class="slide k-cover" data-kind="cover" data-label="封面" data-sect="個案檔案　CASE FILE"><div class="folder"><span class="ftab big">個案檔案　CASE FILE</span><p class="caseno">個案編號　115-1 / W09</p><h1>社會救助與貧窮</h1><p class="sub">誰是窮人？誰值得幫？國家怎麼接住人？</p><div class="cover-row"><ul class="fields"><li><span>課程</span>社會政策 Social Policy</li><li><span>週次</span>第 9 週　2026 年 11 月 13 日</li><li><span>教師</span>葉崇揚</li></ul><div class="stamp big"><span>社會政策</span><b>第 9 週</b></div></div><p class="hint"><span class="pill">互動講義</span>用 <kbd>→</kbd> 鍵或下方按鈕翻頁　·　<kbd>Esc</kbd> 開目次　·　進度會自動保存在這台裝置</p></div></section>
+<section class="slide k-howto" data-kind="howto" data-label="這份講義怎麼用" data-sect="開場"><div class="hd"><span class="ftab">使用說明</span></div><h2>這份講義怎麼用</h2><p class="src">這是預習與複習用的，不是上課投影片</p><ol class="steps"><li><div><b>上課前</b>：從頭讀一遍。不必背，但要知道每一節在問什麼問題。</div></li><li><div><b>上課後</b>：回來把答錯的小測驗重看一次，再對照本週讀本。</div></li><li><div><b>怎麼讀</b><p>標著 ◆ 的頁，都要你動手：排序、先猜、分類、配對、翻檔案、勾審查單、寫討論。做過才記得住。</p></div></li><li><div><b>進度會自己存</b>：關掉再打開，會回到上次那頁。小測驗的答案也留著。</div></li><li><div><b>簽到</b>：三份小測驗都作答、閱讀滿 20 分鐘之後，到「完成」頁填學號姓名送出。</div></li></ol><p class="note">這份講義的內容和上課投影片相同，另外加上要動手的練習。頁尾的「第 9 週　p. 00」是投影片的頁碼。</p></section>
+<section class="slide k-roadmap" data-kind="roadmap" data-label="今天的審查流程" data-sect="開場"><div class="hd"><span class="ftab">開場</span><span class="fcode">FORM 09-00</span></div><h2>今天的審查流程</h2><ol class="docket"><li><span class="no">01</span><b>貧窮是什麼</b><span>定義為什麼沒有共識？</span></li><li><span class="no">02</span><b>誰是窮人</b><span>怎麼量？怎麼找到窮人？</span></li><li><span class="no">03</span><b>社會安全與社會救助</b><span>救助在整個體系的哪裡？</span></li><li><span class="no">04</span><b>福利國家要做什麼</b><span>只是一張安全網嗎？</span></li><li><span class="no">05</span><b>誰值得幫</b><span>民眾用什麼判準決定？</span></li><li><span class="no">06</span><b>救助的政治</b><span>怎樣幫窮人，才走得久？</span></li><li><span class="no">07</span><b>台灣的社會救助</b><span>制度怎麼篩？窮人怎麼走？</span></li></ol><footer class="sfoot"><span class="cite"></span><span class="pg">第 9 週　p. 02</span></footer></section>
+<section class="slide k-warmup" data-kind="warmup" data-label="◆ 暖身：如果要刪預算，你先保住誰？" data-sect="開場" data-act="1"><div class="hd"><span class="ftab">開場</span><span class="fcode">FORM 09-01</span></div><h2>暖身：如果要刪預算，你先保住誰？</h2><p class="lead">把下面六個群體排出 1 到 6，1 是最該保住的。先寫下來，第五節揭曉。</p><p class="instr">依你的判斷，從最該保住的開始，依序點下去。點錯了，按「重排」。</p><div class="rank" data-rank="r3" data-act-key="rank-3" data-n="6"><div class="rks"><button class="rk" type="button" data-i="0"><span class="rn"></span><span class="rt">老人</span></button><button class="rk" type="button" data-i="1"><span class="rn"></span><span class="rt">病人與身障者</span></button><button class="rk" type="button" data-i="2"><span class="rn"></span><span class="rt">有子女的貧窮家庭</span></button><button class="rk" type="button" data-i="3"><span class="rn"></span><span class="rt">失業者</span></button><button class="rk" type="button" data-i="4"><span class="rn"></span><span class="rt">領社會救助的人</span></button><button class="rk" type="button" data-i="5"><span class="rn"></span><span class="rt">移民</span></button></div><div class="row"><button class="pbtn sec js-reset" type="button">重排</button><span class="cnt"></span></div><div class="fbk"></div></div><footer class="sfoot"><span class="cite">題目改寫自 van Oorschot（2000: 37）</span><span class="pg">第 9 週　p. 03</span></footer></section>
+</div>
+<div class="pane" data-pane="1">
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">01</span><span class="ct">貧窮沒有公認的定義</span><span class="cc">5 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第一節　貧窮是什麼" data-sect="第一節　貧窮是什麼"><div class="divwrap"><div class="bigno"><b>01</b></div><div><span class="ftab">第一節　貧窮是什麼</span><h2>貧窮是什麼</h2><p class="subt">貧窮沒有公認的定義。為什麼？</p><div class="reading"><p>讀本：Spicker（2025a）ch. 6 Poverty，頁 87–98</p></div></div><div class="stamp"><span>SECTION</span><b>壹</b></div></div><footer class="sfoot"><span class="cite"></span><span class="pg">第 9 週　p. 04</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：這些說法，各屬於哪一種貧窮？" data-sect="第一節　貧窮是什麼" data-act="1"><div class="hd"><span class="ftab">◆ 動手做</span></div><h2>先猜：這些說法，各屬於哪一種貧窮？</h2><p class="src">Spicker 把貧窮的定義分成三類。讀下一頁之前，先自己分分看</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s5" data-act-key="sort-5" data-done="下一頁是三類定義。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="需要物品與服務" data-ans="物質條件" data-dim="">需要物品與服務<span class="t">物質條件</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="多重剝奪" data-ans="物質條件" data-dim="">多重剝奪<span class="t">物質條件</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="生活水準低落" data-ans="物質條件" data-dim="">生活水準低落<span class="t">物質條件</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k1" data-txt="所得低" data-ans="經濟位置" data-dim="">所得低<span class="t">經濟位置</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k1" data-txt="資源有限" data-ans="經濟位置" data-dim="">資源有限<span class="t">經濟位置</span></button><button class="sc" type="button" draggable="true" data-i="5" data-k="k1" data-txt="不平等或社會階級低" data-ans="經濟位置" data-dim="">不平等或社會階級低<span class="t">經濟位置</span></button><button class="sc" type="button" draggable="true" data-i="6" data-k="k2" data-txt="缺乏應得的權利" data-ans="社會位置" data-dim="">缺乏應得的權利<span class="t">社會位置</span></button><button class="sc" type="button" draggable="true" data-i="7" data-k="k2" data-txt="依賴" data-ans="社會位置" data-dim="">依賴<span class="t">社會位置</span></button><button class="sc" type="button" draggable="true" data-i="8" data-k="k2" data-txt="社會排除" data-ans="社會位置" data-dim="">社會排除<span class="t">社會位置</span></button></div><div class="scols n3"><div class="scol" data-k="k0"><h4>物質條件</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>經濟位置</h4><div class="drop"></div></div><div class="scol" data-k="k2"><h4>社會位置</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-cards" data-kind="cards" data-label="貧窮沒有公認的定義" data-sect="第一節　貧窮是什麼"><div class="hd"><span class="ftab">第一節　貧窮是什麼</span></div><h2>貧窮沒有公認的定義</h2><p class="lead">Piachaud：定義貧窮是一個道德問題。它指的是「不能接受的困苦」。</p><div class="grid3"><div class="card"><h4>物質條件</h4><ul class="bl"><li>需要物品與服務</li><li>多重剝奪</li><li>生活水準低落</li></ul></div><div class="card"><h4>經濟位置</h4><ul class="bl"><li>所得低</li><li>資源有限</li><li>不平等或社會階級低</li></ul></div><div class="card"><h4>社會位置</h4><ul class="bl"><li>缺乏應得的權利</li><li>依賴</li><li>社會排除</li></ul></div></div><div class="expl"><span class="k">說明</span><p>Spicker 一開頭就說，貧窮沒有公認的定義。他引用 Piachaud 的理由：定義貧窮是一個道德問題，因為「貧窮」指的是讓人無法接受的困苦（Spicker, 2025a: 87）。</p><p>「貧窮」這個詞可以指三組不同的東西：物質條件、經濟位置、社會位置。這些意思有的彼此接近，有的相距很遠（2025a: 87–88）。</p></div><footer class="sfoot"><span class="cite">Spicker（2025a: 87）</span><span class="pg">第 9 週　p. 05</span></footer></section>
+<section class="slide k-cards" data-kind="cards" data-label="窮人自己怎麼說" data-sect="第一節　貧窮是什麼"><div class="hd"><span class="ftab">第一節　貧窮是什麼</span></div><h2>窮人自己怎麼說</h2><p class="lead">世界銀行的《窮人的聲音》研究：低所得說不完貧窮牽涉的問題。</p><div class="grid3"><div class="card"><h4>物質面</h4><ul class="bl"><li>生計不穩定</li><li>身體健康問題</li><li>住在被排除的地方</li></ul></div><div class="card"><h4>社會關係</h4><ul class="bl"><li>性別關係</li><li>社會排除</li><li>缺乏安全感</li></ul></div><div class="card"><h4>政治面</h4><ul class="bl"><li>掌權者濫用權力</li><li>結論：貧窮愈來愈被看成多面向的概念</li></ul></div></div><div class="expl"><span class="k">說明</span><p>貧窮常被說成所得低、資源少。Spicker 認為，這說不完貧窮牽涉的問題。</p><p>世界銀行的《窮人的聲音》研究，訪問了各國的窮人。反覆出現的主題分成三類：物質面、社會關係、政治面。研究特別強調社會關係，例如性別關係、社會排除與缺乏安全感（2025a: 88）。</p><p>Spicker 的結論是：處理貧窮時，不能把這些問題擱在一邊。貧窮因此愈來愈被看成多面向的概念（2025a: 88）。</p></div><footer class="sfoot"><span class="cite">Spicker（2025a: 88）</span><span class="pg">第 9 週　p. 06</span></footer></section>
+<section class="slide k-cols" data-kind="cols" data-label="絕對貧窮與相對貧窮" data-sect="第一節　貧窮是什麼"><div class="hd"><span class="ftab">第一節　貧窮是什麼</span></div><h2>絕對貧窮與相對貧窮</h2><div class="grid2 withmid"><div class="card col"><span class="ctag">ABSOLUTE</span><h4>絕對：能不能活下去</h4><ul class="bl"><li>以「維生」為基礎：活下去的最低標準</li><li>Rowntree 依最低需要畫出「貧窮線」</li><li>哥本哈根宣言：嚴重剝奪基本需要。不只看所得，也看能否取得社會服務</li></ul></div><span class="mid">VS</span><div class="card col"><span class="ctag">RELATIVE</span><h4>相對：能不能像別人一樣生活</h4><ul class="bl"><li>和同一社會的其他人比較</li><li>Townsend：缺乏或不足以擁有社會上常見或習慣的飲食、設施、標準、服務與活動</li></ul></div></div><div class="call"><p>貧窮和所有需要一樣，都要放在它發生的社會裡定義。但這不等於只跟同一社會的人比：有些國家大多數人都窮。</p></div><div class="expl"><span class="k">說明</span><p>傳統上，貧窮有兩種模型。絕對貧窮以維生為基礎，問的是活下去所需的最低標準。Rowntree 就是依最低需要，畫出一條貧窮線（2025a: 89）。</p><p>相對貧窮拿窮人和同一社會的其他人比較。Townsend 定義的重點是「社會上常見或習慣的」生活方式：缺了這些，就是窮（2025a: 89）。</p><p>Spicker 補充了兩點。第一，人能吃什麼、住哪裡，取決於所在的社會，所以貧窮一定要放在社會脈絡裡定義。但這不等於只跟同一社會的人比，因為有些國家大多數人都窮。第二，性別、和權威的關係這類社會與政治關係，也是貧窮經驗的一部分（2025a: 89–90）。</p></div><footer class="sfoot"><span class="cite">Spicker（2025a: 89–90）</span><span class="pg">第 9 週　p. 07</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">02</span><span class="ct">窮人為什麼窮</span><span class="cc">2 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：這些解釋，各怪在誰身上？" data-sect="第一節　貧窮是什麼" data-act="1"><div class="hd"><span class="ftab">◆ 動手做</span></div><h2>先猜：這些解釋，各怪在誰身上？</h2><p class="src">窮人為什麼窮？讀下一頁之前，先自己分分看</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s8" data-act-key="sort-8" data-done="下一頁是兩種解釋的對照。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="個人：能力不足、選錯，或自己選了這種生活" data-ans="病理解釋：問題在窮人身上" data-dim="">個人：能力不足、選錯，或自己選了這種生活<span class="t">病理解釋：問題在窮人身上</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="家庭：貧窮在家族裡代代相傳。這個說法被徹底研究過，不成立" data-ans="病理解釋：問題在窮人身上" data-dim="">家庭：貧窮在家族裡代代相傳。這個說法被徹底研究過，不成立<span class="t">病理解釋：問題在窮人身上</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="次文化：「貧窮文化」：窮人學會適應貧窮。證據模糊，爭議很大" data-ans="病理解釋：問題在窮人身上" data-dim="">次文化：「貧窮文化」：窮人學會適應貧窮。證據模糊，爭議很大<span class="t">病理解釋：問題在窮人身上</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k1" data-txt="階級：在經濟生產中處於邊緣，生活機會受限" data-ans="結構解釋：問題在社會" data-dim="">階級：在經濟生產中處於邊緣，生活機會受限<span class="t">結構解釋：問題在社會</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k1" data-txt="機構：公共服務失靈" data-ans="結構解釋：問題在社會" data-dim="">機構：公共服務失靈<span class="t">結構解釋：問題在社會</span></button><button class="sc" type="button" draggable="true" data-i="5" data-k="k1" data-txt="不平等：所得、財富、種族、性別的不平等，剝奪機會、延續劣勢" data-ans="結構解釋：問題在社會" data-dim="">不平等：所得、財富、種族、性別的不平等，剝奪機會、延續劣勢<span class="t">結構解釋：問題在社會</span></button></div><div class="scols n2"><div class="scol" data-k="k0"><h4>病理解釋：問題在窮人身上</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>結構解釋：問題在社會</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-cols" data-kind="cols" data-label="窮人為什麼窮？兩種解釋" data-sect="第一節　貧窮是什麼"><div class="hd"><span class="ftab">第一節　貧窮是什麼</span></div><h2>窮人為什麼窮？兩種解釋</h2><div class="grid2 withmid"><div class="card col"><span class="ctag">PATHOLOGICAL</span><h4>病理解釋：問題在窮人身上</h4><ul class="bl"><li>個人：能力不足、選錯，或自己選了這種生活</li><li>家庭：貧窮在家族裡代代相傳。這個說法被徹底研究過，不成立</li><li>次文化：「貧窮文化」：窮人學會適應貧窮。證據模糊，爭議很大</li></ul></div><span class="mid">VS</span><div class="card col"><span class="ctag">STRUCTURAL</span><h4>結構解釋：問題在社會</h4><ul class="bl"><li>階級：在經濟生產中處於邊緣，生活機會受限</li><li>機構：公共服務失靈</li><li>不平等：所得、財富、種族、性別的不平等，剝奪機會、延續劣勢</li></ul></div></div><div class="expl"><span class="k">說明</span><p>解釋貧窮的理論分成兩大類。病理解釋把貧窮歸到窮人自己的特質或行為。結構解釋則從貧窮發生的社會找原因（Spicker, 2025a: 90–91）。</p><p>注意 Spicker 對兩個病理說法的評語。「貧窮在家族裡代代相傳」已經被徹底研究過，結論是不成立。「貧窮文化」的證據模糊，爭議很大（2025a: 90）。</p><p>結構解釋的三種說法，各指向社會的一個部分：階級指經濟生產中的邊緣位置，機構指公共服務的失靈，不平等指所得、財富、種族與性別的結構性差距（2025a: 90–91）。</p></div><footer class="sfoot"><span class="cite">Spicker（2025a: 90–91）</span><span class="pg">第 9 週　p. 08</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">03</span><span class="ct">怎麼量貧窮</span><span class="cc">5 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第二節　誰是窮人" data-sect="第二節　誰是窮人"><div class="divwrap"><div class="bigno"><b>02</b></div><div><span class="ftab">第二節　誰是窮人</span><h2>誰是窮人</h2><p class="subt">定義沒有共識，測量就沒有共識。那要怎麼找到窮人？</p><div class="reading"><p>讀本：Spicker（2025a）ch. 6，頁 91–97</p><p>法規：社會救助法第 4 條</p></div></div><div class="stamp"><span>SECTION</span><b>貳</b></div></div><footer class="sfoot"><span class="cite"></span><span class="pg">第 9 週　p. 09</span></footer></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 動手：先猜：四種測量貧窮的方法，各怎麼做？" data-sect="第二節　誰是窮人" data-act="1"><div class="hd"><span class="ftab">◆ 動手做</span></div><h2>先猜：四種測量貧窮的方法，各怎麼做？</h2><p class="src">點左邊一種方法，再點右邊對應的做法。答案在下一頁</p><div class="match" data-match="m10" data-act-key="match-10"><div class="mcol"><h4>方法</h4><div class="mitem" data-k="0">國際貧窮線</div><div class="mitem" data-k="1">預算標準</div><div class="mitem" data-k="2">相對所得</div><div class="mitem" data-k="3">主觀與共識</div></div><div class="mcol"><h4>做法與例子</h4><div class="mitem" data-k="0">世界銀行：每天 1.25 美元，全球約 13 億人；每天 2 美元，接近 25 億人</div><div class="mitem" data-k="1">估算一籃子必需品的成本。美國用食物籃推算需要的所得</div><div class="mitem" data-k="2">歐盟：所得低於中位數 60%，算「貧窮風險」。不平等愈大，貧窮愈多</div><div class="mitem" data-k="3">問人自認窮不窮；或用民調決定必需品，再看誰負擔不起</div></div></div><p class="mstat"></p></section>
+<section class="slide k-table" data-kind="table" data-label="怎麼量貧窮？測量只是路標" data-sect="第二節　誰是窮人"><div class="hd"><span class="ftab">第二節　誰是窮人</span><span class="fcode">FORM 09-10</span></div><h2>怎麼量貧窮？測量只是路標</h2><div class="tblwrap"><table class="tbl"><thead><tr><th>方法</th><th>做法與例子</th></tr></thead><tbody><tr><th class="rh">國際貧窮線</th><td>世界銀行：每天 1.25 美元，全球約 13 億人；每天 2 美元，接近 25 億人</td></tr><tr><th class="rh">預算標準</th><td>估算一籃子必需品的成本。美國用食物籃推算需要的所得</td></tr><tr><th class="rh">相對所得</th><td>歐盟：所得低於中位數 60%，算「貧窮風險」。不平等愈大，貧窮愈多</td></tr><tr><th class="rh">主觀與共識</th><td>問人自認窮不窮；或用民調決定必需品，再看誰負擔不起</td></tr><tr><th class="rh">結果</th><td>用這些測試，英國約四分之一人口是窮人</td></tr></tbody></table></div><div class="expl"><span class="k">說明</span><p>Spicker 說，貧窮的定義沒有共識，測量也就不會有共識。就算定義有了共識，貧窮也很複雜，難以量化。所以各種測量都只是「指標」，也就是路標（Spicker, 2025a: 91）。</p><p>最常用的是所得。世界銀行曾用每天 1.25 美元這條任意畫出的線。美國從一籃食物的成本，推算一個家庭需要多少所得。歐盟用相對的指標：所得低於中位數 60%，算「貧窮風險」。中位數是所得分配正中間那個人的所得。用這種指標，不平等愈大，貧窮就愈多（2025a: 91–92）。</p><p>社會調查還有兩種做法。一種問人自認窮不窮。另一種用民調找出大家公認的必需品，再看誰負擔不起。英國的一項調查用這些方法，估計約四分之一人口是窮人（2025a: 92）。</p></div><footer class="sfoot"><span class="cite">Spicker（2025a: 91–92）</span><span class="pg">第 9 週　p. 10</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 動手：先猜：台灣的貧窮線怎麼畫？" data-sect="第二節　誰是窮人" data-act="1"><div class="hd"><span class="ftab">◆ 先猜</span></div><h2>先猜：台灣的貧窮線怎麼畫？</h2><p class="src">社會救助法第 4 條。答案在下一頁</p><div class="pq1"><p class="pqq">最低生活費參照每人可支配所得中位數的……</p><div class="poll" data-poll="mlc" data-answer="60%" data-act-key="predict-mlc"><div class="opts"><button type="button" data-v="40%">40%</button><button type="button" data-v="50%">50%</button><button type="button" data-v="60%">60%</button><button type="button" data-v="70%">70%</button></div></div><p class="verdict" data-verdict-for="mlc"></p></div><div class="pq1"><p class="pqq">中低收入戶的門檻，是最低生活費的幾倍？</p><div class="poll" data-poll="mid" data-answer="1.5 倍" data-act-key="predict-mid"><div class="opts"><button type="button" data-v="1.2 倍">1.2 倍</button><button type="button" data-v="1.5 倍">1.5 倍</button><button type="button" data-v="2 倍">2 倍</button><button type="button" data-v="2.5 倍">2.5 倍</button></div></div><p class="verdict" data-verdict-for="mid"></p></div><div class="fbk ok reveal-box" data-reveal-all="mlc,mid">最低生活費：參照當地區最近一年每人可支配所得中位數 60%。變動達 5% 以上才調整。中低收入戶：每人每月不超過最低生活費 1.5 倍，財產也不能超過公告金額（社會救助法第 4、4-1 條）。下一頁是完整的條文重點。</div></section>
+<section class="slide k-law" data-kind="law" data-label="台灣的貧窮線：最低生活費" data-sect="第二節　誰是窮人"><div class="hd"><span class="ftab">第二節　誰是窮人</span><span class="fcode">社會救助法</span></div><h2>台灣的貧窮線：最低生活費</h2><p class="lead">台灣的最低生活費也參照中位數 60%，它就是社會救助的門檻。</p><ol class="laws"><li><span class="art">§4</span><span class="lt">最低生活費：參照當地區最近一年每人可支配所得中位數 60%。變動達 5% 以上才調整</span></li><li><span class="art">§4</span><span class="lt">低收入戶：家庭總收入平均每人每月在最低生活費以下，且家庭財產未超過公告金額</span></li><li><span class="art">§4-1</span><span class="lt">中低收入戶：每人每月不超過最低生活費 1.5 倍，財產也不能超過公告金額</span></li><li><span class="art">§5</span><span class="lt">「家庭」怎麼算：申請人的配偶、一親等直系血親、同戶籍或共同生活的直系血親等</span></li></ol><div class="expl"><span class="k">說明</span><p>社會救助法第 4 條把貧窮線寫進法律。最低生活費參照當地區最近一年每人可支配所得中位數的 60% 訂定。新算出的數額和現行最低生活費相差 5% 以上，才調整（社會救助法第 4 條）。</p><p>這條線也有上下限。最低生活費不得超過全國每人可支配所得中位數的 70%，也不得低於台灣省其餘縣（市）中位數的 60%（第 4 條第 3 項）。</p><p>低收入戶要同時通過兩關：家庭總收入平均每人每月在最低生活費以下，家庭財產也不超過公告金額。中低收入戶的所得門檻，放寬到最低生活費的 1.5 倍（第 4、4-1 條）。</p><p>算收入時看的是整個「家庭」。除了申請人，還包括配偶、一親等直系血親、同一戶籍或共同生活的其他直系血親，以及報稅時把他們列為扶養親屬的納稅義務人（第 5 條）。</p></div><footer class="sfoot"><span class="cite">社會救助法第 4、4-1、5 條</span><span class="pg">第 9 週　p. 11</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">04</span><span class="ct">資產調查與五種回應</span><span class="cc">4 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-form" data-kind="form" data-label="◆ 資產調查審查單" data-sect="第二節　誰是窮人" data-act="1"><div class="hd"><span class="ftab">第二節　誰是窮人</span><span class="fcode">FORM 09-12</span></div><h2>資產調查審查單</h2><p class="lead">原則很簡單：窮的時候給，不窮的時候不給。實務上卻有很多問題。</p><div class="formgrid"><div class="sheet"><div class="checks" data-checks="c12" data-act-key="check-12"><label class="ck"><input type="checkbox"><span>所得難以認定：變動快、查核不準，邊界總有問題</span></label><label class="ck"><input type="checkbox"><span>門檻一刀切：線下的人反而比線上的人好過</span></label><label class="ck"><input type="checkbox"><span>逐步扣減：又變成懲罰上進的「貧窮陷阱」</span></label><label class="ck"><input type="checkbox"><span>服務到不了許多原本要照顧的人</span></label><label class="ck"><input type="checkbox"><span>行政困難，成本又高</span></label></div><p class="ckstat">逐項讀過就勾起來　·　已勾 <b>0</b> / 5</p></div><div class="formside"><div class="stamp"><span>社會救助</span><b>審查中</b></div><div class="memo-side"><p>查不清所得，就改用「代理指標」。它比較會排除不窮的人，不太會找出真正窮的人。</p></div></div></div><div class="expl"><span class="k">說明</span><p>資產調查的原則很簡單：人窮的時候給，不窮的時候不給。Spicker 列出這個原則在實務上的問題（Spicker, 2025a: 92–93）。</p><p>門檻有一個兩難。設一條線一刀切，線下一點的人反而比線上一點的人好過，這不公平。改成隨所得逐步扣減給付，又變成「貧窮陷阱」：收入一提高，給付就減少，等於懲罰改善處境的人（2025a: 92–93）。</p><p>政府沒有能力有效查核所得，有些國家就改用「代理」資產調查：從全國家戶調查找出最可能和低所得有關的指標。這比完整查核所得便宜，但結果很粗略。世界銀行發現，名單上很難加進新人，危機過後也很難把人移出。有的申請者覺得結果幾乎靠運氣。澳洲援外機構也指出，有人會為了上名單而行賄（2025a: 93）。</p></div><footer class="sfoot"><span class="cite">Spicker（2025a: 92–93）</span><span class="pg">第 9 週　p. 12</span></footer></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 動手：先猜：回應貧窮的五種方式，各是什麼？" data-sect="第二節　誰是窮人" data-act="1"><div class="hd"><span class="ftab">◆ 動手做</span></div><h2>先猜：回應貧窮的五種方式，各是什麼？</h2><p class="src">點左邊一種方式，再點右邊對應的說明。答案在下一頁</p><div class="match" data-match="m13" data-act-key="match-13"><div class="mcol"><h4>方式</h4><div class="mitem" data-k="0">濟貧</div><div class="mitem" data-k="1">風險保障</div><div class="mitem" data-k="2">間接回應</div><div class="mitem" data-k="3">策略介入</div><div class="mitem" data-k="4">預防</div></div><div class="mcol"><h4>說明</h4><div class="mitem" data-k="0">給窮人特定協助，像施粥所。治不了貧窮，但讓人活下去</div><div class="mitem" data-k="1">在老年、失能、失業時保護人。比直接濟貧有效，但只處理一部分</div><div class="mitem" data-k="2">改善健康、保障女性權利、減少貪腐，都能減輕貧窮</div><div class="mitem" data-k="3">聚焦教育、育兒或社區投資。但貧窮太複雜，單點不夠</div><div class="mitem" data-k="4">預防勝於治療。但許多關於成因的斷言，後來證明是錯的</div></div></div><p class="mstat"></p></section>
+<section class="slide k-cards" data-kind="cards" data-label="回應貧窮的五種方式" data-sect="第二節　誰是窮人"><div class="hd"><span class="ftab">第二節　誰是窮人</span></div><h2>回應貧窮的五種方式</h2><div class="grid5"><div class="card"><h4>濟貧</h4><p>給窮人特定協助，像施粥所。治不了貧窮，但讓人活下去</p></div><div class="card"><h4>風險保障</h4><p>在老年、失能、失業時保護人。比直接濟貧有效，但只處理一部分</p></div><div class="card"><h4>間接回應</h4><p>改善健康、保障女性權利、減少貪腐，都能減輕貧窮</p></div><div class="card"><h4>策略介入</h4><p>聚焦教育、育兒或社區投資。但貧窮太複雜，單點不夠</p></div><div class="card"><h4>預防</h4><p>預防勝於治療。但許多關於成因的斷言，後來證明是錯的</p></div></div><div class="expl"><span class="k">說明</span><p>這五種方式可以並用。濟貧治不了貧窮，但讓人活下去。風險保障是多數社會保障制度的做法：在老年、失能、失業這些可能讓人變窮的處境中保護人（Spicker, 2025a: 94）。</p><p>後兩種的限制值得注意。策略介入假設抓住少數關鍵，例如教育或育兒，就能解決貧窮；但貧窮太複雜，牽涉的問題太多。預防常被說成比治療便宜，但預防要先知道什麼處境會導致貧窮。過去關於成因的許多斷言，例如遺傳、失功能的家庭、教育機會或給付制度，後來都證明是錯的（2025a: 94–95）。</p><p>世界銀行也試過「指標鎖定」，例如集中幫助乾旱或歉收的地區。但依地理區域鎖定，效果並不好。有時普及的服務，例如基本醫療套案，反而比選擇性的服務更能把資源送到窮人手上（2025a: 94）。</p></div><footer class="sfoot"><span class="cite">Spicker（2025a: 94–95）</span><span class="pg">第 9 週　p. 13</span></footer></section>
+<section class="slide k-cols" data-kind="cols" data-label="什麼最有效？極端貧窮是人權問題" data-sect="第二節　誰是窮人"><div class="hd"><span class="ftab">第二節　誰是窮人</span></div><h2>什麼最有效？極端貧窮是人權問題</h2><div class="grid2"><div class="card col"><span class="ctag">MOST EFFECTIVE</span><h4>最有效的三種回應</h4><ul class="bl"><li>經濟發展：一次改善很多人的處境</li><li>社會保障：減少讓人陷入脆弱的情境</li><li>政治賦權：讓窮人自己選擇最重要的議題。Sen：民主政府對窮人很關鍵</li></ul></div><div class="card col"><span class="ctag">UN GUIDING PRINCIPLES</span><h4>國家的義務</h4><ul class="bl"><li>保護窮人不被汙名與歧視</li><li>讓女性參與決策</li><li>給窮人申訴與救濟的管道</li><li>確保最低限度的食物、住所與衛生</li><li>廢除把在公共場所睡覺、乞討、盥洗入罪的法律</li></ul></div></div><div class="call"><p>聯合國把極端貧窮看成侵犯人權。永續發展目標（2015–30）要消除極端貧窮。</p></div><div class="expl"><span class="k">說明</span><p>Spicker 認為，處理多面向的問題，需要好幾種政策一起推動。各國的減貧策略，通常把經濟與人的發展，和治理問題放在一起（Spicker, 2025a: 95）。</p><p>最有效的三種回應各有理由。經濟發展一次改善很多人的處境。社會保障減少人陷入脆弱的情境。政治賦權讓窮人自己選擇對生活最重要的議題（2025a: 95–96）。</p><p>聯合國《極端貧窮與人權指導原則》把貧窮看成多面向的現象：同時缺乏所得，也缺乏有尊嚴地生活的基本能力。除了投影片列的義務，國家也要確保所有勞工的工資，足以讓自己和家人過適當的生活（2025a: 96–97）。</p><p>千禧年發展目標（2000–2015）要把極端貧窮減半。以每天 1.25 美元計算，世界銀行估計全球有 17% 的人口是窮人。指導原則也承認，貧窮不只是所得低，許多問題在富國和窮國都存在（2025a: 97–98）。</p></div><footer class="sfoot"><span class="cite">Spicker（2025a: 95–98）</span><span class="pg">第 9 週　p. 14</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">05</span><span class="ct">第一、二節小測驗</span><span class="cc">1 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quiz" data-kind="quiz" data-label="◆ 第一、二節小測驗" data-sect="第二節　誰是窮人" data-act="1"><div class="hd"><span class="ftab">小測驗</span></div><h2>第一、二節小測驗</h2><p class="src">三題，作答後會立刻看到解說</p><div data-quiz="q1"><div class="qz" data-a="3"><div class="stem">1. Piachaud 說，定義貧窮是什麼樣的問題？</div><button class="opt" type="button">技術問題</button><button class="opt" type="button">統計問題</button><button class="opt" type="button">道德問題</button><button class="opt" type="button">法律問題</button><div class="fb">定義貧窮是一個道德問題，它指的是「不能接受的困苦」（Spicker, 2025a: 87；第 7 頁〈貧窮沒有公認的定義〉）。</div></div><div class="qz" data-a="2"><div class="stem">2. 歐盟怎麼界定「貧窮風險」？</div><button class="opt" type="button">每天所得低於 2 美元</button><button class="opt" type="button">所得低於中位數 60%</button><button class="opt" type="button">負擔不起一籃子必需品</button><button class="opt" type="button">自認是窮人</button><div class="fb">歐盟：所得低於中位數 60%，算「貧窮風險」（Spicker, 2025a: 91–92；第 14 頁〈怎麼量貧窮？測量只是路標〉）。台灣的最低生活費也參照中位數 60%（第 16 頁〈台灣的貧窮線：最低生活費〉）。</div></div><div class="qz" data-a="3"><div class="stem">3. 查不清所得，改用「代理指標」，會有什麼問題？</div><button class="opt" type="button">比較會找出真正窮的人</button><button class="opt" type="button">行政成本更高</button><button class="opt" type="button">比較會排除不窮的人，不太會找出真正窮的人</button><button class="opt" type="button">會懲罰上進</button><div class="fb">代理指標比較會排除不窮的人，不太會找出真正窮的人（Spicker, 2025a: 92–93；第 17 頁〈資產調查審查單〉）。</div></div></div><p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p></section></div></div>
+</div>
+<div class="pane" data-pane="2">
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">01</span><span class="ct">社會安全是什麼</span><span class="cc">3 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第三節　社會安全與社會救助" data-sect="第三節　社會安全與社會救助"><div class="divwrap"><div class="bigno"><b>03</b></div><div><span class="ftab">第三節　社會安全與社會救助</span><h2>社會安全與社會救助</h2><p class="subt">社會救助在整個所得保障體系裡，站在哪裡？</p><div class="reading"><p>讀本：《解讀社會政策》第 IV.7 章，頁 545–556</p></div></div><div class="stamp"><span>SECTION</span><b>參</b></div></div><footer class="sfoot"><span class="cite"></span><span class="pg">第 9 週　p. 15</span></footer></section>
+<section class="slide k-cards" data-kind="cards" data-label="什麼是「社會安全」？三種定義" data-sect="第三節　社會安全與社會救助"><div class="hd"><span class="ftab">第三節　社會安全與社會救助</span></div><h2>什麼是「社會安全」？三種定義</h2><p class="lead">至今沒有普遍接受的定義。由左到右，範圍愈來愈窄。</p><div class="grid3"><div class="card"><h4>最廣</h4><ul class="bl"><li>人們確保足夠收入的各種方法</li><li>包括工作、慈善、家人與國家</li></ul></div><div class="card"><h4>較窄</h4><ul class="bl"><li>所有財務支援，但市場提供的除外</li><li>依賴親屬生活也算</li></ul></div><div class="card"><h4>最窄</h4><ul class="bl"><li>國家提供的直接財務支援</li><li>本章採用：國家的所得維持體系</li></ul></div></div><div class="expl"><span class="k">說明</span><p>「社會安全」至今沒有普遍接受的定義（《解讀社會政策》頁 547）。</p><p>最廣的定義包括所有收入來源：工作與自營所得、慈善、家人的援助、國家的現金給付。其中最重要的是私部門：多數工作年齡的人主要靠工作所得，退休年金通常也以這些收入計算（頁 547）。</p><p>現在愈來愈傾向用最窄的定義。但作者也指出，這個定義不夠周延。例如英國的法定病假薪資現在多半由雇主負擔，職業年金也由雇主安排，功能卻和國家給付相似。「扣抵稅額」也扮演和給付相似的角色。所以本章採務實的做法：以國家的所得維持體系為主，也注意政府與雇主的其他相關支付（頁 547–548）。</p></div><footer class="sfoot"><span class="cite">《解讀社會政策》頁 547–548</span><span class="pg">第 9 週　p. 16</span></footer></section>
+<section class="slide k-form" data-kind="form" data-label="◆ 社會安全的六種可能目標" data-sect="第三節　社會安全與社會救助" data-act="1"><div class="hd"><span class="ftab">第三節　社會安全與社會救助</span><span class="fcode">BOX IV.7.1</span></div><h2>社會安全的六種可能目標</h2><div class="formgrid"><div class="sheet"><div class="checks" data-checks="c17" data-act-key="check-17"><label class="ck"><input type="checkbox"><span>投保以對抗失業、疾病等風險</span></label><label class="ck"><input type="checkbox"><span>紓解貧窮或低所得</span></label><label class="ck"><input type="checkbox"><span>生命週期中的重分配：工作年齡與退休之間</span></label><label class="ck"><input type="checkbox"><span>貧與富之間的重分配</span></label><label class="ck"><input type="checkbox"><span>補償額外成本：兒童、失能</span></label><label class="ck"><input type="checkbox"><span>傳統家庭解組時提供財務支持</span></label></div><p class="ckstat">逐項讀過就勾起來　·　已勾 <b>0</b> / 6</p></div><div class="formside"><div class="memo-side"><p>英國體系另外還要：</p><ul class="bl"><li>維持自給自足的誘因</li><li>壓低不領取的比率</li><li>防堵詐領</li><li>行政成本低廉</li></ul></div></div></div><div class="expl"><span class="k">說明</span><p>社會安全體系沒有單一目標。這個體系隨時間演變，不同部分有不同目標，連主要目標是什麼都眾說紛紜（《解讀社會政策》頁 548–549）。</p><p>英國體系的目標，傳統上比歐陸國家有限，但比英語世界其他國家寬。英國重視濟貧，所以非常倚重資產調查：個人或家庭的資源低於一定水準，才領得到。資產調查在美國、紐西蘭和澳洲也很普遍。歐陸則較少，因為歐陸的社會安全比較不集中，也更關注所得維持與補償（頁 549）。</p></div><footer class="sfoot"><span class="cite">《解讀社會政策》頁 549</span><span class="pg">第 9 週　p. 17</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">02</span><span class="ct">三類給付與社會救助</span><span class="cc">3 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：這些給付，各屬於哪一類？" data-sect="第三節　社會安全與社會救助" data-act="1"><div class="hd"><span class="ftab">◆ 動手做</span></div><h2>先猜：這些給付，各屬於哪一類？</h2><p class="src">依權利資格的規則，給付分成三類。讀下一頁之前，先自己分分看</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s18" data-act-key="sort-18" data-done="下一頁是三類給付的說明。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="國家退休年金" data-ans="保險給付" data-dim="">國家退休年金<span class="t">保險給付</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k1" data-txt="低收入補助" data-ans="資產調查給付" data-dim="">低收入補助<span class="t">資產調查給付</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k1" data-txt="房租津貼" data-ans="資產調查給付" data-dim="">房租津貼<span class="t">資產調查給付</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k2" data-txt="兒童津貼" data-ans="專項給付" data-dim="">兒童津貼<span class="t">專項給付</span></button></div><div class="scols n3"><div class="scol" data-k="k0"><h4>保險給付</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>資產調查給付</h4><div class="drop"></div></div><div class="scol" data-k="k2"><h4>專項給付</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-cards" data-kind="cards" data-label="三類給付：依什麼取得資格？" data-sect="第三節　社會安全與社會救助"><div class="hd"><span class="ftab">第三節　社會安全與社會救助</span></div><h2>三類給付：依什麼取得資格？</h2><p class="lead">依權利資格的規則來分。這只是簡化，三類常互相交錯。</p><div class="grid3"><div class="card"><h4>保險給付</h4><ul class="bl"><li>依繳過的保費</li><li>很個人化：配偶收入通常不影響</li><li>例：國家退休年金</li></ul></div><div class="card"><h4>資產調查給付</h4><ul class="bl"><li>依「家庭」的所得與儲蓄</li><li>有時就稱為「社會救助」</li><li>例：低收入補助、房租津貼</li></ul></div><div class="card"><h4>專項給付</h4><ul class="bl"><li>依身分或處境，如有孩子、失能</li><li>不做資產調查，也不必繳保費</li><li>例：兒童津貼</li></ul></div></div><div class="expl"><span class="k">說明</span><p>這是依「權利資格的規則」來分。保險給付源自 1940 年代的貝佛里奇報告，核心想法是：失業、失能、退休、失去家庭主要賺錢的人，這些風險會讓生活水準嚴重下滑。領取資格看兩件事：是否繳過保費，以及是否遇上給付涵蓋的風險（《解讀社會政策》頁 550–551）。</p><p>資產調查給付看的是「家庭」的資源，特別是所得和儲蓄。在英國，社會救助幾乎就等於低收入補助，加上依所得發給失業者的求職津貼（頁 551）。</p><p>專項給付承認某些群體有額外的支出，國家應該幫忙分擔，例如兒童津貼。它不做資產調查，也不必繳保費，但要通過居住的審查（頁 552）。</p><p>作者提醒，三分法是簡化。資產調查給付也會看是否處於特殊情境。保險給付也可能因為領到個人年金或職業年金而減少（頁 552）。</p></div><footer class="sfoot"><span class="cite">《解讀社會政策》頁 550–552</span><span class="pg">第 9 週　p. 18</span></footer></section>
+<section class="slide k-form" data-kind="form" data-label="◆ 社會救助怎麼運作" data-sect="第三節　社會安全與社會救助" data-act="1"><div class="hd"><span class="ftab">第三節　社會安全與社會救助</span><span class="fcode">FORM 09-19</span></div><h2>社會救助怎麼運作</h2><div class="formgrid"><div class="sheet"><div class="checks" data-checks="c19" data-act-key="check-19"><label class="ck"><input type="checkbox"><span>看家庭：資格依「家庭」的資源而定，特別是所得與儲蓄</span></label><label class="ck"><input type="checkbox"><span>看國家：澳洲、紐西蘭幾乎都要資產調查，常是為了排富；北歐的社會救助只補社會保險的漏洞</span></label><label class="ck"><input type="checkbox"><span>看地方：常由地方執行，地方對資格有裁量權</span></label><label class="ck"><input type="checkbox"><span>看工作：工作年齡、不需照顧孩子或失能者的人，必須能工作、可工作、積極找工作</span></label><label class="ck"><input type="checkbox"><span>看歷史：過去要先進貧民習藝所，才領得到救助</span></label></div><p class="ckstat">逐項讀過就勾起來　·　已勾 <b>0</b> / 5</p></div><div class="formside"><div class="stamp"><span>社會救助</span><b>附條件</b></div></div></div><div class="expl"><span class="k">說明</span><p>在澳洲和紐西蘭，幾乎所有給付都要做資產調查。但這不表示只有赤貧的人才領得到。有時資產調查的目的是排除富人，而不是只照顧最窮的人（《解讀社會政策》頁 551）。</p><p>北歐的社會救助角色很小，只照顧沒被主要社會保險涵蓋的人。社會救助也常由地方執行，地方對給付資格有一定的裁量權（頁 551）。</p><p>領社會救助通常附帶條件。工作年齡、又不必獨自照顧孩子或失能成人的人，必須有工作能力、可以工作，並積極找工作。過去這種人要先進貧民習藝所，才能領到救助（頁 551）。</p></div><footer class="sfoot"><span class="cite">《解讀社會政策》頁 551</span><span class="pg">第 9 週　p. 19</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">03</span><span class="ct">安全網與脆弱</span><span class="cc">4 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第四節　福利國家要做什麼" data-sect="第四節　福利國家要做什麼"><div class="divwrap"><div class="bigno"><b>04</b></div><div><span class="ftab">第四節　福利國家要做什麼</span><h2>福利國家要做什麼</h2><p class="subt">福利國家只是一張安全網嗎？</p><div class="reading"><p>讀本：Spicker（2025b）ch. 3 The aims of social welfare policies，頁 31–59</p></div></div><div class="stamp"><span>SECTION</span><b>肆</b></div></div><footer class="sfoot"><span class="cite"></span><span class="pg">第 9 週　p. 20</span></footer></section>
+<section class="slide k-cols" data-kind="cols" data-label="安全網與殘補式福利" data-sect="第四節　福利國家要做什麼"><div class="hd"><span class="ftab">第四節　福利國家要做什麼</span></div><h2>安全網與殘補式福利</h2><div class="grid2"><div class="card col"><span class="ctag">RESIDUAL</span><h4>殘補式福利是什麼</h4><ul class="bl"><li>任何福利國家都要接住被漏掉的人</li><li>問題在主張它「只」該做安全網</li><li>殘補：假設多數人不需要幫忙，只處理「剩下的人」</li></ul></div><div class="card col"><span class="ctag">OBJECTIONS</span><h4>三種反對理由</h4><ul class="bl"><li>歷史：總伴隨汙名、困苦與懲罰</li><li>方法：分出誰有資格，就有公平與管理的問題</li><li>原則：在領與不領的人之間做出令人反感的區分</li></ul></div></div><div class="call"><p>Murray 說福利國家原本只是安全網，後來膨脹了。Spicker：搞錯歷史。英國的福利國家正是要取代它。</p></div><div class="expl"><span class="k">說明</span><p>任何福利國家，只要想讓人依權利取得給付，就要有辦法接住原本會被漏掉的人和情況。許多國家的保障，原本是給正式受僱者的互助保險，或是給全體人口的一般服務。兩者之間常有缺口，例如年輕人、無家者、出獄者或移民（Spicker, 2025b: 31–32）。</p><p>問題在於主張福利國家「只」該做安全網。殘補式福利假設多數人不需要幫忙，可以靠自己或家人滿足需要。但線畫在哪裡，各國不同：澳洲的年金要做資產調查，卻有九成以上 65 歲以上的人領到（2025b: 32）。</p><p>Spicker 認為，Murray 等人說福利國家原本只是安全網、後來膨脹了，是搞錯了歷史。在英國，依賴殘補式的安全網，正是福利國家要取代的。福利國家提供普遍的服務，讓給窮人的服務和給其他人的服務難以區分（2025b: 33–34）。</p><p>他的評語是：福利國家最大的成功，是讓一些主要的服務變得理所當然，幾乎沒人注意，更沒人質疑。最大的失敗，是沒能把這種接受，擴大到其他的服務（2025b: 34）。</p></div><footer class="sfoot"><span class="cite">Spicker（2025b: 31–34）</span><span class="pg">第 9 週　p. 21</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 動手：先猜：穩定但低薪的工作者" data-sect="第四節　福利國家要做什麼" data-act="1"><div class="hd"><span class="ftab">◆ 先猜</span></div><h2>先猜：穩定但低薪的工作者</h2><p class="src">Spicker 區分「風險」與「脆弱」。答案在下一頁</p><div class="pq1"><p class="pqq">穩定但低薪的工作者，比較接近哪一種處境？</p><div class="poll" data-poll="vul" data-answer="風險不高，卻很脆弱" data-act-key="predict-vul"><div class="opts"><button type="button" data-v="風險高，也脆弱">風險高，也脆弱</button><button type="button" data-v="風險不高，卻很脆弱">風險不高，卻很脆弱</button><button type="button" data-v="風險高，但不脆弱">風險高，但不脆弱</button><button type="button" data-v="風險不高，也不脆弱">風險不高，也不脆弱</button></div></div><p class="verdict" data-verdict-for="vul"></p></div><div class="fbk ok reveal-box" data-reveal-all="vul">穩定但低薪的工作者，風險不高，卻很脆弱（Spicker, 2025b: 34–35）。下一頁是風險與脆弱的對照。</div></section>
+<section class="slide k-cols" data-kind="cols" data-label="保護脆弱者：風險不等於脆弱" data-sect="第四節　福利國家要做什麼"><div class="hd"><span class="ftab">第四節　福利國家要做什麼</span></div><h2>保護脆弱者：風險不等於脆弱</h2><div class="grid2 withmid"><div class="card col"><span class="ctag">RISK</span><h4>風險</h4><ul class="bl"><li>壞事「可能」發生</li><li>商場上的競爭者有風險，但不一定脆弱</li></ul></div><span class="mid">VS</span><div class="card col"><span class="ctag">VULNERABILITY</span><h4>脆弱</h4><ul class="bl"><li>壞事發生時，無法應付或復原</li><li>穩定但低薪的工作者，風險不高，卻很脆弱</li></ul></div></div><div class="call"><p>社會保障更關心脆弱，而不是風險。脆弱有很多面向：性別、從屬、剝削、無力。</p></div><div class="expl"><span class="k">說明</span><p>保護人不只是安全網。原則上，保護應該在需要安全網之前就發揮作用。保護也包括保護人不受他人影響，例如社會排除、債務，或是土地所有權讓某些人住不到房子（Spicker, 2025b: 34）。</p><p>聯合國把社會保障定義為減少人暴露於風險的政策。Spicker 認為這不太對，因為「風險」這個詞太廣了（2025b: 35）。</p><p>脆弱有很多面向，有些很難測量。缺乏資源是主要的指標之一，所以很多人把現金援助當成社會保障的核心策略（2025b: 35）。</p></div><footer class="sfoot"><span class="cite">Spicker（2025b: 34–35）</span><span class="pg">第 9 週　p. 22</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">04</span><span class="ct">重分配、團結與權利</span><span class="cc">4 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-cards" data-kind="cards" data-label="重分配：撲滿，不是羅賓漢" data-sect="第四節　福利國家要做什麼"><div class="hd"><span class="ftab">第四節　福利國家要做什麼</span></div><h2>重分配：撲滿，不是羅賓漢</h2><p class="lead">羅賓漢悖論：愈不平等的社會，重分配反而愈少。因為重點從來不是個人移轉，而是公共服務。</p><div class="grid4"><div class="card"><h4>垂直與水平</h4><p>垂直：高低所得之間。水平：不同處境之間，例如年金與兒童給付</p></div><div class="card"><h4>撲滿</h4><p>從個人來看，福利國家是在一生之中重分配資源（Barr）</p></div><div class="card"><h4>不會拖累經濟</h4><p>年金與救助是移轉支付。錢還在經濟裡，只是換人花</p></div><div class="card"><h4>文明的條件</h4><p>Tawney：讓每個人都能取得原本只有富人享有的「文明條件」</p></div></div><div class="expl"><span class="k">說明</span><p>垂直重分配發生在高低所得之間：從富到窮叫累進，從窮到富叫累退。水平重分配發生在不同處境之間，例如年金把資源從工作年齡的人移到老人，兒童給付從沒有孩子的人移到有孩子的家庭（Spicker, 2025b: 38）。</p><p>批評者常說重分配拖累經濟。Spicker 的回應很簡單：年金與救助是移轉支付，錢還在經濟裡，只是換人花。窮人消費占所得的比例較高，拿到錢反而可能稍微刺激需求（2025b: 39）。他也說，主張自由市場的人應該支持一定程度的重分配：人沒有資源，市場就無法興旺（2025b: 40）。</p><p>羅賓漢悖論問的是：愈不平等的社會，需要應該愈大，為什麼重分配反而愈少？Spicker 的答案是，重點從來不是給個人的移轉，而是公共服務、社會基礎建設，以及 Tawney 說的「文明的條件」。這些服務不足的國家，要補的就更多（2025b: 40–41）。</p></div><footer class="sfoot"><span class="cite">Spicker（2025b: 38–41）</span><span class="pg">第 9 週　p. 23</span></footer></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 動手：先猜：被排除的三種方式" data-sect="第四節　福利國家要做什麼" data-act="1"><div class="hd"><span class="ftab">◆ 動手做</span></div><h2>先猜：被排除的三種方式</h2><p class="src">Spicker 用三個英文詞說被排除的方式。點左邊一個詞，再點右邊對應的意思。答案在下一頁</p><div class="match" data-match="m24" data-act-key="match-24"><div class="mcol"><h4>英文</h4><div class="mitem" data-k="0">left out</div><div class="mitem" data-k="1">kept out</div><div class="mitem" data-k="2">pushed out</div></div><div class="mcol"><h4>意思</h4><div class="mitem" data-k="0">沒有支持體系，網子有洞</div><div class="mitem" data-k="1">不被當成社會成員，例如移民</div><div class="mitem" data-k="2">汙名與社會拒斥</div></div></div><p class="mstat"></p></section>
+<section class="slide k-cards" data-kind="cards" data-label="團結與排除" data-sect="第四節　福利國家要做什麼"><div class="hd"><span class="ftab">第四節　福利國家要做什麼</span></div><h2>團結與排除</h2><p class="lead">團結不是一種情緒，而是相互的責任：共同義務與支持的網絡。被排除有三種方式。</p><div class="grid4"><div class="card"><span class="tagc">1</span><h4>沒被接住</h4><p>left out：沒有支持體系，網子有洞</p></div><div class="card"><span class="tagc">2</span><h4>被擋在外</h4><p>kept out：不被當成社會成員，例如移民</p></div><div class="card"><span class="tagc">3</span><h4>被推出去</h4><p>pushed out：汙名與社會拒斥</p></div><div class="card"><span class="tagc">!</span><h4>陰暗面</h4><p>形成義務與認同的同一個過程，也會排除外人</p></div></div><div class="expl"><span class="k">說明</span><p>英文常把 solidarity 當成一種情緒，例如上街表達「聲援」。Spicker 說這和福利無關。在歐陸，團結是社會福利最根本的原則，指的是相互的責任：構成多數社會關係的共同義務與支持網絡（Spicker, 2025b: 43）。</p><p>沒有完全被納入團結體系的人是「邊緣」的，在體系之外的人是「被排除」的。國家提供福利的主要角色之一，就是把更多人納進來，讓原本不完全屬於社會的人，也享有團結的好處（2025b: 44）。</p><p>陰暗面在於：塑造我們的義務與社會認同的同一個過程，也會把外人排除在外。當代福利國家的許多兩難，都在於如何把人拉進支持與義務的網絡（2025b: 45）。</p></div><footer class="sfoot"><span class="cite">Spicker（2025b: 43–45）</span><span class="pg">第 9 週　p. 24</span></footer></section>
+<section class="slide k-memo" data-kind="memo" data-label="公民權與社會權" data-sect="第四節　福利國家要做什麼"><div class="hd"><span class="ftab">第四節　福利國家要做什麼</span><span class="fcode">MEMO</span></div><h2>公民權與社會權</h2><div class="memo"><span class="qmark">“</span><blockquote><p>公民身分是給予社群完整成員的地位。擁有這個地位的人，在權利與義務上一律平等。</p></blockquote><cite>—— T. H. Marshall</cite></div><ul class="bl"><li>社會權不是人權：人權是給每個人的最低限度，公民的權利只屬於特定社會的成員</li><li>權利常附帶條件。很多權利是「特定的」，例如年金依個人繳費而不同</li><li>「福利的權利」既不是對一切的權利，也不是人人都有的權利</li></ul><div class="expl"><span class="k">說明</span><p>Marshall 的社會公民身分，意味著每個人都享有一套共同的法定權利，沒有人被落下。但公民身分和團結一樣，有排除的問題：福利權利如果建立在社群的成員資格上，就一定有人不算成員（Spicker, 2025b: 45–46）。</p><p>社會權不是人權。Spicker 舉了一個例子：美洲人權法院審理五位秘魯年金領取者被拒發年金的案子時，沒有把它當成侵犯社會保障人權，而是當成特定的財產權受到侵害（2025b: 46）。</p><p>「平等的地位」很少說明權利在實務上是什麼。人能得到什麼，取決於各自的處境。歐洲最大、最穩固的年金體系，正是建立在依個人繳費而不同的特定權利上。Spicker 因此說，普遍的規則不一定最符合人的利益（2025b: 46–47）。</p></div><footer class="sfoot"><span class="cite">Spicker（2025b: 45–47）</span><span class="pg">第 9 週　p. 25</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">05</span><span class="ct">改變行為與其他目標</span><span class="cc">3 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-poll" data-kind="poll" data-label="◆ 動手：你怎麼看：有給付可領，人就會選擇不工作嗎？" data-sect="第四節　福利國家要做什麼" data-act="1"><div class="hd"><span class="ftab">◆ 表態</span></div><h2>你怎麼看：有給付可領，人就會選擇不工作嗎？</h2><p class="src">先表態，再讀下一頁 Spicker 怎麼回應。沒有標準答案</p><div class="pollbox"><div class="poll" data-poll="p26" data-act-key="poll-p26"><div class="opts"><button type="button" data-v="會，誘因很重要">會，誘因很重要</button><button type="button" data-v="不會，選擇有很多成本">不會，選擇有很多成本</button><button type="button" data-v="要看給付多高、條件怎麼定">要看給付多高、條件怎麼定</button></div></div></div></section>
+<section class="slide k-cols" data-kind="cols" data-label="改變行為：誘因真的有效嗎？" data-sect="第四節　福利國家要做什麼"><div class="hd"><span class="ftab">第四節　福利國家要做什麼</span></div><h2>改變行為：誘因真的有效嗎？</h2><div class="grid2 withmid"><div class="card col"><span class="ctag">CLAIM</span><h4>常見的說法</h4><ul class="bl"><li>政府用獎勵與懲罰改變行為</li><li>Murray：胡蘿蔔與棍子有效，有給付可領的人會選擇不工作</li></ul></div><span class="mid">VS</span><div class="card col"><span class="ctag">SPICKER</span><h4>為什麼不對</h4><ul class="bl"><li>「其他條件不變」從來不成立</li><li>選擇有成本：時間、壓力、汙名、失去自主</li><li>鼓勵生育的金錢誘因，效果通常很小</li><li>說失業給付讓人想失業，就像說喪葬補助讓人想死</li></ul></div></div><div class="expl"><span class="k">說明</span><p>政府改變行為的方式很多：刑法、管制、教育、宣傳，以及對認可的行為給獎勵、對不認可的處境給懲罰。福利因此也被批評是一種「社會控制」（Spicker, 2025b: 50）。</p><p>經濟學原本談的是整體人口：給了誘因，只有一部分人會改變，有多少人回應就是「彈性」。鼓勵生育的金錢誘因效果有限，因為女性生得少、生得晚，是她們在人生中做了其他選擇（2025b: 51）。</p><p>Spicker 批評「理性選擇」的說法有兩個問題。第一，它假設「其他條件不變」，但其他條件從來不會不變。第二，選擇有成本。失業的成本很高：失去的所得、應付官僚、制裁、社會孤立、貧窮與長期的不利（2025b: 52）。</p></div><footer class="sfoot"><span class="cite">Spicker（2025b: 50–52）</span><span class="pg">第 9 週　p. 26</span></footer></section>
+<section class="slide k-form" data-kind="form" data-label="◆ 現金給付還有這些目標" data-sect="第四節　福利國家要做什麼" data-act="1"><div class="hd"><span class="ftab">第四節　福利國家要做什麼</span><span class="fcode">FORM 09-27</span></div><h2>現金給付還有這些目標</h2><p class="lead">福利國家不是單一服務，也沒有單一目標。</p><div class="formgrid"><div class="sheet"><div class="checks" data-checks="c27" data-act-key="check-27"><label class="ck"><input type="checkbox"><span>免除工作義務：退休、疾病、生育給付，讓人可以離開勞動市場</span></label><label class="ck"><input type="checkbox"><span>支持其他服務：條件式現金移轉，要求健康檢查或孩子上學</span></label><label class="ck"><input type="checkbox"><span>補償：戰爭失能、疫苗傷害、職業災害</span></label><label class="ck"><input type="checkbox"><span>資助特定活動：租屋、照顧、食物生產，例如美國的食物券</span></label></div><p class="ckstat">逐項讀過就勾起來　·　已勾 <b>0</b> / 4</p></div><div class="formside"><div class="memo-side"><p>Spicker：用「體制」為福利國家分類很荒謬。要平衡的目標太多，內部差異太大。</p></div></div></div><div class="expl"><span class="k">說明</span><p>Spicker 先檢討了幾種單一目標的說法：福利國家只是安全網、只回應需要、是重分配的引擎、只是支持經濟。每一種都不完整。他的結論是：這些目標都適用，只是組合不同；只看一個目標，就會漏掉重要的東西（Spicker, 2025b: 54）。</p><p>不同的服務各有標準。兒少保護的社工關心風險，醫療人員看醫療上的優先順序，住宅官員看公平，教師看個人發展（2025b: 54–55）。</p><p>現金給付的目標特別多。除了安全網、社會保障、回應需要、團結、重分配、改變行為，還有投影片列的四項。「免除工作義務」聽起來意外，因為許多國家都在推「促進就業」；但退休、疾病與生育給付的核心設計，正是讓人可以暫時或長期離開勞動市場（2025b: 57–58）。</p></div><footer class="sfoot"><span class="cite">Spicker（2025b: 54, 57–59）</span><span class="pg">第 9 週　p. 27</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">06</span><span class="ct">第三、四節小測驗</span><span class="cc">1 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quiz" data-kind="quiz" data-label="◆ 第三、四節小測驗" data-sect="第四節　福利國家要做什麼" data-act="1"><div class="hd"><span class="ftab">小測驗</span></div><h2>第三、四節小測驗</h2><p class="src">三題，作答後會立刻看到解說</p><div data-quiz="q2"><div class="qz" data-a="3"><div class="stem">1. 《解讀社會政策》採用哪一種「社會安全」定義？</div><button class="opt" type="button">人們確保足夠收入的各種方法</button><button class="opt" type="button">所有財務支援，但市場提供的除外</button><button class="opt" type="button">國家提供的直接財務支援</button><button class="opt" type="button">依賴親屬生活</button><div class="fb">本章採用最窄的定義：國家的所得維持體系（頁 547–548；第 23 頁〈什麼是「社會安全」？三種定義〉）。</div></div><div class="qz" data-a="3"><div class="stem">2. 兒童津貼屬於哪一類給付？</div><button class="opt" type="button">保險給付</button><button class="opt" type="button">資產調查給付</button><button class="opt" type="button">專項給付</button><button class="opt" type="button">社會救助</button><div class="fb">專項給付依身分或處境而給，不做資產調查，也不必繳保費（頁 550–552；第 26 頁〈三類給付：依什麼取得資格？〉）。</div></div><div class="qz" data-a="2"><div class="stem">3. Spicker 怎麼區分風險與脆弱？</div><button class="opt" type="button">兩者是同一件事</button><button class="opt" type="button">風險是壞事「可能」發生；脆弱是壞事發生時，無法應付或復原</button><button class="opt" type="button">風險只發生在窮人身上</button><button class="opt" type="button">脆弱只看所得高低</button><div class="fb">穩定但低薪的工作者，風險不高，卻很脆弱。社會保障更關心脆弱（Spicker, 2025b: 34–35；第 31 頁〈保護脆弱者：風險不等於脆弱〉）。</div></div></div><p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p></section></div></div>
+</div>
+<div class="pane" data-pane="3">
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">01</span><span class="ct">值得與不值得</span><span class="cc">5 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第五節　誰值得幫" data-sect="第五節　誰值得幫"><div class="divwrap"><div class="bigno"><b>05</b></div><div><span class="ftab">第五節　誰值得幫</span><h2>誰值得幫？</h2><p class="subt">福利應得性（welfare deservingness）：民眾怎麼判斷誰「值得」幫。被看成愈值得的群體，針對他們的方案得到愈多支持。</p><div class="reading"><p>補充讀本：van Oorschot（2000）</p><p>van Oorschot &amp; Roosma（2017）</p></div></div><div class="stamp"><span>SECTION</span><b>伍</b></div></div><footer class="sfoot"><span class="cite">van Oorschot &amp; Roosma（2017: 13）</span><span class="pg">第 9 週　p. 28</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：濟貧法怎麼分這些人？" data-sect="第五節　誰值得幫" data-act="1"><div class="hd"><span class="ftab">◆ 動手做</span></div><h2>先猜：濟貧法怎麼分這些人？</h2><p class="src">濟貧法把窮人分成兩種。讀下一頁之前，先自己分分看</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s29" data-act-key="sort-29" data-done="下一頁是濟貧法的分類，以及歷史上的三個判準。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="老人" data-ans="值得救濟" data-dim="">老人<span class="t">值得救濟</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="病人與體弱者" data-ans="值得救濟" data-dim="">病人與體弱者<span class="t">值得救濟</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="兒童" data-ans="值得救濟" data-dim="">兒童<span class="t">值得救濟</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k1" data-txt="失業者" data-ans="不值得救濟" data-dim="">失業者<span class="t">不值得救濟</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k1" data-txt="懶惰的貧民" data-ans="不值得救濟" data-dim="">懶惰的貧民<span class="t">不值得救濟</span></button><button class="sc" type="button" draggable="true" data-i="5" data-k="k1" data-txt="有能力工作的人" data-ans="不值得救濟" data-dim="">有能力工作的人<span class="t">不值得救濟</span></button></div><div class="scols n2"><div class="scol" data-k="k0"><h4>值得救濟</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>不值得救濟</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-cols" data-kind="cols" data-label="「值得」與「不值得」救濟的窮人" data-sect="第五節　誰值得幫"><div class="hd"><span class="ftab">第五節　誰值得幫</span></div><h2>「值得」與「不值得」救濟的窮人</h2><div class="grid2"><div class="card col"><span class="ctag">POOR LAWS</span><h4>濟貧法的分類</h4><ul class="bl"><li>值得救濟：老人、病人與體弱者、兒童，也就是「無能力的窮人」</li><li>不值得救濟：失業者、懶惰的貧民、有能力工作的人</li><li>今天仍然如此：老人與身障者領的給付較少汙名；寡婦比離婚婦女受保障</li></ul></div><div class="card col"><span class="ctag">DE SWAAN</span><h4>歷史上的三個判準</h4><ul class="bl"><li>失能：靠自己的努力也無法謀生</li><li>親近：屬於「我們」：同一家族、城鎮、教會或民族</li><li>溫順：安靜、不張揚、不要求的窮人比較值得</li></ul></div></div><div class="expl"><span class="k">說明</span><p>濟貧法的分類至今仍在。老人與身障者領的給付汙名較少，許多國家的寡婦比離婚婦女受到更好的保障；老人與單親家長的求職義務，通常也比較寬鬆（van Oorschot &amp; Roosma, 2017: 6–7）。</p><p>De Swaan 認為三個判準裡，失能最重要：在整部濟貧史上，它一直是必要條件，但不一定足夠。親近的界線可以是親屬、居住地，或「我們的家族、城鎮、教會、民族」這類認同團體。在現代社會，它可能變成不願支持少數族群或外國居民（van Oorschot, 2000: 35）。</p><p>溫順指窮人面對重分配時的被動程度。荷蘭的一項研究發現，地方社會服務人員發展出一套非正式規則：順從的案主，比會提出要求的案主得到更慷慨的對待（2000: 36）。</p></div><footer class="sfoot"><span class="cite">van Oorschot（2000: 35–36）；van Oorschot &amp; Roosma（2017: 7）</span><span class="pg">第 9 週　p. 29</span></footer></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 動手：先猜：CARIN 五個判準，各問什麼？" data-sect="第五節　誰值得幫" data-act="1"><div class="hd"><span class="ftab">◆ 動手做</span></div><h2>先猜：CARIN 五個判準，各問什麼？</h2><p class="src">點左邊一個判準，再點右邊對應的問題。答案在下一頁</p><div class="match" data-match="m30" data-act-key="match-30"><div class="mcol"><h4>判準</h4><div class="mitem" data-k="0">C　控制</div><div class="mitem" data-k="1">A　態度</div><div class="mitem" data-k="2">R　互惠</div><div class="mitem" data-k="3">I　認同</div><div class="mitem" data-k="4">N　需要</div></div><div class="mcol"><h4>問的問題</h4><div class="mitem" data-k="0">需要是自己造成的嗎？</div><div class="mitem" data-k="1">討喜、順從、知道感恩嗎？</div><div class="mitem" data-k="2">做過貢獻，或將來能貢獻嗎？</div><div class="mitem" data-k="3">離「我們」多近？</div><div class="mitem" data-k="4">需要有多大？</div></div></div><p class="mstat"></p></section>
+<section class="slide k-cards" data-kind="cards" data-label="福利應得性的五個判準：CARIN" data-sect="第五節　誰值得幫"><div class="hd"><span class="ftab">第五節　誰值得幫</span></div><h2>福利應得性的五個判準：CARIN</h2><div class="grid5"><div class="card"><span class="tagc">C</span><h4>控制</h4><p class="cs">Control</p><p>需要是自己造成的嗎？愈無法控制，愈值得</p></div><div class="card"><span class="tagc">A</span><h4>態度</h4><p class="cs">Attitude</p><p>討喜、順從、知道感恩嗎？愈順從，愈值得</p></div><div class="card"><span class="tagc">R</span><h4>互惠</h4><p class="cs">Reciprocity</p><p>做過貢獻，或將來能貢獻嗎？貢獻愈多，愈值得</p></div><div class="card"><span class="tagc">I</span><h4>認同</h4><p class="cs">Identity</p><p>離「我們」多近？愈接近我們，愈值得</p></div><div class="card"><span class="tagc">N</span><h4>需要</h4><p class="cs">Need</p><p>需要有多大？需要愈大，愈值得</p></div></div><div class="expl"><span class="k">說明</span><p>van Oorschot 把前人的研究整理成五個判準。Cook 在美國的研究發現，除了需要的程度，最重要的是「責任歸屬」：困境被看成超出個人控制，支持就高（van Oorschot, 2000: 36）。</p><p>態度與互惠都和互惠的規範有關。窮人能回報的不多，所以民眾在意回報的替代品，例如一聲謝謝、順從、感恩；在現代，則是積極找工作或參加再就業方案。互惠也可以往回算：過去做過貢獻，支持就算是「掙來」的。這說明了為什麼老人比年輕人得到更多支持（2000: 36）。</p><p>需要這個判準，也延伸到陷入困境家庭裡的孩子。他們被看成「無辜的第三方」（van Oorschot &amp; Roosma, 2017: 14）。</p></div><footer class="sfoot"><span class="cite">van Oorschot（2000: 36）；van Oorschot &amp; Roosma（2017: 13–14）</span><span class="pg">第 9 週　p. 30</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">02</span><span class="ct">民眾怎麼判斷</span><span class="cc">4 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-predict" data-kind="predict" data-label="◆ 動手：先猜：荷蘭民眾最看重哪一個判準？" data-sect="第五節　誰值得幫" data-act="1"><div class="hd"><span class="ftab">◆ 先猜</span></div><h2>先猜：荷蘭民眾最看重哪一個判準？</h2><p class="src">van Oorschot（2000）比較民眾給不同群體的分數。答案在下一頁</p><div class="pq1"><p class="pqq">對比群體分數差距最大的判準是……</p><div class="poll" data-poll="top" data-answer="控制" data-act-key="predict-top"><div class="opts"><button type="button" data-v="控制">控制</button><button type="button" data-v="認同">認同</button><button type="button" data-v="互惠">互惠</button><button type="button" data-v="需要">需要</button></div></div><p class="verdict" data-verdict-for="top"></p></div><div class="fbk ok reveal-box" data-reveal-all="top">控制 3.60 最高，其次是認同 2.27、互惠 1.85（van Oorschot, 2000: 37–39）。下一頁是完整的長條圖。</div></section>
+<section class="slide k-bars" data-kind="bars" data-label="荷蘭民眾最看重哪一個判準？" data-sect="第五節　誰值得幫"><div class="hd"><span class="ftab">第五節　誰值得幫</span><span class="fcode">TABLE I</span></div><h2>荷蘭民眾最看重哪一個判準？</h2><p class="lead">對比群體在 1–10 分上的平均差距。差距愈大，這個判準愈重要。</p><ol class="hbars"><li><span class="bl2">控制</span><span class="bt"><i style="--w:100.0%"></i></span><span class="bv">3.60</span></li><li><span class="bl2">認同</span><span class="bt"><i style="--w:63.1%"></i></span><span class="bv">2.27</span></li><li><span class="bl2">互惠</span><span class="bt"><i style="--w:51.4%"></i></span><span class="bv">1.85</span></li><li><span class="bl2">社會風險</span><span class="bt"><i style="--w:37.5%"></i></span><span class="bv">1.35</span></li><li><span class="bl2">需要</span><span class="bt"><i style="--w:36.4%"></i></span><span class="bv">1.31</span></li></ol><div class="call"><p>「無法工作的人」得 7.6 分，「不願工作的人」只有 2.3 分。</p><p>態度：這份調查沒有題目可以測量。資料：1995 年荷蘭全國調查，N = 1,500。</p></div><div class="expl"><span class="k">說明</span><p>資料來自 1995 年荷蘭的全國代表性調查，N = 1,500。題目是：如果削減給付，誰比較有權利得到社會的財務支持？受訪者對 29 個群體，從 1（完全沒有權利）到 10（完全有權利）打分數（van Oorschot, 2000: 37）。</p><p>分析的做法是比較在某個判準上對比的兩群人。兩群分數差不多，代表這個判準不重要；差很多，代表很重要。例如控制比較「無法工作」和「不願工作」的人。認同只能用「外國人」和全體平均來比，因為沒有其他題目可用（2000: 37–38）。</p><p>所有對比的差距都達顯著，代表五個判準都有作用。其中最重要的是控制，其次是認同與互惠（2000: 38）。</p></div><footer class="sfoot"><span class="cite">van Oorschot（2000: 37–39）</span><span class="pg">第 9 週　p. 31</span></footer></section>
+<section class="slide k-memo" data-kind="memo" data-label="民眾心裡的三個審查問題" data-sect="第五節　誰值得幫"><div class="hd"><span class="ftab">第五節　誰值得幫</span><span class="fcode">MEMO</span></div><h2>民眾心裡的三個審查問題</h2><div class="memo"><span class="qmark">“</span><ol class="qlist"><li><b>你為什麼需要幫忙？</b><span class="tagc">控制</span></li><li><b>你是我們的人嗎？</b><span class="tagc">認同</span></li><li><b>你為我們做過什麼，或能做什麼？</b><span class="tagc">互惠</span></li></ol></div><ul class="bl"><li>最可能被接受：因生病或失能而需要、一輩子在這個群體裡生活與工作的年金領取者</li><li>最可能被拒絕：年輕、單身、剛移入、寧願領給付也不工作的外國人</li></ul><div class="expl"><span class="k">說明</span><p>這三個問題有沒有固定的先後順序，資料看不出來。De Swaan 認為失能（也就是控制）是必要條件。控制在荷蘭是最重要的判準，至少不和這個說法矛盾（van Oorschot, 2000: 38）。</p><p>兩端的人物畫像，是把所有判準結合起來的結果。最受歡迎的人，困境超出自己控制，遇上公認的社會風險，過去做過貢獻，需要很大，又和幫助者同屬一群。最被拒絕的人正好相反（2000: 38–39）。</p></div><footer class="sfoot"><span class="cite">van Oorschot（2000: 38–39, 43）</span><span class="pg">第 9 週　p. 32</span></footer></section>
+<section class="slide k-reveal" data-kind="reveal" data-label="揭曉：普遍的支持排序" data-sect="第五節　誰值得幫"><div class="hd"><span class="ftab">第五節　誰值得幫</span><span class="fcode">FORM 09-01</span></div><h2>揭曉：普遍的支持排序</h2><p class="lead">跨國、跨時期的調查一再發現同一個排序。和你的一樣嗎？</p><div class="rankcmp" data-rankcmp="r3"><p class="rch"><span>普遍的排序</span><span>你在開場排的名次</span></p><ol class="docket rk2"><li><span class="no">1</span><b>老人</b><span class="mine" data-mine="0">—</span></li><li><span class="no">2</span><b>病人與身障者</b><span class="mine" data-mine="1">—</span></li><li><span class="no">3</span><b>有子女的貧窮家庭</b><span class="mine" data-mine="2">—</span></li><li><span class="no">4</span><b>失業者</b><span class="mine" data-mine="3">—</span></li><li><span class="no">5</span><b>領社會救助的人</b><span class="mine" data-mine="4">—</span></li><li><span class="no">底</span><b>移民</b><span class="mine" data-mine="5">—</span></li></ol><p class="rcmsg"></p></div><div class="call"><p>老人最值得：年齡不能怪他們；他們是我們的父母；有年齡帶來的需要；年輕時已經貢獻；不被看成不知感恩。後來的研究發現，移民也落在最底端。</p></div><div class="expl"><span class="k">說明</span><p>這個排序最早由 Coughlin（1980）整理文獻後提出，稱為「普遍的支持面向」。之後英國、芬蘭、丹麥、荷蘭、比利時、捷克等國的研究，都一再印證（van Oorschot &amp; Roosma, 2017: 14）。</p><p>用 CARIN 來看，就能理解這個排序。失業者常被懷疑要為自己的處境負責，但在認同與互惠上，比移民得分高。病人與身障者比失業者更被看成值得，因為他們的困境明顯不是自願的。移民在認同與互惠上特別吃虧（2017: 14–15）。</p><p>應得性是程度上的差別。同一群人也會因其他特徵而不同：有錢的老人在「需要」上得分較低，身障的失業者在「控制」上得分較高（2017: 15）。</p></div><footer class="sfoot"><span class="cite">van Oorschot &amp; Roosma（2017: 14–15）</span><span class="pg">第 9 週　p. 33</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">03</span><span class="ct">為什麼救助總排最後</span><span class="cc">4 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-form" data-kind="form" data-label="◆ 為什麼社會救助總是排最後？" data-sect="第五節　誰值得幫" data-act="1"><div class="hd"><span class="ftab">第五節　誰值得幫</span><span class="fcode">FORM 09-34</span></div><h2>為什麼社會救助總是排最後？</h2><div class="formgrid"><div class="sheet"><div class="checks" data-checks="c34" data-act-key="check-34"><label class="ck"><input type="checkbox"><span>資產調查本身：造成貧窮陷阱與失業陷阱、汙名、資格不穩定、該領的人不領</span></label><label class="ck"><input type="checkbox"><span>負擔分配：中高所得者出錢卻不受益，容易被看成不公平</span></label><label class="ck"><input type="checkbox"><span>詐領的印象：規則愈多，可以違反的地方愈多，也愈容易被懷疑濫用</span></label><label class="ck"><input type="checkbox"><span>不像權利：行政裁量讓給付像施捨，施捨帶來羞恥與自卑</span></label></div><p class="ckstat">逐項讀過就勾起來　·　已勾 <b>0</b> / 4</p></div><div class="formside"><div class="stamp"><span>應得性</span><b>最低</b></div></div></div><div class="expl"><span class="k">說明</span><p>資產調查和其他鎖定的標準性質不同，因為它常給申請者帶來特定的問題：貧窮與失業陷阱、汙名、資格不穩定、該領的人不領。這些都和「完全的社會融合」這個社會政策的核心目標背道而馳（van Oorschot &amp; Roosma, 2017: 6）。</p><p>負擔分配的問題來自 Rothstein 的分析：人支持重分配，前提是覺得大家都公平分擔，而且制度公正有效地運作。選擇性的給付多由中高所得者出錢，卻分給低所得者，容易被看成不公平。規則愈複雜，行政成本與官僚也愈多，門檻也讓更多人不去申請（2017: 8–9）。</p><p>申請資產調查給付，等於公開表示自己無法自立，背離了自我負責的規範。行政裁量也讓給付不像權利，而像施捨。Simmel 說，施捨會帶來羞恥與自卑（2017: 11）。</p></div><footer class="sfoot"><span class="cite">van Oorschot &amp; Roosma（2017: 6, 8–9, 11）</span><span class="pg">第 9 週　p. 34</span></footer></section>
+<section class="slide k-steps" data-kind="steps" data-label="◆ 選擇性的惡性循環" data-sect="第五節　誰值得幫" data-act="1"><div class="hd"><span class="ftab">第五節　誰值得幫</span><span class="fcode">FORM 09-35</span></div><h2>選擇性的惡性循環</h2><p class="instr">這是一個循環。從第一步開始，依序點下面四步；點對了就排進去。</p><div class="cycle" data-order="o35" data-act-key="order-35"><div class="otray"><button class="oi" type="button" data-o="0">目標群體<br>被看成「不值得」</button><button class="oi" type="button" data-o="1">政策更選擇性<br>標準更嚴格</button><button class="oi" type="button" data-o="2">官僚更多<br>被懷疑的濫用也更多</button><button class="oi" type="button" data-o="3">方案的正當性<br>再下降</button></div><ol class="tline"><li class="empty" data-t="目標群體
+被看成「不值得」"><span class="no">1</span><span>？</span></li><li class="empty" data-t="政策更選擇性
+標準更嚴格"><span class="no">2</span><span>？</span></li><li class="empty" data-t="官僚更多
+被懷疑的濫用也更多"><span class="no">3</span><span>？</span></li><li class="empty" data-t="方案的正當性
+再下降"><span class="no">4</span><span>？</span></li></ol><div class="row"><button class="pbtn sec js-show" type="button">直接看答案</button></div><div class="fbk"></div></div><div class="call side"><p>選擇性陷阱</p><p>高度選擇性的體系一旦建立，就很難把涵蓋範圍擴大到最窮的人之外。</p><p>美國是典型的例子。</p></div><div class="expl"><span class="k">說明</span><p>這個循環結合了制度與應得性兩種解釋。資產調查方案的出錢者與受益者界線分明，容易被看成負擔不公；規則複雜，詐領的機會與疑慮也多。詐領又會被看成不願為自己負責（控制）或道德低落（態度），讓受益者顯得更不值得（van Oorschot &amp; Roosma, 2017: 18）。</p><p>美國的經驗顯示，目標群體被看成不值得，會促使政策制定者把方案弄得更選擇性、標準更嚴，好把值得與不值得的人分得更「公平」。結果官僚更多，被懷疑的濫用也更多，方案的正當性再往下掉（2017: 18）。</p><p>選擇性高的體系，把出錢的中產與受益的窮人分開，被看成造成分裂，而不是整合。一旦大眾把福利看成只給窮人的東西，就很難說服中產支持擴大福利（2017: 10）。</p></div><footer class="sfoot"><span class="cite">van Oorschot &amp; Roosma（2017: 10, 18）</span><span class="pg">第 9 週　p. 35</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 動手：先猜：這些人，比較可能是哪一派？" data-sect="第五節　誰值得幫" data-act="1"><div class="hd"><span class="ftab">◆ 動手做</span></div><h2>先猜：這些人，比較可能是哪一派？</h2><p class="src">van Oorschot（2000）比較了「判準用得多」和「判準用得少」的人。讀下一頁之前，先自己分分看</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s36" data-act-key="sort-36" data-done="下一頁是兩派的對照。"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="年紀較大、教育程度較低、職位較低" data-ans="選擇派：判準用得多" data-dim="">年紀較大、教育程度較低、職位較低<span class="t">選擇派：判準用得多</span></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="投票給宗教右派" data-ans="選擇派：判準用得多" data-dim="">投票給宗教右派<span class="t">選擇派：判準用得多</span></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="認為社會安全會敗壞道德" data-ans="選擇派：判準用得多" data-dim="">認為社會安全會敗壞道德<span class="t">選擇派：判準用得多</span></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k0" data-txt="認為給付太高，而且常被濫用" data-ans="選擇派：判準用得多" data-dim="">認為給付太高，而且常被濫用<span class="t">選擇派：判準用得多</span></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k1" data-txt="較年輕、教育程度高、工作好" data-ans="普及派：判準用得少" data-dim="">較年輕、教育程度高、工作好<span class="t">普及派：判準用得少</span></button><button class="sc" type="button" draggable="true" data-i="5" data-k="k1" data-txt="不認為社會安全讓人變懶" data-ans="普及派：判準用得少" data-dim="">不認為社會安全讓人變懶<span class="t">普及派：判準用得少</span></button><button class="sc" type="button" draggable="true" data-i="6" data-k="k1" data-txt="不認為制度被廣泛濫用" data-ans="普及派：判準用得少" data-dim="">不認為制度被廣泛濫用<span class="t">普及派：判準用得少</span></button><button class="sc" type="button" draggable="true" data-i="7" data-k="k1" data-txt="態度通常比較慷慨" data-ans="普及派：判準用得少" data-dim="">態度通常比較慷慨<span class="t">普及派：判準用得少</span></button></div><div class="scols n2"><div class="scol" data-k="k0"><h4>選擇派：判準用得多</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>普及派：判準用得少</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></section>
+<section class="slide k-cols" data-kind="cols" data-label="誰比較「有條件」？選擇派與普及派" data-sect="第五節　誰值得幫"><div class="hd"><span class="ftab">第五節　誰值得幫</span></div><h2>誰比較「有條件」？選擇派與普及派</h2><div class="grid2 withmid"><div class="card col"><span class="ctag">SELECTIVISTS</span><h4>選擇派：判準用得多</h4><ul class="bl"><li>年紀較大、教育程度較低、職位較低</li><li>投票給宗教右派</li><li>認為社會安全會敗壞道德</li><li>認為給付太高，而且常被濫用</li></ul></div><span class="mid">VS</span><div class="card col"><span class="ctag">UNIVERSALISTS</span><h4>普及派：判準用得少</h4><ul class="bl"><li>較年輕、教育程度高、工作好</li><li>不認為社會安全讓人變懶</li><li>不認為制度被廣泛濫用</li><li>態度通常比較慷慨</li></ul></div></div><div class="call"><p>收入高低、有沒有工作或在領給付，和條件化的程度沒有關係。</p></div><div class="expl"><span class="k">說明</span><p>把每個人在各判準上的分數加總，就是「條件化」的程度。分數高的人看法比較有條件，分數低的人比較無條件（van Oorschot, 2000: 39）。</p><p>作者的解釋是：年輕、教育高、工作好的人比較不可能陷入需要，從高度選擇性的體系得不到什麼，所以偏好較普及的體系。年紀大、技能低的人處境較有風險，可能希望保障只留給真正需要的人。另一種解釋是：社經地位最接近窮人的人，把窮人看成直接的競爭者（2000: 39–40）。</p><p>為什麼收入高低、有沒有在領給付，和條件化無關？作者的一個解釋是，人在工作與領給付之間經常流動，而看法不會隨身分變換一夕改變（2000: 40–41）。</p></div><footer class="sfoot"><span class="cite">van Oorschot（2000: 40–43）</span><span class="pg">第 9 週　p. 36</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">04</span><span class="ct">救助的政治</span><span class="cc">5 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第六節　救助的政治" data-sect="第六節　救助的政治"><div class="divwrap"><div class="bigno"><b>06</b></div><div><span class="ftab">第六節　救助的政治</span><h2>救助的政治</h2><p class="subt">只給窮人的方案，為什麼總是撐不久？</p><div class="reading"><p>延伸讀本：Skocpol（2020 [1991]）</p><p>Targeting within universalism，頁 250–274</p></div></div><div class="stamp"><span>SECTION</span><b>陸</b></div></div><footer class="sfoot"><span class="cite"></span><span class="pg">第 9 週　p. 37</span></footer></section>
+<section class="slide k-cards" data-kind="cards" data-label="◆ 美國百年來，只給窮人的三次嘗試" data-sect="第六節　救助的政治" data-act="1"><div class="hd"><span class="ftab">第六節　救助的政治</span></div><h2>美國百年來，只給窮人的三次嘗試</h2><p class="instr">三份檔案，點一份翻開，或按「全部翻開」。</p><div class="flips f3" data-flips="f38" data-act-key="flip-38"><button class="fcard" type="button"><span class="fname">貧民院</span><span class="fsub">19 世紀</span><span class="fback">想省錢、改造窮人的品格。1850 年代就失靈，最後成了沒有資源和家人的老人之家</span><span class="fhint">點一下翻開</span></button><button class="fcard" type="button"><span class="fname">母親年金</span><span class="fsub">1911–1920</span><span class="fback">本意是不讓寡母被當成貧民。後來經費最少、最貶抑人，演變成被貶稱的「福利」</span><span class="fhint">點一下翻開</span></button><button class="fcard" type="button"><span class="fname">向貧窮宣戰</span><span class="fsub">1960–70 年代</span><span class="fback">幫了很多人，但引發反撲：中產與勞工多繳稅，卻覺得自己沒得到好處</span><span class="fhint">點一下翻開</span></button></div><div class="row"><button class="pbtn sec" type="button" data-flipall="f38">全部翻開</button></div><div class="expl"><span class="k">說明</span><p>貧民院想一舉多得：省下濟貧的錢、嚇阻潛在的貧民，又改善窮人的品格與行為。但實際上，把人關在院裡比讓人住在家裡更花錢。院所經費不足，被貪腐的管理者把持，孩子、老人與精神病患被關起來，常遭剝削（Skocpol, 2020 [1991]: 254–255）。</p><p>母親年金由菁英與中產婦女團體推動。她們主張母親養育孩子是值得尊敬的服務，喪夫的母親不該被當成貧民。但地方不願把稅花在窮人身上，給付低到許多人仍得去打工。社工員帶著「適當家庭」調查嚴格把關，方案最後成了今天被貶稱為「福利」的核心（2020 [1991]: 255–256）。</p><p>向貧窮宣戰確實幫了很多人，老人受益最多。但非老年人的貧窮率下降不多。1970 年代勞工與中產階級的實質所得下降、稅負上升，卻覺得自己從給窮人的移轉裡得不到好處，於是轉向反對（2020 [1991]: 257–258）。</p></div><footer class="sfoot"><span class="cite">Skocpol（2020 [1991]: 254–259）</span><span class="pg">第 9 週　p. 38</span></footer></section>
+<section class="slide k-cards" data-kind="cards" data-label="三個結論" data-sect="第六節　救助的政治"><div class="hd"><span class="ftab">第六節　救助的政治</span></div><h2>三個結論</h2><p class="lead">Skocpol 檢視美國反貧窮政策的歷史，得出三個結論。</p><div class="grid3"><div class="card"><span class="tagc">1</span><h4>只針對窮人</h4><p>政治上無法持續，還讓窮人被汙名、被貶低</p></div><div class="card"><span class="tagc">2</span><h4>相對普及的政策</h4><p>有些在政治上非常成功</p></div><div class="card"><span class="tagc">3</span><h4>普及中的選擇</h4><p>在普及的架構裡多給弱勢一些，卻不汙名化他們</p></div></div><div class="expl"><span class="k">說明</span><p>支持只鎖定窮人的人說，普及的方案太貴，又把資源給了最不需要的人。Skocpol 指出，他們很少面對政治支持從哪裡來的問題：收入剛好在貧窮線上的勞工家庭，自己也缺健保、缺托育，為什麼要出錢支持只給線下的人的方案？（Skocpol, 2020 [1991]: 252–253）</p><p>在美國，窮人常被當成負面的對照，讓「靠自己」的人藉此定義自己。這種刻板印象，說明了為什麼跨國研究發現：普及的方案雖然比較貴，在民主國家卻比較能持續（2020 [1991]: 253）。</p></div><footer class="sfoot"><span class="cite">Skocpol（2020 [1991]: 253）</span><span class="pg">第 9 週　p. 39</span></footer></section>
+<section class="slide k-cards" data-kind="cards" data-label="◆ 普及中的選擇：成功的例子" data-sect="第六節　救助的政治" data-act="1"><div class="hd"><span class="ftab">第六節　救助的政治</span></div><h2>普及中的選擇：成功的例子</h2><p class="instr">三份檔案，點一份翻開，或按「全部翻開」。</p><div class="flips f3" data-flips="f40" data-act-key="flip-40"><button class="fcard" type="button"><span class="fname">南北戰爭年金</span><span class="fsub">19 世紀末–20 世紀初</span><span class="fback">1910 年約 29% 的 65 歲以上男性領取。它被當成「掙來的」，和濟貧對立</span><span class="fhint">點一下翻開</span></button><button class="fcard" type="button"><span class="fname">母嬰健康法案</span><span class="fsub">1921–1929</span><span class="fback">Lathrop 刻意不只鎖定窮人，法案寫明「本法不是慈善」</span><span class="fhint">點一下翻開</span></button><button class="fcard" type="button"><span class="fname">社會安全</span><span class="fsub">1935–</span><span class="fback">「不談窮人，反而幫到窮人」。老人貧窮率從 1959 年的 35% 降到 1983 年的 14%</span><span class="fhint">點一下翻開</span></button></div><div class="row"><button class="pbtn sec" type="button" data-flipall="f40">全部翻開</button></div><div class="expl"><span class="k">說明</span><p>南北戰爭年金明確和濟貧對立，理由是「這是掙來的」。1891 年的年金局長說，老兵領年金時會感到驕傲，面對救濟卻會羞愧地轉身。這些給付最後涵蓋九成以上在世的老兵，其中也包括許多黑人與貧窮的白人（Skocpol, 2020 [1991]: 260–261）。</p><p>母嬰健康法案實施的 7 年間，兒童局辦了 18.3 萬場健康諮詢會，設立約 3,000 個產前中心，同時特別把資源導向偏遠鄉間的母親。它從未被汙名化。但它沒有建立固定的給付權利，所以 1929 年被國會終止（2020 [1991]: 262–263）。</p><p>社會安全在制度內，逐步把給付向較貧窮的老人傾斜。1960、70 年代的大幅調升，讓它成為美國最有效的反貧窮方案。雷根政府想刪減時，立刻遭到民意反彈而退讓（2020 [1991]: 264–266）。</p></div><footer class="sfoot"><span class="cite">Skocpol（2020 [1991]: 259–266）</span><span class="pg">第 9 週　p. 40</span></footer></section>
+<section class="slide k-form" data-kind="form" data-label="◆ 今天可以怎麼做：家庭安全方案" data-sect="第六節　救助的政治" data-act="1"><div class="hd"><span class="ftab">第六節　救助的政治</span><span class="fcode">FORM 09-41</span></div><h2>今天可以怎麼做：家庭安全方案</h2><p class="lead">Skocpol 的建議：用普及的政策，取代只給窮人的「福利」。</p><div class="formgrid"><div class="sheet"><div class="checks" data-checks="c41" data-act-key="check-41"><label class="ck"><input type="checkbox"><span>子女扶養保證：從缺席父母的薪資扣繳，政府保障最低額</span></label><label class="ck"><input type="checkbox"><span>所有工作家庭的育嬰假與托育協助</span></label><label class="ck"><input type="checkbox"><span>給失業者與新進勞工的職業訓練與轉業協助</span></label><label class="ck"><input type="checkbox"><span>全民健康給付</span></label></div><p class="ckstat">逐項讀過就勾起來　·　已勾 <b>0</b> / 4</p></div><div class="formside"><div class="stamp"><span>普及中的</span><b>選擇</b></div><div class="memo-side"><p>支票也寄給中上階層的女性，所以「沒有汙名、沒有失敗、沒有孤立」。</p></div></div></div><div class="expl"><span class="k">說明</span><p>Skocpol 主張用新政策取代「福利」，同時照顧弱勢、中產與穩定的勞工。新政策要用一致的道德語言，對所有受益者與納稅人說話：強調工作的回報、個人向上的機會，以及家庭與社區照顧孩子的責任（Skocpol, 2020 [1991]: 267）。</p><p>子女扶養保證的做法是：所有缺席的父母依薪資比例付扶養費，像所得稅一樣從薪資扣繳，再由政府把支票寄給監護的一方。收不到或不足時，由政府補到最低額。這筆錢不會在母親開始工作時就消失，這點和福利給付不同（2020 [1991]: 267–268）。</p><p>她也提醒：新方案即使一開始規模小，有不少給了看起來沒那麼窮的家庭，日後也可能為更聚焦的協助打開空間。相反地，一開始就窄窄鎖定的方案，可能失去支持，或拿不到需要的資源（2020 [1991]: 267）。</p></div><footer class="sfoot"><span class="cite">Skocpol（2020 [1991]: 267–268）</span><span class="pg">第 9 週　p. 41</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">05</span><span class="ct">台灣的社會救助</span><span class="cc">6 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第七節　台灣的社會救助" data-sect="第七節　台灣的社會救助"><div class="divwrap"><div class="bigno"><b>07</b></div><div><span class="ftab">第七節　台灣的社會救助</span><h2>台灣的社會救助</h2><p class="subt">制度怎麼篩人？窮人又怎麼走進、走出貧窮？</p><div class="reading"><p>延伸讀本：呂朝賢、陳俊全、王德睦（2008）</p><p>法規：社會救助法（民國 104 年 12 月 30 日修正）</p></div></div><div class="stamp"><span>SECTION</span><b>柒</b></div></div><footer class="sfoot"><span class="cite"></span><span class="pg">第 9 週　p. 42</span></footer></section>
+<section class="slide k-law" data-kind="law" data-label="社會救助法的骨架" data-sect="第七節　台灣的社會救助"><div class="hd"><span class="ftab">第七節　台灣的社會救助</span><span class="fcode">社會救助法</span></div><h2>社會救助法的骨架</h2><ol class="laws"><li><span class="art">§1</span><span class="lt">目的：照顧低收入戶、中低收入戶及遭受急難或災害的人，並協助其自立</span></li><li><span class="art">§2</span><span class="lt">四種救助：生活扶助、醫療補助、急難救助、災害救助</span></li><li><span class="art">§11</span><span class="lt">生活扶助以現金給付為原則</span></li><li><span class="art">§13</span><span class="lt">地方政府每年定期調查低收入戶與中低收入戶</span></li><li><span class="art">§15-1</span><span class="lt">地方政府可以辦理脫離貧窮的相關措施</span></li></ol><div class="expl"><span class="k">說明</span><p>生活扶助以現金給付為原則，但因實際需要，也可以委託社會救助機構、社會福利機構或其他家庭收容。現金給付可依收入差別訂定等級，每四年參照消費者物價指數調整一次（社會救助法第 11 條）。</p><p>地方政府每年定期調查低收入戶與中低收入戶。因收入或資產增加而停止扶助的人，地方政府應主動評估需求，協助申請其他福利，並視需要轉介就業服務（第 13 條）。</p><p>參加脫離貧窮措施的家庭，因措施增加的收入和存款，在一定期間與額度內可以不計入家庭總收入與家庭財產，最長三年，必要時再延長一年（第 15-1 條）。</p></div><footer class="sfoot"><span class="cite">社會救助法第 1、2、11、13、15-1 條</span><span class="pg">第 9 週　p. 43</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 動手：先猜：台灣的窮人，脫貧之後會怎樣？" data-sect="第七節　台灣的社會救助" data-act="1"><div class="hd"><span class="ftab">◆ 先猜</span></div><h2>先猜：台灣的窮人，脫貧之後會怎樣？</h2><p class="src">呂朝賢、陳俊全、王德睦（2008）追蹤 1995–2005 年的低收入戶。答案在下一頁</p><div class="pq1"><p class="pqq">脫貧者在 11 年內再入貧的比例，大約是……</p><div class="poll" data-poll="re" data-answer="約 20%" data-act-key="predict-re"><div class="opts"><button type="button" data-v="約 5%">約 5%</button><button type="button" data-v="約 10%">約 10%</button><button type="button" data-v="約 20%">約 20%</button><button type="button" data-v="約 40%">約 40%</button></div></div><p class="verdict" data-verdict-for="re"></p></div><div class="fbk ok reveal-box" data-reveal-all="re">脫貧者 11 年內再入貧：20.19%（呂朝賢等，2008）。下一頁還有貧窮年資與脫貧機率。</div></section>
+<section class="slide k-stats" data-kind="stats" data-label="台灣的貧窮動態：進得去，出不太來" data-sect="第七節　台灣的社會救助"><div class="hd"><span class="ftab">第七節　台灣的社會救助</span><span class="fcode">DATA 1995–2005</span></div><h2>台灣的貧窮動態：進得去，出不太來</h2><div class="stats3"><div class="statc"><b>4.73 年</b><span>貧窮年資的中位數</span></div><div class="statc"><b>0.1275</b><span>平均每年的脫貧機率</span></div><div class="statc"><b>20.19%</b><span>脫貧者 11 年內再入貧</span></div></div><ul class="bl"><li>資料：健保承保檔裡的低收入戶成員，接近全國母體</li><li>短暫貧窮的人最多：未滿 3 年者約占 56–60%</li><li>但長期貧窮者用掉多數「貧窮人年」：滿 9 年以上的脫貧者占 52.54%</li></ul><div class="call">和西方國家相比，台灣的窮人更難脫貧。</div><div class="expl"><span class="k">說明</span><p>這份研究從健保承保資料中，找出「第五類被保險人：合於社會救助法規定的低收入戶成員」，串成 1995–2005 年的長期追蹤資料（呂朝賢等，2008: 452）。</p><p>作者借用 Bane 與 Ellwood 的住院病人比喻：出院的病人多數是短期病人，但在任何時間點看病床，慢性病人占了大部分。台灣的窮人也一樣：短暫貧窮的人最多，但貧窮滿 9 年以上的脫貧者，占了總貧窮人年數的一半以上（2008: 466）。</p><p>為什麼台灣的窮人比西方更難脫貧？作者認為，社會救助的審查標準過於嚴苛，能通過的多已是「積重難返」的人（2008: 464, 466）。</p></div><footer class="sfoot"><span class="cite">呂朝賢等（2008: 441, 452, 462–466）</span><span class="pg">第 9 週　p. 44</span></footer></section>
+<section class="slide k-cols" data-kind="cols" data-label="誰最難脫貧？為什麼？" data-sect="第七節　台灣的社會救助"><div class="hd"><span class="ftab">第七節　台灣的社會救助</span></div><h2>誰最難脫貧？為什麼？</h2><div class="grid2"><div class="card col"><span class="ctag">WHO</span><h4>最難脫貧的人</h4><ul class="bl"><li>女性</li><li>0–4 歲的幼兒</li><li>住在高度都市化地區的人</li><li>相對容易：15–29 歲、農業市鎮</li></ul></div><div class="card col"><span class="ctag">WHY</span><h4>研究者的解釋</h4><ul class="bl"><li>審查標準過於嚴苛，落入的多是「積重難返」的人</li><li>社會安全以職業為主，女性保障不足</li><li>資產調查式補助對脫貧沒有顯著幫助；較普及的給付，如老人津貼、政府的健保保費支出，反而有幫助</li></ul></div></div><div class="call"><p>作者建議：福利給付應以兒童本身為對象，不要讓父母的不幸傳到孩子身上。</p></div><div class="expl"><span class="k">說明</span><p>影響脫貧的因素用 Cox 迴歸估計。例如 0–4 歲比 65 歲以上的人，脫貧機會少了 33.7%；15–29 歲則多了 24.8%（呂朝賢等，2008: 466–467）。</p><p>女性難脫貧，和台灣的社會安全以職業保障為主有關。女性的勞動參與率、薪資與年資都較低，在職與退休後的保障都不如男性。以勞保老年給付為例，2006 年女性每件請領的金額只有男性的 75%（2008: 470）。</p><p>都市化地區較難脫貧，作者提出五種可能的解釋，例如都市生活成本高、生活資源多靠薪資與市場、社會支持網絡較薄弱。作者強調，這些都只是初步的假說（2008: 470–471）。</p><p>以縣市資料分析，對弱勢者的資產調查式補助，對脫貧率沒有顯著影響；政府移轉收入的比例愈高，脫貧率愈高。作者因此主張，政策焦點應朝向預防入貧，而不是等人變窮了才給協助（2008: 468）。</p></div><footer class="sfoot"><span class="cite">呂朝賢等（2008: 441, 466–472）</span><span class="pg">第 9 週　p. 45</span></footer></section>
+<section class="slide k-law" data-kind="law" data-label="課堂討論：用 CARIN 讀社會救助法" data-sect="第七節　台灣的社會救助"><div class="hd"><span class="ftab">第七節　台灣的社會救助</span><span class="fcode">DISCUSSION</span></div><h2>課堂討論：用 CARIN 讀社會救助法</h2><p class="lead">下面是一種讀法。你同意這樣對照嗎？</p><ol class="laws"><li><span class="tagc">C</span><span class="art">§5-3</span><span class="lt">「有工作能力」：16 到 64 歲，除非身障、重病、照顧家人、獨自扶養 6 歲以下子女、懷孕等</span></li><li><span class="tagc">R</span><span class="art">§5-1</span><span class="lt">有工作能力卻沒有就業的人，收入依基本工資計算</span></li><li><span class="tagc">A</span><span class="art">§15</span><span class="lt">不願接受就業服務，或接受後不願工作的人，不予扶助</span></li><li><span class="tagc">I</span><span class="art">§4</span><span class="lt">戶內人口要實際住在戶籍地，最近一年住在國內超過 183 天</span></li><li><span class="tagc">N</span><span class="art">§4</span><span class="lt">收入在最低生活費以下，財產也不能超過公告金額</span></li></ol><div class="expl"><span class="k">說明</span><p>這頁對照的條文，原文還有一些細節。第 5-3 條列了不算「有工作能力」的情形，例如 25 歲以下仍在就學、身心障礙或重病致不能工作、照顧特定的家人（同一戶以一人為限）、獨自扶養 6 歲以下子女、懷孕六個月以上至分娩後二個月內等（社會救助法第 5-3 條）。</p><p>有工作能力卻未就業的人，收入依基本工資計算。但經公立就業服務機構認定失業，或參加政府辦的全日制職業訓練，這段期間可以不計工作收入（第 5-1 條）。</p><p>不願接受就業服務，或接受後不願工作的人，不予扶助（第 15 條第 4 項）。同一條也規定，參與就業服務後因就業增加的收入，在一定期間與額度內可以不計入家庭總收入（第 15 條第 3 項）。</p><p>居住的條件是：申請戶的戶內人口都要實際住在戶籍所在地，且最近一年住在國內超過 183 天；申請時設籍多久，則不限制（第 4 條第 6 項）。</p></div><footer class="sfoot"><span class="cite">社會救助法第 4、5-1、5-3、15 條</span><span class="pg">第 9 週　p. 46</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">06</span><span class="ct">第五至七節小測驗</span><span class="cc">1 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quiz" data-kind="quiz" data-label="◆ 第五至七節小測驗" data-sect="第七節　台灣的社會救助" data-act="1"><div class="hd"><span class="ftab">小測驗</span></div><h2>第五至七節小測驗</h2><p class="src">三題，作答後會立刻看到解說。三份小測驗都作答完，才能送出簽到</p><div data-quiz="q3"><div class="qz" data-a="4"><div class="stem">1. van Oorschot 的荷蘭調查裡，哪一個判準最重要？</div><button class="opt" type="button">需要</button><button class="opt" type="button">互惠</button><button class="opt" type="button">認同</button><button class="opt" type="button">控制</button><div class="fb">控制的差距 3.60 最大（van Oorschot, 2000: 37–39；第 46 頁〈荷蘭民眾最看重哪一個判準？〉）。</div></div><div class="qz" data-a="2"><div class="stem">2. Skocpol 說，什麼樣的政策在政治上走得久？</div><button class="opt" type="button">只針對窮人的方案</button><button class="opt" type="button">普及中的選擇：在普及的架構裡多給弱勢一些</button><button class="opt" type="button">完全交給地方裁量</button><button class="opt" type="button">取消所有資產調查</button><div class="fb">只針對窮人的政策，政治上無法持續；普及中的選擇，在普及的架構裡多給弱勢一些，卻不汙名化他們（Skocpol, 2020 [1991]: 253；第 55 頁〈三個結論〉）。</div></div><div class="qz" data-a="3"><div class="stem">3. 呂朝賢等（2008）發現，什麼對脫貧有幫助？</div><button class="opt" type="button">資產調查式補助</button><button class="opt" type="button">更嚴格的審查標準</button><button class="opt" type="button">較普及的給付，如老人津貼、政府的健保保費支出</button><button class="opt" type="button">以職業為主的社會安全</button><div class="fb">資產調查式補助對脫貧沒有顯著幫助；較普及的給付反而有幫助（呂朝賢等，2008: 441, 466–472；第 62 頁〈誰最難脫貧？為什麼？〉）。</div></div></div><p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p></section></div></div>
+</div>
+<div class="pane" data-pane="4">
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">01</span><span class="ct">小結與課堂討論</span><span class="cc">2 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-table" data-kind="table" data-label="今天的小結" data-sect="總結"><div class="hd"><span class="ftab">總結</span><span class="fcode">SUMMARY</span></div><h2>今天的小結</h2><div class="tblwrap"><table class="tbl"><thead><tr><th>問題</th><th>今天的回答</th></tr></thead><tbody><tr><th class="rh">貧窮是什麼？</th><td>沒有公認的定義：它是道德判斷，也是多面向的處境</td></tr><tr><th class="rh">怎麼找到窮人？</th><td>每一種測量與鎖定，都有漏洞</td></tr><tr><th class="rh">救助在哪裡？</th><td>依家庭資源審查的最後安全網</td></tr><tr><th class="rh">只是安全網嗎？</th><td>不是：福利國家有很多目標，安全網只是其中之一</td></tr><tr><th class="rh">誰被認為值得幫？</th><td>看控制、態度、互惠、認同、需要；社會救助總排在後面</td></tr><tr><th class="rh">怎樣幫，才走得久？</th><td>普及中的選擇：不只談窮人</td></tr><tr><th class="rh">台灣呢？</th><td>審查嚴、脫貧難；普及給付比資產調查更有助脫貧</td></tr></tbody></table></div><footer class="sfoot"><span class="cite"></span><span class="pg">第 9 週　p. 47</span></footer></section>
+<section class="slide k-discuss" data-kind="discuss" data-label="◆ 補件通知：課堂討論" data-sect="總結" data-act="1"><div class="hd"><span class="ftab">總結</span><span class="fcode">FORM 09-48</span></div><h2>補件通知：課堂討論</h2><p class="instr">點開一題，寫下你的想法。寫好的會跟著簽到一起送出，老師上課會挑幾則出來討論。</p><div class="discbox"><details class="disc"><summary><span class="no">01</span><span>暖身的排序和荷蘭民眾一樣嗎？你用了 CARIN 的哪幾個判準？</span></summary><div class="inbox" data-inbox="d1" data-act-key="inbox-d1"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details><details class="disc"><summary><span class="no">02</span><span>台灣的社會救助法比較像殘補式安全網，還是也有 Spicker 說的其他目標？舉一個條文說明。</span></summary><div class="inbox" data-inbox="d2" data-act-key="inbox-d2"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details><details class="disc"><summary><span class="no">03</span><span>「有工作能力卻沒有就業，收入依基本工資計算」公平嗎？用控制與互惠兩個判準討論。</span></summary><div class="inbox" data-inbox="d3" data-act-key="inbox-d3"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details><details class="disc"><summary><span class="no">04</span><span>資產調查式補助無助脫貧。依 Skocpol 的「普及中的選擇」，你會怎麼設計？</span></summary><div class="inbox" data-inbox="d4" data-act-key="inbox-d4"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details></div><footer class="sfoot"><span class="cite"></span><span class="pg">第 9 週　p. 48</span></footer></section></div></div>
+<div class="chap"><button class="chap-h" type="button"><span class="cn">02</span><span class="ct">讀本與下週預告</span><span class="cc">2 頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-readings" data-kind="readings" data-label="讀本" data-sect="總結"><div class="hd"><span class="ftab">總結</span><span class="fcode">READING LIST</span></div><h2>讀本</h2><p class="instr">讀完一篇就勾起來，自己看進度。勾選只存在這台裝置，不會送出。</p><div class="readlist"><h4 class="rh4">必讀</h4><label class="rp"><input type="checkbox" data-r="0"><span>《解讀社會政策》第 IV.7 章 所得保障暨社會安全（頁 545–556）。群學。</span></label><label class="rp"><input type="checkbox" data-r="1"><span>Spicker, P. (2025a). An Introduction to Social Policy, ch. 6: Poverty (pp. 87–98).</span></label><label class="rp"><input type="checkbox" data-r="2"><span>Spicker, P. (2025b). What Is the Welfare State For?, ch. 3 (pp. 31–59). Bristol University Press.</span></label><h4 class="rh4">延伸</h4><label class="rp"><input type="checkbox" data-r="3"><span>呂朝賢、陳俊全、王德睦（2008）。臺灣的社會救助動態：趨勢、型態與成因。人文及社會科學集刊，20(4)，441–479。</span></label><label class="rp"><input type="checkbox" data-r="4"><span>Lister, R. (2004). Poverty, ch. 1. Polity.</span></label><label class="rp"><input type="checkbox" data-r="5"><span>Skocpol, T. (2020 [1991]). Targeting within universalism. In Social Policy in the United States (pp. 250–274). Princeton University Press.</span></label></div><p class="rpstat">已讀 <b>0</b> / <span class="rptot"></span></p><footer class="sfoot"><span class="cite"></span><span class="pg">第 9 週　p. 49</span></footer></section>
+<section class="slide k-readings" data-kind="readings" data-label="補充讀本：福利應得性" data-sect="總結"><div class="hd"><span class="ftab">總結</span><span class="fcode">READING LIST</span></div><h2>補充讀本：福利應得性</h2><p class="instr">讀完一篇就勾起來，自己看進度。勾選只存在這台裝置，不會送出。</p><div class="readlist"><h4 class="rh4">補充</h4><label class="rp"><input type="checkbox" data-r="6"><span>van Oorschot, W. (2000). Who should get what, and why? On deservingness criteria and the conditionality of solidarity among the public. Policy &amp; Politics, 28(1), 33–48.</span></label><label class="rp"><input type="checkbox" data-r="7"><span>van Oorschot, W., &amp; Roosma, F. (2017). The social legitimacy of targeted welfare and welfare deservingness. In W. van Oorschot et al. (Eds.), The Social Legitimacy of Targeted Welfare (pp. 3–33). Edward Elgar.</span></label><h4 class="rh4">法規</h4><label class="rp"><input type="checkbox" data-r="8"><span>社會救助法（民國 104 年 12 月 30 日修正）。全國法規資料庫。</span></label></div><p class="rpstat">已讀 <b>0</b> / <span class="rptot"></span></p><div class="card ticket"><span class="k">下週預告</span><h4>下週　11/20　第 10 週　老年經濟安全與年金政策</h4></div><footer class="sfoot"><span class="cite"></span><span class="pg">第 9 週　p. 50</span></footer></section></div></div>
+</div>
+<div class="pane" data-pane="5">
+<section class="slide k-done" data-kind="done" data-label="◆ 完成與簽到" data-sect=""><div class="hd"><span class="ftab">完成</span></div><h2>完成紀錄</h2><p class="src">三份小測驗全部作答、閱讀滿 20 分鐘，就可以送出簽到</p><div class="stat"><div>答對題數<b id="st-score">—</b></div><div>已作答<b id="st-done">—</b></div><div>閱讀時間<b id="st-time">00:00</b></div><div>看過頁數<b id="st-seen">—</b></div><div>動手做<b id="st-act">—</b></div></div><div class="idbox"><div><label for="sid">學號</label><input id="sid" maxlength="12" placeholder="例如 14115101" autocomplete="off"></div><div><label for="sname">姓名</label><input id="sname" maxlength="20" placeholder="你的姓名" autocomplete="off"></div></div><div class="fbbox"><label for="sfbk">這一週最有收穫、或最想問的一點（選填）</label><textarea id="sfbk" maxlength="300" placeholder="寫一兩句就好，老師上課會挑幾則回應"></textarea></div><p class="dmsg" id="dmsg"></p><button class="pbtn" id="submit" type="button" disabled>送出簽到</button><p class="code" id="scode"></p></section>
+</div>
+</main>
+<nav class="navbar">
+  <button class="nav-btn prev" id="prev" type="button" onclick="goPrev()">← 前頁</button>
+  <div class="nav-mid"><span class="pageno"><span id="cur">1</span> / <span id="tot">69</span></span><div class="dots" id="dots"></div></div>
+  <button class="nav-btn" id="next" type="button" onclick="goNext()">下一頁 →</button>
+</nav>
+<div class="khint" id="khint"><kbd>←</kbd> <kbd>→</kbd> 翻頁　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕</div>
+<div class="toc" id="toc" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" type="button" onclick="toggleToc()" aria-label="關閉">×</button>
+    <h3>目次</h3>
+    <p class="tsub">點任一條目跳到該頁。</p>
+    <div class="tfilter" id="tfilter">
+      <button type="button" class="on" data-f="all">全部</button>
+      <button type="button" data-f="act">要動手的</button>
+      <button type="button" data-f="sum">表格、條文與數字</button>
+      <button type="button" data-f="quote">引文與討論</button>
+      <button type="button" data-f="read">讀本</button>
+    </div>
+    <ol id="toclist"></ol>
+  </div>
+</div>
+<script>
+/* ═══════════════════════════════════════════════
+   簽到設定：Google 表單的 formResponse 網址與四個欄位代號。
+   ENDPOINT 留空時，送出鍵會產生一組代碼，請學生交給老師手動登記。
+   ═══════════════════════════════════════════════ */
+const CONFIG = {
+  ENDPOINT:'',
+  // 簽到後台（Apps Script）網址。填了就先送這裡，寫入試算表並讀回確認後顯示「已登記」；失敗才改走上面的表單
+  GAS:'',
+  FIELDS:{ sid:'entry.778218493', name:'entry.419586149', code:'entry.1960280121', detail:'entry.749946348' },
+  WEEK:'W09', MIN_MINUTES:20
+};
+// 老師測試用：網址加 ?test=1 就跳過閱讀時間門檻（只影響這個分頁）
+if(new URLSearchParams(location.search).get('test')==='1') CONFIG.MIN_MINUTES=0;
+
+const KEY='sp115-w09';
+const store={get(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}},
+             set(o){try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}}};
+let S=store.get();
+['poll','quiz','seen','sort','match','flip','inbox','readp','acts','rank','order','checks'].forEach(k=>{ S[k]=S[k]||{}; });
+S.seconds=S.seconds||0; S.page=S.page||0;
+const save=()=>store.set(S);
+const $=id=>document.getElementById(id);
+const esc=v=>String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.random()*(i+1)|0; [a[i],a[j]]=[a[j],a[i]]; } return a; }
+// 打亂後若剛好和原來一樣，就再打亂一次（只有三、四項時常會遇到）
+function mix(a){ let b=a; for(let t=0;t<6 && a.length>1;t++){ b=shuffle(a); if(b.some((x,i)=>x!==a[i])) break; } return b; }
+function shake(el){ el.classList.add('shake'); setTimeout(()=>el.classList.remove('shake'),420); }
+
+const slides=[...document.querySelectorAll('.slide')];
+const TOT=slides.length;
+$('tot').textContent=TOT;
+let cur=0;
+
+/* ── 動手紀錄 ── */
+const ACTS=[...new Set([...document.querySelectorAll('[data-act-key]')].map(e=>e.dataset.actKey))];
+function actDone(k){ if(k && !S.acts[k]){ S.acts[k]=1; save(); refresh(); } }
+const actCount=()=>ACTS.filter(k=>S.acts[k]).length;
+
+/* ── 目次與 dots ── */
+const toclist=$('toclist'), dotsEl=$('dots');
+const SECN=['第一','第二','第三','第四','第五','第六','第七'];
+const secNo=s=>SECN.findIndex(k=>s.startsWith(k))+1;
+slides.forEach((s,i)=>{
+  const label=s.dataset.label, sect=s.dataset.sect||'';
+  const li=document.createElement('li');
+  if(s.dataset.kind==='divider'||s.dataset.kind==='cover') li.className='head';
+  li.innerHTML='<a href="#" data-i="'+i+'"><span class="n">'+(i+1)+'</span><span>'+label+'</span></a>';
+  li.querySelector('a').addEventListener('click',e=>{ e.preventDefault(); goTo(i); toggleToc(); });
+  toclist.appendChild(li);
+  const d=document.createElement('div');
+  const n=secNo(sect);
+  d.className='dot'+(n?' s'+n:'');
+  d.title=(i+1)+'. '+label;
+  d.addEventListener('click',()=>goTo(i));
+  dotsEl.appendChild(d);
+});
+const dots=[...dotsEl.children], tocLinks=[...toclist.querySelectorAll('a')];
+
+/* ── 分節與小節 ── */
+const panes=[...document.querySelectorAll('.pane')];
+const paneBtns=[...document.querySelectorAll('#panenav button')];
+function showPane(id,scroll){
+  panes.forEach(p=>p.classList.toggle('on',p.dataset.pane===id));
+  paneBtns.forEach(b=>b.classList.toggle('on',b.dataset.pane===id));
+  S.pane=id; save();
+  document.querySelectorAll('.sbar.show').forEach(b=>b.classList.remove('show'));
+  if(scroll!==false) window.scrollTo({top:0,behavior:'instant'});
+}
+paneBtns.forEach(b=>b.addEventListener('click',()=>showPane(b.dataset.pane)));
+document.querySelectorAll('.chap-h').forEach(h=>{
+  h.addEventListener('click',()=>{
+    const c=h.parentElement, was=c.classList.contains('open');
+    c.classList.toggle('open');
+    if(!was) c.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+/* ── 翻頁 ── */
+function goTo(n){
+  n=Math.max(0,Math.min(TOT-1,n));
+  const sl=slides[n];
+  const pane=sl.closest('.pane');
+  if(pane && !pane.classList.contains('on')) showPane(pane.dataset.pane,false);
+  const chap=sl.closest('.chap');
+  if(chap) chap.classList.add('open');
+  cur=n;
+  requestAnimationFrame(()=>sl.scrollIntoView({behavior:'smooth',block:'start'}));
+  S.page=cur; S.seen[cur]=1; save();
+  paint();
+}
+function goNext(){ goTo(cur+1); }
+function goPrev(){ goTo(cur-1); }
+function paintBar(){
+  const m=document.documentElement.scrollHeight-window.innerHeight;
+  $('bar').style.width=(m>0?Math.min(100,window.scrollY/m*100):0)+'%';
+}
+function paintPos(){
+  $('cur').textContent=cur+1;
+  $('sect').textContent=slides[cur].dataset.sect||'';
+  dots.forEach((d,i)=>d.classList.toggle('on',i===cur));
+  tocLinks.forEach((a,i)=>a.classList.toggle('cur',i===cur));
+  const act=dots[cur]; if(act) act.scrollIntoView({block:'nearest',inline:'center'});
+  $('prev').disabled=(cur===0);
+  $('next').disabled=(cur===TOT-1);
+  paintSectProg();
+}
+function paint(){
+  paintBar(); paintPos();
+  refresh();
+}
+let SECTIDX=null;
+function paintSectProg(){
+  const el=$('sprog'); if(!el) return;
+  if(!SECTIDX){ SECTIDX={}; slides.forEach((s,i)=>{ const k=s.dataset.sect||''; (SECTIDX[k]=SECTIDX[k]||[]).push(i); }); }
+  const k=slides[cur].dataset.sect||'', arr=SECTIDX[k]||[];
+  el.textContent=(k && arr.length>1)?((arr.indexOf(cur)+1)+' / '+arr.length):'';
+}
+
+/* ── 鍵盤 ── */
+document.addEventListener('keydown',e=>{
+  const tg=e.target.tagName;
+  if(tg==='INPUT'||tg==='TEXTAREA') return;
+  if($('toc').classList.contains('show')){ if(e.key==='Escape') toggleToc(); return; }
+  if(e.key==='ArrowRight'||e.key==='PageDown'){ e.preventDefault(); goNext(); }
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); goPrev(); }
+  else if(e.key==='Escape'){ toggleToc(); }
+  else if(e.key==='f'||e.key==='F'){ goFull(); }
+  else if(e.key==='Home'){ goTo(0); }
+  else if(e.key==='End'){ goTo(TOT-1); }
+});
+function toggleToc(){ $('toc').classList.toggle('show'); }
+function goFull(){ if(!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.(); }
+
+/* ── 計時 ── */
+function fmt(s){ const m=Math.floor(s/60); return String(m).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+let active=!document.hidden;
+document.addEventListener('visibilitychange',()=>{ active=!document.hidden; });
+setInterval(()=>{
+  if(!active) return;
+  S.seconds++;
+  $('clock').textContent=fmt(S.seconds);
+  const st=$('st-time'); if(st) st.textContent=fmt(S.seconds);
+  if(S.seconds%10===0) save();
+  refresh();
+},1000);
+
+/* ── 表態與先猜 ── */
+function paintRevealAll(){
+  document.querySelectorAll('[data-reveal-all]').forEach(el=>{
+    el.classList.toggle('show',el.dataset.revealAll.split(',').every(k=>S.poll[k]));
+  });
+}
+document.querySelectorAll('[data-poll]').forEach(box=>{
+  const id=box.dataset.poll, ans=box.dataset.answer||'';
+  const bs=[...box.querySelectorAll('.opts button')];
+  const rv=[...document.querySelectorAll('[data-reveal-for="'+id+'"]')];
+  const verdict=document.querySelector('[data-verdict-for="'+id+'"]');
+  const paintP=()=>{
+    const v=S.poll[id];
+    bs.forEach(b=>{
+      b.classList.remove('sel','ok','ng');
+      if(!v) return;
+      if(ans){ b.disabled=true; if(b.dataset.v===ans) b.classList.add('ok'); else if(b.dataset.v===v) b.classList.add('ng'); }
+      else if(b.dataset.v===v) b.classList.add('sel');
+    });
+    if(v){ rv.forEach(r=>r.classList.add('show'));
+      if(verdict){ verdict.textContent = !ans ? '' : (v===ans ? '你猜對了。' : '答案是「'+ans+'」。'); verdict.className='verdict show '+(v===ans?'ok':'ng'); } }
+  };
+  bs.forEach(b=>b.addEventListener('click',()=>{
+    if(ans && S.poll[id]) return;
+    S.poll[id]=b.dataset.v; save(); paintP(); paintRecall(); paintRevealAll(); actDone(box.dataset.actKey);
+  }));
+  paintP();
+});
+function paintRecall(){
+  document.querySelectorAll('[data-recall]').forEach(el=>{ el.textContent=S.poll[el.dataset.recall]||'（沒有作答）'; });
+}
+
+/* ── 翻牌 ── */
+document.querySelectorAll('[data-flips]').forEach(fl=>{
+  const id=fl.dataset.flips, cards=[...fl.querySelectorAll('.fcard')];
+  S.flip[id]=S.flip[id]||[];
+  const chk=()=>{ if(cards.every(c=>c.classList.contains('open'))) actDone(fl.dataset.actKey); };
+  const rec=()=>{ S.flip[id]=cards.map((c,i)=>c.classList.contains('open')?i:-1).filter(i=>i>=0); save(); chk(); };
+  cards.forEach((c,i)=>{
+    if(S.flip[id].includes(i)) c.classList.add('open');
+    c.addEventListener('click',()=>{ c.classList.toggle('open'); rec(); });
+  });
+  const all=document.querySelector('[data-flipall="'+id+'"]');
+  if(all) all.addEventListener('click',()=>{ cards.forEach(c=>c.classList.add('open')); rec(); });
+});
+
+/* ── 分類（點選或拖曳） ── */
+document.querySelectorAll('[data-sort]').forEach(box=>{
+  const id=box.dataset.sort;
+  const tray=box.querySelector('.tray'), cols=[...box.querySelectorAll('.scol')];
+  const cards=[...box.querySelectorAll('.sc')], N=cards.length;
+  const fb=box.querySelector('.fbk'), score=box.querySelector('.score');
+  const st=S.sort[id]=S.sort[id]||{p:{}};
+  let sel=null;
+  const bar=document.createElement('div');
+  bar.className='sbar';
+  bar.innerHTML='<span class="sbt"></span>'+cols.map(c=>'<button type="button" data-k="'+c.dataset.k+'">'+esc(c.dataset.short||c.querySelector('h4').textContent)+'</button>').join('')
+    +'<button type="button" class="x" aria-label="取消">取消</button>';
+  document.body.appendChild(bar);
+  const select=el=>{
+    cards.forEach(c=>c.classList.remove('sel')); sel=el;
+    document.querySelectorAll('.sbar.show').forEach(b=>{ if(b!==bar) b.classList.remove('show'); });
+    if(el){ el.classList.add('sel'); bar.querySelector('.sbt').textContent='把「'+el.dataset.txt+'」放到：'; bar.classList.add('show'); }
+    else bar.classList.remove('show');
+  };
+  const clear=()=>{ cards.forEach(c=>c.classList.remove('ok','ng')); fb.className='fbk'; score.textContent=''; };
+  const put=(el,col)=>{
+    (col?col.querySelector('.drop'):tray).appendChild(el);
+    if(col) st.p[el.dataset.i]=col.dataset.k; else delete st.p[el.dataset.i];
+    save();
+  };
+  const byI=i=>cards.find(c=>c.dataset.i===i);
+  mix(cards).forEach(c=>tray.appendChild(c));
+  cards.forEach(c=>{ const k=st.p[c.dataset.i]; const col=k&&cols.find(x=>x.dataset.k===k); if(col) col.querySelector('.drop').appendChild(c); });
+  cards.forEach(c=>{
+    c.addEventListener('click',e=>{
+      e.stopPropagation(); clear();
+      if(c.parentElement!==tray){ put(c,null); select(c); return; }
+      select(sel===c?null:c);
+    });
+    c.addEventListener('dragstart',e=>{ e.dataTransfer.setData('text/plain',c.dataset.i); e.dataTransfer.effectAllowed='move'; select(c); });
+  });
+  cols.forEach(col=>{
+    col.addEventListener('click',()=>{ if(!sel) return; clear(); put(sel,col); select(null); });
+    col.addEventListener('dragover',e=>{ e.preventDefault(); col.classList.add('hot'); });
+    col.addEventListener('dragleave',()=>col.classList.remove('hot'));
+    col.addEventListener('drop',e=>{ e.preventDefault(); col.classList.remove('hot');
+      const el=byI(e.dataTransfer.getData('text/plain')); if(!el) return; clear(); put(el,col); select(null); });
+  });
+  bar.querySelectorAll('button[data-k]').forEach(b=>b.addEventListener('click',()=>{
+    if(!sel) return; clear(); put(sel,cols.find(c=>c.dataset.k===b.dataset.k)); select(null);
+  }));
+  bar.querySelector('.x').addEventListener('click',()=>select(null));
+  tray.addEventListener('dragover',e=>e.preventDefault());
+  tray.addEventListener('drop',e=>{ e.preventDefault(); const el=byI(e.dataTransfer.getData('text/plain')); if(el){ clear(); put(el,null); select(null); } });
+  box.querySelector('.js-check').addEventListener('click',()=>{
+    let n=0, placed=0; const wrong=[], op=box.dataset.opinion;   // op：沒有標準答案，放好之後只揭曉作者的放法
+    cols.forEach(col=>col.querySelectorAll('.sc').forEach(el=>{
+      placed++; if(op) return;
+      const ok=el.dataset.k===col.dataset.k; n+=ok; el.classList.add(ok?'ok':'ng'); if(!ok) wrong.push(el);
+    }));
+    if(placed<N){ cards.forEach(c=>c.classList.remove('ok','ng')); fb.className='fbk show'; fb.innerHTML='還有 <b>'+(N-placed)+'</b> 張沒放。'; return; }
+    if(op){ fb.className='fbk show'; fb.innerHTML='<b>Holliday 的放法：</b>'+esc(op); st.done=1; save(); actDone(box.dataset.actKey); return; }
+    score.textContent=n+' / '+N; st.score=n; save(); actDone(box.dataset.actKey);
+    fb.className='fbk show '+(n===N?'ok':'ng');
+    fb.innerHTML = n===N ? '<b>全對。</b>'+(box.dataset.done||'')
+      : '<b>放錯的：</b><br>'+wrong.map(el=>'「'+esc(el.dataset.txt)+'」屬於「'+esc(el.dataset.ans)+'」'+(el.dataset.dim?'（'+esc(el.dataset.dim)+'）':'')).join('<br>');
+  });
+  box.querySelector('.js-reset').addEventListener('click',()=>{ clear(); st.p={}; delete st.score; save(); select(null); shuffle(cards).forEach(c=>tray.appendChild(c)); });
+});
+
+/* ── 配對 ── */
+document.querySelectorAll('[data-match]').forEach(box=>{
+  const id=box.dataset.match, [L,R]=box.querySelectorAll('.mcol');
+  const stat=box.parentElement.querySelector('.mstat');
+  const total=L.querySelectorAll('.mitem').length;
+  S.match[id]=S.match[id]||[];
+  let sel=null;
+  mix([...R.querySelectorAll('.mitem')]).forEach(it=>R.appendChild(it));
+  const paintM=()=>{
+    const done=S.match[id];
+    box.querySelectorAll('.mitem').forEach(it=>it.classList.toggle('done',done.includes(it.dataset.k)));
+    stat.innerHTML = done.length===total ? '全部配對完成 ✓' : '已配對 <b>'+done.length+'</b> / '+total+'　·　點左邊一項，再點右邊對應的一項';
+    if(done.length===total) actDone(box.dataset.actKey);
+  };
+  box.querySelectorAll('.mitem').forEach(it=>it.addEventListener('click',()=>{
+    if(it.classList.contains('done')) return;
+    if(it.parentElement===L){ L.querySelectorAll('.mitem').forEach(x=>x.classList.remove('sel')); it.classList.add('sel'); sel=it; return; }
+    if(!sel){ shake(it); return; }
+    if(sel.dataset.k===it.dataset.k){ sel.classList.remove('sel'); S.match[id].push(it.dataset.k); save(); sel=null; paintM(); }
+    else shake(it);
+  }));
+  paintM();
+});
+
+/* ── 暖身排序：點的順序就是名次 ── */
+document.querySelectorAll('[data-rank]').forEach(box=>{
+  const id=box.dataset.rank, n=+box.dataset.n, btns=[...box.querySelectorAll('.rk')];
+  const cnt=box.querySelector('.cnt'), fb=box.querySelector('.fbk');
+  S.rank[id]=S.rank[id]||[];
+  const paintR=()=>{
+    const a=S.rank[id];
+    btns.forEach(b=>{ const k=a.indexOf(+b.dataset.i); b.classList.toggle('on',k>=0); b.querySelector('.rn').textContent=k>=0?k+1:''; });
+    cnt.textContent='已排 '+a.length+' / '+n;
+    if(a.length===n){ fb.className='fbk show ok'; fb.innerHTML='<b>排好了。</b>第五節會揭曉跨國調查的普遍排序，到時候對照你的排法。'; actDone(box.dataset.actKey); }
+    else fb.className='fbk';
+    paintRankCmp();
+  };
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    const a=S.rank[id], i=+b.dataset.i;
+    if(a.includes(i)||a.length>=n) return;
+    a.push(i); save(); paintR();
+  }));
+  box.querySelector('.js-reset').addEventListener('click',()=>{ S.rank[id]=[]; save(); paintR(); });
+  paintR();
+});
+function paintRankCmp(){
+  document.querySelectorAll('[data-rankcmp]').forEach(box=>{
+    const a=S.rank[box.dataset.rankcmp]||[], msg=box.querySelector('.rcmsg'), n=box.querySelectorAll('[data-mine]').length;
+    let same=0;
+    box.querySelectorAll('[data-mine]').forEach((el,pos)=>{
+      const k=a.indexOf(+el.dataset.mine);
+      el.textContent=k>=0?'第 '+(k+1)+' 名':'—';
+      el.classList.toggle('same',k===pos);
+      if(k===pos) same++;
+    });
+    msg.textContent = a.length<n ? '你還沒在開場排完。回到開場的暖身頁排一次，這裡就會出現你的名次。'
+      : '你排的名次，有 '+same+' 個和普遍的排序相同。';
+  });
+}
+
+/* ── 依序點選（惡性循環） ── */
+document.querySelectorAll('[data-order]').forEach(box=>{
+  const id=box.dataset.order, tray=box.querySelector('.otray');
+  const items=[...tray.querySelectorAll('.oi')], slots=[...box.querySelectorAll('.tline li')];
+  const fb=box.querySelector('.fbk');
+  S.order[id]=S.order[id]||0;
+  const fill=n=>{
+    slots.forEach((li,i)=>{ if(i<n && !li.classList.contains('filled')){
+      li.classList.remove('empty'); li.classList.add('filled');
+      li.lastElementChild.textContent=li.dataset.t; } });
+    items.forEach(it=>it.classList.toggle('used',+it.dataset.o<n));
+    if(n===slots.length){ fb.className='fbk show ok'; fb.innerHTML='<b>排好了。</b>第四步之後，又回到第一步。'; actDone(box.dataset.actKey); }
+  };
+  mix(items).forEach(it=>tray.appendChild(it));
+  items.forEach(it=>it.addEventListener('click',()=>{
+    if(+it.dataset.o===S.order[id]){ S.order[id]++; save(); fill(S.order[id]); }
+    else shake(it);
+  }));
+  box.querySelector('.js-show').addEventListener('click',()=>{ S.order[id]=slots.length; save(); fill(slots.length); });
+  fill(S.order[id]);
+});
+
+/* ── 審查單：逐項勾選 ── */
+document.querySelectorAll('[data-checks]').forEach(box=>{
+  const id=box.dataset.checks, cbs=[...box.querySelectorAll('input')], stat=box.parentElement.querySelector('.ckstat b');
+  S.checks[id]=S.checks[id]||[];
+  const paintC=()=>{
+    cbs.forEach((c,i)=>{ c.checked=S.checks[id].includes(i); c.parentElement.classList.toggle('done',c.checked); });
+    stat.textContent=S.checks[id].length;
+    if(S.checks[id].length===cbs.length) actDone(box.dataset.actKey);
+  };
+  cbs.forEach((c,i)=>c.addEventListener('change',()=>{
+    S.checks[id]=cbs.map((x,k)=>x.checked?k:-1).filter(k=>k>=0); save(); paintC(); }));
+  paintC();
+});
+
+/* ── 寫一句 ── */
+document.querySelectorAll('[data-inbox]').forEach(box=>{
+  const id=box.dataset.inbox, ta=box.querySelector('textarea'), btn=box.querySelector('.js-save'), mine=box.querySelector('.imine');
+  const show=v=>{ mine.innerHTML='你寫的是：<b>'+esc(v)+'</b><br>這一句會跟著簽到一起送出，老師上課會挑幾則出來討論。'; mine.classList.add('show'); };
+  if(S.inbox[id]){ ta.value=S.inbox[id]; show(S.inbox[id]); btn.textContent='已存起來（還能改）'; }
+  btn.disabled=ta.value.trim().length<4;
+  ta.addEventListener('input',()=>{ btn.disabled=ta.value.trim().length<4; });
+  btn.addEventListener('click',()=>{ const v=ta.value.trim(); if(v.length<4) return;
+    S.inbox[id]=v; save(); show(v); btn.textContent='已存起來（還能改）'; actDone(box.dataset.actKey); });
+});
+
+/* ── 閱讀進度 ── */
+const rps=[...document.querySelectorAll('.rp')];
+function paintRead(){
+  let n=0;
+  rps.forEach(r=>{ const cb=r.querySelector('input'); r.classList.toggle('done',cb.checked); if(cb.checked) n++; });
+  document.querySelectorAll('.rpstat b').forEach(b=>b.textContent=n);
+  document.querySelectorAll('.rptot').forEach(b=>b.textContent=rps.length);
+}
+rps.forEach(r=>{
+  const cb=r.querySelector('input'), k='r'+cb.dataset.r;
+  if(S.readp[k]) cb.checked=true;
+  cb.addEventListener('change',()=>{ S.readp[k]=cb.checked?1:0; save(); paintRead(); });
+});
+paintRead();
+
+/* ── 小測驗 ── */
+const ANS={};
+document.querySelectorAll('[data-quiz]').forEach(quiz=>{
+  const qid=quiz.dataset.quiz;
+  ANS[qid]=[...quiz.querySelectorAll('.qz')].map(q=>parseInt(q.dataset.a,10));
+  S.quiz[qid]=S.quiz[qid]||{};
+  quiz.querySelectorAll('.qz').forEach((q,i)=>{
+    const a=parseInt(q.dataset.a,10), opts=[...q.querySelectorAll('.opt')], fb=q.querySelector('.fb');
+    const lock=picked=>{
+      opts.forEach((o,k)=>{ o.disabled=true;
+        if(k+1===a) o.classList.add('right'); else if(k+1===picked) o.classList.add('wrong'); });
+      fb.classList.add('show');
+    };
+    if(S.quiz[qid][i]) lock(S.quiz[qid][i]);
+    opts.forEach((o,k)=>o.addEventListener('click',()=>{
+      if(S.quiz[qid][i]) return;
+      S.quiz[qid][i]=k+1; save(); lock(k+1); refresh();
+    }));
+  });
+});
+function tally(){
+  let done=0,right=0,total=0;
+  for(const qid in ANS) ANS[qid].forEach((a,i)=>{
+    total++; const p=S.quiz[qid]&&S.quiz[qid][i];
+    if(p){ done++; if(p===a) right++; }
+  });
+  return {done,right,total};
+}
+
+/* ── 完成頁 ── */
+function refresh(){
+  const sc=$('st-score'); if(!sc) return;
+  const t=tally();
+  sc.textContent=t.right+' / '+t.total;
+  $('st-done').textContent=t.done+' / '+t.total;
+  $('st-seen').textContent=Object.keys(S.seen).length+' / '+TOT;
+  $('st-act').textContent=actCount()+' / '+ACTS.length;
+  $('st-time').textContent=fmt(S.seconds);
+  const need=CONFIG.MIN_MINUTES*60, btn=$('submit'), msg=$('dmsg');
+  if(S.sent){
+    btn.disabled=true; btn.textContent=S.sentRow?'已登記':'已送出';
+    msg.textContent='已於 '+S.sent+(S.sentRow?' 完成登記。':' 送出。');
+    const box=$('scode');
+    if(box && S.sentCode) box.innerHTML=esc(S.sentWho||'')+'<br><b>'+esc(S.sentCode)+'</b>'
+      +'<span class="codenote">'
+      +(S.sentRow ? '已確認寫入老師的簽到表（第 '+Number(S.sentRow)+' 列），簽到完成。'
+        : '瀏覽器收不到 Google 的回覆，這裡無法確認是否寫入成功。'
+        +'請記下上面這組代碼；若老師的紀錄裡沒有你，把代碼交給老師即可補登。')+'</span>';
+    return;
+  }
+  const sid=($('sid').value||'').trim(), sname=($('sname').value||'').trim();
+  const okQ=(t.done===t.total), okT=(S.seconds>=need), okId=(sid.length>=4 && sname.length>=1);
+  btn.disabled=!(okQ&&okT&&okId);
+  if(!okQ) msg.textContent='還有 '+(t.total-t.done)+' 題沒有作答。三份小測驗全部作答完畢後，就可以送出簽到。';
+  else if(!okT) msg.textContent='已全部作答。閱讀時間還差 '+Math.ceil((need-S.seconds)/60)+' 分鐘（門檻 '+CONFIG.MIN_MINUTES+' 分鐘）。';
+  else if(!okId) msg.textContent='條件已符合。請填上學號與姓名，才能送出簽到。';
+  else msg.textContent='條件已符合，可以送出簽到。';
+}
+$('submit').addEventListener('click',()=>{
+  const t=tally(), d=new Date(), pad=n=>String(n).padStart(2,'0');
+  const stamp=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
+  const note=$('scode');
+  const sid=($('sid').value||'').trim(), name=($('sname').value||'').trim();
+  const minutes=Math.floor(S.seconds/60), pages=Object.keys(S.seen).length;
+  const feedback=($('sfbk').value||'').trim();
+  const code=CONFIG.WEEK+'｜答對 '+t.right+'/'+t.done+'｜'+minutes+' 分｜'+pages+'/'+TOT+' 頁';
+  const groups=[...document.querySelectorAll('[data-rank="r3"] .rk .rt')].map(e=>e.textContent);
+  const rank=(S.rank.r3||[]).map(k=>groups[k]).join('>')||'（未排）';
+  const detail='暖身排序：'+rank
+    +'｜誘因會讓人不工作嗎：'+(S.poll.p26||'—')
+    +'｜討論1：'+(((S.inbox.d1||'').trim())||'（未填）')
+    +'｜討論2：'+(((S.inbox.d2||'').trim())||'（未填）')
+    +'｜討論3：'+(((S.inbox.d3||'').trim())||'（未填）')
+    +'｜討論4：'+(((S.inbox.d4||'').trim())||'（未填）')
+    +'｜動手 '+actCount()+'/'+ACTS.length
+    +'｜回饋：'+(feedback||'（未填）');
+  if(!CONFIG.ENDPOINT){
+    note.innerHTML='<b>尚未送出</b>：簽到後台還沒接上。請把這組代碼交給老師：<br><b>'+esc(code)+'</b>';
+    return;
+  }
+  const btn=$('submit');
+  btn.disabled=true; note.textContent='傳送中…';
+  const fd=new URLSearchParams();
+  fd.append(CONFIG.FIELDS.sid,sid);
+  fd.append(CONFIG.FIELDS.name,name);
+  fd.append(CONFIG.FIELDS.code,code);
+  fd.append(CONFIG.FIELDS.detail,detail);
+  const viaForm=()=>fetch(CONFIG.ENDPOINT,{method:'POST',mode:'no-cors',body:fd})
+  .then(()=>{ S.sent=stamp; S.sentCode=code; S.sentWho=sid+'　'+name; save(); refresh(); })
+  .catch(()=>{ btn.disabled=false; note.textContent='送出失敗，請確認網路後再按一次；若仍失敗請截圖這一頁給老師。'; });
+  if(!CONFIG.GAS){ viaForm(); return; }
+  // 先送簽到後台：寫進試算表並讀回確認，回傳列號。後台沒回應或出錯，就改走表單
+  const ac=new AbortController(), timer=setTimeout(()=>ac.abort(),20000);
+  fetch(CONFIG.GAS,{method:'POST',body:new URLSearchParams({week:CONFIG.WEEK,sid:sid,name:name,code,detail}),signal:ac.signal})
+  .then(r=>r.json())
+  .then(j=>{ clearTimeout(timer); if(!j||!j.ok||!j.row) throw new Error('not ok');
+    S.sent=stamp; S.sentCode=code; S.sentWho=sid+'　'+name; S.sentRow=j.row; save(); refresh(); })
+  .catch(()=>{ clearTimeout(timer); viaForm(); });
+});
+
+/* ── 目次篩選 ── */
+const SUM_KINDS=['table','law','bars','stats','form'];
+const QUOTE_KINDS=['memo','discuss','reveal'];
+$('tfilter').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  $('tfilter').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  const f=b.dataset.f;
+  [...toclist.children].forEach((li,i)=>{
+    const s=slides[i], k=s.dataset.kind;
+    let show=true;
+    if(f==='act') show=s.hasAttribute('data-act');
+    else if(f==='sum') show=SUM_KINDS.includes(k);
+    else if(f==='quote') show=QUOTE_KINDS.includes(k);
+    else if(f==='read') show=(k==='readings');
+    li.classList.toggle('hide',!show);
+  });
+});
+
+/* ── 捲動追蹤：目前看到哪一頁 ── */
+let tick=false;
+window.addEventListener('scroll',()=>{ if(tick) return; tick=true; requestAnimationFrame(()=>{ paintBar(); tick=false; }); },{passive:true});
+const io=new IntersectionObserver(es=>{
+  let best=null, bi=-1;
+  es.forEach(e=>{ if(e.isIntersecting){ const i=slides.indexOf(e.target);
+    if(i>=0 && (best===null||e.intersectionRatio>best)){ best=e.intersectionRatio; bi=i; } } });
+  if(bi>=0 && bi!==cur){ cur=bi; S.page=cur; S.seen[cur]=1; save(); paintPos(); }
+},{rootMargin:'-40% 0px -40% 0px',threshold:[0,.25,.5,1]});
+slides.forEach(sl=>io.observe(sl));
+/* 看過頁數：一頁露出一半，或占滿半個畫面，就算看過。
+   不用上面的中段帶判定：節首的短頁捲不進中段帶，相鄰的長頁也會在同一批回報裡被略過。 */
+const seenIO=new IntersectionObserver(es=>{
+  let add=false;
+  es.forEach(e=>{ if(!e.isIntersecting) return;
+    const i=slides.indexOf(e.target);
+    if(i>=0 && !S.seen[i] && (e.intersectionRatio>=.5 || e.intersectionRect.height>=window.innerHeight*.5)){
+      S.seen[i]=1; add=true; } });
+  if(add){ save(); refresh(); }
+},{threshold:[0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1]});
+slides.forEach(sl=>seenIO.observe(sl));
+
+/* ── 起始 ── */
+showPane(S.pane||'0',false);
+slides.forEach((sl,i)=>{ if(sl.offsetParent!==null && sl.getBoundingClientRect().top<window.innerHeight) S.seen[i]=1; });
+['sid','sname','sfbk'].forEach(id=>{
+  const el=$(id); if(!el) return;
+  if(S[id]) el.value=S[id];
+  el.addEventListener('input',()=>{ S[id]=el.value; save(); refresh(); });
+});
+paintRecall(); paintRevealAll(); paintRankCmp();
+$('clock').textContent=fmt(S.seconds);
+paint();
+setTimeout(()=>{ const k=$('khint'); if(k) k.style.opacity=0; },6000);
+
+/* ── 續讀提示 ── */
+(function(){
+  const start=S.page||0;
+  if(start<2) return;
+  const box=document.createElement('div');
+  box.className='resume';
+  box.innerHTML='<span>上次讀到第 '+(start+1)+' 頁</span><button type="button" id="rs-go">繼續讀</button><button type="button" class="x" id="rs-top">從頭開始</button>';
+  document.body.appendChild(box);
+  const kill=()=>box.remove();
+  $('rs-go').addEventListener('click',()=>{ goTo(start); kill(); });
+  $('rs-top').addEventListener('click',()=>{ goTo(0); kill(); });
+  setTimeout(kill,12000);
+})();
+
+
+</script>
+</body>
+</html>

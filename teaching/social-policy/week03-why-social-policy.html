@@ -448,6 +448,8 @@ tr:nth-child(even) td{background:#fbfcfd;}
   cursor:grab;user-select:none;transition:.18s;color:var(--ink);}
 .chip:hover{border-color:var(--accent);transform:translateY(-1px);}
 .chip.dragging{opacity:.4;}
+.chip.sel{background:var(--accent);color:#fff;border-color:var(--accent);}
+.chip.shake{animation:shake .4s;}
 .chip.ok{background:#EAF5EF;border-color:#BBDDCB;color:var(--ok);cursor:default;}
 .drag .bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:11px;margin-top:13px;}
 .bin{background:var(--card);border:1.5px dashed var(--line);border-radius:11px;padding:12px 14px;min-height:96px;
@@ -2852,6 +2854,8 @@ html{scroll-padding-top:110px;}
 const CONFIG = {
   // Google 表單接收端點（不經過 OAuth，任何人都能提交）
   ENDPOINT:'https://docs.google.com/forms/d/e/1FAIpQLSePcsBh-01YCetVhg6_DbwpGh3x7FOtU8Ldhr_OqmXay7qDug/formResponse',
+  // 簽到後台（Apps Script）網址。填了就先送這裡，寫入試算表並讀回確認後顯示「已登記」；失敗才改走上面的表單
+  GAS:'',
   FIELDS:{ sid:'entry.778218493', name:'entry.419586149',
            code:'entry.1960280121', detail:'entry.749946348' },
   WEEK:'W03', MIN_MINUTES:20
@@ -3087,13 +3091,14 @@ function refresh(){
   document.getElementById('st-done').textContent=t.done+' / '+t.total;
   document.getElementById('st-seen').textContent=Object.keys(S.seen).length+' / '+TOT;
   const need=CONFIG.MIN_MINUTES*60, btn=document.getElementById('submit'), msg=document.getElementById('dmsg');
-  if(S.sent){ btn.disabled=true; btn.textContent='已送出';
-    msg.textContent='已於 '+S.sent+' 送出。';
+  if(S.sent){ btn.disabled=true; btn.textContent=S.sentRow?'已登記':'已送出';
+    msg.textContent='已於 '+S.sent+(S.sentRow?' 完成登記。':' 送出。');
     const sc=document.getElementById('scode');
     if(sc && S.sentCode) sc.innerHTML=(S.sentWho||'')+'<b>'+S.sentCode+'</b>'
       +'<span style="display:block;font-size:14.5px;color:#8FA9C0;line-height:1.8;margin-top:8px;">'
-      +'瀏覽器收不到 Google 的回覆，這裡無法確認是否寫入成功。'
-      +'請記下上面這組代碼；若老師的紀錄裡沒有你，把代碼交給老師即可補登。</span>';
+      +(S.sentRow ? '已確認寫入老師的簽到表（第 '+Number(S.sentRow)+' 列），簽到完成。'
+        : '瀏覽器收不到 Google 的回覆，這裡無法確認是否寫入成功。'
+        +'請記下上面這組代碼；若老師的紀錄裡沒有你，把代碼交給老師即可補登。')+'</span>';
     return; }
   const sid=(document.getElementById('sid')?.value||'').trim();
   const sname=(document.getElementById('sname')?.value||'').trim();
@@ -3149,11 +3154,19 @@ document.getElementById('submit').addEventListener('click',()=>{
   fd.append(CONFIG.FIELDS.name, payload.name);
   fd.append(CONFIG.FIELDS.code, code);
   fd.append(CONFIG.FIELDS.detail, detail);
-  fetch(CONFIG.ENDPOINT,{method:'POST',mode:'no-cors',body:fd})
+  const viaForm=()=>fetch(CONFIG.ENDPOINT,{method:'POST',mode:'no-cors',body:fd})
   .then(()=>{S.sent=stamp; S.sentCode=code; S.sentWho=payload.sid+'　'+payload.name;
     store.set(S); refresh();})
   .catch(()=>{btn.disabled=false;
     note.textContent='送出失敗，請確認網路後再按一次；若仍失敗請截圖這一頁給老師。';});
+  if(!CONFIG.GAS){ viaForm(); return; }
+  // 先送簽到後台：寫進試算表並讀回確認，回傳列號。後台沒回應或出錯，就改走表單
+  const ac=new AbortController(), timer=setTimeout(()=>ac.abort(),20000);
+  fetch(CONFIG.GAS,{method:'POST',body:new URLSearchParams({week:CONFIG.WEEK,sid:payload.sid,name:payload.name,code,detail}),signal:ac.signal})
+  .then(r=>r.json())
+  .then(j=>{ clearTimeout(timer); if(!j||!j.ok||!j.row) throw new Error('not ok');
+    S.sent=stamp; S.sentCode=code; S.sentWho=payload.sid+'　'+payload.name; S.sentRow=j.row; store.set(S); refresh(); })
+  .catch(()=>{ clearTimeout(timer); viaForm(); });
 });
 
 /* ── 一次只顯示一節 ── */
@@ -3216,6 +3229,17 @@ const _io=new IntersectionObserver(es=>{
   }
 },{rootMargin:'-40% 0px -40% 0px',threshold:[0,.25,.5,1]});
 slides.forEach(sl=>_io.observe(sl));
+/* 看過頁數：一頁露出一半，或占滿半個畫面，就算看過。
+   不用上面的中段帶判定：節首的短頁捲不進中段帶，相鄰的長頁也會在同一批回報裡被略過。 */
+const _seenIO=new IntersectionObserver(es=>{
+  let add=false;
+  es.forEach(e=>{ if(!e.isIntersecting) return;
+    const i=slides.indexOf(e.target);
+    if(i>=0 && !S.seen[i] && (e.intersectionRatio>=.5 || e.intersectionRect.height>=window.innerHeight*.5)){
+      S.seen[i]=1; add=true; } });
+  if(add){ store.set(S); refresh(); }
+},{threshold:[0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1]});
+slides.forEach(sl=>_seenIO.observe(sl));
 slides.forEach((sl,i)=>{ if(sl.offsetParent!==null &&
   sl.getBoundingClientRect().top<window.innerHeight) S.seen[i]=1; });
 showPane(S.pane||'0',false);
@@ -3276,7 +3300,7 @@ document.querySelectorAll('[data-drag]').forEach(box=>{
     if(parseInt(chip.dataset.k,10)===parseInt(bin.dataset.b,10)){
       place(chip,bin); S.drag[id][chip.textContent]=1; store.set(S);
     }else{
-      chip.classList.add('shake'); setTimeout(()=>chip.classList.remove('shake'),420);
+      chip.classList.remove('sel'); chip.classList.add('shake'); setTimeout(()=>chip.classList.remove('shake'),420);
     }
   };
   chips.forEach(chip=>{
