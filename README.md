@@ -1,66 +1,65 @@
-# Chung-Yang Yeh — Personal Academic Website
+# 葉崇揚個人學術網站
 
-Personal academic website for Chung-Yang Yeh (葉崇揚), Professor, Department of Sociology, Soochow University, Taiwan.
+葉崇揚（Chung-Yang Yeh），東吳大學社會學系教授。網址：https://chungyang1017.github.io/
 
-## 部署到 GitHub Pages
+## 部署
 
-repo 已連到 `chungyang1017.github.io`，推上 main 分支即自動上線。
+- 推上 `main` 分支後，GitHub Pages 會自動上線，大約 1 到 2 分鐘。
+- 短時間內連推好幾個 commit，部署可能失敗（建置成功、部署失敗，新內容 404）。一次推一個，等部署跑完再推下一個。已經失敗時，推一個空 commit 重新觸發：`git commit --allow-empty -m "重新部署"`。
 
-## 目錄結構
+## 頁面
 
-```
-chungyang1017.github.io/
-├── index.html                    ← 主要內容（單頁）
-├── css/
-│   └── style.css                 ← 全部樣式
-├── js/
-│   └── main.js                   ← 導覽、頁籤、攝影圖庫、燈箱
-├── images/
-│   └── photography/              ← 攝影作品圖檔
-│       └── README.md             ← 圖檔放置與命名說明
-└── photo.jpg                     ← 個人照片（放這裡會自動帶入 hero）
-```
+中英文是兩份檔案：中文頁檔名加 `-zh`，英文頁不加。首頁例外，中文是 `index.html`，英文是 `index-en.html`。改一邊時，另一邊要一起改。
 
-## 維護內容
+| 中文 | 英文 | 內容 |
+|---|---|---|
+| `index.html` | `index-en.html` | 首頁（錦鯉水面的 Canvas 水波） |
+| `about-zh.html` | `about.html` | 簡介 |
+| `academic-zh.html` | `academic.html` | 學術（著作前 10 筆、研究計畫、專書） |
+| `photography-zh.html` | `photography.html` | 攝影總覽 |
+| `photography-<主題>-zh.html` | `photography-<主題>.html` | 攝影各主題頁（spring、summer、autumn、winter、street、xpan、ginen 等） |
+| `teaching-zh.html` | `teaching.html` | 教學 |
+| `syllabus-zh.html` | `syllabus.html` | 課程大綱 |
+| `essays-zh.html` | `essays.html` | 隨筆 |
 
-### 修改文字內容
-所有內文都在 `index.html`，搜尋對應的 `id`：
-- `id="about"` → 自我介紹
-- `id="publications"` → 著作（期刊、專書、書籍章節、研討會）
-- `id="research"` → 研究計畫
-- `id="photography"` → 攝影作品
-- `id="contact"` → 聯絡方式
+子資料夾：
 
-### 加入個人照片
-1. 把照片檔（建議直式 3:4 構圖）存成 `photo.jpg`，放在 repo 根目錄
-2. 打開 `index.html`，找 `<div class="hero-photo-placeholder">…</div>` 整段
-3. 換成：
-   ```html
-   <img src="photo.jpg" alt="Chung-Yang Yeh" style="width:100%;height:100%;object-fit:cover;" />
-   ```
+- `publications/`：完整著作清單（`publications-zh.html`、`publications.html`）
+- `books/`：專書頁（東亞福利 2018、年金改革 2026，各有中英）
+- `commentary/`：評論文章（中英）
+- `projects/`：研究計畫頁（年金偏好，中英）
+- `teaching/`：各課程的單堂講義（生命歷程、社會政策、社會研究法、福利社會學）
 
-### 加入攝影作品
-1. 把圖檔丟進 `images/photography/`
-2. 打開 `js/main.js`，找最上面的 `photoData` 陣列
-3. 依範例格式新增條目（每張一個 object）：
-   ```js
-   {
-     src: 'images/photography/檔名.jpg',
-     title: '標題',           // 可選
-     location: '地點',        // 可選
-     year: '2024',            // 可選
-     shape: 'portrait',       // 可選: 'portrait' | 'landscape' | 'square'
-     span: 2                  // 可選: 設為 2 會跨兩欄
-   }
-   ```
-4. 圖檔規格建議：JPG/WebP、長邊 1600–2000 px、單檔 < 500 KB
+其他：`privacy.html` 是 Enix 的隱私權政策，`google4fcaa6d347996230.html` 是 Google Search Console 的驗證檔，兩個都不要刪。
 
-### 著作清單規則
-- 期刊論文 / 專書 / 書籍章節：完整呈現（無時間限制）
-- **研討會論文：只列近五年**（目前為 2021 起）
+各頁的樣式寫在頁面自己的 `<style>` 裡。共用的樣式檔只有 `css/lighttable-ginen.css`，給銀鹽攝影頁的看片燈箱用。
 
-## 設計系統
+## 資料檔（`js/`）
 
-- 字體：Cormorant Garamond（顯示）＋ DM Sans（內文）＋ Noto Serif TC（中文）
-- 主色：紙白 `#f7f4ef` ／ 暖灰 `#ede9e2` ／ 朱砂 `#8b3a2a` ／ 燙金 `#b8935a`
-- 全部色彩、字體、邊距都集中在 `css/style.css` 最上方的 `:root` 變數
+內容放在資料檔，頁面讀資料檔產生清單。新增或修改資料只要改資料檔，中英兩頁會一起更新。
+
+| 檔案 | 內容 | 使用的頁面 |
+|---|---|---|
+| `publications-data.js` | 期刊論文 | 學術頁、著作頁 |
+| `chapters-data.js` | 專書章節 | 學術頁、著作頁 |
+| `conferences-data.js` | 研討會論文 | 學術頁、著作頁 |
+| `pub-counts.js` | 依上面三個資料檔即時計算著作數字 | 學術頁 |
+| `photo-data.js` | 攝影作品（編號、主題、三語標題與說明） | 攝影各頁 |
+| `lighttable-ginen.js` | 銀鹽攝影頁的看片燈箱 | 銀鹽攝影頁 |
+| `course-data.js` | 課程與各週講義連結 | 教學頁、課程大綱頁 |
+
+### 新增期刊論文
+
+1. 在 `publications-data.js` 的陣列**最前面**加一筆。清單照陣列順序顯示，不會自動依年份排序。
+2. 已接受、還沒有卷期的論文，加 `forthcoming: true`。年份位置會顯示 "Forthcoming"。
+3. 學術頁的數字會自動更新。著作頁（`publications/` 中英兩頁）只有研討會數字會自動算，期刊、專書、章節的數字寫死在頁面上，要手動改。
+
+### 新增攝影作品
+
+圖檔放在 `images/photography/`，再到 `photo-data.js` 加一筆。
+
+## 本機才有的檔案
+
+試做版與舊版頁面（`landing*.html`、`*-classic.html`、`index-ripple.html` 等）在 2026-09-30 移出網站。檔案還留在本機，但列在 `.git/info/exclude`，不會推上線。2026-10-19 又移出 4 個沒有頁面引用的舊檔：`commentary/index.html`、`commentary/index-en.html`、`css/style.css`、`js/main.js`。
+
+`.py` 的產生與整理腳本放在上一層的 `個人網頁/` 資料夾，不在這個 repo 裡。
