@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────
 //  自動統計 · 頁面上的著作數字由 js/*-data.js 即時計算
-//  期刊＝publicationsData、章節＝chaptersData、研討會＝conferencesData
+//  期刊＝publicationsData、章節＝chaptersData、研討會＝conferencesData、受邀演講＝talksData
 //  專書＝頁面上的 .b-card 卡片數、研究計畫＝.grant-list article 數
-//  必須在三個資料檔之後載入；新增資料後頁面數字自動更新，不必手改。
+//  必須在四個資料檔之後載入；新增資料後頁面數字自動更新，不必手改。
 //  [data-count="…"] 填筆數；研討會只計近五年（CONF_WINDOW），更早的自動排除。
 // ─────────────────────────────────────────────
 (function () {
@@ -24,6 +24,7 @@
     journal: (typeof publicationsData !== 'undefined') ? publicationsData.length : 0,
     chapter: (typeof chaptersData !== 'undefined') ? chaptersData.length : 0,
     conf: confCount,
+    talk: (typeof talksData !== 'undefined') ? talksData.length : 0,
     book: document.querySelectorAll('.b-card').length,
     grants: document.querySelectorAll('.grant-list article').length
   };

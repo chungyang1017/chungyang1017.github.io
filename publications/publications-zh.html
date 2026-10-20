@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>葉崇揚 ・ 著作 ・ Publications</title>
-  <meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 期刊論文、專書、章節、研討會發表完整列表。" />
+  <meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 期刊論文、專書、章節、研討會發表與受邀演講完整列表。" />
   <link rel="alternate" hreflang="zh-Hant" href="publications-zh.html" />
   <link rel="alternate" hreflang="en" href="publications.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -173,8 +173,9 @@
       .stat-en { font-size: 10px; }
 
       .tabs-wrap { padding: 24px 22px 0; }
-      .tab { padding: 12px 14px; font-size: 12px; flex: 1; }
+      .tab { padding: 12px 8px; font-size: 12px; flex: 1; }
       .tab .en { display: none; }
+      .tab .jp { display: block; white-space: nowrap; margin-right: 0; }  /* 五個分頁：標籤不斷行、數字在下一行 */
 
       .content { padding: 24px 22px 56px; }
       .j-row { grid-template-columns: 1fr; gap: 8px; padding: 18px 0; }
@@ -195,7 +196,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
 <meta property="og:title" content="葉崇揚 ・ 著作 ・ Publications" />
-<meta property="og:description" content="葉崇揚（Chung-Yang Yeh） ・ 期刊論文、專書、章節、研討會發表完整列表。" />
+<meta property="og:description" content="葉崇揚（Chung-Yang Yeh） ・ 期刊論文、專書、章節、研討會發表與受邀演講完整列表。" />
 <meta property="og:url" content="https://chungyang1017.github.io/publications/publications-zh.html" />
 <meta property="og:image" content="https://chungyang1017.github.io/photo.jpg" />
 <meta property="og:locale" content="zh_TW" />
@@ -255,6 +256,7 @@
     <button class="tab" data-tab="book"><span class="jp">專書</span><span class="en">BOOK</span><span class="n" data-count="book">2</span></button>
     <button class="tab" data-tab="chapter"><span class="jp">章節</span><span class="en">CHAPTER</span><span class="n" data-count="chapter">17</span></button>
     <button class="tab" data-tab="conf"><span class="jp">研討會</span><span class="en">CONFERENCE</span><span class="n" data-conf-total>16</span></button>
+    <button class="tab" data-tab="talk"><span class="jp">演講</span><span class="en">TALKS</span><span class="n" data-count="talk">1</span></button>
   </div>
 </div>
 
@@ -306,6 +308,12 @@
     <div class="c-list" id="pub-conferences-list"></div>
   </div>
 
+  <!-- TALK pane -->
+  <div class="pane" data-pane="talk" id="talks">
+    <!-- Auto-rendered ALL invited talks from js/talks-data.js -->
+    <div class="c-list" id="pub-talks-list"></div>
+  </div>
+
 </div>
 
 <footer>
@@ -316,12 +324,14 @@
 <script src="../js/publications-data.js"></script>
 <script src="../js/chapters-data.js"></script>
 <script src="../js/conferences-data.js"></script>
+<script src="../js/talks-data.js"></script>
 <script src="../js/pub-counts.js"></script>
 <script>
   // Auto-render ALL journals, chapters, and conferences from data files (single source of truth)
   renderTopJournals('pub-journals-list', 99, 'zh');
   renderTopChapters('pub-chapters-list', 99, 'zh');
   renderTopConferences('pub-conferences-list', 99, 'zh');
+  renderTalks('pub-talks-list', 99, 'zh');
   // Conference counts follow the data file (all years, same as the list below)
   document.querySelectorAll('[data-conf-total]').forEach(el => { el.textContent = conferencesData.length; });
 
@@ -334,7 +344,7 @@
   }));
   // Auto-activate from URL hash
   if (window.location.hash) {
-    const map = { '#journals': 'journal', '#books': 'book', '#chapters': 'chapter', '#conference': 'conf' };
+    const map = { '#journals': 'journal', '#books': 'book', '#chapters': 'chapter', '#conference': 'conf', '#talks': 'talk' };
     const target = map[window.location.hash];
     if (target) {
       const tab = document.querySelector(`.tab[data-tab="${target}"]`);

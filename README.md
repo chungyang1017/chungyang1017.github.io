@@ -67,7 +67,8 @@ python3 _tools/build_pages.py
 | `publications-data.js` | 期刊論文 | 學術頁、著作頁 |
 | `chapters-data.js` | 專書章節 | 學術頁、著作頁 |
 | `conferences-data.js` | 研討會論文 | 學術頁、著作頁 |
-| `pub-counts.js` | 依上面三個資料檔即時計算著作數字 | 學術頁 |
+| `talks-data.js` | 受邀演講（可附影片連結） | 學術頁、著作頁 |
+| `pub-counts.js` | 依上面四個資料檔即時計算著作數字 | 學術頁 |
 | `photo-data.js` | 攝影作品（編號、主題、三語標題與說明） | 攝影各頁 |
 | `lighttable-ginen.js` | 銀鹽攝影頁的看片燈箱 | 銀鹽攝影頁 |
 | `course-data.js` | 課程與各週講義連結 | 教學頁、課程大綱頁 |

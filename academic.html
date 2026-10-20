@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Research · Chung-Yang Yeh</title>
-<meta name="description" content="Chung-Yang Yeh ・ Professor of Social Policy, Soochow University. Comparative welfare states, East Asian social policy, pension politics — journal articles, books, chapters, conference papers and research grants.">
+<meta name="description" content="Chung-Yang Yeh ・ Professor of Social Policy, Soochow University. Comparative welfare states, East Asian social policy, pension politics — journal articles, books, chapters, conference papers, invited talks and research grants.">
 <link rel="alternate" hreflang="zh-Hant" href="academic-zh.html">
 <link rel="alternate" hreflang="en" href="academic.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -199,7 +199,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
 <meta property="og:title" content="Research · Chung-Yang Yeh" />
-<meta property="og:description" content="Chung-Yang Yeh ・ Professor of Social Policy, Soochow University. Comparative welfare states, East Asian social policy, pension politics — journal articles, books, chapters, conference papers and research grants." />
+<meta property="og:description" content="Chung-Yang Yeh ・ Professor of Social Policy, Soochow University. Comparative welfare states, East Asian social policy, pension politics — journal articles, books, chapters, conference papers, invited talks and research grants." />
 <meta property="og:url" content="https://chungyang1017.github.io/academic.html" />
 <meta property="og:image" content="https://chungyang1017.github.io/photo.jpg" />
 <meta property="og:locale" content="en_US" />
@@ -332,16 +332,25 @@
   </div>
 </section>
 
-<!-- Research Grants -->
-<section class="scroll-section samon" id="sec-grants">
+<!-- Invited Talks -->
+<section class="scroll-section samon" id="sec-talks">
   <div class="row">
     <div class="meta-col reveal">
       <div class="num">壱の伍</div>
-      <div class="big">研</div>
-      <h2>Grants</h2>
-      <div class="sub">Research Grants · <span data-count="grants">7</span></div>
-      <p>Research grants from Taiwan's National Science and Technology Council (formerly the Ministry of Science and Technology), 2018 to the present — following the comparative axis of East Asian welfare states, one question deeper at a time.</p>
+      <div class="big">演</div>
+      <h2>Invited Talks</h2>
+      <div class="sub">Invited Talks · <span data-count="talk">1</span></div>
+      <p>Talks given by invitation at forums and academic events.</p>
     </div>
+    <div>
+      <div class="pub-list reveal" id="academic-talks-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Research Grants -->
+<section class="scroll-section alt samon" id="sec-grants">
+  <div class="row right">
     <div>
       <div class="grant-list reveal">
         <article>
@@ -395,6 +404,13 @@
         </article>
       </div>
     </div>
+    <div class="meta-col reveal">
+      <div class="num">壱の陸</div>
+      <div class="big">研</div>
+      <h2>Grants</h2>
+      <div class="sub">Research Grants · <span data-count="grants">7</span></div>
+      <p>Research grants from Taiwan's National Science and Technology Council (formerly the Ministry of Science and Technology), 2018 to the present — following the comparative axis of East Asian welfare states, one question deeper at a time.</p>
+    </div>
   </div>
 </section>
 
@@ -406,11 +422,13 @@
 <script src="js/publications-data.js"></script>
 <script src="js/chapters-data.js"></script>
 <script src="js/conferences-data.js"></script>
+<script src="js/talks-data.js"></script>
 <script src="js/pub-counts.js"></script>
 <script>
   renderTopJournals('academic-journals-list', 10, 'en');
   renderTopChapters('academic-chapters-list', 10, 'en');
   renderTopConferences('academic-conferences-list', 10, 'en');
+  renderTalks('academic-talks-list', 10, 'en');
 </script>
 
 <!-- reveal 揭示（漸進增強：IO 為主，scroll／計時器備援） -->
