@@ -10,7 +10,12 @@ const talksData = [
     title_en: 'When AI Meets Ultra-Low Fertility: The East Asian Experience of Social Investment',
     venue_zh: '2026 臺灣全球健康福祉論壇，2026年10月20日，臺北國際會議中心',
     venue_en: '2026 Global Health and Welfare Forum in Taiwan, 20 Oct 2026, Taipei International Convention Center',
-    video: 'https://youtu.be/0TvgNxovgik?t=4300' }
+    video: 'https://youtu.be/0TvgNxovgik?t=4300' },
+  { year: 2021,
+    title_zh: '婦女經濟賦權與發展性社會工作的開展及可能',
+    title_en: 'Women’s Economic Empowerment and the Development and Possibilities of Developmental Social Work',
+    venue_zh: 'ANWS亞洲婦女康護安置年會，2021年10月26日，由勵馨基金會主辦',
+    venue_en: 'ANWS Asia Women’s Shelter Annual Conference, 26 Oct 2021, organised by the Garden of Hope Foundation' }
 ];
 
 // Render top-N invited talks into a list container (same .c-row markup as conferences).
