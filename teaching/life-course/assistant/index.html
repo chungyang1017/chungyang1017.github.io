@@ -455,8 +455,9 @@ dialog::backdrop{background:rgba(17,17,17,.4)}
     const a = document.createElement("div");
     a.className = "a" + (item.done ? "" : " working");
     const body = (item.texts || []).join("\n\n");
-    a.innerHTML = body ? md(body) : (item.done ? "" : `<p class="dots">查資料、整理回答中</p>`);
-    if (!item.done && body) a.insertAdjacentHTML("beforeend", `<p class="note dots">還在寫</p>`);
+    const working = item.tools ? `正在查資料（第 ${item.tools} 次）` : "查資料、整理回答中";
+    a.innerHTML = body ? md(body) : (item.done ? "" : `<p class="dots">${working}</p>`);
+    if (!item.done && body) a.insertAdjacentHTML("beforeend", `<p class="note dots">${item.tools ? `還在進行，已查資料 ${item.tools} 次` : "還在寫"}</p>`);
     if (item.note) a.insertAdjacentHTML("beforeend", `<p class="note">${escapeHtml(item.note)}</p>`);
     t.appendChild(a);
     const m = document.createElement("div");
@@ -516,6 +517,7 @@ dialog::backdrop{background:rgba(17,17,17,.4)}
         const r = await api(`/api/poll?turn=${encodeURIComponent(turnId)}&since=${since}`);
         if (item) {
           if (r.texts.length) item.texts.push(...r.texts);
+          if (typeof r.tools === "number") item.tools = r.tools;
           if (r.done) { item.done = true; if (r.note) item.note = r.note; }
           setLog(log);
           renderLog();
