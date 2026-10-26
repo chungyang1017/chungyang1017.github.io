@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light">
+<title>生命歷程助理 ・ 生命歷程與社會政策</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Noto+Sans+TC:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+<style>
+/* 樣式：Intercom（照 awesome-design-md/design-md/intercom/DESIGN.md）
+   專有字型的替代照規範建議：Saans → Inter（標題 500、內文 400）；SaansMono → JetBrains Mono 400。
+   規範沒有深色主題（Known Gaps：marketing site does not ship a dark theme），所以鎖定淺色。
+   橘色（Fin Orange）只用在 AI 產品的位置：送出按鈕與品牌旁的小徽章；其餘主按鈕用炭灰。 */
+:root{
+  --ink:#111111;--on-primary:#ffffff;--ink-muted:#626260;--ink-subtle:#7b7b78;--ink-tertiary:#9c9fa5;
+  --canvas:#f5f1ec;--surface-1:#ffffff;--surface-2:#ebe7e1;
+  --inverse-canvas:#000000;--inverse-surface-1:#313130;--inverse-ink:#ffffff;--inverse-ink-muted:#9c9fa5;
+  --hairline:#d3cec6;--hairline-soft:#ebe7e1;
+  --fin-orange:#ff5600;--error:#c41c1c;
+  --sans:"Inter","Noto Sans TC","PingFang TC",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono","Noto Sans TC","PingFang TC",ui-monospace,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+html{background:var(--canvas);color-scheme:light}
+/* body：16 / 400 / 1.50 */
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);font-size:16px;font-weight:400;line-height:1.5;letter-spacing:0;-webkit-font-smoothing:antialiased}
+a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--hairline);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--ink)}
+button,input,select,textarea{font:inherit;color:inherit}
+.hidden{display:none !important}
+
+/* top-nav：56px、canvas、body-sm */
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;height:56px;padding:0 max(16px,calc((100vw - 1280px) / 2 + 32px));background:var(--canvas);border-bottom:1px solid var(--hairline-soft);font-size:14px}
+/* 品牌：card-title 22 / 500 / -0.3px；左邊一枚 Fin 徽章（橘色小方塊，rounded.xs） */
+.brand{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:500;line-height:1.25;letter-spacing:-.3px;color:var(--ink);white-space:nowrap}
+.brand::before{content:"";flex:none;width:12px;height:12px;border-radius:4px;background:var(--fin-orange)}
+.brand small{font-size:14px;font-weight:400;line-height:1.5;letter-spacing:0;color:var(--ink-muted)}
+.sp{flex:1}
+.who{font-size:14px;color:var(--ink-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* 按鈕：button 15 / 500 / 1.20，padding 10px 18px，rounded.md 8px，觸控高度 ≥40px */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:10px 18px;border:1px solid var(--hairline);border-radius:8px;background:var(--surface-1);color:var(--ink);font-size:15px;font-weight:500;line-height:1.2;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--ink-tertiary)}
+.btn:active{background:var(--surface-2)}
+.btn:disabled{background:var(--surface-2);border-color:var(--surface-2);color:var(--ink-tertiary);cursor:default}
+/* button-primary：炭灰；按下 inverse-canvas */
+.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--on-primary)}
+.btn.primary:active{background:var(--inverse-canvas);border-color:var(--inverse-canvas)}
+.btn.primary:disabled{background:var(--surface-2);border-color:var(--surface-2);color:var(--ink-tertiary)}
+/* button-fin：送出給 AI 助理的按鈕。對話畫面裡沒有炭灰主按鈕，不會同框 */
+#btnSend{background:var(--fin-orange);border-color:var(--fin-orange);color:var(--on-primary)}
+#btnSend:disabled{background:var(--surface-2);border-color:var(--surface-2);color:var(--ink-tertiary)}
+.btn.danger{color:var(--error)}
+
+/* 登入 */
+.auth{max-width:480px;margin:96px auto;padding:0 16px}
+/* display-md 40 / 500 / 1.15 / -0.8px */
+.auth h1{font-size:40px;font-weight:500;line-height:1.15;letter-spacing:0;color:var(--ink);margin:0 0 16px}
+/* body-lg 18 / 400 / 1.50 / -0.1px */
+.auth p.lead{margin:0 0 32px;color:var(--ink-muted);font-size:18px;line-height:1.5;letter-spacing:-.1px}
+/* pricing-tab：pill 切換，選中＝浮上白色 */
+.tabs{display:flex;gap:4px;width:fit-content;max-width:100%;padding:4px;margin-bottom:16px;background:var(--canvas);border:1px solid var(--hairline);border-radius:9999px}
+.tabs button{min-height:40px;padding:8px 16px;border:0;border-radius:9999px;background:var(--canvas);color:var(--ink-muted);font-size:15px;font-weight:500;line-height:1.2;cursor:pointer}
+.tabs button.on{background:var(--surface-1);color:var(--ink)}
+/* 表單放在 feature-card：白底＋hairline、rounded.lg 12px、padding 24px */
+.auth form{background:var(--surface-1);border:1px solid var(--hairline);border-radius:12px;padding:24px}
+.field{display:block;margin:0 0 16px}
+/* eyebrow 14 / 500 / 1.30 當欄位標籤 */
+.field span{display:block;font-size:14px;font-weight:500;line-height:1.3;color:var(--ink);margin-bottom:8px}
+/* text-input：白底、rounded.md、padding 10px 14px、觸控 ≥44px */
+.field input{width:100%;min-height:44px;padding:10px 14px;border:1px solid var(--hairline);border-radius:8px;background:var(--surface-1);color:var(--ink);font-size:16px;line-height:1.5}
+.field input:focus,.bar select:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.hint{font-size:14px;line-height:1.5;color:var(--ink-subtle);margin:-8px 0 16px}
+.msg-err{background:var(--surface-1);color:var(--error);border:1px solid var(--error);border-radius:8px;padding:10px 14px;font-size:14px;line-height:1.5;margin:0 0 16px}
+.auth .btn.primary{width:100%;min-height:44px}
+.fine{font-size:14px;line-height:1.5;color:var(--ink-subtle);margin:24px 0 0}
+.auth form .fine{margin-top:16px}
+
+/* 對話 */
+.app{display:flex;flex-direction:column;min-height:calc(100vh - 56px)}
+.bar{max-width:848px;width:100%;margin:0 auto;padding:16px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:14px;border-bottom:1px solid var(--hairline-soft)}
+.bar label{display:inline-flex;align-items:center;gap:8px;color:var(--ink-muted);font-weight:500;max-width:100%}
+.bar select{min-height:40px;max-width:100%;padding:0 12px;border:1px solid var(--hairline);border-radius:8px;background:var(--surface-1);color:var(--ink);font-size:14px;font-weight:500}
+/* 額度：body-sm、ink-muted，金額用 ink 500 */
+.quota{color:var(--ink-muted);font-size:14px;line-height:1.5}
+.quota b{color:var(--ink);font-weight:500}
+.log{flex:1;max-width:848px;width:100%;margin:0 auto;padding:32px 24px 8px}
+/* 空白狀態：startup-discount-card（surface-2、rounded.lg、padding 32px） */
+.empty{background:var(--surface-2);border-radius:12px;padding:32px;color:var(--ink);font-size:16px;line-height:1.5}
+.empty h2{font-size:22px;font-weight:500;line-height:1.25;letter-spacing:0;color:var(--ink);margin:0 0 12px}
+.empty ul{margin:8px 0 16px;padding-left:1.4em}
+.empty li{margin:4px 0}
+.turn{margin:0 0 48px}
+/* 使用者：pricing-card-featured 的反轉炭灰 */
+.u{line-height:1.7;margin-left:auto;max-width:80%;width:fit-content;background:var(--ink);color:var(--on-primary);border-radius:12px;padding:12px 16px;white-space:pre-wrap;word-break:break-word}
+.u .files{display:block;font-size:12px;line-height:1.4;color:var(--inverse-ink-muted);margin-top:4px}
+/* 回答：product-mockup-card（白底＋hairline、rounded.xl 16px、padding 24px），無陰影 */
+.a{line-height:1.8;background:var(--surface-1);border:1px solid var(--hairline);border-radius:16px;padding:8px 24px;margin-top:12px;overflow-wrap:anywhere;color:var(--ink)}
+.a.working{color:var(--ink-muted);padding:16px 24px}
+.a.working > p{margin:0}
+.a .note{color:var(--ink-subtle);font-size:14px}
+/* 小標：h1＝headline 28、h2＝card-title 22、h3／h4＝subhead 20（權重改 500） */
+.a h1,.a h2,.a h3,.a h4{font-weight:500;color:var(--ink);margin:32px 0 8px}
+.a h1{font-size:28px;line-height:1.2;letter-spacing:0}
+.a h2{font-size:22px;line-height:1.25;letter-spacing:0}
+.a h3,.a h4{font-size:20px;line-height:1.4;letter-spacing:0}
+.a > :first-child{margin-top:16px}
+.a p{margin:12px 0}
+.a strong{font-weight:600;color:var(--ink)}
+.a ul,.a ol{padding-left:1.4em;margin:12px 0}
+.a li{margin:4px 0}
+.a li::marker{color:var(--ink-subtle)}
+.a ol > li::marker{font-weight:500}
+/* 表格：body-sm、hairline 外框、surface-2 交錯列 */
+.a table{border-collapse:separate;border-spacing:0;display:block;width:fit-content;max-width:100%;overflow-x:auto;font-size:14px;line-height:1.5;margin:16px 0;border:1px solid var(--hairline);border-radius:8px}
+.a th,.a td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--hairline-soft)}
+.a th + th,.a td + td{border-left:1px solid var(--hairline-soft)}
+.a tr:last-child td{border-bottom:0}
+.a th{background:var(--canvas);font-weight:500;color:var(--ink)}
+.a tbody tr:nth-child(even) td{background:var(--canvas)}
+.a code{font-family:var(--mono);font-size:13px;background:var(--canvas);border:1px solid var(--hairline-soft);border-radius:4px;padding:1px 6px}
+.a pre{background:var(--canvas);border:1px solid var(--hairline-soft);border-radius:8px;padding:16px;overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.5}
+.a pre code{background:none;border:0;padding:0}
+.a blockquote{margin:12px 0;padding:0 16px;border-left:2px solid var(--hairline);color:var(--ink-muted)}
+.a hr{border:0;border-top:1px solid var(--hairline-soft);margin:24px 0}
+/* 參考文獻：最後一個小標下面接 DOI 連結的段落或清單。小標改 eyebrow（14 / 500、句首大寫不全大寫），條目 body-sm、APA 首行凸排 */
+.a :is(h1,h2,h3,h4):has(+ p a[href*="doi.org"]),
+.a :is(h1,h2,h3,h4):has(+ ul a[href*="doi.org"]),
+.a :is(h1,h2,h3,h4):has(+ ol a[href*="doi.org"]){font-size:14px;font-weight:500;line-height:1.3;letter-spacing:0;color:var(--ink-muted);border-top:1px solid var(--hairline-soft);padding-top:24px;margin:32px 0 8px}
+.a :is(h1,h2,h3,h4):has(+ p a[href*="doi.org"]) ~ p,
+.a p:has(a[href*="doi.org"]){font-size:14px;line-height:1.5;color:var(--ink-muted);padding-left:2em;text-indent:-2em;margin:8px 0}
+.a :is(h1,h2,h3,h4):has(+ ul a[href*="doi.org"]) + ul,
+.a :is(h1,h2,h3,h4):has(+ ol a[href*="doi.org"]) + ol{list-style:none;padding-left:0;font-size:14px;line-height:1.5;color:var(--ink-muted)}
+.a :is(h1,h2,h3,h4):has(+ ul a[href*="doi.org"]) + ul li,
+.a :is(h1,h2,h3,h4):has(+ ol a[href*="doi.org"]) + ol li{padding-left:2em;text-indent:-2em;margin:8px 0}
+.a a[href*="doi.org"]{color:var(--ink-muted)}
+.a p:has(a[href*="doi.org"]):last-child,.a li:last-child:has(a[href*="doi.org"]){margin-bottom:16px}
+/* caption 12 / 400 / 1.40 */
+.meta-line{font-size:12px;line-height:1.4;color:var(--ink-subtle);margin-top:8px;padding-left:4px}
+.divider{display:flex;align-items:center;gap:16px;color:var(--ink-subtle);font-size:12px;line-height:1.4;margin:8px 0 48px}
+.divider::before,.divider::after{content:"";flex:1;border-top:1px solid var(--hairline)}
+.dots::after{content:"";animation:dots 1.4s steps(4,end) infinite}
+@keyframes dots{0%{content:""}25%{content:"．"}50%{content:"．．"}75%{content:"．．．"}}
+
+/* 輸入區：白色浮卡（hairline、rounded.lg），聚焦時邊框轉炭灰 */
+.composer{position:sticky;bottom:0;background:var(--canvas);border-top:1px solid var(--hairline-soft);padding:16px 0}
+.box{max-width:848px;margin:0 auto;padding:0 24px}
+.inner{background:var(--surface-1);border:1px solid var(--hairline);border-radius:12px;padding:12px 12px 12px 16px}
+.inner:focus-within{border-color:var(--ink)}
+textarea{width:100%;min-height:52px;max-height:40vh;resize:none;border:0;background:transparent;padding:4px 0;font-size:16px;line-height:1.5;color:var(--ink)}
+textarea:focus{outline:none}
+textarea::placeholder{color:var(--ink-tertiary)}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.chips{display:flex;flex-wrap:wrap;gap:8px;flex:1;min-width:0}
+/* 附件：inline tag（rounded.sm 6px、caption） */
+.chip{display:inline-flex;align-items:center;gap:4px;background:var(--surface-2);color:var(--ink);border-radius:6px;padding:4px 4px 4px 8px;font-size:12px;line-height:1.4;max-width:100%}
+.chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px}
+.chip button{border:0;background:none;cursor:pointer;color:var(--ink-muted);font-size:15px;line-height:1;padding:2px 6px}
+.small{font-size:12px;line-height:1.4;color:var(--ink-subtle);margin:8px 4px 0}
+
+/* 記憶視窗：白色卡片＋hairline、rounded.xl、無陰影（規範不用 drop shadow） */
+dialog{border:1px solid var(--hairline);border-radius:16px;padding:0;max-width:min(560px,calc(100vw - 32px));width:100%;background:var(--surface-1);color:var(--ink)}
+dialog::backdrop{background:rgba(17,17,17,.4)}
+.dlg{padding:24px}
+.dlg h2{font-size:22px;font-weight:500;line-height:1.25;letter-spacing:0;color:var(--ink);margin:0 0 8px}
+.dlg .hint{color:var(--ink-muted)}
+.dlg pre{white-space:pre-wrap;background:var(--canvas);border:1px solid var(--hairline-soft);border-radius:8px;padding:16px;font-family:var(--sans);font-size:14px;line-height:1.5;max-height:50vh;overflow:auto;margin:0}
+.dlg .acts{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
+
+@media (max-width:767px){
+  .top{padding:0 16px;gap:8px}
+  .brand{font-size:20px;letter-spacing:-.2px;gap:8px}
+  .brand small,.who{display:none}
+  .top .btn{padding:10px 12px}
+  .auth{margin:48px auto}
+  .auth h1{font-size:28px;line-height:1.2;letter-spacing:0}
+  .auth p.lead{font-size:16px;margin-bottom:24px}
+  .auth form{padding:16px}
+  .bar{padding:12px 16px;gap:8px 12px}
+  .log{padding:24px 16px 8px}
+  .empty{padding:24px}
+  .box{padding:0 16px}
+  .composer{padding:12px 0}
+  .u{max-width:92%}
+  .a{padding:4px 16px}
+  .a.working{padding:12px 16px}
+  .a h1{font-size:22px;line-height:1.25;letter-spacing:0}
+  .a h2{font-size:20px;line-height:1.4;letter-spacing:0}
+  .a h3,.a h4{font-size:18px;line-height:1.5;letter-spacing:0}
+  .btn{padding:10px 14px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">生命歷程助理<small>生命歷程與社會政策 ・ 115-1</small></div>
+  <div class="sp"></div>
+  <div class="who" id="who"></div>
+  <button class="btn hidden" id="btnMemory" type="button">我的記憶</button>
+  <button class="btn hidden" id="btnLogout" type="button">登出</button>
+</header>
+
+<!-- 登入 -->
+<section class="auth hidden" id="authView">
+  <h1>生命歷程助理</h1>
+  <p class="lead">「生命歷程與社會政策」的課程助理。可以問課程內容、閱讀文獻，也可以討論報告和論文的方向。</p>
+  <div class="tabs" role="tablist">
+    <button type="button" class="on" id="tabLogin" role="tab">登入</button>
+    <button type="button" id="tabActivate" role="tab">第一次使用</button>
+  </div>
+  <div class="msg-err hidden" id="authErr"></div>
+  <form id="loginForm" autocomplete="on">
+    <label class="field"><span>學號</span><input name="id" autocomplete="username" required inputmode="text"></label>
+    <label class="field"><span>密碼</span><input name="password" type="password" autocomplete="current-password" required></label>
+    <button class="btn primary" type="submit">登入</button>
+    <p class="fine">忘記密碼，請找葉老師重發啟用碼，再用「第一次使用」重設密碼。</p>
+  </form>
+  <form id="activateForm" class="hidden" autocomplete="off">
+    <label class="field"><span>學號</span><input name="id" autocomplete="username" required></label>
+    <p class="hint">沒有學號的人，填葉老師給的帳號代碼。</p>
+    <label class="field"><span>啟用碼</span><input name="code" required autocapitalize="characters" spellcheck="false"></label>
+    <p class="hint">葉老師私下給你的 6 碼。</p>
+    <label class="field"><span>設定密碼</span><input name="password" type="password" autocomplete="new-password" minlength="8" required></label>
+    <label class="field"><span>再輸入一次密碼</span><input name="password2" type="password" autocomplete="new-password" minlength="8" required></label>
+    <button class="btn primary" type="submit">啟用並登入</button>
+  </form>
+  <p class="fine">對話內容不會留給老師看，也不會保存在伺服器上。畫面上的紀錄只存在你自己的瀏覽器裡。</p>
+</section>
+
+<!-- 對話 -->
+<section class="app hidden" id="chatView">
+  <div class="bar">
+    <label>模型
+      <select id="selModel"></select>
+    </label>
+    <label>思考深度
+      <select id="selEffort"></select>
+    </label>
+    <button class="btn" id="btnNew" type="button">開新對話</button>
+    <div class="sp"></div>
+    <div class="quota" id="quota"></div>
+  </div>
+  <div class="log" id="log"></div>
+  <div class="composer">
+    <div class="box">
+      <form class="inner" id="chatForm">
+        <textarea id="input" placeholder="問課程、文獻，或討論你的報告方向……" rows="2"></textarea>
+        <div class="row">
+          <div class="chips" id="chips"></div>
+          <input type="file" id="fileInput" class="hidden" multiple accept=".pdf,.docx,.txt,.md,.csv,image/png,image/jpeg,image/webp,image/gif">
+          <button class="btn" type="button" id="btnAttach" title="上傳草稿或文件（最多 3 個）">附加檔案</button>
+          <button class="btn hidden" type="button" id="btnStop">停止</button>
+          <button class="btn primary" type="submit" id="btnSend">送出</button>
+        </div>
+      </form>
+      <p class="small">助理不代寫報告，但會給你寫作需要的文獻、概念和方向。引用都附出處，用之前請自己核對原文。Enter 換行，Ctrl／⌘＋Enter 送出。</p>
+    </div>
+  </div>
+</section>
+
+<dialog id="memDlg">
+  <div class="dlg">
+    <h2>我的記憶</h2>
+    <p class="hint" style="margin:0 0 8px">助理從你的對話整理的筆記，下次對話時用來接續討論。只有你看得到。</p>
+    <pre id="memText"></pre>
+    <div class="acts">
+      <button class="btn danger" type="button" id="btnMemDelete">刪除記憶</button>
+      <button class="btn" type="button" id="btnMemClose">關閉</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  const API = "https://lifecourse-assistant.easp2027.workers.dev";
+  const $ = (id) => document.getElementById(id);
+  const MAX_FILES = 3;
+
+  // ---- 瀏覽器儲存（可能不能用，一律包起來） ----
+  const store = {
+    get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+    del(k) { try { localStorage.removeItem(k); } catch {} },
+  };
+  let token = store.get("lc.token");
+  let me = null;
+  let files = [];
+  let polling = null;
+
+  const logKey = () => `lc.log.${me.id}`;
+  const prefKey = () => `lc.pref.${me.id}`;
+  const turnKey = () => `lc.turn.${me.id}`;
+
+  // ---- API ----
+  async function api(path, opts = {}) {
+    const headers = opts.headers || {};
+    if (token) headers.Authorization = `Bearer ${token}`;
+    let res;
+    try {
+      res = await fetch(API + path, { ...opts, headers });
+    } catch {
+      throw new Error("連不上伺服器，請檢查網路後再試。");
+    }
+    let data = {};
+    try { data = await res.json(); } catch {}
+    if (res.status === 401 && token) { logout(true); throw new Error(data.error || "請重新登入。"); }
+    if (!res.ok) throw new Error(data.error || `出錯了（${res.status}）`);
+    return data;
+  }
+  const postJson = (path, body) => api(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+
+  // ---- 登入 ----
+  function showAuth(err) {
+    $("authView").classList.remove("hidden");
+    $("chatView").classList.add("hidden");
+    $("btnMemory").classList.add("hidden");
+    $("btnLogout").classList.add("hidden");
+    $("who").textContent = "";
+    authError(err);
+  }
+  function authError(msg) {
+    $("authErr").textContent = msg || "";
+    $("authErr").classList.toggle("hidden", !msg);
+  }
+  function tab(which) {
+    $("tabLogin").classList.toggle("on", which === "login");
+    $("tabActivate").classList.toggle("on", which === "activate");
+    $("loginForm").classList.toggle("hidden", which !== "login");
+    $("activateForm").classList.toggle("hidden", which !== "activate");
+    authError("");
+  }
+  $("tabLogin").onclick = () => tab("login");
+  $("tabActivate").onclick = () => tab("activate");
+
+  $("loginForm").onsubmit = async (e) => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    try {
+      const r = await postJson("/api/login", { id: f.get("id"), password: f.get("password") });
+      token = r.token; store.set("lc.token", token);
+      await enter();
+    } catch (err) { authError(err.message); }
+  };
+  $("activateForm").onsubmit = async (e) => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    if (f.get("password") !== f.get("password2")) return authError("兩次輸入的密碼不一樣。");
+    try {
+      const r = await postJson("/api/activate", { id: f.get("id"), code: f.get("code"), password: f.get("password") });
+      token = r.token; store.set("lc.token", token);
+      await enter();
+    } catch (err) { authError(err.message); }
+  };
+
+  async function logout(silent) {
+    stopPolling();
+    if (!silent && token) { try { await api("/api/logout", { method: "POST" }); } catch {} }
+    token = null; me = null; store.del("lc.token");
+    showAuth(silent ? "登入已過期，請重新登入。" : "");
+  }
+  $("btnLogout").onclick = () => logout(false);
+
+  // ---- 進入對話畫面 ----
+  async function enter() {
+    me = await api("/api/me");
+    $("authView").classList.add("hidden");
+    $("chatView").classList.remove("hidden");
+    $("btnMemory").classList.remove("hidden");
+    $("btnLogout").classList.remove("hidden");
+    $("who").textContent = `${me.name}（${me.roleLabel}）`;
+    const pref = store.get(prefKey()) || {};
+    fillSelect($("selModel"), me.models, pref.model || me.defaults.model);
+    fillSelect($("selEffort"), me.efforts, pref.effort || me.defaults.effort);
+    showQuota(me.remaining);
+    renderLog();
+    const t = store.get(turnKey());
+    if (t) startPolling(t.turnId);
+  }
+  function fillSelect(sel, options, value) {
+    sel.innerHTML = "";
+    for (const [k, label] of Object.entries(options)) {
+      const o = document.createElement("option");
+      o.value = k; o.textContent = label;
+      if (k === me.defaults.model || k === me.defaults.effort) o.textContent += "（預設）";
+      sel.appendChild(o);
+    }
+    sel.value = value in options ? value : Object.keys(options)[0];
+  }
+  for (const id of ["selModel", "selEffort"]) {
+    $(id).onchange = () => store.set(prefKey(), { model: $("selModel").value, effort: $("selEffort").value });
+  }
+  function showQuota(r) {
+    if (!r) return;
+    const usable = Math.min(r.personCents, r.totalCents);
+    $("quota").innerHTML = `本月剩餘額度 <b>US$${(usable / 100).toFixed(2)}</b>`;
+    $("quota").title = `你個人剩 US$${(r.personCents / 100).toFixed(2)}，全部使用者合計剩 US$${(r.totalCents / 100).toFixed(2)}。每月 1 日重新計算。`;
+  }
+  async function refreshQuota() {
+    try { const r = await api("/api/me"); showQuota(r.remaining); } catch {}
+  }
+
+  // ---- 畫面紀錄（只存在這個瀏覽器） ----
+  function getLog() { return store.get(logKey()) || []; }
+  function setLog(log) { store.set(logKey(), log.slice(-200)); }
+
+  function md(text) {
+    const html = DOMPurify.sanitize(marked.parse(text || "", { breaks: true }));
+    const d = document.createElement("div");
+    d.innerHTML = html;
+    d.querySelectorAll("a").forEach((a) => { a.target = "_blank"; a.rel = "noopener noreferrer"; });
+    return d.innerHTML;
+  }
+
+  function renderLog() {
+    const log = getLog();
+    const box = $("log");
+    box.innerHTML = "";
+    if (log.length === 0) {
+      box.innerHTML = `<div class="empty"><h2>可以問什麼</h2><ul>
+        <li>這週的閱讀在講什麼？某個概念（例如累積優勢、去標準化）怎麼理解？</li>
+        <li>我的報告想做某個題目，研究問題可以怎麼問？有哪些文獻可以讀？</li>
+        <li>上傳草稿（PDF、Word），請助理指出論證和文獻上的問題。</li>
+      </ul>助理會從課程資料、葉老師的文獻筆記和全文庫查資料，必要時上網找。它不代寫，也不改寫你的句子。</div>`;
+      return;
+    }
+    for (const item of log) box.appendChild(renderItem(item));
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+
+  function renderItem(item) {
+    if (item.type === "divider") {
+      const d = document.createElement("div");
+      d.className = "divider"; d.textContent = item.text;
+      return d;
+    }
+    const t = document.createElement("div");
+    t.className = "turn";
+    const u = document.createElement("div");
+    u.className = "u";
+    u.textContent = item.q;
+    if (item.files && item.files.length) {
+      const f = document.createElement("span");
+      f.className = "files"; f.textContent = `附件：${item.files.join("、")}`;
+      u.appendChild(f);
+    }
+    t.appendChild(u);
+    const a = document.createElement("div");
+    a.className = "a" + (item.done ? "" : " working");
+    const body = (item.texts || []).join("\n\n");
+    a.innerHTML = body ? md(body) : (item.done ? "" : `<p class="dots">查資料、整理回答中</p>`);
+    if (!item.done && body) a.insertAdjacentHTML("beforeend", `<p class="note dots">還在寫</p>`);
+    if (item.note) a.insertAdjacentHTML("beforeend", `<p class="note">${escapeHtml(item.note)}</p>`);
+    t.appendChild(a);
+    const m = document.createElement("div");
+    m.className = "meta-line";
+    m.textContent = `${item.time || ""}${item.modelLabel ? ` ・ ${item.modelLabel}` : ""}`;
+    t.appendChild(m);
+    return t;
+  }
+  function escapeHtml(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+
+  // ---- 送出與輪詢 ----
+  function setBusy(busy) {
+    $("btnSend").disabled = busy;
+    $("btnStop").classList.toggle("hidden", !busy);
+    $("btnNew").disabled = busy;
+    $("selModel").disabled = busy;
+    $("selEffort").disabled = busy;
+  }
+
+  $("chatForm").onsubmit = async (e) => {
+    e.preventDefault();
+    const text = $("input").value.trim();
+    if (!text) return;
+    const fd = new FormData();
+    fd.append("text", text);
+    fd.append("model", $("selModel").value);
+    fd.append("effort", $("selEffort").value);
+    for (const f of files) fd.append("files", f);
+    setBusy(true);
+    try {
+      const r = await api("/api/chat", { method: "POST", body: fd });
+      const log = getLog();
+      log.push({
+        turnId: r.turnId, q: text, files: files.map((f) => f.name), texts: [], done: false,
+        time: new Date().toLocaleString("zh-TW", { hour12: false }),
+        modelLabel: `${$("selModel").selectedOptions[0].textContent.replace("（預設）", "")} ・ ${$("selEffort").selectedOptions[0].textContent.replace("（預設）", "")}`,
+      });
+      setLog(log);
+      $("input").value = ""; files = []; renderChips(); autosize();
+      renderLog();
+      store.set(turnKey(), { turnId: r.turnId });
+      startPolling(r.turnId);
+    } catch (err) {
+      setBusy(false);
+      alert(err.message);
+    }
+  };
+
+  function startPolling(turnId) {
+    stopPolling();
+    setBusy(true);
+    const tick = async () => {
+      const log = getLog();
+      const item = log.find((x) => x.turnId === turnId);
+      const since = item ? item.texts.length : 0;
+      try {
+        const r = await api(`/api/poll?turn=${encodeURIComponent(turnId)}&since=${since}`);
+        if (item) {
+          if (r.texts.length) item.texts.push(...r.texts);
+          if (r.done) { item.done = true; if (r.note) item.note = r.note; }
+          setLog(log);
+          renderLog();
+        }
+        if (r.done || (!r.busy && r.turnId !== turnId)) {
+          if (item && !item.done) { item.done = true; item.note = item.note || "（這個回答沒有取回，可能已經過期。）"; setLog(log); renderLog(); }
+          store.del(turnKey());
+          stopPolling();
+          setBusy(false);
+          refreshQuota();
+          return;
+        }
+      } catch (err) {
+        if (!token) return;
+      }
+      polling = setTimeout(tick, 2500);
+    };
+    polling = setTimeout(tick, 1500);
+  }
+  function stopPolling() { if (polling) clearTimeout(polling); polling = null; }
+
+  $("btnStop").onclick = async () => { try { await api("/api/stop", { method: "POST" }); } catch (err) { alert(err.message); } };
+
+  $("btnNew").onclick = async () => {
+    if (!confirm("開新對話後，助理不會再接著前面的內容（記憶會保留）。要開新對話嗎？")) return;
+    try {
+      await api("/api/new", { method: "POST" });
+      const log = getLog();
+      if (log.length) { log.push({ type: "divider", text: "── 新對話 ──" }); setLog(log); renderLog(); }
+    } catch (err) { alert(err.message); }
+  };
+
+  // ---- 附件 ----
+  $("btnAttach").onclick = () => $("fileInput").click();
+  $("fileInput").onchange = (e) => {
+    let dropped = 0;
+    for (const f of e.target.files) {
+      if (files.length < MAX_FILES) files.push(f); else dropped++;
+    }
+    if (dropped) alert(`一次最多 ${MAX_FILES} 個檔案，多的 ${dropped} 個沒有加進來。`);
+    e.target.value = "";
+    renderChips();
+  };
+  function renderChips() {
+    const box = $("chips");
+    box.innerHTML = "";
+    files.forEach((f, i) => {
+      const c = document.createElement("span");
+      c.className = "chip";
+      c.innerHTML = `<span></span><button type="button" aria-label="移除">×</button>`;
+      c.firstChild.textContent = f.name;
+      c.lastChild.onclick = () => { files.splice(i, 1); renderChips(); };
+      box.appendChild(c);
+    });
+  }
+
+  // ---- 輸入框 ----
+  function autosize() { const t = $("input"); t.style.height = "auto"; t.style.height = Math.min(t.scrollHeight, window.innerHeight * 0.4) + "px"; }
+  $("input").addEventListener("input", autosize);
+  $("input").addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); $("chatForm").requestSubmit(); }
+  });
+
+  // ---- 記憶 ----
+  $("btnMemory").onclick = async () => {
+    try {
+      const r = await api("/api/memory");
+      $("memText").textContent = r.memory || "（還沒有記憶。跟助理聊過之後，它會整理你的報告題目、進度和卡住的地方。）";
+      $("memDlg").showModal();
+    } catch (err) { alert(err.message); }
+  };
+  $("btnMemClose").onclick = () => $("memDlg").close();
+  $("btnMemDelete").onclick = async () => {
+    if (!confirm("刪除後無法復原，助理會忘記你之前的報告題目和進度。確定刪除？")) return;
+    try {
+      await api("/api/memory", { method: "DELETE" });
+      $("memText").textContent = "（已刪除。）";
+    } catch (err) { alert(err.message); }
+  };
+
+  // ---- 開始 ----
+  if (token) enter().catch((err) => showAuth(err.message)); else showAuth("");
+})();
+</script>
+</body>
+</html>
