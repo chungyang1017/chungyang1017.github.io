@@ -460,6 +460,9 @@ tr:nth-child(even) td{background:#fbfcfd;}
 .bin .items{display:flex;flex-wrap:wrap;gap:6px;}
 .drag .dstat{margin-top:12px;font-size:15.5px;color:var(--grey);}
 .drag .dstat b{color:var(--accent);}
+/* 觸控裝置：手指拖不動，提示只講點選 */
+.hint-touch{display:none;}
+@media (hover:none) and (pointer:coarse){.hint-desk{display:none;}.hint-touch{display:inline;}}
 
 /* ── 勾選診斷 ── */
 .checkdx{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:19px 23px;margin:18px 0 0;}
@@ -2400,7 +2403,7 @@ html{scroll-padding-top:110px;}
     <div class="inner">
       <div class="eyebrow">動手做</div>
       <h2>這些政策，屬於哪一個範疇？</h2>
-      <p class="sub">拖（或先點項目再點框）。拖錯會彈回來</p>
+      <p class="sub"><span class="hint-desk">拖（或先點項目再點框）</span><span class="hint-touch">先點項目，再點框</span>。拖錯會彈回來</p>
       <div class="lead-q"><b>這頁回答</b><span>用 2004 年綱領的六大範疇，把你生活裡看得到的制度歸位。</span></div>
       <div class="drag" data-drag="d1">
         <div class="pool">
