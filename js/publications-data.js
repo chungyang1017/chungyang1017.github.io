@@ -25,7 +25,7 @@ const publicationsData = [
     authors_zh: 'Hung, H-F., Huang, F-Y., Yeh, C-Y. and Lee, S-F.', authors_en: 'Hung, H-F., Huang, F-Y., Yeh, C-Y. and Lee, S-F.',
     venue_zh: 'Journal of Asian Public Policy', venue_en: 'Journal of Asian Public Policy',
     vol: '',
-    link: null,
+    link: { type: 'doi', url: 'https://doi.org/10.1080/17516234.2026.2748483' },
     badge: 'SSCI',
     metrics: { if: '2.9', rank: 'Q1 Area Studies', year: 2025 } },
 
