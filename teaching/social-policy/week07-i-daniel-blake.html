@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>電影欣賞《我是布萊克》 ・ 社會政策 第 7 週 ・ 葉崇揚</title>
+<meta name="description" content="社會政策第 7 週電影欣賞：《我是布萊克》（I, Daniel Blake）的電影說明、英國「從福利到工作」的政策脈絡，以及觀後心得與提問。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* 第 7 週電影頁：沿用第 10 週講義的燕麥色系，做成單頁。
+   中文字型只用 Noto Serif TC、Noto Sans TC；英文小標與數字用 Jost。 */
+:root{
+  --bg:#F2EEE7; --card:#FFFDF9; --oat:#EAE3D8;
+  --ink:#2E2C28; --soft:#4F4A42; --muted:#7C7469; --line:#DCD4C7;
+  --terra:#B3613F; --terra-l:#F4DED3; --sage:#5F8270; --sage-l:#DDE8E0;
+  --serif:"Noto Serif TC",serif;
+  --sans:"Noto Sans TC",system-ui,-apple-system,sans-serif;
+  --latin:Jost,"Noto Sans TC",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.9;-webkit-font-smoothing:antialiased}
+b,strong{font-weight:500}
+a{color:var(--terra);text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--terra);outline-offset:2px}
+.wrap{max-width:760px;margin:0 auto;padding:40px 16px 96px}
+.back{display:inline-block;font-size:15px;color:var(--muted);text-decoration:none;margin-bottom:28px}
+.back:hover{color:var(--terra)}
+.eyebrow{font:500 14px/1.4 var(--latin);letter-spacing:.18em;color:var(--terra);text-transform:uppercase}
+h1{font-family:var(--serif);font-weight:700;font-size:40px;line-height:1.3;margin:10px 0 4px}
+.en{font:400 20px/1.4 var(--latin);color:var(--muted);letter-spacing:.02em}
+.when{margin-top:14px;font-size:16px;color:var(--soft)}
+h2{font-family:var(--serif);font-weight:700;font-size:26px;line-height:1.4;margin:0 0 16px}
+section{margin-top:44px}
+p+p{margin-top:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px}
+dl.facts{display:grid;grid-template-columns:7em 1fr;gap:8px 16px;font-size:17px}
+dl.facts dt{color:var(--muted)}
+dl.facts dd{color:var(--ink)}
+.note{font-size:15px;color:var(--muted);margin-top:14px;line-height:1.7}
+.cite{font-size:15px;color:var(--muted);white-space:nowrap}
+.ctx h3{font-family:var(--serif);font-weight:700;font-size:20px;margin:26px 0 8px}
+.ctx h3:first-of-type{margin-top:0}
+.term{font:500 15px/1 var(--latin);color:var(--sage);background:var(--sage-l);border-radius:4px;padding:2px 6px;white-space:nowrap}
+.link{margin-top:22px;padding:16px 20px;background:var(--terra-l);border-radius:10px;color:var(--ink)}
+.refs{font-size:15px;line-height:1.7;color:var(--soft);padding-left:1.2em}
+.refs li+li{margin-top:6px}
+/* 心得與提問 */
+.form label{display:block;font-size:16px;font-weight:500;margin-bottom:6px}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+.form input,.form textarea{width:100%;font:inherit;font-size:17px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+.form input{min-height:46px}
+.form textarea{min-height:180px;line-height:1.8;resize:vertical}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--terra);box-shadow:0 0 0 1px var(--terra)}
+.count{text-align:right;font:400 14px/1.6 var(--latin);color:var(--muted);margin-top:4px}
+.btn{margin-top:16px;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:10px 28px;border:0;border-radius:999px;background:var(--terra);color:#fff;font:500 17px/1.2 var(--sans);cursor:pointer}
+.btn:disabled{background:var(--oat);color:var(--muted);cursor:default}
+.msg{margin-top:14px;font-size:16px;line-height:1.7;color:var(--soft);min-height:1.7em}
+.msg.ok{color:var(--sage)}
+.msg.ng{color:var(--terra)}
+footer{margin-top:56px;font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+@media (max-width:560px){
+  body{font-size:17px}
+  h1{font-size:32px}
+  dl.facts{grid-template-columns:5.5em 1fr;font-size:16px}
+  .form .row{grid-template-columns:1fr}
+  .card{padding:20px 16px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="../../syllabus-zh.html?course=social-policy">← 社會政策課程大綱</a>
+
+  <p class="eyebrow">社會政策 ・ 第 7 週 ・ 電影欣賞</p>
+  <h1>我是布萊克</h1>
+  <p class="en">I, Daniel Blake</p>
+  <p class="when">2026 年 10 月 30 日（週五）上課時間觀賞</p>
+
+  <section>
+    <h2>電影基本資料</h2>
+    <div class="card">
+      <dl class="facts">
+        <dt>片名</dt><dd>《我是布萊克》（I, Daniel Blake）。香港譯為《我，不低頭》。</dd>
+        <dt>導演</dt><dd>肯．洛區（Ken Loach）</dd>
+        <dt>編劇</dt><dd>保羅．萊弗蒂（Paul Laverty）</dd>
+        <dt>主演</dt><dd>戴夫．約翰斯飾丹尼爾．布萊克；海莉．斯誇爾斯飾凱蒂</dd>
+        <dt>出品</dt><dd>英國，2016 年，英語，片長 100 分鐘</dd>
+        <dt>台灣上映</dt><dd>2016 年 12 月 23 日</dd>
+        <dt>獎項</dt><dd>第 69 屆坎城影展金棕櫚獎、英國電影學院獎最佳英國電影、第 42 屆凱薩獎最佳外國片</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2>故事開頭</h2>
+    <p>59 歲的英格蘭木匠布萊克，還沒到退休年齡，患有心臟病。他暫時失業，為了維持生計去申請津貼，卻沒有獲准。他因此在政府的社會福利和官僚機構之間被踢來踢去。</p>
+    <p>他在這段時間認識了凱蒂。凱蒂帶著兩個孩子，處境和布萊克相似，也要靠社會福利救助，並設法盡快找到工作。</p>
+    <p>電影在英格蘭的紐卡斯爾（Newcastle upon Tyne）拍攝。</p>
+    <p class="note">這裡只寫開頭的設定，不寫結局。電影資料依據中文維基百科〈我是布萊克〉條目。</p>
+  </section>
+
+  <section class="ctx">
+    <h2>看片前：英國的「從福利到工作」</h2>
+
+    <h3>從「扶一把」開始</h3>
+    <p>1997 年工黨執政。布萊爾說，福利應該是「扶一把」，不是「施捨」（hand-up, not a hand-out）。1998 年的「新政」（New Deal）把領給付和參加求職、訓練等工作相關活動綁在一起 <span class="cite">（Deeming, 2015: 870）</span>。這就是<span class="term">welfare to work</span>「從福利到工作」：領給付的人有權利，也有義務。</p>
+
+    <h3>什麼是工作福利</h3>
+    <p><span class="term">workfare</span>工作福利，是把工作或求職當成領給付的條件。做不到，給付就被減少或停發。停發給付叫做「制裁」（sanction）。只要不遵從工作要求就有失去給付的風險，就算是強制 <span class="cite">（Lødemel &amp; Trickey, 2000: 7）</span>。</p>
+
+    <h3>生病的人，也要被評估能不能工作</h3>
+    <p>2008 年起，因病不能工作的人改申請「就業與支持津貼」（Employment and Support Allowance, ESA）。申請者要先通過更嚴的「工作能力評估」（Work Capability Assessment）。評估看的是能不能做「某些工作」，而不是能不能回到原本的工作。沒有達到門檻的人，會被判定「適合工作」（fit for work），不能領這項津貼 <span class="cite">（Barnes &amp; Sissons, 2013: 73–74）</span>。</p>
+    <p>到 2011 年 5 月底，初次評估有 62% 被判定適合工作。這樣的比例引起很大爭議。被判定適合工作的人有 36% 提出申訴，申訴結果有 39% 對申請者有利 <span class="cite">（Barnes &amp; Sissons, 2013: 74）</span>。</p>
+
+    <h3>2010 年以後：條件更嚴，制裁更重</h3>
+    <p>保守黨與自由民主黨聯合政府上台後，條件性再加強。目標是把盡可能多的長期病患與身心障礙者推到「求職者津貼」（Jobseeker's Allowance）。在那裡，他們必須接受任何工作，否則失去給付。主要的動力是削減公共支出 <span class="cite">（Macnicol, 2013: 37）</span>。</p>
+    <p>2012 年的改革讓制裁最長可以停發三年 <span class="cite">（Wright, 2023）</span>。2010 到 2015 年，大約四分之一的求職者津貼申請人被制裁過。2013 年最多，一年施加了約 104 萬次制裁 <span class="cite">（Dwyer et al., 2023: 1）</span>。</p>
+
+    <p class="link">布萊克申請津貼沒有獲准、在官僚體系之間被踢來踢去，背後就是這一套制度。看片時，可以留意他每一次走進辦公室、打電話、填表時，制度要求他做什麼。</p>
+
+    <h3>參考文獻</h3>
+    <ul class="refs">
+      <li>Barnes, H., &amp; Sissons, P. (2013). Redefining ‘fit for work’: Welfare reform and the introduction of Employment Support Allowance. In C. Lindsay &amp; D. Houston (Eds.), <i>Disability benefits, welfare reform and employment policy</i> (pp. 72–93). Palgrave Macmillan.</li>
+      <li>Deeming, C. (2015). Foundations of the workfare state: Reflections on the political transformation of the welfare state in Britain. <i>Social Policy &amp; Administration</i>, 49(7), 862–886.</li>
+      <li>Dwyer, P., Scullion, L., Jones, K., McNeill, J., &amp; Stewart, A. B. R. (2023). <i>The impacts of welfare conditionality: Sanctions, support and behaviour change</i>. Policy Press.</li>
+      <li>Lødemel, I., &amp; Trickey, H. (Eds.). (2000). <i>‘An offer you can’t refuse’: Workfare in international perspective</i>. Policy Press.</li>
+      <li>Macnicol, J. (2013). A history of work-disability. In C. Lindsay &amp; D. Houston (Eds.), <i>Disability benefits, welfare reform and employment policy</i> (pp. 33–53). Palgrave Macmillan.</li>
+      <li>Wright, S. (2023). <i>Women and welfare conditionality: Lived experiences of benefit sanctions, work and welfare</i>. Policy Press.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>觀後心得與提問</h2>
+    <div class="card form">
+      <p style="font-size:16px;color:var(--soft);margin-bottom:18px">看完電影後，寫下你的心得，或提出你想問的問題，兩者都可以。這一欄必填。送出後只有老師看得到。</p>
+      <div class="row">
+        <div><label for="sid">學號</label><input id="sid" maxlength="12" placeholder="例如 14115101" autocomplete="off" inputmode="numeric"></div>
+        <div><label for="sname">姓名</label><input id="sname" maxlength="20" placeholder="你的姓名" autocomplete="off"></div>
+      </div>
+      <label for="stext">心得或問題（必填）</label>
+      <textarea id="stext" maxlength="1500" placeholder="例如：哪一幕讓你印象最深？制度要求布萊克做的事，哪一件你覺得最不合理？你有什麼問題想問？"></textarea>
+      <div class="count"><span id="ccount">0</span> / 1500</div>
+      <button class="btn" id="submit" type="button" disabled>送出</button>
+      <p class="msg" id="msg"></p>
+    </div>
+  </section>
+
+  <footer>社會政策（115 學年度第 1 學期）・ 葉崇揚</footer>
+</main>
+
+<script>
+/* 送出設定：GAS 是第 7 週心得試算表的 Apps Script 網址（結尾 /exec）。 */
+const CONFIG = { WEEK: 'W07', GAS: 'https://script.google.com/macros/s/AKfycbxCINcEgmZrd1rztNF8Ztn5IGC81kyjkOJNiUddE_u0lomr7Kzw8KgjOW3hAplEhozE4g/exec' };
+
+const $ = id => document.getElementById(id);
+const sid = $('sid'), sname = $('sname'), stext = $('stext'), btn = $('submit'), msg = $('msg');
+const KEY = 'sp115-w07-film';
+
+// 草稿存在這台裝置，關掉再打開還在（存取失敗就略過）
+try {
+  const d = JSON.parse(localStorage.getItem(KEY) || '{}');
+  if (d.sid) sid.value = d.sid;
+  if (d.name) sname.value = d.name;
+  if (d.text) stext.value = d.text;
+  if (d.row) { msg.textContent = '你已經送出過了（老師試算表第 ' + Number(d.row) + ' 列）。要補充可以再送一次。'; msg.className = 'msg ok'; }
+} catch (_) {}
+
+function save(extra) {
+  try {
+    const d = JSON.parse(localStorage.getItem(KEY) || '{}');
+    Object.assign(d, { sid: sid.value, name: sname.value, text: stext.value }, extra || {});
+    localStorage.setItem(KEY, JSON.stringify(d));
+  } catch (_) {}
+}
+
+function check() {
+  $('ccount').textContent = stext.value.length;
+  const ok = sid.value.trim().length >= 4 && sname.value.trim() && stext.value.trim();
+  btn.disabled = !ok;
+  return ok;
+}
+[sid, sname, stext].forEach(el => el.addEventListener('input', () => { check(); save(); }));
+check();
+
+btn.addEventListener('click', () => {
+  if (!check()) return;
+  if (!CONFIG.GAS) { msg.textContent = '送出功能還沒接上，請先把內容存在自己的電腦，稍後再送。'; msg.className = 'msg ng'; return; }
+  btn.disabled = true;
+  msg.textContent = '送出中…'; msg.className = 'msg';
+  const ac = new AbortController();
+  const timer = setTimeout(() => ac.abort(), 25000);
+  fetch(CONFIG.GAS, {
+    method: 'POST',
+    body: new URLSearchParams({ week: CONFIG.WEEK, sid: sid.value.trim(), name: sname.value.trim(), text: stext.value.trim() }),
+    signal: ac.signal
+  })
+    .then(r => r.json())
+    .then(j => {
+      clearTimeout(timer);
+      if (j && j.ok) {
+        save({ row: j.row });
+        msg.textContent = '送出成功，已確認寫入老師的試算表（第 ' + Number(j.row) + ' 列）。謝謝你！';
+        msg.className = 'msg ok';
+      } else {
+        throw new Error((j && j.error) || 'error');
+      }
+    })
+    .catch(() => {
+      clearTimeout(timer);
+      btn.disabled = false;
+      msg.textContent = '送出失敗，請稍後再試一次。你寫的內容還留在這裡，沒有不見。';
+      msg.className = 'msg ng';
+    });
+});
+</script>
+</body>
+</html>
