@@ -20,11 +20,11 @@
 // ─────────────────────────────────────────────
 
 const publicationsData = [
-  { year: 2026, lang: 'en', forthcoming: true,
+  { year: 2026, lang: 'en',
     title_zh: 'Cumulating Precarity in a Hybrid Platform Economy: Gender, Class, and the Social Exclusion of Single Mothers in Taiwan', title_en: 'Cumulating Precarity in a Hybrid Platform Economy: Gender, Class, and the Social Exclusion of Single Mothers in Taiwan',
     authors_zh: 'Hung, H-F., Huang, F-Y., Yeh, C-Y. and Lee, S-F.', authors_en: 'Hung, H-F., Huang, F-Y., Yeh, C-Y. and Lee, S-F.',
     venue_zh: 'Journal of Asian Public Policy', venue_en: 'Journal of Asian Public Policy',
-    vol: '',
+    vol: '1–19',
     link: { type: 'doi', url: 'https://doi.org/10.1080/17516234.2026.2748483' },
     badge: 'SSCI',
     metrics: { if: '2.9', rank: 'Q1 Area Studies', year: 2025 } },
@@ -239,7 +239,7 @@ const publicationsData = [
 
   { year: 2017, lang: 'zh',
     title_zh: '專欄導語：融合或排斥？跨兩岸遷移者與社會保障', title_en: 'Editorial: Inclusion or Exclusion? Cross-strait Migrants and Social Protection',
-    authors_zh: '葉崇揚、岳經綼', authors_en: 'Yeh, C-Y. and Yueh, C-W.',
+    authors_zh: '葉崇揚、岳經綸', authors_en: 'Yeh, C-Y. and Ngok, K-L.',
     venue_zh: '中國公共政策評論', venue_en: 'China Public Policy Review',
     vol: '第十一期: 149–154',
     link: { type: 'publisher', url: 'https://www.newcnki.net/info/6353.html' },
