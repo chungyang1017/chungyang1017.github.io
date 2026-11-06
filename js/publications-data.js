@@ -262,7 +262,7 @@ const publicationsData = [
     badge: 'TSSCI' },
 
   { year: 2016, lang: 'zh',
-    title_zh: '社會投資福利國家？論當代社會救助政策邏輯的轉變', title_en: 'Social Investment Welfare State? On the Logic Shift of Contemporary Social Assistance Policy',
+    title_zh: '社會投資福利國家？論當代社會救助政策邏輯的轉變', title_en: 'Towards Social Investment Welfare State? The Transformation of the Logic of the Contemporary Social Assistance System',
     authors_zh: '葉崇揚', authors_en: 'Yeh, C-Y.',
     venue_zh: '中國公共政策評論', venue_en: 'Chinese Public Policy Review',
     vol: '第十期: 1–23',
