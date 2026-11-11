@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --chashitsu-bg: #e8dcc4;
+      --chashitsu-bg: #eee9df;
       --chashitsu-paper: #f5ecd6;
       --chashitsu-tatami: #d8c8a8;
       --moss: #3d5a3f;          /* 公部門 */
@@ -49,7 +49,7 @@
     .topbar {
       position: fixed; top: 0; left: 0; right: 0;
       height: 56px; z-index: 50;
-      background: rgba(232,220,196,0.94);
+      background: rgba(238,233,223,0.94);
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line-soft);
       display: flex; align-items: center; justify-content: space-between;
@@ -94,7 +94,7 @@
     .navbar {
       position: fixed; bottom: 0; left: 0; right: 0;
       height: 64px; z-index: 50;
-      background: rgba(232,220,196,0.94);
+      background: rgba(238,233,223,0.94);
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       border-top: 1px solid var(--line-soft);
       display: flex; align-items: center; justify-content: space-between;
@@ -163,13 +163,6 @@
       display: inline-flex; align-items: center; gap: 14px;
       font-family: var(--sans); font-size: 13px;
       letter-spacing: 0.4em; opacity: 0.6; margin-bottom: 24px;
-    }
-    .slide-title .seal {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 36px; height: 36px;
-      background: var(--accent); color: var(--chashitsu-paper);
-      font-family: var(--brush); font-size: 16px;
-      transform: rotate(-3deg);
     }
     .slide-title h1 {
       font-family: var(--brush); font-size: 72px;
@@ -813,7 +806,6 @@
   <section class="slide slide-title is-active" data-kind="title" data-label="封面">
     <div class="slide-inner">
       <div class="week-tag">
-        <span class="seal">學</span>
         <span>第 10 週 ・ 4/30 ・ WEEK 10</span>
       </div>
       <h1>福利的價值與意識形態</h1>
