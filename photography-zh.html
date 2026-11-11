@@ -2,449 +2,788 @@
 <!-- 本頁由 _src/photography.html 產生，請改模板後執行 python3 _tools/build_pages.py，不要直接改這個檔案。 -->
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>攝影 Photography · 葉崇揚</title>
 <meta name="description" content="葉崇揚（Chung-Yang Yeh） ・ 寫真十一系列：春信、青嵐、紅葉、雪明、潮聲、山水、街、Xpan、銀鹽、Lisbon、Singapore。">
 <link rel="alternate" hreflang="zh-Hant" href="photography-zh.html">
 <link rel="alternate" hreflang="en" href="photography.html">
+<link rel="preconnect" href="https://photo.easp2027.workers.dev">
+<link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600&family=Yuji+Syuku&family=Klee+One:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" id="p-fonts" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://photo.easp2027.workers.dev/shared/core.css">
 <style>
-  /* 包 B · 方案 2 卷軸 — 共用樣式（pack-scroll _shared.css） */
-  :root{
-    --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
-    --moss:#3d5a3f; --accent:#c43838; --water:#5a7a8a;
-    --ink:#1f1f1d; --ink-soft:rgba(31,31,29,.72); --ink-quiet:rgba(31,31,29,.5);
-    --rule:rgba(31,31,29,.12);
-    --serif:"Shippori Mincho","Noto Serif JP",serif;
-    --display:"Yuji Syuku",serif;
-    --latin:"Inter",sans-serif;
-    --kana:"Klee One",serif;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{ background:var(--sand); color:var(--ink); font-family:var(--serif); font-feature-settings:"palt"; -webkit-font-smoothing:antialiased; }
-  body.is-book-open{ overflow:hidden; }
-  a{color:inherit}
+/* 歲時記：縱書雜誌（magazine-vertical）的色票、字級、間距。
+   這一段從 saijiki/index.html 原樣複製，首頁與攝影誌總覽完全照它。 */
+:root{
+  color-scheme:light;
+  --paper:#f5f5f5;--ink:#1d1d1d;--muted:#575757;--line:#c5c7c8;
+  --spread-rule:#dedede;--card-rule:#cfcfcf;--spine:rgba(0,0,0,.07);--focus:#428bd1;
+  --sans:"PingFang TC","Noto Sans TC","Heiti TC",sans-serif;
+  --serif:"Songti TC","Noto Serif TC",serif;
+  --pv-bg:#101214;--pv-ink:#eee;--pv-muted:#d4d6d7;--pv-line:#585b5d;--pv-font:var(--sans);
+  --H:max(600px,calc(100svh - 58px));
+}
+*{box-sizing:border-box}
+html{background:var(--paper);scroll-behavior:auto}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 14px/1.5 var(--sans)}
+h1,h2,h3,p,figure{margin:0}
+a{color:inherit;text-decoration:none}
+a,button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit}
+a:hover,.btn:hover{opacity:.8}
+:focus-visible{outline:3px solid var(--focus);outline-offset:4px}
+.serif{font-family:var(--serif)}
+.tcy{text-combine-upright:all;-webkit-text-combine:horizontal}
+.v{writing-mode:vertical-rl;text-orientation:mixed}
 
-  /* 卷軸感頂部 */
-  .nav{
-    position:sticky;top:0;z-index:50;
-    background:color-mix(in srgb,var(--sand) 94%,transparent);
-    backdrop-filter:blur(8px);
-    display:flex;justify-content:space-between;align-items:center;
-    padding:16px 48px;border-bottom:1px solid var(--rule);
-  }
-  .nav .brand{display:flex;gap:16px;align-items:baseline}
-  .nav .seal{
-    display:inline-flex;align-items:center;justify-content:center;
-    width:42px;height:42px;background:var(--accent);color:var(--sand);
-    font-family:var(--display);font-size:20px;
-    transform:rotate(-3deg);box-shadow:2px 2px 0 rgba(196,56,56,.25);
-    text-decoration:none;
-  }
-  .nav .name{font-family:var(--display);font-size:18px;letter-spacing:.1em;line-height:1;text-decoration:none}
-  .nav .name small{display:block;font-family:var(--latin);font-size:9px;letter-spacing:.3em;color:var(--ink-quiet);margin-top:4px}
-  .nav nav{display:flex;gap:24px;font-size:16px;letter-spacing:.2em}
-  .nav nav a{color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:1px solid transparent;transition:.2s}
-  .nav nav a:hover{border-bottom-color:var(--ink)}
-  .nav nav a.is-active{color:var(--accent);border-bottom-color:var(--accent)}
-  .nav .lang{border-left:1px solid var(--rule);padding-left:24px;font-family:var(--latin);font-size:16px;letter-spacing:.2em;color:var(--ink-soft);text-decoration:none}
+/* 頂列 */
+.topbar{position:sticky;top:0;z-index:5;height:58px;padding:0 26px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--paper);border-bottom:1px solid var(--line);font-size:13px;line-height:1.5;letter-spacing:.08em}
+.topbar a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}
+.topbar .home{font-family:var(--serif);letter-spacing:.22em}
+.topbar nav{display:flex;gap:26px}
+.topbar nav a{color:var(--muted)}
+.topbar nav a[aria-current="true"]{color:var(--ink)}
+.topbar .ctx{color:var(--muted);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-  /* 砂紋 */
-  .samon{position:relative}
-  .samon::before{
-    content:"";position:absolute;inset:0;pointer-events:none;opacity:.08;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='60'><g fill='none' stroke='%233d5a3f' stroke-width='.6'><path d='M 0 30 Q 50 22 100 30 T 200 30'/><path d='M 0 36 Q 50 28 100 36 T 200 36'/><path d='M 0 42 Q 50 34 100 42 T 200 42'/><path d='M 0 48 Q 50 40 100 48 T 200 48'/></g></svg>");
-  }
+/* 跨頁 */
+.spread{position:relative;min-height:var(--H);display:flex;flex-direction:row-reverse;align-items:center;justify-content:flex-start;gap:2.4vw;padding:44px 3vw;border-bottom:1px solid var(--spread-rule);overflow-x:clip;scroll-margin-top:58px}
+.spread::before{content:"";position:absolute;left:50%;top:24px;bottom:24px;width:1px;background:linear-gradient(transparent,var(--spine) 15%,var(--spine) 85%,transparent);pointer-events:none}
+.spread>*{position:relative;z-index:1}
+.spread.single{justify-content:center}
 
-  /* 卷軸開頭：左大漢字 + 右內容 */
-  .scroll-head{
-    display:grid;grid-template-columns:380px 1fr;gap:60px;
-    padding:120px 60px;max-width:1280px;margin:0 auto;
-    position:relative;border-top:1px solid var(--rule);
-    background:var(--sand-light);
-  }
-  .scroll-head .index{font-family:var(--display);font-size:24px;color:var(--ink-quiet);margin-bottom:8px}
-  .scroll-head .kanji{font-family:var(--display);font-size:160px;line-height:.9;letter-spacing:0}
-  .scroll-head h1{margin:24px 0 8px;font-family:var(--display);font-size:36px;font-weight:400;letter-spacing:.1em}
-  .scroll-head .sub{font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);margin-bottom:20px;font-family:var(--latin);text-transform:uppercase}
-  .scroll-head .lede{font-size:15px;line-height:2;color:var(--ink-soft);max-width:420px;text-wrap:pretty}
-  .scroll-head .right{padding-top:56px;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start}
+/* 直排標題區 */
+.head{writing-mode:vertical-rl;text-orientation:mixed;align-self:stretch;flex:none;padding:4px 0}
+.masthead h1{font-family:var(--serif);font-size:54px;font-weight:500;letter-spacing:.22em;line-height:1.25;margin-left:16px}
+.en{font-size:13px;letter-spacing:.18em;line-height:1.5;color:var(--muted);margin-left:20px}
+.period{font-size:15px;letter-spacing:.12em;line-height:1.5;margin-left:44px}
+.chapter-no{font-family:var(--serif);font-size:30px;font-weight:500;letter-spacing:.3em;line-height:1.3;margin-left:12px}
+.chapter-head .chapter-no,.kan .chapter-no{font-size:40px}
+.chapter-date{font-size:15px;letter-spacing:.1em;line-height:1.5;margin-left:10px}
+.period+.gap{margin-left:44px}
+.chapter-range{font-size:13px;letter-spacing:.1em;line-height:1.5;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:8px 15px;border:1px solid var(--line);background:transparent;font-size:14px;letter-spacing:.1em;cursor:pointer}
+.v .btn,.head .btn{padding:15px 8px;min-height:0;min-width:44px}
 
-  /* 段落分節 — 卷軸交替背景 */
-  .scroll-section{
-    padding:96px 60px;max-width:1280px;margin:0 auto;
-    border-top:1px solid var(--rule);position:relative;
-  }
-  .scroll-section.alt{background:var(--sand-light)}
-  .scroll-section .row{ display:grid;grid-template-columns:320px 1fr;gap:60px;align-items:start; }
-  .scroll-section .row.right{grid-template-columns:1fr 320px}
-  .scroll-section .row.right .left-col{order:2}
-  .scroll-section .meta-col .num{font-family:var(--display);font-size:22px;opacity:.4;margin-bottom:8px}
-  .scroll-section .meta-col .big{font-family:var(--display);font-size:96px;line-height:.95;letter-spacing:0}
-  .scroll-section .meta-col h2{margin:20px 0 8px;font-family:var(--display);font-size:30px;font-weight:400;letter-spacing:.1em}
-  .scroll-section .meta-col .sub{font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);margin-bottom:20px;font-family:var(--latin);text-transform:uppercase}
-  .scroll-section .meta-col p{font-size:14px;line-height:1.95;color:var(--ink-soft);max-width:280px;margin:0;text-wrap:pretty}
+/* 目次 */
+.toc{writing-mode:vertical-rl;text-orientation:mixed;align-self:stretch;display:block;padding:4px 0}
+.toc h2{font-size:13px;font-weight:400;letter-spacing:.1em;color:var(--muted);margin-left:12px;padding-top:4px}
+.toc h2:not(:first-child){margin-right:44px}
+.toc a{display:block;margin-left:12px;padding:4px 0}
+.toc a b{font-family:var(--serif);font-size:30px;font-weight:500;letter-spacing:.3em;line-height:1.3}
+.toc a span{font-size:13px;letter-spacing:.1em;color:var(--muted)}
 
-  /* footer */
-  .foot{ border-top:1px solid var(--rule); padding:48px 60px; display:flex;justify-content:space-between; font-size:11px;letter-spacing:.2em;color:var(--ink-quiet); }
+/* 卷首（四季） */
+.kan{display:flex;flex-direction:row-reverse;align-self:stretch;gap:2.4vw;flex:none}
+.kan .vname{writing-mode:vertical-rl;text-orientation:mixed;padding:4px 0}
+.kan .vname small{display:block;font-family:var(--sans);font-size:13px;font-weight:400;letter-spacing:.1em;color:var(--muted);margin-left:12px}
+.kan .info{writing-mode:vertical-rl;text-orientation:mixed;padding:4px 0}
+.kan .info>*{margin-left:10px}
+.haiku{writing-mode:vertical-rl;text-orientation:mixed;font-family:var(--serif);font-size:30px;font-weight:500;letter-spacing:.3em;line-height:1.3;flex:none;padding:4px 0;max-height:calc(var(--H) - 96px)}
+.haiku span{display:block;margin-left:12px}
+.haiku.prose{font-size:15px;letter-spacing:.1em;line-height:1.8;font-weight:400}
+.haiku.prose span{display:inline;margin:0}
 
-  /* ── 攝影頁專屬（pack-scroll photography.html） ── */
-  .series-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .series{display:flex;flex-direction:column;position:relative;cursor:pointer;background:none;border:none;padding:0;text-align:left;font-family:inherit;color:inherit;width:100%}
-  .series .img{aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--ink)}
-  .series .img img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.19,1,.22,1)}
-  .series:hover .img img{transform:scale(1.04)}
-  .series .img .seal-tag{
-    position:absolute;left:12px;top:12px;
-    width:36px;height:36px;background:var(--accent);color:var(--sand);
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--display);font-size:16px;transform:rotate(-3deg);
-  }
-  .series .meta{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;font-size:11px;color:var(--ink-quiet);font-family:var(--latin);letter-spacing:.15em}
-  .series h3{margin:6px 0 0;font-family:var(--display);font-size:24px;font-weight:400;letter-spacing:.05em}
-  .series .desc{margin-top:10px;font-size:13px;color:var(--ink-soft);line-height:1.85;text-wrap:pretty}
+/* 照片與圖說 */
+.fig{display:flex;flex-direction:row-reverse;align-items:flex-end;gap:14px;margin:0;--h:calc(var(--H) - 96px)}
+.photo{display:block;padding:0;border:0;line-height:0;background:transparent;cursor:pointer;flex:none}
+.photo img{display:block;width:min(var(--w),calc(var(--h) * var(--r)));height:auto;max-width:none;object-fit:contain}
+.fig.opener-photo{--w:58vw}
+.fig.single-photo{--w:min(82vw,calc(94vw - 200px))}
+.fig.large{--w:56vw;--h:calc(var(--H) - 150px);align-self:flex-start;margin-top:2vh}
+.fig.small{--w:19vw;--h:calc(var(--H) * .4);align-self:flex-end;margin-bottom:2vh}
+.cap{writing-mode:vertical-rl;text-orientation:mixed;flex:none;font-size:13px;line-height:1.8;letter-spacing:.06em;color:var(--muted);max-height:min(calc(var(--w) / var(--r)),var(--h))}
+.cap .cap-no,.cap .cap-title{display:block;color:var(--ink)}
+.cap .cap-title{font-family:var(--serif);font-size:15px;letter-spacing:.1em}
+.cap .cap-haiku{display:block;font-family:var(--serif);font-size:15px;letter-spacing:.1em;color:var(--ink)}
+.cap .cap-haiku span{display:block}
+.cap .cap-prose{display:block}
+.cap .ex{margin-inline-end:1.1em;white-space:nowrap}
 
-  .feature-strip{
-    display:grid;grid-template-columns:1.4fr 1fr;gap:0;
-    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
-    background:var(--paper);
-  }
-  .feature-strip > .img{position:relative;overflow:hidden;min-height:520px;cursor:pointer}
-  .feature-strip > .img img{width:100%;height:100%;object-fit:cover}
-  .feature-strip .text{padding:80px 64px;display:flex;flex-direction:column;justify-content:center;position:relative}
-  .feature-strip .text .e{font-size:11px;letter-spacing:.4em;color:var(--accent);font-family:var(--latin);margin-bottom:20px}
-  .feature-strip .text h2{margin:0 0 24px;font-family:var(--display);font-size:48px;line-height:1.2;letter-spacing:.05em;font-weight:400;text-wrap:pretty}
-  .feature-strip .text p{font-size:14px;line-height:2;color:var(--ink-soft);max-width:420px;text-wrap:pretty;margin:0 0 1em}
+/* 別卷 */
+.bekkan-grid{flex:1;min-width:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));direction:rtl;gap:30px 12px;align-content:center}
+.bk{direction:ltr;height:300px;display:flex;flex-direction:row-reverse;gap:12px;padding:4px 10px 4px 0;border-right:1px solid var(--card-rule);min-width:0}
+.bk .t{writing-mode:vertical-rl;text-orientation:mixed;flex:none;display:block}
+.bk .t b{display:block;font-family:var(--serif);font-size:30px;font-weight:500;letter-spacing:.3em;line-height:1.3;margin-left:10px}
+.bk .t span{font-size:13px;letter-spacing:.1em;color:var(--muted);line-height:1.75}
+.bk .photo{flex:1;min-width:0;height:100%;display:flex;align-items:flex-end;justify-content:flex-end}
+.bk .photo img{width:auto;height:auto;max-width:100%;max-height:100%}
+/* 攝影誌只有一兩本時：放大、置中（教授 2026-11-11） */
+@media (min-width:1101px){
+  .bekkan-grid.few{display:flex;flex-direction:row-reverse;justify-content:center;align-items:center;gap:6vw}
+  .bekkan-grid.few .bk{flex:none;height:min(60vh,calc(var(--H) - 150px))}
+  .bekkan-grid.few .bk .photo{flex:none}
+  .bekkan-grid.few .bk .photo img{max-width:32vw}
+}
 
-  /* ── reveal（漸進增強：預設可見；js 就緒才隱藏待揭示） ── */
-  /* 季節頂圖 */
-  .season-banner{position:relative;height:clamp(260px,42vh,440px);overflow:hidden;border-bottom:1px solid var(--rule)}
-  .season-banner img{width:100%;height:100%;object-fit:cover;display:block}
-  .season-banner .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(31,31,29,.12) 0%,rgba(31,31,29,0) 34%,rgba(31,31,29,.36) 100%)}
-  .season-banner .mark{position:absolute;left:clamp(22px,4vw,60px);bottom:clamp(22px,3.4vw,38px);color:var(--sand);display:flex;align-items:baseline;gap:16px}
-  .season-banner .mark .k{font-family:var(--display);font-size:clamp(38px,5vw,56px);line-height:1;text-shadow:0 2px 20px rgba(0,0,0,.55)}
-  .season-banner .mark .e{font-family:var(--latin);font-size:12px;letter-spacing:.3em;text-transform:uppercase;opacity:.92;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+/* 攝影誌索引 */
+.colophon-grid{flex:1;min-width:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));direction:rtl;gap:30px 12px;align-content:center}
+.yr{direction:ltr;writing-mode:vertical-rl;text-orientation:mixed;height:300px;padding:4px 0;border-right:1px solid var(--ink)}
+.yr b{display:block;font-family:var(--serif);font-size:30px;font-weight:500;letter-spacing:.1em;line-height:1.3;margin:0 10px 0 12px}
+.yr>span{display:block;font-size:13px;color:var(--muted);letter-spacing:.1em;line-height:1.75;white-space:nowrap}
+.card{direction:ltr;height:300px;min-width:0;display:flex;flex-direction:column;gap:10px;padding:4px 10px 4px 0;border-right:1px solid var(--card-rule)}
+.card .photo{height:72px;display:flex;align-items:center;justify-content:center}
+.card .photo img{width:auto;height:auto;max-width:100%;max-height:100%}
+.card a{flex:1;min-height:0;writing-mode:vertical-rl;text-orientation:mixed;font-size:13px;line-height:1.75;letter-spacing:.05em;color:var(--muted)}
+.card a>span{display:block}
+.card a b{display:block;font-family:var(--serif);font-size:15px;font-weight:500;letter-spacing:.1em;color:var(--ink)}
+.card a:hover{opacity:1;color:var(--ink)}
 
-  .reveal{opacity:1}
-  .js-anim .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.19,1,.22,1),transform .8s cubic-bezier(.19,1,.22,1)}
-  .js-anim .reveal.in{opacity:1;transform:none}
+/* 卷末：前後卷 */
+.endnav{writing-mode:vertical-rl;text-orientation:mixed;display:block;align-self:center}
+.endnav a{display:block;margin-left:44px;padding:4px 0}
+.endnav small{display:block;font-size:13px;letter-spacing:.1em;color:var(--muted);margin-left:12px}
+.endnav b{font-family:var(--serif);font-size:40px;font-weight:500;letter-spacing:.3em;line-height:1.3}
 
-  /* ══ Lightbox（沿用原攝影頁，點照片放大不變） ══ */
-  .lightbox{ position:fixed;inset:0;z-index:100; background:rgba(15,12,9,.96); display:none;align-items:center;justify-content:center; padding:2rem;cursor:zoom-out; }
-  .lightbox.is-open{display:flex}
-  .lightbox-figure{ max-width:96vw;max-height:92vh; display:flex;flex-direction:row;align-items:center; gap:2.5rem;cursor:default; }
-  .lightbox-img{ max-width:70vw;max-height:88vh;object-fit:contain;display:block; transition:opacity .25s ease; }
-  .lightbox-img.is-flipping{opacity:0}
-  .lightbox-caption{ writing-mode:vertical-rl;text-orientation:mixed; max-height:80vh;color:rgba(232,226,212,.78); display:flex;flex-direction:column; gap:1.6rem;align-items:flex-start;padding:1rem 0; }
-  .lightbox-caption .lb-title{font-family:var(--serif);font-size:14px;letter-spacing:.22em;color:rgba(232,226,212,.5)}
-  .lightbox-caption .lb-title .romaji{font-family:var(--latin);font-style:italic;font-size:12px;color:rgba(232,226,212,.4);letter-spacing:.08em;display:block;margin-top:.5rem;writing-mode:horizontal-tb}
-  .lightbox-caption .lb-haiku-jp{font-family:var(--serif);font-size:1.4rem;line-height:2.4;color:rgba(232,226,212,.95);letter-spacing:.18em}
-  .lightbox-caption .lb-haiku-zh{font-family:var(--serif);font-size:1.05rem;line-height:2.1;color:rgba(232,226,212,.65);letter-spacing:.14em}
-  .lightbox-close,.lightbox-prev,.lightbox-next{ position:absolute;background:rgba(232,226,212,.06); border:1px solid rgba(232,226,212,.18);color:rgba(232,226,212,.9); width:44px;height:44px;font-size:1.5rem;line-height:1; display:flex;align-items:center;justify-content:center;cursor:pointer; transition:background .2s,border-color .2s; }
-  .lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{background:rgba(196,56,56,.25);border-color:rgba(196,56,56,.5)}
-  .lightbox-close{top:1.25rem;right:1.25rem}
-  .lightbox-prev{left:1.25rem;top:50%;transform:translateY(-50%)}
-  .lightbox-next{right:1.25rem;top:50%;transform:translateY(-50%)}
-  .lightbox-counter{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-family:var(--latin);font-size:.78rem;letter-spacing:.18em;color:rgba(232,226,212,.55)}
-
-  /* ── Mobile ── */
-  @media (max-width:820px){
-    .nav{padding:12px 20px;flex-wrap:wrap;gap:10px}
-    .nav nav{gap:14px;font-size:12px;letter-spacing:.14em;order:3;width:100%;justify-content:space-between}
-    .nav .lang{padding-left:14px}
-    .scroll-head{grid-template-columns:1fr;gap:24px;padding:64px 22px}
-    .scroll-head .kanji{font-size:110px}
-    .scroll-head .right{padding-top:0}
-    .feature-strip{grid-template-columns:1fr}
-    .feature-strip > .img{min-height:300px}
-    .feature-strip .text{padding:48px 24px}
-    .feature-strip .text h2{font-size:34px}
-    .scroll-section{padding:56px 22px}
-    .scroll-section .row,.scroll-section .row.right{grid-template-columns:1fr;gap:28px}
-    .scroll-section .row.right .left-col,.scroll-section .row.right > div:first-child{order:2}
-    .scroll-section .meta-col .big{font-size:72px}
-    .series-grid{grid-template-columns:1fr 1fr;gap:16px}
-    .foot{padding:32px 22px;flex-direction:column;gap:8px}
-    .lightbox{padding:1rem}
-    .lightbox-figure{flex-direction:column;gap:1rem}
-    .lightbox-img{max-width:92vw;max-height:65vh}
-    .lightbox-caption{writing-mode:horizontal-tb;flex-direction:column;max-height:none;text-align:center;padding:0;gap:.6rem}
-    .lightbox-caption .lb-haiku-jp{font-size:1.05rem;line-height:1.85;letter-spacing:.1em}
-    .lightbox-prev,.lightbox-next{width:38px;height:38px;font-size:1.2rem}
-  }
-  @media (max-width:460px){ .series-grid{grid-template-columns:1fr} }
-  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1!important;transform:none!important;transition:none} .series .img img{transition:none} }
-
-  /* ── 正文放大：稍微放大閱讀字級（2026-07）。要整體再調，改這一區塊即可 ── */
-  .scroll-head .lede{font-size:16.5px}
-  .scroll-section .meta-col p{font-size:15.5px}
-  .series .desc{font-size:14.5px}
-  .feature-strip .text p{font-size:15.5px}
+/* ≤1100px：改回橫排；季語名、短句保留直排當裝飾 */
+@media (max-width:1100px){
+  .spread{display:block;min-height:0;padding:30px 0 34px}
+  .spread::before{display:none}
+  .head{writing-mode:horizontal-tb;padding:0 18px 22px}
+  .head>*{margin:0 0 6px}
+  .masthead h1{font-size:30px;letter-spacing:.12em}
+  .chapter-no,.chapter-head .chapter-no{font-size:24px;letter-spacing:.2em}
+  .head .btn,.v .btn{padding:8px 15px;min-height:44px;margin-top:6px}
+  /* 刊頭與卷首：右邊直排名稱，左邊橫排資料 */
+  .vhead{display:flex;flex-direction:row-reverse;align-items:flex-start;gap:16px;padding:0 18px 22px}
+  .vhead .vname,.vhead h1.vt{writing-mode:vertical-rl;text-orientation:mixed;flex:none}
+  .vhead h1.vt{font-family:var(--serif);font-size:40px;font-weight:500;letter-spacing:.22em;line-height:1.25;margin:0}
+  .kan{display:flex;flex-direction:row-reverse;align-items:flex-start;gap:16px;padding:0 18px 22px}
+  .kan .chapter-no{font-size:40px}
+  .kan .info,.vhead .info{writing-mode:horizontal-tb;flex:1;min-width:0;align-self:flex-end;display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:0}
+  .kan .info>*,.vhead .info>*{margin:0}
+  .haiku{font-size:15px;letter-spacing:.12em;line-height:1.8;font-weight:400;max-height:none;padding:6px 0 0}
+  .haiku span{margin-left:6px}
+  .haiku.prose{display:none}
+  .fig{display:block;margin:0 0 28px}
+  .fig .photo{width:100%}
+  .photo img,.fig .photo img{width:100%;max-width:100%;height:auto}
+  .cap{writing-mode:horizontal-tb;max-height:none;display:flex;flex-wrap:wrap;gap:4px 14px;padding:10px 18px 0}
+  .cap .cap-haiku,.cap .cap-prose{flex-basis:100%}
+  .cap .ex{margin:0}
+  .toc{writing-mode:horizontal-tb;display:block;padding:0 18px}
+  .toc h2{margin:22px 0 6px;padding:0 0 6px;border-bottom:1px solid var(--card-rule)}
+  .toc h2:not(:first-child){margin-right:0}
+  .toc a{display:flex;align-items:baseline;gap:12px;min-height:44px;margin:0;padding:6px 0;border-bottom:1px solid var(--spread-rule)}
+  .toc a b{font-size:20px;letter-spacing:.2em}
+  .bekkan-grid{grid-template-columns:repeat(2,minmax(0,1fr));direction:ltr;gap:24px 12px;padding:0 18px}
+  .bk{height:auto;display:flex;flex-direction:column-reverse;gap:0;border:0;border-top:1px solid var(--card-rule);padding:12px 0 0}
+  .bk .photo{height:auto;display:block;margin-bottom:10px}
+  .bk .photo img{width:100%;max-height:none}
+  .bk .t{writing-mode:horizontal-tb;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;min-height:44px}
+  .bk .t b{font-size:20px;letter-spacing:.2em;margin:0}
+  .colophon-grid{display:block;padding:0 18px}
+  .yr{writing-mode:horizontal-tb;height:auto;border:0;border-bottom:1px solid var(--ink);padding:20px 0 6px;display:flex;align-items:baseline;justify-content:space-between}
+  .yr b{margin:0;font-size:24px}
+  .yr>span{margin:0}
+  .card{writing-mode:horizontal-tb;height:auto;flex-direction:row;align-items:center;gap:14px;padding:12px 0;border:0;border-bottom:1px solid var(--card-rule)}
+  .card .photo{width:104px;height:72px;flex:none}
+  .card a{writing-mode:horizontal-tb;flex:1;min-height:44px;display:flex;flex-direction:column;justify-content:center}
+  .card a b{font-size:16px}
+  .endnav{writing-mode:horizontal-tb;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 18px;direction:rtl}
+  .endnav a{direction:ltr;margin:0;padding:12px 0;border-top:1px solid var(--card-rule);min-height:44px}
+  .endnav small{margin:0 0 4px}
+  .endnav b{font-size:20px;letter-spacing:.12em}
+}
+@media (max-width:700px){
+  .topbar{padding:0 14px;font-size:12px;gap:12px}
+  .topbar nav{gap:16px}
+  .topbar .ctx{display:none}
+  .masthead h1,.vhead h1.vt{font-size:40px}
+  .vhead.long{display:block}
+  .vhead.long h1.vt{writing-mode:horizontal-tb;font-size:30px;letter-spacing:.12em;margin:0 0 12px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
 </style>
-<!-- og:start -->
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
-<meta property="og:title" content="攝影 Photography · 葉崇揚" />
-<meta property="og:description" content="葉崇揚（Chung-Yang Yeh） ・ 寫真十一系列：春信、青嵐、紅葉、雪明、潮聲、山水、街、Xpan、銀鹽、Lisbon、Singapore。" />
-<meta property="og:url" content="https://chungyang1017.github.io/photography-zh.html" />
-<meta property="og:image" content="https://chungyang1017.github.io/photo.jpg" />
-<meta property="og:locale" content="zh_TW" />
-<meta name="twitter:card" content="summary" />
-<!-- og:end -->
+<style>
+/* ════ 色譜相簿頁：從 palette/index.html 搬來，數值照抄。
+   只在相簿頁（html.pm）生效；類別、變數、id 一律加 p- 前綴，跟歲時記的規則互不干擾。 ════ */
+@property --p-bg { syntax: '<color>'; inherits: true; initial-value: #EFEBE3; }
+@property --p-ink { syntax: '<color>'; inherits: true; initial-value: #1B1714; }
+@property --p-ink2 { syntax: '<color>'; inherits: true; initial-value: #5B5249; }
+@property --p-line { syntax: '<color>'; inherits: true; initial-value: #C9C0B3; }
+:root {
+  --p-card: #FBFAF6;
+  --p-card-line: #E4DED3;
+  --p-ink-d: #1B1714;
+  --p-ink-d2: #675D54;
+  --p-serif: "Noto Serif TC", serif;
+  --p-sans: "Noto Sans TC", sans-serif;
+  --p-latin: "Instrument Serif", "Noto Serif TC", serif;
+  --p-mono: "IBM Plex Mono", "Noto Sans TC", monospace;
+  --p-gut: clamp(16px, 4vw, 60px);
+  --p-bar: 58px; /* 頂列沿用歲時記的 58px，手機也是 */
+  --p-ease: cubic-bezier(.2, .75, .2, 1);
+}
+html.pm {
+  --pv-bg: #0D0B0A; --pv-ink: #EFE9E0; --pv-muted: #B9AFA3; --pv-line: rgba(239, 233, 224, .35);
+  --pv-font: "Noto Sans TC", sans-serif;
+  background: var(--p-bg); -webkit-text-size-adjust: 100%;
+  transition: --p-bg .9s ease, --p-ink .9s ease, --p-ink2 .9s ease, --p-line .9s ease;
+}
+html.pm body { background: var(--p-bg); color: var(--p-ink); font-family: var(--p-sans); font-size: 15px; line-height: 1.6; overflow-x: clip; overflow-anchor: none; -webkit-font-smoothing: antialiased; }
+html.pm main img { display: block; }
+html.pm :focus-visible { outline: 2px solid var(--p-ink); outline-offset: 3px; }
+html.pm main a:hover { opacity: 1; }
+.p-sr { position: fixed !important; top: 0; left: 0; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ── 頂列：連結、位置、字級照歲時記；底色、字色、字族換成色譜的 ── */
+html.pm .topbar { background: var(--p-bg); color: var(--p-ink); border-bottom-color: var(--p-line); font-family: var(--p-sans); font-weight: 500; }
+html.pm .topbar .home { font-family: var(--p-serif); font-weight: 700; }
+html.pm .topbar nav a, html.pm .topbar .ctx { color: var(--p-ink2); }
+html.pm .topbar nav a[aria-current="true"] { color: var(--p-ink); }
+
+/* ── 排序膠囊 ── */
+.p-pills { display: flex; gap: 2px; padding: 3px; border: 1px solid var(--p-line); border-radius: 999px; }
+.p-pills button { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; min-width: 44px; padding: 5px 13px; border: 0; border-radius: 999px; background: transparent; color: var(--p-ink); font: 500 13px/1.3 var(--p-sans); letter-spacing: .04em; white-space: nowrap; text-decoration: none; cursor: pointer; transition: background-color .25s, color .25s; }
+.p-pills button:hover { background: color-mix(in srgb, var(--p-ink) 10%, transparent); }
+.p-pills [aria-checked="true"] { background: var(--p-ink); color: var(--p-bg); }
+
+/* ── 刊頭 ── */
+.p-cover { display: flex; flex-direction: column; padding: clamp(16px, 4.2vh, 46px) var(--p-gut) clamp(14px, 3.2vh, 34px); gap: clamp(10px, 2.2vh, 24px); }
+.p-cover.fill { min-height: calc(100svh - var(--p-bar)); }
+.p-c-mast { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px 32px; flex-wrap: wrap; padding-bottom: clamp(8px, 1.5vh, 16px); border-bottom: 1.5px solid var(--p-ink); }
+.p-c-title { margin: 0; display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 .32em; font: 700 clamp(46px, 7.4vw, 116px)/.95 var(--p-serif); letter-spacing: .03em; }
+.p-c-title em { font: italic 400 clamp(22px, 2.7vw, 42px)/1 var(--p-latin); letter-spacing: .01em; }
+.p-c-issue { display: flex; align-items: baseline; gap: 14px; white-space: nowrap; }
+.p-c-issue b { font: 400 clamp(34px, 4.4vw, 68px)/.9 var(--p-latin); font-variant-numeric: lining-nums; }
+.p-c-issue span { font-size: 14px; letter-spacing: .14em; }
+.p-c-feature { display: flex; justify-content: space-between; align-items: baseline; gap: 6px 24px; flex-wrap: wrap; }
+.p-c-feature h2 { margin: 0; font: 600 clamp(19px, 1.9vw, 27px)/1.3 var(--p-serif); letter-spacing: .06em; }
+.p-c-feature h2 .lat { font: italic 400 clamp(21px, 2.1vw, 30px)/1.2 var(--p-latin); letter-spacing: .01em; }
+.p-tag { display: inline-block; margin-right: 14px; padding: 2px 8px; border: 1px solid currentColor; font: 500 12px/1.5 var(--p-sans); letter-spacing: .24em; vertical-align: .25em; }
+.p-c-feature p { margin: 0; font: 500 12px/1.5 var(--p-mono); letter-spacing: .06em; color: var(--p-ink2); }
+
+/* ── 刊頭下方的色帶 ── */
+.p-stripe { flex: 1 1 0; min-width: 0; background: var(--c); box-shadow: inset -2px 0 0 var(--p-bg); transform-origin: 50% 100%; transition: transform .3s var(--p-ease); }
+.p-stripe:hover { transform: scaleY(1.07); }
+.p-band-wrap { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 150px; }
+.p-band { flex: 1 1 auto; display: flex; min-height: 110px; cursor: pointer; }
+.p-band .p-stripe { box-shadow: inset -2px 0 0 var(--p-bg); }
+.p-band-cap { display: flex; justify-content: space-between; gap: 12px; margin-top: 10px; font: 500 11px/1 var(--p-sans); letter-spacing: .14em; color: var(--p-ink2); }
+
+/* 浮動預覽：只對滑鼠指標 */
+.p-tip { position: fixed; z-index: 60; width: 214px; padding: 8px 8px 10px; background: var(--p-card); color: var(--p-ink-d); font: 500 10.5px/1.1 var(--p-mono); box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .6); pointer-events: none; opacity: 0; transform: translateY(6px); transition: opacity .18s, transform .18s; }
+.p-tip.on { opacity: 1; transform: none; }
+.p-tip img { display: block; }
+.p-tip-face { display: grid; place-items: center; aspect-ratio: 4 / 3; background: var(--c); }
+.p-tip-face img { max-width: 86%; max-height: 86%; width: auto; height: auto; }
+.p-tip-cap { display: flex; justify-content: space-between; gap: 8px; margin-top: 8px; }
+.p-tip-t { display: block; margin-top: 6px; font: 600 14px/1.3 var(--p-serif); letter-spacing: .06em; }
+
+/* ── 作品色卡 ── */
+.p-plate { position: relative; display: flex; align-items: center; justify-content: center; min-height: calc(100svh - var(--p-bar)); padding: var(--pad) var(--p-gut); scroll-margin-top: var(--p-bar); --pad: clamp(18px, 4vh, 40px); }
+.p-plate-in { --side: clamp(232px, 18.6vw, 276px); --gap: clamp(22px, 3.1vw, 50px); --rankw: clamp(60px, 6.6vw, 100px); display: grid; grid-template-columns: var(--rankw) auto var(--side); column-gap: var(--gap); align-items: center; }
+.p-rank { align-self: start; display: grid; justify-items: end; color: var(--p-ink); }
+.p-rank b { font: 400 clamp(54px, 6.4vw, 100px)/.8 var(--p-latin); letter-spacing: -.01em; font-variant-numeric: lining-nums; }
+.p-rank span { margin-top: 8px; font: 400 18px/1 var(--p-latin); color: var(--p-ink2); }
+.p-rank em { margin-top: 16px; font: normal 500 12px/1 var(--p-sans); letter-spacing: .3em; color: var(--p-ink2); writing-mode: vertical-rl; }
+.p-card { --label: 118px; width: min(calc(100vw - 2 * var(--p-gut) - var(--rankw) - var(--side) - 2 * var(--gap) - 18px), calc((100svh - var(--p-bar) - 2 * var(--pad) - var(--label)) * var(--ar))); margin: 0; background: var(--p-card); color: var(--p-ink-d); box-shadow: 0 1px 2px rgba(0, 0, 0, .1), 0 28px 56px -26px rgba(0, 0, 0, .55); }
+.p-card-photo { display: block; width: 100%; margin: 0; padding: 0; border: 0; background: #DCD6CC; cursor: zoom-in; }
+.p-card-photo img { width: 100%; height: auto; aspect-ratio: var(--ar); }
+html.pm .p-card-photo:focus-visible { outline: 3px solid var(--p-ink); outline-offset: 4px; }
+.p-card-label { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 3px 18px; padding: 13px 18px 15px; }
+.p-cl-no { font: 500 12px/1 var(--p-mono); letter-spacing: .1em; }
+.p-cl-main { display: flex; align-items: center; gap: 7px; justify-self: end; font: 500 12px/1 var(--p-mono); letter-spacing: .04em; }
+.p-cl-main i { width: 11px; height: 11px; background: var(--c); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .12); }
+.p-cl-main small { font: 400 11px var(--p-sans); color: var(--p-ink-d2); letter-spacing: .1em; }
+.p-cl-title { grid-column: 1 / -1; margin: 4px 0 0; font: 700 clamp(21px, 2.1vw, 30px)/1.25 var(--p-serif); letter-spacing: .06em; }
+.p-cl-title.is-date { font: 500 clamp(18px, 1.7vw, 24px)/1.25 var(--p-mono); letter-spacing: .04em; }
+/* 色譜原稿的 <p class="cl-meta"> 帶著瀏覽器預設的段落邊距；歲時記把 p 歸零了，這裡補回來 */
+.p-cl-meta { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0 14px; margin: 1em 0; font-size: 12.5px; color: var(--p-ink-d2); }
+.p-cl-meta span:first-child { color: var(--p-ink-d); }
+.p-strip { align-self: center; background: var(--p-card); color: var(--p-ink-d); font-size: 12px; box-shadow: 0 1px 2px rgba(0, 0, 0, .1), 0 22px 44px -26px rgba(0, 0, 0, .5); }
+.p-strip-head { display: flex; align-items: center; gap: 10px; padding: 9px 14px 8px; border-bottom: 1px solid var(--p-card-line); font: 500 10.5px/1.2 var(--p-mono); letter-spacing: .16em; }
+.p-strip-head::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--c); box-shadow: inset 0 1px 2px rgba(0, 0, 0, .45), 0 0 0 1px rgba(0, 0, 0, .06); }
+.p-strip-head span:last-child { margin-left: auto; }
+.p-sws { list-style: none; margin: 0; padding: 0; }
+.p-sw { display: grid; grid-template-columns: 42% minmax(0, 1fr) auto; align-items: center; height: clamp(30px, 5.3svh, 50px); border-bottom: 1px solid var(--p-card-line); }
+.p-sw-chip { position: relative; height: 100%; background: var(--c); }
+.p-sw-chip small { position: absolute; left: 8px; top: 50%; transform: translateY(-50%); padding: 3px 5px 2px; background: var(--p-ink-d); color: var(--p-card); font: 500 10px/1 var(--p-sans); letter-spacing: .12em; }
+.p-sw-chip.is-dark small { background: var(--p-card); color: var(--p-ink-d); }
+.p-sw-hex { padding-left: 12px; font: 500 12.5px/1 var(--p-mono); letter-spacing: .02em; white-space: nowrap; }
+.p-sw-pct { padding-right: 14px; font: 400 11px/1 var(--p-mono); color: var(--p-ink-d2); }
+.p-exif { display: grid; grid-template-columns: minmax(0, 1fr); gap: 5px; margin: 0; padding: 11px 14px 13px; }
+.p-exif div { display: grid; grid-template-columns: 4.6em minmax(0, 1fr); gap: 0 10px; align-items: baseline; }
+.p-exif dt { font-size: 11.5px; color: var(--p-ink-d2); white-space: nowrap; }
+.p-exif dd { margin: 0; font: 400 11.5px/1.5 var(--p-mono); overflow-wrap: anywhere; text-wrap: balance; }
+
+/* ── 相簿結尾：深色版權頁兼導覽（前後、回目次、同類清單） ── */
+.p-colophon { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: clamp(28px, 4vw, 64px); padding: clamp(48px, 9vh, 96px) var(--p-gut) clamp(40px, 7vh, 72px); background: var(--p-bg); color: var(--p-ink); font-size: 12.5px; line-height: 1.6; }
+.p-co-mast b { display: block; font: 700 clamp(26px, 3vw, 42px)/1.15 var(--p-serif); letter-spacing: .06em; }
+.p-co-mast span { display: block; margin-top: 8px; font: italic 400 18px/1 var(--p-latin); color: var(--p-ink2); }
+.p-co-nav { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+.p-co-nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid var(--p-line); border-radius: 999px; text-decoration: none; font: 500 13px/1.3 var(--p-sans); letter-spacing: .04em; }
+.p-co-nav a:hover { background: color-mix(in srgb, var(--p-ink) 10%, transparent); }
+.p-co-col h3 { margin: 0 0 10px; padding-top: 12px; border-top: 1.5px solid var(--p-ink); font: 600 17px/1.3 var(--p-serif); letter-spacing: .12em; }
+.p-co-col ul { list-style: none; margin: 0; padding: 0; }
+.p-co-col a { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 12px; min-height: 44px; border-bottom: 1px solid var(--p-line); text-decoration: none; }
+.p-co-col a i { display: flex; height: 10px; }
+.p-co-col a i s { flex: 1; background: var(--c); }
+.p-co-col a b { font: 600 14px/1.3 var(--p-serif); letter-spacing: .06em; }
+.p-co-col a span { font: 400 11.5px/1 var(--p-mono); color: var(--p-ink2); }
+.p-co-col a[aria-current="page"] b { text-decoration: underline; text-underline-offset: 4px; }
+
+/* ── 中寬：作品頁改單欄，色票條改橫排 ── */
+@media (max-width: 1080px) {
+  .p-plate-in { grid-template-columns: minmax(0, 1fr); row-gap: 16px; width: min(100%, 760px); }
+  .p-rank { justify-items: start; grid-auto-flow: column; justify-content: start; align-items: baseline; gap: 10px; }
+  .p-rank b { font-size: 46px; }
+  .p-rank span { margin: 0; }
+  .p-rank em { writing-mode: horizontal-tb; margin: 0 0 0 6px; letter-spacing: .2em; }
+  .p-card { width: 100%; }
+  .p-strip { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+  .p-strip-head { grid-column: 1 / -1; }
+  .p-sws { grid-row: span 2; display: grid; grid-template-columns: repeat(5, 1fr); border-right: 1px solid var(--p-card-line); align-self: start; }
+  .p-sw { grid-template-columns: 1fr; grid-template-rows: 64px auto auto; height: auto; border-bottom: 0; }
+  .p-sw + .p-sw { border-left: 1px solid var(--p-card-line); }
+  .p-sw-hex { padding: 8px 0 0 8px; font-size: 11.5px; }
+  .p-sw-chip small { left: 6px; top: auto; bottom: 6px; transform: none; }
+  .p-sw-pct { padding: 3px 0 9px 8px; }
+  .p-colophon { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .p-co-mast { grid-column: 1 / -1; }
+}
+
+/* ── 手機 ── */
+@media (max-width: 720px) {
+  .p-pills button { padding: 5px 12px; font-size: 12.5px; letter-spacing: .02em; }
+  .p-c-mast { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .p-c-feature { flex-direction: column; gap: 4px; }
+  .p-band-wrap { min-height: 240px; }
+  .p-cover.fill { min-height: 0; }
+  .p-band { min-height: 240px; }
+  .p-band .p-stripe { box-shadow: inset -1px 0 0 var(--p-bg); }
+  .p-plate { --pad: 30px; min-height: 0; padding-top: 34px; padding-bottom: 34px; }
+  .p-strip { grid-template-columns: minmax(0, 1fr); }
+  .p-sws { grid-row: auto; border-right: 0; border-bottom: 1px solid var(--p-card-line); }
+  .p-sw { grid-template-rows: 46px auto auto; }
+  .p-sw-hex { padding: 7px 0 0 6px; font-size: 10.5px; letter-spacing: 0; }
+  .p-sw-pct { padding: 3px 0 8px 6px; font-size: 10px; }
+  .p-exif { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-auto-flow: row dense; gap: 6px 14px; }
+  .p-exif div { grid-template-columns: 4.4em minmax(0, 1fr); }
+  .p-exif div.wide { grid-column: 1 / -1; }
+  .p-card-label { padding: 12px 14px 13px; }
+  .p-cl-meta { gap: 0 10px; font-size: 12px; }
+  .p-colophon { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ── 矮視窗（桌機寬、高度不足）：縮短色卡標籤 ── */
+@media (min-width: 1081px) and (max-height: 760px) {
+  .p-card { --label: 92px; }
+  .p-card-label { padding: 10px 16px 11px; }
+  .p-cl-title { margin-top: 2px; font-size: 21px; }
+  .p-cl-meta { font-size: 12px; }
+  .p-plate { --pad: 18px; }
+  .p-strip-head { padding: 7px 12px 6px; }
+  .p-exif { gap: 3px; padding: 8px 12px 10px; }
+  .p-exif dd { line-height: 1.4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.pm { transition: none; }
+}
+/* 主站才有：回個人網頁的連結 */
+.topbar .lead{display:flex;align-items:center;gap:18px;flex:none}
+.topbar .back{gap:7px;color:inherit;opacity:.72}
+.topbar .back:hover{opacity:1}
+.topbar .back span{font-size:17px;line-height:1}
+.topbar .back b{font-weight:400}
+@media (max-width:700px){.topbar .lead{gap:2px}.topbar .back b{display:none}}
+</style>
 </head>
 <body>
-
-<header class="nav">
-  <div class="brand">
-    <a class="seal" href="index.html">葉</a>
-    <a class="name" href="index.html">葉崇揚<small>YEH CHUNG-YANG</small></a>
+<header class="topbar">
+  <div class="lead">
+    <a class="back" href="index.html" aria-label="回個人網頁"><span aria-hidden="true">‹</span><b>個人網頁</b></a>
+    <a class="home" href="#/">葉崇揚 攝影</a>
   </div>
-  <nav>
-    <a href="index.html">首頁</a>
-    <a href="about-zh.html">簡介</a>
-    <a href="academic-zh.html">學術</a>
-    <a href="photography-zh.html" class="is-active">攝影</a>
-    <a href="teaching-zh.html">教學</a>
-    <a href="essays-zh.html">隨筆</a>
+  <nav aria-label="網站">
+    <a href="#/" data-go="shiki">四季</a>
+    <a href="#/" data-go="bekkan">別卷</a>
+    <a href="#/journals" data-nav="journals">攝影誌</a>
   </nav>
-  <a class="lang" href="photography.html">EN</a>
+  <span class="ctx" id="ctx"></span>
 </header>
+<main id="app"></main>
+<script src="https://photo.easp2027.workers.dev/shared/data.js"></script>
+<script src="https://photo.easp2027.workers.dev/shared/core.js"></script>
+<script>
+// 教授 2026-11-11：攝影誌那邊只放 Lisbon 和 Singapore（從別卷移過來）。何布做過的那些攝影誌不放。
+const JOURNAL_IDS = ['lisbon', 'singapore'];
+const JOURNALS = PS.series.filter(s => JOURNAL_IDS.includes(s.id));
+const SERIES = PS.series.filter(s => !JOURNAL_IDS.includes(s.id));      // 四季加別卷
+const THEMES = PS.themes.filter(s => !JOURNAL_IDS.includes(s.id));      // 別卷
+const isJournal = g => JOURNALS.includes(g);
+(function(){
+'use strict';
+const app = document.getElementById('app'), ctx = document.getElementById('ctx');
+const E = PS.esc;
+let cur = [];                       // 目前這頁可放大的照片
+PS.bind(app, () => cur);
 
-<section class="season-banner">
-  <img src="images/photography/dscf3771_2.jpg" alt="錦秋 · 紅葉" loading="eager">
-  <div class="veil"></div>
-  <div class="mark"><span class="k">秋</span><span class="e">Aki · Autumn</span></div>
-</section>
+// ── 文字格式 ──
+// 一到兩位數字組成直立字格；四位數年份與相機資訊維持橫躺
+const tcy = s => E(s).replace(/\d+/g, d => d.length <= 2 ? `<span class="tcy">${d}</span>` : d);
+const pad = n => String(n).padStart(2, '0');
+const no = i => `張號 ${tcy(pad(i + 1))}`;
+const when = w => { const m = String(w).match(/^(\d{4})\.(.*)$/); if (!m) return tcy(w); return `${m[1]}　${tcy(m[2].replace(/\./g, '・').replace(/[–-]/g, '〜'))}`; };
+const md = d => { const [, m, dd] = d.split('-'); return `${tcy(m)}・${tcy(dd)}`; };
+const count = n => `${tcy(String(n))} 張`;
+const KIND = { place: '旅行', monthly: '月誌', book: '攝影集' };
+const NUMS = '一二三四五六七八九十';
+const lines = h => String(h || '').split('／').filter(Boolean);
+const isVerse = h => String(h || '').includes('／');
+const exif = m => String(m || '').split(' · ').filter(Boolean).map(x => `<span class="ex">${E(x)}</span>`).join('<wbr>');
+const ratio = p => (p.w / p.h).toFixed(4);
+const wide = p => p.w / p.h >= 2;
 
-<section class="scroll-head samon">
-  <div>
-    <div class="index reveal">弐</div>
-    <div class="kanji reveal">影</div>
-  </div>
-  <div class="right">
-    <h1 class="reveal">攝影</h1>
-    <div class="sub reveal">PHOTOGRAPHY · 9 SERIES · 171 FRAMES</div>
-    <div class="lede reveal">內與外的交界。近三十年來，與研究並行的另一種觀看——十一個系列，把走過的光留在底片上。與其說是有計畫的專案，更像是被光與季節推著走的紀錄。</div>
-  </div>
-</section>
+function haikuBlock(h, cls = '') {
+  if (!h) return '';
+  if (isVerse(h)) return `<div class="haiku ${cls}">${lines(h).map(l => `<span>${E(l)}</span>`).join('')}</div>`;
+  return `<div class="haiku prose ${cls}"><span>${E(h)}</span></div>`;
+}
 
-<section class="feature-strip">
-  <div class="img" id="feature-img"><img src="images/photography/dscf3424_1.jpg" alt="秋晨楓枝 · 朱徑"></div>
-  <div class="text samon">
-    <div class="e reveal">紅葉 · 朱徑</div>
-    <h2 class="reveal">葉未全紅，<br>秋已過半。</h2>
-    <p class="reveal">光斜斜地落下來，只照亮低垂的這一枝。黃裡透著紅，還沒到最濃的時候；背後的林子暗著，什麼也不說。</p>
-    <p class="reveal">寫真是與研究並行的另一隻眼——底片記下的，是那一天的光、那一刻的靜。這一眼，比文字更安靜。</p>
-    <div class="reveal" style="margin-top:32px;font-family:var(--latin);font-size:11px;letter-spacing:.25em;color:var(--ink-quiet)">010 · CRIMSON PATH · 紅葉</div>
-  </div>
-</section>
+// ── 照片 ──
+// 首頁的封面照片點了是進那一本（系列或攝影誌），不是放大。放大只在相簿頁裡。
+function fig(p, href, name, cls, cap, eager) {
+  return `<figure class="fig ${cls}" style="--r:${ratio(p)}">`
+    + `<a class="photo" href="${href}" aria-label="翻開 ${E(name)}">${PS.img(p, { size: 's', eager })}</a>`
+    + `<figcaption class="cap">${cap}</figcaption></figure>`;
+}
+// ── 首頁 ──
+function journalIndex(base) {
+  return JOURNALS.map((s, i) => `<article class="bk">
+      <a class="t" href="#/journal/${s.id}"><b>${E(s.name)}</b><span>${E(s.short)}　${count(s.count)}</span></a>
+      <a class="photo" href="#/journal/${s.id}" aria-label="翻開 ${E(s.name)}">${PS.img(PS.cover(s), { size: 's' })}</a></article>`).join('');
+}
+function journalSpread(base, isPage) {
+  const head = isPage
+    ? `<header class="head masthead vhead"><h1 class="vt">攝影誌</h1><div class="info">${JOURNALS.length ? `<p class="period">${tcy(String(JOURNALS.length))} 冊</p>` : ''}</div></header>`
+    : `<header class="head chapter-head"><h2 class="chapter-no">攝影誌</h2>${JOURNALS.length ? `<p class="chapter-date">${tcy(String(JOURNALS.length))} 冊</p>` : ''}</header>`;
+  return `<section class="spread colophon" id="shi" aria-label="攝影誌">${head}<div class="bekkan-grid${JOURNALS.length <= 2 ? ' few' : ''}">${journalIndex(base)}</div></section>`;
+}
 
-<section class="scroll-section samon">
-  <div class="row">
-    <div class="meta-col reveal">
-      <div class="num">弐の壱</div>
-      <div class="big">系</div>
-      <h2>系列</h2>
-      <div class="sub">SERIES · 10</div>
-      <p>十一個系列，每個都有自己的場域與時間窗。整理在一起，像一份緩慢的年曆。點任一系列，翻閱其中每一張。</p>
-    </div>
-    <div class="series-grid" id="series-grid"></div>
-  </div>
-</section>
-
-<section class="scroll-section alt samon">
-  <div class="row right">
-    <div>
-      <div class="reveal" style="font-family:var(--display);font-size:36px;line-height:1.6;letter-spacing:.04em;text-wrap:pretty">寫真は、<br>記憶の<br>器である。</div>
-      <div class="reveal" style="margin-top:32px;font-size:14px;line-height:2;color:var(--ink-soft);max-width:520px;text-wrap:pretty">
-        <p style="margin:0 0 1em">於我而言，寫真是一種觀察與敘事的方法。將近三十年來，它與研究並行——一種以文字深入，一種以光影靠近。</p>
-        <p style="margin:0 0 1em">作品依十一個系列分類：春信、青嵐、紅葉、雪明、潮聲、山水、街、Xpan、銀鹽、Lisbon、Singapore。與其說是有計畫的專案，更像是被光與季節推著走的紀錄。</p>
-        <p style="margin:0">它們合起來，是一份緩慢的觀看——比文字更安靜，比資料更有溫度。</p>
+function renderHome() {
+  const S = PS.seasons, T = THEMES, J = JOURNALS;
+  cur = [];
+  const seasons = S.map((s, i) => {
+    const c = PS.cover(s);
+    return `<section class="spread opener season" id="${i === 0 ? 'shiki' : 'kan-' + s.id}" aria-label="${E(s.name)}">
+      <div class="kan">
+        <h2 class="vname chapter-no"><small>卷${NUMS[i]}</small><a href="#/series/${s.id}">${E(s.name)}</a></h2>
+        ${haikuBlock(c.haiku)}
+        <div class="info"><p class="en">${E(s.latin)}</p><p class="chapter-date">${E(s.short)}　${count(s.count)}</p><a class="btn" href="#/series/${s.id}">翻開</a></div>
       </div>
-    </div>
-    <div class="meta-col reveal">
-      <div class="num">弐の弐</div>
-      <div class="big">記</div>
-      <h2>關於</h2>
-      <div class="sub">ON PHOTOGRAPHY</div>
-      <p>為什麼拍、怎麼看、十一個系列如何長出來——一段給自己的註腳。</p>
-    </div>
-  </div>
-</section>
+      ${fig(c, `#/series/${s.id}`, s.name, 'opener-photo', c.title ? `<span class="cap-title">${E(c.title)}</span>` : '', i === 0)}
+    </section>`;
+  }).join('');
+  const bekkan = `<section class="spread colophon" id="bekkan" aria-label="別卷">
+    <header class="head chapter-head"><h2 class="chapter-no">別卷</h2><p class="chapter-date">${tcy(String(T.length))} 卷</p></header>
+    <div class="bekkan-grid">${T.map((s, i) => `<article class="bk">
+      <a class="t" href="#/series/${s.id}"><b>${E(s.name)}</b><span>${E(s.short)}　${count(s.count)}</span></a>
+      <a class="photo" href="#/series/${s.id}" aria-label="翻開 ${E(s.name)}">${PS.img(PS.cover(s), { size: 's' })}</a></article>`).join('')}</div></section>`;
+  app.innerHTML = seasons + bekkan + journalSpread(S.length + T.length, false);
+  ctx.textContent = PS.site.latin;
+}
 
-<footer class="foot">
-  <span>YEH CHUNG-YANG · 葉崇揚</span>
-  <span>2026 · 夏 · 171 枚</span>
-</footer>
+function renderJournals() {
+  cur = [];
+  app.innerHTML = journalSpread(0, true);
+  ctx.textContent = JOURNALS.length ? `攝影誌　${JOURNALS.length} 冊` : '攝影誌';
+}
 
-<!-- Lightbox（沿用原攝影頁，不動） -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
-  <button class="lightbox-close" id="lightbox-close" type="button" aria-label="關閉">×</button>
-  <button class="lightbox-prev" id="lightbox-prev" type="button" aria-label="前">‹</button>
-  <button class="lightbox-next" id="lightbox-next" type="button" aria-label="次">›</button>
-  <figure class="lightbox-figure">
-    <img class="lightbox-img" id="lightbox-img" alt="" />
-    <figcaption class="lightbox-caption" id="lightbox-caption"></figcaption>
-  </figure>
-  <div class="lightbox-counter" id="lightbox-counter"></div>
-</div>
+// ════ 色譜相簿頁：從 palette/index.html 搬來，計算方式與數值照抄 ════
+const P = (function () {
+  const $ = s => document.querySelector(s);
+  const esc = PS.esc;
+  const reduce = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const PAPER = { bg: '#EFEBE3', ink: '#1B1714', ink2: '#5B5249', line: '#C9C0B3' };
+  const DARK = { bg: '#15120F', ink: '#F3EEE6', ink2: '#ADA294', line: '#3B342E' };
+  const PKIND = { place: '旅行誌', monthly: '月誌', book: '攝影集' };
+  const pad = (n, w = 2) => String(n).padStart(w, '0');
+  const dot = d => d ? d.replace(/-/g, '.') : '';
+  const root = document.documentElement;
+  // 色譜的 Google Fonts 只在相簿頁生效。歲時記的字族清單裡也有 Noto Serif TC、Noto Sans TC，
+  // 這組字型一直開著的話，系統字缺的字（例如「・」）會改用它，首頁就跟歲時記不一樣了。
+  const fonts = document.getElementById('p-fonts');
 
-<script src="js/photo-data.js"></script>
-<script>
-  // 9 系列（真實）＋每系列一句描述
-  const SERIES = [
-    { id:'harugasumi', jp:'春信', romaji:'Shunshin',  en:'Spring',        place:'櫻花季',       desc:'櫻的七日。從初綻到吹雪，一年裡最短的花期。' },
-    { id:'aoarashi',   jp:'青嵐', romaji:'Aoarashi',  en:'Summer',        place:'盛夏',         desc:'雨後的青葉，苔與水面的光。京都的六月。' },
-    { id:'kouyou',     jp:'紅葉', romaji:'Kōyō',      en:'Autumn',        place:'京都・東京',   desc:'燃燒的山。京都與東京，秋深時的紅與金。' },
-    { id:'yukiakari',  jp:'雪明', romaji:'Yukiakari', en:'Winter',        place:'北海道',       desc:'北海道的雪夜。黑暗之中，也有青色的光。' },
-    { id:'kaiyou',     jp:'潮騒', romaji:'Shiosai',   en:'Tideline',      place:'海岸',         desc:'海岸線。紫色的黃昏、石與飛沫。' },
-    { id:'sansui',     jp:'山水', romaji:'Sansui',    en:'Landscape',     place:'山海',         desc:'山與海之間。霧、雲海、與遠方的稜線。' },
-    { id:'street',     jp:'街',   romaji:'Machi',     en:'Street',        place:'台北 ・ 京都',  desc:'台北與京都的街角。人、影、與一瞬的停格。' },
-    { id:'xpan',       jp:'Xpan', romaji:'Panoramic', en:'Xpan · 65×24',  place:'寬幅',         desc:'65×24 的寬幅。橫向的凝視，被裁下的風景。' },
-    { id:'ginen',      jp:'銀塩', romaji:'Ginen',     en:'Silver Halide', place:'正片掃描',     desc:'正片掃描。底片的顆粒與光，銀鹽的溫度。' },
-    { id:'lisbon',     jp:'Lisbon', romaji:'Lisboa',    en:'Lisbon',        place:'葡萄牙 ・ 里斯本', desc:'八月的里斯本。電車、石板坡，與河邊的人。' },
-    { id:'singapore',  jp:'Singapore', romaji:'Singapura', en:'Singapore',  place:'新加坡',           desc:'多語言的城市。廟宇、清真寺與玻璃塔並列，繁華與勞動也在同一條街上。' },
-  ];
-  const KAN = ['壱','弐','参','肆','伍','陸','漆','捌','玖','拾'];
-
-  const seriesIndex = {};
-  SERIES.forEach(sr => { seriesIndex[sr.id] = photoData.filter(p => p.themes && p.themes.includes(sr.id)); });
-
-  // ── 系列網格卡片（pack-scroll 版面）：代表照＋朱印編號＋月份枚數＋系列名＋描述
-  function renderGrid() {
-    const grid = document.getElementById('series-grid');
-    let i = 0;
-    SERIES.forEach(sr => {
-      const photos = seriesIndex[sr.id] || [];
-      if (photos.length === 0) return;
-      const cover = photos[0].src;
-      const card = document.createElement('button');
-      card.className = 'series';
-      card.type = 'button';
-      card.dataset.seriesId = sr.id;
-      card.innerHTML =
-        `<div class="img"><img src="${cover}" alt="${sr.jp}系列代表作" loading="${i < 6 ? 'eager' : 'lazy'}"></div>`
-        + `<div class="meta"><span>${sr.place}</span><span>${photos.length} 枚</span></div>`
-        + `<h3>${sr.jp}</h3>`
-        + `<p class="desc">${sr.desc}</p>`;
-      card.addEventListener('click', () => {
-        if (sr.id === 'harugasumi') { location.href = 'photography-spring-zh.html'; return; }
-        if (sr.id === 'aoarashi') { location.href = 'photography-summer-zh.html'; return; }
-        if (sr.id === 'kouyou') { location.href = 'photography-autumn-zh.html'; return; }
-        if (sr.id === 'yukiakari') { location.href = 'photography-winter-zh.html'; return; }
-        if (sr.id === 'sansui') { location.href = 'photography-sansui-zh.html'; return; }
-        if (sr.id === 'street') { location.href = 'photography-street-zh.html'; return; }
-        if (sr.id === 'lisbon') { location.href = 'photography-lisbon-zh.html'; return; }
-        if (sr.id === 'singapore') { location.href = 'photography-singapore-zh.html'; return; }
-        if (sr.id === 'ginen') { location.href = 'photography-ginen-zh.html'; return; }
-        if (sr.id === 'xpan') { location.href = 'photography-xpan-zh.html'; return; }
-        if (sr.id === 'kaiyou') { location.href = 'photography-tideline-zh.html'; return; }
-        openBook(sr.id, 0);
-      });
-      grid.appendChild(card);
-      i++;
-    });
+  // ── 色彩計算 ──
+  const rgb = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const lin = c => { c /= 255; return c <= .04045 ? c / 12.92 : ((c + .055) / 1.055) ** 2.4; };
+  const lum = h => { const [r, g, b] = rgb(h).map(lin); return .2126 * r + .7152 * g + .0722 * b; };
+  const cr = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+  const mix = (a, b, t) => { const x = rgb(a), y = rgb(b); return '#' + x.map((v, i) => Math.round(v * (1 - t) + y[i] * t).toString(16).padStart(2, '0')).join(''); };
+  function oklab(h) {
+    const [r, g, b] = rgb(h).map(lin);
+    const l = Math.cbrt(.4122214708 * r + .5363325363 * g + .0514459929 * b);
+    const m = Math.cbrt(.2119034982 * r + .6806995451 * g + .1073969566 * b);
+    const s = Math.cbrt(.0883024619 * r + .2817188376 * g + .6299787005 * b);
+    const L = .2104542553 * l + .793617785 * m - .0040720468 * s;
+    const A = 1.9779984951 * l - 2.428592205 * m + .4505937099 * s;
+    const B = .0259040371 * l + .7827717662 * m - .808675766 * s;
+    return { L, C: Math.hypot(A, B), h: (Math.atan2(B, A) * 180 / Math.PI + 360) % 360 };
   }
-  renderGrid();
+  // 主色：五色裡彩度最高的一色（太暗或太亮的打折）；五色都近灰時取中間那一色
+  function mainIdx(p) {
+    if (p._mi != null) return p._mi;
+    const o = p.pal.map(oklab); let best = -1, bi = 2;
+    o.forEach((c, i) => { const s = c.C * (c.L < .2 || c.L > .95 ? .35 : 1); if (s > best) { best = s; bi = i; } });
+    if (o[bi].C < .03) bi = 2;
+    p._o = o; return (p._mi = bi);
+  }
+  const mainHex = p => p.pal[mainIdx(p)];
+  // 文字色：淺深兩組候選取對比高的一邊，挑第一個 ≥ 4.5 的；ink2 是混合後仍 ≥ 4.5 的最淡版本
+  const themeCache = new Map();
+  function themeFor(bg) {
+    if (themeCache.has(bg)) return themeCache.get(bg);
+    const LT = ['#FBF8F2', '#FFFFFF'], DK = ['#1B1714', '#0E0B09', '#000000'];
+    const side = Math.max(...LT.map(c => cr(c, bg))) >= Math.max(...DK.map(c => cr(c, bg))) ? LT : DK;
+    const ink = side.find(c => cr(c, bg) >= 4.5) || side.reduce((a, c) => cr(c, bg) > cr(a, bg) ? c : a);
+    let ink2 = ink;
+    for (let k = 34; k >= 5; k--) { const c = mix(ink, bg, k / 100); if (cr(c, bg) >= 4.5) { ink2 = c; break; } }
+    const t = { bg, ink, ink2, line: mix(ink, bg, .7) };
+    themeCache.set(bg, t); return t;
+  }
+  // theme-color 只在相簿頁存在；歲時記原本沒有這個 meta，回首頁時整個拿掉
+  let curTheme = '', metaTheme = null;
+  function setTheme(t) {
+    if (t.bg === curTheme) return; curTheme = t.bg;
+    const r = root.style;
+    r.setProperty('--p-bg', t.bg); r.setProperty('--p-ink', t.ink); r.setProperty('--p-ink2', t.ink2); r.setProperty('--p-line', t.line);
+    if (!metaTheme) { metaTheme = document.createElement('meta'); metaTheme.name = 'theme-color'; document.head.appendChild(metaTheme); }
+    metaTheme.setAttribute('content', t.bg);
+  }
 
-  // feature-strip 青嵐大圖 → 夏天總覽頁
-  document.getElementById('feature-img').addEventListener('click', () => { location.href = 'photography-summer-zh.html'; });
+  // ── 排序：色譜（主色色相，起點 180°、每 10° 一組，組內由亮到暗；低彩度排最後）或原序 ──
+  let mode = 'color';
+  try { mode = localStorage.getItem('saijiki-palette-sort') || 'color'; } catch (e) {}
+  function specKey(p) {
+    mainIdx(p); const o = p._o[p._mi];
+    return o.C >= .045 ? [0, Math.floor(((o.h - 180 + 360) % 360) / 10), -o.L] : [1, 0, -o.L];
+  }
+  function order(g) {
+    const idx = g.photos.map((p, i) => i);
+    if (mode !== 'color') return idx;
+    const k = g.photos.map(specKey);
+    return idx.sort((a, b) => k[a][0] - k[b][0] || k[a][1] - k[b][1] || k[a][2] - k[b][2] || a - b);
+  }
+  const stripes = g => order(g).map(i => `<i class="p-stripe" data-i="${i}" style="--c:${mainHex(g.photos[i])}"></i>`).join('');
+  const sorterHTML = () => `<div class="p-pills" role="radiogroup" aria-label="色帶排序">${[['color', '色譜'], ['time', '原序']].map(([k, l]) => `<button type="button" role="radio" data-sort="${k}" aria-checked="${mode === k}" tabindex="${mode === k ? 0 : -1}">${l}</button>`).join('')}</div>`;
 
-  // ══ Lightbox（完全沿用原攝影頁邏輯） ══
-  let lbState = null, isFlipping = false;
-  const lbEl = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lightbox-img');
-  const lbCap = document.getElementById('lightbox-caption');
-  const lbCounter = document.getElementById('lightbox-counter');
-
-  function openBook(seriesId, idx = 0) {
-    const sr = SERIES.find(s => s.id === seriesId);
-    const photos = seriesIndex[seriesId] || [];
-    if (!sr || photos.length === 0) return;
-    lbState = { sr, photos, idx };
-    document.body.classList.add('is-book-open');
-    lbEl.classList.add('is-open');
-    lbEl.setAttribute('aria-hidden', 'false');
-    renderLb();
+  function resort(next) {
+    if (next === mode) return;
+    mode = next; try { localStorage.setItem('saijiki-palette-sort', mode); } catch (e) {}
+    document.querySelectorAll('[data-sort]').forEach(b => { b.setAttribute('aria-checked', b.dataset.sort === mode); b.tabIndex = b.dataset.sort === mode ? 0 : -1; });
+    const bands = [...document.querySelectorAll('[data-band]')];
+    const anim = !reduce(), first = new Map();
+    if (anim) bands.forEach(b => [...b.children].forEach(s => first.set(s, s.getBoundingClientRect().left)));
+    bands.forEach(b => { const g = PS.group(b.dataset.band); order(g).forEach(i => b.appendChild(b.querySelector(`[data-i="${i}"]`))); });
+    if (anim) bands.forEach(b => [...b.children].forEach((s, k) => {
+      const dx = first.get(s) - s.getBoundingClientRect().left;
+      if (Math.abs(dx) > .5) s.animate([{ transform: `translateX(${dx}px)` }, { transform: 'none' }], { duration: 700, delay: k * 5, easing: 'cubic-bezier(.2,.75,.2,1)', fill: 'backwards' });
+    }));
+    live.textContent = mode === 'color' ? '色帶依色譜排列' : '色帶依原本順序排列';
   }
-  function closeLb() {
-    lbState = null;
-    document.body.classList.remove('is-book-open');
-    lbEl.classList.remove('is-open');
-    lbEl.setAttribute('aria-hidden', 'true');
-  }
-  function nextLb() { if (lbState && !isFlipping && lbState.idx < lbState.photos.length - 1) flipTo(lbState.idx + 1); }
-  function prevLb() { if (lbState && !isFlipping && lbState.idx > 0) flipTo(lbState.idx - 1); }
-  function flipTo(newIdx) {
-    isFlipping = true; lbImg.classList.add('is-flipping');
-    setTimeout(() => { lbState.idx = newIdx; renderLb(); lbImg.classList.remove('is-flipping'); isFlipping = false; }, 250);
-  }
-  function renderLb() {
-    const { sr, photos, idx } = lbState;
-    const photo = photos[idx];
-    lbImg.src = photo.src;
-    lbImg.alt = photo.title_zh || ('No. ' + photo.num);
-    const titleZh = photo.title_zh || photo.title_jp || '';
-    const titleJp = photo.title_jp || '';
-    const haikuJp = (photo.haiku_jp || '').replace(/[／\/]\s*/g, '<br>');
-    const haikuZh = (photo.haiku_zh || '').replace(/[／\/]\s*/g, '<br>');
-    let html = '';
-    if (titleZh) html += `<div class="lb-title">No. ${photo.num} ・ ${titleZh}${titleJp && titleJp !== titleZh ? `<span class="romaji">${titleJp}</span>` : ''}</div>`;
-    if (haikuJp) html += `<div class="lb-haiku-jp">${haikuJp}</div>`;
-    if (haikuZh) html += `<div class="lb-haiku-zh">${haikuZh}</div>`;
-    lbCap.innerHTML = html;
-    lbCounter.textContent = `${sr.jp} ・ ${String(idx + 1).padStart(3, '0')} / ${String(photos.length).padStart(3, '0')}`;
-  }
-  document.getElementById('lightbox-close').addEventListener('click', closeLb);
-  document.getElementById('lightbox-prev').addEventListener('click', e => { e.stopPropagation(); prevLb(); });
-  document.getElementById('lightbox-next').addEventListener('click', e => { e.stopPropagation(); nextLb(); });
-  lbEl.addEventListener('click', e => { if (e.target === lbEl) closeLb(); });
-  document.querySelector('.lightbox-figure').addEventListener('click', e => e.stopPropagation());
+  document.addEventListener('click', e => { const b = e.target.closest('[data-sort]'); if (b) resort(b.dataset.sort); });
   document.addEventListener('keydown', e => {
-    if (!lbState) return;
-    if (e.key === 'Escape') closeLb();
-    else if (e.key === 'ArrowRight') nextLb();
-    else if (e.key === 'ArrowLeft') prevLb();
+    const b = e.target.closest && e.target.closest('[data-sort]'); if (!b) return;
+    if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+    e.preventDefault(); const all = [...b.parentNode.querySelectorAll('[data-sort]')];
+    const n = all[(all.indexOf(b) + (e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 1) + all.length) % all.length];
+    resort(n.dataset.sort); n.focus();
   });
-</script>
 
-<!-- reveal 揭示（漸進增強：IO 為主，scroll／計時器備援） -->
-<script>
-(function () {
-  "use strict";
-  document.documentElement.classList.add('js-anim');
-  var revealables = document.querySelectorAll('.reveal');
-  var markIn = function (el) { el.classList.add('in'); };
-  var revealVisibleNow = function () {
-    var vh = window.innerHeight;
-    revealables.forEach(function (el) {
-      if (el.classList.contains('in')) return;
-      var r = el.getBoundingClientRect();
-      if (r.top < vh * 0.98 && r.bottom > 0) markIn(el);
+  // ── 作品色卡 ──
+  function parseMeta(m) {
+    const o = {}; if (!m) return o;
+    m.split(' · ').forEach((t, i) => {
+      if (/^[\d.]+ mm$/.test(t)) o.焦段 = t;
+      else if (/^f\//.test(t)) o.光圈 = t;
+      else if (/^ISO/.test(t)) o.ISO = t.replace(/^ISO\s*/, '');
+      else if (/ s$/.test(t)) o.快門 = t;
+      else if (/^\d{4}:\d\d:\d\d/.test(t)) o.時間 = t.slice(11, 16);
+      else if (/mm/i.test(t) || /NIKKOR/.test(t)) o.鏡頭 = t;
+      else if (i === 0) o.機身 = t;
     });
-  };
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      for (var i = 0; i < entries.length; i++) if (entries[i].isIntersecting) markIn(entries[i].target);
-    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
-    revealables.forEach(function (el) { io.observe(el); });
-  } else { revealables.forEach(markIn); }
-  window.addEventListener('scroll', revealVisibleNow, { passive: true });
-  window.addEventListener('pageshow', revealVisibleNow);
-  setTimeout(revealVisibleNow, 400); setTimeout(revealVisibleNow, 1600);
-  revealVisibleNow();
-})();
-</script>
+    return o;
+  }
+  function plate(g, p, i) {
+    const n = g.photos.length, mi = mainIdx(p), main = p.pal[mi];
+    const isS = !g.title;
+    const title = p.title ? `<h3 class="p-cl-title">${esc(p.title)}</h3>` : `<h3 class="p-cl-title is-date">${esc(dot(p.date))}</h3>`;
+    const meta = isS
+      ? (p.haiku ? p.haiku.split('／').map(s => `<span>${esc(s)}</span>`).join('') : '')
+      : [p.title && dot(p.date), p.place, p.meta].filter(Boolean).map(s => `<span>${esc(s)}</span>`).join('');
+    // 色票條：由亮到暗
+    const sw = p.pal.map((c, k) => ({ c, k, L: Math.round(p._o[k].L * 100) })).reverse()
+      .map(s => `<li class="p-sw"><span class="p-sw-chip${s.L < 52 ? ' is-dark' : ''}" style="--c:${s.c}">${s.k === mi ? '<small>主色</small>' : ''}</span><span class="p-sw-hex">${s.c.toUpperCase()}</span><span class="p-sw-pct">L ${s.L}</span></li>`).join('');
+    const ex = isS
+      ? [['編號', p.no], ['年份', p.year], ['系列', g.name]]
+      : (() => { const m = parseMeta(p.meta); return [['日期', dot(p.date)], ['時間', m.時間], ['機身', m.機身], ['鏡頭', m.鏡頭, 1], ['焦段', m.焦段], ['光圈', m.光圈], ['快門', m.快門], ['ISO', m.ISO]]; })();
+    const exif = ex.filter(e => e[1]).map(e => `<div${e[2] ? ' class="wide"' : ''}><dt>${e[0]}</dt><dd>${esc(e[1])}</dd></div>`).join('');
+    const alt = PS.caption(p) || `${g.name || g.title} 第 ${i + 1} 張`;
+    return `<section class="p-plate" id="p-plate-${i}" data-i="${i}" aria-label="第 ${i + 1} 張">
+      <div class="p-plate-in" style="--ar:${(p.w / p.h).toFixed(4)}">
+        <div class="p-rank" aria-hidden="true"><b>${pad(i + 1)}</b><span>/ ${n}</span><em>${esc(g.short && g.short.length <= 3 ? g.name : (g.name || g.title))}</em></div>
+        <figure class="p-card">
+          <button class="p-card-photo" type="button" data-pv="${i}" aria-label="放大：${esc(alt)}">${PS.img(p, { alt, eager: i < 2 })}</button>
+          <figcaption class="p-card-label">
+            <span class="p-cl-no">${isS ? `No.${esc(p.no)}` : pad(i + 1)}</span>
+            <span class="p-cl-main"><i style="--c:${main}"></i>${main.toUpperCase()}<small>主色</small></span>
+            ${title}${meta ? `<p class="p-cl-meta">${meta}</p>` : ''}
+          </figcaption>
+        </figure>
+        <aside class="p-strip" style="--c:${main}" aria-label="色票">
+          <div class="p-strip-head"><span>色票</span><span>${pad(i + 1)} / ${n}</span></div>
+          <ul class="p-sws">${sw}</ul>
+          <dl class="p-exif">${exif}</dl>
+        </aside>
+      </div>
+    </section>`;
+  }
 
-<!-- BFCache 還原修復 -->
-<script>
-  window.addEventListener('pageshow', function(e){
-    if (e.persisted) { document.body.style.display='none'; void document.body.offsetHeight; document.body.style.display=''; }
+  // ── 相簿結尾：前後（系列對系列、攝影誌對攝影誌）、回目次、同類清單 ──
+  const href = g => isJournal(g) ? `#/journal/${g.id}` : `#/series/${g.id}`;
+  const chips = x => `<i>${x.photos.slice(0, 12).map(p => `<s style="--c:${mainHex(p)}"></s>`).join('')}</i>`;
+  function colophon(g) {
+    const isJ = isJournal(g), list = isJ ? JOURNALS : SERIES, k = list.indexOf(g);
+    const L = isJ ? ['上一冊', '下一冊'] : ['前卷', '次卷'];
+    const step = (x, l) => x ? `<li><a href="${href(x)}">${chips(x)}<b>${esc(x.name || x.title)}</b><span>${l}</span></a></li>` : '';
+    const li = list.map(x => `<li><a href="${href(x)}"${x === g ? ' aria-current="page"' : ''}>${chips(x)}<b>${esc(x.name || x.title)}</b><span>${x.title ? esc(x.when) : x.count + ' 張'}</span></a></li>`).join('');
+    return `<footer class="p-colophon" id="p-colophon">
+      <div class="p-co-mast"><b>${esc(PS.site.name)}</b><span>${esc(PS.site.latin)}</span>
+        <nav class="p-co-nav" aria-label="返回"><a href="#/">目次</a></nav></div>
+      <nav class="p-co-col" aria-label="前後"><h3>前後</h3><ul>${step(list[k - 1], L[0])}${step(list[k + 1], L[1])}</ul></nav>
+      <div class="p-co-col"><h3>${isJ ? '攝影誌' : '系列'}</h3><ul>${li}</ul></div>
+    </footer>`;
+  }
+  function renderGroup(g) {
+    const isJ = !!g.title;
+    const feat = isJ
+      ? `<h2><span class="p-tag">${PKIND[g.kind]}</span>${esc(g.when)}</h2><p>攝影誌</p>`
+      : `<h2><span class="p-tag">${g.kind === 'season' ? '四季' : isJournal(g) ? '攝影誌' : '別卷'}</span><span class="lat">${esc(g.latin)}</span></h2><p>${isJournal(g) ? '' : '系列'}</p>`;
+    return `<header class="p-cover fill" id="p-head">
+        <div class="p-c-mast"><h1 class="p-c-title">${esc(isJ ? g.title : g.name)}${!isJ && g.short !== g.name ? `<em>${esc(g.short)}</em>` : ''}</h1><div class="p-c-issue"><b>${g.count}</b><span>張</span></div></div>
+        <div class="p-c-feature">${feat}</div>
+        <div class="p-band-wrap"><div class="p-band" data-band="${g.id}" id="p-band">${stripes(g)}</div>
+          <div class="p-band-cap"><span>${g.photos.length} 色</span>${sorterHTML()}</div></div>
+      </header>
+      <div class="p-plates">${g.photos.map((p, i) => plate(g, p, i)).join('')}</div>` + colophon(g);
+  }
+
+  // ── 色帶點一下跳到那張 ──
+  let curGroup = null;
+  function goPlate(i) {
+    const el = document.getElementById('p-plate-' + i); if (!el) return;
+    el.scrollIntoView({ behavior: reduce() ? 'auto' : 'smooth', block: 'start' });
+    const b = el.querySelector('.p-card-photo'); if (b) b.focus({ preventScroll: true });
+  }
+  document.addEventListener('click', e => { const s = e.target.closest('#p-band [data-i]'); if (s) goPlate(+s.dataset.i); });
+
+  // ── 浮動預覽（只對滑鼠） ──
+  const tip = document.createElement('div'); tip.className = 'p-tip'; tip.setAttribute('aria-hidden', 'true'); document.body.appendChild(tip);
+  const live = document.createElement('p'); live.className = 'p-sr'; live.setAttribute('aria-live', 'polite'); document.body.appendChild(live);
+  let tipKey = '';
+  document.addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse' || !curGroup) return;
+    const s = e.target.closest && e.target.closest('[data-band] [data-i]');
+    if (!s) { tip.classList.remove('on'); tipKey = ''; return; }
+    const p = curGroup.photos[+s.dataset.i], k = p.id;
+    if (k !== tipKey) {
+      tipKey = k; const c = mainHex(p);
+      tip.innerHTML = `<div class="p-tip-face" style="--c:${c}">${PS.img(p, { alt: '', eager: true })}</div><div class="p-tip-cap"><span>${pad(+s.dataset.i + 1)}</span><span>${c.toUpperCase()}</span></div><b class="p-tip-t">${esc(p.title || dot(p.date))}</b>`;
+    }
+    const x = Math.min(innerWidth - 226, Math.max(12, e.clientX - 107)), r = s.getBoundingClientRect();
+    const y = r.top > 230 ? r.top - tip.offsetHeight - 12 : r.bottom + 12;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px'; tip.classList.add('on');
   });
+  addEventListener('scroll', () => tip.classList.remove('on'), { passive: true });
+
+  // ── 換色：畫面中線上的區塊決定整頁顏色 ──
+  let zoneIO = null, bigIO = null;
+  function unwatch() { [zoneIO, bigIO].forEach(o => o && o.disconnect()); zoneIO = bigIO = null; }
+  function watch(g) {
+    unwatch();
+    setTheme(PAPER);
+    zoneIO = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting || !curGroup) return;
+      const t = e.target;
+      if (t.id === 'p-head') setTheme(PAPER);
+      else if (t.id === 'p-colophon') setTheme(DARK);
+      else setTheme(themeFor(mainHex(g.photos[+t.dataset.i])));
+    }), { rootMargin: '-50% 0px -50% 0px' });
+    document.querySelectorAll('#p-head, .p-plate, #p-colophon').forEach(el => zoneIO.observe(el));
+    // 小圖先載，接近視窗時若需要更大的圖再換
+    bigIO = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return; bigIO.unobserve(e.target);
+      const p = g.photos[+e.target.dataset.i], img = e.target.querySelector('.p-card-photo img');
+      if (p.l === p.s || !img) return;
+      if (img.getBoundingClientRect().width * devicePixelRatio <= 900) return;
+      const big = new Image(); big.src = PS.url(p.l);
+      (big.decode ? big.decode() : Promise.resolve()).then(() => { if (img.isConnected) img.src = big.src; }).catch(() => {});
+    }), { rootMargin: '30% 0px 30% 0px' });
+    document.querySelectorAll('.p-plate').forEach(el => bigIO.observe(el));
+  }
+
+  // 作品上按左右鍵跳前後一張
+  document.addEventListener('keydown', e => {
+    const b = e.target.closest && e.target.closest('.p-card-photo'); if (!b || !curGroup) return;
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    e.preventDefault(); goPlate(Math.max(0, Math.min(curGroup.photos.length - 1, +b.dataset.pv + (e.key === 'ArrowRight' ? 1 : -1))));
+  });
+
+  return {
+    // 進相簿：換上色譜的外觀
+    enter(g, app) {
+      curGroup = g;
+      fonts.media = 'all';
+      root.classList.add('pm');
+      app.innerHTML = renderGroup(g);
+      tip.classList.remove('on'); tipKey = '';
+      watch(g);
+    },
+    // 離開相簿：色譜改過的東西全部還原，歲時記的樣式回來
+    leave() {
+      curGroup = null; unwatch();
+      root.classList.remove('pm');
+      fonts.media = 'not all';
+      ['--p-bg', '--p-ink', '--p-ink2', '--p-line'].forEach(v => root.style.removeProperty(v));
+      if (!root.getAttribute('style')) root.removeAttribute('style');
+      if (metaTheme) { metaTheme.remove(); metaTheme = null; }
+      curTheme = '';
+      tip.classList.remove('on'); tipKey = ''; tip.innerHTML = '';
+    },
+  };
+})();
+
+// ── 頁面切換 ──
+let go = null;
+document.querySelector('.topbar').addEventListener('click', e => {
+  const a = e.target.closest('[data-go]'); if (!a) return;
+  e.preventDefault(); go = a.dataset.go;
+  if (location.hash.replace(/^#\/?/, '') === '') jump(); else location.hash = '#/';
+});
+function jump() { const id = go; go = null; requestAnimationFrame(() => { const el = document.getElementById(id); if (el) el.scrollIntoView({ block: 'start' }); }); }
+
+PS.route(parts => {
+  const [a, b] = parts, g = b && PS.group(b);
+  // 相簿頁換成色譜；首頁與攝影誌總覽是歲時記
+  const album = (a === 'series' || a === 'journal') && g && g.name ? g : null;
+  if (album) { cur = g.photos; P.enter(g, app); ctx.textContent = `${g.name}　${g.count} 張`; }
+  else { P.leave(); if (a === 'journals') renderJournals(); else renderHome(); }
+  document.querySelectorAll('.topbar nav a').forEach(x => x.removeAttribute('aria-current'));
+  const navKey = a === 'journals' || (album && isJournal(album)) ? 'journals' : album && album.kind === 'theme' ? 'bekkan' : album ? 'shiki' : '';
+  const on = document.querySelector(`.topbar [data-nav="${navKey}"],.topbar [data-go="${navKey}"]`);
+  if (on) on.setAttribute('aria-current', 'true');
+  if (go) jump();
+  document.documentElement.dataset.ready = 'true';
+});
+})();
 </script>
 </body>
 </html>
