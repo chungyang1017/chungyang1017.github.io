@@ -10,153 +10,105 @@
 <link rel="alternate" hreflang="en" href="about.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600&family=Yuji+Syuku&family=Klee+One:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap">
 <style>
-  :root{
-    --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
-    --moss:#3d5a3f; --accent:#c43838; --water:#5a7a8a;
-    --ink:#1f1f1d; --ink-soft:rgba(31,31,29,.72); --ink-quiet:rgba(31,31,29,.5);
-    --rule:rgba(31,31,29,.12);
-    --serif:"Shippori Mincho","Noto Serif TC","Noto Serif JP",serif;
-    --display:"Yuji Syuku",serif;
-    --latin:"Inter",sans-serif;
-    --kana:"Klee One",serif;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{ background:var(--sand); color:var(--ink); font-family:var(--serif); font-feature-settings:"palt"; -webkit-font-smoothing:antialiased; }
-  a{color:inherit}
+:root{color-scheme:light;--paper:#f5f5f5;--ink:#1d1d1d;--muted:#575757;--faint:#6b6b6b;--line:#c5c7c8;--accent:#1d1d1d;
+  --serif:"Noto Serif TC","Songti TC",serif;--sans:"Noto Sans TC","PingFang TC",sans-serif;--latin:"Cormorant Garamond","Noto Serif TC",serif;
+  --pad:clamp(20px,6.5vw,104px)}
+*{box-sizing:border-box}
+html{background:var(--paper);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.9 var(--serif);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul,dl,dd,figure{margin:0;padding:0}
+ul{list-style:none}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+img{display:block;max-width:100%;height:auto}
+/* 全站共用的頂列：沒有印章，跟攝影頁同一種細線與字距 */
+.top{position:sticky;top:0;z-index:5;min-height:58px;padding:0 26px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--paper);border-bottom:1px solid var(--line);font:400 13px/1.5 var(--sans);letter-spacing:.08em}
+.top a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}
+.top .name{font-family:var(--serif);font-size:15px;letter-spacing:.22em;justify-content:flex-start}
+.top nav{display:flex;gap:22px}
+.top nav a{color:var(--muted)}
+.top nav a:hover{color:var(--ink)}
+.top nav a[aria-current="page"]{color:var(--ink);box-shadow:inset 0 -1px 0 var(--accent)}
+.top .lang{color:var(--muted)}
+.kicker{font:400 13px/1.6 var(--sans);letter-spacing:.22em;color:var(--muted)}
+.kicker i,.lab i{font:italic 400 16px/1 var(--latin);letter-spacing:.04em;margin-left:.7em;color:var(--faint)}
+.lead{font:300 clamp(24px,2.7vw,36px)/1.75 var(--serif);letter-spacing:.06em;text-wrap:balance}
+.me img{width:100%}
+.me figcaption{margin-top:10px;font:400 12px/1.5 var(--sans);letter-spacing:.24em;color:var(--faint)}
+.prose p{max-width:34em;text-align:justify;letter-spacing:.03em}
+.prose p+p{margin-top:1.5em}
+.prose.more{margin-top:3.2em}
+.prose.more .sub{margin-bottom:1.2em}
+.prose.more .sub em{font-style:normal;letter-spacing:.06em;margin-left:1.2em;padding:1px 8px;border:1px solid var(--line)}
+.prose.more .sub+p{margin-top:0}
+.lab{font:500 13px/1.6 var(--sans);letter-spacing:.22em}
+.lab::before{content:"";display:block;width:18px;height:1px;background:var(--accent);margin-bottom:14px}
+.blurb{margin-top:10px;font:400 13px/1.8 var(--sans);color:var(--muted);max-width:16em}
+.sub{font:400 12px/1.6 var(--sans);letter-spacing:.2em;color:var(--faint);margin:0 0 6px}
+.rows{display:grid;grid-template-columns:6.6em minmax(0,1fr);column-gap:20px;row-gap:20px;max-width:40em}
+.rows dt{font:400 13px/2.1 var(--sans);font-variant-numeric:tabular-nums;letter-spacing:.04em;color:var(--faint)}
+.rows dd b{display:block;font-weight:500;font-size:16.5px;line-height:1.65;letter-spacing:.03em}
+.rows dd b a{box-shadow:inset 0 -1px 0 var(--accent)}
+.rows dd span{display:block;font:400 13.5px/1.7 var(--sans);color:var(--muted)}
+.rows+.sub,.rows+.svc{margin-top:44px}
+.svc p{font:400 14px/1.8 var(--sans);color:var(--muted);max-width:40em}
+.dom{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 40px;max-width:40em}
+.dom b{display:block;font-weight:500;font-size:16.5px;letter-spacing:.04em}
+.dom span{display:block;font:italic 400 16px/1.5 var(--latin);color:var(--muted)}
+.mail{font:400 clamp(18px,2vw,22px)/1.6 var(--latin);letter-spacing:.02em;display:inline-flex;min-height:44px;align-items:center;box-shadow:inset 0 -1px 0 var(--accent);overflow-wrap:anywhere}
+.note{margin-top:6px;font:400 14px/1.8 var(--sans);color:var(--muted)}
+.links{margin-top:26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 40px;max-width:40em}
+.links a{display:flex;flex-direction:column;justify-content:center;min-height:48px;font:500 12px/1.5 var(--sans);letter-spacing:.2em}
+.links a small{font:400 13px/1.5 var(--sans);letter-spacing:.02em;color:var(--muted);overflow-wrap:anywhere}
+.links a:hover small{color:var(--ink)}
+/* 英文版：字距和對齊是為中文設的，英文改回一般排法 */
+html[lang="en"] .prose p{text-align:left;letter-spacing:0;line-height:1.75}
+html[lang="en"] .lead{letter-spacing:.01em;line-height:1.5}
+html[lang="en"] .top .name{letter-spacing:.08em}
+html[lang="en"] .rows dd b,html[lang="en"] .dom b{letter-spacing:0}
+.foot{padding:40px var(--pad) 56px;display:flex;justify-content:space-between;gap:20px;font:400 12px/1.6 var(--sans);letter-spacing:.2em;color:var(--faint)}
+@media (max-width:760px){
+  body{font-size:16px}
+  .top{flex-wrap:wrap;padding:6px 14px 0;gap:0 12px}
+  .top nav{order:3;width:100%;justify-content:space-between;gap:0;border-top:1px solid var(--line)}
+  .top nav a{font-size:12.5px;letter-spacing:.04em}
+  .dom,.links{grid-template-columns:1fr}
+  .rows{grid-template-columns:5.4em minmax(0,1fr);column-gap:14px}
+  .foot{flex-direction:column;gap:4px}
+}
 
-  .nav{ position:sticky;top:0;z-index:50; background:color-mix(in srgb,var(--sand) 94%,transparent); backdrop-filter:blur(8px); display:flex;justify-content:space-between;align-items:center; padding:16px 48px;border-bottom:1px solid var(--rule); }
-  .nav .brand{display:flex;gap:16px;align-items:baseline}
-  .nav .seal{ display:inline-flex;align-items:center;justify-content:center; width:42px;height:42px;background:var(--accent);color:var(--sand); font-family:var(--display);font-size:20px; transform:rotate(-3deg);box-shadow:2px 2px 0 rgba(196,56,56,.25); text-decoration:none; }
-  .nav .name{font-family:var(--display);font-size:18px;letter-spacing:.1em;line-height:1;text-decoration:none}
-  .nav .name small{display:block;font-family:var(--latin);font-size:9px;letter-spacing:.3em;color:var(--ink-quiet);margin-top:4px}
-  .nav nav{display:flex;gap:24px;font-size:16px;letter-spacing:.2em}
-  .nav nav a{color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:1px solid transparent;transition:.2s}
-  .nav nav a:hover{border-bottom-color:var(--ink)}
-  .nav nav a.is-active{color:var(--accent);border-bottom-color:var(--accent)}
-  .nav .lang{border-left:1px solid var(--rule);padding-left:24px;font-family:var(--latin);font-size:16px;letter-spacing:.2em;color:var(--ink-soft);text-decoration:none}
-
-  .samon{position:relative}
-  .samon::before{ content:"";position:absolute;inset:0;pointer-events:none;opacity:.08; background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='60'><g fill='none' stroke='%233d5a3f' stroke-width='.6'><path d='M 0 30 Q 50 22 100 30 T 200 30'/><path d='M 0 36 Q 50 28 100 36 T 200 36'/><path d='M 0 42 Q 50 34 100 42 T 200 42'/><path d='M 0 48 Q 50 40 100 48 T 200 48'/></g></svg>"); }
-
-  .scroll-head{ display:grid;grid-template-columns:380px 1fr;gap:60px; padding:120px 60px;max-width:1280px;margin:0 auto; position:relative;border-top:1px solid var(--rule); background:var(--sand-light); }
-  .scroll-head .index{font-family:var(--display);font-size:24px;color:var(--ink-quiet);margin-bottom:8px}
-  .scroll-head .kanji{font-family:var(--display);font-size:160px;line-height:.9;letter-spacing:0}
-  .scroll-head h1{margin:24px 0 8px;font-family:var(--display);font-size:36px;font-weight:400;letter-spacing:.1em}
-  .scroll-head .sub{font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);margin-bottom:20px;font-family:var(--latin);text-transform:uppercase}
-  .scroll-head .lede{font-size:15px;line-height:2;color:var(--ink-soft);max-width:460px;text-wrap:pretty}
-  .scroll-head .right{padding-top:56px;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start}
-
-  .scroll-section{ padding:96px 60px;max-width:1280px;margin:0 auto; border-top:1px solid var(--rule);position:relative; }
-  .scroll-section.alt{background:var(--sand-light)}
-  .scroll-section .row{ display:grid;grid-template-columns:320px 1fr;gap:60px;align-items:start; }
-  .scroll-section .row.right{grid-template-columns:1fr 320px}
-  .scroll-section .meta-col .num{font-family:var(--display);font-size:22px;opacity:.4;margin-bottom:8px}
-  .scroll-section .meta-col .big{font-family:var(--display);font-size:96px;line-height:.95;letter-spacing:0}
-  .scroll-section .meta-col h2{margin:20px 0 8px;font-family:var(--display);font-size:30px;font-weight:400;letter-spacing:.1em}
-  .scroll-section .meta-col .sub{font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);margin-bottom:20px;font-family:var(--latin);text-transform:uppercase}
-  .scroll-section .meta-col p{font-size:15px;line-height:1.95;color:var(--ink-soft);max-width:280px;margin:0;text-wrap:pretty}
-
-  .foot{ border-top:1px solid var(--rule); padding:48px 60px; display:flex;justify-content:space-between; font-size:11px;letter-spacing:.2em;color:var(--ink-quiet); }
-
-  /* ── 簡介頁專屬 ── */
-  .about-hero{display:grid;grid-template-columns:1fr 1.15fr;gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);min-height:520px}
-  .about-hero .portrait{position:relative;background:linear-gradient(160deg,#3d5a3f,#1f1f1d);overflow:hidden;min-height:420px}
-  .about-hero .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block}
-  .about-hero .portrait .fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;font-family:var(--display);font-size:140px;color:var(--sand);opacity:.4}
-  .about-hero .portrait .vname{position:absolute;left:28px;top:28px;writing-mode:vertical-rl;color:var(--sand);font-family:var(--display);font-size:30px;letter-spacing:.3em;text-shadow:0 2px 14px rgba(0,0,0,.55);z-index:2}
-  .about-hero .portrait .cap{position:absolute;left:28px;bottom:26px;color:var(--sand);font-family:var(--latin);font-size:11px;letter-spacing:.25em;text-shadow:0 1px 8px rgba(0,0,0,.6);z-index:2}
-  .about-hero .text{padding:64px 60px;display:flex;flex-direction:column;justify-content:center;background:var(--sand-light);position:relative}
-  .about-hero .text .e{font-size:11px;letter-spacing:.4em;color:var(--accent);font-family:var(--latin);margin-bottom:18px;text-transform:uppercase}
-  .about-hero .text h1{margin:0 0 26px;font-family:var(--display);font-size:32px;line-height:1.5;letter-spacing:.04em;font-weight:400;text-wrap:pretty}
-  .about-hero .text p{font-size:14px;line-height:2;color:var(--ink-soft);margin:0 0 1em;text-wrap:pretty}
-  .about-hero .text p:last-child{margin-bottom:0}
-  .about-hero .text p .num{font-family:var(--display);color:var(--accent);margin-right:10px}
-
-  /* 簡介 scroll-head：右側直式照片，與大漢字＋文字並列 */
-  .scroll-head.about-head{grid-template-columns:240px 1fr 244px;gap:48px;align-items:center}
-  .about-head .right{padding-top:0}
-  .about-head .lede{font-size:16.5px;line-height:1.95;max-width:520px}
-  .about-head .sub{font-size:12px}
-  .about-head .portrait-col{position:relative;aspect-ratio:3/4;max-height:400px;overflow:hidden;background:linear-gradient(160deg,#3d5a3f,#1f1f1d)}
-  .about-head .portrait-col img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%}
-  .about-head .portrait-col .fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;font-family:var(--display);font-size:80px;color:var(--sand);opacity:.4}
-  .about-head .portrait-col .cap{position:absolute;left:14px;bottom:12px;color:var(--sand);font-family:var(--latin);font-size:10px;letter-spacing:.2em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
-  .profile-text{max-width:680px}
-  .profile-text h3{font-family:var(--display);font-size:27px;font-weight:400;line-height:1.5;letter-spacing:.04em;margin:0 0 24px;text-wrap:pretty}
-  .profile-text p{font-size:16px;line-height:2.0;color:var(--ink-soft);margin:0 0 1.1em;text-wrap:pretty}
-  .profile-text p:last-child{margin-bottom:0}
-  .profile-text .pn{font-family:var(--display);color:var(--accent);margin-right:10px}
-
-  .table{width:100%;border-collapse:collapse;font-size:15px}
-  .table th,.table td{text-align:left;padding:14px 0;border-bottom:1px solid var(--rule);vertical-align:top}
-  .table th{width:104px;font-family:var(--latin);font-size:12px;letter-spacing:.14em;color:var(--ink-quiet);font-weight:400}
-  .table td b{font-family:var(--display);font-size:19px;font-weight:400;letter-spacing:.04em;display:block;margin-bottom:4px}
-  .table td b a{color:#3a6ea5;text-decoration:none}
-  .table td b a:hover{color:#2c567e;text-decoration:underline}
-  .table td span{font-size:13.5px;color:var(--ink-soft);line-height:1.7;display:block}
-  .cv-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-  .cv-cols .lab{font-size:12px;letter-spacing:.3em;color:var(--ink-quiet);font-family:var(--latin);text-transform:uppercase;margin-bottom:14px}
-
-  .domain{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
-  .domain > div{background:var(--paper);padding:26px 24px}
-  .domain .num{font-family:var(--display);font-size:14px;color:var(--accent)}
-  .domain h4{margin:8px 0 6px;font-family:var(--display);font-size:22px;font-weight:400;letter-spacing:.04em}
-  .domain p{margin:0;font-size:13px;line-height:1.6;color:var(--ink-quiet);font-family:var(--latin);letter-spacing:.1em;text-transform:uppercase}
-
-  .contact-mail{font-family:var(--display);font-size:29px;letter-spacing:.02em;margin-bottom:10px}
-  .contact-mail a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent)}
-  .contact-note{font-size:13px;color:var(--ink-quiet);margin-bottom:30px;font-family:var(--latin);letter-spacing:.1em}
-  .links{display:flex;gap:0;flex-wrap:wrap}
-  .links a{padding:14px 20px;border:1px solid var(--rule);margin-right:-1px;margin-bottom:-1px;text-decoration:none;color:var(--ink);font-family:var(--latin);font-size:12.5px;letter-spacing:.16em;transition:.2s;background:var(--paper);display:flex;flex-direction:column;gap:4px}
-  .links a:hover{background:var(--ink);color:var(--sand)}
-  .links a small{font-size:11px;letter-spacing:.08em;color:var(--ink-quiet);text-transform:none}
-  .links a:hover small{color:var(--sand)}
-  .service{margin-top:30px;font-size:14px;line-height:1.8;color:var(--ink-soft)}
-  .service .lab{font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);font-family:var(--latin);text-transform:uppercase;margin-bottom:10px}
-
-  .reveal{opacity:1}
-  .js-anim .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.19,1,.22,1),transform .8s cubic-bezier(.19,1,.22,1)}
-  .js-anim .reveal.in{opacity:1;transform:none}
-
-  @media (max-width:820px){
-    .nav{padding:12px 20px;flex-wrap:wrap;gap:10px}
-    .nav nav{gap:14px;font-size:12px;letter-spacing:.14em;order:3;width:100%;justify-content:space-between}
-    .nav .lang{padding-left:14px}
-    .scroll-head{grid-template-columns:1fr;gap:24px;padding:64px 22px}
-    .scroll-head .kanji{font-size:110px}
-    .scroll-head .right{padding-top:0}
-    .scroll-head.about-head{grid-template-columns:1fr}
-    .about-head .portrait-col{aspect-ratio:16/10;max-height:320px}
-    .about-hero{grid-template-columns:1fr}
-    .about-hero .portrait{min-height:340px}
-    .about-hero .text{padding:44px 24px}
-    .scroll-section{padding:56px 22px}
-    .scroll-section .row,.scroll-section .row.right{grid-template-columns:1fr;gap:28px}
-    .scroll-section .row.right > div:first-child{order:2}
-    .scroll-section .meta-col .big{font-size:72px}
-    .domain{grid-template-columns:1fr 1fr}
-    .cv-cols{grid-template-columns:1fr;gap:28px}
-    .foot{padding:32px 22px;flex-direction:column;gap:8px}
-  }
-  @media (max-width:460px){ .domain{grid-template-columns:1fr} }
-  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1!important;transform:none!important;transition:none} }
-
-  /* ── 正文放大：稍微放大閱讀字級（2026-07）。要整體再調，改這一區塊即可 ── */
-  .about-head .lede{font-size:19.5px}
-  .profile-text h3{font-size:31px}
-  .profile-text p{font-size:19px}
-  .scroll-section .meta-col p{font-size:17px}
-  .table{font-size:17px}
-  .table td b{font-size:21px}
-  .table td span{font-size:15.5px}
-  .domain h4{font-size:24px}
-  .domain p{font-size:15px}
-  .contact-note{font-size:15px}
-  .service{font-size:16px}
+/* B 左窄右寬：左邊固定放照片、姓名、連絡；右邊捲動看內容 */
+.wrap{display:grid;grid-template-columns:minmax(220px,280px) minmax(0,1fr);column-gap:clamp(48px,8vw,140px);padding:96px var(--pad) 40px;align-items:start}
+.side{position:sticky;top:106px}
+@media (max-height:840px){.side{position:static}}   /* 視窗太矮時左欄不固定，免得連絡方式被切掉 */
+.side .me{width:210px}
+.side .who{margin-top:34px;font:500 22px/1.5 var(--serif);letter-spacing:.24em}
+.side .who small{display:block;margin-top:2px;font:400 12px/1.6 var(--sans);letter-spacing:.24em;color:var(--faint)}
+.side .role{margin-top:14px;font:400 13.5px/1.8 var(--sans);color:var(--muted)}
+.side .mail{margin-top:26px;font-size:17px}
+.side .links{grid-template-columns:1fr;margin-top:14px;gap:0}
+.main .kicker{margin-bottom:22px}
+.main .lead{max-width:17em}
+.main .prose{margin-top:56px}
+.main .prose.more{margin-top:3.2em}
+.blk{padding:72px 0 0;margin-top:72px;border-top:1px solid var(--line)}
+.blk .body{margin-top:30px}
+@media (max-width:900px){
+  .wrap{display:block;padding:56px var(--pad) 24px}
+  .side .me{width:100%}
+  .side{position:static;display:grid;grid-template-columns:42% minmax(0,1fr);column-gap:22px;align-items:end;margin-bottom:56px}
+  .side .who{margin-top:0;font-size:20px}
+  .side .contact{grid-column:1/-1;margin-top:8px}
+  .blk{padding-top:48px;margin-top:48px}
+}
 </style>
+<script>
+// 細線與底線的顏色跟著季節換；四個顏色都取自教授自己四季系列的照片
+(function(){var m=new Date().getMonth()+1,s=m>=3&&m<=5?'spring':m>=6&&m<=8?'summer':m>=9&&m<=11?'autumn':'winter';
+var c={"spring": "#4d6b09", "summer": "#015749", "autumn": "#813707", "winter": "#0648a2"};document.documentElement.style.setProperty('--accent',c[s]);document.documentElement.dataset.season=s;})();
+</script>
 <!-- og:start -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
@@ -168,229 +120,9 @@
 <meta name="twitter:card" content="summary" />
 <!-- og:end -->
 </head>
-<body>
-
-<header class="nav">
-  <div class="brand">
-    <a class="seal" href="index.html">葉</a>
-    <a class="name" href="index.html">葉崇揚<small>YEH CHUNG-YANG</small></a>
-  </div>
-  <nav>
-    <a href="index.html">首頁</a>
-    <a href="about-zh.html" class="is-active">簡介</a>
-    <a href="academic-zh.html">學術</a>
-    <a href="photography-zh.html">攝影</a>
-    <a href="teaching-zh.html">教學</a>
-    <a href="essays-zh.html">隨筆</a>
-  </nav>
-  <a class="lang" href="about.html">EN</a>
-</header>
-
-<section class="scroll-head about-head samon">
-  <div>
-    <div class="index reveal">伍</div>
-    <div class="kanji reveal">介</div>
-  </div>
-  <div class="right">
-    <h1 class="reveal">簡介</h1>
-    <div class="sub reveal">About · CV · Contact</div>
-    <div class="lede reveal">福利國家研究者，東吳大學社會學系教授。從英國念博士回來，把比較福利體制的視野，放進台灣與東亞的脈絡——年金、社會投資、福利態度與不平等。</div>
-  </div>
-  <div class="portrait-col reveal">
-    <img src="photo.jpg" alt="葉崇揚" onerror="this.style.display='none';this.parentNode.querySelector('.fallback').style.display='flex'">
-    <div class="fallback">葉</div>
-    <div class="cap">台北 2026</div>
-  </div>
-</section>
-
-<section class="scroll-section samon">
-  <div class="row">
-    <div class="meta-col reveal">
-      <div class="num">伍の序</div>
-      <div class="big">述</div>
-      <h2>自述</h2>
-      <div class="sub">Profile</div>
-      <p>關於研究、方法，與近年放不下的關懷。</p>
-    </div>
-    <div class="profile-text reveal">
-      <h3>在制度與社會之間寫字，一個福利國家的研究者。</h3>
-      <p><span class="pn">一</span>福利國家研究者，從英國念博士回來，把比較福利體制的視野放進台灣與東亞的脈絡。長年關注年金、社會投資、福利態度與不平等。</p>
-      <p><span class="pn">二</span>研究在比較與制度分析之間移動。希望文字硬一點、視野軟一點——資料是可驗證的，但社會永遠比模型多一層。</p>
-      <p><span class="pn">三</span>近年的興趣是福利市場、福利金融化，以及監管型福利國家的崛起。同時也在思考：福利政策怎麼回應一個不斷縮小、變老、變不平等的台灣。</p>
-    </div>
-  </div>
-</section>
-
-<!-- 研究領域 -->
-<section class="scroll-section samon">
-  <div class="row">
-    <div class="meta-col reveal">
-      <div class="num">伍の壱</div>
-      <div class="big">域</div>
-      <h2>研究領域</h2>
-      <div class="sub">Research Interests</div>
-      <p>六個彼此重疊的領域，環繞著比較福利國家這個核心。</p>
-    </div>
-    <div class="domain reveal">
-      <div><div class="num">壱</div><h4>比較東亞福利國家</h4><p>East Asian Welfare States</p></div>
-      <div><div class="num">弐</div><h4>年金政策</h4><p>Pension Policy</p></div>
-      <div><div class="num">参</div><h4>社會投資</h4><p>Social Investment</p></div>
-      <div><div class="num">肆</div><h4>福利態度</h4><p>Welfare Attitudes</p></div>
-      <div><div class="num">伍</div><h4>貧窮與生命歷程</h4><p>Poverty &amp; Life Course</p></div>
-      <div><div class="num">陸</div><h4>社會研究方法</h4><p>Research Methodology</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- 學歷・經歷 -->
-<section class="scroll-section alt samon">
-  <div class="row right">
-    <div>
-      <div class="cv-cols">
-        <div>
-          <div class="lab">學歷 · Education</div>
-          <table class="table">
-            <tr><th>2010–14</th><td><b>PhD ・ 社會學與社會政策</b><span>University of Southampton, UK</span><span>Public-Private Pension Mix in East Asia</span></td></tr>
-            <tr><th>2003–06</th><td><b>碩士 ・ 社會福利研究所</b><span>國立中正大學</span></td></tr>
-            <tr><th>1999–03</th><td><b>學士 ・ 社會政策與社會工作</b><span>國立暨南國際大學</span></td></tr>
-          </table>
-        </div>
-        <div>
-          <div class="lab">經歷 · Appointments</div>
-          <table class="table">
-            <tr><th>2024–</th><td><b>教授</b><span>東吳大學 社會學系</span></td></tr>
-            <tr><th>2024–25</th><td><b>訪問學者</b><span>名古屋大學</span></td></tr>
-            <tr><th>2020–24</th><td><b>副教授</b><span>東吳大學 社會學系</span></td></tr>
-            <tr><th>2018–20</th><td><b>助理教授</b><span>東吳大學 社會學系</span></td></tr>
-            <tr><th>2017–18</th><td><b>助理教授</b><span>亞洲大學 社會工作學系</span></td></tr>
-            <tr><th>2015–17</th><td><b>博士後研究員</b><span>中央研究院 人文社會科學研究中心</span></td></tr>            <tr><th>2015</th><td><b>CRPD 辦公室專案經理</b><span>衛生福利部</span></td></tr>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="meta-col reveal">
-      <div class="num">伍の弐</div>
-      <div class="big">歷</div>
-      <h2>學經歷</h2>
-      <div class="sub">CV</div>
-      <p>從暨南、中正到 Southampton；現任東吳大學社會學系教授。</p>
-    </div>
-  </div>
-</section>
-
-<!-- 獲獎 -->
-<section class="scroll-section samon">
-  <div class="row">
-    <div class="meta-col reveal">
-      <div class="num">伍の参</div>
-      <div class="big">賞</div>
-      <h2>獲獎</h2>
-      <div class="sub">Honours &amp; Awards</div>
-      <p>研究獎勵與獎助，從博士論文獎學金到近年的研究獎。</p>
-    </div>
-    <div class="reveal">
-      <table class="table">
-        <tr><th>2025</th><td><b>東吳大學研究優良</b><span>Research Excellence ・ Soochow University</span></td></tr>
-        <tr><th>2024</th><td><b>研究成果優異減授課時數</b><span>4 學分 ・ 連續三年 ・ 東吳大學</span></td></tr>
-        <tr><th>2023</th><td><b>東吳大學 雷德獎</b><span>青年學者獎 ・ Young Scholar Award</span></td></tr>
-        <tr><th>2023</th><td><b>東吳大學研究優良</b><span>Research Excellence ・ Soochow University</span></td></tr>
-        <tr><th>2021</th><td><b>東吳大學研究優良</b><span>Research Excellence ・ Soochow University</span></td></tr>
-        <tr><th>2019</th><td><b>科技部新進人員研究獎勵</b><span>MOST New Faculty Research Award</span></td></tr>
-        <tr><th>2013–14</th><td><b>蔣經國國際學術交流基金會</b><span>海外博士論文獎助 ・ Dissertation Fellowship</span></td></tr>
-        <tr><th>2010–13</th><td><b>教育部公費留學獎學金</b><span>Government Scholarship for Overseas Study, ROC</span></td></tr>
-      </table>
-      <div class="service">
-        <div class="lab">學術服務 · Service</div>
-        East Asian Social Policy (EASP) Research Network ・ Committee Member（2019–）
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 研究計畫 -->
-<section class="scroll-section alt samon">
-  <div class="row">
-    <div class="meta-col reveal">
-      <div class="num">伍の肆</div>
-      <div class="big">計</div>
-      <h2>研究計畫</h2>
-      <div class="sub">Research Grants</div>
-      <p>國家科學及技術委員會（前科技部）專題研究計畫，二〇一八年迄今。</p>
-    </div>
-    <div class="reveal">
-      <table class="table">
-        <tr><th>2026–29</th><td><b><a href="projects/pension-preferences.html">多面向的年金政策偏好：資訊、政治交換與東亞社會大眾的年金改革偏好分析</a></b><span>NSTC 115-2410-H-031-023-SS3</span></td></tr>
-        <tr><th>2025–26</th><td><b>打造福利市場：比較東亞福利國家</b><span>NSTC 114-2410-H-031-090</span></td></tr>
-        <tr><th>2023–25</th><td><b>比較東亞福利國家的年金市場化和金融化和管制型福利國家的興起</b><span>NSTC 112-2410-H-031-039-MY2</span></td></tr>
-        <tr><th>2021–23</th><td><b>形塑與管理年金政治：國際比較下的東亞福利國家</b><span>MOST 110-2410-H-031-052-MY2</span></td></tr>
-        <tr><th>2020–21</th><td><b>女性勞動參與率與家庭政策：社會投資的觀點</b><span>MOST 109-2410-H-194-024 ・ 共同主持人</span></td></tr>
-        <tr><th>2019–21</th><td><b>從消極保障到積極促進的微觀基礎：東亞福利國家的比較分析</b><span>MOST 108-2410-H-031-069-MY2</span></td></tr>
-        <tr><th>2018</th><td><b>從生產主義到社會投資：東亞福利國家轉型的比較政治經濟學</b><span>MOST 107-2410-H-031-065</span></td></tr>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- 連絡 -->
-<section class="scroll-section alt samon">
-  <div class="row right">
-    <div>
-      <div class="contact-mail"><a href="mailto:chungyang.yeh@gmail.com">chungyang.yeh@gmail.com</a></div>
-      <div class="contact-note">採訪、演講或合作，歡迎來信。</div>
-      <div class="links">
-        <a href="https://scholar.google.com/citations?user=mLY3afoAAAAJ&hl=en" target="_blank" rel="noopener">GOOGLE SCHOLAR<small>scholar.google.com</small></a>
-        <a href="https://orcid.org/0000-0003-4284-137X" target="_blank" rel="noopener">ORCID<small>0000-0003-4284-137X</small></a>
-        <a href="https://github.com/chungyang1017" target="_blank" rel="noopener">GITHUB<small>@chungyang1017</small></a>
-        <a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener">INSTAGRAM<small>@chungyang.yeh</small></a>
-      </div>
-    </div>
-    <div class="meta-col reveal">
-      <div class="num">伍の伍</div>
-      <div class="big">絡</div>
-      <h2>連絡</h2>
-      <div class="sub">Contact</div>
-      <p>電子郵件與外部連結。研究、著作與程式碼散落在這幾個地方。</p>
-    </div>
-  </div>
-</section>
-
-<footer class="foot">
-  <span>葉崇揚 · YEH CHUNG-YANG</span>
-  <span>簡介 · About</span>
-</footer>
-
-<!-- reveal 揭示（漸進增強：IO 為主，scroll／計時器備援） -->
-<script>
-(function () {
-  "use strict";
-  document.documentElement.classList.add('js-anim');
-  var revealables = document.querySelectorAll('.reveal');
-  var markIn = function (el) { el.classList.add('in'); };
-  var revealVisibleNow = function () {
-    var vh = window.innerHeight;
-    revealables.forEach(function (el) {
-      if (el.classList.contains('in')) return;
-      var r = el.getBoundingClientRect();
-      if (r.top < vh * 0.98 && r.bottom > 0) markIn(el);
-    });
-  };
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      for (var i = 0; i < entries.length; i++) if (entries[i].isIntersecting) markIn(entries[i].target);
-    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
-    revealables.forEach(function (el) { io.observe(el); });
-  } else { revealables.forEach(markIn); }
-  window.addEventListener('scroll', revealVisibleNow, { passive: true });
-  window.addEventListener('pageshow', revealVisibleNow);
-  setTimeout(revealVisibleNow, 400); setTimeout(revealVisibleNow, 1600);
-  revealVisibleNow();
-})();
-</script>
-
-<script>
-  window.addEventListener('pageshow', function(e){
-    if (e.persisted) { document.body.style.display='none'; void document.body.offsetHeight; document.body.style.display=''; }
-  });
-</script>
+<body class="b">
+<header class="top"><a class="name" href="index.html">葉崇揚</a><nav aria-label="網站"><a href="index.html">首頁</a><a href="about-zh.html" aria-current="page">簡介</a><a href="academic-zh.html">學術</a><a href="photography-zh.html">攝影</a><a href="teaching-zh.html">教學</a><a href="essays-zh.html">隨筆</a></nav><a class="lang" href="about.html">EN</a></header>
+<div class="wrap"><aside class="side"><figure class="me"><img src="about-portrait.jpg" width="1200" height="1600" alt="葉崇揚"><figcaption>奈良</figcaption></figure><div><p class="who">葉崇揚<small>YEH CHUNG-YANG</small></p><p class="role">教授<br>東吳大學 社會學系</p></div><div class="contact"><a class="mail" href="mailto:chungyang.yeh@gmail.com">chungyang.yeh@gmail.com</a><p class="note">採訪、演講或合作，歡迎來信。</p><div class="links"><a href="https://scholar.google.com/citations?user=mLY3afoAAAAJ&hl=en" target="_blank" rel="noopener">GOOGLE SCHOLAR<small>scholar.google.com</small></a><a href="https://orcid.org/0000-0003-4284-137X" target="_blank" rel="noopener">ORCID<small>0000-0003-4284-137X</small></a><a href="https://github.com/chungyang1017" target="_blank" rel="noopener">GITHUB<small>@chungyang1017</small></a><a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener">INSTAGRAM<small>@chungyang.yeh</small></a></div></div></aside><main class="main"><h1 class="kicker">簡介<i>About</i></h1><p class="lead">在制度與社會之間寫字，一個福利國家的研究者。</p><div class="prose"><p>福利國家研究者，從英國念博士回來，把比較福利體制的視野放進台灣與東亞的脈絡。長年關注年金、社會投資、福利態度與不平等。</p><p>研究在比較與制度分析之間移動。希望文字硬一點、視野軟一點——資料是可驗證的，但社會永遠比模型多一層。</p><p>近年的興趣是福利市場、福利金融化，以及監管型福利國家的崛起。同時也在思考：福利政策怎麼回應一個不斷縮小、變老、變不平等的台灣。</p></div><div class="prose more"><p class="sub">攝影</p><p>也是攝影師。近三十年，攝影是與研究並行的另一種觀看。風景和街拍都拍，數位和底片都拍。</p><p>風景想拍的，是有感情、有個人情緒的風景寫真，不是漂亮的風景照：把看到的東西，透過自己的情緒表達出來。喜歡藍調時刻，因為這個時間拍出來的東西不一樣。也喜歡印象派和透納，透過顏色之間的構圖來表達情緒，同時反映光線。</p><p>街拍更負有社會責任。它不只是個人情緒的出口，也是拍攝者對既有社會結構的批判。</p><p>偏好日本的攝影風格。喜歡的攝影師有植田正治、前田真三、中西敏貴，以及 Josef Koudelka 和 André Kertész。</p></div><section class="blk" id="dom"><div class="head"><h2 class="lab">研究領域<i>Research Interests</i></h2></div><div class="body"><ul class="dom"><li><b>比較東亞福利國家</b><span>East Asian Welfare States</span></li><li><b>年金政策</b><span>Pension Policy</span></li><li><b>社會投資</b><span>Social Investment</span></li><li><b>福利態度</b><span>Welfare Attitudes</span></li><li><b>貧窮與生命歷程</b><span>Poverty &amp; Life Course</span></li><li><b>社會研究方法</b><span>Research Methodology</span></li><li><b>AI 與數位治理</b><span>AI &amp; Digital Governance</span></li></ul></div></section><section class="blk" id="cv"><div class="head"><h2 class="lab">學經歷<i>CV</i></h2></div><div class="body"><p class="sub">學歷 · Education</p><dl class="rows"><dt>2010–14</dt><dd><b>PhD ・ 社會學與社會政策</b><span>University of Southampton, UK</span><span>Public-Private Pension Mix in East Asia</span></dd><dt>2003–06</dt><dd><b>碩士 ・ 社會福利研究所</b><span>國立中正大學</span></dd><dt>1999–03</dt><dd><b>學士 ・ 社會政策與社會工作</b><span>國立暨南國際大學</span></dd></dl><p class="sub">經歷 · Appointments</p><dl class="rows"><dt>2024–</dt><dd><b>教授</b><span>東吳大學 社會學系</span></dd><dt>2024–25</dt><dd><b>訪問學者</b><span>名古屋大學</span></dd><dt>2020–24</dt><dd><b>副教授</b><span>東吳大學 社會學系</span></dd><dt>2018–20</dt><dd><b>助理教授</b><span>東吳大學 社會學系</span></dd><dt>2017–18</dt><dd><b>助理教授</b><span>亞洲大學 社會工作學系</span></dd><dt>2015–17</dt><dd><b>博士後研究員</b><span>中央研究院 人文社會科學研究中心</span></dd><dt>2015</dt><dd><b>CRPD 辦公室專案經理</b><span>衛生福利部</span></dd></dl></div></section><section class="blk" id="hon"><div class="head"><h2 class="lab">獲獎<i>Honours &amp; Awards</i></h2></div><div class="body"><dl class="rows"><dt>2025</dt><dd><b>東吳大學研究優良</b><span>Research Excellence ・ Soochow University</span></dd><dt>2024</dt><dd><b>研究成果優異減授課時數</b><span>4 學分 ・ 連續三年 ・ 東吳大學</span></dd><dt>2023</dt><dd><b>東吳大學 雷德獎</b><span>青年學者獎 ・ Young Scholar Award</span></dd><dt>2023</dt><dd><b>東吳大學研究優良</b><span>Research Excellence ・ Soochow University</span></dd><dt>2021</dt><dd><b>東吳大學研究優良</b><span>Research Excellence ・ Soochow University</span></dd><dt>2019</dt><dd><b>科技部新進人員研究獎勵</b><span>MOST New Faculty Research Award</span></dd><dt>2013–14</dt><dd><b>蔣經國國際學術交流基金會</b><span>海外博士論文獎助 ・ Dissertation Fellowship</span></dd><dt>2010–13</dt><dd><b>教育部公費留學獎學金</b><span>Government Scholarship for Overseas Study, ROC</span></dd></dl><div class="svc"><p class="sub">學術服務 · Service</p><p>East Asian Social Policy (EASP) Research Network ・ Committee Member（2019–）</p></div></div></section><section class="blk" id="gr"><div class="head"><h2 class="lab">研究計畫<i>Research Grants</i></h2></div><div class="body"><dl class="rows"><dt>2026–29</dt><dd><b><a href="projects/pension-preferences.html">多面向的年金政策偏好：資訊、政治交換與東亞社會大眾的年金改革偏好分析</a></b><span>NSTC 115-2410-H-031-023-SS3</span></dd><dt>2025–26</dt><dd><b>打造福利市場：比較東亞福利國家</b><span>NSTC 114-2410-H-031-090</span></dd><dt>2023–25</dt><dd><b>比較東亞福利國家的年金市場化和金融化和管制型福利國家的興起</b><span>NSTC 112-2410-H-031-039-MY2</span></dd><dt>2021–23</dt><dd><b>形塑與管理年金政治：國際比較下的東亞福利國家</b><span>MOST 110-2410-H-031-052-MY2</span></dd><dt>2020–21</dt><dd><b>女性勞動參與率與家庭政策：社會投資的觀點</b><span>MOST 109-2410-H-194-024 ・ 共同主持人</span></dd><dt>2019–21</dt><dd><b>從消極保障到積極促進的微觀基礎：東亞福利國家的比較分析</b><span>MOST 108-2410-H-031-069-MY2</span></dd><dt>2018</dt><dd><b>從生產主義到社會投資：東亞福利國家轉型的比較政治經濟學</b><span>MOST 107-2410-H-031-065</span></dd></dl></div></section></main></div>
+<footer class="foot"><span>葉崇揚 · YEH CHUNG-YANG</span><span>簡介 · About</span></footer>
 </body>
 </html>
