@@ -616,6 +616,9 @@ const JOURNALS = PS.series.filter(s => JOURNAL_IDS.includes(s.id));
 const SERIES = PS.series.filter(s => !JOURNAL_IDS.includes(s.id));      // 四季加別卷
 const THEMES = PS.themes.filter(s => !JOURNAL_IDS.includes(s.id));      // 別卷
 const isJournal = g => JOURNALS.includes(g);
+// 教授 2026-11-11 20:17、20:27：原來的 Lisbon 相簿拿掉，改成「里斯本攝影集」（主站另一頁）。攝影集排在攝影誌這一區，點了開那一頁。
+const BOOKS = PS.data.books || [];
+const NJ = JOURNALS.length + BOOKS.length;          // 攝影誌這一區一共幾冊
 // 教授 2026-11-11：四季的相簿用色譜，其餘（別卷、攝影誌）用高級雜誌。要對調就改這一行。
 const usePalette = g => g.kind === 'season';
 (function(){
@@ -656,15 +659,18 @@ function fig(p, href, name, cls, cap, eager) {
 }
 // ── 首頁 ──
 function journalIndex(base) {
-  return JOURNALS.map((s, i) => `<article class="bk">
+  return BOOKS.map(b => `<article class="bk">
+      <a class="t" href="${E(b.href)}"><b>${E(b.name)}</b><span>${E(b.short)}　${count(b.count)}</span></a>
+      <a class="photo" href="${E(b.href)}" aria-label="翻開 ${E(b.name)}">${PS.img(b.cover, { size: 's' })}</a></article>`).join('')
+    + JOURNALS.map((s, i) => `<article class="bk">
       <a class="t" href="#/journal/${s.id}"><b>${E(s.name)}</b><span>${E(s.short)}　${count(s.count)}</span></a>
       <a class="photo" href="#/journal/${s.id}" aria-label="翻開 ${E(s.name)}">${PS.img(PS.cover(s), { size: 's' })}</a></article>`).join('');
 }
 function journalSpread(base, isPage) {
   const head = isPage
-    ? `<header class="head masthead vhead"><h1 class="vt">攝影誌</h1><div class="info">${JOURNALS.length ? `<p class="period">${tcy(String(JOURNALS.length))} 冊</p>` : ''}</div></header>`
-    : `<header class="head chapter-head"><h2 class="chapter-no">攝影誌</h2>${JOURNALS.length ? `<p class="chapter-date">${tcy(String(JOURNALS.length))} 冊</p>` : ''}</header>`;
-  return `<section class="spread colophon" id="shi" aria-label="攝影誌">${head}<div class="bekkan-grid${JOURNALS.length <= 2 ? ' few' : ''}">${journalIndex(base)}</div></section>`;
+    ? `<header class="head masthead vhead"><h1 class="vt">攝影誌</h1><div class="info">${NJ ? `<p class="period">${tcy(String(NJ))} 冊</p>` : ''}</div></header>`
+    : `<header class="head chapter-head"><h2 class="chapter-no">攝影誌</h2>${NJ ? `<p class="chapter-date">${tcy(String(NJ))} 冊</p>` : ''}</header>`;
+  return `<section class="spread colophon" id="shi" aria-label="攝影誌">${head}<div class="bekkan-grid${NJ <= 2 ? ' few' : ''}">${journalIndex(base)}</div></section>`;
 }
 
 function renderHome() {
@@ -693,7 +699,7 @@ function renderHome() {
 function renderJournals() {
   cur = [];
   app.innerHTML = journalSpread(0, true);
-  ctx.textContent = JOURNALS.length ? `攝影誌　${JOURNALS.length} 冊` : '攝影誌';
+  ctx.textContent = NJ ? `攝影誌　${NJ} 冊` : '攝影誌';
 }
 
 // ════ 色譜相簿頁：從 palette/index.html 搬來，計算方式與數值照抄 ════
@@ -1129,6 +1135,9 @@ function jump() { const id = go; go = null; requestAnimationFrame(() => { const 
 
 PS.route(parts => {
   const [a, b] = parts, g = b && PS.group(b);
+  // 舊的 #/journal/lisbon 這類網址：相簿已經拿掉、改成攝影集的，直接轉過去
+  const book = a === 'journal' && !g && BOOKS.find(x => x.id === b);
+  if (book) { location.replace(book.href); return; }
   // 首頁與攝影誌總覽是歲時記；相簿頁照 usePalette 分成色譜或高級雜誌
   const album = (a === 'series' || a === 'journal') && g && g.name ? g : null;
   const asPalette = !!album && usePalette(album), asMagazine = !!album && !asPalette;

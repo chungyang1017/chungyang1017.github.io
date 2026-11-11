@@ -1,16 +1,215 @@
-<!DOCTYPE html>
+⟦zh⟧<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>新加坡攝影旅誌</title>
+<link rel="canonical" href="https://chungyang1017.github.io/photography-singapore-zh.html">
+<link rel="preconnect" href="https://photo.easp2027.workers.dev">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<style>
+/* 版型：magazine-transit（旅誌）。滿版封面、彩色書背、色塊章頁、不對稱圖版。底色是版型的一部分，深色模式也固定淺色。 */
+:root{
+  --paper:#f8f8f8; --ink:#161616; --muted:#666; --rule:#d9d9d9; --focus:#d34939;
+  --blue:#1e4b62; --red:#ad3a30; --green:#25483b; --rail:138px;
+  --lb-bg:#101214; --lb-ink:#f5f5f5; --lb-rule:#333; --lb-divider:#303235; --lb-border:#555;
+  --lb-scrim:#1119; --lb-scrim-m:#0b0c0d99; --lb-on-bg:#eee; --lb-on-ink:#111; --lb-thumb:#e7e7e7;
+  --lb-track:#191b1c; --lb-thumb-bar:#777;
+  --sans:"Helvetica Neue","PingFang TC","Heiti TC","Noto Sans TC",sans-serif;
+  color-scheme:light; font-synthesis:none; background:var(--paper);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;padding-right:var(--rail);-webkit-tap-highlight-color:transparent}
+body.modal-open{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:2px solid var(--focus);outline-offset:5px}
+img{display:block;max-width:100%;height:auto}
+figure,h1,h2,p{margin:0}
+h1,h2{font-weight:400}
+button.photo{display:block;padding:0;width:100%;position:relative;cursor:zoom-in}
+button.photo img{width:100%}
+
+.topbar{position:relative;z-index:20;height:56px;display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:32px;background:var(--paper);font-size:13px;letter-spacing:.09em}
+.topbar a{padding-block:14px;white-space:nowrap}
+.topbar a:hover,.page-end a:hover{text-decoration:underline;text-underline-offset:5px}
+.topbar .home{display:flex;align-items:center;gap:20px;flex:none}
+.topbar .back,.topbar .edition{color:var(--muted);white-space:nowrap}
+.topbar nav{display:flex;gap:26px;align-items:center}
+
+.spines{position:fixed;right:0;top:0;bottom:0;display:flex;width:var(--rail);z-index:25}
+.spines a{width:46px;writing-mode:vertical-rl;display:flex;align-items:center;gap:28px;padding:28px 13px;font-size:14px;letter-spacing:.18em;color:#fff;background:var(--blue);transition:filter .2s}
+.spines a:nth-child(2){background:var(--red)}
+.spines a:nth-child(3){background:var(--green)}
+.spines a:hover{filter:brightness(1.2)}
+.spines b{font-weight:400;margin-top:auto;letter-spacing:.08em}
+
+.travel-hero{height:calc(100svh - 56px);position:relative;isolation:isolate;color:#fff}
+.travel-hero>.photo{height:100%;position:absolute;inset:0}
+.travel-hero>.photo img{height:100%;object-fit:cover;object-position:center 58%}
+.travel-title{position:absolute;top:20%;left:6%;pointer-events:none;text-shadow:0 2px 32px #0005}
+.travel-title h1{font-size:clamp(110px,13vw,250px);font-weight:500;letter-spacing:-.055em;line-height:1.2}
+.travel-title .eyebrow{font-size:13px;line-height:1.6;letter-spacing:.4em;margin-top:12px}
+.travel-hero .trip-stamp{position:absolute;left:6%;bottom:7%;border-top:1px solid #fff8;padding-top:16px;font-size:16px;letter-spacing:.16em;pointer-events:none}
+
+.travel-chapter{padding-top:120px}
+.travel-chapter-head{display:grid;grid-template-columns:1fr 2fr;align-items:stretch;margin-bottom:110px}
+.chapter-color{background:var(--blue);color:#fff;padding:48px 30px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px}
+.c2 .chapter-color{background:var(--red)}
+.c3 .chapter-color{background:var(--green)}
+.chapter-color h2{font-size:clamp(42px,6vw,92px);letter-spacing:-.06em}
+.chapter-color span{font-size:14px;letter-spacing:.2em}
+/* 章頁的照片不裁切：直幅和正方形照片照自己的比例決定欄寬，色塊補滿左邊；圖說放在色塊下緣的延伸線下面 */
+.head-photo{position:relative}
+.travel-chapter-head.portrait{grid-template-columns:minmax(0,1fr) auto}
+.travel-chapter-head.portrait .photo{width:min(calc(88svh * var(--ratio)),calc((100vw - var(--rail)) * .6667))}
+.head-photo .caption{position:absolute;left:0;right:0;top:100%}
+
+.caption{font-size:13px;line-height:1.7;display:flex;justify-content:space-between;gap:28px;padding:14px 12px 0;letter-spacing:.035em}
+.caption .t{white-space:nowrap}
+.caption .d{text-align:right;color:var(--muted);max-width:44em}
+.travel-photo{margin:0 5% 110px;width:90%}
+.travel-photo:nth-of-type(3n){margin-left:15%;width:85%}
+.travel-photo:nth-of-type(4n){margin-left:0;width:100%}
+.travel-photo.portrait{width:min(62%,calc(92svh * var(--ratio)));margin-inline:auto}
+
+.page-end{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin:0 40px;padding:40px 0;border-top:1px solid var(--rule);font-size:13px;letter-spacing:.08em}
+
+/* 燈箱：跟里斯本攝影集同一套 */
+.lightbox{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:var(--lb-bg);color:var(--lb-ink);z-index:100;
+  display:none;grid-template-rows:62px minmax(0,1fr) auto auto;font-size:13px;line-height:1.8;letter-spacing:.035em;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.lightbox[open]{display:grid}
+.lightbox::backdrop{background:var(--lb-bg)}
+.lb-top{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--lb-rule);
+  padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.lb-count{letter-spacing:.12em}
+.lb-btns{display:flex;gap:10px}
+.lb-btn{min-width:44px;min-height:44px;padding:8px 14px;border:1px solid var(--lb-border);background:transparent;color:#fff;font:inherit;line-height:1;cursor:pointer}
+.lb-btn[aria-pressed="true"]{background:var(--lb-on-bg);color:var(--lb-on-ink)}
+.lb-stage{position:relative;min-height:0;display:flex;align-items:center;justify-content:center;padding:24px 72px}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.lb-arrow{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:64px;border:0;background:var(--lb-scrim);color:#fff;font-size:20px;cursor:pointer}
+.lb-arrow.prev{left:10px}.lb-arrow.next{right:10px}
+.lb-arrow:disabled{opacity:.25;cursor:default}
+.lb-data{display:flex;justify-content:space-between;gap:24px;border-top:1px solid var(--lb-divider);padding-block:12px;
+  padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.lb-data .l{white-space:nowrap}
+.lb-data .r{text-align:right;max-width:70%}
+.lb-thumbs{height:90px;display:flex;gap:8px;align-items:center;overflow-x:auto;border-top:1px solid var(--lb-divider);padding-inline:20px;
+  scrollbar-width:thin;scrollbar-color:var(--lb-thumb-bar) var(--lb-track)}
+.lb-thumbs[hidden]{display:none}
+.lb-thumbs button{flex:0 0 76px;height:58px;padding:0;border:1px solid transparent;background:none;opacity:.55;cursor:pointer}
+.lb-thumbs button[aria-current="true"]{opacity:1;border-color:var(--lb-thumb)}
+.lb-thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+
+@media (max-width:700px){
+  html{scroll-padding-top:65px}
+  body{--rail:0px;padding:0}
+  .topbar{height:54px;gap:16px;font-size:12px;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+  .topbar .home{gap:14px}
+  .topbar nav{display:none}          /* 手機上章節連結就是正下方那一列書背 */
+  .spines{position:relative;inset:auto;width:100%;height:50px;display:grid;grid-template-columns:1fr 1fr 1fr}
+  .spines a{width:100%;writing-mode:horizontal-tb;justify-content:center;gap:10px;padding:10px 4px;letter-spacing:.04em;font-size:12px}
+  .spines b{margin:0}
+  .travel-hero{height:calc(100svh - 104px)}
+  .travel-title{top:26%;left:7%}
+  .travel-title h1{font-size:94px;letter-spacing:-.07em}
+  .travel-title .eyebrow{font-size:12px;letter-spacing:.2em}
+  .travel-hero .trip-stamp{font-size:13px;letter-spacing:.08em;left:7%;bottom:8%}
+  .travel-chapter{padding-top:55px}
+  .travel-chapter-head,.travel-chapter-head.portrait{display:flex;flex-direction:column;margin-bottom:60px}
+  .chapter-color{padding:24px 20px;min-height:155px}
+  .chapter-color h2{font-size:52px}
+  .chapter-color span{font-size:13px}
+  .travel-chapter-head.portrait .photo{width:100%}
+  .head-photo .caption{position:static}
+  .travel-photo,.travel-photo:nth-of-type(3n),.travel-photo:nth-of-type(4n),.travel-photo.portrait{margin:0 0 60px;width:100%}
+  .caption{flex-direction:column;gap:2px;padding:12px 18px 0;line-height:1.8}
+  .caption .d{text-align:left}
+  .page-end{margin:0 18px;padding:30px 0;font-size:12px}
+  .lightbox{font-size:12px;line-height:1.75}
+  .lb-stage{padding:24px 4px 72px}
+  .lb-arrow{top:auto;bottom:8px;transform:none;width:44px;height:44px;background:var(--lb-scrim-m)}
+  .lb-arrow.prev{left:8px}.lb-arrow.next{right:8px}
+  .lb-data{flex-direction:column;gap:2px}
+  .lb-data .l{white-space:normal}
+  .lb-data .r{text-align:left;max-width:none}
+  .lb-thumbs{height:78px}
+  .lb-thumbs button{flex-basis:64px;height:50px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar" id="top"><span class="home"><a class="back" href="photography-zh.html#/journals">‹ 攝影</a><a href="#top">Singapore</a></span><span class="edition">攝影旅誌</span><nav aria-label="章節"><a href="#chapter-1">01–12</a><a href="#chapter-2">13–24</a><a href="#chapter-3">25–36</a></nav></div>
+<main><aside class="spines" aria-label="章節"><a href="#chapter-1">第一章<b>01–12</b></a><a href="#chapter-2">第二章<b>13–24</b></a><a href="#chapter-3">第三章<b>25–36</b></a></aside>
+<section class="travel-hero"><button type="button" class="photo" data-photo="S313" aria-label="放大：藍色的天際線，第 04 張" style="--ratio:1.500375"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S313-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S313-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S313-2000.jpg 2000w" sizes="100vw" width="2000" height="1333" loading="eager" decoding="async" alt="藍色的天際線｜新加坡"></button><header class="travel-title"><h1>新加坡</h1><p class="eyebrow">SINGAPORE</p></header><p class="trip-stamp">攝影旅誌　／　36 張</p></section>
+<section class="travel-chapter c1" id="chapter-1"><header class="travel-chapter-head portrait"><div class="chapter-color"><span>第一章</span><h2>01–12</h2><span>12 張</span></div><figure class="head-photo"><button type="button" class="photo" data-photo="S310" aria-label="放大：巷底的塔，第 01 張" style="--ratio:0.666500"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S310-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S310-1200.jpg 800w, https://photo.easp2027.workers.dev/books/singapore/img/S310-2000.jpg 1333w" sizes="(max-width:700px) 100vw, 55vw" width="1333" height="2000" loading="lazy" decoding="async" alt="巷底的塔｜新加坡"></button><figcaption class="caption"><span class="t">01　巷底的塔</span><span class="d">藍色時刻的後巷。冷氣室外機與垃圾桶排到底，盡頭是亮著燈的金融區高塔。</span></figcaption></figure></header><figure class="travel-photo portrait" style="--ratio:0.666500"><button type="button" class="photo" data-photo="S311" aria-label="放大：早晨的後巷，第 02 張" style="--ratio:0.666500"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S311-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S311-1200.jpg 800w, https://photo.easp2027.workers.dev/books/singapore/img/S311-2000.jpg 1333w" sizes="(max-width:700px) 100vw, 55vw" width="1333" height="2000" loading="lazy" decoding="async" alt="早晨的後巷｜新加坡"></button><figcaption class="caption"><span class="t">02　早晨的後巷</span><span class="d">接住晨光的高樓，樓腳下是剛醒過來的店家背面。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:0.666500"><button type="button" class="photo" data-photo="S312" aria-label="放大：一張椅子，第 03 張" style="--ratio:0.666500"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S312-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S312-1200.jpg 800w, https://photo.easp2027.workers.dev/books/singapore/img/S312-2000.jpg 1333w" sizes="(max-width:700px) 100vw, 55vw" width="1333" height="2000" loading="lazy" decoding="async" alt="一張椅子｜新加坡"></button><figcaption class="caption"><span class="t">03　一張椅子</span><span class="d">男人在後巷擺一張椅子坐著。抬頭是玻璃帷幕的高塔。</span></figcaption></figure><figure class="travel-photo" style="--ratio:1.500375"><button type="button" class="photo" data-photo="S313" aria-label="放大：藍色的天際線，第 04 張" style="--ratio:1.500375"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S313-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S313-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S313-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="1333" loading="lazy" decoding="async" alt="藍色的天際線｜新加坡"></button><figcaption class="caption"><span class="t">04　藍色的天際線</span><span class="d">黃昏的新加坡河。對岸的金融區一起亮了起來。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:0.666500"><button type="button" class="photo" data-photo="S314" aria-label="放大：河上的船，第 05 張" style="--ratio:0.666500"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S314-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S314-1200.jpg 800w, https://photo.easp2027.workers.dev/books/singapore/img/S314-2000.jpg 1333w" sizes="(max-width:700px) 100vw, 55vw" width="1333" height="2000" loading="lazy" decoding="async" alt="河上的船｜新加坡"></button><figcaption class="caption"><span class="t">05　河上的船</span><span class="d">高塔底下兩艘小船，紅色的燈在水面上暈開。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:0.666500"><button type="button" class="photo" data-photo="S315" aria-label="放大：拿著菜單的人，第 06 張" style="--ratio:0.666500"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S315-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S315-1200.jpg 800w, https://photo.easp2027.workers.dev/books/singapore/img/S315-2000.jpg 1333w" sizes="(max-width:700px) 100vw, 55vw" width="1333" height="2000" loading="lazy" decoding="async" alt="拿著菜單的人｜新加坡"></button><figcaption class="caption"><span class="t">06　拿著菜單的人</span><span class="d">拿著菜單等客人的店員，背後是要抬頭才看得完的銀行大樓。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:0.666500"><button type="button" class="photo" data-photo="S316" aria-label="放大：天橋下，第 07 張" style="--ratio:0.666500"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S316-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S316-1200.jpg 800w, https://photo.easp2027.workers.dev/books/singapore/img/S316-2000.jpg 1333w" sizes="(max-width:700px) 100vw, 55vw" width="1333" height="2000" loading="lazy" decoding="async" alt="天橋下｜新加坡"></button><figcaption class="caption"><span class="t">07　天橋下</span><span class="d">坐在天橋階梯上的人們。階梯的另一頭，是遠處的大樓群。</span></figcaption></figure><figure class="travel-photo" style="--ratio:2.710027"><button type="button" class="photo" data-photo="S317" aria-label="放大：三個人，第 08 張" style="--ratio:2.710027"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S317-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S317-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S317-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="738" loading="lazy" decoding="async" alt="三個人｜新加坡"></button><figcaption class="caption"><span class="t">08　三個人</span><span class="d">工地圍籬前，三個人各坐一張椅子休息，彼此沒有交談。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:1.000000"><button type="button" class="photo" data-photo="S318" aria-label="放大：217，第 09 張" style="--ratio:1.000000"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S318-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S318-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S318-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 55vw" width="2000" height="2000" loading="lazy" decoding="async" alt="217｜新加坡"></button><figcaption class="caption"><span class="t">09　217</span><span class="d">「非相關人員禁止進入」的告示底下，一個人坐在編了號的圍擋前。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:0.666500"><button type="button" class="photo" data-photo="S319" aria-label="放大：窗子底下，第 10 張" style="--ratio:0.666500"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S319-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S319-1200.jpg 800w, https://photo.easp2027.workers.dev/books/singapore/img/S319-2000.jpg 1333w" sizes="(max-width:700px) 100vw, 55vw" width="1333" height="2000" loading="lazy" decoding="async" alt="窗子底下｜新加坡"></button><figcaption class="caption"><span class="t">10　窗子底下</span><span class="d">白色百葉窗底下，兩個穿工作服的人就坐在地上休息。</span></figcaption></figure><figure class="travel-photo" style="--ratio:1.500375"><button type="button" class="photo" data-photo="S320" aria-label="放大：木箱上的午睡，第 11 張" style="--ratio:1.500375"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S320-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S320-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S320-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="1333" loading="lazy" decoding="async" alt="木箱上的午睡｜新加坡"></button><figcaption class="caption"><span class="t">11　木箱上的午睡</span><span class="d">斑駁的牆、晾著的布、黃色的塑膠籃。中間有人躺在木箱上睡著。</span></figcaption></figure><figure class="travel-photo" style="--ratio:1.500375"><button type="button" class="photo" data-photo="S321" aria-label="放大：扛著貨，第 12 張" style="--ratio:1.500375"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S321-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S321-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S321-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="1333" loading="lazy" decoding="async" alt="扛著貨｜新加坡"></button><figcaption class="caption"><span class="t">12　扛著貨</span><span class="d">兩個把大袋子扛在肩上的人走過，眼睛看著鏡頭。</span></figcaption></figure></section><section class="travel-chapter c2" id="chapter-2"><header class="travel-chapter-head"><div class="chapter-color"><span>第二章</span><h2>13–24</h2><span>12 張</span></div><figure class="head-photo"><button type="button" class="photo" data-photo="S322" aria-label="放大：文化館門口，第 13 張" style="--ratio:1.500375"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S322-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S322-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S322-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="1333" loading="lazy" decoding="async" alt="文化館門口｜新加坡"></button><figcaption class="caption"><span class="t">13　文化館門口</span><span class="d">印度文化館的招牌底下，一個人赤腳坐在石階上看手機，正好與展示裡的塑像並排。</span></figcaption></figure></header><figure class="travel-photo portrait" style="--ratio:0.750000"><button type="button" class="photo" data-photo="S323" aria-label="放大：金飾廣告，第 14 張" style="--ratio:0.750000"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S323-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S323-1200.jpg 900w, https://photo.easp2027.workers.dev/books/singapore/img/S323-2000.jpg 1500w" sizes="(max-width:700px) 100vw, 55vw" width="1500" height="2000" loading="lazy" decoding="async" alt="金飾廣告｜新加坡"></button><figcaption class="caption"><span class="t">14　金飾廣告</span><span class="d">當金子的廣告。在滿身金飾的女子前面，一個男人正在講電話。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:0.666500"><button type="button" class="photo" data-photo="S324" aria-label="放大：朱紅的牆，第 15 張" style="--ratio:0.666500"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S324-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S324-1200.jpg 800w, https://photo.easp2027.workers.dev/books/singapore/img/S324-2000.jpg 1333w" sizes="(max-width:700px) 100vw, 55vw" width="1333" height="2000" loading="lazy" decoding="async" alt="朱紅的牆｜新加坡"></button><figcaption class="caption"><span class="t">15　朱紅的牆</span><span class="d">被漆成彩色、成了觀光景點的老屋。屋腳下坐著一個看手機的人。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:0.666500"><button type="button" class="photo" data-photo="S325" aria-label="放大：青綠的牆，第 16 張" style="--ratio:0.666500"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S325-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S325-1200.jpg 800w, https://photo.easp2027.workers.dev/books/singapore/img/S325-2000.jpg 1333w" sizes="(max-width:700px) 100vw, 55vw" width="1333" height="2000" loading="lazy" decoding="async" alt="青綠的牆｜新加坡"></button><figcaption class="caption"><span class="t">16　青綠的牆</span><span class="d">綠色的牆與彩色玻璃窗。窗下有人放下購物袋歇著。</span></figcaption></figure><figure class="travel-photo" style="--ratio:1.500375"><button type="button" class="photo" data-photo="S326" aria-label="放大：走過那面顏色，第 17 張" style="--ratio:1.500375"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S326-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S326-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S326-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="1333" loading="lazy" decoding="async" alt="走過那面顏色｜新加坡"></button><figcaption class="caption"><span class="t">17　走過那面顏色</span><span class="d">被漆成紅、黃、藍的牆。有人一邊看手機一邊走過去。</span></figcaption></figure><figure class="travel-photo" style="--ratio:1.500375"><button type="button" class="photo" data-photo="S327" aria-label="放大：壁畫之前，第 18 張" style="--ratio:1.500375"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S327-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S327-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S327-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="1333" loading="lazy" decoding="async" alt="壁畫之前｜新加坡"></button><figcaption class="caption"><span class="t">18　壁畫之前</span><span class="d">女子低著頭走過鮮豔的壁畫。畫裡的那張臉是笑著的。</span></figcaption></figure><figure class="travel-photo" style="--ratio:1.500375"><button type="button" class="photo" data-photo="S328" aria-label="放大：牆上的勞動，第 19 張" style="--ratio:1.500375"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S328-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S328-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S328-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="1333" loading="lazy" decoding="async" alt="牆上的勞動｜新加坡"></button><figcaption class="caption"><span class="t">19　牆上的勞動</span><span class="d">牆上畫著曬衣服的人。牆前排著共享單車，一個人正走過去。</span></figcaption></figure><figure class="travel-photo" style="--ratio:1.333333"><button type="button" class="photo" data-photo="S329" aria-label="放大：被單的另一邊，第 20 張" style="--ratio:1.333333"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S329-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S329-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S329-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="1500" loading="lazy" decoding="async" alt="被單的另一邊｜新加坡"></button><figcaption class="caption"><span class="t">20　被單的另一邊</span><span class="d">壁畫裡的老人正在晾白被單。畫下的石頭上，坐著一個真的人。</span></figcaption></figure><figure class="travel-photo" style="--ratio:1.500375"><button type="button" class="photo" data-photo="S330" aria-label="放大：故鄉的牆，第 21 張" style="--ratio:1.500375"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S330-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S330-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S330-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="1333" loading="lazy" decoding="async" alt="故鄉的牆｜新加坡"></button><figcaption class="caption"><span class="t">21　故鄉的牆</span><span class="d">牆上畫著南印度的田野與寺塔，牆下一個人在綠色桌上吃飯。</span></figcaption></figure><figure class="travel-photo" style="--ratio:1.500375"><button type="button" class="photo" data-photo="S331" aria-label="放大：趴著，第 22 張" style="--ratio:1.500375"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S331-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S331-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S331-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="1333" loading="lazy" decoding="async" alt="趴著｜新加坡"></button><figcaption class="caption"><span class="t">22　趴著</span><span class="d">牆裡的兩個人一直在煎餅，牆下穿紅衣的男人趴在桌上。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:0.666500"><button type="button" class="photo" data-photo="S332" aria-label="放大：螢光色的外套，第 23 張" style="--ratio:0.666500"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S332-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S332-1200.jpg 800w, https://photo.easp2027.workers.dev/books/singapore/img/S332-2000.jpg 1333w" sizes="(max-width:700px) 100vw, 55vw" width="1333" height="2000" loading="lazy" decoding="async" alt="螢光色的外套｜新加坡"></button><figcaption class="caption"><span class="t">23　螢光色的外套</span><span class="d">穿著螢光工作服的人坐在壁畫裡的女子底下。綠色的椅子，綠色的桌子。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:0.750000"><button type="button" class="photo" data-photo="S333" aria-label="放大：粉紅色的巷子，第 24 張" style="--ratio:0.750000"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S333-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S333-1200.jpg 900w, https://photo.easp2027.workers.dev/books/singapore/img/S333-2000.jpg 1500w" sizes="(max-width:700px) 100vw, 55vw" width="1500" height="2000" loading="lazy" decoding="async" alt="粉紅色的巷子｜新加坡"></button><figcaption class="caption"><span class="t">24　粉紅色的巷子</span><span class="d">被漆成粉紅色的巷子。行李箱擱在旁邊，戴頭巾的女子低頭看手機。</span></figcaption></figure></section><section class="travel-chapter c3" id="chapter-3"><header class="travel-chapter-head portrait"><div class="chapter-color"><span>第三章</span><h2>25–36</h2><span>12 張</span></div><figure class="head-photo"><button type="button" class="photo" data-photo="S334" aria-label="放大：樹的影子，第 25 張" style="--ratio:1.000000"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S334-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S334-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S334-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 55vw" width="2000" height="2000" loading="lazy" decoding="async" alt="樹的影子｜新加坡"></button><figcaption class="caption"><span class="t">25　樹的影子</span><span class="d">一整面白牆都是樹的影子。影子的一角，戴頭巾的女子小小地坐著。</span></figcaption></figure></header><figure class="travel-photo" style="--ratio:1.500375"><button type="button" class="photo" data-photo="S335" aria-label="放大：藍與黃的牆，第 26 張" style="--ratio:1.500375"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S335-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S335-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S335-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="1333" loading="lazy" decoding="async" alt="藍與黃的牆｜新加坡"></button><figcaption class="caption"><span class="t">26　藍與黃的牆</span><span class="d">紅色的螃蟹招牌、生鏽的鐵門、置物櫃、紅藍塑膠椅。沒有人。</span></figcaption></figure><figure class="travel-photo" style="--ratio:1.500375"><button type="button" class="photo" data-photo="S336" aria-label="放大：坐在後門，第 27 張" style="--ratio:1.500375"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S336-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S336-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S336-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="1333" loading="lazy" decoding="async" alt="坐在後門｜新加坡"></button><figcaption class="caption"><span class="t">27　坐在後門</span><span class="d">坐在店家後門的台階上看手機。巷子一路筆直地伸過去。</span></figcaption></figure><figure class="travel-photo" style="--ratio:1.500375"><button type="button" class="photo" data-photo="S337" aria-label="放大：冷氣機的牆，第 28 張" style="--ratio:1.500375"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S337-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S337-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S337-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="1333" loading="lazy" decoding="async" alt="冷氣機的牆｜新加坡"></button><figcaption class="caption"><span class="t">28　冷氣機的牆</span><span class="d">兩側被冷氣室外機與垃圾桶夾住的巷子。兩個人隔著距離，各自休息。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:0.666500"><button type="button" class="photo" data-photo="S338" aria-label="放大：倚著欄杆，第 29 張" style="--ratio:0.666500"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S338-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S338-1200.jpg 800w, https://photo.easp2027.workers.dev/books/singapore/img/S338-2000.jpg 1333w" sizes="(max-width:700px) 100vw, 55vw" width="1333" height="2000" loading="lazy" decoding="async" alt="倚著欄杆｜新加坡"></button><figcaption class="caption"><span class="t">29　倚著欄杆</span><span class="d">白牆的窄巷，一個背影倚著欄杆望向巷子那頭。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:1.000000"><button type="button" class="photo" data-photo="S339" aria-label="放大：一道光，第 30 張" style="--ratio:1.000000"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S339-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S339-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S339-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 55vw" width="2000" height="2000" loading="lazy" decoding="async" alt="一道光｜新加坡"></button><figcaption class="caption"><span class="t">30　一道光</span><span class="d">從高處往下看。一道光切開暗處，老人走在光裡。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:0.666500"><button type="button" class="photo" data-photo="S340" aria-label="放大：街頭的吉他，第 31 張" style="--ratio:0.666500"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S340-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S340-1200.jpg 800w, https://photo.easp2027.workers.dev/books/singapore/img/S340-2000.jpg 1333w" sizes="(max-width:700px) 100vw, 55vw" width="1333" height="2000" loading="lazy" decoding="async" alt="街頭的吉他｜新加坡"></button><figcaption class="caption"><span class="t">31　街頭的吉他</span><span class="d">天橋底下彈電吉他的老人。走上階梯的人沒有回頭。</span></figcaption></figure><figure class="travel-photo" style="--ratio:1.500375"><button type="button" class="photo" data-photo="S341" aria-label="放大：回頭，第 32 張" style="--ratio:1.500375"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S341-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S341-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S341-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="1333" loading="lazy" decoding="async" alt="回頭｜新加坡"></button><figcaption class="caption"><span class="t">32　回頭</span><span class="d">走過招募志工的海報，回過頭來看了一眼。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:0.666500"><button type="button" class="photo" data-photo="S342" aria-label="放大：廣告底下，第 33 張" style="--ratio:0.666500"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S342-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S342-1200.jpg 800w, https://photo.easp2027.workers.dev/books/singapore/img/S342-2000.jpg 1333w" sizes="(max-width:700px) 100vw, 55vw" width="1333" height="2000" loading="lazy" decoding="async" alt="廣告底下｜新加坡"></button><figcaption class="caption"><span class="t">33　廣告底下</span><span class="d">在放大成整面牆的名牌廣告底下，年輕人坐在人行道上看手機。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:0.666500"><button type="button" class="photo" data-photo="S343" aria-label="放大：壁畫與啤酒，第 34 張" style="--ratio:0.666500"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S343-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S343-1200.jpg 800w, https://photo.easp2027.workers.dev/books/singapore/img/S343-2000.jpg 1333w" sizes="(max-width:700px) 100vw, 55vw" width="1333" height="2000" loading="lazy" decoding="async" alt="壁畫與啤酒｜新加坡"></button><figcaption class="caption"><span class="t">34　壁畫與啤酒</span><span class="d">巨大的壁畫底下，一杯啤酒擱著，人看著手機。</span></figcaption></figure><figure class="travel-photo portrait" style="--ratio:0.666500"><button type="button" class="photo" data-photo="S344" aria-label="放大：河邊的位子，第 35 張" style="--ratio:0.666500"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S344-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S344-1200.jpg 800w, https://photo.easp2027.workers.dev/books/singapore/img/S344-2000.jpg 1333w" sizes="(max-width:700px) 100vw, 55vw" width="1333" height="2000" loading="lazy" decoding="async" alt="河邊的位子｜新加坡"></button><figcaption class="caption"><span class="t">35　河邊的位子</span><span class="d">河邊的露天座位。戴橘色帽子的老人，還有一個白色購物袋。</span></figcaption></figure><figure class="travel-photo" style="--ratio:1.500375"><button type="button" class="photo" data-photo="S345" aria-label="放大：迴廊，第 36 張" style="--ratio:1.500375"><img src="https://photo.easp2027.workers.dev/books/singapore/img/S345-1200.jpg" srcset="https://photo.easp2027.workers.dev/books/singapore/img/S345-1200.jpg 1200w, https://photo.easp2027.workers.dev/books/singapore/img/S345-2000.jpg 2000w" sizes="(max-width:700px) 100vw, 90vw" width="2000" height="1333" loading="lazy" decoding="async" alt="迴廊｜新加坡"></button><figcaption class="caption"><span class="t">36　迴廊</span><span class="d">殖民時期建築的迴廊。輪椅上的人，以及站在後面推輪椅的人。</span></figcaption></figure></section></main>
+<footer class="page-end"><a href="photography-zh.html#/journals">← 攝影誌</a><span>新加坡</span><a href="#top">回到頂端 ↑</a></footer>
+
+<dialog class="lightbox" id="lb" aria-label="放大看照片">
+ <div class="lb-top"><span class="lb-count" id="lbCount"></span><span class="lb-btns"><button type="button" class="lb-btn" id="lbSheet" aria-pressed="false">印樣</button><button type="button" class="lb-btn" id="lbClose">關閉</button></span></div>
+ <div class="lb-stage" id="lbStage"><img id="lbImg" alt=""><button type="button" class="lb-arrow prev" id="lbPrev" aria-label="上一張">←</button><button type="button" class="lb-arrow next" id="lbNext" aria-label="下一張">→</button></div>
+ <div class="lb-data"><span class="l" id="lbL"></span><span class="r" id="lbR"></span></div>
+ <div class="lb-thumbs" id="lbThumbs" hidden></div>
+</dialog>
+
+<script>
+const META = {"S310": {"n": "01", "title": "巷底的塔", "text": "藍色時刻的後巷。冷氣室外機與垃圾桶排到底，盡頭是亮著燈的金融區高塔。"}, "S311": {"n": "02", "title": "早晨的後巷", "text": "接住晨光的高樓，樓腳下是剛醒過來的店家背面。"}, "S312": {"n": "03", "title": "一張椅子", "text": "男人在後巷擺一張椅子坐著。抬頭是玻璃帷幕的高塔。"}, "S313": {"n": "04", "title": "藍色的天際線", "text": "黃昏的新加坡河。對岸的金融區一起亮了起來。"}, "S314": {"n": "05", "title": "河上的船", "text": "高塔底下兩艘小船，紅色的燈在水面上暈開。"}, "S315": {"n": "06", "title": "拿著菜單的人", "text": "拿著菜單等客人的店員，背後是要抬頭才看得完的銀行大樓。"}, "S316": {"n": "07", "title": "天橋下", "text": "坐在天橋階梯上的人們。階梯的另一頭，是遠處的大樓群。"}, "S317": {"n": "08", "title": "三個人", "text": "工地圍籬前，三個人各坐一張椅子休息，彼此沒有交談。"}, "S318": {"n": "09", "title": "217", "text": "「非相關人員禁止進入」的告示底下，一個人坐在編了號的圍擋前。"}, "S319": {"n": "10", "title": "窗子底下", "text": "白色百葉窗底下，兩個穿工作服的人就坐在地上休息。"}, "S320": {"n": "11", "title": "木箱上的午睡", "text": "斑駁的牆、晾著的布、黃色的塑膠籃。中間有人躺在木箱上睡著。"}, "S321": {"n": "12", "title": "扛著貨", "text": "兩個把大袋子扛在肩上的人走過，眼睛看著鏡頭。"}, "S322": {"n": "13", "title": "文化館門口", "text": "印度文化館的招牌底下，一個人赤腳坐在石階上看手機，正好與展示裡的塑像並排。"}, "S323": {"n": "14", "title": "金飾廣告", "text": "當金子的廣告。在滿身金飾的女子前面，一個男人正在講電話。"}, "S324": {"n": "15", "title": "朱紅的牆", "text": "被漆成彩色、成了觀光景點的老屋。屋腳下坐著一個看手機的人。"}, "S325": {"n": "16", "title": "青綠的牆", "text": "綠色的牆與彩色玻璃窗。窗下有人放下購物袋歇著。"}, "S326": {"n": "17", "title": "走過那面顏色", "text": "被漆成紅、黃、藍的牆。有人一邊看手機一邊走過去。"}, "S327": {"n": "18", "title": "壁畫之前", "text": "女子低著頭走過鮮豔的壁畫。畫裡的那張臉是笑著的。"}, "S328": {"n": "19", "title": "牆上的勞動", "text": "牆上畫著曬衣服的人。牆前排著共享單車，一個人正走過去。"}, "S329": {"n": "20", "title": "被單的另一邊", "text": "壁畫裡的老人正在晾白被單。畫下的石頭上，坐著一個真的人。"}, "S330": {"n": "21", "title": "故鄉的牆", "text": "牆上畫著南印度的田野與寺塔，牆下一個人在綠色桌上吃飯。"}, "S331": {"n": "22", "title": "趴著", "text": "牆裡的兩個人一直在煎餅，牆下穿紅衣的男人趴在桌上。"}, "S332": {"n": "23", "title": "螢光色的外套", "text": "穿著螢光工作服的人坐在壁畫裡的女子底下。綠色的椅子，綠色的桌子。"}, "S333": {"n": "24", "title": "粉紅色的巷子", "text": "被漆成粉紅色的巷子。行李箱擱在旁邊，戴頭巾的女子低頭看手機。"}, "S334": {"n": "25", "title": "樹的影子", "text": "一整面白牆都是樹的影子。影子的一角，戴頭巾的女子小小地坐著。"}, "S335": {"n": "26", "title": "藍與黃的牆", "text": "紅色的螃蟹招牌、生鏽的鐵門、置物櫃、紅藍塑膠椅。沒有人。"}, "S336": {"n": "27", "title": "坐在後門", "text": "坐在店家後門的台階上看手機。巷子一路筆直地伸過去。"}, "S337": {"n": "28", "title": "冷氣機的牆", "text": "兩側被冷氣室外機與垃圾桶夾住的巷子。兩個人隔著距離，各自休息。"}, "S338": {"n": "29", "title": "倚著欄杆", "text": "白牆的窄巷，一個背影倚著欄杆望向巷子那頭。"}, "S339": {"n": "30", "title": "一道光", "text": "從高處往下看。一道光切開暗處，老人走在光裡。"}, "S340": {"n": "31", "title": "街頭的吉他", "text": "天橋底下彈電吉他的老人。走上階梯的人沒有回頭。"}, "S341": {"n": "32", "title": "回頭", "text": "走過招募志工的海報，回過頭來看了一眼。"}, "S342": {"n": "33", "title": "廣告底下", "text": "在放大成整面牆的名牌廣告底下，年輕人坐在人行道上看手機。"}, "S343": {"n": "34", "title": "壁畫與啤酒", "text": "巨大的壁畫底下，一杯啤酒擱著，人看著手機。"}, "S344": {"n": "35", "title": "河邊的位子", "text": "河邊的露天座位。戴橘色帽子的老人，還有一個白色購物袋。"}, "S345": {"n": "36", "title": "迴廊", "text": "殖民時期建築的迴廊。輪椅上的人，以及站在後面推輪椅的人。"}};
+const ORDER = ["S310", "S311", "S312", "S313", "S314", "S315", "S316", "S317", "S318", "S319", "S320", "S321", "S322", "S323", "S324", "S325", "S326", "S327", "S328", "S329", "S330", "S331", "S332", "S333", "S334", "S335", "S336", "S337", "S338", "S339", "S340", "S341", "S342", "S343", "S344", "S345"];
+const $ = s => document.getElementById(s);
+const lb = $('lb'), img = $('lbImg');
+let cur = 0, opener = null;
+function show(i){
+  cur = Math.max(0, Math.min(ORDER.length - 1, i));
+  const id = ORDER[cur], m = META[id];
+  img.style.opacity = 0;
+  const n = new Image(); n.src = `https://photo.easp2027.workers.dev/books/singapore/img/${id}-2000.jpg`;
+  const done = () => { if (ORDER[cur] === id){ img.src = n.src; img.alt = `${m.title}｜新加坡`; img.style.opacity = 1; } };
+  (n.decode ? n.decode().then(done, done) : (n.onload = done));
+  $('lbCount').textContent = `${m.n} / ${String(ORDER.length).padStart(2, '0')}`;
+  $('lbL').textContent = `${m.title}　／　新加坡　／　${m.n}`;
+  $('lbR').textContent = m.text;
+  $('lbPrev').disabled = cur === 0; $('lbNext').disabled = cur === ORDER.length - 1;
+  document.querySelectorAll('#lbThumbs button').forEach((b, k) => { b.setAttribute('aria-current', k === cur ? 'true' : 'false'); if (k === cur && !$('lbThumbs').hidden) b.scrollIntoView({block:'nearest', inline:'center'}); });
+}
+function openLb(id, el){
+  opener = el; if (!$('lbThumbs').children.length) $('lbThumbs').innerHTML = ORDER.map(i => `<button type="button" aria-label="第 ${META[i].n} 張"><img src="https://photo.easp2027.workers.dev/books/singapore/img/${i}-1200.jpg" alt="" loading="lazy"></button>`).join('');
+  document.querySelectorAll('#lbThumbs button').forEach((b, k) => b.onclick = () => show(k));
+  try { lb.showModal(); } catch(e){ lb.setAttribute('open', ''); }
+  document.body.classList.add('modal-open'); show(ORDER.indexOf(id));
+}
+function close(){ if (lb.open) lb.close(); }
+lb.addEventListener('close', () => { document.body.classList.remove('modal-open'); if (opener) opener.focus(); });
+document.querySelectorAll('[data-photo]').forEach(b => b.addEventListener('click', () => openLb(b.dataset.photo, b)));
+$('lbClose').onclick = close;
+$('lbPrev').onclick = () => show(cur - 1); $('lbNext').onclick = () => show(cur + 1);
+$('lbSheet').onclick = () => { const t = $('lbThumbs'); t.hidden = !t.hidden; $('lbSheet').setAttribute('aria-pressed', t.hidden ? 'false' : 'true'); show(cur); };
+document.addEventListener('keydown', e => { if (!lb.open) return; if (e.key === 'ArrowLeft') show(cur - 1); else if (e.key === 'ArrowRight') show(cur + 1); });
+let sx = 0, sy = 0;
+$('lbStage').addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, {passive:true});
+$('lbStage').addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+  if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.5) show(cur + (dx < 0 ? 1 : -1)); }, {passive:true});
+</script>
+</body>
+</html>
+⟦en⟧<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>⟦zh⟧Singapore · 新加坡 — 葉崇揚⟦en⟧Singapore — Chung-Yang Yeh⟦/⟧</title>
+<title>新加坡攝影旅誌</title>
 <meta name="robots" content="noindex">
-⟦zh⟧<link rel="canonical" href="https://chungyang1017.github.io/photography-zh.html">⟦en⟧<link rel="canonical" href="https://chungyang1017.github.io/photography.html">⟦/⟧
-⟦zh⟧<meta http-equiv="refresh" content="0; url=photography-zh.html#/journal/singapore">⟦en⟧<meta http-equiv="refresh" content="0; url=photography.html#/journal/singapore">⟦/⟧
-<script>location.replace(⟦zh⟧'photography-zh.html#/journal/singapore'⟦en⟧'photography.html#/journal/singapore'⟦/⟧);</script>
+<link rel="canonical" href="https://chungyang1017.github.io/photography-singapore-zh.html">
+<meta http-equiv="refresh" content="0; url=photography-singapore-zh.html">
+<script>location.replace('photography-singapore-zh.html' + location.hash);</script>
 </head>
 <body>
-<!-- 這一頁搬到新的攝影頁了（2026-11-11）。舊網址留著，自動轉過去。 -->
-<p>⟦zh⟧<a href="photography-zh.html#/journal/singapore">攝影</a>⟦en⟧<a href="photography.html#/journal/singapore">Photography</a>⟦/⟧</p>
+<!-- 新加坡攝影旅誌只有中文，英文網址轉到中文頁（2026-11-11）。 -->
+<p><a href="photography-singapore-zh.html">新加坡攝影旅誌</a></p>
 </body>
 </html>
+⟦/⟧
