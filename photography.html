@@ -142,6 +142,18 @@ a:hover,.btn:hover{opacity:.8}
 .bk .t span{font-size:13px;letter-spacing:.1em;color:var(--muted);line-height:1.75}
 .bk .photo{flex:1;min-width:0;height:100%;display:flex;align-items:flex-end;justify-content:flex-end}
 .bk .photo img{width:auto;height:auto;max-width:100%;max-height:100%}
+/* 別卷（新）：跟四季殘響同一套，橫排、照片不裁 */
+.spread.bek{justify-content:center;--red:#b13a2e}
+.spread.bek::before{display:none}
+.lst2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;border-top:1px solid var(--spread-rule)}
+.li2{display:grid;grid-template-columns:minmax(150px,210px) minmax(0,1fr);gap:26px;align-items:end;padding:24px 0;border-bottom:1px solid var(--spread-rule)}
+.li2 .fr-cap{padding:0}
+.li2 .fr-lat{white-space:normal}
+.li2 .ph{display:block;line-height:0;justify-self:start;max-width:100%}
+.li2 .ph img{display:block;width:auto;height:auto;max-width:100%;max-height:clamp(140px,19vh,210px);aspect-ratio:auto;object-fit:fill}
+/* 別卷不必擠進第一個畫面，矮螢幕上不用跟著四季縮那麼小；羅馬字字距縮一點，窄欄也排得下一行 */
+.spread.bek .sheet{max-width:max(1180px,calc((var(--H) - 360px) * 2.667))}
+.li2 .fr-lat{letter-spacing:.16em}
 /* 攝影誌只有一兩本時：放大、置中（教授 2026-11-11） */
 @media (min-width:1101px){
   .bekkan-grid.few{display:flex;flex-direction:row-reverse;justify-content:center;align-items:center;gap:6vw}
@@ -221,8 +233,14 @@ a:hover,.btn:hover{opacity:.8}
   .sheet{max-width:none;padding:0 18px}
   .fr-cap .haiku{display:block;font-size:13px}
   .fr-cap .haiku.prose{display:none}
+  .lst2{grid-template-columns:minmax(0,1fr)}   /* 別卷：平板改一欄，照片才不會太小 */
 }
 @media (max-width:700px){
+  /* 別卷：手機一欄，照片在上、字在下 */
+  .lst2{grid-template-columns:minmax(0,1fr)}
+  .li2{grid-template-columns:minmax(0,1fr);gap:10px;align-items:start}
+  .li2 .ph{order:-1;justify-self:stretch}
+  .li2 .ph img{width:100%;max-height:none}
   /* 手機：四格排不下，改成可以左右滑 */
   .strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -18px;padding:0 18px;scroll-padding-inline:18px;scrollbar-width:none;overscroll-behavior-x:contain}
   .strip::-webkit-scrollbar{display:none}
@@ -746,11 +764,21 @@ function renderHome() {
       ${cap(s, i, c)}
     </article>`;
   }).join('')}</div></div></section>`;
-  const bekkan = `<section class="spread colophon" id="bekkan" aria-label="別卷">
-    <header class="head chapter-head"><h2 class="chapter-no">別卷</h2><p class="chapter-date">${tcy(String(T.length))} 卷</p></header>
-    <div class="bekkan-grid">${T.map((s, i) => `<article class="bk">
-      <a class="t" href="#/series/${s.id}"><b>${E(s.name)}</b><span>${E(s.short)}　${count(s.count)}</span></a>
-      <a class="photo" href="#/series/${s.id}" aria-label="翻開 ${E(s.name)}">${PS.img(PS.cover(s), { size: 's' })}</a></article>`).join('')}</div></section>`;
+  // 教授 2026-11-12 00:22 在別卷的兩種左右並列裡選目錄式兩欄。
+  const bekHead = `<header class="sheet-head"><p><b>別卷</b></p></header>`;
+  const bekCap = (s, i, c) => `<div class="fr-cap">
+        <div class="fr-head"><h2 class="fr-name"><a href="#/series/${s.id}">${E(s.name)}</a><small>${ROMAN(i + 1)}</small></h2>${c.title ? `<p class="fr-title">${E(c.title)}</p>` : ''}</div>
+        <p class="fr-lat">${E(s.latin)}</p>
+        ${haikuBlock(c.haiku)}
+        <p class="fr-meta"><span>${E(s.short)}　${s.count} 張</span><a href="#/series/${s.id}">翻開</a></p>
+      </div>`;
+  // 別卷：目錄式，左右兩欄並排；每卷左邊是卷名與俳句，右邊是封面（不裁切）。
+  const bekkan = `<section class="spread bek" id="bekkan" aria-label="別卷"><div class="sheet">${bekHead}
+    <div class="lst2">${T.map((s, i) => { const c = PS.cover(s);
+      return `<article class="li2" aria-label="${E(s.name)}">
+      ${bekCap(s, i, c)}
+      <a class="ph" href="#/series/${s.id}" aria-label="翻開 ${E(s.name)}">${PS.img(c, { size: 's' })}</a>
+    </article>`; }).join('')}</div></div></section>`;
   app.innerHTML = seasons + bekkan + journalSpread(S.length + T.length, false);
   ctx.textContent = PS.site.latin;
 }
