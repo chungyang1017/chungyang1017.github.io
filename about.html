@@ -74,7 +74,9 @@ html[lang="en"] .rows dd b,html[lang="en"] .dom b{letter-spacing:0}
 .foot{padding:40px var(--pad) 56px;display:flex;justify-content:space-between;gap:20px;font:400 12px/1.6 var(--sans);letter-spacing:.2em;color:var(--faint)}
 /* 字放大；職稱與單位、中文與英文名稱寫在同一行，放不下才換行 */
 body{font-size:18px}
-.top{font-size:14px}
+.top{font-size:16px;min-height:64px}
+.top .name{font-size:19px}
+.top nav{gap:28px}
 .kicker,.lab{font-size:14.5px}
 .sub{font-size:13.5px}
 .rows{grid-template-columns:7em minmax(0,1fr);row-gap:12px}
@@ -93,7 +95,10 @@ body{font-size:18px}
   body{font-size:17px}
   .top{flex-wrap:wrap;padding:6px 14px 0;gap:0 12px}
   .top nav{order:3;width:100%;justify-content:space-between;gap:0;border-top:1px solid var(--line)}
-  .top nav a{font-size:12.5px;letter-spacing:.04em}
+  .top nav a{font-size:14.5px;letter-spacing:.04em}
+  .top nav{gap:0}
+  .top .name{font-size:18px}
+  html[lang="en"] .top nav a{font-size:12.5px;letter-spacing:0;min-width:0}
   .dom,.links{grid-template-columns:1fr}
   .rows{grid-template-columns:5.4em minmax(0,1fr);column-gap:14px}
   .foot{flex-direction:column;gap:4px}
@@ -114,11 +119,11 @@ html[lang="en"] .b .lab{letter-spacing:.04em}
 @media (min-width:1500px){body.b{font-size:19px}.b .rows dd b,.b .dom b{font-size:20px}}
 @media (max-width:1180px){.b .dom{grid-template-columns:1fr}}
 @media (max-width:760px){.b .dom{grid-template-columns:1fr}}
-.side{position:sticky;top:106px}
+.side{position:sticky;top:112px}
 @media (max-height:840px){.side{position:static}}   /* 視窗太矮時左欄不固定，免得連絡方式被切掉 */
 .side .me{width:210px}
 .side .who{margin-top:34px;font:500 22px/1.5 var(--serif);letter-spacing:.24em}
-.side .who small{display:inline;margin-left:1em;font:400 12.5px/1.6 var(--sans);letter-spacing:.2em;color:var(--faint)}
+.side .who small{display:inline-block;white-space:nowrap;margin-left:1em;font:400 12.5px/1.6 var(--sans);letter-spacing:.2em;color:var(--faint)}
 .side .role{margin-top:12px;font:400 15.5px/1.8 var(--sans);color:var(--muted)}
 .side .mail{margin-top:24px;font-size:19px}
 .side .links{grid-template-columns:1fr;margin-top:14px;gap:0}
