@@ -65,17 +65,19 @@ button.photo img{width:100%}
 .chapter-color span{font-size:14px;letter-spacing:.2em}
 /* 章頁的照片不裁切：直幅和正方形照片照自己的比例決定欄寬，色塊補滿左邊；圖說放在色塊下緣的延伸線下面 */
 .head-photo{position:relative}
-.travel-chapter-head.portrait{grid-template-columns:minmax(0,1fr) auto}
-.travel-chapter-head.portrait .photo{width:min(calc(88svh * var(--ratio)),calc((100vw - var(--rail)) * .6667))}
+/* 教授 2026-11-11 21:09「有時候照片太大，螢幕沒辦法放下一張照片，都調整一下」：
+   每張照片的高度不超過「螢幕高度減 150px」，圖說也一起放得進一個畫面。寬度照這個上限反推，照片一律不裁切。 */
+.travel-chapter-head,.travel-chapter-head.portrait{grid-template-columns:minmax(0,1fr) auto}
+.head-photo .photo{width:min(calc((100svh - 150px) * var(--ratio)),calc((100vw - var(--rail)) * .6667))}
 .head-photo .caption{position:absolute;left:0;right:0;top:100%}
 
 .caption{font-size:13px;line-height:1.7;display:flex;justify-content:space-between;gap:28px;padding:14px 12px 0;letter-spacing:.035em}
 .caption .t{white-space:nowrap}
 .caption .d{text-align:right;color:var(--muted);max-width:44em}
-.travel-photo{margin:0 5% 110px;width:90%}
-.travel-photo:nth-of-type(3n){margin-left:15%;width:85%}
-.travel-photo:nth-of-type(4n){margin-left:0;width:100%}
-.travel-photo.portrait{width:min(62%,calc(92svh * var(--ratio)));margin-inline:auto}
+.travel-photo{--fit:calc((100svh - 150px) * var(--ratio));margin:0 auto 110px;width:min(90%,var(--fit))}
+.travel-photo:nth-of-type(3n){margin-left:auto;margin-right:0;width:min(85%,var(--fit))}
+.travel-photo:nth-of-type(4n){margin-inline:auto;width:min(100%,var(--fit))}
+.travel-photo.portrait{margin-inline:auto;width:min(62%,var(--fit))}
 
 .page-end{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin:0 40px;padding:40px 0;border-top:1px solid var(--rule);font-size:13px;letter-spacing:.08em}
 
@@ -127,7 +129,7 @@ button.photo img{width:100%}
   .chapter-color{padding:24px 20px;min-height:155px}
   .chapter-color h2{font-size:52px}
   .chapter-color span{font-size:13px}
-  .travel-chapter-head.portrait .photo{width:100%}
+  .head-photo .photo{width:100%}
   .head-photo .caption{position:static}
   .travel-photo,.travel-photo:nth-of-type(3n),.travel-photo:nth-of-type(4n),.travel-photo.portrait{margin:0 0 60px;width:100%}
   .caption{flex-direction:column;gap:2px;padding:12px 18px 0;line-height:1.8}
