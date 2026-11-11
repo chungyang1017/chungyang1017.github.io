@@ -39,10 +39,12 @@ img{display:block;max-width:100%;height:auto}
 .me figcaption{margin-top:10px;font:400 12px/1.5 var(--sans);letter-spacing:.24em;color:var(--faint)}
 .prose p{max-width:34em;text-align:justify;letter-spacing:.03em}
 .prose p+p{margin-top:1.5em}
-.prose.more{margin-top:3.2em}
-.prose.more .sub{margin-bottom:1.2em}
-.prose.more .sub em{font-style:normal;letter-spacing:.06em;margin-left:1.2em;padding:1px 8px;border:1px solid var(--line)}
-.prose.more .sub+p{margin-top:0}
+.prose.more{margin-top:4em}
+.part{font:500 26px/1.5 var(--serif);letter-spacing:.24em;margin:0 0 .9em}
+.part::before{content:"";display:block;width:18px;height:1px;background:var(--accent);margin-bottom:16px}
+.part em{font:400 13px/1 var(--sans);font-style:normal;letter-spacing:.06em;margin-left:1.2em;padding:3px 8px;border:1px solid var(--line);vertical-align:middle}
+.part+p{margin-top:0}
+html[lang="en"] .part{letter-spacing:.04em}
 .lab{font:500 13px/1.6 var(--sans);letter-spacing:.22em}
 .lab::before{content:"";display:block;width:18px;height:1px;background:var(--accent);margin-bottom:14px}
 .blurb{margin-top:10px;font:400 13px/1.8 var(--sans);color:var(--muted);max-width:16em}
@@ -53,6 +55,7 @@ img{display:block;max-width:100%;height:auto}
 .rows dd b a{box-shadow:inset 0 -1px 0 var(--accent)}
 .rows dd span{display:block;font:400 13.5px/1.7 var(--sans);color:var(--muted)}
 .rows+.sub,.rows+.svc{margin-top:44px}
+.a .cv2>div+div{margin-top:44px}
 .svc p{font:400 14px/1.8 var(--sans);color:var(--muted);max-width:40em}
 .dom{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 40px;max-width:40em}
 .dom b{display:block;font-weight:500;font-size:16.5px;letter-spacing:.04em}
@@ -69,8 +72,25 @@ html[lang="en"] .lead{letter-spacing:.01em;line-height:1.5}
 html[lang="en"] .top .name{letter-spacing:.08em}
 html[lang="en"] .rows dd b,html[lang="en"] .dom b{letter-spacing:0}
 .foot{padding:40px var(--pad) 56px;display:flex;justify-content:space-between;gap:20px;font:400 12px/1.6 var(--sans);letter-spacing:.2em;color:var(--faint)}
+/* 字放大；職稱與單位、中文與英文名稱寫在同一行，放不下才換行 */
+body{font-size:18px}
+.top{font-size:14px}
+.kicker,.lab{font-size:14.5px}
+.sub{font-size:13.5px}
+.rows{grid-template-columns:7em minmax(0,1fr);row-gap:12px}
+.rows dt{font-size:15px;line-height:2.3}
+.rows dd{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:1.1em}
+.rows dd b{display:inline;font-size:19px}
+.rows dd span{display:inline;font-size:15.5px}
+.dom li{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:.9em}
+.dom b{display:inline;font-size:19px}
+.dom span{display:inline;font-size:18px}
+.note,.svc p{font-size:15.5px}
+.links a{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;align-items:baseline;align-content:center;column-gap:.9em;min-height:44px;font-size:12.5px;letter-spacing:.14em}
+.links a small{font-size:14.5px}
+.me figcaption{font-size:13px}
 @media (max-width:760px){
-  body{font-size:16px}
+  body{font-size:17px}
   .top{flex-wrap:wrap;padding:6px 14px 0;gap:0 12px}
   .top nav{order:3;width:100%;justify-content:space-between;gap:0;border-top:1px solid var(--line)}
   .top nav a{font-size:12.5px;letter-spacing:.04em}
@@ -80,19 +100,32 @@ html[lang="en"] .rows dd b,html[lang="en"] .dom b{letter-spacing:0}
 }
 
 /* B 左窄右寬：左邊固定放照片、姓名、連絡；右邊捲動看內容 */
-.wrap{display:grid;grid-template-columns:minmax(220px,280px) minmax(0,1fr);column-gap:clamp(48px,8vw,140px);padding:96px var(--pad) 40px;align-items:start}
+.wrap{display:grid;grid-template-columns:minmax(240px,320px) minmax(0,1fr);column-gap:clamp(48px,7vw,120px);max-width:1400px;margin-inline:auto;padding:96px var(--pad) 40px;align-items:start}
+.b .prose p{max-width:none}
+.b .rows,.b .dom,.b .links,.b .svc p{max-width:none}
+.b .main .lead{max-width:none}
+.b .dom{grid-template-columns:repeat(2,minmax(0,1fr))}
+.b .cv2>div+div{margin-top:44px}
+.b .foot{max-width:1400px;margin-inline:auto}
+.b .lab{font:500 26px/1.5 var(--serif);letter-spacing:.24em}
+.b .lab i{font-size:20px;letter-spacing:.04em}
+.b .lab::before{margin-bottom:16px}
+html[lang="en"] .b .lab{letter-spacing:.04em}
+@media (min-width:1500px){body.b{font-size:19px}.b .rows dd b,.b .dom b{font-size:20px}}
+@media (max-width:1180px){.b .dom{grid-template-columns:1fr}}
+@media (max-width:760px){.b .dom{grid-template-columns:1fr}}
 .side{position:sticky;top:106px}
 @media (max-height:840px){.side{position:static}}   /* 視窗太矮時左欄不固定，免得連絡方式被切掉 */
 .side .me{width:210px}
 .side .who{margin-top:34px;font:500 22px/1.5 var(--serif);letter-spacing:.24em}
-.side .who small{display:block;margin-top:2px;font:400 12px/1.6 var(--sans);letter-spacing:.24em;color:var(--faint)}
-.side .role{margin-top:14px;font:400 13.5px/1.8 var(--sans);color:var(--muted)}
-.side .mail{margin-top:26px;font-size:17px}
+.side .who small{display:inline;margin-left:1em;font:400 12.5px/1.6 var(--sans);letter-spacing:.2em;color:var(--faint)}
+.side .role{margin-top:12px;font:400 15.5px/1.8 var(--sans);color:var(--muted)}
+.side .mail{margin-top:24px;font-size:19px}
 .side .links{grid-template-columns:1fr;margin-top:14px;gap:0}
 .main .kicker{margin-bottom:22px}
 .main .lead{max-width:17em}
 .main .prose{margin-top:56px}
-.main .prose.more{margin-top:3.2em}
+.main .prose.more{margin-top:4em}
 .blk{padding:72px 0 0;margin-top:72px;border-top:1px solid var(--line)}
 .blk .body{margin-top:30px}
 @media (max-width:900px){
@@ -122,7 +155,7 @@ var c={"spring": "#4d6b09", "summer": "#015749", "autumn": "#813707", "winter": 
 </head>
 <body class="b">
 <header class="top"><a class="name" href="index-en.html">Chung-Yang Yeh</a><nav aria-label="Site"><a href="index-en.html">Home</a><a href="about.html" aria-current="page">About</a><a href="academic.html">Research</a><a href="photography.html">Photography</a><a href="teaching.html">Teaching</a><a href="essays.html">Essays</a></nav><a class="lang" href="about-zh.html">中</a></header>
-<div class="wrap"><aside class="side"><figure class="me"><img src="about-portrait.jpg" width="1200" height="1600" alt="Chung-Yang Yeh"><figcaption>NARA</figcaption></figure><div><p class="who">葉崇揚<small>YEH CHUNG-YANG</small></p><p class="role">Professor<br>Dept. of Sociology, Soochow University</p></div><div class="contact"><a class="mail" href="mailto:chungyang.yeh@gmail.com">chungyang.yeh@gmail.com</a><p class="note">For interviews, talks, or collaboration, please get in touch.</p><div class="links"><a href="https://scholar.google.com/citations?user=mLY3afoAAAAJ&hl=en" target="_blank" rel="noopener">GOOGLE SCHOLAR<small>scholar.google.com</small></a><a href="https://orcid.org/0000-0003-4284-137X" target="_blank" rel="noopener">ORCID<small>0000-0003-4284-137X</small></a><a href="https://github.com/chungyang1017" target="_blank" rel="noopener">GITHUB<small>@chungyang1017</small></a><a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener">INSTAGRAM<small>@chungyang.yeh</small></a></div></div></aside><main class="main"><h1 class="kicker">About</h1><p class="lead">Writing between institutions and society — a researcher of the welfare state.</p><div class="prose"><p>A welfare-state researcher. After completing my PhD in the United Kingdom, I brought a comparative welfare-regime lens back to Taiwan and East Asia. My long-standing concerns are pensions, social investment, welfare attitudes, and inequality.</p><p>My work moves between comparative and institutional analysis. I want the prose to be hard and the vision soft — data should be verifiable, yet society always holds one more layer than the model.</p><p>Recent interests run to welfare markets, the financialisation of welfare, and the rise of the regulatory welfare state. I am also asking how social policy should answer to a Taiwan that keeps shrinking, ageing, and growing more unequal.</p></div><div class="prose more"><p class="sub">Photography</p><p>Also a photographer. For nearly thirty years, photography has been another way of seeing that runs alongside the research. I photograph both landscapes and streets, in digital and on film.</p><p>In landscape, I look for a photograph with feeling and personal emotion rather than a pretty view: to express what I saw through my own emotion. I am fond of the blue hour, because what is photographed at that time is different. I also love the Impressionists and Turner, who express emotion through the composition of colours while reflecting the light.</p><p>Street photography carries more social responsibility. It is not only an outlet for personal emotion; it is also the photographer’s critique of existing social structures.</p><p>My taste leans towards Japanese photography. The photographers I admire include Shoji Ueda, Shinzo Maeda and Toshiki Nakanishi, as well as Josef Koudelka and André Kertész.</p></div><section class="blk" id="dom"><div class="head"><h2 class="lab">Interests<i>Research Interests</i></h2></div><div class="body"><ul class="dom"><li><b>East Asian Welfare States</b><span>比較東亞福利國家</span></li><li><b>Pension Policy</b><span>年金政策</span></li><li><b>Social Investment</b><span>社會投資</span></li><li><b>Welfare Attitudes</b><span>福利態度</span></li><li><b>Poverty &amp; Life Course</b><span>貧窮與生命歷程</span></li><li><b>Research Methodology</b><span>社會研究方法</span></li><li><b>AI &amp; Digital Governance</b><span>AI 與數位治理</span></li></ul></div></section><section class="blk" id="cv"><div class="head"><h2 class="lab">CV<i>Education &amp; Appointments</i></h2></div><div class="body"><p class="sub">Education</p><dl class="rows"><dt>2010–14</dt><dd><b>PhD ・ Sociology &amp; Social Policy</b><span>University of Southampton, UK</span><span>Public-Private Pension Mix in East Asia</span></dd><dt>2003–06</dt><dd><b>MA ・ Social Welfare</b><span>National Chung Cheng University</span></dd><dt>1999–03</dt><dd><b>BA ・ Social Policy &amp; Social Work</b><span>National Chi Nan University</span></dd></dl><p class="sub">Appointments</p><dl class="rows"><dt>2024–</dt><dd><b>Professor</b><span>Dept. of Sociology, Soochow University</span></dd><dt>2024–25</dt><dd><b>Visiting Scholar</b><span>Nagoya University</span></dd><dt>2020–24</dt><dd><b>Associate Professor</b><span>Dept. of Sociology, Soochow University</span></dd><dt>2018–20</dt><dd><b>Assistant Professor</b><span>Dept. of Sociology, Soochow University</span></dd><dt>2017–18</dt><dd><b>Assistant Professor</b><span>Dept. of Social Work, Asia University</span></dd><dt>2015–17</dt><dd><b>Postdoctoral Fellow</b><span>RCHSS, Academia Sinica</span></dd><dt>2015</dt><dd><b>Project Manager, CRPD Office</b><span>Ministry of Health and Welfare</span></dd></dl></div></section><section class="blk" id="hon"><div class="head"><h2 class="lab">Honours<i>Honours &amp; Awards</i></h2></div><div class="body"><dl class="rows"><dt>2025</dt><dd><b>Research Excellence</b><span>Soochow University</span></dd><dt>2024</dt><dd><b>Research Excellence ・ Course Reduction</b><span>4 credits ・ three consecutive years ・ Soochow University</span></dd><dt>2023</dt><dd><b>Soochow University Rether Award</b><span>Young Scholar Award</span></dd><dt>2023</dt><dd><b>Research Excellence</b><span>Soochow University</span></dd><dt>2021</dt><dd><b>Research Excellence</b><span>Soochow University</span></dd><dt>2019</dt><dd><b>MOST New Faculty Research Award</b><span>Ministry of Science and Technology</span></dd><dt>2013–14</dt><dd><b>CCK Foundation Fellowship</b><span>Doctoral Dissertation Fellowship (overseas)</span></dd><dt>2010–13</dt><dd><b>MOE Government Scholarship</b><span>Government Scholarship for Overseas Study, ROC</span></dd></dl><div class="svc"><p class="sub">Service</p><p>East Asian Social Policy (EASP) Research Network ・ Committee Member (2019–)</p></div></div></section><section class="blk" id="gr"><div class="head"><h2 class="lab">Grants<i>Research Grants</i></h2></div><div class="body"><dl class="rows"><dt>2026–29</dt><dd><b><a href="projects/pension-preferences-en.html">The Multidimensional Pension Preferences: Information, the Politics of Trade-offs, and Pension Preferences in East Asia</a></b><span>NSTC 115-2410-H-031-023-SS3</span></dd><dt>2025–26</dt><dd><b>Building Welfare Markets: Comparing East Asian Welfare States</b><span>NSTC 114-2410-H-031-090</span></dd><dt>2023–25</dt><dd><b>Marketisation and Financialisation of Pension Systems and the Rise of the Regulatory Welfare State in East Asian Welfare States</b><span>NSTC 112-2410-H-031-039-MY2</span></dd><dt>2021–23</dt><dd><b>Shaping and Managing Pension Politics: East Asian Welfare States in International Comparison</b><span>MOST 110-2410-H-031-052-MY2</span></dd><dt>2020–21</dt><dd><b>Female Labour Force Participation Rate and Family Policy: A Social Investment Perspective</b><span>MOST 109-2410-H-194-024 ・ Co-PI</span></dd><dt>2019–21</dt><dd><b>The Micro-Foundation of the Transformation from Passive Protection to Activation: A Comparative Study of East Asian Welfare States</b><span>MOST 108-2410-H-031-069-MY2</span></dd><dt>2018</dt><dd><b>From Productivist to Social Investment: The Transformation of Comparative East Asian Welfare States</b><span>MOST 107-2410-H-031-065</span></dd></dl></div></section></main></div>
+<div class="wrap"><aside class="side"><figure class="me"><img src="about-portrait.jpg" width="1200" height="1600" alt="Chung-Yang Yeh"><figcaption>NARA</figcaption></figure><div><p class="who">葉崇揚<small>YEH CHUNG-YANG</small></p><p class="role">Professor　Dept. of Sociology, Soochow University</p></div><div class="contact"><a class="mail" href="mailto:chungyang.yeh@gmail.com">chungyang.yeh@gmail.com</a><p class="note">For interviews, talks, or collaboration, please get in touch.</p><div class="links"><a href="https://scholar.google.com/citations?user=mLY3afoAAAAJ&hl=en" target="_blank" rel="noopener">GOOGLE SCHOLAR<small>scholar.google.com</small></a><a href="https://orcid.org/0000-0003-4284-137X" target="_blank" rel="noopener">ORCID<small>0000-0003-4284-137X</small></a><a href="https://github.com/chungyang1017" target="_blank" rel="noopener">GITHUB<small>@chungyang1017</small></a><a href="https://www.instagram.com/chungyang.yeh/" target="_blank" rel="noopener">INSTAGRAM<small>@chungyang.yeh</small></a></div></div></aside><main class="main"><h1 class="kicker">About</h1><p class="lead">Writing between institutions and society — a researcher of the welfare state.</p><div class="prose"><h2 class="part">Research</h2><p>A welfare-state researcher. After completing my PhD in the United Kingdom, I brought a comparative welfare-regime lens back to Taiwan and East Asia. My long-standing concerns are pensions, social investment, welfare attitudes, and inequality.</p><p>My work moves between comparative and institutional analysis. I want the prose to be hard and the vision soft — data should be verifiable, yet society always holds one more layer than the model.</p><p>Recent interests run to welfare markets, the financialisation of welfare, and the rise of the regulatory welfare state. I am also asking how social policy should answer to a Taiwan that keeps shrinking, ageing, and growing more unequal.</p></div><div class="prose more"><h2 class="part">Photography</h2><p>Also a photographer. For nearly thirty years, photography has been another way of seeing that runs alongside the research. I photograph both landscapes and streets, in digital and on film.</p><p>In landscape, I look for a photograph with feeling and personal emotion rather than a pretty view: to express what I saw through my own emotion. I am fond of the blue hour, because what is photographed at that time is different. I also love the Impressionists and Turner, who express emotion through the composition of colours while reflecting the light.</p><p>Street photography carries more social responsibility. It is not only an outlet for personal emotion; it is also the photographer’s critique of existing social structures.</p><p>My taste leans towards Japanese photography. The photographers I admire include Shoji Ueda, Shinzo Maeda and Toshiki Nakanishi, as well as Josef Koudelka and André Kertész.</p></div><section class="blk" id="dom"><div class="head"><h2 class="lab">Interests<i>Research Interests</i></h2></div><div class="body"><ul class="dom"><li><b>East Asian Welfare States</b><span>比較東亞福利國家</span></li><li><b>Pension Policy</b><span>年金政策</span></li><li><b>Social Investment</b><span>社會投資</span></li><li><b>Welfare Attitudes</b><span>福利態度</span></li><li><b>Poverty &amp; Life Course</b><span>貧窮與生命歷程</span></li><li><b>Research Methodology</b><span>社會研究方法</span></li><li><b>AI &amp; Digital Governance</b><span>AI 與數位治理</span></li></ul></div></section><section class="blk" id="cv"><div class="head"><h2 class="lab">CV<i>Education &amp; Appointments</i></h2></div><div class="body"><div class="cv2"><div><p class="sub">Education</p><dl class="rows"><dt>2010–14</dt><dd><b>PhD ・ Sociology &amp; Social Policy</b><span>University of Southampton, UK</span><span>Public-Private Pension Mix in East Asia</span></dd><dt>2003–06</dt><dd><b>MA ・ Social Welfare</b><span>National Chung Cheng University</span></dd><dt>1999–03</dt><dd><b>BA ・ Social Policy &amp; Social Work</b><span>National Chi Nan University</span></dd></dl></div><div><p class="sub">Appointments</p><dl class="rows"><dt>2024–</dt><dd><b>Professor</b><span>Dept. of Sociology, Soochow University</span></dd><dt>2024–25</dt><dd><b>Visiting Scholar</b><span>Nagoya University</span></dd><dt>2020–24</dt><dd><b>Associate Professor</b><span>Dept. of Sociology, Soochow University</span></dd><dt>2018–20</dt><dd><b>Assistant Professor</b><span>Dept. of Sociology, Soochow University</span></dd><dt>2017–18</dt><dd><b>Assistant Professor</b><span>Dept. of Social Work, Asia University</span></dd><dt>2015–17</dt><dd><b>Postdoctoral Fellow</b><span>RCHSS, Academia Sinica</span></dd><dt>2015</dt><dd><b>Project Manager, CRPD Office</b><span>Ministry of Health and Welfare</span></dd></dl></div></div></div></section><section class="blk" id="hon"><div class="head"><h2 class="lab">Honours<i>Honours &amp; Awards</i></h2></div><div class="body"><dl class="rows"><dt>2025</dt><dd><b>Research Excellence</b><span>Soochow University</span></dd><dt>2024</dt><dd><b>Research Excellence ・ Course Reduction</b><span>4 credits ・ three consecutive years ・ Soochow University</span></dd><dt>2023</dt><dd><b>Soochow University Rether Award</b><span>Young Scholar Award</span></dd><dt>2023</dt><dd><b>Research Excellence</b><span>Soochow University</span></dd><dt>2021</dt><dd><b>Research Excellence</b><span>Soochow University</span></dd><dt>2019</dt><dd><b>MOST New Faculty Research Award</b><span>Ministry of Science and Technology</span></dd><dt>2013–14</dt><dd><b>CCK Foundation Fellowship</b><span>Doctoral Dissertation Fellowship (overseas)</span></dd><dt>2010–13</dt><dd><b>MOE Government Scholarship</b><span>Government Scholarship for Overseas Study, ROC</span></dd></dl><div class="svc"><p class="sub">Service</p><p>East Asian Social Policy (EASP) Research Network ・ Committee Member (2019–)</p></div></div></section></main></div>
 <footer class="foot"><span>葉崇揚 · YEH CHUNG-YANG</span><span>About</span></footer>
 </body>
 </html>
