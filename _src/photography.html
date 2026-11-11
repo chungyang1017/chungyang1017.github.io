@@ -133,14 +133,6 @@ a:hover,.btn:hover{opacity:.8}
 .cap .cap-prose{display:block}
 .cap .ex{margin-inline-end:1.1em;white-space:nowrap}
 
-/* 別卷 */
-.bekkan-grid{flex:1;min-width:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));direction:rtl;gap:30px 12px;align-content:center}
-.bk{direction:ltr;height:300px;display:flex;flex-direction:row-reverse;gap:12px;padding:4px 10px 4px 0;border-right:1px solid var(--card-rule);min-width:0}
-.bk .t{writing-mode:vertical-rl;text-orientation:mixed;flex:none;display:block}
-.bk .t b{display:block;font-family:var(--serif);font-size:30px;font-weight:500;letter-spacing:.3em;line-height:1.3;margin-left:10px}
-.bk .t span{font-size:13px;letter-spacing:.1em;color:var(--muted);line-height:1.75}
-.bk .photo{flex:1;min-width:0;height:100%;display:flex;align-items:flex-end;justify-content:flex-end}
-.bk .photo img{width:auto;height:auto;max-width:100%;max-height:100%}
 /* 別卷（新）：跟四季殘響同一套，橫排、照片不裁 */
 .spread.bek{justify-content:center;--red:#b13a2e}
 .spread.bek::before{display:none}
@@ -153,13 +145,10 @@ a:hover,.btn:hover{opacity:.8}
 /* 別卷不必擠進第一個畫面，矮螢幕上不用跟著四季縮那麼小；羅馬字字距縮一點，窄欄也排得下一行 */
 .spread.bek .sheet{max-width:max(1180px,calc((var(--H) - 360px) * 2.667))}
 .li2 .fr-lat{letter-spacing:.16em}
-/* 攝影誌只有一兩本時：放大、置中（教授 2026-11-11） */
-@media (min-width:1101px){
-  .bekkan-grid.few{display:flex;flex-direction:row-reverse;justify-content:center;align-items:center;gap:6vw}
-  .bekkan-grid.few .bk{flex:none;height:min(60vh,calc(var(--H) - 150px))}
-  .bekkan-grid.few .bk .photo{flex:none}
-  .bekkan-grid.few .bk .photo img{max-width:32vw}
-}
+.sheet-head .sheet-h1{margin:0;font:inherit;letter-spacing:inherit}
+/* 題名放不下時換到下一行，不截字；攝影誌只有兩本，照片放大 */
+.li2 .fr-head{flex-wrap:wrap}
+#shi .li2 .ph img{max-height:clamp(180px,42vh,440px)}
 
 /* 攝影誌索引 */
 .colophon-grid{flex:1;min-width:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));direction:rtl;gap:30px 12px;align-content:center}
@@ -211,12 +200,6 @@ a:hover,.btn:hover{opacity:.8}
   .toc h2:not(:first-child){margin-right:0}
   .toc a{display:flex;align-items:baseline;gap:12px;min-height:44px;margin:0;padding:6px 0;border-bottom:1px solid var(--spread-rule)}
   .toc a b{font-size:20px;letter-spacing:.2em}
-  .bekkan-grid{grid-template-columns:repeat(2,minmax(0,1fr));direction:ltr;gap:24px 12px;padding:0 18px}
-  .bk{height:auto;display:flex;flex-direction:column-reverse;gap:0;border:0;border-top:1px solid var(--card-rule);padding:12px 0 0}
-  .bk .photo{height:auto;display:block;margin-bottom:10px}
-  .bk .photo img{width:100%;max-height:none}
-  .bk .t{writing-mode:horizontal-tb;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;min-height:44px}
-  .bk .t b{font-size:20px;letter-spacing:.2em;margin:0}
   .colophon-grid{display:block;padding:0 18px}
   .yr{writing-mode:horizontal-tb;height:auto;border:0;border-bottom:1px solid var(--ink);padding:20px 0 6px;display:flex;align-items:baseline;justify-content:space-between}
   .yr b{margin:0;font-size:24px}
@@ -240,6 +223,7 @@ a:hover,.btn:hover{opacity:.8}
   .li2{grid-template-columns:minmax(0,1fr);gap:10px;align-items:start}
   .li2 .ph{order:-1;justify-self:stretch}
   .li2 .ph img{width:100%;max-height:none}
+  #shi .li2 .ph img{max-height:none}
   /* 手機：四格排不下，改成可以左右滑 */
   .strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -18px;padding:0 18px;scroll-padding-inline:18px;scrollbar-width:none;overscroll-behavior-x:contain}
   .strip::-webkit-scrollbar{display:none}
@@ -690,7 +674,6 @@ const pad = n => String(n).padStart(2, '0');
 const no = i => `張號 ${tcy(pad(i + 1))}`;
 const when = w => { const m = String(w).match(/^(\d{4})\.(.*)$/); if (!m) return tcy(w); return `${m[1]}　${tcy(m[2].replace(/\./g, '・').replace(/[–-]/g, '〜'))}`; };
 const md = d => { const [, m, dd] = d.split('-'); return `${tcy(m)}・${tcy(dd)}`; };
-const count = n => `${tcy(String(n))} 張`;
 const KIND = { place: '旅行', monthly: '月誌', book: '攝影集' };
 const NUMS = '一二三四五六七八九十';
 const lines = h => String(h || '').split('／').filter(Boolean);
@@ -713,19 +696,21 @@ function fig(p, href, name, cls, cap, eager) {
     + `<figcaption class="cap">${cap}</figcaption></figure>`;
 }
 // ── 首頁 ──
+// 攝影誌：跟別卷同一套目錄式兩欄（教授 2026-11-12 00:29「改」）。每本字在左、封面在右，不裁切。
 function journalIndex(base) {
-  return BOOKS.map(b => `<article class="bk">
-      <a class="t" href="${E(b.href)}"><b>${E(b.name)}</b><span>${E(b.short)}　${count(b.count)}</span></a>
-      <a class="photo" href="${E(b.href)}" aria-label="翻開 ${E(b.name)}">${PS.img(b.cover, { size: 's' })}</a></article>`).join('')
-    + JOURNALS.map((s, i) => `<article class="bk">
-      <a class="t" href="#/journal/${s.id}"><b>${E(s.name)}</b><span>${E(s.short)}　${count(s.count)}</span></a>
-      <a class="photo" href="#/journal/${s.id}" aria-label="翻開 ${E(s.name)}">${PS.img(PS.cover(s), { size: 's' })}</a></article>`).join('');
+  return BOOKS.map(b => ({ href: b.href, name: b.name, short: b.short, count: b.count, cover: b.cover }))
+    .concat(JOURNALS.map(s => ({ href: `#/journal/${s.id}`, name: s.name, short: s.short, count: s.count, cover: PS.cover(s) })))
+    .map(b => `<article class="li2" aria-label="${E(b.name)}">
+      <div class="fr-cap">
+        <div class="fr-head"><h2 class="fr-name"><a href="${E(b.href)}">${E(b.name)}</a></h2>${b.cover.title ? `<p class="fr-title">${E(b.cover.title)}</p>` : ''}</div>
+        <p class="fr-meta"><span>${E(b.short)}　${b.count} 張</span><a href="${E(b.href)}">翻開</a></p>
+      </div>
+      <a class="ph" href="${E(b.href)}" aria-label="翻開 ${E(b.name)}">${PS.img(b.cover, { size: 's' })}</a></article>`).join('');
 }
 function journalSpread(base, isPage) {
-  const head = isPage
-    ? `<header class="head masthead vhead"><h1 class="vt">攝影誌</h1><div class="info">${NJ ? `<p class="period">${tcy(String(NJ))} 冊</p>` : ''}</div></header>`
-    : `<header class="head chapter-head"><h2 class="chapter-no">攝影誌</h2>${NJ ? `<p class="chapter-date">${tcy(String(NJ))} 冊</p>` : ''}</header>`;
-  return `<section class="spread colophon" id="shi" aria-label="攝影誌">${head}<div class="bekkan-grid${NJ <= 2 ? ' few' : ''}">${journalIndex(base)}</div></section>`;
+  const t = isPage ? '<h1 class="sheet-h1"><b>攝影誌</b></h1>' : '<p><b>攝影誌</b></p>';
+  return `<section class="spread bek" id="shi" aria-label="攝影誌"><div class="sheet"><header class="sheet-head">${t}</header>
+    <div class="lst2">${journalIndex(base)}</div></div></section>`;
 }
 
 // 教授 2026-11-11 23:42 在三種樣本裡選 B（色帶）。
