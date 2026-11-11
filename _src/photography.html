@@ -91,20 +91,11 @@ a:hover,.btn:hover{opacity:.8}
    教授 2026-11-11 21:30「四季，我不想這樣上下，我想要左右並列」；21:33「類似，四季殘響，那個明信片設計。11 四季合一 底片接觸印樣」；
    21:35「攝影展的訊息不用放上去。我只要設計風格」「但是底色不要黑色的」。
    樣子來源：/Volumes/Extreme SSD/攝影展/Design.pdf 第 11 頁（片格、片孔、紅色格號、片格下的季名）。底色用網頁原本的紙色。 */
-.spread.shiki{justify-content:center;--film:#0b0908;--red:#b13a2e}
+.spread.shiki{justify-content:center;--red:#b13a2e}
 .spread.shiki::before{display:none}
-.sheet{flex:1;min-width:0;max-width:max(760px,calc((var(--H) - 392px) * 2.667))}
-.sheet-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:14px;font-family:var(--serif);font-size:13px;letter-spacing:.3em;line-height:1.5}
+.sheet-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:16px;font-family:var(--serif);font-size:13px;letter-spacing:.3em;line-height:1.5}
 .sheet-head b{font-size:20px;font-weight:500;margin-right:14px}
-.sheet-head .mark{color:var(--red)}
-.strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .fr{min-width:0;container-type:inline-size}
-.film{position:relative;display:block;padding:40px 12px;background:var(--film);line-height:0}
-.film::before,.film::after{content:"";position:absolute;left:0;right:0;height:40px;background:linear-gradient(90deg,transparent 0 37%,var(--paper) 37% 63%,transparent 63% 100%) 0 50%/calc(100% / 6) 11px repeat-x}
-.film::before{top:0}
-.film::after{bottom:0}
-.film img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;object-position:var(--pos,50% 50%)}
-.film .fno{position:absolute;z-index:1;left:0;top:0;height:40px;display:flex;align-items:center;padding:0 12px;background:var(--film);font-family:var(--serif);font-size:13px;line-height:1;letter-spacing:.24em;white-space:nowrap;color:var(--red)}
 .fr-cap{padding:14px 0 0}
 .fr-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
 .fr-name{font-family:var(--serif);font-size:24px;font-weight:500;letter-spacing:.3em;line-height:1.3;color:var(--red);white-space:nowrap}
@@ -118,6 +109,13 @@ a:hover,.btn:hover{opacity:.8}
 @container (max-width:260px){.fr-lat{font-size:11px;letter-spacing:.12em}}
 @container (max-width:175px){.fr-lat{letter-spacing:.04em}.fr-name{font-size:20px}}
 @container (max-width:155px){.fr-lat{font-size:10px;letter-spacing:.02em}.fr-name{font-size:18px;letter-spacing:.2em}}
+
+.sheet{flex:1;min-width:0;max-width:max(760px,calc((var(--H) - 360px) * 2.667))}
+.strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.ph{display:block;line-height:0}
+.ph img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;object-position:var(--pos,50% 50%)}
+.band{display:flex;height:14px;margin-top:8px}
+.band i{flex:1 1 0;min-width:0}
 
 /* 照片與圖說 */
 .fig{display:flex;flex-direction:row-reverse;align-items:flex-end;gap:14px;margin:0;--h:calc(var(--H) - 96px)}
@@ -224,13 +222,11 @@ a:hover,.btn:hover{opacity:.8}
   .fr-cap .haiku.prose{display:none}
 }
 @media (max-width:700px){
-  /* 手機：四格排不下，改成一條可以左右滑的底片 */
-  .strip{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -18px;padding:0 18px;scroll-padding-inline:18px;scrollbar-width:none;overscroll-behavior-x:contain}
+  /* 手機：四格排不下，改成可以左右滑 */
+  .strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -18px;padding:0 18px;scroll-padding-inline:18px;scrollbar-width:none;overscroll-behavior-x:contain}
   .strip::-webkit-scrollbar{display:none}
   .fr{flex:0 0 41vw;scroll-snap-align:start}
-  .film{padding:30px 9px}
-  .film::before,.film::after{height:30px;background-size:calc(100% / 6) 9px}
-  .film .fno{height:30px;padding:0 9px;font-size:12px}
+  .band{height:10px;margin-top:6px}
   .sheet-head{font-size:12px;letter-spacing:.2em}
   .topbar{padding:0 14px;font-size:12px;gap:12px}
   .topbar nav{gap:16px}
@@ -714,26 +710,39 @@ function journalSpread(base, isPage) {
   return `<section class="spread colophon" id="shi" aria-label="攝影誌">${head}<div class="bekkan-grid${NJ <= 2 ? ' few' : ''}">${journalIndex(base)}</div></section>`;
 }
 
+// 教授 2026-11-11 23:42 在三種樣本裡選 B（色帶）。
+// 每張照片的主色：五色裡彩度最高的一色（太暗或太亮的打折）；五色都近灰時取中間那一色。和色譜相簿同一個算法。
+function mainColor(p) {
+  const lin = c => { c /= 255; return c <= .04045 ? c / 12.92 : ((c + .055) / 1.055) ** 2.4; };
+  const ok = h => { const [r, g, b] = [1, 3, 5].map(i => lin(parseInt(h.slice(i, i + 2), 16)));
+    const l = Math.cbrt(.4122214708 * r + .5363325363 * g + .0514459929 * b), m = Math.cbrt(.2119034982 * r + .6806995451 * g + .1073969566 * b), s = Math.cbrt(.0883024619 * r + .2817188376 * g + .6299787005 * b);
+    const L = .2104542553 * l + .793617785 * m - .0040720468 * s, A = 1.9779984951 * l - 2.428592205 * m + .4505937099 * s, B = .0259040371 * l + .7827717662 * m - .808675766 * s;
+    return { L, C: Math.hypot(A, B) }; };
+  const o = p.pal.map(ok); let best = -1, bi = 2;
+  o.forEach((c, i) => { const v = c.C * (c.L < .2 || c.L > .95 ? .35 : 1); if (v > best) { best = v; bi = i; } });
+  if (o[bi].C < .03) bi = 2;
+  return p.pal[bi];
+}
 const COVER_POS = {};
 function renderHome() {
   const S = PS.seasons, T = THEMES, J = JOURNALS;
   cur = [];
-  // 四季：一張接觸印樣，四格底片左右並列，春在左。格號照明信片的 1A、4A、7A、10A。
-  const FNO = ['1A', '4A', '7A', '10A'];
-  const seasons = `<section class="spread shiki" id="shiki" aria-label="四季"><div class="sheet">
-    <header class="sheet-head"><p><b>四季</b>${S.length} 卷</p><p class="mark" aria-hidden="true">SHIKI — CONTACT SHEET</p></header>
-    <div class="strip">${S.map((s, i) => {
-    const c = PS.cover(s);
-    return `<article class="fr" id="kan-${s.id}" aria-label="${E(s.name)}">
-      <a class="film" href="#/series/${s.id}" aria-label="翻開 ${E(s.name)}"${COVER_POS[s.id] ? ` style="--pos:${COVER_POS[s.id]}"` : ''}>
-        <span class="fno" aria-hidden="true">${FNO[i] || (i + 1) + 'A'}</span>${PS.img(c, { size: 's', eager: true })}
-      </a>
-      <div class="fr-cap">
+  // 四季：四張直幅並列，下面接一條色帶。色帶是這一卷每張照片的主色，算法和色譜相簿一樣。
+  const head = `<header class="sheet-head"><p><b>四季殘響</b></p></header>`;
+  const pos = s => COVER_POS[s.id] ? ` style="--pos:${COVER_POS[s.id]}"` : '';
+  const cap = (s, i, c) => `<div class="fr-cap">
         <div class="fr-head"><h2 class="fr-name"><a href="#/series/${s.id}">${E(s.name)}</a><small>卷${NUMS[i]}</small></h2>${c.title ? `<p class="fr-title">${E(c.title)}</p>` : ''}</div>
         <p class="fr-lat">${E(s.latin)}</p>
         ${haikuBlock(c.haiku)}
         <p class="fr-meta"><span>${E(s.short)}　${s.count} 張</span><a href="#/series/${s.id}">翻開</a></p>
-      </div>
+      </div>`;
+  const seasons = `<section class="spread shiki" id="shiki" aria-label="四季"><div class="sheet">${head}
+    <div class="strip">${S.map((s, i) => {
+    const c = PS.cover(s);
+    return `<article class="fr" id="kan-${s.id}" aria-label="${E(s.name)}">
+      <a class="ph" href="#/series/${s.id}" aria-label="翻開 ${E(s.name)}"${pos(s)}>${PS.img(c, { size: 's', eager: true })}</a>
+      <div class="band" aria-hidden="true">${s.photos.map(p => `<i style="background:${mainColor(p)}"></i>`).join('')}</div>
+      ${cap(s, i, c)}
     </article>`;
   }).join('')}</div></div></section>`;
   const bekkan = `<section class="spread colophon" id="bekkan" aria-label="別卷">
