@@ -8,92 +8,159 @@
 <meta name="description" content="多面向的年金政策偏好：資訊、政治交換與東亞社會大眾的年金改革偏好分析。國科會三年期專題研究計畫（NSTC 115-2410-H-031-023-SS3），主持人葉崇揚。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Yuji+Syuku&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap">
 <style>
-  :root{
-    --sand:#e8e2d4; --sand-light:#f4ecdc; --paper:#fcfaf3;
-    --accent:#c43838;
-    --ink:#1f1f1d; --ink-soft:rgba(31,31,29,.72); --ink-quiet:rgba(31,31,29,.5);
-    --rule:rgba(31,31,29,.12);
-    --serif:"Shippori Mincho","Noto Serif TC","Noto Serif JP",serif;
-    --display:"Yuji Syuku",serif;
-    --latin:"Inter",sans-serif;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--sand);color:var(--ink);font-family:var(--serif);font-feature-settings:"palt";-webkit-font-smoothing:antialiased}
-  a{color:var(--accent);text-decoration:none}
-  a:hover{text-decoration:underline}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 48px}
+:root{color-scheme:light;--paper:#f5f5f5;--ink:#1d1d1d;--muted:#575757;--faint:#6b6b6b;--line:#c5c7c8;--accent:#1d1d1d;
+  --serif:"Noto Serif TC","Songti TC",serif;--sans:"Noto Sans TC","PingFang TC",sans-serif;--latin:"Cormorant Garamond","Noto Serif TC",serif;
+  --pad:clamp(20px,6.5vw,104px)}
+*{box-sizing:border-box}
+html{background:var(--paper);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.9 var(--serif);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul,dl,dd,figure{margin:0;padding:0}
+ul{list-style:none}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+img{display:block;max-width:100%;height:auto}
+/* 全站共用的頂列：沒有印章，跟攝影頁同一種細線與字距 */
+.top{position:sticky;top:0;z-index:5;min-height:58px;padding:0 26px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--paper);border-bottom:1px solid var(--line);font:400 13px/1.5 var(--sans);letter-spacing:.08em}
+.top a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}
+.top .name{font-family:var(--serif);font-size:15px;letter-spacing:.22em;justify-content:flex-start}
+.top nav{display:flex;gap:22px}
+.top nav a{color:var(--muted)}
+.top nav a:hover{color:var(--ink)}
+.top nav a[aria-current="page"]{color:var(--ink);box-shadow:inset 0 -1px 0 var(--accent)}
+.top .lang{color:var(--muted)}
+.kicker{font:400 13px/1.6 var(--sans);letter-spacing:.22em;color:var(--muted)}
+.kicker i,.lab i{font:italic 400 16px/1 var(--latin);letter-spacing:.04em;margin-left:.7em;color:var(--faint)}
+.lead{font:300 clamp(24px,2.7vw,36px)/1.75 var(--serif);letter-spacing:.06em;text-wrap:balance}
+.me img{width:100%}
+.me figcaption{margin-top:10px;font:400 12px/1.5 var(--sans);letter-spacing:.24em;color:var(--faint)}
+.prose p{max-width:34em;text-align:justify;letter-spacing:.03em}
+.prose p+p{margin-top:1.5em}
+.prose.more{margin-top:4em}
+.part{font:500 26px/1.5 var(--serif);letter-spacing:.24em;margin:0 0 .9em}
+.part::before{content:"";display:block;width:18px;height:1px;background:var(--accent);margin-bottom:16px}
+.part em{font:400 13px/1 var(--sans);font-style:normal;letter-spacing:.06em;margin-left:1.2em;padding:3px 8px;border:1px solid var(--line);vertical-align:middle}
+.part+p{margin-top:0}
+html[lang="en"] .part{letter-spacing:.04em}
+.lab{font:500 13px/1.6 var(--sans);letter-spacing:.22em}
+.lab::before{content:"";display:block;width:18px;height:1px;background:var(--accent);margin-bottom:14px}
+.blurb{margin-top:10px;font:400 13px/1.8 var(--sans);color:var(--muted);max-width:16em}
+.sub{font:400 12px/1.6 var(--sans);letter-spacing:.2em;color:var(--faint);margin:0 0 6px}
+.rows{display:grid;grid-template-columns:6.6em minmax(0,1fr);column-gap:20px;row-gap:20px;max-width:40em}
+.rows dt{font:400 13px/2.1 var(--sans);font-variant-numeric:tabular-nums;letter-spacing:.04em;color:var(--faint)}
+.rows dd b{display:block;font-weight:500;font-size:16.5px;line-height:1.65;letter-spacing:.03em}
+.rows dd b a{box-shadow:inset 0 -1px 0 var(--accent)}
+.rows dd span{display:block;font:400 13.5px/1.7 var(--sans);color:var(--muted)}
+.rows+.sub,.rows+.svc{margin-top:44px}
+.a .cv2>div+div{margin-top:44px}
+.svc p{font:400 14px/1.8 var(--sans);color:var(--muted);max-width:40em}
+.dom{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 40px;max-width:40em}
+.dom b{display:block;font-weight:500;font-size:16.5px;letter-spacing:.04em}
+.dom span{display:block;font:italic 400 16px/1.5 var(--latin);color:var(--muted)}
+.mail{font:400 clamp(18px,2vw,22px)/1.6 var(--latin);letter-spacing:.02em;display:inline-flex;min-height:44px;align-items:center;box-shadow:inset 0 -1px 0 var(--accent);overflow-wrap:anywhere}
+.note{margin-top:6px;font:400 14px/1.8 var(--sans);color:var(--muted)}
+.links{margin-top:26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 40px;max-width:40em}
+.links a{display:flex;flex-direction:column;justify-content:center;min-height:48px;font:500 12px/1.5 var(--sans);letter-spacing:.2em}
+.links a small{font:400 13px/1.5 var(--sans);letter-spacing:.02em;color:var(--muted);overflow-wrap:anywhere}
+.links a:hover small{color:var(--ink)}
+/* 英文版：字距和對齊是為中文設的，英文改回一般排法 */
+html[lang="en"] .prose p{text-align:left;letter-spacing:0;line-height:1.75}
+html[lang="en"] .lead{letter-spacing:.01em;line-height:1.5}
+html[lang="en"] .top .name{letter-spacing:.08em}
+html[lang="en"] .rows dd b,html[lang="en"] .dom b{letter-spacing:0}
+.foot{padding:40px var(--pad) 56px;display:flex;justify-content:space-between;gap:20px;font:400 12px/1.6 var(--sans);letter-spacing:.2em;color:var(--faint)}
+/* 字放大；職稱與單位、中文與英文名稱寫在同一行，放不下才換行 */
+body{font-size:18px}
+.top{font-size:16px;min-height:64px}
+.top .name{font-size:19px}
+.top nav{gap:28px}
+.kicker,.lab{font-size:14.5px}
+.sub{font-size:13.5px}
+.rows{grid-template-columns:7em minmax(0,1fr);row-gap:12px}
+.rows dt{font-size:15px;line-height:2.3}
+.rows dd{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:1.1em}
+.rows dd b{display:inline;font-size:19px}
+.rows dd span{display:inline;font-size:15.5px}
+.dom li{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:.9em}
+.dom b{display:inline;font-size:19px}
+.dom span{display:inline;font-size:18px}
+.note,.svc p{font-size:15.5px}
+.links a{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;align-items:baseline;align-content:center;column-gap:.9em;min-height:44px;font-size:12.5px;letter-spacing:.14em}
+.links a small{font-size:14.5px}
+.me figcaption{font-size:13px}
+@media (max-width:760px){
+  body{font-size:17px}
+  .top{flex-wrap:wrap;padding:6px 14px 0;gap:0 12px}
+  .top nav{order:3;width:100%;justify-content:space-between;gap:0;border-top:1px solid var(--line)}
+  .top nav a{font-size:14.5px;letter-spacing:.04em}
+  .top nav{gap:0}
+  .top .name{font-size:18px}
+  html[lang="en"] .top nav a{font-size:12.5px;letter-spacing:0;min-width:0}
+  .dom,.links{grid-template-columns:1fr}
+  .rows{grid-template-columns:5.4em minmax(0,1fr);column-gap:14px}
+  .foot{flex-direction:column;gap:4px}
+}
 
-  .top{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--rule)}
-  .top .brand{display:flex;align-items:center;gap:14px;color:var(--ink);text-decoration:none}
-  .top .seal{width:42px;height:42px;background:var(--accent);color:var(--sand);font-family:var(--display);font-size:20px;display:flex;align-items:center;justify-content:center}
-  .top .name{font-family:var(--display);font-size:18px;letter-spacing:.1em}
-  .top .name small{display:block;font-family:var(--latin);font-size:9px;letter-spacing:.3em;color:var(--ink-quiet);margin-top:4px}
-  .top .tag{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);text-transform:uppercase}
-
-  .hero{background:var(--sand-light);border-bottom:1px solid var(--rule);padding:96px 0 72px}
-  .hero .grid{display:grid;grid-template-columns:200px minmax(0,1fr);gap:48px}
-  .hero .index{font-family:var(--display);font-size:24px;color:var(--ink-quiet);margin-bottom:8px}
-  .hero .kanji{font-family:var(--display);font-size:150px;line-height:.95}
-  .hero .right{display:flex;flex-direction:column;gap:20px;justify-content:flex-end}
-  .hero .eyebrow{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--accent);text-transform:uppercase}
-  .hero h1{margin:0;font-weight:600;font-size:clamp(26px,3vw,40px);line-height:1.5;letter-spacing:.02em;text-wrap:pretty}
-  .hero .lede{font-size:15px;line-height:2;color:var(--ink-soft);max-width:640px;text-wrap:pretty}
-
-  .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:-1px}
-  .facts>div{background:var(--sand);padding:26px 24px}
-  .facts .k{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--ink-quiet);text-transform:uppercase}
-  .facts .v{font-size:17px;margin-top:10px}
-  .facts .v.latin{font-family:var(--latin);font-size:15px;letter-spacing:.02em;margin-top:12px}
-
-  .section{padding-top:88px}
-  .sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap}
-  .sec-head .no{font-family:var(--display);font-size:22px;color:var(--ink-quiet)}
-  .sec-head h2{margin:0;font-family:var(--display);font-weight:400;font-size:32px;letter-spacing:.1em}
-  .sec-head .sub{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--ink-quiet);text-transform:uppercase}
-
-  .axes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
-  .axes .card{background:var(--paper);border:1px solid var(--rule);padding:32px 28px;display:flex;flex-direction:column;gap:16px}
-  .axes .t{font-family:var(--display);font-size:30px;line-height:1.4;color:var(--accent)}
-  .axes p{margin:0;font-size:14px;line-height:2;color:var(--ink-soft);text-wrap:pretty}
-
-  .design-grid{display:grid;grid-template-columns:380px minmax(0,1fr);gap:48px;margin-top:40px}
-  .design-grid .lede{font-size:15px;line-height:2.1;color:var(--ink-soft);text-wrap:pretty}
-  .rows{display:flex;flex-direction:column}
-  .rows article{background:var(--paper);border:1px solid var(--rule);margin-bottom:-1px;padding:22px 26px;display:grid;grid-template-columns:158px minmax(0,1fr);gap:20px;align-items:baseline}
-  .rows .k{font-family:var(--latin);font-size:12px;letter-spacing:.1em;color:var(--ink-quiet);text-transform:uppercase}
-  .rows .v{font-size:15px;line-height:1.8}
-  .rows .v.quiet{color:var(--ink-soft)}
-
-  .timeline article{grid-template-columns:158px 120px minmax(0,1fr)}
-  .timeline .period{font-family:var(--latin);font-size:13px;letter-spacing:.06em;color:var(--ink-quiet)}
-  .timeline .yr{font-weight:600;font-size:16px}
-
-  .two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}
-  .output-box{background:var(--paper);border:1px solid var(--rule);margin-top:40px;padding:32px 26px;font-size:15px;line-height:2;color:var(--ink-quiet)}
-  .last{padding-bottom:96px}
-
-  footer{border-top:1px solid var(--rule);background:var(--sand-light);padding:40px 0}
-  footer .inner{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap}
-  footer .grant{font-size:13px;color:var(--ink-quiet)}
-  footer .sig{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--ink-quiet);text-transform:uppercase}
-
-  @media (max-width:900px){
-    .wrap{padding:0 24px}
-    .top{padding:16px 24px}
-    .top .tag{display:none}
-    .hero{padding:64px 0 48px}
-    .hero .grid{grid-template-columns:1fr;gap:24px}
-    .hero .kanji{font-size:96px}
-    .facts{grid-template-columns:1fr 1fr}
-    .axes{grid-template-columns:1fr}
-    .design-grid{grid-template-columns:1fr;gap:28px}
-    .rows article{grid-template-columns:1fr;gap:8px}
-    .timeline article{grid-template-columns:1fr;gap:8px}
-    .two-col{grid-template-columns:1fr}
-  }
+.top nav a[aria-current="true"]{color:var(--ink);box-shadow:inset 0 -1px 0 var(--accent)}
+.proj{max-width:1400px;margin:0 auto;padding:clamp(56px,8vw,112px) var(--pad) 24px}
+.phead .kicker{font-size:21px;letter-spacing:.2em}
+.phead .eyebrow{margin-top:28px;font:italic 400 21px/1.5 var(--latin);letter-spacing:.02em;color:var(--faint)}
+.phead h1{margin-top:8px;max-width:30em;font:500 clamp(28px,3vw,42px)/1.6 var(--serif);letter-spacing:.04em}
+.phead .lede{margin-top:28px;max-width:38em;font:300 clamp(19px,1.5vw,22px)/1.95 var(--serif);letter-spacing:.04em;color:#2b2b2b;text-align:justify}
+.facts{margin-top:56px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.facts>div{padding:22px 24px 24px 0}
+.facts>div+div{padding-left:24px;border-left:1px solid var(--line)}
+.facts .k{font:400 13.5px/1.6 var(--sans);letter-spacing:.16em;color:var(--faint)}
+.facts .v{margin-top:8px;font:500 18.5px/1.6 var(--serif);letter-spacing:.03em}
+.facts .v.latin{font:400 17px/1.6 var(--sans);letter-spacing:.02em}
+.psec{margin-top:clamp(72px,8vw,112px)}
+.psec .part i{font:italic 400 21px/1 var(--latin);letter-spacing:.04em;margin-left:.8em;color:var(--faint)}
+.axes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 56px}
+.axes h3{font:500 22px/1.55 var(--serif);letter-spacing:.06em}
+.axes p{margin-top:12px;font-size:17.5px;line-height:1.95;letter-spacing:.03em;color:#2b2b2b;text-align:justify}
+.design{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px 64px;align-items:start}
+.design>p{font-size:18.5px;line-height:2;letter-spacing:.03em;color:#2b2b2b;text-align:justify}
+.prow{border-top:1px solid var(--line)}
+.prow>div{display:grid;grid-template-columns:10em minmax(0,1fr);column-gap:24px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.prow .k{font:400 14px/1.7 var(--sans);letter-spacing:.12em;color:var(--faint)}
+.prow .v{font-size:18.5px;line-height:1.7;letter-spacing:.03em}
+.prow .v.quiet{color:var(--muted)}
+.prow.timeline>div{grid-template-columns:12em 6em minmax(0,1fr)}
+.prow.timeline .k{font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.prow.timeline .yr{font-weight:500;font-size:18.5px;letter-spacing:.06em}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 64px}
+.two .psec{margin-top:0}
+.outbox{padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:18px;line-height:1.95;color:var(--muted)}
+html[lang="en"] .phead h1,html[lang="en"] .phead .lede,html[lang="en"] .axes h3,html[lang="en"] .axes p,html[lang="en"] .design>p,html[lang="en"] .prow .v,html[lang="en"] .facts .v{letter-spacing:0}
+html[lang="en"] .phead .lede,html[lang="en"] .axes p,html[lang="en"] .design>p{text-align:left;line-height:1.75}
+html[lang="en"] .psec .part i{font:400 17px/1 var(--serif);font-style:normal;letter-spacing:.2em}
+@media (max-width:1100px){
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts>div:nth-child(3){padding-left:0;border-left:0}
+  .facts>div:nth-child(n+3){border-top:1px solid var(--line)}
+  .axes{grid-template-columns:1fr}
+  .design,.two{grid-template-columns:1fr}
+  .two .psec+.psec{margin-top:clamp(72px,8vw,112px)}
+}
+@media (max-width:760px){
+  .phead .kicker{font-size:18px}
+  .phead .eyebrow{font-size:18px}
+  .phead .lede{text-align:left}
+  .facts{grid-template-columns:1fr}
+  .facts>div,.facts>div+div{padding:16px 0;border-left:0}
+  .facts>div+div{border-top:1px solid var(--line)}
+  .psec .part i{display:block;margin:6px 0 0}
+  .axes p,.design>p{text-align:left}
+  .prow>div,.prow.timeline>div{grid-template-columns:1fr;row-gap:2px}
+  .prow .k:empty{display:none}
+}
 </style>
+<script>
+// 細線與底線的顏色跟著季節換；四個顏色都取自教授自己四季系列的照片
+(function(){var m=new Date().getMonth()+1,s=m>=3&&m<=5?'spring':m>=6&&m<=8?'summer':m>=9&&m<=11?'autumn':'winter';
+var c={"spring": "#4d6b09", "summer": "#015749", "autumn": "#813707", "winter": "#0648a2"};document.documentElement.style.setProperty('--accent',c[s]);document.documentElement.dataset.season=s;})();
+</script>
 <!-- og:start -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
@@ -105,111 +172,19 @@
 <meta name="twitter:card" content="summary" />
 <!-- og:end -->
 </head>
-<body>
-
-<div class="top">
-  <a class="brand" href="../index.html">
-    <span class="seal">年</span>
-    <span class="name">葉崇揚<small>CHUNG-YANG YEH</small></span>
-  </a>
-  <div style="display:flex;align-items:center;gap:24px">
-    <div class="tag">NSTC Research Project · 2026 – 2029</div>
-    <a class="lang" href="pension-preferences-en.html" style="font-family:var(--latin);font-size:16px;letter-spacing:.2em;color:var(--ink-soft);border-left:1px solid var(--rule);padding-left:24px">EN</a>
-  </div>
+<body class="project">
+<header class="top"><a class="name" href="../index.html">葉崇揚</a><nav aria-label="網站"><a href="../index.html">首頁</a><a href="../about-zh.html">簡介</a><a href="../academic-zh.html" aria-current="true">學術</a><a href="../photography-zh.html">攝影</a><a href="../teaching-zh.html">教學</a><a href="../essays-zh.html">隨筆</a></nav><a class="lang" href="pension-preferences-en.html">EN</a></header>
+<main class="proj">
+<header class="phead"><p class="kicker">研究計畫</p><p class="eyebrow">The Multidimensional Pension Preferences</p><h1>多面向的年金政策偏好：<br>資訊、政治交換與東亞社會大眾的年金改革偏好分析</h1><p class="lede">年金改革是東亞福利國家共同的難題：制度必須回應人口老化與財政壓力，改革卻往往在民意面前卻步。本計畫追問——社會大眾的年金改革偏好從何而來？它如何被資訊改變、被交換（／權衡）政治說服？</p></header>
+<div class="facts"><div><div class="k">Period</div><div class="v">2026.08 – 2029.07（三年期）</div></div><div><div class="k">Funding</div><div class="v">國家科學及技術委員會</div></div><div><div class="k">Grant No.</div><div class="v latin">NSTC 115-2410-H-031-023-SS3</div></div><div><div class="k">Principal Investigator</div><div class="v">葉崇揚 · 東吳大學社會學系</div></div></div>
+<section class="psec"><h2 class="part">研究主軸<i>Three Axes</i></h2><div class="axes"><div><h3>多面向的年金偏好</h3><p>年金改革偏好並非單純的支持或反對。把它拆開成給付水準、財源組合、退休年齡與世代分配的權衡，描繪社會大眾偏好的內在結構。</p></div><div><h3>資訊</h3><p>民眾對年金制度的理解往往有限。當制度財務、人口趨勢與改革後果的資訊被攤開，偏好會如何移動？檢視資訊在偏好形成中的角色。</p></div><div><h3>交換（／權衡）政治</h3><p>改革從來不是單一政策的公投，而是配套與補償的交換。哪些交換（／權衡）的組合，能讓社會大眾接受痛苦的改革？</p></div></div></section>
+<section class="psec"><h2 class="part">研究設計<i>Design</i></h2><div class="design"><p>以跨國比較的調查實驗為核心，在東亞社會同步施測——用聯合實驗（conjoint experiment）讓受訪者在完整的改革方案之間做選擇，而不是對單一政策表態。</p><div class="prow"><div><div class="k">Method</div><div class="v">聯合實驗與調查實驗（conjoint / survey experiments）</div></div><div><div class="k">Cases</div><div class="v">台灣、日本、南韓（預計）</div></div><div><div class="k">Data</div><div class="v quiet">【待補：樣本規模與調查方式】</div></div></div></div></section>
+<section class="psec"><h2 class="part">三年期程<i>Timeline</i></h2><div class="prow timeline"><div><div class="k">2026.08 – 2027.07</div><div class="yr">第一年</div><div class="v quiet">【待補：第一年工作重點】</div></div><div><div class="k">2027.08 – 2028.07</div><div class="yr">第二年</div><div class="v quiet">【待補：第二年工作重點】</div></div><div><div class="k">2028.08 – 2029.07</div><div class="yr">第三年</div><div class="v quiet">【待補：第三年工作重點】</div></div></div></section>
+<div class="two psec">
+<section class="psec"><h2 class="part">研究團隊<i>Team</i></h2><div class="prow"><div><div class="k">PI</div><div class="v">葉崇揚 · 東吳大學社會學系教授</div></div><div><div class="k">Members</div><div class="v">Traute Meyer · 英國南安普敦大學社會學、社會政策與犯罪學系教授</div></div><div><div class="k"></div><div class="v">施世駿 · 國立臺灣大學國家發展研究所教授</div></div><div><div class="k"></div><div class="v">林宏陽 · 國立屏東科技大學社會工作系教授</div></div></div></section>
+<section class="psec"><h2 class="part">研究成果<i>Output</i></h2><div class="outbox">計畫成果（論文、研討會發表、資料集）將於執行期間陸續更新。</div></section>
 </div>
-
-<header class="hero">
-  <div class="wrap grid">
-    <div>
-      <div class="index">研究計畫</div>
-      <div class="kanji">年金</div>
-    </div>
-    <div class="right">
-      <div class="eyebrow">The Multidimensional Pension Preferences</div>
-      <h1>多面向的年金政策偏好：<br>資訊、政治交換與東亞社會大眾的年金改革偏好分析</h1>
-      <p class="lede">年金改革是東亞福利國家共同的難題：制度必須回應人口老化與財政壓力，改革卻往往在民意面前卻步。本計畫追問——社會大眾的年金改革偏好從何而來？它如何被資訊改變、被交換（／權衡）政治說服？</p>
-    </div>
-  </div>
-</header>
-
-<div class="wrap">
-  <div class="facts">
-    <div><div class="k">Period</div><div class="v">2026.08 – 2029.07（三年期）</div></div>
-    <div><div class="k">Funding</div><div class="v">國家科學及技術委員會</div></div>
-    <div><div class="k">Grant No.</div><div class="v latin">NSTC 115-2410-H-031-023-SS3</div></div>
-    <div><div class="k">Principal Investigator</div><div class="v">葉崇揚 · 東吳大學社會學系</div></div>
-  </div>
-</div>
-
-<section class="section">
-  <div class="wrap">
-    <div class="sec-head"><span class="no">壱</span><h2>研究主軸</h2><span class="sub">Three Axes</span></div>
-    <div class="axes">
-      <div class="card">
-        <div class="t">多面向的年金偏好</div>
-        <p>年金改革偏好並非單純的支持或反對。把它拆開成給付水準、財源組合、退休年齡與世代分配的權衡，描繪社會大眾偏好的內在結構。</p>
-      </div>
-      <div class="card">
-        <div class="t">資訊</div>
-        <p>民眾對年金制度的理解往往有限。當制度財務、人口趨勢與改革後果的資訊被攤開，偏好會如何移動？檢視資訊在偏好形成中的角色。</p>
-      </div>
-      <div class="card">
-        <div class="t">交換（／權衡）政治</div>
-        <p>改革從來不是單一政策的公投，而是配套與補償的交換。哪些交換（／權衡）的組合，能讓社會大眾接受痛苦的改革？</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="sec-head"><span class="no">弐</span><h2>研究設計</h2><span class="sub">Design</span></div>
-    <div class="design-grid">
-      <div class="lede">以跨國比較的調查實驗為核心，在東亞社會同步施測——用聯合實驗（conjoint experiment）讓受訪者在完整的改革方案之間做選擇，而不是對單一政策表態。</div>
-      <div class="rows">
-        <article><div class="k">Method</div><div class="v">聯合實驗與調查實驗（conjoint / survey experiments）</div></article>
-        <article><div class="k">Cases</div><div class="v">台灣、日本、南韓（預計）</div></article>
-        <article><div class="k">Data</div><div class="v quiet">【待補：樣本規模與調查方式】</div></article>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="sec-head"><span class="no">参</span><h2>三年期程</h2><span class="sub">Timeline</span></div>
-    <div class="rows timeline" style="margin-top:40px">
-      <article><div class="period">2026.08 – 2027.07</div><div class="yr">第一年</div><div class="v quiet">【待補：第一年工作重點】</div></article>
-      <article><div class="period">2027.08 – 2028.07</div><div class="yr">第二年</div><div class="v quiet">【待補：第二年工作重點】</div></article>
-      <article><div class="period">2028.08 – 2029.07</div><div class="yr">第三年</div><div class="v quiet">【待補：第三年工作重點】</div></article>
-    </div>
-  </div>
-</section>
-
-<section class="section last">
-  <div class="wrap two-col">
-    <div>
-      <div class="sec-head"><span class="no">肆</span><h2>研究團隊</h2><span class="sub">Team</span></div>
-      <div class="rows" style="margin-top:40px">
-        <article><div class="k">PI</div><div class="v">葉崇揚 · 東吳大學社會學系教授</div></article>
-        <article><div class="k">Members</div><div class="v">Traute Meyer · 英國南安普敦大學社會學、社會政策與犯罪學系教授</div></article>
-        <article><div class="k"></div><div class="v">施世駿 · 國立臺灣大學國家發展研究所教授</div></article>
-        <article><div class="k"></div><div class="v">林宏陽 · 國立屏東科技大學社會工作系教授</div></article>
-      </div>
-    </div>
-    <div>
-      <div class="sec-head"><span class="no">伍</span><h2>研究成果</h2><span class="sub">Output</span></div>
-      <div class="output-box">計畫成果（論文、研討會發表、資料集）將於執行期間陸續更新。</div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap inner">
-    <div class="grant">本計畫由國家科學及技術委員會補助（NSTC 115-2410-H-031-023-SS3）。</div>
-    <div class="sig">Chung-Yang Yeh · Soochow University</div>
-  </div>
-</footer>
-
+</main>
+<footer class="foot"><span>本計畫由國家科學及技術委員會補助（NSTC 115-2410-H-031-023-SS3）。</span><span>Chung-Yang Yeh · Soochow University</span></footer>
 </body>
 </html>
