@@ -98,7 +98,7 @@ body{font-size:18px}
   .top nav a{font-size:14.5px;letter-spacing:.04em}
   .top nav{gap:0}
   .top .name{font-size:18px}
-  html[lang="en"] .top nav a{font-size:12.5px;letter-spacing:0;min-width:0}
+  html[lang="en"] .top nav a{font-size:12.5px;letter-spacing:0;min-width:44px;justify-content:center}   /* 手機可點範圍至少 44px（2026-11-13） */
   .dom,.links{grid-template-columns:1fr}
   .rows{grid-template-columns:5.4em minmax(0,1fr);column-gap:14px}
   .foot{flex-direction:column;gap:4px}
@@ -171,6 +171,9 @@ html[lang="en"] .book .d{text-align:left}
   .pub .y{line-height:1.5}
   .pub .t{font-size:18px}
   .pub .m{font-size:14.5px}
+  /* 手機：DOI、華藝、原文這類連結太小（何布轉，教授 11/13 00:26「好，你改一下」、00:28「做完直接推」）。可點範圍上下各加 11px，版面不動 */
+  .pub .m a,.book .m a{padding:11px 0;box-shadow:none;background:linear-gradient(var(--accent),var(--accent)) 0 100%/100% 1px no-repeat;background-origin:content-box;background-clip:content-box}
+  .pub .m,.book .m{clip-path:inset(-12px 0 -12px 1.6em)}
   .book{grid-template-columns:96px minmax(0,1fr);column-gap:18px}
   .book img{width:96px}
   .book .t b{font-size:20px}
