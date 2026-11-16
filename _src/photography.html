@@ -149,6 +149,7 @@ a:hover,.btn:hover{opacity:.8}
 /* 題名放不下時換到下一行，不截字；攝影誌只有兩本，照片放大 */
 .li2 .fr-head{flex-wrap:wrap}
 #shi .li2 .ph img{max-height:clamp(180px,42vh,440px)}
+#shi .li2 .fr-name{white-space:normal}   /* 攝影誌第三本的英文名「Oirase & Naruko Gorge」比較長，讓它換行，不要被照片蓋住（2026-11-16） */
 
 /* 攝影誌索引 */
 .colophon-grid{flex:1;min-width:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));direction:rtl;gap:30px 12px;align-content:center}
@@ -625,7 +626,7 @@ html.album .topbar .ctx{font-variant-numeric:tabular-nums}
   .top nav a{font-size:14.5px;letter-spacing:.04em}
   .top nav{gap:0}
   .top .name{font-size:18px}
-  .top[data-lang="en"] nav a{font-size:12.5px;letter-spacing:0;min-width:0}
+  .top[data-lang="en"] nav a{font-size:12.5px;letter-spacing:0;min-width:44px;justify-content:center}   /* 手機可點範圍至少 44px（2026-11-13） */
 }
 </style>
 <script>

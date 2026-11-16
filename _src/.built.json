@@ -37,8 +37,8 @@
   "photography-winter.html": "5caa2d066defd99aeb1dea6e8c4434ae26edc5e313ad21471d799702350f9cb2",
   "photography-xpan-zh.html": "bbbd8e6d86ff64754e3dc2d303ccd9fc7389f2385da780654ebea6632ccd6884",
   "photography-xpan.html": "717fc4ff4e0eae484f1d463b153e6396655a69e0bba83c98b087fb70d8986f4a",
-  "photography-zh.html": "7f53b9e229ab9d250aea61fe7f25736601434a8fea75c9f067c422fb0d72e4c0",
-  "photography.html": "bcb6272d70cf3397842f84db94e55331aa9239f287f2c397bb7d2ae9c39865ee",
+  "photography-zh.html": "71a9fab203f56a1576cd00878415a573946811a1055d08026de5799cbc3655d8",
+  "photography.html": "b35fe72b49eae361d9e93d0130233231019a5e3ce83058653182aa53b377489e",
   "projects/pension-preferences.html": "47eac3fd8e49e17ee43b3a81f22a5cc4d9e8f4e2f1222390e6d8ce74131e040d",
   "projects/pension-preferences-en.html": "33a92fc9b66d1af095b4dc4a262d05b95667099a82794b72b6c2e2540707382a",
   "publications/publications-zh.html": "90b8f5682248e42309c0a00d5685f90db919170995f00d0fd2627d50b6c130ec",
@@ -46,5 +46,7 @@
   "syllabus-zh.html": "04eea500af2f7d322f1d190af9ef4fdaa519cdba451819ba0bad7092576afde2",
   "syllabus.html": "2918e6fd235aec7ff9851f1cbc40344e9a0ae34fff8ec749d78ff315e119522a",
   "teaching-zh.html": "5e6c794e01fb0e5faf593471bc41ab1071a7224d7583f2518510d7895a0cad19",
-  "teaching.html": "7af4ae6ed5105fcf3ac8908920a4716ed4d75d015266fd2766ecd91ed4272190"
+  "teaching.html": "7af4ae6ed5105fcf3ac8908920a4716ed4d75d015266fd2766ecd91ed4272190",
+  "photography-tohoku-zh.html": "b5ad70442bfc33aee0f12b1c297c13fd3e7b5bf279d886d5ec573d9e90b22df6",
+  "photography-tohoku.html": "8fc5c717d38c3b90a30b52a53dcb2587a18d210fd858dfab47795fdd8c38cb99"
 }
