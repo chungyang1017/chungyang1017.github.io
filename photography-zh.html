@@ -150,7 +150,9 @@ a:hover,.btn:hover{opacity:.8}
 /* 題名放不下時換到下一行，不截字；攝影誌只有兩本，照片放大 */
 .li2 .fr-head{flex-wrap:wrap}
 #shi .li2 .ph img{max-height:clamp(180px,42vh,440px)}
-#shi .li2 .fr-name{white-space:normal}   /* 攝影誌第三本的英文名「Oirase & Naruko Gorge」比較長，讓它換行，不要被照片蓋住（2026-11-16） */
+#shi .li2 .fr-name{white-space:normal;text-wrap:balance}   /* 書名放不下時換行、兩行盡量等長，不要被照片蓋住，也不要單獨一個字掉到下一行（2026-11-16） */
+#shi .fr-meta{flex-wrap:wrap;row-gap:0}   /* 英文書名較長時，張數和「翻開」整組換到下一行，不拆字（2026-11-16） */
+#shi .fr-meta span+span,#shi .fr-meta a{white-space:nowrap}
 
 /* 攝影誌索引 */
 .colophon-grid{flex:1;min-width:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));direction:rtl;gap:30px 12px;align-content:center}
@@ -699,13 +701,14 @@ function fig(p, href, name, cls, cap, eager) {
 }
 // ── 首頁 ──
 // 攝影誌：跟別卷同一套目錄式兩欄（教授 2026-11-12 00:29「改」）。每本字在左、封面在右，不裁切。
+// 書名中文當主（紅色大字）、英文當輔（下一行），跟四季、別卷一樣（教授 2026-11-16 20:52「中文當主，英文當輔」）。
 function journalIndex(base) {
-  return BOOKS.map(b => ({ href: b.href, name: b.name, short: b.short, count: b.count, cover: b.cover }))
+  return BOOKS.map(b => ({ href: b.href, name: b.short, short: b.name, count: b.count, cover: b.cover }))
     .concat(JOURNALS.map(s => ({ href: `#/journal/${s.id}`, name: s.name, short: s.short, count: s.count, cover: PS.cover(s) })))
     .map(b => `<article class="li2" aria-label="${E(b.name)}">
       <div class="fr-cap">
         <div class="fr-head"><h2 class="fr-name"><a href="${E(b.href)}">${E(b.name)}</a></h2>${b.cover.title ? `<p class="fr-title">${E(b.cover.title)}</p>` : ''}</div>
-        <p class="fr-meta"><span>${E(b.short)}　${b.count} 張</span><a href="${E(b.href)}">翻開</a></p>
+        <p class="fr-meta"><span>${E(b.short)}</span><span>${b.count} 張</span><a href="${E(b.href)}">翻開</a></p>
       </div>
       <a class="ph" href="${E(b.href)}" aria-label="翻開 ${E(b.name)}">${PS.img(b.cover, { size: 's' })}</a></article>`).join('');
 }
