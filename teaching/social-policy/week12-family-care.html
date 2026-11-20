@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>家庭政策與照顧：兒童照顧與長期照顧・社會政策第12週・葉崇揚</title>
+<meta name="description" content="社會政策第12週互動講義（分頁式）：家庭政策是什麼、男性養家模式、四種家庭主義、台灣保母托育的照顧公共化與反挫、社區照顧與長期照顧，以及社會投資觀點下的兒童照顧。共75頁，含3份分節小測驗、暖身排序、先猜、分類、配對、表態與課堂討論。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Huninn&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* 社會政策第11、12週互動講義：共用版面（結構與互動元件）。顏色、字型、裝飾在各週的 w11.css、w12.css。
+   字級：內文18px，最小的標籤不低於14px。字型只用繁體中文字型與西文字型。 */
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:18px;line-height:1.85;-webkit-font-smoothing:antialiased;
+  padding-top:calc(var(--top) + var(--tabs));padding-bottom:92px}
+button{font:inherit;color:inherit}
+a{color:var(--link)}
+b,strong{font-weight:700}
+kbd{font-family:var(--mono);font-size:14px;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 6px;background:var(--card)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ── 頂列 ── */
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--top);z-index:40;background:var(--bar);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;font-size:15px}
+.logo{flex:none;font:700 15px/1 var(--mono);letter-spacing:.08em;color:#fff;background:var(--accent);border-radius:6px;padding:8px 10px}
+.topbar .course{font-weight:700;white-space:nowrap}
+.topbar .wk{color:var(--muted);white-space:nowrap}
+.topbar .sect{color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.topbar .sprog{color:var(--muted);white-space:nowrap;font-family:var(--mono);font-size:14px}
+.topbar .sp{flex:1}
+.clock{font:500 14px/1 var(--mono);letter-spacing:.04em;color:var(--soft);border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:var(--card)}
+.tb{height:38px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:0 16px;cursor:pointer;font-size:15px;white-space:nowrap;transition:all .2s}
+.tb:hover{border-color:var(--ink)}
+.tb.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+#bar{position:fixed;top:var(--top);left:0;height:3px;width:0;z-index:41;transition:width .2s;background:var(--accent)}
+@media(max-width:900px){.topbar .course,.topbar .wk,.topbar .hide-m{display:none}}
+@media(max-width:520px){.topbar{gap:8px;padding:0 12px}.topbar .sprog{display:none}.clock{padding:8px 10px}}
+
+/* ── 分節頁籤 ── */
+.panenav{position:fixed;top:var(--top);left:0;right:0;height:var(--tabs);z-index:39;background:var(--bar);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 16px;overflow-x:auto;scrollbar-width:none}
+.panenav::-webkit-scrollbar{display:none}
+.panenav button{flex:none;display:flex;align-items:center;gap:8px;border:0;background:transparent;color:var(--muted);border-radius:999px;padding:5px 14px 5px 5px;font-size:15px;cursor:pointer;transition:all .2s}
+.panenav button:hover{color:var(--ink)}
+.panenav .pn{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font:500 14px/1 var(--mono);background:var(--card)}
+.panenav button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.panenav button.on .pn{background:var(--accent);border-color:var(--accent);color:#fff}
+@media(min-width:1000px){.panenav{justify-content:center}}
+
+/* ── 版面 ── */
+.deck{max-width:960px;margin:0 auto;padding:16px 18px 40px;overflow-x:clip}
+.pane{display:none}
+.pane.on{display:block}
+.slide{position:relative;background:var(--card);margin:34px 0;scroll-margin-top:calc(var(--top) + var(--tabs) + 14px)}
+.sbody{padding:6px 56px 28px}
+@media(max-width:700px){.sbody{padding:4px 20px 22px}}
+.k-cover>.sbody,.k-divider>.sbody{padding:0}
+.anim .slide{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.anim .slide.in{opacity:1;transform:none}
+.shead{padding:26px 56px 6px}
+@media(max-width:700px){.shead{padding:20px 20px 4px}}
+.lab{font-size:15px;line-height:1.6;color:var(--muted);letter-spacing:.06em}
+.shead h2{font-family:var(--head);font-weight:700;font-size:32px;line-height:1.4;margin:8px 0 18px;color:var(--ink)}
+@media(max-width:700px){.shead h2{font-size:25px}}
+.sbody>*+*{margin-top:16px}
+.sbody p{max-width:42em}
+.sbody h4{font-family:var(--head);font-size:20px;line-height:1.5;margin-top:28px;color:var(--ink)}
+.sbody h4:first-child{margin-top:4px}
+.sbody .lead-in{font-weight:700;margin-top:24px}
+.sbody .intro{font-size:19px}
+.sbody .pq{font-weight:700;font-size:19px}
+.sbody .note,.sbody .tcap,.sbody .legend{font-size:16px;color:var(--muted)}
+.sbody .tcap{margin-top:24px;font-weight:700;color:var(--soft)}
+.sbody .tcap+.tw{margin-top:8px}
+ul.bl,ol.bl{display:grid;gap:8px;padding-left:1.4em;max-width:44em}
+ul.bl{list-style:none;padding-left:0}
+ul.bl>li{position:relative;padding-left:24px}
+ul.bl>li::before{content:"";position:absolute;left:4px;top:.78em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+ol.bl>li{padding-left:4px}
+ol.bl>li::marker{font-family:var(--mono);font-weight:700;color:var(--accent)}
+ul.sub,ol.sub{margin-top:6px;display:grid;gap:4px;padding-left:1.4em}
+ul.sub{list-style:none;padding-left:4px}
+ul.sub>li{position:relative;padding-left:20px}
+ul.sub>li::before{content:"";position:absolute;left:2px;top:.85em;width:9px;height:2px;background:var(--muted)}
+ol.sub>li::marker{font-family:var(--mono);color:var(--muted)}
+
+/* 表格 */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-left:-2px;margin-right:-2px;padding:2px}
+table{border-collapse:collapse;width:100%;font-size:16px;line-height:1.7;min-width:520px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border:1px solid var(--line)}
+thead th{background:var(--th);font-weight:700;font-size:16px;white-space:normal}
+tbody th{background:var(--th2);font-weight:700}
+tr.top td,tr.top th{background:var(--hi)}
+td.mine{white-space:nowrap;font-weight:700;color:var(--accent)}
+th.xcol,th.nw{white-space:nowrap}
+.rcmsg{font-size:16px;color:var(--muted)}
+@media(max-width:700px){table{font-size:15px;min-width:480px}th,td{padding:8px 10px}}
+.tw table:has(tr>*:nth-child(2):last-child){min-width:0}
+
+/* 引文 */
+blockquote{padding:16px 22px;max-width:44em}
+blockquote p{max-width:none}
+blockquote p.en{font-style:italic}
+blockquote p.tr{font-size:16px;color:var(--soft);margin-top:4px}
+blockquote cite{display:block;font-style:normal;font-size:15px;color:var(--muted);margin-top:8px}
+
+/* 長條圖 */
+.bars{margin-top:18px;max-width:44em}
+.bars .bcap{font-size:16px;color:var(--soft);font-weight:700;margin-bottom:8px}
+.bars ul{list-style:none;display:grid;gap:10px}
+.bars li{display:grid;grid-template-columns:minmax(8em,13em) 1fr auto;align-items:center;gap:12px}
+.bl-l{font-size:16px;line-height:1.5}
+.bl-t{height:22px;background:var(--track);border-radius:4px;overflow:hidden}
+.bl-t i{display:block;height:100%;width:var(--w);background:var(--accent);border-radius:4px}
+.anim .slide .bl-t i{width:0;transition:width 1.1s var(--ease) .2s}
+.anim .slide.in .bl-t i{width:var(--w)}
+.bl-v{font-family:var(--mono);font-weight:700;font-size:16px;white-space:nowrap}
+@media(max-width:600px){.bars li{grid-template-columns:1fr auto;gap:4px 10px}.bl-l{grid-column:1/-1}}
+
+/* 頁尾 */
+.sfoot{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;padding:14px 56px 18px;font-size:14px;line-height:1.7;color:var(--muted)}
+.sfoot .cite{max-width:46em}
+.sfoot .cite b{font-weight:700;color:var(--soft)}
+.sfoot .pgno{flex:none;font-family:var(--mono);white-space:nowrap}
+@media(max-width:700px){.sfoot{padding:12px 20px 16px;flex-direction:column;align-items:flex-start;gap:6px}}
+
+/* 連結 */
+a.goto{font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+a.url{word-break:break-all}
+
+/* ── 互動共用 ── */
+.instr{font-size:16px;color:var(--soft)}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:14px}
+.pbtn{min-height:44px;border:0;border-radius:999px;background:var(--accent);color:#fff;padding:0 22px;font-size:16px;font-weight:700;cursor:pointer;transition:transform .15s,filter .15s}
+.pbtn:hover:not(:disabled){filter:brightness(1.08)}
+.pbtn:active:not(:disabled){transform:scale(.97)}
+.pbtn:disabled{opacity:.4;cursor:not-allowed}
+.pbtn.sec{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.fbk{display:none;margin-top:14px;padding:12px 16px;border-radius:8px;font-size:16px;line-height:1.75;background:var(--card2);border:1px solid var(--line)}
+.fbk.show{display:block;animation:fadein .35s var(--ease)}
+.fbk.ok{border-color:var(--ok)}
+.fbk.ng{border-color:var(--ng)}
+.score{font-family:var(--mono);font-weight:700;font-size:17px}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.shake{animation:shake .42s}
+@keyframes shake{0%,100%{transform:none}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+
+/* 先猜、表態 */
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:6px}
+@media(max-width:600px){.opts{grid-template-columns:1fr}}
+.opts button{min-height:52px;text-align:left;padding:10px 16px;border:1.5px solid var(--line);background:var(--card);border-radius:10px;cursor:pointer;font-size:17px;line-height:1.55;transition:all .18s}
+.opts button:hover:not(:disabled){border-color:var(--accent)}
+.opts button.sel{background:var(--accent);border-color:var(--accent);color:#fff}
+.opts button.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ink);font-weight:700}
+.opts button.ng{background:var(--ng-soft);border-color:var(--ng);color:var(--ink)}
+.opts button:disabled{cursor:default}
+.verdict{display:none;font-weight:700;font-size:17px}
+.verdict.show{display:block}
+.verdict.ok{color:var(--ok)}
+.verdict.ng{color:var(--ng)}
+.reveal-box{display:none}
+.reveal-box.show{display:block}
+.pollthanks{display:none;margin-top:12px;font-size:16px;color:var(--soft)}
+.pollthanks.show{display:block;animation:fadein .35s var(--ease)}
+
+/* 分類 */
+.legend{margin-top:4px}
+.tray{display:flex;flex-wrap:wrap;gap:8px;min-height:60px;padding:12px;border:1.5px dashed var(--line);border-radius:10px;margin-top:10px}
+.sc{display:inline-flex;flex-direction:column;align-items:flex-start;text-align:left;max-width:100%;padding:8px 14px;border:1.5px solid var(--line);background:var(--card);border-radius:8px;cursor:grab;font-size:16px;line-height:1.5;transition:all .15s}
+.sc small{font-size:14px;color:var(--muted)}
+.sc.sel{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.sc.ok{border-color:var(--ok);background:var(--ok-soft)}
+.sc.ng{border-color:var(--ng);background:var(--ng-soft)}
+.scols{display:grid;gap:10px;margin-top:12px}
+.scols.n2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.scols.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.scols.n4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:760px){.scols.n3,.scols.n4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:460px){.scols.n2,.scols.n3,.scols.n4{grid-template-columns:1fr}}
+.scol{border:1.5px solid var(--line);border-radius:10px;padding:10px;min-height:120px;background:var(--card2);cursor:pointer;transition:border-color .15s}
+.scol.hot{border-color:var(--accent)}
+.scol h4{font-size:16px;line-height:1.45;margin:0 0 8px!important;font-family:var(--sans)!important}
+.drop{display:flex;flex-direction:column;gap:6px}
+.drop .sc{width:100%}
+.sbar{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);z-index:60;display:none;flex-wrap:wrap;justify-content:center;gap:8px;max-width:min(92vw,720px);
+  padding:12px 14px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,.16)}
+.sbar.show{display:flex;animation:fadein .3s var(--ease)}
+.sbar .sbt{flex-basis:100%;text-align:center;font-size:15px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbar button{min-height:40px;border:0;background:var(--accent);color:#fff;border-radius:999px;padding:0 16px;font-size:15px;cursor:pointer}
+.sbar button.x{background:transparent;color:var(--muted);border:1px solid var(--line)}
+
+/* 配對 */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}
+.mcol{display:flex;flex-direction:column;gap:8px}
+.mcol h4{font-size:16px!important;margin:0 0 2px!important;color:var(--muted)!important;font-family:var(--sans)!important}
+.mitem{text-align:left;padding:10px 14px;border:1.5px solid var(--line);background:var(--card);border-radius:8px;cursor:pointer;font-size:16px;line-height:1.55;transition:all .15s}
+.mitem:hover{border-color:var(--accent)}
+.mitem.sel{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.mitem.done{border-color:var(--ok);background:var(--ok-soft);cursor:default;opacity:.85}
+.mitem .ml{font-family:var(--mono);font-weight:700;color:var(--accent);margin-right:2px}
+.mstat{font-size:15px;color:var(--muted)}
+.mstat b{font-family:var(--mono)}
+.mstat.ok{color:var(--ok);font-weight:700}
+@media(max-width:600px){.match{gap:8px}.mitem{padding:8px 10px;font-size:15px}}
+
+/* 依序點選 */
+.otray{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.oi{padding:10px 14px;border:1.5px solid var(--line);background:var(--card);border-radius:8px;cursor:pointer;font-size:16px;line-height:1.5;text-align:left;transition:all .15s}
+.oi:hover{border-color:var(--accent)}
+.oi.used{opacity:.3;pointer-events:none}
+.tline{list-style:none;display:grid;gap:8px;margin-top:14px;counter-reset:none}
+.tline li{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;border:1.5px dashed var(--line);border-radius:8px;font-size:16px;line-height:1.55}
+.tline li .no{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:700 14px/1 var(--mono);background:var(--track);color:var(--soft)}
+.tline li.filled{border-style:solid;border-color:var(--ok);background:var(--ok-soft);animation:fadein .35s var(--ease)}
+.tline li.filled .no{background:var(--ok);color:#fff}
+.tline li.empty span:last-child{color:var(--muted)}
+
+/* 暖身排序 */
+.rks{display:grid;gap:8px;margin-top:10px}
+.rk{display:flex;align-items:center;gap:12px;text-align:left;padding:10px 14px;border:1.5px solid var(--line);background:var(--card);border-radius:8px;cursor:pointer;font-size:16px;line-height:1.55;transition:all .15s}
+.rk:hover{border-color:var(--accent)}
+.rk .rn{flex:none;width:30px;height:30px;border-radius:50%;border:1.5px dashed var(--line);display:grid;place-items:center;font:700 15px/1 var(--mono)}
+.rk.on{border-color:var(--accent);background:var(--accent-soft)}
+.rk.on .rn{border:0;background:var(--accent);color:#fff}
+.cnt{font-family:var(--mono);font-size:15px;color:var(--muted)}
+
+/* 小測驗 */
+.qz{padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:var(--card2);margin-top:14px}
+.stem{font-weight:700;font-size:18px;line-height:1.65;margin-bottom:10px}
+.stem .qn{display:inline-block;font:700 14px/1 var(--mono);color:#fff;background:var(--accent);border-radius:4px;padding:5px 8px;margin-right:10px;vertical-align:2px}
+.opt{display:block;width:100%;text-align:left;margin-top:8px;padding:10px 14px;border:1.5px solid var(--line);background:var(--card);border-radius:8px;cursor:pointer;font-size:16px;line-height:1.55;transition:all .15s}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);background:var(--ok-soft);font-weight:700}
+.opt.wrong{border-color:var(--ng);background:var(--ng-soft)}
+.opt.pop{animation:pop .5s var(--ease)}
+@keyframes pop{50%{transform:scale(1.025)}}
+.fb{display:none;margin-top:12px;font-size:16px;line-height:1.75;color:var(--soft)}
+.fb.show{display:block;animation:fadein .35s var(--ease)}
+.qmeta{font-size:15px;color:var(--muted)}
+
+/* 討論 */
+.discbox{display:grid;gap:10px}
+.disc{border:1px solid var(--line);border-radius:12px;background:var(--card2)}
+.disc summary{display:flex;gap:14px;align-items:flex-start;padding:14px 18px;cursor:pointer;list-style:none;font-size:17px;line-height:1.7}
+.disc summary::-webkit-details-marker{display:none}
+.disc summary .no{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font:700 15px/1 var(--mono);background:var(--accent);color:#fff;margin-top:2px}
+.disc.saved summary .no{background:var(--ok)}
+.inbox{padding:0 18px 16px}
+.inbox textarea,.fbbox textarea{width:100%;min-height:110px;padding:12px 14px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);font:inherit;font-size:16px;line-height:1.7;resize:vertical}
+.imine{display:none;margin-top:10px;font-size:15px;color:var(--soft)}
+.imine.show{display:block}
+
+/* 讀本 */
+.readlist{display:grid;gap:8px}
+.rh4{margin-top:18px!important}
+.rp{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--card2);cursor:pointer;font-size:16px;line-height:1.65}
+.rp input{flex:none;width:20px;height:20px;margin-top:3px;accent-color:var(--accent)}
+.rp.done{border-color:var(--ok);background:var(--ok-soft)}
+.rpstat{font-size:15px;color:var(--muted)}
+.rpstat b{font-family:var(--mono)}
+.ticket{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:14px 18px;border:1.5px dashed var(--line);border-radius:10px;font-weight:700}
+.ticket .tk{font-size:14px;color:#fff;background:var(--accent);border-radius:4px;padding:3px 10px}
+.websrc{border:1px solid var(--line);border-radius:10px;padding:0 18px;background:var(--card2)}
+.websrc summary{cursor:pointer;padding:12px 0;font-weight:700;font-size:16px}
+.websrc .note{margin-bottom:8px}
+.websrc ol{padding-left:1.4em;display:grid;gap:10px;padding-bottom:16px;font-size:15px;line-height:1.7}
+.websrc .use{font-size:14px;color:var(--muted);margin-top:2px}
+
+/* 完成與簽到 */
+.stat{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.stat>div{padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--card2);font-size:15px;color:var(--muted);text-align:center}
+.stat b{display:block;font:700 22px/1.4 var(--mono);color:var(--ink);margin-top:4px}
+@media(max-width:700px){.stat{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.idbox{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.idbox{grid-template-columns:1fr}}
+.idbox label,.fbbox label{display:block;font-size:15px;color:var(--soft);margin-bottom:4px;font-weight:700}
+.idbox input{width:100%;height:46px;padding:0 14px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);font:inherit;font-size:17px}
+.dmsg{font-size:16px;color:var(--soft)}
+.code{font-size:15px;color:var(--soft);line-height:1.75}
+.code b{font-family:var(--mono)}
+.codenote{display:block;margin-top:6px;color:var(--muted)}
+
+/* ── 章節 ── */
+.chap{margin:18px 0}
+.chap-h{width:100%;display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--line);border-radius:12px;background:var(--card);cursor:pointer;text-align:left;font-size:18px}
+.chap-h .cn{flex:none;font:700 16px/1 var(--mono)}
+.chap-h .ct{flex:1;font-weight:700;font-family:var(--head)}
+.chap-h .cc{font-size:14px;color:var(--muted);font-family:var(--mono)}
+.chap-h .cv{width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin:-4px 4px 0;transition:transform .25s}
+.chap.open .chap-h .cv{transform:rotate(-135deg);margin-top:4px}
+.chap-b{display:none}
+.chap.open .chap-b{display:block}
+
+/* ── 底列 ── */
+.navbar{position:fixed;left:0;right:0;bottom:0;height:72px;z-index:40;background:var(--bar);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-top:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:0 16px}
+.nav-btn{flex:none;height:46px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:0 18px;font-size:16px;cursor:pointer;white-space:nowrap}
+.nav-btn:not(.prev){background:var(--accent);border-color:var(--accent);color:#fff}
+.nav-btn:disabled{opacity:.35;cursor:default}
+.nav-mid{flex:1;min-width:0;display:flex;align-items:center;gap:12px}
+.pageno{flex:none;font:500 14px/1 var(--mono);color:var(--soft)}
+.dots{flex:1;min-width:0;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:6px 2px}
+.dots::-webkit-scrollbar{display:none}
+.dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--line);cursor:pointer;transition:transform .2s}
+.dot.on{transform:scale(1.6);background:var(--ink)}
+@media(max-width:520px){.navbar{padding:0 10px;gap:8px}.nav-btn{padding:0 14px;font-size:15px}.dots{display:none}.nav-mid{justify-content:center}}
+.khint{position:fixed;right:18px;bottom:84px;z-index:30;font-size:14px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 12px;transition:opacity .8s}
+@media(max-width:900px){.khint{display:none}}
+
+/* ── 目次 ── */
+.toc{position:fixed;inset:0;z-index:80;background:rgba(20,30,30,.4);display:none}
+.toc.show{display:block}
+.toc-panel{position:absolute;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--card);overflow-y:auto;padding:26px 22px 40px;box-shadow:-8px 0 30px rgba(0,0,0,.15)}
+.toc-close{position:absolute;top:14px;right:14px;width:40px;height:40px;border:0;background:transparent;font-size:28px;cursor:pointer;color:var(--muted)}
+.toc h3{font-family:var(--head);font-size:22px}
+.tsub{font-size:15px;color:var(--muted);margin:4px 0 12px}
+.tfilter{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tfilter button{min-height:34px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:0 12px;font-size:14px;cursor:pointer}
+.tfilter button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+#toclist{list-style:none}
+#toclist li.hide{display:none}
+#toclist a{display:flex;gap:10px;padding:7px 8px;border-radius:6px;text-decoration:none;color:var(--ink);font-size:15px;line-height:1.5}
+#toclist a:hover{background:var(--card2)}
+#toclist a.cur{background:var(--accent-soft);font-weight:700}
+#toclist .n{flex:none;width:28px;text-align:right;font-family:var(--mono);color:var(--muted);font-size:14px}
+#toclist li.head a{font-weight:700;margin-top:8px}
+
+/* 續讀提示 */
+.resume{position:fixed;left:50%;bottom:88px;transform:translateX(-50%);z-index:70;display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;
+  padding:10px 14px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,.16);font-size:15px;max-width:92vw}
+.resume button{min-height:38px;border:0;border-radius:999px;background:var(--accent);color:#fff;padding:0 14px;cursor:pointer;font-size:15px}
+.resume button.x{background:transparent;color:var(--muted);border:1px solid var(--line)}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* 第12週：家庭聯絡簿
+   每一頁是一張米黃的橫格紙，左邊一條紅色邊線。標題用圓體（粉圓），重點用紅筆圈起來；
+   引文像貼在聯絡簿上的便條；表態與討論做成簽名欄；答對、完成的地方貼一顆小星星。
+   中文字型只用 Huninn（粉圓）、LXGW WenKai TC（霞鶩文楷繁體）、Noto Sans TC。 */
+:root{
+  --bg:#E6DECB; --bar:rgba(250,246,233,.95); --card:#FFFBEA; --card2:#FFF7DD;
+  --ink:#2E2A24; --soft:#4E463C; --muted:#73685A; --line:#D6C9A9;
+  --accent:#2F5F9E; --accent-soft:#DCE7F4; --link:#2A5791;
+  --red:#D3343A; --rule:#DCE5E8; --margin:#EBA3A3;
+  --th:#E4EDF4; --th2:#FBF3D9; --hi:#FDE7A0; --track:#EFE6CC;
+  --ok:#2F8049; --ok-soft:#E3F1E2; --ng:#D3343A; --ng-soft:#FBE4E1;
+  --sans:"Noto Sans TC",system-ui,-apple-system,sans-serif;
+  --head:"Huninn","Noto Sans TC",sans-serif;
+  --hand:"LXGW WenKai TC","Noto Sans TC",sans-serif;
+  --mono:"Huninn","Noto Sans TC",sans-serif;
+  --top:60px; --tabs:54px;
+  --ease:cubic-bezier(.22,.8,.26,1);
+}
+body{background:
+  repeating-linear-gradient(115deg,rgba(120,96,60,.035) 0 2px,transparent 2px 9px),var(--bg);font-variant-numeric:tabular-nums}
+.logo{background:var(--red);border-radius:999px;font-family:var(--head);letter-spacing:.04em}
+
+/* ── 橫格紙 ── */
+.slide{border-radius:4px;box-shadow:0 1px 0 rgba(60,45,20,.08),0 12px 28px -14px rgba(60,45,20,.35);
+  background:
+    linear-gradient(90deg,transparent 40px,var(--margin) 40px,var(--margin) 42px,transparent 42px),
+    repeating-linear-gradient(180deg,transparent 0 35px,var(--rule) 35px 36px),
+    var(--card)}
+.shead,.sbody,.sfoot{padding-left:72px}
+@media(max-width:700px){
+  .slide{background:linear-gradient(90deg,transparent 12px,var(--margin) 12px,var(--margin) 13.5px,transparent 13.5px),repeating-linear-gradient(180deg,transparent 0 35px,var(--rule) 35px 36px),var(--card)}
+  .shead,.sbody,.sfoot{padding-left:30px}}
+/* 頁籤：紙膠帶 */
+.shead .lab{display:inline-block;margin-top:2px;padding:3px 14px;color:#5B4630;font-weight:700;font-size:15px;transform:rotate(-1.5deg);
+  background:repeating-linear-gradient(135deg,rgba(240,170,170,.55) 0 8px,rgba(255,214,214,.55) 8px 16px);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.slide[data-act] .shead .lab{background:repeating-linear-gradient(135deg,rgba(150,190,230,.55) 0 8px,rgba(206,225,245,.6) 8px 16px);color:#2E4B73}
+.shead h2{font-weight:400;font-size:32px;letter-spacing:.02em;position:relative;display:inline-block;margin-bottom:22px}
+.shead h2::after{content:"";position:absolute;left:-4px;right:12%;bottom:-6px;height:9px;border-bottom:3px solid var(--red);border-radius:0 0 60% 40%/0 0 100% 100%;transform:rotate(-.6deg);opacity:.85}
+.shead{display:block}
+.shead .lab+h2{display:table}
+
+/* 紅筆圈重點 */
+.sbody h4{font-weight:400}
+.sbody h4 span{display:inline-block;padding:1px 14px;border:2px solid var(--red);border-radius:52% 46% 50% 48%/62% 56% 46% 52%;transform:rotate(-1deg)}
+.sbody .lead-in{font-family:var(--head);font-weight:400;font-size:19px;text-decoration:underline wavy var(--red) 1.5px;text-underline-offset:6px}
+.sbody p b,.sbody li b,td b{background:linear-gradient(transparent 58%,var(--hi) 58%);padding:0 2px}
+ol.bl>li::marker{font-family:var(--head);color:var(--red);font-weight:400}
+ul.bl>li::before{width:9px;height:9px;top:.74em;background:transparent;border:2px solid var(--accent)}
+
+/* 表格：像聯絡簿的欄位 */
+table{border:2px solid #9C8C6B;background:rgba(255,253,244,.9)}
+th,td{border-color:#CDBF9E}
+thead th{background:var(--th);color:#2E4B73}
+tbody th{background:var(--th2)}
+tr.top td,tr.top th{background:var(--hi)}
+td.mine{color:var(--red);font-family:var(--head);font-weight:400;font-size:17px}
+
+/* 便條：引文 */
+blockquote{position:relative;background:#FFF3B4;padding:20px 24px 16px;font-family:var(--hand);font-size:19px;line-height:1.85;color:#3A2E1C;
+  box-shadow:0 2px 0 rgba(0,0,0,.04),0 10px 18px -12px rgba(80,60,20,.45);transform:rotate(-.35deg);margin-top:22px!important}
+blockquote::before{content:"";position:absolute;left:50%;top:-11px;width:92px;height:22px;margin-left:-46px;transform:rotate(2deg);
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 6px,rgba(235,225,200,.55) 6px 12px);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+blockquote p.tr{color:#5B4A2E}
+blockquote cite{font-family:var(--sans);color:var(--red)}
+.sbody blockquote+blockquote{margin-top:28px!important;transform:rotate(.3deg)}
+
+/* 長條圖：色鉛筆 */
+.bl-t{background:var(--track);border-radius:3px}
+.bl-t i{background:repeating-linear-gradient(110deg,#5D8CC7 0 5px,#4A79B6 5px 8px);border-radius:3px}
+.bl-v{font-family:var(--head);font-weight:400;color:var(--red);font-size:17px}
+
+/* 星星貼紙 */
+.star{--s:34px}
+.k-cover .cover::before,.divider::after,.qz.got::after,.fbk.ok::before,.rp.done::after,.mstat.ok::before,.disc.saved summary::after{
+  content:"";display:inline-block;width:var(--s,30px);height:var(--s,30px);
+  background:radial-gradient(circle at 35% 30%,#FFF3A6,#F7C531 55%,#E9A915);
+  clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.2))}
+.qz{position:relative}
+.qz.got::after{position:absolute;right:14px;top:-12px;--s:38px;transform:rotate(14deg)}
+.fbk.ok::before{--s:22px;vertical-align:-4px;margin-right:8px}
+.rp{position:relative}
+.rp.done::after{position:absolute;right:10px;top:50%;margin-top:-13px;--s:26px;transform:rotate(-10deg)}
+.mstat.ok::before{--s:20px;vertical-align:-3px;margin-right:6px}
+.disc.saved summary::after{--s:24px;margin-left:auto;flex:none;transform:rotate(12deg)}
+
+/* ── 封面：聯絡簿封面 ── */
+.k-cover{background:var(--card)}
+.cover{position:relative;padding:44px 64px 28px}
+.k-cover .cover::before{position:absolute;right:56px;top:34px;--s:58px;transform:rotate(16deg)}
+.c-eyebrow{font-weight:700;color:var(--soft);letter-spacing:.08em}
+.kws{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 10px}
+.kw{font-family:var(--head);font-size:20px;padding:4px 16px;border-radius:10px;box-shadow:0 2px 3px rgba(0,0,0,.08)}
+.kw0{background:#FFD7D7;transform:rotate(-3deg)}
+.kw1{background:#D6E9FB;transform:rotate(2deg)}
+.kw2{background:#DFF2D4;transform:rotate(-1.5deg)}
+.cover h1{font-family:var(--head);font-weight:400;font-size:54px;line-height:1.3;margin:16px 0 8px;color:var(--ink)}
+.c-q{font-family:var(--hand);font-size:22px;line-height:1.7;color:var(--red);max-width:28em}
+.c-f{margin-top:26px;border:3px double #9C8C6B;background:rgba(255,253,244,.92);max-width:44em}
+.c-f>div{display:grid;grid-template-columns:7em 1fr;border-bottom:1px dashed #CDBF9E}
+.c-f>div:last-child{border-bottom:0}
+.c-f dt{padding:10px 16px;font-family:var(--head);color:#2E4B73}
+.c-f dd{padding:10px 16px 10px 0;font-size:16px}
+@media(max-width:700px){.cover{padding:30px 22px 20px 30px}.cover h1{font-size:36px}.c-q{font-size:19px}.k-cover .cover::before{right:16px;top:16px;--s:40px}.c-f>div{grid-template-columns:1fr}.c-f dd{padding:0 14px 10px}}
+
+/* ── 章節頁 ── */
+.divider{position:relative;padding:44px 64px 28px 72px}
+.divider::after{position:absolute;right:60px;top:40px;--s:46px;transform:rotate(-12deg)}
+.ticketno{display:flex;align-items:center;gap:16px}
+.tsec{font-family:var(--head);font-size:20px;color:var(--soft)}
+.tno{font-family:var(--head);font-size:64px;line-height:1;color:var(--red);padding:6px 20px;border:3px solid var(--red);border-radius:50% 46% 52% 48%/58% 52% 48% 56%;transform:rotate(-4deg)}
+.dtitle{font-family:var(--head);font-weight:400;font-size:40px;line-height:1.35;margin-top:22px}
+.dq{font-family:var(--hand);font-size:22px;line-height:1.7;color:var(--accent);margin-top:8px}
+.dread{margin-top:22px;border-top:2px solid #9C8C6B}
+.dread>div{display:grid;grid-template-columns:5em 1fr;border-bottom:1px dashed #CDBF9E}
+.dread dt{padding:8px 0;font-family:var(--head);color:#2E4B73}
+.dread dd{padding:8px 0;font-size:16px}
+@media(max-width:700px){.divider{padding:30px 20px 20px 30px}.divider::after{right:16px;top:18px;--s:34px}.tno{font-size:48px}.dtitle{font-size:29px}.dq{font-size:19px}.dread>div{grid-template-columns:1fr}.dread dd{padding-top:0}}
+.chap-h{background:var(--card);border:1.5px solid var(--line)}
+.chap-h .cn{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;background:var(--red);color:#fff;font-family:var(--head);font-weight:400;font-size:16px}
+.chap-h .ct{font-weight:400}
+
+/* ── 路線 ── */
+.route{list-style:none;display:grid;gap:6px}
+.route a{display:grid;grid-template-columns:auto auto 1fr;align-items:baseline;gap:4px 16px;padding:8px 6px;text-decoration:none;color:var(--ink);border-bottom:1px dashed #CDBF9E}
+.route a:hover .rti{color:var(--accent)}
+.rno{font-family:var(--head);font-size:22px;color:var(--red)}
+.rti{font-family:var(--head);font-size:19px;white-space:nowrap}
+.rq{font-family:var(--hand);color:var(--accent);font-size:18px}
+@media(max-width:700px){.route a{grid-template-columns:auto 1fr}.rq{grid-column:2}.rti{white-space:normal}}
+
+/* ── 互動 ── */
+.instr{font-family:var(--hand);font-size:17px;color:var(--accent)}
+.instr::before{content:"\270E\FE0E";margin-right:6px;color:var(--red)}
+.sc,.mitem,.oi,.rk,.opt{background:rgba(255,255,255,.85)}
+.scol{background:rgba(255,250,232,.9);border-style:dashed}
+.scol h4{font-family:var(--head)!important;font-weight:400;color:#2E4B73}
+/* 勾選框：家長勾的那種 */
+.opts button{padding-left:46px;position:relative;background:rgba(255,255,255,.85);border-radius:6px}
+.opts button::before{content:"";position:absolute;left:16px;top:50%;width:18px;height:18px;margin-top:-9px;border:2px solid var(--soft);border-radius:2px;background:#fff}
+.opts button.sel,.opts button.ok,.opts button.ng{background:rgba(255,255,255,.95);color:var(--ink);border-color:var(--accent)}
+.opts button.sel::after,.opts button.ok::after{content:"✓";position:absolute;left:14px;top:50%;margin-top:-20px;font:400 30px/1 var(--head);color:var(--red)}
+.opts button.ok{border-color:var(--ok);background:var(--ok-soft)}
+.opts button.ng{border-color:var(--ng)}
+.opts button.ng::after{content:"✗";position:absolute;left:15px;top:50%;margin-top:-17px;font:400 26px/1 var(--head);color:var(--red)}
+/* 表態與討論：簽名欄 */
+.pollbox,.discbox{border:3px double #9C8C6B;padding:16px;background:rgba(255,253,244,.9);position:relative}
+.pollbox::after{content:"";display:block;margin-top:16px;height:22px;border-bottom:1.5px dotted var(--soft);width:min(260px,70%);margin-left:auto}
+.disc{background:rgba(255,255,255,.75);border-radius:6px}
+.disc summary .no{background:var(--red);font-family:var(--head);font-weight:400}
+.disc.saved summary .no{background:var(--ok)}
+.inbox textarea,.fbbox textarea{background:repeating-linear-gradient(180deg,#fff 0 30px,var(--rule) 30px 31px);line-height:31px;padding-top:0;font-family:var(--hand);font-size:18px}
+.qz{background:rgba(255,255,255,.8);border-radius:8px}
+.stem .qn{background:var(--red);font-family:var(--head);font-weight:400}
+.fb{font-family:var(--sans)}
+.fbk.reveal-box{background:#FFF3B4;border:0;font-family:var(--hand);font-size:18px;color:#3A2E1C}
+.verdict{font-family:var(--head);font-weight:400;font-size:20px}
+.ticket{border-color:#9C8C6B;font-family:var(--head);font-weight:400}
+.ticket .tk{background:var(--red)}
+.rp{background:rgba(255,255,255,.8);padding-right:46px}
+.rh4 span{border-color:var(--accent)!important}
+.websrc{background:rgba(255,253,244,.9)}
+.stat>div{background:rgba(255,255,255,.85)}
+.stat b{font-family:var(--head);font-weight:400;font-size:24px}
+.dot.s1{background:#F2B8B8}.dot.s2{background:#EFA27F}.dot.s3{background:#E9C46A}.dot.s4{background:#9CC78E}.dot.s5{background:#7FB3D5}.dot.s6{background:#9C9AD8}.dot.s7{background:#C79AD0}
+.dot.on{background:var(--red)}
+.chap-h .cv{border-color:var(--red)}
+
+</style>
+<!-- og:start -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
+<meta property="og:title" content="家庭政策與照顧：兒童照顧與長期照顧・社會政策第12週・葉崇揚" />
+<meta property="og:description" content="社會政策第12週互動講義（分頁式）：家庭政策是什麼、男性養家模式、四種家庭主義、台灣保母托育的照顧公共化與反挫、社區照顧與長期照顧，以及社會投資觀點下的兒童照顧。共75頁，含3份分節小測驗、暖身排序、先猜、分類、配對、表態與課堂討論。" />
+<meta property="og:url" content="https://chungyang1017.github.io/teaching/social-policy/week12-family-care.html" />
+<meta property="og:image" content="https://chungyang1017.github.io/photo.jpg" />
+<meta property="og:locale" content="zh_TW" />
+<meta name="twitter:card" content="summary" />
+<!-- og:end -->
+</head>
+<body class="w12">
+<!-- 本頁由 handout-md/build.py 從內容稿產生；改內容請改稿子再重跑，不要直接改這一頁。 -->
+<header class="topbar">
+  <span class="logo">W12</span>
+  <span class="course">社會政策（Social Policy）</span>
+  <span class="wk">第12週　家庭政策與照顧：兒童照顧與長期照顧</span>
+  <span class="sect" id="sect"></span>
+  <span class="sprog" id="sprog"></span>
+  <span class="sp"></span>
+  <span class="clock" id="clock">00:00</span>
+  <button class="tb pri" type="button" onclick="toggleToc()">目次</button>
+  <button class="tb hide-m" type="button" onclick="goFull()">全螢幕</button>
+  <button class="tb hide-m" type="button" onclick="location.href='../../teaching-zh.html'">教學頁</button>
+</header>
+<div id="bar"></div>
+<nav class="panenav" id="panenav"><button type="button" data-pane="0" class="on"><span class="pn">0</span>開場</button><button type="button" data-pane="1"><span class="pn">1</span>第一、二節</button><button type="button" data-pane="2"><span class="pn">2</span>第三、四節</button><button type="button" data-pane="3"><span class="pn">3</span>第五至七節</button><button type="button" data-pane="4"><span class="pn">4</span>總結</button></nav>
+<main class="deck" id="deck">
+<div class="pane on" data-pane="0">
+<section class="slide k-cover" data-kind="cover" data-label="封面" data-sect="開場"><div class="sbody"><div class="cover"><p class="c-eyebrow">社會政策（Social Policy）．第12週</p><div class="kws"><span class="kw kw0">WEEK 12</span><span class="kw kw1">家庭政策</span><span class="kw kw2">照顧公共化</span></div><h1>家庭政策與照顧：兒童照顧與長期照顧</h1><p class="c-q">孩子和長輩由誰來照顧？國家該分擔多少、怎麼分擔？</p><dl class="c-f"><div><dt>日期</dt><dd>2026年12月4日</dd></div><div><dt>教師</dt><dd>葉崇揚</dd></div><div><dt>主讀本</dt><dd>傅立葉、王兆慶（2011）〈照顧公共化的改革與挑戰〉；Leitner（2003）Varieties of familialism</dd></div></dl></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第12週　01</span></footer></section>
+<section class="slide k-howto" data-kind="howto" data-label="這份講義怎麼用" data-sect="開場"><header class="shead"><p class="lab">使用說明</p><h2>這份講義怎麼用</h2></header><div class="sbody"><p>這是預習與複習用的，不是上課投影片。</p><ul class="bl"><li>上課前：從頭讀一遍。不必背，但要知道每一節在問什麼問題。</li><li>上課後：回來把答錯的小測驗重看一次，再對照本週讀本。</li><li>怎麼讀：標著◆的頁，都要你動手：排序、先猜、分類、配對、表態、寫討論。做過才記得住。</li><li>進度會自己存：關掉再打開，會回到上次那頁。小測驗的答案也留著。</li><li>簽到：三份小測驗都作答、閱讀滿20分鐘之後，到「完成」頁填學號姓名送出。</li></ul></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第12週　02</span></footer></section>
+<section class="slide k-route" data-kind="route" data-label="今天的路線" data-sect="開場"><header class="shead"><p class="lab">開場</p><h2>今天的路線</h2></header><div class="sbody"><ol class="route" aria-label="節、標題、這一節問什麼"><li><a href="#" class="goto" data-goto="4"><span class="rno">01</span><span class="rti">家庭政策是什麼</span><span class="rq">沒有「家庭部」，算不算有家庭政策？</span></a></li><li><a href="#" class="goto" data-goto="9"><span class="rno">02</span><span class="rti">男性養家：福利國家對家庭的假設</span><span class="rq">福利國家假設誰去工作、誰在家照顧？</span></a></li><li><a href="#" class="goto" data-goto="16"><span class="rno">03</span><span class="rti">四種家庭主義</span><span class="rq">國家支持家庭照顧，是給家庭權利，還是加給家庭義務？</span></a></li><li><a href="#" class="goto" data-goto="27"><span class="rno">04</span><span class="rti">照顧公共化：保母托育計畫怎麼誕生</span><span class="rq">台灣的托育，怎麼從私人市場走向公共管理？</span></a></li><li><a href="#" class="goto" data-goto="39"><span class="rno">05</span><span class="rti">公共化的爭議與反挫</span><span class="rq">為什麼這條路走得不平順？</span></a></li><li><a href="#" class="goto" data-goto="51"><span class="rno">06</span><span class="rti">個人社會服務、社區照顧與長期照顧</span><span class="rq">「社區照顧」是在社區裡照顧，還是由社區來照顧？</span></a></li><li><a href="#" class="goto" data-goto="62"><span class="rno">07</span><span class="rti">社會投資觀點下的兒童照顧</span><span class="rq">照顧孩子，是家庭的事，還是國家的投資？</span></a></li></ol></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第12週　03</span></footer></section>
+<section class="slide k-rank" data-kind="rank" data-label="◆ 暖身：孩子兩歲，你會怎麼安排照顧？" data-sect="開場" data-act="1"><header class="shead"><p class="lab">◆ 動手做（排序）</p><h2>暖身：孩子兩歲，你會怎麼安排照顧？</h2></header><div class="sbody"><p class="intro"><b>情境</b>：你和伴侶都在工作，孩子剛滿兩歲。</p><p class="pq">把下面六種照顧安排排出1到6，1是你最可能選的。沒有標準答案。先記下來，第四節對照（<a class="goto" href="#" data-goto="29">第30頁</a>）。</p><p class="instr">從最可能的開始，依序點下去。點錯了，按「重排」。</p><div class="rank" data-rank="r4" data-n="6" data-act-key="rank-4"><div class="rks"><button class="rk" type="button" data-i="0"><span class="rn"></span><span class="rt">父母一方辭職或留職停薪，自己在家帶</span></button><button class="rk" type="button" data-i="1"><span class="rn"></span><span class="rt">請祖父母或親戚帶</span></button><button class="rk" type="button" data-i="2"><span class="rn"></span><span class="rt">找鄰居或朋友介紹的保母，私下談價錢</span></button><button class="rk" type="button" data-i="3"><span class="rn"></span><span class="rt">找和政府簽約的準公共化保母</span></button><button class="rk" type="button" data-i="4"><span class="rn"></span><span class="rt">送私立托嬰中心</span></button><button class="rk" type="button" data-i="5"><span class="rn"></span><span class="rt">送公共托育家園或公設民營托嬰中心</span></button></div><div class="row"><span class="cnt"></span><button class="pbtn sec js-reset" type="button">重排</button></div><div class="fbk"></div></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：選項取自傅立葉、王兆慶（2011: 87）；衛生福利部（2018、2020）</span><span class="pgno">第12週　04</span></footer></section>
+
+</div>
+<div class="pane" data-pane="1">
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">01</span><span class="ct">家庭政策是什麼</span><span class="cc">5頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第一節　家庭政策是什麼" data-sect="第一節　家庭政策是什麼"><div class="sbody"><div class="divider"><div class="ticketno"><span class="tsec">第一節</span><span class="tno">01</span></div><h2 class="dtitle">家庭政策是什麼</h2><p class="dq">沒有「家庭部」，算不算有家庭政策？</p><dl class="dread"><div><dt>讀本</dt><dd>Millar（2006）〈社會政策與家庭政策〉，《解讀社會政策》第II.17章，頁251–259</dd></div></dl></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第12週　05</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 這些政策，是顯性還是隱性的家庭政策？" data-sect="第一節　家庭政策是什麼" data-act="1"><header class="shead"><p class="lab">◆ 動手做（分類）</p><h2>這些政策，是顯性還是隱性的家庭政策？</h2></header><div class="sbody"><p class="intro">Kamerman與Kahn（1978）把家庭政策分成兩種。顯性：以家庭為施行對象的政策。隱性：不以家庭為主要對象，卻會影響家庭的政策。讀下一頁之前，先自己分分看。</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s6" data-act-key="sort-6"><div class="tray"><button class="sc" type="button" draggable="true" data-i="7" data-k="k1" data-txt="貿易及關稅條款" data-ans="隱性家庭政策">貿易及關稅條款</button><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="家庭諮商" data-ans="顯性家庭政策">家庭諮商</button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="兒童福利" data-ans="顯性家庭政策">兒童福利</button><button class="sc" type="button" draggable="true" data-i="5" data-k="k1" data-txt="產業區位" data-ans="隱性家庭政策">產業區位</button><button class="sc" type="button" draggable="true" data-i="8" data-k="k1" data-txt="移民政策" data-ans="隱性家庭政策">移民政策</button><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="日間照顧" data-ans="顯性家庭政策">日間照顧</button><button class="sc" type="button" draggable="true" data-i="6" data-k="k1" data-txt="造路的決定" data-ans="隱性家庭政策">造路的決定</button><button class="sc" type="button" draggable="true" data-i="3" data-k="k0" data-txt="家庭計畫" data-ans="顯性家庭政策">家庭計畫</button><button class="sc" type="button" draggable="true" data-i="4" data-k="k0" data-txt="所得維持" data-ans="顯性家庭政策">所得維持</button></div><div class="scols n2"><div class="scol" data-k="k0"><h4>顯性家庭政策</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>隱性家庭政策</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：Kamerman與Kahn（1978: 3），引自Millar（2006: 257）</span><span class="pgno">第12週　06</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="家庭政策：不存在，也無所不在" data-sect="第一節　家庭政策是什麼" data-flags="sum quote"><header class="shead"><p class="lab">揭曉</p><h2>家庭政策：不存在，也無所不在</h2></header><div class="sbody"><blockquote><p>「家庭政策，因此，可以說不存在，也可以說無所不在。」</p><cite>— Millar（2006: 251）</cite></blockquote><ul class="bl"><li>英國沒有「家庭局」的編制。政策時常互相矛盾，也少有共識。</li><li>但社會安全、賦稅、健康、教育、住宅、就業的每項政策，幾乎都會影響家庭。</li></ul><div class="tw"><table><thead><tr><th>顯性家庭政策</th><th>隱性家庭政策</th></tr></thead><tbody><tr><td>以家庭為政策施行對象，目標通常（但不必然）預先列明</td><td>不以家庭為主要對象及目標，卻對家庭產生影響</td></tr><tr><td>例：日間照顧、兒童福利、家庭諮商、家庭的計畫、所得維持、某些減免賦稅和住宅政策</td><td>例：產業區位、造路的決定、貿易及關稅條款、移民政策</td></tr></tbody></table></div><ul class="bl"><li>Millar建議改稱「直接」與「間接」。「隱性」容易被誤會成刻意隱藏的議程。</li></ul><p class="lead-in">直接家庭政策的三個領域：</p><ol class="bl"><li value="1">家庭行為的法律規範：結婚、離婚、避孕、墮胎、父母的權利和義務、兒童保護</li><li value="2">支持家庭所得：賦稅減免、家庭和兒童的補助、父母親職假和補助、子女扶養費的強制執行</li><li value="3">家庭服務的供給：兒童照顧、住宅津貼、社會服務和社區照顧</li></ol><p>今天的重點在第3類：照顧服務。</p></div><footer class="sfoot"><span class="cite"><b>出處</b>：Millar（2006: 251, 257–258）；Kamerman與Kahn（1978: 3），引自Millar（2006: 257）</span><span class="pgno">第12週　07</span></footer></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 四種家庭政策模式，各以哪個國家為例？" data-sect="第一節　家庭政策是什麼" data-act="1"><header class="shead"><p class="lab">◆ 動手做（配對）</p><h2>四種家庭政策模式，各以哪個國家為例？</h2></header><div class="sbody"><p class="intro">Gauthier（1996）檢視22個工業國家家庭政策的歷史，歸納出四種模式。點左邊一種模式，再點右邊對應的國家。答案在下一頁。</p><div class="match" data-match="m8" data-act-key="match-8"><div class="mcol"><h4>模式</h4><button class="mitem" type="button" data-k="0">支持家庭及生育</button><button class="mitem" type="button" data-k="1">支持傳統</button><button class="mitem" type="button" data-k="2">支持平等</button><button class="mitem" type="button" data-k="3">支持家庭但非干預</button></div><div class="mcol"><h4>國家</h4><button class="mitem" type="button" data-k="1">德國</button><button class="mitem" type="button" data-k="3">英國和美國</button><button class="mitem" type="button" data-k="0">法國</button><button class="mitem" type="button" data-k="2">瑞典和丹麥</button></div></div><p class="mstat"></p></div><footer class="sfoot"><span class="cite"><b>出處</b>：Gauthier（1996），引自Millar（2006: 258–259）</span><span class="pgno">第12週　08</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="Gauthier的四種家庭政策模式" data-sect="第一節　家庭政策是什麼" data-flags="sum"><header class="shead"><p class="lab">揭曉</p><h2>Gauthier的四種家庭政策模式</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">模式</th><th class="nw">例子</th><th class="nw">關注焦點</th><th class="nw">政策做法</th></tr></thead><tbody><tr><td>支持家庭及生育（pro-family/pro-natalist）</td><td>法國</td><td>低生育率</td><td>鼓勵人們生養小孩；協助母親協調工作與家庭，讓就業不致成為照顧兒童的障礙</td></tr><tr><td>支持傳統（pro-traditional）</td><td>德國</td><td>保存「家庭」</td><td>政府擔起支持家庭的責任，但最重要的資源是家庭本身、社區、教會等志願與非營利組織；支持婦女留在家裡</td></tr><tr><td>支持平等（pro-egalitarian）</td><td>瑞典、丹麥</td><td>性別平等</td><td>男女都是家計所得者，也都是家庭照顧者；結婚、離婚、墮胎的限制很少</td></tr><tr><td>支持家庭但非干預（pro-family but non-interventionist）</td><td>英國、美國</td><td>貧困家庭</td><td>認為多數家庭透過市場就能滿足需求；對就業父母的協助很少</td></tr></tbody></table></div><ul class="bl"><li>Millar提醒：這些模式有點理想化，政策也一直在變。</li><li>英國工黨1997年執政後，家庭政策變得更明確，不太適合再歸為「支持家庭但非干預」。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Gauthier（1996），引自Millar（2006: 258–259）</span><span class="pgno">第12週　09</span></footer></section>
+</div></div><div class="chap"><button class="chap-h" type="button"><span class="cn">02</span><span class="ct">男性養家：福利國家對家庭的假設</span><span class="cc">6頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第二節　男性養家：福利國家對家庭的假設" data-sect="第二節　男性養家：福利國家對家庭的假設"><div class="sbody"><div class="divider"><div class="ticketno"><span class="tsec">第二節</span><span class="tno">02</span></div><h2 class="dtitle">男性養家：福利國家對家庭的假設</h2><p class="dq">福利國家假設誰去工作、誰在家照顧？</p><dl class="dread"><div><dt>讀本</dt><dd>Spicker（2025）ch. 4，頁58–62；Millar（2006）頁252–256；Leitner（2003）頁355–356</dd></div></dl></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第12週　10</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="戰後福利國家的家庭藍圖" data-sect="第二節　男性養家：福利國家對家庭的假設" data-flags="sum quote"><header class="shead"><p class="lab">第二節　男性養家：福利國家對家庭的假設</p><h2>戰後福利國家的家庭藍圖</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">男人</th><th class="nw">女人</th></tr></thead><tbody><tr><td>全職工作者，負責家庭生計</td><td>全職照顧者，負責家務</td></tr><tr><td>家庭和國家財務支持之間的主要聯繫者</td><td>家庭和國家服務（健康照顧、教育、社會照顧）之間的主要聯繫者</td></tr><tr><td>因妻小獲得稅額寬減；大部分社會保險給付付給男人</td><td>服務的設計，在支撐女人的照顧工作</td></tr></tbody></table></div><blockquote><p>「這些服務意在支撐女人的照顧工作，就如各項給付支撐男人賺生計一般。」</p><cite>— Millar（2006: 252）</cite></blockquote><ul class="bl"><li>這套藍圖假設家庭穩定長存，男女的家庭角色分得很清楚。</li><li>Spicker：有些國家的政策建立在「男人是養家者」的想法上，假設婚姻是永久的、女人不工作。</li><li>偏離常態的家庭，例如貧窮的單親母親，可能受到懲罰。</li><li>許多社會保障制度，要有穩定的工作紀錄，才提供失業、疾病和老年的基本保障。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Millar（2006: 252）；Spicker（2025: 58–59）</span><span class="pgno">第12週　11</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="「正常」家庭：符合社會規範，不是平均" data-sect="第二節　男性養家：福利國家對家庭的假設" data-flags="quote"><header class="shead"><p class="lab">第二節　男性養家：福利國家對家庭的假設</p><h2>「正常」家庭：符合社會規範，不是平均</h2></header><div class="sbody"><blockquote><p class="en">"'Normal' does not mean 'average'; it means 'conforming to social norms'."</p><p class="tr">（「正常」不是「平均」，而是「符合社會規範」。）</p><cite>— Spicker（2025: 59）</cite></blockquote><ul class="bl"><li>「正常」家庭：雙親加上一個以上的孩子。在已開發國家，這種家庭越來越不典型。</li><li>四個原因：<ul class="sub"><li>人口老化：越來越多家戶是沒有孩子同住的老人</li><li>延後生育：越來越多家戶是單身女性或沒有孩子的伴侶</li><li>單親增加</li><li>家戶分裂：離婚，以及子女更早獨立</li></ul></li><li>政策有時會強化正常家庭：<ul class="sub"><li>獎勵：已婚受扶養者與子女的補貼</li><li>懲罰：要求扶養家人、對離婚的法律與財務嚇阻</li></ul></li><li>同居規則：把同住的兩人當作已婚者看待，以求和已婚伴侶公平。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Spicker（2025: 59–61）</span><span class="pgno">第12週　12</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 單親家庭增加，哪一個不是原因？" data-sect="第二節　男性養家：福利國家對家庭的假設" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>單親家庭增加，哪一個不是原因？</h2></header><div class="sbody"><p class="intro">Spicker列出單親增加的三個主要因素，也點名一個常見說法沒有根據。答案在下一頁。</p><p class="pq">下面哪一個，Spicker認為「沒有理由」當作單親增加的原因？</p><div class="poll" data-poll="p13" data-answer="未成年生育" data-act-key="predict-13"><div class="opts"><button type="button" data-v="離婚"><span>離婚</span></button><button type="button" data-v="失業"><span>失業</span></button><button type="button" data-v="同居"><span>同居</span></button><button type="button" data-v="未成年生育"><span>未成年生育</span></button></div></div><p class="verdict" data-verdict-for="p13"></p><div class="fbk ok reveal-box" data-reveal-all="p13">未成年生育。Spicker說，沒有理由把單親增加歸因於未成年生育；未成年生育和其他生育一樣，一直在下降（Spicker, 2025: 61）。下一頁是三個原因。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：Spicker（2025: 61）</span><span class="pgno">第12週　13</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="單親：三個原因，兩種立場" data-sect="第二節　男性養家：福利國家對家庭的假設" data-flags="quote"><header class="shead"><p class="lab">揭曉</p><h2>單親：三個原因，兩種立場</h2></header><div class="sbody"><p class="lead-in">三個原因：</p><ol class="bl"><li value="1">離婚：隨著女性在財務和職涯上更獨立而增加</li><li value="2">失業：失業和離婚有關。部分因為婚姻承受壓力，部分或許因為傳統男性養家者的角色被削弱</li><li value="3">同居：這是統計上的假象，不是父母身分真的改變</li></ol><p class="lead-in">領社會給付的單親，立場分成兩邊：</p><ul class="bl"><li>個人主義：選擇生孩子，就要自己照顧家庭</li><li>集體主義：孩子也是其他人的事。這在很大程度上是歐陸的主流立場</li><li>另有一派：孩子的利益，優先於對父母身分的道德評價</li></ul><blockquote><p class="en">"children are other people's business as well."（孩子也是其他人的事。）</p><cite>— Spicker（2025: 62）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：Spicker（2025: 61–62）</span><span class="pgno">第12週　14</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="男性養家模式為什麼鬆動？" data-sect="第二節　男性養家：福利國家對家庭的假設" data-flags="sum"><header class="shead"><p class="lab">第二節　男性養家：福利國家對家庭的假設</p><h2>男性養家模式為什麼鬆動？</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th>兒童照顧：母親進入勞動市場</th><th>老人照顧：家庭照顧者變少</th></tr></thead><tbody><tr><td>有6歲以下孩子的母親，就業率快速上升</td><td>在歐洲，家庭通常是老人的主要照顧者</td></tr><tr><td>OECD：母親平均就業率54%，父親超過90%；差距過去十年每年縮小約1個百分點</td><td>80歲以上、失能率高的人口快速增加</td></tr><tr><td>舊的男性養家模式，不符合女性的就業型態，也不符合家庭對雙薪模式的偏好</td><td>中年女性和高齡者的人數比例已大幅縮小，而且會繼續縮小</td></tr></tbody></table></div><p>福利造成了家庭變遷嗎？</p><ul class="bl"><li>Millar：要了解政策對家庭行為的影響，難度很高。</li><li>但西方工業國家的家庭趨勢相近，福利供給的類型卻各不相同。</li><li>她的推論：「福利的供給不太可能是造成家庭變遷的主因，即使是，改變政策也無法逆轉這些趨勢。」</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Leitner（2003: 355），引用OECD（2001: 133, 135）與OECD（1996: 15, 19）；Millar（2006: 256）</span><span class="pgno">第12週　15</span></footer></section>
+</div></div><div class="chap"><button class="chap-h" type="button"><span class="cn">✓</span><span class="ct">第一、二節小測驗</span><span class="cc">1頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quiz" data-kind="quiz" data-label="◆ 第一、二節小測驗" data-sect="第二節　男性養家：福利國家對家庭的假設" data-act="1"><header class="shead"><p class="lab">小測驗</p><h2>第一、二節小測驗</h2></header><div class="sbody"><p class="intro">三題，作答後會立刻看到解說。</p><div data-quiz="q16"><div class="qz" data-a="1"><div class="stem">1. Kamerman與Kahn所說的「顯性家庭政策」，是什麼意思？</div><button class="opt" type="button">以家庭為施行對象，目標通常預先列明的政策</button><button class="opt" type="button">刻意隱藏議程的政策</button><button class="opt" type="button">只限於稅制的政策</button><button class="opt" type="button">不以家庭為對象，卻影響家庭的政策</button><div class="fb"><b>解說</b>：顯性家庭政策以家庭為施行對象，目標通常（但不必然）預先列明，例如日間照顧、兒童福利。最後一個選項是隱性家庭政策（Kamerman與Kahn, 1978: 3，引自Millar, 2006: 257；<a class="goto" href="#" data-goto="6">第7頁</a>〈家庭政策：不存在，也無所不在〉）。</div></div><div class="qz" data-a="3"><div class="stem">2. Gauthier的四種家庭政策模式裡，以瑞典和丹麥為例的是哪一種？</div><button class="opt" type="button">支持家庭及生育</button><button class="opt" type="button">支持傳統</button><button class="opt" type="button">支持平等</button><button class="opt" type="button">支持家庭但非干預</button><div class="fb"><b>解說</b>：支持平等模式以性別平等為主要關懷，男女都被視為家計所得者與家庭照顧者（Gauthier, 1996，引自Millar, 2006: 258；<a class="goto" href="#" data-goto="8">第9頁</a>〈Gauthier的四種家庭政策模式〉）。</div></div><div class="qz" data-a="3"><div class="stem">3. Spicker說「正常」家庭的「正常」，是什麼意思？</div><button class="opt" type="button">最常見</button><button class="opt" type="button">平均</button><button class="opt" type="button">符合社會規範</button><button class="opt" type="button">法律規定</button><div class="fb"><b>解說</b>："Normal" does not mean "average"; it means "conforming to social norms"（Spicker, 2025: 59；<a class="goto" href="#" data-goto="11">第12頁</a>〈「正常」家庭：符合社會規範，不是平均〉）。</div></div></div><p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p></div><footer class="sfoot"><span class="cite"><b>出處</b>：見各題解說</span><span class="pgno">第12週　16</span></footer></section>
+</div></div>
+</div>
+<div class="pane" data-pane="2">
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">03</span><span class="ct">四種家庭主義</span><span class="cc">11頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第三節　四種家庭主義" data-sect="第三節　四種家庭主義"><div class="sbody"><div class="divider"><div class="ticketno"><span class="tsec">第三節</span><span class="tno">03</span></div><h2 class="dtitle">四種家庭主義</h2><p class="dq">國家支持家庭照顧，是給家庭權利，還是加給家庭義務？</p><dl class="dread"><div><dt>讀本</dt><dd>Leitner（2003）Varieties of familialism，European Societies 5(4)，頁353–372</dd></div></dl></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第12週　17</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="從Esping-Andersen出發：家庭主義與去家庭化" data-sect="第三節　四種家庭主義" data-flags="quote"><header class="shead"><p class="lab">第三節　四種家庭主義</p><h2>從Esping-Andersen出發：家庭主義與去家庭化</h2></header><div class="sbody"><blockquote><p class="en">"A familialistic system, [...], is one in which public policy assumes – indeed insists – that households must carry the principal responsibility for their members' welfare. A de-familializing regime is one which seeks to unburden the household and diminish individuals' welfare dependence on kinship."</p><p class="tr">（家庭主義的體制，是公共政策假定、甚至堅持家戶必須為成員的福利負主要責任。去家庭化的體制，則設法減輕家戶的負擔，降低個人福利對親屬的依賴。）</p><cite>— Esping-Andersen（1999: 51），引自Leitner（2003: 356）</cite></blockquote><ul class="bl"><li>Esping-Andersen：北歐靠公共服務去家庭化，自由主義體制靠市場去家庭化。只有保守主義體制像家庭主義。</li></ul><p class="lead-in">Leitner的批評：</p><ol class="bl"><li value="1">靠市場去家庭化，有階級偏誤：只有富裕的人負擔得起，或去家庭化的品質隨所得而不同。</li><li value="2">即使在北歐，家庭仍是最重要的照顧提供者。</li><li value="3">Esping-Andersen用的是結果指標，例如與子女同住的老人比例、和父母同住的失業青年比例、女性每週無酬家務時數。這些指標說不出背後的結構。</li><li value="4">Leitner改看政策本身：國家用什麼方法，要家庭負起照顧。</li></ol></div><footer class="sfoot"><span class="cite"><b>出處</b>：Esping-Andersen（1999: 51），引自Leitner（2003: 356）；Leitner（2003: 356–357）</span><span class="pgno">第12週　18</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 這些政策，是家庭化還是去家庭化？" data-sect="第三節　四種家庭主義" data-act="1"><header class="shead"><p class="lab">◆ 動手做（分類）</p><h2>這些政策，是家庭化還是去家庭化？</h2></header><div class="sbody"><p class="intro">Leitner把照顧政策分成兩種。家庭化：強化家庭的照顧功能。去家庭化：減輕家庭的照顧負擔。讀下一頁之前，先自己分分看。</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s19" data-act-key="sort-19"><div class="tray"><button class="sc" type="button" draggable="true" data-i="4" data-k="k0" data-txt="照顧期間計入個人年金權" data-ans="家庭化政策">照顧期間計入個人年金權</button><button class="sc" type="button" draggable="true" data-i="6" data-k="k1" data-txt="公共的社會服務" data-ans="去家庭化政策">公共的社會服務</button><button class="sc" type="button" draggable="true" data-i="5" data-k="k1" data-txt="公共托育" data-ans="去家庭化政策">公共托育</button><button class="sc" type="button" draggable="true" data-i="3" data-k="k0" data-txt="照顧的減稅" data-ans="家庭化政策">照顧的減稅</button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="照顧假" data-ans="家庭化政策">照顧假</button><button class="sc" type="button" draggable="true" data-i="7" data-k="k1" data-txt="由公共補助、市場提供的照顧服務" data-ans="去家庭化政策">由公共補助、市場提供的照顧服務</button><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="育嬰假（親職假）" data-ans="家庭化政策">育嬰假（親職假）</button><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="照顧的現金給付" data-ans="家庭化政策">照顧的現金給付</button></div><div class="scols n2"><div class="scol" data-k="k0"><h4>家庭化政策</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>去家庭化政策</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：Leitner（2003: 358）</span><span class="pgno">第12週　19</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="兩類照顧政策" data-sect="第三節　四種家庭主義" data-flags="sum"><header class="shead"><p class="lab">揭曉</p><h2>兩類照顧政策</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th>家庭化政策：強化家庭照顧</th><th>去家庭化政策：減輕家庭照顧</th></tr></thead><tbody><tr><td>1. 時間權利：育嬰假、照顧假</td><td>公共提供的托育或社會服務</td></tr><tr><td>2. 直接與間接移轉：現金給付、減稅</td><td>由市場提供照顧（或由公共補助市場提供）</td></tr><tr><td>3. 照顧者的社會權利：個人年金權、（部分）納入其他社會安全制度、未就業妻子（丈夫）的衍生權利</td><td></td></tr></tbody></table></div><ul class="bl"><li>家庭化政策「要求（同時也使得）」家庭滿足成員的照顧需要。它也加深了需要照顧的人對家庭的依賴。</li><li>Leitner比較的是單項政策，不是整個福利國家。福利國家很少清楚地落在某一類。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Leitner（2003: 357–358）</span><span class="pgno">第12週　20</span></footer></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 四種家庭主義，各是什麼樣子？" data-sect="第三節　四種家庭主義" data-act="1"><header class="shead"><p class="lab">◆ 動手做（配對）</p><h2>四種家庭主義，各是什麼樣子？</h2></header><div class="sbody"><p class="intro">家庭化有強有弱，去家庭化也有強有弱，交叉出四種理念型。點左邊一型，再點右邊對應的描述。答案在下一頁。</p><div class="match" data-match="m21" data-act-key="match-21"><div class="mcol"><h4>類型</h4><button class="mitem" type="button" data-k="0">選擇家庭主義</button><button class="mitem" type="button" data-k="1">明確家庭主義</button><button class="mitem" type="button" data-k="2">隱性家庭主義</button><button class="mitem" type="button" data-k="3">去家庭主義</button></div><div class="mcol"><h4>描述</h4><button class="mitem" type="button" data-k="3">國家或市場提供照顧服務，但家庭照顧的權利不受肯認</button><button class="mitem" type="button" data-k="2">兩種都沒有；沒有其他選擇，家庭只好自己照顧</button><button class="mitem" type="button" data-k="0">有家庭以外的照顧服務，也有支持家庭照顧的政策；家庭可以選擇</button><button class="mitem" type="button" data-k="1">有支持家庭照顧的政策，但缺乏家庭以外的替代照顧</button></div></div><p class="mstat"></p></div><footer class="sfoot"><span class="cite"><b>出處</b>：Leitner（2003: 358–359）</span><span class="pgno">第12週　21</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="家庭化×去家庭化：四種理念型" data-sect="第三節　四種家庭主義" data-flags="sum quote"><header class="shead"><p class="lab">揭曉</p><h2>家庭化×去家庭化：四種理念型</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th></th><th>去家庭化：強</th><th>去家庭化：弱</th></tr></thead><tbody><tr><th scope="row">家庭化：強</th><td>選擇家庭主義（optional familialism）</td><td>明確家庭主義（explicit familialism）</td></tr><tr><th scope="row">家庭化：弱</th><td>去家庭主義（de-familialism）</td><td>隱性家庭主義（implicit familialism）</td></tr></tbody></table></div><ul class="bl"><li>明確：強化家庭照顧，又缺乏公共與市場的替代照顧，明確地要家庭負起照顧。</li><li>選擇：家庭照顧受到支持，也可以選擇（部分）卸下照顧責任。</li><li>隱性：既不去家庭化，也不積極支持家庭照顧。但沒有其他選擇，家庭仍是主要照顧者。</li><li>去家庭主義：家庭照顧者（部分）卸下負擔，但家庭照顧的權利不受肯認。</li></ul><blockquote><p class="en">"Yet, only in the optional familialism is the family's right to care not equated with the family's obligation to care."</p><p class="tr">（只有在選擇家庭主義裡，家庭照顧的權利才不等於家庭照顧的義務。）</p><cite>— Leitner（2003: 359）</cite></blockquote><p>小提醒：這裡的「隱性家庭主義」，和第一節Kamerman與Kahn的「隱性家庭政策」是兩回事。</p></div><footer class="sfoot"><span class="cite"><b>出處</b>：Leitner（2003: 358–359），表1</span><span class="pgno">第12週　22</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 歐洲各國的兒童照顧，屬於哪一型？" data-sect="第三節　四種家庭主義" data-act="1"><header class="shead"><p class="lab">◆ 動手做（分類）</p><h2>歐洲各國的兒童照顧，屬於哪一型？</h2></header><div class="sbody"><p class="intro">Leitner用兩個指標。家庭化：有沒有給付的育嬰假。去家庭化：未滿3歲幼兒使用正式托育的比例。約三成以上算普及，3–12%算很低。用上一頁的表分分看。</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。</p><p class="legend">卡片：育嬰假給付；未滿3歲正式托育比例</p><div data-sort="s23" data-act-key="sort-23"><div class="tray"><button class="sc" type="button" draggable="true" data-i="11" data-k="k3" data-txt="愛爾蘭　沒有給付；38%" data-ans="去家庭主義"><b>愛爾蘭</b><small>沒有給付；38%</small></button><button class="sc" type="button" draggable="true" data-i="7" data-k="k2" data-txt="西班牙　沒有給付；5%" data-ans="隱性家庭主義"><b>西班牙</b><small>沒有給付；5%</small></button><button class="sc" type="button" draggable="true" data-i="10" data-k="k3" data-txt="英國　沒有給付；34%" data-ans="去家庭主義"><b>英國</b><small>沒有給付；34%</small></button><button class="sc" type="button" draggable="true" data-i="9" data-k="k2" data-txt="葡萄牙　沒有給付；12%" data-ans="隱性家庭主義"><b>葡萄牙</b><small>沒有給付；12%</small></button><button class="sc" type="button" draggable="true" data-i="4" data-k="k1" data-txt="德國　有給付；10%" data-ans="明確家庭主義"><b>德國</b><small>有給付；10%</small></button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="瑞典　有給付；48%" data-ans="選擇家庭主義"><b>瑞典</b><small>有給付；48%</small></button><button class="sc" type="button" draggable="true" data-i="5" data-k="k1" data-txt="義大利　有給付；6%" data-ans="明確家庭主義"><b>義大利</b><small>有給付；6%</small></button><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="丹麥　有給付；64%" data-ans="選擇家庭主義"><b>丹麥</b><small>有給付；64%</small></button><button class="sc" type="button" draggable="true" data-i="6" data-k="k1" data-txt="奧地利　有給付；4%" data-ans="明確家庭主義"><b>奧地利</b><small>有給付；4%</small></button><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="比利時　有給付；30%" data-ans="選擇家庭主義"><b>比利時</b><small>有給付；30%</small></button><button class="sc" type="button" draggable="true" data-i="3" data-k="k0" data-txt="法國　有給付；29%" data-ans="選擇家庭主義"><b>法國</b><small>有給付；29%</small></button><button class="sc" type="button" draggable="true" data-i="8" data-k="k2" data-txt="希臘　沒有給付；3%" data-ans="隱性家庭主義"><b>希臘</b><small>沒有給付；3%</small></button></div><div class="scols n4"><div class="scol" data-k="k0"><h4>選擇家庭主義</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>明確家庭主義</h4><div class="drop"></div></div><div class="scol" data-k="k2"><h4>隱性家庭主義</h4><div class="drop"></div></div><div class="scol" data-k="k3"><h4>去家庭主義</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：Leitner（2003: 360–361），表2、表3</span><span class="pgno">第12週　23</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="兒童照顧：四個國家群" data-sect="第三節　四種家庭主義" data-flags="sum"><header class="shead"><p class="lab">揭曉</p><h2>兒童照顧：四個國家群</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th></th><th>正式托育普及</th><th>正式托育很少</th></tr></thead><tbody><tr><th scope="row">有育嬰假給付</th><td>選擇家庭主義：比利時、丹麥、法國、瑞典（芬蘭是邊界個案）</td><td>明確家庭主義：奧地利、德國、義大利、盧森堡、荷蘭</td></tr><tr><th scope="row">沒有育嬰假給付</th><td>去家庭主義：愛爾蘭、英國</td><td>隱性家庭主義：希臘、葡萄牙、西班牙</td></tr></tbody></table></div><p class="lead-in">和Esping-Andersen的三個世界不一樣：</p><ul class="bl"><li>北歐不是「去家庭化」，而是選擇家庭主義。比利時、法國因為托育傳統，也加入這一群。</li><li>保守主義國家分成明確與隱性兩群。南歐（義大利除外）落在隱性。</li><li>自由主義的愛爾蘭、英國，落在去家庭主義。</li><li>荷蘭沒有法定的育嬰假給付，但團體協商的給付很普遍。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Leitner（2003: 360–362），表3及註3</span><span class="pgno">第12週　24</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 英國的老人照顧，屬於哪一型？" data-sect="第三節　四種家庭主義" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>英國的老人照顧，屬於哪一型？</h2></header><div class="sbody"><p class="intro">換到老人照顧，Leitner改用兩個指標。家庭化：家庭照顧老人有沒有現金給付。去家庭化：65歲以上接受居家服務的比例。多數國家只有1–9%，北歐明顯較高。答案在下一頁。</p><p class="pq">英國：照顧者可以領均一津貼；65歲以上接受居家服務的比例是9%。英國的老人照顧屬於……</p><div class="poll" data-poll="p25" data-answer="明確家庭主義" data-act-key="predict-25"><div class="opts"><button type="button" data-v="選擇家庭主義"><span>選擇家庭主義</span></button><button type="button" data-v="明確家庭主義"><span>明確家庭主義</span></button><button type="button" data-v="隱性家庭主義"><span>隱性家庭主義</span></button><button type="button" data-v="去家庭主義"><span>去家庭主義</span></button></div></div><p class="verdict" data-verdict-for="p25"></p><div class="fbk ok reveal-box" data-reveal-all="p25">明確家庭主義。有照顧給付，居家服務卻有限（Leitner, 2003: 363–365）。英國在兒童照顧是去家庭主義，到了老人照顧變成明確家庭主義。下一頁是各國的分類。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：Leitner（2003: 363–365），表4、表5</span><span class="pgno">第12週　25</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="同一個國家，不同照顧政策，不同類型" data-sect="第三節　四種家庭主義" data-flags="sum quote"><header class="shead"><p class="lab">揭曉</p><h2>同一個國家，不同照顧政策，不同類型</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th></th><th>居家服務普及</th><th>居家服務有限</th></tr></thead><tbody><tr><th scope="row">有老人照顧給付</th><td>選擇家庭主義：丹麥、芬蘭、瑞典</td><td>明確家庭主義：奧地利、比利時、法國、德國、愛爾蘭、盧森堡、英國</td></tr><tr><th scope="row">沒有老人照顧給付</th><td>（無）</td><td>隱性家庭主義：希臘、義大利、荷蘭、葡萄牙、西班牙</td></tr></tbody></table></div><ul class="bl"><li>65歲以上接受居家服務的比例：芬蘭24%、丹麥22%、瑞典16%。其他國家多在1–9%。</li><li>換了照顧政策，國家就換了位置：<ul class="sub"><li>英國、愛爾蘭：兒童照顧是去家庭主義，老人照顧是明確家庭主義</li><li>比利時、法國：兒童照顧是選擇，老人照顧是明確</li><li>義大利、荷蘭：兒童照顧是明確，老人照顧是隱性</li></ul></li></ul><blockquote><p class="en">"countries cluster differently for different care policies."</p><p class="tr">（不同的照顧政策，國家會分成不同的群。）</p><cite>— Leitner（2003: 354）</cite></blockquote><ul class="bl"><li>要把每個福利國家歸進單一一種家庭主義，很難，甚至不可能。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Leitner（2003: 363–365），表3、表4、表5</span><span class="pgno">第12週　26</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="性別化與去性別化的家庭主義" data-sect="第三節　四種家庭主義" data-flags="sum"><header class="shead"><p class="lab">第三節　四種家庭主義</p><h2>性別化與去性別化的家庭主義</h2></header><div class="sbody"><ul class="bl"><li>家庭照顧通常由女性（妻子、女兒、媳婦）提供。所以支持家庭照顧，本身就是性別議題。</li><li>隱性家庭主義看似放任，卻複製、也確認了既有的性別分工。</li><li>家庭化的政策可以是性別化的，也可以是去性別化的。</li></ul><div class="tw"><table><thead><tr><th>性別化家庭主義</th><th>去性別化家庭主義</th></tr></thead><tbody><tr><td>只把家庭照顧指派給女性（或男性）</td><td>不以生理性別區分</td></tr><tr><td>相對於就業，貶低家庭照顧</td><td>肯認家庭照顧，讓照顧者經濟獨立</td></tr><tr><td>不提供從照顧回到就業的選擇</td><td>讓人能在家庭照顧與就業之間移動</td></tr><tr><td>以（已婚）異性戀伴侶家庭為中心</td><td>對不同的家庭照顧安排，提供相當的給付</td></tr></tbody></table></div><p class="lead-in">用育嬰假檢驗九個國家：</p><ul class="bl"><li>丹麥、瑞典最去性別化：假期較短、所得替代讓照顧者有一定的經濟獨立、有讓父母分擔照顧的誘因。</li><li>法國、德國、義大利、盧森堡明顯性別化：假期長、給付不足、缺乏父母分擔的誘因。這在結構上強化了母親的照顧角色與經濟依賴。</li><li>比利時接近去性別化，但給付不足。奧地利有分擔誘因，但給付不足，在結構上仍鼓勵母親在家照顧。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Leitner（2003: 365–372），表7</span><span class="pgno">第12週　27</span></footer></section>
+</div></div><div class="chap"><button class="chap-h" type="button"><span class="cn">04</span><span class="ct">照顧公共化：保母托育計畫怎麼誕生</span><span class="cc">11頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第四節　照顧公共化：保母托育計畫怎麼誕生" data-sect="第四節　照顧公共化：保母托育計畫怎麼誕生"><div class="sbody"><div class="divider"><div class="ticketno"><span class="tsec">第四節</span><span class="tno">04</span></div><h2 class="dtitle">照顧公共化：保母托育計畫怎麼誕生</h2><p class="dq">台灣的托育，怎麼從私人市場走向公共管理？</p><dl class="dread"><div><dt>讀本</dt><dd>傅立葉、王兆慶（2011）〈照顧公共化的改革與挑戰：以保母托育體系的改革為例〉，《女學學誌》29，頁79–95</dd></div></dl></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第12週　28</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 2006年，0–3歲的幼兒誰在帶？" data-sect="第四節　照顧公共化：保母托育計畫怎麼誕生" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>2006年，0–3歲的幼兒誰在帶？</h2></header><div class="sbody"><p class="intro">本週必讀的起點，是台灣嬰幼兒照顧的現況。答案在下一頁。</p><p class="pq">2006年，台灣0–3歲嬰幼兒由母親和親屬照顧的比例，大約是……</p><div class="poll" data-poll="p29" data-answer="約92%" data-act-key="predict-29"><div class="opts"><button type="button" data-v="約30%"><span>約30%</span></button><button type="button" data-v="約50%"><span>約50%</span></button><button type="button" data-v="約70%"><span>約70%</span></button><button type="button" data-v="約92%"><span>約92%</span></button></div></div><p class="verdict" data-verdict-for="p29"></p><div class="fbk ok reveal-box" data-reveal-all="p29">91.9%由母親和親屬照顧；只有8.2%由保母及其他聘僱人力照顧（行政院主計處，2006，引自傅立葉、王兆慶，2011: 87）。下一頁說明這代表什麼。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 87）</span><span class="pgno">第12週　29</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="家庭為主、市場為輔" data-sect="第四節　照顧公共化：保母托育計畫怎麼誕生" data-flags="sum"><header class="shead"><p class="lab">揭曉</p><h2>家庭為主、市場為輔</h2></header><div class="sbody"><figure class="bars"><p class="bcap">2006年，0–3歲嬰幼兒</p><ul><li><span class="bl-l">母親和親屬照顧</span><span class="bl-t"><i style="--w:100.0%"></i></span><span class="bl-v">91.9%</span></li><li><span class="bl-l">保母及其他聘僱人力</span><span class="bl-t"><i style="--w:8.9%"></i></span><span class="bl-v">8.2%</span></li></ul></figure><ul class="bl"><li>台灣0–3歲的嬰幼兒照顧，以「家庭」為主，「市場」居次。</li><li>國家在嬰幼兒照顧的生產上，幾乎完全缺席。</li><li>保母工作成為街頭巷尾的非正式經濟活動。保母習於和家長私下協商托育關係。</li></ul><p>對照：你在暖身排的第1名，落在哪裡？</p><div class="tw"><table><thead><tr><th class="nw">暖身的選項</th><th>照顧由誰提供</th><th class="xcol">你的排序</th></tr></thead><tbody><tr><td>父母一方自己帶</td><td>家庭</td><td class="mine" data-mine="0">—</td></tr><tr><td>祖父母或親戚帶</td><td>家庭</td><td class="mine" data-mine="1">—</td></tr><tr><td>鄰居朋友介紹的保母，私下談</td><td>市場（非正式）</td><td class="mine" data-mine="2">—</td></tr><tr><td>私立托嬰中心</td><td>市場</td><td class="mine" data-mine="4">—</td></tr><tr><td>準公共化保母</td><td>私人提供，和政府簽約、接受管理（見<a class="goto" href="#" data-goto="50">第51頁</a>）</td><td class="mine" data-mine="3">—</td></tr><tr><td>公共托育家園、公設民營托嬰中心</td><td>公共</td><td class="mine" data-mine="5">—</td></tr></tbody></table></div><p>這篇文章怎麼寫成的：兩位作者親身參與計畫的制訂，一位後來在社區保母系統工作。資料以參與式觀察為主、文獻檔案為輔。作者也說明，發現不一定能推論到所有的保母系統。</p></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 79, 81, 87）；行政院主計處（2006），引自傅立葉、王兆慶（2011: 87）；對照表為本課整理，選項來源同<a class="goto" href="#" data-goto="3">第4頁</a></span><span class="pgno">第12週　30</span></footer></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 照顧服務主要由誰生產？" data-sect="第四節　照顧公共化：保母托育計畫怎麼誕生" data-act="1"><header class="shead"><p class="lab">◆ 動手做（配對）</p><h2>照顧服務主要由誰生產？</h2></header><div class="sbody"><p class="intro">傅立葉與王兆慶引用Esping-Andersen：不同的福利國家體制，負責照顧服務生產的主要部門不同。點左邊一種體制，再點右邊對應的部門。答案在下一頁。</p><div class="match" data-match="m31" data-act-key="match-31"><div class="mcol"><h4>體制</h4><button class="mitem" type="button" data-k="0">保守主義</button><button class="mitem" type="button" data-k="1">自由主義</button><button class="mitem" type="button" data-k="2">社會民主</button></div><div class="mcol"><h4>部門</h4><button class="mitem" type="button" data-k="1">市場</button><button class="mitem" type="button" data-k="2">國家</button><button class="mitem" type="button" data-k="0">家庭</button></div></div><p class="mstat"></p></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 82），引用Esping-Andersen（1990）</span><span class="pgno">第12週　31</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="「照顧公共化」的兩種概念" data-sect="第四節　照顧公共化：保母托育計畫怎麼誕生" data-flags="sum"><header class="shead"><p class="lab">揭曉</p><h2>「照顧公共化」的兩種概念</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th>概念一：家庭照顧工作社會化</th><th>概念二：看照顧服務由誰生產</th></tr></thead><tbody><tr><td>照顧由家務事，轉為社會的公共事務（王增勇等，2006）</td><td>保守主義：家庭；自由主義：市場；社會民主：國家</td></tr><tr><td>例：國家給照顧者津貼、合理的喘息服務、外籍看護工的正常勞動條件與休假權益</td><td>作者引用的研究指出：只有社會民主模式能有效提升婦女就業、促進性別平等</td></tr><tr><td>沒有講清楚：照顧服務主要由哪個部門生產</td><td>注重服務的來源，以及不同來源的運作邏輯</td></tr></tbody></table></div><ul class="bl"><li>「去私領域化」的照顧服務有兩條路：市場與國家。</li><li>兩者都能減輕家庭的照顧負擔。差別在有沒有反市場剝削的價值關懷。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 82–83），引用王增勇等（2006）、Esping-Andersen（1990）</span><span class="pgno">第12週　32</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="照顧市場化：三方皆輸" data-sect="第四節　照顧公共化：保母托育計畫怎麼誕生" data-flags="sum quote"><header class="shead"><p class="lab">第四節　照顧公共化：保母托育計畫怎麼誕生</p><h2>照顧市場化：三方皆輸</h2></header><div class="sbody"><ul class="bl"><li>老人與失能者照顧：高達18萬的外籍看護工，屬於全球化的跨國照顧服務市場。</li><li>學前托育也高度市場化。3–6歲使用托育服務的兒童，進入公共幼托體系的比率：</li></ul><figure class="bars"><ul><li><span class="bl-l">義大利</span><span class="bl-t"><i style="--w:100.0%"></i></span><span class="bl-v">91%</span></li><li><span class="bl-l">瑞典</span><span class="bl-t"><i style="--w:81.3%"></i></span><span class="bl-v">74%</span></li><li><span class="bl-l">英國</span><span class="bl-t"><i style="--w:65.9%"></i></span><span class="bl-v">60%</span></li><li><span class="bl-l">台灣</span><span class="bl-t"><i style="--w:36.3%"></i></span><span class="bl-v">33%</span></li></ul></figure><p class="lead-in">三方皆輸：</p><ol class="bl"><li value="1">服務購買者：市場生產不足且價格昂貴，一般家庭無法負擔</li><li value="2">照顧工作者：受到剝削，而多數從事這類工作的是女性</li><li value="3">被照顧者：服務品質不佳，老人或兒童得不到理想的照顧</li></ol><blockquote><p>「在此種狀況下誰是獲益者？從台灣社會的例子中，可以明顯看出獲益的是營利業者與資本家。」</p><cite>— 傅立葉、王兆慶（2011: 83）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 83）；托育比率引自賴幸媛、尹伶瑛、雷倩等（2007）</span><span class="pgno">第12週　33</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="去私領域化＋去商品化，但不必公營" data-sect="第四節　照顧公共化：保母托育計畫怎麼誕生" data-flags="quote"><header class="shead"><p class="lab">第四節　照顧公共化：保母托育計畫怎麼誕生</p><h2>去私領域化＋去商品化，但不必公營</h2></header><div class="sbody"><ul class="bl"><li>社會民主模式的重點：同時達成照顧的「去私領域化」和「去商品化」。</li><li>台灣的財政結構與政治文化不同於北歐，國家無法直接提供這些服務。</li><li>所以公共化策略不是「公營」或「公有」，而是從家庭與市場的交界，召喚出「社區」與「第三部門」，讓非營利組織和政府共同治理。</li></ul><p class="lead-in">內政部兒童局在計畫中揭示：</p><ol class="bl"><li value="1">對育兒家庭：提供「平價、可靠的普及托育服務」</li><li value="2">對照顧者：建構「非低薪、權益受保障之大量照顧福利服務工作機會」</li><li value="3">對管理：結合民間團體、機構、學校，「培訓專業管理人力」</li></ol><p class="lead-in">積極性福利的想像：</p><blockquote><p>「因為平價，經濟弱勢階級也可以使用福利服務；因為品質合理，經濟優勢階級也願意使用福利服務。」</p><cite>— 傅立葉、王兆慶（2011: 85）</cite></blockquote><ul class="bl"><li>不必由國家直接聘僱照顧人力。只要形成「公共化管理」的效果，使價格、勞動條件、照顧品質都合理即可。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 84–85），引用內政部兒童局（2008）</span><span class="pgno">第12週　34</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 2005年底，系統裡實際在托育的保母有多少人？" data-sect="第四節　照顧公共化：保母托育計畫怎麼誕生" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>2005年底，系統裡實際在托育的保母有多少人？</h2></header><div class="sbody"><p class="intro">2000年起，政府推動「社區保母支持系統」。當時勞委會已發出4萬張保母證照。答案在下一頁。</p><p class="pq">2005年底，社區保母支持系統裡「實際從事托育」的保母，大約有……</p><div class="poll" data-poll="p35" data-answer="約5千人" data-act-key="predict-35"><div class="opts"><button type="button" data-v="約1千人"><span>約1千人</span></button><button type="button" data-v="約5千人"><span>約5千人</span></button><button type="button" data-v="約2萬人"><span>約2萬人</span></button><button type="button" data-v="約4萬人"><span>約4萬人</span></button></div></div><p class="verdict" data-verdict-for="p35"></p><div class="fbk ok reveal-box" data-reveal-all="p35">5,286人。系統納管7,221名保母，其中實際從事托育的只有5,286名，遠低於4萬張證照（內政部兒童局，2006，引自傅立葉、王兆慶，2011: 89–90）。下一頁說明為什麼。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 89–90）</span><span class="pgno">第12週　35</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="「非正式經濟」不容易馴服" data-sect="第四節　照顧公共化：保母托育計畫怎麼誕生" data-flags="sum"><header class="shead"><p class="lab">揭曉</p><h2>「非正式經濟」不容易馴服</h2></header><div class="sbody"><figure class="bars"><p class="bcap">2005年底</p><ul><li><span class="bl-l">勞委會已發出的保母證照</span><span class="bl-t"><i style="--w:100.0%"></i></span><span class="bl-v">約4萬張</span></li><li><span class="bl-l">社區保母支持系統納管</span><span class="bl-t"><i style="--w:18.1%"></i></span><span class="bl-v">7,221名</span></li><li><span class="bl-l">實際從事托育</span><span class="bl-t"><i style="--w:13.2%"></i></span><span class="bl-v">5,286名</span></li></ul></figure><p class="lead-in">兩股正式化的力道：</p><ul class="bl"><li>1998年起的保母技術士證照：證照終生有效，卻不要求持續進修或執業；考試測不出耐心與親密能力；沒有持續督導托育環境。</li><li>2000年起的社區保母支持系統：在職訓練、直接訪視、媒合轉介。</li></ul><p class="lead-in">保母說「不需要加入系統」的三種觀點：</p><ol class="bl"><li value="1">不必靠系統轉介孩子，靠自己就招得到</li><li value="2">自己不是在「就業」，而是做善事、用愛心養育鄰里的孩子</li><li value="3">政府的系統就像「法律」，只需要管壞人</li></ol><p class="lead-in">官方的兩個障礙：</p><ul class="bl"><li>兒童局：「本制度涉及透過補助誘發送托照顧，與『幼兒由父母照顧是最好的模式』之理念似有相左。」</li><li>兒童局另提殘補的替代方案：「由弱勢家庭兒童先推動，視辦理情形再逐步擴大實施」。</li><li>作者的歸納：一是家庭主義的保守意識型態，二是財政考量衍生的殘補式福利主張。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 88–90），引用內政部兒童局（2006）</span><span class="pgno">第12週　36</span></footer></section>
+<section class="slide k-order" data-kind="order" data-label="◆ 保母托育公共化的五步" data-sect="第四節　照顧公共化：保母托育計畫怎麼誕生" data-act="1"><header class="shead"><p class="lab">◆ 動手做（排序）</p><h2>保母托育公共化的五步</h2></header><div class="sbody"><p class="intro">從證照到補助計畫，依時間先後排出五件事。答案在下一頁。</p><p class="instr">從最早的開始，依序點下面五張卡片；點對了就排進去。</p><div class="cycle" data-order="o37" data-act-key="order-37"><div class="otray"><button class="oi" type="button" data-o="1">社區保母支持系統開始實施</button><button class="oi" type="button" data-o="0">保母技術士證照制度開辦</button><button class="oi" type="button" data-o="4">「保母托育管理與托育費用補助實施計畫」上路</button><button class="oi" type="button" data-o="2">托育政策催生聯盟倡議「保母管理及費用補助制度」</button><button class="oi" type="button" data-o="3">行政院婦權會促成「普及照顧政策研議小組」</button></div><ol class="tline"><li class="empty" data-t="保母技術士證照制度開辦"><span class="no">1</span><span>？</span></li><li class="empty" data-t="社區保母支持系統開始實施"><span class="no">2</span><span>？</span></li><li class="empty" data-t="托育政策催生聯盟倡議「保母管理及費用補助制度」"><span class="no">3</span><span>？</span></li><li class="empty" data-t="行政院婦權會促成「普及照顧政策研議小組」"><span class="no">4</span><span>？</span></li><li class="empty" data-t="「保母托育管理與托育費用補助實施計畫」上路"><span class="no">5</span><span>？</span></li></ol><div class="row"><button class="pbtn sec js-show" type="button">直接看答案</button></div><div class="fbk"></div></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 88–91, 100）</span><span class="pgno">第12週　37</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="從社區保母系統到保母托育計畫" data-sect="第四節　照顧公共化：保母托育計畫怎麼誕生" data-flags="sum quote"><header class="shead"><p class="lab">揭曉</p><h2>從社區保母系統到保母托育計畫</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">年</th><th class="nw">事件</th></tr></thead><tbody><tr><td>1998</td><td>勞委會職訓局辦理第一屆丙級保母技術士技能檢定</td></tr><tr><td>2000</td><td>社區保母支持系統：政府結合民間非營利組織，「公私融合、社區自治」</td></tr><tr><td>2005</td><td>彭婉如基金會組成托育政策催生聯盟：用普及發放給雙薪家庭的托育補助，誘導家長找系統內的有照保母</td></tr><tr><td>2006</td><td>行政院婦權會要求檢討，政務委員專案會議促成「普及照顧政策研議小組」</td></tr><tr><td>2006–2008</td><td>普照小組開會14次，出席者約10人以內，包括兒童局局長與行政院主計處專員</td></tr><tr><td>2008</td><td>1月社區保母系統新制上路，4月起提供托育補助</td></tr></tbody></table></div><p class="lead-in">2008年的補助給誰：</p><ul class="bl"><li>受僱者家庭：父母雙方或單親一方因就業，無法自行照顧未滿2歲幼兒、需要送請保母照顧。</li><li>家庭年總收入150萬元以下：每位幼兒每月3,000元。</li><li>低收入戶，或家有未滿2歲發展遲緩、身心障礙幼兒：每位幼兒每月5,000元。</li></ul><p class="lead-in">國家女性主義：</p><ul class="bl"><li>倡議不是街頭運動、不是媒體戰，也少有國會遊說，而是一開始就架構在中央政府行政部門之中。</li></ul><blockquote><p>「此套制度的設計中，國家不能只給錢，還要負責管理」</p><cite>— 托育政策催生聯盟（2008），引自傅立葉、王兆慶（2011: 95）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 88–95, 99–100）</span><span class="pgno">第12週　38</span></footer></section>
+</div></div><div class="chap"><button class="chap-h" type="button"><span class="cn">✓</span><span class="ct">第三、四節小測驗</span><span class="cc">1頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quiz" data-kind="quiz" data-label="◆ 第三、四節小測驗" data-sect="第四節　照顧公共化：保母托育計畫怎麼誕生" data-act="1"><header class="shead"><p class="lab">小測驗</p><h2>第三、四節小測驗</h2></header><div class="sbody"><p class="intro">三題，作答後會立刻看到解說。</p><div data-quiz="q39"><div class="qz" data-a="2"><div class="stem">1. 有支持家庭照顧的政策，卻缺乏家庭以外的替代照顧。這是Leitner的哪一型？</div><button class="opt" type="button">選擇家庭主義</button><button class="opt" type="button">明確家庭主義</button><button class="opt" type="button">隱性家庭主義</button><button class="opt" type="button">去家庭主義</button><div class="fb"><b>解說</b>：明確家庭主義強化家庭照顧，又缺乏公共與市場的替代照顧，明確地要家庭負起照顧（Leitner, 2003: 358–359；<a class="goto" href="#" data-goto="21">第22頁</a>〈家庭化×去家庭化：四種理念型〉）。</div></div><div class="qz" data-a="2"><div class="stem">2. 英國和愛爾蘭在兒童照顧屬於去家庭主義。到了老人照顧，屬於哪一型？</div><button class="opt" type="button">選擇家庭主義</button><button class="opt" type="button">明確家庭主義</button><button class="opt" type="button">隱性家庭主義</button><button class="opt" type="button">仍是去家庭主義</button><div class="fb"><b>解說</b>：有照顧給付、居家服務有限，是明確家庭主義。不同的照顧政策，國家會分成不同的群（Leitner, 2003: 363–365；<a class="goto" href="#" data-goto="25">第26頁</a>〈同一個國家，不同照顧政策，不同類型〉）。</div></div><div class="qz" data-a="2"><div class="stem">3. 傅立葉與王兆慶說，社會民主模式的重點，是同時達成照顧的哪兩件事？</div><button class="opt" type="button">公有化與國營化</button><button class="opt" type="button">去私領域化與去商品化</button><button class="opt" type="button">市場化與家庭化</button><button class="opt" type="button">現金化與普及化</button><div class="fb"><b>解說</b>：社會民主模式的重點，在同時達成照顧的「去私領域化」和「去商品化」。台灣的做法不是公營或公有，而是讓非營利組織和政府共同治理（傅立葉、王兆慶, 2011: 84；<a class="goto" href="#" data-goto="33">第34頁</a>〈去私領域化＋去商品化，但不必公營〉）。</div></div></div><p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p></div><footer class="sfoot"><span class="cite"><b>出處</b>：見各題解說</span><span class="pgno">第12週　39</span></footer></section>
+</div></div>
+</div>
+<div class="pane" data-pane="3">
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">05</span><span class="ct">公共化的爭議與反挫</span><span class="cc">12頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第五節　公共化的爭議與反挫" data-sect="第五節　公共化的爭議與反挫"><div class="sbody"><div class="divider"><div class="ticketno"><span class="tsec">第五節</span><span class="tno">05</span></div><h2 class="dtitle">公共化的爭議與反挫</h2><p class="dq">為什麼這條路走得不平順？</p><dl class="dread"><div><dt>讀本</dt><dd>傅立葉、王兆慶（2011）頁95–111</dd></div></dl></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第12週　40</span></footer></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 三個爭議，各是怎麼收場？" data-sect="第五節　公共化的爭議與反挫" data-act="1"><header class="shead"><p class="lab">◆ 動手做（配對）</p><h2>三個爭議，各是怎麼收場？</h2></header><div class="sbody"><p class="intro">保母計畫形成初期，有三個爭議事件。點左邊一個爭議，再點右邊對應的結果。答案在下一頁。</p><div class="match" data-match="m41" data-act-key="match-41"><div class="mcol"><h4>爭議</h4><button class="mitem" type="button" data-k="0">私立托嬰中心要不要納入補助</button><button class="mitem" type="button" data-k="1">保母收費要不要管制</button><button class="mitem" type="button" data-k="2">在家自己帶的家長拿不到補助，公不公平</button></div><div class="mcol"><h4>結果</h4><button class="mitem" type="button" data-k="1">取消縣市訂定保母收費「上限」的權力</button><button class="mitem" type="button" data-k="2">至今仍纏繞著計畫；作者認為批評者不瞭解、或根本不贊同公共化的企圖</button><button class="mitem" type="button" data-k="0">以「接受補助就應該納入管理」為條件，把托嬰中心納入</button></div></div><p class="mstat"></p></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 95–99）</span><span class="pgno">第12週　41</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="計畫上路初期的三個爭議" data-sect="第五節　公共化的爭議與反挫" data-flags="sum quote"><header class="shead"><p class="lab">揭曉</p><h2>計畫上路初期的三個爭議</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">爭議</th><th class="nw">誰提出</th><th class="nw">結果</th></tr></thead><tbody><tr><td>私立托嬰中心要不要納入補助</td><td>中華民國幼兒托育聯合會2008年3月10日行文內政部與立委；私立托嬰中心的壓力團體也得到立委協助</td><td>婦團代表先強烈反對：營利導向不符公共化理念。後來同意以「接受補助就應該納入管理」為條件納入，另訂督導管理原則</td></tr><tr><td>保母收費要不要管制</td><td>縣市政府與學者反映：訂定保母收費可能違反公平交易法</td><td>2009年3月的版本，取消縣市訂定收費「上限」的權力</td></tr><tr><td>在家自己帶的家長拿不到補助</td><td>兒童福利聯盟2008年5月舉辦記者會</td><td>「公平性」的問題至今仍纏繞著保母計畫</td></tr></tbody></table></div><ul class="bl"><li>2009年私立托嬰中心只有154所、收托2,219位未滿2歲幼兒。數字不大，但推動計畫時仍要和這些營利組織相互折衝。</li></ul><blockquote><p>這些事件表示，不只需要說服中央主管機關，「還得克服複雜的商業利益糾葛，以及其他國家部門的意識型態」。</p><cite>— 傅立葉、王兆慶（2011: 95）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 95–98）</span><span class="pgno">第12週　42</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="收費管制：「民主治理」被「市場競爭」打敗" data-sect="第五節　公共化的爭議與反挫" data-flags="quote"><header class="shead"><p class="lab">第五節　公共化的爭議與反挫</p><h2>收費管制：「民主治理」被「市場競爭」打敗</h2></header><div class="sbody"><ul class="bl"><li>原計畫授權縣市托育管理委員會，訂定保母的收費上限、收退費標準與調漲幅度限制。委員會由地方主管機關、民間團體代表與專家學者組成。</li></ul><p class="lead-in">為什麼要管價格：</p><ul class="bl"><li>避免惡性競爭，平衡生產者和消費者不對等的權力。</li><li>避免托育補助反而造成保母漲價，形成「肉包子打狗」效應，重蹈幼兒教育券的覆轍。</li></ul><p class="lead-in">公平會怎麼看：</p><ul class="bl"><li>2008年11月7日座談會的主席致詞稿：公平交易法要排除妨礙市場自由競爭的人為障礙，藉由「市場機制」這隻「看不見的手」決定資源的分配與利用。</li><li>婦權會委員的質疑：</li></ul><blockquote><p>「許多專業服務，例如醫師開立死亡證明或出生證明，甚至商業服務，例如電視第四台的收費，都可以訂定收費標準，何以訂定保母費用就不可以？」</p><cite>— 婦權會委員A1，引自傅立葉、王兆慶（2011: 97）</cite></blockquote><p class="lead-in">結果：</p><ul class="bl"><li>2009年3月的版本，收費「上限」改為收費「項目」。</li></ul><blockquote><p>「原本想以『民主治理』取代『市場競爭』的意圖，卻正好被市場競爭打敗」</p><cite>— 傅立葉、王兆慶（2011: 98）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 96–98），引用行政院公平交易委員會（2008a）</span><span class="pgno">第12週　43</span></footer></section>
+<section class="slide k-poll" data-kind="poll" data-label="◆ 在家自己帶孩子的家長，也該領補助嗎？" data-sect="第五節　公共化的爭議與反挫" data-act="1"><header class="shead"><p class="lab">◆ 表態</p><h2>在家自己帶孩子的家長，也該領補助嗎？</h2></header><div class="sbody"><p class="intro">2008年的托育補助，只給因就業無法自行照顧、把孩子送托的家庭。先表態，再讀下一頁作者怎麼說。沒有標準答案。</p><div class="pollbox"><div class="poll" data-poll="p44" data-act-key="poll-p44"><div class="opts"><button type="button" data-v="該，和送托的家長一樣多"><span>該，和送托的家長一樣多</span></button><button type="button" data-v="該，但可以比送托的少"><span>該，但可以比送托的少</span></button><button type="button" data-v="不該，補助應該支持就業與送托"><span>不該，補助應該支持就業與送托</span></button><button type="button" data-v="不該發現金，錢應該拿去增加公共托育"><span>不該發現金，錢應該拿去增加公共托育</span></button></div></div><p class="pollthanks" data-reveal-for="p44">記下來了。下一頁看看作者怎麼說。</p></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 98–99）</span><span class="pgno">第12週　44</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="「公平性」背後的性別秩序" data-sect="第五節　公共化的爭議與反挫" data-flags="quote"><header class="shead"><p class="lab">揭曉</p><h2>「公平性」背後的性別秩序</h2></header><div class="sbody"><p class="lead-in">批評的聲音：</p><ul class="bl"><li>兒童福利聯盟調查：五成六的媽媽不知道「社區保母系統」，九成六未申請托育補助。有的媽媽辭職帶孩子，卻得不到補助，認為是政府「變相懲罰」。</li><li>行政院研考會（2008）：「自行照顧或托親友者卻不得領取，是否符合社會公平，應予檢討。」</li></ul><p class="lead-in">作者的論證：</p><blockquote><p>「補助居家照顧小孩的母親，最明顯的意義就是國家以資源將女性繼續綁在家中」</p><cite>— 傅立葉、王兆慶（2011: 99）</cite></blockquote><ul class="bl"><li>作者認為：看似社會公平的問題，其實涉及整個社會對性別秩序的想像，但這點很難說服其他團體。</li><li>照顧公共化必須同時對抗兩股力量：強調自由競爭市場的資本主義意識型態，以及強調傳統性別分工的父權社會文化。</li></ul><p class="lead-in">用第三節的話來說：</p><ul class="bl"><li>補助在家照顧，是家庭化政策。如果沒有托育可選，就接近明確家庭主義；托育與在家津貼都有，就接近選擇家庭主義（Leitner, 2003: 358–359）。</li><li>哪一種比較好，是今天的討論題之一。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 98–99），引用林倖妃（2008）、行政院研考會（2008）；Leitner（2003: 358–359）</span><span class="pgno">第12週　45</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="補助上路後：系統保母大增" data-sect="第五節　公共化的爭議與反挫" data-flags="sum"><header class="shead"><p class="lab">第五節　公共化的爭議與反挫</p><h2>補助上路後：系統保母大增</h2></header><div class="sbody"><p class="tcap">表：社區保母系統推動概況</p><div class="tw"><table><thead><tr><th class="nw">年</th><th>社區保母系統數</th><th>加入系統的保母人數</th><th>收托幼兒人數</th></tr></thead><tbody><tr><td>2005</td><td>40</td><td>7,221</td><td>7,142</td></tr><tr><td>2006</td><td>40</td><td>7,833</td><td>10,604</td></tr><tr><td>2007</td><td>46</td><td>9,284</td><td>8,956</td></tr><tr><td>2008＊</td><td>54</td><td>13,624</td><td>16,021</td></tr><tr><td>2009</td><td>56</td><td>14,248</td><td>16,985</td></tr><tr><td>2010</td><td>58</td><td>15,085</td><td>22,134</td></tr></tbody></table></div><p class="note">＊2008年1月起社區保母系統新制上路，4月起提供托育補助。</p><ul class="bl"><li>托育補助的誘因，讓納入系統的保母數量驟增。</li><li>作者提醒：成效不能只看系統保母的數量。更關鍵的是，能不能改變行之有年的保母市場文化，以及國家介入托育的態度。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 100–101），表二，資料來源為內政部兒童局（2011）</span><span class="pgno">第12週　46</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="「野生動物」，不是「圈養動物」" data-sect="第五節　公共化的爭議與反挫" data-flags="quote"><header class="shead"><p class="lab">第五節　公共化的爭議與反挫</p><h2>「野生動物」，不是「圈養動物」</h2></header><div class="sbody"><ul class="bl"><li>2008年以後，許多長期當個體戶的保母，第一次接受管理：環境檢查、托育品質檢核、家庭訪視。</li><li>保母過去沒有形成強而有力的專業社群。政策制訂時，未能有效整合保母的意見。</li></ul><blockquote><p>「試問今天如果我有錢，我有五六十萬去裝潢的話，我幹嘛當保母？」</p><cite>— 保母B2，引自傅立葉、王兆慶（2011: 101）</cite></blockquote><blockquote><p>「家長是我自己找來的，又不是你們介紹給我的，你們憑什麼打去問家長對我滿不滿意？」</p><cite>— 保母的電話投訴，引自傅立葉、王兆慶（2011: 102）</cite></blockquote><blockquote><p>「保母天生就是『野生動物』，不是『圈養動物』。加入基金會的系統也不是真的要給我們管，她們多半只是來『靠行』而已」</p><cite>— 彭婉如基金會主管C1，引自傅立葉、王兆慶（2011: 103）</cite></blockquote><p class="lead-in">系統的管理權力有限：</p><ul class="bl"><li>加入只要書面審查和一次初訪。退場還要看兒童局的條件、縣市政府的執法態度，甚至議員的關說。</li><li>工作人員和保母之間，沒有上司對下屬的關係，也沒有明確的賞罰權。</li><li>結果轉向低度干預：「只要媒合後，有家長願意把孩子交給保母，就表示保母仍然是被市場接受的」。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 101–104）</span><span class="pgno">第12週　47</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 台北市系統的孩子，有多少是系統轉介的？" data-sect="第五節　公共化的爭議與反挫" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>台北市系統的孩子，有多少是系統轉介的？</h2></header><div class="sbody"><p class="intro">彭婉如基金會承辦台北市的社區保母系統。答案在下一頁。</p><p class="pq">2009年，這個系統新增收托的302位兒童裡，透過系統轉介的大約占……</p><div class="poll" data-poll="p48" data-answer="約三分之一" data-act-key="predict-48"><div class="opts"><button type="button" data-v="約10%"><span>約10%</span></button><button type="button" data-v="約三分之一"><span>約三分之一</span></button><button type="button" data-v="約三分之二"><span>約三分之二</span></button><button type="button" data-v="約90%"><span>約90%</span></button></div></div><p class="verdict" data-verdict-for="p48"></p><div class="fbk ok reveal-box" data-reveal-all="p48">102位，約三分之一。其餘200位、66%，是保母透過系統外的網絡自己找來的（傅立葉、王兆慶，2011: 106）。下一頁說明為什麼。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 106）</span><span class="pgno">第12週　48</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="三分之二的孩子，是保母自己找來的" data-sect="第五節　公共化的爭議與反挫" data-flags="sum"><header class="shead"><p class="lab">揭曉</p><h2>三分之二的孩子，是保母自己找來的</h2></header><div class="sbody"><figure class="bars"><p class="bcap">2009年，台北市系統新增收托302位</p><ul><li><span class="bl-l">系統轉介</span><span class="bl-t"><i style="--w:51.0%"></i></span><span class="bl-v">102位</span></li><li><span class="bl-l">保母自覓</span><span class="bl-t"><i style="--w:100.0%"></i></span><span class="bl-v">200位（66%）</span></li></ul></figure><ul class="bl"><li>每位保母平均收托2.1個孩子，系統的托育能量幾近飽和。</li><li>家長透過系統找到保母的機率，只有10–20%左右（段慧瑩，2005）。</li><li>保母團體之間互相轉介，談成就付一千塊。媒合效率提高了，也帶進欺瞞、勸誘等不確定因素。</li><li>有的家長在兩三個系統重複登記，分不清誰負責管理、轉介。</li><li>作者的判斷：這不是個別系統的管理效能問題，而是系統組織體制混亂造成的結構性問題。</li><li>提醒：這些觀察限於作者參與的系統，不一定能推論到所有系統。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 81, 105–107），引用段慧瑩（2005）</span><span class="pgno">第12週　49</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="照顧公共化的三組變因" data-sect="第五節　公共化的爭議與反挫" data-flags="sum"><header class="shead"><p class="lab">第五節　公共化的爭議與反挫</p><h2>照顧公共化的三組變因</h2></header><div class="sbody"><p>下一個挑戰：登記制</p><ul class="bl"><li>依《兒童及少年福利與權益保障法》，2015年起所有居家式托育照顧工作者，都要向縣市政府登記，違者罰鍰。</li><li>登記制把所有保母「納入」管理，卻沒有解決「如何管理」。</li><li>有學者主張，讓個別托育關係回歸「市場機制」。民間團體代表則建議以「高度支持」取代「高度管理」。</li></ul><p class="lead-in">三組變因：</p><div class="tw"><table><thead><tr><th class="nw">變因</th><th>往公共化走的例子</th><th>往反方向走的例子</th></tr></thead><tbody><tr><td>社會民主意識形態共識</td><td>國家擔起責任，介入保母托育服務的生產與管理</td><td>呼應「回歸自由市場機制」的觀點</td></tr><tr><td>家庭負擔照顧成本降低</td><td>有效管制價格，輔以現金補助</td><td>市場普遍漲價，形成「肉包子打狗」效應</td></tr><tr><td>服務生產與管理效能提高</td><td>克服保母市場地下經濟亂象，使托育服務規格化</td><td>市場反挫，削弱管理權力與執行效能</td></tr></tbody></table></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 107–109），圖二</span><span class="pgno">第12週　50</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="之後：2018年托育準公共化" data-sect="第五節　公共化的爭議與反挫" data-flags="sum"><header class="shead"><p class="lab">第五節　公共化的爭議與反挫</p><h2>之後：2018年托育準公共化</h2></header><div class="sbody"><p>傅立葉與王兆慶的文章寫於2011年。2018年8月1日，衛福部推動0–2歲托育準公共化。</p><div class="tw"><table><thead><tr><th></th><th>2008年保母托育計畫</th><th>2018年托育準公共化</th></tr></thead><tbody><tr><td>補助條件</td><td>父母雙方或單親一方因就業，無法自行照顧（傅立葉、王兆慶，2011: 99）</td><td>不再設父母雙就業的條件；家庭所得稅率級距未達20%（衛福部，2018）</td></tr><tr><td>補助額度</td><td>一般家庭每位幼兒每月3,000元（傅立葉、王兆慶，2011: 99）</td><td>政府協助支付每月6,000元至1萬元不等的托育費用（衛福部，2018）</td></tr><tr><td>價格</td><td>2009年取消縣市訂定收費上限的權力（傅立葉、王兆慶，2011: 98）</td><td>與地方政府共同訂定收費價格，進行價格管理；托育支出控制在家庭可支配所得的10–15%（衛福部，2018）</td></tr><tr><td>參與方式</td><td>保母加入社區保母系統（傅立葉、王兆慶，2011: 99）</td><td>保母與私立托嬰中心和政府簽約，成為合作單位（衛福部，2020）</td></tr></tbody></table></div><p class="lead-in">衛福部（2020）說明，到2020年8月底：</p><ul class="bl"><li>加入準公共化的保母22,058人，簽約率91.13%。</li><li>托嬰中心簽約率96.71%。</li><li>家長使用公共及準公共托育服務「高達九成以上」。</li></ul><p>想一想：2009年，縣市訂定保母收費上限的權力被取消。2018年的準公共化，則透過簽約建立價格管理機制。兩者有什麼不同？讀本沒有討論2018年的制度，這一題留給你。</p></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 98–99）；衛生福利部（2018、2020），見「網路來源」</span><span class="pgno">第12週　51</span></footer></section>
+</div></div><div class="chap"><button class="chap-h" type="button"><span class="cn">06</span><span class="ct">個人社會服務、社區照顧與長期照顧</span><span class="cc">11頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第六節　個人社會服務、社區照顧與長期照顧" data-sect="第六節　個人社會服務、社區照顧與長期照顧"><div class="sbody"><div class="divider"><div class="ticketno"><span class="tsec">第六節</span><span class="tno">06</span></div><h2 class="dtitle">個人社會服務、社區照顧與長期照顧</h2><p class="dq">「社區照顧」是在社區裡照顧，還是由社區來照顧？</p><dl class="dread"><div><dt>讀本</dt><dd>Spicker（2025）ch. 13，頁187–190；Baldock（2006）《解讀社會政策》第IV.12章，頁605–618；Hill（2003）《理解社會政策》第7章，頁205–236</dd></div></dl></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第12週　52</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="個人社會服務：「第五類社會服務」" data-sect="第六節　個人社會服務、社區照顧與長期照顧" data-flags="sum quote"><header class="shead"><p class="lab">第六節　個人社會服務、社區照顧與長期照顧</p><h2>個人社會服務：「第五類社會服務」</h2></header><div class="sbody"><ul class="bl"><li>「個人社會服務」沒有清楚、一致的範圍。它包括社會工作與社會照顧，也就是落在健康服務之外的對人服務。</li><li>服務對象：老人、犯罪者、精神疾病患者、受虐待或被疏忽或缺乏支持的兒童、學習障礙者、身體疾病與身心障礙者。</li><li>服務場所：社工部門的地區團隊、日間照顧、住宿式照顧、法院、居家照顧、醫院。</li><li>社會工作有時被說成是家庭服務。Spicker認為這是誤導：家庭能得到支持，通常是因為符合其他某一類對象。</li></ul><blockquote><p>「個人社會服務一向被稱為『第五類社會服務』（the fifth social service）：不僅規模排在末位，而且是人們走投無路時才求助的最後救濟手段。」</p><cite>— Baldock（2006: 605）</cite></blockquote><figure class="bars"><p class="bcap">英國2000–2001會計年度，平均每位國民的公共支出</p><ul><li><span class="bl-l">社會安全</span><span class="bl-t"><i style="--w:100.0%"></i></span><span class="bl-v">1,953英鎊</span></li><li><span class="bl-l">教育</span><span class="bl-t"><i style="--w:46.3%"></i></span><span class="bl-v">905英鎊</span></li><li><span class="bl-l">健康</span><span class="bl-t"><i style="--w:45.0%"></i></span><span class="bl-v">879英鎊</span></li><li><span class="bl-l">個人社會服務</span><span class="bl-t"><i style="--w:10.1%"></i></span><span class="bl-v">198英鎊</span></li></ul></figure></div><footer class="sfoot"><span class="cite"><b>出處</b>：Spicker（2025: 187–188）；Baldock（2006: 605）</span><span class="pgno">第12週　53</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 英國社會服務部門，服務多少比例的85歲以上老人？" data-sect="第六節　個人社會服務、社區照顧與長期照顧" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>英國社會服務部門，服務多少比例的85歲以上老人？</h2></header><div class="sbody"><p class="intro">英國地方政府的社會服務部門，負責照顧有需要的老人、兒童與身心障礙者。答案在下一頁。</p><p class="pq">在任一時間，英國地方政府社會服務部門服務的85歲以上老人，大約占……</p><div class="poll" data-poll="p54" data-answer="約三分之一" data-act-key="predict-54"><div class="opts"><button type="button" data-v="約九成"><span>約九成</span></button><button type="button" data-v="約三分之二"><span>約三分之二</span></button><button type="button" data-v="約三分之一"><span>約三分之一</span></button><button type="button" data-v="不到5%"><span>不到5%</span></button></div></div><p class="verdict" data-verdict-for="p54"></p><div class="fbk ok reveal-box" data-reveal-all="p54">三分之一（Baldock, 2006: 608）。下一頁說明，其他人的照顧從哪裡來。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：Baldock（2006: 608）</span><span class="pgno">第12週　54</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="大部分照顧，仍由家庭提供" data-sect="第六節　個人社會服務、社區照顧與長期照顧" data-flags="quote"><header class="shead"><p class="lab">揭曉</p><h2>大部分照顧，仍由家庭提供</h2></header><div class="sbody"><p class="lead-in">英國地方政府社會服務部門，在任一時間僅服務：</p><ul class="bl"><li>三分之一的85歲以上老人</li><li>不到4%來自靠福利津貼度日家庭的兒童</li><li>不到2%的身體障礙兒童</li><li>不到10%居住在社區的精神病患者</li></ul><blockquote><p>「大部分社會照顧由家庭提供，少部分來自朋友和鄰居。例如最繁重的孱弱老人照顧工作，主要由女性承擔。」</p><cite>— Baldock（2006: 608）</cite></blockquote><ul class="bl"><li>這不表示其他人沒有得到照顧，而是公共社會服務只占社會照顧的一小部分。</li><li>Leitner也指出：在歐洲，家庭通常是老人的主要照顧者；即使在北歐，家庭也是最重要的照顧提供者。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Baldock（2006: 608）；Leitner（2003: 355, 357）</span><span class="pgno">第12週　55</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 「在社區中照顧」還是「由社區照顧」？" data-sect="第六節　個人社會服務、社區照顧與長期照顧" data-act="1"><header class="shead"><p class="lab">◆ 動手做（分類）</p><h2>「在社區中照顧」還是「由社區照顧」？</h2></header><div class="sbody"><p class="intro">Spicker說，社區照顧這個詞有兩層意思。讀下一頁之前，先自己分分看。</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。</p><div data-sort="s56" data-act-key="sort-56"><div class="tray"><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="獨立生活與「正常化」" data-ans="在社區中照顧（care in the community）">獨立生活與「正常化」</button><button class="sc" type="button" draggable="true" data-i="4" data-k="k1" data-txt="由社區服務照顧" data-ans="由社區照顧（care by the community）">由社區服務照顧</button><button class="sc" type="button" draggable="true" data-i="3" data-k="k1" data-txt="透過互助的社會網絡照顧" data-ans="由社區照顧（care by the community）">透過互助的社會網絡照顧</button><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="不住在機構裡的照顧" data-ans="在社區中照顧（care in the community）">不住在機構裡的照顧</button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="在一般住宅裡照顧" data-ans="在社區中照顧（care in the community）">在一般住宅裡照顧</button><button class="sc" type="button" draggable="true" data-i="5" data-k="k1" data-txt="由非正式照顧者照顧" data-ans="由社區照顧（care by the community）">由非正式照顧者照顧</button></div><div class="scols n2"><div class="scol" data-k="k0"><h4>在社區中照顧（care in the community）</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>由社區照顧（care by the community）</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：Spicker（2025: 189）</span><span class="pgno">第12週　56</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="社區照顧的兩層意思" data-sect="第六節　個人社會服務、社區照顧與長期照顧" data-flags="sum quote"><header class="shead"><p class="lab">揭曉</p><h2>社區照顧的兩層意思</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th>在社區中照顧（care in the community）</th><th>由社區照顧（care by the community）</th></tr></thead><tbody><tr><td>不住在機構裡的照顧</td><td>透過互助的社會網絡照顧</td></tr><tr><td>在一般住宅裡照顧</td><td>由社區服務照顧</td></tr><tr><td>獨立生活與「正常化」</td><td>由非正式照顧者照顧</td></tr></tbody></table></div><blockquote><p class="en">"Care in the community includes care that is not in an institution; care in ordinary housing; and independence or 'normalisation'. Care by the community includes care through solidaristic social networks; care by community services; and care by informal carers."</p><cite>— Spicker（2025: 189）</cite></blockquote><ul class="bl"><li>英國1989年白皮書的定義：為因年齡、精神疾病、心智障礙，或身體、感官障礙，需要住在自己家中、或社區裡類似家庭環境的人，提供服務與支持。</li><li>Hill提醒兩點：一、社會照顧和醫療照顧通常分開。二、定義沒講誰提供、誰付錢。國家不是唯一的提供者，想得到公共協助，要先通過需要與經濟狀況的調查。</li><li>照顧管理：為每個人，從不同來源組合一個照顧「套裝」（package）。但選項不一定存在，服務發展不足，又供不應求。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Spicker（2025: 189）；Hill（2003: 211–212），引用英國1989年白皮書（HMSO, 1989，第1.1段）</span><span class="pgno">第12週　57</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="英國的社區照顧改革" data-sect="第六節　個人社會服務、社區照顧與長期照顧" data-flags="quote"><header class="shead"><p class="lab">第六節　個人社會服務、社區照顧與長期照顧</p><h2>英國的社區照顧改革</h2></header><div class="sbody"><ul class="bl"><li>1990年《國民健康服務與社區照顧法》與1989年《兒童法》，1991年4月起的五年內陸續實施。連官方文件都常把這段時期稱為「一場革命」。</li><li>改革的核心，是兩個和社會工作一樣古老的理念：<ol class="sub"><li value="1">社區中的照顧，好過機構中的照顧</li><li value="2">預防性的社會工作，勝於救助社會急難</li></ol></li><li>1980年代，社會安全給付補貼了私人住宿照顧機構，這類機構快速增加。Hill認為，改革主要是因為要控制這筆支出。</li><li>新制1993年4月實施：地方政府先評估照顧需要，再向服務提供者購買服務。</li><li>「照顧管理者」（care manager）負責評估需要，並把服務委託給提供者。</li><li>地方政府從直接提供服務，轉為協助民營、志願與非正式部門提供。2002年從事公共出資社會照顧的人員，只有三分之一由地方政府直接聘僱。</li></ul><blockquote><p>社會服務部門已成為「獨立照顧機構混合經濟體制中的少數供應者」。</p><cite>— Baldock（2006: 612）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：Baldock（2006: 611–612）；Hill（2003: 213–214, 219）</span><span class="pgno">第12週　58</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="改革之後：責任推回給誰？" data-sect="第六節　個人社會服務、社區照顧與長期照顧" data-flags="quote"><header class="shead"><p class="lab">第六節　個人社會服務、社區照顧與長期照顧</p><h2>改革之後：責任推回給誰？</h2></header><div class="sbody"><ul class="bl"><li>現在大部分社會照顧，必須經過資產調查。2002年老人居家照顧的支出，有25%從服務費收回。</li><li>服務更嚴格地鎖定最需要的老人。1994至1999年，接受居家照顧服務的戶數減少13%以上，但獲得協助者的服務時數增加了。</li><li>1998年，地方政府已向志願與營利組織購買46%的居家照顧服務。</li><li>醫院照顧仍然免費。社會服務認為必要的住宿式照顧，卻要依家庭經濟狀況付費。</li><li>社會服務和醫療的協調，特別是出院安排，仍然雜亂。這也是醫院裡老人「賴床不走」（bed-blocking）的原因。</li></ul><blockquote><p>「在某些方面，在『照顧』的幌子背後是要把責任推回到『社區』。後者往往意味著推給已經承受很大壓力的親屬。」</p><cite>— Hill（2003: 235；譯文用語已改為台灣用語）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：Baldock（2006: 612, 616）；Hill（2003: 219–220, 235）</span><span class="pgno">第12週　59</span></footer></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 長照的錢從哪裡來？" data-sect="第六節　個人社會服務、社區照顧與長期照顧" data-act="1"><header class="shead"><p class="lab">◆ 動手做（配對）</p><h2>長照的錢從哪裡來？</h2></header><div class="sbody"><p class="intro">需要長期照顧的人越來越多，各國用不同方式籌錢。點左邊一個國家，再點右邊對應的做法。答案在下一頁。</p><div class="match" data-match="m60" data-act-key="match-60"><div class="mcol"><h4>國家</h4><button class="mitem" type="button" data-k="0">日本</button><button class="mitem" type="button" data-k="1">韓國</button><button class="mitem" type="button" data-k="2">英國（皇家長期照顧委員會）</button><button class="mitem" type="button" data-k="3">台灣</button></div><div class="mcol"><h4>做法</h4><button class="mitem" type="button" data-k="2">建議：個人照顧依需要評估後提供，以一般稅收分散風險；生活費與住宿費依經濟狀況負擔</button><button class="mitem" type="button" data-k="0">長期照顧保險：1997年導入，2000年後實施</button><button class="mitem" type="button" data-k="3">長照服務發展基金：來源包括遺產稅及贈與稅、菸稅調增的稅收、菸品健康福利捐與政府預算</button><button class="mitem" type="button" data-k="1">長期照顧保險：2008年實施，第一年約23萬名長者使用</button></div></div><p class="mstat"></p></div><footer class="sfoot"><span class="cite"><b>出處</b>：Peng（2011: 44, 50）；Hill（2003: 216–217）；《長期照顧服務法》第15條</span><span class="pgno">第12週　60</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="保險、稅收，還是基金？" data-sect="第六節　個人社會服務、社區照顧與長期照顧" data-flags="sum quote"><header class="shead"><p class="lab">揭曉</p><h2>保險、稅收，還是基金？</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">國家</th><th class="nw">做法</th></tr></thead><tbody><tr><td>日本</td><td>1997年導入長期照顧保險（2000年後實施），讓老人照顧普及化</td></tr><tr><td>韓國</td><td>2008年實施普及的長期照顧保險；第一年約23萬名長者使用，占65歲以上人口的5.3%</td></tr><tr><td>英國</td><td>皇家長期照顧委員會（1999）建議：成本分成生活費、住房費和個人照顧費。個人照顧依需要評估後提供，其他費用依經濟狀況負擔。但有兩位委員反對，政府也沒有表示肯定</td></tr><tr><td>台灣</td><td>長照服務發展基金（特種基金）：遺產稅及贈與稅稅率調增所增加的稅收、菸品應徵稅額調增所增加的稅收、政府預算撥充、菸品健康福利捐、捐贈等。法定來源裡沒有保險費</td></tr></tbody></table></div><blockquote><p>「鑑於整個國家的最大利益，分散風險的最有效措施是提供以普遍稅為保證的、基於需要而不是財富的服務。」</p><cite>— 皇家長期照顧委員會（1999: xvii），引自Hill（2003: 217）</cite></blockquote><ul class="bl"><li>皇家委員會也認為：未提存準備的專款社會保險基金，不適合英國；預先提存的計畫，又會讓年輕人背負沉重的終身負擔。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Peng（2011: 44, 50）；Hill（2003: 216–217）；《長期照顧服務法》第15條，見「網路來源」</span><span class="pgno">第12週　61</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="台灣的長照：從1.0到3.0" data-sect="第六節　個人社會服務、社區照顧與長期照顧" data-flags="sum quote"><header class="shead"><p class="lab">第六節　個人社會服務、社區照顧與長期照顧</p><h2>台灣的長照：從1.0到3.0</h2></header><div class="sbody"><p class="lead-in">法律上的定義：</p><blockquote><p>長期照顧「指身心失能持續已達或預期達六個月以上者，依其個人或其照顧者之需要，所提供之生活支持、協助、社會參與、照顧及相關之醫護服務。」</p><cite>— 《長期照顧服務法》第3條</cite></blockquote><div class="tw"><table><thead><tr><th class="nw">年</th><th class="nw">事件</th></tr></thead><tbody><tr><td>2007</td><td>長照1.0：行政院核定《長期照顧十年計畫》</td></tr><tr><td>2015</td><td>《長期照顧服務法》公布，2017年6月3日上路</td></tr><tr><td>2017</td><td>長照2.0：2016年12月核定，2017年1月起實施。服務對象由4類擴大為8類，服務項目由8項增至17項</td></tr><tr><td>2026</td><td>長照3.0：2025年12月31日核定，2026年起實施。願景是「健康老化、在地安老、安寧善終」</td></tr></tbody></table></div><ul class="bl"><li>衛福部：整體長期照顧服務涵蓋盛行率，由2017年的20.30%，成長到2025年6月的89.9%。</li><li>長照3.0的八大面向之一，是「強化家庭支持，擴大住院照護」。</li><li>想一想：長照2.0、3.0擴大的主要是服務。用Leitner的話，這是家庭化還是去家庭化的政策？家庭照顧者又得到哪些支持？</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：衛生福利部長照專區〈長照十年計畫2.0〉〈長照十年計畫3.0〉〈長期照顧服務法〉；《長期照顧服務法》第3條；見「網路來源」</span><span class="pgno">第12週　62</span></footer></section>
+</div></div><div class="chap"><button class="chap-h" type="button"><span class="cn">07</span><span class="ct">社會投資觀點下的兒童照顧</span><span class="cc">6頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第七節　社會投資觀點下的兒童照顧" data-sect="第七節　社會投資觀點下的兒童照顧"><div class="sbody"><div class="divider"><div class="ticketno"><span class="tsec">第七節</span><span class="tno">07</span></div><h2 class="dtitle">社會投資觀點下的兒童照顧</h2><p class="dq">照顧孩子，是家庭的事，還是國家的投資？</p><dl class="dread"><div><dt>讀本</dt><dd>Peng（2011）Social investment policies in Canada, Australia, Japan, and South Korea，頁41–53</dd></div></dl></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第12週　63</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="社會投資：三個核心概念" data-sect="第七節　社會投資觀點下的兒童照顧" data-flags="quote"><header class="shead"><p class="lab">第七節　社會投資觀點下的兒童照顧</p><h2>社會投資：三個核心概念</h2></header><div class="sbody"><ul class="bl"><li>1990年起，加拿大、澳洲、日本、韓國出現相似的改革。兒童、婦女與家庭這個過去被當成私事的政策領域，被拉上政策議程。</li><li>政府開始說：投資兒童、婦女與家庭，不只對社會重要，也對國家和經濟有好處。</li></ul><p class="lead-in">社會投資的三個核心概念：</p><ol class="bl"><li value="1">社會政策與經濟政策重新整合</li><li value="2">從重分配的國家，轉向促進的國家（facilitative state）</li><li value="3">透過人力資本投資，促成經濟活化</li></ol><ul class="bl"><li>早期兒童教育與照顧（ECEC）是常見的政策工具。</li></ul><blockquote><p class="en">"Rather than passively supporting individuals and families through welfare, the new role of the state is therefore to be actively connecting individuals to the labour market"</p><p class="tr">（國家的新角色，不是透過福利被動地支持個人與家庭，而是積極地把個人連結到勞動市場。）</p><cite>— Peng（2011: 43）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：Peng（2011: 41–43）</span><span class="pgno">第12週　64</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 投資未來，還是人力資本活化？" data-sect="第七節　社會投資觀點下的兒童照顧" data-act="1"><header class="shead"><p class="lab">◆ 動手做（分類）</p><h2>投資未來，還是人力資本活化？</h2></header><div class="sbody"><p class="intro">Peng把四國的社會投資分成兩種。讀下一頁之前，先自己分分看。</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。</p><div data-sort="s65" data-act-key="sort-65"><div class="tray"><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="靠給就業父母的托育補貼，以及托育市場化" data-ans="投資未來（加拿大、澳洲）">靠給就業父母的托育補貼，以及托育市場化</button><button class="sc" type="button" draggable="true" data-i="4" data-k="k1" data-txt="對象擴及兒童、婦女與老人" data-ans="人力資本活化與動員（日本、韓國）">對象擴及兒童、婦女與老人</button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="起因：兒童貧窮與所得不平等升高" data-ans="投資未來（加拿大、澳洲）">起因：兒童貧窮與所得不平等升高</button><button class="sc" type="button" draggable="true" data-i="3" data-k="k1" data-txt="起因：人口老化與極低生育率" data-ans="人力資本活化與動員（日本、韓國）">起因：人口老化與極低生育率</button><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="主要對象是兒童，特別是高風險兒童" data-ans="投資未來（加拿大、澳洲）">主要對象是兒童，特別是高風險兒童</button><button class="sc" type="button" draggable="true" data-i="6" data-k="k1" data-txt="照顧市場化，但國家仍管制服務價格與人員證照" data-ans="人力資本活化與動員（日本、韓國）">照顧市場化，但國家仍管制服務價格與人員證照</button><button class="sc" type="button" draggable="true" data-i="5" data-k="k1" data-txt="把婦女從家中的無酬照顧，重新配置到有酬就業" data-ans="人力資本活化與動員（日本、韓國）">把婦女從家中的無酬照顧，重新配置到有酬就業</button></div><div class="scols n2"><div class="scol" data-k="k0"><h4>投資未來（加拿大、澳洲）</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>人力資本活化與動員（日本、韓國）</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：Peng（2011: 46–51）</span><span class="pgno">第12週　65</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="兩種社會投資模式" data-sect="第七節　社會投資觀點下的兒童照顧" data-flags="sum quote"><header class="shead"><p class="lab">揭曉</p><h2>兩種社會投資模式</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th></th><th>投資未來：加拿大、澳洲</th><th>人力資本活化與動員：日本、韓國</th></tr></thead><tbody><tr><td>起因</td><td>兒童貧窮升高、所得不平等；為知識經濟做準備</td><td>人口老化與極低生育率</td></tr><tr><td>對象</td><td>兒童，特別是高風險兒童</td><td>兒童、婦女與老人</td></tr><tr><td>工具</td><td>給就業父母的托育補貼；托育與學前教育市場化</td><td>擴大兒童與老人照顧服務；友善婦女的家庭政策</td></tr><tr><td>市場</td><td>以市場為主的ECEC服務</td><td>也走市場化，但管制較強：國家控制服務價格與照顧人員的證照</td></tr><tr><td>歷史遺緒</td><td>自由主義體制：殘補式福利，托育向來是家庭私事</td><td>發展型國家：用社會政策達成經濟目標</td></tr></tbody></table></div><blockquote><p class="en">"redeploying women's human capital from unpaid care work within the household to paid employment in the labor market"</p><p class="tr">（把婦女的人力資本，從家中的無酬照顧，重新配置到勞動市場的有酬就業。）</p><cite>— Peng（2011: 51）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：Peng（2011: 46–51）</span><span class="pgno">第12週　66</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="日本與韓國：照顧的擴張" data-sect="第七節　社會投資觀點下的兒童照顧"><header class="shead"><p class="lab">第七節　社會投資觀點下的兒童照顧</p><h2>日本與韓國：照顧的擴張</h2></header><div class="sbody"><p class="lead-in">日本：</p><ul class="bl"><li>1994年的天使計畫，公開承認家庭提供照顧的能力有限。</li><li>立案托育中心的兒童：1990年180萬人，2008年202萬人。同一時期，6歲以下兒童持續減少。</li><li>長期照顧保險的使用者：2000年149萬人，2005年329萬人。</li></ul><p class="lead-in">韓國：</p><ul class="bl"><li>托育中心：1990年1,919所，2007年29,823所。</li><li>托育中心的兒童：1990年4萬8千人，2007年106萬2,415人。</li><li>2008年實施長期照顧保險，第一年約23萬名長者使用。</li></ul><ul class="bl"><li>日韓政府也希望，這些政策能鼓勵年輕夫妻多生孩子，以延緩人口老化。</li><li>政策有沒有做到這一點，Peng的文章沒有評估。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Peng（2011: 44, 49–51）</span><span class="pgno">第12週　67</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="台灣：極低生育率下的照顧政策" data-sect="第七節　社會投資觀點下的兒童照顧"><header class="shead"><p class="lab">第七節　社會投資觀點下的兒童照顧</p><h2>台灣：極低生育率下的照顧政策</h2></header><div class="sbody"><ul class="bl"><li>總生育率（平均每位婦女一生生育的孩子數）：<ul class="sub"><li>1984年（民國73年）2.06，首度低於人口替代水準2.1</li><li>2023年（民國112年）0.87，是當時的歷年最低</li><li>2024年（民國113年）0.89</li></ul></li><li>2025年（民國114年）出生數10萬7,812人，比2024年減少20.05%。</li><li>2018年的托育準公共化，是衛福部「配合行政院少子女化對策」提出的。</li><li>和日韓一樣，台灣也把照顧政策和人口問題連在一起。Peng的比較沒有包括台灣。台灣比較像哪一種模式，是開放的問題。</li><li>第14週「福利國家轉型：福利退卻與社會投資」，會再談社會投資。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：內政部〈出生數、出生率及總生育率〉（113年資料）；內政部戶政司（2026）《人口統計季刊》114年冬季季刊；衛生福利部（2018）；見「網路來源」</span><span class="pgno">第12週　68</span></footer></section>
+</div></div><div class="chap"><button class="chap-h" type="button"><span class="cn">✓</span><span class="ct">第五至七節小測驗</span><span class="cc">1頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quiz" data-kind="quiz" data-label="◆ 第五至七節小測驗" data-sect="第七節　社會投資觀點下的兒童照顧" data-act="1"><header class="shead"><p class="lab">小測驗</p><h2>第五至七節小測驗</h2></header><div class="sbody"><p class="intro">三題，作答後會立刻看到解說。三份小測驗都作答完，才能送出簽到。</p><div data-quiz="q69"><div class="qz" data-a="2"><div class="stem">1. 2008年的計畫，原本授權縣市訂定保母收費上限。後來為什麼取消？</div><button class="opt" type="button">保母集體抗議</button><button class="opt" type="button">縣市政府與學者反映可能違反公平交易法，公平會建議改用對市場競爭干預較小的手段</button><button class="opt" type="button">家長要求自由議價</button><button class="opt" type="button">立法院刪除預算</button><div class="fb"><b>解說</b>：公平會建議「採行其他對市場競爭干預較小之手段」，2009年3月的版本取消了訂定收費上限的權力（傅立葉、王兆慶, 2011: 97–98；<a class="goto" href="#" data-goto="42">第43頁</a>〈收費管制：「民主治理」被「市場競爭」打敗〉）。</div></div><div class="qz" data-a="3"><div class="stem">2. Spicker說的「由社區照顧」（care by the community），包括哪一項？</div><button class="opt" type="button">不住在機構裡的照顧</button><button class="opt" type="button">在一般住宅裡照顧</button><button class="opt" type="button">由非正式照顧者照顧</button><button class="opt" type="button">獨立生活與正常化</button><div class="fb"><b>解說</b>：由社區照顧，包括透過互助的社會網絡、由社區服務、由非正式照顧者照顧。其他三項屬於「在社區中照顧」（Spicker, 2025: 189；<a class="goto" href="#" data-goto="56">第57頁</a>〈社區照顧的兩層意思〉）。</div></div><div class="qz" data-a="2"><div class="stem">3. Peng說，日本和韓國推動社會投資，最初的推力是什麼？</div><button class="opt" type="button">兒童貧窮升高</button><button class="opt" type="button">人口老化與極低生育率</button><button class="opt" type="button">國際組織的要求</button><button class="opt" type="button">單親家庭增加</button><div class="fb"><b>解說</b>：日韓社會投資最初的推力，是對人口老化與極低生育率的憂慮。兒童貧窮是加拿大與澳洲的起因（Peng, 2011: 48–49；<a class="goto" href="#" data-goto="65">第66頁</a>〈兩種社會投資模式〉）。</div></div></div><p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p></div><footer class="sfoot"><span class="cite"><b>出處</b>：見各題解說；公平會建議原文見傅立葉、王兆慶（2011: 97，註3）</span><span class="pgno">第12週　69</span></footer></section>
+</div></div>
+</div>
+<div class="pane" data-pane="4">
+<section class="slide k-content" data-kind="content" data-label="今天的六個重點" data-sect="總結"><header class="shead"><p class="lab">總結</p><h2>今天的六個重點</h2></header><div class="sbody"><ol class="bl"><li value="1">家庭政策「可以說不存在，也可以說無所不在」。戰後福利國家，建立在男性養家、女性照顧的藍圖上。</li><li value="2">Leitner：國家支持家庭照顧（家庭化），和分擔家庭照顧（去家庭化）的強弱，交叉出四種家庭主義。同一個國家，不同的照顧政策可能屬於不同類型。</li><li value="3">家庭化政策不一定性別化。關鍵在給付高低、假期長短，以及有沒有讓父母分擔的誘因。</li><li value="4">台灣的保母托育公共化：婦運在行政體制內推動，打造公共治理的基礎。但它同時遇上自由市場與家庭主義兩股力量。</li><li value="5">社區照顧與長照：公共服務只占照顧的一小部分，照顧責任可能被推回家庭與親屬。</li><li value="6">社會投資有兩種：以兒童為中心的「投資未來」，和擴及婦女與老人的「人力資本活化」。</li></ol></div><footer class="sfoot"><span class="cite"><b>出處</b>：Millar（2006: 251–252）；Leitner（2003: 358–359, 365, 368–370）；傅立葉、王兆慶（2011: 99, 110）；Baldock（2006: 608）；Hill（2003: 235）；Peng（2011: 46, 50–51）</span><span class="pgno">第12週　70</span></footer></section>
+<section class="slide k-poll" data-kind="poll" data-label="◆ 台灣的兒童照顧，下一步最該加強哪一項？" data-sect="總結" data-act="1"><header class="shead"><p class="lab">◆ 表態</p><h2>台灣的兒童照顧，下一步最該加強哪一項？</h2></header><div class="sbody"><p class="intro">表態完，下一頁是作者們的結語。沒有標準答案。</p><div class="pollbox"><div class="poll" data-poll="p71" data-act-key="poll-p71"><div class="opts"><button type="button" data-v="擴大公共與準公共托育"><span>擴大公共與準公共托育</span></button><button type="button" data-v="提高在家照顧的津貼"><span>提高在家照顧的津貼</span></button><button type="button" data-v="加強父親育嬰假的誘因"><span>加強父親育嬰假的誘因</span></button><button type="button" data-v="加強托育價格與品質的公共管理"><span>加強托育價格與品質的公共管理</span></button></div></div><p class="pollthanks" data-reveal-for="p71">記下來了。下一頁看看作者怎麼說。</p></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：選項整理自Leitner（2003: 358, 368–370）；傅立葉、王兆慶（2011: 108–109）</span><span class="pgno">第12週　71</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="家庭照顧的權利，不等於家庭照顧的義務" data-sect="總結" data-flags="quote"><header class="shead"><p class="lab">總結</p><h2>家庭照顧的權利，不等於家庭照顧的義務</h2></header><div class="sbody"><blockquote><p class="en">"Yet, only in the optional familialism is the family's right to care not equated with the family's obligation to care."</p><p class="tr">（只有在選擇家庭主義裡，家庭照顧的權利才不等於家庭照顧的義務。）</p><cite>— Leitner（2003: 359）</cite></blockquote><blockquote><p>「使得幼兒照顧工作不再是私領域的活動，而是須經由民主參與程序共同決定的公共事務與公共責任。」</p><cite>— 傅立葉、王兆慶（2011: 110）</cite></blockquote><p class="lead-in">傅立葉與王兆慶列出的未來挑戰：</p><ul class="bl"><li>如何催生廣泛分布、且接受公共管理的保母人力資源</li><li>如何降低托育費用，讓家庭能以最低成本取得最佳品質的服務</li><li>如何整合政府與民間部門，形成對照顧公共化理念的共識</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Leitner（2003: 359）；傅立葉、王兆慶（2011: 110–111）</span><span class="pgno">第12週　72</span></footer></section>
+<section class="slide k-discuss" data-kind="discuss" data-label="◆ 討論" data-sect="總結" data-act="1" data-flags="quote"><header class="shead"><p class="lab">總結</p><h2>討論</h2></header><div class="sbody"><p class="instr">點開一題，寫下你的想法。寫好的會跟著簽到一起送出，老師上課會挑幾則出來討論。</p><div class="discbox"><details class="disc"><summary><span class="no">1</span><span class="dq">回到暖身的排序。你排第1名的照顧安排，在台灣是靠哪一種政策撐起來的？用Leitner的四種家庭主義，台灣的兒童照顧比較像哪一型？</span></summary><div class="inbox" data-inbox="d1" data-act-key="inbox-d1"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details><details class="disc"><summary><span class="no">2</span><span class="dq">在家自己帶孩子的家長，該不該領補助？傅立葉與王兆慶認為，這會「將女性繼續綁在家中」。你同意嗎？</span></summary><div class="inbox" data-inbox="d2" data-act-key="inbox-d2"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details><details class="disc"><summary><span class="no">3</span><span class="dq">照顧服務的價格，該交給市場競爭，還是由公共決定？用2009年的收費上限爭議和2018年的準公共化說明。</span></summary><div class="inbox" data-inbox="d3" data-act-key="inbox-d3"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details><details class="disc"><summary><span class="no">4</span><span class="dq">長照服務擴大之後，家庭照顧者的負擔就會減輕嗎？Hill說「照顧」的背後，可能是把責任推回親屬。台灣有沒有這個風險？</span></summary><div class="inbox" data-inbox="d4" data-act-key="inbox-d4"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：傅立葉、王兆慶（2011: 98–99）；Leitner（2003: 358–359）；Hill（2003: 235）</span><span class="pgno">第12週　73</span></footer></section>
+<section class="slide k-readings" data-kind="readings" data-label="本週讀本" data-sect="總結"><header class="shead"><p class="lab">總結</p><h2>本週讀本</h2></header><div class="sbody"><p class="instr">讀完一篇就勾起來，自己看進度。勾選只存在這台裝置，不會送出。</p><div class="readlist"><h4 class="rh4"><span>必讀</span></h4><label class="rp"><input type="checkbox" data-r="0"><span>傅立葉、王兆慶（2011）。〈照顧公共化的改革與挑戰：以保母托育體系的改革為例〉。《女學學誌：婦女與性別研究》，29，79–120。</span></label><label class="rp"><input type="checkbox" data-r="1"><span>Leitner, S. (2003). Varieties of familialism: The caring function of the family in comparative perspective. European Societies, 5(4), 353–375.</span></label><label class="rp"><input type="checkbox" data-r="2"><span>Spicker, P. (2025). An Introduction to Social Policy, ch. 4 Welfare and society: Family policy (pp. 59–62); ch. 13 The personal social services: social work and social care (pp. 187–190).</span></label><h4 class="rh4"><span>選讀</span></h4><label class="rp"><input type="checkbox" data-r="3"><span>Millar, J.（2006）。〈社會政策與家庭政策〉（賴月蜜譯）。載於Alcock, P., Erskine, A., &amp; May, M.（編），《解讀社會政策》（李易駿等譯），第II.17章，頁251–262。臺北：群學。</span></label><label class="rp"><input type="checkbox" data-r="4"><span>Baldock, J.（2006）。〈個人社會服務與社區照顧〉（鄭怡世譯）。載於Alcock, P., Erskine, A., &amp; May, M.（編），《解讀社會政策》（李易駿等譯），第IV.12章，頁605–618。臺北：群學。</span></label><label class="rp"><input type="checkbox" data-r="5"><span>Hill, M.（2003）。《理解社會政策》（劉升華譯），第7章〈個人社會服務〉，頁205–236。北京：商務印書館。</span></label><label class="rp"><input type="checkbox" data-r="6"><span>Peng, I. (2011). Social investment policies in Canada, Australia, Japan, and South Korea. International Journal of Child Care and Education Policy, 5(1), 41–53.</span></label></div><p class="rpstat">已讀　<b>0</b>／<span class="rptot">7</span></p><div class="ticket"><span class="tk">下週</span><span>第13週：勞動政策（12/11）</span></div><details class="websrc"><summary>網路來源</summary><p class="note">以下官方資料都在2026年11月19日查詢。</p><ol><li>衛生福利部（2018年6月22日）。〈衛福部推動0至2歲托育準公共化政策，協助家長支付托育費用〉。資料來源：社會及家庭署。<a class="url" href="https://www.mohw.gov.tw/cp-4050-41991-1.html" target="_blank" rel="noopener">https://www.mohw.gov.tw/cp-4050-41991-1.html</a><p class="use">用在<a class="goto" href="#" data-goto="3">第4頁</a>、<a class="goto" href="#" data-goto="50">第51頁</a>、<a class="goto" href="#" data-goto="67">第68頁</a>：8月1日起實施；每月6,000元至1萬元；共同訂定收費價格、價格管理；可支配所得10–15%；不再設父母雙就業條件；所得稅率級距未達20%；「配合行政院少子女化對策」。</p></li><li>衛生福利部（2020年9月15日）。〈總統「0到6歲國家跟你一起養」政見，加碼托育補助及育兒津貼〉。資料來源：社會及家庭署。<a class="url" href="https://www.mohw.gov.tw/cp-16-55672-1.html" target="_blank" rel="noopener">https://www.mohw.gov.tw/cp-16-55672-1.html</a><p class="use">用在<a class="goto" href="#" data-goto="3">第4頁</a>、<a class="goto" href="#" data-goto="50">第51頁</a>：自107年8月1日實施準公共托育；與保母及私立托嬰中心簽約為合作單位，建立價格管理機制；迄109年8月底準公共化保母22,058人、簽約率91.13%；托嬰中心簽約率96.71%；家長使用公共及準公共托育服務高達九成以上；「公設民營托嬰中心及公共家園」。</p></li><li>衛生福利部長照專區（建檔2022年6月9日，更新2026年6月30日）。〈長照十年計畫2.0〉。資料來源：長期照顧司。<a class="url" href="https://1966.gov.tw/LTC/cp-6572-69919-207.html" target="_blank" rel="noopener">https://1966.gov.tw/LTC/cp-6572-69919-207.html</a><p class="use">用在<a class="goto" href="#" data-goto="61">第62頁</a>：96年核定長照1.0；105年12月核定、106年1月起實施長照2.0；服務對象4類擴大為8類、服務項目8項增至17項。</p></li><li>衛生福利部長照專區（建檔2025年12月31日，更新2026年3月9日）。〈長照十年計畫3.0〉。資料來源：長期照顧司。<a class="url" href="https://1966.gov.tw/LTC/cp-6572-85008-207.html" target="_blank" rel="noopener">https://1966.gov.tw/LTC/cp-6572-85008-207.html</a><p class="use">用在<a class="goto" href="#" data-goto="61">第62頁</a>：2025年12月31日核定、2026年起實施；願景「健康老化、在地安老、安寧善終」；涵蓋盛行率2017年20.30%、2025年6月89.9%；八大面向之一「強化家庭支持，擴大住院照護」。</p></li><li>衛生福利部長照專區（建檔2022年6月9日，更新2025年5月28日）。〈長期照顧服務法〉。資料來源：長期照顧司。<a class="url" href="https://1966.gov.tw/LTC/cp-6572-69920-207.html" target="_blank" rel="noopener">https://1966.gov.tw/LTC/cp-6572-69920-207.html</a><p class="use">用在<a class="goto" href="#" data-goto="61">第62頁</a>：104年6月3日公布、106年6月3日上路。</p></li><li>全國法規資料庫（法務部）。《長期照顧服務法》（民國110年6月9日修正），第3條、第15條。<a class="url" href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0070040" target="_blank" rel="noopener">https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0070040</a><p class="use">用在<a class="goto" href="#" data-goto="59">第60頁</a>、<a class="goto" href="#" data-goto="60">第61頁</a>、<a class="goto" href="#" data-goto="61">第62頁</a>：長期照顧的定義；長照服務發展基金的來源。</p></li><li>內政部。〈四、出生數、出生率及總生育率〉（113年資料，頁17–25）。<a class="url" href="https://ws.moi.gov.tw/Download.ashx?u=LzAwMS9VcGxvYWQvNDAwL3JlbGZpbGUvMC8yMjc1OC83M2RiZGVkOC02ZTgwLTQ2YTUtYWRhYi02YTRkYTU4MmJjNmUucGRm&amp;n=MS00LnBkZg%3D%3D&amp;icon=.pdf" target="_blank" rel="noopener">https://ws.moi.gov.tw/Download.ashx?u=LzAwMS9VcGxvYWQvNDAwL3JlbGZpbGUvMC8yMjc1OC83M2RiZGVkOC02ZTgwLTQ2YTUtYWRhYi02YTRkYTU4MmJjNmUucGRm&amp;n=MS00LnBkZg%3D%3D&amp;icon=.pdf</a><p class="use">用在<a class="goto" href="#" data-goto="67">第68頁</a>：73年總生育數2.06、首度低於替代水準2.1；112年0.87為歷年最低；113年0.89（表1-11）。</p></li><li>內政部戶政司（2026）。《中華民國人口統計季刊》民國114年冬季季刊。<a class="url" href="https://www.ris.gov.tw/documents/data/5/2/DemographicQuarterly_Winter2025.pdf" target="_blank" rel="noopener">https://www.ris.gov.tw/documents/data/5/2/DemographicQuarterly_Winter2025.pdf</a><p class="use">用在<a class="goto" href="#" data-goto="67">第68頁</a>：114年出生總數10萬7,812人，較去年減少20.05%（根據戶籍登記資料）。</p></li></ol></details></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第12週　74</span></footer></section>
+<section class="slide k-done" data-kind="done" data-label="◆ 完成紀錄" data-sect="總結" data-act="1"><header class="shead"><p class="lab">完成</p><h2>完成紀錄</h2></header><div class="sbody"><p class="intro">三份小測驗全部作答、閱讀滿20分鐘，就可以送出簽到。</p><div class="stat"><div>答對題數<b id="st-score">—</b></div><div>已作答<b id="st-done">—</b></div><div>閱讀時間<b id="st-time">00:00</b></div><div>看過頁數<b id="st-seen">—</b></div><div>動手做<b id="st-act">—</b></div></div><div class="idbox"><div><label for="sid">學號</label><input id="sid" maxlength="12" placeholder="例如14115101" autocomplete="off"></div><div><label for="sname">姓名</label><input id="sname" maxlength="20" placeholder="你的姓名" autocomplete="off"></div></div><div class="fbbox"><label for="sfbk">這一週最有收穫、或最想問的一點（選填）</label><textarea id="sfbk" maxlength="300" placeholder="寫一兩句就好，老師上課會挑幾則回應"></textarea></div><p class="dmsg" id="dmsg"></p><button class="pbtn" id="submit" type="button" disabled>送出簽到</button><p class="code" id="scode"></p></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第12週　75</span></footer></section>
+
+</div>
+</main>
+<nav class="navbar">
+  <button class="nav-btn prev" id="prev" type="button" onclick="goPrev()">← 前頁</button>
+  <div class="nav-mid"><span class="pageno"><span id="cur">1</span> / <span id="tot">75</span></span><div class="dots" id="dots"></div></div>
+  <button class="nav-btn" id="next" type="button" onclick="goNext()">下一頁 →</button>
+</nav>
+<div class="khint" id="khint"><kbd>←</kbd> <kbd>→</kbd> 翻頁　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕</div>
+<div class="toc" id="toc" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" type="button" onclick="toggleToc()" aria-label="關閉">×</button>
+    <h3>目次</h3>
+    <p class="tsub">點任一條目跳到該頁。</p>
+    <div class="tfilter" id="tfilter">
+      <button type="button" class="on" data-f="all">全部</button>
+      <button type="button" data-f="act">要動手的</button>
+      <button type="button" data-f="sum">表格與數字</button>
+      <button type="button" data-f="quote">引文與討論</button>
+      <button type="button" data-f="read">讀本</button>
+    </div>
+    <ol id="toclist"></ol>
+  </div>
+</div>
+<script>
+/* ═══════════════════════════════════════════════
+   社會政策第11、12週互動講義的互動程式（由第10週的 app.js 改寫）。
+   各週的設定（週次、表態題、討論題、簽到網址）由 build.py 填入 CONF。
+   GAS 是該週簽到試算表的 Apps Script 網址；留空時，送出鍵會產生一組代碼，請學生交給老師手動登記。
+   ═══════════════════════════════════════════════ */
+const CONF={"WEEK": "W12", "KEY": "sp115-w12", "GAS": "", "POLLS": [["p44", "在家自己帶孩子的家長，也該領補助嗎？"], ["p71", "台灣的兒童照顧，下一步最該加強哪一項？"]], "INBOX": ["d1", "d2", "d3", "d4"], "RANK": "r4", "RANK_PAGE": 4};
+const CONFIG = {
+  ENDPOINT:'',
+  GAS:CONF.GAS||'',
+  FIELDS:{ sid:'', name:'', code:'', detail:'' },
+  WEEK:CONF.WEEK, MIN_MINUTES:20
+};
+// 老師測試用：網址加 ?test=1 就跳過閱讀時間門檻（只影響這個分頁）
+if(new URLSearchParams(location.search).get('test')==='1') CONFIG.MIN_MINUTES=0;
+
+const KEY=CONF.KEY;
+const store={get(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}},
+             set(o){try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}}};
+let S=store.get();
+['poll','quiz','seen','sort','match','inbox','readp','acts','rank','order'].forEach(k=>{ S[k]=S[k]||{}; });
+S.seconds=S.seconds||0; S.page=S.page||0;
+const save=()=>store.set(S);
+const $=id=>document.getElementById(id);
+const esc=v=>String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function shake(el){ el.classList.add('shake'); setTimeout(()=>el.classList.remove('shake'),420); }
+
+const slides=[...document.querySelectorAll('.slide')];
+const TOT=slides.length;
+$('tot').textContent=TOT;
+let cur=0;
+
+/* ── 動手紀錄 ── */
+const ACTS=[...new Set([...document.querySelectorAll('[data-act-key]')].map(e=>e.dataset.actKey))];
+function actDone(k){ if(k && !S.acts[k]){ S.acts[k]=1; save(); refresh(); } }
+const actCount=()=>ACTS.filter(k=>S.acts[k]).length;
+
+/* ── 目次與 dots ── */
+const toclist=$('toclist'), dotsEl=$('dots');
+const SECN=['第一','第二','第三','第四','第五','第六','第七'];
+const secNo=s=>SECN.findIndex(k=>s.startsWith(k))+1;
+slides.forEach((s,i)=>{
+  const label=s.dataset.label, sect=s.dataset.sect||'';
+  const li=document.createElement('li');
+  if(s.dataset.kind==='divider'||s.dataset.kind==='cover') li.className='head';
+  li.innerHTML='<a href="#" data-i="'+i+'"><span class="n">'+(i+1)+'</span><span>'+esc(label)+'</span></a>';
+  li.querySelector('a').addEventListener('click',e=>{ e.preventDefault(); goTo(i); toggleToc(); });
+  toclist.appendChild(li);
+  const d=document.createElement('div');
+  const n=secNo(sect);
+  d.className='dot'+(n?' s'+n:'');
+  d.title=(i+1)+'. '+label;
+  d.addEventListener('click',()=>goTo(i));
+  dotsEl.appendChild(d);
+});
+const dots=[...dotsEl.children], tocLinks=[...toclist.querySelectorAll('a')];
+
+/* ── 分節與小節 ── */
+const panes=[...document.querySelectorAll('.pane')];
+const paneBtns=[...document.querySelectorAll('#panenav button')];
+function showPane(id,scroll){
+  panes.forEach(p=>p.classList.toggle('on',p.dataset.pane===id));
+  paneBtns.forEach(b=>b.classList.toggle('on',b.dataset.pane===id));
+  S.pane=id; save();
+  document.querySelectorAll('.sbar.show').forEach(b=>b.classList.remove('show'));
+  if(scroll!==false) window.scrollTo({top:0,behavior:'instant'});
+}
+paneBtns.forEach(b=>b.addEventListener('click',()=>showPane(b.dataset.pane)));
+document.querySelectorAll('.chap-h').forEach(h=>{
+  h.addEventListener('click',()=>{
+    const c=h.parentElement, was=c.classList.contains('open');
+    c.classList.toggle('open');
+    if(!was) c.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+/* ── 翻頁 ── */
+function goTo(n){
+  n=Math.max(0,Math.min(TOT-1,n));
+  const sl=slides[n];
+  const pane=sl.closest('.pane');
+  if(pane && !pane.classList.contains('on')) showPane(pane.dataset.pane,false);
+  const chap=sl.closest('.chap');
+  if(chap) chap.classList.add('open');
+  cur=n; navLock=Date.now()+1500;   // 捲動中不讓「目前看到哪一頁」改掉頁碼（短頁時中段會落在下一頁）
+  requestAnimationFrame(()=>sl.scrollIntoView({behavior:'smooth',block:'start'}));
+  S.page=cur; S.seen[cur]=1; save();
+  paint();
+}
+let navLock=0;
+function goNext(){ goTo(cur+1); }
+function goPrev(){ goTo(cur-1); }
+// 內文裡的「畫面［08］」「第8頁」：點了跳過去
+document.querySelectorAll('a.goto').forEach(a=>a.addEventListener('click',e=>{ e.preventDefault(); goTo(+a.dataset.goto); }));
+function paintBar(){
+  const m=document.documentElement.scrollHeight-window.innerHeight;
+  $('bar').style.width=(m>0?Math.min(100,window.scrollY/m*100):0)+'%';
+}
+function paintPos(){
+  $('cur').textContent=cur+1;
+  $('sect').textContent=slides[cur].dataset.sect||'';
+  dots.forEach((d,i)=>d.classList.toggle('on',i===cur));
+  tocLinks.forEach((a,i)=>a.classList.toggle('cur',i===cur));
+  const act=dots[cur]; if(act) act.scrollIntoView({block:'nearest',inline:'center'});
+  $('prev').disabled=(cur===0);
+  $('next').disabled=(cur===TOT-1);
+  paintSectProg();
+}
+function paint(){
+  paintBar(); paintPos();
+  refresh();
+}
+let SECTIDX=null;
+function paintSectProg(){
+  const el=$('sprog'); if(!el) return;
+  if(!SECTIDX){ SECTIDX={}; slides.forEach((s,i)=>{ const k=s.dataset.sect||''; (SECTIDX[k]=SECTIDX[k]||[]).push(i); }); }
+  const k=slides[cur].dataset.sect||'', arr=SECTIDX[k]||[];
+  el.textContent=(k && arr.length>1)?((arr.indexOf(cur)+1)+' / '+arr.length):'';
+}
+
+/* ── 鍵盤 ── */
+document.addEventListener('keydown',e=>{
+  const tg=e.target.tagName;
+  if(tg==='INPUT'||tg==='TEXTAREA') return;
+  if($('toc').classList.contains('show')){ if(e.key==='Escape') toggleToc(); return; }
+  if(e.key==='ArrowRight'||e.key==='PageDown'){ e.preventDefault(); goNext(); }
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); goPrev(); }
+  else if(e.key==='Escape'){ toggleToc(); }
+  else if(e.key==='f'||e.key==='F'){ goFull(); }
+  else if(e.key==='Home'){ goTo(0); }
+  else if(e.key==='End'){ goTo(TOT-1); }
+});
+function toggleToc(){ $('toc').classList.toggle('show'); }
+function goFull(){ if(!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.(); }
+
+/* ── 計時 ── */
+function fmt(s){ const m=Math.floor(s/60); return String(m).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+let active=!document.hidden;
+document.addEventListener('visibilitychange',()=>{ active=!document.hidden; });
+setInterval(()=>{
+  if(!active) return;
+  S.seconds++;
+  $('clock').textContent=fmt(S.seconds);
+  const st=$('st-time'); if(st) st.textContent=fmt(S.seconds);
+  if(S.seconds%10===0) save();
+  refresh();
+},1000);
+
+/* ── 表態與先猜 ── */
+function paintRevealAll(){
+  document.querySelectorAll('[data-reveal-all]').forEach(el=>{
+    el.classList.toggle('show',el.dataset.revealAll.split(',').every(k=>S.poll[k]));
+  });
+}
+document.querySelectorAll('[data-poll]').forEach(box=>{
+  const id=box.dataset.poll, ans=box.dataset.answer||'';
+  const bs=[...box.querySelectorAll('.opts button')];
+  const rv=[...document.querySelectorAll('[data-reveal-for="'+id+'"]')];
+  const verdict=document.querySelector('[data-verdict-for="'+id+'"]');
+  const paintP=()=>{
+    const v=S.poll[id];
+    bs.forEach(b=>{
+      b.classList.remove('sel','ok','ng');
+      if(!v) return;
+      if(ans){ b.disabled=true; if(b.dataset.v===ans) b.classList.add('ok'); else if(b.dataset.v===v) b.classList.add('ng'); }
+      else if(b.dataset.v===v) b.classList.add('sel');
+    });
+    if(v){ rv.forEach(r=>r.classList.add('show'));
+      if(verdict){ verdict.textContent = !ans ? '' : (v===ans ? '猜對了。' : '沒猜中。'); verdict.className='verdict show '+(v===ans?'ok':'ng'); } }
+  };
+  bs.forEach(b=>b.addEventListener('click',()=>{
+    if(ans && S.poll[id]) return;
+    S.poll[id]=b.dataset.v; save(); paintP(); paintRevealAll(); actDone(box.dataset.actKey);
+  }));
+  paintP();
+});
+
+/* ── 分類（點選或拖曳） ── */
+document.querySelectorAll('[data-sort]').forEach(box=>{
+  const id=box.dataset.sort;
+  const tray=box.querySelector('.tray'), cols=[...box.querySelectorAll('.scol')];
+  const cards=[...box.querySelectorAll('.sc')], N=cards.length;   // 顯示順序在建置時就排好了
+  const fb=box.querySelector('.fbk'), score=box.querySelector('.score');
+  const st=S.sort[id]=S.sort[id]||{p:{}};
+  let sel=null;
+  const bar=document.createElement('div');
+  bar.className='sbar';
+  bar.innerHTML='<span class="sbt"></span>'+cols.map(c=>'<button type="button" data-k="'+c.dataset.k+'">'+esc(c.querySelector('h4').textContent)+'</button>').join('')
+    +'<button type="button" class="x" aria-label="取消">取消</button>';
+  document.body.appendChild(bar);
+  const select=el=>{
+    cards.forEach(c=>c.classList.remove('sel')); sel=el;
+    document.querySelectorAll('.sbar.show').forEach(b=>{ if(b!==bar) b.classList.remove('show'); });
+    if(el){ el.classList.add('sel'); bar.querySelector('.sbt').textContent='把「'+el.dataset.txt+'」放到：'; bar.classList.add('show'); }
+    else bar.classList.remove('show');
+  };
+  const clear=()=>{ cards.forEach(c=>c.classList.remove('ok','ng')); fb.className='fbk'; score.textContent=''; };
+  const put=(el,col)=>{
+    (col?col.querySelector('.drop'):tray).appendChild(el);
+    if(col) st.p[el.dataset.i]=col.dataset.k; else delete st.p[el.dataset.i];
+    save();
+  };
+  const byI=i=>cards.find(c=>c.dataset.i===i);
+  const home=()=>cards.forEach(c=>tray.appendChild(c));   // 放回原來的順序
+  cards.forEach(c=>{ const k=st.p[c.dataset.i]; const col=k&&cols.find(x=>x.dataset.k===k); if(col) col.querySelector('.drop').appendChild(c); });
+  cards.forEach(c=>{
+    c.addEventListener('click',e=>{
+      e.stopPropagation(); clear();
+      if(c.parentElement!==tray){ put(c,null); home(); cards.forEach(x=>{ const k=st.p[x.dataset.i]; const col=k&&cols.find(y=>y.dataset.k===k); if(col) col.querySelector('.drop').appendChild(x); }); select(c); return; }
+      select(sel===c?null:c);
+    });
+    c.addEventListener('dragstart',e=>{ e.dataTransfer.setData('text/plain',c.dataset.i); e.dataTransfer.effectAllowed='move'; select(c); });
+  });
+  cols.forEach(col=>{
+    col.addEventListener('click',()=>{ if(!sel) return; clear(); put(sel,col); select(null); });
+    col.addEventListener('dragover',e=>{ e.preventDefault(); col.classList.add('hot'); });
+    col.addEventListener('dragleave',()=>col.classList.remove('hot'));
+    col.addEventListener('drop',e=>{ e.preventDefault(); col.classList.remove('hot');
+      const el=byI(e.dataTransfer.getData('text/plain')); if(!el) return; clear(); put(el,col); select(null); });
+  });
+  bar.querySelectorAll('button[data-k]').forEach(b=>b.addEventListener('click',()=>{
+    if(!sel) return; clear(); put(sel,cols.find(c=>c.dataset.k===b.dataset.k)); select(null);
+  }));
+  bar.querySelector('.x').addEventListener('click',()=>select(null));
+  tray.addEventListener('dragover',e=>e.preventDefault());
+  tray.addEventListener('drop',e=>{ e.preventDefault(); const el=byI(e.dataTransfer.getData('text/plain')); if(el){ clear(); put(el,null); select(null); } });
+  box.querySelector('.js-check').addEventListener('click',()=>{
+    let n=0, placed=0; const wrong=[];
+    cols.forEach(col=>col.querySelectorAll('.sc').forEach(el=>{
+      placed++;
+      const ok=el.dataset.k===col.dataset.k; n+=ok; el.classList.add(ok?'ok':'ng'); if(!ok) wrong.push(el);
+    }));
+    if(placed<N){ cards.forEach(c=>c.classList.remove('ok','ng')); fb.className='fbk show'; fb.innerHTML='還有<b>'+(N-placed)+'</b>張沒放。'; return; }
+    score.textContent=n+' / '+N; st.score=n; save(); actDone(box.dataset.actKey);
+    fb.className='fbk show '+(n===N?'ok':'ng');
+    fb.innerHTML = n===N ? '<b>全對。</b>'
+      : '<b>放錯的：</b><br>'+wrong.map(el=>'「'+esc(el.dataset.txt)+'」屬於「'+esc(el.dataset.ans)+'」').join('<br>');
+  });
+  box.querySelector('.js-reset').addEventListener('click',()=>{ clear(); st.p={}; delete st.score; save(); select(null); home(); });
+});
+
+/* ── 配對 ── */
+document.querySelectorAll('[data-match]').forEach(box=>{
+  const id=box.dataset.match, [L,R]=box.querySelectorAll('.mcol');
+  const stat=box.parentElement.querySelector('.mstat');
+  const total=L.querySelectorAll('.mitem').length;
+  S.match[id]=S.match[id]||[];
+  let sel=null;
+  const paintM=()=>{
+    const done=S.match[id];
+    box.querySelectorAll('.mitem').forEach(it=>it.classList.toggle('done',done.includes(it.dataset.k)));
+    stat.innerHTML = done.length===total ? '全部配對完成 ✓' : '已配對<b>'+done.length+'</b>／'+total+'　·　點左邊一項，再點右邊對應的一項';
+    stat.classList.toggle('ok',done.length===total);
+    if(done.length===total) actDone(box.dataset.actKey);
+  };
+  box.querySelectorAll('.mitem').forEach(it=>it.addEventListener('click',()=>{
+    if(it.classList.contains('done')) return;
+    if(it.parentElement===L){ L.querySelectorAll('.mitem').forEach(x=>x.classList.remove('sel')); it.classList.add('sel'); sel=it; return; }
+    if(!sel){ shake(it); return; }
+    if(sel.dataset.k===it.dataset.k){ sel.classList.remove('sel'); S.match[id].push(it.dataset.k); save(); sel=null; paintM(); }
+    else shake(it);
+  }));
+  paintM();
+});
+
+/* ── 暖身排序：點的順序就是名次（沒有標準答案） ── */
+document.querySelectorAll('[data-rank]').forEach(box=>{
+  const id=box.dataset.rank, n=+box.dataset.n, btns=[...box.querySelectorAll('.rk')];
+  const cnt=box.querySelector('.cnt'), fb=box.querySelector('.fbk');
+  S.rank[id]=S.rank[id]||[];
+  const paintR=()=>{
+    const a=S.rank[id];
+    btns.forEach(b=>{ const k=a.indexOf(+b.dataset.i); b.classList.toggle('on',k>=0); b.querySelector('.rn').textContent=k>=0?k+1:''; });
+    cnt.textContent='已排'+a.length+'／'+n;
+    if(a.length===n){ fb.className='fbk show ok'; fb.innerHTML='<b>排好了。</b>'; actDone(box.dataset.actKey); }
+    else fb.className='fbk';
+    paintRankCmp();
+  };
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    const a=S.rank[id], i=+b.dataset.i;
+    if(a.includes(i)||a.length>=n) return;
+    a.push(i); save(); paintR();
+  }));
+  box.querySelector('.js-reset').addEventListener('click',()=>{ S.rank[id]=[]; save(); paintR(); });
+  paintR();
+});
+// 後面的對照表：每一列填上「你排第幾」，第1名那一列標出來
+function paintRankCmp(){
+  if(!CONF.RANK) return;
+  const a=S.rank[CONF.RANK]||[], cells=[...document.querySelectorAll('td.mine[data-mine]')];
+  if(!cells.length) return;
+  const n=document.querySelectorAll('[data-rank="'+CONF.RANK+'"] .rk').length;
+  cells.forEach(td=>{
+    const k=a.indexOf(+td.dataset.mine);
+    td.textContent=(a.length===n && k>=0)?'你排第'+(k+1):'—';
+    td.closest('tr').classList.toggle('top',a.length===n && k===0);
+  });
+  const tw=cells[0].closest('.tw');
+  let msg=tw.nextElementSibling&&tw.nextElementSibling.classList.contains('rcmsg')?tw.nextElementSibling:null;
+  if(!msg){ msg=document.createElement('p'); msg.className='rcmsg'; tw.after(msg); }
+  if(a.length<n){ msg.innerHTML='你還沒在開場排完。回到<a href="#" class="goto" data-goto="'+(CONF.RANK_PAGE-1)+'">第'+CONF.RANK_PAGE+'頁</a>的暖身排一次，這裡就會出現你的名次。';
+    msg.querySelector('a').addEventListener('click',e=>{ e.preventDefault(); goTo(CONF.RANK_PAGE-1); }); }
+  else msg.textContent='';
+}
+
+/* ── 依序點選 ── */
+document.querySelectorAll('[data-order]').forEach(box=>{
+  const id=box.dataset.order, tray=box.querySelector('.otray');
+  const items=[...tray.querySelectorAll('.oi')], slots=[...box.querySelectorAll('.tline li')];
+  const fb=box.querySelector('.fbk');
+  S.order[id]=S.order[id]||0;
+  const fill=n=>{
+    slots.forEach((li,i)=>{ if(i<n && !li.classList.contains('filled')){
+      li.classList.remove('empty'); li.classList.add('filled');
+      li.lastElementChild.textContent=li.dataset.t; } });
+    items.forEach(it=>it.classList.toggle('used',+it.dataset.o<n));
+    if(n===slots.length){ fb.className='fbk show ok'; fb.innerHTML='<b>排好了。</b>'; actDone(box.dataset.actKey); }
+  };
+  items.forEach(it=>it.addEventListener('click',()=>{
+    if(+it.dataset.o===S.order[id]){ S.order[id]++; save(); fill(S.order[id]); }
+    else shake(it);
+  }));
+  box.querySelector('.js-show').addEventListener('click',()=>{ S.order[id]=slots.length; save(); fill(slots.length); });
+  fill(S.order[id]);
+});
+
+/* ── 寫一句 ── */
+document.querySelectorAll('[data-inbox]').forEach(box=>{
+  const id=box.dataset.inbox, ta=box.querySelector('textarea'), btn=box.querySelector('.js-save'), mine=box.querySelector('.imine');
+  const show=v=>{ mine.innerHTML='你寫的是：<b>'+esc(v)+'</b><br>這一句會跟著簽到一起送出，老師上課會挑幾則出來討論。'; mine.classList.add('show'); box.closest('details')?.classList.add('saved'); };
+  if(S.inbox[id]){ ta.value=S.inbox[id]; show(S.inbox[id]); btn.textContent='已存起來（還能改）'; }
+  btn.disabled=ta.value.trim().length<4;
+  ta.addEventListener('input',()=>{ btn.disabled=ta.value.trim().length<4; });
+  btn.addEventListener('click',()=>{ const v=ta.value.trim(); if(v.length<4) return;
+    S.inbox[id]=v; save(); show(v); btn.textContent='已存起來（還能改）'; actDone(box.dataset.actKey); });
+});
+
+/* ── 閱讀進度 ── */
+const rps=[...document.querySelectorAll('.rp')];
+function paintRead(){
+  let n=0;
+  rps.forEach(r=>{ const cb=r.querySelector('input'); r.classList.toggle('done',cb.checked); if(cb.checked) n++; });
+  document.querySelectorAll('.rpstat b').forEach(b=>b.textContent=n);
+  document.querySelectorAll('.rptot').forEach(b=>b.textContent=rps.length);
+}
+rps.forEach(r=>{
+  const cb=r.querySelector('input'), k='r'+cb.dataset.r;
+  if(S.readp[k]) cb.checked=true;
+  cb.addEventListener('change',()=>{ S.readp[k]=cb.checked?1:0; save(); paintRead(); });
+});
+paintRead();
+
+/* ── 小測驗 ── */
+const ANS={};
+document.querySelectorAll('[data-quiz]').forEach(quiz=>{
+  const qid=quiz.dataset.quiz;
+  ANS[qid]=[...quiz.querySelectorAll('.qz')].map(q=>parseInt(q.dataset.a,10));
+  S.quiz[qid]=S.quiz[qid]||{};
+  quiz.querySelectorAll('.qz').forEach((q,i)=>{
+    const a=parseInt(q.dataset.a,10), opts=[...q.querySelectorAll('.opt')], fb=q.querySelector('.fb');
+    const lock=picked=>{
+      opts.forEach((o,k)=>{ o.disabled=true;
+        if(k+1===a) o.classList.add('right'); else if(k+1===picked) o.classList.add('wrong'); });
+      q.classList.add(picked===a?'got':'miss');
+      fb.classList.add('show');
+    };
+    if(S.quiz[qid][i]) lock(S.quiz[qid][i]);
+    opts.forEach((o,k)=>o.addEventListener('click',()=>{
+      if(S.quiz[qid][i]) return;
+      S.quiz[qid][i]=k+1; save(); lock(k+1); refresh();
+    }));
+  });
+});
+function tally(){
+  let done=0,right=0,total=0;
+  for(const qid in ANS) ANS[qid].forEach((a,i)=>{
+    total++; const p=S.quiz[qid]&&S.quiz[qid][i];
+    if(p){ done++; if(p===a) right++; }
+  });
+  return {done,right,total};
+}
+
+/* ── 完成頁 ── */
+function refresh(){
+  const sc=$('st-score'); if(!sc) return;
+  const t=tally();
+  sc.textContent=t.right+' / '+t.total;
+  $('st-done').textContent=t.done+' / '+t.total;
+  $('st-seen').textContent=Object.keys(S.seen).length+' / '+TOT;
+  $('st-act').textContent=actCount()+' / '+ACTS.length;
+  $('st-time').textContent=fmt(S.seconds);
+  const need=CONFIG.MIN_MINUTES*60, btn=$('submit'), msg=$('dmsg');
+  if(S.sent){
+    btn.disabled=true; btn.textContent=S.sentRow?'已登記':'已送出';
+    msg.textContent='已於'+S.sent+(S.sentRow?'完成登記。':'送出。');
+    const box=$('scode');
+    if(box && S.sentCode) box.innerHTML=esc(S.sentWho||'')+'<br><b>'+esc(S.sentCode)+'</b>'
+      +'<span class="codenote">'
+      +(S.sentRow ? '已確認寫入老師的簽到表（第'+Number(S.sentRow)+'列），簽到完成。'
+        : '瀏覽器收不到Google的回覆，這裡無法確認是否寫入成功。'
+        +'請記下上面這組代碼；若老師的紀錄裡沒有你，把代碼交給老師即可補登。')+'</span>';
+    return;
+  }
+  const sid=($('sid').value||'').trim(), sname=($('sname').value||'').trim();
+  const okQ=(t.done===t.total), okT=(S.seconds>=need), okId=(sid.length>=4 && sname.length>=1);
+  btn.disabled=!(okQ&&okT&&okId);
+  if(!okQ) msg.textContent='還有'+(t.total-t.done)+'題沒有作答。三份小測驗全部作答完畢後，就可以送出簽到。';
+  else if(!okT) msg.textContent='已全部作答。閱讀時間還差'+Math.ceil((need-S.seconds)/60)+'分鐘（門檻'+CONFIG.MIN_MINUTES+'分鐘）。';
+  else if(!okId) msg.textContent='條件已符合。請填上學號與姓名，才能送出簽到。';
+  else msg.textContent='條件已符合，可以送出簽到。';
+}
+$('submit').addEventListener('click',()=>{
+  const t=tally(), d=new Date(), pad=n=>String(n).padStart(2,'0');
+  const stamp=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
+  const note=$('scode');
+  const sid=($('sid').value||'').trim(), name=($('sname').value||'').trim();
+  const minutes=Math.floor(S.seconds/60), pages=Object.keys(S.seen).length;
+  const feedback=($('sfbk').value||'').trim();
+  const code=CONFIG.WEEK+'｜答對'+t.right+'/'+t.done+'｜'+minutes+'分｜'+pages+'/'+TOT+'頁';
+  let detail='';
+  if(CONF.RANK){
+    const names=[...document.querySelectorAll('[data-rank="'+CONF.RANK+'"] .rk .rt')].map(e=>e.textContent);
+    detail+='暖身排序：'+((S.rank[CONF.RANK]||[]).map(k=>names[k]).join('>')||'（未排）')+'｜';
+  }
+  (CONF.POLLS||[]).forEach(([pid,label])=>{ detail+=label+'：'+(S.poll[pid]||'—')+'｜'; });
+  (CONF.INBOX||[]).forEach((iid,i)=>{ detail+='討論'+(i+1)+'：'+(((S.inbox[iid]||'').trim())||'（未填）')+'｜'; });
+  detail+='動手'+actCount()+'/'+ACTS.length+'｜回饋：'+(feedback||'（未填）');
+  const manual=why=>{ note.innerHTML='<b>尚未送出</b>：'+why+'請把這組代碼交給老師：<br><b>'+esc(code)+'</b>'; };
+  if(!CONFIG.ENDPOINT && !CONFIG.GAS){ manual('簽到後台還沒接上。'); return; }
+  const btn=$('submit');
+  btn.disabled=true; note.textContent='傳送中…';
+  const fd=new URLSearchParams();
+  fd.append(CONFIG.FIELDS.sid,sid);
+  fd.append(CONFIG.FIELDS.name,name);
+  fd.append(CONFIG.FIELDS.code,code);
+  fd.append(CONFIG.FIELDS.detail,detail);
+  const viaForm=()=>!CONFIG.ENDPOINT ? (btn.disabled=false, manual('簽到後台沒有回應。')) : fetch(CONFIG.ENDPOINT,{method:'POST',mode:'no-cors',body:fd})
+  .then(()=>{ S.sent=stamp; S.sentCode=code; S.sentWho=sid+'　'+name; save(); refresh(); })
+  .catch(()=>{ btn.disabled=false; note.textContent='送出失敗，請確認網路後再按一次；若仍失敗請截圖這一頁給老師。'; });
+  if(!CONFIG.GAS){ viaForm(); return; }
+  // 先送簽到後台：寫進試算表並讀回確認，回傳列號。後台沒回應或出錯，就改走表單
+  const ac=new AbortController(), timer=setTimeout(()=>ac.abort(),20000);
+  fetch(CONFIG.GAS,{method:'POST',body:new URLSearchParams({week:CONFIG.WEEK,sid:sid,name:name,code,detail}),signal:ac.signal})
+  .then(r=>r.json())
+  .then(j=>{ clearTimeout(timer); if(!j||!j.ok||!j.row) throw new Error('not ok');
+    S.sent=stamp; S.sentCode=code; S.sentWho=sid+'　'+name; S.sentRow=j.row; save(); refresh(); })
+  .catch(()=>{ clearTimeout(timer); viaForm(); });
+});
+
+/* ── 目次篩選 ── */
+$('tfilter').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  $('tfilter').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  const f=b.dataset.f;
+  [...toclist.children].forEach((li,i)=>{
+    const s=slides[i], k=s.dataset.kind, fl=(s.dataset.flags||'').split(' ');
+    let show=true;
+    if(f==='act') show=s.hasAttribute('data-act');
+    else if(f==='sum') show=fl.includes('sum');
+    else if(f==='quote') show=fl.includes('quote');
+    else if(f==='read') show=(k==='readings');
+    li.classList.toggle('hide',!show);
+  });
+});
+
+/* ── 捲動追蹤：目前看到哪一頁 ── */
+let tick=false;
+window.addEventListener('scroll',()=>{ if(tick) return; tick=true; requestAnimationFrame(()=>{ paintBar(); tick=false; }); },{passive:true});
+const io=new IntersectionObserver(es=>{
+  if(Date.now()<navLock) return;
+  let best=null, bi=-1;
+  es.forEach(e=>{ if(e.isIntersecting){ const i=slides.indexOf(e.target);
+    if(i>=0 && (best===null||e.intersectionRatio>best)){ best=e.intersectionRatio; bi=i; } } });
+  if(bi>=0 && bi!==cur){ cur=bi; S.page=cur; S.seen[cur]=1; save(); paintPos(); }
+},{rootMargin:'-40% 0px -40% 0px',threshold:[0,.25,.5,1]});
+slides.forEach(sl=>io.observe(sl));
+/* 看過頁數：一頁露出一半，或占滿半個畫面，就算看過。 */
+const seenIO=new IntersectionObserver(es=>{
+  let add=false;
+  es.forEach(e=>{ if(!e.isIntersecting) return;
+    const i=slides.indexOf(e.target);
+    if(i>=0 && !S.seen[i] && (e.intersectionRatio>=.5 || e.intersectionRect.height>=window.innerHeight*.5)){
+      S.seen[i]=1; add=true; } });
+  if(add){ save(); refresh(); }
+},{threshold:[0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1]});
+slides.forEach(sl=>seenIO.observe(sl));
+
+/* ── 起始 ── */
+showPane(S.pane||'0',false);
+slides.forEach((sl,i)=>{ if(sl.offsetParent!==null && sl.getBoundingClientRect().top<window.innerHeight) S.seen[i]=1; });
+['sid','sname','sfbk'].forEach(id=>{
+  const el=$(id); if(!el) return;
+  if(S[id]) el.value=S[id];
+  el.addEventListener('input',()=>{ S[id]=el.value; save(); refresh(); });
+});
+paintRevealAll(); paintRankCmp();
+$('clock').textContent=fmt(S.seconds);
+paint();
+setTimeout(()=>{ const k=$('khint'); if(k) k.style.opacity=0; },6000);
+
+/* ── 續讀提示 ── */
+(function(){
+  const start=S.page||0;
+  if(start<2) return;
+  const box=document.createElement('div');
+  box.className='resume';
+  box.innerHTML='<span>上次讀到第'+(start+1)+'頁</span><button type="button" id="rs-go">繼續讀</button><button type="button" class="x" id="rs-top">從頭開始</button>';
+  document.body.appendChild(box);
+  const kill=()=>box.remove();
+  $('rs-go').addEventListener('click',()=>{ goTo(start); kill(); });
+  $('rs-top').addEventListener('click',()=>{ goTo(0); kill(); });
+  setTimeout(kill,12000);
+})();
+
+/* ═══════ 讓頁面活起來：捲進畫面時浮現、長條長出來 ═══════ */
+const RM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const liveIO=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting) return;
+  const sl=e.target; if(sl.classList.contains('in')) return;
+  sl.classList.add('in'); liveIO.unobserve(sl);
+}),{threshold:.08});
+if(RM||document.hidden) slides.forEach(sl=>sl.classList.add('in')); else { document.documentElement.classList.add('anim'); slides.forEach(sl=>liveIO.observe(sl)); }
+// 剛切換分頁、或展開章節時，畫面裡的頁面要馬上顯示
+function wakeVisible(){ slides.forEach(sl=>{ if(sl.offsetParent!==null){ const r=sl.getBoundingClientRect();
+  if(r.top<innerHeight && r.bottom>0 && !sl.classList.contains('in')){ sl.classList.add('in'); liveIO.unobserve(sl); } } }); }
+document.addEventListener('click',()=>setTimeout(wakeVisible,60));
+setTimeout(wakeVisible,200);
+// 小測驗答對：選項跳一下
+document.querySelectorAll('.qz .opt').forEach(o=>o.addEventListener('click',()=>setTimeout(()=>{
+  const r=o.closest('.qz').querySelector('.opt.right'); if(r){ r.classList.add('pop'); setTimeout(()=>r.classList.remove('pop'),600); } },10)));
+
+</script>
+</body>
+</html>

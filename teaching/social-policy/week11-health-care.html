@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>健康照護政策・社會政策第11週・葉崇揚</title>
+<meta name="description" content="社會政策第11週互動講義（分頁式）：健康從哪裡來、醫療為什麼特別、配給、路徑依賴、路徑的起點與分岔、低保費與財務危機，以及全民健保怎麼走到國家主義。共75頁，含3份分節小測驗、暖身排序、先猜、分類、配對、表態與課堂討論。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* 社會政策第11、12週互動講義：共用版面（結構與互動元件）。顏色、字型、裝飾在各週的 w11.css、w12.css。
+   字級：內文18px，最小的標籤不低於14px。字型只用繁體中文字型與西文字型。 */
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:18px;line-height:1.85;-webkit-font-smoothing:antialiased;
+  padding-top:calc(var(--top) + var(--tabs));padding-bottom:92px}
+button{font:inherit;color:inherit}
+a{color:var(--link)}
+b,strong{font-weight:700}
+kbd{font-family:var(--mono);font-size:14px;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 6px;background:var(--card)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ── 頂列 ── */
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--top);z-index:40;background:var(--bar);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;font-size:15px}
+.logo{flex:none;font:700 15px/1 var(--mono);letter-spacing:.08em;color:#fff;background:var(--accent);border-radius:6px;padding:8px 10px}
+.topbar .course{font-weight:700;white-space:nowrap}
+.topbar .wk{color:var(--muted);white-space:nowrap}
+.topbar .sect{color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.topbar .sprog{color:var(--muted);white-space:nowrap;font-family:var(--mono);font-size:14px}
+.topbar .sp{flex:1}
+.clock{font:500 14px/1 var(--mono);letter-spacing:.04em;color:var(--soft);border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:var(--card)}
+.tb{height:38px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:0 16px;cursor:pointer;font-size:15px;white-space:nowrap;transition:all .2s}
+.tb:hover{border-color:var(--ink)}
+.tb.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+#bar{position:fixed;top:var(--top);left:0;height:3px;width:0;z-index:41;transition:width .2s;background:var(--accent)}
+@media(max-width:900px){.topbar .course,.topbar .wk,.topbar .hide-m{display:none}}
+@media(max-width:520px){.topbar{gap:8px;padding:0 12px}.topbar .sprog{display:none}.clock{padding:8px 10px}}
+
+/* ── 分節頁籤 ── */
+.panenav{position:fixed;top:var(--top);left:0;right:0;height:var(--tabs);z-index:39;background:var(--bar);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 16px;overflow-x:auto;scrollbar-width:none}
+.panenav::-webkit-scrollbar{display:none}
+.panenav button{flex:none;display:flex;align-items:center;gap:8px;border:0;background:transparent;color:var(--muted);border-radius:999px;padding:5px 14px 5px 5px;font-size:15px;cursor:pointer;transition:all .2s}
+.panenav button:hover{color:var(--ink)}
+.panenav .pn{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font:500 14px/1 var(--mono);background:var(--card)}
+.panenav button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.panenav button.on .pn{background:var(--accent);border-color:var(--accent);color:#fff}
+@media(min-width:1000px){.panenav{justify-content:center}}
+
+/* ── 版面 ── */
+.deck{max-width:960px;margin:0 auto;padding:16px 18px 40px;overflow-x:clip}
+.pane{display:none}
+.pane.on{display:block}
+.slide{position:relative;background:var(--card);margin:34px 0;scroll-margin-top:calc(var(--top) + var(--tabs) + 14px)}
+.sbody{padding:6px 56px 28px}
+@media(max-width:700px){.sbody{padding:4px 20px 22px}}
+.k-cover>.sbody,.k-divider>.sbody{padding:0}
+.anim .slide{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.anim .slide.in{opacity:1;transform:none}
+.shead{padding:26px 56px 6px}
+@media(max-width:700px){.shead{padding:20px 20px 4px}}
+.lab{font-size:15px;line-height:1.6;color:var(--muted);letter-spacing:.06em}
+.shead h2{font-family:var(--head);font-weight:700;font-size:32px;line-height:1.4;margin:8px 0 18px;color:var(--ink)}
+@media(max-width:700px){.shead h2{font-size:25px}}
+.sbody>*+*{margin-top:16px}
+.sbody p{max-width:42em}
+.sbody h4{font-family:var(--head);font-size:20px;line-height:1.5;margin-top:28px;color:var(--ink)}
+.sbody h4:first-child{margin-top:4px}
+.sbody .lead-in{font-weight:700;margin-top:24px}
+.sbody .intro{font-size:19px}
+.sbody .pq{font-weight:700;font-size:19px}
+.sbody .note,.sbody .tcap,.sbody .legend{font-size:16px;color:var(--muted)}
+.sbody .tcap{margin-top:24px;font-weight:700;color:var(--soft)}
+.sbody .tcap+.tw{margin-top:8px}
+ul.bl,ol.bl{display:grid;gap:8px;padding-left:1.4em;max-width:44em}
+ul.bl{list-style:none;padding-left:0}
+ul.bl>li{position:relative;padding-left:24px}
+ul.bl>li::before{content:"";position:absolute;left:4px;top:.78em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+ol.bl>li{padding-left:4px}
+ol.bl>li::marker{font-family:var(--mono);font-weight:700;color:var(--accent)}
+ul.sub,ol.sub{margin-top:6px;display:grid;gap:4px;padding-left:1.4em}
+ul.sub{list-style:none;padding-left:4px}
+ul.sub>li{position:relative;padding-left:20px}
+ul.sub>li::before{content:"";position:absolute;left:2px;top:.85em;width:9px;height:2px;background:var(--muted)}
+ol.sub>li::marker{font-family:var(--mono);color:var(--muted)}
+
+/* 表格 */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-left:-2px;margin-right:-2px;padding:2px}
+table{border-collapse:collapse;width:100%;font-size:16px;line-height:1.7;min-width:520px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border:1px solid var(--line)}
+thead th{background:var(--th);font-weight:700;font-size:16px;white-space:normal}
+tbody th{background:var(--th2);font-weight:700}
+tr.top td,tr.top th{background:var(--hi)}
+td.mine{white-space:nowrap;font-weight:700;color:var(--accent)}
+th.xcol,th.nw{white-space:nowrap}
+.rcmsg{font-size:16px;color:var(--muted)}
+@media(max-width:700px){table{font-size:15px;min-width:480px}th,td{padding:8px 10px}}
+.tw table:has(tr>*:nth-child(2):last-child){min-width:0}
+
+/* 引文 */
+blockquote{padding:16px 22px;max-width:44em}
+blockquote p{max-width:none}
+blockquote p.en{font-style:italic}
+blockquote p.tr{font-size:16px;color:var(--soft);margin-top:4px}
+blockquote cite{display:block;font-style:normal;font-size:15px;color:var(--muted);margin-top:8px}
+
+/* 長條圖 */
+.bars{margin-top:18px;max-width:44em}
+.bars .bcap{font-size:16px;color:var(--soft);font-weight:700;margin-bottom:8px}
+.bars ul{list-style:none;display:grid;gap:10px}
+.bars li{display:grid;grid-template-columns:minmax(8em,13em) 1fr auto;align-items:center;gap:12px}
+.bl-l{font-size:16px;line-height:1.5}
+.bl-t{height:22px;background:var(--track);border-radius:4px;overflow:hidden}
+.bl-t i{display:block;height:100%;width:var(--w);background:var(--accent);border-radius:4px}
+.anim .slide .bl-t i{width:0;transition:width 1.1s var(--ease) .2s}
+.anim .slide.in .bl-t i{width:var(--w)}
+.bl-v{font-family:var(--mono);font-weight:700;font-size:16px;white-space:nowrap}
+@media(max-width:600px){.bars li{grid-template-columns:1fr auto;gap:4px 10px}.bl-l{grid-column:1/-1}}
+
+/* 頁尾 */
+.sfoot{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;padding:14px 56px 18px;font-size:14px;line-height:1.7;color:var(--muted)}
+.sfoot .cite{max-width:46em}
+.sfoot .cite b{font-weight:700;color:var(--soft)}
+.sfoot .pgno{flex:none;font-family:var(--mono);white-space:nowrap}
+@media(max-width:700px){.sfoot{padding:12px 20px 16px;flex-direction:column;align-items:flex-start;gap:6px}}
+
+/* 連結 */
+a.goto{font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+a.url{word-break:break-all}
+
+/* ── 互動共用 ── */
+.instr{font-size:16px;color:var(--soft)}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:14px}
+.pbtn{min-height:44px;border:0;border-radius:999px;background:var(--accent);color:#fff;padding:0 22px;font-size:16px;font-weight:700;cursor:pointer;transition:transform .15s,filter .15s}
+.pbtn:hover:not(:disabled){filter:brightness(1.08)}
+.pbtn:active:not(:disabled){transform:scale(.97)}
+.pbtn:disabled{opacity:.4;cursor:not-allowed}
+.pbtn.sec{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.fbk{display:none;margin-top:14px;padding:12px 16px;border-radius:8px;font-size:16px;line-height:1.75;background:var(--card2);border:1px solid var(--line)}
+.fbk.show{display:block;animation:fadein .35s var(--ease)}
+.fbk.ok{border-color:var(--ok)}
+.fbk.ng{border-color:var(--ng)}
+.score{font-family:var(--mono);font-weight:700;font-size:17px}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.shake{animation:shake .42s}
+@keyframes shake{0%,100%{transform:none}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+
+/* 先猜、表態 */
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:6px}
+@media(max-width:600px){.opts{grid-template-columns:1fr}}
+.opts button{min-height:52px;text-align:left;padding:10px 16px;border:1.5px solid var(--line);background:var(--card);border-radius:10px;cursor:pointer;font-size:17px;line-height:1.55;transition:all .18s}
+.opts button:hover:not(:disabled){border-color:var(--accent)}
+.opts button.sel{background:var(--accent);border-color:var(--accent);color:#fff}
+.opts button.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ink);font-weight:700}
+.opts button.ng{background:var(--ng-soft);border-color:var(--ng);color:var(--ink)}
+.opts button:disabled{cursor:default}
+.verdict{display:none;font-weight:700;font-size:17px}
+.verdict.show{display:block}
+.verdict.ok{color:var(--ok)}
+.verdict.ng{color:var(--ng)}
+.reveal-box{display:none}
+.reveal-box.show{display:block}
+.pollthanks{display:none;margin-top:12px;font-size:16px;color:var(--soft)}
+.pollthanks.show{display:block;animation:fadein .35s var(--ease)}
+
+/* 分類 */
+.legend{margin-top:4px}
+.tray{display:flex;flex-wrap:wrap;gap:8px;min-height:60px;padding:12px;border:1.5px dashed var(--line);border-radius:10px;margin-top:10px}
+.sc{display:inline-flex;flex-direction:column;align-items:flex-start;text-align:left;max-width:100%;padding:8px 14px;border:1.5px solid var(--line);background:var(--card);border-radius:8px;cursor:grab;font-size:16px;line-height:1.5;transition:all .15s}
+.sc small{font-size:14px;color:var(--muted)}
+.sc.sel{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.sc.ok{border-color:var(--ok);background:var(--ok-soft)}
+.sc.ng{border-color:var(--ng);background:var(--ng-soft)}
+.scols{display:grid;gap:10px;margin-top:12px}
+.scols.n2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.scols.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.scols.n4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:760px){.scols.n3,.scols.n4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:460px){.scols.n2,.scols.n3,.scols.n4{grid-template-columns:1fr}}
+.scol{border:1.5px solid var(--line);border-radius:10px;padding:10px;min-height:120px;background:var(--card2);cursor:pointer;transition:border-color .15s}
+.scol.hot{border-color:var(--accent)}
+.scol h4{font-size:16px;line-height:1.45;margin:0 0 8px!important;font-family:var(--sans)!important}
+.drop{display:flex;flex-direction:column;gap:6px}
+.drop .sc{width:100%}
+.sbar{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);z-index:60;display:none;flex-wrap:wrap;justify-content:center;gap:8px;max-width:min(92vw,720px);
+  padding:12px 14px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,.16)}
+.sbar.show{display:flex;animation:fadein .3s var(--ease)}
+.sbar .sbt{flex-basis:100%;text-align:center;font-size:15px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbar button{min-height:40px;border:0;background:var(--accent);color:#fff;border-radius:999px;padding:0 16px;font-size:15px;cursor:pointer}
+.sbar button.x{background:transparent;color:var(--muted);border:1px solid var(--line)}
+
+/* 配對 */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}
+.mcol{display:flex;flex-direction:column;gap:8px}
+.mcol h4{font-size:16px!important;margin:0 0 2px!important;color:var(--muted)!important;font-family:var(--sans)!important}
+.mitem{text-align:left;padding:10px 14px;border:1.5px solid var(--line);background:var(--card);border-radius:8px;cursor:pointer;font-size:16px;line-height:1.55;transition:all .15s}
+.mitem:hover{border-color:var(--accent)}
+.mitem.sel{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.mitem.done{border-color:var(--ok);background:var(--ok-soft);cursor:default;opacity:.85}
+.mitem .ml{font-family:var(--mono);font-weight:700;color:var(--accent);margin-right:2px}
+.mstat{font-size:15px;color:var(--muted)}
+.mstat b{font-family:var(--mono)}
+.mstat.ok{color:var(--ok);font-weight:700}
+@media(max-width:600px){.match{gap:8px}.mitem{padding:8px 10px;font-size:15px}}
+
+/* 依序點選 */
+.otray{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.oi{padding:10px 14px;border:1.5px solid var(--line);background:var(--card);border-radius:8px;cursor:pointer;font-size:16px;line-height:1.5;text-align:left;transition:all .15s}
+.oi:hover{border-color:var(--accent)}
+.oi.used{opacity:.3;pointer-events:none}
+.tline{list-style:none;display:grid;gap:8px;margin-top:14px;counter-reset:none}
+.tline li{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;border:1.5px dashed var(--line);border-radius:8px;font-size:16px;line-height:1.55}
+.tline li .no{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:700 14px/1 var(--mono);background:var(--track);color:var(--soft)}
+.tline li.filled{border-style:solid;border-color:var(--ok);background:var(--ok-soft);animation:fadein .35s var(--ease)}
+.tline li.filled .no{background:var(--ok);color:#fff}
+.tline li.empty span:last-child{color:var(--muted)}
+
+/* 暖身排序 */
+.rks{display:grid;gap:8px;margin-top:10px}
+.rk{display:flex;align-items:center;gap:12px;text-align:left;padding:10px 14px;border:1.5px solid var(--line);background:var(--card);border-radius:8px;cursor:pointer;font-size:16px;line-height:1.55;transition:all .15s}
+.rk:hover{border-color:var(--accent)}
+.rk .rn{flex:none;width:30px;height:30px;border-radius:50%;border:1.5px dashed var(--line);display:grid;place-items:center;font:700 15px/1 var(--mono)}
+.rk.on{border-color:var(--accent);background:var(--accent-soft)}
+.rk.on .rn{border:0;background:var(--accent);color:#fff}
+.cnt{font-family:var(--mono);font-size:15px;color:var(--muted)}
+
+/* 小測驗 */
+.qz{padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:var(--card2);margin-top:14px}
+.stem{font-weight:700;font-size:18px;line-height:1.65;margin-bottom:10px}
+.stem .qn{display:inline-block;font:700 14px/1 var(--mono);color:#fff;background:var(--accent);border-radius:4px;padding:5px 8px;margin-right:10px;vertical-align:2px}
+.opt{display:block;width:100%;text-align:left;margin-top:8px;padding:10px 14px;border:1.5px solid var(--line);background:var(--card);border-radius:8px;cursor:pointer;font-size:16px;line-height:1.55;transition:all .15s}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);background:var(--ok-soft);font-weight:700}
+.opt.wrong{border-color:var(--ng);background:var(--ng-soft)}
+.opt.pop{animation:pop .5s var(--ease)}
+@keyframes pop{50%{transform:scale(1.025)}}
+.fb{display:none;margin-top:12px;font-size:16px;line-height:1.75;color:var(--soft)}
+.fb.show{display:block;animation:fadein .35s var(--ease)}
+.qmeta{font-size:15px;color:var(--muted)}
+
+/* 討論 */
+.discbox{display:grid;gap:10px}
+.disc{border:1px solid var(--line);border-radius:12px;background:var(--card2)}
+.disc summary{display:flex;gap:14px;align-items:flex-start;padding:14px 18px;cursor:pointer;list-style:none;font-size:17px;line-height:1.7}
+.disc summary::-webkit-details-marker{display:none}
+.disc summary .no{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font:700 15px/1 var(--mono);background:var(--accent);color:#fff;margin-top:2px}
+.disc.saved summary .no{background:var(--ok)}
+.inbox{padding:0 18px 16px}
+.inbox textarea,.fbbox textarea{width:100%;min-height:110px;padding:12px 14px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);font:inherit;font-size:16px;line-height:1.7;resize:vertical}
+.imine{display:none;margin-top:10px;font-size:15px;color:var(--soft)}
+.imine.show{display:block}
+
+/* 讀本 */
+.readlist{display:grid;gap:8px}
+.rh4{margin-top:18px!important}
+.rp{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--card2);cursor:pointer;font-size:16px;line-height:1.65}
+.rp input{flex:none;width:20px;height:20px;margin-top:3px;accent-color:var(--accent)}
+.rp.done{border-color:var(--ok);background:var(--ok-soft)}
+.rpstat{font-size:15px;color:var(--muted)}
+.rpstat b{font-family:var(--mono)}
+.ticket{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:14px 18px;border:1.5px dashed var(--line);border-radius:10px;font-weight:700}
+.ticket .tk{font-size:14px;color:#fff;background:var(--accent);border-radius:4px;padding:3px 10px}
+.websrc{border:1px solid var(--line);border-radius:10px;padding:0 18px;background:var(--card2)}
+.websrc summary{cursor:pointer;padding:12px 0;font-weight:700;font-size:16px}
+.websrc .note{margin-bottom:8px}
+.websrc ol{padding-left:1.4em;display:grid;gap:10px;padding-bottom:16px;font-size:15px;line-height:1.7}
+.websrc .use{font-size:14px;color:var(--muted);margin-top:2px}
+
+/* 完成與簽到 */
+.stat{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.stat>div{padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--card2);font-size:15px;color:var(--muted);text-align:center}
+.stat b{display:block;font:700 22px/1.4 var(--mono);color:var(--ink);margin-top:4px}
+@media(max-width:700px){.stat{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.idbox{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.idbox{grid-template-columns:1fr}}
+.idbox label,.fbbox label{display:block;font-size:15px;color:var(--soft);margin-bottom:4px;font-weight:700}
+.idbox input{width:100%;height:46px;padding:0 14px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);font:inherit;font-size:17px}
+.dmsg{font-size:16px;color:var(--soft)}
+.code{font-size:15px;color:var(--soft);line-height:1.75}
+.code b{font-family:var(--mono)}
+.codenote{display:block;margin-top:6px;color:var(--muted)}
+
+/* ── 章節 ── */
+.chap{margin:18px 0}
+.chap-h{width:100%;display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--line);border-radius:12px;background:var(--card);cursor:pointer;text-align:left;font-size:18px}
+.chap-h .cn{flex:none;font:700 16px/1 var(--mono)}
+.chap-h .ct{flex:1;font-weight:700;font-family:var(--head)}
+.chap-h .cc{font-size:14px;color:var(--muted);font-family:var(--mono)}
+.chap-h .cv{width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin:-4px 4px 0;transition:transform .25s}
+.chap.open .chap-h .cv{transform:rotate(-135deg);margin-top:4px}
+.chap-b{display:none}
+.chap.open .chap-b{display:block}
+
+/* ── 底列 ── */
+.navbar{position:fixed;left:0;right:0;bottom:0;height:72px;z-index:40;background:var(--bar);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-top:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:0 16px}
+.nav-btn{flex:none;height:46px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:0 18px;font-size:16px;cursor:pointer;white-space:nowrap}
+.nav-btn:not(.prev){background:var(--accent);border-color:var(--accent);color:#fff}
+.nav-btn:disabled{opacity:.35;cursor:default}
+.nav-mid{flex:1;min-width:0;display:flex;align-items:center;gap:12px}
+.pageno{flex:none;font:500 14px/1 var(--mono);color:var(--soft)}
+.dots{flex:1;min-width:0;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:6px 2px}
+.dots::-webkit-scrollbar{display:none}
+.dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--line);cursor:pointer;transition:transform .2s}
+.dot.on{transform:scale(1.6);background:var(--ink)}
+@media(max-width:520px){.navbar{padding:0 10px;gap:8px}.nav-btn{padding:0 14px;font-size:15px}.dots{display:none}.nav-mid{justify-content:center}}
+.khint{position:fixed;right:18px;bottom:84px;z-index:30;font-size:14px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 12px;transition:opacity .8s}
+@media(max-width:900px){.khint{display:none}}
+
+/* ── 目次 ── */
+.toc{position:fixed;inset:0;z-index:80;background:rgba(20,30,30,.4);display:none}
+.toc.show{display:block}
+.toc-panel{position:absolute;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--card);overflow-y:auto;padding:26px 22px 40px;box-shadow:-8px 0 30px rgba(0,0,0,.15)}
+.toc-close{position:absolute;top:14px;right:14px;width:40px;height:40px;border:0;background:transparent;font-size:28px;cursor:pointer;color:var(--muted)}
+.toc h3{font-family:var(--head);font-size:22px}
+.tsub{font-size:15px;color:var(--muted);margin:4px 0 12px}
+.tfilter{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tfilter button{min-height:34px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:0 12px;font-size:14px;cursor:pointer}
+.tfilter button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+#toclist{list-style:none}
+#toclist li.hide{display:none}
+#toclist a{display:flex;gap:10px;padding:7px 8px;border-radius:6px;text-decoration:none;color:var(--ink);font-size:15px;line-height:1.5}
+#toclist a:hover{background:var(--card2)}
+#toclist a.cur{background:var(--accent-soft);font-weight:700}
+#toclist .n{flex:none;width:28px;text-align:right;font-family:var(--mono);color:var(--muted);font-size:14px}
+#toclist li.head a{font-weight:700;margin-top:8px}
+
+/* 續讀提示 */
+.resume{position:fixed;left:50%;bottom:88px;transform:translateX(-50%);z-index:70;display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;
+  padding:10px 14px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,.16);font-size:15px;max-width:92vw}
+.resume button{min-height:38px;border:0;border-radius:999px;background:var(--accent);color:#fff;padding:0 14px;cursor:pointer;font-size:15px}
+.resume button.x{background:transparent;color:var(--muted);border:1px solid var(--line)}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* 第11週：藥袋與處方箋
+   淡薄荷綠的底，每一頁是一只白色藥袋：上緣湖水綠的印刷條，袋口剪成鋸齒。
+   重點引文放在紅色警語框；數字用等寬字；頁與頁之間是虛線剪裁線；節號做成掛號號碼牌。
+   中文字型只用 Noto Sans TC、Noto Serif TC；數字用 JetBrains Mono。 */
+:root{
+  --bg:#E2F0EB; --bar:rgba(242,249,246,.95); --card:#FFFFFF; --card2:#F4FAF8;
+  --ink:#173533; --soft:#3B5754; --muted:#587470; --line:#C3DCD5;
+  --accent:#0F8476; --accent-soft:#D3EDE6; --link:#0D6E63;
+  --teal:#0F8476; --mint:#D9F0E9; --aqua:#2BA59E; --red:#CC3433; --red-soft:#FFF4F3;
+  --th:#DDF1EA; --th2:#F1F8F5; --hi:#FFF1C9; --track:#E1EEEA;
+  --ok:#1C8552; --ok-soft:#E2F4E9; --ng:#C93838; --ng-soft:#FDE8E7;
+  --sans:"Noto Sans TC",system-ui,-apple-system,sans-serif;
+  --head:"Noto Sans TC",system-ui,sans-serif;
+  --serif:"Noto Serif TC",serif;
+  --mono:"JetBrains Mono","Noto Sans TC",ui-monospace,monospace;
+  --top:60px; --tabs:54px;
+  --ease:cubic-bezier(.22,.8,.26,1);
+}
+body{background:
+  radial-gradient(circle at 12px 12px,rgba(15,132,118,.10) 1.4px,transparent 1.6px) 0 0/24px 24px,var(--bg)}
+.num{font-family:var(--mono);font-size:.93em;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.logo{background:var(--teal);border-radius:4px}
+
+/* ── 藥袋 ── */
+.slide{border-radius:3px 3px 6px 6px;box-shadow:0 1px 0 rgba(23,53,51,.06),0 10px 26px -12px rgba(23,53,51,.28)}
+/* 袋口的鋸齒 */
+.slide::before{content:"";position:absolute;left:0;right:0;top:-9px;height:10px;
+  background:linear-gradient(-45deg,var(--teal) 7px,transparent 0) 0 0/14px 10px repeat-x,linear-gradient(45deg,var(--teal) 7px,transparent 0) 0 0/14px 10px repeat-x}
+.slide.k-cover::before,.slide.k-divider::before{background:linear-gradient(-45deg,var(--card) 7px,transparent 0) 0 0/14px 10px repeat-x,linear-gradient(45deg,var(--card) 7px,transparent 0) 0 0/14px 10px repeat-x}
+/* 頁與頁之間：虛線剪裁線 */
+.slide+.slide::after{content:"\2702\FE0E";position:absolute;left:-2px;right:0;top:-31px;height:16px;display:flex;align-items:center;
+  font-size:17px;line-height:1;color:var(--aqua);padding-left:0;
+  background:linear-gradient(90deg,#9CCABE 55%,transparent 0) 26px 50%/12px 2px repeat-x}
+.shead{position:relative;padding-top:0}
+.shead .lab{margin:0 -56px;padding:9px 56px;background:var(--teal);color:#fff;font-weight:700;letter-spacing:.08em;display:flex;align-items:center;gap:10px}
+.shead .lab::before{content:"";width:14px;height:14px;flex:none;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 4px var(--aqua)}
+@media(max-width:700px){.shead .lab{margin:0 -20px;padding:8px 20px}}
+.shead h2{margin-top:20px;padding-bottom:14px;border-bottom:1.5px solid var(--line)}
+/* 要動手的頁：處方箋的 ℞ */
+.slide[data-act] .shead::after{content:"\211E";position:absolute;right:46px;top:44px;font:700 64px/1 var(--serif),serif;color:rgba(15,132,118,.12);pointer-events:none}
+@media(max-width:700px){.slide[data-act] .shead::after{right:14px;font-size:48px}}
+.shead h2{padding-right:60px}
+
+/* 頁尾：撕下來的存根 */
+.sfoot{border-top:2px dashed var(--line);margin:8px 22px 0;padding-left:34px;padding-right:34px}
+@media(max-width:700px){.sfoot{margin:6px 10px 0;padding-left:10px;padding-right:10px}}
+.sfoot .pgno{border:1.5px solid var(--teal);color:var(--teal);border-radius:3px;padding:2px 8px;font-weight:700}
+
+/* 內文 */
+.sbody h4{display:flex;align-items:center;gap:10px;color:var(--teal)}
+.sbody h4::before{content:"";width:6px;height:20px;border-radius:2px;background:var(--teal);flex:none}
+.sbody .lead-in{color:var(--teal)}
+ul.bl>li::before{width:12px;height:6px;border-radius:3px;top:.82em;background:linear-gradient(90deg,var(--teal) 50%,var(--aqua) 50%)}
+table{border:1.5px solid var(--teal)}
+thead th{background:var(--th);color:#0B5F55;border-color:#A9D3C8}
+th,td{border-color:#C9E2DB}
+tbody td{font-variant-numeric:tabular-nums}
+
+/* 紅色警語框：重點引文 */
+blockquote{position:relative;border:2px solid var(--red);background:var(--red-soft);border-radius:4px;padding:16px 22px 14px 58px;font-family:var(--serif);font-size:18px;line-height:1.85}
+blockquote::before{content:"!";position:absolute;left:16px;top:16px;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;
+  font:700 17px/26px var(--sans);text-align:center}
+blockquote cite{font-family:var(--sans);color:#9A3A36}
+blockquote p.tr{font-family:var(--sans);color:var(--soft)}
+@media(max-width:700px){blockquote{padding:14px 16px 12px 48px;font-size:17px}blockquote::before{left:12px}}
+
+/* 長條圖 */
+.bl-t{background:var(--track);border-radius:999px}
+.bl-t i{background:linear-gradient(90deg,var(--teal),var(--aqua));border-radius:999px}
+
+/* ── 封面：一只大藥袋 ── */
+.k-cover{background:var(--card);overflow:hidden}
+.cover{padding:0 56px 26px;position:relative}
+.cover::after{content:"\211E";position:absolute;right:40px;bottom:8px;font:700 180px/1 var(--serif),serif;color:rgba(15,132,118,.07);pointer-events:none}
+.c-eyebrow{margin:0 -56px;padding:14px 56px;background:var(--teal);color:#fff;font-weight:700;letter-spacing:.1em}
+.kws{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:30px 0 6px}
+.kw{font-weight:700;font-size:17px;border-radius:999px;padding:6px 16px 6px 34px;position:relative;background:var(--mint);color:#0B5F55}
+.kw::before{content:"";position:absolute;left:12px;top:50%;width:14px;height:8px;margin-top:-4px;border-radius:4px;background:linear-gradient(90deg,var(--red) 50%,#fff 50%);box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.kw0{font-family:var(--mono);font-size:22px;letter-spacing:.06em;background:transparent;color:var(--teal);border:2px solid var(--teal);border-radius:4px;padding:4px 12px}
+.kw0::before{display:none}
+.cover h1{font-size:60px;line-height:1.25;font-weight:900;letter-spacing:.04em;margin:18px 0 10px;color:var(--ink)}
+.c-q{font-size:21px;line-height:1.75;color:var(--soft);max-width:30em}
+.c-f{display:grid;grid-template-columns:auto 1fr;margin-top:28px;border:1.5px solid var(--teal);border-radius:4px;max-width:44em;position:relative;z-index:1;background:var(--card)}
+.c-f>div{display:contents}
+.c-f dt{padding:10px 16px;background:var(--th);color:#0B5F55;font-weight:700;font-size:16px;border-bottom:1px solid #C9E2DB;white-space:nowrap}
+.c-f dd{padding:10px 16px;font-size:16px;border-bottom:1px solid #C9E2DB}
+.c-f>div:last-child dt,.c-f>div:last-child dd{border-bottom:0}
+.k-cover .sfoot{margin-top:0}
+@media(max-width:700px){.cover{padding:0 20px 20px}.c-eyebrow{margin:0 -20px;padding:12px 20px}.cover h1{font-size:40px}.c-q{font-size:18px}.cover::after{font-size:110px;right:10px}}
+
+/* ── 章節頁：掛號號碼牌 ── */
+.divider{padding:40px 56px 26px;display:grid;grid-template-columns:auto 1fr;gap:10px 36px;align-items:center}
+.ticketno{grid-row:span 2;position:relative;display:flex;flex-direction:column;align-items:center;width:170px;padding:16px 10px 46px;
+  background:var(--card);border:2px solid var(--teal);border-radius:8px;
+  -webkit-mask:radial-gradient(circle 10px at 0 calc(100% - 30px),transparent 98%,#000) 0 0/51% 100% no-repeat,radial-gradient(circle 10px at 100% calc(100% - 30px),transparent 98%,#000) 100% 0/51% 100% no-repeat;
+          mask:radial-gradient(circle 10px at 0 calc(100% - 30px),transparent 98%,#000) 0 0/51% 100% no-repeat,radial-gradient(circle 10px at 100% calc(100% - 30px),transparent 98%,#000) 100% 0/51% 100% no-repeat}
+.ticketno::after{content:"";position:absolute;left:14px;right:14px;bottom:30px;border-top:2px dashed var(--line)}
+.tsec{font-size:16px;font-weight:700;color:var(--soft);letter-spacing:.2em}
+.tno{font:700 86px/1 var(--mono);color:var(--teal);letter-spacing:-.02em;margin:6px 0 0}
+.dtitle{font-size:38px;line-height:1.35;font-weight:900;color:var(--ink);align-self:end}
+.dq{font-size:21px;line-height:1.7;color:var(--red);font-weight:700;align-self:start}
+.dread{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;margin-top:18px;border:1.5px solid var(--teal);border-radius:4px}
+.dread>div{display:contents}
+.dread dt{padding:9px 16px;background:var(--th);color:#0B5F55;font-weight:700;font-size:15px;border-bottom:1px solid #C9E2DB;white-space:nowrap}
+.dread dd{padding:9px 16px;font-size:16px;border-bottom:1px solid #C9E2DB}
+.dread>div:last-child dt,.dread>div:last-child dd{border-bottom:0}
+@media(max-width:700px){.divider{grid-template-columns:1fr;padding:30px 20px 20px;justify-items:start}.ticketno{grid-row:auto;width:140px}.tno{font-size:68px}.dtitle{font-size:28px}.dq{font-size:18px}}
+.chap-h .cn{background:var(--teal);color:#fff;border-radius:4px;padding:7px 9px;position:relative}
+.chap-h .cn::after{content:"";position:absolute;right:-5px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:var(--card)}
+.chap-h{border-left:4px solid var(--teal)}
+
+/* ── 路線：今天的掛號單 ── */
+.route{list-style:none;display:grid;gap:8px}
+.route a{display:grid;grid-template-columns:auto auto 1fr;align-items:center;gap:6px 16px;padding:12px 16px;border:1.5px solid var(--line);border-radius:6px;text-decoration:none;color:var(--ink);background:var(--card);transition:all .15s}
+.route a:hover{border-color:var(--teal);background:var(--card2)}
+.rno{font:700 22px/1 var(--mono);color:#fff;background:var(--teal);border-radius:4px;padding:8px 10px}
+.rti{font-weight:700;font-size:18px;white-space:nowrap}
+.rq{color:var(--soft);font-size:16px}
+@media(max-width:700px){.route a{grid-template-columns:auto 1fr}.rq{grid-column:2}.rti{white-space:normal}}
+
+/* ── 互動：處方箋 ── */
+.instr{display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border:1.5px dashed var(--teal);border-radius:4px;background:var(--card2)}
+.instr::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red);flex:none}
+.opts button{border-radius:999px;padding-left:44px;position:relative}
+.opts button::before{content:"";position:absolute;left:16px;top:50%;width:16px;height:16px;margin-top:-8px;border-radius:50%;border:2px solid var(--line)}
+.opts button.sel::before{border-color:#fff;background:#fff;box-shadow:inset 0 0 0 3px var(--teal)}
+.opts button.ok::before{border-color:var(--ok);background:var(--ok)}
+.opts button.ng::before{border-color:var(--ng);background:var(--ng)}
+.sc{border-radius:6px;border-left:5px solid var(--teal)}
+.scol{background:var(--card2);border-top:4px solid var(--teal);border-radius:4px}
+.scol h4{color:#0B5F55}
+.mitem{border-radius:6px}
+.qz{border-left:5px solid var(--teal);border-radius:4px;background:var(--card)}
+.tline li .no{background:var(--mint);color:var(--teal)}
+.fbk.reveal-box{border-left:5px solid var(--ok)}
+.pollbox{border:1.5px solid var(--line);border-radius:6px;padding:14px;background:var(--card2)}
+.ticket{border-color:var(--teal)}
+.ticket .tk{background:var(--teal)}
+.rp{border-left:4px solid var(--line)}
+.rp.done{border-left-color:var(--ok)}
+.dot.s1{background:#9FD5C9}.dot.s2{background:#7CC4B7}.dot.s3{background:#5BB3A6}.dot.s4{background:#3EA193}.dot.s5{background:#2A8E81}.dot.s6{background:#1C7B6F}.dot.s7{background:#12685E}
+.dot.on{background:var(--red)}
+
+</style>
+<!-- og:start -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="葉崇揚 Chung-Yang Yeh" />
+<meta property="og:title" content="健康照護政策・社會政策第11週・葉崇揚" />
+<meta property="og:description" content="社會政策第11週互動講義（分頁式）：健康從哪裡來、醫療為什麼特別、配給、路徑依賴、路徑的起點與分岔、低保費與財務危機，以及全民健保怎麼走到國家主義。共75頁，含3份分節小測驗、暖身排序、先猜、分類、配對、表態與課堂討論。" />
+<meta property="og:url" content="https://chungyang1017.github.io/teaching/social-policy/week11-health-care.html" />
+<meta property="og:image" content="https://chungyang1017.github.io/photo.jpg" />
+<meta property="og:locale" content="zh_TW" />
+<meta name="twitter:card" content="summary" />
+<!-- og:end -->
+</head>
+<body class="w11">
+<!-- 本頁由 handout-md/build.py 從內容稿產生；改內容請改稿子再重跑，不要直接改這一頁。 -->
+<header class="topbar">
+  <span class="logo">W11</span>
+  <span class="course">社會政策（Social Policy）</span>
+  <span class="wk">第11週　健康照護政策</span>
+  <span class="sect" id="sect"></span>
+  <span class="sprog" id="sprog"></span>
+  <span class="sp"></span>
+  <span class="clock" id="clock">00:00</span>
+  <button class="tb pri" type="button" onclick="toggleToc()">目次</button>
+  <button class="tb hide-m" type="button" onclick="goFull()">全螢幕</button>
+  <button class="tb hide-m" type="button" onclick="location.href='../../teaching-zh.html'">教學頁</button>
+</header>
+<div id="bar"></div>
+<nav class="panenav" id="panenav"><button type="button" data-pane="0" class="on"><span class="pn">0</span>開場</button><button type="button" data-pane="1"><span class="pn">1</span>第一、二節</button><button type="button" data-pane="2"><span class="pn">2</span>第三、四節</button><button type="button" data-pane="3"><span class="pn">3</span>第五至七節</button><button type="button" data-pane="4"><span class="pn">4</span>總結</button><button type="button" data-pane="5"><span class="pn">✓</span>完成</button></nav>
+<main class="deck" id="deck">
+<div class="pane on" data-pane="0">
+<section class="slide k-cover" data-kind="cover" data-label="封面" data-sect="開場"><div class="sbody"><div class="cover"><p class="c-eyebrow">社會政策（Social Policy）・第11週</p><div class="kws"><span class="kw kw0">WEEK11</span><span class="kw kw1">健康照護</span><span class="kw kw2">路徑依賴</span></div><h1>健康照護政策</h1><p class="c-q">健康從哪裡來？醫療的錢誰來付？全民健保為什麼長成「政府經營的單一體系」？</p><dl class="c-f"><div><dt>日期</dt><dd><span class="num">2026</span>年<span class="num">11</span>月<span class="num">27</span>日</dd></div><div><dt>教師</dt><dd>葉崇揚</dd></div><div><dt>主讀本</dt><dd>林國明（<span class="num">2003</span>）〈到國家主義之路：路徑依賴與全民健保組織體制的形成〉；Spicker（<span class="num">2025</span>）ch. <span class="num">12</span> Health care</dd></div></dl></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：本課<span class="num">115</span>-<span class="num">1</span>課程大綱，第<span class="num">11</span>週</span><span class="pgno">第11週　00</span></footer></section>
+<section class="slide k-howto" data-kind="howto" data-label="這份講義怎麼用" data-sect="開場"><header class="shead"><p class="lab">說明</p><h2>這份講義怎麼用</h2></header><div class="sbody"><h4><span>這是預習與複習用的，不是上課投影片</span></h4><ul class="bl"><li>上課前：從頭讀一遍。不必背，但要知道每一節在問什麼問題。</li><li>上課後：回來把答錯的小測驗重看一次，再對照本週讀本。</li></ul><h4><span>怎麼讀</span></h4><ul class="bl"><li>標著◆的頁，都要你動手：排序、先猜、分類、配對、表態、寫討論。做過才記得住。</li><li>進度會自己存：關掉再打開，會回到上次那頁。小測驗的答案也留著。</li><li>簽到：三份小測驗都作答、閱讀滿<span class="num">20</span>分鐘之後，到「完成」頁填學號姓名送出。</li><li>頁尾的「第<span class="num">11</span>週　<span class="num">00</span>」是這份講義的頁碼。</li></ul></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第11週　01</span></footer></section>
+<section class="slide k-route" data-kind="route" data-label="今天的路線" data-sect="開場"><header class="shead"><p class="lab">開場</p><h2>今天的路線</h2></header><div class="sbody"><ol class="route" aria-label="節、標題、這一節問什麼"><li><a href="#" class="goto" data-goto="5"><span class="rno">01</span><span class="rti">健康從哪裡來</span><span class="rq">健康靠的是醫院嗎？</span></a></li><li><a href="#" class="goto" data-goto="13"><span class="rno">02</span><span class="rti">醫療為什麼特別</span><span class="rq">醫療為什麼不能像買東西一樣，交給市場？</span></a></li><li><a href="#" class="goto" data-goto="22"><span class="rno">03</span><span class="rti">配給</span><span class="rq">需求大於資源時，誰決定誰先看？</span></a></li><li><a href="#" class="goto" data-goto="28"><span class="rno">04</span><span class="rti">路徑依賴</span><span class="rq">怎麼解釋一個國際上罕見的制度？</span></a></li><li><a href="#" class="goto" data-goto="40"><span class="rno">05</span><span class="rti">路徑的起點與分岔</span><span class="rq">1950年代的選擇，怎麼一路影響到1990年代？</span></a></li><li><a href="#" class="goto" data-goto="51"><span class="rno">06</span><span class="rti">低保費與財務危機</span><span class="rq">大家都喜歡的低保費，為什麼會把體系推向危機？</span></a></li><li><a href="#" class="goto" data-goto="59"><span class="rno">07</span><span class="rti">走到國家主義</span><span class="rq">危機中，為什麼是「政府經營的單一體系」勝出？</span></a></li></ol><ul class="bl"><li>前三節講健康照護政策的一般問題。後四節講台灣全民健保的組織體制，主讀本是林國明（<span class="num">2003</span>）。</li><li>小測驗：第二節後、第四節後、第七節後各一份。</li></ul></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第11週　02</span></footer></section>
+<section class="slide k-order" data-kind="order" data-label="◆ 暖身：健保之前的五件事" data-sect="開場" data-act="1"><header class="shead"><p class="lab">◆ 動手做（排序）</p><h2>暖身：健保之前的五件事</h2></header><div class="sbody"><p class="intro">全民健保<span class="num">1995</span>年開辦。在那之前，台灣的醫療保險已經走了四十多年。先猜猜看，把下面五件事依發生的先後排好。第四到第七節會一段一段講。</p><p class="instr">依序點下面的卡片；點對了就排進去。</p><div class="cycle" data-order="o3" data-act-key="order-3"><div class="otray"><button class="oi" type="button" data-o="4">全民健保開辦</button><button class="oi" type="button" data-o="2">勞保加辦門診給付</button><button class="oi" type="button" data-o="0">勞工保險開辦</button><button class="oi" type="button" data-o="3">農民健康保險全面開辦</button><button class="oi" type="button" data-o="1">公務人員保險立法</button></div><ol class="tline"><li class="empty" data-t="勞工保險開辦"><span class="no">1</span><span>？</span></li><li class="empty" data-t="公務人員保險立法"><span class="no">2</span><span>？</span></li><li class="empty" data-t="勞保加辦門診給付"><span class="no">3</span><span>？</span></li><li class="empty" data-t="農民健康保險全面開辦"><span class="no">4</span><span>？</span></li><li class="empty" data-t="全民健保開辦"><span class="no">5</span><span>？</span></li></ol><div class="row"><button class="pbtn sec js-show" type="button">直接看答案</button></div><div class="fbk"></div></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">18</span>、<span class="num">30</span>、<span class="num">46</span>、<span class="num">58</span>）</span><span class="pgno">第11週　03</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="一條四十多年的路" data-sect="開場" data-flags="sum"><header class="shead"><p class="lab">揭曉</p><h2>一條四十多年的路</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">年份</th><th class="nw">發生什麼</th></tr></thead><tbody><tr><td><span class="num">1950</span></td><td>勞工保險開辦，由台灣省政府以單行法規辦理</td></tr><tr><td><span class="num">1958</span></td><td>公務人員保險立法；同年制訂勞工保險條例</td></tr><tr><td><span class="num">1970</span></td><td>勞保門診給付正式實施（<span class="num">1968</span>年修法通過）</td></tr><tr><td><span class="num">1989</span></td><td>農民健康保險全面開辦（<span class="num">1985</span>年起試辦）</td></tr><tr><td><span class="num">1995</span></td><td>全民健保開辦（<span class="num">3</span>月<span class="num">1</span>日）</td></tr></tbody></table></div><ul class="bl"><li>林國明要問的是：這條路，為什麼最後走到「政府經營的單一體系」？</li><li>第七節結束時，我們會把這條路重畫一次。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">18</span>、<span class="num">30</span>註<span class="num">35</span>、<span class="num">46</span>、<span class="num">58</span>註<span class="num">86</span>）</span><span class="pgno">第11週　04</span></footer></section>
+
+</div>
+<div class="pane" data-pane="1">
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">01</span><span class="ct">健康從哪裡來</span><span class="cc">8頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第一節　健康從哪裡來" data-sect="第一節　健康從哪裡來"><div class="sbody"><div class="divider"><div class="ticketno"><span class="tsec">第一節</span><span class="tno">01</span></div><h2 class="dtitle">健康從哪裡來</h2><p class="dq">健康靠的是醫院嗎？</p><dl class="dread"><div><dt>讀本</dt><dd>Spicker（<span class="num">2025</span>）ch. <span class="num">12</span> Health care，頁<span class="num">181</span>–<span class="num">184</span></dd></div><div><dt>選讀</dt><dd>Allsop（<span class="num">2006</span>）〈健康照顧〉，頁<span class="num">569</span>–<span class="num">571</span>；Hill（<span class="num">2003</span>）第<span class="num">6</span>章，頁<span class="num">195</span>–<span class="num">199</span></dd></div></dl></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第11週　05</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="健康是什麼？" data-sect="第一節　健康從哪裡來" data-flags="quote"><header class="shead"><p class="lab">第一節　健康從哪裡來</p><h2>健康是什麼？</h2></header><div class="sbody"><h4><span>三種定義</span></h4><ul class="bl"><li>文化的：適合某個社會的身心健康標準。</li><li>規範的：一個固定的水準，或理想的身心狀態。</li><li>功能的：能完成某些身心活動所需要的狀態。</li></ul><h4><span>健康取決於什麼</span></h4><ul class="bl"><li>生物因素、環境、營養、生活水準。健康可以看成「福利」的函數。</li><li>造成健康不良的問題，大多不是「健康服務」直接處理的。</li><li><span class="num">19</span>世紀，Chadwick發現健康不良是貧窮的主要原因。他的對策是改善衛生下水道，不是擴大醫療。</li><li>世界上大多數疾病，來自供水不良或營養不足。</li></ul><blockquote><p class="en">"'Health services' are better described as medical services."</p><p class="tr">（「健康服務」比較準確的名稱是醫療服務。本課中譯）</p><cite>— Spicker（<span class="num">2025</span>：<span class="num">181</span>）</cite></blockquote><ul class="bl"><li>Allsop也說：環境與住宅、所得與就業、教育都會影響健康。健康政策應該和其他社會政策放在一起看。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Spicker（<span class="num">2025</span>：<span class="num">181</span>）；Allsop（<span class="num">2006</span>：<span class="num">569</span>）</span><span class="pgno">第11週　06</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 哪一塊對人口健康最重要？" data-sect="第一節　健康從哪裡來" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>哪一塊對人口健康最重要？</h2></header><div class="sbody"><p class="intro">Spicker把健康照護分成三塊。對一個人口的健康來說，哪一塊最重要？答案在下一頁。</p><div class="poll" data-poll="p7" data-answer="公共衛生" data-act-key="predict-7"><div class="opts"><button type="button" data-v="醫院醫療"><span>醫院醫療</span></button><button type="button" data-v="基層醫療"><span>基層醫療</span></button><button type="button" data-v="公共衛生"><span>公共衛生</span></button><button type="button" data-v="藥品"><span>藥品</span></button></div></div><p class="verdict" data-verdict-for="p7"></p><div class="fbk ok reveal-box" data-reveal-all="p7">公共衛生（Spicker，<span class="num">2025</span>：<span class="num">184</span>）。下一頁看三塊各管什麼，以及哪一塊最花錢。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：Spicker（<span class="num">2025</span>：<span class="num">184</span>）</span><span class="pgno">第11週　07</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="醫院最貴，卻不是最重要" data-sect="第一節　健康從哪裡來" data-flags="sum quote"><header class="shead"><p class="lab">揭曉</p><h2>醫院最貴，卻不是最重要</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">分支</th><th class="nw">包括什麼</th><th>Spicker的評價</th></tr></thead><tbody><tr><td>公共衛生</td><td>預防醫學（篩檢、預防接種、衛生教育），也包括住宅、供水、下水道、食品衛生</td><td>可能是人口健康最重要的議題</td></tr><tr><td>基層醫療</td><td>一般科或家庭醫師、牙醫、驗光、藥師、居家護理。有些國家改用「醫院」與「門診（ambulatory care）」來分</td><td>實務上，醫療照護的主要焦點</td></tr><tr><td>醫院醫療</td><td>急性照護與長期住院。趨勢是縮減長期住院，由急性醫院提供完整照護</td><td>對健康或疾病的影響可能最小</td></tr></tbody></table></div><blockquote><p>醫院醫療 "costs the most, has the highest status and is the focus of most political attention"</p><p class="tr">（最花錢、地位最高，也最受政治關注。本課中譯）</p><cite>— Spicker（<span class="num">2025</span>：<span class="num">184</span>）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：Spicker（<span class="num">2025</span>：<span class="num">183</span>–<span class="num">184</span>）</span><span class="pgno">第11週　08</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 差距變大，還是變小？" data-sect="第一節　健康從哪裡來" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>差距變大，還是變小？</h2></header><div class="sbody"><p class="intro">英格蘭與威爾斯，<span class="num">20</span>到<span class="num">64</span>歲男性的死亡率。把第一社會階層（專業人員）設為<span class="num">100</span>。<span class="num">1970</span>–<span class="num">72</span>年，第五社會階層（非技術工人）是<span class="num">179</span>。到了<span class="num">1991</span>–<span class="num">93</span>年，變成多少？答案在下一頁。</p><div class="poll" data-poll="p9" data-answer="287" data-act-key="predict-9"><div class="opts"><button type="button" data-v="120"><span><span class="num">120</span></span></button><button type="button" data-v="179"><span><span class="num">179</span></span></button><button type="button" data-v="230"><span><span class="num">230</span></span></button><button type="button" data-v="287"><span><span class="num">287</span></span></button></div></div><p class="verdict" data-verdict-for="p9"></p><div class="fbk ok reveal-box" data-reveal-all="p9"><span class="num">287</span>（Hill，<span class="num">2003</span>：<span class="num">195</span>）。整體死亡率在下降，階層之間的差距卻變大。下一頁說明。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：Hill（<span class="num">2003</span>：<span class="num">195</span>）</span><span class="pgno">第11週　09</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="死亡率下降，差距卻擴大" data-sect="第一節　健康從哪裡來"><header class="shead"><p class="lab">揭曉</p><h2>死亡率下降，差距卻擴大</h2></header><div class="sbody"><ul class="bl"><li><b><span class="num">179</span> → <span class="num">287</span></b>：第五社會階層的相對死亡率，第一階層＝<span class="num">100</span>（<span class="num">1970</span>–<span class="num">72</span>年 → <span class="num">1991</span>–<span class="num">93</span>年）。</li><li>隨著死亡率全面下降，階層之間的差異沒有縮小，許多情況反而擴大。</li><li>最低社會階層的死亡率，比最高階層高出三倍。<span class="num">1990</span>年代英國的健康不平等擴大，反映貧富差距拉大。</li></ul><h4><span>反向照顧法則（inverse care law）</span></h4><ul class="bl"><li>Tudor Hart（<span class="num">1971</span>）：健康最差的人，得到的服務最少。</li><li>Acheson報告（<span class="num">1998</span>）：預防服務最不足的社區，不健康的風險也最大。許多貧窮地區很難招募一般科醫師與其他基層醫療人員。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Hill（<span class="num">2003</span>：<span class="num">195</span>–<span class="num">197</span>）；Allsop（<span class="num">2006</span>：<span class="num">570</span>）；Spicker（<span class="num">2025</span>：<span class="num">183</span>）</span><span class="pgno">第11週　10</span></footer></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 健康不平等的四種解釋" data-sect="第一節　健康從哪裡來" data-act="1"><header class="shead"><p class="lab">◆ 動手做（配對）</p><h2>健康不平等的四種解釋</h2></header><div class="sbody"><p class="intro">為什麼社會階級越低，健康越差？Spicker整理了四種解釋。點左邊一種解釋，再點右邊對應的說法。答案在下一頁。</p><div class="match" data-match="m11" data-act-key="match-11"><div class="mcol"><h4>解釋</h4><button class="mitem" type="button" data-k="0">人為產物（artefact）</button><button class="mitem" type="button" data-k="1">自然與社會選擇</button><button class="mitem" type="button" data-k="2">貧窮</button><button class="mitem" type="button" data-k="3">文化與行為</button></div><div class="mcol"><h4>說法</h4><button class="mitem" type="button" data-k="3"><span class="ml">a.</span> 飲食、體能和抽菸等習慣，各階級不同</button><button class="mitem" type="button" data-k="2"><span class="ml">b.</span> 透過營養、住宅與環境，讓人生病</button><button class="mitem" type="button" data-k="0"><span class="ml">c.</span> 「健康」和「社會階級」都是人為建構的分類</button><button class="mitem" type="button" data-k="1"><span class="ml">d.</span> 最健康的人最可能在社會上成功，階級反映了這種篩選</button></div></div><p class="mstat"></p></div><footer class="sfoot"><span class="cite"><b>出處</b>：Spicker（<span class="num">2025</span>：<span class="num">182</span>）</span><span class="pgno">第11週　11</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="解釋不同，處方就不同" data-sect="第一節　健康從哪裡來" data-flags="sum"><header class="shead"><p class="lab">揭曉</p><h2>解釋不同，處方就不同</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">解釋</th><th class="nw">意思</th></tr></thead><tbody><tr><td>人為產物</td><td>「健康」和「社會階級」都是人為建構的分類，反映社會組織的方式</td></tr><tr><td>自然與社會選擇</td><td>最健康的人最可能成功，階級反映這種篩選</td></tr><tr><td>貧窮</td><td>透過營養、住宅與環境，讓人生病</td></tr><tr><td>文化與行為</td><td>飲食、體能、抽菸等習慣有階級差異</td></tr></tbody></table></div><p><b>Allsop的版本</b>：健康不良會造成貧窮；窮人住的地方環境比較危險；生活方式有階級差別；家族病史也有影響。</p><h4><span>解釋不同，政策處方也不同</span></h4><ul class="bl"><li>英國保守黨政府：個人健康個人負責，提供資訊與衛生教育，想改變人民的行為。</li><li>工黨政府：比較強調減少生活條件的不平等。</li><li>提高窮人的所得、改善環境是長程目標，可能幾十年都看不到成果。</li><li>McKeown（<span class="num">1980</span>）的研究：環境與行為的變化，比醫療進步更重要。所以有人批評NHS其實是「國民疾病服務」（National illness service）。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Spicker（<span class="num">2025</span>：<span class="num">182</span>）；Allsop（<span class="num">2006</span>：<span class="num">571</span>）；Hill（<span class="num">2003</span>：<span class="num">199</span>）</span><span class="pgno">第11週　12</span></footer></section>
+</div></div><div class="chap"><button class="chap-h" type="button"><span class="cn">02</span><span class="ct">醫療為什麼特別</span><span class="cc">8頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第二節　醫療為什麼特別" data-sect="第二節　醫療為什麼特別"><div class="sbody"><div class="divider"><div class="ticketno"><span class="tsec">第二節</span><span class="tno">02</span></div><h2 class="dtitle">醫療為什麼特別</h2><p class="dq">醫療為什麼不能像買東西一樣，交給市場？</p><dl class="dread"><div><dt>讀本</dt><dd>Spicker（<span class="num">2025</span>）頁<span class="num">185</span></dd></div><div><dt>選讀</dt><dd>Hill（<span class="num">2003</span>）頁<span class="num">188</span>–<span class="num">192</span>；Allsop（<span class="num">2006</span>）頁<span class="num">569</span>、<span class="num">573</span></dd></div><div><dt>參考</dt><dd>本課<span class="num">112.1</span>講義〈社會保險：年金、健康〉的健康保險部分</dd></div></dl></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第11週　13</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ NHS剛建立時，有人預測需求會……" data-sect="第二節　醫療為什麼特別" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>NHS剛建立時，有人預測需求會……</h2></header><div class="sbody"><p class="intro">英國在<span class="num">1940</span>年代建立NHS，看病免費。當時有人預測，人們對醫療的需求會怎樣？答案在下一頁。</p><div class="poll" data-poll="p14" data-answer="會減少" data-act-key="predict-14"><div class="opts"><button type="button" data-v="會減少"><span>會減少</span></button><button type="button" data-v="會穩定成長"><span>會穩定成長</span></button><button type="button" data-v="會暴增"><span>會暴增</span></button><button type="button" data-v="會轉向私人醫療"><span>會轉向私人醫療</span></button></div></div><p class="verdict" data-verdict-for="p14"></p><div class="fbk ok reveal-box" data-reveal-all="p14">會減少（Hill，<span class="num">2003</span>：<span class="num">188</span>）。這個預測錯了。下一頁看為什麼。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：Hill（<span class="num">2003</span>：<span class="num">188</span>）</span><span class="pgno">第11週　14</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="需求沒有止境" data-sect="第二節　醫療為什麼特別"><header class="shead"><p class="lab">揭曉</p><h2>需求沒有止境</h2></header><div class="sbody"><h4><span>預測忽略了兩件事</span></h4><ul class="bl"><li>生過重病的人，還可能再生病。</li><li>平均壽命延長，慢性病照顧的工作量更大。老年人更容易得慢性病，而老年人口快速增加。</li></ul><h4><span>沒有價格，需求怎麼管？</span></h4><ul class="bl"><li>NHS建立以來，政治上一直要面對：人的需求沒有止境。免費服務少了價格機制。</li></ul><h4><span>「需要」很難界定</span></h4><ul class="bl"><li>生病（illness）是主觀的，是自己覺得有病。疾病（disease）是病理狀態，是醫師認定的症狀（Stacey，<span class="num">1988</span>）。</li><li>有人很不舒服，卻查不出異常。有人病得很重，卻感覺不到。</li><li>需求常由「生產者」決定：醫師的診斷決定需要什麼服務。有時，社會問題也被「醫療化」。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Hill（<span class="num">2003</span>：<span class="num">188</span>–<span class="num">189</span>）</span><span class="pgno">第11週　15</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="醫療服務的四個特性" data-sect="第二節　醫療為什麼特別" data-flags="sum"><header class="shead"><p class="lab">第二節　醫療為什麼特別</p><h2>醫療服務的四個特性</h2></header><div class="sbody"><p>本課<span class="num">112.1</span>講義整理過醫療服務的特性。這裡只留能對回本週讀本的四點。</p><div class="tw"><table><thead><tr><th class="nw">特性</th><th class="nw">讀本怎麼說</th></tr></thead><tbody><tr><td>攸關生存，沒得選</td><td>其他生活領域可以選擇怎麼花錢，生重病的人別無選擇。人可能為了救自己或家人的命而破產</td></tr><tr><td>需求緊急</td><td>社會保障看重服務的回應能力，特別是在緊急的時候</td></tr><tr><td>資訊不對等，需求由提供者界定</td><td>醫師決定什麼是健康和疾病、醫療工作的內容、治療該怎麼做；需求常由醫師的診斷決定</td></tr><tr><td>使用者難以議價</td><td>Freidson（<span class="num">1970</span>）：英國的醫療組織方式，讓個人面對醫師時處於很不利的地位</td></tr></tbody></table></div><ul class="bl"><li>所以醫療很難像一般商品那樣，靠價格和選擇來分配。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：本課<span class="num">112.1</span>講義投影片<span class="num">39</span>；Hill（<span class="num">2003</span>：<span class="num">189</span>–<span class="num">191</span>）；Spicker（<span class="num">2025</span>：<span class="num">185</span>）；Allsop（<span class="num">2006</span>：<span class="num">576</span>–<span class="num">577</span>）</span><span class="pgno">第11週　16</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 錢從哪裡來：三種做法" data-sect="第二節　醫療為什麼特別" data-act="1"><header class="shead"><p class="lab">◆ 動手做（分類）</p><h2>錢從哪裡來：三種做法</h2></header><div class="sbody"><p class="intro">健康照護的錢，可以來自直接付費、私人保險、社會保險、稅收，或它們的組合。下面這些特徵，各屬於哪一種做法？讀下一頁之前，先自己分分看。</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s17" data-act-key="sort-17"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k0" data-txt="財政部每年把一整筆經費撥給服務體系" data-ans="稅收制（英國NHS）">財政部每年把一整筆經費撥給服務體系</button><button class="sc" type="button" draggable="true" data-i="1" data-k="k1" data-txt="依職業身分，加入不同的保險體系" data-ans="社會保險（德國原型）">依職業身分，加入不同的保險體系</button><button class="sc" type="button" draggable="true" data-i="2" data-k="k2" data-txt="不保「很大的風險」" data-ans="私人保險（市場）">不保「很大的風險」</button><button class="sc" type="button" draggable="true" data-i="3" data-k="k0" data-txt="看病的機會依需求，不依負擔能力" data-ans="稅收制（英國NHS）">看病的機會依需求，不依負擔能力</button><button class="sc" type="button" draggable="true" data-i="4" data-k="k1" data-txt="由疾病基金會等民間組織經營，接受國家監督" data-ans="社會保險（德國原型）">由疾病基金會等民間組織經營，接受國家監督</button><button class="sc" type="button" draggable="true" data-i="5" data-k="k2" data-txt="保險公司可能破產" data-ans="私人保險（市場）">保險公司可能破產</button><button class="sc" type="button" draggable="true" data-i="6" data-k="k0" data-txt="行政成本比社會保險低" data-ans="稅收制（英國NHS）">行政成本比社會保險低</button><button class="sc" type="button" draggable="true" data-i="7" data-k="k2" data-txt="常排除某些情況，例如懷孕" data-ans="私人保險（市場）">常排除某些情況，例如懷孕</button></div><div class="scols n3"><div class="scol" data-k="k0"><h4>稅收制（英國NHS）</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>社會保險（德國原型）</h4><div class="drop"></div></div><div class="scol" data-k="k2"><h4>私人保險（市場）</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：Allsop（<span class="num">2006</span>：<span class="num">573</span>）；林國明（<span class="num">2003</span>：<span class="num">5</span>、<span class="num">7</span>）；Hill（<span class="num">2003</span>：<span class="num">191</span>）</span><span class="pgno">第11週　17</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="三種做法的對照" data-sect="第二節　醫療為什麼特別" data-flags="sum"><header class="shead"><p class="lab">揭曉</p><h2>三種做法的對照</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th></th><th>稅收制（英國NHS）</th><th>社會保險（德國原型）</th><th>私人保險（市場）</th></tr></thead><tbody><tr><td>財源</td><td>主要是稅收（英國約<span class="num">74</span>%）</td><td>保險費</td><td>個人買保險</td></tr><tr><td>誰經營</td><td>國家；財政部每年撥一整筆經費</td><td>民間保險組織（如疾病基金會），接受國家監督</td><td>保險公司</td></tr><tr><td>讀本說的優點</td><td>成本控制嚴格、行政成本低、優先順序明確、依需求而非負擔能力</td><td>主張多元體系的人認為能強化競爭與社會自主</td><td>支持者認為個人應自我保險，政府只替沒能力投保的人提供資產調查式的救助</td></tr><tr><td>讀本說的問題</td><td><span class="num">1980</span>–<span class="num">90</span>年代資源不足</td><td>依職業分立；中產階級常不願和產業工人共擔風險</td><td>不保大風險、排除某些情況、可能破產；也有提供者決定需求的問題</td></tr><tr><td>本課<span class="num">112.1</span>講義的例子</td><td>英國</td><td>德國、日本</td><td>美國</td></tr></tbody></table></div><ul class="bl"><li>多數OECD國家都有全民的醫療涵蓋。主要例外是美國。</li><li>台灣是社會保險，但只有一個政府經營的保險人。第四節回來談。</li><li>社會保險的一般原理（強制參加、風險分擔、社會連帶），W<span class="num">10</span>講過。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Allsop（<span class="num">2006</span>：<span class="num">573</span>）；林國明（<span class="num">2003</span>：<span class="num">5</span>、<span class="num">7</span>–<span class="num">8</span>、<span class="num">58</span>）；Hill（<span class="num">2003</span>：<span class="num">191</span>）；Spicker（<span class="num">2025</span>：<span class="num">185</span>）；本課<span class="num">112.1</span>講義投影片<span class="num">41</span></span><span class="pgno">第11週　18</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 免費的醫療，把錢從誰移給誰？" data-sect="第二節　醫療為什麼特別" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>免費的醫療，把錢從誰移給誰？</h2></header><div class="sbody"><p class="intro">英國的NHS看病免費。Hill認為，這套免費醫療主要是讓資源在哪兩群人之間移轉？答案在下一頁。</p><div class="poll" data-poll="p19" data-answer="健康的人 → 生病的人" data-act-key="predict-19"><div class="opts"><button type="button" data-v="富人 → 窮人"><span>富人 → 窮人</span></button><button type="button" data-v="健康的人 → 生病的人"><span>健康的人 → 生病的人</span></button><button type="button" data-v="年輕人 → 老人"><span>年輕人 → 老人</span></button><button type="button" data-v="雇主 → 勞工"><span>雇主 → 勞工</span></button></div></div><p class="verdict" data-verdict-for="p19"></p><div class="fbk ok reveal-box" data-reveal-all="p19">健康的人 → 生病的人（Hill，<span class="num">2003</span>：<span class="num">192</span>）。下一頁看為什麼，以及「看病要不要收費」的兩難。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：Hill（<span class="num">2003</span>：<span class="num">192</span>）</span><span class="pgno">第11週　19</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="從健康的人，到生病的人" data-sect="第二節　醫療為什麼特別"><header class="shead"><p class="lab">揭曉</p><h2>從健康的人，到生病的人</h2></header><div class="sbody"><ul class="bl"><li>免費醫療主要不是在窮人和富人之間分配資源，而是讓健康的人幫助生病的人。</li><li>生病的自然結果是收入減少、開銷增加。所以重要的不只是整體的不平等，還有健康者與病人之間的不平等。</li></ul><h4><span>看病要不要收費？</span></h4><ul class="bl"><li>支持：用「成本分攤」控制需求。Freidson認為，病人可以「僱用」或「解僱」醫師，力量會變大。</li><li>反對：收費會讓急需幫助的人卻步，低收入者更是如此（Abel-Smith，<span class="num">1976</span>）。</li><li>住院收「住宿費」，可能讓病人縮短住院。大量開票收款的成本也很高。</li></ul><h4><span>另外兩條路的問題</span></h4><ul class="bl"><li>私人保險：不保大風險，常排除某些情況。</li><li>資產調查式的醫療：看病前要先查收入，最後可能變成兩種等級的醫療服務。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Hill（<span class="num">2003</span>：<span class="num">190</span>–<span class="num">192</span>）</span><span class="pgno">第11週　20</span></footer></section>
+</div></div><div class="chap"><button class="chap-h" type="button"><span class="cn">✓</span><span class="ct">第一、二節小測驗</span><span class="cc">1頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quiz" data-kind="quiz" data-label="◆ 第一、二節小測驗" data-sect="第二節　醫療為什麼特別" data-act="1"><header class="shead"><p class="lab">小測驗</p><h2>第一、二節小測驗</h2></header><div class="sbody"><p class="intro">三題，作答後會立刻看到解說。</p><div data-quiz="q21"><div class="qz" data-a="3"><div class="stem"><span class="qn">第1題</span>Spicker認為，對一個人口的健康最重要的是哪一塊？</div><button class="opt" type="button">A. 醫院醫療</button><button class="opt" type="button">B. 基層醫療</button><button class="opt" type="button">C. 公共衛生</button><button class="opt" type="button">D. 藥品</button><div class="fb"><b>解說</b>：公共衛生可能是人口健康最重要的議題。醫院醫療對健康的影響可能最小，卻最花錢、最受政治關注（Spicker，<span class="num">2025</span>：<span class="num">184</span>；<a class="goto" href="#" data-goto="8">畫面［08］</a>〈醫院最貴，卻不是最重要〉）。</div></div><div class="qz" data-a="1"><div class="stem"><span class="qn">第2題</span>「反向照顧法則」（inverse care law）說的是什麼？</div><button class="opt" type="button">A. 健康最差的人，得到的服務最少</button><button class="opt" type="button">B. 越有錢的人，越少看病</button><button class="opt" type="button">C. 醫院越多，人越不健康</button><button class="opt" type="button">D. 預防比治療貴</button><div class="fb"><b>解說</b>：Tudor Hart（<span class="num">1971</span>）指出，健康最差的人得到的服務最少（Spicker，<span class="num">2025</span>：<span class="num">183</span>；Hill，<span class="num">2003</span>：<span class="num">197</span>；<a class="goto" href="#" data-goto="10">畫面［10］</a>〈死亡率下降，差距卻擴大〉）。</div></div><div class="qz" data-a="2"><div class="stem"><span class="qn">第3題</span>Hill認為，免費醫療主要讓資源在誰之間移轉？</div><button class="opt" type="button">A. 富人 → 窮人</button><button class="opt" type="button">B. 健康的人 → 生病的人</button><button class="opt" type="button">C. 年輕人 → 老人</button><button class="opt" type="button">D. 雇主 → 勞工</button><div class="fb"><b>解說</b>：免費醫療主要不是在窮人和富人之間分配資源，而是讓健康的人幫助生病的人（Hill，<span class="num">2003</span>：<span class="num">192</span>；<a class="goto" href="#" data-goto="20">畫面［20］</a>〈從健康的人，到生病的人〉）。</div></div></div><p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第11週　21</span></footer></section>
+</div></div>
+</div>
+<div class="pane" data-pane="2">
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">03</span><span class="ct">配給：需求大於資源時</span><span class="cc">6頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第三節　配給：需求大於資源時" data-sect="第三節　配給：需求大於資源時"><div class="sbody"><div class="divider"><div class="ticketno"><span class="tsec">第三節</span><span class="tno">03</span></div><h2 class="dtitle">配給：需求大於資源時</h2><p class="dq">錢不夠的時候，誰決定誰先看？</p><dl class="dread"><div><dt>讀本</dt><dd>Spicker（<span class="num">2025</span>）頁<span class="num">184</span>–<span class="num">186</span></dd></div><div><dt>選讀</dt><dd>Allsop（<span class="num">2006</span>）頁<span class="num">569</span>、<span class="num">572</span>–<span class="num">577</span>；Hill（<span class="num">2003</span>）頁<span class="num">179</span>–<span class="num">193</span></dd></div></dl></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第11週　22</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="為什麼一定要配給" data-sect="第三節　配給：需求大於資源時" data-flags="quote"><header class="shead"><p class="lab">第三節　配給：需求大於資源時</p><h2>為什麼一定要配給</h2></header><div class="sbody"><blockquote><p>「不管用什麼方式籌款，健康照顧需求都會超出負擔能力，所以需要某些機制來控制成本。」</p><cite>— Allsop（<span class="num">2006</span>：<span class="num">569</span>）</cite></blockquote><h4><span>支出為什麼一直漲</span></h4><ul class="bl"><li>人口老化、期待與需求升高、技術成本上升（「醫療通膨」）、勞動成本上升。</li><li>健康照顧是勞力密集的行業。成本約有三分之二花在工作人員的薪資上。</li><li>要維持同樣的服務水準，每年要增加多少經費？保守估計<span class="num">2</span>%，更多人認為接近<span class="num">4</span>%或<span class="num">5</span>%（Robinson &amp; Judge，<span class="num">1987</span>）。</li></ul><h4><span>稅收制的代價</span></h4><ul class="bl"><li>英國<span class="num">1980</span>–<span class="num">90</span>年代，政府沒有分配足夠資源給健康部門。只有<span class="num">13</span>%的人有私人保險，補不了這個落差。</li><li><span class="num">1998</span>年，英國的健康支出占GDP <span class="num">6.8</span>%，歐盟平均是<span class="num">8.4</span>%。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Allsop（<span class="num">2006</span>：<span class="num">569</span>、<span class="num">572</span>–<span class="num">573</span>、<span class="num">576</span>）；Spicker（<span class="num">2025</span>：<span class="num">185</span>）；Hill（<span class="num">2003</span>：<span class="num">187</span>）</span><span class="pgno">第11週　23</span></footer></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 配給的五種方式" data-sect="第三節　配給：需求大於資源時" data-act="1"><header class="shead"><p class="lab">◆ 動手做（配對）</p><h2>配給的五種方式</h2></header><div class="sbody"><p class="intro">沒有價格的時候，服務要靠別的方式分配。點左邊一種配給方式，再點右邊對應的英國例子。答案在下一頁。</p><div class="match" data-match="m24" data-act-key="match-24"><div class="mcol"><h4>配給方式</h4><button class="mitem" type="button" data-k="0">守門人</button><button class="mitem" type="button" data-k="1">等候名單</button><button class="mitem" type="button" data-k="2">不給付某些治療</button><button class="mitem" type="button" data-k="3">收費</button><button class="mitem" type="button" data-k="4">總額預算</button></div><div class="mcol"><h4>英國的例子</h4><button class="mitem" type="button" data-k="4"><span class="ml">a.</span> 財政部每年撥給NHS一整筆經費</button><button class="mitem" type="button" data-k="0"><span class="ml">b.</span> 除了急診，病人要先看一般科醫師，再由醫師決定要不要轉到醫院</button><button class="mitem" type="button" data-k="3"><span class="ml">c.</span> 配鏡、牙科和部分藥品要付費，約占NHS收入的<span class="num">5</span>%</button><button class="mitem" type="button" data-k="2"><span class="ml">d.</span> 要不要把不孕症治療移出NHS，經常引起爭議</button><button class="mitem" type="button" data-k="1"><span class="ml">e.</span> 非急迫的手術，排隊等候</button></div></div><p class="mstat"></p></div><footer class="sfoot"><span class="cite"><b>出處</b>：Allsop（<span class="num">2006</span>：<span class="num">572</span>–<span class="num">573</span>）；Hill（<span class="num">2003</span>：<span class="num">181</span>、<span class="num">186</span>、<span class="num">190</span>、<span class="num">192</span>）</span><span class="pgno">第11週　24</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="五種配給，各有副作用" data-sect="第三節　配給：需求大於資源時" data-flags="sum quote"><header class="shead"><p class="lab">揭曉</p><h2>五種配給，各有副作用</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">方式</th><th class="nw">例子</th><th>副作用或爭議</th></tr></thead><tbody><tr><td>守門人</td><td>一般科醫師先看，再轉診</td><td>基層太慢或醫院等太久，自己跑急診的人就會增加</td></tr><tr><td>等候名單</td><td>非急迫手術排隊</td><td>要縮短名單很簡單：不讓人進名單。只看名單長短，會忽略有人比較急。壓力會轉到急診</td></tr><tr><td>不給付</td><td>不孕症治療</td><td>哪些該移出，經常引起爭議</td></tr><tr><td>收費</td><td>配鏡、牙科、部分藥品</td><td>收費會讓急需的人卻步；低收入者可退費</td></tr><tr><td>總額預算</td><td>財政部每年撥款</td><td>成本控制嚴格，但可能長期資源不足</td></tr></tbody></table></div><blockquote><p>「這個守門的角色是一種配給（rationing）機制，有助於解釋英國醫療照顧成本爲何較低。」</p><cite>— Allsop（<span class="num">2006</span>：<span class="num">572</span>）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：Allsop（<span class="num">2006</span>：<span class="num">572</span>–<span class="num">573</span>）；Hill（<span class="num">2003</span>：<span class="num">181</span>、<span class="num">186</span>、<span class="num">190</span>–<span class="num">193</span>）</span><span class="pgno">第11週　25</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="醫療體系裡的三方：誰說了算？" data-sect="第三節　配給：需求大於資源時" data-flags="sum"><header class="shead"><p class="lab">第三節　配給：需求大於資源時</p><h2>醫療體系裡的三方：誰說了算？</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">三方</th><th class="nw">關心什麼</th><th class="nw">位置</th></tr></thead><tbody><tr><td>政府與健康服務經理人</td><td>資金籌措、成本效益、照顧策略</td><td>抓緊荷包、訂定政策</td></tr><tr><td>醫療專業</td><td>理想上，給每個病人最好的照顧；實際上，也設法維持對自己工作的臨床控制</td><td>專家壟斷；醫師決定什麼是健康和疾病、治療該怎麼做</td></tr><tr><td>社區與使用者</td><td>怎麼治好自己和家人的病</td><td>在集權壟斷的體系裡，最少發聲的機會</td></tr></tbody></table></div><ul class="bl"><li>Hill：世界各地的醫療服務，大多建立在醫師提出的條件上。控制醫療權力，成了醫療政策改革的中心議題。</li><li>英國的變化：<span class="num">1990</span>年起，把「購買者」和「提供者」分開，形成「內部市場」。消費意識也在抬頭，病人團體開始參與政策。</li><li>想一想：台灣的健保，三方的位置在哪裡？第七節會看到，規劃專家主張單一體系讓政府面對醫療提供者時，有很強的談判力。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Allsop（<span class="num">2006</span>：<span class="num">574</span>、<span class="num">576</span>–<span class="num">577</span>）；Hill（<span class="num">2003</span>：<span class="num">179</span>、<span class="num">182</span>–<span class="num">183</span>）；林國明（<span class="num">2003</span>：<span class="num">54</span>）</span><span class="pgno">第11週　26</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="社會保障的期待，國家提供的成本" data-sect="第三節　配給：需求大於資源時"><header class="shead"><p class="lab">第三節　配給：需求大於資源時</p><h2>社會保障的期待，國家提供的成本</h2></header><div class="sbody"><h4><span>健康服務是一組社會保障措施</span></h4><ul class="bl"><li>通常包括社會保險與團結式的提供。有些國家（例如法國）把它歸在社會安全（social security）底下。</li><li>多數OECD國家，全民涵蓋住院醫療，也至少涵蓋部分門診。主要例外是美國。藥品等醫療用品的涵蓋，各國差異大得多。</li><li>Spicker的圖（頁<span class="num">184</span>，資料來自OECD）比較英國、瑞典、法國、德國、美國的涵蓋程度。美國明顯偏低。</li></ul><h4><span>兩種不同的期待</span></h4><ul class="bl"><li>為社會保障付錢的人，看重可近性、涵蓋，以及服務的回應能力，特別是緊急時。</li><li>直接買某項治療的消費者，看重品質，以及有沒有其他治療可選。</li><li>很多爭論，例如「卓越中心」或「增加選擇」，只看後者，忽略了前者。</li></ul><h4><span>國家提供，通常比市場便宜</span></h4><ul class="bl"><li>Spicker舉的理由包括：配給；生產者比較不能自己決定支出。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Spicker（<span class="num">2025</span>：<span class="num">184</span>–<span class="num">186</span>）</span><span class="pgno">第11週　27</span></footer></section>
+</div></div><div class="chap"><button class="chap-h" type="button"><span class="cn">04</span><span class="ct">路徑依賴：怎麼解釋一個罕見的制度</span><span class="cc">11頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第四節　路徑依賴：怎麼解釋一個罕見的制度" data-sect="第四節　路徑依賴：怎麼解釋一個罕見的制度"><div class="sbody"><div class="divider"><div class="ticketno"><span class="tsec">第四節</span><span class="tno">04</span></div><h2 class="dtitle">路徑依賴</h2><p class="dq">台灣為什麼會建立「政府經營的單一體系」這種國際上罕見的健保組織體制？</p><dl class="dread"><div><dt>讀本</dt><dd>林國明（<span class="num">2003</span>）〈到國家主義之路〉，頁<span class="num">1</span>–<span class="num">18</span></dd></div></dl></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第11週　28</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 開辦前，多少人沒有醫療保險？" data-sect="第四節　路徑依賴：怎麼解釋一個罕見的制度" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>開辦前，多少人沒有醫療保險？</h2></header><div class="sbody"><p class="intro"><span class="num">1995</span>年全民健保開辦前，被舊的社會保險體系遺漏、沒有醫療保險的人，大約有多少？答案在下一頁。</p><div class="poll" data-poll="p29" data-answer="九百多萬人" data-act-key="predict-29"><div class="opts"><button type="button" data-v="約100萬人"><span>約<span class="num">100</span>萬人</span></button><button type="button" data-v="約300萬人"><span>約<span class="num">300</span>萬人</span></button><button type="button" data-v="九百多萬人"><span>九百多萬人</span></button><button type="button" data-v="約1,500萬人"><span>約<span class="num">1,500</span>萬人</span></button></div></div><p class="verdict" data-verdict-for="p29"></p><div class="fbk ok reveal-box" data-reveal-all="p29">九百多萬人（林國明，<span class="num">2003</span>：<span class="num">3</span>）。下一頁看全民健保改變了什麼。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">3</span>）</span><span class="pgno">第11週　29</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="全民健保的兩個意義" data-sect="第四節　路徑依賴：怎麼解釋一個罕見的制度"><header class="shead"><p class="lab">揭曉</p><h2>全民健保的兩個意義</h2></header><div class="sbody"><h4><span><span class="num">1</span>　公民身分</span></h4><ul class="bl"><li>林國明寫作時（<span class="num">2003</span>），全民健保是台灣第一個、也是唯一一個依公民身分賦予受益權利的福利制度。</li><li>符合設籍規定的國民，全都可以、也全都必須加入。</li></ul><h4><span><span class="num">2</span>　打破職業分立</span></h4><ul class="bl"><li>以前依職業區隔，分成公教人員、勞工與農民三大保險體系，底下有<span class="num">12</span>個大小不等的群體。</li><li>全民健保把它們整合成單一體系。九百多萬沒有保險的人也一起加入，由中央健康保險局經營。</li></ul><h4><span>風險社群（risk community）</span></h4><ul class="bl"><li>社會保險透過國家強制力，建構共同分攤風險的集體社群。</li><li>職業分立的「一國多制」下，風險社群和政治社群的界限不一致。單一體系讓兩者重疊，社會連帶從階級或職業，轉為公民之間的關係。</li></ul><h4><span>權力也集中了</span></h4><ul class="bl"><li>單一付費體系（single-payer system）：每年大約三千億元的醫療資源，由單一保險機構經手（<span class="num">2003</span>年的數字）。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">3</span>–<span class="num">4</span>）</span><span class="pgno">第11週　30</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 統合主義，還是國家主義？" data-sect="第四節　路徑依賴：怎麼解釋一個罕見的制度" data-act="1"><header class="shead"><p class="lab">◆ 動手做（分類）</p><h2>統合主義，還是國家主義？</h2></header><div class="sbody"><p class="intro">林國明比較兩種醫療保險的組織體制。下面的特徵，各屬於哪一種？讀下一頁之前，先自己分分看。</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s31" data-act-key="sort-31"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k1" data-txt="所有國民加入同一個保險體系" data-ans="國家主義（台灣）">所有國民加入同一個保險體系</button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="不同職業的人，加入不同的保險體系" data-ans="統合主義（德國原型）">不同職業的人，加入不同的保險體系</button><button class="sc" type="button" draggable="true" data-i="2" data-k="k1" data-txt="由政府機構經營保險" data-ans="國家主義（台灣）">由政府機構經營保險</button><button class="sc" type="button" draggable="true" data-i="3" data-k="k0" data-txt="保險業務由接受公共監督的民間組織管理" data-ans="統合主義（德國原型）">保險業務由接受公共監督的民間組織管理</button><button class="sc" type="button" draggable="true" data-i="4" data-k="k1" data-txt="國家統制權力最大、決策權威最集中" data-ans="國家主義（台灣）">國家統制權力最大、決策權威最集中</button><button class="sc" type="button" draggable="true" data-i="5" data-k="k0" data-txt="決策權力分散在多個組織手中" data-ans="統合主義（德國原型）">決策權力分散在多個組織手中</button></div><div class="scols n2"><div class="scol" data-k="k0"><h4>統合主義（德國原型）</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>國家主義（台灣）</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">5</span>）</span><span class="pgno">第11週　31</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="台灣是罕見的例子" data-sect="第四節　路徑依賴：怎麼解釋一個罕見的制度" data-flags="sum"><header class="shead"><p class="lab">揭曉</p><h2>台灣是罕見的例子</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">面向</th><th>統合主義（德國原型）</th><th>國家主義（台灣）</th></tr></thead><tbody><tr><td>誰加入哪裡</td><td>依職業身分分別加入</td><td>全體國民同一體系</td></tr><tr><td>誰經營</td><td>接受公共監督的民間組織</td><td>政府機構</td></tr><tr><td>決策權力</td><td>分散在多元組織</td><td>最集中</td></tr></tbody></table></div><ul class="bl"><li>資本主義國家的醫療社會保險，絕大多數是德國統合主義原型的變種。</li><li>台灣是唯一一個把原本職業分立的體制打破、整合成國家經營單一體系的案例。</li><li>加拿大也接近國家經營的單一體系。但它一開始就是單一體系，而且在省的層次運作。全民健保規劃時，衛生署長表示主要是仿效加拿大。</li></ul><h4><span>對照本課<span class="num">112.1</span>講義：單一保險人與多元保險人</span></h4><ul class="bl"><li>規劃專家主張，單一體系能節省行政成本，也讓政府面對醫療提供者時有強大的談判力。</li><li>主張多元體系的立委，希望模仿日本或德國，強化競爭和社會自主。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">4</span>–<span class="num">5</span>、<span class="num">54</span>、<span class="num">58</span>）；本課<span class="num">112.1</span>講義投影片<span class="num">47</span>–<span class="num">48</span></span><span class="pgno">第11週　32</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="三種常見解釋，為什麼不合用" data-sect="第四節　路徑依賴：怎麼解釋一個罕見的制度" data-flags="sum quote"><header class="shead"><p class="lab">第四節　路徑依賴：怎麼解釋一個罕見的制度</p><h2>三種常見解釋，為什麼不合用</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th>西方文獻的解釋</th><th class="nw">意思</th><th>放到台灣的問題</th></tr></thead><tbody><tr><td>社會連帶的文化（Rimlinger，<span class="num">1971</span>）</td><td>社會普遍有「民吾同胞」的連帶文化，才會有單一體系</td><td>預設大家有共識。但台灣的體制選擇，充滿爭議與衝突</td></tr><tr><td>勞工的政治權力（Navarro，<span class="num">1994</span>）</td><td>勞工要消弭地位分歧，力量夠強就能建立單一體系</td><td>勞工團體雖支持單一體制，關心的卻是保費負擔，甚至不是主要行動者</td></tr><tr><td>階級聯盟（Esping-Andersen &amp; Korpi，<span class="num">1984</span>）</td><td>看勞工能不能和其他階級結盟</td><td>同上，體制不是追求團結的階級行動推出來的</td></tr></tbody></table></div><p class="lead-in">林國明的答案：</p><blockquote><p>「國家主義健保體制的建構，是路徑依賴下的非意圖結果。」</p><cite>— 林國明（<span class="num">2003</span>：<span class="num">7</span>）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">6</span>–<span class="num">7</span>）</span><span class="pgno">第11週　33</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="和西方比：兩個時序條件" data-sect="第四節　路徑依賴：怎麼解釋一個罕見的制度" data-flags="sum quote"><header class="shead"><p class="lab">第四節　路徑依賴：怎麼解釋一個罕見的制度</p><h2>和西方比：兩個時序條件</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th></th><th>西方多數國家</th><th class="nw">台灣</th></tr></thead><tbody><tr><td>保險組織從哪裡來</td><td>國家強制保險出現前，已有行會、社區、工會的民間自願保險。國家想取代疾病基金會、互助會，遭到激烈抵抗，最後形成「社會自主經營但接受國家監督的組織體制」</td><td>實施社會保險前，沒有民間自願保險，一開始就是國家經營。改成國家經營的單一體系，只是「國家內部」的重組。反而民間經營要「無中生有」，面對巨大的初創成本（start-up costs）</td></tr><tr><td>誰跟誰一起分擔風險</td><td>先保產業工人，其他階級逐步納入。中產階級、專業階層、自雇者、資本家，常不願和產業勞工共組風險社群</td><td>受雇者、自營作業者和雇主，全都進了「勞工」保險。勞保早已鋪下跨階級的連帶</td></tr></tbody></table></div><p class="lead-in">林國明特別提醒：</p><blockquote><p>「讀者切莫將以上的陳述當作是解釋『國家主義』組織體制形成之因果通則。」</p><cite>— 林國明（<span class="num">2003</span>：<span class="num">8</span>–<span class="num">9</span>）</cite></blockquote><ul class="bl"><li>這些條件只是行動者做選擇時，面對的機會與限制。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">7</span>–<span class="num">9</span>）</span><span class="pgno">第11週　34</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="路徑依賴：像在打小鋼珠" data-sect="第四節　路徑依賴：怎麼解釋一個罕見的制度" data-flags="quote"><header class="shead"><p class="lab">第四節　路徑依賴：怎麼解釋一個罕見的制度</p><h2>路徑依賴：像在打小鋼珠</h2></header><div class="sbody"><ul class="bl"><li>寬鬆的定義：早期發生的事，會影響後來的發展。這只說了「歷史是重要的」，沒說為什麼重要。</li><li>嚴謹的定義：像樹枝分岔的次序發展。林國明採用這種。</li></ul><blockquote><p>「每一選擇不僅是放棄了一些可能的替代機會，而且前一個選擇所決定的路徑往往限定了下一個選擇的可能路徑。」</p><cite>— 柯志明（<span class="num">2001</span>：<span class="num">372</span>），引自林國明（<span class="num">2003</span>：<span class="num">12</span>–<span class="num">13</span>）</cite></blockquote><blockquote><p>「事情在序列中的什麼時間發生，影響它們如何發生。」</p><cite>— Tilly（<span class="num">1984</span>：<span class="num">14</span>），引自林國明（<span class="num">2003</span>：<span class="num">13</span>）</cite></blockquote><ul class="bl"><li>所以分析的核心，是事件在時間上的先後順序。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">12</span>–<span class="num">13</span>）</span><span class="pgno">第11週　35</span></footer></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 路徑依賴的工具" data-sect="第四節　路徑依賴：怎麼解釋一個罕見的制度" data-act="1"><header class="shead"><p class="lab">◆ 動手做（配對）</p><h2>路徑依賴的工具</h2></header><div class="sbody"><p class="intro">點左邊一個概念，再點右邊對應的意思。答案在下一頁。</p><div class="match" data-match="m36" data-act-key="match-36"><div class="mcol"><h4>概念</h4><button class="mitem" type="button" data-k="0">重大關鍵時刻</button><button class="mitem" type="button" data-k="1">自我增強序列</button><button class="mitem" type="button" data-k="2">反應序列</button><button class="mitem" type="button" data-k="3">有限制的變遷</button><button class="mitem" type="button" data-k="4">危機</button></div><div class="mcol"><h4>意思</h4><button class="mitem" type="button" data-k="2"><span class="ml">a.</span> 序列中的每一個事件，既是對先前事件的反應，也是後續事件的原因</button><button class="mitem" type="button" data-k="4"><span class="ml">b.</span> 讓既存制度的存續遭到質疑，促成結構變革的契機</button><button class="mitem" type="button" data-k="0"><span class="ml">c.</span> 行動者有多個方案可選，而且這個選擇限制了後來的發展</button><button class="mitem" type="button" data-k="3"><span class="ml">d.</span> 局部調整可能發生，但基本結構不變，直到再製的機制被侵蝕</button><button class="mitem" type="button" data-k="1"><span class="ml">e.</span> 制度選定後，後續發展沿著同一方向強化，排除其他方案</button></div></div><p class="mstat"></p></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">13</span>–<span class="num">15</span>）</span><span class="pgno">第11週　36</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="路徑依賴的工具箱" data-sect="第四節　路徑依賴：怎麼解釋一個罕見的制度" data-flags="sum"><header class="shead"><p class="lab">揭曉</p><h2>路徑依賴的工具箱</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">概念</th><th class="nw">意思</th></tr></thead><tbody><tr><td>重大關鍵時刻</td><td>行動者有多重方案可選；而且只有限制了後來發展的選擇點，才算關鍵時刻</td></tr><tr><td>自我增強序列</td><td>制度選定後，沿同一方向增強既有模式，排除替代方案（Pierson）</td></tr><tr><td>反應序列</td><td>時序相連、因果相關的事件鎖鍊，每個事件是前一事件的反應，也是下一事件的原因（Mahoney）</td></tr><tr><td>有限制的變遷</td><td>局部變遷可能，但根本變遷要等再製機制被侵蝕或陷入困局（Pierson）</td></tr><tr><td>危機</td><td>侵蝕再製機制，讓菁英面對解決問題的巨大壓力，使既存制度遭到質疑</td></tr></tbody></table></div><ul class="bl"><li>林國明的補充：自我增強序列和反應序列，可能同時發生。制度很頑固，行動的反應最後可能還是維繫了基本結構。</li></ul><h4><span>制度為什麼會自我增強？四種機制</span></h4><ul class="bl"><li>效用：學習效果、協調成本、調適的預期、不可逆轉的投資。</li><li>功能：制度對外部系統產生功能。</li><li>權力：制度增強特定行動者的權力。</li><li>正當性：制度塑造人們判斷是非對錯的信念。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">13</span>–<span class="num">16</span>）</span><span class="pgno">第11週　37</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="林國明的四個階段" data-sect="第四節　路徑依賴：怎麼解釋一個罕見的制度" data-flags="sum"><header class="shead"><p class="lab">第四節　路徑依賴：怎麼解釋一個罕見的制度</p><h2>林國明的四個階段</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">階段</th><th class="nw">時間</th><th class="nw">問題</th><th class="nw">本講義</th></tr></thead><tbody><tr><td><span class="num">1</span>　路徑的起點</td><td><span class="num">1950</span>年代</td><td>重大關鍵時刻，選了什麼制度形式？</td><td>第五節</td></tr><tr><td><span class="num">2</span>　再製與反應</td><td><span class="num">1970</span>–<span class="num">80</span>年代</td><td>軸線一：組織體制（勞保跨階級、公保零細化）；軸線二：低保費</td><td>第五、六節</td></tr><tr><td><span class="num">3</span>　危機</td><td><span class="num">1980</span>年代末</td><td>內部因素和環境因素怎麼一起造成危機？</td><td>第六節</td></tr><tr><td><span class="num">4</span>　新制度</td><td><span class="num">1989</span>–<span class="num">1995</span>年</td><td>危機中的決策，怎麼走到國家主義？</td><td>第七節</td></tr></tbody></table></div><ul class="bl"><li>每個時點的選擇，同時受兩樣東西影響：既存的制度，以及政體結構（國家機構、政黨與選舉構成的政治社會、社會團體構成的公民社會）。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">17</span>–<span class="num">18</span>、<span class="num">53</span>）</span><span class="pgno">第11週　38</span></footer></section>
+</div></div><div class="chap"><button class="chap-h" type="button"><span class="cn">✓</span><span class="ct">第三、四節小測驗</span><span class="cc">1頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quiz" data-kind="quiz" data-label="◆ 第三、四節小測驗" data-sect="第四節　路徑依賴：怎麼解釋一個罕見的制度" data-act="1"><header class="shead"><p class="lab">小測驗</p><h2>第三、四節小測驗</h2></header><div class="sbody"><p class="intro">三題，作答後會立刻看到解說。</p><div data-quiz="q39"><div class="qz" data-a="2"><div class="stem"><span class="qn">第1題</span>Allsop說，英國家庭醫師的「守門」角色，是一種什麼機制？</div><button class="opt" type="button">A. 競爭機制</button><button class="opt" type="button">B. 配給機制</button><button class="opt" type="button">C. 市場機制</button><button class="opt" type="button">D. 保險機制</button><div class="fb"><b>解說</b>：這個守門的角色是一種配給機制，有助於解釋英國醫療照顧成本為何較低（Allsop，<span class="num">2006</span>：<span class="num">572</span>；<a class="goto" href="#" data-goto="25">畫面［25］</a>〈五種配給，各有副作用〉）。</div></div><div class="qz" data-a="2"><div class="stem"><span class="qn">第2題</span>林國明說，資本主義國家的醫療社會保險，絕大多數是哪一種原型的變種？</div><button class="opt" type="button">A. 英國NHS</button><button class="opt" type="button">B. 德國統合主義</button><button class="opt" type="button">C. 加拿大單一體系</button><button class="opt" type="button">D. 美國市場模式</button><div class="fb"><b>解說</b>：絕大多數是德國「統合主義」原型的變種：依職業分別加入、民間組織管理、決策權力分散。台灣是罕見的國家主義（林國明，<span class="num">2003</span>：<span class="num">5</span>；<a class="goto" href="#" data-goto="32">畫面［32］</a>〈台灣是罕見的例子〉）。</div></div><div class="qz" data-a="2"><div class="stem"><span class="qn">第3題</span>「反應序列」指的是什麼？</div><button class="opt" type="button">A. 制度一旦選定，就沿同一方向強化</button><button class="opt" type="button">B. 序列中的每一個事件，既是對先前事件的反應，也是後續事件的原因</button><button class="opt" type="button">C. 行動者有多重方案可選的時刻</button><button class="opt" type="button">D. 外部環境的震盪</button><div class="fb"><b>解說</b>：反應序列是時序相連、因果相關的事件鎖鍊（Mahoney，<span class="num">2000</span>，引自林國明，<span class="num">2003</span>：<span class="num">14</span>；<a class="goto" href="#" data-goto="37">畫面［37］</a>〈路徑依賴的工具箱〉）。</div></div></div><p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第11週　39</span></footer></section>
+</div></div>
+</div>
+<div class="pane" data-pane="3">
+<div class="chap open"><button class="chap-h" type="button"><span class="cn">05</span><span class="ct">路徑的起點與分岔</span><span class="cc">11頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第五節　路徑的起點與分岔" data-sect="第五節　路徑的起點與分岔"><div class="sbody"><div class="divider"><div class="ticketno"><span class="tsec">第五節</span><span class="tno">05</span></div><h2 class="dtitle">路徑的起點與分岔</h2><p class="dq">1950年代的選擇，怎麼一路影響到1990年代？</p><dl class="dread"><div><dt>讀本</dt><dd>林國明（<span class="num">2003</span>）頁<span class="num">18</span>–<span class="num">44</span></dd></div></dl></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第11週　40</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="1950年代：重大關鍵時刻" data-sect="第五節　路徑的起點與分岔"><header class="shead"><p class="lab">第五節　路徑的起點與分岔</p><h2>1950年代：重大關鍵時刻</h2></header><div class="sbody"><ul class="bl"><li><span class="num">1949</span>年國民黨政府撤退來台。<span class="num">1950</span>年公布實施勞工保險，由台灣省政府以單行法規辦理。<span class="num">1958</span>年制訂勞保條例，同年公保立法。</li><li>為什麼？國民黨「黨改造」時，把內戰失敗歸因於沒有實施民生主義，改以農工等勞動民眾為社會基礎。舉辦社會保險，是爭取勞工支持的政治號召。</li><li>也是社會控制：無一定雇主的工人和漁民，要透過職業工會和漁會投保，被納入國家的行政控制。</li><li>但是錢很少。<span class="num">1953</span>到<span class="num">1960</span>年，國防與一般政務占中央政府支出<span class="num">80</span>%以上，社會福利不到<span class="num">1</span>%。</li><li>結果，社會保險提供的是「象徵意義大於實質意義」的福利。到了<span class="num">1970</span>年，保險人口仍只占全部人口的<span class="num">8.6</span>%。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">18</span>–<span class="num">23</span>、<span class="num">29</span>註<span class="num">33</span>）</span><span class="pgno">第11週　41</span></footer></section>
+<section class="slide k-match" data-kind="match" data-label="◆ 起點的四個制度要素" data-sect="第五節　路徑的起點與分岔" data-act="1"><header class="shead"><p class="lab">◆ 動手做（配對）</p><h2>起點的四個制度要素</h2></header><div class="sbody"><p class="intro">林國明從四個制度要素，看<span class="num">1950</span>年代的選擇。點左邊一個要素，再點右邊對應的選擇。答案在下一頁。</p><div class="match" data-match="m42" data-act-key="match-42"><div class="mcol"><h4>制度要素</h4><button class="mitem" type="button" data-k="0">保障對象</button><button class="mitem" type="button" data-k="1">給付結構</button><button class="mitem" type="button" data-k="2">財務負擔</button><button class="mitem" type="button" data-k="3">組織體制</button></div><div class="mcol"><h4><span class="num">1950</span>年代的選擇</h4><button class="mitem" type="button" data-k="3"><span class="ml">a.</span> 國家經營；勞保由省府辦理；公保和勞保分立</button><button class="mitem" type="button" data-k="2"><span class="ml">b.</span> 「不增加政府及勞資雙方負擔」，勞保費率只有工資的<span class="num">3</span>%</button><button class="mitem" type="button" data-k="0"><span class="ml">c.</span> 鹽民、漁民、蔗農跟著勞工加入勞保；<span class="num">1951</span>年納入職業工人</button><button class="mitem" type="button" data-k="1"><span class="ml">d.</span> 綜合保險，現金和醫療一起給；勞工和公教「施恩不均」</button></div></div><p class="mstat"></p></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">23</span>–<span class="num">27</span>）</span><span class="pgno">第11週　42</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="起點的四個選擇，和它們的後果" data-sect="第五節　路徑的起點與分岔" data-flags="sum"><header class="shead"><p class="lab">揭曉</p><h2>起點的四個選擇，和它們的後果</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">要素</th><th><span class="num">1950</span>年代的選擇</th><th class="nw">後來的影響</th></tr></thead><tbody><tr><td>保障對象</td><td>鹽民、漁民、蔗農、農業雇工隨勞工加入。<span class="num">1951</span>年納入職業工人，但要先加入工會</td><td>勞保從一開始就不是嚴格的階級方案。職業工會後來成了自營作業者、小雇主投保的管道</td></tr><tr><td>給付結構</td><td>綜合保險。勞保<span class="num">1956</span>年才有住院給付，沒有門診；<span class="num">1958</span>年的公保門診、住院都有</td><td>現金給付「杯水車薪」，醫療成了最實惠的福利。「施恩不均」影響後來的路徑</td></tr><tr><td>財務負擔</td><td><span class="num">1958</span>年行政院：本案在「不增加政府及勞資雙方負擔」的原則下擬定。<span class="num">1950</span>年費率<span class="num">3</span>%；產業勞工只負擔<span class="num">20</span>%</td><td>低保費成了「牢不可破的原則」。勞雇分攤比率後來讓調整保費「左右為難」</td></tr><tr><td>組織體制</td><td>國家經營：先由台灣人壽、後由省府勞保局承辦勞保；公保由中央信託局承辦。勞保「中央立法、地方執行」；公勞保分立</td><td>「多頭馬車」被批評了<span class="num">40</span>年；職業分立、行政分割從此確立</td></tr></tbody></table></div><ul class="bl"><li>產業勞工的分攤：<span class="num">1950</span>年是勞工<span class="num">20</span>%、雇主<span class="num">60</span>%、省政府<span class="num">20</span>%；<span class="num">1958</span>年改為勞雇<span class="num">25</span>:<span class="num">75</span>；<span class="num">1968</span>年改為<span class="num">20</span>:<span class="num">80</span>。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">24</span>–<span class="num">28</span>、註<span class="num">24</span>–<span class="num">25</span>）</span><span class="pgno">第11週　43</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 公保歸誰管？" data-sect="第五節　路徑的起點與分岔" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>公保歸誰管？</h2></header><div class="sbody"><p class="intro">公務人員保險要歸考試院銓敘部主管，還是行政院內政部？兩院爭了七年。最後怎麼決定？答案在下一頁。</p><div class="poll" data-poll="p44" data-answer="立法院表決" data-act-key="predict-44"><div class="opts"><button type="button" data-v="蔣介石裁示"><span>蔣介石裁示</span></button><button type="button" data-v="立法院表決"><span>立法院表決</span></button><button type="button" data-v="兩院協商達成共識"><span>兩院協商達成共識</span></button><button type="button" data-v="大法官解釋"><span>大法官解釋</span></button></div></div><p class="verdict" data-verdict-for="p44"></p><div class="fbk ok reveal-box" data-reveal-all="p44">立法院表決：在場<span class="num">205</span>位委員，<span class="num">149</span>票同意由銓敘部主管（林國明，<span class="num">2003</span>：<span class="num">29</span>）。下一頁看這一票的分量。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">29</span>）</span><span class="pgno">第11週　44</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="一次表決，兩條軌道" data-sect="第五節　路徑的起點與分岔" data-flags="quote"><header class="shead"><p class="lab">揭曉</p><h2>一次表決，兩條軌道</h2></header><div class="sbody"><ul class="bl"><li>爭議遠溯<span class="num">1943</span>年：社會部想把文官保險納入勞工保險。考試院長戴季陶激烈反對，認為這會把國家與官吏的關係，變成工人對雇主的契約關係。</li><li><span class="num">1951</span>年，考試院和行政院各提草案。七年協調沒有結果。立法院表決，<span class="num">205</span>位在場委員中<span class="num">149</span>票同意銓敘部。林國明在註腳中判斷，蔣介石似乎沒有介入協調兩院之爭。</li><li>林國明的反事實推論：如果當時劃給內政部，社會保險的規劃與行政事權會統一，立委倡議多年的「中央社會保險局」可能成立，勞保和公保包含的群體也可能不同。</li></ul><blockquote><p>「社會保險的組織體制，將走上不同的歷史軌道。」</p><cite>— 林國明（<span class="num">2003</span>：<span class="num">29</span>）</cite></blockquote><ul class="bl"><li>這就是「重大關鍵時刻」：有多重方案可選，而且這個選擇限制了後來的發展。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">13</span>–<span class="num">14</span>、<span class="num">28</span>–<span class="num">29</span>）</span><span class="pgno">第11週　45</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="1970年：門診納入勞保" data-sect="第五節　路徑的起點與分岔"><header class="shead"><p class="lab">第五節　路徑的起點與分岔</p><h2>1970年：門診納入勞保</h2></header><div class="sbody"><h4><span>起因是財務危機</span></h4><ul class="bl"><li><span class="num">1958</span>年的勞保費率：現金給付<span class="num">3</span>%、住院給付<span class="num">1</span>%。費率太低，住院支出年年高過保費收入。</li><li><span class="num">1967</span>年，行政院只打算把住院費率提高到<span class="num">2</span>%。</li></ul><h4><span>立委主動加了門診</span></h4><ul class="bl"><li>「保大（住院）不保小（門診）」：只有住院、沒有門診，造成應該看門診卻去住院。</li><li>「施恩不均」：公保門診住院都有，勞保沒有門診，勞工「難以甘服」。</li></ul><h4><span>改採「綜合費率」</span></h4><ul class="bl"><li>費率從<span class="num">4</span>%提高到<span class="num">8</span>%，現金和醫療不再分開計算。理由是分開算，會超過<span class="num">10</span>%。</li><li>後果：<span class="num">1980</span>年代醫療支出暴增時，可以挪用老年給付的提存準備，政府得以拖延解決財務問題（第六節）。</li></ul><h4><span>門診改變了社會保險的性質</span></h4><ul class="bl"><li>看門診是多數人的日常經驗。醫療成了社會保險最重要、最顯著的福利。</li><li>很多不具保險身分的人，開始希望進入保險體系。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">32</span>–<span class="num">34</span>）</span><span class="pgno">第11週　46</span></footer></section>
+<section class="slide k-sort" data-kind="sort" data-label="◆ 誰進了哪個體系？" data-sect="第五節　路徑的起點與分岔" data-act="1"><header class="shead"><p class="lab">◆ 動手做（分類）</p><h2>誰進了哪個體系？</h2></header><div class="sbody"><p class="intro"><span class="num">1950</span>到<span class="num">1980</span>年代，執政者不斷擴大保險對象。下面這些人，各被納入哪個體系？讀下一頁之前，先自己分分看。</p><p class="instr">點一張卡片，再點一欄放進去。電腦也可以直接拖曳。放錯了，再點一次卡片就能拿下來。</p><div data-sort="s47" data-act-key="sort-47"><div class="tray"><button class="sc" type="button" draggable="true" data-i="0" data-k="k1" data-txt="私立學校教職員" data-ans="公保體系">私立學校教職員</button><button class="sc" type="button" draggable="true" data-i="1" data-k="k0" data-txt="鹽民、漁民、蔗農" data-ans="勞保">鹽民、漁民、蔗農</button><button class="sc" type="button" draggable="true" data-i="2" data-k="k0" data-txt="雇主" data-ans="勞保">雇主</button><button class="sc" type="button" draggable="true" data-i="3" data-k="k1" data-txt="公務人員的眷屬" data-ans="公保體系">公務人員的眷屬</button><button class="sc" type="button" draggable="true" data-i="4" data-k="k0" data-txt="職業工人" data-ans="勞保">職業工人</button><button class="sc" type="button" draggable="true" data-i="5" data-k="k2" data-txt="農民" data-ans="農保">農民</button><button class="sc" type="button" draggable="true" data-i="6" data-k="k0" data-txt="新聞、文化與公益事業的工作者" data-ans="勞保">新聞、文化與公益事業的工作者</button><button class="sc" type="button" draggable="true" data-i="7" data-k="k1" data-txt="退休公務人員的配偶" data-ans="公保體系">退休公務人員的配偶</button></div><div class="scols n3"><div class="scol" data-k="k0"><h4>勞保</h4><div class="drop"></div></div><div class="scol" data-k="k1"><h4>公保體系</h4><div class="drop"></div></div><div class="scol" data-k="k2"><h4>農保</h4><div class="drop"></div></div></div><div class="row"><button class="pbtn js-check" type="button">對答案</button><button class="pbtn sec js-reset" type="button">重來</button><span class="score"></span></div><div class="fbk"></div></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">24</span>、<span class="num">37</span>–<span class="num">38</span>、<span class="num">40</span>–<span class="num">42</span>、<span class="num">46</span>）</span><span class="pgno">第11週　47</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="「勞工」保險，成了跨階級的風險社群" data-sect="第五節　路徑的起點與分岔" data-flags="sum quote"><header class="shead"><p class="lab">揭曉</p><h2>「勞工」保險，成了跨階級的風險社群</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">勞保</th><th class="nw">公保體系</th><th class="nw">農保</th></tr></thead><tbody><tr><td>鹽民、漁民、蔗農（<span class="num">1950</span>年代）；職業工人（<span class="num">1951</span>）；新聞、文化與公益事業工作者（<span class="num">1979</span>）；雇主（<span class="num">1988</span>）</td><td>私立學校教職員（另立條例）；公務人員眷屬（<span class="num">1982</span>）；退休公務人員配偶（<span class="num">1985</span>）</td><td>農民（<span class="num">1985</span>年試辦，<span class="num">1989</span>年全面開辦）</td></tr></tbody></table></div><h4><span>為什麼大家都進了勞保？</span></h4><ul class="bl"><li>行政院原本想另訂「社會保險法」，分類辦理。但事權已經分散在考試院、行政院和省府，社會保險法舉步維艱。</li></ul><blockquote><p>「本來社會保險法可以解決這個問題，但現在社會保險法又遇到阻礙，所以不得已先走勞保這條路，保進來以後，名稱再解決。」</p><cite>— 內政部社會司長劉修如，引自林國明（<span class="num">2003</span>：<span class="num">35</span>）</cite></blockquote><ul class="bl"><li><span class="num">1979</span>年，「勞心者」終於強制納入勞保。原因：職業結構改變；沒走的那條路越來越遠；勞保有了門診，福利差距縮小。</li></ul><blockquote><p>「『勞工』保險，非預期地成爲一個跨階級的、具有廣泛社會基礎的風險社群。」</p><cite>— 林國明（<span class="num">2003</span>：<span class="num">38</span>）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">24</span>、<span class="num">35</span>–<span class="num">38</span>、<span class="num">40</span>–<span class="num">42</span>、<span class="num">46</span>）</span><span class="pgno">第11週　48</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="公保體系越分越細" data-sect="第五節　路徑的起點與分岔" data-flags="quote"><header class="shead"><p class="lab">第五節　路徑的起點與分岔</p><h2>公保體系越分越細</h2></header><div class="sbody"><h4><span>身分分類合不合理？</span></h4><ul class="bl"><li><span class="num">1968</span>年，反對把「勞心者」納入勞保的立委說：</li></ul><blockquote><p>「不能說公立學校的教職員是公教人員，私立學校的教職員是勞工，台大教授是公教人員，東海大學教授是勞工。」</p><cite>— 引自林國明（<span class="num">2003</span>：<span class="num">37</span>）</cite></blockquote><h4><span>私校教職員進了公保體系</span></h4><ul class="bl"><li>私校不願進勞保：學校要負擔<span class="num">80</span>%的保費；身分上也要和公立學校一樣。</li><li>蔣經國<span class="num">1978</span>、<span class="num">1979</span>年兩度指示研究。最後另訂條例，私校教職員自成一個方案，「一切比照公保」。</li></ul><h4><span><span class="num">1980</span>年代，越開越多</span></h4><ul class="bl"><li>公務人員眷屬疾病保險（<span class="num">1982</span>）、退休公務人員疾病保險（<span class="num">1985</span>）、退休公務人員配偶疾病保險（<span class="num">1985</span>）。</li><li>私校比照：退休教職員（<span class="num">1985</span>）、退休教職員配偶（<span class="num">1985</span>）、教職員眷屬（<span class="num">1990</span>）。</li><li>十年間，公保體系新立了<span class="num">7</span>個保險方案。</li></ul><h4><span>結果</span></h4><ul class="bl"><li>公保體系底下有<span class="num">8</span>個分立的方案。加上農保等方案，全民健保前共有<span class="num">12</span>個大小不等的方案。</li></ul><blockquote><p>「我國⋯⋯乃是全世界實施健康保險制度最爲分歧的國家」</p><cite>— 全民健保規劃小組（<span class="num">1990</span>a：<span class="num">300</span>），引自林國明（<span class="num">2003</span>：<span class="num">10</span>）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">10</span>、<span class="num">37</span>、<span class="num">40</span>–<span class="num">42</span>）</span><span class="pgno">第11週　49</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="為什麼改不動：權力與正當性" data-sect="第五節　路徑的起點與分岔"><header class="shead"><p class="lab">第五節　路徑的起點與分岔</p><h2>為什麼改不動：權力與正當性</h2></header><div class="sbody"><h4><span>權力</span></h4><ul class="bl"><li><span class="num">1978</span>–<span class="num">79</span>年修法時，立委決議設中央保險局，把省府辦理的勞保收回中央。台灣省議會第二天就決議反對，行政院緊急撤回。</li><li>制度分配了利益與權力，獲益者傾向維持既有模式（Pierson）。</li><li>「維持現狀的偏差」（status quo bias）：威權的「有限多元」下，部門爭端很少走正式規則。沒有領袖介入，就陷入「不行動」的僵局。</li></ul><h4><span>正當性</span></h4><ul class="bl"><li>反覆出現的問題是：人群這樣分類，合不合理？公教可以和勞工待遇不同嗎？勞心者算勞工嗎？私校為什麼不能比照公校？</li></ul><h4><span>兩個政權特質</span></h4><ul class="bl"><li>「政策示惠的統治心性」和「有限多元」，影響了權力機制和正當性機制的運作。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">39</span>、<span class="num">42</span>–<span class="num">44</span>）</span><span class="pgno">第11週　50</span></footer></section>
+</div></div><div class="chap"><button class="chap-h" type="button"><span class="cn">06</span><span class="ct">低保費與財務危機</span><span class="cc">8頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第六節　低保費與財務危機" data-sect="第六節　低保費與財務危機"><div class="sbody"><div class="divider"><div class="ticketno"><span class="tsec">第六節</span><span class="tno">06</span></div><h2 class="dtitle">低保費與財務危機</h2><p class="dq">大家都喜歡的低保費，為什麼會把體系推向危機？</p><dl class="dread"><div><dt>讀本</dt><dd>林國明（<span class="num">2003</span>）頁<span class="num">44</span>–<span class="num">52</span></dd></div></dl></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第11週　51</span></footer></section>
+<section class="slide k-order" data-kind="order" data-label="◆ 綜合費率的連鎖反應" data-sect="第六節　低保費與財務危機" data-act="1"><header class="shead"><p class="lab">◆ 動手做（排序）</p><h2>綜合費率的連鎖反應</h2></header><div class="sbody"><p class="intro">勞保的保費遠低於精算費率。為什麼從<span class="num">1970</span>年起，帳面上一直沒有虧損？把下面五張卡片依因果順序排好。答案在下一頁。</p><p class="instr">依序點下面的卡片；點對了就排進去。</p><div class="cycle" data-order="o52" data-act-key="order-52"><div class="otray"><button class="oi" type="button" data-o="3">帳面上沒有虧損，沒有調漲保費的立即壓力</button><button class="oi" type="button" data-o="1"><span class="num">1968</span>年改採「綜合費率」，現金給付和醫療給付不分開算</button><button class="oi" type="button" data-o="4"><span class="num">1980</span>年代醫療支出擴大，提存準備嚴重不足</button><button class="oi" type="button" data-o="0">保費遠低於精算費率</button><button class="oi" type="button" data-o="2">醫療給付不夠時，挪用老年給付的提存準備</button></div><ol class="tline"><li class="empty" data-t="保費遠低於精算費率"><span class="no">1</span><span>？</span></li><li class="empty" data-t="1968年改採「綜合費率」，現金給付和醫療給付不分開算"><span class="no">2</span><span>？</span></li><li class="empty" data-t="醫療給付不夠時，挪用老年給付的提存準備"><span class="no">3</span><span>？</span></li><li class="empty" data-t="帳面上沒有虧損，沒有調漲保費的立即壓力"><span class="no">4</span><span>？</span></li><li class="empty" data-t="1980年代醫療支出擴大，提存準備嚴重不足"><span class="no">5</span><span>？</span></li></ol><div class="row"><button class="pbtn sec js-show" type="button">直接看答案</button></div><div class="fbk"></div></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">33</span>、<span class="num">45</span>–<span class="num">46</span>、<span class="num">49</span>）</span><span class="pgno">第11週　52</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="帳面上沒虧損的危機" data-sect="第六節　低保費與財務危機" data-flags="sum"><header class="shead"><p class="lab">揭曉</p><h2>帳面上沒虧損的危機</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">步驟</th><th class="nw">說明</th></tr></thead><tbody><tr><td><span class="num">1</span>　低保費</td><td>保費遠低於精算費率</td></tr><tr><td><span class="num">2</span>　綜合費率</td><td><span class="num">1968</span>年起，現金給付和醫療給付的費率不分開算</td></tr><tr><td><span class="num">3</span>　挪用</td><td>勞保基金其實就是老年給付的責任準備。醫療給付不足時，就挪用它</td></tr><tr><td><span class="num">4</span>　帳面沒虧損</td><td><span class="num">1970</span>年起，勞保只有<span class="num">1987</span>年出現年度短絀。既無虧損，就沒有調費壓力</td></tr><tr><td><span class="num">5</span>　提存準備不足</td><td><span class="num">1981</span>–<span class="num">1990</span>年，醫療給付支出平均每年成長<span class="num">22</span>%。<span class="num">1993</span>年估計應付的老年給付準備是<span class="num">1,953</span>億元，勞保基金只剩<span class="num">921</span>億元</td></tr></tbody></table></div><ul class="bl"><li>如果符合資格的人都來請領老年給付，勞保基金會立即虧空一千多億。</li><li>還有一個加重因素：勞保被保險人領了老年給付，就失去醫療保障。很多人因此繼續留在勞保。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">33</span>、<span class="num">45</span>–<span class="num">46</span>、<span class="num">49</span>–<span class="num">50</span>、註<span class="num">61</span>、<span class="num">68</span>、<span class="num">69</span>）</span><span class="pgno">第11週　53</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="低保費為什麼一直維持" data-sect="第六節　低保費與財務危機" data-flags="quote"><header class="shead"><p class="lab">第六節　低保費與財務危機</p><h2>低保費為什麼一直維持</h2></header><div class="sbody"><p>低保費的再製機制，牽涉到功能、權力與正當性。</p><h4><span>功能（從權力菁英的角度）</span></h4><ul class="bl"><li>經濟：雇主負擔勞工<span class="num">80</span>%的保費。低保費避免增加雇主的勞動成本。</li><li>政治：低保費讓提供完整醫療給付的社會保險大受歡迎。這種「正向回饋」，讓執政者想繼續維持。</li></ul><h4><span>權力</span></h4><ul class="bl"><li>民主轉型之前，保費的決定權掌握在威權菁英手中。</li></ul><h4><span>正當性</span></h4><ul class="bl"><li>社會保險被看成國家「照顧人民的美意」。既然是國家的恩惠，就不該要人民負擔太高的保費。</li></ul><blockquote><p>「因爲⋯⋯長期習慣低保險費率政策，將社會保險視爲福利，所以也不贊成提高保險費率」</p><cite>— 全民健保規劃小組（<span class="num">1990</span>b：<span class="num">9</span>），引自林國明（<span class="num">2003</span>：<span class="num">45</span>）</cite></blockquote><h4><span>逃避譴責</span></h4><ul class="bl"><li>選舉競爭增強後，執政菁英和民選政治人物不願接受調費的「正當性試煉」。理性的選擇是繼續維持低保費。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">44</span>–<span class="num">45</span>）</span><span class="pgno">第11週　54</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 農民要自付多少？" data-sect="第六節　低保費與財務危機" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>農民要自付多少？</h2></header><div class="sbody"><p class="intro"><span class="num">1988</span>年底，行政院提出農保條例草案，原擬農民自付<span class="num">50</span>%、政府補助<span class="num">50</span>%。立委無分朝野，要求降低農民的負擔。最後農民自付多少？答案在下一頁。</p><div class="poll" data-poll="p55" data-answer="30%" data-act-key="predict-55"><div class="opts"><button type="button" data-v="50%"><span><span class="num">50</span>%</span></button><button type="button" data-v="40%"><span><span class="num">40</span>%</span></button><button type="button" data-v="30%"><span><span class="num">30</span>%</span></button><button type="button" data-v="20%"><span><span class="num">20</span>%</span></button></div></div><p class="verdict" data-verdict-for="p55"></p><div class="fbk ok reveal-box" data-reveal-all="p55"><span class="num">30</span>%，政府負擔<span class="num">70</span>%（林國明，<span class="num">2003</span>：<span class="num">48</span>）。下一頁看立委的理由。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">47</span>–<span class="num">48</span>）</span><span class="pgno">第11週　55</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="農保：路徑依賴下的保費決定" data-sect="第六節　低保費與財務危機" data-flags="sum quote"><header class="shead"><p class="lab">揭曉</p><h2>農保：路徑依賴下的保費決定</h2></header><div class="sbody"><h4><span>背景</span></h4><ul class="bl"><li><span class="num">1985</span>年，在<span class="num">41</span>個鄉鎮試辦。只有農會會員能參加，造成「一戶一人投保」。</li><li><span class="num">1988</span>年<span class="num">5</span>月<span class="num">20</span>日的農民抗議（五二〇事件），訴求之一是全面開辦農保。這是台灣第一次，把社會保險議題寫上街頭抗議的標語。</li></ul><h4><span>立委的比較</span></h4><div class="tw"><table><thead><tr><th class="nw">方案</th><th>被保險人自付</th><th class="nw">其他負擔</th></tr></thead><tbody><tr><td>公保</td><td><span class="num">35</span>%</td><td>政府<span class="num">65</span>%</td></tr><tr><td>勞保（產業勞工）</td><td><span class="num">20</span>%</td><td>雇主<span class="num">80</span>%</td></tr><tr><td>農保（行政院原案）</td><td><span class="num">50</span>%</td><td>政府<span class="num">50</span>%</td></tr><tr><td>農保（立法結果）</td><td><span class="num">30</span>%</td><td>政府<span class="num">70</span>%</td></tr></tbody></table></div><blockquote><p>「現在農民收入最低，保費（自付比率）又比別人高，這沒道理。」</p><cite>— 立委發言，引自林國明（<span class="num">2003</span>：<span class="num">47</span>–<span class="num">48</span>）</cite></blockquote><ul class="bl"><li>農保費率也不能高於勞保。而勞保的費率，已經將近<span class="num">20</span>年沒有調漲。</li><li>林國明的解釋：過去的低保費政策形成了正當性信念，加上決策當下的環境，一起造成低額保費和高額的政府負擔。</li><li>農保全面實施第一年，政府就要編上百億元的預算。農保成了政府預算的「財政黑洞」。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">46</span>–<span class="num">48</span>）</span><span class="pgno">第11週　56</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 虧損有多大？" data-sect="第六節　低保費與財務危機" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>虧損有多大？</h2></header><div class="sbody"><p class="intro"><span class="num">1993</span>年，所有保險方案的總虧損約<span class="num">205</span>億元。加上勞保的預估虧損，高達<span class="num">1,236</span>億元。這大約是當年中央政府總預算的多少？答案在下一頁。</p><div class="poll" data-poll="p57" data-answer="11%" data-act-key="predict-57"><div class="opts"><button type="button" data-v="1%"><span><span class="num">1</span>%</span></button><button type="button" data-v="5%"><span><span class="num">5</span>%</span></button><button type="button" data-v="11%"><span><span class="num">11</span>%</span></button><button type="button" data-v="25%"><span><span class="num">25</span>%</span></button></div></div><p class="verdict" data-verdict-for="p57"></p><div class="fbk ok reveal-box" data-reveal-all="p57">約<span class="num">11</span>%（林國明，<span class="num">2003</span>：<span class="num">50</span>）。即使用當年全部的社會福利預算來補，也補不了。下一頁看為什麼補不了，也漲不了。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">50</span>）</span><span class="pgno">第11週　57</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="被困在自己造成的危機裡" data-sect="第六節　低保費與財務危機" data-flags="quote"><header class="shead"><p class="lab">揭曉</p><h2>被困在自己造成的危機裡</h2></header><div class="sbody"><h4><span>危機從哪裡來</span></h4><ul class="bl"><li>體系成熟，退休給付增加。醫療機構擴充、技術設備進步，推高醫療費用。</li><li>公保開辦第二年就出現赤字。<span class="num">1986</span>到<span class="num">1993</span>年，公保平均每年虧損約<span class="num">35</span>億元。</li><li>農保虧損嚴重到付不出特約醫療院所的費用，引起醫院拒看農保病人。</li></ul><h4><span>為什麼漲不了保費</span></h4><ul class="bl"><li><span class="num">1980</span>年代末，出口導向的經濟面臨結構調整，很難增加雇主負擔。</li><li><span class="num">1989</span>年底，勞委會提案把費率從<span class="num">6</span>%至<span class="num">8</span>%調為<span class="num">9</span>%至<span class="num">13</span>%，勞資分擔改為<span class="num">3</span>:<span class="num">7</span>。勞資雙方都反對。國民黨增額立委直言：「提高保費，執政黨選舉一定輸」。</li></ul><h4><span>為什麼補不了</span></h4><ul class="bl"><li><span class="num">1990</span>到<span class="num">1994</span>年，中央政府每年的財政赤字平均約占支出總額的<span class="num">14</span>%。</li><li><span class="num">1993</span>年，光是補貼農保的保費和虧損就約二百億元，約占所有社會福利支出的<span class="num">23</span>%。</li></ul><blockquote><p>「國家行動者，被困在自己過去的行動所招致的危機中。」</p><cite>— 林國明（<span class="num">2003</span>：<span class="num">48</span>）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">48</span>–<span class="num">52</span>）</span><span class="pgno">第11週　58</span></footer></section>
+</div></div><div class="chap"><button class="chap-h" type="button"><span class="cn">07</span><span class="ct">走到國家主義</span><span class="cc">9頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-divider" data-kind="divider" data-label="第七節　走到國家主義" data-sect="第七節　走到國家主義"><div class="sbody"><div class="divider"><div class="ticketno"><span class="tsec">第七節</span><span class="tno">07</span></div><h2 class="dtitle">走到國家主義</h2><p class="dq">危機中，為什麼是「政府經營的單一體系」勝出？</p><dl class="dread"><div><dt>讀本</dt><dd>林國明（<span class="num">2003</span>）頁<span class="num">52</span>–<span class="num">65</span></dd></div><div><dt>補充</dt><dd>衛生福利部的官方統計（見文末「網路來源」）</dd></div></dl></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第11週　59</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="專家的方案，執政菁英的盤算" data-sect="第七節　走到國家主義"><header class="shead"><p class="lab">第七節　走到國家主義</p><h2>專家的方案，執政菁英的盤算</h2></header><div class="sbody"><h4><span>專家的方案</span></h4><ul class="bl"><li>全民健保<span class="num">1989</span>年開始規劃。第一期由經建會負責，第二期由衛生署接手，高度倚賴學者專家。</li><li>專家比較「從大體著眼」，較能避開「維持現狀的偏差」。</li><li>專家的兩個改革重點：<ol class="sub"><li value="1">現金給付和醫療保險分開辦理。本課<span class="num">112.1</span>講義也提到：全民健保把「健康」從勞保等綜合保險抽出來，成為獨立的社會保險。</li><li value="2">權威集中。<span class="num">5</span>個同時給現金和醫療的方案，調整成<span class="num">3</span>個只給現金的方案；<span class="num">7</span>個只給醫療的方案，予以廢除。</li></ol></li><li>專家認為單一體系能擴大風險分攤、節省行政成本、提高整體規劃能力，並對醫療提供者有強大的談判力：「權力集中、理性行政、簡單而有效率」。</li></ul><h4><span>執政菁英的盤算</span></h4><ul class="bl"><li>另一個方案是：維持公勞農保，另立「國民健康保險」涵蓋其他人。</li><li>但未納保的人，除了勞工與農民的眷屬，多是無業、失業或社會邊緣戶。這會變成弱勢者相互取暖的「弱勢保險」：保費必然很高，否則政府要大量補貼。</li><li>單一體系可以交叉補貼。國家主義方案成了企求「極大化政治支持，極小化財政支出」的選擇。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">10</span>、<span class="num">53</span>–<span class="num">55</span>、註<span class="num">79</span>）；本課<span class="num">112.1</span>講義投影片<span class="num">34</span></span><span class="pgno">第11週　60</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 每交1元保費，用掉多少？" data-sect="第七節　走到國家主義" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>每交1元保費，用掉多少？</h2></header><div class="sbody"><p class="intro">健保開辦後，中央健保局統計「平均每交一元保險費的醫療費用支出」。第一類職業人口（公教人員、產業勞工、雇主和自營作業者、專門技術人員）是<span class="num">0.8</span>。低收入戶是多少？答案在下一頁。</p><div class="poll" data-poll="p61" data-answer="2.7" data-act-key="predict-61"><div class="opts"><button type="button" data-v="0.8"><span><span class="num">0.8</span></span></button><button type="button" data-v="1.0"><span><span class="num">1.0</span></span></button><button type="button" data-v="1.7"><span><span class="num">1.7</span></span></button><button type="button" data-v="2.7"><span><span class="num">2.7</span></span></button></div></div><p class="verdict" data-verdict-for="p61"></p><div class="fbk ok reveal-box" data-reveal-all="p61"><span class="num">2.7</span>；農民是<span class="num">1.7</span>（林國明，<span class="num">2003</span>：<span class="num">55</span>）。下一頁看這代表什麼。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">55</span>）</span><span class="pgno">第11週　61</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="單一體系裡的交叉補貼" data-sect="第七節　走到國家主義"><header class="shead"><p class="lab">揭曉</p><h2>單一體系裡的交叉補貼</h2></header><div class="sbody"><h4><span>平均每交<span class="num">1</span>元保費的醫療費用支出</span></h4><ul class="bl"><li>第一類職業人口：<span class="num">0.8</span></li><li>農民：<span class="num">1.7</span></li><li>低收入戶：<span class="num">2.7</span>（低收入戶的保費由政府全額補貼）</li></ul><h4><span>這代表什麼</span></h4><ul class="bl"><li>第一類職業人口的平均保費，高於平均醫療支出。農民和低收入戶每交<span class="num">100</span>元保費，分別用掉<span class="num">170</span>元和<span class="num">270</span>元的醫療費用。</li><li>過去公保、勞保的被保險人，在整合後分攤了農民和其他經濟弱勢群體的醫療費用。</li></ul><h4><span>政府也脫困了</span></h4><ul class="bl"><li>農保把醫療業務移給健保局。政府補貼農保虧損，從<span class="num">1994</span>年的<span class="num">170</span>億元，降到<span class="num">1996</span>年的八千多萬元。</li><li>政府部門的醫療保健支出，從健保前一年的約<span class="num">443</span>億元，降到<span class="num">1998</span>年的<span class="num">363</span>億元。</li><li>林國明提醒：這些是「後見之明」。但執政者做選擇時，不可能不了解單一體系的財政效果。</li><li>對照第二節：Hill說免費醫療是健康者幫病人。這裡還看到職業群體之間的移轉。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">55</span>–<span class="num">56</span>、註<span class="num">81</span>）；Hill（<span class="num">2003</span>：<span class="num">192</span>）</span><span class="pgno">第11週　62</span></footer></section>
+<section class="slide k-poll" data-kind="poll" data-label="◆ 如果你是1994年的立委" data-sect="第七節　走到國家主義" data-act="1"><header class="shead"><p class="lab">◆ 表態</p><h2>如果你是1994年的立委</h2></header><div class="sbody"><p class="intro">全民健保法立法時，桌上有好幾個方案。你會支持哪一個？沒有標準答案。</p><div class="pollbox"><div class="poll" data-poll="p63" data-act-key="poll-p63"><div class="opts"><button type="button" data-v="A. 公辦公營・單一體系（行政院原案）"><span>A. 公辦公營・單一體系（行政院原案）</span></button><button type="button" data-v="B. 公辦民營・單一基金會（1994年5月行政院的「急轉彎」）"><span>B. 公辦民營・單一基金會（<span class="num">1994</span>年<span class="num">5</span>月行政院的「急轉彎」）</span></button><button type="button" data-v="C. 民間經營・多元體系（模仿日本或德國）"><span>C. 民間經營・多元體系（模仿日本或德國）</span></button><button type="button" data-v="D. 維持公勞農保分立，另立國民健康保險"><span>D. 維持公勞農保分立，另立國民健康保險</span></button></div></div><p class="pollthanks" data-reveal-for="p63">記下來了。下一頁看看當年怎麼決定。</p></div></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">57</span>–<span class="num">58</span>）</span><span class="pgno">第11週　63</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="兩場體制之爭的結局" data-sect="第七節　走到國家主義"><header class="shead"><p class="lab">揭曉</p><h2>兩場體制之爭的結局</h2></header><div class="sbody"><h4><span>第一場：單一體系，還是多元體系？</span></h4><ul class="bl"><li>銓敘部強烈反對：公務人員福利不可與私人混雜，也怕拉低公務人員的福利。勞委會也反對。</li><li>內政部一度想設中央社會保險局，把所有保險收歸自己管。</li><li>衛生署想主管單一體系，取得介入醫療體系的財務工具。</li><li>行政院長郝柏村曾問：可不可以不動公勞農保，另立國民健康保險（D案）？衛生署和專家力陳不可行。</li><li><span class="num">1992</span>年<span class="num">7</span>月<span class="num">9</span>日，行政院院會核准衛生署方案：設中央健康保險局，經營涵蓋全體國民的單一體系。</li></ul><h4><span>第二場：公辦公營，還是公辦民營？</span></h4><ul class="bl"><li>反對公營的立委，動機各不相同：商業利益、不信任公營效率、社會自主的理念。</li><li><span class="num">1994</span>年<span class="num">5</span>月，副院長徐立德指示草擬「公辦民營」基金會（B案）。理由：要趕快完成立法；基金會比較有魄力調高費率，也能避開民代關說。</li><li>但基金會董事全由政府指定，被批評仍是政府控制，也不是多元體系。行政院退回公辦公營。</li></ul><h4><span>結局</span></h4><ul class="bl"><li>妥協條文：開辦前兩年採公辦公營的單一體系，兩年後再考慮是否民營化。「國家主義」的健保體制，就此定案。</li><li>國會已全面改選，但國民黨仍是一黨支配、行政優位，行政院的方案最後透過黨政協調完成立法。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">57</span>–<span class="num">60</span>）</span><span class="pgno">第11週　64</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="民間經營，為什麼不可信？" data-sect="第七節　走到國家主義" data-flags="quote"><header class="shead"><p class="lab">第七節　走到國家主義</p><h2>民間經營，為什麼不可信？</h2></header><div class="sbody"><ul class="bl"><li>沒有任何社會團體動員反對單一體系，也沒有團體動員支持公辦民營。</li><li>醫療保險的整合，其實是用人數最多的勞保，去整合福利較好的公保和虧損嚴重的農保。勞保早有跨階級的連帶，整合沒有引起有動員力量的群體反對。</li><li>勞工團體反而動員支持政府經營：</li></ul><blockquote><p>「現在工會的組織不健全，要像德國那樣，由工會組成的疾病基金會來辦保險，在台灣是做不到的。我們沒有那個社會條件。」</p><cite>— 勞工團體領袖，林國明訪談（<span class="num">2003</span>：<span class="num">60</span>）</cite></blockquote><ul class="bl"><li>經過<span class="num">40</span>年國家控制，要讓國家從「集政策決定、經營與監督於一身」的角色，轉成社會自主運作的監督者，並不容易。當時沒有人能令人信服地說明，民間經營的多元體系該怎麼建、怎麼維持公共信任。</li></ul><blockquote><p>「路徑依賴，限制了選擇的可能，使全民健保的組織體制，最終走上了國家主義之路。」</p><cite>— 林國明（<span class="num">2003</span>：<span class="num">61</span>）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">60</span>–<span class="num">61</span>）</span><span class="pgno">第11週　65</span></footer></section>
+<section class="slide k-predict" data-kind="predict" data-label="◆ 今天，誰的醫療支出占GDP最低？" data-sect="第七節　走到國家主義" data-act="1"><header class="shead"><p class="lab">◆ 先猜</p><h2>今天，誰的醫療支出占GDP最低？</h2></header><div class="sbody"><p class="intro">健保開辦已經三十年。<span class="num">2024</span>年，下面四個國家裡，經常性醫療保健支出占GDP最低的是哪一個？答案在下一頁。</p><div class="poll" data-poll="p66" data-answer="台灣" data-act-key="predict-66"><div class="opts"><button type="button" data-v="台灣"><span>台灣</span></button><button type="button" data-v="韓國"><span>韓國</span></button><button type="button" data-v="日本"><span>日本</span></button><button type="button" data-v="英國"><span>英國</span></button></div></div><p class="verdict" data-verdict-for="p66"></p><div class="fbk ok reveal-box" data-reveal-all="p66">台灣：<span class="num">6.9</span>%，其次是韓國<span class="num">8.4</span>%（衛生福利部，<span class="num">2026</span>：<span class="num">65</span>；資料來自OECD）。下一頁是六國對照。</div></div><footer class="sfoot"><span class="cite"><b>出處</b>：衛生福利部（<span class="num">2026</span>：<span class="num">65</span>）</span><span class="pgno">第11週　66</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="今天的健保：幾個官方數字" data-sect="第七節　走到國家主義" data-flags="sum"><header class="shead"><p class="lab">揭曉</p><h2>今天的健保：幾個官方數字</h2></header><div class="sbody"><h4><span>經常性醫療保健支出占GDP，<span class="num">2024</span>年</span></h4><div class="tw"><table><thead><tr><th class="nw">國家</th><th class="nw">占GDP</th></tr></thead><tbody><tr><td>美國</td><td><span class="num">17.2</span>%</td></tr><tr><td>德國</td><td><span class="num">12.3</span>%</td></tr><tr><td>英國</td><td><span class="num">11.1</span>%</td></tr><tr><td>日本</td><td><span class="num">10.6</span>%</td></tr><tr><td>韓國</td><td><span class="num">8.4</span>%</td></tr><tr><td>台灣</td><td><span class="num">6.9</span>%</td></tr></tbody></table></div><h4><span>台灣<span class="num">2024</span>年（<span class="num">113</span>年）的醫療支出</span></h4><ul class="bl"><li>國民醫療保健支出（NHE）<span class="num">1</span>兆<span class="num">8,897</span>億元，占GDP <span class="num">7.3</span>%。</li><li>全民健保運用<span class="num">8,169</span>億元，占NHE <span class="num">43.2</span>%。家庭自付<span class="num">7,036</span>億元，占<span class="num">37.2</span>%。</li><li>對照：林國明寫作時，健保每年經手約三千億元（<span class="num">2003</span>：<span class="num">4</span>）。</li></ul><h4><span>保費，今昔對照</span></h4><ul class="bl"><li><span class="num">1950</span>年勞保：費率<span class="num">3</span>%（含現金給付），產業勞工自付<span class="num">20</span>%。</li><li>今天的健保：一般保險費率<span class="num">5.17</span>%（<span class="num">110</span>年<span class="num">1</span>月<span class="num">1</span>日起）；健保會審議建議<span class="num">115</span>年度維持<span class="num">5.17</span>%，送行政院核定。一般公司行號的受僱者，自付<span class="num">30</span>%、雇主<span class="num">60</span>%、政府<span class="num">10</span>%。</li><li>兩者涵蓋的給付不同，數字不能直接比。</li></ul><h4><span>怎麼讀這些數字</span></h4><ul class="bl"><li>支出比較低，不等於比較好，也不等於比較差。</li><li>規劃專家主張單一體系有談判力、能控制成本；Spicker也說國家提供通常比較便宜。這張表不能證明因果，上課再討論。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：衛生福利部（<span class="num">2026</span>：<span class="num">3</span>–<span class="num">4</span>、<span class="num">6</span>、<span class="num">65</span>）；衛生福利部（<span class="num">2020</span>）；衛生福利部全民健康保險會（<span class="num">2025</span>：<span class="num">4</span>）；衛生福利部（<span class="num">2019</span>）；林國明（<span class="num">2003</span>：<span class="num">4</span>、<span class="num">26</span>、<span class="num">54</span>）；Spicker（<span class="num">2025</span>：<span class="num">185</span>–<span class="num">186</span>）</span><span class="pgno">第11週　67</span></footer></section>
+</div></div><div class="chap"><button class="chap-h" type="button"><span class="cn">✓</span><span class="ct">第五至七節小測驗</span><span class="cc">1頁</span><span class="cv"></span></button><div class="chap-b"><section class="slide k-quiz" data-kind="quiz" data-label="◆ 第五至七節小測驗" data-sect="第七節　走到國家主義" data-act="1"><header class="shead"><p class="lab">小測驗</p><h2>第五至七節小測驗</h2></header><div class="sbody"><p class="intro">三題，作答後會立刻看到解說。三份小測驗都作答完，才能送出簽到。</p><div data-quiz="q68"><div class="qz" data-a="2"><div class="stem"><span class="qn">第1題</span><span class="num">1968</span>年勞保加辦門診時，改採「綜合費率」。林國明認為，這個決定後來造成什麼？</div><button class="opt" type="button">A. 保費每年自動調漲</button><button class="opt" type="button">B. 醫療支出可以挪用老年給付的提存準備，政府得以拖延調整保費</button><button class="opt" type="button">C. 勞工自付的比例提高</button><button class="opt" type="button">D. 勞保改由中央辦理</button><div class="fb"><b>解說</b>：採綜合費率後，日益擴增的醫療支出可以挪用老年給付的提存準備，帳面上沒有虧損，低保費得以維持，卻造成提存準備嚴重不足（林國明，<span class="num">2003</span>：<span class="num">33</span>、<span class="num">45</span>–<span class="num">46</span>；<a class="goto" href="#" data-goto="46">畫面［46］</a>〈<span class="num">1970</span>年：門診納入勞保〉、<a class="goto" href="#" data-goto="53">畫面［53］</a>〈帳面上沒虧損的危機〉）。</div></div><div class="qz" data-a="3"><div class="stem"><span class="qn">第2題</span>林國明為什麼說，「勞工」保險成了跨階級的風險社群？</div><button class="opt" type="button">A. 勞工運動要求跨階級團結</button><button class="opt" type="button">B. 社會保險法順利立法，分類辦理</button><button class="opt" type="button">C. 事權分散，另立體系很難，執政者把公教人員和農民以外的人都納入勞保</button><button class="opt" type="button">D. 雇主主動要求加入</button><div class="fb"><b>解說</b>：事權分散在不同國家機關，社會保險法難產，執政者「不得已先走勞保這條路」。受雇者不分勞心勞力，加上自營作業者和雇主，都進了勞保（林國明，<span class="num">2003</span>：<span class="num">35</span>、<span class="num">38</span>、<span class="num">42</span>–<span class="num">43</span>；<a class="goto" href="#" data-goto="48">畫面［48］</a>〈「勞工」保險，成了跨階級的風險社群〉）。</div></div><div class="qz" data-a="2"><div class="stem"><span class="qn">第3題</span>危機中，執政菁英為什麼偏好單一體系？</div><button class="opt" type="button">A. 勞工團體以大規模運動施壓</button><button class="opt" type="button">B. 單一體系能交叉補貼，農民和弱勢者不必繳高保費，政府也不必再補貼虧損</button><button class="opt" type="button">C. 醫師團體要求</button><button class="opt" type="button">D. 加拿大政府施壓</button><div class="fb"><b>解說</b>：不同職業群體在同一個風險社群內交叉補貼，國家主義方案成了「極大化政治支持，極小化財政支出」的選擇（林國明，<span class="num">2003</span>：<span class="num">10</span>、<span class="num">55</span>；<a class="goto" href="#" data-goto="60">畫面［60］</a>〈專家的方案，執政菁英的盤算〉）。</div></div></div><p class="qmeta">作答後無法更改；答錯不影響簽到，但請把解說讀完。</p></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第11週　68</span></footer></section>
+</div></div>
+</div>
+<div class="pane" data-pane="4">
+<section class="slide k-content" data-kind="content" data-label="今天的重點" data-sect="總結"><header class="shead"><p class="lab">總結</p><h2>今天的重點</h2></header><div class="sbody"><h4><span>健康照護政策的一般問題</span></h4><ul class="bl"><li>健康主要不是醫院造的。公共衛生可能最重要，醫院最貴（Spicker）。</li><li>需求沒有止境，所以一定要配給：守門人、等候名單、不給付、收費、總額預算，各有副作用（Allsop、Hill）。</li><li>錢怎麼來，決定了誰幫誰。免費醫療主要是健康的人幫生病的人（Hill）。</li></ul><h4><span>林國明：台灣健保走到國家主義的路</span></h4><ul class="bl"><li>起點：<span class="num">1950</span>年代選了「國家經營、體系分立、事權分散」，以及低保費。</li><li>反應序列：門診、勞心者、私校教職員。結果一邊是跨階級的勞保，一邊是<span class="num">12</span>個零細的方案。</li><li>自我增強：低保費靠功能、權力、正當性一再維持，最後在<span class="num">1980</span>年代末陷入危機。</li><li>新制度：單一體系有效率的說法，也有交叉補貼的財政好處。勞保早有跨階級連帶，民營方案又不可信，於是走上國家主義。</li><li>這是林國明的論證：國家主義健保是一連串行動的非意圖結果。證據支持到哪裡，大家可以檢驗。</li></ul></div><footer class="sfoot"><span class="cite"><b>出處</b>：Spicker（<span class="num">2025</span>：<span class="num">184</span>）；Allsop（<span class="num">2006</span>：<span class="num">569</span>、<span class="num">572</span>）；Hill（<span class="num">2003</span>：<span class="num">192</span>）；林國明（<span class="num">2003</span>：<span class="num">7</span>、<span class="num">61</span>–<span class="num">62</span>）</span><span class="pgno">第11週　69</span></footer></section>
+<section class="slide k-poll" data-kind="poll" data-label="◆ 健保下一次缺錢，你最能接受哪一種？" data-sect="總結" data-act="1"><header class="shead"><p class="lab">◆ 表態</p><h2>健保下一次缺錢，你最能接受哪一種？</h2></header><div class="sbody"><p class="intro">沒有標準答案。先表態，再看下一頁讀本怎麼說。</p><div class="pollbox"><div class="poll" data-poll="p70" data-act-key="poll-p70"><div class="opts"><button type="button" data-v="調高保費"><span>調高保費</span></button><button type="button" data-v="提高看病時的部分負擔"><span>提高看病時的部分負擔</span></button><button type="button" data-v="政府多編預算補助"><span>政府多編預算補助</span></button><button type="button" data-v="縮減給付項目"><span>縮減給付項目</span></button></div></div><p class="pollthanks" data-reveal-for="p70">記下來了。下一頁看看讀本怎麼說。</p></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第11週　70</span></footer></section>
+<section class="slide k-content" data-kind="content" data-label="讀本怎麼看這四種做法" data-sect="總結" data-flags="sum quote"><header class="shead"><p class="lab">總結</p><h2>讀本怎麼看這四種做法</h2></header><div class="sbody"><div class="tw"><table><thead><tr><th class="nw">做法</th><th>讀本提醒什麼</th></tr></thead><tbody><tr><td>調高保費</td><td>低保費已成根深蒂固的信念，調費要面對「正當性的試煉」（林國明，<span class="num">2003</span>：<span class="num">45</span>）；<span class="num">1990</span>年代初，立委說「提高保費，執政黨選舉一定輸」（<span class="num">2003</span>：<span class="num">51</span>）</td></tr><tr><td>提高部分負擔</td><td>收費能控制需求，也會讓急需幫助的人卻步，低收入者更是如此（Hill，<span class="num">2003</span>：<span class="num">190</span>–<span class="num">191</span>）</td></tr><tr><td>政府多補助</td><td><span class="num">1990</span>年代初政府財政惡化，執政菁英亟欲擺脫社會保險的財務責任（林國明，<span class="num">2003</span>：<span class="num">52</span>）</td></tr><tr><td>縮減給付</td><td>英國把某些治療（例如不孕症）移出NHS，經常引起爭議（Hill，<span class="num">2003</span>：<span class="num">190</span>）</td></tr></tbody></table></div><h4><span>結語</span></h4><blockquote><p>「令人感到諷刺的是，台灣這一形成所有公民的社會連帶，被認爲最能促進社會團結與集體認同的國家主義健保體制，並不是由社會團結的共識信念所建構，也不是由追求團結目標的行動者所推動，而是試圖以社會政策爭取政治支持，但卻無積極財政承諾的執政者，因應制度危機所做的選擇。」</p><cite>— 林國明（<span class="num">2003</span>：<span class="num">64</span>–<span class="num">65</span>）</cite></blockquote></div><footer class="sfoot"><span class="cite"><b>出處</b>：林國明（<span class="num">2003</span>：<span class="num">45</span>、<span class="num">51</span>–<span class="num">52</span>、<span class="num">64</span>–<span class="num">65</span>）；Hill（<span class="num">2003</span>：<span class="num">190</span>–<span class="num">191</span>）</span><span class="pgno">第11週　71</span></footer></section>
+<section class="slide k-discuss" data-kind="discuss" data-label="◆ 討論" data-sect="總結" data-act="1" data-flags="quote"><header class="shead"><p class="lab">討論</p><h2>討論</h2></header><div class="sbody"><p class="instr">點開一題，寫下你的想法。寫好的會跟著簽到一起送出，老師上課會挑幾則出來討論。</p><div class="discbox"><details class="disc"><summary><span class="no">1</span><span class="dq">林國明說，國家主義健保是路徑依賴下的「非意圖結果」。你被說服了嗎？他的證據支持到哪裡？如果公保主管機關那次表決結果相反，健保可能會長成什麼樣子？</span></summary><div class="inbox" data-inbox="d1" data-act-key="inbox-d1"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details><details class="disc"><summary><span class="no">2</span><span class="dq">低保費的信念，今天還在嗎？下一次健保缺錢，該由誰多分擔：被保險人、雇主、政府，還是看病的人？用Hill對收費的討論說明你的理由。</span></summary><div class="inbox" data-inbox="d2" data-act-key="inbox-d2"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details><details class="disc"><summary><span class="no">3</span><span class="dq">Spicker說，醫院醫療最貴，卻不是對健康最重要的。健保主要付的是醫療費用。你覺得健康政策應該把錢多放在哪裡？</span></summary><div class="inbox" data-inbox="d3" data-act-key="inbox-d3"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details><details class="disc"><summary><span class="no">4</span><span class="dq">反向照顧法則（inverse care law）在台灣存在嗎？舉一個你知道的地方或群體當例子。</span></summary><div class="inbox" data-inbox="d4" data-act-key="inbox-d4"><textarea maxlength="300" placeholder="寫兩三句就好"></textarea><div class="row"><button class="pbtn js-save" type="button" disabled>寫好了，存起來</button></div><div class="imine"></div></div></details></div></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第11週　72</span></footer></section>
+<section class="slide k-readings" data-kind="readings" data-label="本週讀本" data-sect="總結"><header class="shead"><p class="lab">讀本</p><h2>本週讀本</h2></header><div class="sbody"><p class="instr">讀完一篇就勾起來，自己看進度。勾選只存在這台裝置，不會送出。</p><div class="readlist"><h4 class="rh4"><span>必讀</span></h4><label class="rp"><input type="checkbox" data-r="0"><span>林國明（2003）。到國家主義之路：路徑依賴與全民健保組織體制的形成。台灣社會學，5，1–71。<a class="url" href="https://doi.org/10.6676/TS.2003.5.1" target="_blank" rel="noopener">https://doi.org/10.6676/TS.2003.5.1</a></span></label><label class="rp"><input type="checkbox" data-r="1"><span>Spicker, P. (2025). An Introduction to Social Policy, ch. 12: Health care (pp. 181–186). Independently published. <a class="url" href="https://www.spicker.uk/social-policy/" target="_blank" rel="noopener">https://www.spicker.uk/social-policy/</a></span></label><h4 class="rh4"><span>選讀</span></h4><label class="rp"><input type="checkbox" data-r="2"><span>Allsop, J.（2006）。健康照顧（侯東成譯）。載於P. Alcock, A. Erskine, &amp; M. May（合編），解讀社會政策（第IV.9章，頁569–580）。台北：群學、國立編譯館。</span></label><label class="rp"><input type="checkbox" data-r="3"><span>Hill, M.（2003）。理解社會政策（劉升華譯），第6章〈醫療衛生服務〉（頁176–204）。北京：商務印書館。</span></label></div><p class="rpstat">已讀　<b>0</b>／<span class="rptot">4</span></p><div class="ticket"><span class="tk">下週</span><span>第12週　家庭政策與照顧：兒童照顧與長期照顧（12/4）</span></div><details class="websrc"><summary>網路來源</summary><p class="note">查詢日期一律為2026年11月19日。</p><ol><li>衛生福利部（2026）。《中華民國113年國民醫療保健支出》（115年2月編印）。用到：頁3（NHE 1兆8,897億元、占GDP 7.3%）、頁4與頁6（全民健保8,169億元占43.2%、家庭部門7,036億元占37.2%）、頁65表6（經常性醫療保健支出占GDP，2024年；資料來源：OECD Health Statistics，擷取時間2025/12/22）。<a class="url" href="https://www.mohw.gov.tw/dl-99631-cfe880cf-a90b-4eba-b240-351bf8abfd75.html" target="_blank" rel="noopener">https://www.mohw.gov.tw/dl-99631-cfe880cf-a90b-4eba-b240-351bf8abfd75.html</a></li><li>衛生福利部（2020）。〈投資健康，110年健保費率調整為5.17%〉（建檔與更新：109年12月31日）。用到：110年1月1日起一般保險費率5.17%。<a class="url" href="https://www.mohw.gov.tw/cp-4624-57420-1.html" target="_blank" rel="noopener">https://www.mohw.gov.tw/cp-4624-57420-1.html</a></li><li>衛生福利部全民健康保險會（2025）。〈第7屆114年第9次委員會議議事錄〉（114年11月19日）。用到：頁4，決議「115年度保險費率經本會審議結果，建議維持現行費率5.17%」，並函請衛福部轉陳行政院核定。<a class="url" href="https://www.mohw.gov.tw/dl-97833-67395cad-dd80-415b-a623-392fb6c04fe6.html" target="_blank" rel="noopener">https://www.mohw.gov.tw/dl-97833-67395cad-dd80-415b-a623-392fb6c04fe6.html</a></li><li>衛生福利部（2019）。〈針對最近網路散播「台灣健保超級比一比」訊息，內容與實際情形諸多不符，健保署就大陸人士來臺參加健保之相關規定說明如次〉（更新：108年3月18日）。用到：「例如一般公司行號的受僱者，其健保費即由自己負擔30%，雇主負擔60%，政府負擔10%。」<a class="url" href="https://mohw.gov.tw/cp-4343-83-1.html" target="_blank" rel="noopener">https://mohw.gov.tw/cp-4343-83-1.html</a></li></ol></details></div><footer class="sfoot"><span class="cite"></span><span class="pgno">第11週　73</span></footer></section>
+
+</div>
+<div class="pane" data-pane="5">
+<section class="slide k-done" data-kind="done" data-label="◆ 完成與簽到" data-sect="" data-act="1"><header class="shead"><p class="lab">完成</p><h2>完成紀錄</h2></header><div class="sbody"><p class="intro">三份小測驗全部作答、閱讀滿20分鐘，就可以送出簽到</p><div class="stat"><div>答對題數<b id="st-score">—</b></div><div>已作答<b id="st-done">—</b></div><div>閱讀時間<b id="st-time">00:00</b></div><div>看過頁數<b id="st-seen">—</b></div><div>動手做<b id="st-act">—</b></div></div><div class="idbox"><div><label for="sid">學號</label><input id="sid" maxlength="12" placeholder="例如14115101" autocomplete="off"></div><div><label for="sname">姓名</label><input id="sname" maxlength="20" placeholder="你的姓名" autocomplete="off"></div></div><div class="fbbox"><label for="sfbk">這一週最有收穫、或最想問的一點（選填）</label><textarea id="sfbk" maxlength="300" placeholder="寫一兩句就好，老師上課會挑幾則回應"></textarea></div><p class="dmsg" id="dmsg"></p><button class="pbtn" id="submit" type="button" disabled>送出簽到</button><p class="code" id="scode"></p></div></section>
+
+</div>
+</main>
+<nav class="navbar">
+  <button class="nav-btn prev" id="prev" type="button" onclick="goPrev()">← 前頁</button>
+  <div class="nav-mid"><span class="pageno"><span id="cur">1</span> / <span id="tot">75</span></span><div class="dots" id="dots"></div></div>
+  <button class="nav-btn" id="next" type="button" onclick="goNext()">下一頁 →</button>
+</nav>
+<div class="khint" id="khint"><kbd>←</kbd> <kbd>→</kbd> 翻頁　<kbd>Esc</kbd> 目次　<kbd>F</kbd> 全螢幕</div>
+<div class="toc" id="toc" onclick="if(event.target===this) toggleToc()">
+  <div class="toc-panel">
+    <button class="toc-close" type="button" onclick="toggleToc()" aria-label="關閉">×</button>
+    <h3>目次</h3>
+    <p class="tsub">點任一條目跳到該頁。</p>
+    <div class="tfilter" id="tfilter">
+      <button type="button" class="on" data-f="all">全部</button>
+      <button type="button" data-f="act">要動手的</button>
+      <button type="button" data-f="sum">表格與數字</button>
+      <button type="button" data-f="quote">引文與討論</button>
+      <button type="button" data-f="read">讀本</button>
+    </div>
+    <ol id="toclist"></ol>
+  </div>
+</div>
+<script>
+/* ═══════════════════════════════════════════════
+   社會政策第11、12週互動講義的互動程式（由第10週的 app.js 改寫）。
+   各週的設定（週次、表態題、討論題、簽到網址）由 build.py 填入 CONF。
+   GAS 是該週簽到試算表的 Apps Script 網址；留空時，送出鍵會產生一組代碼，請學生交給老師手動登記。
+   ═══════════════════════════════════════════════ */
+const CONF={"WEEK": "W11", "KEY": "sp115-w11", "GAS": "", "POLLS": [["p63", "如果你是1994年的立委"], ["p70", "健保下一次缺錢，你最能接受哪一種？"]], "INBOX": ["d1", "d2", "d3", "d4"], "RANK": "", "RANK_PAGE": 0};
+const CONFIG = {
+  ENDPOINT:'',
+  GAS:CONF.GAS||'',
+  FIELDS:{ sid:'', name:'', code:'', detail:'' },
+  WEEK:CONF.WEEK, MIN_MINUTES:20
+};
+// 老師測試用：網址加 ?test=1 就跳過閱讀時間門檻（只影響這個分頁）
+if(new URLSearchParams(location.search).get('test')==='1') CONFIG.MIN_MINUTES=0;
+
+const KEY=CONF.KEY;
+const store={get(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}},
+             set(o){try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}}};
+let S=store.get();
+['poll','quiz','seen','sort','match','inbox','readp','acts','rank','order'].forEach(k=>{ S[k]=S[k]||{}; });
+S.seconds=S.seconds||0; S.page=S.page||0;
+const save=()=>store.set(S);
+const $=id=>document.getElementById(id);
+const esc=v=>String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function shake(el){ el.classList.add('shake'); setTimeout(()=>el.classList.remove('shake'),420); }
+
+const slides=[...document.querySelectorAll('.slide')];
+const TOT=slides.length;
+$('tot').textContent=TOT;
+let cur=0;
+
+/* ── 動手紀錄 ── */
+const ACTS=[...new Set([...document.querySelectorAll('[data-act-key]')].map(e=>e.dataset.actKey))];
+function actDone(k){ if(k && !S.acts[k]){ S.acts[k]=1; save(); refresh(); } }
+const actCount=()=>ACTS.filter(k=>S.acts[k]).length;
+
+/* ── 目次與 dots ── */
+const toclist=$('toclist'), dotsEl=$('dots');
+const SECN=['第一','第二','第三','第四','第五','第六','第七'];
+const secNo=s=>SECN.findIndex(k=>s.startsWith(k))+1;
+slides.forEach((s,i)=>{
+  const label=s.dataset.label, sect=s.dataset.sect||'';
+  const li=document.createElement('li');
+  if(s.dataset.kind==='divider'||s.dataset.kind==='cover') li.className='head';
+  li.innerHTML='<a href="#" data-i="'+i+'"><span class="n">'+(i+1)+'</span><span>'+esc(label)+'</span></a>';
+  li.querySelector('a').addEventListener('click',e=>{ e.preventDefault(); goTo(i); toggleToc(); });
+  toclist.appendChild(li);
+  const d=document.createElement('div');
+  const n=secNo(sect);
+  d.className='dot'+(n?' s'+n:'');
+  d.title=(i+1)+'. '+label;
+  d.addEventListener('click',()=>goTo(i));
+  dotsEl.appendChild(d);
+});
+const dots=[...dotsEl.children], tocLinks=[...toclist.querySelectorAll('a')];
+
+/* ── 分節與小節 ── */
+const panes=[...document.querySelectorAll('.pane')];
+const paneBtns=[...document.querySelectorAll('#panenav button')];
+function showPane(id,scroll){
+  panes.forEach(p=>p.classList.toggle('on',p.dataset.pane===id));
+  paneBtns.forEach(b=>b.classList.toggle('on',b.dataset.pane===id));
+  S.pane=id; save();
+  document.querySelectorAll('.sbar.show').forEach(b=>b.classList.remove('show'));
+  if(scroll!==false) window.scrollTo({top:0,behavior:'instant'});
+}
+paneBtns.forEach(b=>b.addEventListener('click',()=>showPane(b.dataset.pane)));
+document.querySelectorAll('.chap-h').forEach(h=>{
+  h.addEventListener('click',()=>{
+    const c=h.parentElement, was=c.classList.contains('open');
+    c.classList.toggle('open');
+    if(!was) c.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+/* ── 翻頁 ── */
+function goTo(n){
+  n=Math.max(0,Math.min(TOT-1,n));
+  const sl=slides[n];
+  const pane=sl.closest('.pane');
+  if(pane && !pane.classList.contains('on')) showPane(pane.dataset.pane,false);
+  const chap=sl.closest('.chap');
+  if(chap) chap.classList.add('open');
+  cur=n; navLock=Date.now()+1500;   // 捲動中不讓「目前看到哪一頁」改掉頁碼（短頁時中段會落在下一頁）
+  requestAnimationFrame(()=>sl.scrollIntoView({behavior:'smooth',block:'start'}));
+  S.page=cur; S.seen[cur]=1; save();
+  paint();
+}
+let navLock=0;
+function goNext(){ goTo(cur+1); }
+function goPrev(){ goTo(cur-1); }
+// 內文裡的「畫面［08］」「第8頁」：點了跳過去
+document.querySelectorAll('a.goto').forEach(a=>a.addEventListener('click',e=>{ e.preventDefault(); goTo(+a.dataset.goto); }));
+function paintBar(){
+  const m=document.documentElement.scrollHeight-window.innerHeight;
+  $('bar').style.width=(m>0?Math.min(100,window.scrollY/m*100):0)+'%';
+}
+function paintPos(){
+  $('cur').textContent=cur+1;
+  $('sect').textContent=slides[cur].dataset.sect||'';
+  dots.forEach((d,i)=>d.classList.toggle('on',i===cur));
+  tocLinks.forEach((a,i)=>a.classList.toggle('cur',i===cur));
+  const act=dots[cur]; if(act) act.scrollIntoView({block:'nearest',inline:'center'});
+  $('prev').disabled=(cur===0);
+  $('next').disabled=(cur===TOT-1);
+  paintSectProg();
+}
+function paint(){
+  paintBar(); paintPos();
+  refresh();
+}
+let SECTIDX=null;
+function paintSectProg(){
+  const el=$('sprog'); if(!el) return;
+  if(!SECTIDX){ SECTIDX={}; slides.forEach((s,i)=>{ const k=s.dataset.sect||''; (SECTIDX[k]=SECTIDX[k]||[]).push(i); }); }
+  const k=slides[cur].dataset.sect||'', arr=SECTIDX[k]||[];
+  el.textContent=(k && arr.length>1)?((arr.indexOf(cur)+1)+' / '+arr.length):'';
+}
+
+/* ── 鍵盤 ── */
+document.addEventListener('keydown',e=>{
+  const tg=e.target.tagName;
+  if(tg==='INPUT'||tg==='TEXTAREA') return;
+  if($('toc').classList.contains('show')){ if(e.key==='Escape') toggleToc(); return; }
+  if(e.key==='ArrowRight'||e.key==='PageDown'){ e.preventDefault(); goNext(); }
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); goPrev(); }
+  else if(e.key==='Escape'){ toggleToc(); }
+  else if(e.key==='f'||e.key==='F'){ goFull(); }
+  else if(e.key==='Home'){ goTo(0); }
+  else if(e.key==='End'){ goTo(TOT-1); }
+});
+function toggleToc(){ $('toc').classList.toggle('show'); }
+function goFull(){ if(!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.(); }
+
+/* ── 計時 ── */
+function fmt(s){ const m=Math.floor(s/60); return String(m).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+let active=!document.hidden;
+document.addEventListener('visibilitychange',()=>{ active=!document.hidden; });
+setInterval(()=>{
+  if(!active) return;
+  S.seconds++;
+  $('clock').textContent=fmt(S.seconds);
+  const st=$('st-time'); if(st) st.textContent=fmt(S.seconds);
+  if(S.seconds%10===0) save();
+  refresh();
+},1000);
+
+/* ── 表態與先猜 ── */
+function paintRevealAll(){
+  document.querySelectorAll('[data-reveal-all]').forEach(el=>{
+    el.classList.toggle('show',el.dataset.revealAll.split(',').every(k=>S.poll[k]));
+  });
+}
+document.querySelectorAll('[data-poll]').forEach(box=>{
+  const id=box.dataset.poll, ans=box.dataset.answer||'';
+  const bs=[...box.querySelectorAll('.opts button')];
+  const rv=[...document.querySelectorAll('[data-reveal-for="'+id+'"]')];
+  const verdict=document.querySelector('[data-verdict-for="'+id+'"]');
+  const paintP=()=>{
+    const v=S.poll[id];
+    bs.forEach(b=>{
+      b.classList.remove('sel','ok','ng');
+      if(!v) return;
+      if(ans){ b.disabled=true; if(b.dataset.v===ans) b.classList.add('ok'); else if(b.dataset.v===v) b.classList.add('ng'); }
+      else if(b.dataset.v===v) b.classList.add('sel');
+    });
+    if(v){ rv.forEach(r=>r.classList.add('show'));
+      if(verdict){ verdict.textContent = !ans ? '' : (v===ans ? '猜對了。' : '沒猜中。'); verdict.className='verdict show '+(v===ans?'ok':'ng'); } }
+  };
+  bs.forEach(b=>b.addEventListener('click',()=>{
+    if(ans && S.poll[id]) return;
+    S.poll[id]=b.dataset.v; save(); paintP(); paintRevealAll(); actDone(box.dataset.actKey);
+  }));
+  paintP();
+});
+
+/* ── 分類（點選或拖曳） ── */
+document.querySelectorAll('[data-sort]').forEach(box=>{
+  const id=box.dataset.sort;
+  const tray=box.querySelector('.tray'), cols=[...box.querySelectorAll('.scol')];
+  const cards=[...box.querySelectorAll('.sc')], N=cards.length;   // 顯示順序在建置時就排好了
+  const fb=box.querySelector('.fbk'), score=box.querySelector('.score');
+  const st=S.sort[id]=S.sort[id]||{p:{}};
+  let sel=null;
+  const bar=document.createElement('div');
+  bar.className='sbar';
+  bar.innerHTML='<span class="sbt"></span>'+cols.map(c=>'<button type="button" data-k="'+c.dataset.k+'">'+esc(c.querySelector('h4').textContent)+'</button>').join('')
+    +'<button type="button" class="x" aria-label="取消">取消</button>';
+  document.body.appendChild(bar);
+  const select=el=>{
+    cards.forEach(c=>c.classList.remove('sel')); sel=el;
+    document.querySelectorAll('.sbar.show').forEach(b=>{ if(b!==bar) b.classList.remove('show'); });
+    if(el){ el.classList.add('sel'); bar.querySelector('.sbt').textContent='把「'+el.dataset.txt+'」放到：'; bar.classList.add('show'); }
+    else bar.classList.remove('show');
+  };
+  const clear=()=>{ cards.forEach(c=>c.classList.remove('ok','ng')); fb.className='fbk'; score.textContent=''; };
+  const put=(el,col)=>{
+    (col?col.querySelector('.drop'):tray).appendChild(el);
+    if(col) st.p[el.dataset.i]=col.dataset.k; else delete st.p[el.dataset.i];
+    save();
+  };
+  const byI=i=>cards.find(c=>c.dataset.i===i);
+  const home=()=>cards.forEach(c=>tray.appendChild(c));   // 放回原來的順序
+  cards.forEach(c=>{ const k=st.p[c.dataset.i]; const col=k&&cols.find(x=>x.dataset.k===k); if(col) col.querySelector('.drop').appendChild(c); });
+  cards.forEach(c=>{
+    c.addEventListener('click',e=>{
+      e.stopPropagation(); clear();
+      if(c.parentElement!==tray){ put(c,null); home(); cards.forEach(x=>{ const k=st.p[x.dataset.i]; const col=k&&cols.find(y=>y.dataset.k===k); if(col) col.querySelector('.drop').appendChild(x); }); select(c); return; }
+      select(sel===c?null:c);
+    });
+    c.addEventListener('dragstart',e=>{ e.dataTransfer.setData('text/plain',c.dataset.i); e.dataTransfer.effectAllowed='move'; select(c); });
+  });
+  cols.forEach(col=>{
+    col.addEventListener('click',()=>{ if(!sel) return; clear(); put(sel,col); select(null); });
+    col.addEventListener('dragover',e=>{ e.preventDefault(); col.classList.add('hot'); });
+    col.addEventListener('dragleave',()=>col.classList.remove('hot'));
+    col.addEventListener('drop',e=>{ e.preventDefault(); col.classList.remove('hot');
+      const el=byI(e.dataTransfer.getData('text/plain')); if(!el) return; clear(); put(el,col); select(null); });
+  });
+  bar.querySelectorAll('button[data-k]').forEach(b=>b.addEventListener('click',()=>{
+    if(!sel) return; clear(); put(sel,cols.find(c=>c.dataset.k===b.dataset.k)); select(null);
+  }));
+  bar.querySelector('.x').addEventListener('click',()=>select(null));
+  tray.addEventListener('dragover',e=>e.preventDefault());
+  tray.addEventListener('drop',e=>{ e.preventDefault(); const el=byI(e.dataTransfer.getData('text/plain')); if(el){ clear(); put(el,null); select(null); } });
+  box.querySelector('.js-check').addEventListener('click',()=>{
+    let n=0, placed=0; const wrong=[];
+    cols.forEach(col=>col.querySelectorAll('.sc').forEach(el=>{
+      placed++;
+      const ok=el.dataset.k===col.dataset.k; n+=ok; el.classList.add(ok?'ok':'ng'); if(!ok) wrong.push(el);
+    }));
+    if(placed<N){ cards.forEach(c=>c.classList.remove('ok','ng')); fb.className='fbk show'; fb.innerHTML='還有<b>'+(N-placed)+'</b>張沒放。'; return; }
+    score.textContent=n+' / '+N; st.score=n; save(); actDone(box.dataset.actKey);
+    fb.className='fbk show '+(n===N?'ok':'ng');
+    fb.innerHTML = n===N ? '<b>全對。</b>'
+      : '<b>放錯的：</b><br>'+wrong.map(el=>'「'+esc(el.dataset.txt)+'」屬於「'+esc(el.dataset.ans)+'」').join('<br>');
+  });
+  box.querySelector('.js-reset').addEventListener('click',()=>{ clear(); st.p={}; delete st.score; save(); select(null); home(); });
+});
+
+/* ── 配對 ── */
+document.querySelectorAll('[data-match]').forEach(box=>{
+  const id=box.dataset.match, [L,R]=box.querySelectorAll('.mcol');
+  const stat=box.parentElement.querySelector('.mstat');
+  const total=L.querySelectorAll('.mitem').length;
+  S.match[id]=S.match[id]||[];
+  let sel=null;
+  const paintM=()=>{
+    const done=S.match[id];
+    box.querySelectorAll('.mitem').forEach(it=>it.classList.toggle('done',done.includes(it.dataset.k)));
+    stat.innerHTML = done.length===total ? '全部配對完成 ✓' : '已配對<b>'+done.length+'</b>／'+total+'　·　點左邊一項，再點右邊對應的一項';
+    stat.classList.toggle('ok',done.length===total);
+    if(done.length===total) actDone(box.dataset.actKey);
+  };
+  box.querySelectorAll('.mitem').forEach(it=>it.addEventListener('click',()=>{
+    if(it.classList.contains('done')) return;
+    if(it.parentElement===L){ L.querySelectorAll('.mitem').forEach(x=>x.classList.remove('sel')); it.classList.add('sel'); sel=it; return; }
+    if(!sel){ shake(it); return; }
+    if(sel.dataset.k===it.dataset.k){ sel.classList.remove('sel'); S.match[id].push(it.dataset.k); save(); sel=null; paintM(); }
+    else shake(it);
+  }));
+  paintM();
+});
+
+/* ── 暖身排序：點的順序就是名次（沒有標準答案） ── */
+document.querySelectorAll('[data-rank]').forEach(box=>{
+  const id=box.dataset.rank, n=+box.dataset.n, btns=[...box.querySelectorAll('.rk')];
+  const cnt=box.querySelector('.cnt'), fb=box.querySelector('.fbk');
+  S.rank[id]=S.rank[id]||[];
+  const paintR=()=>{
+    const a=S.rank[id];
+    btns.forEach(b=>{ const k=a.indexOf(+b.dataset.i); b.classList.toggle('on',k>=0); b.querySelector('.rn').textContent=k>=0?k+1:''; });
+    cnt.textContent='已排'+a.length+'／'+n;
+    if(a.length===n){ fb.className='fbk show ok'; fb.innerHTML='<b>排好了。</b>'; actDone(box.dataset.actKey); }
+    else fb.className='fbk';
+    paintRankCmp();
+  };
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    const a=S.rank[id], i=+b.dataset.i;
+    if(a.includes(i)||a.length>=n) return;
+    a.push(i); save(); paintR();
+  }));
+  box.querySelector('.js-reset').addEventListener('click',()=>{ S.rank[id]=[]; save(); paintR(); });
+  paintR();
+});
+// 後面的對照表：每一列填上「你排第幾」，第1名那一列標出來
+function paintRankCmp(){
+  if(!CONF.RANK) return;
+  const a=S.rank[CONF.RANK]||[], cells=[...document.querySelectorAll('td.mine[data-mine]')];
+  if(!cells.length) return;
+  const n=document.querySelectorAll('[data-rank="'+CONF.RANK+'"] .rk').length;
+  cells.forEach(td=>{
+    const k=a.indexOf(+td.dataset.mine);
+    td.textContent=(a.length===n && k>=0)?'你排第'+(k+1):'—';
+    td.closest('tr').classList.toggle('top',a.length===n && k===0);
+  });
+  const tw=cells[0].closest('.tw');
+  let msg=tw.nextElementSibling&&tw.nextElementSibling.classList.contains('rcmsg')?tw.nextElementSibling:null;
+  if(!msg){ msg=document.createElement('p'); msg.className='rcmsg'; tw.after(msg); }
+  if(a.length<n){ msg.innerHTML='你還沒在開場排完。回到<a href="#" class="goto" data-goto="'+(CONF.RANK_PAGE-1)+'">第'+CONF.RANK_PAGE+'頁</a>的暖身排一次，這裡就會出現你的名次。';
+    msg.querySelector('a').addEventListener('click',e=>{ e.preventDefault(); goTo(CONF.RANK_PAGE-1); }); }
+  else msg.textContent='';
+}
+
+/* ── 依序點選 ── */
+document.querySelectorAll('[data-order]').forEach(box=>{
+  const id=box.dataset.order, tray=box.querySelector('.otray');
+  const items=[...tray.querySelectorAll('.oi')], slots=[...box.querySelectorAll('.tline li')];
+  const fb=box.querySelector('.fbk');
+  S.order[id]=S.order[id]||0;
+  const fill=n=>{
+    slots.forEach((li,i)=>{ if(i<n && !li.classList.contains('filled')){
+      li.classList.remove('empty'); li.classList.add('filled');
+      li.lastElementChild.textContent=li.dataset.t; } });
+    items.forEach(it=>it.classList.toggle('used',+it.dataset.o<n));
+    if(n===slots.length){ fb.className='fbk show ok'; fb.innerHTML='<b>排好了。</b>'; actDone(box.dataset.actKey); }
+  };
+  items.forEach(it=>it.addEventListener('click',()=>{
+    if(+it.dataset.o===S.order[id]){ S.order[id]++; save(); fill(S.order[id]); }
+    else shake(it);
+  }));
+  box.querySelector('.js-show').addEventListener('click',()=>{ S.order[id]=slots.length; save(); fill(slots.length); });
+  fill(S.order[id]);
+});
+
+/* ── 寫一句 ── */
+document.querySelectorAll('[data-inbox]').forEach(box=>{
+  const id=box.dataset.inbox, ta=box.querySelector('textarea'), btn=box.querySelector('.js-save'), mine=box.querySelector('.imine');
+  const show=v=>{ mine.innerHTML='你寫的是：<b>'+esc(v)+'</b><br>這一句會跟著簽到一起送出，老師上課會挑幾則出來討論。'; mine.classList.add('show'); box.closest('details')?.classList.add('saved'); };
+  if(S.inbox[id]){ ta.value=S.inbox[id]; show(S.inbox[id]); btn.textContent='已存起來（還能改）'; }
+  btn.disabled=ta.value.trim().length<4;
+  ta.addEventListener('input',()=>{ btn.disabled=ta.value.trim().length<4; });
+  btn.addEventListener('click',()=>{ const v=ta.value.trim(); if(v.length<4) return;
+    S.inbox[id]=v; save(); show(v); btn.textContent='已存起來（還能改）'; actDone(box.dataset.actKey); });
+});
+
+/* ── 閱讀進度 ── */
+const rps=[...document.querySelectorAll('.rp')];
+function paintRead(){
+  let n=0;
+  rps.forEach(r=>{ const cb=r.querySelector('input'); r.classList.toggle('done',cb.checked); if(cb.checked) n++; });
+  document.querySelectorAll('.rpstat b').forEach(b=>b.textContent=n);
+  document.querySelectorAll('.rptot').forEach(b=>b.textContent=rps.length);
+}
+rps.forEach(r=>{
+  const cb=r.querySelector('input'), k='r'+cb.dataset.r;
+  if(S.readp[k]) cb.checked=true;
+  cb.addEventListener('change',()=>{ S.readp[k]=cb.checked?1:0; save(); paintRead(); });
+});
+paintRead();
+
+/* ── 小測驗 ── */
+const ANS={};
+document.querySelectorAll('[data-quiz]').forEach(quiz=>{
+  const qid=quiz.dataset.quiz;
+  ANS[qid]=[...quiz.querySelectorAll('.qz')].map(q=>parseInt(q.dataset.a,10));
+  S.quiz[qid]=S.quiz[qid]||{};
+  quiz.querySelectorAll('.qz').forEach((q,i)=>{
+    const a=parseInt(q.dataset.a,10), opts=[...q.querySelectorAll('.opt')], fb=q.querySelector('.fb');
+    const lock=picked=>{
+      opts.forEach((o,k)=>{ o.disabled=true;
+        if(k+1===a) o.classList.add('right'); else if(k+1===picked) o.classList.add('wrong'); });
+      q.classList.add(picked===a?'got':'miss');
+      fb.classList.add('show');
+    };
+    if(S.quiz[qid][i]) lock(S.quiz[qid][i]);
+    opts.forEach((o,k)=>o.addEventListener('click',()=>{
+      if(S.quiz[qid][i]) return;
+      S.quiz[qid][i]=k+1; save(); lock(k+1); refresh();
+    }));
+  });
+});
+function tally(){
+  let done=0,right=0,total=0;
+  for(const qid in ANS) ANS[qid].forEach((a,i)=>{
+    total++; const p=S.quiz[qid]&&S.quiz[qid][i];
+    if(p){ done++; if(p===a) right++; }
+  });
+  return {done,right,total};
+}
+
+/* ── 完成頁 ── */
+function refresh(){
+  const sc=$('st-score'); if(!sc) return;
+  const t=tally();
+  sc.textContent=t.right+' / '+t.total;
+  $('st-done').textContent=t.done+' / '+t.total;
+  $('st-seen').textContent=Object.keys(S.seen).length+' / '+TOT;
+  $('st-act').textContent=actCount()+' / '+ACTS.length;
+  $('st-time').textContent=fmt(S.seconds);
+  const need=CONFIG.MIN_MINUTES*60, btn=$('submit'), msg=$('dmsg');
+  if(S.sent){
+    btn.disabled=true; btn.textContent=S.sentRow?'已登記':'已送出';
+    msg.textContent='已於'+S.sent+(S.sentRow?'完成登記。':'送出。');
+    const box=$('scode');
+    if(box && S.sentCode) box.innerHTML=esc(S.sentWho||'')+'<br><b>'+esc(S.sentCode)+'</b>'
+      +'<span class="codenote">'
+      +(S.sentRow ? '已確認寫入老師的簽到表（第'+Number(S.sentRow)+'列），簽到完成。'
+        : '瀏覽器收不到Google的回覆，這裡無法確認是否寫入成功。'
+        +'請記下上面這組代碼；若老師的紀錄裡沒有你，把代碼交給老師即可補登。')+'</span>';
+    return;
+  }
+  const sid=($('sid').value||'').trim(), sname=($('sname').value||'').trim();
+  const okQ=(t.done===t.total), okT=(S.seconds>=need), okId=(sid.length>=4 && sname.length>=1);
+  btn.disabled=!(okQ&&okT&&okId);
+  if(!okQ) msg.textContent='還有'+(t.total-t.done)+'題沒有作答。三份小測驗全部作答完畢後，就可以送出簽到。';
+  else if(!okT) msg.textContent='已全部作答。閱讀時間還差'+Math.ceil((need-S.seconds)/60)+'分鐘（門檻'+CONFIG.MIN_MINUTES+'分鐘）。';
+  else if(!okId) msg.textContent='條件已符合。請填上學號與姓名，才能送出簽到。';
+  else msg.textContent='條件已符合，可以送出簽到。';
+}
+$('submit').addEventListener('click',()=>{
+  const t=tally(), d=new Date(), pad=n=>String(n).padStart(2,'0');
+  const stamp=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
+  const note=$('scode');
+  const sid=($('sid').value||'').trim(), name=($('sname').value||'').trim();
+  const minutes=Math.floor(S.seconds/60), pages=Object.keys(S.seen).length;
+  const feedback=($('sfbk').value||'').trim();
+  const code=CONFIG.WEEK+'｜答對'+t.right+'/'+t.done+'｜'+minutes+'分｜'+pages+'/'+TOT+'頁';
+  let detail='';
+  if(CONF.RANK){
+    const names=[...document.querySelectorAll('[data-rank="'+CONF.RANK+'"] .rk .rt')].map(e=>e.textContent);
+    detail+='暖身排序：'+((S.rank[CONF.RANK]||[]).map(k=>names[k]).join('>')||'（未排）')+'｜';
+  }
+  (CONF.POLLS||[]).forEach(([pid,label])=>{ detail+=label+'：'+(S.poll[pid]||'—')+'｜'; });
+  (CONF.INBOX||[]).forEach((iid,i)=>{ detail+='討論'+(i+1)+'：'+(((S.inbox[iid]||'').trim())||'（未填）')+'｜'; });
+  detail+='動手'+actCount()+'/'+ACTS.length+'｜回饋：'+(feedback||'（未填）');
+  const manual=why=>{ note.innerHTML='<b>尚未送出</b>：'+why+'請把這組代碼交給老師：<br><b>'+esc(code)+'</b>'; };
+  if(!CONFIG.ENDPOINT && !CONFIG.GAS){ manual('簽到後台還沒接上。'); return; }
+  const btn=$('submit');
+  btn.disabled=true; note.textContent='傳送中…';
+  const fd=new URLSearchParams();
+  fd.append(CONFIG.FIELDS.sid,sid);
+  fd.append(CONFIG.FIELDS.name,name);
+  fd.append(CONFIG.FIELDS.code,code);
+  fd.append(CONFIG.FIELDS.detail,detail);
+  const viaForm=()=>!CONFIG.ENDPOINT ? (btn.disabled=false, manual('簽到後台沒有回應。')) : fetch(CONFIG.ENDPOINT,{method:'POST',mode:'no-cors',body:fd})
+  .then(()=>{ S.sent=stamp; S.sentCode=code; S.sentWho=sid+'　'+name; save(); refresh(); })
+  .catch(()=>{ btn.disabled=false; note.textContent='送出失敗，請確認網路後再按一次；若仍失敗請截圖這一頁給老師。'; });
+  if(!CONFIG.GAS){ viaForm(); return; }
+  // 先送簽到後台：寫進試算表並讀回確認，回傳列號。後台沒回應或出錯，就改走表單
+  const ac=new AbortController(), timer=setTimeout(()=>ac.abort(),20000);
+  fetch(CONFIG.GAS,{method:'POST',body:new URLSearchParams({week:CONFIG.WEEK,sid:sid,name:name,code,detail}),signal:ac.signal})
+  .then(r=>r.json())
+  .then(j=>{ clearTimeout(timer); if(!j||!j.ok||!j.row) throw new Error('not ok');
+    S.sent=stamp; S.sentCode=code; S.sentWho=sid+'　'+name; S.sentRow=j.row; save(); refresh(); })
+  .catch(()=>{ clearTimeout(timer); viaForm(); });
+});
+
+/* ── 目次篩選 ── */
+$('tfilter').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  $('tfilter').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  const f=b.dataset.f;
+  [...toclist.children].forEach((li,i)=>{
+    const s=slides[i], k=s.dataset.kind, fl=(s.dataset.flags||'').split(' ');
+    let show=true;
+    if(f==='act') show=s.hasAttribute('data-act');
+    else if(f==='sum') show=fl.includes('sum');
+    else if(f==='quote') show=fl.includes('quote');
+    else if(f==='read') show=(k==='readings');
+    li.classList.toggle('hide',!show);
+  });
+});
+
+/* ── 捲動追蹤：目前看到哪一頁 ── */
+let tick=false;
+window.addEventListener('scroll',()=>{ if(tick) return; tick=true; requestAnimationFrame(()=>{ paintBar(); tick=false; }); },{passive:true});
+const io=new IntersectionObserver(es=>{
+  if(Date.now()<navLock) return;
+  let best=null, bi=-1;
+  es.forEach(e=>{ if(e.isIntersecting){ const i=slides.indexOf(e.target);
+    if(i>=0 && (best===null||e.intersectionRatio>best)){ best=e.intersectionRatio; bi=i; } } });
+  if(bi>=0 && bi!==cur){ cur=bi; S.page=cur; S.seen[cur]=1; save(); paintPos(); }
+},{rootMargin:'-40% 0px -40% 0px',threshold:[0,.25,.5,1]});
+slides.forEach(sl=>io.observe(sl));
+/* 看過頁數：一頁露出一半，或占滿半個畫面，就算看過。 */
+const seenIO=new IntersectionObserver(es=>{
+  let add=false;
+  es.forEach(e=>{ if(!e.isIntersecting) return;
+    const i=slides.indexOf(e.target);
+    if(i>=0 && !S.seen[i] && (e.intersectionRatio>=.5 || e.intersectionRect.height>=window.innerHeight*.5)){
+      S.seen[i]=1; add=true; } });
+  if(add){ save(); refresh(); }
+},{threshold:[0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1]});
+slides.forEach(sl=>seenIO.observe(sl));
+
+/* ── 起始 ── */
+showPane(S.pane||'0',false);
+slides.forEach((sl,i)=>{ if(sl.offsetParent!==null && sl.getBoundingClientRect().top<window.innerHeight) S.seen[i]=1; });
+['sid','sname','sfbk'].forEach(id=>{
+  const el=$(id); if(!el) return;
+  if(S[id]) el.value=S[id];
+  el.addEventListener('input',()=>{ S[id]=el.value; save(); refresh(); });
+});
+paintRevealAll(); paintRankCmp();
+$('clock').textContent=fmt(S.seconds);
+paint();
+setTimeout(()=>{ const k=$('khint'); if(k) k.style.opacity=0; },6000);
+
+/* ── 續讀提示 ── */
+(function(){
+  const start=S.page||0;
+  if(start<2) return;
+  const box=document.createElement('div');
+  box.className='resume';
+  box.innerHTML='<span>上次讀到第'+(start+1)+'頁</span><button type="button" id="rs-go">繼續讀</button><button type="button" class="x" id="rs-top">從頭開始</button>';
+  document.body.appendChild(box);
+  const kill=()=>box.remove();
+  $('rs-go').addEventListener('click',()=>{ goTo(start); kill(); });
+  $('rs-top').addEventListener('click',()=>{ goTo(0); kill(); });
+  setTimeout(kill,12000);
+})();
+
+/* ═══════ 讓頁面活起來：捲進畫面時浮現、長條長出來 ═══════ */
+const RM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const liveIO=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting) return;
+  const sl=e.target; if(sl.classList.contains('in')) return;
+  sl.classList.add('in'); liveIO.unobserve(sl);
+}),{threshold:.08});
+if(RM||document.hidden) slides.forEach(sl=>sl.classList.add('in')); else { document.documentElement.classList.add('anim'); slides.forEach(sl=>liveIO.observe(sl)); }
+// 剛切換分頁、或展開章節時，畫面裡的頁面要馬上顯示
+function wakeVisible(){ slides.forEach(sl=>{ if(sl.offsetParent!==null){ const r=sl.getBoundingClientRect();
+  if(r.top<innerHeight && r.bottom>0 && !sl.classList.contains('in')){ sl.classList.add('in'); liveIO.unobserve(sl); } } }); }
+document.addEventListener('click',()=>setTimeout(wakeVisible,60));
+setTimeout(wakeVisible,200);
+// 小測驗答對：選項跳一下
+document.querySelectorAll('.qz .opt').forEach(o=>o.addEventListener('click',()=>setTimeout(()=>{
+  const r=o.closest('.qz').querySelector('.opt.right'); if(r){ r.classList.add('pop'); setTimeout(()=>r.classList.remove('pop'),600); } },10)));
+
+</script>
+</body>
+</html>
