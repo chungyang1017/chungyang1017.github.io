@@ -629,7 +629,7 @@ blockquote p.tr{font-family:var(--sans);color:var(--soft)}
    各週的設定（週次、表態題、討論題、簽到網址）由 build.py 填入 CONF。
    GAS 是該週簽到試算表的 Apps Script 網址；留空時，送出鍵會產生一組代碼，請學生交給老師手動登記。
    ═══════════════════════════════════════════════ */
-const CONF={"WEEK": "W11", "KEY": "sp115-w11", "GAS": "", "POLLS": [["p63", "如果你是1994年的立委"], ["p70", "健保下一次缺錢，你最能接受哪一種？"]], "INBOX": ["d1", "d2", "d3", "d4"], "RANK": "", "RANK_PAGE": 0};
+const CONF={"WEEK": "W11", "KEY": "sp115-w11", "GAS": "https://script.google.com/macros/s/AKfycbz9WoQL69Vzo57VNL7RfX0BJEjVRHjl61vetTyXs88szgFm4VBfdAWRx76iJJSBS7fjtA/exec", "POLLS": [["p63", "如果你是1994年的立委"], ["p70", "健保下一次缺錢，你最能接受哪一種？"]], "INBOX": ["d1", "d2", "d3", "d4"], "RANK": "", "RANK_PAGE": 0};
 const CONFIG = {
   ENDPOINT:'',
   GAS:CONF.GAS||'',
